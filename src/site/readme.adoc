@@ -6,7 +6,7 @@ The _docsy_ theme was customized to support specific needs of the tangly OS docu
 
 Each section has a configuration in the front matter in the index file. The type of the section is specified to allow Hugo to retrieve the corresponding templates.
 
-Use https://linkchecker.github.io/linkchecker/[Link Checker] to validate all links on the web site.
+Use https://linkchecker.github.io/linkchecker/[Link Checker] to validate all links on the website.
 
 How to kill the hugo process hanging in a port:
 
@@ -29,7 +29,7 @@ The open source copyright of our site is not well displayed in the standard foot
 
 ==== Attachments
 
-For the attachment feature we added:
+For the attachment feature, we added:
 
 * assets/scss/shortcodes.scss
 * assets/scss/main.scss _added import of the shortcodes.scss styling.
@@ -37,7 +37,7 @@ For the attachment feature we added:
 
 ==== Comments
 
-For the comment feature we added:
+For the comment feature, we added:
 
 * layouts/blog/content.html _added utterances code for comments_
 * layouts/partials/comments-utterances.html _partial for comment template_
@@ -49,3 +49,12 @@ Exploration was started to improve the styling of https://asciidoc.org[asciidoc]
 * assets/scss/_asciidoctor.scss _used to better style asciidoc documents_.
 * assets/scss/_shortcodes_.scss _used by the attachment extension_.
 * assets/scss/_styles_projects.scss _regular extension hook for Hugo Docsy template_.
+
+== Local Development
+
+The code to generate a presentation workshop slides deck is:
+
+[source,bash]
+----
+ bundle exec asciidoctor-revealjs -a revealjsdir=https://cdn.jsdelivr.net/npm/reveal.js@4.5.0 arc42/<presenation>.adoc
+----

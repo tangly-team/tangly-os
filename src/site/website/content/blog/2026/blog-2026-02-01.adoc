@@ -1,0 +1,32 @@
+---
+title: "req42 Agile Requirements"
+linkTitle: "req42"
+date: 2025-01-05
+tags: ["agile", ]
+---
+
+== req42 Agile Requirements
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+
+We hope that the metaphor of the universe will steer you away from having to manage all artifacts in the form of a document.
+You should just have these artifacts tangible in some form that allows all stakeholders involved to communicate about them in a reasonable way.
+
+Think of these artifacts as a cabinet, where each artifact has its own compartment.
+The cabinet today should of course not be one filled with lots of paper in different compartments, but rather a wiki with an appropriate structure or some other electronic collection.
+With such a cabinet, you can number the product owner’s universe and place the artifacts in the respective cabinet compartment.
+
+image::2026-02-01-head.png[width=420,height=360,role=left]
+
+=== Artifacts
+
+The following figure shows you the “universe of the product owner” from req42.
+The “guiding star” in the middle is of course the Product Backlog as the most important artifact, with which you will certainly spend most of your time.
+Around it many other artifacts are revolving that you should take seriously in your role as a product owner.
+
+The blue planets are the more requirements-oriented deliverables, the red planets are the more management-oriented records, and the green planet represents your deliverables.
+
+image::2026-02-01-universe.png[width=420,height=360,role=left]
+

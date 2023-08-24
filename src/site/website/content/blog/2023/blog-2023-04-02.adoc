@@ -137,7 +137,8 @@ xattr -d com.apple.quarantine /Applications/JabRef.app
 
 npm install --global state-machine-cat                                <7>
 
-gem install asciidoctor-bibtex asciidoctor-diagram asciidoctor-chart asciidoctor-rouge asciidoctor-kroki    <8>
+gem install asciidoctor-bibtex asciidoctor-diagram asciidoctor-chart  <8>
+gem install asciidoctor-rouge asciidoctor-kroki asciidoctor-revealjs
 
 brew install --cask netnewswire                                       <9>
 brew install --cask asciidocfx                                        <10>

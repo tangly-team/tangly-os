@@ -1,7 +1,7 @@
 ---
 title: "Java 21"
 linkTitle: "Java 21"
-date: 2023-09-10
+date: 2023-09-30
 tags: ["java"]
 ---
 
@@ -38,11 +38,16 @@ The syntactic improvements initiated by Amber and core group are;
 - https://openjdk.org/jeps/430[String Templates] _Preview_
 - https://openjdk.org/jeps/431[Sequenced Collections]
 
+The string template feature is worth the effort to study the provided functions.
+My code could be considerably simplified when using the functionality.
+
 === Loom Project
 
 The https://openjdk.org/projects/loom/[loom] initiative is completing the major changes associated with virtual threads.
 
 - https://openjdk.org/jeps/444[Virtual Threads]
+- https://openjdk.org/jeps/446[Scoped Values] _Preview_
+- https://openjdk.org/jeps/453[Structured Concurrency] _Preview_
 
 === Panama Project
 
@@ -65,12 +70,27 @@ The https://openjdk.org/projects/lilliput/[lilliput] initiative aims to reduce m
 Obsolete features are removed:
 
 - https://openjdk.org/jeps/449[Deprecate the Windows 32-bit x86 Port for Removal]
+- https://openjdk.org/jeps/451[Prepare to Disallow the Dynamic Loading of Agents]
 
 Extensions to existing features:
 
-- https://openjdk.org/jeps/404[Generational Shenandoah (Experimental)]
 - https://openjdk.org/jeps/439[Generational ZGC]
 - https://openjdk.org/jeps/445[Unnamed Classes and Instance Main Methods (Preview)]
+- https://openjdk.org/jeps/452[Key Encapsulation Mechanism API]
+
+=== Lessons Learnt
+
+Gradle toolchain feature simplifies experimenting with a new Java version.
+Often you can use the continuous integration pipelines of {ref-github} or {ref-gitlab} platforms.
+No virtual machines with an experimental Java version are available.
+
+Use different distributions to harden your code and explore alternative solutions.
+The https://www.eclipse.org/[Eclipse] foundation https://adoptium.net/temurin/[temurin] distribution is very nice.
+
+Migrate all your active products to the new Java version.
+Invest effort to enhance source code and use the new features.
+So, you will avoid technical obsolesce and geriatric applications.
+
 
 [bibliography]
 === Links
@@ -91,7 +111,3 @@ Marcel Baumann. 2022.
 Marcel Baumann. 2022
 - [[[modern-java-development, 8]]] link:../../2021/modern-java-development/[Modern Java Development].
 Marcel Baumann. 2021.
-
-=== References
-
-bibliography::[]

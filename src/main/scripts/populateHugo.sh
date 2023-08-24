@@ -14,6 +14,7 @@
 prjRootDir=/Users/Shared/Projects/
 prjName=tangly-os
 prjDir=$prjRootDir$prjName
+workshopsDir=$prjDir/src/site/workshops
 websiteDir=$prjDir/src/site/website
 
 siteRootDir=/Users/Shared/Projects/
@@ -32,6 +33,18 @@ function copy_domain_module() {
   cp $prjDir/net.tangly.erp.$1/readme.* $siteDir/content/docs/domains/$1/
   cp -R $prjDir/net.tangly.erp.$1/src/site/* $siteDir/content/docs/domains/$1/
   cp -R $prjDir/net.tangly.erp.$1/build/docs/javadoc/* $siteDir/static/docs/domains/$1/api-$1
+}
+
+revealjsDir=https://cdn.jsdelivr.net/npm/reveal.js@4.5.0
+siteWorkshopsDir=$siteDir/static/ideas/learnings/workshops/
+
+# copy the pictures and the revealjs slides into the workshops folder in the static part of the site
+function copy_workshop () {
+    cp -R $workshopsDir/$1/pics/* $siteWorkshopsDir/$1/pics
+    pushd $workshopsDir
+    bundle exec asciidoctor-revealjs -a revealjsdir=$revealjsDir $1/$1.adoc
+    popd
+    mv $workshopsDir/$1/$1.html  $siteWorkshopsDir/$1/
 }
 
 # clean-up the directories before copying new data
@@ -72,6 +85,11 @@ copy_domain_module products
 copy_domain_module shared
 copy_domain_module ui
 cp -R $prjDir/net.tangly.erp.shared/src/site/_design $siteDir/content/docs/domains/_design
+
+copy_workshop agile-scrum
+copy_workshop arc42
+copy_workshop c4-uml
+copy_workshop ddd
 
 cd $siteDir
 rm -v **/.DS_Store

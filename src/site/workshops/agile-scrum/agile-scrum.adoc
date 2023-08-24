@@ -1,0 +1,116 @@
+= Agile and Scrum Approaches
+:author: Marcel Baumann (tangly llc)
+:revealjs_theme: white
+:source-highlighter: highlight.js
+:highlightjs-languages: toml, java, bash
+:revealjs_slideNumber: true
+:revealjs_hash: true
+:revealjs_embedded: false
+:imagesdir: pics
+:icons: font
+
+== Agenda
+
+== Why Agile
+
+[.lightbg,background-opacity="0.5"]
+=== Agile Organizations
+
+image::agile-organizations.png[background,size=cover]
+
+- Customer centric
+- Small teams of professionals
+- Networked transparent communication
+
+[.lightbg,background-opacity="0.5"]
+=== Agile Initiatives
+
+image::project-success-rates.png[background,size=cover]
+
+=== Agile Manifesto
+
+- *Individuals* and *interactions* over processes and tools
+- *Working software* over comprehensive documentation
+- *Customer collaboration* over contract negotiation
+- *Responding to change* over following a plan
+
+=== Agile Manifesto Principles
+
+image::agile-manifesto-principles.png[background,size=cover]
+
+== Scrum Principles
+
+[.lightbg,background-opacity="0.5"]
+== Scrum Rules the World
+
+image::scrum-rules-the-world.png[background,size=cover]
+
+=== Scrum in 100 Words
+
+- Scrum is an *agile process* that allows us to focus on delivering the *highest business value* in the *shortest time*.
+- It allows us to rapidly and repeatedly *inspect* actual working software (every two weeks or each day).
+- The business sets the *priorities*.
+Teams self-organize to determine *the best way to deliver the highest priority features*.
+- At least every two weeks anyone can see real *working software* and decide to release it as is or continue to enhance it for another sprint.
+
+=== Scrum Pillars
+
+[.center-text]
+Transparency - Inspection - Adaptation
+
+- Scrum is founded on *empiricism* and *lean thinking*.
+- Empiricism asserts that knowledge comes from experience and *making decisions based on what is observed*.
+- Lean thinking reduces *waste* and focuses on the essentials.
+
+[.lightbg,background-opacity="0.5"]
+=== Scrum Values
+
+image::scrum-values.png[background,size=cover]
+
+== Scrum Events
+
+image::scrum-approach.png[background,size=cover]
+
+=== Planning
+
+=== Daily Scrum
+
+=== Review
+
+=== Retrospective
+
+=== Backlog Refinement
+
+=== Architecture and Design
+
+== Scrum Artifacts
+
+=== Backlog
+
+=== Sprint Backlog
+
+=== Increment
+
+=== Definition of Done
+
+== Agile Fluency
+
+=== Agile Fluency Model
+
+=== Technical Agile Fluency
+
+- clean code and refactoring
+- version control
+- continuous integration and delivery
+- automated test suite
+- configuration and documentation as code
+
+=== Software Craftsmanship
+
+== Lessons Learnt
+
+[%notitle]
+[.lightbg,background-opacity="0.5"]
+== Discussion
+
+image::discussion.png[background,size=cover]

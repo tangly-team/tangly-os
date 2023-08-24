@@ -126,7 +126,8 @@ The generation and publishing of the whole site use a simple script.
 === arc42 Template
 
 I regularly use the {ref-arc42} template to mitigate lengthy discussions about how extensive software architecture shall be documented.
-The founders of https://www.isaqb.org/[iSAQB] certification institute created and maintained the *arc42* template.
+The founders of https://www.isaqb.org/[iSAQB] certification institute created the *arc42* template.
+They actively maintain and enhance the template and associated documentation.
 
 The template emphasizes the use of {ref-uml} and {ref-c4} notations for diagrams.
 {ref-plantuml} supports all the required diagram types.

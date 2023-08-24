@@ -49,6 +49,20 @@ An actor is a computational entity that, in response to a message it receives, c
 - Create a finite number of new actors.
 - Designate the behavior to be used for the next message it receives.
 
+[IMPORTANT]
+====
+Each actor owns a private mailbox or message queue.
+The owning actor is the sole instance empowered to retrieve messages.
+
+Any actor can send a message to another actor.
+Multiple actors can send messages to a specific actor.
+
+The sender cannot modify an already sent message.
+Ideally, messages should be immutable objects.
+
+The receiver is the owner of a received message and is responsible for its disposal.
+====
+
 === Advantages and Downsides
 
 Here are four benefits of this model:

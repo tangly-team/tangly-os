@@ -91,14 +91,14 @@ Delegate and empower your team.
 As a manager, you shall reconsider which activities are your responsibility.
 An agile team must at least be self-organized and ideally self-designed.
 
-manager lead::
+Manager lead::
 The team performs the work,
 self-organised / self-managed::
 The team organizes and performs its own activities and work.
-self-designed / self-selected::
+Self-designed / self-selected::
 The team creates, selects and removes new members and maintains itself.
 Logically, they are also in charge of evaluation, rewards, and career development.
-self-directed / self-governed::
+Self-directed / self-governed::
 The team has no outside management.
 
 image::2017-09-02-types-of-authority.png[]
@@ -118,7 +118,7 @@ Participate in transition planning::
 Agile transformation promotes self-organized teams that work efficiently on their own, which involves strategic planning.
 Find ways to reduce waste::
 as an agile manager, you will be expected to continually improve workflow and maximize efficiency by eliminating impediments.
-This key activity may not be part of your current role as a manager,
+This key activity may not be part of your current role as a manager.
 
 You will have more than enough work as a manager in an agile company.
 Only the content will be different.

@@ -1,0 +1,140 @@
+<?xml version="1.0"?>
+<svg
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    id="svg2187"
+    viewBox="0 0 50 50"
+    version="1.0"
+>
+    <g
+        id="layer1"
+        stroke="#000"
+        fill="none"
+    >
+        <path
+            id="path3201"
+            d="m46.376 25c0 10.905-9.5701 19.746-21.376 19.746-11.805 0-21.376-8.841-21.376-19.746s9.5701-19.746 21.376-19.746c11.805 0 21.376 8.8406 21.376 19.746z"
+            stroke-width="2.25"
+        />
+        <g
+            id="g4550"
+            transform="matrix(.10905 0 0 .10905 32.553 22.065)"
+            stroke-width="9.99"
+        >
+            <path
+                id="path3986-6"
+                stroke-linejoin="round"
+                d="m-60.221 107.13-19.562 6.5312 19.562-6.5312zm9.4375 10.719-29.156 11 29.156-11zm-0.3125 15.125-19.562 6.5312 19.562-6.5312z"
+                stroke-linecap="round"
+            />
+            <path
+                id="path4420"
+                d="m-45.232 107.94s0-3.9677 2.1124-18.855c2.0818-14.618 23.159-49.271 24.029-50.491 7.347-8.9726 11.724-19.959 11.724-31.872 0-30.14-27.725-54.577-61.919-54.577-34.198 0-61.921 24.437-61.921 54.577 0 11.912 4.3763 22.9 11.721 31.872 0.86902 1.2212 21.951 35.873 24.031 50.491 2.1146 14.887 2.1146 18.855 2.1146 18.855"
+            />
+            <path
+                id="path3986-6-6-8"
+                stroke-linejoin="round"
+                d="m-68.659-85.683-1.2188 20.594 1.2188-20.594zm-58.5 15.781 13.688 15.469-13.688-15.469zm115.78 0-13.656 15.469 13.656-15.469zm-156.06 46.469 19.562 6.5312-19.562-6.5312zm196.34 0-19.562 6.5312 19.562-6.5312z"
+                stroke-linecap="round"
+            />
+        </g
+        >
+    </g
+    >
+    <metadata
+    >
+        <rdf:RDF
+        >
+            <cc:Work
+            >
+                <dc:format
+                >image/svg+xml
+                </dc:format
+                >
+                <dc:type
+                    rdf:resource="http://purl.org/dc/dcmitype/StillImage"
+                />
+                <cc:license
+                    rdf:resource="http://creativecommons.org/licenses/publicdomain/"
+                />
+                <dc:publisher
+                >
+                    <cc:Agent
+                        rdf:about="http://openclipart.org/"
+                    >
+                        <dc:title
+                        >Openclipart
+                        </dc:title
+                        >
+                    </cc:Agent
+                    >
+                </dc:publisher
+                >
+                <dc:title
+                >Idea icon
+                </dc:title
+                >
+                <dc:date
+                >2013-11-10T16:47:40
+                </dc:date
+                >
+                <dc:description
+                >Idea pictogram/icon
+                </dc:description
+                >
+                <dc:source
+                >https://openclipart.org/detail/188607/idea-icon-by-ousia-188607
+                </dc:source
+                >
+                <dc:creator
+                >
+                    <cc:Agent
+                    >
+                        <dc:title
+                        >ousia
+                        </dc:title
+                        >
+                    </cc:Agent
+                    >
+                </dc:creator
+                >
+                <dc:subject
+                >
+                    <rdf:Bag
+                    >
+                        <rdf:li
+                        >idea
+                        </rdf:li
+                        >
+                        <rdf:li
+                        >light bulb
+                        </rdf:li
+                        >
+                    </rdf:Bag
+                    >
+                </dc:subject
+                >
+            </cc:Work
+            >
+            <cc:License
+                rdf:about="http://creativecommons.org/licenses/publicdomain/"
+            >
+                <cc:permits
+                    rdf:resource="http://creativecommons.org/ns#Reproduction"
+                />
+                <cc:permits
+                    rdf:resource="http://creativecommons.org/ns#Distribution"
+                />
+                <cc:permits
+                    rdf:resource="http://creativecommons.org/ns#DerivativeWorks"
+                />
+            </cc:License
+            >
+        </rdf:RDF
+        >
+    </metadata
+    >
+</svg
+>

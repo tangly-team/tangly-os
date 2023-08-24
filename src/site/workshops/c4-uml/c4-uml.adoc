@@ -1,0 +1,20 @@
+= C4 and UML Notations
+:author: Marcel Baumann (tangly llc)
+:imagesdir: pics
+:icons: font
+:revealjs_theme: white
+:source-highlighter: highlight.js
+:revealjs_slideNumber: true
+:revealjs_hash: true
+:revealjs_embedded: false
+:ref-c4: https://c4model.com/[C4 Model]
+:ref-uml: https://en.wikipedia.org/wiki/Unified_Modeling_Language[UML]
+
+
+== Agenda
+
+[%notitle]
+[.lightbg,background-opacity="0.5"]
+== Discussion
+
+image::discussion.png[background,size=cover]

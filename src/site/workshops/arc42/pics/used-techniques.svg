@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="us-ascii" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="753px" preserveAspectRatio="none"
+     style="width:938px;height:753px;background:#FFFFFF;" version="1.1" viewBox="0 0 938 753" width="938px" zoomAndPan="magnify">
+    <defs/>
+    <g>
+        <rect fill="#90EE90" height="36.2969" rx="12.5" ry="12.5" style="stroke:#181818;stroke-width:1.5;" width="59" x="418" y="357.7813"/>
+        <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="39" x="428" y="380.7764">arc42</text>
+        <rect fill="#ADD8E6" height="36.2969" rx="12.5" ry="12.5" style="stroke:#181818;stroke-width:1.5;" width="70" x="527" y="245.1875"/>
+        <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="50" x="537" y="268.1826">Models</text>
+        <rect fill="#F1F1F1" height="36.2969" rx="12.5" ry="12.5" style="stroke:#181818;stroke-width:1.5;" width="49" x="647" y="132.5938"/>
+        <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="29" x="657" y="155.5889">UML</text>
+        <rect fill="#F1F1F1" height="36.2969" rx="12.5" ry="12.5" style="stroke:#181818;stroke-width:1.5;" width="163" x="746" y="20"/>
+        <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="143" x="756" y="42.9951">Component Diagram</text>
+        <path d="M696,150.7422 L706,150.7422 C721,150.7422 721,38.1484 736,38.1484 L746,38.1484 " fill="none" style="stroke:#181818;stroke-width:1.0;"/>
+        <rect fill="#F1F1F1" height="36.2969" rx="12.5" ry="12.5" style="stroke:#181818;stroke-width:1.5;" width="140" x="746" y="76.2969"/>
+        <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="120" x="756" y="99.292">Package Diagram</text>
+        <path d="M696,150.7422 L706,150.7422 C721,150.7422 721,94.4453 736,94.4453 L746,94.4453 " fill="none" style="stroke:#181818;stroke-width:1.0;"/>
+        <rect fill="#F1F1F1" height="36.2969" rx="12.5" ry="12.5" style="stroke:#181818;stroke-width:1.5;" width="118" x="746" y="132.5938"/>
+        <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="98" x="756" y="155.5889">Class Diagram</text>
+        <path d="M696,150.7422 L706,150.7422 C721,150.7422 721,150.7422 736,150.7422 L746,150.7422 " fill="none" style="stroke:#181818;stroke-width:1.0;"/>
+        <rect fill="#F1F1F1" height="36.2969" rx="12.5" ry="12.5" style="stroke:#181818;stroke-width:1.5;" width="152" x="746" y="188.8906"/>
+        <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="132" x="756" y="211.8857">Statechart Diagram</text>
+        <path d="M696,150.7422 L706,150.7422 C721,150.7422 721,207.0391 736,207.0391 L746,207.0391 " fill="none" style="stroke:#181818;stroke-width:1.0;"/>
+        <rect fill="#F1F1F1" height="36.2969" rx="12.5" ry="12.5" style="stroke:#181818;stroke-width:1.5;" width="152" x="746" y="245.1875"/>
+        <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="132" x="756" y="268.1826">Sequence Diagram</text>
+        <path d="M696,150.7422 L706,150.7422 C721,150.7422 721,263.3359 736,263.3359 L746,263.3359 " fill="none" style="stroke:#181818;stroke-width:1.0;"/>
+        <path d="M597,263.3359 L607,263.3359 C622,263.3359 622,150.7422 637,150.7422 L647,150.7422 " fill="none" style="stroke:#181818;stroke-width:1.0;"/>
+        <rect fill="#F1F1F1" height="36.2969" rx="12.5" ry="12.5" style="stroke:#181818;stroke-width:1.5;" width="39" x="647" y="385.9297"/>
+        <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="19" x="657" y="408.9248">C4</text>
+        <rect fill="#F1F1F1" height="36.2969" rx="12.5" ry="12.5" style="stroke:#181818;stroke-width:1.5;" width="190" x="736" y="301.4844"/>
+        <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="170" x="746" y="324.4795">System Context Diagram</text>
+        <path d="M686,404.0781 L696,404.0781 C711,404.0781 711,319.6328 726,319.6328 L736,319.6328 " fill="none" style="stroke:#181818;stroke-width:1.0;"/>
+        <rect fill="#F1F1F1" height="36.2969" rx="12.5" ry="12.5" style="stroke:#181818;stroke-width:1.5;" width="148" x="736" y="357.7813"/>
+        <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="128" x="746" y="380.7764">Container Diagram</text>
+        <path d="M686,404.0781 L696,404.0781 C711,404.0781 711,375.9297 726,375.9297 L736,375.9297 " fill="none" style="stroke:#181818;stroke-width:1.0;"/>
+        <rect fill="#F1F1F1" height="36.2969" rx="12.5" ry="12.5" style="stroke:#181818;stroke-width:1.5;" width="163" x="736" y="414.0781"/>
+        <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="143" x="746" y="437.0732">Component Diagram</text>
+        <path d="M686,404.0781 L696,404.0781 C711,404.0781 711,432.2266 726,432.2266 L736,432.2266 " fill="none" style="stroke:#181818;stroke-width:1.0;"/>
+        <rect fill="#F1F1F1" height="36.2969" rx="12.5" ry="12.5" style="stroke:#181818;stroke-width:1.5;" width="118" x="736" y="470.375"/>
+        <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="98" x="746" y="493.3701">Code Diagram</text>
+        <path d="M686,404.0781 L696,404.0781 C711,404.0781 711,488.5234 726,488.5234 L736,488.5234 " fill="none" style="stroke:#181818;stroke-width:1.0;"/>
+        <path d="M597,263.3359 L607,263.3359 C622,263.3359 622,404.0781 637,404.0781 L647,404.0781 " fill="none" style="stroke:#181818;stroke-width:1.0;"/>
+        <path d="M477,375.9297 L487,375.9297 C502,375.9297 502,263.3359 517,263.3359 L527,263.3359 " fill="none" style="stroke:#181818;stroke-width:1.0;"/>
+        <rect fill="#ADD8E6" height="36.2969" rx="12.5" ry="12.5" style="stroke:#181818;stroke-width:1.5;" width="54" x="527" y="611.1172"/>
+        <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="34" x="537" y="634.1123">Build</text>
+        <rect fill="#F1F1F1" height="36.2969" rx="12.5" ry="12.5" style="stroke:#181818;stroke-width:1.5;" width="167" x="631" y="526.6719"/>
+        <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="147" x="641" y="549.667">Version Management</text>
+        <path d="M581,629.2656 L591,629.2656 C606,629.2656 606,544.8203 621,544.8203 L631,544.8203 " fill="none" style="stroke:#181818;stroke-width:1.0;"/>
+        <rect fill="#F1F1F1" height="36.2969" rx="12.5" ry="12.5" style="stroke:#181818;stroke-width:1.5;" width="178" x="631" y="582.9688"/>
+        <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="158" x="641" y="605.9639">Continuous Integration</text>
+        <path d="M581,629.2656 L591,629.2656 C606,629.2656 606,601.1172 621,601.1172 L631,601.1172 " fill="none" style="stroke:#181818;stroke-width:1.0;"/>
+        <rect fill="#F1F1F1" height="36.2969" rx="12.5" ry="12.5" style="stroke:#181818;stroke-width:1.5;" width="173" x="631" y="639.2656"/>
+        <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="153" x="641" y="662.2607">Configuration as Code</text>
+        <path d="M581,629.2656 L591,629.2656 C606,629.2656 606,657.4141 621,657.4141 L631,657.4141 " fill="none" style="stroke:#181818;stroke-width:1.0;"/>
+        <rect fill="#F1F1F1" height="36.2969" rx="12.5" ry="12.5" style="stroke:#181818;stroke-width:1.5;" width="39" x="631" y="695.5625"/>
+        <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="19" x="641" y="718.5576">Git</text>
+        <path d="M581,629.2656 L591,629.2656 C606,629.2656 606,713.7109 621,713.7109 L631,713.7109 " fill="none" style="stroke:#181818;stroke-width:1.0;"/>
+        <path d="M477,375.9297 L487,375.9297 C502,375.9297 502,629.2656 517,629.2656 L527,629.2656 " fill="none" style="stroke:#181818;stroke-width:1.0;"/>
+        <rect fill="#ADD8E6" height="36.2969" rx="12.5" ry="12.5" style="stroke:#181818;stroke-width:1.5;" width="118" x="250" y="188.8906"/>
+        <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="98" x="260" y="211.8857">Requirements</text>
+        <rect fill="#F1F1F1" height="36.2969" rx="12.5" ry="12.5" style="stroke:#181818;stroke-width:1.5;" width="190" x="10" y="104.4453"/>
+        <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="170" x="20" y="127.4404">Specification By Example</text>
+        <path d="M250,207.0391 L240,207.0391 C225,207.0391 225,122.5938 210,122.5938 L200,122.5938 " fill="none" style="stroke:#181818;stroke-width:1.0;"/>
+        <rect fill="#F1F1F1" height="36.2969" rx="12.5" ry="12.5" style="stroke:#181818;stroke-width:1.5;" width="154" x="46" y="160.7422"/>
+        <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="134" x="56" y="183.7373">Acceptance Criteria</text>
+        <path d="M250,207.0391 L240,207.0391 C225,207.0391 225,178.8906 210,178.8906 L200,178.8906 " fill="none" style="stroke:#181818;stroke-width:1.0;"/>
+        <rect fill="#F1F1F1" height="36.2969" rx="12.5" ry="12.5" style="stroke:#181818;stroke-width:1.5;" width="182" x="18" y="217.0391"/>
+        <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="162" x="28" y="240.0342">Behavior-Driven Design</text>
+        <path d="M250,207.0391 L240,207.0391 C225,207.0391 225,235.1875 210,235.1875 L200,235.1875 " fill="none" style="stroke:#181818;stroke-width:1.0;"/>
+        <rect fill="#F1F1F1" height="36.2969" rx="12.5" ry="12.5" style="stroke:#181818;stroke-width:1.5;" width="168" x="32" y="273.3359"/>
+        <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="148" x="42" y="296.3311">Defect-Driven Design</text>
+        <path d="M250,207.0391 L240,207.0391 C225,207.0391 225,291.4844 210,291.4844 L200,291.4844 " fill="none" style="stroke:#181818;stroke-width:1.0;"/>
+        <path d="M418,375.9297 L408,375.9297 C393,375.9297 393,207.0391 378,207.0391 L368,207.0391 " fill="none" style="stroke:#181818;stroke-width:1.0;"/>
+        <rect fill="#ADD8E6" height="36.2969" rx="12.5" ry="12.5" style="stroke:#181818;stroke-width:1.5;" width="69" x="299" y="357.7813"/>
+        <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="49" x="309" y="380.7764">Design</text>
+        <rect fill="#F1F1F1" height="36.2969" rx="12.5" ry="12.5" style="stroke:#181818;stroke-width:1.5;" width="131" x="118" y="329.6328"/>
+        <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="111" x="128" y="352.6279">Design Patterns</text>
+        <path d="M299,375.9297 L289,375.9297 C274,375.9297 274,347.7813 259,347.7813 L249,347.7813 " fill="none" style="stroke:#181818;stroke-width:1.0;"/>
+        <rect fill="#F1F1F1" height="36.2969" rx="12.5" ry="12.5" style="stroke:#181818;stroke-width:1.5;" width="148" x="101" y="385.9297"/>
+        <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="128" x="111" y="408.9248">Code Conventions</text>
+        <path d="M299,375.9297 L289,375.9297 C274,375.9297 274,404.0781 259,404.0781 L249,404.0781 " fill="none" style="stroke:#181818;stroke-width:1.0;"/>
+        <path d="M418,375.9297 L408,375.9297 C393,375.9297 393,375.9297 378,375.9297 L368,375.9297 " fill="none" style="stroke:#181818;stroke-width:1.0;"/>
+        <rect fill="#ADD8E6" height="36.2969" rx="12.5" ry="12.5" style="stroke:#181818;stroke-width:1.5;" width="93" x="275" y="526.6719"/>
+        <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="73" x="285" y="549.667">Document</text>
+        <rect fill="#F1F1F1" height="36.2969" rx="12.5" ry="12.5" style="stroke:#181818;stroke-width:1.5;" width="77" x="148" y="442.2266"/>
+        <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="57" x="158" y="465.2217">Asciidoc</text>
+        <path d="M275,544.8203 L265,544.8203 C250,544.8203 250,460.375 235,460.375 L225,460.375 " fill="none" style="stroke:#181818;stroke-width:1.0;"/>
+        <rect fill="#F1F1F1" height="36.2969" rx="12.5" ry="12.5" style="stroke:#181818;stroke-width:1.5;" width="83" x="142" y="498.5234"/>
+        <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="63" x="152" y="521.5186">PlantUML</text>
+        <path d="M275,544.8203 L265,544.8203 C250,544.8203 250,516.6719 235,516.6719 L225,516.6719 " fill="none" style="stroke:#181818;stroke-width:1.0;"/>
+        <rect fill="#F1F1F1" height="36.2969" rx="12.5" ry="12.5" style="stroke:#181818;stroke-width:1.5;" width="79" x="146" y="554.8203"/>
+        <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="59" x="156" y="577.8154">Mermaid</text>
+        <path d="M275,544.8203 L265,544.8203 C250,544.8203 250,572.9688 235,572.9688 L225,572.9688 " fill="none" style="stroke:#181818;stroke-width:1.0;"/>
+        <rect fill="#F1F1F1" height="36.2969" rx="12.5" ry="12.5" style="stroke:#181818;stroke-width:1.5;" width="211" x="14" y="611.1172"/>
+        <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="191" x="24" y="634.1123">Architecture Design Record</text>
+        <path d="M275,544.8203 L265,544.8203 C250,544.8203 250,629.2656 235,629.2656 L225,629.2656 " fill="none" style="stroke:#181818;stroke-width:1.0;"/>
+        <path d="M418,375.9297 L408,375.9297 C393,375.9297 393,544.8203 378,544.8203 L368,544.8203 " fill="none"
+              style="stroke:#181818;stroke-width:1.0;"/><!--SRC=[RL9DRnf13Btlhx3KIo9419Ie5QU49OsAM0b1GWzH3cRMB5PdP-XyeF3lwvq5gKjwslLxzlEpnmy-e0ircxB6GzPx-wAvseVA4PbtGAV6ewntGRSwqZiKjYJj1Ut1Qx5elZt8RNsmXao06MFbi6xX9QhVM54Np3LwtuNM0GEflHYvmkbF9ACw0f2Fp-J91wgbjGdqSLNOWCY6t3NyNvkvJFGFqfbs6bcNgU-6d6The40ZCzMYabrQiOasUlWfJaGZIDQ5sd4LMmJGfqQ9UUQGzVkTHYkPbLtIzSBrONqWnJjMRVNq14yVM1yq9V9HAJe4R7QJEmxa61C-fJqUsRh-pF6H3Cp8SsKIDQCTgV29w9Zef3U_yeH1r4rhAIrAfXA1nfJ_L6vLJ8j95hrYBgrAmLAZ2SsvD451haOksoodzk9VXUZeqdD5oheoUo0volDXPXS1E9wVONWt6eo-tWq7Dx-eX7dKC1p1y7voFvuCli7hImuDVvlTF2yNu6rqiggIVN2yZOtvssoEHuHLb55gce29McVpJJ61TTnAcbmaR8fCjePH1tWoofPigeb8_-X_pnPegYXtS2xChUYuKnlz1G00]-->
+    </g>
+</svg>

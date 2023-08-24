@@ -15,7 +15,7 @@ image::2017-08-01-head.png[width=420,height=360,role=left]
 
 Lately I was asked if I was interested in working as a Scrum master
 cite:[great-scrum-master,scrum-pocket-guide-3rd,mastering-professional-scrum].
-The below job description was handed me over.
+The job description below was handed me over.
 What an experience it was.
 
 The text with the regular font is the job description.

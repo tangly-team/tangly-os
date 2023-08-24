@@ -190,7 +190,7 @@ So you have the right to change everything at the end of each sprint, but the co
 Here again we are back to ROI computations.
 
 As a rule of thumb to test your decision, Uncle Bob stated in the "Clean Coder" book if you deliver an application with errors.
-The only professional approach is to sign personally a check to the customer for the loss of income.
+The only professional approach is to personally sign a check to the customer for the loss of income.
 In other words, are you ready to change the user interface two hours before the sprint demonstration will be held?
 
 === You shall not perform up-front design Architecture emerge during the coding of the solution.
@@ -215,7 +215,7 @@ _ROI: The overhead of architecture activities versus to effort to write it twice
 * You should not have a complete and detailed plan.
 * Major assumptions should be identified; if they change - see above, "You shall allow change any time" – you should reevaluate the architecture.
 * You should understand the application domain, the technology, known similar examples and calculate the ROI of the variants you propose.
-* Often teams forget about non-functional requirements such as scalability, reliability, multiple sites.
+* Often teams forget about non-functional requirements such as scalability, reliability, and multiple sites.
 These features cannot be added later, you have to write the application twice.
 ====
 

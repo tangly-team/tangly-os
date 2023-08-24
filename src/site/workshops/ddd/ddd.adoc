@@ -1,0 +1,17 @@
+= Domain Driven Design
+:author: Marcel Baumann (tangly llc)
+:imagesdir: pics
+:icons: font
+:revealjs_theme: white
+:source-highlighter: highlight.js
+:highlightjs-languages: toml, java, bash
+:revealjs_slideNumber: true
+:revealjs_hash: true
+:revealjs_embedded: false
+:ref-uml: https://en.wikipedia.org/wiki/Unified_Modeling_Language[UML]
+
+[%notitle]
+[.lightbg,background-opacity="0.5"]
+== Discussion
+
+image::discussion.png[background,size=cover]

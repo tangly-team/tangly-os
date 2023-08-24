@@ -1,0 +1,259 @@
+---
+title: "Software Architecture Themes and Questions"
+linkTitle: "Architecture Themes"
+date: 2023-10-01
+tags: ["agile", "architecture"]
+---
+
+== Software Architecture Themes and Questions
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+
+image::2023-10-02-head.png[width=320,height=320,role=left]
+
+A software architect works with a development team to define how features shall be realized.
+The selected approach should support corporate governance and legal constraints.
+
+A new digital product must fulfill a set of technical aspects to be usable.
+Technical constraints are the non-functional requirements of the product
+footnote:[The ISO standard 25010, 25012, 25040 and 25059 is a family of software and data quality standards.
+They are an example of non-functional requirement nomenclature.].
+
+Some of these technical requirements are encountered again and again when developing digital products.
+
+Any software product must provide solutions to standard problems.
+
+Typical aspects are user interface, persistence, configuration and compatibility issues.
+
+Experienced software designers often have a list of questions any software architecture should answer.
+
+Below the questions I answered every time when implementing a new application.
+
+=== User Experience
+
+How should the users interact with the product?
+How can the application streamline customer activities and diminish user mistakes?
+
+Usability::
+The navigability of the visual components shall follow standards
+footnote:[Major platforms such as macOS or Android have extensive visual and usability guidelines.].
+https://en.wikipedia.org/wiki/Internationalization_and_localization[Internationalization and localization]::
+The application shall be usable in various countries through i18n and l16n.
+Corporate identity::
+The user interface shall follow corporate identity such as color palette, logo, and navigation.
+Translation::
+All human-readable texts shall be translated in the supported languages.
+Accessibility::
+The solution shall be accessible to various groups of users.
+Accessibility laws exist in most of the countries.
+User manual::
+A user manual shall be provided to the users.
+
+[IMPORTANT]
+====
+Hire a professional interface and usability expert.
+Trained collaborators are key to designing world-class user interfaces.
+====
+
+=== Configuration
+
+How should the product be configured during production and at customer site?
+
+Deployment configuration::
+Defines how the application is deployed on the target system.
+Parametrization::
+Parametrizes the application to a specific country and customer.
+Configuration persistence::
+The configuration of the application through the producing company and the user shall be persisted.
+Configuration migration::
+Existing configurations need to be migrated to new versions of the solutions.
+
+[IMPORTANT]
+====
+XML is an obsolete technology.
+Do not use it in new projects.
+Consider JSON or TOML.
+
+Avoid storing configuration parameters into a relational database.
+====
+
+=== Data Management
+
+How are data persisted in the application?
+Which information should be persisted is a requirement.
+The manner to persist data is a design decision.
+
+Persistence::
+How does the application persist data?
+Archiving::
+How is older information archived?
+Data migration::
+How is persisted data migrated when a new application version is deployed?s
+Backwards compatibility::
+Sometimes the application shall handle older persisted information or configuration without explicit migration.
+The same constraints can often be requested when communicating with external systems.
+
+[IMPORTANT]
+====
+Data is often the most valuable asset of an organization.
+
+Organizations often store information over decades.
+This data must be accessible in the future.
+====
+
+=== Internal Communication
+
+How do the application components communicate inside the software?
+
+Task communication, synchronization and parallelization::
+How do threads communicate inside the system?
+How do components communicate inside the software?
+Interprocess communication::
+How does the application communicate with external systems?
+Transaction handling::
+How are transactions handled to provide atomic changes of a set of related data?
+Scalability:
+How to scale the system when more requests must be processed?
+Response times::
+How do we guaranty soft and hard response deadlines?
+Availability::
+How do we ensure that the application is available when needed?
+
+[IMPORTANT]
+====
+Internal communication shall always use asynchronous communication implemented through the actor model.
+It provides scalability, availability, and response time.
+Transaction handling is provided through eventual consistency and storno approach.
+
+By all means avoid the global lock approach which probably will kill your application in the long term.
+====
+
+=== Errors
+
+How are runtime faults and errors handled in the product?
+
+Interface data validation::
+Input information shall always be validated to avoid data corruption.
+Plausibility checks::
+Which information is plausible?
+Which data values hint to an error or corruption?
+Plausibility checks are also applicable for internal data.
+Error and exception handling::
+How do we detect errors?
+How do we propagate them through the system and outside?
+How do we recover from an error?
+How do we log any error for further offsite analysis?
+
+[IMPORTANT]
+====
+Error handling is a crosscutting concept in the application.
+Try using the same approach through the whole system to diminish semantic complexity.
+====
+
+=== Integration
+
+How can you integrate the product into a landscape?
+
+Deployment::
+How should the solution be deployed in a landscape?
+Is incremental update requested?
+How do we update the configuration of a subset of the landscape in a consistent way?
+Authentication::
+How do we authenticate the users of the application.
+Authorization::
+How do we limit access to specific functionality or data to selected users?
+External interfaces::
+How do we document and validate interfaces to external applications?
+Batch processing::
+Should we process batch of requests?
+Business rules::
+How can our application be integrated in the processes of the organizational landscape?
+
+[IMPORTANT]
+====
+Modular monolith approach is currently the most cost-effective approach to structure a software application.
+Communication between bounded domains is asynchronous and message based.
+
+Use standards for authentication and authorization to minimize security risks.
+====
+
+=== Monitoring
+
+How could the organization infer that happened during the product use in the field?
+What are the operational processes?
+
+Logging::
+How should you trace interesting activities?
+Log all exceptions, errors, all data received or sent to another system as a minimum.
+Monitoring and data collection for offsite analysis::
+How should you monitor activities of interest in the system?
+Auditing::
+Legal and governance relevant activities should be audited.
+Audit logs should often be human-readable due to legal considerations.
+Reporting::
+How can a user create reports?
+Disaster recovery::
+How should our system recover after a catastrophic crash with data or configuration loss.
+
+[IMPORTANT]
+====
+Monitoring is essential in a sucessful product.
+Do not skip it.
+
+The solution should support automatic offsite processing to extract relevant scenarios from huge data sets.
+====
+
+=== Development Practices
+
+How should the development team work to produce the right product with the right quality?
+
+Coding guidelines::
+How should you write source code?
+The selected guidelines shall be automatically enforced with tools.
+Use available guidelines for your technology stack to increase quality.
+Design patterns::
+How can you design and implement recurring functionalities found in most systems?
+Use well-documented design patterns and code idioms.
+Functional requirement verification::
+How can you ensure all functional requirements are implemented?
+Consider automatic acceptance testing.
+Non-functional requirements verification::
+How can ensure all non-functional requirements are correctly implemented?
+Consider using fitness functions.
+Code legibility::
+How to encourage your developers to write legible and maintainable source code?
+
+[IMPORTANT]
+====
+The standard digital development approach is agile.
+
+Use the current version of your technology stack.
+Laggards are losers in the technology field.
+====
+
+=== Legal Aspects
+
+Which legal restrictions apply to the product
+footnote:[Senior designers should be aware of legal and copyright aspects for digital products.]?
+
+Industry norms::
+Which standards should you fulfill to avoid being sued?
+Data confidentiality::
+Which confidentiality regulations should you implement to avoid being sued?
+Accessibility laws::
+Which user interface functions should you provide to avoid being sued?
+
+== Lessons Learnt
+
+Each architect has preferred solutions for these themes.
+You can freely select your approach as long as the non-functional requirements are fulfilled.
+
+Beware that the capabilities of your development team will influence which answers should be selected.
+Avoid solutions overwhelming your developers.
+
+Consider choosing well-known approaches to reduce training and coaching effort.
+
+Invest effort to create an evolvable architecture.
+The chosen architecture shall adapt to encompass newly discovered requirements.

@@ -1,0 +1,541 @@
+= arc42 Software Architecture Template
+:author: Marcel Baumann (tangly llc)
+:imagesdir: pics
+:icons: font
+:revealjs_theme: white
+:revealjs_viewDistance: 5
+:revealjs_width: 1408
+:revealjs_height: 792
+:source-highlighter: highlight.js
+:highlightjs-languages: toml, java, bash
+:revealjs_slideNumber: true
+:revealjs_hash: true
+:revealjs_embedded: false
+:ref-4-1-view: https://en.wikipedia.org/wiki/4%2B1_architectural_view_model[4+1 Architectural View]
+:ref-adr: https://adr.github.io/[Architecture Decision Record ADR]
+:ref-arc42: https://arc42.org/[arc42]
+:ref-asciidoc: https://asciidoc.org/[Asciidoc]
+:ref-c4: https://c4model.com/[C4 Model]
+:ref-docker: https://www.docker.com/[Docker]
+:ref-git: https://git-scm.com/[Git]
+:ref-open-api: https://www.openapis.org/[OpenAPI]
+:ref-uml: https://en.wikipedia.org/wiki/Unified_Modeling_Language[UML]
+
+== Agenda
+
+. What is software architecture?
+. What is arc42?
+. Sections in arc42
+
+[.notes]
+--
+- Presentation of the software architecture template arc42
+- arc42 is a pragmatic approach to document software architecture in an agile world
+- It is still text heavy, but supports continuous delivery pipelines and documents as code
+--
+
+=== What is Software Architecture?
+
+[quote,Grady Booch]
+____
+All architectures are design, but not all designs are architecture.
+
+Architecture represents the set of significant design decisions that shape the form and the function of a system, where significant is measured by the cost of change.
+____
+
+=== Ideas
+
+[%step]
+What should we document and communicate about our architecture?
+
+[%step]
+How should we document and communicate it in an agile environment?
+
+[%step]
+How can we minimize the effort for the software architecture documentation?
+
+[%step]
+How can stakeholders access the versioned documentation?
+
+[.notes]
+--
+- {ref-arc42} is a pretty minimalistic documentation template compared to other templates.
+The template provides a clear structure to your software architecture document.
+- No matter how big your project is, it keeps the documentation relatively slim and maintainable.
+- The code is the architecture.
+Drawings and documents are a picture of what the authors thought the architecture is.
+- Tension between software architecture and regulatory aspects.
+--
+
+=== Known Problems
+
+- Not existing or outdated documents
+- Confusing and without a clear structure
+- Process-oriented instead of result-oriented +
+_How instead of Why_
+- *Painful to maintain*
+
+[.notes]
+--
+- Outdated software architecture documents _SAD_ are often encountered
+- No clear purpose of the documentation.
+What is the target audience?
+- Often too many texts and diagrams.
+- Cumbersome to maintain with inadequate tools and processes.
+--
+
+[.lightbg,background-opacity="0.25"]
+=== Concepts
+
+image::00-software-documentation.jpg[background,size=cover]
+
+- Documentation as code under version management
+- Optimized for understandability and adequacy
+- Developers are interested to create and maintain the documents with manageable effort
+- Follow standard to reduce training and internal resistance
+
+[.notes]
+--
+- You only describe things that your stakeholders really have to know.
+- You explain facts and issues that are necessary to understand the system or individual design decisions.
+- You only keep track of important architecture decision that you had to make anyhow.
+- arc42 is lean and lightweight.
+--
+
+=== arc42 Sections
+
+image::00_arc42-overview.png[]
+
+== 1 - https://docs.arc42.org/section-1/[Introduction and Goals]
+
+image::01-intro-and-goals.png[width=640,height=200,float="center"]
+
+- Business goals and essential features
+- A short description of the requirements
+- A few quality goals for the architecture
+- List of important stakeholders and expectations
+
+[.notes]
+--
+- The purpose of the product in Scrum described in the vision, portfolio planning, product roadmap, release plan, backlog.
+- A customer journey with key scenarios.
+Reflect if behavior-driven development and automated tests is a viable approach.
+- Quality tree for fitness functions.
+Try to identify the top five quality goals for the architecture.
+See ISO 25010 for potential goals.
+Section 10 will refine these goals.
+--
+
+===  1: Tips
+
+[cols="1,1",options="header"]
+|===
+^s|Prefer|Avoid
+|Provide context | Do not skip this
+|Cover the important bits | Avoid going into details
+|Use diagrams _C4, UML_ | Do not make this too long
+|Use concrete examples _specification by example_ | Avoid verbosity
+|===
+
+[.notes]
+--
+- Professional software developers know {ref-uml} and {ref-c4}.
+Minimize the cognitive load and use established notations.
+- Specification by Example is a natural path to behavior-driven development and acceptance criteria in Scrum stories.
+--
+
+==  2 - https://docs.arc42.org/section-2/[Constraints]
+
+image::02-constraints-overview.png[width=640,height=200,float="center"]
+
+Anything that constrains teams in design and implementation decisions.
+
+- Environmental and legal aspects
+- Company-wide or organizational constraints
+- Technical limitations
+
+[.notes]
+--
+- Architects should understand legal and technical constraints
+- Look at the constraints of other systems within the organization
+- Document the consequences of imposed constraints
+--
+
+== 3 - https://docs.arc42.org/section-3/[Context and Scope]
+
+image::03-context-overview.png[width=640,height=200,float="center"]
+
+- Separate your system from its external systems and users.
+- Specify the external interfaces shown either in a business and technical perspectives.
+- List of communication interfaces
+
+[.notes]
+--
+- C4 context diagram is very good to document your system boundaries.
+Show all external interfaces.
+- Explicitly indicate risks and quality requirements.
+- Defer technical context to the deployment section.
+--
+
+=== 3: Tips
+
+- Select tools which can be integrated into our continuous delivery pipeline
+- Prefer artifacts you can store in {ref-git}
+- Follow standards
+
+[.notes]
+--
+- Do not use https://subversion.apache.org/[Subversion].
+It was a great tool and should rest in peace.
+--
+
+== 4 - https://docs.arc42.org/section-4/[Solution Strategy]
+
+image::04-solution-strategy-overview.svg[width=640,height=100,float="center"]
+
+Fundamental decisions and solution strategies
+
+- Technology decisions
+- Top-level decomposition
+- Approaches to achieve top quality goals
+- Relevant organizational decisions such as the development process
+
+[.notes]
+--
+- These decisions form the cornerstones of your architecture.
+- Let the solution strategy grow incrementally and interactively.
+- Justify the solution strategy.
+--
+
+==  5: https://docs.arc42.org/section-5/[Building Block View]
+
+image::05-building-block-overview.png[width=640,height=200,float="center"]
+
+A static decomposition of the system, shown as hierarchy of white boxes up to the right level of abstraction.
+Elements are modules, components, subsystems, classes, interfaces, libraries, frameworks, or partitions.
+
+[.notes]
+--
+- Maintain an overview of your source code by making its structure understandable through abstraction.
+This allows you to communicate with your stakeholder on an abstract level without disclosing implementation details.
+- Multiple levels of diagrams can be provided.
+--
+
+=== Historical Background
+
+UML and {ref-4-1-view} heavily influence the arc42 approach.
+
+image::05-4_1_view_of_sw_architecture.png[float="center"]
+
+[.notes]
+--
+- Scenarios: section 1: Introduction and goals
+- Logical view: section 3: Context and Scope, section 5: Building Block view
+- Process view: section 6: Runtime view
+- Deployment view: section 7: Deployment view
+- Physical view: section 7: Deployment view
+--
+
+=== C4
+
+{ref-c4} is a model is a set of hierarchical abstractions
+
+- https://c4model.com/#SystemContextDiagram[System Context View] _shows the system scope_
+- https://c4model.com/#ContainerDiagram[Container View] _decomposes the applications and data stores_
+- https://c4model.com/#ComponentDiagram[Component View] _decomposes containers into interrelated components_
+- https://c4model.com/#CodeDiagram[Code View] _provides details about the design and is based on UML_
+
+[.notes]
+--
+The optional diagrams are:
+- https://c4model.com/#SystemLandscapeDiagram[System Landscape Diagram].
+- https://c4model.com/#DynamicDiagram[Dynamic Diagram].
+- https://c4model.com/#DeploymentDiagram[Deployment Diagram].
+--
+
+=== System Context Diagrams
+
+image::C4-Context.png[width=960,height=640,float="center"]
+
+=== Container Diagrams
+
+image::C4-Container.png[width=960,height=640,float="center"]
+
+=== Component Diagrams
+
+image::C4-Component.png[width=960,height=640,float="center"]
+
+=== Code Diagrams
+
+image::C4-Code.png[width=960,height=640,float="center"]
+
+== 6 - https://docs.arc42.org/section-6/[Runtime View]
+
+image::06-runtime-overview.png[width=640,height=200,float="center"]
+
+Behavior of building blocks as scenarios, covering use cases, operation, administration, error handeling and features.
+
+Examples for this might be UML sequence, activity or state machine diagrams.
+
+[.notes]
+--
+- Document only a few runtime scenarios.
+--
+
+=== 6 - Tips
+
+- Runtime scenarios explain important application behavior
+- Maintaining runtime scenarios is expensive
+- You often can explain behavior with unit tests to document how the system behaves
+
+== 7 - https://docs.arc42.org/section-7/[Deployment View]
+
+image::07-deployment-overview.png[width=640,height=200,float="center"]
+
+The technical infrastructure with environments, servers and topologies.
+
+Mapping of building blocks to the right infrastructure.
+
+UML offers deployment diagrams to express that view
+
+[.notes]
+--
+- Document your hardware architecture.
+- Architects should have knowledge of hardware and operating system aspects.
+- Modern applications are described with Docker or Kubernetes composition textual configurations.
+--
+
+[.lightbg,background-opacity="0.2"]
+=== 7 - Tips
+
+image::07-docker-compose.png[background,size=cover]
+
+- You can often describe your system topology with a {ref-docker} compose file.
+- API are described with {ref-open-api}.
+
+== 8 - https://docs.arc42.org/section-8/[Crosscutting Concepts]
+
+image::08-concepts-overview.png[width=640,height=200,float="center"]
+
+Principal regulations and solution approach relevant in multiple parts of the system.
+
+- domain models, architecture patterns and design patterns
+- rules for using specific technology, technical consequences of overall decisions
+- implementation rules
+
+[.notes]
+--
+Concepts form the basis for conceptual integrity (consistency, homogeneity) of the architecture.
+- concept papers with any kind of structure - cross-cutting model excerpts or scenarios using notations of the architecture views - example implementations,especially for technical concepts - reference to typical usage of standard frameworks (e.g. using Hibernate for object/relational mapping)
+--
+
+=== 8 - Tips
+
+image::08-crosscutting-concepts.png[width=1260,height=600,float="center"]
+
+== 9 - https://docs.arc42.org/section-9/[Architecture Decisions]
+
+image::09-decision-overview.png[width=640,height=200,float="center"]
+
+Important, expensive, critical, large scale or risky architecture decisions including rationales.
+
+Use the {ref-adr} approach to document such decisions.
+
+[.notes]
+--
+- Stakeholders and the development team of your system should be able to comprehend and retrace your decisions.
+- Document decision criteria and rejected alternatives.
+--
+
+=== 9 - Architecture Decision Record
+
+image::09-adr-details.png[width=260,height=260,role=right]
+
+Smaller pieces of documentation are easier to read, create and maintain.
+When it comes to architecture decisions, development teams often will:
+
+- Know about the decision, as it is visible in the source code
+- Miss the motivations behind that historical decision
+
+[.notes]
+--
+Motivations for decisions change over time.
+ADR record these motivations to empower teams to change decisions due to changes, e.g., technical evolutions.
+--
+
+== 10 - https://docs.arc42.org/section-10/[Quality]
+
+image::10-q-scenario-overview.png[width=640,height=200,float="center"]
+
+Quality requirements as scenarios.
+The quality goals can be taken from section 1  _Introduction and goals_.
+
+[.notes]
+--
+- Do not use ATAM because it is a slow and manual process.
+- Evaluate fitness functions and continuous delivery as an approach to define and validate quality goals.
+--
+
+=== 10 - Tips
+
+- Explore fitness functions
+- Use static code analysis
+- Write automated unit and acceptance tests
+- Install monitoring
+- Promote defect-driven development
+
+[.notes]
+--
+Explore approaches:
+
+- defect-driven development
+- https://blog.tangly.net/blog/2020/advocate-zero-bug-policy-in-your-projects/[Advocate Zero Bug Policy]
+--
+
+== 11 - https://docs.arc42.org/section-11/[Risks and technical Debt]
+
+image::11-risk-overview.png[width=640,height=200,float="center"]
+
+The known technical risks or already present technical debt.
+
+What potential problems exist in the application itself or its surroundings?
+
+What does the development team fear for the future?
+
+=== 11 - Tips
+
+[quote,Tim Lister,Atlantics]
+____
+Risk management is project management for grown-ups.
+____
+
+Each risk has a description, an associated cost, a probability, and a set of mitigation measures.
+
+== 12 - https://docs.arc42.org/section-12/[Glossary]
+
+image::12-glossary-overview.png[width=640,height=200,float="center"]
+
+Important domain and technical terms that stakeholders use when discussing the system.
+
+Translate in other languages if there are multiple languages spoken in your company.
+
+[.notes]
+--
+If possible, document everything in international English.
+The ubiquitous language should also be English.
+--
+
+== Lessons Learnt
+
+=== Effort
+
+I generate most of the content into the following sections:
+
+- 5 - Building Block View
+- 8 - Crosscutting Concepts
+- 9 - Design Decisions _ADR_
+- _13 - User Interface_
+
+=== Used Techniques
+
+image::used-techniques.svg[width=960,height=640,float="center"]
+
+// [plantuml, used-techniques-diagram, svg]
+// ----
+// @startmindmap
+// +[#lightgreen] arc42
+// ++[#lightblue] Models
+// +++ UML
+// ++++ Component Diagram
+// ++++ Package Diagram
+// ++++ Class Diagram
+// ++++ Statechart Diagram
+// ++++ Sequence Diagram
+// +++ C4
+// ++++ System Context Diagram
+// ++++ Container Diagram
+// ++++ Component Diagram
+// ++++ Code Diagram
+// ++[#lightblue] Build
+// +++ Version Management
+// +++ Continuous Integration
+// +++ Configuration as Code
+// +++ Git
+// --[#lightblue] Requirements
+// --- Specification By Example
+// --- Acceptance Criteria
+// --- Behavior-Driven Design
+// --- Defect-Driven Design
+// --[#lightblue] Design
+// --- Design Patterns
+// --- Code Conventions
+// --[#lightblue] Document
+// --- Asciidoc
+// --- PlantUML
+// --- Mermaid
+// --- Architecture Design Record
+// @endmindmap
+// ----// [plantuml, used-techniques-diagram, svg]
+// ----
+// @startmindmap
+// +[#lightgreen] arc42
+// ++[#lightblue] Models
+// +++ UML
+// ++++ Component Diagram
+// ++++ Package Diagram
+// ++++ Class Diagram
+// ++++ Statechart Diagram
+// ++++ Sequence Diagram
+// +++ C4
+// ++++ System Context Diagram
+// ++++ Container Diagram
+// ++++ Component Diagram
+// ++++ Code Diagram
+// ++[#lightblue] Build
+// +++ Version Management
+// +++ Continuous Integration
+// +++ Configuration as Code
+// +++ Git
+// --[#lightblue] Requirements
+// --- Specification By Example
+// --- Acceptance Criteria
+// --- Behavior-Driven Design
+// --- Defect-Driven Design
+// --[#lightblue] Design
+// --- Design Patterns
+// --- Code Conventions
+// --[#lightblue] Document
+// --- Asciidoc
+// --- PlantUML
+// --- Mermaid
+// --- Architecture Decision Record
+// @endmindmap
+// ----
+
+[.notes]
+--
+{ref-asciidoc} has the expressive syntax of DocBook.
+These features fulfill the requirements of most projects.
+--
+
+=== Examples
+
+image::00-arc42-logo.png[role=right]
+
+- https://arc42.org/examples[arc42 Examples]
+- https://docs.arc42.org/keywords/[arc42 Practical Tips]
+- https://faq.arc42.org/home/[arc42 FAQ]
+
+[.notes]
+--
+- Embrace modern software engineering practices: TDD, ATDD, Git, CI, C4, UML, VM
+- Avoid duplicating texts or images.
+Asciidoc provides approaches to reference text blocks and images.
+You can version, diff, and create pre- or post-processing tasks on text files.
+--
+
+[%notitle]
+[.lightbg,background-opacity="0.5"]
+== Discussion
+
+image::discussion.png[background,size=cover]

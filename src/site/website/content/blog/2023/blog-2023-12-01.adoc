@@ -29,3 +29,67 @@ As Groovy is dynamically typed, it is really hard for IDEs to provide good and f
 Contrarily, parsing and interpreting Maven’s XML is dead simple.
 Breaking Changes:::
 New Gradle versions are often breaking existing plugins, and the poor maintainer of these one-man-open-source-projects cannot keep up with this speed.
+
+=== Maintain Your Build
+
+Build rot is the silent degradation of your build system’s effectiveness, a result of poor practices, neglect, or simply the passage of time.
+It is like rust corroding a piece of machinery.
+In this case, it gradually eats into the heart of your build system, causing it to slow down, become unpredictable, or become more challenging to maintain.
+This phenomenon can manifest within any build tool, but for our exploration.
+I zoom in on two of the most popular Java build tools: Maven and Gradle.
+I surface the most common sources of build rot and then describe how Developer Productivity Engineering practices can be deployed to address build rot pains.
+
+What are the most common sources of build rot?
+
+Dependencies::
+Poorly managed dependencies are one characteristic of build rot common to Maven and Gradle.
+Both build systems offer powerful dependency management capabilities.
+But neglecting regular updates to these dependencies can add vulnerable libraries to your build, directly impact build speed, and introduce compatibility issues.
+
+An overly complex pom.xml file, cluttered with unnecessary dependencies or outdated plugins, can significantly extend build times and become a maintenance nightmare.
+
+_Use the https://github.com/ben-manes/gradle-versions-plugin[Versions Plugin] to identify outdated dependencies and plugins._ +
+_Define all your dependencies in a central https://docs.gradle.org/current/userguide/platforms.html[version catalog] configuration file._
+
+Over-customization::
+Gradle’s flexibility is one of its strong suits and yet it can ironically invite build rot.
+Over-customization, while seemingly advantageous in the short run, can result in a convoluted build.gradle files.
+These scripts can become so complex that they require more effort to first comprehend and then maintain.
+
+_Define standard build processes as plugins in your https://docs.gradle.org/current/userguide/organizing_gradle_projects.html[buildSrc]._ +
+_Eliminate all imperative logic from regular build.gradle scripts._
+_Better follow the conventions and processes of standard plugins instead of creating custom logic._
+
+Redundant tasks and misconfigured scripts::
+Moreover, this complexity can have a significant impact on build speed.
+If scripts include redundant tasks, or simply take a long time to execute your Groovy or Kotlin configuration, the build speed can slow to a frustrating crawl.
+Misconfigured scripts can also lead to extended test times, further exacerbating the build rot.
+
+_Always prefer standard plugins to build artifacts._
+
+Suboptimal parallelization::
+Another silent perpetrator of build rot is the under-utilization of parallel execution capabilities offered by both Maven and Gradle.
+Both support parallel builds.
+Not taking advantage of this feature can lead to unnecessarily long build times.
+Similarly, not properly organizing your project into modules can result in unnecessary rebuilds of unchanged code, further slowing down your build process.
+
+_Modern software engineering practices promote modularity and low-coupling between components._
+
+Deprecated features and APIs::
+Sticking with deprecated features or APIs in your build scripts can also contribute to build rot.
+These deprecated features might be less efficient than their newer counterparts and might be removed in future build tool versions.
+The time and effort needed to refactor your scripts, once these features are eventually removed, add to the maintenance burden and deepen the build rot.
+
+_Refactoring is a mandatory practice to integrate improvements of your build tool into your scripts._
+
+=== Lessons Learnt
+
+Developers must understand the intricacies of these tools to use build systems like Maven and Gradle to the greatest effect.
+By promoting a learning culture, you equip your team with the knowledge they need to best leverage these tools.
+Regular training and knowledge-sharing sessions can help reduce build rot and enhance productivity.
+
+Update regularly your tools, plugins, and dependencies ensures you are leveraging the most efficient, optimized versions of libraries.
+This practice mitigates potential security issues and prevents the accumulation of _update debt_.
+
+Observability is critical in managing build rot.
+Tracking build and test times, identifying trends, and analyzing the impact of changes all offer valuable insights.

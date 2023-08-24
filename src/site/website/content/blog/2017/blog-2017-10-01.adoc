@@ -120,7 +120,7 @@ What happens if cost overruns happen?
 We suggest sharing the costs and defining the percentage each party shall pay.
 If the supplier pays 0%, it is a time and material contract.
 If the supplier pays 100%, it is a fix price contract.
-Aim for 50% -,
+Aim for 50%.
 ** Define a checkpoint to validate the estimates and hypotheses.
 ** Define exit criteria and exit points for both parties.
 ** State governance how to simplify scope and stories to respect budget.

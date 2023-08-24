@@ -26,7 +26,7 @@ The development team shall inform about progress, incremental deliveries, techni
 
 === Why Visual Tools?
 
-Various practices exist to forecast product development progress, like burn-downs, burn-ups, or cumulative flow, velocity diagrams.
+Various practices exist to forecast product development progress, like burn-downs, burn-ups, cumulative flow, or velocity diagrams.
 
 While proven useful, these do not replace the importance of *empiricism*.
 

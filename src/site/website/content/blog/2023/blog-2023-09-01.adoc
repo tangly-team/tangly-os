@@ -42,6 +42,19 @@ I also discovered some arcane idioms I never used in productive code.
 I think a young developer should be certified for her main programming language and technology stack she is using daily.
 I also acquired the https://vaadin.com/learn?version=v14[Vaadin certification] because I regularly developed full-stack applications with Java and https://vaadin.com/[Vaadin].
 
+=== Software Architecture Certifications
+
+A software architect certainly should possess a certification showing his architectural capabilities.
+
+The TOGAF standard is still the seminal reference for all software enterprise architecture activities.
+On the bright side, the steward https://www.opengroup.org/togaf[Open Group] of the TOGAF certification <<togaf-certification>> has realized that agile is the way to develop digital products <<togaf-certification>>.
+
+The iSAQB certification is well-known in Europe and especially in the German-speaking countries.
+The foundation now also provides training in agile software architecture in their advanced track <<agile-architecture>>.
+
+Another approach is a master degree in software engineering or computer science.
+The curriculum should teach modern ideas cite:[modern-software-engineering,continuous-delivery,building-evolutionary-architectures-2nd,domain-driven-design].
+
 === Agile Certifications
 
 Agile approaches and Scrum framework are the regular approach to successfully developer software and digital products.
@@ -70,8 +83,19 @@ The PMI-ACP <<pmi-acp-certification>> is the agile certification from the projec
 It has value in North America.
 It is quite unknown in Europe.
 
-The TOGAF standard is still the seminal reference for all software enterprise architecture activities.
-On the bright side, the steward https://www.opengroup.org/togaf[Open Group] of the TOGAF certification <<togaf-certification>> has realized that agile is the way to develop digital products.
+=== Thoughts
+
+A certification is a proof that a professional software engineer invested in his continuous formation.
+Consider acquiring a certification to show your commitment to a specific field in our industry.
+But it cannot replace a formal bachelor or master level education in computer science or software engineering.
+
+Training on the job is nice and efficient.
+A few lecture days before taking a multiple choice test and receiving a nice certificate is also worth the time.
+
+It definitively cannot replace university level formation.
+No country in the world would accept only training on the job for a physician, a surgeon, or a structural engineer.
+
+Why does our industry still believe you can work as a professional developer without any formal training?
 
 [bibliography]
 === Links
@@ -81,7 +105,8 @@ On the bright side, the steward https://www.opengroup.org/togaf[Open Group] of t
 - [[[developer-certification, 3]]] link:../../2021/scrum-developer-formation/[Scrum Developer Certification]
 - [[[pmi-acp-certification, 4]]] link:../../2016/pmi-acp-certification/[PMI ACP Certification]
 - [[[java-certification, 5]]] link:../../2023/java-certification/[Java Certification]
-- [[[togaf-certification, 6]]] https://www.opengroup.org/certifications/togaf-certification-portfolio[TOGAF Certification]
+- [[agile-architecture, 6]]] link:../../2021/agile-software-architecture-is-mainstream/[Agile Software Architecture is Mainstream]
+- [[[togaf-certification, 7]]] https://www.opengroup.org/certifications/togaf-certification-portfolio[TOGAF Certification]
 
 === References
 

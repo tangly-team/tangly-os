@@ -1,0 +1,30 @@
+---
+title: "Workshops"
+date: 2020-05-01
+weight: 70
+description: links to workshops
+---
+
+## Workshops
+
+The available workshops are:
+
+- [agile and Scrum](agile-scrum/agile-scrum.html)
+- [arch42 software architecture template](arc42/arc42.html)
+- [c4 and UML notations](c4-uml/c4-uml.html)
+- [domain-driven design](ddd/ddd.html)
+
+## Tips
+
+All workshops use [asciidoctor revealjs](https://docs.asciidoctor.org/reveal.js-converter/latest/).
+
+The important keyboard shortcuts are:
+
+?
+: help for all shortcuts
+
+F
+: Fullscreen presentation
+
+S
+: Speaker mode with notes, next slide, and timers

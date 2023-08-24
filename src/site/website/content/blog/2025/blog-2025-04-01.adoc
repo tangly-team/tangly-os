@@ -39,7 +39,7 @@ Simple loop-based run-times typically do a lot of polling to check if interrupts
 Response-time is often abysmal because the interrupt delivered data is not processed accordingly to expected priority.
 The received data is processed in the next loop iteration of the main scheduler
 footnote:[You can try to slice the main routine in smaller increment.
-The approach is handcoded and must be changed when timing constraints change.].
+The approach is hardcoded and must be changed when timing constraints change.].
 
 As a result, a great deal of processor time is occupied doing nothing.
 Because multitasking RTOS-based applications are interrupt-driven, it is possible to largely eliminate polling from the application.
@@ -58,7 +58,7 @@ The memory usage is:
 |Item|Bytes Used
 |Scheduler Itself          |236 bytes (can easily be reduced by using smaller data types).
 |For each queue you create |add 76 bytes + queue storage area (see FAQ Why do queues use that much RAM?)
-|For each task you create  |add 64 bytes (includes 4 characters for the task name) + the task stack size.
+|For each task you create  |add 64 bytes (includes four characters for the task name) + the task stack size.
 |===
 
 The RTOS kernel itself required about 5 to 10 KBytes of ROM space.
@@ -72,7 +72,7 @@ A context switch time of 84 CPU cycles was obtained under the following test con
 - Stack overflow checking turned off
 - Trace features turned off
 - Run-time stats feature turned off
-- Compiler set to optimise for speed
+- Compiler set to optimize for speed
 - configUSE_PORT_OPTIMISED_TASK_SELECTION set to 1 in _FreeRTOSConfig.h_
 ====
 
@@ -97,13 +97,17 @@ Although this is not the best way to reap the benefits of object-oriented design
 [TIP]
 ====
 Many {cpp} features are strictly front-end issues.
+footnote:[I often hear complaints about the extensions for threads and concurrency.
+But critics never told me how we should support modern processors with multiple cores using another approach.
+I agree that the support for concurrency e.g. message queues could be better in the current {cpp} 20 and 23 library.
+And the current features still solve most of the concurrency problems encountered in regular and embedded applications.].
 They have no effect on the code generation
 footnote:[I agree that templates and exceptions have an impact on the generated code.
 And you have to acknowledge that you can write complex {cpp} programs without using such constructs.].
 The benefits conferred by these features are therefore free of cost at runtime.
 
 Default arguments to functions are an example of a cost-free front end feature.
-The compiler inserts default arguments to a function call where none are specified by the source.
+The compiler inserts default arguments to a function call where the source specifies none.
 
 A less obvious front end feature is _function name overloading_.
 Namespaces provide additional scopes and the same name can be used in multiple contexts.
@@ -117,7 +121,7 @@ _{cpp} code is at least as efficient as similar C code._
 _{cpp} compiler inlines per default all concrete class methods._
 - Objects are large.
 - Virtual functions are slow.
-- {cpp} is not ROMable.
+- {cpp} binary files are not ROMable.
 - Class libraries make large binaries.
 - Abstraction leads to inefficiency.
 
@@ -128,7 +132,7 @@ We are aware of two factual arguments why you should not use {cpp} in your proje
 . No {cpp} toolchain is available for your target platform.
 _ARM, x86_64 and RISC V platforms have multiple {cpp} toolchains_.
 . Your developers are not fluent with object-oriented approaches and the {cpp} language.
-Your organization is also not willing to invest into the training and coaching.
+Your organization is also not willing to invest into training and coaching.
 
 _These are clear reasons why your development group must stay with C.
 Beware that multiple organizations including the Linux kernel developers are, albeit slowly, moving away from C._
