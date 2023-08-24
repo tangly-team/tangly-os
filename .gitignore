@@ -36,6 +36,12 @@ hs_err_pid*
 /net.tangly.erp.ui/vite.config.ts
 /net.tangly.erp.ui/vite.generated.ts
 
-# Covers other tools such JabRef, microstream
+# Covers other tools such JabRef, microstream, revealjs
 /storage/
-/src/main/resources/references.bib.sav
+**/references.bib.sav
+**/Gemfile.lock
+**/.bundle/
+/src/site/workshops/arc42/arc42.html
+/src/site/workshops/c4-uml/c4-uml.html
+/src/site/workshops/agile-scrum/agile-scrum.html
+/src/site/workshops/ddd/ddd.html

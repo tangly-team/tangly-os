@@ -1,0 +1,13 @@
+# "en" in the file name specifies the natural language to be checked, so you can use other ISO codes, e.g. "ru" or "de"
+
+# A subset of "vale" linter syntax is supported:
+# "existence", "substitution", "sequence", "capitalization", "occurrence", "conditional" rule types.
+# See https://docs.errata.ai/vale/styles#extension-points for more details.
+
+extends: existence                # check for unwanted words or phrases
+message: Don't use '%s'           # a message to display in the inspection tooltip when a matching fragment is found
+level: warning
+ignorecase: true
+scope: text.properties            # check only in texts (values) in *.properties files
+tokens:
+    - appears to be
