@@ -48,9 +48,9 @@ public class One2OneField<T extends Entity> extends CustomField<T> {
         this.entityClass = entityClass;
         this.provider = provider;
         setLabel(relation);
-        oid = VaadinUtils.createTextField(EntityView.OID_LABEL, EntityView.OID, true, false);
-        id = VaadinUtils.createTextField(EntityView.ID_LABEL, EntityView.ID, true, false);
-        name = VaadinUtils.createTextField(EntityView.NAME_LABEL, EntityView.NAME, true, false);
+        oid = VaadinUtils.createTextField(EntityView.OID_LABEL, EntityView.OID, true, true);
+        id = VaadinUtils.createTextField(EntityView.ID_LABEL, EntityView.ID, true, true);
+        name = VaadinUtils.createTextField(EntityView.NAME_LABEL, EntityView.NAME, true, true);
         update = new Button(new Icon(VaadinIcon.ELLIPSIS_DOTS_V));
         update.addClickListener(e -> displayRelationships());
         HorizontalLayout layout = new HorizontalLayout();
@@ -91,11 +91,7 @@ public class One2OneField<T extends Entity> extends CustomField<T> {
     }
 
     private void displayRelationships() {
-        Dialog dialog = new Dialog();
-        dialog.setCloseOnEsc(false);
-        dialog.setCloseOnOutsideClick(false);
-        dialog.setModal(false);
-        dialog.setResizable(true);
+        Dialog dialog = VaadinUtils.createDialog();
         EntityView<T> view = EntityView.of(entityClass, null, provider, Mode.LIST);
         dialog.add(new VerticalLayout(view, new HtmlComponent("br"), createFormButtons(dialog, view)));
         view.selectedItem(getValue());

@@ -16,6 +16,7 @@ import com.vaadin.flow.component.grid.HeaderRow;
 import net.tangly.core.domain.BoundedDomain;
 import net.tangly.core.domain.DomainEntity;
 import net.tangly.core.providers.ProviderInMemory;
+import net.tangly.ui.components.EntityView;
 import net.tangly.ui.components.ItemView;
 import net.tangly.ui.components.Mode;
 import org.jetbrains.annotations.NotNull;
@@ -60,10 +61,9 @@ public class DomainEntitiesView extends ItemView<DomainEntity> {
         grid.addColumn(DomainEntity::entitiesCount).setKey("entitiesCount").setHeader("#Entities").setSortable(true).setAutoWidth(true);
         grid.addColumn(o -> o.hasComments() ? o.commentsCount() : 0).setKey("commentsCount").setHeader("#Comments").setSortable(true).setAutoWidth(true);
         grid.addColumn(o -> o.hasTags() ? o.tagsCount() : 0).setKey("tagsCount").setHeader("#Tags").setSortable(true).setAutoWidth(true);
-        grid().getHeaderRows().clear();
-        HeaderRow headerRow = grid().appendHeaderRow();
+        HeaderRow headerRow = createHeaderRow();
         if (filter() instanceof DomainEntitiesFilter filter) {
-            addFilterText(headerRow, "name", filter::name);
+            headerRow.getCell(grid.getColumnByKey(EntityView.NAME)).setComponent(createTextFilterField(filter::name));
         }
     }
 }

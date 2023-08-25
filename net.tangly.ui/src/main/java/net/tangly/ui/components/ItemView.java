@@ -13,8 +13,6 @@
 package net.tangly.ui.components;
 
 import com.vaadin.flow.component.Component;
-import com.vaadin.flow.component.ComponentEventListener;
-import com.vaadin.flow.component.datepicker.DatePicker;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.grid.GridVariant;
 import com.vaadin.flow.component.grid.HeaderRow;
@@ -34,7 +32,6 @@ import net.tangly.core.domain.BoundedDomain;
 import net.tangly.core.providers.Provider;
 import org.jetbrains.annotations.NotNull;
 
-import java.time.LocalDate;
 import java.util.Objects;
 import java.util.Set;
 import java.util.function.Consumer;
@@ -192,7 +189,7 @@ public abstract class ItemView<T> extends VerticalLayout {
     }
 
     T selectedItem() {
-        return grid().getSelectedItems().stream().findAny().get();
+        return grid().getSelectedItems().stream().findAny().orElse(null);
     }
 
     void selectedItem(T item) {
@@ -221,13 +218,6 @@ public abstract class ItemView<T> extends VerticalLayout {
         return field;
     }
 
-    public static Component createDateFilterField(@NotNull Consumer<LocalDate> consumer) {
-        var field = new DatePicker();
-        field.setClearButtonVisible(true);
-        field.addValueChangeListener(e -> consumer.accept(e.getValue()));
-        return field;
-    }
-
     public static Component createDateRangeField(@NotNull Consumer<DateRange> consumer) {
         var field = new DateRangePicker("interval", null, null);
         field.addValueChangeListener(e -> consumer.accept(e.getValue()));
@@ -236,6 +226,13 @@ public abstract class ItemView<T> extends VerticalLayout {
 
     protected Provider<T> provider() {
         return provider;
+    }
+
+    protected GridContextMenu<T> menu() {
+        if (Objects.isNull(menu)) {
+            menu = grid().addContextMenu();
+        }
+        return menu;
     }
 
     /**
@@ -266,45 +263,26 @@ public abstract class ItemView<T> extends VerticalLayout {
 
     protected void buildMenu() {
         if (mode.hasForm()) {
-            if (Objects.isNull(menu)) {
-                menu = grid().addContextMenu();
-            }
-            menu.removeAll();
-            menu.addItem(Mode.VIEW_TEXT, event -> event.getItem().ifPresent(form::display));
+            menu().removeAll();
+            menu().addItem(Mode.VIEW_TEXT, event -> event.getItem().ifPresent(form::display));
             if (!mode().readonly()) {
-                menu.add(new Hr());
-                menu.addItem(Mode.EDIT_TEXT, event -> event.getItem().ifPresent(form::edit));
-                menu.addItem(Mode.CREATE_TEXT, event -> form.create());
-                menu.addItem(Mode.DUPLICATE_TEXT, event -> event.getItem().ifPresent(form::duplicate));
-                menu.addItem(Mode.DELETE_TEXT, event -> event.getItem().ifPresent(form::delete));
+                menu().add(new Hr());
+                menu().addItem(Mode.EDIT_TEXT, event -> event.getItem().ifPresent(form::edit));
+                menu().addItem(Mode.CREATE_TEXT, event -> form.create());
+                menu().addItem(Mode.DUPLICATE_TEXT, event -> event.getItem().ifPresent(form::duplicate));
+                menu().addItem(Mode.DELETE_TEXT, event -> event.getItem().ifPresent(form::delete));
             }
             SingleSelect<Grid<T>, T> selection = grid.asSingleSelect();
             selection.addValueChangeListener(e -> form.value(e.getValue()));
         }
     }
 
-    /**
-     * Add a menu item for custom menu action. Please use a naming convention to distinguish actions performed on a select item and actions performed on the whole list.
-     *
-     * @param entry menu entry to add
-     */
-    protected void addMenuSection(@NotNull String entryName, ComponentEventListener<GridContextMenu.GridContextMenuItemClickEvent<T>> entry) {
-        menu.addItem(entryName, entry);
-    }
-
-    protected void addMenuSeparator() {
-        menu.add(new Hr());
+    protected HeaderRow createHeaderRow() {
+        grid().getHeaderRows().clear();
+        return grid().appendHeaderRow();
     }
 
     protected void addFilterText(@NotNull HeaderRow headerRow, @NotNull String key, @NotNull Consumer<String> attribute) {
         headerRow.getCell(grid().getColumnByKey(key)).setComponent(createTextFilterField(attribute));
-    }
-
-    protected void addFilterInteger(@NotNull HeaderRow headerRow, @NotNull String key, @NotNull Consumer<Integer> attribute) {
-        headerRow.getCell(grid().getColumnByKey(key)).setComponent(createIntegerFilterField(attribute));
-    }
-
-    protected void addFilterDate(@NotNull HeaderRow headerRow, @NotNull String key, @NotNull Consumer<LocalDate> attribute) {
-        headerRow.getCell(grid().getColumnByKey(key)).setComponent(createDateFilterField(attribute));
     }
 }

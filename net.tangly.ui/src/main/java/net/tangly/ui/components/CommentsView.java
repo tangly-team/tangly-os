@@ -20,24 +20,25 @@ import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.server.VaadinSession;
 import net.tangly.core.Comment;
+import net.tangly.core.DateRange;
 import net.tangly.core.HasComments;
 import net.tangly.core.domain.BoundedDomain;
-import net.tangly.core.providers.Provider;
 import net.tangly.core.providers.ProviderInMemory;
 import org.jetbrains.annotations.NotNull;
 
-import java.time.LocalDate;
-import java.util.Collections;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 /**
+ * A view for a list of objects. The list is copied locally to support adding and removing items. To add items, a provider is passed with the eligible list of items
+ * <p>
  * The comments view is a Crud view with all the comments defined for an object implementing the {@link HasComments}. Edition functions are provided to add, delete, and view
  * individual comments. Update function is not supported because comments are immutable objects. Immutable objects must explicitly be deleted before a new version is added. This
  * approach supports auditing approaches.
  * <p>the filter conditions are defined as follow. You can filter by author, by a string contained in the text, or a time interval during which the comment was created.
  * Therefore to select the range of interest you need to input two dates.</p>
  */
-public class CommentsView extends ItemView<Comment> implements HasBindValue<HasComments> {
+public class CommentsView extends ItemView<Comment> {
     private static final String CREATED = "created";
     private static final String AUTHOR = "author";
     private static final String TEXT = "text";
@@ -45,18 +46,16 @@ public class CommentsView extends ItemView<Comment> implements HasBindValue<HasC
     private static final String AUTHOR_LABEL = "Author";
     private static final String TEXT_LABEL = "Text";
 
-    static class CommentFilter extends ItemFilter<Comment> {
-        private LocalDate from;
-        private LocalDate to;
+    static class CommentFilter extends ItemView.ItemFilter<Comment> {
+        private DateRange.DateFilter range;
         private String author;
         private String text;
 
         public CommentFilter() {
         }
 
-        public void createdRange(LocalDate from, LocalDate to) {
-            this.from = from;
-            this.to = to;
+        public void range(@NotNull DateRange range) {
+            this.range = new DateRange.DateFilter(range);
             refresh();
         }
 
@@ -72,18 +71,19 @@ public class CommentsView extends ItemView<Comment> implements HasBindValue<HasC
 
         @Override
         public boolean test(@NotNull Comment entity) {
-            return matches(entity.author(), author) && matches(entity.text(), text);
+            return matches(entity.author(), author) && (Objects.isNull(range) || range.test(entity.created().toLocalDate())) && matches(entity.text(), text);
         }
     }
 
-    static class CommentForm extends ItemForm<Comment, CommentsView> {
-        private Binder<Comment> itemBinder;
+    static class CommentForm extends ItemForm<Comment, ItemView<Comment>> {
+        private final Binder<Comment> itemBinder;
         private DateTimePicker created;
         private TextField author;
         private TextField text;
 
         public CommentForm(@NotNull CommentsView parent) {
             super(parent);
+            itemBinder = new Binder<>(Comment.class);
             init();
         }
 
@@ -98,7 +98,6 @@ public class CommentsView extends ItemView<Comment> implements HasBindValue<HasC
             fieldsLayout.setColspan(text, 3);
             fieldsLayout.setResponsiveSteps(new FormLayout.ResponsiveStep("0", 1), new FormLayout.ResponsiveStep("320px", 2), new FormLayout.ResponsiveStep("500px", 3));
             form().add(fieldsLayout, createButtonBar());
-            itemBinder = new Binder<>(Comment.class);
             itemBinder.forField(created).bind(Comment::created, null);
             itemBinder.forField(author).bind(Comment::author, null);
             itemBinder.forField(text).bind(Comment::text, null);
@@ -116,7 +115,21 @@ public class CommentsView extends ItemView<Comment> implements HasBindValue<HasC
         public void value(Comment value) {
             if (value != null) {
                 itemBinder.readBean(value);
+            } else {
+                clear();
             }
+        }
+
+        @Override
+        public void create() {
+            super.create();
+            created.setValue(LocalDateTime.now());
+        }
+
+        @Override
+        public void duplicate(@NotNull Comment entity) {
+            super.duplicate(entity);
+            created.setValue(LocalDateTime.now());
         }
 
         @Override
@@ -135,45 +148,16 @@ public class CommentsView extends ItemView<Comment> implements HasBindValue<HasC
          */
         @Override
         protected Comment createOrUpdateInstance(Comment entity) {
-            Comment comment = new Comment(author.getValue(), text.getValue());
-            HasComments hasComments = parent().hasComments;
-            if (entity != null) {
-                hasComments.remove(entity);
-            }
-            hasComments.add(comment);
-            return comment;
+            Comment newItem = new Comment(author.getValue(), text.getValue());
+            parent().provider().replace(entity, newItem);
+            return newItem;
         }
     }
 
-    private transient HasComments hasComments;
-
-    /**
-     * The view is created with an optional entity providing the comments to display. The set of comments can be later updated by calling {@link ItemView#provider(Provider)}.
-     *
-     * @param entity optional entity with the comment set
-     * @param domain optional domain to which the generic entity belongs to
-     * @param mode   mode of the component
-     */
-
-    public CommentsView(HasComments entity, @NotNull BoundedDomain<?, ?, ?, ?> domain, @NotNull Mode mode) {
-        super(Comment.class, domain, ProviderInMemory.of(Objects.nonNull(entity) ? entity.comments() : Collections.emptyList()), new CommentFilter(), mode);
+    public CommentsView(@NotNull BoundedDomain<?, ?, ?, ?> domain, @NotNull Mode mode) {
+        super(Comment.class, domain, ProviderInMemory.of(), new CommentFilter(), mode);
         form = new CommentForm(this);
-        this.hasComments = entity;
         init();
-    }
-
-    @Override
-    public HasComments value() {
-        return hasComments;
-    }
-
-    @Override
-    public void value(HasComments value) {
-        if (!Objects.equals(hasComments, value)) {
-            this.hasComments = value;
-            provider(ProviderInMemory.of(Objects.nonNull(value) ? value.comments() : Collections.emptyList()));
-            dataView().refreshAll();
-        }
     }
 
     @Override
@@ -185,10 +169,10 @@ public class CommentsView extends ItemView<Comment> implements HasBindValue<HasC
         grid.addColumn(Comment::text).setKey(TEXT).setHeader(TEXT_LABEL).setSortable(true).setResizable(true).setFlexGrow(0).setWidth("25em");
 
         if (filter() instanceof CommentFilter filter) {
-            grid().getHeaderRows().clear();
-            HeaderRow headerRow = grid().appendHeaderRow();
-            addFilterText(headerRow, AUTHOR, filter::author);
-            addFilterText(headerRow, TEXT, filter::text);
+            HeaderRow headerRow = createHeaderRow();
+            headerRow.getCell(grid.getColumnByKey(CREATED)).setComponent(createDateRangeField(filter::range));
+            headerRow.getCell(grid.getColumnByKey(AUTHOR)).setComponent(createTextFilterField(filter::author));
+            headerRow.getCell(grid.getColumnByKey(TEXT)).setComponent(createTextFilterField(filter::text));
         }
         buildMenu();
     }

@@ -16,19 +16,11 @@ import com.vaadin.flow.component.HtmlComponent;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.grid.Grid;
-import com.vaadin.flow.component.icon.Icon;
-import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
-import com.vaadin.flow.data.binder.Binder;
 import net.tangly.core.Entity;
 import net.tangly.core.providers.Provider;
 import org.jetbrains.annotations.NotNull;
-
-import java.util.List;
-import java.util.Objects;
-import java.util.function.BiConsumer;
-import java.util.function.Function;
 
 /**
  * Defines a view for a list of referenced entities displayed in a grid. The details of the selected referenced entity can be shown. The following actions are supported:
@@ -51,61 +43,19 @@ import java.util.function.Function;
  *     <dt>Items to add</dt><dd>itemsToAdd.addAll(newList).removeAll(originalList)</dd>
  * </dl>
  *
- * @param <O> type of the owning entity
  * @param <T> type of the entities referenced in the one-to-many relations
  */
-public class One2ManyView<O extends Entity, T extends Entity> extends VerticalLayout implements HasBindValue<O> {
-    private final Class<T> entityClass;
+public class One2ManyView<T extends Entity> extends EntityView<T> {
     private final Provider<T> provider;
-    private final EntityView<T> view;
-    private final Button update;
-    private final Function<O, List<T>> items;
-    private final BiConsumer<O, T> add;
-    private final BiConsumer<O, T> remove;
-    private O value;
-    private Mode mode;
 
-    public One2ManyView(@NotNull String relation, @NotNull Class<T> entityClass, @NotNull Provider<T> provider, Function<O, List<T>> items, BiConsumer<O, T> add,
-                        BiConsumer<O, T> remove) {
-        this.entityClass = entityClass;
+    public One2ManyView(@NotNull Class<T> entityClass, @NotNull Provider<T> provider, Mode mode) {
+        super(entityClass, null, null, mode);
         this.provider = provider;
-        this.items = items;
-        this.add = add;
-        this.remove = remove;
+        // TODO add the menu items
+        grid().setSelectionMode(Grid.SelectionMode.MULTI);
+        menu().addItem("Add", event -> {});
+        menu().addItem("Remove", event -> {});
         setHeight("15em");
-        this.view = EntityView.of(entityClass, null, provider, Mode.LIST);
-        update = new Button(new Icon(VaadinIcon.ELLIPSIS_DOTS_V));
-        update.addClickListener(e -> displayRelationships());
-        add(view, new HorizontalLayout(update));
-    }
-
-    @Override
-    public O value() {
-        return value;
-    }
-
-    @Override
-    public void value(O value) {
-        this.value = value;
-        if (!Objects.equals(this.value, value)) {
-            this.value = value;
-            //            this.provider(ProviderInMemory.of(Objects.nonNull(value) ? Collections.emptyList() : Collections.emptyList()));
-        }
-    }
-
-    @Override
-    public Mode mode() {
-        return this.mode;
-    }
-
-    @Override
-    public void mode(Mode mode) {
-        this.mode = mode;
-        update.setEnabled(!mode.readonly());
-    }
-
-    @Override
-    public void bind(@NotNull Binder<O> binder, boolean readonly) {
     }
 
     private void displayRelationships() {
@@ -114,9 +64,8 @@ public class One2ManyView<O extends Entity, T extends Entity> extends VerticalLa
         dialog.setCloseOnOutsideClick(false);
         dialog.setModal(false);
         dialog.setResizable(true);
-        EntityView<T> view = EntityView.of(entityClass, null, provider, Mode.LIST);
+        EntityView<T> view = EntityView.of(entityClass(), null, provider, Mode.LIST);
         view.grid().setSelectionMode(Grid.SelectionMode.MULTI);
-        // TODO select all items of the one2many
         dialog.add(new VerticalLayout(view, new HtmlComponent("br"), createFormButtons(dialog, view)));
         dialog.open();
     }
@@ -125,15 +74,11 @@ public class One2ManyView<O extends Entity, T extends Entity> extends VerticalLa
         HorizontalLayout actions = new HorizontalLayout();
         actions.setSpacing(true);
         Button cancel = new Button("Cancel", event -> dialog.close());
-        Button clear = new Button("Remove", event -> {
-            view.selectedItems().forEach(provider::delete);
-            dialog.close();
-        });
         Button select = new Button("Add", event -> {
             view.selectedItems().forEach(provider::update);
             dialog.close();
         });
-        actions.add(cancel, clear, select);
+        actions.add(cancel, select);
         return actions;
     }
 }

@@ -55,7 +55,7 @@ public class EntityField<T extends Entity> extends CustomField<T> {
 
     @Override
     protected T generateModelValue() {
-        return null;
+        return getValue();
     }
 
     @Override
@@ -91,9 +91,9 @@ public class EntityField<T extends Entity> extends CustomField<T> {
         binder.bindReadOnly(oid, o -> (int) o.oid());
         binder.bind(id, HasId::id, isMutable ? HasId::id : null);
         binder.bind(name, HasName::name, isMutable ? HasName::name : null);
-        binder.forField(from).withValidator(from -> (from == null) || (to.getValue() == null) || (from.isBefore(to.getValue())), "From date must be before to date")
+        binder.forField(from).withValidator(o -> (o == null) || (to.getValue() == null) || (o.isBefore(to.getValue())), "From date must be before to date")
             .bind(HasDateRange::from, isMutable ? HasDateRange::from : null);
-        binder.forField(to).withValidator(to -> (to == null) || (from.getValue() == null) || (to.isAfter(from.getValue())), "To date must be after from date")
+        binder.forField(to).withValidator(o -> (o == null) || (from.getValue() == null) || (o.isAfter(from.getValue())), "To date must be after from date")
             .bind(HasDateRange::to, isMutable ? HasDateRange::to : null);
         binder.bind(text, HasText::text, isMutable ? HasText::text : null);
     }

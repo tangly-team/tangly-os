@@ -18,10 +18,11 @@ import org.jetbrains.annotations.NotNull;
 /**
  * Define the modes of the item view.
  * <dl>
- *     <dt>LIST</dt><dd>The list mode displays a read-only grid of entities without any menu items.</dd>
- *     <dt>VIEW</dt><dd>The view mode displays a read-only grid of entities with a details form.</dd>
- *     <dt>EDIT</dt><dd>The edit mode displays a grid of entities with a details form for edition and creation. The edit mode supports edition, creation, and duplication.</dd>
- *     <dt>DELETE</dt><dd>Teh delete mode displays a grid of entities with a read-only details form for deletion.</dd>
+ *     <dt>LIST</dt><dd>The list mode displays a read-only grid of entities without any default menu items.</dd>
+ *     <dt>VIEW</dt><dd>The view mode displays a read-only grid of entities with a details form and associated menu item.</dd>
+ *     <dt>EDIT</dt><dd>The edit mode displays a grid of entities with a details form for edition and creation. The edit mode supports edition, creation, and duplication through
+ *     menu items. </dd>
+ *     <dt>DELETE</dt><dd>The delete mode displays a grid of entities with a read-only details form for deletion.</dd>
  * </dl>
  */
 public enum Mode {

@@ -15,6 +15,7 @@ package net.tangly.ui.components;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.HasValue;
 import com.vaadin.flow.component.datepicker.DatePicker;
+import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.grid.GridVariant;
@@ -156,6 +157,15 @@ public final class VaadinUtils {
             anchor.setTarget("_blank");
             return anchor;
         });
+    }
+
+    public static Dialog createDialog() {
+        Dialog dialog = new Dialog();
+        dialog.setCloseOnEsc(false);
+        dialog.setCloseOnOutsideClick(false);
+        dialog.setModal(false);
+        dialog.setResizable(true);
+        return dialog;
     }
 
     public static <T extends LegalEntity> ComponentRenderer<Anchor, T> zefixComponentRenderer() {

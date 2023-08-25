@@ -18,15 +18,12 @@ import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.grid.HeaderRow;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
-import net.tangly.core.HasTags;
 import net.tangly.core.Tag;
 import net.tangly.core.TagType;
 import net.tangly.core.domain.BoundedDomain;
-import net.tangly.core.providers.Provider;
 import net.tangly.core.providers.ProviderInMemory;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Collections;
 import java.util.Objects;
 
 /**
@@ -42,7 +39,7 @@ import java.util.Objects;
  *     <dt>delete</dt><dd>The selected tag is removed.The operation can be accepted or canceled.</dd>
  * </dl>
  */
-public class TagsView extends ItemView<Tag> implements HasBindValue<HasTags> {
+public class TagsView extends ItemView<Tag> {
     private static final String NAMESPACE = "namespace";
     private static final String NAME = "name";
     private static final String VALUE = "value";
@@ -162,11 +159,7 @@ public class TagsView extends ItemView<Tag> implements HasBindValue<HasTags> {
         @Override
         protected Tag createOrUpdateInstance(Tag entity) {
             Tag tag = new Tag(namespace.getValue(), name.getValue(), value.getValue());
-            HasTags hasTags = parent().hasTags;
-            if (entity != null) {
-                hasTags.remove(entity);
-            }
-            hasTags.add(tag);
+            parent().provider().replace(entity, tag);
             return tag;
         }
 
@@ -186,34 +179,10 @@ public class TagsView extends ItemView<Tag> implements HasBindValue<HasTags> {
         }
     }
 
-    private transient HasTags hasTags;
-
-    /**
-     * The view is created with an optional entity providing the tags to display. The set of tags can be later updated by calling {@link ItemView#provider(Provider)}.
-     *
-     * @param entity optional entity with the tags set
-     * @param domain optional domain to which the generic entity belongs to
-     * @param mode   mode of the component
-     */
-    public TagsView(HasTags entity, @NotNull BoundedDomain<?, ?, ?, ?> domain, @NotNull Mode mode) {
-        super(Tag.class, domain, ProviderInMemory.of(Objects.nonNull(entity) ? entity.tags() : Collections.emptySet()), new TagsView.TagFilter(), mode);
+    public TagsView(@NotNull BoundedDomain<?, ?, ?, ?> domain, @NotNull Mode mode) {
+        super(Tag.class, domain, ProviderInMemory.of(), new TagFilter(), mode);
         form = new TagForm(this);
-        this.hasTags = entity;
         init();
-    }
-
-    @Override
-    public HasTags value() {
-        return hasTags;
-    }
-
-    @Override
-    public void value(HasTags value) {
-        if (!Objects.equals(hasTags, value)) {
-            this.hasTags = value;
-            provider(ProviderInMemory.of(Objects.nonNull(value) ? value.tags() : Collections.emptySet()));
-            dataView().refreshAll();
-        }
     }
 
     @Override
@@ -221,15 +190,14 @@ public class TagsView extends ItemView<Tag> implements HasBindValue<HasTags> {
         setHeight("15em");
         Grid<Tag> grid = grid();
         grid.addColumn(Tag::namespace).setKey(NAMESPACE).setHeader(NAMESPACE_LABEL).setSortable(true).setResizable(true).setFlexGrow(0).setWidth("10em");
-        grid.addColumn(Tag::name).setKey(NAME).setHeader(NAME_LABEL).setSortable(true).setResizable(true).setFlexGrow(0).setWidth("20em");
-        grid.addColumn(Tag::value).setKey(VALUE).setHeader(VALUE_LABEL).setSortable(false).setResizable(true).setFlexGrow(0).setWidth("25em");
+        grid.addColumn(Tag::name).setKey(NAME).setHeader(NAME_LABEL).setSortable(true).setResizable(true).setFlexGrow(0).setWidth("10em");
+        grid.addColumn(Tag::value).setKey(VALUE).setHeader(VALUE_LABEL).setSortable(false).setResizable(true).setFlexGrow(0).setWidth("10em");
 
         if (filter() instanceof TagFilter filter) {
-            grid().getHeaderRows().clear();
-            HeaderRow headerRow = grid().appendHeaderRow();
-            addFilterText(headerRow, NAMESPACE, filter::namespace);
-            addFilterText(headerRow, NAME, filter::name);
-            addFilterText(headerRow, VALUE, filter::value);
+            HeaderRow headerRow = createHeaderRow();
+            headerRow.getCell(grid.getColumnByKey(NAMESPACE)).setComponent(createTextFilterField(filter::namespace));
+            headerRow.getCell(grid.getColumnByKey(NAME)).setComponent(createTextFilterField(filter::name));
+            headerRow.getCell(grid.getColumnByKey(VALUE)).setComponent(createTextFilterField(filter::value));
         }
         buildMenu();
     }

@@ -52,10 +52,9 @@ public class TagTypesView extends ItemView<TagType> {
         grid.addColumn(this::count).setKey("count").setHeader("Count").setSortable(true).setAutoWidth(true).setResizable(true);
 
         if (filter() instanceof TagTypeFilter filter) {
-            grid().getHeaderRows().clear();
-            HeaderRow headerRow = grid().appendHeaderRow();
-            addFilterText(headerRow, NAMESPACE, filter::namespace);
-            addFilterText(headerRow, NAME, filter::name);
+            HeaderRow headerRow = createHeaderRow();
+            headerRow.getCell(grid.getColumnByKey(NAMESPACE)).setComponent(createTextFilterField(filter::namespace));
+            headerRow.getCell(grid.getColumnByKey(NAME)).setComponent(createTextFilterField(filter::name));
         }
 
         // TODO addMenuSection(List.of(Map.entry("Count Tags", e -> update(domain.countTags(new HashMap<>())))));
