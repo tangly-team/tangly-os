@@ -10,23 +10,53 @@ tags: ["agile", "git", "series-students"]
 :email: <marcel.baumann@tangly.net>
 :homepage: https://www.tangly.net/
 :company: https://www.tangly.net/[tangly llc]
+:ref-svn: https://subversion.apache.org/[Subversion]
 
 image::2017-05-02-head.jpg[width=420,height=360,role=left]
 
-=== Start using Git
+You shall put your source code and text documentation under a version management system.
 
-You shall put your source code under a version management system.
-The actual industrial standard is https://git-scm.com/[git], a distributed version control system -
+The actual industrial standard for version control system is https://git-scm.com/[git], a distributed version control system -
 https://en.wikipedia.org/wiki/Distributed_version_control[DVCS] -.
+It tracks changes in any set of computer files, usually used for coordinating work among programmers who are collaboratively developing source code during software development.
+
+{ref-svn} was a great tool and should now be retired.
+Simple refactoring activities with renaming will already corrupt a subversion repository.
+Commit operations can take quite some time before completing.
 
 Install git on your development machine.
+
+Binaries are available for all major platforms.
+
+If you want higher security, you should install _ssh_.
+The operation is trivial for linux and macOS systems.
+It is more cumbersome on Microsoft Windows systems.
+
 In case you are using the IntelliJ IDEA configure {ref-git} in the IDE through the preference pane.
+
+=== Create a Local Repository
 
 To put your product under git version management, go to the root of the product and perform the command
 
-[source]
+[source,console]
 ----
 git init
+----
+
+You have want to have a local copy of an existing git repository:
+
+[source,console]
+----
+git clone <repository link>     <1>
+----
+
+<1> The link is either a https or a ssh link to the remote repository.
+
+Once you have a local copy of a shared repository, you can update your copy with the changes of the remote repository using:
+
+[source,console]
+----
+git pull
 ----
 
 To add a specific file or all your source files to git.
@@ -55,7 +85,7 @@ Your IDE shall support this feature and would add files or folder to ignore thro
 
 === Commit Changes
 
-To commit your changes you simply
+To commit your changes you simply:
 
 [source,console]
 ----
@@ -64,6 +94,7 @@ git commit -m "commit message, should be clear and legible"
 
 You can perform these operations directly in IntelliJ IDEA (VCS functions) with these instructions.
 Switch to the Version Control tool window and switch to the Local Changes tab.
+
 . Expand the Un-versioned Files node, and select the files to be added.
 From the context menu, choose _to Add to VCS_, or press ⌥⌘A.
 . Switch to the Project tool window and select the files to be added.
@@ -78,7 +109,24 @@ By a few minutes, we mean 5 or 10 minutes.
 Observe yourself.
 If you commit at the end of the day, you are using your DVCS as a backup medium.
 It is time to change your habits.
-Use Git as a history of all successful changes you implement, and simply rollback all unsuccessful ones, simply discarding them.
+Use Git as a history of all successful changes you implement, and simply roll back all unsuccessful ones, simply discarding them.
+
+If you forget some files when performing the last commit, you can correct it:
+
+[source,console]
+----
+git commit --amend   <1>
+----
+
+<1> Please do not amend a shared commits.
+Amending a commit that is shared with another user will potentially require confusing and lengthy merge conflict resolutions.
+
+Once you are satisfied with your changes, you can propagate them to the remote repository using:
+
+[source,console]
+----
+git push
+----
 
 === What is Your Project Status?
 

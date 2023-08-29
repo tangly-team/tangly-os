@@ -1,0 +1,26 @@
+---
+title: "Architecture and Design"
+linkTitle: "Architecture"
+weight: 5
+date: 2023-01-01
+---
+
+= ERP Architecture and Design
+:imagesdir:./pics
+:toc-title: Table of Contents
+:toc:
+:numbered:
+
+- link:01-introduction-and-goals[Introduction and Goals]
+- link:02-architecture-constraints[Architecture Constraints]
+- link:03-system-scope-and-context[System Scope and Context]
+- link:04-solution-strategy[Solution Strategy]
+- link:05-building-block-view[Building Block View]
+- link:06-runtime-view[Runtime View]
+- link:07-deployment-view[Deployment View]
+- link:08-crosscutting-concepts[Concepts]
+- link:09-architecture-decisions[Architecture Decisions]
+- link:10-quality-requirements[Quality Requirements]
+- link:11-technical-risks[Technical Risks]
+- link:12-glossary[Glossary]
+- link:13-user-interface[User Interface]

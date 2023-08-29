@@ -1,0 +1,28 @@
+---
+linkTitle: "02 Constraints"
+weight: 20
+---
+
+[[section-architecture-constraints]]
+== Architecture Constraints
+:ref-vaadin: https://vaadin.com/[Vaadin]
+
+The following organizational constraints are identified:
+
+Development Stack::
+The programming stack is modern Java.
+The current released version shall be used for all development.
+User Interface::
+The user interface stack is {ref-vaadin} Flow.
+Development Environment::
+The primary development platform is {ref-github}.
+All artifacts are under {ref-git} source code management.
+Documentation Language::
+The primary language for all documents is International US English.
+Supported Languages::
+The primary language for the user interface is International US English.
+Localization capabilities of reports shall be provided.
+Copyright::
+All source code and documentation shall be published under a permissive copyright.
+The used libraries shall conform to such copyrights.
+

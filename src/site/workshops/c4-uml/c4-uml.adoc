@@ -13,6 +13,15 @@
 
 == Agenda
 
+== Class Diagram
+
+[plantuml,uml-class-diagram]
+....
+class Actor {}
+class Queue {}
+struct Message {}
+....
+
 [%notitle]
 [.lightbg,background-opacity="0.5"]
 == Discussion

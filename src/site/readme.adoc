@@ -56,5 +56,7 @@ The code to generate a presentation workshop slides deck is:
 
 [source,bash]
 ----
- bundle exec asciidoctor-revealjs -a revealjsdir=https://cdn.jsdelivr.net/npm/reveal.js@4.5.0 arc42/<presenation>.adoc
+ bundle exec asciidoctor-revealjs -a revealjsdir=https://cdn.jsdelivr.net/npm/reveal.js@4.5.0 <folder>/<presenation>.adoc   <1>
 ----
+
+<1> Run the command from the _workshops_ directory.
