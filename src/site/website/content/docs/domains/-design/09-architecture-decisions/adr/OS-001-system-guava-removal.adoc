@@ -1,0 +1,63 @@
+---
+title: "OS 001: System Guava Removal"
+linkTitle: "Guava Removal"
+date: 2018-02-20
+weight: 1
+---
+
+== OS-001 Remove usage of Google Guava Library
+
+Date: 2018-02-20
+
+=== Status
+
+Implemented
+
+=== Context
+
+image::OS-001-head.jpg[width=420,height=360,role=left]
+
+Guava is an historical effort to provide much-needed functionalities to the Java community.
+The Java ecosystem evolves quite slowly at the beginning of the millennium.
+Later stewardship clearly improved with a six-month release schedule approach.
+Preview and incubator initiatives allowed timely evaluation of new features and idioms in the Java language and ecosystem.
+
+JDK versions from release 8 often provide better replacement methods for a lot of Guava functions.
+New JDKs are released every six months and provide regular improvements to the API.
+These improvements make Guava functions more and more obsolete.
+
+https://github.com/google/guava[Guava] is an external library of high quality but still an additional dependency in the application.
+We always follow the rule to use language and standard library constructs over using external libraries.
+Guava tries to support older JDKs and, therefore does not use more modern approaches defined in new API versions.
+We consider Guava has a legacy library.
+We are dedicated to writing modern Java using the latest official releases of the language and runtime environment.
+
+The advantage is better integration, always synchronized with a new release of the JDK and no incompatibilities.
+The drawback is sometimes a slightly more cumbersome syntax or solution.
+footnote:[If a specific function is only available in Guava and your project strongly relies on it, feel free to continue using Guava].
+
+=== Decision
+
+All Guava usages shall be replaced by JDK standard functions.
+The main advantages are:
+
+. Current JDK versions provide their own implementation e.g., in the Objects class.
+. Guava dependency is removed from our source code and compiled artifacts.
+. Guava is not optimized for idioms used in current JDK such as streams and extensive use of lambdas.
+Guava needs years to support new concepts such as algebraic data types.
+
+[CAUTION]
+====
+This decision is against good practices documented in the first decade of this millennium.
+The Guava library did not evolve as rapidly as the new Java versions released in the second and third decades.
+
+We strongly advocate timely evolution.
+Try to avoid becoming laggards in your technology stack.
+As a rule, use the current Java release, or as a minimal version, the latest long-term supported version of Java.
+====
+
+=== Consequences
+
+* Some operations are more complicated to implement because a solution is already provided in Guava.
+* We have the huge advantage of being able to use the current approaches provided in JDK and associated standard API.
+* Code uses the current constructs provided through last released JDK.

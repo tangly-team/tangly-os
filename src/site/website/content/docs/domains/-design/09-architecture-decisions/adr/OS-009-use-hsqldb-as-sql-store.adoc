@@ -1,0 +1,46 @@
+---
+title: "OS 009: Use HSQLDB as an SQL DB"
+linkTitle: "Use HSQLDB as SQL store"
+date: 2022-01-01
+weight: 9
+---
+
+== OS-009 Use HSQLDB as an SQL store
+
+Date: 2022-01-01
+
+=== Status
+
+Implemented
+
+=== Context
+
+image::OS-009-head.png[width=420,height=360,role=left]
+
+Applications regularly need to store information in a persistent store.
+A proven approach is to use an SQL database solution for such activities.
+The Java ecosystem supports a relational database with libraries.
+
+The JPA approach provides an object relational mapper.
+The JOOQL approach has a genuine mapping of SQL statements to type verified Java expressions.
+
+=== Decision
+
+The HSQLDB SQL database java solution is the preferred choice when an application needs to store data in a relational store.
+
+Beware the preferred persistence mechanism is link:../os-007-persistence-microstream/[Microstream].
+
+=== Consequences
+
+The advantages of the solution are:
+* A simple java library packaged as a jar file provides all the need functionalities.
+* The implementation provides an SQL standard compliant solution * the application can embed the database server.
+This is a preferred approach in domain-driven design solutions.
+* No runtime license costs are required.
+The deployment on virtualized and cloud platforms is hugely simplified.
+
+The drawbacks are:
+* Best of breed products such PostgreSQL, Oracle, or SQL server are not preferred solutions.
+Operations departments have extensive experience with these products but none with HSQLDB.
+* The size of the database is limited.
+The current limitation is in the level of tens of terabytes.

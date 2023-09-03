@@ -9,10 +9,11 @@ description: links to workshops
 
 The available workshops are:
 
-- [agile and Scrum](agile-scrum/agile-scrum.html)
-- [arch42 software architecture template](arc42/arc42.html)
-- [c4 and UML notations](c4-uml/c4-uml.html)
-- [domain-driven design](ddd/ddd.html)
+- [Agile and Scrum](agile-scrum/agile-scrum.html)
+- [Agile Technical Fluency](agile-technical-fluency/agile-technical-fluency.html)
+- [Arc42 Software Architecture Template](arc42/arc42.html)
+- [C4 and UML Notations](c4-uml/c4-uml.html)
+- [Domain-Driven Design](ddd/ddd.html)
 
 ## Tips
 

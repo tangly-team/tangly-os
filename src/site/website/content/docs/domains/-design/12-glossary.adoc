@@ -1,0 +1,19 @@
+---
+linkTitle: "12 Glossary"
+weight: 120
+date: 2023-01-01
+---
+
+[[section-glossary]]
+== Glossary
+
+[cols="e,2e" options="header"]
+|===
+|Term |Definition
+|ATDD |Acceptance Test Driven Developmnent
+|TDD  |Test Driven Design
+|UI   |User Interface
+|a11y |accessibility
+|i18n |Internationalization
+|l16n |Localization
+|===

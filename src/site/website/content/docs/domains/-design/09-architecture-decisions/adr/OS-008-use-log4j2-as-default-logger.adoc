@@ -1,0 +1,85 @@
+---
+title: "OS 008: Use log4j2 as default logging framework"
+linkTitle: "Log4j2"
+date: 2021-06-15
+weight: 8
+---
+
+== OS-008 Use log4j2 as default logging framework
+
+Date: 2021-06-15
+
+=== Status
+
+Implemented
+
+=== Context
+
+image::OS-008-head.png[width=420,height=360,role=left]
+
+The logging library https://en.wikipedia.org/wiki/SLF4J[slf4j] seems to be a dead project for at least one year.
+The last commit in the https://github.com/qos-ch/slf4j[GitHub slf4j repository] was performed two years ago.
+Version 2.0 of the library is an alpha release on https://mvnrepository.com/artifact/org.slf4j/slf4j-api[Maven Central] dating back to October 2019.
+
+The apache project log4j has made tremendous progress with the creation of the log4j2 library.
+All features provided in slf4j are now available in log4j2.
+In particular, the fluent interface, which is only available in the beta version of slf4j is also supported.
+Additional features are also provided and performance is better than with other logging frameworks.
+
+The project is active and under the umbrella of the https://www.apache.org[Apache Foundation].
+The library uses well-documented Java module names as any modern library shall provide.
+
+This situation raises the question to move our application to the apache logging framework.
+Both APIs are very similar in style and naming.
+The effort to migrate is quite reasonable.
+Usually, only the logger declaration needs a modification.
+The creation of logging records uses exactly the same syntax and calling conventions.
+
+The advantage is better integration with an actively supported and developed library.
+
+=== Decision
+
+All components will be migrated to the log4j2 library
+footnote:[It is sad that such a well-crafted library as slf4j is fading away.
+We assume that the community actively working on extensions was too small.
+Ceki Gülcü did a wonderful job to pave the way for modern and efficient logging concepts in the Java world.].
+
+All components shall use the fluent interface to write logging records.
+This decision shall increase the legibility of the source code.
+
+Staying in a library no more under active development is too dangerous.
+Closing of security issues and support of current JDK versions are not guaranteed.
+
+=== Consequences
+
+* All source files must be modified to use the new library
+** All logging record creations shall use a fluent interface.
+As in slf4j, no string concatenation shall happen in log record calls, use the message feature of the library.
+** Logging level is specified by using the fluent interface
+** No conditional statements shall be used to bracket logging statements
+** Exceptions are always stated through the fluent user interface and are not an argument of the log message
+* All https://gradle.org/[Gradle] build files shall use the new library.
+The API is declared as an implementation dependency.
+The core library is declared as a test or runtime dependency.
+* Testing shall be performed to verify correct behavior and correct configuration.
+
+We shall explore if trouble arise from used components which are using other logging libraries.
+The risk is small because it is already existing wehn using slf4j liberary.
+The difference is only our new preferred library is now the Apache one.
+
+[IMPORTANT]
+====
+Configure slf4j API to use the log4j2 backend to write logging statements.
+This configuration is important if some of your libraries are using slf4j.
+====
+
+The architecture of log4j2 is described in https://logging.apache.org/log4j/2.x/manual/architecture.html[Log4j2 Main Components].
+
+=== Learnings
+
+* The log4j2 community reacted professionally and fast in 2022 to correct a security attack in the library.
+The update of all libraries and applications with the patched version was done in a few minutes.
+A gradle plugin was used to infer, which version of the library was used.
+The continuous implementation and delivery pipeline were used to generate hardened versions.
+* A new feature of Gradle supports the definition of dependencies in a central file for all submodules.
+The project uses _libs.version.toml_ configuration file to unify library usage through all components.

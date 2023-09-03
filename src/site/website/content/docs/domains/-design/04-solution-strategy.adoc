@@ -1,0 +1,42 @@
+---
+linkTitle: "04 Solution"
+weight: 40
+date: 2023-01-01
+---
+
+[[section-solution-strategy]]
+== Solution Strategy
+
+=== Internal Identifiers, external Identifiers, and Names
+
+Internal Identifier::
+External Identifier::
+Name::
+
+=== Codes, Tags, and Comments
+
+Codes::
+Tags::
+Comments::
+
+=== Entities and Value Objects
+
+Entity::
+Extended Entity::
+External Entity::
+Value Object::
+
+=== Providers
+
+Persistence Provider::
+In-Memory Provider::
+
+=== Links
+
+- link:../../../../blog/2020/entities-identifiers-external-identifiers-and-names/[Entities, Identifiers, and Names]
+- link:../../../../blog/2021/meaningful-identifiers/[Meaningful Identifiers]
+- link:../../../..blog/2020/reference-codes/[Reference Codes]
+- link:../../../../blog/2020/the-power-of-tags-and-comments/[The Power of Tags and Comments]
+- link:../../../../blog/2024/domain-entities/[Domain Entities]
+- link:../../../../blog/2021/value-objects-as-embedded-entities/[Value Objects as Embedded Entities]
+- link../../../../blog/2021/microstream-4.x/[Microstream 4.x]

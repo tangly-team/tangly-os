@@ -1,0 +1,74 @@
+= Agile Technical Fluency
+:author: Marcel Baumann (tangly llc)
+:imagesdir: pics
+:icons: font
+:revealjs_theme: white
+:source-highlighter: highlight.js
+:revealjs_slideNumber: true
+:revealjs_hash: true
+:revealjs_embedded: false
+:ref-c4: https://c4model.com/[C4 Model]
+:ref-git: https://git-scm.com/[Git]
+:ref-github: https://github.com/[GitHub]
+:ref-gitlab: https://gitlab.com/[GitLab]
+:ref-bitbucket: https://bitbucket.org/[Bitbucket]
+:ref-uml: https://en.wikipedia.org/wiki/Unified_Modeling_Language[UML]
+
+== Agenda
+
+- Source Code management fluency
+- Design and modern softare engineering fluency
+- Delivery fluency
+- Process fluency
+
+== Git Fluency
+
+- Git is the de facto standard for source management
+- Support agile and modern software engineering practices
+- Preferred solution for all major digital product development platforms
+
+=== Basic Commands
+
+- Create and clone a repository
+- Commit changes
+- Push changes
+- https://blog.tangly.net/blog/2017/git-local-repositories-for-the-impatient/[Git for the Impatient]
+
+=== Branches
+
+- Create a branch
+- Commit and push changes on a branch
+- Merge request flow
+- https://blog.tangly.net/blog/2016/git-branches-for-the-impatient/[Git Branches for the Impatient]
+
+=== Rebase and Merge
+
+- Rebase
+- Merge
+- Squash
+- http://localhost:1313/blog/2023/git-rebase-and-merge-for-the-impatient/[Git Rebase and Merge for the Impatient]
+
+=== Tag
+
+- Tag your release
+- Beware of multi-reposities impact
+- http://localhost:1313/blog/2023/git-tag-for-the-impatient/[Git Tag for the Impatient]
+
+=== Tips
+
+- One team member should be an expert in {ref-git}
+- One team member should be an expert in your platform {ref-github}, {ref-gitlab}, or {ref-bitbucket}
+- Clear ways of working
+- Prefer co-working over complex processes
+
+==  Design fluency
+
+== Delivery fluency
+
+== Process fluency
+
+[%notitle]
+[.lightbg,background-opacity="0.5"]
+== Discussion
+
+image::discussion.png[background,size=cover]

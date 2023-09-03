@@ -1,0 +1,74 @@
+---
+title: "OS 011: Vaadin User Interface"
+linkTitle: "Vaadin User Interface"
+date: 2022-01-01
+weight: 10
+---
+
+== OS-011 Vaadin User Interface
+
+Date: 2022-01-01
+
+=== Status
+
+Implemented
+
+=== Context
+
+image::OS-011-head.svg[width=360,height=360,role=left]
+
+Our primary and almost exclusive technical stack is link:../os-003-use-modern-java-constructs/[Modern Java].
+
+A major weakness of the Java ecosystem is the user interface aspects.
+https://en.wikipedia.org/wiki/Swing_(Java)[Swing] is old and no more actively supported by Oracle or other major players.
+https://openjfx.io/[JavaFX] has a small active community.
+The platform never had huge acceptance.
+
+We could use various JavaScript frameworks to realize our user interfaces.
+The drawback is supporting an additional technology stack.
+Complexity is added between the Java backend and the TypeScript frontend.
+
+=== Decision
+
+Our primary approach to realizing user interface is to use https://vaadin.com/[Vaadin].
+
+The version of Vaadin should be higher than 14.
+
+Vaadin has some impressive aspects:
+
+* User interface can fully be written in Java.
+* Mobile first and progressive Web applications are natively supported with all visual components.
+* The solution can be hosed in a docker image.
+* User interface components are based on https://www.webcomponents.org/[Web Components] and https://lit.dev/[Lit HTML].
+* If desired, you can write user interface components in Typescript and connect them the Vaadin ecosystem.
+
+A strength of Vaadin has extensive support for migrating legacy Java solutions to a modern Java technical stack.
+
+=== Consequences
+
+The advantages are:
+
+* Java is our sole technology stack to realize complete applications.
+* The major part of the framework is under Apache 2.0 open source license.
+* Vaadin applications easily support a few hundreds of active users.
+If you respect some design considerations, Vaadin applications scale to a few thousands of active users.
+* Active community provides additional user interface components.
+
+[TIP]
+====
+We use the https://vaadin.com/directory/component/so-charts[SO-Charts] components to draw our charts.
+The library is a wrapper around the Apache https://echarts.apache.org/en/index.html[ECharts] library.
+This library provides a huge number of high-quality graphs.
+====
+
+The drawback is:
+
+* You cannot currently write solutions supporting a hundred thousand of parallel users.
+
+[NOTE]
+====
+Our market is the creation of management and organization internal applications.
+
+These solutions have seldom more than five hundred of parallel users.
+Therefore, we never had scalabity or performance problems with Vaadin based programs.
+====

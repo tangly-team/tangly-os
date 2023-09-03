@@ -1,0 +1,20 @@
+---
+linkTitle: "09 Decisions"
+weight: 90
+date: 2023-01-01
+---
+
+[[section-design-decisions]]
+== Architecture Decisions
+
+- link:adr/OS-001-system-guava-removal[OS-001 System Guava Removal]
+- link:adr/OS-002-unit-test-conventions[OS-002 Unit Test Conventions]
+- link:adr/OS-003-use-modern-java-constructs[OS-003 Use Modern Java Constructs]
+- link:adr/OS-004-publish-technical-documentation-through-static-website[OS-004 Publish Technical Documentation Through Static Website]
+- link:adr/OS-005-publish-maven-central-artifact[OS-005 Publish Maven Central Artifact]
+- link:adr/OS-006-dependency-injection-guice[OS-006 Dependency Injection Guice]
+- link:adr/OS-007-persistence-microstream[OS-007 Persistence Microstream]
+- link:adr/OS-008-use-log4j2-as-default-logger[OS-008 Use Log4j2 as Default Logger]
+- link:adr/OS-009-use-hsqldb-as-sql-store[OS-009 Use HSQLDB as SQL Store]
+- link:adr/OS-010-archive-data[OS-010 Archive Data]
+- link:adr/OS-011-vaadin-as-user-interface[OS-011 Vaadin as User Interface]

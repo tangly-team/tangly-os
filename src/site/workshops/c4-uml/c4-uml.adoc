@@ -13,6 +13,20 @@
 
 == Agenda
 
+== Object-Orientation
+
+=== What is an Object?
+
+=== What is a Class?
+
+=== What is an Interface?
+
+=== Advanced Approaches
+
+Templates Mixins
+
+=== Functional Approaches
+
 == Class Diagram
 
 [plantuml,uml-class-diagram]
@@ -21,6 +35,20 @@ class Actor {}
 class Queue {}
 struct Message {}
 ....
+
+== Package Diagram
+
+== State Machine Diagram
+
+== Sequence Diagram
+
+== Embedded Considerations
+
+- Heap and Dynamic Object Allocations
+- Threads
+- Interrupt Routines
+
+== UML and C4
 
 [%notitle]
 [.lightbg,background-opacity="0.5"]

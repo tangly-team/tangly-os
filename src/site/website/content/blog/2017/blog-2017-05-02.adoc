@@ -12,7 +12,7 @@ tags: ["agile", "git", "series-students"]
 :company: https://www.tangly.net/[tangly llc]
 :ref-svn: https://subversion.apache.org/[Subversion]
 
-image::2017-05-02-head.jpg[width=420,height=360,role=left]
+image::2017-05-02-head.png[width=420,height=360,role=left]
 
 You shall put your source code and text documentation under a version management system.
 
@@ -192,4 +192,15 @@ Or on Linux and macOS:
 git config --global core.autocrlf input
 ----
 
+=== Thoughts
+
 When using an IDE, consider the https://editorconfig.org[Editor Configuration] approach for the end of line, indentation, and tabs versus spaces.
+
+You can find a lot of information on https://stackoverflow.com/questions/tagged/git[Stack Overflow].
+Beware when reading the answers on Stack Overflow that Git commands have changed over time.
+Select new posts to find the best answers.
+
+The nifty-gritty details can be found in the official https://git-scm.com/book/en/v2[Git documentation].
+
+The _Pro Git_ book can be downloaded from https://git-scm.com[Git SCM].
+

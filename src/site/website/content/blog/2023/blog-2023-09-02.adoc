@@ -10,6 +10,7 @@ tags: ["java"]
 :email: <marcel.baumann@tangly.net>
 :homepage: https://www.tangly.net/
 :company: https://www.tangly.net/[tangly llc]
+:ref-lombok: https://projectlombok.org/[Lombok]
 
 image::2023-09-02-head.jpg[width=420,height=360,role=left]
 
@@ -77,6 +78,13 @@ Extensions to existing features:
 - https://openjdk.org/jeps/439[Generational ZGC]
 - https://openjdk.org/jeps/445[Unnamed Classes and Instance Main Methods (Preview)]
 - https://openjdk.org/jeps/452[Key Encapsulation Mechanism API]
+
+=== Stumbling Blocks
+
+Once again {ref-lombok} up to version 1.18.28 is not working with JDK 21.
+The project uses internal unsafe functions, which are no more supported in this Java release.
+
+All other libraries and tools I am using worked without troubles.
 
 === Lessons Learnt
 

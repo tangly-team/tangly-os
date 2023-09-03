@@ -1,0 +1,229 @@
+---
+title: "Git Rebase and Merge for the Impatient"
+linkTitle: "Git Rebase"
+date: 2023-09-02
+tags: ["agile", "git", "series-students"]
+---
+
+== Git Rebase and Merge for the Impatient
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+:ref-svn: https://subversion.apache.org/[Subversion]
+
+image::2023-09-03-head.png[width=420,height=360,role=left]
+
+Both the rebase and merge commands provide similar functionalities.
+
+They combine the work of multiple developers into a single entity, integrating changes between branches.
+
+That about sums up their similarities.
+
+The operation _git merge_ is a way of combining changes from one source branch into another target branch.
+The operation leaves commit messages in the history.
+
+The operation _git rebase_ is a way of moving the changes from one branch onto another branch.
+The operation does not leave any commit message in the history.
+
+A simple and powerful approach governing the use of these commands is:
+
+- Local branches shall be updated using rebase.
+The commit history of the branch stays clean.
+- Local feature branches shall be regularly synchronized against the default remote branch.
+Therefore, team members will have less merge conflicts.
+- Remote branches shall be updated using merge.
+- Before a merge request is created, you can clean up your commit history with an interactive rebase.
+
+[TIP]
+====
+Feature branches should be short-lived. +
+The implementation of a feature shall be shorter than a Scrum sprint, meaning less than two weeks.
+====
+
+=== Regular Rebase
+
+Rebasing a branch in {ref-git} is a way to move the entirety of a branch to another point in the tree.
+The simplest example is moving a branch further up in the tree.
+As a developer, you want to regularly integrate the latest changes from the default branch into your feature branch
+
+In Git, a rebase updates your feature branch with the contents of another branch.
+This step is important for Git-based development strategies.
+
+Use a rebase to confirm that your branch’s changes do not conflict with any changes added to your target branch after you created your feature branch.
+
+When you rebase:
+
+. Git imports all the commits submitted to your target branch after you initially created your feature branch from it.
+. Git stacks the commits you have in your feature branch on top of all the commits it imported from that branch:
+
+image::2023-09-03-rebase.png[role=center]
+
+To rebase, make sure you have all the commits you want in the rebase in your main branch.
+Check out the branch you want to rebase and type
+
+Standard rebase replays the previous commits on a branch without changes, stopping only if merge conflicts occur.
+
+. Fetch the latest changes from main: git fetch origin main
+. Check out your feature branch: git checkout my-feature
+. Rebase it against main: git rebase origin/main
+. Force push to your remote branch with:
++
+[source,console]
+----
+git push --force-with-lease origin my-feature   <1>
+git push --force origin my-feature              <2>
+----
++
+<1> lease option preserves any new commits added to the remote branch by other people.
+<2> force does not preserve any new commits added to the remote branch by other people.
+
+If there are merge conflicts, Git prompts you to fix them before continuing the rebase.
+
+[source,console]
+----
+git rebase main                                 <1>
+----
+
+<1> The _main_ branch is the branch you want to rebase on.
+
+[CAUTION]
+====
+git rebase rewrites the commit history.
+It can be harmful to do it in shared branches.
+It can cause complex and hard to resolve merge conflicts.
+In these cases, instead of rebasing your branch against the default branch, consider pulling it with _git pull origin main_.
+Pulling has similar effects with less risk of compromising the work of your contributors.
+====
+
+=== Merge
+
+The git merge command will merge any changes that were made to the code base on a separate branch to your current branch as a new commit.
+
+The command syntax is as follows:
+
+[source,console]
+----
+git merge BRANCH-NAME
+----
+
+For example, if you are currently working in a branch named dev and would like to merge any new changes that were made in a branch named new-features, you would issue the following command:
+
+[source,console]
+----
+git merge new-features
+----
+
+[NOTE]
+====
+If there are any uncommitted changes on your current branch, Git will not allow you to merge until all changes in your current branch have been committed.
+====
+
+To handle those changes, you can temporarily stash them:
+
+[source,console]
+----
+git stash                                       <1>
+git merge new-feature                           <2>
+git stash pop                                   <3>
+----
+
+<1> add them to the stash
+<2> do your merge
+<3> get the changes back into your working tree
+
+=== Interactive Rebase
+
+Use an interactive rebase (the --interactive flag, or -i) to simultaneously update a branch while you modify how its commits are handled.
+For example, to edit the last five commits in your branch (HEAD~5), run:
+
+[source,console]
+----
+git rebase -i HEAD~5
+----
+
+Git opens the last five commits in your terminal text editor, the oldest commit first.
+Each commit shows the action to take on it, the SHA, and the commit title:
+
+[source,console]
+----
+pick 111111111111 Second round of structural revisions
+pick 222222222222 Update inbound link to this changed page
+pick 333333333333 Shifts from H4 to H3
+pick 444444444444 Adds revisions from editorial
+pick 555555555555 Revisions continue to build the concept part out
+
+# Rebase 111111111111..222222222222 onto zzzzzzzzzzzz (5 commands)
+#
+# Commands:
+# p, pick <commit> = use commit
+# r, reword <commit> = use commit, but edit the commit message
+# e, edit <commit> = use commit, but stop for amending
+# s, squash <commit> = use commit, but meld into previous commit
+# f, fixup [-C | -c] <commit> = like "squash" but keep only the previous
+----
+
+After the list of commits, a commented-out section shows some common actions you can take on a commit:
+
+- *Pick* a commit to use it with no changes.
+The default option.
+- *Reword* a commit message.
+- *Edit* a commit to use it, but pause the rebase to amend (add changes to) it.
+- *Squash* multiple commits together to simplify the commit history of your feature branch.
+
+Replace the keyword pick according to the operation you want to perform in each commit.
+To do so, edit the commits in your text editor.
+
+=== Force push
+
+Complex operations in Git require you to force an update to the remote branch.
+Operations like squashing commits, resetting a branch, or rebasing a branch rewrite the history of your branch.
+Git requires a forced update to help safeguard against these more destructive changes from happening accidentally.
+
+Force pushing is not recommended on shared branches, as you risk destroying the changes of others.
+
+--force-with-lease flag::
+The _--force-with-lease_ flag force pushes.
+Because it preserves any new commits added to the remote branch by other people, it is safer than _--force_:
++
+[source,console]
+----
+git push --force-with-lease origin my-feature
+----
+--force flag::
+The _--force flag_ forces pushes, but does not preserve any new commits added to the remote branch by other people.
+To use this method, pass the flag _--force_ or _-f_ to the push command:
++
+[source,console]
+----
+git push --force origin my-feature
+----
+
+=== Thoughts
+
+Both _git merge_ and _git rebase_ are very useful commands.
+One is not better than the other.
+However, there are some very important differences between the two commands that you and your team should take into consideration.
+
+Whenever _git merge_ is run, an extra merge commit is created.
+Whenever you are working in your local repository, having too many merge commits can make the commit history look confusing.
+One way to avoid the merge commit is to use _git rebase_ instead.
+
+_git rebase_ is a very powerful feature.
+It is risky as well if it is not used in the right way.
+The command alters the commit history, so use it with care.
+If rebasing is done in the remote repository, then it can create a lot of issues when other developers try to pull the latest code changes.
+Remember to only run _git rebase_ in a local repository.
+
+You can find a lot of information on https://stackoverflow.com/questions/tagged/git[Stack Overflow].
+Beware when reading the answers on Stack Overflow that Git commands have changed over time.
+Select new posts to find the best answers.
+
+The nifty-gritty details can be found in the official https://git-scm.com/book/en/v2[Git documentation].
+
+The _Pro Git_ book can be downloaded from https://git-scm.com[Git SCM].
+
+=== Links
+
+- link:../../2016/git-branches-for-the-impatient/[Git Branches for the Impatient]
+- link:../../2017/2017/git-local-repositories-for-the-impatient/[Git Local Repositories for the Impatient]
