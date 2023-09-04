@@ -24,17 +24,21 @@ hs_err_pid*
 **/jspm_packages/
 /net.tangly.erp.ui/frontend/generated/
 /net.tangly.erp.ui/frontend/generated/vaadin.ts
-/net.tangly.erp.ui/pnpm-lock.yaml
-/net.tangly.erp.ui/pnpmfile.js
-/net.tangly.erp.ui/webpack.config.js
-/net.tangly.erp.ui/webpack.generated.js
-/net.tangly.erp.ui/.npmrc
-/net.tangly.erp.ui/frontend/index.html
-/src/main/resources/references.bib.bak
-/src/main/resources/references.bib.sav.tmp
-/net.tangly.erp.ui/.pnpmfile.cjs
-/net.tangly.erp.ui/vite.config.ts
-/net.tangly.erp.ui/vite.generated.ts
+**/pnpm-lock.yaml
+**/pnpmfile.js
+**/webpack.config.js
+**/webpack.generated.js
+**/.npmrc
+**/frontend/index.html
+**/.pnpmfile.cjs
+**/package.json
+**/package-lock.json
+**/tsconfig.json
+**/vite.config.ts
+**/vite.generated.ts
+**/types.d.ts
+**/package-lock.json
+
 
 # Covers other tools such JabRef, microstream, revealjs
 /storage/
