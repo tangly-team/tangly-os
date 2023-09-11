@@ -1,0 +1,189 @@
+= Agile Technical Fluency
+:author: Marcel Baumann (tangly llc)
+:imagesdir: pics
+:icons: font
+:revealjs_theme: white
+:source-highlighter: highlight.js
+:revealjs_slideNumber: true
+:revealjs_hash: true
+:revealjs_embedded: false
+:ref-agile-fluency: https://www.agilefluency.org/[Agile Fluency Model]
+:ref-c4: https://c4model.com/[C4 Model]
+:ref-cvs: https://en.wikipedia.org/wiki/Concurrent_Versions_System[CVS]
+:ref-git: https://git-scm.com/[Git]
+:ref-github: https://github.com/[GitHub]
+:ref-gitlab: https://gitlab.com/[GitLab]
+:ref-bitbucket: https://bitbucket.org/[Bitbucket]
+:ref-svn: https://subversion.apache.org/[Subversion]
+:ref-uml: https://en.wikipedia.org/wiki/Unified_Modeling_Language[UML]
+
+== Agenda
+
+- Source Code management fluency
+- Design and modern software engineering fluency
+- Delivery fluency
+- Process fluency
+
+[.notes]
+--
+This slide deck is licensed under Attribution 4.0 International (CC BY 4.0).
+The attribution is https://blog.tangly.net/[tangly llc].
+
+Additional slide decks can be found under https://blog.tangly.net/ideas/learnings/workshops/[Workshops].
+--
+
+== Git Fluency
+
+- {ref-git} is the de facto standard for source management
+- Support agile and modern software engineering practices
+- Preferred solution for all major digital product development platforms
+
+[.notes]
+--
+- Agile approaches require incremental and iterative development solutions.
+- You should use {ref-git} as your source code management system.
+{ref-svn} is obsolete.
+Updates are published at most once a year.
+The last functional update is _1.14_ and was released in May 2020.
+
+{ref-cvs} was the predecessor of {ref-svn} and should certainly not be used.
+--
+
+=== Basic Commands
+
+- Create and clone a repository
+- Commit changes
+- Push changes
+- https://blog.tangly.net/blog/2017/git-local-repositories-for-the-impatient/[Git for the Impatient]
+
+[.lightbg,background-opacity="0.2"]
+=== Branches
+
+image::git-branch.png[background,size=cover]
+
+- Create a branch
+- Commit and push changes on a branch
+- Merge request flow
+- https://blog.tangly.net/blog/2016/git-branches-for-the-impatient/[Git Branches for the Impatient]
+
+[.lightbg,background-opacity="0.2"]
+=== Rebase and Merge
+
+image::git-rebase.png[background,size=cover]
+
+- Rebase
+- Merge
+- Squash
+- https://blog.tangly.net/blog/2023/git-rebase-and-merge-for-the-impatient/[Git Rebase and Merge for the Impatient]
+
+[.lightbg,background-opacity="0.2"]
+=== Tag
+
+image::git-tag.png[background,size=cover]
+
+- Tag your release
+- Beware of multi-repositories impact
+- https://blog.tangly.net/blog/2023/git-tag-for-the-impatient/[Git Tag for the Impatient]
+
+[.notes]
+--
+You have to write your own synchronization scripts when working with multiple repositories for one product.
+--
+
+=== Tips
+
+- One team member should be an expert with {ref-git}
+- One team member should be experienced with your platform {ref-github}, {ref-gitlab}, or {ref-bitbucket}
+- Standard ways of working in the team
+- Prefer co-working to complex processes
+- Experiment!
+Try for example https://blog.tangly.net/blog/2023/semantic-commits-for-the-impatient/[Semantic Commits]
+
+[.notes]
+--
+The goal of source code management processes is to increase productivity and reduce mundane activities.
+--
+
+==  Design fluency
+
+== Delivery fluency
+
+[.lightbg,background-opacity="0.3"]
+== Agile Process fluency
+
+image::agile-development.png[background,size=cover]
+
+- Why Agile?
+- What is Agile?
+- How Should You Apply Agile?
+
+[.lightbg,background-opacity="0.3"]
+=== Agile Organizations
+
+image::agile-organizations.png[background,size=cover]
+
+- Customer centric
+- Small teams
+- Networked communication
+
+[%notitle]
+=== Agile Impact on Success
+
+[.stretch]
+image::agile-impact.png[]
+
+=== Scrum Rules the World
+
+[.stretch]
+image::scrum-rules-world.png[]
+
+[.notes]
+--
+- PMI - DaD
+- TOGAF – Agile Enterprise Architecture
+- IREP and ISAQB with agile tracks
+- ITIL 4 tries to integrate agile ideas
+--
+
+[%notitle]
+=== Scrum Approach
+
+[.stretch]
+image::scrum-approach.jpg[]
+
+[%notitle]
+=== Scrum Elements
+
+[.stretch]
+image::scrum-elements.png[]
+
+=== Thoughts
+
+[quote,Gunther Verheyen]
+____
+Increasing agility is a path.
+
+Progressing on that path requires vision, belief, persistence and *hard work*.
+____
+
+[.notes]
+--
+{ref-agile-fluency} shows why technical fluency is a must for successful agile product development.
+--
+
+=== Tips
+
+- Your *Scrum master* has formal https://blog.tangly.net/blog/2021/scrum-master-formation/[Scrum Master formation] and a technical digital product background
+- Your *product owner* has formal https://blog.tangly.net/blog/2021/product-owner-formation/[Product owner formation] and a product development background
+- Your *developers* have a formal https://blog.tangly.net/blog/2021/scrum-developer-formation/[Developer formation] and modern software engineering training
+
+[.notes]
+--
+- https://blog.tangly.net/blog/2022/would-you-enjoy-being-a-scrum-master/[Would You Enjoy Being a Scrum Master?]
+--
+
+[%notitle]
+[.lightbg,background-opacity="0.5"]
+== Discussion
+
+image::discussion.png[background,size=cover]

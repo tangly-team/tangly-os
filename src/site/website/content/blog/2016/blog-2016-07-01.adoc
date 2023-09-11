@@ -37,9 +37,9 @@ Ideally branches should be short-lived to avoid waste.
 
 [NOTE]
 ====
-In an agile working setup, a branch should be merged before the end of the sprint it was started.
+In an agile working setup, a branch should be merged before the end of the sprint.
 
-Stories should be completed inside a sprint time slot.
+All stories should be completed inside a sprint time slot.
 ====
 
 _You should use meaningful names for your branch name and associated commit messages._
@@ -60,17 +60,34 @@ link:../../2017/git-local-repositories-for-the-impatient/[Git Local Repositories
 
 === Create the Branch
 
+You get a list of branches with:
+
+[source,console]
+----
+git branch                                      <1>
+git fetch                                       <2>
+----
+
+<1> List of all branches in the local repository.
+<2> Retrieve all changes from the remote repository including new branches and store them in the local repository.
+Your working directory is not modified.
+
 Create new branch feat-#42 locally.
 
 [source,console]
 ----
-git checkout -b feat-#42
+git checkout -b feat-#42                        <1>
+git checkout feat-#42                           <2>
 ----
+
+<1> Create a new local branch.
+<2> Select an existing branch.
 
 Create the remote branch with the same name and initiate tracking, assuming your remote uses the standard default name origin.
 
 [source,console]
 ----
+
 git push -u origin feat-#42
 ----
 
@@ -188,7 +205,7 @@ git branch -d feat-#42
 You are done.
 Now you are ready to implement the next feature.
 
-=== View local and remote Branches
+=== View Local and Remote Branches
 
 If you want to view branches, use the following commands for the local branches.
 
@@ -206,7 +223,7 @@ git branch -r
 git branch -r --no-merged
 ----
 
-Checkout remote Branch.
+=== Checkout Remote Branch.
 
 The -p parameter means --prune
 
@@ -233,3 +250,11 @@ Use them only in the commit messages.
 ====
 
 These same characters work in https://bitbucket.org/[bitbucket].
+
+=== Links
+
+- link:../../2016/git-branches-for-the-impatient/[Git Branches for the Impatient]
+- link:../../2017/git-local-repositories-for-the-impatient/[Git Local Repositories for the Impatient]
+- link:../../2023/git-rebase-and-merge-for-the-impatient/[Git Rebase and Merge for the Impatient]
+- link:../../2023//git-tag-for-the-impatient/[Git Tag for the Impatient]
+- link:../../2023/semantic-commits-for-the-impatient/[Semantic Commits for the Impatient]

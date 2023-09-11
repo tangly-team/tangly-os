@@ -15,7 +15,7 @@ image::2018-11-02-head.png[width=420,height=360,role=left]
 
 It is official.
 The power engine of the SAFe 4.6 vehicle is the team and technical agility.
-View the https://scaledagileframework.com for more information
+View the {ref-safe} for more information
 footnote:[scaled agile framework site has discarded the information for older versions of the framework.
 Try to find the news and the slides for version 4.6.].
 It is one of their five Lean Enterprise competencies and one of their four core values.
@@ -36,8 +36,8 @@ But how to produce quality software and apply technical excellence was sadly alw
 And more than once a senior {ref-safe} coach just publicly stated that the {ref-safe} core value x is not so important for a successful introduction.
 Quite a denial approach of his own methodology, I think!
 
-Be honest with yourself and your teams, either you implement the techniques described in https://scaledagileframework
-.com/team-and-technical-agility/[Technical Agility] and https:scaledagileframework.com/built-In-quality/[Build-In Quality] chapters of {ref-safe} or you are not agile and have no {ref-safe} power engine.
+Be honest with yourself and your teams, either you implement the techniques described in https://scaledagileframework.com/team-and-technical-agility/[Technical Agility]
+and https:scaledagileframework.com/built-In-quality/[Build-In Quality] chapters of {ref-safe} or you are not agile and have no {ref-safe} power engine.
 It is called https://en.wikipedia.org/wiki/Cargo_cult_programming[cargo cult].
 
 A good starting point is the five dimensions of build-in quality described in {ref-safe} 4.6.

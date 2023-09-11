@@ -89,6 +89,15 @@ A certification is a proof that a professional software engineer invested in his
 Consider acquiring a certification to show your commitment to a specific field in our industry.
 But it cannot replace a formal bachelor or master level education in computer science or software engineering.
 
+[CAUTION]
+====
+Certifications are quite meaningful for junior engineers.
+They learnt the theory and prove they understood the concepts.
+
+Experienced engineers are seldom challenged when learning for a certification.
+It is more of a memorization exercise and less of learning new techniques.
+====
+
 Training on the job is nice and efficient.
 A few lecture days before taking a multiple choice test and receiving a nice certificate is also worth the time.
 

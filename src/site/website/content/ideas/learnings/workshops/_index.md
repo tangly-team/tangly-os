@@ -29,3 +29,9 @@ F
 
 S
 : Speaker mode with notes, next slide, and timers
+
+## Books
+
+{{< attachments folder="../lectures/agile-books" recursive=false exclude=".md,.adoc,.DS_Store" title="Agile Technical Fluency Books" >}}
+Books to acquire technical fluency {{</attachments >}}
+

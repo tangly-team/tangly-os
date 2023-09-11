@@ -11,6 +11,14 @@
 
 == Agenda
 
+[.notes]
+--
+This slide deck is licensed under Attribution 4.0 International (CC BY 4.0).
+The attribution is https://blog.tangly.net/[tangly llc].
+
+Additional slide decks can be found under https://blog.tangly.net/ideas/learnings/workshops/[Workshops].
+--
+
 == Why Agile
 
 [.lightbg,background-opacity="0.5"]
@@ -22,10 +30,11 @@ image::agile-organizations.png[background,size=cover]
 - Small teams of professionals
 - Networked transparent communication
 
-[.lightbg,background-opacity="0.5"]
-=== Agile Initiatives
+[%notitle]
+=== Agile Products
 
-image::project-success-rates.png[background,size=cover]
+[.streched]
+image::project-success-rates.png[]
 
 === Agile Manifesto
 
@@ -36,14 +45,15 @@ image::project-success-rates.png[background,size=cover]
 
 === Agile Manifesto Principles
 
-image::agile-manifesto-principles.png[background,size=cover]
+[.streched]
+image::agile-manifesto-principles.png[]
+
+=== Scrum Rules the World
+
+[.streched]
+image::scrum-rules-the-world.png[]
 
 == Scrum Principles
-
-[.lightbg,background-opacity="0.5"]
-== Scrum Rules the World
-
-image::scrum-rules-the-world.png[background,size=cover]
 
 === Scrum in 100 Words
 
@@ -69,7 +79,8 @@ image::scrum-values.png[background,size=cover]
 
 == Scrum Events
 
-image::scrum-approach.png[background,size=cover]
+[.streched]
+image::scrum-approach.png[]
 
 === Planning
 
@@ -95,14 +106,12 @@ image::scrum-approach.png[background,size=cover]
 
 == Agile Fluency
 
-=== Agile Fluency Model
-
 === Technical Agile Fluency
 
 - clean code and refactoring
 - version control
 - continuous integration and delivery
-- automated test suite
+- automated test suite, see TDD, ATDD, BDD
 - configuration and documentation as code
 
 === Software Craftsmanship

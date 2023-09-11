@@ -26,13 +26,18 @@ Commit operations can take quite some time before completing.
 
 Install git on your development machine.
 
-Binaries are available for all major platforms.
+Binaries are available for all major platforms and can be found under https://git-scm.com/downloads[Downloads]
+GUI clients are also provided for all major platforms
+footnote:[Major platforms are Unix, Linux, macOs, and Microsoft Windows.].
 
 If you want higher security, you should install _ssh_.
 The operation is trivial for linux and macOS systems.
 It is more cumbersome on Microsoft Windows systems.
 
 In case you are using the IntelliJ IDEA configure {ref-git} in the IDE through the preference pane.
+
+Graphical {ref-git} clients are available.
+I sometimes use the free available https://www.sourcetreeapp.com/[SourceTree].
 
 === Create a Local Repository
 
@@ -89,10 +94,12 @@ To commit your changes you simply:
 
 [source,console]
 ----
-git commit -m "commit message, should be clear and legible"
+git commit -m "commit message, should be clear and legible"         <1>
 ----
 
-You can perform these operations directly in IntelliJ IDEA (VCS functions) with these instructions.
+<1> Development platforms such as {ref-github}, {ref-gitlab} or{ref-bitbucket} often support linking commit messages containing keywords with work items and tickets.
+
+You can perform these operations directly in IntelliJ IDEA using the provided VCS functions.
 Switch to the Version Control tool window and switch to the Local Changes tab.
 
 . Expand the Un-versioned Files node, and select the files to be added.
@@ -118,7 +125,7 @@ If you forget some files when performing the last commit, you can correct it:
 git commit --amend   <1>
 ----
 
-<1> Please do not amend a shared commits.
+<1> Please do not amend shared commits.
 Amending a commit that is shared with another user will potentially require confusing and lengthy merge conflict resolutions.
 
 Once you are satisfied with your changes, you can propagate them to the remote repository using:
@@ -134,8 +141,14 @@ To find out what the status of your product is, simply
 
 [source,console]
 ----
-git status
+git status                                      <1>
+git log                                         <2>
+git diff                                        <3>
 ----
+
+<1> status of your local copy with modified files, and untracked files.
+<2> list of commits with detailed information.
+<3> shows the changes in edited files.
 
 The same information is available in IntelliJ IDEA under
 
@@ -151,17 +164,28 @@ This approach is deeply compatible with lean and agile values.
 It is also the one with the least waste of effort.
 
 If your team decides to work with branches, make them short-lived!.
-See How to link:../../2016/git-branches-for-the-impatient/[Git Branches for the Impatient] post.
+See how you can do it in the link:../../2016/git-branches-for-the-impatient/[Git Branches for the Impatient] post.
 
 === Discarding Changes
 
 You find the changes you made locally were not a good decision.
 No problem, you can erase these changes with:
 
+Undo last commit putting everything back into the staging area:
+
 [source,console]
 ----
-git reset --hard
+git reset --soft HEAD^
 ----
+
+Undo last and remove changes:
+
+[source,console]
+----
+git reset --hard HEAD^          <1>
+----
+
+<1> Short form is _git reset --hard_.
 
 You revert to the last save-committed set of files.
 Resetting with the hard option recursively discards all of your currently uncommitted (unstaged or staged) changes.
@@ -195,6 +219,7 @@ git config --global core.autocrlf input
 === Thoughts
 
 When using an IDE, consider the https://editorconfig.org[Editor Configuration] approach for the end of line, indentation, and tabs versus spaces.
+All major integrated development environments support this configuration approach.
 
 You can find a lot of information on https://stackoverflow.com/questions/tagged/git[Stack Overflow].
 Beware when reading the answers on Stack Overflow that Git commands have changed over time.
@@ -204,3 +229,10 @@ The nifty-gritty details can be found in the official https://git-scm.com/book/e
 
 The _Pro Git_ book can be downloaded from https://git-scm.com[Git SCM].
 
+=== Links
+
+- link:../../2016/git-branches-for-the-impatient/[Git Branches for the Impatient]
+- link:../../2017/git-local-repositories-for-the-impatient/[Git Local Repositories for the Impatient]
+- link:../../2023/git-rebase-and-merge-for-the-impatient/[Git Rebase and Merge for the Impatient]
+- link:../../2023//git-tag-for-the-impatient/[Git Tag for the Impatient]
+- link:../../2023/semantic-commits-for-the-impatient/[Semantic Commits for the Impatient]

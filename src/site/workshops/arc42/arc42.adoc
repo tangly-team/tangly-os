@@ -29,6 +29,14 @@
 
 [.notes]
 --
+This slide deck is licensed under Attribution 4.0 International (CC BY 4.0).
+The attribution is https://blog.tangly.net/[tangly llc].
+
+Additional slide decks can be found under https://blog.tangly.net/ideas/learnings/workshops/[Workshops]
+--
+
+[.notes]
+--
 - Presentation of the software architecture template arc42
 - arc42 is a pragmatic approach to document software architecture in an agile world
 - It is still text heavy, but supports continuous delivery pipelines and documents as code

@@ -7,40 +7,505 @@
 :revealjs_slideNumber: true
 :revealjs_hash: true
 :revealjs_embedded: false
+:ref-bpml: https://en.wikipedia.org/wiki/Business_Process_Modeling_Language[BPML]
 :ref-c4: https://c4model.com/[C4 Model]
 :ref-uml: https://en.wikipedia.org/wiki/Unified_Modeling_Language[UML]
 
-
 == Agenda
 
+- Object orientation
+- UML
+- C4
+
+[.notes]
+--
+This slide deck is licensed under Attribution 4.0 International (CC BY 4.0).
+The attribution is https://blog.tangly.net/[tangly llc].
+
+Additional slide decks can be found under https://blog.tangly.net/ideas/learnings/workshops/[Workshops].
+--
+
+[.lightbg,background-opacity="0.25"]
 == Object-Orientation
+
+image::oo-concepts.png[background,size="60%"]
+
+Object-orientation rules the software world.
+
+The programming languages {cpp}, Java, C#, Python, Typescript, Ruby, Switft, Rust, or Delphi includes object-orientation features.
 
 === What is an Object?
 
+An *object* has three capabilities:
+
+- Identity _is unique in the system_
+- State _is composed of attributes_
+- Behavior _is defined with methods_
+
+[.notes]
+--
+An object shall represent a physical instance or a clear abstraction.
+--
+
 === What is a Class?
 
-=== What is an Interface?
+- A *class* is a template for a set objects. +
+It defines the available attributes and their type. +
+It declares the behavior of the objects.
+- An *interface* is a behavior template.
+- An *abstract class* defines state and behavor.
+It cannot have instances.
+- Primitive types have no identity.
+
+[.notes]
+--
+Primitive objects are equivalent if they have the same attributes.
+You cannot distinguish multiple equivalent primitives objects.
+
+Two objects can always be distinguished through their identities.
+--
 
 === Advanced Approaches
 
-Templates Mixins
+- Templates are classes with generic types and constants.
+- Mixins are a kind of interfaces or abstract classes.
+They codify an orthogonal abstraction.
+
+== Why Do You Model?
+
+- Designing is an activity
+- A design represents an artifact representing some findings.
+This artifact is obsolete when you continue designing.
+- The model codifies your findings and partially describes the implementation.
+
+[.notes]
+--
+The primary value is communication and understanding.
+You can sketch, blueprint and program with UML.
+
+Sketching is active (forward to and backward from the code).
+Blueprinting is dubious.
+Programming approach is dead (MDA is obsolete).
+--
+
+=== Software Design Principles
+
+- Modularity
+- Cohesion
+- Separation of concerns
+- Information hiding
+- Abstraction
+
+[.notes]
+--
+These concepts are discussed and applied since the sixties in the last century.
+They are implied in any good object-oriented design.
+--
+
+[.lightbg,background-opacity="0.2"]
+[.columns]
+=== Idioms
+
+[.column.is-three-fifths]
+--
+The design is constrained by
+
+- The technology stack
+- The team capabilities
+- The non-functional requirements
+--
+
+[.notes]
+--
+It is a fallacy to pretend that your solution is independent of the technology stack and programming language.
+The design shall follow the programmatic idioms and build on the strength of the selected technology stack.
+--
+
+[.column]
+image::architecture-constraints.png[]
 
 === Functional Approaches
 
+- Functions are first-class citizens
+- Functions can be variables, parameters, and return values
+
+Design patterns such as the visitor, strategy or factory pattern are easily implemented with functions.
+
+=== UML and C4
+
+- {ref-uml} is the modeling approach for object-oriented systems originating in the eighties
+- {ref-c4} is a simplification to the exploding complexity of UML 2.5
+- Choose the tools empowering you to create the optimal design for your product
+
+[.notes]
+--
+The standardization of UML was around 1995.
+--
+
+=== UML Diagram Types
+
+image::uml-diagram-types.jpg[]
+
+[.notes]
+--
+Structure diagrams show the things in the modeled system.
+In a more technical term, they show different objects in a system.
+Behavioral diagrams show what should happen in a system.
+They describe how the objects interact with each other to create a functioning system.
+
+I use
+
+Structure Diagrams:: class diagram, sometimes the component diagram
+Behavior Diagras:: state machine diagram, sequence diagram, sometimes the communication diagram
+
+I prefer
+
+- Customer journeys over use case diagram
+- Textual descriptions over deployment diagram or package diagram
+--
+
 == Class Diagram
 
-[plantuml,uml-class-diagram]
-....
-class Actor {}
-class Queue {}
-struct Message {}
-....
+image::uml-class-diagram.svg[]
+
+// [plantuml,uml-class-diagram,svg]
+// ----
+// @startuml
+// interface Actor <<Active>> {
+//   + {static} send(Actor actor, Message message)
+//   + String name()
+//   # receive(Message message)
+//   # {abstract} process(Message message)
+// }
+// class Queue<T> {}
+//
+// class Message <<struct>> {}
+//
+// enum MessageType
+//
+// Message *-- "1" MessageType : type
+//
+// Actor *- "1" Queue : messages
+// Queue .> Message
+//
+// class ActorCpp {}
+// Actor <|.. ActorCpp
+//
+// class ActorCmsis {}
+// Actor <|.. ActorCmsis
+//
+// @enduml
+// ----
+
+=== Relations
+
+- Association _shows a dependency between two class_
+- Inheritance _extends a class_
+- Realization _implements an interface_
+- Dependency _uses a class_
+- Aggregation _instance has other objects_
+- Composition _lifecycle is the same_
+
+[.notes]
+--
+Avoid bidirectional associations.
+Dependencies can have keywords to refine them: call, create, derive, instantiate, permit, realize, refine, substitute, trace, use.
+--
+
+=== Properties and Methods
+
+- Properties define the state of an object
+- Methods define the behavior of an object
+
+A big chunk of the source code is the implementation of methods.
+
+[.notes]
+--
+Properties are called attributes in UML.
+--
+
+=== Visibility and Specifiers
+
+- private, package-private, protected, public
+- static
+- abstract
+- derived
+- \{readonly}
+
+[.columns]
+=== Advanced Topics
+
+[.column]
+- Property default value, cardinality, ordered
+- Association roles
+- Constraints _{...}_
+- Stereotypes
+
+[.column]
+- Tags
+- Notes
+- Navigability
+
+[.notes]
+--
+Use notes to specify constraints on class or relations.
+If you are a purist, try OCL _Object Constraint Language_.
+
+Reflect on _Design by Contract_ with pre-condition, post-condition, and invariant.
+--
+
+=== Thoughts
+
+- Class diagrams visualize the object-oriented structure of your source code
+- Their value is the abstraction to highlight key concepts
+- Details are available in the source code
+
+[.notes]
+--
+In general, it is impossible to declare all the details of the source code in class diagrams.
+Modern programming languages have too many features and idioms.
+--
+
+== Component Diagram
+
+- defines the structure of the architecture in components
+- distribution structure such as libraries and executables
+- source code structure
+
+[.notes]
+--
+A component diagram displays the structural relationship for the components of a software system.
+These are mostly used when working with complex systems with many components.
+Components communicate with each other using interfaces.
+The interfaces are linked using connectors.
+
+Java or C++ modules are components.
+--
+
+=== Component Diagram
+
+image::uml-component-diagram.svg[]
+
+// [plantuml,uml-component-diagram,svg]
+// ....
+// package "Application" {
+//   HTTP - [Loader]
+//   [Process Manager]
+// }
+// rectangle "Drivers" {
+//   FTP - [Second Component]
+//   [First Component] --> FTP
+// }
+// cloud {
+//   [Maintenance]
+// }
+// database "Persistence" {
+//   folder "Configuration Data" {
+//     [Configuration]
+//   }
+//   frame "Logger" {
+//     [Trace]
+//   }
+// }
+// ....
+
+=== Thoughts
+
+- Provide an overview to highlight your component structure
+- Beware that modern programming languages support a textual representation of this structure
 
 == Package Diagram
 
+- structure of source code in package and modules.
+You can show your layered architecture with a package diagram.
+
+[.notes]
+--
+As the name suggests, a package diagram shows the dependencies between different packages in a system.
+--
+
+== Deployment Diagram
+
+- physical distribution of artifacts on nodes, cores, and processes
+- Communication between nodes
+
+[.notes]
+--
+A deployment diagram shows the hardware of your system and the software in that hardware.
+Deployment diagrams are useful when your software solution is deployed across multiple machines with each having a unique configuration.
+--
+
+== Object Diagram
+
+- A set of concrete instances of classes and their relations
+- Sequence diagram
+- Communication diagram
+
+[.notes]
+--
+Object Diagrams, sometimes referred to as instance diagrams, are very similar to class diagrams.
+Like class diagrams, they also show the relationship between objects, but they use real-world examples.
+
+They show what a system will look like at a given time.
+Because there is data available in the objects, they are used to explain complex relationships between objects.
+
+In UML version 1, communication diagrams were called collaboration diagrams.
+Communication diagrams are similar to sequence diagrams, but the focus is on messages passed between objects.
+The same information can be represented using a sequence diagram and different objects.
+--
+
+=== Sequence Diagram
+
+image:uml-sequence-diagram.svg[]
+
+// [plantuml,uml-sequence-diagram,svg]
+// ....
+// participant User
+// User -> Engine: DoWork
+// activate Engine
+// Engine -> Receipt: << createRequest >>
+// activate Engine
+// Receipt -> Interpreter: DoWork
+// activate Interpreter
+// Interpreter --> Receipt: WorkDone
+// destroy Interpreter
+// Receipt --> Engine: RequestCreated
+// deactivate Receipt
+// Engine -> User: Done
+// deactivate Engine
+// ....
+
+[.notes]
+--
+Sequence diagrams in UML show how objects interact with each other and the order those interactions occur.
+It is important to note that they show the interactions for a particular scenario.
+The processes are represented vertically and interactions are shown as arrows.
+--
+
+=== Advanced Concepts
+
+- Activation frames
+- Synchronous and asynchronous calls
+- Return values
+- Interaction Frames
+- Creation and deletion of instances
+
 == State Machine Diagram
 
-== Sequence Diagram
+=== Rules
+
+- A state machine is inside a class
+- Events are asynchronous messages
+- Avoid activities and concurrent states
+- Timeout requires a global time provider
+
+[.notes]
+--
+Design your system so that you do not have any concurrent state.
+
+Flat state machines can be implemented with a double switch.
+Hierarchical state machines require a nested set or at least a table representation if you have no history states.
+--
+
+=== State Machine Diagram
+
+image:uml-state-diagram.svg[]
+
+// [plantuml,uml-state-diagram,svg]
+// ....
+// hide empty description
+//
+// state Root {
+//     [*] --> Off
+//     state Maintenance
+//     Maintenance -> Off : TogglePower / MaintainedToOff
+//
+//     state Off
+//     Off -> Maintenance : TogglePower [Maintenance is On] / log transition Off to Maintenance
+//     Off -> On : TogglePower [Maintenance Off] / OffToOn
+//
+//
+//     state On {
+//         [*] --> DAB
+//         state DAB
+//         DAB -> FM : ToggleMode / DABToFM
+//
+//         state FM {
+//             [*] --> Play
+//             state Play
+//             Play -> AutoTune : StationLost / PlayToAutoTune
+//
+//             state AutoTune
+//             AutoTune -> Play : StationFound / AutoTuneToPlay
+//
+//             FM -> DAB : ToggleMode / FMToDAB
+//         }
+//
+//         On -> Off : TogglePower / OnToOff
+//     }
+// }
+// ....
+
+
+== Requirements Aspects
+
+- Use case diagram
+- Activity diagram
+
+=== Use Case Diagram
+
+image:uml-use-case-diagram.svg[]
+
+// [plantuml,uml-use-case-diagram,svg]
+// ....
+// left to right direction
+//
+// actor developer
+// database repo as "central\nrepo"
+// agent jenkins as "Jenkins"
+//
+// rectangle admin as "Gerrit / Gitlab" {
+//     agent ui as "front"
+//     database repo_local as "local\nrepo"
+// }
+//
+// developer --> ui : push
+// ui --> repo_local : push
+// ui -left-> jenkins: "\npush "
+// ui ..> repo : replication
+// ....
+
+[.notes]
+--
+As the most known diagram type of the behavioral UML types, use case diagrams give a graphic overview of the actors involved in a system, different functions needed by those actors and how these different functions interact.
+--
+
+=== Activity Diagram
+
+image:uml-activity-diagram.svg[]
+
+// [plantuml,uml-activity-diagram,svg]
+// ....
+// (*) --> "Initialization"
+//
+// if "Some Test" then
+//   -->[true] "Some Activity"
+//   --> "Another activity"
+//   -right-> (*)
+// else
+//   ->[false] "Something else"
+//   -->[Ending process] (*)
+// endif
+// ....
+
+[.notes]
+--
+Activity diagrams represent workflows in a graphical way.
+They can be used to describe the business workflow or the operational workflow of any component in a system.
+
+I recommend using {ref-bpml} _Business Process Modeling Language_ notation to describe workflows.
+Agile approaches prefer customer journeys and event storming.
+--
 
 == Embedded Considerations
 
@@ -49,6 +514,89 @@ struct Message {}
 - Interrupt Routines
 
 == UML and C4
+
+The {ref-c4}  is:
+
+. A set of hierarchical abstractions: software systems **c**ontext, **c**ontainers, **c**omponents, and **c**ode
+. A set of hierarchical diagrams: system context, containers, components, and code
+. Notation and tooling independent
+
+[.notes]
+--
+The C4 model is an easy to learn, developer-friendly approach to software architecture diagramming.
+Good software architecture diagrams assist with communication inside/outside of software development/product teams.
+It supports efficient onboarding of new staff, architecture reviews, risk identification, threat modeling, etc.
+--
+
+=== System Context Diagram
+
+image:c4-system-context.png[]
+
+[.notes]
+--
+A System Context diagram is a good starting point for diagramming and documenting a software system, allowing you to step back and see the big picture.
+Draw a diagram showing your system as a box in the center, surrounded by its users and the other systems that it interacts with.
+
+Detail is not important here as this is your zoomed-out view showing a big picture of the system landscape.
+The focus should be on people such as actors, roles, personas and software systems rather than technologies, protocols and other low-level details.
+It's the sort of diagram that you could show to non-technical people.
+--
+
+=== Container Diagram
+
+image:c4-containers.png[]
+
+[.notes]
+--
+Once you understand how your system fits in to the overall IT environment, a really useful next step is to zoom-in to the system boundary with a Container diagram.
+A "container" is something like a server-side web application, single-page application, desktop application, mobile app, database schema, file system, etc.
+Essentially, a container is a separately runnable/deployable unit such as a separate process space that executes code or stores data.
+
+The Container diagram shows the high-level shape of the software architecture and how responsibilities are distributed across it.
+It also shows the major technology choices and how the containers communicate with one another.
+It is a simple, high-level technology focussed diagram that is useful for software developers and support/operations staff alike.
+--
+
+=== Component Diagram
+
+image:c4-components.png[]
+
+[.notes]
+--
+Next, you can zoom in and decompose each container further to identify the major structural building blocks and their interactions.
+
+The Component diagram shows how a container is made up of a number of "components".
+It describes what each of those components is, their responsibilities and the technology/implementation details.
+--
+
+=== Code Diagram
+
+image:c4-class-diagram.png[]
+
+[.notes]
+--
+Finally, you can zoom in to each component to show how it is implemented as code; using UML class diagrams, entity relationship diagrams or similar.
+
+This is an optional level of detail and is often available on-demand from tooling such as IDEs.
+Ideally, this diagram would be automatically generated using tooling such as an IDE or UML modeling tool.
+You should consider showing only those attributes and methods that allow you to tell the story that you want to tell.
+This level of detail is not recommended for anything but the most important or complex components.
+--
+
+=== Advanced Diagrams
+
+- System Landscape Diagram
+- Dynamic Diagram
+- Deployment Diagram
+
+=== Thoughts
+
+Although the example diagrams above are created using a _boxes and lines_ notation, the core diagrams can be illustrated using UML.
+
+[.notes]
+--
+The resulting UML diagrams tend to lack the same degree of a descriptive text, because adding such text is not easy with most UML tools.
+--
 
 [%notitle]
 [.lightbg,background-opacity="0.5"]

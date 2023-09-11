@@ -30,9 +30,16 @@ Both approaches are quite similar.
 They mix a phase-based Waterfall approach with the four phases of the old https://en.wikipedia.org/wiki/Rational_Unified_Process[RUP] project life-cycle approach.
 RUP belongs to the family of https://en.wikipedia.org/wiki/Unified_Process[unified process methods].
 
-image::2022-04-02-rup-phases.jpg[width=480,height=380,role=text-center]
+image::2022-04-02-rup-phases.jpg[width=640,height=380,role=text-center]
 
-The four phases or gates are inception, elaboration, construction, and transition.
+The four phases or gates are
+footnote:[The description Craig Larman book _Applying UML and Patterns_.]
+
+Inception:: approximate vision, business case, scope, and vague estimates.
+Elaboration:: refined vision, iterative implementation of the core architecture, resolution of high risks, identification of most requirements and scope, more realistic estimates.
+Construction:: iterative implementation of the remaining lower risk and easier elements, and preparation for deployment.
+Transition:: beta tests, deployment.
+
 If you are using {ref-devops} approaches, you certainly do not need an inception or a transition phase.
 
 These approaches are obsolete.

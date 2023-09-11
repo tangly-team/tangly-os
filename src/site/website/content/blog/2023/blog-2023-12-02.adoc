@@ -1,92 +1,138 @@
 ---
-title: "Git Tag for the Impatient"
-linkTitle: "Git Tag"
-date: 2023-09-03
+title: "Semantic Commits for the Impatient"
+linkTitle: "Semantic Commits"
+date: 2023-09-10
 tags: ["agile", "git", "series-students"]
 ---
 
-== Git Tag for the Impatient
+== Semantic Commits for the Impatient
 :author: Marcel Baumann
 :email: <marcel.baumann@tangly.net>
 :homepage: https://www.tangly.net/
 :company: https://www.tangly.net/[tangly llc]
 :ref-svn: https://subversion.apache.org/[Subversion]
+:ref-semver: http://semver.org/[SemVer]
 
 image::2023-12-02-head.png[width=420,height=360,role=left]
 
-The development software team has reached a milestone.
+The *conventional commits* specification is a lightweight convention on top of commit messages.
+The additional information classifies the type of work performed in the commit.
 
-A working application with a set of features is available.
-All tests are green.
+A developer infers the importance of the task by looking to the type of the commit.
+The message communicates the nature of changes to teammates, the public, and other stakeholders.
 
-The application can potentially be shipped to internal or external customers.
+Contributors of project repositories know that a well-designed Git commit message is the best way to communicate the context about a change to other developers.
+And in fact, they help themselves in the future.
+A diff will tell you what has changed, but only the confirmation message can say why.
 
-How can you mark this event in the git repository of the application?
+It provides an easy set of rules for creating an explicit commit history which makes it easier to write automated tools on top of.
 
-Use tags to recognize this state in the list of changes of your shared {ref-git} repository.
+The development team can use scripts to filter and aggregate commit information based on the tags in the commit message.
 
-=== Listing Your Tags
+This convention dovetails with {ref-semver}, by describing the features, fixes, and breaking changes made in commit messages.
 
-Listing the existing tags in Git is straightforward.
-Just type git tag (with optional -l or --list):
+=== Structure
 
-[source,console]
-----
-$ git tag
-v1.0
-v2.0
-----
-
-This command lists the tags in alphabetical order; the order in which they are displayed has no real importance.
-
-=== Creating Tags
-
-Git supports two types of tags: lightweight and annotated.
-
-Annotated tags, however, are stored as full objects in the Git database.
-They have a check sum.
-They contain the tagger name, email, and date.
-THey have a tagging message, and can be signed and verified with GNU Privacy Guard (GPG).
-It is generally recommended that you create annotated tags, so you can have all this information; but if you want a temporary tag or for some reason do not want to keep the other information, lightweight tags are available too.
-
-Annotated Tags Creating an annotated tag in Git is simple.
-The easiest way is to specify -a when you run the tag command:
+The commit message should be structured as follows:
 
 [source,console]
 ----
-$ git tag -a v1.4.0 -m "1.4.0 (2020.2)"
-$ git tag
-v0.1
-v1.3.1
-v1.4.0
+<type>[optional scope]: <description>           <1>
+
+[optional body]
+
+[optional footer(s)]
 ----
 
-The _-m_ specifies a tagging message, which is stored with the tag.
-If you do not specify a message for an annotated tag, Git launches your editor, and you can type it in.
+<1> Use the body to explain what and why.
+Do not explain how.
+That is the code.
 
-=== Sharing Tags
+The commit contains the following structural elements to communicate intent to the consumers of your library:
 
-By default, the git push command does not transfer tags to remote servers.
-You will have to explicitly push tags to a shared server after you have created them.
-This process is just like sharing remote branches you can run:
+fix:: a commit of the type fix patches a bug in your codebase.
+This correlates with *PATCH* in Semantic Versioning.
+It is used to identify production changes related to backward-compatible bug fixes.
+feature:: a commit of the type feat introduces a new feature to the codebase.
+It is used to identify production changes related to new backward-compatible abilities or functionality.
+This correlates with *MINOR* in Semantic Versioning.
+BREAKING CHANGE:: a commit that has a footer BREAKING CHANGE:, or appends a ! after the type/scope, introduces a breaking API change.
+This correlates with *MAJOR* in Semantic Versioning.
+A BREAKING CHANGE can be part of commits of any type.
 
-[source,console]
+Other types are allowed, for example:
+
+build::
+The build type is used to identify development changes related to the build system.
+They involve scripts, configurations or tools, and package dependencies.
+ci::
+The ci type is used to identify development changes related to the continuous integration and deployment system.
+They involve scripts, configurations or tools.
+doc::
+The doc type is used to identify documentation changes related to the project.
+Whether intended externally for the end users (in case of a library) or internally for the developers.
+refactor::
+The refactor type is used to identify development changes related to modifying the codebase, which neither adds a feature nor fixes a bug.
+Examples are removing redundant code, simplifying the code, or renaming variables.
+test::
+The test type is used to identify development changes related to tests.
+chore:
+Activities not adding new features or fixing a fault.
+This type is used when you do not know which other tag you could use.
+
+footers other than BREAKING CHANGE: <description> may be provided and follow a convention similar to git trailer format.
+
+=== How to Create a Semantic Commit with Git
+
+The command line for a complex git commit message is simple:
+
+[code,console]
 ----
-git push origin --tags
+git commit -m "fix(core): remove deprecated and defunct wtf* apis"                              <1> <2>
+           -m "These apis have been deprecated in v8, so they should stick around till v10."
+           -m "PR Close #33949"
 ----
+
+<1> We use multiple _-m_ in order to concatenate paragraphs instead of simple lines.
+The header and body are supposed to be separated by a blank line.
+That is distinctly true due to the paragraphs.
+<2> Summary in present tense.
+
+[TIP]
+====
+Your IDE probably provides a comfortable user interface to create a commit message as a set of paragraphs.
+
+Simply use your preferred IDE to write semantic commits with multiple blocks.
+====
 
 === Thoughts
 
-You can find a lot of information on https://stackoverflow.com/questions/tagged/git[Stack Overflow].
-Beware when reading the answers on Stack Overflow that Git commands have changed over time.
-Select new posts to find the best answers.
+Please start with a small list and extend it if needed.
+I suggest: feature, refactor, fix, build, chore
+footnote:[I never needed the _doc_ tag.
+Feel free to use it if you find it useful for your product.].
 
-The nifty-gritty details can be found in the official https://git-scm.com/book/en/v2[Git documentation].
+Ask yourself if identifying the subsystem where the changes were performed makes sense for your application.
+Often changes are not local to a specific component.
 
-The _Pro Git_ book can be downloaded from https://git-scm.com[Git SCM].
+Some teams put a ticker number instead of the subsystem name.
+It makes sense if your platform transforms the ticket number into a link to the ticket content.
+
+[TIP]
+====
+I use the tags _feature_, _refactor_, _build_, and _chore_.
+I do not put component or ticket information in the parenthesis after the tag.
+
+I put the ticket number in the summary of the commit message.
+
+I seldom use the footer for breaking change information.
+I handle this information through semantic versioning in tags.
+====
 
 === Links
 
 - link:../../2016/git-branches-for-the-impatient/[Git Branches for the Impatient]
 - link:../../2017/git-local-repositories-for-the-impatient/[Git Local Repositories for the Impatient]
 - link:../../2023/git-rebase-and-merge-for-the-impatient/[Git Rebase and Merge for the Impatient]
+- link:../../2023//git-tag-for-the-impatient/[Git Tag for the Impatient]
+- link:../../2023/semantic-commits-for-the-impatient/[Semantic Commits for the Impatient]

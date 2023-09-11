@@ -64,9 +64,24 @@ Check out the branch you want to rebase and type
 
 Standard rebase replays the previous commits on a branch without changes, stopping only if merge conflicts occur.
 
-. Fetch the latest changes from main: git fetch origin main
-. Check out your feature branch: git checkout my-feature
-. Rebase it against main: git rebase origin/main
+. Fetch the latest changes from main:
++
+[source,console]
+----
+git fetch origin main
+----
+. Check out your feature branch:
++
+[source,console]
+----
+git checkout my-feature
+----
+. Rebase it against main:
++
+[source,console]
+----
+git rebase origin/main
+----
 . Force push to your remote branch with:
 +
 [source,console]
@@ -99,13 +114,6 @@ Pulling has similar effects with less risk of compromising the work of your cont
 === Merge
 
 The git merge command will merge any changes that were made to the code base on a separate branch to your current branch as a new commit.
-
-The command syntax is as follows:
-
-[source,console]
-----
-git merge BRANCH-NAME
-----
 
 For example, if you are currently working in a branch named dev and would like to merge any new changes that were made in a branch named new-features, you would issue the following command:
 
@@ -226,4 +234,7 @@ The _Pro Git_ book can be downloaded from https://git-scm.com[Git SCM].
 === Links
 
 - link:../../2016/git-branches-for-the-impatient/[Git Branches for the Impatient]
-- link:../../2017/2017/git-local-repositories-for-the-impatient/[Git Local Repositories for the Impatient]
+- link:../../2017/git-local-repositories-for-the-impatient/[Git Local Repositories for the Impatient]
+- link:../../2023/git-rebase-and-merge-for-the-impatient/[Git Rebase and Merge for the Impatient]
+- link:../../2023//git-tag-for-the-impatient/[Git Tag for the Impatient]
+- link:../../2023/semantic-commits-for-the-impatient/[Semantic Commits for the Impatient]
