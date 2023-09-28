@@ -19,7 +19,7 @@ You do not need to install a virus scanner or a special personal firewall.].
 Install Java development kits. You should at least install the last released version and the last LTS version.
 We use the distributions of Oracle.
 
-[source, bash]
+[source,console]
 ----
 alias java17 = "export JAVA_HOME=`/usr/libexec/java_home -v 17`; java -version"
 alias java19 = "export JAVA_HOME=`/usr/libexec/java_home -v 19`; java -version"
@@ -61,7 +61,7 @@ The following plugins shall be installed
 
 You can generate an SSH key with the following commands
 
-[source, bash]
+[source,console]
 ----
 ssh-keygen -t ed25519 -C "marcel.baumann@tangly.net" <1>
 ----
@@ -87,7 +87,7 @@ Host gitlab.enterprise.ch
 ----
 <1> Replace with the name of the file containing your ssh key.
 
-[source, bash]
+[source,console]
 ----
 git config --global user.name "marcelbaumann"
 git config --global user.email "marcel.baumann@tangly.net"
@@ -97,7 +97,7 @@ git config --global user.email "marcel.baumann@tangly.net"
 
 Install the following additional packages for asciidoctor to work without errors.
 
-[source, bash]
+[source,console]
 ----
 gem install asciidoctor-diagram
 gem install asciidoctor-bibtex
@@ -120,7 +120,7 @@ The following approach works nicely for us:
 * now you can just commit and push changes to your _git backup repository_.
 * once you have completed a feature, push the changes as usual to your regular remote git repository.
 
-[source, bash]
+[source,console]
 ----
 git init -bare                                                                          <1>
 git add remote backup /Volumes/GoogleDrive/My Drive/tangly/08-Data/git/tangly-os.git    <2>

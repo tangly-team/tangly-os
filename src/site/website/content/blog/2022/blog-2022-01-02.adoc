@@ -41,7 +41,7 @@ We do not have to make defensive copies all the time.
 This means that we save some work on the garbage collector which increases performance and decreases memory overhead.
 We all want that, don't we?
 Thread Safety::
-After creation any number of threads can access immutable objects simultaneously, without any synchronization mechanism.
+After creation, any number of threads can access immutable objects simultaneously, without any synchronization mechanism.
 It is a huge advantage in the modern world of multicore processors.
 
 === Immutable Classes

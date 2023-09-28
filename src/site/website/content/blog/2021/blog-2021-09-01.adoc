@@ -126,7 +126,7 @@ The declarations for such a diagram could be:
 
 [code]
 ----
-[plantuml,dependencies,svg, width="100%",,opts="inline",svg-type="inline"]     <1>
+[plantuml,target=dependencies,format=svg, width="100%",,opts="inline",svg-type="inline"]     <1>
 
 ....
 @startuml

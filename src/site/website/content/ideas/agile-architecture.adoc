@@ -96,7 +96,7 @@ A good architecture fulfills the functional and non-functional specifications an
 It shall emerge during the development of releases and intentionally implement the known requirements.
 Your architects are talented developers and are full members of your Scrum teams.
 
-[plantuml,agile-architecture-mindmap,svg]
+[plantuml,target=agile-architecture-mindmap,format=svg]
 ----
 @startmindmap
 + Agile Architecture

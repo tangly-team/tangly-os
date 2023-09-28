@@ -10,6 +10,7 @@ tags: ["java", "architecture"]
 :email: <marcel.baumann@tangly.net>
 :homepage: https://www.tangly.net/
 :company: https://www.tangly.net/[tangly ll c]
+:ref-pitest: https://pitest.org/[Pitest]
 
 image::2025-12-01-head.jpg[width=420,height=360,role=left]
 
@@ -19,5 +20,8 @@ The goal of Mutation Testing is ensuring the quality of test cases in terms of r
 The changes made in the mutant program should be kept tiny that it does not affect the overall objective of the program.
 Mutation Testing is also called Fault-based testing strategy as it involves creating a fault in the program and it is a type of White Box Testing which is mainly used for Unit Testing.
 
-https://pitest.org/[Pitest] is a state of the art mutation testing system, providing gold standard test coverage for Java and the jvm.
+{ref-pitest} is a state of the art mutation testing system, providing gold standard test coverage for Java and the jvm.
 It is fast, scalable and integrates with modern test and build tooling.
+
+A mutation can have the following states:
+- Killed - Lived - No coverage is the same as lived, but just not covered by a test - Non-viable mutation due to invalid bytecode - Timed out - Memory error - Run error akin to non-viable, some of these can lead to a run error

@@ -13,6 +13,38 @@ tags: ["java", "architecture", "agile"]
 
 image::2024-04-01-head.png[width=420,height=360,role=left]
 
+A digital product is often custom hardware and a software product running on top.
+We will not discuss in this blog pure software products running on standard consumer hardware.
+
+=== Key Features
+
+Concurrent programming::
+actor
+Commands and queries::
+command interpreter
+Lifecycle::
+start, stop and emergency stop::
+Configuration::
+configure at startup time and deny changes when running.
+A restart shall have a duration of a few tens of milliseconds.
+Reaction to Problems::
+alarms and errors
+Process requests::
+recipe execution
+
+=== Hardware Integration
+
+- GPIO
+- SPI
+- I2C
+- PWM Pulse width modulation
+- CANbus and CANopen
+- Ethernet
+
+
+- EEPROM and Flash
+- Bluetooth
+
 === Technical Stacks
 
 ==== Java

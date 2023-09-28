@@ -11,6 +11,7 @@ tags: ["C++", "architecture"]
 :homepage: https://www.tangly.net/
 :company: https://www.tangly.net/[tangly llc]
 :ref-actor-model: https://en.wikipedia.org/wiki/Actor_model[Actor Model]
+:ref-freertos: https://www.freertos.org/index.html[freeRTOS]
 :ref-message-passing: https://en.wikipedia.org/wiki/Message_passing[Message Passing]
 :ref-cmsis-rtos2: https://arm-software.github.io/CMSIS_5/RTOS2/html/index.html[CMSIS-RTOS v2]
 
@@ -21,7 +22,9 @@ The actor library defines the actor abstraction with mailboxes and concrete impl
 The {ref-cmsis-rtos2} platform provides an actor implementation for all realtime kernels supporting the CMSIS API.
 The API is under the stewardship of ARM company.
 
-STM provides this integration with freeRTOS for all STM32 microcontrollers.
+Any kernel with a {ref-cmsis-rtos2} compatible layer is eligible.
+
+STM provides the CMSIS integration with {ref-free-rtos} for all STM32 microcontrollers.
 
 === Library
 
@@ -29,13 +32,16 @@ The library defines key abstractions as abstract classes <<actors>> <<actors-in-
 
 The implementation for a target platform defines the concrete classes for all abstract entities below.
 
-[plantuml,actors,svg]
+[plantuml,target=actors,format=svg]
 ....
 @startuml
 class Message<T> {
   int kind();
   T data();
 }
+
+abstract class MessagePool<T> {}
+MessagePool *-- "n" Message : messages
 
 abstract class ConcurrentQueue<T>
 
@@ -46,15 +52,10 @@ abstract class Actor<T> {
     {abstract} void delay(const uint32_t ticks);
 }
 
-abstract class MessagePool<T> {}
+Actor o-"1" MessagePool : pool
 
-abstract class TimerMgr<T> {
-}
-
-MessagePool *-- Message
-Actor "1"*-"1" ConcurrentQueue : queue
-ConcurrentQueue "1"*--"n" Message : messages
-TimerMgr *-"1" MessagePool : pool
+Actor "1" *- "1" ConcurrentQueue : queue
+ConcurrentQueue "1" o-- "0..n" Message : messages
 
 class ConcurrentQueueCmsis<T> {}
 
@@ -62,16 +63,12 @@ class MessagePoolCmsis<T> {}
 
 class ActorCmsis<T> {}
 
-class TimerMgrCmsis<T> {}
-
 ConcurrentQueue <|-- ConcurrentQueueCmsis
 
 Actor <|-- ActorCmsis
+ActorCmsis .> ConcurrentQueueCmsis : <<uses>>
 
 MessagePool <|-- MessagePoolCmsis
-
-TimerMgr <|-- TimerMgrSal
-ActorCmsis <|-- TimerMgrSal
 
 @enduml
 ....
@@ -84,31 +81,23 @@ We advocate the following message structure:
 
 [source,cpp]
 ----
-struct Data;                                                                   <1>
+struct Data;                                                    <1>
 
-struct ActorData {                                                             <2>
+struct ActorData {                                              <2>
     int msgId;
 };
 
-typedef std::variant<ActorData, TimerCmd<Data>, Timer<Data>> Variants;         <3>
+typedef std::variant<ActorData> Variants;                       <3>
 
-struct Data {                                                                  <4>
+struct Data {                                                   <4>
     Variants variants;
 
-    TimerCmd<Data>* timerCmd() {                                               <5>
-        return std::get_if<TimerCmd<Data>>(&variants);
-    }
-
-    Timer<Data>* timer() {
-        return std::get_if<Timer<Data>>(&variants);
-    };
-
-    ActorData* data() {
+    ActorData* data() {                                         <5>
         return std::get_if<ActorData>(&variants);
     };
 };
 
-typedef Message<Data> MyMessage;                                               <6>
+typedef Message<Data> MyMessage;                                <6>
 ----
 
 <1> Forward declaration of the structure containing all message variants.
@@ -119,6 +108,16 @@ You can define one or multiple payload structures.
 This approach is necessary to satisfy the {cpp} compiler.
 <5> Optionally, you can provide helper methods to access a specific payload type with runtime checks enabled.
 <6> Optionally, you can define a type declaration for your messages with the defined payload.
+
+[CAUTION]
+====
+Do not use smart pointers in your message definitions.
+
+CMSIS is C based and will wreak havoc on the smart pointer contract.
+
+Use only records, variants, and primitive types.
+Consider using a message pool to optimize memory usage and to eliminate heap allocations.
+====
 
 ==== Define Your Actors
 
@@ -148,8 +147,6 @@ bool MyActorCmsis::processMsg(Message<Data>* msg) {                            <
                 break;
             ...
         }
-    } else if (const Timer<Data>* timer = std::get_if<Timer<Data>>(&variants)) {
-        std::cout << timer->client()->name() << " " << timer->id() << std::endl;
     }
     _pool.release(msg);                                                        <4>
     return continues;
@@ -157,6 +154,8 @@ bool MyActorCmsis::processMsg(Message<Data>* msg) {                            <
 ----
 
 <1> The body of your actor class responsible to process received messages.
+You do not need to handle the communication with CMSIS or how the actor communicates with the CMSIS thread.
+The {cpp} implementation takes care of these quirks.
 <2> Retrieve the payload variant you are interested in and check if it is available.
 <3> Process the message payload
 <4> Release the message back to the pool.
@@ -174,6 +173,107 @@ The command message creation only uses local variables and therefore does not ne
 The implementation of the actor is slightly more expensive.
 The users can use the actor as a regular class and do not have to bother with filling messages and sending them.
 ====
+
+=== Implementation Details
+
+A CMSIS actor is shadowed with a CMSIS task.
+A CMSIS task is an opaque C construct in the kernel space
+footnote:[An opaque object is only a handle, not a pointer to the instance.
+The structure and internal values are hidden.].
+
+A CMSIS concurrent queue is shadowed with a CMSIS message queue.
+A CMIS message queue is an opaque C construct in the kernel space.
+We are using a message pool, the CMSIS message queue only stores 32-bit pointers.
+
+[plantuml,actor-msg-sequence,svg]
+----
+participant Sender <<Actor>> #lightblue
+participant SenderCmsisTask <<Thread>> #lightblue
+queue SenderQueue #lightblue
+participant Receiver <<Actor>> #lightgreen
+participant ReceiverCmsisTask <<Thread>> #lightgreen
+queue ReceiverQueue #lightgreen
+collections ReceiverCmsisQueue #lightgreen
+
+== Sender is Active ==
+
+Sender -> Receiver : receive(msg)
+activate Sender
+activate SenderCmsisTask
+Receiver -> ReceiverQueue : push(msg)
+ReceiverQueue -> ReceiverCmsisQueue : osMessageQueuePut
+hnote over Sender : processing...
+Sender -> SenderQueue : pop()
+deactivate Sender
+deactivate SenderCmsisTask
+
+== Receiver is Active ==
+Kernel -> ReceiverCmsisTask : activate()
+activate ReceiverCmsisTask
+ReceiverCmsisTask -> Receiver : runBody()
+activate Receiver
+Receiver -> ReceiverQueue : pop()
+ReceiverQueue -> ReceiverCmsisQueue : osMessageQueueGet
+hnote over Receiver : processing...
+deactivate Receiver
+deactivate ReceiverCmsisTask
+----
+
+The connection between the concurrent queue to the underlying CMSIS C queue is simply done.
+The CMSIS queue is created and the reference identifier in the {cpp} is stored into the concurrent queue.
+
+When a new {cpp} actor is created, it must be connected to the underlying CMSIS C thread.
+This approach does the trick.
+
+[source,cpp]
+----
+class ActorCmsis {
+        /**
+         * Synthetic method to connect the C++ class with the CMSIS OS thread.
+         * @param self pointer to the class instance
+         */
+        static void run(void* self);                                           <1>
+
+        /**
+         * Process the next received message. Overwrite the method to implement
+         * the business logic of your actor. The returned message can be nullptr
+         * if the waitDelay is set to a value bigger than 0.
+         * @param  msg message to process
+         * @return flag indicating if the processing should continue
+         */
+        virtual bool processMsg(Message<T>* msg) = 0;
+}
+
+template<typename T>
+ActorCmsis<T>::ActorCmsis(const char* name, int queueSize,
+    osThreadAttr_t& attributes, MsgPoolCmsis<T>& pool)
+        : Actor<T>(name, pool), _queue{queueSize} {
+    strncpy(attributes.name, name, Actor<T>::ACTOR_NAME_SIZE);
+    _task = osThreadNew(&ActorCmsis<T>::run, this, &attributes);               <2>
+}
+
+    template<typename T>
+    void ActorCmsis<T>::run(void* self) {
+        ActorCmsis* instance = reinterpret_cast<ActorCmsis*>(self);            <3>
+        instance->runBody();                                                   <4>
+    }
+
+    template<typename T>
+    void ActorCmsis<T>::runBody() {                                            <5>
+        bool continues = true;
+        while (continues) {
+            Message<T>* msg = message();
+            continues = processMsg(msg);                                       <6>
+        }
+    }
+----
+
+<1> Declare a static function which will be executed by the newly created CMSIS thread
+<2> Create the CMSIS thread with the static method run and as parameter the _this_ pointer of the actor object.
+<3> Interpret the void pointer back to the _this_ pointer passed previously as parameter to the CMSIS thread.
+<4> Now we can call the actor instance method listening to messages.
+<5> The method blocks until a message is available in the actor queue.
+<6> The method is specific to each actor and defines how messages are processed based on the actor state and logic.
 
 === Lessons Learnt
 

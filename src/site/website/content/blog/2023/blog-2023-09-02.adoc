@@ -1,7 +1,7 @@
 ---
 title: "Java 21"
 linkTitle: "Java 21"
-date: 2023-09-30
+date: 2023-09-25
 tags: ["java"]
 ---
 
@@ -29,6 +29,10 @@ The tail-call optimization for recursive calls is sadly still missing.
 === Amber Project
 
 The https://openjdk.org/projects/amber/[amber] initiative is completing the changes with pattern matching.
+Start adapting your coding idioms and use pattern matching.
+
+The visitor pattern can simply be implemented as switch expression with pattern matching.
+As a bonus, the compiler will verify completeness if your class hierarchy uses sealed inheritance.
 
 - https://openjdk.org/jeps/440[Record Patterns]
 - https://openjdk.org/jeps/441[Patten Matching for switch]
@@ -40,7 +44,7 @@ The syntactic improvements initiated by Amber and core group are;
 - https://openjdk.org/jeps/431[Sequenced Collections]
 
 The string template feature is worth the effort to study the provided functions.
-My code could be considerably simplified when using the functionality.
+My code could be considerably simplified when using this functionality.
 
 === Loom Project
 
@@ -49,6 +53,12 @@ The https://openjdk.org/projects/loom/[loom] initiative is completing the major 
 - https://openjdk.org/jeps/444[Virtual Threads]
 - https://openjdk.org/jeps/446[Scoped Values] _Preview_
 - https://openjdk.org/jeps/453[Structured Concurrency] _Preview_
+
+Virtual threads are now official part of the Java universe.
+Your design can create as much threads as you want without restrictions.
+
+_Most of the Java developers never create directly thread instances._
+_The feature is useful for library and framework creators._
 
 === Panama Project
 
@@ -61,6 +71,9 @@ They synchronize as much as possible their interfaces with the Valhalla and Lill
 === Valhalla Project
 
 As usual, the https://openjdk.org/projects/valhalla/[Valhalla] initiative did not release any improvements in the current release.
+
+_It is time that value objects are proposed in the near future._
+_The project is going for ten years._
 
 === Lilliput and Leyden Projects
 
@@ -81,14 +94,31 @@ Extensions to existing features:
 
 === Stumbling Blocks
 
-Once again {ref-lombok} up to version 1.18.28 is not working with JDK 21.
+Once again {ref-lombok} up to version 1.18.28 is not working with JDK 21
+footnote:[Version 1.18.30 was released in 2023-09-20 and provides initial support for JDK 21.
+Late but it still saves the day.].
 The project uses internal unsafe functions, which are no more supported in this Java release.
 
+[TIP]
+====
+The edge snapshot release has experimental support for JDK 21.
+You need the following additions in your gradle configuration.
+
+- add the repository _maven { url "https://projectlombok.org/edge-releases"}_
+- use the dependency _org.projectlombok:lombok:edge-SNAPSHOT_ for the library and the annotation processor
+====
+
 All other libraries and tools I am using worked without troubles.
+Major libraries test their current release with early-accesses and solve the problems before the official release a new Java version.
 
 === Lessons Learnt
 
 Gradle toolchain feature simplifies experimenting with a new Java version.
+The current version of {ref-gradle} runs under Java 21.
+
+IntelliJ IDE provides support for newer JDK before their official release.
+It tremendously simplifies exploration of new features.
+
 Often you can use the continuous integration pipelines of {ref-github} or {ref-gitlab} platforms.
 No virtual machines with an experimental Java version are available.
 
@@ -98,7 +128,6 @@ The https://www.eclipse.org/[Eclipse] foundation https://adoptium.net/temurin/[t
 Migrate all your active products to the new Java version.
 Invest effort to enhance source code and use the new features.
 So, you will avoid technical obsolesce and geriatric applications.
-
 
 [bibliography]
 === Links

@@ -12,7 +12,7 @@ description: good practices
 :keywords: agile, architecture, design
 :company: https://www.tangly.net/[tangly llc]
 
-[plantuml,development-good-practices-mindmap,svg]
+[plantuml,target=development-good-practices-mindmap,format=svg]
 ----
 @startmindmap
 - DevOps

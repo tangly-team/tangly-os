@@ -25,7 +25,7 @@ Technical schools should provide an in-depth experience in these areas to prepar
 The below mind map consolidates concepts, tools and approaches based on the https://about.gitlab.com/[GitLab] tooling established in some universities.
 The approach emphasizes *agile* and *DevOps* concepts and approaches.
 
-[plantuml,students-proficiencies,svg]
+[plantuml,target=students-proficiencies,format=svg]
 ....
 @startmindmap
 <style>
@@ -100,18 +100,18 @@ The actual industrial standard is https://git-scm.com/[git], a distributed versi
 
 More sophisticated source code management systems based on {ref-git} with additional agile and DevOps functionalities are:
 
-* https://github.com/[GitHub] is a closed source solution and most well-known solution.
+* https://github.com/[GitHub] is a closed-source solution and most well-known solution.
 Microsoft acquired them in 2020.
 Some Swiss technical universities - ZHAW, University of Bern - use the academic GitHub campus program.
 CI and CD pipelines are not part of the GitHub product and must be installed separately.
 The academic program means you receive GitHub licenses.
 Your organization is responsible for running the software on the premises.
-* https://about.gitlab.com/[Gitlab] is an open source solution and a strong contender for GitHub.
+* https://about.gitlab.com/[Gitlab] is an open-source solution and a strong contender for GitHub.
 CI and CD pipelines are part of the product.
-* https://bitbucket.org/dashboard/overview[Bitbucket] is a closed source solution of Atlassian.
+* https://bitbucket.org/dashboard/overview[Bitbucket] is a closed-source solution of Atlassian.
 CI and CD pipelines are part of the product.
 Atlassian also owns JIRA, Confluence and Trello.
-* https://azure.microsoft.com/en-us/services/devops/[Azure Devops] is a closed source solution and Microsoft answers to .NET development.
+* https://azure.microsoft.com/en-us/services/devops/[Azure Devops] is a closed-source solution and Microsoft answers to .NET development.
 CI and CD pipelines access is under definition by Microsoft.
 They slowly open their product to additional development stacks such as Java, Python.
 * https://gitea.io/[Gitea] is a community-managed lightweight code hosting solution written in Go.
@@ -159,7 +159,7 @@ The huge advantage of package managers is the update function to install new ver
 You are a Windows user you can find a Windows package on the https://git-scm.com/downloads[git home page].
 ====
 
-Git has 3 different _areas_ for your code:
+Git has three different _areas_ for your code:
 
 Working directory::
 The area that you will be doing all of your work in (creating, editing, deleting, and organizing files).
@@ -207,7 +207,7 @@ See our blog link:../../2016/git-branches-for-the-impatient[Git Branches for the
 
 image::2021-01-03-cicd_pipeline.png[720,480,role=left]
 
-The minimal gradle build file of a Java project is elementary and compact.
+The minimal Gradle build file of a Java project is elementary and compact.
 
 [source,gradle]
 ----
@@ -223,7 +223,7 @@ include 'net.tangly.bus'
 include 'net.tangly.commons'
 ----
 
-The initial build file for each module is the same as for a minimal gradle project.
+The initial build file for each module is the same as for a minimal Gradle project.
 You can now compile, test and check your application.
 
 [source,console]
@@ -317,7 +317,7 @@ You should write unit and integration tests for your Java application using:
 
 Static code generators are becoming the standard approach for the technical documentation.
 One huge advantage is you can check the whole documentation into your git repository.
-You have a synchronisation between a released version of your application and the corresponding documentation.
+You have a synchronization between a released version of your application and the corresponding documentation.
 Both are stored in the same repository and can be marked with a version label You can use:
 
 * https://www.markdownguide.org/[Markdown]

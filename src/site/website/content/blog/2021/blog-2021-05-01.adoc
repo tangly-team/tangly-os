@@ -95,11 +95,11 @@ Kanban offers an easy start with agile and unlike Scrum is applicable to any pro
 As our numbers show, it is becoming more and more popular.
 Remember, it is not Kanban if it doesn't have WIP limits.
 
-There is also a trend towards stable product teams that extend their responsibilities beyond those of _just_ the development of a solution or service.
+There is also a trend towards stable product teams that extend their responsibilities beyond those of _just_ the development for a solution or service.
 
 === Findings
 
-The conclusion of the main article of the report is enlightening.
+The conclusion of the main article is enlightening.
 
 [cite,SwissQ]
 ____
@@ -107,7 +107,7 @@ Agile transformation has stalled during the second wave in many companies.
 Only individual elements of the third wave, such as portfolio management, have been tackled.
 At the same time, transformation has often only occurred on the surface; the company’s DNA and culture have not (yet) adapted to the new era.
 
-Executives must now take on the hard topics, such as new organizational forms, management behaviour, dedicated agile executives.
+Executives must now take on the hard topics, such as new organizational forms, management behavior, dedicated agile executives.
 They must make difficult and painful decisions regarding new leadership teams.
 ____
 

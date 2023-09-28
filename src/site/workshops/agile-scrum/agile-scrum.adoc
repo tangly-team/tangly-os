@@ -30,6 +30,14 @@ image::agile-organizations.png[background,size=cover]
 - Small teams of professionals
 - Networked transparent communication
 
+=== Roles and Responsabilities
+
+image::roles-maangement.png[]
+
+=== Agile Impact on Success
+
+image::project-success-rates.png
+
 [%notitle]
 === Agile Products
 
@@ -77,7 +85,14 @@ Transparency - Inspection - Adaptation
 
 image::scrum-values.png[background,size=cover]
 
-== Scrum Events
+== Scrum
+
+=== Scrum Workflow
+
+[.streched]
+image::scrum-flow.png[]
+
+=== Scrum Events
 
 [.streched]
 image::scrum-approach.png[]

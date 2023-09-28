@@ -1,7 +1,7 @@
 ---
 title: "req42 Agile Requirements"
 linkTitle: "req42"
-date: 2025-01-05
+date: 2026-02-05
 tags: ["agile", ]
 ---
 

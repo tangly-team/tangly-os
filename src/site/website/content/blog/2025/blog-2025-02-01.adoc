@@ -5,25 +5,31 @@ date: 2025-02-01
 tags: ["architecture", "domain-driven-design", "c++", "embedded"]
 ---
 
-== Domain-Driven Design Approaches for Embedded Systems
+== DDD Approaches for Embedded Systems
 :author: Marcel Baumann
 :email: <marcel.baumann@tangly.net>
 :homepage: https://www.tangly.net/
 :company: https://www.tangly.net/[tangly llc]
 :ref-actor-model: https://en.wikipedia.org/wiki/Actor_model[Actor Model]
-:ref-fsm: https://en.wikipedia.org/wiki/Finite-state_machine[Finite State Machine]
 :ref-cohesion: https://en.wikipedia.org/wiki/Cohesion_(computer_science)[Cohesion]
+:ref-eventual-consistency: https://en.wikipedia.org/wiki/Eventual_consistency[Eventual Consistency]
+:ref-fsm: https://en.wikipedia.org/wiki/Finite-state_machine[Finite State Machine]
 :ref-coupling: https://en.wikipedia.org/wiki/Coupling_(computer_programming)[Coupling]
 :ref-kiss: https://en.wikipedia.org/wiki/KISS_principle[KISS principle]
+:ref-json-schema: https://json-schema.org/[JSON Schema]
+:ref-plc: https://en.wikipedia.org/wiki/Programmable_logic_controller[Programmable Logic Controller]
 
 image::2025-02-01-head.jpg[width=420,height=360,role=left]
 
 Domain-driven design is established as the preferred software design approach cite:[domain-driven-design,implementing-domain-driven-design,domain-driven-design-distilled].
+Use this approach to successfully develop digital products.
 
 The approach promotes modular object-oriented design cite:[modern-software-engineering].
 
-Embedded systems and the associated hardware naturally map to object-oriented abstractions.
-Just look at your device to identify classes.
+The modular monolith architecture is recognized as the cost-effective approach for high-quality software products <<modular-monolith>>.
+
+Embedded systems and the underlying hardware naturally map to object-oriented abstractions.
+Just look at your device, buses, actuators, and sensors to identify potential classes.
 
 The method emphasizes clean-code approach and the usage of {ref-scrum} and {ref-devops} techniques.
 
@@ -40,15 +46,17 @@ cite:[domain-driven-design,implementing-domain-driven-design,domain-driven-desig
 A model acts as a ubiquitous language to help communication between software developers and domain experts.
 It also acts as the conceptual foundation for the design of the software itself.
 
-Each physical component should probably be a bounded domain.
-Examples are battery packs, drives, sensor packages, tractors.
+Each physical component type is a potential bounded domain.
+Examples are battery packs, drives, sensor packages, tractors, hydraulic systems.
 
 Such a component often has a set of sensors and actuators.
-Additional logic is defined to transform the raw signals in a representative view of the abstraction.
+Advanced components have their own processing capabilities
+footnote:[Examples are frequency converters, motors with a CAN node, or modems.].
+Additional logic is provided to transform the raw signals in a representative view of the abstraction.
 This logic can be implemented in software or hardware.
 
-Hardware components shall be realized as active objects to react to the parallelism of the hardware sensors and actuators.
-Often hardware components trigger interrupts and the associated interrupt routine should be seen as a simplified active object
+Hardware components shall be realized as active objects to handle the parallelism of the hardware sensors and actuators.
+Often hardware components trigger interrupts and the associated interrupt routines should be seen as simplified active objects
 footnote:[If no interrupt is provided, you have to declare a timer interrupt routine and poll the registers of the sensor.
 The drawback is you have to find the adequate timings for the characteristics of the sensor and the requirements of your application.].
 
@@ -58,7 +66,7 @@ https://en.wikipedia.org/wiki/Ethernet[Ethernet] or https://en.wikipedia.org/wik
 Below, an example of a battery component with sensors and actuators is given.
 The battery component could be an aggregate structure inside the bounded domain defining the device.
 
-[plantuml,battery-aggregate,svg]
+[plantuml,target=battery-aggregate,format=svg]
 ----
 @startuml
 
@@ -153,7 +161,7 @@ Examples are alarm and error state machine of the machine, job or mission execut
 
 Below, an example of a device component architecture is given.
 
-[plantuml,device-domains,svg]
+[plantuml,target=device-domains,format=svg]
 ----
 @startuml
 !include <C4/C4_Container>
@@ -241,26 +249,40 @@ Messages are part of the bounded domain interface declaration.
 
 [TIP]
 ====
-Ideally, the interface of a bounded domain is fully described through the messages it will process.
+Ideally, the interface of a bounded domain is fully described through the messages it will process and the events it publishes.
 
 {ref-fsm} can be provided to describe the behavior of a domain when processing a specific message.
 {ref-uml} provides the statechart notation to graphically document finite state machines.
 ====
 
-A bounded domain should be packaged as a {cpp} module and declared in a specific namespace.
+A bounded domain should be packaged as a {cpp} module and declared in a specific namespace
+footnote:[Modern {cpp} best practices recommend that any application class is declared inside a namespace.
+Modern {cpp} versions provide syntactic sugar to declare nested namespaces with a compact and legible notation.
+See for example {cpp} Google coding guidelines.].
 A bounded domain should also be packaged following the concepts of the used framework.
 For example, it should be a Gradle module or a ROS package.
+
+[IMPORTANT]
+====
+Describe your bounded domain graphically using {ref-plantuml} and {ref-c4}.
+
+Document your bounded domain interface using {ref-openapi} and {ref-asynapi}.
+
+Explain the whole architecture using {ref-arc42} and {ref-adr}.
+Documentation as code shall be integrated into your agile development approach.
+====
 
 === Layers in Bounded Domain
 
 A sensor or an actuator is part of one bounded domain.
 Sensor processing is often a data processing pipeline:
 
-. Initialize the sensor and configure the processing pipeline
-. Execute the pipeline
+. Initialize the sensor and configure the processing pipeline.
+. Execute the pipeline.
 .. Normalize sensor data.
 .. Filter, transform and enrich sensor data.
 This stage is also used to handle back pressure by removing excess data.
+_Often the sampling frequency of components is faster than the processing needs of the upper layers._
 .. Store the sensor data or send an application-specific message based on the values.
 . Shutdown the sensor pipeline.
 
@@ -268,6 +290,9 @@ Ideally, the whole sensor pipeline is hosted inside one domain model.
 The message sent should always contain the actual value.
 Avoid sending only the changes from the previous value.
 You can naturally send the actual value and the change in the same message.
+
+Try to send messages only when a value has changed.
+This approach reduces message traffic and processing activities without impending the accuracy of the system.
 
 The hardware abstraction layer and hardware driver should be in the HAL layer.
 
@@ -277,7 +302,7 @@ Data processing nodes are in higher layers.
 
 [TIP]
 ====
-A specific model can be provided if your control algorithm follows the PLC approach.
+A specific model can be provided if your control algorithm follows the {ref-plc} approach.
 
 You must provide a buffered model of all relevant inputs and outputs of your machine.
 Relevant means used in the PLC algorithm.
@@ -300,6 +325,100 @@ The approach works as long as the periodicity of the PLC algorithm calls is fast
 
 During the execution of the PLC algorithm, no input values are changed during a specific cycle.
 ====
+
+=== Bounded Domain Interface
+
+The interface shall be the only dependency a user has with a bounded domain.
+The interface shall formally be documented to ensure legibility and maintainability.
+
+[IMPORTANT]
+====
+A *message* carries information from one application to the other.
+An *event* is a message that provides details of something that has already occurred.
+One important aspect is that depending on the type of information a message contains, it can fall under an event, query, or command.
+
+Use standard such as {ref-open-pi}, {ref-asyncapi} or {ref-json-schema} to document the interfaces of your bounded domain.
+Explain the chosen approach.
+Document how to use the interface.
+Provide examples.
+
+Use the recommended specification and documentation approach of the framework you are using.
+
+Your users will be very thankful and your component will be more successful.
+====
+
+The interface of a bounded domain shall promote concurrent asynchronous communication.
+Try the following approach.
+
+==== Incoming Queries and Commands
+
+An asynchronous command cannot have an immediate return value.
+Otherwise, it is a synchronous call.
+Best practice is to implement the command as an asynchronous message send to a message queue for later processing.
+
+The only compromise is when the return value is a simple acknowledgement the command was received.
+The command was queued and still needs to be processed.
+
+A query always requires a return value containing the result of the query.
+Two solutions are available.
+
+First, realize the query as a job request with an identifier and send it as an asynchronous command.
+The query results shall be published as an asynchronous message published on a topic and available to interested parties.
+The query identifier is used to map the query with the results.
+
+Second, realize the query as a synchronous service call.
+The query results are returned synchronously in the call.
+The caller is blocked upon completion of the request.
+You can also use futures to delegate the synchronization to the calling party.
+
+The synchronous call is a feasible approach only if the execution of the request is fast and the processing entity is almost always ready for execution.
+Starvation could otherwise occur.
+Take care that the processing of a request never requires the activation of additional synchronous calls.
+The consequence would otherwise be starvation and potential deadlocks.
+
+[IMPORTANT]
+====
+Asynchronous approach requires multithreaded systems.
+
+Asynchronous command and query requests is the only scalable and resilient approach for complex concurrent systems.
+====
+
+==== Outgoing Queries and Commands
+
+Asynchronous outgoing queries and commands can simply be used and will perform well.
+
+An outgoing command is when you request an operation from another bounded domain.
+
+Synchronous calls are cumbersome.
+You do not have any information on how another bounded domain will process these requests.
+The starvation and deadlock risks are amplified with each additional domain you are accessing synchronously.
+
+[TIP]
+====
+Simple queries requesting a stored value can be implemented as synchronous services.
+
+In other words, a simple query should not have complex computations and should not call other services.
+
+As long as the servicing entity is not overworked, the system stays responsive.
+====
+
+==== Events to publish state changes
+
+Events should always be transmitted as asynchronous messages published on topics.
+Interested parties register to related topics.
+Sources of events do not need to know their listeners.
+
+[IMPORTANT]
+====
+Beware that event-based system imply {ref-eventual-consistency}.
+
+Invest effort to identify a good topic structure for your system.
+A good design minimizes filtering of events you are not interested in without forcing a listener to register to a lot of topics.
+====
+
+Avoid callbacks to propagate events.
+Callbacks introduce a dependency between the caller and the callee.
+The callee is responsible to implement parallel handling of multiple callbacks and protection of variables accessed from multiple callbacks.
 
 === Crosscutting Concerns
 
@@ -326,6 +445,10 @@ You should try to configure the hardware and the application during the startup 
 
 Configuration changes during regular operations are expensive to implement and seldom needed.
 Challenge all such requirements and explain the associated costs.
+
+Restarting a microcontroller application takes tens of milliseconds.
+Rebooting an embedded linux system takes hundreds of milliseconds.
+Update the configuration, reboot, wait a second and continue working.
 ====
 
 ==== Startup and Shutdown
@@ -334,7 +457,7 @@ A machine must be started and stopped.
 Each hardware component shall provide the same state machine and state changes.
 Some machines need an immediate shutdown due to regulatory aspects.
 
-[plantuml,startup-shutdown,svg]
+[plantuml,target=startup-shutdown,format=svg]
 ----
 @startuml
 [*] -> Powered
@@ -347,10 +470,14 @@ state Ready {
 [*] -> Idle
 Idle -> Processing : process
 Processing -> Idle : finished
+Processing -> Suspended : alarm / suspend
+Suspended -> Processing : recovered
 }
 
 Ready --> ShuttingDown : shutdown / componentShutdown
 Ready --> ShuttingDown : shutdownImmediate / componentImmediateShutdown
+
+note left of ShuttingDown : immediate shutdown stops a component or a device \nas fast as possible without e.g. storing data.
 
 ShuttingDown --> Stopped : allCompoentsStopped
 Stopped --> [*]
@@ -367,6 +494,8 @@ Ready::
 The device is ready to process jobs.
 Shutting Down::
 All components are shutting-down.
+The shutdown is controlled if a regular shutdown was initiated.
+The shutdown is immediate and uncontrolled for an immediate emergency shutdown.
 After some time, all should be stopped.
 This phase is the latest slot to persist required information If an immediate shutdown was requested, expensive activities such as persisting configuration or process data should be discarded.
 Stopped::
@@ -391,9 +520,43 @@ Beware that during the polling operation to retrieve the current state, new even
 
 The same approaches can be used to visualize the state of the jobs planned or under execution.
 
+==== Alarming
+
+Alarms are information defining problems in the product.
+A human operator shall receive all alarms and decide if they influence his decisions.
+
+Alarms are also used to bring the device to a save state if the error detected impeded correct processing.
+
+Alarms should have a unique type identifier, a severity level and a human-readable text.
+Alarms are sent to a product wide topic and made available to all interested parties.
+
 ==== Logging
 
 Logging approaches are discussed in a separate article <<logging>>.
+
+==== Dependency Injection
+
+Instances need reference to other objects in the system to fulfill their responsibilities.
+Either you hard-code the dependencies or you use a dependency injection approach.
+
+I recommend using the simple dependency injection through the constructor approach as long as possible.
+If class _Driver_ has a dependency to a class _GPIOHandler_ you should write the following code.
+
+[source,cpp]
+----
+class Driver {
+    Driver(GPIOHandler& handler);               <1>
+----
+
+<1> Instead of a reference, you can use a pointer to the handler.
+The reference solution is more elegant and encodes the dependency pattern more correctly.
+
+[TIP]
+====
+The construction of the embedded application is a set of code snippets creating all objects and wiring them through the constructor parameters.
+
+The order of the calls is an acyclic graph with one implicit or explicit root object.
+====
 
 === Lessons Learnt
 
@@ -401,7 +564,7 @@ The {ref-kiss} is essential to construct a maintainable and stable solution.
 
 Aggressive refactoring and clean code approaches hugely improve the code in the long-term cite:[refactoring,clean-code,clean-coder,clean-architecture].
 
-Embedded applications should always be implemented with the active object pattern.
+Embedded applications should always be implemented with the active object pattern <<actors>>.
 The programmable logic control _PLC_ with a fixed timed based loop has well-documented limitations as soon as the application complexity increases.
 Communication should always be message-based.
 Avoid using synchronization primitives such as mutex, semaphores, or monitors.
@@ -409,14 +572,18 @@ Avoid using synchronization primitives such as mutex, semaphores, or monitors.
 [bibliography]
 === Links
 
-- [[[software-structure-with-ddd, 1]]] link:../../2022/software-structure-with-ddd/[Software Structure with DDD].
+- [[[modular-monolith, 1]]] https://martinfowler.com/bliki/MonolithFirst.html[Monolith First]
+Martin Fowler. 2015.
+- [[[software-structure-with-ddd, 2]]] link:../../2022/software-structure-with-ddd/[Software Structure with DDD].
 Marcel Baumann. 2022.
-- [[[logging, 2]]] link:../../2025/logging/[Logging].
+- [[[logging, 3]]] link:../../2025/logging/[Logging].
 Marcel Baumann. 2025.
-- [[[technical-debt, 3]]] link:../../2022/technical-debt/[Technical Debt].
+- [[[technical-debt, 4]]] link:../../2022/technical-debt/[Technical Debt].
 Marcel Baumann. 2022.
-- [[[document-software-architecture, 4]]] link:../../2024/document-agile-architecture/[How Should You Document Your Agile Architecture?].
+- [[[document-software-architecture, 5]]] link:../../2024/document-agile-architecture/[How Should You Document Your Agile Architecture?].
 Marcel Baumann. 2024.
+- [[[actors, 6]]] link:../../blog/2024/actors/[Actors]
+Marcel Baumann.2024.
 
 === References
 

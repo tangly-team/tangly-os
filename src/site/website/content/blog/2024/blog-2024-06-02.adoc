@@ -38,7 +38,7 @@ An actor is a computational entity that, in response to a message it receives, c
 
 === Actor Abstractions
 
-[plantuml,actors,svg]
+[plantuml,target=actors,format=svg]
 ....
 @startuml
 class Message<T> {
@@ -106,8 +106,7 @@ struct PayloadTwo {};
 
 struct Data;                                                                   <2>
 
-typedef std::variant<PayLoadOne, PayLoaTwo, Timer<Data>,
-                        TimerCmd<Data>> Variants;                              <3>
+typedef std::variant<PayLoadOne, PayLoaTwo> Variants;                          <3>
 
 struct Data {                                                                  <4>
     Variants data;

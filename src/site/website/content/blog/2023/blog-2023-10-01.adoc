@@ -13,7 +13,7 @@ tags: ["agile", "devops", "series-students"]
 
 image::2023-10-01-head.png[width=420,height=360,role=left]
 
-Why is visibility so important for any agile or Scrum team?
+Why is visibility so important for any agile or {ref-scrum} team?
 
 When you are running an agile product development initiative, your ultimate goal is customer satisfaction with the delivered solution.
 
@@ -59,7 +59,7 @@ They provide easy and legible access to progress information.
 If your team, Scrum Master, Product Owner or stakeholders cannot see what the team is doing, it creates the impression that you are doing lots of _nothing_.
 Or do lots of things completely _wrong_.
 
-This kind of doubt is one of the fastest ways to find yourself in a quagmire of unfinished work.
+These doubts are one of the fastest ways to find yourself in a quagmire of unfinished work.
 
 Making your work visible raises expectation, and luckily, it raises opinions of you.
 

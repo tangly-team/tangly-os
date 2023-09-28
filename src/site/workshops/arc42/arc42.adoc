@@ -18,7 +18,6 @@
 :ref-c4: https://c4model.com/[C4 Model]
 :ref-docker: https://www.docker.com/[Docker]
 :ref-git: https://git-scm.com/[Git]
-:ref-open-api: https://www.openapis.org/[OpenAPI]
 :ref-uml: https://en.wikipedia.org/wiki/Unified_Modeling_Language[UML]
 
 == Agenda
@@ -319,7 +318,7 @@ UML offers deployment diagrams to express that view
 image::07-docker-compose.png[background,size=cover]
 
 - You can often describe your system topology with a {ref-docker} compose file.
-- API are described with {ref-open-api}.
+- API are described with {ref-openapi}.
 
 == 8 - https://docs.arc42.org/section-8/[Crosscutting Concepts]
 

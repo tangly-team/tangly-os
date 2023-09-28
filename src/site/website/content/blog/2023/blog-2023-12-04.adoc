@@ -1,0 +1,179 @@
+---
+title: "Sensors and Actuators"
+linkTitle: "Sensors and Actuators"
+date: 2023-12-15
+tags: ["cpp", "architecture"]
+---
+
+== Sensors and Actuators
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+:ref-can-bus: https://en.wikipedia.org/wiki/CAN_bus[CAN bus]
+:ref-kiss: https://en.wikipedia.org/wiki/KISS_principle[Keeep It Simple, Stupid]
+:ref-proto-buf: https://en.wikipedia.org/wiki/Protocol_Buffers[Protocol Buffers]
+:ref-spi: https://en.wikipedia.org/wiki/Serial_Peripheral_Interface[Serial Peripherical Interface]
+
+image::2023-12-04-head.jpg[width=420,height=360,role=left]
+
+=== Model
+
+Embedded design maps domain abstractions to the underlying hardware.
+
+A valve is a domain abstraction of a physical hardware valve.
+A physical valve can be a simple opened-closed device, or a proportional device.
+
+The microcontroller board controls the valve through a GPIO, a PWM or a CAN bus controller.
+These hardware components map the domain object to the electronics controlling the physical device.
+
+[plantuml,device-model,svg]
+----
+set separator ::
+
+class Model::ValveOnOff {
+    + void open();
+    + void close();
+    + bool isOpen() const;
+    - ValveOnOff(const ValveOnOff&) = delete
+    - const ValveOnOff& operator=(const ValveOnOff&) = delete
+}
+
+class Model::ValveProgressive {
+    + void open(uint32_t)
+    + uint32_t openess() const;
+    - ValveProgressive(const ValveProgressive&) = delete
+    - const ValveProgressive& operator=(const ValveProgressive&) = delete
+}
+
+class HAL::GPIO {}
+class HAL::PWM {}
+class HAL::CANController {}
+
+class Vinci::ValveGpio {}
+ValveGpio ..> ValveOnOff
+ValveGpio o- "1" GPIO : gpio
+
+class Vinci::ValvePwm {}
+ValvePwm ..> ValveOnOff
+ValvePwm o- "1" PWM : pwm
+
+class Vinci::ValveCan {}
+ValveCan ..> ValveProgressive
+ValveCan o- "1" CANController : can
+----
+
+The designers should decide if a _progressive valve_ is a kind of _on/off valve_ or not.
+
+All instances of the namespaces _HAL_ and _Vinci_ are static and created when the application starts.
+
+The algorithms should ideally only access the abstractions defined in the _model_ namespace.
+
+[CAUTION]
+====
+The instantiation of objects should define the initialization of abstractions and the underlying physical devices.
+
+Do we start our system and bring all devices to a well-defined initial state?
+
+Or do we start our system, retrieve the state of all devices and initialize our objects accordingly?
+This approach is only possible if each hardware component has sensors providing its current state.
+====
+
+=== C++ Approach
+
+A physical device shall be mapped to a {cpp} class.
+Instances of the class map to existing devices.
+
+Therefore, the copy constructor and the copy operator should be disabled.
+The physical devices are defined through the machine the software controls.
+
+The software accesses the physical device through an electronics interface such as a GPIO, PWM or CAN controller.
+The mapping between the electronic component and the physical device is hardwired at construction.
+
+[source,cpp]
+----
+class ValveOnOff {
+public:
+    void open();
+    void close();
+    bool isOpen() const;
+private:
+    ValveOnOff(const ValveOnOff&) = delete;                           <1>
+    const ValveOnOff& operator=(const ValveOnOff&) = delete;          <2>
+    bool _opened = false;                                             <3>
+};
+----
+
+<1> A physical device cannot be replicated.
+<2> A physical device cannot be copied.
+<3> Imply that the application resets the system when booting.
+
+=== Interrupt Routines
+
+Output devices do not need interrupts.
+A driver provides a function to output the new value on the electronics.
+As an example, the function writes the new value to a memory-mapped register.
+The designer is responsible to avoid concurrent access to the register.
+
+Input devices should always support interrupts.
+Otherwise, the application must poll registers to detect changes.
+Polling is cumbersome and expensive.
+Either the programmer guesses a polling frequency and misses sometimes data.
+Or he chooses a high-frequency sampling rate and wastes computing resources.
+
+Two major interrupt approaches exist:
+
+- The interrupt routine reads the new value of the sensor and stores the data at a defined location.
+The application accesses the sensor stored value when needed.
++
+This approach decouples the application from the external sensors.
+The drawback is that the program is not informed when a new value is received.
+- The interrupt routine reads the new value and sends the value as a message to interested parties.
++
+The approach is a reactive system triggering the application each time input data is received.
+
+The interrupt routine or the underlying hardware can handle sensor inputs in two ways:
+
+- Data is retrieved regularly.
+This synchronous approach gives a rhythm to the system but often uses computing resources without gains.
+- Data is retrieved when a value has changed.
+Either the hardware detects the change or the interrupt routine compares the received data with the stored value.
++
+This approach is purely reactive.
+Algorithms are only triggered when the external system has changed.
+
+[TIP]
+====
+I recommend interrupt triggering input data gathering and reacting to input *changes*.
+
+This design approach minimizes microcontroller resource consumption and simplifies the control algorithms.
+====
+
+=== Lessons Learnt
+
+Try to define the simplest model to implement your features.
+Follow the {ref-kiss} principle.
+
+Model the physical world.
+A valve, a GPIO, a CAN controller are real things.
+Model them.
+Do not try to hide things.
+
+The introductory book _Realtime {cpp}_ cite:[realtime-cpp] is a rigorous introduction how to program microcontrollers in {cpp}.
+You learn how to access hardware resources from {cpp} and what are the costs of various {cpp} constructs.
+
+Use the actor pattern to implement thread communication <<distributed-asynchronous-systems>> <<actors-in-cpp>> <<actors-cmsis-cpp>>.
+
+[bibliography]
+=== Links
+
+- [[[distributed-asynchronous-systems, 3]]] link:../../2025/distributed-systems/[Distributed Asynchronous Systems].
+Marcel Baumann.
+- [[[actors-in-cpp, 4]]] link:../../2024/actors-in-cpp/[Actors in {cpp}].
+Marcel Baumann.
+- [[[actors-cmsis-cpp, 5]]] link:../../2024/actors-with-cmsis-os-in-cpp/[Actors with CMSIS in {cpp}].
+Marcel Baumann.
+
+=== References
+
+bibliography::[]

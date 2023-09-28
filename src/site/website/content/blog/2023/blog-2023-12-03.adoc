@@ -1,0 +1,195 @@
+---
+title: "Command Interpreter Revisited"
+linkTitle: "Interpreter"
+date: 2023-12-12
+tags: ["java", "cpp", "architecture"]
+---
+
+== Command Interpreter Revisited
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+:ref-can-bus: https://en.wikipedia.org/wiki/CAN_bus[CAN bus]
+:ref-proto-buf: https://en.wikipedia.org/wiki/Protocol_Buffers[Protocol Buffers]
+:ref-spi: https://en.wikipedia.org/wiki/Serial_Peripheral_Interface[Serial Peripherical Interface]
+
+image::2023-12-03-head.jpg[width=420,height=360,role=left]
+
+Most digital products have a command interpreter.
+
+External systems send requests to the system and often await an answer.
+This behavior could be modeled with a command interpreter.
+
+The channels used to provide requests and return answers are variable.
+
+A regular command line interpreter inputs commands as a string containing a request and associated parameters.
+The answer is displayed as a string.
+
+Commands can be transmitted other various buses and protocols.
+
+An operator can send a command over a {ref-can-bus} or {ref-spi} connection.
+
+The processed commands are the instructions independent of the transmission layer and communication protocol.
+
+How could you design such a versatile interface using modern software construct from Java or {cpp}?
+
+Which design delegates most of the validation to the compiler
+footnote:[A powerful software quality approach is to delegate validation activities to the compiler.]?
+
+=== Command Descriptors and Commands
+
+A description of a command could be encoded in a set of classes defining a bounded domain.
+This approach is often used in command line interpreters.
+It works well, but the compiler will not validate the descriptors.
+The solution does not well integrate with modern communication protocols such as {ref-proto-buf}.
+
+A modern approach would be to encode the command universe as a sealed class hierarchy in Java.
+A similar approach could be a variant template instance in {cpp}.
+
+The key concept is to encode the command structure into declarations instead of defining a domain model to describe them.
+The sole drawback of this approach is that you cannot dynamically add a command type.
+You have to declare a new class and compile the program
+footnote:[Agile and DevOps approaches mitigate the problem.
+You should be able to generate a new version of your application in at most a few minutes without manual activities.].
+
+[plantuml,target=commands,format=svg]
+----
+interface Cmd  {
+    int id();
+    String name();
+    boolean hasAnswer();
+}
+
+interface LedgerCmd <<sealed>> extends Cmd {}
+
+class CmdBookTransaction <<record>> implements LedgerCmd {
+    AccountId from;
+    AccountId to;
+    LocalDate date;
+    Amount amount;
+    String text;
+}
+
+class Booking <<record>> {
+    accountId account;
+    Amount amount;
+    String text;
+}
+
+class CmdBookSplitTransaction <<record>> implements LedgerCmd {
+    Booking[] from;
+    Booking[] to;
+    LocalDate date;
+}
+
+CmdBookSplitTransaction ..> Booking
+
+class AccountBalance <<record>> {
+    accountId account;
+    LocalDate date;
+    Amount balance;
+}
+
+class CmdGetAccountBalance <<record>> implements LedgerCmd {
+    AccountId account;
+    LocalData date;
+}
+
+CmdGetAccountBalance *- "1" AccountBalance : answer
+
+CmdBookTransaction <.. Cmd
+CmdBookSplitTransaction <.. Cmd
+CmdGetAccountBalance <.. Cmd
+----
+
+[IMPORTANT]
+====
+The sealed class hierarchy defines the command types and their parameters.
+Each command type is defined through a class definition.
+
+Instances of a command type are commands.
+Each command is defined through an instance of a class.
+
+The sealed structure guarantees that the compiler will mark all code segments needing edition when a new command type is added.
+The sealed class structure and the pattern matching approach is a compiler-validated visitor pattern.
+
+We decided to store the result of a query into the command object.
+A computed answer belongs to the query initiating the processing.
+
+You can pack the result into a future wrapper to support asynchronous command processing.
+====
+
+=== Interpreters and Dispatcher
+
+THe interpreter is quite simple to realize.
+
+It processes all commands it is in charge of.
+An interpreter is in charge of one or more command sets with a specific group identifier.
+
+A second responsibility is to build a command object based on input data.
+It parses the input and generates the command instance representing the received data.
+
+[TIP]
+====
+Object-oriented approach states that you should not mix the received data with the internal command classes.
+Do not inherit from any classes defined in the channel abstraction.
+
+Domain-driven design approach clearly states the channels are interfaces to a bounded domain.
+No abstraction defined in the interface layer should pollute the domain model.
+====
+
+The dispatcher delegates the processing to multiple interpreters.
+Each subsystem can provide their interpreter to execute commands specific to the bounded domain.
+The dispatching criteria is either a group identifier or an interface marker.
+
+[plantuml,target=command-interpreter,format=svg]
+----
+interface CmdInterpreter  {
+    boolean canProcess(int group)
+
+    Cmd parse(String[] text)
+    Cmd parse(byte[] data)
+
+    String[] transform(Cmd cmd)
+    byte[] transform(Cmd cmd)
+
+    void process(Cmd command)
+}
+
+class CmdDispatcher {
+    void register(CmdInterpreter, int group)
+    void register(CmdChannel)
+
+    void process(Cmd command)
+}
+
+CmdDispatcher *-- "0..n" CmdInterpreter : interpreters
+
+interface CmdChannel {
+    byte[] readData()
+    void writeData(byte[] data)
+
+    String[] readText();
+    void writeText(String[] text)
+}
+----
+
+A channel receives and transmits command data.
+
+[TIP]
+====
+Why should we support multiple channels to propagate commands?
+
+An operator would input commands as text on a command line.
+
+An external software system would send commands through a bus such as ethernet, CANbus or SPI.
+====
+
+=== Thoughts
+
+This design approach is almost codified as a design pattern.
+The solution is constrained by the decision to use the compiler toolchain to validate the command types and to program the processing with a pattern matching approach.
+
+This approach melts object-orientation with functional aspects.
+It reflects the evolution of modern programming languages blending object-orientation and functional approaches.

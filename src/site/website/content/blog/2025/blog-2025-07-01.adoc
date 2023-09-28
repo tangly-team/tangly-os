@@ -41,6 +41,7 @@ Modern embedded solutions should be message-based communication actors.
 Do not use blocking synchronization primitives to implement multithreaded applications if you want to avoid potential deadlock, livelock and starvation problems.+
 +
 I strongly recommend using a realtime operating system and {cpp} as your programming language.
++
 - Asynchronous distributed systems <<asynchronous-distributed-systems>>
 - Modern embedded system <<modern-embedded-systems>>
 - Logging <<logging>>

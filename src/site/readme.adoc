@@ -52,9 +52,17 @@ Exploration was started to improve the styling of https://asciidoc.org[asciidoc]
 
 == Local Development
 
+To setup the ruby toolchain, you should execute:
+
+[source,console]
+----
+bundle config --local path .bundle/gems
+bundle
+----
+
 The code to generate a presentation workshop slides deck is:
 
-[source,bash]
+[source,console]
 ----
  bundle exec asciidoctor-revealjs -a revealjsdir=https://cdn.jsdelivr.net/npm/reveal.js@4.5.0 <folder>/<presenation>.adoc   <1>
 ----

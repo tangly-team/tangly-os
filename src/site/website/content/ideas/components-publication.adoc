@@ -55,7 +55,7 @@ On the positive side, the last publications were performed in less than 30 minut
 
 Below the dependencies between tangly open source components as defined in the multi-modules {ref-gradle} build file.
 
-[plantuml,tangly-componentsDependencies,width="100%",svg,opts="inline",svg-type="inline"]
+[plantuml,target=tangly-componentsDependencies,format=svg,width="100%",opts="inline",svg-type="inline"]
 ....
 @startuml
 
@@ -238,7 +238,8 @@ Upon completion, the site is published on the web for all.
 Install regular Java JDK such as the Oracle or OpenJDK distribution.
 They will be located under _/Library/Java/JavaVirtualMachines_.
 
-If using bash shell, add the following commands to your .bash_profile.
+If using bash or zsh shell, add the following commands to your _.bash_profile_ or _.zshrc_
+footnote:[_zsh_ is the default shell in current macOS versions.].
 
 [source,console]
 ----

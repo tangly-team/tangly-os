@@ -92,7 +92,7 @@ But it cannot replace a formal bachelor or master level education in computer sc
 [CAUTION]
 ====
 Certifications are quite meaningful for junior engineers.
-They learnt the theory and prove they understood the concepts.
+They learnt the theory and proved they understood the concepts.
 
 Experienced engineers are seldom challenged when learning for a certification.
 It is more of a memorization exercise and less of learning new techniques.
@@ -114,7 +114,7 @@ Why does our industry still believe you can work as a professional developer wit
 - [[[developer-certification, 3]]] link:../../2021/scrum-developer-formation/[Scrum Developer Certification]
 - [[[pmi-acp-certification, 4]]] link:../../2016/pmi-acp-certification/[PMI ACP Certification]
 - [[[java-certification, 5]]] link:../../2023/java-certification/[Java Certification]
-- [[agile-architecture, 6]]] link:../../2021/agile-software-architecture-is-mainstream/[Agile Software Architecture is Mainstream]
+- [[[agile-architecture, 6]]] link:../../2021/agile-software-architecture-is-mainstream/[Agile Software Architecture is Mainstream]
 - [[[togaf-certification, 7]]] https://www.opengroup.org/certifications/togaf-certification-portfolio[TOGAF Certification]
 
 === References

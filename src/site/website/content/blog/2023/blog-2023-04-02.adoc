@@ -16,7 +16,7 @@ image::2023-04-02-head.jpg[width=420,height=360,role=left]
 I just received my new MacBookPro M2 Max with 32 GB of RAM and 1 TB SSD
 footnote:[I am using Apple products for the last thirty-five years.
 I am certainly not objective when discussing the advantages and drawbacks of Apple computers.
-I also used Linux based workstations and regularly compiled kernels and configured drivers.
+I also used Linux-based workstations and regularly compiled kernels and configured drivers.
 Some companies forced me to use Windows computers.
 I learnt to hate virus scanners and firewalls impeding my daily developer tasks.].
 
@@ -94,7 +94,7 @@ The complete accounting activities including VAT declarations are performed with
 Developer Tools::
 - https://www.jetbrains.com/idea/[JetBrains IntelliJ IDEA] with AsciiDoc, Cursive, SonarLint, Statistics, Grazie Professional, and Snyk plugins.
 - Java JDK 17 LTS, JDK 20, and JDK 21 including the documentation for the latest JDK
-footnote:[I always install the last long term support _LTS_ Java version, the last official release, and the version under development.
+footnote:[I always install the last long-term support _LTS_ Java version, the last official release, and the version under development.
 I use the development version to validate all projects to ensure they will run when the new version is officially released.
 I only use the LTS version for legacy activities.
 I am not aware of any scenarios why an organization should use an older Java version and have an advantage.].
@@ -113,7 +113,7 @@ The official Swiss railway company does not provide Internet access in the train
 
 If you never started the Apache server, you need to execute once:
 
-[source,bash]
+[source,console]
 ----
 sudo apachectl start
 ----
@@ -125,7 +125,7 @@ https://brew.sh/[Homebrew] is an awesome tool to install libraries, tools and ap
 
 image::2023-04-02-homebrew.png[width=600,height=360,role=text-center]
 
-[source,bash]
+[source,console]
 ----
 brew install maven gradle git git-lfs node pmd                        <1>
 brew install hugo asciidoctor graphviz plantuml mermaid-cli python    <2>
@@ -167,7 +167,7 @@ It is also used to check if https://blog.tangly.net[tangly blog] RSS feed is wor
 I use a URL link checker to validate my websites.
 The link checker is a python package.
 
-[source,bash]
+[source,console]
 ----
 sudo -H pip3 install linkchecker                                <1>
 ----
@@ -187,13 +187,60 @@ If you copy your _.ssh_ folder to the new workstation, you could have access rig
 _Ssh_ is quite restrictive about the access rights of the various files in the configuration folders due to security considerations.
 Try the following changes.
 
-[source,bash]
+[source,console]
 ----
 sudo chown -R <user> ~/.ssh
 chmod 700 ~/.ssh
 chmod 600 ~/.ssh/*
 ----
 ====
+
+=== Local Configuration
+
+==== Folders
+
+Collaborators shall store projects under a well-defined path.
+
+[source,console]
+----
+mkdir /Users/Shared/Projects
+----
+
+The official company open-source project is under _/Users/Shared/Projects/tangly-os_.
+
+The {ref-uri-blog} is under _/Users/Shared/Projects/tangly-os-site_.
+The site folder is where the site content is generated using {ref-hugo} and {ref-docsy}.
+
+==== Configuration
+
+Here the startup script
+
+[source,console]
+----
+plugins=(ssh-agent)
+
+
+export PATH="/opt/homebrew/bin:/opt/homebrew/opt/ruby/bin:$PATH"                <1>
+
+export MAVEN_OPTS="--enable-preview"
+export GRADLE_OPTS="--enable-preview"
+export JAVA_HOME=`/usr/libexec/java_home`
+export GRAPHVIZ_DOT="/opt/homebrew/bin/dot"
+
+alias la="ls -al"
+alias brewup='brew update; brew upgrade; brew cleanup; brew doctor'
+
+alias java17="export JAVA_HOME=`/usr/libexec/java_home -v 17`; java -version"   <2>
+alias java20="export JAVA_HOME=`/usr/libexec/java_home -v 20`; java -version"
+alias java21="export JAVA_HOME=`/usr/libexec/java_home -v 21`; java -version"
+alias java22="export JAVA_HOME=`/usr/libexec/java_home -v 22`; java -version"
+
+java20                                                                          <3>
+----
+
+<1> Add homebrew to the path.
+<2> Command to select a JDK version and set it as default under macOS.
+<3> Select the default JDK version.
 
 === Thoughts
 

@@ -1,7 +1,7 @@
 ---
 title: "Software Architecture Themes and Questions"
 linkTitle: "Architecture Themes"
-date: 2023-10-01
+date: 2023-10-05
 tags: ["agile", "architecture"]
 ---
 
@@ -90,7 +90,7 @@ How does the application persist data?
 Archiving::
 How is older information archived?
 Data migration::
-How is persisted data migrated when a new application version is deployed?s
+How is persisted data migrated when a new application version is deployed?
 Backwards compatibility::
 Sometimes the application shall handle older persisted information or configuration without explicit migration.
 The same constraints can often be requested when communicating with external systems.
@@ -161,20 +161,20 @@ How should the solution be deployed in a landscape?
 Is incremental update requested?
 How do we update the configuration of a subset of the landscape in a consistent way?
 Authentication::
-How do we authenticate the users of the application.
+How do we authenticate the users of the application?
 Authorization::
 How do we limit access to specific functionality or data to selected users?
 External interfaces::
 How do we document and validate interfaces to external applications?
 Batch processing::
-Should we process batch of requests?
+Should we process batches of requests?
 Business rules::
 How can our application be integrated in the processes of the organizational landscape?
 
 [IMPORTANT]
 ====
 Modular monolith approach is currently the most cost-effective approach to structure a software application.
-Communication between bounded domains is asynchronous and message based.
+Communication between bounded domains is primary asynchronous and message based.
 
 Use standards for authentication and authorization to minimize security risks.
 ====
@@ -195,11 +195,11 @@ Audit logs should often be human-readable due to legal considerations.
 Reporting::
 How can a user create reports?
 Disaster recovery::
-How should our system recover after a catastrophic crash with data or configuration loss.
+How should our system recover after a catastrophic crash with data or configuration loss?
 
 [IMPORTANT]
 ====
-Monitoring is essential in a sucessful product.
+Monitoring is essential in a successful product.
 Do not skip it.
 
 The solution should support automatic offsite processing to extract relevant scenarios from huge data sets.
