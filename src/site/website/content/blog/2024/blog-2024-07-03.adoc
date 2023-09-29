@@ -2,7 +2,7 @@
 title: "Modern Embedded Realtime Architecture"
 linkTitle: "Embedded Architecture"
 date: 2024-07-20
-tags: ["C++", "architecture"]
+tags: ["C++", "architecture", "embedded"]
 ---
 
 == Modern Embedded Realtime Architecture

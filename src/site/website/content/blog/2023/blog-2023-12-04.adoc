@@ -2,7 +2,7 @@
 title: "Sensors and Actuators"
 linkTitle: "Sensors and Actuators"
 date: 2023-12-15
-tags: ["cpp", "architecture"]
+tags: ["C++", "architecture", "embedded"]
 ---
 
 == Sensors and Actuators

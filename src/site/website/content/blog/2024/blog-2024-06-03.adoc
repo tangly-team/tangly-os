@@ -2,7 +2,7 @@
 title: "Actors with CMSIS OS in Cpp"
 linkTitle: "C++ cmsis Actors"
 date: 2024-06-10
-tags: ["C++", "architecture"]
+tags: ["C++", "architecture", "embedded"]
 ---
 
 == Actors with CMSIS OS Platform in {cpp}

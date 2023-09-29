@@ -270,11 +270,11 @@ This design always promotes eventual consistency.
 You will never have an atomic global state of the system.
 
 I agree that if you have reliable communication, it would be possible.
-The advocates of this solution just forget about the costs of reliability and the consequences as stated in the {ref-cap}.
+The advocates of this solution just forget about the costs of reliability <<fallacies>> and the consequences as stated in the {ref-cap}.
 ====
 
 [biblography]
 === Links
 
 - [[[actor-model, 1]]] https://en.wikipedia.org/wiki/Actor_model[Actor Model]
-
+- [[[fallacies, 2]]] https://en.wikipedia.org/wiki/Fallacies_of_distributed_computing[Fallacies of Distributed Computing]
