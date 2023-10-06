@@ -1,0 +1,621 @@
+---
+title: "20th Devoxx Belgium Conference 2023"
+linkTitle: "Devoxx"
+date: 2023-10-06
+tags: ["java", "organization"]
+---
+
+== 20th Devoxx Belgium Conference 2023
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+:ref-anemic-domain-model: https://en.wikipedia.org/wiki/Anemic_domain_model[Anemic Domain Model]
+:ref-armeria: https://armeria.dev/[Armeria]
+:ref-avro: https://avro.apache.org/[Avro]
+:ref-cloudevents: https://cloudevents.io/[cloudevents]
+:ref-devoxx-channel: https://www.youtube.com/@DevoxxForever/videos[Devoxx Channel]
+:ref-djl: https://docs.djl.ai/[Deep Java Library]
+:ref-digma: https://digma.ai/[Digma]
+:ref-docker: https://www.docker.com/[Docker]
+:ref-docker-compose: https://docs.docker.com/compose/[Docker Compose]
+:ref-eclipsestore: https://eclipsestore.io/[Eclipse Store]
+:ref-ffm: https://openjdk.org/jeps/454[Foreign Function and Memory API]
+:ref-grpc: https://grpc.io/[gRPC]
+:ref-idea: https://www.jetbrains.com/idea/[Jetbrains IntelliJ IDEA]
+:ref-jetbrains: https://www.jetbrains.com/[jebrains]
+:ref-jib: https://github.com/GoogleContainerTools/jib[jib]
+:ref-jobrunr: https://www.jobrunr.io/en/[JobRunr]
+:ref-jspecify: https://jspecify.dev/[JSpecify]
+:ref-langchain4j: https://github.com/langchain4j/langchain4j[LangChain4J]
+:ref-protobuf: https://protobuf.dev/[ProtoBuf]
+:ref-opentelemetry: https://opentelemetry.io/[OpenTelemetry]
+:ref-oracle: https://www.oracle.com/java/[Oracle Java]
+:ref-panama: https://openjdk.org/projects/panama/[Panama]
+:ref-postgresql: https://www.postgresql.org/[postgreSQL]
+:ref-structurizr: https://structurizr.com/[Structurizr]
+:ref-toxiproxy: https://github.com/shopify/toxiproxy[toxiproxy]
+:ref-vaadin: https://vaadin.com/[vaadin}>]
+:ref-valhalla: https://openjdk.org/projects/valhalla/[Valhalla]
+
+image::2023-10-03-head.png[width=420,height=360,role=left]
+
+I attended the highly anticipated 20th edition of Devoxx Belgium 2023.
+
+Building on the success of the previous year, which attracted over 3,200 attendees, this five-day technology conference is set to exceed expectations.
+
+The fresh release of Java 21 is a hot topic.
+Renowned speakers share their knowledge and discuss the enhancements that this new version brings, providing a valuable learning opportunity.
+
+Attending Devoxx Belgium presents a remarkable opportunity to broaden your knowledge, refine your skills, and gain firsthand experience with the most recent technologies.
+
+Session recordings are available on YouTube under the {ref-devoxx-channel}.
+The videos are published on the same day the talk was held.
+Congratulations to the Devoxx committee.
+
+Most of the talks were good.
+A few were excellent such as <<awesome-speech-llm>>.
+The Oracle Java architects are doing a stunning job.
+They are very professional, polite, and their talks are of high-quality.
+Brian Goetz and Per Minborg made a big impression on how competent they are
+footnote:[I still think that Oracle Java license conditions are crazy.
+You have to pay 250 USD per collaborator.
+Nothing to do with how many developers you have or how many applications you are running.].
+
+My favorite tool companies {ref-jetbrains}, {ref-vaadin}, and {ref-oracle} were exhibitors.
+
+=== Day One
+
+The train ride from Brussels airport to Antwerp is around half an hour.
+
+The venue is easy to find and has splendid public transportation connections.
+The registration was straightforward and fast.
+Wireless is working.
+
+It was saddening that most attendees are white male engineers.
+Perhaps the conference committee should more actively pursue diversity.
+Other conferences try very hard to attract less represented groups in particular women.
+
+The coffee was lousy as usual at a software conference
+footnote:[Agile conferences have often a real coffee machine and a barista.
+I promise it is not the reason why I also attend agile congresses.].
+The danish pastries were welcome.
+
+==== Test Containers: Needed, Simple, Powerful
+
+Integration tests verify your application is working as expected.
+
+Test containers is a powerful wrapper around docker.
+You can create the integration environment and the continuous delivery pipeline in Java.
+
+[sidebar]
+Test containers seem to lower the anxiety how to set up an integration environment and deploy the application on it.
+
+If you prefer to write and debug your integration setup in Java, test containers are useful.
+The demonstration highlighted you have anyway to learn the subtleties of Docker.
+You can write your setup code in Java, but it requires quite knowledge about the underlying tooling.
+
+A cool hint was {ref-toxiproxy} to simulate network delays and errors.
+
+Alternative approaches are docker compose or plugins such as jib.
+
+_I am still not convinced the gains using test containers are worth learning a new library._
+_The assumption is you are already proficient with {ref-docker} and {ref-docker-compose}._
+
+==== Java 21
+
+The introduction was well-done.
+Honestly, if you read the JSR and articles during the early-adopter phase, you did not get new information during the presentation.
+
+_The presentation is for Java developers lagging behind the latest Java LTS release._
+_Modern developers evaluate a new Java version before it is officially released._
+
+==== Value Types and Patterns Matching
+
+Data oriented programming separate data and code.
+This approach is against core concepts of object-oriented programming.
+
+The speakers talked about the disadvantages of recompiling code when changing an interface.
+But honestly what are the costs of compiling in a modern {ref-devops} environment?
+
+The advantage of declaring a static method instead of a default method in the interface is not visible for me.
+
+Use sealed class hierarchies, pattern matching in switch expressions to delegate complex business logic inside business classes.
+Consider using records to write less code and move in the direction of immutable instances.
+Deconstruction patterns and unnamed variables make the algorithms more legible.
+
+Avoid {ref-anemic-domain-model}.
+I acknowledge there is a tension between behavior which should be part of a class and complex business logic which should be defined separately from the core domain.
+
+[CAUTION]
+====
+If you are not the owner of the code, you want to extend it using:
+
+Polymorphism:: You can add new subtypes and cannot create new operations.
+Functional:: You can add new operations but cannot create new subtypes.
+====
+
+The above constraint clearly defines the tension in designing the abstractions for a bounded domain.
+
+An experienced architect with domain knowledge should hint which functionalities belong to a class and which ones are better located in business logic abstractions.
+
+Future constructs were also presented.
+
+Named patterns is a discussion theme in the community.
+They support the deconstruction of regular classes.
+
+Value classes as potential first preview of the {ref-valhalla} project.
+Value instances have no identity anc can be stored on the stack.
+Interestingly, the optimization is only done at runtime.
+
+They stated discussions is under to integrate null annotation in the language as discussed in {ref-jspecify}
+footnote:[The restriction is that the community agrees upon the check definitions.].
+
+[TIP]
+====
+Modern Java programmers implement the _equals(Object obj)_ method with _instanceof_ and not _if_ statement.
+
+The statement _if (this == obj)_ is a performance killer when compared with the modern approach.
+====
+
+==== Getting Started with the Structurizr DSL
+
+Simon Brown provided a nice introduction to {ref-c4}: Context, Container, Component, and Code.
+
+The explanations of Structurizr DSL and examples were interesting.
+
+- Multiple diagrams can be defined in _views_.
+The types are _systemContext_, _container_, and _component_.
+- You can manipulate the diagrams with scripts.
+- The model stores semantic relations between the various elements.
+- You can use the command line to generate all views as regular or C4 plantUML diagrams.
+
+The examples showed that often you start programming diagram items and contents.
+
+_The major drawback is that {ref-structurizr} wants to be the ruler of your documentation._
+_You cannot create a static website with the diagrams and the links between them._
+_The tool plantUML supports such features through the SVG output._ +
+_Instead {ref-structurizr} requires that your {ref-asciidoc} or {ref-arc42} documents are integrated into it._
+
+[NOTE]
+====
+You can export the content of a model to an HTML page.
+
+It is not the same as generating a static website with a static generator and theme.
+Generators such as {ref-hugo} provides mechanisms to generate links and cross-references to link various parts of your documentation.
+====
+
+The idea to add a semantic abstraction layer to diagramming tools is brilliant.
+I think the current solution should be improved to simplify diagram handling.
+
+=== Day Two
+
+I found a nice coffee shop in town to get a real coffee and a cinnamon roll.
+Loaded with caffeine and sugar, I am ready to tackle the second conference day.
+
+==== Know Your Java?
+
+Entertaining and professional presentation of Java quirks.
+The examples show Java software archeology.
+
+[quote,Venkat Subramaniam]
+____
+Don't Walk Away From Complexity, Run.
+
+Speed without Discipline: a Recipe for Disaster.
+____
+
+New features have sometimes strange impacts on existing code, often due to bad naming or interface segregation troubles.
+
+[TIP]
+====
+Learn the language and the standard API.
+
+Study functional programming, pure function, immutable data structure concepts.
+Java mixes object-orientation and functional programming.
+The compiler performs limited checks if your functional code behaves correctly.
+
+As a young developer, consider taking the Java developer certification examination.
+====
+
+==== Test-Driven Insights: 10 Hints You Were Missing
+
+Funny examples of how to write unit tests for crap code.
+The end of the talk presented good design approaches and the need to refactor.
+The speaker Victor Rentea outed himself as a clean-code advocate.
+
+Rely on the language and not on tests to detect errors is a profound advice.
+
+The {cpp} bashing was surprising.
+
+The attendees hinted that a lot of legacy code exists.
+Developers are under the yoke of maintaining and extending geriatric solutions.
+
+_I rather advocate performing refactoring to remove technical debt before trying to add functionality._
+_I fully agree that there are rare exceptions due to important business deadlines._
+_Here you could use the tricks with mocks, partial mocks, breaking information hiding to test legacy code._
+
+_Be honest._
+_I would never work on a crap software code application._
+_Either the company is resolute with professionalism and supports refactoring._
+_Or I would look out for a serious development environment._
+
+==== Microservices Got Talent: The Event-Driven Beautiful Dance
+
+Event-first design is another approach to look at your domain.
+
+Ensures there are event handlers for all emitted events before they are effectively persisted.
+The event sourcing runtime should ensure the approach.
+
+- Validate the command.
+Execute the commands sequentially on your model.
+- Mutate the state by applying the events
+- Persist the events Do not use Java serialization.
+Think about schema evolution.
+JSON is fine, but you have to manually implement schema changes. +
+Performant approaches are {ref-avro} or {ref-protobuf} which support schema evolution. +
+{ref-eclipsestore} is a potential candidate.
+The event sourcing runtime is responsible to load events into memory and removes them from memory for a specific instance in the domain model.
+
+Projections are used to process events and create a query optimized views on the model.
+The concept is similar to a materialized view in a relational database.
+Events are sent at least once to projection event handlers
+footnote:[Exactly once is only available for local services using a transactional backend.].
+Scalability is realized through slicing of the event store.
+The slicing property is the stable identifier of the entity referenced in the event.
+Design your system accordingly.
+
+Choreography sagas are completely based on events and projections.
+Once triggered, it moves like a wave until completion.
+Therefore, no error should block the flow and they are hard to debug.
+
+You can use complex sagas with orchestration tools such as https://temporal.io/[Temporal] or https://camunda.com/[Camunda].
+A trend is to offer PaaS solutions built around a kubernetes cluster.
+
+==== With Java 21, Your Code Runs Even Faster. But How is that Possible?
+
+The presentation was fun, instructive and well-done.
+The details were inspiring and of high-quality.
+The speaker showed multiple areas where the JVM was locally massively improved through clever refactoring.
+Worth every second and a nice way to complete the day.
+
+=== Day Three
+
+==== Keynote
+
+The themes are Java and AI.
+Artificial intelligence is a hot topic with few concrete scenarios.
+The three most cited areas are personal assistant, coding assistant, and image generator.
+
+_A good coding copilot would be a great use case._
+_Jetbrains and other companies solutions are still work in progress and often not released to the public._
+
+And two talks about physics and quantum computing.
+
+Brian Goetz presented the new features of Java 21.
+An alluring idea was presented.
+Library owners should follow a similar release strategy as Java.
+
+- LTS releases are delivered every two years.
+Once released, only security problems and bugs are corrected in the LTS releases.
+- New features are only implemented for the current Java release.
+Use the newest Java features.
+You do not have to provide backward compatibility for older versions.
+Your users can use your LTS release.
+
+[IMPORTANT]
+====
+The idea is so cool.
+I will advocate the approach and try it on my open-source projects.
+
+You have only to support two versions of your library.
+You can use old the cool new features in the newest version without stressing about backward compatibility.
+====
+
+==== Unlocking the Potential of Bits and Bytes: Reducing Data Footprint for Cost and Eco-Efficiency
+
+Beginner introduction of byte encoding for the payload.
+
+The speaker advocates the use of cheap raspberry boards to experiment.
+
+Smaller data packages reduce energy consumption, network traffic, and surprisingly also latency.
+
+{ref-protobuf} is a good compromise to encode payloads.
+Hand coded structures are still factors more compact but require code to encode and decode the payload.
+
+==== PostgreSQL, The Time-Series Database You Actually Want
+
+The speaker shows a demonstration of time series in {ref-postgresql}.
+Nice to learn the database supports the feature, and I missed concrete examples why should I use it.
+
+==== Project Leyden
+
+Brian Goetz explained the various mechanisms to speed startup time and increase performance.
+In the end, Java programs should be more cloud-friendly.
+
+Use AppCDS to improve the startup performance of your application.
+It should be a standard step in your deployment before packaging your application into a Docker image.
+
+[source,console]
+----
+java -XX:+AutoCreateSharedArchive -XX:SharedArchiveFile=tangly-os-archive.jsa  <1>
+----
+
+<1> Since JDK 19, the CDS archive file is created automatically as a dynamic archive if it is missing.
+If the file exists, the JVM will use it.
+CDS is active per default _-Xshare:auto_.
+
+Ideally, some improvements shall be delivered with JDK 22.
+
+==== Java at AWS: Lessons Learned from Upgrading and Modernizing a Massive JVM Codebase
+
+Speakers presented the huge gains moving from JDK 8 to JDK 17.
+
+They had a few regression cases when doing such a huge jump in versions.
+The troubles were methods or classes no more accessible in the newer version.
+Just read the log files; the encountered restriction always generates a log describing the problem.
+
+Beware that more threads can be active in garbage collection in newer versions.
+
+They provided an interesting argumentation why they will wait with the update to Java 21.
+The known bugs are too critical to update such a huge installed base.
+
+James Gosling was interesting and getting older.
+He had a point that multiple libraries implementing the same functions are eating away your memory.
+A Java application should have one JSON transformer, one serializer, and one HTTP protocol stack.
+
+[TIP]
+====
+Limit the number of libraries you are using.
+
+The biggest inhibitors for updates are test mocks and Lombok.
+
+Instead of forking an open-source library, write a change request first.
+Prefer pull requests over forks.
+Sharing source code is more toxic than sharing binaries.
+Long live maven central.
+====
+
+==== Java on Arm. New horizons
+
+It was a boring presentation.
+I know a little about ARM processor architecture.
+The speaker just presented the different processors available on the market.
+
+No real presentation how Java is optimized for ARM architecture.
+He could have presented intrinsics, SIMD support and other architecture optimizations.
+
+Cloud companies provide ARM-based solutions with tens or hundreds of cores.
+All Apple computers are running on ARM.
+
+One clear statement was we will run our applications on a platform with a lot of ARM or X86 cores in the future.
+
+==== Coding Your Documentation
+
+Hubert Klein also known as _mrhaki_ is an advocate of {ref-asciidoc}.
+He has a cool https://blog.mrhaki.com/[blog].
+I am also a fan of {ref-asciidoc}, {ref-asciidoctor}, and {ref-hugo}.
+
+The presentation was interesting and professional.
+
+[sidebar]
+I am an absolute fan of {ref-asciidoc}, {ref-plantuml} and {ref-hugo}.
+I enjoyed seeing how he solved similar problems with the same toolchains.
+
+=== Day Four
+
+*Surprise, Surprise*.
+The public transportation went on strike today.
+I had a nice stroll along the harbor to reach the conference venue.
+The weather was fine and I achieved my daily sport quota.
+
+In the evening, I discovered that the strike is going on.
+I got my second walk and enjoyed the sunset over the harbor and the old city.
+
+It was the first day with fall temperatures.
+The previous days had summer temperatures.
+You still could have dinner outside on a terrace.
+It was a little chilly, but locals enjoyed the last warm days of this season.
+
+==== Open Telemetry and Continuous Feedback. Things you need to know about your Java code at runtime
+
+The speaker favors integration and production feedbacks how the application behaves.
+
+He advocates {ref-opentelemetry} because it is an industrial standard.
+
+[sidebar]
+An introduction how to use {ref-opentelemetry} can be found under http://continuousfeedback.org/[Continuous Feedback].
+
+The {ref-digma} plugin is an approach to support developers.
+Observability metrics are provided during development and testing directly in your {ref-idea}.
+
+Cool plugin providing developer functionality without having to install multiple docker images as with regular DevOps tools.
+
+==== Lessons learned using Machine Learning in Java
+
+Funny presentation how to classify Lego bricks using machine learning.
+
+The speaker is not a machine learning _ML_ specialist and had a steep learning curve.
+All packages are available as open source packages.
+
+The Java ecosystem is smaller and less well documented.
+He used {ref-djl}.
+
+One important finding was _use real images, do not create them mechanically_.
+The difference is tremendous.
+
+[sidebar]
+Tutorials how to set up a machine learning environment, train the models, and process application data are sorely missing.
+
+[#awesome-speech-llm]
+==== Java Meets AI: A Hands-On Guide to Building LLM-Powered Applications with LangChain4j
+
+This presentation was the coolest of the whole Devoxx 2023.
+
+The speaker is an active developer of {ref-langchain4j}.
+Her approach solves the troubles described in the previous talk for LLM models.
+
+[sidebar]
+If you are a beginner, go to https://huggingface.co/[HuggingFace] and https://localai.io/[localAI].
+
+The code examples show how little code you need to set up a chat agent backed with a LLM model.
+
+You can define your own tools to compute values instead of asking the model to guess them.
+Better than you can ask your model to generate a tool because models can also write source code.
+This is awesome.
+
+[sidebar]
+I have to test chat with documents.
+Train with your documents, for example, your blog.
+After training, the chat can answer questions about your own documents or source code.
+
+==== Debugging with IntelliJ IDEA
+
+Solid presentation of {ref-idea} debugger features with hands-on examples.
+
+I seldom use the debugger.
+The tips were good but not really relevant for me.
+
+==== gRPC Supercharged with Armeria
+
+The speaker presented a solid introduction to {ref-grpc} and {ref-armeria}.
+
+The frameworks provide needed services for a highly scalable applications based on microservices.
+{ref-armeria} industrializes {ref-grpc} services.
+
+The concepts are clean and well-implemented.
+The decorator pattern is used to add functionality to services.
+I seldom have non-functional requirements requiring such complex architectures.
+
+[sidebar]
+The {ref-armeria} framework provides the equivalent of {ref-openapi} for {ref-grpc}.
+Beware that {ref-armeria} is a framework which again implemented an HTTP engine.
+
+==== Building and Deploying Java Client Desktop Applications With JDK 21 and Beyond
+
+A solid presentation about Swing and JavaFX.
+You can use both libraries in the same application.
+
+The demonstration of an email client was solid.
+I got the impression that not a lot of innovations are happening in the Swing or JavaFX landscapes
+footnote:[I do not care too much about the inertia.
+I am mainly developing web-based applications with {ref-vaadin}.
+{ref-jetbrains} is doing an incredible job to update Swing and Java 2D subsystems to changes.
+The https://openjdk.org/projects/lanai/[Lanai] and https://openjdk.org/projects/wakefield/[Wakefield] projects are awesome.].
+
+[sidebar]
+Use _jpackage_ to create a native installer
+footnote:[You can only create an installer for the platform where you are running _jpackage_.
+Use a continuous delivery platform to build installer for all the platforms you want to support.].
+For example, it creates a _dmg_ installer for the macOS platform.
+
+==== Open standards for building event-driven applications in the cloud
+
+The speaker provided a good introduction to {ref-asynapi} and {ref-cloudevents}.
+
+[sidebar]
+Funny to have a speaker at a Java conference stating he did not install Java on his notebook and showing C# examples.
+It is a proof the speaker did not prepare for this talk.
+It felt like disrespect to the conference attendees.
+
+=== Day Five
+
+The last conference day.
+I am surprised how tiring it was to listen to so many presentations and trying to memorize interesting concepts.
+
+I decided to leave earlier to be sure to catch my flight.
+The yesterday experience with the strikes made me worried.
+It worked well, and I was ahead on time at the airport.
+
+[sidebar]
+I decided to enjoy the digital nomad feeling.
+I published this blog at the airport while waiting to board my plane.
+
+==== The developer's guide to making money in the open-source galaxy
+
+An entertaining presentation about entrepreneurship.
+
+He had tribulations between Java and .NET projects.
+I finally got the courage to realize a product idea I had long ago and implement it as an open-source Java.
+{ref-jobrunr} was born as a port of .NET Hangfire.
+
+He used redIT to market his product.
+He enjoys working with the Java community and Java champions.
+They are very supportive and kind.
+
+The commercial model is {ref-jobrunr} as open-source application and a paid professional version.
+The first license is a permanent license to a French company priced 400 EUR.
+
+The breakthrough was a talk in May 2022 at the Spring I/O conference.
+The ThoughtWorks technology radar mentioned {ref-jobrunr} and increased the exposure.
+
+He made 90'000 EUR in 2022.
+The forecast for 2023 is around 260'000 EUR.
+This year is hired his first employee.
+
+The whole approach is cute, hands-on, and most importantly working.
+He is able to live from an open-source product.
+This is an impressive and sadly seldom achievement.
+
+==== The Panama Dojo: Black-Belt Programming with Java 21 and the FFM API
+
+Per Minborg provided again a cool high-quality talk about {ref-panama and {ref-ffm}.
+
+An arena models the lifecycle of one or more memory segments.
+All segments allocated in the arena share the same lifetime.
+Multiple arena types are provided for different scenarios.
+
+Memory layouts describe contents of a memory region programmatically.
+
+[sidebar]
+With {ref-panama}, it is again good and easier to call C libraries from Java applications.
+JNI is now officially an obsolete technology.
+Use {ref-ffm} to call external libraries.
+
+=== Learnings
+
+Please use the *current* release of Java.
+Most speakers rightly make fun of organizations still using Java 8 or older versions.
+They seriously asked why you are not yet on the Java LTS 21 version.
+
+Embrace *functional programming*.
+Conquer streams and lambda expressions defined as pure functions.
+Promote immutable objects and collections in your source code.
+These design solutions naturally scale with more processing cores.
+
+Advanced discussions were heard in some talks.
+How should and would Java evolve in the next years?
+Current https://openjdk.org/[openJDK] projects cover all ideas I heard during the conference.
+The exception is how to support ML and AI approaches.
+I am only aware of https://www.jcp.org/en/jsr/detail?id=381[JSR 381]
+footnote:[I have the impression that JSR approach is dead.
+Oracle architects stated the goal is to make Java a friendly environment for all important trends.
+Project {ref-panama} is an approach to better integrate ML and AI libraries with Java.
+{ref-panama} is available in curren Java versions.
+Project {ref-valhalla} would allow more performant implementation of computation algorithms in Java.
+It is a pity that we are still waiting on a fist release of the project.].
+
+Green IT is regularly cited.
+I am not sure organizations take the initiative seriously.
+
+Speakers are professional engineers.
+Almost all of them have Apple notebooks.
+Professional Java developers are using {ref-idea} from {ref-jetbrains}.
+More than 80% of conference participants use it.
+
+I love the modern connected world.
+I hold video conferences with my daughters and wife every day without trouble.
+
+I was pleased that no customers called me during the conference.
+
+[bibliography]
+=== Links
+
+- [[[certifications-useful, 1]]] link:../../2023/are-certifications-useful/[Are Certifications Useful?]
+Marcel Baumann. 2023.
+- [[[java-certification, 2]]] link:../../2023/java-certification/[Java Certification]
+Marcel Baumann. 2023.
+- [[[java-developer-11, 3]]] link:../../2021/certified-java-developer/[Java Certified Developer Java 11]
+Marcel Baumann. 2021.
+- [[[modern-java-constructs, 4]]] link:../../2022/modern-java-constructs/[Modern Java Constructs]
+Marcel Baumann. 2022.

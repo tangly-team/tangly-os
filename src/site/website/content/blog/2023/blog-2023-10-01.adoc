@@ -147,7 +147,7 @@ image::2023-10-01-dora-metrics.png[width=80%,height=360,role=text-center]
 * Deployment frequency (DF).
 * https://en.wikipedia.org/wiki/Lead_time[Lead time] for changes (LT), you can also compute the average age of issues and cumulative flow diagrams for issues.
 * Change failure rate (CFR).
-* https://en.wikipedia.org/wiki/Mean_time_to_recovery[Meantime to Recovery] _MTTR_
+* https://en.wikipedia.org/wiki/Mean_time_to_recovery[Meantime to Recovery] _MTTR_.
 _Called time to restore service in the above dashboard_.
 
 === GitHub Tools

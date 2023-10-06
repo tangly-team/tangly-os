@@ -15,10 +15,16 @@ Agile and Scrum::
 - link:../../tags/agile/[Agile and Scrum Blogs]
 - link:../../ideas/learnings/workshops/agile-scrum/agile-scrum.html[Agile Scrum Workshop]
 - link:../../ideas/learnings/workshops/agile-technical-fluency/agile-technical-fluency.html[Agile Technical Fluency Workshop]
+- {ref-lean}, {ref-scrum}, {ref-less}, {ref-scrumguide}, {ref-scrum-alliance}, {ref-scrum-alliance}
+- {ref-manifesto} and {ref-manifesto-principles}, {ref-kaizen}, {ref-xp}
+- {ref-craftsmanship}, {ref-sociocracy}, {ref-bbrt}
+- {ref-trunk-based-development}
 DevOps::
 - link:../../tags/git[Git, GitHub, GitLab, BitBucket Blogs]
 - link:../../tags/devops[DevOps Blogs]
 - link:../../ideas/learnings/workshops/agile-technical-fluency/agile-technical-fluency.html[Agile Technical Fluency Workshop]
+- {ref-devops}
+- {ref-git}, {ref-github}, {ref-gitlab}
 Agile Software Architecture and Design::
 - link:../../ideas/agile-architecture/[Agile Architecture]
 - link:../../tags/architecture[Agile Architecture Blogs]
@@ -26,6 +32,8 @@ Agile Software Architecture and Design::
 - link:../../ideas/learnings/lectures/swat-lecture/[Agile Software Architecture and Techniques Lecture]
 - link:../../ideas/learnings/workshops/arc42/arc42.html[arc 42 Workshop]
 - link:../../ideas/learnings/workshops/c4-uml/c4-uml.html[C4 and UML Workshop]
+- {ref-c4}, {ref-plantuml}, {ref-mermaid}, {ref-uml}, {ref-state-machine-cat}
+- {ref-actor-model}, {ref-openapi}, {ref-asynapi}
 Domain-Driven Design::
 - link:../../tags/domain-driven-design/[Domain-Driven Design]
 - link:../../ideas/learnings/workshops/ddd/ddd.html[DDD Workshop]
@@ -34,6 +42,10 @@ Modern Java::
 - link:../../tags/java[Modern Java Blogs]
 - link:../../tags/jvm-languages/[JVM Languages Blogs]
 - link:../../ideas/learnings/lectures/pcp-lecture/[Programming Concepts and Paradigms Lecture]
+- {ref-javadoc}
+- {ref-microstream}
 Embedded Devices::
 - link:../../tags/embedded[Embedded Devices Blogs]
 - link:../../tags/c++[{cpp} Blogs]
+- {ref-doxygen}
+- {ref-cmsis-rtos2}, {ref-can-bus}, {ref-micro-os-II}
