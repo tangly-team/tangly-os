@@ -3,21 +3,21 @@
 The _tangly_ open source components are a set of open source libraries released under Apache 2.0 licence and are available through maven central.
 The components are
 
-* link:net.tangly.bdd/readme.md[_BDD_] behavior driven development library
-* link:net.tangly.commons/readme.md[_COMMONS_] commons library
-* link:net.tangly.dev/readme.md[_DEV_] development tools library
-link:net.tangly.fsm/readme.md[_FSM_] hierarchical finite state machine library
-* link:net.tangly.gleam/readme.md[_GLEAM_] declarative model transformation frameworks library.
+* link:net.tangly.bdd/readme.adoc [_BDD_] behavior driven development library
+* link:net.tangly.commons/readme.adoc[_COMMONS_] commons library
+* link:net.tangly.dev/readme.adoc[_DEV_] development tools library
+link:net.tangly.fsm/readme.adoc[_FSM_] hierarchical finite state machine library
+* link:net.tangly.gleam/readme.adoc[_GLEAM_] declarative model transformation frameworks library.
 Approaches for TSV and JSON representations are available.
-* link:net.tangly.ports/readme.md[_PORTS_] ports library providing examples to connect a business domain model to external systems
-* link:net.tangly.ui/readme.md[_UI_] Vaadin user interface library
-* link:net.tangly.ui/readme.md[_WEB_] Web utilities library
+* link:net.tangly.ports/readme.adoc[_PORTS_] ports library providing examples to connect a business domain model to external systems
+* link:net.tangly.ui/readme.adoc[_UI_] Vaadin user interface library
+* link:net.tangly.ui/readme.adoc[_WEB_] Web utilities library
 * ERP Components
-** link:net.tangly.erp.crm/readme.md[_ERP CRM_] customer relations management business components library
-** link:net.tangly.erp.invoices/readme.md[_ERP INVOICES_] invoices business components library
-** link:net.tangly.erp.ledger/readme.md[_ERP LEDGER_] ledger business components library
-** link:net.tangly.erp.products/readme.md[_ERP PRODUCTS_] products business components library
-** link:net.tangly.erp.shared/readme.md[_ERP SHARED_] shared business components library
+** link:net.tangly.erp.crm/readme.adoc[_ERP CRM_] customer relations management business components library
+** link:net.tangly.erp.invoices/readme.adoc[_ERP INVOICES_] invoices business components library
+** link:net.tangly.erp.ledger/readme.adoc[_ERP LEDGER_] ledger business components library
+** link:net.tangly.erp.products/readme.adoc[_ERP PRODUCTS_] products business components library
+** link:net.tangly.erp.shared/readme.adoc[_ERP SHARED_] shared business components library
 
 The documentation is located under https://blog.tangly.net/[tangly-team].
 
@@ -29,9 +29,9 @@ A legacy mirror is also hosted under BitBucket https://bitbucket.org/tangly-team
 
 The issue tracker for errors, improvements, and corrections is https://bitbucket.org/tangly-team/tangly-os/issues[tangly OS issues].
 
-For any further question and discussion you can use the forum https://groups.google.com/g/tangly-os-components[tangly-OS-Components]
+For any further questions, you can use the forum https://github.com/orgs/tangly-team/discussions[tangly-Discussions].
 
-Beware we are experimenting with the most current versions of components, libraries and JDK.
+We are experimenting with the most current versions of components, libraries and JDK.
 The components are stored in a single git repository and are build using a multi-modules gradle build script.
 
 == Contribution

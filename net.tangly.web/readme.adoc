@@ -24,7 +24,6 @@ Therefore to build and execute the ERP application please
 [source,shell]
 ----
     mvn jetty:run
-
 ----
 
 The initial username and password are 'administrator' and 'aeon'.
@@ -54,9 +53,9 @@ The library can be included in Gradle as
     implementation "net.tangly:web:0.2.7"
 ----
 
-The documentation can be found under https://blog.tangly.net/docs/web/[Web documentation]
+The documentation can be found under https://blog.tangly.net/docs/web/[Web documentation].
 
-For any further question and discussion you can use the forum https://groups.google.com/g/tangly-os-components[tangly-OS-Components]
+For any further questions, you can use the forum https://github.com/orgs/tangly-team/discussions[tangly-Discussions].
 
 == Contribution
 
