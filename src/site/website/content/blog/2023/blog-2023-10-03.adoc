@@ -19,9 +19,11 @@ include::../fragments/_config-mb-blog.aodc[]
 :ref-docker-compose: https://docs.docker.com/compose/[Docker Compose]
 :ref-eclipsestore: https://eclipsestore.io/[Eclipse Store]
 :ref-ffm: https://openjdk.org/jeps/454[Foreign Function and Memory API]
+:ref-flyway: https://flywaydb.org/[Flyway]
 :ref-grpc: https://grpc.io/[gRPC]
+:ref-hsqldb: https://hsqldb.org/[HyperSQL]
 :ref-idea: https://www.jetbrains.com/idea/[Jetbrains IntelliJ IDEA]
-:ref-jetbrains: https://www.jetbrains.com/[jebrains]
+:ref-jetbrains: https://www.jetbrains.com/[Jetbrains]
 :ref-jib: https://github.com/GoogleContainerTools/jib[jib]
 :ref-jobrunr: https://www.jobrunr.io/en/[JobRunr]
 :ref-jspecify: https://jspecify.dev/[JSpecify]
@@ -56,7 +58,7 @@ A few were excellent such as <<awesome-speech-llm>>.
 The Oracle Java architects are doing a stunning job.
 They are very professional, polite, and their talks are of high-quality.
 Brian Goetz and Per Minborg made a big impression on how competent they are
-footnote:[I still think that Oracle Java license conditions are crazy.
+footnote:[I still think that Oracle Java license conditions are lunatic.
 You have to pay 250 USD per collaborator.
 Nothing to do with how many developers you have or how many applications you are running.].
 
@@ -98,7 +100,15 @@ A cool hint was {ref-toxiproxy} to simulate network delays and errors.
 Alternative approaches are docker compose or plugins such as jib.
 
 _I am still not convinced the gains using test containers are worth learning a new library._
-_The assumption is you are already proficient with {ref-docker} and {ref-docker-compose}._
+_The assumption is that you are already proficient with {ref-docker} and {ref-docker-compose}._
+_Test containers are certainly useful when you have a complex ecosystem with databases, servers, and a lot of microservices._
+
+_I often have a modular monolithic application._
+_I use {ref-eclipsestore} and embedded {ref-hsqldb} for persistence._
+_I use {ref-flyway} to populate the database._
+_My docker compose file is simple and straightforward._
+
+_Why should I add the complexity of test containers?_
 
 ==== Java 21
 
@@ -116,14 +126,16 @@ This approach is against core concepts of object-oriented programming.
 The speakers talked about the disadvantages of recompiling code when changing an interface.
 But honestly what are the costs of compiling in a modern {ref-devops} environment?
 
-The advantage of declaring a static method instead of a default method in the interface is not visible for me.
+The advantage of declaring a static method instead of a default method in the interface is not visible to me.
 
 Use sealed class hierarchies, pattern matching in switch expressions to delegate complex business logic inside business classes.
+
 Consider using records to write less code and move in the direction of immutable instances.
+
 Deconstruction patterns and unnamed variables make the algorithms more legible.
 
 Avoid {ref-anemic-domain-model}.
-I acknowledge there is a tension between behavior which should be part of a class and complex business logic which should be defined separately from the core domain.
+I acknowledge there is a tension between behavior which should be part of a class and complex business logic which should be defined separately from the core domain abstractions.
 
 [CAUTION]
 ====
@@ -155,6 +167,7 @@ footnote:[The restriction is that the community agrees upon the check definition
 Modern Java programmers implement the _equals(Object obj)_ method with _instanceof_ and not _if_ statement.
 
 The statement _if (this == obj)_ is a performance killer when compared with the modern approach.
+Stop using conditional statements when implementing _equals_ method.
 ====
 
 ==== Getting Started with the Structurizr DSL
@@ -196,6 +209,7 @@ Loaded with caffeine and sugar, I am ready to tackle the second conference day.
 
 Entertaining and professional presentation of Java quirks.
 The examples show Java software archeology.
+Old coding and naming decisions coming back to bite you.
 
 [quote,Venkat Subramaniam]
 ____
@@ -209,8 +223,10 @@ New features have sometimes strange impacts on existing code, often due to bad n
 [TIP]
 ====
 Learn the language and the standard API.
+Stop programming _for_ instructions to iterate through collections.
+Use the _streams_ API.
 
-Study functional programming, pure function, immutable data structure concepts.
+Study functional programming, pure function, and immutable data structure concepts.
 Java mixes object-orientation and functional programming.
 The compiler performs limited checks if your functional code behaves correctly.
 
@@ -248,7 +264,7 @@ The event sourcing runtime should ensure the approach.
 
 - Validate the command.
 Execute the commands sequentially on your model.
-- Mutate the state by applying the events
+- Mutate the state by applying the events.
 - Persist the events Do not use Java serialization.
 Think about schema evolution.
 JSON is fine, but you have to manually implement schema changes. +
@@ -275,6 +291,7 @@ A trend is to offer PaaS solutions built around a kubernetes cluster.
 
 The presentation was fun, instructive and well-done.
 The details were inspiring and of high-quality.
+
 The speaker showed multiple areas where the JVM was locally massively improved through clever refactoring.
 Worth every second and a nice way to complete the day.
 
@@ -449,7 +466,7 @@ Tutorials how to set up a machine learning environment, train the models, and pr
 [#awesome-speech-llm]
 ==== Java Meets AI: A Hands-On Guide to Building LLM-Powered Applications with LangChain4j
 
-This presentation was the coolest of the whole Devoxx 2023.
+*This presentation was the coolest of the whole Devoxx 2023*.
 
 The speaker is an active developer of {ref-langchain4j}.
 Her approach solves the troubles described in the previous talk for LLM models.
@@ -472,14 +489,14 @@ After training, the chat can answer questions about your own documents or source
 
 Solid presentation of {ref-idea} debugger features with hands-on examples.
 
-I seldom use the debugger.
-The tips were good but not really relevant for me.
+_I seldom use the debugger._
+_The tips were good but not really relevant for me._
 
 ==== gRPC Supercharged with Armeria
 
 The speaker presented a solid introduction to {ref-grpc} and {ref-armeria}.
 
-The frameworks provide needed services for a highly scalable applications based on microservices.
+The frameworks provide needed services for highly scalable applications based on microservices.
 {ref-armeria} industrializes {ref-grpc} services.
 
 The concepts are clean and well-implemented.
@@ -523,7 +540,7 @@ The last conference day.
 I am surprised how tiring it was to listen to so many presentations and trying to memorize interesting concepts.
 
 I decided to leave earlier to be sure to catch my flight.
-The yesterday experience with the strikes made me worried.
+The yesterday experience with the strikes worried me.
 It worked well, and I was ahead on time at the airport.
 
 [sidebar]
@@ -550,7 +567,7 @@ The ThoughtWorks technology radar mentioned {ref-jobrunr} and increased the expo
 
 He made 90'000 EUR in 2022.
 The forecast for 2023 is around 260'000 EUR.
-This year is hired his first employee.
+He hired his first employee.
 
 The whole approach is cute, hands-on, and most importantly working.
 He is able to live from an open-source product.
@@ -564,7 +581,7 @@ An arena models the lifecycle of one or more memory segments.
 All segments allocated in the arena share the same lifetime.
 Multiple arena types are provided for different scenarios.
 
-Memory layouts describe contents of a memory region programmatically.
+Memory layouts describe the contents of a memory region programmatically.
 
 [sidebar]
 With {ref-panama}, it is again good and easier to call C libraries from Java applications.
