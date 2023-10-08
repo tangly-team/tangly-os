@@ -6,10 +6,8 @@ tags: ["java", "architecture"]
 ---
 
 == Why Should You Write a Technical Blog?
-:author: Marcel Baumann
-:email: <marcel.baumann@tangly.net>
-:homepage: https://www.tangly.net/
-:company: https://www.tangly.net/[tangly ll c]
+
+include::../fragments/_config-mb-blog.aodc[]
 
 === Learn by Writing a Technical Article
 

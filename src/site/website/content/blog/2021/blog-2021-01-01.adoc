@@ -6,10 +6,8 @@ tags: ["design", "domain-driven-design", "crm", "series-identifiers"]
 ---
 
 == Value Objects as Embedded Entities
-:author: Marcel Baumann
-:email: <marcel.baumann@tangly.net>
-:homepage: https://www.tangly.net/
-:company: https://www.tangly.net/[tangly llc]
+
+include::../fragments/_config-mb-blog.aodc[]
 
 image::2021-01-01-head.png[width=420,height=360,role=left]
 
@@ -144,8 +142,4 @@ Another standard but cumbersome approach is to move to JPA.
 
 Related concepts are discussed in our blog series
 
-. link:../../2020/entities-identifiers-external-identifiers-and-names[Entities, Identifiers, External identifiers and Names]
-. link:../../2020/the-power-of-tags-and-comments[The power of Tags and Comments]
-. link:../../2020/reference-codes[Reference Codes]
-. link:../../2021/value-objects-as-embedded-entities[Value Objects as Embedded Entities]
-. link:../../2021/meaningful-identifiers[Meaningful Identifiers]
+include::../fragments/_identifiers-series-links.adoc[]

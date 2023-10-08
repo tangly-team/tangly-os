@@ -6,10 +6,8 @@ tags: ["agile", "series-agile-design"]
 ---
 
 == How Agile Collaborators Learn
-:author: Marcel Baumann
-:email: <marcel.baumann@tangly.net>
-:homepage: https://www.tangly.net/
-:company: https://www.tangly.net/[tangly llc]
+
+include::../fragments/_config-mb-blog.aodc[]
 
 image::2020-02-01-head.jpg[width=420,height=360,role=left]
 
@@ -109,12 +107,7 @@ Are they really investment positions?
 
 The agile architecture track contains the following blogs
 
-. link:../../2019/agile-architecture-principles[Agile Architecture Principles]
-. link:../../2019/agile-code-is-clean-code[Agile Code is Clean Code!]
-. link:../../2019/agile-architecture-within-scrum[Agile Architecture within Scrum]
-. link:../../2020/agile-component-design[Agile Component Design]
-. link:../../2020/legacy-systems-refactoring[Legacy Systems Refactoring]
-. link:../../2020/how-agile-collaborators-learn[How Agile Collaborators Learn]
+include::../fragments/_series-agile-design-links.adoc[]
 
 We also published our <<agile-architecture>> credited with 3 ECTS used for teaching computer science students at bachelor level at Swiss technical universities.
 

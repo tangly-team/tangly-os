@@ -1,0 +1,26 @@
+---
+title: "Asciidoc and Hugo Website Improvements"
+linkTitle: "Website Improvements"
+date: 2023-12-15
+tags: ["hugo"]
+---
+
+== Asciidoc and Hugo Website Improvements
+
+include::../fragments/_config-mb-blog.aodc[]
+
+image::2024-03-03-head.png[width=420,height=360,role=left]
+
+=== Include Common Blocks
+
+=== Bibliography
+
+=== Taxinomies
+
+=== RevealJS
+
+=== Lessons Learnt
+
+=== Links
+
+include::../fragments/_hugo-links.adoc[]

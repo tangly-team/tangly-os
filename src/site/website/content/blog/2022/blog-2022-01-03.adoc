@@ -6,9 +6,8 @@ tags: ["agile"]
 ---
 
 == Evaluate Technical Curriculum Vitae
-:author: Marcel Baumann
-:email: <marcel.baumann@tangly.net>
-:company: https://www.tangly.net/[tangly llc]
+
+include::../fragments/_config-mb-blog.aodc[]
 
 image::2022-01-03-head.jpg[width=420,height=360,role=left]
 

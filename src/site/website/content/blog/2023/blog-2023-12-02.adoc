@@ -6,10 +6,8 @@ tags: ["agile", "git", "series-students"]
 ---
 
 == Semantic Commits for the Impatient
-:author: Marcel Baumann
-:email: <marcel.baumann@tangly.net>
-:homepage: https://www.tangly.net/
-:company: https://www.tangly.net/[tangly llc]
+
+include::../fragments/_config-mb-blog.aodc[]
 :ref-svn: https://subversion.apache.org/[Subversion]
 :ref-semver: http://semver.org/[SemVer]
 
@@ -131,8 +129,4 @@ I handle this information through semantic versioning in tags.
 
 === Links
 
-- link:../../2016/git-branches-for-the-impatient/[Git Branches for the Impatient]
-- link:../../2017/git-local-repositories-for-the-impatient/[Git Local Repositories for the Impatient]
-- link:../../2023/git-rebase-and-merge-for-the-impatient/[Git Rebase and Merge for the Impatient]
-- link:../../2023//git-tag-for-the-impatient/[Git Tag for the Impatient]
-- link:../../2023/semantic-commits-for-the-impatient/[Semantic Commits for the Impatient]
+include::../fragments/_git-series-inks.adoc[]

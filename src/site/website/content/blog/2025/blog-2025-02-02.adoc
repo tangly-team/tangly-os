@@ -6,10 +6,8 @@ tags: ["agile", "tangly", "organization"]
 ---
 
 == The Quest for an Agile Company: Nine Years tangly llc
-:author: Marcel Baumann
-:email: <marcel.baumann@tangly.net>
-:homepage: https://www.tangly.net/
-:company: https://www.tangly.net/[tangly llc]
+
+include::../fragments/_config-mb-blog.aodc[]
 
 image::2025-02-02-head.jpg[width=420,height=360,role=left]
 
@@ -78,17 +76,4 @@ image::2025-02-02-iterations.png[width=420,height=360,role=left]
 [bibliography]
 === Links
 
-- [[[eight-years-tangly, 1]]] link:../../2024/the-quest-for-an-agile-company-eight-years-tangly-llc/[Eight Years tangly llc]
-Marcel Baumann 2023.
-- [[[seven-years-tangly, 2]]] link:../../2023/the-quest-for-an-agile-company-seven-years-tangly-llc/[Seven Years tangly llc]
-Marcel Baumann. 2022.
-- [[[six-years-tangly, 3]]] link:../../2022/the-quest-for-an-agile-company-six-years-tangly-llc/[Six Years tangly llc]
-Marcel Baumann. 2022.
-- [[[five-years-tangly, 4]]] link:../../2020/the-quest-for-an-agile-company-five-years-tangly-llc/[Five Years tangly llc]
-Marcel Baumann. 2020.
-- [[[four-years-tangly, 5]]] link:../../2019/a-journey-to-be-a-digital-company-tangly-llc/[Four Years tangly llc]
-Marcel Baumann. 2019.
-- [[[no-printer, 6]]] link:../../2022/eliminate-your-printer/[Eliminate Your Printer]
-Marcel Baumann. 2022.
-- [[[founding-tangly, 7]]] link:../../2016/found-a-limited-liability-company-in-switzerland/[Founding tangly llc]
-Marcel Baumann. 2016.
+include::../fragments/_tangly-links.adoc[]

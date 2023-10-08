@@ -6,11 +6,8 @@ tags: ["design", "hugo", "series-students"]
 ---
 
 == Improving a Static Website Build With Hugo and Docsy Theme
-:author: Marcel Baumann
-:email: <marcel.baumann@tangly.net>
-:homepage: https://www.tangly.net/
-:company: https://www.tangly.net/[tangly llc]
-:icons: font
+
+include::../fragments/_config-mb-blog.aodc[]
 
 image::2021-09-02-head.jpg[width=420,height=360,role=left]
 
@@ -169,8 +166,6 @@ For example the presentation of a speech is made available directly in the stati
 This feature is currently experimental and queued as a pull request in the Docsy GitHub repository
 footnote:[This feature removed my dependency to Google drive to host downloadable artifacts.].
 
-=== Hugo and Docsy Related Articles
+=== Links
 
-- link:../../2020/creating-a-technical-website-with-hugo-and-asciidoc[Creating a technical Website with Hugo and Asciidoc]
-- link:../../2020/support-comments-for-static-hugo-website[Support Comments for Static Hugo Website]
-- link:../../2021/improving-a-static-web-site-build-with-hugo-and-docsy[Improving a Static Website Build With Hugo and Docsy]
+include::../fragments/_hugo-links.adoc[]

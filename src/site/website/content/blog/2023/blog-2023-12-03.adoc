@@ -6,10 +6,8 @@ tags: ["java", "C++", "architecture"]
 ---
 
 == Command Interpreter Revisited
-:author: Marcel Baumann
-:email: <marcel.baumann@tangly.net>
-:homepage: https://www.tangly.net/
-:company: https://www.tangly.net/[tangly llc]
+
+include::../fragments/_config-mb-blog.aodc[]
 :ref-can-bus: https://en.wikipedia.org/wiki/CAN_bus[CAN bus]
 :ref-proto-buf: https://en.wikipedia.org/wiki/Protocol_Buffers[Protocol Buffers]
 :ref-spi: https://en.wikipedia.org/wiki/Serial_Peripheral_Interface[Serial Peripherical Interface]

@@ -6,10 +6,8 @@ tags: ["C++", "architecture", "embedded"]
 ---
 
 == Domain-Driven Design with ROS-2
-:author: Marcel Baumann
-:email: <marcel.baumann@tangly.net>
-:homepage: https://www.tangly.net/
-:company: https://www.tangly.net/[tangly llc]
+
+include::../fragments/_config-mb-blog.aodc[]
 :ref-fsm: https://en.wikipedia.org/wiki/Finite-state_machine[Finite State Machine]
 :ref-pubsub: https://en.wikipedia.org/wiki/Publish%E2%80%93subscribe_pattern[Publish and Subscribe Pattern]
 :ref-seperation-of-concerns: https://en.wikipedia.org/wiki/Separation_of_concerns[Seperation of Concerns]

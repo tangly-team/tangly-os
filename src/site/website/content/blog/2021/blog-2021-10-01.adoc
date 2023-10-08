@@ -6,12 +6,11 @@ tags: ["agile", "architecture", "series-students"]
 ---
 
 == Agile Design Modeling
-:author: Marcel Baumann
-:email: <marcel.baumann@tangly.net>
-:homepage: https://www.tangly.net/
-:company: https://www.tangly.net/[tangly llc]
+
+include::../fragments/_config-mb-blog.aodc[]
 
 image::2021-10-01-head.jpg[width=420,height=360,role=left]
+
 The line between software development and software architecture is a tricky one.
 
 Some people will tell you that it does not exist and that architecture is simply an extension of the design process undertaken by developers.

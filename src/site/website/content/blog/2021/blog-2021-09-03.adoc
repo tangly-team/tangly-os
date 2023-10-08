@@ -6,12 +6,11 @@ tags: ["agile"]
 ---
 
 == Scrum Developer Formation
-:author: Marcel Baumann
-:email: <marcel.baumann@tangly.net>
-:homepage: https://www.tangly.net/
-:company: https://www.tangly.net/[tangly llc]
+
+include::../fragments/_config-mb-blog.aodc[]
 
 image::2021-09-03-head.png[width=420,height=360,role=left]
+
 You are working as a developer in a Scrum team.
 
 Congratulations, working as a professional https://scrumguides.org/scrum-guide.html#developers[Scrum developer] is a fulfilling and exciting job.

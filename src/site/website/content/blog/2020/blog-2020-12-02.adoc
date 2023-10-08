@@ -6,10 +6,8 @@ tags: ["design", "hugo", "series-students"]
 ---
 
 == Support Comments for Static Hugo Website
-:author: Marcel Baumann
-:email: <marcel.baumann@tangly.net>
-:homepage: https://www.tangly.net/
-:company: https://www.tangly.net/[tangly llc]
+
+include::../fragments/_config-mb-blog.aodc[]
 
 image::2020-12-02-head.png[width=420,height=360,role=left]
 
@@ -171,7 +169,6 @@ comments_utterances_issue_term = "pathname"
 comments_utterances_theme = "github-light"
 ----
 
-== Hugo and Docsy Related Articles
+== Links
 
-- link:../../2020/creating-a-technical-website-with-hugo-and-asciidoc[Creating a technical Website with Hugo and Asciidoc]
-- link:../../2020/support-comments-for-static-hugo-website[Support Comments for Static Hugo Website]
+include::../fragments/_hugo-links.adoc[]

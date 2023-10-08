@@ -13,6 +13,7 @@ contentDir = "content"
 defaultContentLanguage = "en"
 defaultContentLanguageInSubdir = false
 enableMissingTranslationPlaceholders = true
+ignorefiles = ["fragments/.*"]
 
 # new security restrictions in hugo
 [security]

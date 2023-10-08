@@ -6,10 +6,8 @@ tags: ["C++", "architecture", "embedded"]
 ---
 
 == Sensors and Actuators
-:author: Marcel Baumann
-:email: <marcel.baumann@tangly.net>
-:homepage: https://www.tangly.net/
-:company: https://www.tangly.net/[tangly llc]
+
+include::../fragments/_config-mb-blog.aodc[]
 :ref-can-bus: https://en.wikipedia.org/wiki/CAN_bus[CAN bus]
 :ref-kiss: https://en.wikipedia.org/wiki/KISS_principle[Keeep It Simple, Stupid]
 :ref-proto-buf: https://en.wikipedia.org/wiki/Protocol_Buffers[Protocol Buffers]

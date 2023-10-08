@@ -1,0 +1,8 @@
+- link:../../2018/how-healthy-is-your-product-source-code-check/[Source Code Check]
+Marcel Baumann. 2018.
+- link:../../2018/how-healthy-is-your-product-delivery-pipeline-check/[Delivery Pipeline Check]
+Marcel Baumann. 2018.
+- link:../../2018/how-healthy-is-your-product-product-strategy-check/[Product Strategy Check]
+Marcel Baumann. 2018.
+- link:../../2019/how-healthy-is-your-product-company-culture-check/[Company Culture Check]
+Marcel Baumann. 2019.

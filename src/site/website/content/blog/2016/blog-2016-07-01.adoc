@@ -6,10 +6,8 @@ tags: ["agile", "git", "series-students"]
 ---
 
 == Git Branches for the Impatient
-:author: Marcel Baumann
-:email: <marcel.baumann@tangly.net>
-:homepage: https://www.tangly.net/
-:company: https://www.tangly.net/[tangly llc]
+
+include::../fragments/_config-mb-blog.aodc[]
 :ref-trunk-based-development: https://trunkbaseddevelopment.com/[Trunk-Based Development]
 
 image::2016-07-01-head.png[width=420,height=360,role=left]
@@ -253,8 +251,4 @@ These same characters work in https://bitbucket.org/[bitbucket].
 
 === Links
 
-- link:../../2016/git-branches-for-the-impatient/[Git Branches for the Impatient]
-- link:../../2017/git-local-repositories-for-the-impatient/[Git Local Repositories for the Impatient]
-- link:../../2023/git-rebase-and-merge-for-the-impatient/[Git Rebase and Merge for the Impatient]
-- link:../../2023//git-tag-for-the-impatient/[Git Tag for the Impatient]
-- link:../../2023/semantic-commits-for-the-impatient/[Semantic Commits for the Impatient]
+include::../fragments/_git-series-inks.adoc[]

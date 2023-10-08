@@ -78,7 +78,4 @@ Any product should have a battery of measures deployed to continuously monitor t
 
 === Posts in the Health Check Series
 
-. link:../../2018/how-healthy-is-your-product-source-code-check/[Source Code Check]
-. link:../../2018/how-healthy-is-your-product-delivery-pipeline-check/[Delivery Pipeline Check]
-. link:../../2018/how-healthy-is-your-product-product-strategy-check/[Product Strategy Check]
-. link:../../2019/how-healthy-is-your-product-company-culture-check/[Company Culture Check]
+include::../fragments/_how-healthy-series-links.adoc[]

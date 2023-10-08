@@ -6,10 +6,8 @@ tags: ["C++", "architecture", "embedded"]
 ---
 
 == Domain-Driven Design with Embedded Microcontroller Applications
-:author: Marcel Baumann
-:email: <marcel.baumann@tangly.net>
-:homepage: https://www.tangly.net/
-:company: https://www.tangly.net/[tangly llc]
+
+include::../fragments/_config-mb-blog.aodc[]
 
 image::2025-05-02-head.png[width=420,height=360,role=left]
 

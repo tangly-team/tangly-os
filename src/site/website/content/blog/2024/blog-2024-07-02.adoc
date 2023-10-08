@@ -6,10 +6,8 @@ tags: ["java"]
 ---
 
 == How to create electronic invoices?
-:author: Marcel Baumann
-:email: <marcel.baumann@tangly.net>
-:homepage: https://www.tangly.net/
-:company: https://www.tangly.net/[tangly llc]
+
+include::../fragments/_config-mb-blog.aodc[]
 :ref-docbook: https://en.wikipedia.org/wiki/DocBook[DocBook]
 :ref-kroki: https://kroki.io/[Kroki]
 :ref-structurizr: https://structurizr.com/[Structurizr]

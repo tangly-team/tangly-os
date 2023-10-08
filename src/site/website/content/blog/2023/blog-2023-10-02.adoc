@@ -6,10 +6,8 @@ tags: ["agile", "architecture"]
 ---
 
 == Software Architecture Themes and Questions
-:author: Marcel Baumann
-:email: <marcel.baumann@tangly.net>
-:homepage: https://www.tangly.net/
-:company: https://www.tangly.net/[tangly llc]
+
+include::../fragments/_config-mb-blog.aodc[]
 
 image::2023-10-02-head.png[width=320,height=320,role=left]
 

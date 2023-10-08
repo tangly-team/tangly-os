@@ -6,10 +6,8 @@ tags: ["java", "organization"]
 ---
 
 == 20th Devoxx Belgium Conference 2023
-:author: Marcel Baumann
-:email: <marcel.baumann@tangly.net>
-:homepage: https://www.tangly.net/
-:company: https://www.tangly.net/[tangly llc]
+
+include::../fragments/_config-mb-blog.aodc[]
 :ref-anemic-domain-model: https://en.wikipedia.org/wiki/Anemic_domain_model[Anemic Domain Model]
 :ref-armeria: https://armeria.dev/[Armeria]
 :ref-avro: https://avro.apache.org/[Avro]
@@ -136,6 +134,7 @@ Functional:: You can add new operations but cannot create new subtypes.
 ====
 
 The above constraint clearly defines the tension in designing the abstractions for a bounded domain.
+Both variants are mutually exclusive in modern programming languages.
 
 An experienced architect with domain knowledge should hint which functionalities belong to a class and which ones are better located in business logic abstractions.
 
