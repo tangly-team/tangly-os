@@ -1,13 +1,14 @@
 /*
- * Copyright 2021-2022 Marcel Baumann
+ * Copyright 2021-2023 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- *          https://apache.org/licenses/LICENSE-2.0
+ *          http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ *
  */
 
 package net.tangly.core;
@@ -16,6 +17,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
@@ -77,8 +79,14 @@ public class ExternalEntityImp implements ExternalEntity {
     // region Comments
 
     @Override
-    public List<Comment> comments() {
+    public Collection<Comment> comments() {
         return Collections.unmodifiableList(comments);
+    }
+
+    @Override
+    public void comments(Collection<Comment> comments) {
+        this.comments.clear();
+        this.comments.addAll(comments);
     }
 
     @Override
@@ -95,8 +103,13 @@ public class ExternalEntityImp implements ExternalEntity {
     // region HasTags
 
     @Override
-    public Set<Tag> tags() {
+    public Collection<Tag> tags() {
         return Collections.unmodifiableSet(tags);
+    }
+
+    public void tags(@NotNull Collection<Tag> tags) {
+        tags.clear();
+        tags.addAll(tags);
     }
 
     @Override
@@ -109,10 +122,6 @@ public class ExternalEntityImp implements ExternalEntity {
         return tags.remove(tag);
     }
 
-    @Override
-    public void removeAllTags() {
-        tags.clear();
-    }
     // endregion
 
     @Override

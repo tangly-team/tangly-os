@@ -5,3 +5,16 @@ weight: 50
 ---
 
 == Bounded Domain Products Model
+
+[plantuml,bus-article-uml,svg]
+....
+@startuml
+
+class Assignment {}
+
+class Effort {}
+
+class Project {}
+
+@enduml
+....

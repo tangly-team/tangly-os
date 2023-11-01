@@ -1,9 +1,9 @@
 ---
-title: "Bounded Domain Models"
+title: "Core Models"
 date: 2019-05-01
 weight: 50
 ---
-== Bounded Domains Models
+== Core Models
 
 === Codes Model
 
@@ -57,22 +57,22 @@ CodeImp <|-- Code
 An entity and all subclasses have a set of attributes present in any CSV file.
 
 oid::
-object identifier of the entity instance as the string representation of a 64 bits long.
+Object identifier of the entity instance as the string representation of a 64 bits long.
 The value is mandatory.
 id::
-identifier of the entity instance as a string.
+Identifier of the entity instance as a string.
 The value is optional.
 name::
-human-readable name of the entity instance as a string.
+Human-readable name of the entity instance as a string.
 The value is optional.
 text::
-human-readable description of the entity instance as a long string.
+Human-readable description of the entity instance as a long string.
 The value is optional.
 fromDate::
-start date when the entity instance is active.
+Start date when the entity instance is active.
 The value is optional.
 toDate::
-end date when the entity instance is active.
+End date when the entity instance is active.
 Upon the end date, the entity should be read-only and no more edited in the system.
 The value is optional.
 
@@ -89,13 +89,25 @@ interface HasOid {
     long oid()
 }
 
+interface HasName {
+}
+
+class DateRange << (R,orchid) >> {}
+
+interface HasDateRange {}
+
+class Tag {}
+class TagType{}
+
 interface HasTags {}
 
+class Comment {}
+
+interface Code {}
+
+class TypeRegistry {}
+
 interface HasComments {}
-
-interface HasOwner {}
-
-HasOid <|.. HasOwner
 
 interface Entity {
     + String text()
@@ -103,21 +115,25 @@ interface Entity {
     + LocalDate toDate()
 }
 
-HasOid <|.. Entity
-HasId <|.. Entity
-HasTags <|.. Entity
-HasComments <|.. Entity
+HasOid <|-- Entity
+HasId <|-- Entity
+HasName <|-- Entity
+HasDateRange <|-- Entity
 
-abstract class EntityImp {}
+interface EntityExtended {}
+Entity <|-- EntityExtended
+HasTags <|-- EntityExtended
+HasComments <|-- EntityExtended
 
-EntityImp *-- Tag : tags
-EntityImp *-- Comment : comments
+abstract class EntityExtendedImp {}
 
-Entity <|.. EntityImp
+EntityExtended <|-- EntityExtendedImp
+EntityExtendedImp *-- Tag : tags
+EntityExtendedImp *-- Comment : comments
 
 class Address << (R,orchid) >>
 
-class Tag <<record>>
+class Tag << (R,orchid) >>
 
 class Comment {}
 
@@ -250,201 +266,6 @@ package Bounded_Domain_CRM <<Rectangle>> {
     Interaction *-- Activity : activities
 
 }
-
-package Bounded_Domain_Invoices <<Rectangle>> {
-    interface InvoiceLine {
-    }
-
-    class InvoiceItem <<(R,orchid) record>> {
-        int position
-        String text
-        BigDecimal quantity
-    }
-    InvoiceLine <|-- InvoiceItem
-    InvoiceItem o-- Article : article
-
-
-    class Subtotal <<(R,orchid) record>> {
-        int position
-        String text
-    }
-    InvoiceLine <|-- Subtotal
-    Subtotal o-- InvoiceItem : items
-
-    class Invoice {
-    }
-    Invoice o-- LegalEntity : seller
-    Invoice o-- LegalEntity : sellee
-    Invoice *-- InvoiceLine : items
-
-    enum ProductCode {
-    }
-    Code <|-- ProductCode
-
-    class Article <<(R, orchid) record>> {
-        String id
-        String name
-        String text
-        BigDecimal unitPrice
-        String unit
-        BigDecimal vatRate
-    }
-    Article o-- ProductCode : code
-}
-
-package Bounded_Domain_Products <<Rectangle>> {
-
-    class Product {
-    }
-
-    class Assignment {
-    }
-
-    class Effort {
-    }
-}
-
-package Bounded_Domain_Ledger <<Rectangle>> {
-    class AccountEntry {
-    }
-
-    class Account {
-    }
-    Account *-- AccountEntry : entries
-    Account *-- Account : aggregatedAccounts
-
-    class Transaction {
-    }
-    Transaction o-- AccountEntry : debit
-    Transaction o-- AccountEntry : credit
-
-    class Ledger {
-    }
-    Ledger *-- Account : accounts
-    Ledger *-- Transaction : journal
-}
-
-@enduml
-....
-
-== Invoices Model
-
-=== Concepts
-
-Invoices define a business bounded domain as defined in domain-driven design approach.
-They are not constrained through external entities such as products, contracts or legal entities.
-External entities can provide hints to streamline the creation of regular invoices.
-The invoice article identifier is available as an external identifier to the article bounded domain.
-Similar identifiers are available for legal entities.
-
-VAT rates are defined within an article definition.
-Therefore, different VAT rates require different article definitions.
-For example, in Switzerland, a service company has two VAT rates.
-One for regular services and one for services exempted from VAT taxes.
-
-The currency is defined at the invoice level, meaning all invoice items and subtotals should use the same currency.
-
-=== Archiving
-
-An invoice contains all the information to create a legally binding document and hove no dependencies to external systems.
-Invoices should have a unique identifier for accounting purposes.
-A good practice is to use the identifier as part of the archived file to streamline traceability.
-Invoices can be stored in a database, exported as a PDF file or as a JSON file.
-The PDF file is human-readable and adequate for document archiving and legal auditing.
-The JSON file is an adequate archive format which can digitally be processed.
-
-[plantuml,bus-invoice-uml,svg]
-....
-@startuml
-
-package net.tangly.bus.crmRealm {
-    class LegalEntity {}
-
-    class BankConnection << (R,orchid) >> {
-        String iban
-        String bic
-        String institute
-    }
-
-    class Contract {}
-}
-
-package net.tangly.bus.invoices {
-class Product << (R,orchid) >> {
-    String productId
-    String description
-    BigDecimal unitPrice
-    String unit
-    BigDecimal vatRate
-}
-
-class Invoice {
-    String id
-    String contractId
-    LocalDate deliveryDate
-    LocalDate invoicedDate
-    LocalDate dueDate
-    Currency currency
-    String text
-    String paymentConditions
-}
-
-note right: contractId is the identifier for the contract instance in the CRM package.
-
-Invoice *-- InvoiceLine : lines
-Invoice o--> LegalEntity : invoicingEntity
-Invoice o--> LegalEntity : invoicedEntity
-Invoice *--> BankConnection : invoicingConnection
-
-interface InvoiceLine {}
-
-class InvoiceItem << (R,orchid) >> {}
-
-InvoiceLine <|.. InvoiceItem
-
-InvoiceItem o-- Product : article
-
-class Subtotal << (R,orchid) >> {}
-
-InvoiceLine <|.. Subtotal
-Subtotal o-- InvoiceLine
-
-}
-
-@enduml
-....
-
-=== Ledger Model
-
-[plantuml,bus-ledger-uml,svg]
-....
-@startuml
-
-class AccountEntry {}
-
-class Transaction {}
-
-class Account {}
-
-class Ledger {}
-
-Ledger *-- Account : accounts
-Ledger *-- Transaction : transactions
-
-@enduml
-....
-
-=== Products Model
-
-[plantuml,bus-article-uml,svg]
-....
-@startuml
-
-class Assignment {}
-
-class Effort {}
-
-class Project {}
 
 @enduml
 ....

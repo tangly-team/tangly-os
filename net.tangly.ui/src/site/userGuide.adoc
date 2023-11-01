@@ -9,10 +9,15 @@ weight: 30
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
 :stem:
+:toc:
 
 == User Guide Commons Vaadin UI
 
-=== Entity View
+=== Views
+
+==== Item View
+
+==== Entity View
 
 A domain entity shall be displayed and manipulated using the entity view.
 
@@ -31,7 +36,92 @@ public class MyEntityView extends EntityView<MyEntity> {
 }
 ----
 
-=== Item View
+=== Relationship Components
+
+These components allow the display and handling of relations between objects.
+
+All changes of a relation are done in the buffered values of the user interface.
+
+Changes are only performed on the model if the _save_ action is called.
+Mandatory relations are enforced with validation rules.
+
+==== One2One Component
+
+The component displays a relation from one object to another one.
+
+===== Referenced Object
+
+The functions are:
+
+- Display the relation and show key attributes of the referenced item as a composite field.
+The item is a subclass of entity.
+The attributes of an entity are displayed
+- Remove the referenced object from the relation.
+The object is not deleted, only the relation to it.
+- Update the relation to a new referenced item.
+The user can select an instance from a set of available objects.
+This set of objects is provided through a provider.
+
+===== Owned Object
+
+This mode is not supported through the _One2One_ component.
+Implement custom controls to display the object and to create a new one.
+
+==== One2Many Component
+
+The component displays regular objects or instances for a subclass of entity.
+
+The display view can support multiple selections to remove multiple referenced items from the relation at once.
+
+The selection view can support multiple selections to add multiple items to the relation at once.
+
+===== Referenced Objects
+
+The functions are for referenced objects:
+
+- Display all objects referenced and show key attributes of the referenced items as a grid.
+A provided view displays selected properties in columns.
+- Remove a referenced object from the instances which are part of the relation.
+The object is not deleted, only the relation to it.
+- Add an existing object to the instances which are part of the relation.
+The user can select an instance from a set of available objects displayed in a view.
+
+[IMPORTANT]
+====
+The view to display referenced objects shall be provided to the component.
+
+The view to select objects which are added to the relation should be provided to the component.
+A dialog will open with the view and the _cancel_ or _add_ options.
+====
+
+An example of referenced object is an employee list of companies she is working for.
+
+==== Owned Objects
+
+The functions are for owned objects:
+
+- Display all objects referenced and show key attributes of the referenced items as a grid.
+A provided view displays selected properties in columns.
+- Remove a referenced object from the instances which are part of the relation.
+The object is removed from the relation and deleted.
+- Create an object and add it to the instances which are part of the relation.
+The user can select an instance from a set of available objects displayed in a view.
+
+[IMPORTANT]
+====
+The view to display referenced objects shall be provided to the component.
+
+The view to create a new object to add to the relation should be provided to the component.
+A dialog will open with the view and the _cancel_ or _add_ options.
+====
+
+Examples of owned objects are comments and tags of an entity.
+
+[TIP]
+====
+Entities should generally not be handled as owned objects.
+An entity instance should be created through the view handling all objects of this entity type.
+====
 
 === Reflections
 
@@ -41,7 +131,7 @@ Visualized entities are manipulated under different access rights.
 
 * Readonly or full access
 
-** Readonly access allow a user to view an entity and associated properties.
+** Readonly access allows a user to view an entity and associated properties.
 The update, delete and create operations are disabled.
 
 ** Full access allows a user to view, update, create and delete an entity and associated properties.

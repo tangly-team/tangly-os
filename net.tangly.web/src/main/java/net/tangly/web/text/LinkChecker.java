@@ -40,6 +40,7 @@ import java.util.regex.Pattern;
  *     <dt>#_footnoteref_|#_footnotedef_</dt><dd>footnotes references are not semantic links.</dd>
  *     <dt>en.wikipedia.org|www.amazon.com/dp/|mvnrepository.com|oss.sonatype.org|sourceforge.net</dt><dd>Sites which do not like to be queried.</dd>
  * </dl>
+ * <p>A specific link is checked once.</p>
  */
 public class LinkChecker {
     public static int LINK_CHECK_TIMEOUT = 1000;
@@ -54,7 +55,7 @@ public class LinkChecker {
     private String websiteUri;
     private Pattern shouldNotBeValidated;
     private Pattern isApiDocs;
-    private final List<String> validatedLinks;
+    private final Set<String> validatedLinks;
     private final Set<String> validatedPages;
     private final List<Error> errors;
 
@@ -90,7 +91,7 @@ public class LinkChecker {
 
         for (Element link : links) {
             String linkUrl = link.attr("abs:href");
-            boolean validated = shouldBeValidated(linkUrl) ? validate(url, linkUrl) : false;
+            boolean validated = shouldLinkBeValidated(linkUrl) ? validateLink(url, linkUrl) : false;
             // if the link is validated and belongs to the website, the associated webpage should be parsed.
             if (validated && shouldBeParsed(linkUrl)) {
                 parse(linkUrl);
@@ -99,12 +100,12 @@ public class LinkChecker {
     }
 
     public LinkChecker() {
-        validatedLinks = new ArrayList<>();
+        validatedLinks = new HashSet<>();
         validatedPages = new HashSet<>();
         errors = new ArrayList<>();
     }
 
-    private boolean validate(@NotNull String source, @NotNull String url) {
+    private boolean validateLink(@NotNull String source, @NotNull String url) {
         if (validatedLinks.contains(url)) {
             return true;
         }
@@ -122,12 +123,12 @@ public class LinkChecker {
                 connection.setReadTimeout(LINK_CHECK_TIMEOUT);
                 code = connection.getResponseCode();
             }
-            switch (code) {
-                case HttpURLConnection.HTTP_NOT_FOUND -> error = new Error(source, url, "http not found", code);
-            }
-            if (code != HttpURLConnection.HTTP_OK) {
-                error = new Error(source, url, "http not ok", code);
-            }
+            error = switch (code) {
+                case HttpURLConnection.HTTP_OK -> null;
+                case HttpURLConnection.HTTP_NOT_FOUND -> new Error(source, url, "http not found", code);
+                case HttpURLConnection.HTTP_MOVED_TEMP -> new Error(source, url, "http moved", code);
+                default -> new Error(source, url, "http not ok", code);
+            };
         } catch (MalformedURLException e) {
             error = new Error(source, url, "malformed URL exception", code);
         } catch (SocketTimeoutException e) {
@@ -148,7 +149,13 @@ public class LinkChecker {
         return (error == null);
     }
 
-    private boolean shouldBeValidated(@NotNull String url) {
+    /**
+     * A link should be validated if it is the first time it is checked and it is not excluded.
+     *
+     * @param url to check for correctness
+     * @return true if it should be checked, otherwise false.
+     */
+    private boolean shouldLinkBeValidated(@NotNull String url) {
         return !shouldNotBeValidated.matcher(url).find() && !isApiDocs.matcher(url).find();
     }
 

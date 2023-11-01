@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package ledgerCommands;
+
+message CmdBookTransactionData {
+    string name = 1;
+    string accountIdFrom = 2;
+    string accountIdTo = 3;
+    string date = 4;
+    string amount = 5;
+    optional string text = 6;
+}

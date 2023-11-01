@@ -24,11 +24,15 @@ project.ext.moduleName = "${project.ext.groupId}.${project.ext.artifactId}"
 project.ext.inceptionYear = '1996'
 project.description = "User Interface ERP - using Java 20 or higher (tangly llc)"
 
+// beware the shared archive attributes slow down the application the first time it is called.
+
 application {
     applicationDefaultJvmArgs = ['--enable-preview',
                                  '--add-exports=java.base/jdk.internal.misc=ALL_UNNAMED',
                                  '--add-opens=java.base/jdk.internal.misc=ALL-UNNAMED',
                                  '-XX:+ShowCodeDetailsInExceptionMessages',
+                                 '-XX:+AutoCreateSharedArchive',
+                                 '-XX:SharedArchiveFile=tangly-os-archive.jsa',
                                  '-Xmx256m',
                                  '-ea']
     mainClassName = "net.tangly.erp.ui.Main"

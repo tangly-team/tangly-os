@@ -1,10 +1,10 @@
 /*
- * Copyright 2023 Marcel Baumann
+ * Copyright 2023-2023 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- *          https://apache.org/licenses/LICENSE-2.0
+ *          http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -38,17 +38,17 @@ import java.util.function.Function;
 public abstract class EntityForm<T extends Entity, V extends EntityView<T>> extends ItemForm<T, V> {
     private final Function<Long, T> supplier;
     private EntityField<T> entity;
-    private CollectionField<Comment> comments;
-    private CollectionField<Tag> tags;
+    private One2ManyField<Comment> comments;
+    private One2ManyField<Tag> tags;
 
     public EntityForm(@NotNull V parent, Function<Long, T> supplier) {
         super(parent);
         this.supplier = supplier;
         if (HasComments.class.isAssignableFrom(entityClass())) {
-            comments = new CollectionField<>(new CommentsView(parent.domain(), parent.mode()));
+            comments = new One2ManyField<>(new CommentsView(parent.domain(), parent.mode()));
         }
         if (HasTags.class.isAssignableFrom(entityClass())) {
-            tags = new CollectionField<>(new TagsView(parent.domain(), parent.mode()));
+            tags = new One2ManyField<>(new TagsView(parent.domain(), parent.mode()));
         }
     }
 

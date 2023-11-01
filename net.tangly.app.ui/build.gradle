@@ -37,7 +37,6 @@ dependencies {
     implementation project(':net.tangly.ui')
 
     implementation(libs.slf4j.simple)
-
     implementation(libs.vaadin.core)
     implementation(libs.vaadin.embedded.jetty)
 

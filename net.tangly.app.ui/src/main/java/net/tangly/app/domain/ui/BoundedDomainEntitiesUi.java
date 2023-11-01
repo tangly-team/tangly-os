@@ -4,7 +4,7 @@
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- *          https://apache.org/licenses/LICENSE-2.0
+ *          http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -22,13 +22,14 @@ import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.menubar.MenuBar;
 import net.tangly.app.domain.model.BoundedDomainEntities;
 import net.tangly.core.providers.Provider;
+import net.tangly.core.providers.ProviderInMemory;
 import net.tangly.ui.app.domain.BoundedDomainUi;
 import net.tangly.ui.app.domain.DomainView;
 import net.tangly.ui.components.EntityForm;
 import net.tangly.ui.components.EntityView;
 import net.tangly.ui.components.ItemForm;
 import net.tangly.ui.components.Mode;
-import net.tangly.ui.components.One2ManyView;
+import net.tangly.ui.components.One2ManyField;
 import net.tangly.ui.components.One2OneField;
 import org.jetbrains.annotations.NotNull;
 
@@ -100,9 +101,9 @@ public class BoundedDomainEntitiesUi implements BoundedDomainUi {
         }
 
         public static class EntityFourForm extends EntityForm<BoundedDomainEntities.EntityFour, EntityFourView> {
-            private One2OneField<BoundedDomainEntities.EntityThree> one2oneField;
-            private One2ManyView<BoundedDomainEntities.EntityFour, BoundedDomainEntities.EntityThree> one2ManyView;
-            private ComboBox<BoundedDomainEntities.ActivityCode> codeField;
+            private One2OneField<BoundedDomainEntities.EntityThree> one2one;
+            private One2ManyField<BoundedDomainEntities.EntityThree> one2Many;
+            private ComboBox<BoundedDomainEntities.ActivityCode> code;
 
             public EntityFourForm(@NotNull EntityFourView parent) {
                 super(parent, BoundedDomainEntities.EntityFour::new);
@@ -112,29 +113,27 @@ public class BoundedDomainEntitiesUi implements BoundedDomainUi {
             @Override
             protected void init() {
                 super.init();
-                one2oneField = new One2OneField<>("one2one", BoundedDomainEntities.EntityThree.class, parent().domain().realm().threeEntities());
-                binder().bind(one2oneField, BoundedDomainEntities.EntityFour::one2one, BoundedDomainEntities.EntityFour::one2one);
-                codeField = ItemForm.createCodeField(parent().registry().find(BoundedDomainEntities.ActivityCode.class).orElseThrow(), "Activity Code");
-                binder().bind(codeField, BoundedDomainEntities.EntityFour::activity, BoundedDomainEntities.EntityFour::activity);
+                one2one = new One2OneField<>("one2one", BoundedDomainEntities.EntityThree.class, parent().domain().realm().threeEntities());
+                binder().bind(one2one, BoundedDomainEntities.EntityFour::one2one, BoundedDomainEntities.EntityFour::one2one);
+                code = ItemForm.createCodeField(parent().registry().find(BoundedDomainEntities.ActivityCode.class).orElseThrow(), "Activity Code");
+                binder().bind(code, BoundedDomainEntities.EntityFour::activity, BoundedDomainEntities.EntityFour::activity);
                 FormLayout details = new FormLayout();
-                details.add(codeField, one2oneField);
+                details.add(code, one2one);
+                details.setColspan(one2one, 2);
                 addTabAt("details", details, 1);
 
-                // TODO one2many ui
-                one2ManyView =
-                    new One2ManyView<>("one2many", BoundedDomainEntities.EntityThree.class, parent().domain().realm().threeEntities(), BoundedDomainEntities.EntityFour::one2many,
-                        BoundedDomainEntities.EntityFour::addOne2Many, BoundedDomainEntities.EntityFour::removeOne2Many);
+                one2Many = new One2ManyField<>(new EntityThreeView(BoundedDomainEntities.EntityThree.class, parent().domain(), ProviderInMemory.of(), Mode.LIST));
+                binder().bind(one2Many, BoundedDomainEntities.EntityFour::one2many, BoundedDomainEntities.EntityFour::one2many);
                 FormLayout one2many = new FormLayout();
-                one2many.add(one2ManyView);
+                one2many.add(one2Many);
                 addTabAt("one2many", one2many, 2);
-
             }
 
             @Override
             public void mode(@NotNull Mode mode) {
                 super.mode(mode);
-                codeField.setReadOnly(mode.readonly());
-                one2oneField.setReadOnly(mode.readonly());
+                code.setReadOnly(mode.readonly());
+                one2one.setReadOnly(mode.readonly());
             }
         }
     }

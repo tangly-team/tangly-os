@@ -1,13 +1,14 @@
 /*
- * Copyright 2006-2022 Marcel Baumann
+ * Copyright 2006-2023 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- *          https://apache.org/licenses/LICENSE-2.0
+ *          http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ *
  */
 
 package net.tangly.erp;
@@ -17,8 +18,7 @@ import net.tangly.erp.invoices.artifacts.InvoicesUtilities;
 import net.tangly.erp.invoices.ports.InvoicesAdapter;
 import net.tangly.erp.invoices.ports.InvoicesEntities;
 import net.tangly.erp.invoices.ports.InvoicesHdl;
-import org.apache.pdfbox.cos.COSDocument;
-import org.apache.pdfbox.io.RandomAccessBufferedFileInputStream;
+import org.apache.pdfbox.io.RandomAccessReadBuffer;
 import org.apache.pdfbox.pdfparser.PDFParser;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.text.PDFTextStripper;
@@ -48,14 +48,12 @@ class InvoicesPortTest {
     }
 
     private String textFromPdf(Path file) throws IOException {
-        try (RandomAccessBufferedFileInputStream stream = new RandomAccessBufferedFileInputStream(Files.newInputStream(file))) {
+        try (RandomAccessReadBuffer stream = new RandomAccessReadBuffer(Files.newInputStream(file))) {
             var parser = new PDFParser(stream);
-            parser.parse();
-            try (COSDocument cosDoc = parser.getDocument()) {
+            try (PDDocument document = parser.parse()) {
                 var pdfStripper = new PDFTextStripper();
-                var pdDoc = new PDDocument(cosDoc);
                 pdfStripper.setStartPage(1);
-                return pdfStripper.getText(pdDoc);
+                return pdfStripper.getText(document);
             }
         }
     }

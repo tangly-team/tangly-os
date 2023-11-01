@@ -29,14 +29,14 @@ dependencies {
     testCompileOnly(libs.annotations)
     testImplementation(libs.bundles.test.deps)
     testImplementation(libs.apache.log4j2.core)
-    testImplementation(libs.awaitility);
+    testImplementation(libs.awaitility)
     testRuntimeOnly(libs.apache.log4j2.slf4j)
     testRuntimeOnly(libs.junit.engine)
 }
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(20)
+        languageVersion = JavaLanguageVersion.of(21)
     }
     withJavadocJar()
     withSourcesJar()
@@ -68,7 +68,7 @@ tasks.withType(Javadoc).configureEach {
         addBooleanOption('Xdoclint:none', true)
         addStringOption("Xmaxwarns", "1")
         addBooleanOption('-enable-preview', true)
-        addStringOption('-release', '20')
+        addStringOption('-release', '21')
         addStringOption('-snippet-path', "${projectDir}/src/test/java")
         addBooleanOption('quiet')
     }

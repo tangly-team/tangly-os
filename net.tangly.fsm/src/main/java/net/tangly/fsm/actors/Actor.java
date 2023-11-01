@@ -42,7 +42,7 @@ public interface Actor<T> extends Runnable {
     UUID id();
 
     /**
-     * Receive an event for further processing.
+     * Receive a message for further processing.
      *
      * @param message message to process asynchronously later
      */

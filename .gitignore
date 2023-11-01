@@ -22,14 +22,14 @@ hs_err_pid*
 
 # Covers vaadin specifics
 **/jspm_packages/
-/net.tangly.erp.ui/frontend/generated/
-/net.tangly.erp.ui/frontend/generated/vaadin.ts
 **/pnpm-lock.yaml
 **/pnpmfile.js
 **/webpack.config.js
 **/webpack.generated.js
 **/.npmrc
 **/frontend/index.html
+**/frontend/generated/
+**/dev-bundle/
 **/.pnpmfile.cjs
 **/package.json
 **/package-lock.json
@@ -39,13 +39,8 @@ hs_err_pid*
 **/types.d.ts
 **/package-lock.json
 
-
 # Covers other tools such JabRef, microstream, revealjs
 /storage/
 **/references.bib.sav
 **/Gemfile.lock
 **/.bundle/
-/src/site/workshops/arc42/arc42.html
-/src/site/workshops/c4-uml/c4-uml.html
-/src/site/workshops/agile-scrum/agile-scrum.html
-/src/site/workshops/ddd/ddd.html

@@ -4,10 +4,11 @@
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- *          https://apache.org/licenses/LICENSE-2.0
+ *          http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ *
  */
 
 package net.tangly.erp.crm.ui;
@@ -27,13 +28,11 @@ import net.tangly.erp.crm.domain.Activity;
 import net.tangly.erp.crm.domain.Interaction;
 import net.tangly.erp.crm.domain.InteractionCode;
 import net.tangly.erp.crm.services.CrmBoundedDomain;
-import net.tangly.ui.components.CommentsView;
 import net.tangly.ui.components.EntityField;
 import net.tangly.ui.components.EntityForm;
 import net.tangly.ui.components.EntityView;
 import net.tangly.ui.components.ItemForm;
 import net.tangly.ui.components.Mode;
-import net.tangly.ui.components.TagsView;
 import net.tangly.ui.components.VaadinUtils;
 import org.jetbrains.annotations.NotNull;
 
@@ -75,8 +74,9 @@ class InteractionsView extends EntityView<Interaction> {
         }
 
         private void registerTabs(@NotNull TabSheet tabSheet, @NotNull Mode mode, @NotNull Interaction entity) {
-            tabSheet.add("Comments", new CommentsView(entity, parent().domain(), mode));
-            tabSheet.add("Tags", new TagsView(entity, parent().domain(), mode));
+            // TODO comments and tabe
+            //            comments = new CollectionField<>(new CommentsView(parent.domain(), parent.mode()));
+            //            tags = new CollectionField<>(new TagsView(parent.domain(), parent.mode()));
             //            One2ManyView<Activity> activities = new One2ManyView<>(Activity.class, mode, InteractionsView::defineOne2ManyActivities,
             //                ProviderView.of(ProviderInMemory.of(entity.activities())), new ActivitiesView(domain(), mode));
             //            tabSheet.add("Activities", activities);

@@ -1,0 +1,92 @@
+---
+title: "Bounded Domain Invoice Model"
+date: 2019-05-01
+weight: 40
+---
+
+== Invoices Model
+
+=== Concepts
+
+Invoices define a business bounded domain as defined in domain-driven design approach.
+They are not constrained through external entities such as products, contracts or legal entities.
+External entities can provide hints to streamline the creation of regular invoices.
+The invoice article identifier is available as an external identifier to the article bounded domain.
+Similar identifiers are available for legal entities.
+
+VAT rates are defined within an article definition.
+Therefore, different VAT rates require different article definitions.
+For example, in Switzerland, a service company has two VAT rates.
+One for regular services and one for services exempted from VAT taxes.
+
+The currency is defined at the invoice level, meaning all invoice items and subtotals should use the same currency.
+
+=== Archiving
+
+An invoice contains all the information to create a legally binding document and hove no dependencies to external systems.
+Invoices should have a unique identifier for accounting purposes.
+A good practice is to use the identifier as part of the archived file to streamline traceability.
+Invoices can be stored in a database, exported as a PDF file or as a JSON file.
+The PDF file is human-readable and adequate for document archiving and legal auditing.
+The JSON file is an adequate archive format which can digitally be processed.
+
+[plantuml,bus-invoice-uml,svg]
+....
+@startuml
+
+package net.tangly.bus.crmRealm {
+    class LegalEntity {}
+
+    class BankConnection << (R,orchid) >> {
+        String iban
+        String bic
+        String institute
+    }
+
+    class Contract {}
+}
+
+package net.tangly.bus.invoices {
+class Product << (R,orchid) >> {
+    String productId
+    String description
+    BigDecimal unitPrice
+    String unit
+    BigDecimal vatRate
+}
+
+class Invoice {
+    String id
+    String contractId
+    LocalDate deliveryDate
+    LocalDate invoicedDate
+    LocalDate dueDate
+    Currency currency
+    String text
+    String paymentConditions
+}
+
+note right: contractId is the identifier for the contract instance in the CRM package.
+
+Invoice *-- InvoiceLine : lines
+Invoice o--> LegalEntity : invoicingEntity
+Invoice o--> LegalEntity : invoicedEntity
+Invoice *--> BankConnection : invoicingConnection
+
+interface InvoiceLine {}
+
+class InvoiceItem << (R,orchid) >> {}
+
+InvoiceLine <|.. InvoiceItem
+
+InvoiceItem o-- Product : article
+
+class Subtotal << (R,orchid) >> {}
+
+InvoiceLine <|.. Subtotal
+Subtotal o-- InvoiceLine
+
+}
+
+@enduml
+....

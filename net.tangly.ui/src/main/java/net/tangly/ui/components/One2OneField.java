@@ -1,13 +1,14 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2023 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- *          https://apache.org/licenses/LICENSE-2.0
+ *          http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ *
  */
 
 package net.tangly.ui.components;
@@ -32,6 +33,7 @@ import java.util.Objects;
 /**
  * A composite field to display a one-2-one relationship instance. The unique name of the referenced instance is shown. The button allows the change of the relationship instance.
  * <p>The referenced object is stored as field. The displayed fields are updated through {@link One2OneField#setPresentationValue(T)} ()}.</p>
+ * <p>The selection view displays the fields of an entity as columns. The provided provider can be used to filter out the items being considered for the field.</p>
  *
  * @param <T> type of the entity referenced in the one-2-one relationship.
  */

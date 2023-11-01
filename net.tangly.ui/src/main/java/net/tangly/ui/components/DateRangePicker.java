@@ -25,17 +25,16 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 public class DateRangePicker extends CustomField<DateRange> {
-    private final LocalDate lowerDate;
-    private final LocalDate upperDate;
     private final Button rangeText;
     private DateRange range;
 
     public DateRangePicker(String label, LocalDate lowerDate, LocalDate upperDate) {
-        this.lowerDate = lowerDate;
-        this.upperDate = upperDate;
+        if (Objects.nonNull(label)) {
+            this.setLabel(label);
+        }
+        range = DateRange.of(lowerDate, upperDate);
         rangeText = new Button();
-        var foo = rangeText.getStyle();
-        setPresentationValue(DateRange.of(null, null));
+        setPresentationValue(range);
         rangeText.addClickListener(e -> create().open());
         add(rangeText);
     }
@@ -61,7 +60,7 @@ public class DateRangePicker extends CustomField<DateRange> {
         from.setPlaceholder("Start date");
         from.setClearButtonVisible(true);
         var range = getValue();
-        if ((range != null) && (range.from() != null)) {
+        if (range.from() != null) {
             from.setValue(range.from());
         }
 
@@ -69,12 +68,11 @@ public class DateRangePicker extends CustomField<DateRange> {
         to.setClearButtonVisible(true);
         to.setPlaceholder("End date");
         to.setClearButtonVisible(true);
-        if ((range != null) && (range.to() != null)) {
+        if (range.to() != null) {
             to.setValue(range.to());
         }
 
         dialog.add(new VerticalLayout(from, to));
-
         dialog.getFooter().add(new Button("Cancel", e -> dialog.close()));
         dialog.getFooter().add(new Button("OK", e -> {
             this.range = DateRange.of(from.getValue(), to.getValue());

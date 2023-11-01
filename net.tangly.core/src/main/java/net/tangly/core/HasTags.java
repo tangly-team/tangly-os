@@ -1,13 +1,14 @@
 /*
- * Copyright 2006-2022 Marcel Baumann
+ * Copyright 2006-2023 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- *          https://apache.org/licenses/LICENSE-2.0
+ *          http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ *
  */
 
 package net.tangly.core;
@@ -17,7 +18,6 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Collection;
 import java.util.Objects;
 import java.util.Optional;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
@@ -25,25 +25,46 @@ import java.util.stream.Collectors;
  */
 public interface HasTags {
     /**
-     * Return the set of tags for the entity.
+     * Return the collection of tags for the entity.
      *
-     * @return set of tags
+     * @return collection of tags
+     * @see #tags(Collection)
      */
-    Set<Tag> tags();
+    Collection<Tag> tags();
 
     /**
-     * Add the tag to the set of tags.
+     * Set the new collection of tags for the entity.
+     *
+     * @param tags new collection of tags
+     * @see #tags()
+     */
+    void tags(@NotNull Collection<Tag> tags);
+
+    /**
+     * Remove the tag from the collection of tags.
+     *
+     * @param tag tag to remove
+     * @return {@code true} if this collection contained the specified element
+     * @see #add(Tag)
+     */
+    boolean remove(@NotNull Tag tag);
+
+    /**
+     * Add the tag to the collection of tags.
      *
      * @param tag tag to be added
-     * @return {@code true} if this set did not already contain the specified element
+     * @return {@code true} if this collection did not already contain the specified element
+     * @see #remove(Tag)
      */
-    boolean add(Tag tag);
+    boolean add(@NotNull Tag tag);
+
+    default void removeAllTags() {
+        tags().forEach(this::remove);
+    }
 
     default void addTags(@NotNull Iterable<Tag> tags) {
         tags.forEach(this::add);
     }
-
-    void removeAllTags();
 
     /**
      * Replace or insert the given tag. Tag equivalence is detected with optional namespace and tag name.
@@ -66,14 +87,6 @@ public interface HasTags {
         Objects.requireNonNull(tag);
         update(Tag.of(tag, value));
     }
-
-    /**
-     * Remove the tag from the set of tags.
-     *
-     * @param tag tag to remove
-     * @return {@code true} if this set contained the specified element
-     */
-    boolean remove(Tag tag);
 
     /**
      * Remove the tag with the given tag identification containing optional namespace and tag name.
@@ -131,15 +144,15 @@ public interface HasTags {
         return findBy(tag).map(Tag::value);
     }
 
-    default Set<Tag> findByNamespace(String namespace) {
+    default Collection<Tag> findByNamespace(String namespace) {
         Objects.requireNonNull(namespace);
         return tags().stream().filter(o -> Objects.equals(namespace, o.namespace())).collect(Collectors.toSet());
     }
 
     /**
-     * Return the set of tags as a canonical string representation.
+     * Return the collection of tags as a canonical string representation.
      *
-     * @return text representation of the tag set
+     * @return text representation of the tag collection
      * @see HasTags#rawTags(String)
      */
     default String rawTags() {
@@ -149,7 +162,7 @@ public interface HasTags {
     /**
      * Set the tags using the canonical string representation.
      *
-     * @param rawTags canonical representation of the tag set
+     * @param rawTags canonical representation of the tag collection
      * @see HasTags#rawTags()
      */
     default void rawTags(String rawTags) {

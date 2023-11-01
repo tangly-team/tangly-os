@@ -59,7 +59,7 @@ dependencies {
 }
 
 application {
-    mainClassName = "net.tangly.erp.ui.EmbeddedJetty"
+    mainClassName = "net.tangly.erp.ui.Main"
 }
 
 reporting {

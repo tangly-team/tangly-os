@@ -59,10 +59,20 @@ public abstract class ActorImp<T> implements Actor<T>, Runnable {
 
     @Override
     public void run() {
-        while (process(message(0, null))) ;
+        while (process(message())) ;
     }
 
-    protected T message(long timeout, TimeUnit unit) {
+    protected T message() {
+        try {
+            return messages.take();
+        } catch (InterruptedException e) {
+            logger.atError().log("Actor {} encountered interrupted exception {}", name(), e);
+            Thread.currentThread().interrupt();
+        }
+        return null;
+    }
+
+    protected T message(long timeout, @NotNull TimeUnit unit) {
         try {
             return (timeout == 0) ? messages.take() : messages.poll(timeout, unit);
         } catch (InterruptedException e) {

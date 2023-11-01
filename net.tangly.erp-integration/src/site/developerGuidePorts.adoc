@@ -18,16 +18,21 @@ weight: 50
 
 The following ranges of object identifiers _OID_ are foreseen:
 
-Natural entities:: 1 - 99
-Legal entities:: 100 - 199
-Employees:: 200 - 299
-Comments:: 300 - 399
-Assignments:: 400 -499
-Contracts:: 500 -599
-Interactions:: 600 - 699
-Activities:: 700 - 799
-Products:: 800 - 899
-Subjects:: 900 - 999
-Efforts:: 1000 - 1099
+CRM::
+Natural entities::: 1 - 99 00001 - 9999
+Legal entities::: 100 - 199 10000 - 19999
+Employees::: 200 - 299 20000 - 29999
+Comments::: 300 - 399 30000 - 39999
+Products::
+Assignments:: 400 -499 40000 - 49999
+Contracts::: 500 -599 50000 - 59999
+Interactions::: 600 - 699 60000 - 69999
+Activities::: 700 - 799 70000 - 79999
+Products::: 800 - 899 80000 - 89999
+Efforts::: 1000 - 1099 90000 - 99999
+ERP::
+Subjects::: 900 - 999 100000 - 100999
 
 The test dataset defined as resources for the integration tests of the PORT component follows the above conventions.
+
+Newly defined entities have identifiers starting with 200'000.

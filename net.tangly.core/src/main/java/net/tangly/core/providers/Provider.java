@@ -4,10 +4,11 @@
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- *          https://apache.org/licenses/LICENSE-2.0
+ *          http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ *
  */
 
 package net.tangly.core.providers;
@@ -17,11 +18,12 @@ import net.tangly.core.HasOid;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.function.Function;
 
 /**
- * Defines the provider abstraction responsible for handling all instances of a specific type.
+ * Defines the provider abstraction responsible for handling instances of a specific type.
  * The provider declares the regular CRUD operations: <i>Create, Read, Update, and Delete</i>.
  * The provider is the repository and often the factory in the domain-driven design terminology.
  * <dl>
@@ -64,6 +66,21 @@ public interface Provider<T> {
      * @param entity entity to delete
      */
     void delete(@NotNull T entity);
+
+    /**
+     * Replace an existing value with a new one. A null value is ignored.
+     *
+     * @param oldValue remove the old value if not null
+     * @param newValue add the new value if not null
+     */
+    default void replace(T oldValue, T newValue) {
+        if (Objects.nonNull(oldValue)) {
+            delete(oldValue);
+        }
+        if (Objects.nonNull(newValue)) {
+            update(newValue);
+        }
+    }
 
     /**
      * Update the data associated with all entities.
