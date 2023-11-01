@@ -2,14 +2,14 @@
 assertj-version = '3.24.2'
 jackson-version = '2.12.3'
 jersey-version = '2.35'
-javalin-version = '5.6.2'
+javalin-version = '5.6.3'
 jolt-version = '0.1.1'
 junit-version = '5.10.0'
 log4j2-version = '2.20.0'
 openapi-version = "5.6.2-2"
 microstream-version = '08.01.01-MS-GA'
-mustang-version = '2.7.3'
-vaadin-version = '24.1.7'
+mustang-version = '2.8.0'
+vaadin-version = '24.2.1'
 
 [plugins]
 vaadin = { id = "com.vaadin", version.ref = "vaadin-version" }
@@ -35,7 +35,7 @@ apache-log4j2-slf4j = { module = "org.apache.logging.log4j:log4j-slf4j-impl", ve
 
 awaitility = "org.awaitility:awaitility:4.2.0"
 
-slf4j-simple = "org.slf4j:slf4j-simple:2.0.7"
+slf4j-simple = "org.slf4j:slf4j-simple:2.0.9"
 
 apache-pdfbox = "org.apache.pdfbox:pdfbox:3.0.0"
 arch-unit = "com.tngtech.archunit:archunit-junit5-api:1.1.0"
@@ -45,14 +45,15 @@ asciidoctorj-pdf = "org.asciidoctor:asciidoctorj-pdf:2.3.9"
 
 assertj = { module = "org.assertj:assertj-core", version.ref = "assertj-version" }
 eo-yaml = "com.amihaiemil.web:eo-yaml:5.2.1"
-flyway = "org.flywaydb:flyway-core:9.22.0"
+flyway = "org.flywaydb:flyway-core:9.22.3"
 hsqldb = "org.hsqldb:hsqldb:2.7.2"
-iban4j = "org.iban4j:iban4j:3.2.6-RELEASE"
+iban4j = "org.iban4j:iban4j:3.2.7-RELEASE"
 
 ical4j-core = "org.mnode.ical4j:ical4j:3.2.1"
 ical4j-vcard = "org.mnode.ical4j:ical4j-vcard:1.0.7"
 
-google-libphonenumber = "com.googlecode.libphonenumber:libphonenumber:8.13.20"
+google-libphonenumber = "com.googlecode.libphonenumber:libphonenumber:8.13.24"
+google-protobuf = "com.google.protobuf:protobuf-java:3.24.3"
 
 jackson-databind = { module = "com.fasterxml.jackson.core:jackson-databind", version.ref = "jackson-version" }
 jackson-parameters = { module = "com.fasterxml.jackson.module:jackson-module-parameter-names", version.ref = "jackson-version" }
@@ -73,18 +74,17 @@ javalin-redoc-plugin = { module = "io.javalin.community.openapi:javalin-redoc-pl
 
 #Java 9 module compliant version of https://github.com/stleary/JSON-java
 json-core = "com.guicedee.services:json:1.2.2.1"
-json-validator = "com.networknt:json-schema-validator:1.0.86"
+json-validator = "com.networknt:json-schema-validator:1.0.87"
 json-assert = "org.skyscreamer:jsonassert:1.5.0"
 json-jolt-core = { module = "com.bazaarvoice.jolt:jolt-core", version.ref = "jolt-version" }
 json-jolt-utils = { module = "com.bazaarvoice.jolt:jolt-utils", version.ref = "jolt-version" }
 
-jsoup = "org.jsoup:jsoup:1.16.1"
+jsoup = "org.jsoup:jsoup:1.16.2"
 
 junit-api = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "junit-version" }
 junit-engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "junit-version" }
 
-lombok = "org.projectlombok:lombok:1.18.28"
-#lombok = "org.projectlombok:lombok:edge-SNAPSHOT"
+lombok = "org.projectlombok:lombok:1.18.30"
 
 micrometer = "io.micrometer:micrometer-registry-prometheus:1.11.0"
 micrometer-jmx = "io.micrometer:micrometer-registry-jmx:1.11.0"
@@ -98,14 +98,14 @@ microstream-storage = { module = "one.microstream:microstream-storage-embedded",
 microstream-jdk8 = { module = "one.microstream:microstream-persistence-binary-jdk8", version.ref = "microstream-version" }
 microstream-jdk17 = { module = "one.microstream:microstream-persistence-binary-jdk17", version.ref = "microstream-version" }
 
-mockito = "org.mockito:mockito-junit-jupiter:5.5.0"
+mockito = "org.mockito:mockito-junit-jupiter:5.6.0"
 
 scribe = "com.github.scribejava:scribejava-apis:8.3.1"
 
 vaadin-core = { module = "com.vaadin:vaadin-core", version.ref = "vaadin-version" }
-vaadin-pdfviewer = "org.vaadin.addons.componentfactory:vcf-pdf-viewer:2.7.2"
+vaadin-pdfviewer = "org.vaadin.addons.componentfactory:vcf-pdf-viewer:2.8.0"
 
-vaadin-embedded-jetty = "com.github.mvysny.vaadin-boot:vaadin-boot:12.0"
+vaadin-embedded-jetty = "com.github.mvysny.vaadin-boot:vaadin-boot:12.1"
 vaadin-socharts = "com.storedobject.chart:so-charts:3.2.4"
 vaadin-test = "com.github.mvysny.kaributesting:karibu-testing-v23:2.1.0"
 
