@@ -6,6 +6,7 @@ tags: ["organization"]
 ---
 
 == My New MacBooPro 16'' M2 Max
+:ref-metal: https://developer.apple.com/metal/[Metal]
 
 include::../fragments/_config-mb-blog.aodc[]
 
@@ -35,7 +36,7 @@ The new notebook replaces my older MacBookPro 2018 I bought five years ago.
 The new machine is so fast
 footnote:[To be fair, I am not involved in machine learning or vision application development.
 Apple support for standard ML libraries is abysmal.
-The company decided to create their own standard with https://developer.apple.com/metal/[Metal] and do not assume the consequences.].
+The company decided to create their own standard with {ref-metal} and do not assume the consequences.].
 It is a pleasure to work with it.
 The only visible difference with the older notebook is the new version has a bulkier build.
 
@@ -150,7 +151,7 @@ Ant is an obsolete tool and no more part of the set.
 <2> Documentation tools used to produce all technical documents.
 The applications are used to generate static websites.
 I had to update the PATH variable with _/opt/homebrew/opt/ruby/bin_ to ensure that brew ruby installation is used instead of the macOS one.
-<3> https://clojure.org/[Clojure] tools for the technical university lectures I gave.
+<3> {ref-clojure} tools for the technical university lectures I gave.
 <4> Utilities for developers.
 <5> Applications managed through homebrew.
 <6> JabRef for bibliography references management.
@@ -211,7 +212,7 @@ The site folder is where the site content is generated using {ref-hugo} and {ref
 
 ==== Configuration
 
-Here the startup script
+Here is the startup script
 
 [source,console]
 ----
@@ -239,6 +240,19 @@ java20                                                                          
 <1> Add homebrew to the path.
 <2> Command to select a JDK version and set it as default under macOS.
 <3> Select the default JDK version.
+
+[IMPORTANT]
+====
+Remember to install newly released JDKs containing security fixes every three months.
+
+Regularly run the following commands to update your homebrew and ruby packages.
+
+[source,console]
+----
+brewup
+gem update
+----
+====
 
 === Thoughts
 

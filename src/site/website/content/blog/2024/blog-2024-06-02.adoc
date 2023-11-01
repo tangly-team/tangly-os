@@ -209,6 +209,22 @@ It is customary to pass the message as parameter to the function.
 
 The state machine can be documented with a table describing for each state, the event be processed, an optional guard, the target state and the action.
 
+[IMPORTANT]
+====
+Finite state machines can contain timeout events or guards.
+Two major approaches exist to implement these timeout dependencies.
+Either you have access to a global timer manager or you wait on an event with a timeout clause.
+
+We recommend using the timeout clause in the wait next message call for {cpp} implementations.
+The code is straight forward and legible.
+
+_The Java solution will rather use the timer manager approach due to the native introspection support._
+_The {cpp} approach uses the *std::variant<..>* static approach for implementing events, the Java approach uses sealed class hierarchies and *instanceof* operator._
+
+Always chose an implementation reflecting the idioms of the chosen technology stack.
+Pattern matching is part of modern Java language but not of {cpp} language.
+====
+
 This design approach improves the maintainability of the application cite:[modern-software-engineering,continuous-delivery,continuous-delivery-pipelines].
 
 === Message Handling

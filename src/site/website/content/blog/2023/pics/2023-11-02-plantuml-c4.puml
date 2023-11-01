@@ -1,0 +1,13 @@
+[plantuml,target="plantuml-c4",format="svg",align="center"]
+----
+' tag::code[]
+@startuml
+!include <C4/C4_Container>
+
+Person(personAlias, "Customer", "Optional Description")
+Container(containerAlias, "tangly", "Technology", "tangly open source components")
+
+Rel(personAlias, containerAlias, "use", "Cool Technology")
+@enduml
+' end::code[]
+----

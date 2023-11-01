@@ -19,6 +19,7 @@
 :ref-docker: https://www.docker.com/[Docker]
 :ref-git: https://git-scm.com/[Git]
 :ref-uml: https://en.wikipedia.org/wiki/Unified_Modeling_Language[UML]
+:ref-tangly-workshops: https://blog.tangly.net/ideas/learnings/workshops/[Workshops]
 
 == Agenda
 

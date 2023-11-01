@@ -1,25 +1,72 @@
 ---
-title: "C4 with PlantUML"
-linkTitle: ""
+title: "C4 and UML with PlantUML"
+linkTitle: "PlantUML"
 date: 2023-11-15
 tags: ["agile", "architecture", "series-students"]
 ---
 
-== C4 with PlantUML
-
+== C4 and UML with PlantUML
 include::../fragments/_config-mb-blog.aodc[]
+:ref-java-api: https://docs.oracle.com/en/java/javase/21/docs/api/index.html[Java API]
 
 image::2023-11-02-head.png[width=420,height=360,role=left]
 
+You are creating an awesome digital product.
+The software part shall work flawlessly over the years.
+
+Technology changes will be added to the product.
+Legal changes and security improvements are implemented in a timely manner over the years.
+
+This application will evolve to satisfy new needs and customer segments.
+The life span of your product is probably more than a decade.
+
+How can you document critical cross-cutting design decisions and key mechanisms?
+
+How to help new team members understand your architecture and key concepts?
+
+We are convinced that {ref-arc42}, {ref-c4}, {ref-uml} and {ref-plantuml} are approaches to better communicate your intent to team members.
+
 === Include C4 Templates in plantUML
+
+The {ref-c4} notation is available as a template file <<plantuml-c4>>.
+Include the template in your {ref-plantuml} diagram.
+
+The following code generates the below diagram
+footnote:[Use this diagram block definition generates a vector graphic file centered in the document _plantuml,target="plantuml-c4",format="svg",align="center"_].
+
+[tabs]
+====
+Diagram::
++
+include::pics/2023-11-02-plantuml-c4.puml[]
+Source::
++
+[code,console]
+----
+include::pics/2023-11-02-plantuml-c4.puml[tag=code]
+----
+====
 
 === System Context Diagram
 
 A System Context diagram is a good starting point for diagramming and documenting a software system, allowing you to step back and see the big picture.
-Draw a diagram showing your system as a box in the centre, surrounded by its users and the other systems that it interacts with.
+Draw a diagram showing your system as a box in the center, surrounded by its users and the other systems that it interacts with.
 
-Detail isn't important here as this is your zoomed-out view showing a big picture of the system landscape.
+Detail is not important here as this is your zoomed-out view showing a big picture of the system landscape.
 The focus should be on people (actors, roles, personas, etc.) and software systems rather than technologies, protocols and other low-level details.
+
+[tabs]
+====
+Diagram::
++
+include::pics/2023-11-02-c4-context-diagram.puml[]
+Source::
++
+[code,console]
+----
+include::pics/2023-11-02-c4-context-diagram.puml[tag=code]
+----
+====
 
 === Container Diagram
 
@@ -29,13 +76,39 @@ Essentially, a container is a separately runnable/deployable unit (e.g., a separ
 
 The Container diagram shows the high-level shape of the software architecture and how responsibilities are distributed across it.
 It also shows the major technology choices and how the containers communicate with one another.
-It's a simple, high-level technology focussed diagram that is useful for software developers and support/operations staff alike.
+It is a simple, high-level technology focussed diagram that is useful for software developers and support/operations staff alike.
+
+[tabs]
+====
+Diagram::
++
+include::pics/2023-11-02-c4-container-diagram.puml[]
+Source::
++
+[code,console]
+----
+include::pics/2023-11-02-c4-container-diagram.puml[tag=code]
+----
+====
 
 === Component Diagram
 
 Next, you can zoom in and decompose each container further to identify the major structural building blocks and their interactions.
 
 The Component diagram shows how a container is made up of a number of "components", what each of those components are, their responsibilities and the technology/implementation details.
+
+[tabs]
+====
+Diagram::
++
+include::pics/2023-11-02-c4-component-diagram.puml[]
+Source::
++
+[code,console]
+----
+include::pics/2023-11-02-c4-component-diagram.puml[tag=code]
+----
+====
 
 === Code
 
@@ -44,6 +117,19 @@ Finally, you can zoom in to each component to show how it is implemented as code
 This is an optional level of detail and is often available on-demand from tooling such as IDEs.
 Ideally, this diagram would be automatically generated using tooling, (e.g., an IDE or UML modeling tool), and you should consider showing only those attributes and methods that allow you to tell the story that you want to tell.
 This level of detail is not recommended for anything but the most important or complex components.
+
+[tabs]
+====
+Diagram::
++
+include::pics/2023-11-02-c4-code-diagram.puml[]
+Source::
++
+[code,console]
+----
+include::pics/2023-11-02-c4-code-diagram.puml[tag=code]
+----
+====
 
 === Additional Diagrams
 
@@ -57,27 +143,53 @@ From a practical perspective, a system landscape diagram is really just a system
 
 ==== Dynamic Diagram
 
-A dynamic diagram can be useful when you want to show how elements in the static model collaborate at runtime to implement a user story, use case, feature, etc.
+A dynamic diagram can be useful when you want to show how elements in the static model collaborate at runtime to implement a user story, a use case, a feature, etc.
 This dynamic diagram is based upon a UML communication diagram (previously known as a "UML collaboration diagram").
 It is similar to a UML sequence diagram, although it allows a free-form arrangement of diagram elements with numbered interactions to indicate ordering.
 
 ==== Deployment Diagram
 
-A deployment diagram allows you to illustrate how instances of software systems and/or containers in the static model are deployed on to the infrastructure within a given deployment environment (e.g. production, staging, development, etc).
-It's based upon an UML deployment diagram.
+A deployment diagram allows you to illustrate how instances of software systems and/or containers in the static model are deployed on to the infrastructure within a given deployment environment such as production, staging, development, etc.
+It is based upon UML deployment diagrams.
 
 A deployment node represents where an instance of a software system/container is running; perhaps physical infrastructure (e.g. a physical server or device), virtualized infrastructure (e.g. IaaS, PaaS, a virtual machine), containerised infrastructure (e.g. a Docker container), an execution environment (e.g. a database server, Java EE web/application server, Microsoft IIS), etc.
 Deployment nodes can be nested.
 
 You may also want to include infrastructure nodes such as DNS services, load balancers, firewalls, etc.
 
-Feel free to use icons provided by Amazon Web Services, Azure, etc. to complement your deployment diagrams ... just make sure any icons you use are included in your diagram key/legend.
+Feel free to use icons provided by Amazon Web Services, Azure, etc. to complement your deployment diagrams .
+Just make sure any icons you use are included in your diagram legend.
+
+=== Lessons Learnt
+
+You should discuss intensively in your team and organization why you create diagrams.
+Each diagram has a creation and a maintenance costs.
+
+If you decide to create a lot of diagrams for your system, consider using a full-fledged C4 or UML modeling tool instead of a diagraming tool.
+Be aware one team member shall be a power user.
+He will support the team and write utilities to simplify usage of the tool
+footnote:[A typical example of such scripts is the generation of the diagram pictures and their inclusion in the application documentation.
+The process must be fully automated to guaranty synchronization of modeling results and product documenation.].
+
+What are the purpose and goals of your diagrams?
+
+I suggest using diagrams to document key design cross-cutting decisions
+footnote:[Key architecture decisions should often be documented in {ref-adr}.].
+
+New team members should understand the application design with the help of these diagrams and associated documentation.
+
+Please do not try to document all classes and packages with diagrams.
+It is not worth the money.
+
+Reflect what you document in overall diagrams and document and what you document in your API documentation.
+The {ref-java-api} documentation is a good example of high-quality and legible abstraction documentation using {ref-javadoc}.
+You can use {ref-doxygen} for applications programmed in {cpp}.
 
 [bibliography]
 === Links
 
 - [[[agile-visual-tools, 1]]] link:../../2023/agile-visual-tools/[Agile Visual Tools].
 Marcel Baumann. 2023.
-- [[[creating-technical-website-with-hugo-asciidoc,2]]] link:../../2020/creating-a-technical-website-with-hugo-and-asciidoc/[Creating a Technical Website with Hugo and Asciidoc].
+- [[[creating-website-hugo,2]]] link:../../2020/creating-a-technical-website-with-hugo-and-asciidoc/[Creating a Technical Website with Hugo and Asciidoc].
 Marcel Baumann. 2020.
 - [[[plantuml-c4,3]]] https://github.com/plantuml-stdlib/C4-PlantUML[PlantUML stdlib C4]

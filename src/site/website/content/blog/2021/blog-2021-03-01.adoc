@@ -6,16 +6,22 @@ tags: ["java"]
 ---
 
 == Modern Java Development
+:ref-amber: https://openjdk.java.net/projects/amber/[Amber]
+:ref-coin: https://openjdk.java.net/projects/coin/[Coin]
+:ref-jetbrains: https://www.jetbrains.com/[JetBrains]
+:ref-jacoco: https://www.eclemma.org/jacoco/[JaCoCo]
+:ref-slf4j: https://www.slf4j.org/[slf4j]
 
 include::../fragments/_config-mb-blog.aodc[]
 
-image::2021-03-01-head.png[width=420,height=360,role=left]
+image::2021-03-01-head.jpg[width=420,height=360,role=left]
 
 Java development won traction since the decision to release every six months a new version to the community.
 Preview and incubator features promote feedback from the community and users.
 
-Some tool builders, such as JetBrains,https://www.jetbrains.com/[] are working proactively and provide support for JDK in developments.
-Other tool maintainers such as https://www.eclemma.org/jacoco/[JaCoCo] are dreadfully behind the release cycle.
+Some tool builders, such as {ref-jetbrains} are working proactively and provide support for JDK in developments.
+
+Other tool maintainers such as {ref-jacoco}  are dreadfully behind the release cycle.
 
 We learnt to deal with the new speed and how to tackle the laggards.
 Some experiences were quite painful.
@@ -24,7 +30,7 @@ Below our findings and our current focus on developing software products.
 === Legibility Matters
 
 Programmers learnt the last decade that legibility and brevity of programming languages matter.
-The Java https://openjdk.java.net/projects/coin/[Coin] and https://openjdk.java.net/projects/amber/[Amber]
+The Java {ref-coin} and {ref-amber}
 projects were initiated to reduce the verbosity of the Java language mainly through syntactic sugar.
 A programmer should not be forced to write statements the compiler could infer.
 
@@ -81,7 +87,7 @@ We still have open wounds in the legibility and elegance of the Java programming
 https://en.wikipedia.org/wiki/Null_coalescing_operator[Null Coalescing Operator]).
 * Fluent interface when setting multiple properties in an instance.
 * Missing support for modifiable properties (read-only properties have initial support in the record construct).
-* Missing logging interface similar to https://www.slf4j.org/[slf4j].
+* Missing logging interface similar to {ref-slf4j}.
 * Reified generics to have access to generic types during runtime.
 
 === Next Improvements?

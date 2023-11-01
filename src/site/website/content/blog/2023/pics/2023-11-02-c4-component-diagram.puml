@@ -1,0 +1,22 @@
+[plantuml,target="c4-component-diagram",format="svg",align="center"]
+----
+' tag::code[]
+@startuml
+!include <C4/C4_Component>
+
+LAYOUT_WITH_LEGEND()
+
+title Component Diagram for Voice Activated door control system
+
+Person_Ext(customer, "Person", "person walks to the door")
+Container(Service, "Service", "C++", "Main Service")
+
+Container(VoiceRecogniton, "VoiceRecogniton", "C++", "Voice Recognition Module")
+Container(DoorControl, "DoorControl", "C++", "Opens and Clsoeses door")
+
+Rel(customer,Service,"talks")
+Rel(Service,VoiceRecogniton,"Initiatesd Voice Recognition")
+Rel(Service,DoorControl,"Initiates Door control")
+@enduml
+' end::code[]
+----

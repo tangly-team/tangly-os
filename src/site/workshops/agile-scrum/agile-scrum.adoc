@@ -8,18 +8,34 @@
 :revealjs_embedded: false
 :imagesdir: pics
 :icons: font
+:ref-manifesto: http://agilemanifesto.org/[Agile Manifesto]
+:ref-manifesto-principles: https://agilemanifesto.org/principles.html[12 Agile Manifesto Principles]
+:ref-scrum-alliance: "https://www.scrumalliance.org/[Scrum Alliance]"
+:ref-scrum-org: "https://www.scrum.org/[Scrum.org]"
+:ref-scrumguide: http://www.scrumguides.org/[Scrum Guide]
+:ref-tangly-workshops: https://blog.tangly.net/ideas/learnings/workshops/[Workshops]
 
 == Agenda
+
+- Why Agile?
+- Scrum Principles
+- Scrum Approach: _Events, Roles and Artifacts_
+- How to be Successful?
 
 [.notes]
 --
 This slide deck is licensed under Attribution 4.0 International (CC BY 4.0).
 The attribution is https://blog.tangly.net/[tangly llc].
 
-Additional slide decks can be found under https://blog.tangly.net/ideas/learnings/workshops/[Workshops].
+Additional slide decks can be found under {ref-tangly-workshops}.
 --
 
-== Why Agile
+== Why Agile?
+
+[.notes]
+--
+Why should an organization embrace agile approaches to develop new digital products?
+--
 
 [.lightbg,background-opacity="0.5"]
 === Agile Organizations
@@ -30,13 +46,18 @@ image::agile-organizations.png[background,size=cover]
 - Small teams of professionals
 - Networked transparent communication
 
-=== Roles and Responsabilities
+[.notes]
+--
+Customer-centric means all collaborators can communicate directly with customers.
 
-image::roles-maangement.png[]
+Transparent communication in networks allows any collaborator to communicate with another employee.
+--
+
+=== Roles and Responsibilities
+
+image::roles-management.png[]
 
 === Agile Impact on Success
-
-image::project-success-rates.png
 
 [%notitle]
 === Agile Products
@@ -50,6 +71,11 @@ image::project-success-rates.png[]
 - *Working software* over comprehensive documentation
 - *Customer collaboration* over contract negotiation
 - *Responding to change* over following a plan
+
+[.notes]
+--
+The right part is still relevant, but the emphasis is shifted to the left component of each statement.
+--
 
 === Agile Manifesto Principles
 
@@ -66,19 +92,30 @@ image::scrum-rules-the-world.png[]
 === Scrum in 100 Words
 
 - Scrum is an *agile process* that allows us to focus on delivering the *highest business value* in the *shortest time*.
-- It allows us to rapidly and repeatedly *inspect* actual working software (every two weeks or each day).
+- It allows us to rapidly and repeatedly *inspect* actual working software.
 - The business sets the *priorities*.
 Teams self-organize to determine *the best way to deliver the highest priority features*.
-- At least every two weeks anyone can see real *working software* and decide to release it as is or continue to enhance it for another sprint.
+- At least every two weeks anyone can see *working software* and decide to release it or not.
+
+[.notes]
+--
+The {ref-scrumguide} is the seminal text describing Scrum approach.
+The two major Scrum organizations are {ref-scrum-alliance} and {ref-scrum-org}.
+--
 
 === Scrum Pillars
 
 [.center-text]
-Transparency - Inspection - Adaptation
+_Transparency - Inspection - Adaptation_
 
 - Scrum is founded on *empiricism* and *lean thinking*.
 - Empiricism asserts that knowledge comes from experience and *making decisions based on what is observed*.
 - Lean thinking reduces *waste* and focuses on the essentials.
+
+[.notes]
+--
+PDCA - https://en.wikipedia.org/wiki/PDCA[Plan, Do, Check, Act].
+--
 
 [.lightbg,background-opacity="0.5"]
 === Scrum Values
@@ -92,46 +129,187 @@ image::scrum-values.png[background,size=cover]
 [.streched]
 image::scrum-flow.png[]
 
-=== Scrum Events
+== Scrum Events
 
 [.streched]
 image::scrum-approach.png[]
 
-=== Planning
+=== Sprint
+
+- No changes are made that would endanger the *Sprint Goal*.
+- *Quality does not decrease*.
+- The Product Backlog is *refined* as needed.
+- Scope may be clarified and renegotiated with the Product Owner as more is learned.
+
+=== Sprint Planning
+
+image:sprint-planning.png[]
+
+=== Sprint Planning Questions
+
+- Why is the Sprint valuable?
+- What can be done in this Sprint?
+- How will the chosen work get done?
 
 === Daily Scrum
 
-=== Review
+image:daily-scrum.png[]
+
+=== Sprint Review
+
+image:sprint-review.png[]
 
 === Retrospective
 
-=== Backlog Refinement
+image::sprint-retrospective.png[]
 
-=== Architecture and Design
+=== _Product Backlog Refinement_
+
+image:product-backlog-refinement.png[]
+
+=== _Architecture and Design_
+
+- Hold architecture workshops
+- Hold coding dojos at the end of the Sprint
+- Encourage team working including pair or mob programming
+- Document design and decisions for future team members
+- Extend the _Definition of Done_
+
+== Scrum Roles
+
+[.streched]
+image::scrum-approach.png[]
+
+=== Developers
+
+image:development-team.png[]
+
+[.notes]
+--
+A team is cross-functional and has all capabilities to create the product.
+
+All developers have the same title.
+Meritocracy is key for a high-performing team.
+
+Developers are often T-shaped.
+Expert in one domain, knowledgeable in other areas.
+--
+
+=== Developers Responsibilities
+
+- Create a plan for the Sprint and the Sprint Backlog
+- Instill quality by adhering to a _Definition of Done_
+- Adapt their plan each day toward the _Sprint Goal_
+- Hold each other accountable as professionals
+
+[.notes]
+--
+Beware that no all engineers like to be accountable.
+--
+
+=== Product Owner
+
+image:product-owner.jpg[]
+
+=== Product Owner Responsibilities
+
+- Develop and explicitly communicate the Product Goal
+- Create and clearly communicating Product Backlog items
+- Order Product Backlog items _PBI_
+- Ensure that the Product Backlog is transparent, visible and understood.
+
+=== Scrum Master
+
+image:scrum-master.png[]
+
+=== Responsibilities for Scrum Team (1/3)
+
+- Coach the team members in self-management and cross-functionality
+- Help the Scrum Team focus on creating high-value Increments that meet the Definition of Done
+- Cause the removal of impediments to the Scrum Team’s progress
+- Ensure that all Scrum events take place and are positive, productive, and kept within the timebox
+
+=== Responsibilities for Product Owner (2/3)
+
+- Help find techniques for effective Product Goal definition and Product Backlog management
+- Help the Scrum Team understand the need for clear and concise Product Backlog items
+- Help establish empirical product planning for a complex environment
+- Facilitate stakeholder collaboration as requested or needed
+
+=== Responsibilities for organization (3/3)
+
+- Lead, train, and coach the organization in its Scrum adoption
+- Plan and advise Scrum implementations within the organization
+- Help employees and stakeholders understand and enact an empirical approach for complex work
+- Remove barriers between stakeholders and Scrum Teams
 
 == Scrum Artifacts
 
-=== Backlog
+[.streched]
+image::scrum-approach.png[]
+
+[.notes]
+--
+Each artifact contains a commitment to ensure it provides information that enhances transparency and focus against which progress can be measured:
+
+- For the Product Backlog it is the Product Goal.
+- For the Sprint Backlog it is the Sprint Goal.
+- For the Increment it is the Definition of Done.
+--
+
+=== Product Backlog
+
+image:product-backlog.png[]
 
 === Sprint Backlog
 
-=== Increment
+image:sprint-backlog.png[]
 
-=== Definition of Done
+=== Product Increment
 
-== Agile Fluency
+image:product-increment.png[]
+
+[.notes]
+--
+A product is a vehicle to deliver value.
+It has a clear boundary, known stakeholders, well-defined users or customers.
+A product could be a service, a physical product, or something more abstract.
+--
+
+== How to be Successful?
+
+=== Agile Fluency
+
+[.streched]
+image::agile-fluency-model.png[]
 
 === Technical Agile Fluency
 
-- clean code and refactoring
-- version control
-- continuous integration and delivery
-- automated test suite, see TDD, ATDD, BDD
-- configuration and documentation as code
+- Clean code and refactoring
+- Version control
+- Continuous integration and delivery
+- Automated test suite, see TDD, ATDD, BDD
+- Configuration and documentation as code
 
 === Software Craftsmanship
 
-== Lessons Learnt
+[.streched]
+image::software-craftsmanship.png[]
+
+=== DevOps
+
+image:devops-lifecycle.jpg[]]
+
+=== Team Dynamics
+
+image::team-responsibilities.png[]
+
+==== References
+
+- {ref-scrumguide}
+- {ref-scrum-alliance}
+- {ref-scrum-org}
+- {ref-manifesto} and {ref-manifesto-principles}
 
 [%notitle]
 [.lightbg,background-opacity="0.5"]

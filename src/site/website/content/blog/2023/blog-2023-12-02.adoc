@@ -1,7 +1,7 @@
 ---
 title: "Semantic Commits for the Impatient"
 linkTitle: "Semantic Commits"
-date: 2023-09-28
+date: 2023-10-09
 tags: ["agile", "git", "series-students"]
 ---
 

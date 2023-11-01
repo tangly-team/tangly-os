@@ -1,18 +1,21 @@
 /*!
- * Copyright 2015-2022 Marcel Baumann
+ * Copyright 2015-2023 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- *          https://apache.org/licenses/LICENSE-2.0
+ *          http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ *
  */
 
 // Blockquotes
 
 $blockquote-cite-font-color: rgba(0,0,0,0.6);
+
+$tabs-bg: #fff;
 
 // Tables
 
@@ -344,4 +347,117 @@ table.frame-ends {
 
 table.frame-sides {
     border-width: 0 $table-border-size;
+}
+
+.tabs {
+    margin-bottom: 1.25em;
+}
+
+.tablist {
+    > ul {
+        display: flex;
+        flex-wrap: wrap;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+        li {
+            align-items: center;
+            background-color: #fff;
+            cursor: pointer;
+            display: flex;
+            font-weight: bold;
+            line-height: 1.5;
+            padding: 0.25em 1em;
+            position: relative;
+
+            &:focus-visible {
+                outline: none;
+            }
+        }
+    }
+
+    &.ulist {
+        margin: 0;
+
+        > ul li {
+            margin: 0;
+
+            + li {
+                margin-left: 0.25em;
+            }
+        }
+    }
+}
+
+.tabs {
+    .tablist li::after {
+        content: "";
+        display: block;
+        height: 1px;
+        position: absolute;
+        bottom: -1px;
+        left: 0;
+        right: 0;
+    }
+
+    &.is-loading .tablist li:not(:first-child), &:not(.is-loading) .tablist li:not(.is-selected) {
+        background-color: #f5f5f5;
+    }
+
+    &.is-loading .tablist li:first-child::after, &:not(.is-loading) .tablist li.is-selected::after {
+        background-color: #fff;
+    }
+}
+
+.tablist > ul p {
+    line-height: inherit;
+    margin: 0;
+}
+
+.tabpanel {
+    background-color: $tabs-bg;
+    padding: 1.25em;
+}
+
+.tablist > ul li, .tabpanel {
+    border: 1px solid #dcdcdc;
+}
+
+.tablist > ul li {
+    border-bottom: 0;
+}
+
+.tabs {
+    &.is-loading .tabpanel + .tabpanel, &:not(.is-loading) .tabpanel.is-hidden {
+        display: none;
+    }
+}
+
+.tabpanel > :first-child {
+    margin-top: 0;
+}
+
+#content .tabpanel > :last-child {
+    margin-bottom: 0;
+
+    > :last-child {
+        margin-bottom: 0;
+
+        > li:last-child > :last-child {
+            margin-bottom: 0;
+        }
+    }
+}
+
+.tablecontainer {
+    overflow-x: auto;
+}
+
+#content .tablecontainer {
+    margin-bottom: 1.25em;
+
+    > table.tableblock {
+        margin-bottom: 0;
+    }
 }

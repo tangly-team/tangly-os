@@ -11,7 +11,8 @@ include::../fragments/_config-mb-blog.aodc[]
 
 image::2023-11-01-head.png[width=420,height=360,role=left]
 
-You will find that Java expertise is in high demand for all kinds of projects, ranging from big enterprise software implementations down to little web projects.
+Java expertise is in high demand for all kinds of projects, ranging from big enterprise software implementations down to little web projects.
+A huge number of enterprise applications are developed in Java.
 
 But will those employers want you to have related certifications?
 
@@ -86,22 +87,25 @@ You can, for example, publish your certification badge on the LinkedIn platform.
 === Lessons Learnt
 
 - Read all chapters of the book to prepare for the examination.
-- Train with mockup questions.
+- Train with mock questions.
 Do not focus on memorizing the questions.
 - Try to relax during the examination.
-Do not stay too long on one question.
+Do not stay too long on one question. +
++
 Each question has the same weight for passing the examination.
-Answer the questions you find easier.
+Answer first the questions you find easier. +
++
 At the end of the test, reconsider the answered questions and either find or guess an answer.
 With some luck, you get a few more points.
 
 [IMPORTANT]
 ====
 If you are a senior Java developer, you probably do not need to renew your credentials.
-You already have shown you have the exepected level.
+You already have shown you reached the expected level.
 
-The value of taking the updated examination each time a new Java LTS version is released is not clear.
+The value of taking the updated examination each time a new Java LTS version is released is not clear for me.
 Investing in the certification every two years has no measurable return on investment.
+You will not get a salary increase in Europe for a renewal.
 
 Find a more effective approach to learning the new features of the Java language and environment.
 ====
@@ -114,3 +118,5 @@ Scott Selikoff, Jeanne Boyarsky.
 Sybex. 2022
 - [[[certification-java-11, 2]]] link:../../2021/certified-java-developer/[Certified Java 11 Developer]
 Marcel Baumann. 2021.
+- [[[certifications-useful, 3]]] link:../../2023/are-certifications-useful/[Are Certifications Useful?]
+Marcel Baumann. 2023.

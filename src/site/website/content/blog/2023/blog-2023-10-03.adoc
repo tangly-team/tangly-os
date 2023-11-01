@@ -599,6 +599,11 @@ Conquer streams and lambda expressions defined as pure functions.
 Promote immutable objects and collections in your source code.
 These design solutions naturally scale with more processing cores.
 
+*Virtual threads* are here.
+Use them.
+Concurrent collections shall be used to implement back pressure with virtual thread designs.
+The performance of concurrent collections will be fabulous with Java 22.
+
 Advanced discussions were heard in some talks.
 How should and would Java evolve in the next years?
 Current https://openjdk.org/[openJDK] projects cover all ideas I heard during the conference.

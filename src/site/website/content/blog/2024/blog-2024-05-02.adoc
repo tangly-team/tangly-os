@@ -16,13 +16,16 @@ image::2024-05-02-head.svg[width=420,height=360,role=left]
 Concurrent programming has always been tricky.
 Accessing a shared state from multiple threads is a central problem, where hard-to-catch errors may easily appear.
 
-The need for concurrent programming is increased tremendously with the fact that all modern processors and many microcontrollers have multiple cores.
+Protected access to identified shared variables is easy to realize.
+Mechanisms to avoid deadlocks or starvation are cubersome to implement and almost impossible to validate.
+
+The need for concurrent programming has increased tremendously with the fact that all modern processors and many microcontrollers have multiple cores.
 
 Java or {cpp} have all the instruments for safe and flawless concurrency, but the compiler would deliberately let developers write dangerous code.
 
 Java has native threading support since inception.
 Powerful synchronization primitives were added later with the addition of the concurrent package.
-The latest evolution is virtual threads enabling the creation of thousands of parallel tasks.
+The latest evolutions are virtual threads enabling the creation of thousands of parallel tasks and structured concurrency to write legible parallel constructs.
 
 C and {cpp} have threading support and synchronization primitives were added with the 2011 revision.
 Later versions added small refinement to the synchronization mechanisms.
@@ -33,11 +36,12 @@ The {ref-actor-model} is one of the approaches to safe concurrency.
 The model is based on {ref-message-passing}.
 
 Although multiple actors can run at the same time, an actor will process a given message sequentially.
-This means that if you send three messages to the same actor, it will just execute one at a time.
+This means that if you send three messages to the same actor, it will sequencially process one at a time.
 To have these three messages being executed concurrently, you need to create three actors and send one message each.
 
 Messages are sent asynchronously to an actor that needs to store them somewhere while it is processing another message.
-The mailbox is the place where these messages are stored.
+The mailbox is the place where these messages are stored
+footnote:[The mailbox is often called message queue in the literature.].
 
 Another interesting aspect of the actor model is that it does not matter if the actor which I am sending a message to is running locally or on another node.
 
@@ -46,6 +50,7 @@ An actor is a computational entity that, in response to a message it receives, c
 - Send a finite number of messages to other actors.
 - Create a finite number of new actors.
 - Designate the behavior to be used for the next message it receives.
+An actor shall only access local data and information from the current message.
 
 [IMPORTANT]
 ====
@@ -93,7 +98,7 @@ The sender can send out more messages in the meantime.
 ====
 Embedded applications using traditional approaches with synchronization primitives such as mutexes and semaphores are very difficult to implement correctly.
 
-The MISRA committee has recognized the problems and defined a set of restrictions in the MISRA C 2012 Amendment 4—or should we say MISRA C 2023 revision.
+The MISRA committee has recognized the problems and defined a set of restrictions in the MISRA C 2012 Amendment 4, or should we say MISRA C 2023 revision.
 The recommendations are:
 
 - No dynamic creation of threads.
@@ -115,7 +120,7 @@ Two actors may end up waiting for a message from each other, thus creating a dea
 Overall, the model is considered susceptible to deadlocks. +
 However, it is worth noting that concurrent programming is more error-prone and complex than sequential programming.
 . You need to enforce message immutability.
-Using the actor model in languages that do not enforce immutability out of the box means it is up to the developer to ensure messages remain immutable. +
+Using the actor model in languages that do not enforce immutability out of the box means it is up to the developers to ensure messages remain immutable. +
 If this verification is overlooked, messages may become mutable and lead to thread-safety concerns.
 . Unexpected failures can be critical.
 If an actor failure occurs, other actors may get perpetually stuck awaiting a message from it.

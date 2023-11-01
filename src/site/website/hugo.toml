@@ -78,7 +78,7 @@ safeMode = "unsafe"
 workingFolderCurrent = true
 backend = "html5"
 failureLevel = "fatal"
-extensions = ["asciidoctor-diagram", "asciidoctor-bibtex", "asciidoctor-kroki"]
+extensions = ["asciidoctor-diagram", "asciidoctor-bibtex", "asciidoctor-kroki", "asciidoctor-tabs"]
 [markup.asciidocExt.attributes]
 experimental = true
 allow-uri-read = true
@@ -99,6 +99,7 @@ ref-asynapi = "https://www.asyncapi.com/[Async API]"
 ref-bbrt = "https://bbrt.org/[Beyond Budgeting Round Table]"
 ref-bitbucket = "https://bitbucket.org/[Bitbucket]"
 ref-c4 = "https://c4model.com/[C4 Model]"
+ref-clojure = "https://clojure.org/[Clojure]"
 ref-craftsmanship = "https://manifesto.softwarecraftsmanship.org/[Software Craftsmanship]"
 ref-devops = "https://en.wikipedia.org/wiki/DevOps[DevOps]"
 ref-docsy = "https://www.docsy.dev/[Docsy]"

@@ -10,6 +10,7 @@
 :ref-bpml: https://en.wikipedia.org/wiki/Business_Process_Modeling_Language[BPML]
 :ref-c4: https://c4model.com/[C4 Model]
 :ref-uml: https://en.wikipedia.org/wiki/Unified_Modeling_Language[UML]
+:ref-tangly-workshops: https://blog.tangly.net/ideas/learnings/workshops/[Workshops]
 
 == Agenda
 
@@ -22,7 +23,7 @@
 This slide deck is licensed under Attribution 4.0 International (CC BY 4.0).
 The attribution is https://blog.tangly.net/[tangly llc].
 
-Additional slide decks can be found under https://blog.tangly.net/ideas/learnings/workshops/[Workshops].
+Additional slide decks can be found under {ref-tangly-workshops}.
 --
 
 [.lightbg,background-opacity="0.25"]

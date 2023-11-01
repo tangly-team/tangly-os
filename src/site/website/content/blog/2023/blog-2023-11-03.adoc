@@ -1,0 +1,134 @@
+---
+title: "Pragmatic Java Application Design"
+linkTitle: "Pragmatic Design"
+date: 2023-11-25
+tags: ["agile", "architecture"]
+---
+
+== Pragmatic Java Application Design
+
+include::../fragments/_config-mb-blog.aodc[]
+
+image::2023-11-03-head.png[width=420,height=360,role=left]
+
+I attended the 20th edition of the Devoxx Belgium conference in Antwerp.
+
+I heard beautiful examples of how to design complex software applications written in Java.
+
+The solutions scale to hundreds of thousands of users, are resilient to network disruption and use fancy libraries and tools.
+
+The applications are deployed on cloud infrastructure and are available worldwide.
+
+After the conference, I went to Ibiza for a family holidays.
+Our family enjoys prolonging the summer on a beautiful balearic island.
+
+The weather is Switzerland is typical for fall.
+Cold, misty and often rainy.
+
+I used to relaxed location to reflect the kind of applications I often develop for customers.
+
+The application goal often is to digitalize an internal process or a more complex workflow involving customers and suppliers.
+
+The product we have to develop has the following characteristics:
+
+. It is a web-based application.
+Customers and their IT department do not want to install an application locally.
+A few users access the application through a tablet or a smart phone.
+. It has from a few dozens to a maximum of a few hundreds of parallel active users.
+The user interface should be responsive to reflect modern user interface expectation.
+. Persistent data is often a few tens of gigabytes.
+. It has few computational intensive algorithms.
+. It often has to produce various output documents for distribution.
+
+[NOTE]
+====
+A CRM system for a small company uses quite a small persistent storage.
+
+The marketing department has less than 10'000 prospects and less than 1'000'000 interactions.
+The company has at most 10'000 contracts and 1'000'000 invoices.
+We can assume each object is less than 10 KBytes.
+
+The size of the whole database is around 20 GB.
+Modern servers can easily load this data in memory and provide lightning fast access to information.
+
+Please factor in the fact that quite a slice of this data is the past and is very seldom accessed.
+The application will not need regular access to all the historical information.
+
+Most of the time the application only accesses active customers, contracts, and invoices issued in the current year.
+====
+
+=== Modular Monolith
+
+The good approach to design such a system is to use a modular monolith architecture <<modular-monolith>>.
+
+The technologies I use are:
+
+Domain Driven Design::
+Is a good architecture approach to creating modular monoliths with object-oriented technologies
+cite:[domain-driven-design-distilled,implementing-domain-driven-design,domain-storytelling,-driven-design].
+Modern Java technology stack::
+Is probably the most effective stack for engineering maintainable solutions.
+Trained engineers are available.
+High-quality open source and commercial libraries are available to solve most requirements.
+EclipseStore and HyperSQL::
+Are cost-effective and stable approaches for persistence.
+Logging log4j2::
+Is a powerful and established logging approach for your productive systems.
+Monitoring Micrometer::
+Is an industry standard to monitor your productive solutions on premises or in the cloud.
+Vaadin, SO Charts::
+Is a Java-based approach to creating modern user interfaces.
+PDF Box::
+Is a powerful library to generate your PDF output documents.
+FacturX and Swiss QR Code::
+Are used to create compliant invoices in Europe and Switzerland.
+
+The application could have a huge success.
+You must now support thousands of concurrent users and more persistent data.
+
+The following changes are needed:
+
+- Split modular monolith into a set of services
+- Move to PostreSQL
+- Shard your application services and data either geographically or per customer groups.
+
+[CAUTION]
+====
+The user interface written with Vaadin will scale up to around ten thousand concurrent users for one server.
+If you have more users, you must create shards for your application.
+
+This approach will only scale for around hundred thousand concurrent users.
+
+_Honestly, I never created an application with more than eight thousand concurrent users._
+_Products with more parallel users are seldom in Europe._
+====
+
+=== Lessons Learnt
+
+We are professional engineers.
+Form should follow function.
+
+The huge majority of digital products we build do not need fancy and expensive technologies.
+
+We should build solid products.
+Evolutive architecture principles cite:[building-evolutionary-architectures-2nd,continuous-architecture-in-practice] help us to scale later.
+
+Beware that if your market grows exponentially, you will have to rewrite your solution.
+
+This approach is the best for your company and your cash flow.
+
+At this moment, you will better understand your customers and have the necessary budget to create a truly complex solution.
+
+[bibliography]
+=== Links
+
+- [[[monolith-first,1 ]]] https://martinfowler.com/bliki/MonolithFirst.html[Monolith First]
+Martin Fowler. 2015.
+- [[[modular-monolith, 2]]] link:../../2022/modular-monoliths-are-the-new-graal/[Modular Monoliths Are the new Graal]
+Marcel Baumann. 2022.
+- [[[behavor-driven-design, 3]]] link:../../2022/behavior-driven-design/[Behavior Driven Design]
+Marcel Baumann. 2022.
+
+=== References
+
+bibliography::[]
