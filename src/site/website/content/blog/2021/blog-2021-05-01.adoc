@@ -21,7 +21,8 @@ Your key developers are grumbling you are faking it.
 
 Many companies around the world discover their agile transformation is stalling.
 
-The https://swissq.it/en/[SwissQ] report provides empirical data where Swiss companies stand in 2020.
+The SwissQ report provides empirical data where Swiss companies stand in 2020.
+Download is available under from https://report.swissq.it/[SwissQ Reports].
 
 === Where We Stand
 
@@ -141,4 +142,4 @@ We still advocate and promote
 [.text-center]
 _To be agile, not to do agile_
 
-You can download the https://swissq.it/en/downloads/trends-benchmarks-report-2020/[Trends Benchmark Report 2020] report.
+You can download Trends Benchmark Report 2020 from https://report.swissq.it/[SwissQ Reports].

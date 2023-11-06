@@ -1,0 +1,43 @@
+---
+title: "ERP Architecture"
+linkTitle: "Architecture"
+weight: 05
+---
+= ERP Architecture
+
+. link:./01-introduction-and-goals[Introduction and Goals]
+. link:./02-architecture-constraints[Architecture Constraints]
+. link:./03-system-scope-and-context[System Scope and Context]
+. link:./04-solution-strategy[Solution Strategy]
+. link:./05-building-block-view[Building Block View]
+. link:./06-runtime-view[Runtime View]
+. link:./07-deployment-view[Deployment View]
+. link:./08-crosscutting-concepts[Crosscutting Concepts]
+. link:./09-architecture-decisions[Architecture Decisions]
+. link:./10-quality-requirements[Quality Requirements]
+. link:./11-technical-risks[Technical Risks]
+. link:./12-user-manual[User Manual]
+. link:./13-glossary[Glossary]
+
+[plantuml,chapters,svg,opts=interactive]
+----
+@startuml
+!$root = "https://blog.tangly.net/docs/domains/architecture"
+
+rectangle "Architecture Topics" {
+  rectangle "01 Introduction & Goals" [[$root/01-introduction-and-goals/{fundamental requirements esp. quality goals}]]
+  rectangle "02 Constraints" [[$root/02-architecture-constraints/]]
+  rectangle "03 Context & Scope" [[$root/03-system-scope-and-context/{external systems & interfaces}]]
+  rectangle "04 Solution Strategy" [[$root/04-solution-strategy/{core ideas and solution approaches}}]]
+  rectangle "05 Building Block View" [[$root/05-building-block-view/{structure of source code, modularization}]]
+  rectangle "06 Runtime View" [[$root/06-runtime-view/{important runtime scenarios}]]
+  rectangle "07 Deployment View" [[$root/07-deployment-view/{hardware, infrasctructure & deployment}]]
+  rectangle "08 Crosscutting Concepts" [[$root/08-crosscutting-concepts/{crosscutting topics, often very technical and detailed }]]
+  rectangle "09 Architectural Decisions" [[$root/09-architecture-decisions/{important decisions not described elsewhere}]]
+  rectangle "10 Quality Requirements" [[$root/10-quality-requirement/{quality tree, quality scenarios}]]
+  rectangle "11 Risks & Technical Debt" [[$root/11-technical-risks/{known problems & risks}]]
+  rectangle "12 User Interface" [[$root/12-user-manual/{user manual}]]
+  rectangle "13 Glossary" [[$root/13-glossary/{ubiquous language important and specific terms}]]
+}
+@enduml
+----

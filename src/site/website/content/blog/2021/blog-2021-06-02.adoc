@@ -183,4 +183,4 @@ Maybe you are wrong and they were right?
 Did we mention _patience_?
 I wish a fruitful and successful transformation to better way of working and of creating awesome products.
 
-You can download the https://swissq.it/en/downloads/trends-benchmarks-report-2021-in-quality-engineering/[Trends Benchmark Report 2021] report.
+You can download the Trends Benchmark Report 2021 from https://report.swissq.it/[SwissQ Reports].

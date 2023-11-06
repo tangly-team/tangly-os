@@ -153,7 +153,7 @@ See, for example, https://uxschweiz.ch/weiterbildung/mashcid/[Master Human Compu
 === LInks
 
 - [[[product-owner-learning-objectives, 1]]]
-https://www.scrumalliance\.org/ScrumRedesignDEVSite/media/ScrumAllianceMedia/Files%20and%20PDFs/Learning%20Objectives/E_CSPO_LO_5-20-21.pdf[Scrum Alliance Certified Scrum Product Owner Learning Objectives].
+https://www.scrumalliance.org/ScrumRedesignDEVSite/media/ScrumAllianceMedia/Files%20and%20PDFs/Learning%20Objectives/E_CSPO_LO_5-20-21.pdf[Scrum Alliance Certified Scrum Product Owner Learning Objectives].
 Scrum Alliance. 2021
 - [[[product-owner-advanced-learning-objectives, 2]]]
 https://www.scrumalliance.org/ScrumRedesignDEVSite/media/ScrumAllianceMedia/Files%20and%20PDFs/Certifications/CSPO/CSPO_LearningObjectives_Advanced.pdf[Scrum Alliance Advanced Certified Scrum Product Owner Learning Objectives].

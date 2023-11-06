@@ -81,10 +81,10 @@ package net.tangly.gleam [[$root/docs/gleam/]] {
 }
 net.tangly.gleam --> net.tangly.commons
 
-package net.tangly.ports [[$root/docs/ports/]] {
+package net.tangly.ui [[$root/docs/ui/]] {
 }
 
-package net.tangly.ui [[$root/docs/ui/]] {
+package net.tangly.erp.collaborators [[$root/domains/collaborators]] {
 }
 
 package net.tangly.erp.crm [[$root/domains/crm]] {
@@ -218,7 +218,7 @@ We use the selection algorithm of Hugo to activate our tailoring and extensions.
 
 ==== Create Website
 
-The tangly open source components website is hosted under https://blog.tangly.net/docs[Documentation].
+The tangly open source components website is hosted under {ref-tangly-doc-url}[Documentation].
 
 Read the instructions in the asciidoctor script file under the scripts' folder.
 Four scripts are provided to generate the Hugo static site with associated structure and theme.

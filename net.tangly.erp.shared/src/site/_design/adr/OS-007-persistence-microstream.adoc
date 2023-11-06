@@ -68,4 +68,4 @@ MicroStream does not provide functions in this area.
 [bibliography]
 === Links
 
-- [[[microstream-4, 1]]] link:../../../blog/2021/microstream-4.x/[MicroStream 4.x]
+- [[[microstream-4, 1]]] link:{ref-tangly-blog-url}/2021/microstream-4.x/[MicroStream 4.x]

@@ -123,7 +123,7 @@ Do not use it.
 - [[[state-diagram, 1]]] https://en.wikipedia.org/wiki/State_diagram[State Diagram]
 - [[[uml-fsm, 2]]] https://en.wikipedia.org/wiki/UML_state_machine[UML State Machine]
 - [[[scxml,3]]] https://www.w3.org/TR/scxml/[SCXML]
-- [[[fsm, 4]]] link:../../../https://blog.tangly.net/docs/fsm/[Hierarchical Finite State Machine].
+- [[[fsm, 4]]] link:{ref-tangly-doc-url}/fsm/[Hierarchical Finite State Machine].
 Marcel Baumann.
 - [[[actor-model, 5]]] https://en.wikipedia.org/wiki/Actor_model[Actor Model]
 

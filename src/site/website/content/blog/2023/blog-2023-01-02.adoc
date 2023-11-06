@@ -133,7 +133,7 @@ A typical scenario is:
 [bibliography]
 === Links
 
-- [[[first-steps-devops,1]]] link:../../2022/first-stps-devops/[First Steps DevOps]
+- [[[first-steps-devops,1]]] link:../../2022/first-steps-devops/[First Steps DevOps]
 Marcel Baumann. 2022.
 - [[[devops-ideas, 2]]] link:../../2022/introducing-devops-ideas/[Introducing DevOps Ideas]
 Marcel Baumann. 2022.

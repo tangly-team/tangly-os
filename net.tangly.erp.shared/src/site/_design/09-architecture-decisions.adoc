@@ -1,0 +1,16 @@
+ifndef::imagesdir[:imagesdir: ./pics]
+
+[[section-design-decisions]]
+== Architecture Decisions
+
+. link:../adr/os-001-system-guava-removal/[System Guava Removal]
+. link:../adr/os-002-unit-test-conventions/[Unit Test Conventions]
+. link:../adr/os-003-use-modern-java-constructs/[Use Modern Java Constructs]
+. link:../adr/os-004-publish-technical-documentation-through-static-website/[Publish Technical Documentation through Static Website]
+. link:../adr/os-005-publish-maven-central-artifact/[Publish Maven Central Artifacts]
+. link:../adr/os-006-dependency-injection-guice/[Dependency Injection Guice]
+. link:../adr//os-007-persistence-microstream/[Persistence with MicroStream]
+. link:../adr//os-008-use-log4j2-as-default-logger/[Use log4j2 as Default Logger]
+. link:../adr/os-009-use-hsqldb-as-sql-store/[Use hsqldb as SQL store]
+. link:../adr/os-010-archive-data/[Archive Data]
+. link:../adr/os-011-vaadin-as-user-interface/[Vaadin as User Interface Approach]

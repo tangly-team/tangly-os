@@ -50,5 +50,5 @@ We use currently the Google sponsored theme {ref-docsy} for our static website.
 [bibliography]
 === Links
 
-- [[[creating-technical-website, 1]]] link:../../../blog/2020/creating-a-technical-website-with-hugo-and-asciidoc/[Creating a Technical Website with Hugo and AsciiDoc]
-- [[[support-comments, 2]]] link:../../../blog/2020/support-comments-for-static-hugo-website/[Support Comments for Static Hugo Website]
+- [[[creating-technical-website, 1]]] link:{ref-tangly-blog-url}/2020/creating-a-technical-website-with-hugo-and-asciidoc/[Creating a Technical Website with Hugo and AsciiDoc]
+- [[[support-comments, 2]]] link:{ref-tangly-blog-url}/2020/support-comments-for-static-hugo-website/[Support Comments for Static Hugo Website]

@@ -248,7 +248,7 @@ I was stunned by the amount of code that I needed to write to persist a standard
 * Use the Spring mechanisms to streamline unit and integration tests.
 Please, write unit and integration tests.
 * Train all the developers in Spring framework
-footnote:[https://spring.io/[Spring organization] provides https://https://spring.academy/courses[certification path].].
+footnote:[https://spring.io/[Spring organization] provides https://spring.academy/courses[certification path].].
 The organization shall encourage certification in key technologies used in their mission-critical applications.
 You need at least one professional Spring developer to smooth the learning curve.
 * Use the latest Java version.
