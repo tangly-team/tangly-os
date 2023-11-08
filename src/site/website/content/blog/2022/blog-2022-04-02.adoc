@@ -58,7 +58,8 @@ Scrum is currently the most used agile approach in the industry.
 
 [quote,Hermes FAQ]
 ____
-HERMES 2021footnote:[ https://www.hermes.admin.ch/de/faq/projektmanagement-2021/umfeld.html[Hermes FAQ]] corresponds to the current requirements of federal and state administration.
+{ref-hermes} fulfills the current requirements of federal and state administration.
+
 They are mainly organized *hierarchically* and have to handle projects taking governance into account.
 ____
 

@@ -138,7 +138,7 @@ The formation provides a certificate of advanced study CAS in the field.
 Current available certificates of advanced study offering are, for example:
 
 * OST https://www.ost.ch/de/weiterbildung/weiterbildungsangebot/informatik/cas-requirements-engineering[CAS Requirements Engineering]
-* HSLU https://www.hslu.ch/de-ch/informatik/weiterbildung/digital-value-creation/cas-requirements-engineering/[CAS Requirement Engineering]
+* HSLU https://www.hslu.ch/de-ch/hochschule-luzern/weiterbildung/cas/[CAS Requirement Engineering]
 * BFH https://www.bfh.ch/de/weiterbildung/cas/requirements-engineering/[CAS Requirements Engineering]
 * ZHAW https://www.zhaw.ch/de/sml/weiterbildung/detail/kurs/cas-agile-requirements-engineering/[CAS Agile Requirements Engineering]
 

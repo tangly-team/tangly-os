@@ -1,0 +1,80 @@
+---
+title: "Static Website Improvements"
+linkTitle: "Improve Website"
+date: 2023-11-30
+tags: ["hugo"]
+---
+
+== Static Website Improvements
+
+include::../fragments/_config-mb-blog.aodc[]
+:ref-asciidoctor-tabs: https://github.com/asciidoctor/asciidoctor-tabs[asciidoctor tabs]
+:ref-asciidoc-docsy-stylesheet: https://github.com/tangly-team/tangly-os/tree/master/src/site/website/assets/scss[Asciidoc Docsy Stylesheet]
+:ref-asciidoc-tabs-js: https://github.com/tangly-team/tangly-os/tree/master/src/site/website/static/js[Asciidoc Tabs Javascript]
+:ref-hugo-partials: https://github.com/tangly-team/tangly-os/tree/master/src/site/website/layouts/partials[Hugo Docsy Partials]
+:ref-hugo-shortcodes: https://github.com/tangly-team/tangly-os/tree/master/src/site/website/layouts/shortcodes[Hugo Docsy Shortcodes]
+:ref-cs-hslu: https://www.hslu.ch/en/lucerne-school-of-information-technology/[Lucerne School of Information Technology]
+:ref-cc-by-sa: https://creativecommons.org/licenses/by-sa/4.0/[Creative Commons CC BY-SA].
+
+image::2023-11-04-head.jpg[width=420,height=360,role=left]
+
+The static website build tool {ref-hugo} is awesome.
+The extensive built-in feature set of Hugo and the feature-rich text-formatting options that Asciidoc offers creates a blogging experience composed of easy content management and fun writing experience.
+
+The Hugo theme Docsy is ideal to create a good-looking software documentation site.
+This theme is currently the best match I found to combine product documentation with blogging.
+
+I love to write my documentation and blogs using {ref-asciidoc} notation [1].
+A major tool chain is the {ref-asciidoctor} ecosystem.
+
+Lately, I needed new features to ameliorate the usability of our open-source documentation and blogging site.
+
+I had to deepen my understanding of how Hugo is working with themes.
+
+=== Tabs
+
+I wanted to display {ref-plantuml} diagrams and the associated code side by side in my article.
+The tab approach is perfect and lets the reader switch between both views in her browser.
+
+{asciidoctor} provides an extension to support tabular display
+footnote:[The extension is still beta level end of 2023.].
+
+The trick was to integrate the extension in {ref-hugo} and {ref-docsy}.
+
+. The stylesheet for {ref-asciidoc} was extended to handle the tabular notation.
+The {asciidoctor} crew provides a styling example.
+Find my _scss_ stylesheet under {ref-asciidoc-docsy-stylesheet}.
+. Add the Javascript code to react to user selections.
+Find my _javascript_ code under {ref-asciidoc-tabs-js}.
+. The script code shall be included in the {ref-hugo} partials.
+Find the _HTML_ code under {ref-hugo-partials} in the file _footer.html_.
+
+An article using this functionality is link:../../2023/c4-and-uml-with-plantuml[C4 and UML with plantUML].
+
+I hope that the tabular display extension will soon graduate to an official {ref-asciidoc} extension.
+
+=== Attachments
+
+I am a lecturer at {ref-cs-hslu}.
+All course materials are under {ref-cc-by-sa}.
+
+I wanted to provide recommended materials as a list of downloadable documents on the website.
+
+How can you provide this function with {ref-hug} and {ref-docsy}?
+
+The {ref-docsy} theme as a merge request for exactly this function.
+The request was created in June 2021.
+It is still open end of November 2023, more than two years later
+footnote:[You can read the pull request under {ref-docsy}.
+Select the pull requests tab.].
+
+I decided to add the necessary code as a local extension to the docsy theme.
+
+. Add the {ref-hugo} shortcodes to the theme under {ref-hugo-shortcodes} in the file _attachments.html_
+. Add my _scss_ stylesheet under {ref-asciidoc-docsy-stylesheet} in the file _shortcodes.scss_.
+
+A document using this functionality is link:../../../ideas/learnings/lectures/[Lectures].
+
+=== Links
+
+include::../fragments/_hugo-links.adoc[]

@@ -39,7 +39,7 @@ Additional slide decks can be found under {ref-tangly-workshops}.
 Why should an organization embrace agile approaches to develop new digital products?
 --
 
-[.lightbg,background-opacity="0.5"]
+[.lightbg,background-opacity="0.4"]
 === Agile Organizations
 
 image::agile-organizations.png[background,size=cover]
@@ -110,7 +110,7 @@ image::scrum-rules-the-world.png[]
 
 [.notes]
 --
-More than 75% of agile initiatives use a variant of Scrum.
+More than 75% of agile initiatives and digital product developments use a variant of Scrum.
 --
 
 == Scrum Principles
@@ -144,7 +144,7 @@ _Transparency - Inspection - Adaptation_
 {ref-pdca} _PDCA_ is a key approach for empiricism and adaptation.
 --
 
-[.lightbg,background-opacity="0.5"]
+[.lightbg,background-opacity="0.4"]
 === Scrum Values
 
 image::scrum-values.png[background,size=cover]
@@ -163,6 +163,13 @@ The Scrum Team members have the courage to do the right thing, to work on tough 
 
 [.streched]
 image::scrum-flow.png[]
+
+[.notes]
+--
+The Scrum workflow contains multiple PDCA loops.
+The team learns fast and early.
+Experiments have low costs and accelerate learning.
+--
 
 == Scrum Events
 
@@ -355,6 +362,17 @@ image:product-backlog.png[]
 
 image:sprint-backlog.png[]
 
+[.notes]
+--
+A successful agile team has work in progress _WIP_ constraints.
+
+A product backlog item _PBI_ is either not started, working, or completed.
+This means that a _PBI_ is either 0% or 100% completed.
+Other values have no relevance.
+
+Agile developers know you have either fix milestones and variable functionally, and fix functionality and variable milestones.
+--
+
 === Product Increment
 
 image:product-increment.png[]
@@ -394,7 +412,17 @@ image:devops-lifecycle.jpg[]]
 
 image::team-responsibilities.png[]
 
-==== References
+=== Think Lean and Agile
+
+- A *team* works on a *product*.
+Avoid story factories.s
+- Deliver *often*.
+Collect *feedback*.
+- Exhaustive requirements document at the beginning of the project is a fallacy.
+Requirements are continuously refined.
+- Detailed planning for the next year and tracking in hours are pointless.
+
+=== References
 
 - {ref-scrumguide}
 - {ref-scrum-alliance}

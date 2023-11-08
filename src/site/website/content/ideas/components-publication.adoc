@@ -59,50 +59,48 @@ Below the dependencies between tangly open source components as defined in the m
 ....
 @startuml
 
-!$root = ""
-
-package net.tangly.bdd [[$root/docs/bdd/]] {
+package net.tangly.bdd [[/docs/bdd/]] {
 }
 
-package net.tangly.commons [[$root/docs/commons/]] {
+package net.tangly.commons [[/docs/commons/]] {
 }
 
-package net.tangly.core [[$root/docs/core/]] {
+package net.tangly.core [[/docs/core/]] {
 }
 
-package net.tangly.dev [[$root/docs/dev/]] {
+package net.tangly.dev [[/docs/dev/]] {
 }
 net.tangly.dev --> net.tangly.commons
 
-package net.tangly.fsm [[$root/docs/fsm/]] {
+package net.tangly.fsm [[/docs/fsm/]] {
 }
 
-package net.tangly.gleam [[$root/docs/gleam/]] {
+package net.tangly.gleam [[/docs/gleam/]] {
 }
 net.tangly.gleam --> net.tangly.commons
 
-package net.tangly.ui [[$root/docs/ui/]] {
+package net.tangly.ui [[/docs/ui/]] {
 }
 
-package net.tangly.erp.collaborators [[$root/domains/collaborators]] {
+package net.tangly.erp.collaborators [[/docs/domains/collaborators]] {
 }
 
-package net.tangly.erp.crm [[$root/domains/crm]] {
+package net.tangly.erp.crm [[/docs/domains/crm]] {
 }
 
-package net.tangly.erp.invoices [[$root/docs/domains/invoices]] {
+package net.tangly.erp.invoices [[/docs/domains/invoices]] {
 }
 
-package net.tangly.erp.ledger [[$root/docs/domains/ledger]] {
+package net.tangly.erp.ledger [[/docs/domains/ledger]] {
 }
 
-package net.tangly.erp.products [[$root/docs/domains/products]] {
+package net.tangly.erp.products [[/docs/domains/products]] {
 }
 
-package net.tangly.erp.shared [[$root/docs/domains/shared]] {
+package net.tangly.erp.shared [[/docs/domains/shared]] {
 }
 
-package net.tangly.erp.ui [[$root/docs/domains/ui]] {
+package net.tangly.erp.ui [[/docs/domains/ui]] {
 }
 @enduml
 ....

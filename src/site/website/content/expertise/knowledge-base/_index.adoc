@@ -11,7 +11,7 @@ image::knowledge-base.jpg[width=640,height=480,role=text-center]
 Knowledge base for key themes mastered in our organization.
 
 Agile and Scrum::
-- link:../../ideas/agile-transformations/[Agile Tnansformations]
+- link:../../ideas/agile-transformations/[Agile Transformations]
 - link:../../tags/agile/[Agile and Scrum Blogs]
 - link:../../ideas/learnings/workshops/agile-scrum/agile-scrum.html[Agile Scrum Workshop]
 - link:../../ideas/learnings/workshops/agile-technical-fluency/agile-technical-fluency.html[Agile Technical Fluency Workshop]

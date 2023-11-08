@@ -166,7 +166,7 @@ Technical universities in Switzerland provide formal training in project leaders
 The formation provides a certificate of advanced study CAS in the field.
 Current available certificates of advanced study offering are for example:
 
-* HSLU https://www.hslu.ch/de-ch/informatik/weiterbildung/digital-value-creation/cas-devops/[CAS DevOps Leadership and Agile Methods]
+* HSLU https://www.hslu.ch/de-ch/hochschule-luzern/weiterbildung/cas/[CAS DevOps Leadership and Agile Methods]
 * ZHAW https://www.zhaw.ch/de/engineering/weiterbildung/detail/kurs/cas-software-engineering/[CAS Software Engineering]
 * BFH https://www.bfh.ch/de/weiterbildung/cas/agiles-software-engineering-projektmanagement/[CAS Agile Software Engineering]
 * Ost FH https://www.ost.ch/de/weiterbildung/weiterbildungsangebot/informatik/mas-software-engineering[MAS Software Engineering]

@@ -11,7 +11,7 @@ menu:
 
 Find the description of the release and publication process under [ideas](../ideas/components-publication).
 
-Architecture design record _ADR_ for the whole projects are also located under [ideas](../../../../../net.tangly.erp.shared/src/site/site/09-architecture-decisions/adr).
+The architecture and design documentation for the whole project are also located under [architecture](../docs/domains/architecture/).
 </div>
 {{% /blocks/section %}}
 

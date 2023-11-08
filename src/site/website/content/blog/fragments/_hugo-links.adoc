@@ -1,6 +1,8 @@
-- link:../../2020/creating-a-technical-website-with-hugo-and-asciidoc[Creating a technical Website with Hugo and Asciidoc]
-Marcel Baumann. 2020.
-- link:../../2020/support-comments-for-static-hugo-website[Support Comments for Static Hugo Website]
-Marcel Baumann. 2020.
+- link:../../2023/static-website-improvements[Static Website Improvements]
+Marcel Baumann. 2023.
 - link:../../2021/improving-a-static-web-site-build-with-hugo-and-docsy[Improving a Static Website Build With Hugo and Docsy]
 Marcel Baumann. 2021.
+- link:../../2020/support-comments-for-static-hugo-website[Support Comments for Static Hugo Website]
+Marcel Baumann. 2020.
+- link:../../2020/creating-a-technical-website-with-hugo-and-asciidoc[Creating a technical Website with Hugo and Asciidoc]
+Marcel Baumann. 2020.

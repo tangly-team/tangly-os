@@ -158,7 +158,7 @@ Current available certificates of advanced study offering are, for example:
 
 * FHNW https://www.fhnw.ch/de/weiterbildung/wirtschaft/cas-agile-leadership[CAS Agile Leadership]
 * FHNW https://www.fhnw.ch/de/weiterbildung/technik/cas-agile-organisation[CAS Agile Organization]
-* FFHS https://www.ffhs.ch/en/degree-programmes/continuing-education/cas-agile-organisation[CAS Agile Organization]
+* FFHS https://www.ffhs.ch/en/degree-programmes/[CAS Agile Organization]
 * ZHAW https://www.zhaw.ch/de/psychologie/weiterbildung/detail/kurs/cas-agile-fuehrung-flex/[CAS Agile Leadership]
 * ZHAW https://www.zhaw.ch/de/sml/weiterbildung/detail/kurs/cas-agiles-it-projektmanagement/[CAS Agile Project Management]
 * IKF https://www.ikf.ch/de/kurse/cas-agiles-leadership-der-digitalen-transformation[CAS Agile Leadership of Digital Transformation]

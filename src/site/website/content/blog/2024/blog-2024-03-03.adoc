@@ -15,7 +15,7 @@ image::2024-03-03-head.png[width=420,height=360,role=left]
 
 === Bibliography
 
-=== Taxinomies
+=== Taxonomies
 
 === RevealJS
 
