@@ -13,13 +13,21 @@
 
 package net.tangly.ui.components;
 
+import com.vaadin.flow.component.HtmlComponent;
+import com.vaadin.flow.component.Tag;
+import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.customfield.CustomField;
+import com.vaadin.flow.component.dialog.Dialog;
+import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
+import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.theme.lumo.LumoUtility;
 import net.tangly.core.Entity;
+import net.tangly.core.providers.Provider;
 import net.tangly.core.providers.ProviderInMemory;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -35,22 +43,21 @@ import java.util.Objects;
  *
  * @param <T> type of the entities in the list.
  */
-public class One2ManyField<T> extends CustomField<Collection<T>> {
-    private final ItemView<T> view;
-    private ItemView<T> selectionView;
+@Tag("tangly-field-one2many-references")
+public class One2ManyReferencesField<T extends Entity> extends CustomField<Collection<T>> {
+    private final Class<T> entityClass;
+    private final transient Provider<T> selectables;
+    private final EntityView<T> view;
 
-    public One2ManyField(@NotNull ItemView<T> view) {
-        this.view = view;
+    public One2ManyReferencesField(@NotNull Class<T> entityClass, @NotNull Provider<T> selectables) {
+        this.entityClass = entityClass;
+        this.selectables = selectables;
+        this.view = EntityView.of(entityClass, null, ProviderInMemory.of(), Mode.LIST);
         setHeightFull();
         setWidthFull();
         addClassNames(LumoUtility.Padding.NONE, LumoUtility.Margin.NONE, LumoUtility.Border.NONE);
         view.addClassNames(LumoUtility.Padding.NONE, LumoUtility.Margin.NONE, LumoUtility.Border.NONE);
         add(view);
-        mode(Mode.VIEW);
-    }
-
-    public static <T extends Entity> One2ManyField<T> of(@NotNull EntityView<T> items, @NotNull EntityView<T> selectables) {
-        return null;
     }
 
     public Mode mode() {
@@ -60,8 +67,8 @@ public class One2ManyField<T> extends CustomField<Collection<T>> {
     public void mode(@NotNull Mode mode) {
         view.mode(mode);
         view.menu().removeAll();
-        if (mode == Mode.VIEW) {
-            view.menu().addItem("Add", event -> {});
+        if (mode == Mode.EDIT) {
+            view.menu().addItem("Add", event -> displayAddDialog());
             view.menu().addItem("Remove", event -> {
                 view.provider().delete(view.selectedItem());
                 view.dataView().refreshAll();
@@ -82,36 +89,33 @@ public class One2ManyField<T> extends CustomField<Collection<T>> {
     }
 
     @Override
-    protected Collection<T> generateModelValue() {
-        return super.getValue();
+    public Collection<T> generateModelValue() {
+        return view.provider().items();
     }
 
     @Override
     protected void setPresentationValue(Collection<T> items) {
-        if (Objects.isNull(items)) {
-            view.provider(ProviderInMemory.of());
-        } else {
-            view.provider(ProviderInMemory.of(items));
-        }
+        view.provider(Objects.isNull(items) ? ProviderInMemory.of() : ProviderInMemory.of(List.copyOf(items)));
+        setValue(view.provider().items());
     }
 
-    //    private void displayRelationships() {
-    //        Dialog dialog = VaadinUtils.createDialog();
-    //        dialog.add(new VerticalLayout(selectionView, new HtmlComponent("br"), createFormButtons(dialog)));
-    //        dialog.open();
-    //    }
-    //
-    //    private HorizontalLayout createFormButtons(@NotNull Dialog dialog) {
-    //        HorizontalLayout actions = new HorizontalLayout();
-    //        actions.setSpacing(true);
-    //        Button cancel = new Button("Cancel", event -> dialog.close());
-    //        Button add = new Button("Add", event -> {
-    //            clear();
-    //            view.provider().updateAll(selectionView.selectedItems());
-    //            view.dataView().refreshAll();
-    //            dialog.close();
-    //        });
-    //        actions.add(cancel, add);
-    //        return actions;
-    //    }
+    private void displayAddDialog() {
+        Dialog dialog = VaadinUtils.createDialog();
+        EntityView<T> selectionView = EntityView.of(entityClass, null, selectables, Mode.LIST);
+        dialog.add(new VerticalLayout(selectionView, new HtmlComponent("br"), createFormButtons(dialog, view, selectionView)));
+        dialog.open();
+    }
+
+    private HorizontalLayout createFormButtons(@NotNull Dialog dialog, @NotNull EntityView<T> view, @NotNull EntityView<T> selectionView) {
+        HorizontalLayout actions = new HorizontalLayout();
+        actions.setSpacing(true);
+        Button cancel = new Button("Cancel", event -> dialog.close());
+        Button change = new Button("Update", event -> {
+            view.provider().update(selectionView.selectedItem());
+            view.dataView().refreshAll();
+            dialog.close();
+        });
+        actions.add(cancel, change);
+        return actions;
+    }
 }

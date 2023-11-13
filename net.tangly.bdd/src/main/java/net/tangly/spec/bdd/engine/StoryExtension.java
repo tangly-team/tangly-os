@@ -28,7 +28,7 @@ import org.junit.jupiter.api.extension.ParameterResolver;
 import static org.junit.platform.commons.support.AnnotationSupport.isAnnotated;
 
 /**
- * A custom extension that allows test authors to create and run behaviors and stories i.e. BDD specification tests.
+ * A custom extension that allows test authors to create and run behaviors and stories i.e., BDD specification tests.
  * <p>Jupiter engine will provide an execution context instance under which an extension
  * is to operate. A store is a holder that can be used by custom extensions to save and retrieve arbitrary data––basically a supercharged in-memory map. In order to avoid
  * accidental key collisions between multiple extensions, the good folk at JUnit introduced the concept of a namespace. A namespace is a way to scope the data saved by

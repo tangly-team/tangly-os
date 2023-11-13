@@ -4,7 +4,7 @@
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- *          https://apache.org/licenses/LICENSE-2.0
+ *          http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -25,7 +25,7 @@ import java.util.List;
 
 /**
  * Recall that our custom extension generates BDD reports after executing the tests. Some parts of these reports are pulled from the elements of the “@Story” annotation. We use the
- * beforeAll callback to store these strings. Later, at the end of the execution lifecycle, we retrieve these strings to generate reports. A simple POJO is used for this purpose.
+ * beforeAll callback to store these strings. Later at the end of the execution lifecycle, we retrieve these strings to generate reports. A simple POJO is used for this purpose.
  * We name this class “StoryDetails”. The following code snippet demonstrates the process of creating an instance of this class and saves the elements of the annotation into the
  * instance.
  */

@@ -4,18 +4,17 @@
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- *          https://apache.org/licenses/LICENSE-2.0
+ *          http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ *
  */
 
 package net.tangly.erp.crm.services;
 
-import net.tangly.core.HasDateRange;
 import net.tangly.erp.crm.domain.Activity;
 import net.tangly.erp.crm.domain.Contract;
-import net.tangly.erp.crm.domain.Interaction;
 import net.tangly.erp.crm.domain.InteractionCode;
 import net.tangly.erp.crm.domain.Subject;
 import org.jetbrains.annotations.NotNull;
@@ -70,12 +69,14 @@ public class CrmBusinessLogic {
      * @return the aggregated potential amount
      */
     public BigDecimal funnel(@NotNull InteractionCode code, LocalDate from, LocalDate to) {
-        return switch (code) {
-            case lead, prospect, lost -> realm.interactions().items().stream().filter(o -> o.code() == code).filter(new HasDateRange.RangeFilter<>(from, to))
-                .map(Interaction::weightedPotential).reduce(BigDecimal.ZERO, BigDecimal::add);
-            case ordered, completed -> realm.interactions().items().stream().filter(o -> o.code() == code)
-                .flatMap(interaction -> realm.contracts().items().stream().filter(contract -> contract.sellee().oid() == interaction.entity().oid()))
-                .filter(new HasDateRange.RangeFilter<>(from, to)).map(Contract::amountWithoutVat).reduce(BigDecimal.ZERO, BigDecimal::add);
-        };
+        return BigDecimal.ZERO;
+        //        TODO bug with dateRange
+        //        return switch (code) {
+        //            case lead, prospect, lost -> realm.interactions().items().stream().filter(o -> o.code() == code).filter(new HasDateRange.RangeFilter<>(from, to))
+        //                .map(Interaction::weightedPotential).reduce(BigDecimal.ZERO, BigDecimal::add);
+        //            case ordered, completed -> realm.interactions().items().stream().filter(o -> o.code() == code)
+        //                .flatMap(interaction -> realm.contracts().items().stream().filter(contract -> contract.sellee().oid() == interaction.entity().oid()))
+        //                .filter(new HasDateRange.RangeFilter<>(from, to)).map(Contract::amountWithoutVat).reduce(BigDecimal.ZERO, BigDecimal::add);
+        //        };
     }
 }

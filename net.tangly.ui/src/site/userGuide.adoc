@@ -10,10 +10,22 @@ weight: 30
 :copyright: CC-BY-SA 4.0
 :stem:
 :toc:
+:ref-crud: https://en.wikipedia.org/wiki/Create,_read,_update_and_delete[CRUD]
 
 == User Guide Commons Vaadin UI
 
 === Views
+
+Views display a set of instances of an entity.
+The view provides the regular {ref-crud} operations:
+
+- View details of an entity instance.
+- Modify an entity instance.
+The user can edit all properties of an object in the user interface. +
+All changes are buffered in the user interface components.
+She can decide to propage the changes to the model or discard them through _save_ or _cancel_ operations.
+- Delete an entity instance.
+- Create an entity instance.
 
 ==== Item View
 
@@ -36,6 +48,8 @@ public class MyEntityView extends EntityView<MyEntity> {
 }
 ----
 
+The comments and the tags of an entity are modelled as a _one2many_ immutable owned object relations.
+
 === Relationship Components
 
 These components allow the display and handling of relations between objects.
@@ -45,9 +59,46 @@ All changes of a relation are done in the buffered values of the user interface.
 Changes are only performed on the model if the _save_ action is called.
 Mandatory relations are enforced with validation rules.
 
+[plantuml,target=one2one,format=svg,role=text-center]
+....
+@startuml
+
+class CustomField<T> {}
+
+class One2OneField<T extends Entity> {
+    - Class<T> entityClass
+    - Provider<T> provider
+    - TextField oid
+    - TextField id
+    - TextField name
+    - Button update
+
+    + One2OneField(@NotNull String relation, @NotNull Class<T> entityClass, @NotNull Provider<T> provider)
+}
+CustomField <|.. One2OneField
+
+class One2ManyReferencesField<T extends Entity> {
+    - Class<T> entityClass;
+    - Provider<T> selectables;
+    - EntityView<T> view;
+
+    + One2ManyReferencesField(@NotNull Class<T> entityClass, @NotNull Provider<T> selectables)
+}
+CustomField <|.. One2ManyReferencesField
+
+class One2ManyOwnedField<T> {
+    - ItemView<T> view;
+
+    + One2ManyOwnedField(@NotNull ItemView<T> view) {
+}
+CustomField <|.. One2ManyOwnedField
+
+@enduml
+....
+
 ==== One2One Component
 
-The component displays a relation from one object to another one.
+The component displays a relation from one object to another entity instance.
 
 ===== Referenced Object
 
@@ -62,10 +113,17 @@ The object is not deleted, only the relation to it.
 The user can select an instance from a set of available objects.
 This set of objects is provided through a provider.
 
+The provider for selectabe instance is provided to the constructor of the _one2one_ control.
+
+_Providers support composition with _ProviderView_ to define selection on the eligible instances.
+
 ===== Owned Object
 
-This mode is not supported through the _One2One_ component.
+This mode is *not* supported through the _One2One_ component.
 Implement custom controls to display the object and to create a new one.
+
+_Custom controls cannot be defined in a generic way._
+_Expected controls for an entity are well-defined in the framework._
 
 ==== One2Many Component
 
@@ -77,6 +135,7 @@ The selection view can support multiple selections to add multiple items to the 
 
 ===== Referenced Objects
 
+The component is _One2ManyReferencesField_.
 The functions are for referenced objects:
 
 - Display all objects referenced and show key attributes of the referenced items as a grid.
@@ -98,6 +157,7 @@ An example of referenced object is an employee list of companies she is working 
 
 ==== Owned Objects
 
+The component is _One2ManyOwnedField_.
 The functions are for owned objects:
 
 - Display all objects referenced and show key attributes of the referenced items as a grid.
@@ -105,14 +165,18 @@ A provided view displays selected properties in columns.
 - Remove a referenced object from the instances which are part of the relation.
 The object is removed from the relation and deleted.
 - Create an object and add it to the instances which are part of the relation.
-The user can select an instance from a set of available objects displayed in a view.
 
 [IMPORTANT]
 ====
 The view to display referenced objects shall be provided to the component.
+The view is an item view with the create method
 
-The view to create a new object to add to the relation should be provided to the component.
-A dialog will open with the view and the _cancel_ or _add_ options.
+The provider is a shallow copy of the collection for referenced objects belonging to the relation.
+
+Because the copy is shallow, we should not provide an update operation modifying the shared object.
+The object is shared between the model and the user interface buffering.
+
+We recommend that owned objects are immutable.
 ====
 
 Examples of owned objects are comments and tags of an entity.

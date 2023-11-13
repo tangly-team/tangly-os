@@ -12,9 +12,6 @@
  *
  */
 
-/**
- * Provides classes for a programmer first behavior driven framework build on the features of Junit 5.
- */
 module net.tangly.bdd {
     exports net.tangly.spec.bdd;
     exports net.tangly.spec.bdd.engine;

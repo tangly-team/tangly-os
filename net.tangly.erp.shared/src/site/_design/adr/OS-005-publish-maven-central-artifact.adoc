@@ -15,7 +15,7 @@ Implemented
 
 === Links
 
-Supersede: link:../../../../fsm/adr/fsm-002-publish-maven-central-artifact[FSM-0002]
+Supersede: link:../../../../../fsm/adr/fsm-002-publish-maven-central-artifact[FSM-0002]
 
 === Context
 
@@ -41,7 +41,7 @@ The libraries will be published on Maven Central to maximize potential usage.
 === Consequences
 
 * We have to establish a publishing process at the company level to deploy signed artifacts to maven central repository.
-See link:../../../../../ideas/components-publication[release and publication process].
+See link:../../../../../../ideas/components-publication[release and publication process].
 * We have to establish a public website to host the documentation of public-published libraries.
  The static website is {ref-site}
 * We have to support semantic versioning for all future releases of public-published libraries.

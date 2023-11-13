@@ -24,6 +24,8 @@ import java.util.function.Predicate;
  * Define an absolute local date range. The range can be open, meaning either the lower or upper date can be null.
  */
 public record DateRange(LocalDate from, LocalDate to) implements Serializable {
+    public static DateRange INFINITE = new DateRange();
+
     /**
      * Test if the date is inside the date interval specified in the filter.
      *

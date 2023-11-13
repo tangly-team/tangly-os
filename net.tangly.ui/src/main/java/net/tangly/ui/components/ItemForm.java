@@ -1,10 +1,10 @@
 /*
- * Copyright 2023 Marcel Baumann
+ * Copyright 2023-2023 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- *          https://apache.org/licenses/LICENSE-2.0
+ *          http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -18,6 +18,7 @@ import com.vaadin.flow.component.Key;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.combobox.ComboBox;
+import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.tabs.Tab;
@@ -74,6 +75,7 @@ public abstract class ItemForm<T, U extends ItemView<T>> {
     private final Button action;
     private T value;
     private Mode mode;
+    private Dialog dialog;
 
     protected ItemForm(@NotNull U parent) {
         this.parent = parent;
@@ -86,16 +88,16 @@ public abstract class ItemForm<T, U extends ItemView<T>> {
         tabSheet.addThemeVariants(TabSheetVariant.LUMO_TABS_SMALL);
 
         cancel = new Button("Cancel");
-        cancel.addClickListener(event -> cancel());
+        cancel.addClickListener(event -> closeForm());
         cancel.addClickShortcut(Key.ESCAPE);
         action = new Button();
         action.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
         action.addClickListener(event -> {
             switch (mode) {
-                case VIEW -> cancel();
                 case EDIT, CREATE, DUPLICATE -> updateEntity();
                 case DELETE -> deleteEntity();
             }
+            closeForm();
         });
         form().add(tabSheet, createButtonBar());
     }
@@ -199,6 +201,7 @@ public abstract class ItemForm<T, U extends ItemView<T>> {
      */
     public void duplicate(@NotNull T entity) {
         display(entity, Mode.DUPLICATE);
+        this.value = null;
     }
 
     /**
@@ -215,28 +218,33 @@ public abstract class ItemForm<T, U extends ItemView<T>> {
     // region Form functions
 
     /**
-     * Cancel the current form operation. All changes are discarded and the form is closed. It is a close operation without propagating any changes.
-     */
-    void cancel() {
-        value(null);
-        clear();
-        parent.remove(formLayout);
-
-    }
-
-    /**
      * Display the value in the form. The form is revealed in the user interface. The new mode is used to propagate the mode and configure the action buttons.
      *
      * @param value value to display
      * @param mode  display mode of the value
      */
     private void display(T value, @NotNull Mode mode) {
-        mode(mode);
         nameActionButton(mode);
         value(value);
-        parent.add(formLayout);
+        if (parent.isFormEmbedded()) {
+            parent.add(formLayout);
+        } else {
+            dialog = VaadinUtils.createDialog();
+            dialog.add(formLayout);
+            dialog.open();
+        }
     }
 
+    private void closeForm() {
+        if (Objects.nonNull(dialog)) {
+            dialog.close();
+            dialog = null;
+        } else {
+            parent.remove(formLayout);
+        }
+        value(null);
+        clear();
+    }
     /**
      * Clear the content of the form. All property fields are reset to empty or a default value.
      */
@@ -290,7 +298,6 @@ public abstract class ItemForm<T, U extends ItemView<T>> {
             }
             parent.provider().update(entity);
             parent.dataView().refreshAll();
-            cancel();
             return entity;
         } catch (ValidationException e) {
             logger.atError().log(e);
@@ -309,7 +316,6 @@ public abstract class ItemForm<T, U extends ItemView<T>> {
             parent.provider().delete(deletedItem);
             parent.dataView().refreshAll();
         }
-        cancel();
         return deletedItem;
     }
 

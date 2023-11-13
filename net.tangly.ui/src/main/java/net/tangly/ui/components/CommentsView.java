@@ -4,10 +4,11 @@
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- *          https://apache.org/licenses/LICENSE-2.0
+ *          http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ *
  */
 
 package net.tangly.ui.components;
@@ -17,7 +18,6 @@ import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.grid.HeaderRow;
 import com.vaadin.flow.component.textfield.TextField;
-import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.server.VaadinSession;
 import net.tangly.core.Comment;
 import net.tangly.core.DateRange;
@@ -30,7 +30,7 @@ import java.time.LocalDateTime;
 import java.util.Objects;
 
 /**
- * A view for a list of objects. The list is copied locally to support adding and removing items. To add items, a provider is passed with the eligible list of items
+ * A view for a list of objects. The local copy of the list supports adding and removing items. To add items, a provider is passed with the eligible list of items
  * <p>
  * The comments view is a Crud view with all the comments defined for an object implementing the {@link HasComments}. Edition functions are provided to add, delete, and view
  * individual comments. Update function is not supported because comments are immutable objects. Immutable objects must explicitly be deleted before a new version is added. This
@@ -75,32 +75,30 @@ public class CommentsView extends ItemView<Comment> {
         }
     }
 
-    static class CommentForm extends ItemForm<Comment, ItemView<Comment>> {
-        private final Binder<Comment> itemBinder;
+    static class CommentForm extends ItemForm<Comment, CommentsView> {
         private DateTimePicker created;
         private TextField author;
         private TextField text;
 
         public CommentForm(@NotNull CommentsView parent) {
             super(parent);
-            itemBinder = new Binder<>(Comment.class);
             init();
         }
 
         protected void init() {
-            FormLayout fieldsLayout = new FormLayout();
+            FormLayout layout = new FormLayout();
             created = new DateTimePicker(CREATED);
             created.setReadOnly(true);
             author = new TextField(AUTHOR);
             author.setRequired(true);
             text = new TextField(TEXT);
-            fieldsLayout.add(created, author, text);
-            fieldsLayout.setColspan(text, 3);
-            fieldsLayout.setResponsiveSteps(new FormLayout.ResponsiveStep("0", 1), new FormLayout.ResponsiveStep("320px", 2), new FormLayout.ResponsiveStep("500px", 3));
-            form().add(fieldsLayout, createButtonBar());
-            itemBinder.forField(created).bind(Comment::created, null);
-            itemBinder.forField(author).bind(Comment::author, null);
-            itemBinder.forField(text).bind(Comment::text, null);
+            layout.add(created, author, text);
+            layout.setColspan(text, 3);
+            layout.setResponsiveSteps(new FormLayout.ResponsiveStep("0", 1), new FormLayout.ResponsiveStep("320px", 2), new FormLayout.ResponsiveStep("500px", 3));
+            form().add(layout, createButtonBar());
+            binder().forField(created).bind(Comment::created, null);
+            binder().forField(author).bind(Comment::author, null);
+            binder().forField(text).bind(Comment::text, null);
         }
 
         @Override
@@ -109,15 +107,6 @@ public class CommentsView extends ItemView<Comment> {
             created.setReadOnly(mode.readonly());
             author.setReadOnly(mode.readonly());
             text.setReadOnly(mode.readonly());
-        }
-
-        @Override
-        public void value(Comment value) {
-            if (value != null) {
-                itemBinder.readBean(value);
-            } else {
-                clear();
-            }
         }
 
         @Override
@@ -148,9 +137,9 @@ public class CommentsView extends ItemView<Comment> {
          */
         @Override
         protected Comment createOrUpdateInstance(Comment entity) {
-            Comment newItem = new Comment(author.getValue(), text.getValue());
-            parent().provider().replace(entity, newItem);
-            return newItem;
+            Comment comment = new Comment(author.getValue(), text.getValue());
+            parent().provider().replace(entity, comment);
+            return comment;
         }
     }
 

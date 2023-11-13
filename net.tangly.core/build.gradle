@@ -36,6 +36,7 @@ dependencies {
 
     testImplementation(libs.json.validator)
     testImplementation(libs.flyway)
+    testImplementation((libs.flywy.hsqldb))
     testImplementation(libs.hsqldb)
     testImplementation(libs.jimfs)
 }

@@ -4,12 +4,12 @@ jackson-version = '2.12.3'
 jersey-version = '2.35'
 javalin-version = '5.6.3'
 jolt-version = '0.1.1'
-junit-version = '5.10.0'
+junit-version = '5.10.1'
 log4j2-version = '2.20.0'
 openapi-version = "5.6.2-2"
 microstream-version = '08.01.01-MS-GA'
 mustang-version = '2.8.0'
-vaadin-version = '24.2.1'
+vaadin-version = '24.2.2'
 
 [plugins]
 vaadin = { id = "com.vaadin", version.ref = "vaadin-version" }
@@ -38,21 +38,24 @@ awaitility = "org.awaitility:awaitility:4.2.0"
 slf4j-simple = "org.slf4j:slf4j-simple:2.0.9"
 
 apache-pdfbox = "org.apache.pdfbox:pdfbox:3.0.0"
-arch-unit = "com.tngtech.archunit:archunit-junit5-api:1.1.0"
+arch-unit = "com.tngtech.archunit:archunit-junit5-api:1.2.0"
 
 asciidoctorj = "org.asciidoctor:asciidoctorj:2.5.10"
 asciidoctorj-pdf = "org.asciidoctor:asciidoctorj-pdf:2.3.9"
 
 assertj = { module = "org.assertj:assertj-core", version.ref = "assertj-version" }
 eo-yaml = "com.amihaiemil.web:eo-yaml:5.2.1"
-flyway = "org.flywaydb:flyway-core:9.22.3"
+
+flyway = "org.flywaydb:flyway-core:10.0.0"
+flywy-hsqldb = "org.flywaydb:flyway-database-hsqldb:10.0.0"
+
 hsqldb = "org.hsqldb:hsqldb:2.7.2"
 iban4j = "org.iban4j:iban4j:3.2.7-RELEASE"
 
 ical4j-core = "org.mnode.ical4j:ical4j:3.2.1"
 ical4j-vcard = "org.mnode.ical4j:ical4j-vcard:1.0.7"
 
-google-libphonenumber = "com.googlecode.libphonenumber:libphonenumber:8.13.24"
+google-libphonenumber = "com.googlecode.libphonenumber:libphonenumber:8.13.25"
 google-protobuf = "com.google.protobuf:protobuf-java:3.24.3"
 
 jackson-databind = { module = "com.fasterxml.jackson.core:jackson-databind", version.ref = "jackson-version" }
@@ -92,13 +95,13 @@ micrometer-jmx = "io.micrometer:micrometer-registry-jmx:1.11.0"
 mustang-core = { module = "org.mustangproject:library", version.ref = "mustang-version" }
 mustang-validator = { module = "org.mustangproject:validator", version.ref = "mustang-version" }
 
-qrbill = "net.codecrete.qrbill:qrbill-generator:3.1.1"
+qrbill = "net.codecrete.qrbill:qrbill-generator:3.2.0"
 
 microstream-storage = { module = "one.microstream:microstream-storage-embedded", version.ref = "microstream-version" }
 microstream-jdk8 = { module = "one.microstream:microstream-persistence-binary-jdk8", version.ref = "microstream-version" }
 microstream-jdk17 = { module = "one.microstream:microstream-persistence-binary-jdk17", version.ref = "microstream-version" }
 
-mockito = "org.mockito:mockito-junit-jupiter:5.6.0"
+mockito = "org.mockito:mockito-junit-jupiter:5.7.0"
 
 scribe = "com.github.scribejava:scribejava-apis:8.3.1"
 

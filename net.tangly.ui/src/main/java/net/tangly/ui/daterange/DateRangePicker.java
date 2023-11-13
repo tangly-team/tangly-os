@@ -25,12 +25,12 @@ import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 
-public class DateRangePicker extends CustomField<DateRange> {
+public class DateRangePicker extends CustomField<TemporalDateRange> {
 
     protected DatePicker startDatePicker;
     protected DatePicker endDatePicker;
     protected DateRangeShortcut contextMenu;
-    protected HorizontalLayout horizontalLayout = new HorizontalLayout();
+    protected final HorizontalLayout horizontalLayout = new HorizontalLayout();
 
     public DateRangePicker(String label, String startLabel, String endLabel, boolean withShortcuts) {
         setupComponent(label, startLabel, null, endLabel, null, withShortcuts);
@@ -58,7 +58,7 @@ public class DateRangePicker extends CustomField<DateRange> {
             } else {
                 endDatePicker.setMin(null);
             }
-            DateRange.between(startDate, endDatePicker.getValue());
+            TemporalDateRange.between(startDate, endDatePicker.getValue());
         });
 
         endDatePicker.addValueChangeListener(change -> {
@@ -68,7 +68,7 @@ public class DateRangePicker extends CustomField<DateRange> {
             } else {
                 startDatePicker.setMax(null);
             }
-            DateRange.between(startDatePicker.getValue(), endDate);
+            TemporalDateRange.between(startDatePicker.getValue(), endDate);
         });
     }
 
@@ -109,8 +109,8 @@ public class DateRangePicker extends CustomField<DateRange> {
     }
 
 
-    private DateRange setRange(LocalDate beginDate, LocalDate endDate) {
-        DateRange dateRange = DateRange.between(beginDate, endDate);
+    private TemporalDateRange setRange(LocalDate beginDate, LocalDate endDate) {
+        TemporalDateRange dateRange = TemporalDateRange.between(beginDate, endDate);
         this.startDatePicker.setValue(beginDate);
         this.endDatePicker.setValue(endDate);
         this.endDatePicker.setOpened(false);
@@ -139,7 +139,7 @@ public class DateRangePicker extends CustomField<DateRange> {
     public void clear() {
         this.startDatePicker.clear();
         this.endDatePicker.clear();
-        DateRange.between(this.startDatePicker.getValue(), this.endDatePicker.getValue());
+        TemporalDateRange.between(this.startDatePicker.getValue(), this.endDatePicker.getValue());
         this.addValueChange();
     }
 
@@ -153,12 +153,12 @@ public class DateRangePicker extends CustomField<DateRange> {
     }
 
     @Override
-    protected DateRange generateModelValue() {
-        return DateRange.between(startDatePicker.getValue(), endDatePicker.getValue());
+    protected TemporalDateRange generateModelValue() {
+        return TemporalDateRange.between(startDatePicker.getValue(), endDatePicker.getValue());
     }
 
     @Override
-    protected void setPresentationValue(DateRange dateRange) {
+    protected void setPresentationValue(TemporalDateRange dateRange) {
         this.setRange(dateRange.getBeginDate(), dateRange.getEndDate());
     }
 

@@ -3,5 +3,5 @@ module tangly.os.net.tangly.dev.main {
     exports net.tangly.dev.apps;
     exports net.tangly.dev.model;
 
-    requires org.antlr.ST4;
+    requires antlr.runtime;
 }

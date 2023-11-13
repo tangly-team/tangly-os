@@ -4,10 +4,11 @@
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- *          https://apache.org/licenses/LICENSE-2.0
+ *          http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ *
  */
 
 package net.tangly.ui.components;
@@ -17,7 +18,6 @@ import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.grid.HeaderRow;
 import com.vaadin.flow.component.textfield.TextField;
-import com.vaadin.flow.data.binder.Binder;
 import net.tangly.core.Tag;
 import net.tangly.core.TagType;
 import net.tangly.core.domain.BoundedDomain;
@@ -77,7 +77,6 @@ public class TagsView extends ItemView<Tag> {
     }
 
     static class TagForm extends ItemForm<Tag, TagsView> {
-        private Binder<Tag> itemBinder;
         private ComboBox<String> namespace;
         private ComboBox<String> name;
         private TextField value;
@@ -111,10 +110,9 @@ public class TagsView extends ItemView<Tag> {
             layout.add(namespace, name, value);
             layout.setResponsiveSteps(new FormLayout.ResponsiveStep("0", 1));
             form().add(layout, createButtonBar());
-            itemBinder = new Binder<>(Tag.class);
-            itemBinder.forField(namespace).bind(Tag::namespace, null);
-            itemBinder.forField(name).bind(Tag::name, null);
-            itemBinder.forField(value).bind(Tag::value, null);
+            binder().forField(namespace).bind(Tag::namespace, null);
+            binder().forField(name).bind(Tag::name, null);
+            binder().forField(value).bind(Tag::value, null);
         }
 
         @Override
@@ -133,12 +131,10 @@ public class TagsView extends ItemView<Tag> {
          */
         @Override
         public void value(Tag value) {
-            super.value(value);
             if (Objects.nonNull(value)) {
-                namespace.setValue(value.namespace());
                 name.setItems(parent().registry().tagNamesForNamespace(value.namespace()));
-                itemBinder.readBean(value);
             }
+            super.value(value);
         }
 
         @Override

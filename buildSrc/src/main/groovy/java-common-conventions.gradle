@@ -174,7 +174,6 @@ if (project.hasProperty('mode') && project.property('mode').equals('prod')) {
 
 configurations.all {
     resolutionStrategy {
-//        force "org.yaml:snakeyaml:1.27"
     }
 }
 

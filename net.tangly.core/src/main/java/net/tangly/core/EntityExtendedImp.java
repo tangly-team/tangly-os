@@ -31,7 +31,7 @@ public abstract class EntityExtendedImp implements EntityExtended {
     private final long oid;
     private String id;
     private String name;
-    private DateRange interval;
+    private DateRange dateRange;
     private String text;
     private final List<Comment> comments;
     private final Set<Tag> tags;
@@ -46,7 +46,7 @@ public abstract class EntityExtendedImp implements EntityExtended {
 
     protected EntityExtendedImp(long oid) {
         this.oid = oid;
-        interval = new DateRange();
+        dateRange = DateRange.INFINITE;
         comments = new ArrayList<>();
         tags = new HashSet<>();
     }
@@ -77,12 +77,12 @@ public abstract class EntityExtendedImp implements EntityExtended {
 
     @Override
     public DateRange range() {
-        return interval;
+        return dateRange;
     }
 
     @Override
-    public void range(DateRange range) {
-        this.interval = range;
+    public void range(@NotNull DateRange range) {
+        this.dateRange = Objects.nonNull(range) ? range : DateRange.INFINITE;
     }
 
     @Override

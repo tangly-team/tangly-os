@@ -38,17 +38,17 @@ import java.util.function.Function;
 public abstract class EntityForm<T extends Entity, V extends EntityView<T>> extends ItemForm<T, V> {
     private final Function<Long, T> supplier;
     private EntityField<T> entity;
-    private One2ManyField<Comment> comments;
-    private One2ManyField<Tag> tags;
+    private One2ManyOwnedField<Comment> comments;
+    private One2ManyOwnedField<Tag> tags;
 
     public EntityForm(@NotNull V parent, Function<Long, T> supplier) {
         super(parent);
         this.supplier = supplier;
         if (HasComments.class.isAssignableFrom(entityClass())) {
-            comments = new One2ManyField<>(new CommentsView(parent.domain(), parent.mode()));
+            comments = new One2ManyOwnedField<>(new CommentsView(parent.domain(), parent.mode()));
         }
         if (HasTags.class.isAssignableFrom(entityClass())) {
-            tags = new One2ManyField<>(new TagsView(parent.domain(), parent.mode()));
+            tags = new One2ManyOwnedField<>(new TagsView(parent.domain(), parent.mode()));
         }
     }
 
@@ -68,6 +68,8 @@ public abstract class EntityForm<T extends Entity, V extends EntityView<T>> exte
     @Override
     public void clear() {
         entity.clear();
+        comments.clear();
+        tags.clear();
     }
 
     @Override
@@ -79,11 +81,11 @@ public abstract class EntityForm<T extends Entity, V extends EntityView<T>> exte
         form.add(entity);
         addTabAt("entity", form, 0);
         if (tags != null) {
-            binderCast().bind(tags, o -> ((EntityExtended) o).tags(), (o, v) -> ((EntityExtended) o).tags(v));
+            binderCast().bind(tags, o -> ((EntityExtended) o).tags(), (o, v) -> ((EntityExtended) o).tags(tags.generateModelValue()));
             addTabAt("tags", tags, 1);
         }
         if (comments != null) {
-            binderCast().bind(comments, o -> ((EntityExtended) o).comments(), (o, v) -> ((EntityExtended) o).comments(v));
+            binderCast().bind(comments, o -> ((EntityExtended) o).comments(), (o, v) -> ((EntityExtended) o).comments(comments.generateModelValue()));
             addTabAt("comments", comments, 2);
         }
     }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2023-2023 Marcel Baumann
+ * Copyright 2022-2023 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -22,14 +22,13 @@ import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.menubar.MenuBar;
 import net.tangly.app.domain.model.BoundedDomainEntities;
 import net.tangly.core.providers.Provider;
-import net.tangly.core.providers.ProviderInMemory;
 import net.tangly.ui.app.domain.BoundedDomainUi;
 import net.tangly.ui.app.domain.DomainView;
 import net.tangly.ui.components.EntityForm;
 import net.tangly.ui.components.EntityView;
 import net.tangly.ui.components.ItemForm;
 import net.tangly.ui.components.Mode;
-import net.tangly.ui.components.One2ManyField;
+import net.tangly.ui.components.One2ManyReferencesField;
 import net.tangly.ui.components.One2OneField;
 import org.jetbrains.annotations.NotNull;
 
@@ -42,7 +41,7 @@ public class BoundedDomainEntitiesUi implements BoundedDomainUi {
     private final DomainView domainView;
     private transient Component currentView;
 
-    public BoundedDomainEntitiesUi(BoundedDomainEntities domain) {
+    public BoundedDomainEntitiesUi(@NotNull BoundedDomainEntities domain) {
         this.domain = domain;
         entityThreeView = new EntityThreeView(BoundedDomainEntities.EntityThree.class, domain, domain.realm().threeEntities(), Mode.VIEW);
         entityFourView = new EntityFourView(BoundedDomainEntities.EntityFour.class, domain, domain.realm().fourEntities(), Mode.EDIT);
@@ -102,7 +101,7 @@ public class BoundedDomainEntitiesUi implements BoundedDomainUi {
 
         public static class EntityFourForm extends EntityForm<BoundedDomainEntities.EntityFour, EntityFourView> {
             private One2OneField<BoundedDomainEntities.EntityThree> one2one;
-            private One2ManyField<BoundedDomainEntities.EntityThree> one2Many;
+            private One2ManyReferencesField<BoundedDomainEntities.EntityThree> one2Many;
             private ComboBox<BoundedDomainEntities.ActivityCode> code;
 
             public EntityFourForm(@NotNull EntityFourView parent) {
@@ -122,8 +121,8 @@ public class BoundedDomainEntitiesUi implements BoundedDomainUi {
                 details.setColspan(one2one, 2);
                 addTabAt("details", details, 1);
 
-                one2Many = new One2ManyField<>(new EntityThreeView(BoundedDomainEntities.EntityThree.class, parent().domain(), ProviderInMemory.of(), Mode.LIST));
-                binder().bind(one2Many, BoundedDomainEntities.EntityFour::one2many, BoundedDomainEntities.EntityFour::one2many);
+                one2Many = new One2ManyReferencesField<>(BoundedDomainEntities.EntityThree.class, parent().domain().realm().threeEntities());
+                binder().bind(one2Many, BoundedDomainEntities.EntityFour::one2many, (o, v) -> o.one2many(one2Many.generateModelValue()));
                 FormLayout one2many = new FormLayout();
                 one2many.add(one2Many);
                 addTabAt("one2many", one2many, 2);
@@ -132,6 +131,7 @@ public class BoundedDomainEntitiesUi implements BoundedDomainUi {
             @Override
             public void mode(@NotNull Mode mode) {
                 super.mode(mode);
+                one2Many.mode(mode);
                 code.setReadOnly(mode.readonly());
                 one2one.setReadOnly(mode.readonly());
             }

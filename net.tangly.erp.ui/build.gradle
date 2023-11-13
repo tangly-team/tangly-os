@@ -22,7 +22,7 @@ project.ext.artifactId = 'ui'
 project.version = "${projectVersion}"
 project.ext.moduleName = "${project.ext.groupId}.${project.ext.artifactId}"
 project.ext.inceptionYear = '1996'
-project.description = "User Interface ERP - using Java 20 or higher (tangly llc)"
+project.description = "User Interface ERP - using Java 21 or higher (tangly llc)"
 
 // beware the shared archive attributes slow down the application the first time it is called.
 

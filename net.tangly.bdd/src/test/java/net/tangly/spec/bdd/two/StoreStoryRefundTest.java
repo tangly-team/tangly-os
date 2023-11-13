@@ -4,7 +4,7 @@
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- *          https://apache.org/licenses/LICENSE-2.0
+ *          http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -23,12 +23,12 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.extension.ExtendWith;
 
 /**
- * BDD story test refund for shirts store.
+ * BDD story test refund for the shirt store.
  */
 @ExtendWith(StoryExtension.class)
 @Story(value = "Refunded items go back to the stockpile", description = "As a store owner, in order to keep track of stock, I want to add items back to stock when they're " +
     "refunded.", tags = {"Release 2.0"})
-class StoreTestStoryRefund {
+class StoreStoryRefundTest {
     @Scenario("Refunded items from the customer should be returned to stock")
     void refundAndRestock(Scene scene) {
         scene.given("A customer bought a black sweater from the store having 4 black and 0 blue sweaters", t -> t.put("store", new Store(4, 0).sellBlack(1)))

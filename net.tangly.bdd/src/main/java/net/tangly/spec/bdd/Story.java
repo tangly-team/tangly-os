@@ -4,7 +4,7 @@
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- *          https://apache.org/licenses/LICENSE-2.0
+ *          http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -23,9 +23,9 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Represents a story in BDD or specification by example style of writing tests. Notice that the annotation is meta-annotated with JUnit 5 built-in
- * "@Testable" annotation. This annotation gives IDEs and other tools a way to identify classes and methods that are testable––meaning the annotated
- * class or method can be executed by a test engine like JUnit 5 Jupiter test engine.
+ * Represents a story in BDD or specification by example style of writing tests. Notice that the annotation is meta-annotated with JUnit 5 built-in "@Testable" annotation. This
+ * annotation gives IDEs and other tools a way to identify classes and methods that are testable––meaning the annotated class or method can be executed by a test engine like JUnit
+ * 5 Jupiter test engine.
  */
 @Target({ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
@@ -40,8 +40,8 @@ public @interface Story {
     String value();
 
     /**
-     * Return the detailed description of the story as human-readable information for living documentation. One could describe a story in this
-     * format: As a {user-defined string}, in order to {user-defined string}, I want to {user-defined string}.
+     * Return the detailed description of the story as human-readable information for living documentation. One could describe a story in this format: As a {user-defined string},
+     * to {user-defined string}, I want to {user-defined string}.
      *
      * @return the story in a plain human language.
      */
@@ -55,7 +55,7 @@ public @interface Story {
     String id() default "";
 
     /**
-     * Return the tags associated with the feature. Tags provide domain specific classification and additional information.
+     * Return the tags associated with the feature. Tags provide domain-specific classification and additional information.
      *
      * @return tags defined in the feature
      */

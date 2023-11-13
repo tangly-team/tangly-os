@@ -15,7 +15,7 @@ Retired
 
 === Links
 
-Superseded by: link:../../../../ideas/adr/os-005-publish-maven-central-artifact[OS-0005]
+Superseded by: link:../../../../docs/domains/architecture/adr/os-005-publish-maven-central-artifact/[OS-0005]
 
 === Context
 
@@ -28,7 +28,7 @@ More customers will validate the usefulness of the library and identify extensio
 The library shall be published on maven central and be accessible to a wide range of developers and organizations.
 A website shall be set up to provide adequate documentation for users.
 
-The https://blog.tangly.net/docs/fsm/[FSM website] will use a static web approach to minimize costs and provide good legibility.
+The {ref-tangly-doc-url}/fsm/[FSM website] will use a static web approach to minimize costs and provide good legibility.
 
 The library will be published on Maven Central to maximize potential usage.
 

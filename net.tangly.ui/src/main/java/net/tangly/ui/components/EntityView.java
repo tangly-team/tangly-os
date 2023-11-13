@@ -1,10 +1,10 @@
 /*
- * Copyright 2023 Marcel Baumann
+ * Copyright 2023-2023 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- *          https://apache.org/licenses/LICENSE-2.0
+ *          http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -53,13 +53,13 @@ public class EntityView<T extends Entity> extends ItemView<T> {
 
     public static final String ISO_DATE_FORMAT = "yyyy-MM-dd";
 
-    public static <T extends Entity> EntityView<T> of(@NotNull Class<T> entityClass, @NotNull BoundedDomain<?, ?, ?, ?> domain, @NotNull Provider<T> provider, @NotNull Mode mode) {
+    public static <T extends Entity> EntityView<T> of(@NotNull Class<T> entityClass, BoundedDomain<?, ?, ?, ?> domain, @NotNull Provider<T> provider, @NotNull Mode mode) {
         EntityView<T> view = new EntityView<>(entityClass, domain, provider, mode);
         view.init();
         return view;
     }
 
-    public EntityView(@NotNull Class<T> entityClass, @NotNull BoundedDomain<?, ?, ?, ?> domain, @NotNull Provider<T> provider, @NotNull Mode mode) {
+    public EntityView(@NotNull Class<T> entityClass, BoundedDomain<?, ?, ?, ?> domain, @NotNull Provider<T> provider, @NotNull Mode mode) {
         super(entityClass, domain, provider, new EntityFilter<>(), mode);
     }
 

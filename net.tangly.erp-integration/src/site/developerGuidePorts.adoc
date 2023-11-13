@@ -14,24 +14,24 @@ weight: 50
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
 
-=== Conventions for Test Data
+=== Conventions for Beta Customer Test Data
 
 The following ranges of object identifiers _OID_ are foreseen:
 
 CRM::
-Natural entities::: 1 - 99 00001 - 9999
-Legal entities::: 100 - 199 10000 - 19999
-Employees::: 200 - 299 20000 - 29999
-Comments::: 300 - 399 30000 - 39999
+Natural entities::: 00001 - 09999
+Legal entities:::   10000 - 19999
+Employees:::        20000 - 28999
+Comments:::         30000 - 39999
 Products::
-Assignments:: 400 -499 40000 - 49999
-Contracts::: 500 -599 50000 - 59999
-Interactions::: 600 - 699 60000 - 69999
-Activities::: 700 - 799 70000 - 79999
-Products::: 800 - 899 80000 - 89999
-Efforts::: 1000 - 1099 90000 - 99999
+Assignments::       40000 - 49999
+Contracts:::        50000 - 59999
+Interactions:::     60000 - 69999
+Activities:::       n/a
+Products:::         70000 - 79999
+Efforts:::          80000 - 89999
 ERP::
-Subjects::: 900 - 999 100000 - 100999
+Subjects:::         29000 - 29999
 
 The test dataset defined as resources for the integration tests of the PORT component follows the above conventions.
 

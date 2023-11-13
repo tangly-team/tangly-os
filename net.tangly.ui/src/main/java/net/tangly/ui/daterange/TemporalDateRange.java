@@ -13,6 +13,8 @@
 
 package net.tangly.ui.daterange;
 
+import net.tangly.core.DateRange;
+
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.temporal.Temporal;
@@ -21,37 +23,40 @@ import java.time.temporal.TemporalUnit;
 import java.util.List;
 import java.util.Optional;
 
-public class DateRange implements TemporalAmount {
+public class TemporalDateRange implements TemporalAmount {
 
-    private LocalDate beginDate;
-    private LocalDate endDate;
+    private DateRange dateRange;
 
-    public static DateRange between(LocalDate beginDate, LocalDate endDate) {
-        DateRange dateRange = new DateRange();
+    public TemporalDateRange() {
+        dateRange = DateRange.INFINITE;
+    }
+
+    public static TemporalDateRange between(LocalDate beginDate, LocalDate endDate) {
+        TemporalDateRange dateRange = new TemporalDateRange();
         dateRange.setBeginDate(beginDate);
         dateRange.setEndDate(endDate);
         return dateRange;
     }
 
     public LocalDate getBeginDate() {
-        return this.beginDate;
+        return dateRange.from();
     }
 
     public void setBeginDate(LocalDate beginDate) {
-        this.beginDate = beginDate;
+        dateRange = dateRange.from(beginDate);
     }
 
     public LocalDate getEndDate() {
-        return this.endDate;
+        return dateRange.to();
     }
 
     public void setEndDate(LocalDate endDate) {
-        this.endDate = endDate;
+        dateRange = dateRange.to(endDate);
     }
 
     public Period getPeriod() {
-        LocalDate beginDate = Optional.ofNullable(this.beginDate).orElse(LocalDate.MIN);
-        LocalDate endDate = Optional.ofNullable(this.endDate).orElse(LocalDate.MAX);
+        LocalDate beginDate = Optional.ofNullable(dateRange.from()).orElse(LocalDate.MIN);
+        LocalDate endDate = Optional.ofNullable(dateRange.to()).orElse(LocalDate.MAX);
         return Period.between(beginDate, endDate);
     }
 
@@ -79,5 +84,4 @@ public class DateRange implements TemporalAmount {
     public String toString() {
         return this.getPeriod().toString();
     }
-
 }

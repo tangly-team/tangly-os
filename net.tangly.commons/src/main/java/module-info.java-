@@ -24,8 +24,9 @@ module net.tangly.commons {
     exports net.tangly.commons.logger;
     exports net.tangly.commons.utilities;
 
-    // requires org.junit.jupiter.api;
-    // requires org.apache.logging;
-    // TODO asciidoctor still not supporting modules
+    requires org.apache.logging.log4j;
+    requires jakarta.mail;
+    requires org.eclipse.angus.mail;
+//    requires org.asciidoctor.asciidoctorj.api;
     requires static transitive org.jetbrains.annotations;
 }
