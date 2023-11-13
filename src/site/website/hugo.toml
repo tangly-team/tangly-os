@@ -82,6 +82,7 @@ extensions = ["asciidoctor-diagram", "asciidoctor-bibtex", "asciidoctor-kroki", 
 [markup.asciidocExt.attributes]
 experimental = true
 allow-uri-read = true
+preserveTOC = false
 icons = "font"
 imagesdir = "../pics"
 source-highlighter = "rouge"

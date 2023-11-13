@@ -11,34 +11,61 @@
  *
  */
 
-// Blockquotes
+$header-font-family: "Open Sans", "DejaVu Sans", sans-serif;
+$header-font-weight: 300;
+$header-font-color: #ba3925;
+$header-line-height: 1.2;
+$header-top-margin: 1em;
+$header-word-spacing: -0.05em;
 
-$blockquote-cite-font-color: rgba(0,0,0,0.6);
+$title-font-color: rgba(0, 0, 0, 0.85);
+$title-font-weight: $header-font-weight;
+$subheader-font-family: default;
+$subheader-font-size: 1rem;
+$subheader-font-color: #7a2518;
+$subheader-font-weight: normal;
+$subheader-font-style: italic;
+$subheader-line-height: 1.45;
+$subheader-top-margin: 0;
+$subheader-bottom-margin: 0.25em;
+
+$hr-border-color: #ccc;
+$hr-border-style: dotted;
+$hr-border-width: 1px;
+
+$sect-divider-size: 1px !default;
+$sect-divider-style: solid !default;
+$sect-divider-color: #ddd !default;
+
+
+$blockquote-cite-font-color: rgba(0, 0, 0, 0.6);
 
 $tabs-bg: #fff;
 
-// Tables
+$table-bg: #fff;
+$table-even-row-bg: #f9f9f9;
 
- $table-bg: #fff;
- $table-even-row-bg: #f9f9f9;
+$table-border-style: solid;
+$table-border-size: 1px;
+$table-border-color: #ddd;
 
- $table-border-style: solid;
- $table-border-size: 1px;
- $table-border-color: #ddd;
+$table-head-bg: #f5f5f5;
+$table-head-font-size: 14px;
+$table-head-font-color: #222;
+$table-head-font-weight: bold;
+$table-head-padding: 8px 10px 10px;
 
- $table-head-bg: #f5f5f5;
- $table-head-font-size: 14px;
- $table-head-font-color: #222;
- $table-head-font-weight: bold;
- $table-head-padding: 8px 10px 10px;
+$table-row-padding: 9px 10px;
+$table-row-font-size: 14px;
+$table-row-font-color: #222;
+$table-line-height: 18px;
 
- $table-row-padding: 9px 10px;
- $table-row-font-size: 14px;
- $table-row-font-color: #222;
- $table-line-height: 18px;
+$table-display: table-cell;
+$table-margin-bottom: 20px;
 
- $table-display: table-cell;
- $table-margin-bottom: 20px;
+audio, canvas, video {
+    display: inline-block
+}
 
 .left {
     float: left !important;
@@ -287,6 +314,7 @@ b.conum * {
 .colist > table {
     border: 0;
     background: none;
+
     > tbody > tr {
         background: none;
     }
@@ -297,10 +325,12 @@ b.conum * {
         padding: 0.4em 0.75em 0 0.75em;
         line-height: 1;
         vertical-align: top;
+
         img {
             max-width: none;
         }
     }
+
     &:last-child {
         padding: 0.25em 0;
     }
@@ -347,117 +377,4 @@ table.frame-ends {
 
 table.frame-sides {
     border-width: 0 $table-border-size;
-}
-
-.tabs {
-    margin-bottom: 1.25em;
-}
-
-.tablist {
-    > ul {
-        display: flex;
-        flex-wrap: wrap;
-        list-style: none;
-        margin: 0;
-        padding: 0;
-
-        li {
-            align-items: center;
-            background-color: #fff;
-            cursor: pointer;
-            display: flex;
-            font-weight: bold;
-            line-height: 1.5;
-            padding: 0.25em 1em;
-            position: relative;
-
-            &:focus-visible {
-                outline: none;
-            }
-        }
-    }
-
-    &.ulist {
-        margin: 0;
-
-        > ul li {
-            margin: 0;
-
-            + li {
-                margin-left: 0.25em;
-            }
-        }
-    }
-}
-
-.tabs {
-    .tablist li::after {
-        content: "";
-        display: block;
-        height: 1px;
-        position: absolute;
-        bottom: -1px;
-        left: 0;
-        right: 0;
-    }
-
-    &.is-loading .tablist li:not(:first-child), &:not(.is-loading) .tablist li:not(.is-selected) {
-        background-color: #f5f5f5;
-    }
-
-    &.is-loading .tablist li:first-child::after, &:not(.is-loading) .tablist li.is-selected::after {
-        background-color: #fff;
-    }
-}
-
-.tablist > ul p {
-    line-height: inherit;
-    margin: 0;
-}
-
-.tabpanel {
-    background-color: $tabs-bg;
-    padding: 1.25em;
-}
-
-.tablist > ul li, .tabpanel {
-    border: 1px solid #dcdcdc;
-}
-
-.tablist > ul li {
-    border-bottom: 0;
-}
-
-.tabs {
-    &.is-loading .tabpanel + .tabpanel, &:not(.is-loading) .tabpanel.is-hidden {
-        display: none;
-    }
-}
-
-.tabpanel > :first-child {
-    margin-top: 0;
-}
-
-#content .tabpanel > :last-child {
-    margin-bottom: 0;
-
-    > :last-child {
-        margin-bottom: 0;
-
-        > li:last-child > :last-child {
-            margin-bottom: 0;
-        }
-    }
-}
-
-.tablecontainer {
-    overflow-x: auto;
-}
-
-#content .tablecontainer {
-    margin-bottom: 1.25em;
-
-    > table.tableblock {
-        margin-bottom: 0;
-    }
 }

@@ -1,7 +1,7 @@
 ---
 title: "C4 and UML with PlantUML"
 linkTitle: "PlantUML"
-date: 2023-11-15
+date: 2023-11-10
 tags: ["agile", "architecture", "series-students"]
 ---
 
@@ -158,18 +158,18 @@ Deployment nodes can be nested.
 You may also want to include infrastructure nodes such as DNS services, load balancers, firewalls, etc.
 
 Feel free to use icons provided by Amazon Web Services, Azure, etc. to complement your deployment diagrams .
-Just make sure any icons you use are included in your diagram legend.
+Make sure any icons you use are included in your diagram legend.
 
 === Lessons Learnt
 
 You should discuss intensively in your team and organization why you create diagrams.
 Each diagram has a creation and a maintenance costs.
 
-If you decide to create a lot of diagrams for your system, consider using a full-fledged C4 or UML modeling tool instead of a diagraming tool.
+If you decide to create a lot of diagrams for your system, consider using a full-fledged C4 or UML modeling tool instead of a diagramming tool.
 Be aware one team member shall be a power user.
 He will support the team and write utilities to simplify usage of the tool
 footnote:[A typical example of such scripts is the generation of the diagram pictures and their inclusion in the application documentation.
-The process must be fully automated to guaranty synchronization of modeling results and product documenation.].
+The process must be fully automated to guaranty synchronization of modeling results and product documentation.].
 
 What are the purpose and goals of your diagrams?
 

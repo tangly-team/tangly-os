@@ -30,15 +30,17 @@ The modern Java cite:[java-by-comparison,java-puzzlers,effective-java-3rd,things
 
 |Lecture 1
 |Algebraic Data Types
-a|- records
+a|- Records
 - Sealed types — interfaces, abstract classes, classes, and records -
-- Pattern matching and deconstruction in the conditional _if_ and _switch_ statements
+- Pattern matching and deconstruction in the conditional statements _if_ and _switch_
 - Implement the visitor pattern with a functional approach
 
 |Lecture 2
 |Lambdas and Streams
 a| - Single abstract method _SAM_ interface and abstract class
-- Tricks with type inference - functional builder example -
+- Custom intermediate and final operations with _gatherers_ and _collectors_
+- Tricks with type inference.
+An example of a functional builder is discussed.
 - Functional Programming with Java
 
 |Lecture 3

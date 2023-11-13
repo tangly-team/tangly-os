@@ -1,13 +1,13 @@
 ---
 title: "Pragmatic Java Application Design"
 linkTitle: "Pragmatic Design"
-date: 2023-11-25
+date: 2023-11-20
 tags: ["agile", "architecture"]
 ---
 
 == Pragmatic Java Application Design
-
 include::../fragments/_config-mb-blog.aodc[]
+:ref-dev-containers: https://containers.dev/[Development Containers]
 
 image::2023-11-03-head.png[width=420,height=360,role=left]
 
@@ -65,7 +65,7 @@ The technologies I use are:
 
 Domain Driven Design::
 Is a good architecture approach to creating modular monoliths with object-oriented technologies
-cite:[domain-driven-design-distilled,implementing-domain-driven-design,domain-storytelling,-driven-design].
+cite:[domain-driven-design-distilled,implementing-domain-driven-design,domain-storytelling,domain-driven-design].
 Modern Java technology stack::
 Is probably the most effective stack for engineering maintainable solutions.
 Trained engineers are available.
@@ -94,7 +94,7 @@ The following changes are needed:
 
 [CAUTION]
 ====
-The user interface written with Vaadin will scale up to around ten thousand concurrent users for one server.
+The user interface written with Vaadin scales up to around ten thousand concurrent users for one server.
 If you have more users, you must create shards for your application.
 
 This approach will only scale for around hundred thousand concurrent users.
@@ -108,9 +108,9 @@ _Products with more parallel users are seldom in Europe._
 We are professional engineers.
 Form should follow function.
 
-The huge majority of digital products we build do not need fancy and expensive technologies.
+The huge majority of digital products we build do not need fanciful and expensive technologies.
 
-We should build solid products.
+We should build solid products cite:[modern-software-engineering].
 Evolutive architecture principles cite:[building-evolutionary-architectures-2nd,continuous-architecture-in-practice] help us to scale later.
 
 Beware that if your market grows exponentially, you will have to rewrite your solution.
@@ -118,6 +118,13 @@ Beware that if your market grows exponentially, you will have to rewrite your so
 This approach is the best for your company and your cash flow.
 
 At this moment, you will better understand your customers and have the necessary budget to create a truly complex solution.
+
+Track new technologies.
+Evaluate their adequacy for your organization and products.
+
+I am currently evaluating {ref-dev-containers}.
+It has the potential to simplify the setup of a development environment for a team.
+The approach also solves the maintenance nightmare to support multiple development environements for older product versions.
 
 [bibliography]
 === Links

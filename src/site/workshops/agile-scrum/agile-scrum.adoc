@@ -11,8 +11,8 @@
 :ref-manifesto: http://agilemanifesto.org/[Agile Manifesto]
 :ref-manifesto-principles: https://agilemanifesto.org/principles.html[12 Agile Manifesto Principles]
 :ref-pdca: https://en.wikipedia.org/wiki/PDCA[Plan, Do, Check, Act]
-:ref-scrum-alliance: "https://www.scrumalliance.org/[Scrum Alliance]"
-:ref-scrum-org: "https://www.scrum.org/[Scrum.org]"
+:ref-scrum-alliance: https://www.scrumalliance.org/[Scrum Alliance]
+:ref-scrum-org: https://www.scrum.org/[Scrum.org]
 :ref-scrumguide: http://www.scrumguides.org/[Scrum Guide]
 :ref-tangly-workshops: https://blog.tangly.net/ideas/learnings/workshops/[Workshops]
 :ref-yagni: https://en.wikipedia.org/wiki/You_aren%27t_gonna_need_it[[YAGNI]
@@ -28,6 +28,8 @@
 --
 This slide deck is licensed under Attribution 4.0 International (CC BY 4.0).
 The attribution is https://blog.tangly.net/[tangly llc].
+
+The presentation can be given in about 4 hours.
 
 Additional slide decks can be found under {ref-tangly-workshops}.
 --
@@ -67,9 +69,6 @@ Value streams are another approach to creating a product-focused organization.
 --
 
 === Agile Impact on Success
-
-[%notitle]
-=== Agile Products
 
 [.streched]
 image::project-success-rates.png[]

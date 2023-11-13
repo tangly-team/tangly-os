@@ -4,11 +4,11 @@ Marcel Baumann 2023.
 Marcel Baumann. 2022.
 - [[[six-years-tangly, 3]]] link:../../2022/the-quest-for-an-agile-company-six-years-tangly-llc/[Six Years tangly llc]
 Marcel Baumann. 2022.
+- [[[no-printer, 6]]] link:../../2022/eliminate-your-printer/[Eliminate Your Printer]
+Marcel Baumann. 2022.
 - [[[five-years-tangly, 4]]] link:../../2020/the-quest-for-an-agile-company-five-years-tangly-llc/[Five Years tangly llc]
 Marcel Baumann. 2020.
 - [[[four-years-tangly, 5]]] link:../../2019/a-journey-to-be-a-digital-company-tangly-llc/[Four Years tangly llc]
 Marcel Baumann. 2019.
-- [[[no-printer, 6]]] link:../../2022/eliminate-your-printer/[Eliminate Your Printer]
-Marcel Baumann. 2022.
 - [[[founding-tangly, 7]]] link:../../2016/found-a-limited-liability-company-in-switzerland/[Founding tangly llc]
 Marcel Baumann. 2016.

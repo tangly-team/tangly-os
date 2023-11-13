@@ -1,12 +1,11 @@
 ---
 title: "Static Website Improvements"
-linkTitle: "Improve Website"
-date: 2023-11-30
+linkTitle: "Improved Website"
+date: 2023-11-25
 tags: ["hugo"]
 ---
 
 == Static Website Improvements
-
 include::../fragments/_config-mb-blog.aodc[]
 :ref-asciidoctor-tabs: https://github.com/asciidoctor/asciidoctor-tabs[asciidoctor tabs]
 :ref-asciidoc-docsy-stylesheet: https://github.com/tangly-team/tangly-os/tree/master/src/site/website/assets/scss[Asciidoc Docsy Stylesheet]
@@ -19,12 +18,16 @@ include::../fragments/_config-mb-blog.aodc[]
 image::2023-11-04-head.jpg[width=420,height=360,role=left]
 
 The static website build tool {ref-hugo} is awesome.
+
 The extensive built-in feature set of Hugo and the feature-rich text-formatting options that Asciidoc offers creates a blogging experience composed of easy content management and fun writing experience.
 
 The Hugo theme Docsy is ideal to create a good-looking software documentation site.
+The templates for blogging are good enough for our needs.
+
 This theme is currently the best match I found to combine product documentation with blogging.
 
-I love to write my documentation and blogs using {ref-asciidoc} notation [1].
+I love to write my documentation and blogs using {ref-asciidoc} notation.
+The expression power covers all our needs.
 A major tool chain is the {ref-asciidoctor} ecosystem.
 
 Lately, I needed new features to ameliorate the usability of our open-source documentation and blogging site.
@@ -56,11 +59,11 @@ I hope that the tabular display extension will soon graduate to an official {ref
 === Attachments
 
 I am a lecturer at {ref-cs-hslu}.
-All course materials are under {ref-cc-by-sa}.
+All my course materials are under {ref-cc-by-sa}.
 
-I wanted to provide recommended materials as a list of downloadable documents on the website.
+I wanted to provide recommended reading materials as a list of downloadable documents on the website.
 
-How can you provide this function with {ref-hug} and {ref-docsy}?
+How can you provide this function with {ref-hugo} and {ref-docsy}?
 
 The {ref-docsy} theme as a merge request for exactly this function.
 The request was created in June 2021.
@@ -74,6 +77,8 @@ I decided to add the necessary code as a local extension to the docsy theme.
 . Add my _scss_ stylesheet under {ref-asciidoc-docsy-stylesheet} in the file _shortcodes.scss_.
 
 A document using this functionality is link:../../../ideas/learnings/lectures/[Lectures].
+The page displays multiple lists of documents.
+The reader can download the material she is interested in.
 
 === Links
 
