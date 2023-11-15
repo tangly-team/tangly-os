@@ -26,6 +26,8 @@ dependencies {
     runtimeOnly(libs.apache.log4j2.core)
     runtimeOnly(libs.apache.log4j2.slf4j)
 
+    testCompileOnly(libs.lombok);
+    testAnnotationProcessor(libs.lombok)
     testCompileOnly(libs.annotations)
     testImplementation(libs.bundles.test.deps)
     testImplementation(libs.apache.log4j2.core)

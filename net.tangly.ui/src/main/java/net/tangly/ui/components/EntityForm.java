@@ -53,26 +53,6 @@ public abstract class EntityForm<T extends Entity, V extends EntityView<T>> exte
     }
 
     @Override
-    public void mode(@NotNull Mode mode) {
-        super.mode(mode);
-        entity.setReadOnly(mode.readonly());
-        if (Objects.nonNull(comments)) {
-            comments.mode(Mode.propagated(mode));
-        }
-        if (Objects.nonNull(tags)) {
-            tags.mode(Mode.propagated(mode));
-        }
-    }
-
-
-    @Override
-    public void clear() {
-        entity.clear();
-        comments.clear();
-        tags.clear();
-    }
-
-    @Override
     protected void init() {
         entity = new EntityField<>();
         entity.bind(binder(), true);

@@ -4,26 +4,29 @@
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- *          https://apache.org/licenses/LICENSE-2.0
+ *          http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ *
  */
 
 package net.tangly.erp.crm.ui;
 
+import com.vaadin.flow.component.HtmlComponent;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.ColumnTextAlign;
 import com.vaadin.flow.component.grid.HeaderRow;
 import com.vaadin.flow.component.select.Select;
 import com.vaadin.flow.data.binder.ValidationException;
 import com.vaadin.flow.data.renderer.NumberRenderer;
+import net.tangly.core.crm.LegalEntity;
 import net.tangly.erp.crm.domain.Contract;
 import net.tangly.erp.crm.services.CrmBoundedDomain;
 import net.tangly.ui.components.BankConnectionField;
-import net.tangly.ui.components.EntityField;
 import net.tangly.ui.components.EntityView;
 import net.tangly.ui.components.Mode;
+import net.tangly.ui.components.One2OneField;
 import net.tangly.ui.components.VaadinUtils;
 import org.jetbrains.annotations.NotNull;
 
@@ -35,21 +38,13 @@ import java.util.Locale;
  */
 
 class ContractsView extends EntityView<Contract> {
+    private final transient CrmBoundedDomain domain;
 
-    static class ContractForm extends net.tangly.ui.components.ItemForm<Contract, ContractsView> {
-        protected EntityField<Contract> entity;
-        protected BankConnectionField bankConnection;
-        protected Select<Locale> locale;
-        protected Select<Currency> currency;
-
+    static class ContractForm extends net.tangly.ui.components.EntityForm<Contract, ContractsView> {
         public ContractForm(@NotNull ContractsView parent) {
-            super(parent);
+            super(parent, Contract::new);
             init();
-        }
-
-        @Override
-        public void clear() {
-
+            addTabAt("details", details(), 1);
         }
 
         @Override
@@ -57,10 +52,13 @@ class ContractsView extends EntityView<Contract> {
             return null;
         }
 
-        protected void init() {
+        private CrmBoundedDomain crmDomain() {
+            return ((CrmBoundedDomain) parent().domain());
+        }
+
+        private FormLayout details() {
             FormLayout form = new FormLayout();
 
-            EntityField<Contract> entityField = new EntityField<>();
             BankConnectionField bankConnection = new BankConnectionField();
             Select<Locale> locale = new Select<>();
             locale.setLabel("Language");
@@ -68,37 +66,32 @@ class ContractsView extends EntityView<Contract> {
             Select<Currency> currency = new Select<>();
             currency.setLabel("Currency");
             currency.setItems(Currency.getInstance("CHF"), Currency.getInstance("EUR"));
-            //            One2OneField<LegalEntity, LegalEntitiesView> seller = new One2OneField<>("Seller", new LegalEntitiesView(domain, mode));
-            //            One2OneField<LegalEntity, LegalEntitiesView> sellee = new One2OneField<>("Sellee", new LegalEntitiesView(domain, mode));
 
-            //            fields(Set.of(entityField, bankConnection, locale, currency));
+            form.add(new HtmlComponent("br"));
+            One2OneField<LegalEntity> seller = new One2OneField<>("Seller", LegalEntity.class, crmDomain().realm().legalEntities());
+            One2OneField<LegalEntity> sellee = new One2OneField<>("Sellee", LegalEntity.class, crmDomain().realm().legalEntities());
 
-            form.add(entityField, bankConnection, locale, currency);
-            form.setResponsiveSteps(new FormLayout.ResponsiveStep("0", 1), new FormLayout.ResponsiveStep("320px", 2), new FormLayout.ResponsiveStep("500px", 3));
+            form.add(bankConnection, locale, currency, seller, sellee);
 
-            entityField.bind(binder(), true);
+            binder().forField(bankConnection).bind(Contract::bankConnection, Contract::bankConnection);
             binder().forField(locale).bind(Contract::locale, Contract::locale);
             binder().forField(currency).bind(Contract::currency, Contract::currency);
-            //            binder().forField(bankConnection).withValidator(bankConnection.validator()).bind(Contract::bankConnection, Contract::bankConnection);
-            //            binder.forField(seller).bind(Contract::seller, Contract::seller);
-            //            binder.forField(sellee).bind(Contract::sellee, Contract::sellee);
-
+            binder().forField(seller).bind(Contract::seller, Contract::seller);
+            binder().forField(sellee).bind(Contract::sellee, Contract::sellee);
+            return form;
         }
     }
-
-    private final transient CrmBoundedDomain domain;
 
     public ContractsView(@NotNull CrmBoundedDomain domain, @NotNull Mode mode) {
         super(Contract.class, domain, domain.realm().contracts(), mode);
         this.domain = domain;
-        form = new ContractForm(this);
+        form(new ContractForm(this));
         init();
     }
 
     @Override
     protected void init() {
         var grid = grid();
-        // TODO lEntitiesView.addQualifiedEntityColumns(grid);
         grid.addColumn(e -> e.sellee().name()).setKey("customer").setHeader("Customer").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Contract::currency).setKey("currency").setHeader("Currency").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(new NumberRenderer<>(Contract::amountWithoutVat, VaadinUtils.FORMAT)).setKey("amount").setHeader("Amount").setAutoWidth(true).setResizable(true)
@@ -106,10 +99,6 @@ class ContractsView extends EntityView<Contract> {
 
         grid.getHeaderRows().clear();
         HeaderRow headerRow = grid().appendHeaderRow();
-
-        //        if (filter() instanceof ContractFilter filter) {
-        //            addFilterText(headerRow, ID, ID_LABEL, filter::id);
-        //            addFilterText(headerRow, NAME, NAME_LABEL, filter::name);
     }
 }
 

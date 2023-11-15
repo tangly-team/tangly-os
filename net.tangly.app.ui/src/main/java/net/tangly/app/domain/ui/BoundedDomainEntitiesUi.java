@@ -74,7 +74,7 @@ public class BoundedDomainEntitiesUi implements BoundedDomainUi {
         public EntityThreeView(@NotNull Class<BoundedDomainEntities.EntityThree> entityClass, @NotNull BoundedDomainEntities domain,
                                @NotNull Provider<BoundedDomainEntities.EntityThree> provider, Mode mode) {
             super(entityClass, domain, provider, mode);
-            form = new EntityThreeForm(this);
+            form(new EntityThreeForm(this));
             init();
         }
 
@@ -90,7 +90,7 @@ public class BoundedDomainEntitiesUi implements BoundedDomainUi {
         public EntityFourView(@NotNull Class<BoundedDomainEntities.EntityFour> entityClass, @NotNull BoundedDomainEntities domain,
                               @NotNull Provider<BoundedDomainEntities.EntityFour> provider, Mode mode) {
             super(entityClass, domain, provider, mode);
-            form = new EntityFourForm(this);
+            form(new EntityFourForm(this));
             init();
         }
 

@@ -53,7 +53,7 @@ import java.util.function.Consumer;
  *    <dt>Delete</dt><dd>Display a read-only form with the entity properties. If delete operation is selected the entity is removed from the underlying list and from the grid.</dd>
  * </dl>
  * <h2>Form Functions</h2>
- * <p>The operations on the entity through the form are:</p>
+ * <p>You must register a from object to have access to the form functions. The operations on the entity through the form are:</p>
  * <dl>
  *     <dt>Cancel</dt><dd>Closes the form without any changes in the underlying list or the grid. All changes in the user interface are discarded.</dd>
  *     <dt>Close</dt><dd>Updates the underlying entity with the new field values and closes the form.</dd>
@@ -131,7 +131,7 @@ public abstract class ItemView<T> extends VerticalLayout {
     private final Grid<T> grid;
 
     private transient T entity;
-    protected ItemForm<T, ?> form;
+    private ItemForm<T, ?> form;
     private boolean isFormEmbedded;
 
     /**
@@ -197,6 +197,14 @@ public abstract class ItemView<T> extends VerticalLayout {
 
     public void isFormEmbedded(boolean isFormEmbedded) {
         this.isFormEmbedded = isFormEmbedded;
+    }
+
+    protected final ItemForm<T, ?> form() {
+        return form;
+    }
+
+    protected final void form(ItemForm<T, ?> form) {
+        this.form = form;
     }
 
     T selectedItem() {

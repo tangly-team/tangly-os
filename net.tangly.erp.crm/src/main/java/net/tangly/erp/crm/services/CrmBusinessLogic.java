@@ -13,8 +13,10 @@
 
 package net.tangly.erp.crm.services;
 
+import net.tangly.core.HasDateRange;
 import net.tangly.erp.crm.domain.Activity;
 import net.tangly.erp.crm.domain.Contract;
+import net.tangly.erp.crm.domain.Interaction;
 import net.tangly.erp.crm.domain.InteractionCode;
 import net.tangly.erp.crm.domain.Subject;
 import org.jetbrains.annotations.NotNull;
@@ -49,15 +51,15 @@ public class CrmBusinessLogic {
     }
 
     /**
-     * Set the end date property of interaction to the end date of the last contract associated with the interaction in the case of customer and completed
-     * state. Set the end date property of interaction to the end date of the last activity associated with the interaction in the case of lost state.
+     * Set the end date property of interaction to the end date of the last contract associated with the interaction in the case of customer and completed state. Set the end date
+     * property of interaction to the end date of the last activity associated with the interaction in the case of lost state.
      */
     public void updateInteractions() {
         realm().interactions().items().forEach(interaction -> interaction.to(
             realm().contracts().items().stream().filter(contract -> contract.sellee().oid() == interaction.entity().oid()).map(Contract::to)
                 .max(Comparator.comparing(LocalDate::toEpochDay)).orElseThrow()));
-        realm().interactions().items().stream().filter(o -> o.code() == InteractionCode.lost).forEach(interaction -> interaction
-            .to(interaction.activities().stream().map(Activity::date).max(Comparator.comparing(LocalDate::toEpochDay)).orElseThrow()));
+        realm().interactions().items().stream().filter(o -> o.code() == InteractionCode.lost)
+            .forEach(interaction -> interaction.to(interaction.activities().stream().map(Activity::date).max(Comparator.comparing(LocalDate::toEpochDay)).orElseThrow()));
     }
 
     /**
@@ -69,14 +71,13 @@ public class CrmBusinessLogic {
      * @return the aggregated potential amount
      */
     public BigDecimal funnel(@NotNull InteractionCode code, LocalDate from, LocalDate to) {
-        return BigDecimal.ZERO;
-        //        TODO bug with dateRange
-        //        return switch (code) {
-        //            case lead, prospect, lost -> realm.interactions().items().stream().filter(o -> o.code() == code).filter(new HasDateRange.RangeFilter<>(from, to))
-        //                .map(Interaction::weightedPotential).reduce(BigDecimal.ZERO, BigDecimal::add);
-        //            case ordered, completed -> realm.interactions().items().stream().filter(o -> o.code() == code)
-        //                .flatMap(interaction -> realm.contracts().items().stream().filter(contract -> contract.sellee().oid() == interaction.entity().oid()))
-        //                .filter(new HasDateRange.RangeFilter<>(from, to)).map(Contract::amountWithoutVat).reduce(BigDecimal.ZERO, BigDecimal::add);
-        //        };
+        return switch (code) {
+            case lead, prospect, lost ->
+                realm.interactions().items().stream().filter(o -> o.code() == code).filter(new HasDateRange.RangeFilter<>(from, to)).map(Interaction::weightedPotential)
+                    .reduce(BigDecimal.ZERO, BigDecimal::add);
+            case ordered, completed -> realm.interactions().items().stream().filter(o -> o.code() == code)
+                .flatMap(interaction -> realm.contracts().items().stream().filter(contract -> contract.sellee().oid() == interaction.entity().oid()))
+                .filter(new HasDateRange.RangeFilter<>(from, to)).map(Contract::amountWithoutVat).reduce(BigDecimal.ZERO, BigDecimal::add);
+        };
     }
 }

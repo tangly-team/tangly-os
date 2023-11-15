@@ -30,6 +30,8 @@ application {
     applicationDefaultJvmArgs = ['--enable-preview',
                                  '--add-exports=java.base/jdk.internal.misc=ALL_UNNAMED',
                                  '--add-opens=java.base/jdk.internal.misc=ALL-UNNAMED',
+                                 '--add-opens java.base/sun.nio.ch=ALL-UNNAMED',
+                                 '--add-opens java.base/java.io=ALL-UNNAMED',
                                  '-XX:+ShowCodeDetailsInExceptionMessages',
                                  '-XX:+AutoCreateSharedArchive',
                                  '-XX:SharedArchiveFile=tangly-os-archive.jsa',

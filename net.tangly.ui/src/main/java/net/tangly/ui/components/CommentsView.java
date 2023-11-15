@@ -24,6 +24,7 @@ import net.tangly.core.DateRange;
 import net.tangly.core.HasComments;
 import net.tangly.core.domain.BoundedDomain;
 import net.tangly.core.providers.ProviderInMemory;
+import net.tangly.ui.asciidoc.AsciiDocField;
 import org.jetbrains.annotations.NotNull;
 
 import java.time.LocalDateTime;
@@ -76,9 +77,9 @@ public class CommentsView extends ItemView<Comment> {
     }
 
     static class CommentForm extends ItemForm<Comment, CommentsView> {
-        private DateTimePicker created;
-        private TextField author;
-        private TextField text;
+        DateTimePicker created;
+        TextField author;
+        AsciiDocField text;
 
         public CommentForm(@NotNull CommentsView parent) {
             super(parent);
@@ -91,7 +92,7 @@ public class CommentsView extends ItemView<Comment> {
             created.setReadOnly(true);
             author = new TextField(AUTHOR);
             author.setRequired(true);
-            text = new TextField(TEXT);
+            text = new AsciiDocField(TEXT);
             layout.add(created, author, text);
             layout.setColspan(text, 3);
             layout.setResponsiveSteps(new FormLayout.ResponsiveStep("0", 1), new FormLayout.ResponsiveStep("320px", 2), new FormLayout.ResponsiveStep("500px", 3));
@@ -99,14 +100,6 @@ public class CommentsView extends ItemView<Comment> {
             binder().forField(created).bind(Comment::created, null);
             binder().forField(author).bind(Comment::author, null);
             binder().forField(text).bind(Comment::text, null);
-        }
-
-        @Override
-        public void mode(@NotNull Mode mode) {
-            super.mode(mode);
-            created.setReadOnly(mode.readonly());
-            author.setReadOnly(mode.readonly());
-            text.setReadOnly(mode.readonly());
         }
 
         @Override
@@ -121,12 +114,6 @@ public class CommentsView extends ItemView<Comment> {
             created.setValue(LocalDateTime.now());
         }
 
-        @Override
-        public void clear() {
-            created.clear();
-            author.clear();
-            text.clear();
-        }
 
         /**
          * Handle the edition or addition of an immutable comment. If the parameter is not null, it is removed from the list before the changed version is added. The updated
@@ -145,7 +132,7 @@ public class CommentsView extends ItemView<Comment> {
 
     public CommentsView(@NotNull BoundedDomain<?, ?, ?, ?> domain, @NotNull Mode mode) {
         super(Comment.class, domain, ProviderInMemory.of(), new CommentFilter(), mode);
-        form = new CommentForm(this);
+        form(new CommentForm(this));
         init();
     }
 

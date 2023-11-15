@@ -88,6 +88,7 @@ class InteractionsView extends EntityView<Interaction> {
 
     public InteractionsView(@NotNull CrmBoundedDomain domain, @NotNull Mode mode) {
         super(Interaction.class, domain, domain.realm().interactions(), mode);
+        form(new InteractionForm(this));
         init();
     }
 

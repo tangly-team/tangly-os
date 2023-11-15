@@ -9,9 +9,9 @@ weight: 20
 This document provides a high-level view of the changes introduced in the BDD library by release.
 For a detailed view of what has changed, refer to the https://bitbucket.org/tangly-team/tangly-os[repository] commits.
 
-=== 0.2.7 (2023-10-31)
+=== 0.2.7 (2023-11-31)
 
-* Update of library dependencies, update to JDK-20, and modern Gradle approach to build solutions.
+* Update of library dependencies, update to JDK-21, and modern Gradle approach to build solutions.
 
 === 0.2.6 (2021-08-31)
 

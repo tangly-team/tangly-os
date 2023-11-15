@@ -3,6 +3,8 @@ ifndef::imagesdir[:imagesdir: ./pics]
 [[section-design-decisions]]
 == Architecture Decisions
 
+=== Overall Decisions
+
 . link:../adr/os-001-system-guava-removal/[System Guava Removal]
 . link:../adr/os-002-unit-test-conventions/[Unit Test Conventions]
 . link:../adr/os-003-use-modern-java-constructs/[Use Modern Java Constructs]
@@ -14,3 +16,12 @@ ifndef::imagesdir[:imagesdir: ./pics]
 . link:../adr/os-009-use-hsqldb-as-sql-store/[Use hsqldb as SQL store]
 . link:../adr/os-010-archive-data/[Archive Data]
 . link:../adr/os-011-vaadin-as-user-interface/[Vaadin as User Interface Approach]
+
+=== ERP UI Decisions
+
+. link:../adr/ERPUI-001-asciidoc-for-all-texts/[Asciidoc for all Texts]
+
+=== FSM Decisions
+
+. link:../adr/FSM-001-move-abstractions-to-JDK-classes/[Move Abstractions to JDK Classes]
+. link:../adr/FSM-002-publish-maven-central-artifact[Publish Maven Central Artifacts]

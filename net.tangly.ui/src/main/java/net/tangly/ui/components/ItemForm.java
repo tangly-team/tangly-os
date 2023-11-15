@@ -122,13 +122,15 @@ public abstract class ItemForm<T, U extends ItemView<T>> {
     }
 
     /**
-     * Set the mode of the form. Subclasses should overwrite the method to ensure that the mode is propagated to all contained views.
+     * Set the mode of the form and propagate it to all components registered in the binder. Subclasses should overwrite the method to ensure that the mode is propagated to all
+     * contained views.
      *
      * @param mode mode of the form
      * @see #mode()
      */
     public void mode(@NotNull Mode mode) {
         this.mode = mode;
+        binder.getFields().forEach(o -> o.setReadOnly(mode.readonly()));
     }
 
     /**
@@ -142,6 +144,8 @@ public abstract class ItemForm<T, U extends ItemView<T>> {
 
     /**
      * Set the value displayed in the form. If the value is null, the form fields are reset to empty values.
+     * <p>Overwrite the method to update components not supported by Vaadin binder for example an image. Handle null value accordingly. Do not forget to call the overwritten
+     * method to trigger the binding mechanism.</p>
      *
      * @param value value to display in the form
      */
@@ -245,10 +249,14 @@ public abstract class ItemForm<T, U extends ItemView<T>> {
         value(null);
         clear();
     }
+
     /**
-     * Clear the content of the form. All property fields are reset to empty or a default value.
+     * Clear the content of the form. All property fields are reset to empty or a default value. The default implementation clears all fields registered in the binder. Custom
+     * fields are cleared as regular fields because both implements <i>HasValue</i> and therefore are eligble for the binder.
      */
-    protected abstract void clear();
+    protected void clear() {
+        binder.getFields().forEach(o -> o.clear());
+    }
 
     /**
      * Create the form containing all the fields to display an entity. The form is added into the CRUD form with the associated operations.
