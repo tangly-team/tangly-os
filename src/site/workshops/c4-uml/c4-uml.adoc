@@ -23,6 +23,8 @@
 This slide deck is licensed under Attribution 4.0 International (CC BY 4.0).
 The attribution is https://blog.tangly.net/[tangly llc].
 
+The presentation takes about four hours.
+
 Additional slide decks can be found under {ref-tangly-workshops}.
 --
 

@@ -29,7 +29,7 @@
 This slide deck is licensed under Attribution 4.0 International (CC BY 4.0).
 The attribution is https://blog.tangly.net/[tangly llc].
 
-The presentation can be given in about 4 hours.
+The presentation takes about four hours.
 
 Additional slide decks can be found under {ref-tangly-workshops}.
 --
@@ -381,6 +381,21 @@ image:product-increment.png[]
 A product is a vehicle to deliver value.
 It has a clear boundary, known stakeholders, well-defined users or customers.
 A product could be a service, a physical product, or something more abstract.
+--
+
+=== Scrum Commitments
+
+image::scrum-commitments.jpg[]
+
+[.notes]
+--
+Each artifact contains a commitment to ensure it provides information that enhances transparency and focus against which progress can be measured:
+
+- For the Product Backlog, it is the _Product Goal_.
+- For the Sprint Backlog, it is the _Sprint Goal_.
+- For the Increment, it is the _Definition of Done_.
+
+These commitments exist to reinforce empiricism and the Scrum values for the Scrum Team and their stakeholders.
 --
 
 == How to be Successful?

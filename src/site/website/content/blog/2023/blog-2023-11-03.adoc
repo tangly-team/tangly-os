@@ -1,44 +1,48 @@
 ---
 title: "Pragmatic Java Application Design"
 linkTitle: "Pragmatic Design"
-date: 2023-11-20
+date: 2023-11-15
 tags: ["agile", "architecture"]
 ---
 
 == Pragmatic Java Application Design
+
 include::../fragments/_config-mb-blog.aodc[]
 :ref-dev-containers: https://containers.dev/[Development Containers]
+:ref-devoxx: https://devoxx.be/[Devoxx Belgium]
 
 image::2023-11-03-head.png[width=420,height=360,role=left]
 
-I attended the 20th edition of the Devoxx Belgium conference in Antwerp.
+I attended the 20^th^ edition of the {ref-devoxx} conference in Antwerp.
 
-I heard beautiful examples of how to design complex software applications written in Java.
+I heard about beautiful examples of how to design complex software applications written in Java.
 
 The solutions scale to hundreds of thousands of users, are resilient to network disruption and use fancy libraries and tools.
 
 The applications are deployed on cloud infrastructure and are available worldwide.
 
-After the conference, I went to Ibiza for a family holidays.
-Our family enjoys prolonging the summer on a beautiful balearic island.
+After the conference, I went to Ibiza for a family holiday.
+Our family enjoys prolonging the summer on this beautiful balearic island.
 
 The weather is Switzerland is typical for fall.
 Cold, misty and often rainy.
 
-I used to relaxed location to reflect the kind of applications I often develop for customers.
+I used the relaxed location to reflect about the kind of applications I often develop for customers.
 
 The application goal often is to digitalize an internal process or a more complex workflow involving customers and suppliers.
 
 The product we have to develop has the following characteristics:
 
 . It is a web-based application.
-Customers and their IT department do not want to install an application locally.
-A few users access the application through a tablet or a smart phone.
+Customers and their IT departments do not want to install an application locally.
+Only a few users access the application through a tablet or a smartphone.
+I expect that mobile user numbers will increase in the future.
 . It has from a few dozens to a maximum of a few hundreds of parallel active users.
 The user interface should be responsive to reflect modern user interface expectation.
 . Persistent data is often a few tens of gigabytes.
 . It has few computational intensive algorithms.
 . It often has to produce various output documents for distribution.
+The preferred format is PDF.
 
 [NOTE]
 ====
@@ -48,10 +52,10 @@ The marketing department has less than 10'000 prospects and less than 1'000'000 
 The company has at most 10'000 contracts and 1'000'000 invoices.
 We can assume each object is less than 10 KBytes.
 
-The size of the whole database is around 20 GB.
+The size of the whole database is therefore around 20 GB.
 Modern servers can easily load this data in memory and provide lightning fast access to information.
 
-Please factor in the fact that quite a slice of this data is the past and is very seldom accessed.
+Please factor in the fact that quite a slice of this data is in the past and is very seldom accessed.
 The application will not need regular access to all the historical information.
 
 Most of the time the application only accesses active customers, contracts, and invoices issued in the current year.
@@ -69,7 +73,10 @@ cite:[domain-driven-design-distilled,implementing-domain-driven-design,domain-st
 Modern Java technology stack::
 Is probably the most effective stack for engineering maintainable solutions.
 Trained engineers are available.
-High-quality open source and commercial libraries are available to solve most requirements.
+High-quality open source and commercial libraries are available to solve most requirements
+footnote:[Modern applications are deployed on public or private cloud.
+I do not understand why such an application should run on an outdated Java runtime.
+You must update the runtime at least every three months to deploy the quarterly security patches.].
 EclipseStore and HyperSQL::
 Are cost-effective and stable approaches for persistence.
 Logging log4j2::
@@ -78,23 +85,24 @@ Monitoring Micrometer::
 Is an industry standard to monitor your productive solutions on premises or in the cloud.
 Vaadin, SO Charts::
 Is a Java-based approach to creating modern user interfaces.
+{ref-vaadin} empowers developers to use one technology stack for the whole application.
 PDF Box::
 Is a powerful library to generate your PDF output documents.
 FacturX and Swiss QR Code::
 Are used to create compliant invoices in Europe and Switzerland.
 
-The application could have a huge success.
+The application could have a huge success and be sold as a product to customers.
 You must now support thousands of concurrent users and more persistent data.
 
 The following changes are needed:
 
-- Split modular monolith into a set of services
-- Move to PostreSQL
+- Split modular monolith into a set of services.
+- Move to PostreSQL database.
 - Shard your application services and data either geographically or per customer groups.
 
 [CAUTION]
 ====
-The user interface written with Vaadin scales up to around ten thousand concurrent users for one server.
+The user interface written with Vaadin currently scales up to around ten thousand concurrent users for one server.
 If you have more users, you must create shards for your application.
 
 This approach will only scale for around hundred thousand concurrent users.
