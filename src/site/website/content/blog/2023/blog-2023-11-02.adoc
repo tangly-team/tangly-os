@@ -6,6 +6,7 @@ tags: ["agile", "architecture", "series-students"]
 ---
 
 == C4 and UML with PlantUML
+
 include::../fragments/_config-mb-blog.aodc[]
 :ref-java-api: https://docs.oracle.com/en/java/javase/21/docs/api/index.html[Java API]
 
@@ -163,7 +164,7 @@ Make sure any icons you use are included in your diagram legend.
 === Lessons Learnt
 
 You should discuss intensively in your team and organization why you create diagrams.
-Each diagram has a creation and a maintenance costs.
+Each diagram has creation and maintenance costs.
 
 If you decide to create a lot of diagrams for your system, consider using a full-fledged C4 or UML modeling tool instead of a diagramming tool.
 Be aware one team member shall be a power user.
@@ -173,8 +174,20 @@ The process must be fully automated to guaranty synchronization of modeling resu
 
 What are the purpose and goals of your diagrams?
 
-I suggest using diagrams to document key design cross-cutting decisions
-footnote:[Key architecture decisions should often be documented in {ref-adr}.].
+I suggest using diagrams to document key design cross-cutting decisions.
+
+[IMPORTANT]
+====
+Cross-cutting decisions are the backbone of your design.
+Document them extensively with graphical tools.
+
+Key architecture decisions are often tactical decisions and should be documented in {ref-adr}.
+Future team members will understand why you decided to use a specific technology or design pattern.
+
+Public API shall be documented with {ref-openapi} or a similar approach.
+Modules and classes are documented with {ref-javadoc}.
+Maintainers will be thankful for high-quality documentation.
+====
 
 New team members should understand the application design with the help of these diagrams and associated documentation.
 
