@@ -1,5 +1,6 @@
 [versions]
 assertj-version = '3.24.2'
+flyway-version = '10.0.1'
 jackson-version = '2.12.3'
 jersey-version = '2.35'
 javalin-version = '5.6.3'
@@ -22,7 +23,7 @@ jib = "com.google.cloud.tools.jib:3.2.0"
 mannes = "com.github.ben-manes.versions:0.41.0"
 
 [libraries]
-annotations = "org.jetbrains:annotations:24.0.1"
+annotations = "org.jetbrains:annotations:24.1.0"
 antlr-st4 = "org.antlr:ST4:4.3.4"
 apache-commons-cli = "commons-cli:commons-cli:1.5.0"
 apache-commons-csv = "org.apache.commons:commons-csv:1.10.0"
@@ -46,8 +47,8 @@ asciidoctorj-pdf = "org.asciidoctor:asciidoctorj-pdf:2.3.9"
 assertj = { module = "org.assertj:assertj-core", version.ref = "assertj-version" }
 eo-yaml = "com.amihaiemil.web:eo-yaml:5.2.1"
 
-flyway = "org.flywaydb:flyway-core:10.0.1"
-flywy-hsqldb = "org.flywaydb:flyway-database-hsqldb:10.0.0"
+flyway = { module = "org.flywaydb:flyway-core", version.ref = "flyway-version" }
+flywy-hsqldb = { module = "}org.flywaydb:flyway-database-hsqldb", version.ref = "flyway-version" }
 
 hsqldb = "org.hsqldb:hsqldb:2.7.2"
 iban4j = "org.iban4j:iban4j:3.2.7-RELEASE"
