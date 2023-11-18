@@ -5,8 +5,6 @@ date: 2019-01-13
 tags: ["agile"]
 ---
 
-== Detecting Agile Bullshit
-
 include::../fragments/_config-mb-blog.aodc[]
 
 image::2019-01-01-head.jpg[width=420,height=360,role=left]
@@ -26,7 +24,7 @@ Learn from yesterday, live for today, hope for tomorrow.
 The important thing is not to stop questioning.
 ____
 
-=== Identifying Fake Agile Organizations
+== Identifying Fake Agile Organizations
 
 Agile development has become such a holy grail that some organizations or product teams wave the agile flag whether they are true believers or not.
 
@@ -58,7 +56,7 @@ Such processes can and should be automated using e.g., automated testing, contin
 ** Continuous integration and delivery - Jenkins - are not used.
 ** Modern deployment platforms - Docker, Kubernetes - are not used.
 
-=== Questions to Ask Programming Teams
+== Questions to Ask Programming Teams
 
 * How do you test your code? +
 _Wrong answer: “we have a testing organization responsible for testing”_.
@@ -78,7 +76,7 @@ What configuration management tools do you use?
 
 For a team working on agile, the answer to all of these questions should be a form of “yes”.
 
-=== Questions for Program Management
+== Questions for Program Management
 
 * How many programmers are part of the organizations that own the budget and milestones for the program? +
 _Wrong answers: “we don’t know,” “zero,” “it depends on how you define a programmer”_,
@@ -92,7 +90,7 @@ _Wrong answers: “we don’t directly deploy our code to users”_.
 
 For a team working on agile, the answer to all of these questions should be a form of “yes.”
 
-=== Questions for Customers and Users
+== Questions for Customers and Users
 
 * How do you communicate with the developers?
 * Did they observe your relevant teams working and ask questions that indicated a deep understanding of your needs?
@@ -104,7 +102,7 @@ For a team working on agile, the answer to all of these questions should be a fo
 
 For a team working on agile, the answer to all of these questions should be a form of “yes”.
 
-=== Questions for Program Leadership
+== Questions for Program Leadership
 
 * Are teams delivering working software to at least some subset of real users every iteration and gathering feedback?
 * Is there a product charter that lays out the mission and strategic goals?
@@ -117,7 +115,7 @@ _Agile programming teams followed by linear, bureaucratic deployment is a failur
 
 For a team to truly work the agile way, the answer to these questions should be a form of _yes_.
 
-=== Conclusion
+== Conclusion
 
 The above questions are taken directly from the document
 https://media.defense.gov/2018/Oct/09/2002049591/-1/-1/0/DIB_DETECTING_AGILE_BS_2018.10.05.PDF[Detecting Agile Bullshit].
@@ -138,6 +136,6 @@ Luckily, the check will find out you are really being agile instead of pretendin
 I wish good luck and success with your agile transformation.
 
 [bibliography]
-=== Links
+== Links
 
 - [[[detecting-agile-bullshit, 1]]] https://media.defense.gov/2018/Oct/09/2002049591/-1/-1/0/DIB_DETECTING_AGILE_BS_2018.10.05.PDF

@@ -6,10 +6,10 @@ tags: ["agile"]
 
 ---
 
-== Calibrate Your Agile Approach: Bill of Rights
-
 include::../fragments/_config-mb-blog.aodc[]
 
+[.float-group]
+--
 image::2020-01-01-head.jpg[width=420, height=360, role=left]
 
 When https://en.wikipedia.org/wiki/Extreme_programming[eXtreme Programming] first came out, one expectation it worked hard to set is who gets to make what
@@ -20,8 +20,9 @@ For example, business has the right to know how long something is going to take 
 Conversely, developers have the right to know what the priorities are, and to be able to do good work.
 
 To that end, https://en.wikipedia.org/wiki/Extreme_programming[eXtreme Programming] created the *Customer and Development Team Bill of Rights*.
+--
 
-=== Customer Bill of Rights
+== Customer Bill of Rights
 
 You have the right
 
@@ -32,7 +33,7 @@ You have the right
 * To be informed of _schedule changes_, in time to choose how to reduce the scope to restore the original date.
 * _To cancel at any time and be left with a useful working system_ reflecting investment to date.
 
-=== Developer Bill of Rights
+== Developer Bill of Rights
 
 You have the right
 
@@ -42,7 +43,7 @@ You have the right
 * _To make and update your own estimates_.
 * _To accept your responsibilities_ instead of having them assigned to you.
 
-=== Calibration
+== Calibration
 
 You shall use the above bill of rights to evolve the cooperation between the development teams and the customers and improve the product value.
 See if:
@@ -66,6 +67,6 @@ Observe your organization and start to improve.
 The above rules are here to detect and truly improve your organization toward building products, which delight the customers <<detecting-agile-bullshit>>.
 
 [bibliography]
-=== Links
+== Links
 
 - [[[detecting-agile-bullshit, 1]]] link:../../2019/detecting-agile-bullshit/[Agile Bullshit]

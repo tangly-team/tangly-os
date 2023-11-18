@@ -5,8 +5,6 @@ date: 2021-01-04
 tags: ["design", "domain-driven-design", "crm", "series-identifiers"]
 ---
 
-== Value Objects as Embedded Entities
-
 include::../fragments/_config-mb-blog.aodc[]
 
 image::2021-01-01-head.png[width=420,height=360,role=left]
@@ -48,7 +46,7 @@ Many objects can be modeled as value objects instead of entities because they ar
 These objects measure, quantify or describe things in the domain model.
 Because they are so easy to handle, we should model domain abstractions as value objects as often as possible.
 
-=== Addresses, Phone Numbers, Email Addresses
+== Addresses, Phone Numbers, Email Addresses
 
 Some value objects are part of any commercial application domain.
 Postal addresses, phone numbers and email addresses are canonical value objects.
@@ -75,7 +73,7 @@ A Java record class declaration is very compact.
 Often it is a one-liner.
 ====
 
-=== Invoice Lines
+== Invoice Lines
 
 Invoice lines are lines containing details in an invoice.
 Invoice lines are always value objects belonging to exactly one invoice.
@@ -103,7 +101,7 @@ The solution is to define selectors to instantiate the correct Java class.
 Invoices should not be stored in a relation-based persistence store, meaning an SQL database.
 To store them in a table, you have to model the various types of lines and add a technical identifier to each invoice line instance.
 
-=== Factories
+== Factories
 
 The factory pattern in Domain Driven Design _DDD_ can be seen as a super pattern for the Gang of Four (GoF) creation patterns.
 Factories are concerned with creating new entities and value objects.
@@ -132,7 +130,7 @@ When the creation logic is complex or has dependencies that are not needed by th
 It is best to create a separate factory.
 This factory could provide multiple ways to create new instances.
 
-=== Value Objects in Persistent Store
+== Value Objects in Persistent Store
 
 We encourage experimenting with the https://microstream.one/[MicroStream] approach for small projects.
 The effort to persist a Java object graph is very small.

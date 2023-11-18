@@ -5,8 +5,6 @@ date: 2023-09-26
 tags: ["agile", "git", "series-students"]
 ---
 
-== Git Rebase and Merge for the Impatient
-
 include::../fragments/_config-mb-blog.aodc[]
 :ref-svn: https://subversion.apache.org/[Subversion]
 
@@ -39,7 +37,7 @@ Feature branches should be short-lived. +
 The implementation of a feature shall be shorter than a Scrum sprint, meaning less than two weeks.
 ====
 
-=== Regular Rebase
+== Regular Rebase
 
 Rebasing a branch in {ref-git} is a way to move the entirety of a branch to another point in the tree.
 The simplest example is moving a branch further up in the tree.
@@ -109,7 +107,7 @@ In these cases, instead of rebasing your branch against the default branch, cons
 Pulling has similar effects with less risk of compromising the work of your contributors.
 ====
 
-=== Merge
+== Merge
 
 The git merge command will merge any changes that were made to the code base on a separate branch to your current branch as a new commit.
 
@@ -138,7 +136,7 @@ git stash pop                                   <3>
 <2> do your merge
 <3> get the changes back into your working tree
 
-=== Interactive Rebase
+== Interactive Rebase
 
 Use an interactive rebase (the --interactive flag, or -i) to simultaneously update a branch while you modify how its commits are handled.
 For example, to edit the last five commits in your branch (HEAD~5), run:
@@ -180,7 +178,7 @@ The default option.
 Replace the keyword pick according to the operation you want to perform in each commit.
 To do so, edit the commits in your text editor.
 
-=== Force push
+== Force push
 
 Complex operations in Git require you to force an update to the remote branch.
 Operations like squashing commits, resetting a branch, or rebasing a branch rewrite the history of your branch.
@@ -205,7 +203,7 @@ To use this method, pass the flag _--force_ or _-f_ to the push command:
 git push --force origin my-feature
 ----
 
-=== Thoughts
+== Thoughts
 
 Both _git merge_ and _git rebase_ are very useful commands.
 One is not better than the other.
@@ -229,6 +227,6 @@ The nifty-gritty details can be found in the official https://git-scm.com/book/e
 
 The _Pro Git_ book can be downloaded from https://git-scm.com[Git SCM].
 
-=== Links
+== Links
 
 include::../fragments/_git-series-inks.adoc[]

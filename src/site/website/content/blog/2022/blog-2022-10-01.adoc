@@ -5,8 +5,6 @@ date: 2022-10-01
 tags: ["java", "architecture", "vaadin"]
 ---
 
-== Developing with Vaadin
-
 include::../fragments/_config-mb-blog.aodc[]
 
 image::2022-10-01-head.jpg[width=200,height=200,role=left]
@@ -32,7 +30,7 @@ The Vaadin framework is optimal for internal applications.
 
 It scales up to a few thousands of active users.
 
-=== Progressive Web Applications https://en.wikipedia.org/wiki/Progressive_web_app[PWA]
+== Progressive Web Applications https://en.wikipedia.org/wiki/Progressive_web_app[PWA]
 
 User interfaces shall accommodate various screen resolutions.
 Ideally, you should support phone displays, tablets, and high-resolution workstations.
@@ -48,7 +46,7 @@ These components were before created for a particular customer and later release
 I use the https://vaadin.com/directory/component/so-charts[SO-Charts] components to draw various charts.
 This library is a thin wrapper for the Apache project https://echarts.apache.org/en/index.html[ECharts].
 
-=== Developing with Vaadin
+== Developing with Vaadin
 
 The most popular IDE for Java is currently the _IntelliJ IDEA_ tool.
 You develop Vaadin applications just as regular Java applications.
@@ -66,7 +64,7 @@ You will never deploy more than one solution on a container instance.
 
 Vaadin components do not hinder domain-driven design approaches.
 
-=== Testing with https://github.com/mvysny/karibu-testing/[Karibu]
+== Testing with https://github.com/mvysny/karibu-testing/[Karibu]
 
 Digital solutions are developed using agile approaches.
 They are often deployed multiple times every week in production.
@@ -85,7 +83,7 @@ Browserless testing::
 You look up components straight from _UI.getCurrent()_, bypassing the browser and the JavaScript bridge completely.
 You directly call methods on your server-side _View_ classes and on the server-side Java Vaadin components.
 
-=== Learning Vaadin
+== Learning Vaadin
 
 Vaadin provides https://vaadin.com/learn/training/[training videos].
 
@@ -113,7 +111,7 @@ It took them years to acknowledge the Jakarta renaming scheme
 footnot:[The renaming was necessary because Oracle screwed up. The delaying of Vaadin means you cannot use the latest version of Jetty or similar frameworks].
 
 [bibliography]
-=== Links
+== Links
 
 - https://blog.frankel.ch/why-love-vaadin/[Why I (still) love Vaadin].
 Nicolas Fränkel. 2020.

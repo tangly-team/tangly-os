@@ -5,8 +5,6 @@ date: 2016-03-16
 tags: ["organization"]
 ---
 
-== Why I use a MacBookPro Notebook and OS X
-
 include::../fragments/_config-mb-blog.aodc[]
 
 image::2016-03-01-head.jpg[width=420,height=360,role=left]
@@ -22,7 +20,7 @@ Surely I would prefer to have no virus, trojan and other evils in my workstation
 
 So I went to macOS and Apple notebooks without regrets.
 
-=== Gains
+== Gains
 
 The major gains upon migrating to OS X are:
 
@@ -37,7 +35,7 @@ The performance is more than adequate for software development with Java 8/9/10/
 The last notebooks I had all lasted between six and nine years.
 These computers were used daily the first five years.
 
-=== Daily Development
+== Daily Development
 
 The tools I really enjoy and use on a daily basis for software development as I mainly developed in Java - are:
 
@@ -48,7 +46,7 @@ The tools I really enjoy and use on a daily basis for software development as I 
 * VirtualBox when I need a full-fledged virtual machine,
 footnote:[The need of virtual machines for daily work is fading away.].
 
-=== Daily Work
+== Daily Work
 
 The tools I use to perform administrative work are:
 

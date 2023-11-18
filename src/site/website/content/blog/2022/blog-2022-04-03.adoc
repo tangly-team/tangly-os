@@ -5,10 +5,10 @@ date: 2022-04-15
 tags: ["agile"]
 ---
 
-== Being a Digital Product Manager
-
 include::../fragments/_config-mb-blog.aodc[]
 
+[.float-group]
+--
 image::2022-04-03-head.jpg[width=420,height=360,role=left]
 
 Effective https://en.wikipedia.org/wiki/Product_management[product management] is driven by a customer-centric mindset.
@@ -19,14 +19,15 @@ Supported by tools and techniques such as https://en.wikipedia.org/wiki/Design_t
 Good https://en.wikipedia.org/wiki/Product_manager[product managers] balance customer needs, adequate technologies, product delivery, and governance or legal constraints.
 
 They shall master project management approaches, financing mechanisms and collaborator nurturing.
+--
 
-=== Responsibilities
+== Responsibilities
 
 The primary responsibilities of product management often fall into the following areas.
 
 image::2022-04-03-product-line-manager.png[width=420,height=360,role=left]
 
-==== Meet Business Objectives
+=== Meet Business Objectives
 
 Products and solutions must meet the economic business goals established by the organization.
 You should:
@@ -42,7 +43,7 @@ Their expertise lowers the cost of the development and support of your product.
 _Assume you need formal training in marketing, sales, finances, accounting and controlling.
 This is typically achieved with an executive master education during your career._
 
-==== Hire and retain qualified collaborators
+=== Hire and retain qualified collaborators
 
 Great products are always developed with the help of great teams.
 You should:
@@ -55,7 +56,7 @@ _Interestingly, product managers often neglect this responsibility.
 They are fully aware of logistics and production issues.
 Seldom do they put similar effort in the development teams in charge of their products._
 
-==== Get the Product Built and Meet the Market
+=== Get the Product Built and Meet the Market
 
 Product managers collaborate with agile functional teams to build the required functionality.
 
@@ -94,7 +95,7 @@ A product manager shall be proficient with agile techniques and hold some certif
 
 NOTE: https://www.scrumalliance.org/[Scrum Alliance], https://www.scrum.org/[Scrum.org] and https://www.pmi.org/disciplined-agile/process/introduction-to-dad[PMI DAD] have extensive agile training and certification offerings.
 
-==== Amplify Learnings
+=== Amplify Learnings
 
 Product managers ensure their offerings are supported and enhanced to create a continuous flow of value in the organization.
 
@@ -110,7 +111,7 @@ Manage legal and compliance::
 Product management is responsible for working with legal and compliance professionals to ensure the product meets all necessary requirements.
 https://en.wikipedia.org/wiki/Corporate_governance[Corporate governance] is mandatory in professional organizations.
 
-=== Challenges
+== Challenges
 
 * You need to understand business techniques and financial language to fund your product development.
 * You need to understand agile HR to nurture your collaborators.
@@ -120,7 +121,7 @@ Beware of the challenges of internal customers, business to business _B2B_, busi
 * You need to deeply understand technologies to Manage your technology stack.
 Successful companies such as Apple, Microsoft, Twitter, Facebook have senior top executives with deep knowledge and practical experience with software technologies.
 
-=== Capabilities
+== Capabilities
 
 You are responsible for the successful development of products.
 You shall possess a set of capabilities related to this role.
@@ -144,7 +145,7 @@ Each government defines her API to provide mandatory information for social secu
 ** Avoid technology obsolescence and define cost-effective migration paths.
 ** Motivate collaborators and be an attractive company for professional engineers.
 
-=== Continuous Training
+== Continuous Training
 
 Training on the job is certainly a good approach to learning some required skills.
 Be honest.

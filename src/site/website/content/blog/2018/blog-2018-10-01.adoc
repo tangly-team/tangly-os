@@ -5,12 +5,10 @@ date: 2018-10-01
 tags: ["agile", "series-how-healthy"]
 ---
 
-== How Healthy is Your Product? - Source Code Check
-:author: Marcel Baumann
-:email: <marcel.baumann@tangly.net>
-:homepage: https://www.tangly.net/
-:company: https://www.tangly.net/[tangly llc]
+include::../fragments/_config-mb-blog.aodc[]
 
+[.float-group]
+--
 image::2018-10-01-head.png[width=420,height=360,role=left]
 You are developing your product using agile and lean approaches.
 
@@ -22,8 +20,9 @@ We will identify strengths, potential weaknesses and hopefully find room for imp
 
 The initial examination shall always be the source code.
 Your code base is a key asset of your company.
+--
 
-=== Rules
+== Rules
 
 The patient solely decides if a health check shall be performed.
 The effort and depth of a health check are defined together with the patient.
@@ -39,7 +38,7 @@ The real work is to implement consistently the measures.
 I have the same personal challenge when trying to lose weight or improve my running form.
 The long term implementation is the crux.
 
-=== Source Code Checks
+== Source Code Checks
 
 How clean, legible and maintainable is your source code?
 Often it is best to start your health evaluation with your product source code.
@@ -76,6 +75,6 @@ The blog link:../../2018/sonar-lint-for-the-impatient/[SonarLint] for the Impati
 
 Any product should have a battery of measures deployed to continuously monitor the source code and detect trends over time.
 
-=== Posts in the Health Check Series
+== Posts in the Health Check Series
 
 include::../fragments/_how-healthy-series-links.adoc[]

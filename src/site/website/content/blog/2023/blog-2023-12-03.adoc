@@ -5,8 +5,6 @@ date: 2023-12-12
 tags: ["java", "C++", "architecture"]
 ---
 
-== Command Interpreter Revisited
-
 include::../fragments/_config-mb-blog.aodc[]
 :ref-can-bus: https://en.wikipedia.org/wiki/CAN_bus[CAN bus]
 :ref-proto-buf: https://en.wikipedia.org/wiki/Protocol_Buffers[Protocol Buffers]
@@ -35,7 +33,7 @@ How could you design such a versatile interface using modern software construct 
 Which design delegates most of the validation to the compiler
 footnote:[A powerful software quality approach is to delegate validation activities to the compiler.]?
 
-=== Command Descriptors and Commands
+== Command Descriptors and Commands
 
 A description of a command could be encoded in a set of classes defining a bounded domain.
 This approach is often used in command line interpreters.
@@ -118,7 +116,7 @@ A computed answer belongs to the query initiating the processing.
 You can pack the result into a future wrapper to support asynchronous command processing.
 ====
 
-=== Interpreters and Dispatcher
+== Interpreters and Dispatcher
 
 THe interpreter is quite simple to realize.
 
@@ -184,7 +182,7 @@ An operator would input commands as text on a command line.
 An external software system would send commands through a bus such as ethernet, CANbus or SPI.
 ====
 
-=== Thoughts
+== Thoughts
 
 This design approach is almost codified as a design pattern.
 The solution is constrained by the decision to use the compiler toolchain to validate the command types and to program the processing with a pattern matching approach.

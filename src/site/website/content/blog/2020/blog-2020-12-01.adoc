@@ -5,8 +5,6 @@ date: 2020-12-01
 tags: ["agile"]
 ---
 
-== Advocate Zero Bug Policy in Your Projects!
-
 include::../fragments/_config-mb-blog.aodc[]
 
 image::2020-12-01-head.jpg[width=420,height=360,role=left]
@@ -33,7 +31,7 @@ The solution is elegant and simple: Implement the _Zero Bug Policy_.
 [.text-center]
 *Stop Managing Bugs, Start Focusing on Quality!*
 
-=== How to transition?
+== How to transition?
 
 Zero-Bug policy does not mean bug-free code in production; it means striving to eradicate all known bugs.
 
@@ -69,7 +67,7 @@ The steps to reproduce them become irrelevant, the functionality changes, the im
 Please, do not waste your time trying to update the documentation related to these bugs.
 You may lose a few valid ones, but trust me, someone will report it again if it is still happening.
 
-=== Clean Code and Happy Customers
+== Clean Code and Happy Customers
 
 [quote]
 ____
@@ -92,7 +90,7 @@ It is called https://en.wikipedia.org/wiki/Regression_testing[non-regression tes
 * Are you ready to shift your focus from managing bugs to ensuring quality?
 And if not, why should I buy your product?
 
-=== Links
+== Links
 
 See the excellent articles from https://www.linkedin.com/in/yassal-sundman[Yassal Sundman] working for the crisp company.
 

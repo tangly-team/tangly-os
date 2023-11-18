@@ -5,17 +5,21 @@ date: 2017-03-05
 tags: ["agile"]
 ---
 
-== List of Agile and Lean Books for Software Engineers or Students
-
 include::../fragments/_config-mb-blog.aodc[]
 
+[.float-group]
+--
 image::2017-03-01-head.jpg[width=420,height=360,role=left]
-=== Purpose
 
 I am regularly asked by practitioners and technical universities, which books I shall recommend learning more about agile developers, agile projects, and agile companies.
 
+Reading is a great way to learn and to get new ideas.
+
 Below, a selection of books I read and found fascinating.
+
 The selection is certainly not exhaustive.
+--
+
 The criteria are
 
 * I read the book and learnt something.
@@ -24,7 +28,7 @@ I mean by that a real reference opened at least monthly.
 * The book is available as an ebook.
 I only read ebooks and save trees.
 
-=== Software Engineering
+== Software Engineering
 
 * Scrum and XP From the Trenches: How We Do Scrum, Henrik Kniberg A short and splendid introduction to Scrum and XP, worth looking again and again, Kniberg is also the guy behind the Spotify Way
 * Clean Code: A Handbook of Agile Software Craftsmanship, Robert C. Martin The reference book about clean code and XP practices.
@@ -38,7 +42,7 @@ A seminal work from one of the founders of Scrum
 Make the shift from project to product.
 * Agile Testing: A Practical Guide for Testers and Agile Teams, Lisa Crispin and Janet Gregory What does it mean to test and ensure quality in an agile environment?
 
-=== Agile Management Aspects
+== Agile Management Aspects
 
 * Agile Management: Leadership in an agile environment, Angel Medinilla:
 An overview about agile management at company level, you should also read the _Leader's Dilemma_ and see the {ref-bbrt} ideas.
@@ -54,14 +58,14 @@ The major place where improvements are identified is during retrospectives, ofte
 * Scaling Lean & Agile Development: Thinking and Organizational Tools for Large-Scale {ref-scrum}, Craig Larman and Bas Vodde A second set of practices and ideas how to do big agile projects, still the guys behind {ref-less}
 * The Leader's Dilemma: How to Build an Empowered and Adaptive Organization Without Losing Control, Jeremy Hope & Peter Bunce &Franz Rösli & Franz Röösli The modern reference text for the BBRT initiative
 
-=== Presentation Techniques
+== Presentation Techniques
 
 You have to make a beautiful presentation to make a difference!
 
 * Presentation Zen: Simple Ideas on Presentation Design and Delivery, Garr Reynolds Presentation Zen Design: Simple Design Principles and Techniques to Enhance Your Presentations
 * Blah, Blah, Blah: What to Do When Words Don't Work?, Dan Roam
 
-=== History
+== History
 
 You have to know history, or you will repeat the errors of the past generations.
 
@@ -70,7 +74,7 @@ You have to know history, or you will repeat the errors of the past generations.
 * The Mythical Man-Month: Essays on Software Engineering, Anniversary Edition, Frederick P. Brooks Jr cite:[mythical-man-month].
 * Good To Great, Jim Collins
 
-=== Free Time
+== Free Time
 
 * Vorkosigan Saga, Lois McMaster Bujold
 * Empire of Bones Saga, Terry Mixon

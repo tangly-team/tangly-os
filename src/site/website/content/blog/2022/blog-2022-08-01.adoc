@@ -5,10 +5,10 @@ date: 2022-08-01
 tags: ["agile"]
 ---
 
-== How to Detect Fake Scrum?
-
 include::../fragments/_config-mb-blog.aodc[]
 
+[.float-group]
+--
 image::2022-08-01-head.jpg[width=420,height=360,role=left]
 
 Some organisations are adopting agile and Scrum approaches simply because they see competitors doing it.
@@ -22,8 +22,9 @@ Very little actually changes.
 Few benefits of agility are realised.
 
 If anything, the situation may become worse as some previous structures are lost, yet the discipline for Agile is just not there.
+--
 
-=== Larman's Laws
+== Larman's Laws
 
 Craig Larman is one of the founder of {ref-less}.
 He has formulated laws based on his observations.
@@ -50,14 +51,14 @@ ____
 Fake Scrum is around us everywhere we go.
 This dreadful situation is unavoidable.
 
-=== Five Scrum Fake Indicators
+== Five Scrum Fake Indicators
 
 How to find out you are in a fake agile environment?
 Indicators you are in a fake agile or Scrum environment often are:
 
 image::2022-08-01-values-principles-practices.png[width=60%,height=360,role=text-center]
 
-==== No goals
+=== No goals
 
 If a Scrum team has absolutely no goals, what is the purpose of its existence?
 
@@ -70,7 +71,7 @@ Those goals are designed to help us achieve focus, get stuff done, and get resul
 
 If you do not have goals, you got fake Scrum.
 
-==== No Self-management
+=== No Self-management
 
 A team that cannot self-manage is a team that cannot be nimble.
 They are not going to be quick.
@@ -90,7 +91,7 @@ It can come from a lack of trust for each other as team members.
 Wherever your problems are, self-management is crucial to have working in order for Scrum to work.
 If you do not have self-managing going on, it is probably fake Scrum.
 
-==== No deliverables
+=== No deliverables
 
 No increment at the end of the sprint.
 The entire point of Scrum is to have releasable increments for every single sprint.
@@ -99,7 +100,7 @@ Without that, well, we are just cranking a bunch of levers.
 To get to a deliverable can sometimes be kind of challenging.
 You have to write requirements in such a way that something can be delivered in just a short timeframe.
 
-==== No transparency
+=== No transparency
 
 Without transparency, I cannot inspect, I cannot adapt.
 If I cannot inspect and adapt, the entire empirical process falls apart.
@@ -112,7 +113,7 @@ We inspect and adapt at the appropriate frequency and that is how we manage all 
 We certainly cannot eliminate complexity, but we can work with it.
 So, if you do not have transparency, you got fake Scrum.
 
-==== No results
+=== No results
 
 If you got stakeholders that do not see a difference.
 They do not care if they are not talking to your team.
@@ -123,7 +124,7 @@ One key responsibility of a product owner is to involve and inform all stakehold
 If you are not delivering results then what is the point of your work in the first place.
 You are probably doing _fake Scrum_.
 
-=== Digital Software Product Development
+== Digital Software Product Development
 
 The software industry has created and promoted agile and Scrum approaches.
 A development department is responsible for delivering working software each sprint.
@@ -152,7 +153,7 @@ This documentation is often a generated static website <<static-website>>.
 Agile software architecture regularly uses domain driven design ideas <<domain-driven-design>>.
 Ask the team how they do software design activities?
 
-=== Final Thoughts
+== Final Thoughts
 
 Walk the talk.
 Become a professional Scrum master cite:[mastering-professional-scrum], product owner cite:[professional-product-owner], or team developer.
@@ -162,7 +163,7 @@ A digital product development team shall be DevOps affine cite:[continuous-deliv
 See also another blog <<detecting-agile-bullshit>> describing how the department of defense of the USA detects agile lies.
 
 [bibliography]
-=== Links
+== Links
 
 - [[[detecting-agile-bullshit, 1]]] link:../../2019/detecting-agile-bullshit/[Detecting Agile Bullshit]
 Marcel Baumann. 2019.
@@ -179,6 +180,6 @@ Marcel Baumann. 2020.
 - [[[domain-driven-design, 7]]] link:../../2022/software-structure-with-ddd/[Software Structure with DDD]
 Marcel Baumann. 2022.
 
-=== References
+== References
 
 bibliography::[]

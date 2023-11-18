@@ -5,8 +5,6 @@ date: 2024-06-10
 tags: ["C++", "architecture", "embedded"]
 ---
 
-== Actors with CMSIS OS Platform in {cpp}
-
 include::../fragments/_config-mb-blog.aodc[]
 :ref-actor-model: https://en.wikipedia.org/wiki/Actor_model[Actor Model]
 :ref-freertos: https://www.freertos.org/index.html[freeRTOS]
@@ -24,7 +22,7 @@ Any kernel with a {ref-cmsis-rtos2} compatible layer is eligible.
 
 STM provides the CMSIS integration with {ref-free-rtos} for all STM32 microcontrollers.
 
-=== Library
+== Library
 
 The library defines key abstractions as abstract classes <<actors>> <<actors-in-cpp>>.
 
@@ -71,9 +69,9 @@ MessagePool <|-- MessagePoolCmsis
 @enduml
 ....
 
-=== Recipes
+== Recipes
 
-==== Define Message Structure
+=== Define Message Structure
 
 We advocate the following message structure:
 
@@ -117,7 +115,7 @@ Use only records, variants, and primitive types.
 Consider using a message pool to optimize memory usage and to eliminate heap allocations.
 ====
 
-==== Define Your Actors
+=== Define Your Actors
 
 [source,cpp]
 ----
@@ -172,7 +170,7 @@ The implementation of the actor is slightly more expensive.
 The users can use the actor as a regular class and do not have to bother with filling messages and sending them.
 ====
 
-=== Implementation Details
+== Implementation Details
 
 A CMSIS actor is shadowed with a CMSIS task.
 A CMSIS task is an opaque C construct in the kernel space
@@ -273,7 +271,7 @@ ActorCmsis<T>::ActorCmsis(const char* name, int queueSize,
 <5> The method blocks until a message is available in the actor queue.
 <6> The method is specific to each actor and defines how messages are processed based on the actor state and logic.
 
-=== Lessons Learnt
+== Lessons Learnt
 
 The message pool hugely simplifies the handling of messages between actors without having to juggle with scopes.
 The message pool uses constructs compatible with interrupt routines.
@@ -288,7 +286,7 @@ Do not forget to release each message you retrieved from the message queue with 
 If you have a complex logic, consider implementing a flat finite state machine as a double nested switch in the method.
 
 [bibliography]
-=== Links
+== Links
 
 - [[[actors, 1]]] link:../../2024/actors/[Actors].
 Marcel Baumann. 2024.

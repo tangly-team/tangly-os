@@ -5,20 +5,23 @@ date: 2017-04-05
 tags: ["organization", "tangly"]
 ---
 
-== Fun at Workplace
-
 include::../fragments/_config-mb-blog.aodc[]
 
+[.float-group]
+--
 image::2017-04-01-head.jpg[width=420,height=360,role=left]
 
 It is Spring in Switzerland.
 We often have time for small talk because it is cold or rainy outside.
+
 Quite a few of the discussions are about job opportunities, and how interesting and motivating the current activities are.
+
 I selected two articles to help everybody to decide if your software development job is worth the effort.
 
 Just go through the questions and ask yourself if the current product provides the current settings.
+--
 
-=== Joel Test
+== Joel Test
 
 The Joel Test is slightly outdated.
 Keep his questions and just do the following changes:
@@ -42,7 +45,7 @@ No matter how great the potential projects and teammates might be, I do not thin
 
 If a company does not get that, then they do not get the software.
 
-=== My personal list
+== My personal list
 
 My personal list is:
 

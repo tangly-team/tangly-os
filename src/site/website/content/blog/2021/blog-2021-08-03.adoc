@@ -5,8 +5,6 @@ date: 2021-08-09
 tags: ["agile"]
 ---
 
-== Scrum Master Formation
-
 include::../fragments/_config-mb-blog.aodc[]
 
 image::2021-08-03-head.png[width=420,height=360,role=left]
@@ -23,7 +21,7 @@ Being a Scrum master and coach is a profession, not a fancy title!
 
 Please reflect on your goals and ethics.
 
-=== Scrum Master Role
+== Scrum Master Role
 
 Here the official definition of the product owner role taken from the {ref-scrumguide}.
 
@@ -56,7 +54,7 @@ The Scrum Master serves the organization in several ways, including:
 * Helping employees and stakeholders understand and enact an empirical approach for complex work; and,
 * Removing barriers between stakeholders and Scrum Teams.
 
-=== Certifications
+== Certifications
 
 The two big Scrum organizations {ref-scrum-alliance} and {ref-scrum-org} provide a certification path for Scrum masters.
 The certification path has three levels:
@@ -140,7 +138,7 @@ cite:[scrum-managing-for-results,scrum-pocket-guide-3rd].
 
 I published a list of seminal works for interested Scrum masters under link:../../../ideas/learnings/books/[Books].
 
-=== Project Leadership Trainings
+== Project Leadership Trainings
 
 image::2021-08-03-pmi-talent-triangle.png[width=420,height=360,role=left]
 
@@ -150,7 +148,7 @@ https://www.pmi.org/certifications/agile-certifications[Disciplined Agile Design
 
 I expect the emphasis on agile approaches to markedly increase in the next years.
 
-=== University Formal Trainings
+== University Formal Trainings
 
 Technical universities in Switzerland provide formal training in project leadership, project management and related fields.
 The formation provides a certificate of advanced study CAS in the field.
@@ -164,7 +162,7 @@ Current available certificates of advanced study offering are, for example:
 * IKF https://www.ikf.ch/de/kurse/cas-agiles-leadership-der-digitalen-transformation[CAS Agile Leadership of Digital Transformation]
 
 [bibliography]
-=== Links
+== Links
 
 - [[[scrum-master-learning-objectives, 1]]]
 https://www.scrumalliance.org/ScrumRedesignDEVSite/media/ScrumAllianceMedia/Files%20and%20PDFs/Learning%20Objectives/E_CSM_LO_5-20-21.pdf[Scrum Alliance
@@ -192,6 +190,6 @@ Marcel Baumann. 2019.
 - [[[scrum-guide, 9]]] https://scrumguides.org/scrum-guide.html[Scrum Guide]
 Jeff Sutherland, Ken Schwaber. 2020.
 
-=== References
+== References
 
 bibliography::[]

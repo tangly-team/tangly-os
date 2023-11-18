@@ -5,19 +5,22 @@ date: 2021-05-15
 tags: ["agile", "java"]
 ---
 
-== Java Certified Professional: Java SE 11 Developer
-
 include::../fragments/_config-mb-blog.aodc[]
 
+[.float-group]
+--
 image::2021-05-02-head.png[width=420,height=360,role=left]
 
 Java is celebrating 25 years of existence.
 
 I discovered the anniversary offer to certify for Java SE 11 Developer.
 
-This special certification has a cool logo with a remainder of the Java 25-year anniversary.
+This special certification has a cool logo with the remainder of the Java 25-year anniversary.
+
 Oracle offers this certification for only 25 dollars footnote:[The regular price is around 250 dollars.] and provides free access to their learning platform.
+
 The offer and logo availability are time limited.
+--
 
 The free learning subscription includes:
 
@@ -27,7 +30,7 @@ The free learning subscription includes:
 
 I could not resist and decided to get the cool logo and the associated certification.
 
-=== Certification goals
+== Certification goals
 
 The official goals of the certification cover:
 
@@ -78,7 +81,7 @@ Localization::
 Annotations::
 - Create, apply and process annotations.
 
-=== E-learning Platform
+== E-learning Platform
 
 I gave a try to the Oracle online training platform.
 
@@ -89,7 +92,7 @@ At the end, I skipped most of the recordings and just answered the questions.
 
 I would *not* recommend the learning platform as an efficient learning approach.
 
-=== Book
+== Book
 
 I used the book https://www.amazon.com/dp/B08DF4R2V9[OCP Oracle Certified Professional Java SE 11 Programming Study Guide]
 written by Scott Selikoff and Jeanne Boyarsky.
@@ -107,7 +110,7 @@ The questions sometimes asked details you are not aware when writing regular Jav
 footnote:[Regular developers seldom define their own annotations.
 I need to know the details of how to declare annotations to answer examination questions.].
 
-=== Practice Examinations
+== Practice Examinations
 
 Udemy provides https://www.udemy.com/course/java-se-11-certification-exam-1z0-819-practice-tests/[practice tests].
 The set contains 250 questions and costs between 15 and 90 dollars.
@@ -121,7 +124,7 @@ https://javarevisited.blogspot.com/2019/07/top-4-java-11-certification-free-mock
 
 I only used free offering in addition to the practice questions of the bought book.
 
-=== Examination
+== Examination
 
 The examination was acceptable.
 

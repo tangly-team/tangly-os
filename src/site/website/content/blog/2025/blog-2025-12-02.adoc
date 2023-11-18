@@ -5,19 +5,17 @@ date: 2025-12-10
 tags: ["java", "architecture"]
 ---
 
-== Why Should You Write a Technical Blog?
-
 include::../fragments/_config-mb-blog.aodc[]
 
-=== Learn by Writing a Technical Article
+== Learn by Writing a Technical Article
 
-=== Train Your Coaching Capabilities
+== Train Your Coaching Capabilities
 
-=== Show Your Knowledge and Expertise
+== Show Your Knowledge and Expertise
 
-=== Write it First for Yourself
+== Write it First for Yourself
 
-=== You Should Enjoy the Experience
+== You Should Enjoy the Experience
 
 lways stick to simple language, irrespective of how complex the subject is, and convey it straightforwardly.
 Keep in mind that the approach of technical blog writing is anything that can be broken into easy concepts.
@@ -27,10 +25,10 @@ Make sure to add at least one image in your blog which gives an overview.
 To further explain the concepts, you can add images to the body of the blog.
 It is always more appealing to add images.
 
-=== Lessons Learnt
+== Lessons Learnt
 
 [bibliography]
-=== Links
+== Links
 
 - [[[creating-website, 1]]] link:../../2020/creating-a-technical-website-with-hugo-and-asciidoc/[Creating a Technical Website with Hugo and Asciidoc].
 Marcel Baumann. 2020.

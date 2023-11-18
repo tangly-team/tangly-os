@@ -5,13 +5,11 @@ date: 2025-02-10
 tags: ["agile", "tangly", "organization"]
 ---
 
-== The Quest for an Agile Company: Nine Years tangly llc
-
 include::../fragments/_config-mb-blog.aodc[]
 
 image::2025-02-02-head.jpg[width=420,height=360,role=left]
 
-=== Beyond Budgeting Principles
+== Beyond Budgeting Principles
 
 The {ref-bbrt} proposed twelve principles in 2011.
 I added _italics_ comments how our company interprets and applies these ideas.
@@ -69,11 +67,11 @@ Base controls on fast, frequent feedback; not budget variances. +
 +
 _italics_
 
-=== Adaptive Product Development
+== Adaptive Product Development
 
 image::2025-02-02-iterations.png[width=420,height=360,role=left]
 
 [bibliography]
-=== Links
+== Links
 
 include::../fragments/_tangly-links.adoc[]

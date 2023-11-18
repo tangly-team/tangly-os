@@ -5,10 +5,10 @@ date: 2022-05-01
 tags: ["java", "architecture", "series-students"]
 ---
 
-== Measurements and Units
-
 include::../fragments/_config-mb-blog.aodc[]
 
+[.float-group]
+--
 image::2022-05-01-head.png[width=420,height=360,role=left]
 
 JSR-385 could have saved Mars Climate Orbiter<<mars-climate-orbiter>> in year 1999.
@@ -22,7 +22,8 @@ The https://en.wikipedia.org/wiki/Metre_Convention[International Treaty of the M
 In May 2019, the system of units was updated.
 All units are defined by constants of nature.
 
-Still various countries use alternate conventions to complicate our lives.
+Still, various countries use alternate conventions to complicate our lives.
+--
 
 Here some well-documented and expensive catastrophes originating from wrong approaches to measurements.
 
@@ -38,7 +39,7 @@ The machine ending up on the holding pattern on approach without sufficient fuel
 
 Numerous, sometimes fatal, incorrect dosages of medication.
 
-=== Definitions
+== Definitions
 
 image::2022-05-01-si-units.png[width=200,height=200,role=left]
 
@@ -91,12 +92,12 @@ This can be attributed to the fact that different currency systems exist.
 It can also be traced back to historical number systems, which differ from the Latin or Arabic origin of today's western systems in some areas or are absent in these in the same form.
 On the other hand, the use of others, such as a dozen, is almost unknown there.
 
-=== Measurement
+== Measurement
 
 In May 2019, all units are defined by constants of nature in the world-wide https://en.wikipedia.org/wiki/International_System_of_Units[international system of units].
 These changes are incorporated in the newer version of the RFC and the reference implementation.
 
-=== How to Use the API
+== How to Use the API
 
 JSR-385 defines the API 2.x.
 Historically, JSR-363 defined the API 1.0 and is now superseded by the newer definitions.
@@ -108,7 +109,7 @@ Historically, JSR-363 defined the API 1.0 and is now superseded by the newer def
     implementation("tec.units:unit-ri:1.0.3")
 ----
 
-=== Examples
+== Examples
 
 [source,java]
 ----
@@ -165,7 +166,7 @@ The abstractions allow compilation time detection of errors.
     Unit<Length> Centimeter = MetricPrefix.CENTI(LITRE);    // compilation error
 ----
 
-=== Recommendations
+== Recommendations
 
 - Keep your unit definitions in a single place.
 - Encapsulate your own _Quantities_ by delegation.
@@ -175,7 +176,7 @@ The abstractions allow compilation time detection of errors.
 -- _ProductUnit_ is a new unit created as the product of rational powers of other units.
 
 [bibliography]
-=== Links
+== Links
 
 - [[[units-of-measurement,1]]] https://unitsofmeasurement.github.io/[Units of Measurement]
 - [[[mars-climate-orbiter,2]]] https://en.wikipedia.org/wiki/Mars_Climate_Orbiter[Mars Climate Orbiter]

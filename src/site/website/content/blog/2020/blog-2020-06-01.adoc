@@ -5,8 +5,6 @@ date: 2020-06-01
 tags: ["design", "series-agile-design"]
 ---
 
-== Legacy Systems Refactoring
-
 include::../fragments/_config-mb-blog.aodc[]
 
 image::2020-06-01-head.jpg[width=420,height=360,role=left]
@@ -38,7 +36,7 @@ It is a disciplined way to clean up code that minimizes the chances of introduci
 In essence, when you refactor, you are improving the design of the code after it has been written.
 ____
 
-=== Introduction
+== Introduction
 
 For a developer, new to a legacy software solution, it is often hard to understand the existing application.
 He must determine the extent of source code and architectural decay, and identify smells and metric violations.
@@ -55,7 +53,7 @@ Also, software complexity increases as it evolves over time as you add new requi
 The key to managing the lifecycle of software is to continuously work as a professional and skilled developer.
 A professional engineer https://martinfowler.com/bliki/OpportunisticRefactoring.html[opportunistically refactor] each time he modifies source code.
 
-=== Understand Your Product
+== Understand Your Product
 
 * _Understand how it is used_.
 These scenarios define the acceptance tests you need to start creating a set of automated validation criteria.
@@ -69,7 +67,7 @@ This process must be integrated into your continuous integration and delivery pi
 * _Understand how it is structured_.
 You need a tentative architecture description to start refactoring and to untangle this https://en.wikipedia.org/wiki/Big_ball_of_mud[big ball of mud] into a more modular solution.
 
-=== Refactor Your Product
+== Refactor Your Product
 
 Refactoring is always a successful activity.
 You cannot fail.
@@ -128,7 +126,7 @@ Agile product development wants to deliver updates with an hourly or daily rhyth
 If you are running legacy technology, this not only becomes a threat to your business but also to your hiring and employer branding efforts.
 As fewer and fewer programmers and operation managers will have the knowledge of those systems, you will face a dwindling talent pool.
 
-=== Ameliorate Your Process
+== Ameliorate Your Process
 
 Applications do not degrade to legacy or geriatric systems overnight.
 The organization and development group failed to work professionally over years before the product was ultimately doomed.
@@ -149,7 +147,7 @@ All your developers should have formal software development training and frequen
 They consistently read books.
 Is it not that you expect from your physician or the pilot of the plane you are taking?
 
-=== Agile Architecture Series
+== Agile Architecture Series
 
 The agile architecture track contains the following blogs
 

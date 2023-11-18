@@ -5,17 +5,19 @@ date: 2022-09-01
 tags: ["agile", "architecture"]
 ---
 
-== Verifying Software Design Constraints with ArchUnit
-
 include::../fragments/_config-mb-blog.aodc[]
 
+[.float-group]
+--
 image::2022-09-01-head.png[width=420,height=360,role=left]
 
 How often have you experienced a well-defined and understood software architecture on paper?
 And it falls apart when developers start implementing it?
 
 While re-architecting recently legacy components in an application, I experienced the same.
+
 As more and more developers joined the team, it became a constant routine to make them aware of the design and how to adhere to it.
+--
 
 I know some of you may say, _Why not control the implementation during code-review sessions?_.
 Technically you can, but in that case, the reviewer becomes the bottleneck in the whole https://en.wikipedia.org/wiki/Systems_development_life_cycle[SDLC] process.
@@ -26,7 +28,7 @@ The violation of the agreed-upon design principles is marked as a failed build.
 My quest led me to a test library for architecture called https://www.archunit.org/[ArchUnit].
 It enforces architectural constraints in Java projects.
 
-=== Idea
+== Idea
 
 ArchUnit is a test library and allows us to validate whether a solution adheres to a given set of design considerations or architecture rules.
 
@@ -37,7 +39,7 @@ The support for https://junit.org/junit5/docs/current/user-guide/[JUnit 5] is ve
 ArchUnit can check dependencies between packages and classes, layers and slices, detect cyclic dependencies, and more.
 It does so by analyzing the given Java bytecode after importing all classes into a Java code structure.
 
-=== Use Architectural Constraints
+== Use Architectural Constraints
 
 You first need to import the library in Gradle.
 
@@ -95,7 +97,7 @@ The huge advantage is the integration of architectural validations in the contin
 No expensive human activities are required to enforce these rules <<agile-architecture>>.
 
 [bibliography]
-=== Links
+== Links
 
 - [[[software-structure-with-ddd, 1]]] link:../../2022/software-structure-with-ddd/[Software Structure with DDD]
 - [[[introducing-devops-ideas, 2]]] link:../../2022/introducing-devops-ideas/[Introducing DevOps Ideas]

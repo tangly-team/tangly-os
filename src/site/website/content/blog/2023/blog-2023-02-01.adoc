@@ -5,8 +5,6 @@ date: 2023-02-01
 tags: ["agile", "organization"]
 ---
 
-== Technical Interviews
-
 include::../fragments/_config-mb-blog.aodc[]
 
 image::2023-02-01-head.jpg[width=420,height=360,role=left]
@@ -35,7 +33,7 @@ Ask yourself why should a candidate decide to work in your company and develop t
 It is worth investing time and effort to succeed
 footnote:[Once you have found your partner, invest time and effort to keep your relationship healthy.].
 
-=== Before the Interview
+== Before the Interview
 
 You *must* prepare for the interview.
 You have read the CV of your candidate and visited her LinkedIn profile.
@@ -50,7 +48,7 @@ Both parties shall have an opportunity to find out if they are a match.
 
 Google provides hints how to work with creative software collaborators cite:[work-rules].
 
-=== Perform the Interview
+== Perform the Interview
 
 I want to find out how the candidate performs tasks and interacts with his team.
 I am inquisitive of how she learnt new skills.
@@ -79,7 +77,7 @@ Professional engineers have ethics and are aware of their social responsibilitie
 
 The areas are like the ones I check when receiving a CV <<evaluate-technical-cvs>>.
 
-=== Write-Down Your Findings and Recommendations
+== Write-Down Your Findings and Recommendations
 
 You should perform a technical interview with a colleague.
 Try to write your impressions and findings using the same template for all candidates.
@@ -89,7 +87,7 @@ Compare your findings to diminish biases and misunderstandings.
 Inform the candidate about your decision.
 Communication shall be timely and respectful.
 
-=== Have An Onboarding Program
+== Have An Onboarding Program
 
 - Avoid a checklist, avoid predeclared correct answers.
 - Aim to uncover reasons why you should hire a candidate.
@@ -117,12 +115,12 @@ footnote:[I still encounter teams without tools like Slack.
 Worst, some still cannot use development platforms such as GitHub, GitLab, BitBucket or Azure.].
 
 [bibliography]
-=== Links
+== Links
 
 - [[[evaluate-technical-cvs, 1]]] link:../../2022/evaluate-technical-cvs/[Evaluate Technical CVs]
 - [[[google-rework, 2]]] link:https://rework.withgoogle.com/[Rework with Google]
 - [[[select-a-partner, 3]]] link:../../2023/select-an-agile-software-development-partner/[Select an Agile Software Development Partner], Marcel Baumann, 2023
 
-=== References
+== References
 
 bibliography::[]

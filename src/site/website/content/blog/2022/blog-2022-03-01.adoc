@@ -5,10 +5,10 @@ date: 2022-03-10
 tags: ["agile", "series-students"]
 ---
 
-== Is your Team _Pretending_ to be Agile?
-
 include::../fragments/_config-mb-blog.aodc[]
 
+[.float-group]
+--
 image::2022-03-01-head.png[width=420,height=360,role=left]
 
 In the midst of the agile adoption explosion, many teams are experiencing difficulties.
@@ -19,6 +19,7 @@ One of the most common misconceptions about {ref-scrum} is that it is synonymous
 {ref-manifesto} is an umbrella term that refers to a family of approaches that share common values and principles.
 
 Scrum is a commonly used agile framework that offers suggestions for how work can be organized to maximize value to the end-user.
+--
 
 While Scrum is implemented at a product development team level, agile has a focus on the entire organization including its leadership and company culture.
 Both are relatively easy to start down the path but difficult to master.
@@ -34,7 +35,7 @@ https://stateofagile.com/[15th Annual State of Agile report], 46% of survey resp
 
 What are signs your teams are struggling with agile and lean adoption?
 
-=== Common Symptoms
+== Common Symptoms
 
 image::2022-03-01-resistence.png[width=420,height=360,role=text-center]
 
@@ -55,7 +56,7 @@ footnote:[Your organization focuses more on how to write stories in JIRA instead
 * The organization does not respect the Product Owner’s decisions.
 * Resource managers do not know how to support agile teams.
 
-=== Dark Agile
+== Dark Agile
 
 image::2022-03-01-scrum-empirism.png[width=420,height=360,role=left]
 
@@ -75,7 +76,7 @@ Remember that Scrum, Lean, and agile approaches are tools to improve the quality
 {ref-scrum} is a framework and a set of techniques to help you improve your way of creating awesome products.
 The ultimate goal is the product, never the process.
 
-=== How to Be Agile?
+== How to Be Agile?
 
 Emphasizes key values and principles over blindly applying a method <<cargo-cult>>.
 
@@ -99,7 +100,7 @@ Recognize not everybody wants to develop products in the agile way.
 Please hire collaborators who are comfortable with agile approaches, autonomy and accountability.
 
 [bibliography]
-=== Links
+== Links
 
 - [[[great-scrummaster, 1]]] https://www.amazon.com/dp/013465711X[The Great Scrum Master].
 Zuzana Šochová, Addison-Wesley. 2017

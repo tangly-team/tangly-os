@@ -5,10 +5,10 @@ date: 2020-09-08
 tags: ["java", "design", "crm", "series-identifiers"]
 ---
 
-== The power of Tags and Comments
-
 include::../fragments/_config-mb-blog.aodc[]
 
+[.float-group]
+--
 image::2020-09-01-head.jpg[width=420, height=360, role=left]
 
 A software architect models customer domains and maps them to _excellent_ software constructs.
@@ -21,9 +21,11 @@ _Comments_ empower users to store relevant unstructured information.
 Comments are only for human beings.
 
 What are good approaches to provide searchable tags and labels and avoid wild growth of useless records?
-Can you as a designer govern the ontology defined through labels?
 
-=== Tags
+Can you as a designer govern the ontology defined through labels?
+--
+
+== Tags
 
 Tags add semantic information to business entities.
 Tags are often defined as a crowd ontology without enforced schemas.
@@ -56,7 +58,7 @@ Once your design supports tag types, you can add generic validation rules in the
 
 The ontology enforcement allows consistent reporting and data drilling over departments in your company and over time.
 
-=== Comments
+== Comments
 
 Comments provide human-readable information and hints for entities.
 
@@ -94,7 +96,7 @@ public class Comment implements HasOid, HasTags {
 }
 ----
 
-=== Design
+== Design
 
 Our architecture follows the principles of domain-driven design.
 Comments are always associated with a specific bounded domain of the overall application.

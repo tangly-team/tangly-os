@@ -5,10 +5,10 @@ date: 2022-03-15
 tags: ["agile", "java"]
 ---
 
-== Modern Java Constructs with Spring Boot Framework
-
 include::../fragments/_config-mb-blog.aodc[]
 
+[.float-group]
+--
 image::2022-03-02-head.png[width=420,height=360,role=left]
 
 https://spring.io/[Spring] and https://spring.io/projects/spring-boot[Spring Boot] frameworks are the standard for enterprise Java applications.
@@ -16,9 +16,11 @@ https://spring.io/[Spring] and https://spring.io/projects/spring-boot[Spring Boo
 Spring Boot makes it easy to create stand-alone, production-grade Spring-based Applications that you can just run.
 
 They take an opinionated view of the Spring platform and third-party libraries, so you can get started with minimum fuss.
-Most Spring Boot applications need minimal Spring configuration.
 
-=== Minimize Boilerplate Code
+Most Spring Boot applications need minimal Spring configuration.
+--
+
+== Minimize Boilerplate Code
 
 One of the key reasons for the success of Spring is the approach of _convention over configuration_.
 You want to minimize boilerplate code and never have to write XML configuration files.
@@ -37,7 +39,7 @@ You do not need an application server.
 
 Package the whole application in a docker image for integration and testing activities.
 
-=== Lightweight Database
+== Lightweight Database
 
 Your services need to store persistent information in a database.
 Spring framework promotes an SQL database and JPA as object mapper.
@@ -77,7 +79,7 @@ public class Appointments {}
 
 Views for read-only objects Business logic should be in services.
 
-=== Fluent Getter and Setter
+== Fluent Getter and Setter
 
 Spring Persistence and JPA Extends persistence to support Java abstractions such as enumeration sets
 
@@ -119,7 +121,7 @@ Libraries such as Lombok, Jackson, JOOQ, Hibernate, MapStruct, Spring, Spring Bo
 Fluent getters are standard with the official Java record feature.
 ====
 
-=== Eliminate DTO
+== Eliminate DTO
 
 JSON objects are your data transfer objects JSON schema define the data model and validate it.
 
@@ -133,7 +135,7 @@ If you have to return complex aggregated objects for a persistence store, use vi
 Java provides the _record_ construct for such situations.
 The need to define frequent queries to generate aggregate views are a smell that your design has flaws.
 
-=== Schedulers in Spring
+== Schedulers in Spring
 
 Scheduled jobs are easy to defined and use with Spring.
 
@@ -161,7 +163,7 @@ public class AppointmentScheduler {
 }
 ----
 
-=== User Interface
+== User Interface
 
 Use Vaadin for internal applications and B2B applications.
 Vaadin is a good approach up to a few thousand active users.
@@ -177,7 +179,7 @@ These frameworks introduced a technology stack based on JavaScript or ideally on
 New versions of the Typescript language and of the user interface framework are released every few months.
 Experience shows that a major rework of the source code and design decisions is necessary at least every eighteen months.
 
-=== Master Advanced JPA Concepts
+== Master Advanced JPA Concepts
 
 We had to find ways to support standard API classes in the Spring and JPA worlds.
 We had an enumeration set property we needed to persist.
@@ -243,7 +245,7 @@ private final static String SEPARATOR = ",";
 Different approaches found on Stackoverflow or Spring blogs did not work.
 I was stunned by the amount of code that I needed to write to persist a standard Java API collection class.
 
-=== Tips and Tricks
+== Tips and Tricks
 
 * Use the Spring mechanisms to streamline unit and integration tests.
 Please, write unit and integration tests.

@@ -5,8 +5,6 @@ date: 2023-12-15
 tags: ["C++", "architecture", "embedded"]
 ---
 
-== Sensors and Actuators
-
 include::../fragments/_config-mb-blog.aodc[]
 :ref-can-bus: https://en.wikipedia.org/wiki/CAN_bus[CAN bus]
 :ref-kiss: https://en.wikipedia.org/wiki/KISS_principle[Keeep It Simple, Stupid]
@@ -15,7 +13,7 @@ include::../fragments/_config-mb-blog.aodc[]
 
 image::2023-12-04-head.jpg[width=420,height=360,role=left]
 
-=== Model
+== Model
 
 Embedded design maps domain abstractions to the underlying hardware.
 
@@ -77,7 +75,7 @@ Or do we start our system, retrieve the state of all devices and initialize our 
 This approach is only possible if each hardware component has sensors providing its current state.
 ====
 
-=== C++ Approach
+== C++ Approach
 
 A physical device shall be mapped to a {cpp} class.
 Instances of the class map to existing devices.
@@ -106,7 +104,7 @@ private:
 <2> A physical device cannot be copied.
 <3> Imply that the application resets the system when booting.
 
-=== Interrupt Routines
+== Interrupt Routines
 
 Output devices do not need interrupts.
 A driver provides a function to output the new value on the electronics.
@@ -147,7 +145,7 @@ I recommend interrupt triggering input data gathering and reacting to input *cha
 This design approach minimizes microcontroller resource consumption and simplifies the control algorithms.
 ====
 
-=== Lessons Learnt
+== Lessons Learnt
 
 Try to define the simplest model to implement your features.
 Follow the {ref-kiss} principle.
@@ -163,7 +161,7 @@ You learn how to access hardware resources from {cpp} and what are the costs of 
 Use the actor pattern to implement thread communication <<distributed-asynchronous-systems>> <<actors-in-cpp>> <<actors-cmsis-cpp>>.
 
 [bibliography]
-=== Links
+== Links
 
 - [[[distributed-asynchronous-systems, 3]]] link:../../2025/distributed-systems/[Distributed Asynchronous Systems].
 Marcel Baumann.
@@ -172,6 +170,6 @@ Marcel Baumann.
 - [[[actors-cmsis-cpp, 5]]] link:../../2024/actors-with-cmsis-os-in-cpp/[Actors with CMSIS in {cpp}].
 Marcel Baumann.
 
-=== References
+== References
 
 bibliography::[]

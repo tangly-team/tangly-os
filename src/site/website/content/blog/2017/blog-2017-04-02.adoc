@@ -5,8 +5,6 @@ date: 2017-04-15
 tags: ["agile"]
 ---
 
-== Agile Trends Switzerland 2017: We Won
-
 include::../fragments/_config-mb-blog.aodc[]
 
 image::2017-04-02-head.jpg[width=420,height=360,role=left]
@@ -39,7 +37,7 @@ I hope to succeed in the first half of this century.
 
 Below some findings of the study.
 
-=== Major Hurdles Introducing Agile Approaches
+== Major Hurdles Introducing Agile Approaches
 
 The major hurdles when introducing agile approaches at department/company level are
 
@@ -68,7 +66,7 @@ Please involve them, talk to them, find out what they need.
 You could also say organizations are still struggling with _Being agile, not doing agile_.
 Avoid https://en.wikipedia.org/wiki/Cargo_cult[cargo cult].
 
-=== Our Recommendations
+== Our Recommendations
 
 You shall start introducing agile approaches at department and company level.
 

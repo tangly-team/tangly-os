@@ -5,8 +5,6 @@ date: 2021-02-20
 tags: ["agile"]
 ---
 
-== Effective Working in the Digital Age?
-
 include::../fragments/_config-mb-blog.aodc[]
 
 image::2021-02-03-head.jpg[width=420,height=360,role=left]
@@ -30,7 +28,7 @@ My life would be more productive and fun if more people did better understand ho
 
 Here are a few advices to improve our work experience.
 
-=== Schedule an Appointment
+== Schedule an Appointment
 
 If you are responsible for the meeting preparation, please:
 
@@ -62,7 +60,7 @@ Use tools such as Trello and Miro to have more collegial meetings.
 
 The newer versions of major tools from Microsoft, Google, Cisco now include workable versions of whiteboard and voting tools.
 
-=== Write a Meeting Protocol
+== Write a Meeting Protocol
 
 If you are responsible for the meeting event, please:
 
@@ -107,7 +105,7 @@ Two pizza sized teams::
 We try to create teams that are no larger than can be fed by two pizzas.
 ====
 
-=== Share a Document
+== Share a Document
 
 The rules to share a document are:
 
@@ -128,7 +126,7 @@ The Microsoft Office formal ISO/IEC 29500 definition is not even implemented in 
 Acrobat Reader is free to use on all major platforms.
 Acrobat Reader supports a review mode.
 
-=== Communicate
+== Communicate
 
 * Please use a chat application like Slack to communicate.
 Do not email me and call 20 minutes later to ask me if I read your email.
@@ -142,7 +140,7 @@ Remember the core rule over sane communication and a healthier work environment:
 _Praise in emails.
 Blame on the phone._
 
-=== Work on a Project
+== Work on a Project
 
 * Use https://git-scm.com/[Git] and set all source code and project artifacts under source code management.
 * Work with text formats.
@@ -152,7 +150,7 @@ You cannot compute differences on such documents.
 AsciiDoc is semantically equivalent to https://en.wikipedia.org/wiki/DocBook[DocBook].
 You can write whole books with AsciiDoc.
 
-=== Lessons Learnt
+== Lessons Learnt
 
 Adapt your analog processes to the digital world.
 Do not just copy them.

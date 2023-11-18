@@ -5,8 +5,6 @@ date: 2023-06-09
 tags: ["jvm-languages", "series-students"]
 ---
 
-== Teaching Closure II
-
 include::../fragments/_config-mb-blog.aodc[]
 
 image::2023-06-02-head.jpg[width=420,height=360,role=left]
@@ -32,7 +30,7 @@ Loops and conditional statements are almost disappearing in your code.
 
 Clojure is a very nice language to learn functional programming idioms <<clojure-1>>.
 
-=== Functional Thinking
+== Functional Thinking
 
 The key functional concepts of Clojure cite:[programming-clojure] are:
 
@@ -101,7 +99,7 @@ This mechanism provides tail-recursion call optimization.
 The first declaration is without parameter, the second one has one parameter.
 <2> Define a variadic function with a variable number of parameters as the last formal parameter.
 
-=== Advanced Functional Constructs
+== Advanced Functional Constructs
 
 The regular mapping, filtering, reducing and applying functions are fully supported in Clojure.
 
@@ -139,7 +137,7 @@ Beware of the tradeoff between processing improvement versus memory consumption.
 ;; "Elapsed time: 0.022459 msecs"  => 37889062373143906
 ----
 
-=== Synchronization Concepts
+== Synchronization Concepts
 
 Concurrency is built into the language.
 Rich Hickey designed Clojure to specifically address the problems that develop from shared access to mutable state.
@@ -232,7 +230,7 @@ You *must* write your code such that transaction retries are catered for.
 There are a few potential performance tweaks if you can relax the ordering of operations, which *may* reduce the chance of transaction retry.
 ====
 
-=== Embrace Modern Java
+== Embrace Modern Java
 
 Modern Java adds functional approaches cite:[functional-programming-java] to the Java language.
 I will certainly not pretend that Java is a functional language.
@@ -262,7 +260,7 @@ Try using _var_ as much as possible.
 Otherwise, you need to type very lengthy type declarations.
 ====
 
-=== Lessons Learnt
+== Lessons Learnt
 
 Clojure is an ideal language to learn and better understand functional programming approaches cite:[functional-thinking].
 
@@ -278,11 +276,11 @@ I would recommend using Java to teach these concepts and restrict Clojure teachi
 I wish you happy coding in the functional world of Clojure.
 
 [bibliography]
-=== Links
+== Links
 
 - [[[clojure-1, 1]]]  link:../../2023/teaching-clojure-i/[Teaching Clojure I].
 Marcel Baumann. 2023.
 
-=== References
+== References
 
 bibliography::[]

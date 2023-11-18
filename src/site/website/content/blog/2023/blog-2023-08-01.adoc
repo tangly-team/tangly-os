@@ -5,8 +5,6 @@ date: 2023-08-01
 tags: ["agile", "devops"]
 ---
 
-== Corporate Governance for Software Products
-
 include::../fragments/_config-mb-blog.aodc[]
 :ref-togaf: https://www.opengroup.org/togaf[TOGAF]
 
@@ -52,7 +50,7 @@ These domains of governance may exist at multiple geographic levels: the global,
 
 Corporate governance is thus a broad topic, beyond the scope of an enterprise architecture framework such as the TOGAF framework.
 
-=== Agile Corporate Governance PMI
+== Agile Corporate Governance PMI
 
 Your governance team, which may be called an oversight, audit, or control function, will monitor and guide teams throughout your organization.
 
@@ -122,7 +120,7 @@ Regardless of the size or your organization, the length of time it has been in o
 You deserve to be governed effectively::
 Sadly, many governance strategies prove to be ineffective in practice due to application of traditional strategies and ways of thinking.
 
-=== Security
+== Security
 
 Minimal set of security checks for regular compliance.
 
@@ -133,7 +131,7 @@ Implement regular penetration tests for all exposed solutions.
 https://en.wikipedia.org/wiki/Common_Vulnerabilities_and_Exposures[CVE Mitigation Process]::
 Have a process to track and mitigate all published common vulnerabilities and exposures _CVE_ alerts relevant to your digital products.
 
-=== Legal Requirements
+== Legal Requirements
 
 Respect the legal framework of your country and the foreign countries in which your solution is deployed:
 
@@ -142,7 +140,7 @@ Respect the legal framework of your country and the foreign countries in which y
 - Accessibility
 - Lawful Respect for human beings (misogyny, xenophobia, racism, religious intolerance)
 
-=== Technical Good Practices
+== Technical Good Practices
 
 Professional software engineers have a set of non-functional requirements to improve the adequacy of your software products.
 These requirements shall be part of the architecture of corporate governance.
@@ -175,7 +173,7 @@ Enterprise data is a high-value asset.
 Care should be taken to guarantee the long-term quality and usability of strategic data.
 This information is often used over decades.
 
-=== Lessons Learnt
+== Lessons Learnt
 
 Corporate governance requirements are non-functional requirements.
 They impact the architecture and design of the solution.
@@ -192,7 +190,7 @@ They are focused on the legal aspects and seldom understand the societal, commer
 Try to reform them.
 
 [bibliography]
-=== Links
+== Links
 
 - https://pubs.opengroup.org/architecture/togaf9-doc/arch/chap44.html[TOGAF Architecture Governance].
 https://www.opengroup.org/[THe Open Group]. 2022.

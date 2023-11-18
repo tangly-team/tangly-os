@@ -5,7 +5,6 @@ date: 2021-03-01
 tags: ["java"]
 ---
 
-== Modern Java Development
 :ref-amber: https://openjdk.java.net/projects/amber/[Amber]
 :ref-coin: https://openjdk.java.net/projects/coin/[Coin]
 :ref-jetbrains: https://www.jetbrains.com/[JetBrains]
@@ -27,7 +26,7 @@ We learnt to deal with the new speed and how to tackle the laggards.
 Some experiences were quite painful.
 Below our findings and our current focus on developing software products.
 
-=== Legibility Matters
+== Legibility Matters
 
 Programmers learnt the last decade that legibility and brevity of programming languages matter.
 The Java {ref-coin} and {ref-amber}
@@ -50,7 +49,7 @@ Deeper changes are
 The solution is based on the learning of the https://www.joda.org/joda-time/[Joda] time library.
 * Support of Lambda constructs greatly eliminates the need for verbose anonymous classes.
 
-=== Useful Constructs
+== Useful Constructs
 
 Modern Java has introduced powerful constructs to write legible and maintainable code.
 Modern Java code is quite different from Java 5 code.
@@ -78,7 +77,7 @@ The code is more performant and has security issues.
 Text Blocks::
 We can finally write legible multi-lines strings.
 
-=== Cumbersome Aspects
+== Cumbersome Aspects
 
 We still have open wounds in the legibility and elegance of the Java programming languages.
 
@@ -90,7 +89,7 @@ https://en.wikipedia.org/wiki/Null_coalescing_operator[Null Coalescing Operator]
 * Missing logging interface similar to {ref-slf4j}.
 * Reified generics to have access to generic types during runtime.
 
-=== Next Improvements?
+== Next Improvements?
 
 We have the first signs of possible improvements.
 

@@ -5,8 +5,6 @@ date: 2021-10-10
 tags: ["java"]
 ---
 
-== JDK 17 LTS
-
 include::../fragments/_config-mb-blog.aodc[]
 
 image::2021-10-02-head.png[width=420,height=360,role=left]
@@ -26,7 +24,7 @@ The advanced https://en.wikipedia.org/wiki/Pattern_matching[pattern matching] co
 
 Polishing of the https://en.wikipedia.org/wiki/Functional_programming[functional programming] approach improved my source code quite stupendously.
 
-=== Why Should You Upgrade?
+== Why Should You Upgrade?
 
 Be honest.
 It is more a question of *when*, rather than *if* you will upgrade.
@@ -109,7 +107,7 @@ You are a DevOps organization:: You have already completed migration.
 Congratulations, you can focus on business value and beat your competitors.
 ====
 
-=== How Big is the Migration Effort?
+== How Big is the Migration Effort?
 
 When we start developing against the new Java version, it's recommended to start with your local machine, get that up and running first.
 Then upgrade your build environment, so it supports the latest version of Java.
@@ -136,7 +134,7 @@ If that succeeds, and we make the necessary fixes, we go to running the unit tes
 If we fix that as well, we can package the application, and in the end, we can run the application.
 Based on the nice ingredients, we should get a nice result.
 
-=== New Features
+== New Features
 
 The official list of new features is
 
@@ -171,7 +169,7 @@ Increase security.
 The new features you should use on a daily basis are described bellow.
 They will impact the appearance and legibility of your source code.
 
-==== Algebraic Types
+== Algebraic Types
 
 Records <<java-records>> are immutable classes.
 A record and all associated operations are defined in one statement.
@@ -183,7 +181,7 @@ public record Person(String lastname, String firstname, LocalDate birthday) {}
 
 Sealed classes are a powerful constructs to constrain your inheritance hierarchy.
 
-==== Pattern Matching for Switch
+== Pattern Matching for Switch
 
 A preview of pattern matching for switch extends the language of patterns in Java.
 It allows switch expressions and statements to be tested against a number of patterns, each with a specific action.
@@ -208,7 +206,7 @@ The specialized stream _Optional<T>_ was added to provide a better approach.
 ====
 
 [bibliography]
-=== Links
+== Links
 
 - [[[java-records, 1]]] link:../../2020/java-records-are-here-available-in-jdk-14/[Java Records Are Here]
 - [[[jdk-16, 2]]] https://openjdk.java.net/projects/jdk/17/[Open JDK 16]

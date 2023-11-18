@@ -5,8 +5,6 @@ date: 2016-11-13
 tags: ["agile", "organization"]
 ---
 
-== What is an Agile Company?
-
 include::../fragments/_config-mb-blog.aodc[]
 
 image::2016-11-01-head.jpg[width=420,height=360,role=left]
@@ -14,11 +12,13 @@ Lately, people often ask me what is an agile company.
 
 They have an understanding of agile software development techniques such as {ref-scrum}, {ref-lean}, {ref-kanban}, {ref-xp} but no clue how a company could be agile.
 
+What does it mean to be an agile organization?
+
 One way to approach this theme is to implement concepts of the above-mentioned agile approaches.
 
 These are the pillars for iterative incremental improvements.
 
-=== Scrum Pillars
+== Scrum Pillars
 
 Transparency::
 You trust all collaborators to provide their best when working on the product.
@@ -34,7 +34,7 @@ Processes change regularly bottom-up, company’s budget can only be a rolling i
 
 You can also pursue desirable attitudes or values of agile persons.
 
-=== Scrum Values
+== Scrum Values
 
 Commitment::
 As an employee you want to win, you are engaged.
@@ -53,7 +53,7 @@ Respect::
 You truly respect customers, team members, collaborators, and people.
 In your team, I will not hear any disrespectful comments about people.
 
-=== Modern Agile
+== Modern Agile
 
 The https://modernagile.org/[modern agile movement] defines guiding principles.
 
@@ -74,7 +74,7 @@ You make mistakes, you learn and increase continuously the delivered value.
 You have a learning culture, you inspect and adapt.
 You can react to new opportunities faster than competitors.
 
-=== Self Assessment
+== Self Assessment
 
 image::2016-10-01-transformation-values.jpg[width=420,height=360,role=left]
 
@@ -109,7 +109,7 @@ There are universal values to establish a working atmosphere you are proud of.
 
 _I agree with all of you to desire a fulfilling job is only true if you earn enough money to pay your monthly bills._
 
-=== Food for Thoughts
+== Food for Thoughts
 
 These ideas are not new.
 You can delve in empirical evidence and discussions in books written by business management professors, CEO, and passionate agile advocates.

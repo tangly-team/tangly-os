@@ -5,8 +5,6 @@ date: 2021-09-01
 tags: ["design", "hugo", "series-students"]
 ---
 
-== Improving a Static Website Build With Hugo and Docsy Theme
-
 include::../fragments/_config-mb-blog.aodc[]
 
 image::2021-09-02-head.jpg[width=420,height=360,role=left]
@@ -43,7 +41,7 @@ He created it to describe https://en.wikipedia.org/wiki/Temporal_logic[temporal 
 https://en.wikipedia.org/wiki/Digital_Equipment_Corporation[Digital Equipment Corporation] _DEC_ solution.
 These highly qualified experts and their solutions paved the way to legible documentation and professional typography.
 
-=== Source Code Highlight
+== Source Code Highlight
 
 Asciidoctor supports rouge source code highlighting per default
 footnote:[Beware the Hugo documentation stating you have to import an extension for syntax highlighting is plain wrong if you are using
@@ -56,7 +54,7 @@ Just select the style you prefer, such as:
 rouge-style = "github"
 ----
 
-=== Search Function for the Website
+== Search Function for the Website
 
 The theme has multiple search solutions to index your static website.
 I chose the https://lunrjs.com/[Lunr] approach for our site.
@@ -64,7 +62,7 @@ The solution has no strings attached and does not require an external search ser
 
 The website and the search functionality are self-contained as a static website should be.
 
-=== Comment Function for Blog Article
+== Comment Function for Blog Article
 
 The comment feature is somewhat at odds with the concept of static website.
 The theme has multiple comment solutions to allow readers to publish a question or a test to our site.
@@ -90,7 +88,7 @@ You have to create a partial in docsy to use Utterances.
     </script>
 ----
 
-=== Tag Function for Blog Article
+== Tag Function for Blog Article
 
 Docsy has finally merged the change request for taxonomies during the first semester of 2021.
 Tags for articles are now natively supported without tinkering with the code of the plugin.
@@ -98,7 +96,7 @@ Tags for articles are now natively supported without tinkering with the code of 
 Our https://blog.tangly.net/blog/[blog] displays the tags on the right side of the window.
 Give it a try.
 
-=== Diagrams in articles
+== Diagrams in articles
 
 Diagrams in blog articles are currently a more complex issue.
 Hugo seems to be quite restrictive which extensions can be loaded when generating a static site
@@ -148,7 +146,7 @@ _I could not use asciidoc variable in plantUML links because the characters {} a
 The generated HTML code does not respect all AsciiDoc parameters.
 Text flow configurations are not enforced.
 
-=== Layout and Appearance
+== Layout and Appearance
 
 The docsy theme is regularly improving.
 The provided features are good and very stable.
@@ -158,7 +156,7 @@ The CSS styling files of {ref-asciidoc} are not integrated with Hugo and themes.
 Often the appearance of the generated HTML could be improved.
 I am currently exploring venues to improve the integration of nice looking asciidoc styling sheets with the docsy universe.
 
-=== Future Features
+== Future Features
 
 I have integrated an extension to provide access to static files through a Hugo/Docsy site.
 For example the presentation of a speech is made available directly in the static website.
@@ -166,6 +164,6 @@ For example the presentation of a speech is made available directly in the stati
 This feature is currently experimental and queued as a pull request in the Docsy GitHub repository
 footnote:[This feature removed my dependency to Google drive to host downloadable artifacts.].
 
-=== Links
+== Links
 
 include::../fragments/_hugo-links.adoc[]

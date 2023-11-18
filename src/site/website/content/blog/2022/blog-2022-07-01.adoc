@@ -5,10 +5,10 @@ date: 2022-07-04
 tags: ["agile"]
 ---
 
-== Would You Enjoy Being a Scrum Master?
-
 include::../fragments/_config-mb-blog.aodc[]
 
+[.float-group]
+--
 image::2022-07-01-head.png[width=420,height=360,role=left]
 
 {ref-scrum} is the most popular approach to create awesome new digital products.
@@ -22,12 +22,13 @@ There are plenty of good reasons to become a Scrum master.
 The job is fascinating, in demand and pays well.
 
 The most important reason to become a Scrum master is that it is the right job for your personality, interests and skills.
+--
 
 What is the role of Scrum master?
 
 If you choose to accept this mission, what will *you* do every day <<what-does-scrum-master>>?
 
-=== What is a Scrum Master?
+== What is a Scrum Master?
 
 Here is a way of considering the role.
 
@@ -44,7 +45,7 @@ The stakeholders are all employees, partners and shareholders.
 If {ref-scrum} does not ripple through an organisation this way, it is set up for failure.
 Or worse a facade of change, a kind way of saying lies and deceit <<detecting-agile-bullshit>> <<what-do-not-need-to-do-in-scrum>>.
 
-=== Eight Questions
+== Eight Questions
 
 Find out if the Scrum master role suits your interests:
 
@@ -81,7 +82,7 @@ Agile teams are used on an organization's hardest challenges—the projects that
 Add that to the strong personalities found on many development teams and there will be conflict
 cite:[how-to-lead-product-management,beyond-performance-management,leader-dilemna-empowered-organizations,leading-quietly,smart-leaders-smarter-teams].
 
-=== Eight Stances
+== Eight Stances
 
 Are you ready to work as:
 
@@ -114,7 +115,7 @@ Mentor::
 _A mentor is a wise and trustworthy counselor or teacher_.
 The Scrum master has the task of transferring knowledge and experience to the team, guiding it in the adoption of an Agile mindset.
 
-=== Things Scrum Masters Advocates
+== Things Scrum Masters Advocates
 
 Scrum masters promote, explain, and advocate Scrum values, principles cite:[great-scrum-master,mastering-professional-scrum].
 
@@ -157,7 +158,7 @@ You can find all these documents in less than two minutes.
 Better would be to display them on the sprint board.
 ====
 
-=== Things Scrum Masters Never Do
+== Things Scrum Masters Never Do
 
 You are a Scrum master.
 You are *not* a secretary or an administrator.
@@ -170,7 +171,7 @@ You are *not* a secretary or an administrator.
 * She does not act as the chairman during the meetings.
 * She is not a Superhero, and she does not bring the coffee!
 
-=== Over time, a Scrum master Fades Away
+== Over time, a Scrum master Fades Away
 
 After a while, team members need less coaching and transition to a high-performing group.
 
@@ -186,7 +187,7 @@ Those that remain can be particularly difficult to resolve, but there are fewer 
 Even the best Scrum team continues to benefit from the coaching, guiding and mentoring provided by a good Scrum master.
 With that being said, some high-performing teams might find they do not need a Scrum master full-time anymore.
 
-=== Dedication
+== Dedication
 
 [quote, Marcel Baumann, 2022-07-04]
 ____
@@ -195,7 +196,7 @@ He paved the way to my beautiful engineering career.
 ____
 
 [bibliography]
-=== Links
+== Links
 
 - [[[what-does-scrum-master, 1]]] link:../../2017/what-does-a-scrum-master/[What Does A Scrum Master?].
 Marcel Baumann. 2017
@@ -212,6 +213,6 @@ Marcel Baumann. 2021
 - [[[pmi-acp-certification, 7]]] link:../../2016/pmi-acp-certification/[PMI ACP Certification].
 Marcel Baumann. 2016
 
-=== References
+== References
 
 bibliography::[]

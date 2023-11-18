@@ -91,6 +91,16 @@ audio, canvas, video {
     text-align: justify !important;
 }
 
+.clearfix:before, .clearfix:after, .float-group:before, .float-group:after {
+    content: " ";
+    display: table
+}
+
+.clearfix:after, .float-group:after {
+    clear: both
+}
+
+
 .admonitionblock > table {
     border-collapse: separate !important;
     border: 0 !important;

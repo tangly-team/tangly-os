@@ -5,25 +5,34 @@ date: 2024-02-10
 tags: ["agile", "tangly", "organization"]
 ---
 
-== The Quest for an Agile Company: Eight Years tangly llc
-
 include::../fragments/_config-mb-blog.aodc[]
 
 image::2024-02-02-head.jpg[width=420,height=360,role=left]
 
 We are an agile boutique.
 We often work as Scrum master and technical agile coaches.
-We often work at the customer site.
+Our collaborators love to coaching, mentoring, and training.
 
-We have to ask ourselves if we should have permanent office spaces and why?
+We regularly work at the customer site.
+
+How do you organize such a company?
+
+How do collaborators work together?
+
+Should have permanent office spaces or opt for coworking space and why?
+
+== Experience with Coworking Space
 
 In the past, we rented dedicated office desks in a coworking space.
 The place was nice.
 The location was ideal for all collaborators.
 The people were friendly.
 
-We found out we were often at customer locations and had few opportunities to discuss company business in the coworking space.
+The coffee machine was reasonably good.
+During Summer, we could take a swim in the nearby lake.
+You only need to take a five-minutes walk.
 
+We found out we were often at customer locations and had few opportunities to discuss company business in the coworking space.
 The other attendees were working in different industries.
 We had seldom common interests, and regularly we helped them solve their computer problems.
 
@@ -32,13 +41,12 @@ The displays have higher resolution and quality.
 
 So the coworking approach did not have a lot of advantages for us.
 We decided to stop renting the office space after one year.
-
-I do not see the purpose of having a rented office.
+We do not see the purpose of having a rented office.
 The office will most often be empty.
 Internal meetings are seldom held in office space.
 We prefer to meet in a nice coffee or at a cool location.
 
-=== Support Various Working Models
+== Support Various Working Models
 
 You can work at customer site, at home, and at coworking spaces.
 The decision is based on the project needs and your preferences.
@@ -48,11 +56,21 @@ As a developer, I need a fast machine with a high-quality display.
 I also like to have my own keyboard and mouse when I connect to external displays.
 A programmer is more efficient with a US english keyboard and an ergonomic mouse.
 
+[NOTE]
+====
+We are specialized on the Java technology stack.
+Sometimes we need to work with {cpp}.
+
+Apple notebooks are an ideal choice for our needs <<my-macbook>>.
+Cool user interface and powerful command line tools.
+====
+
 As a digital nomad, I have my whole office in one traveling bag
 footnote:[I am a fan of the traveller bags of timbuk2.
-I owned their bags for the last twenty-five years and was always satisified with the quality and look.].
+I owned their bags for the last twenty-five years and was always satisified with the quality and look.
+I pack the notebook, a mouse, a keyboard, a power supply and some adapters.].
 
-=== Nurture a Company Blog
+== Nurture a Company Blog
 
 The {ref-uri-blog} exists since the inception of the company.
 We published steadily at least one article every month.
@@ -67,6 +85,7 @@ The experiences and insights gained through the interactions with our customers 
 The blog is a showcase hinting the capabilities, experiences and interests of our collaborators.
 
 Interested parties read articles and can decide if our ideas match the needs and expectations they have.
+The ideas expressed are cornerstones of our company culture and capabilities.
 
 We are very satisfied with the technological stack used to create and maintain the company documentation site and blog
 <<creating-website>> <<support-comments>> <<improving-website>>.
@@ -76,8 +95,21 @@ The migration was painless und performed in less than an hour.
 
 The community is supportive and professional.
 
+== Company Culture
+
+We are a small agile and Java boutique.
+We love coaching, mentoring, and training.
+We are engineers and software craftsmen.
+We are pragmatic and agile.
+
+All collaborators indentify with these values and apply them in our daily work.
+
+More subtle ethical values are discussed in company meetings.
+I am fascinated that we have a strong common understanding of ethical values.
+It is fun to work at {ref-tangly}.
+
 [bibliography]
-=== Links
+== Links
 
 - [[[seven-years-tangly, 1]]] link:../../2023/the-quest-for-an-agile-company-seven-years-tangly-llc/[Seven Year tangly llc]
 Marcel Baumann. 2022.
@@ -97,7 +129,8 @@ Marcel Baumann. 2020.
 Marcel Baumann. 2020.
 - [[[improving-website, 9]]] link:../../../2021/improving-a-static-web-site-build-with-hugo-and-docsy/[Improving a Static Website build with Hugo and Docsy]
 Marcel Baumann. 2021
+- [[[my-macbook, 10]]] link:../../2023/my-new-macbookpro/[My New MacBook Pro]
 
-=== References
+== References
 
 bibliography::[]

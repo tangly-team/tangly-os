@@ -5,8 +5,6 @@ date: 2017-05-17
 tags: ["agile", "git", "series-students"]
 ---
 
-== Git Local Repositories for the Impatient
-
 include::../fragments/_config-mb-blog.aodc[]
 :ref-svn: https://subversion.apache.org/[Subversion]
 
@@ -37,7 +35,7 @@ In case you are using the IntelliJ IDEA configure {ref-git} in the IDE through t
 Graphical {ref-git} clients are available.
 I sometimes use the free available https://www.sourcetreeapp.com/[SourceTree].
 
-=== Create a Local Repository
+== Create a Local Repository
 
 To put your product under git version management, go to the root of the product and perform the command
 
@@ -86,7 +84,7 @@ See https://git-scm.com/docs/gitignore[gitignore] for details.
 Your IDE shall support this feature and would add files or folder to ignore through its user interface.
 ====
 
-=== Commit Changes
+== Commit Changes
 
 To commit your changes you simply:
 
@@ -133,7 +131,7 @@ Once you are satisfied with your changes, you can propagate them to the remote r
 git push
 ----
 
-=== What is Your Project Status?
+== What is Your Project Status?
 
 To find out what the status of your product is, simply
 
@@ -154,7 +152,7 @@ The same information is available in IntelliJ IDEA under
 . On the main menu, choose VCS | Refresh File Status
 . Switch to the Version Control window and open the Local Changes tab.
 
-=== Always Work with Trunk
+== Always Work with Trunk
 
 Ideally, you shall always work against trunk, also called the main branch.
 Because you develop using TDD and ATTD approaches, you know your source code is always working.
@@ -164,7 +162,7 @@ It is also the one with the least waste of effort.
 If your team decides to work with branches, make them short-lived!.
 See how you can do it in the link:../../2016/git-branches-for-the-impatient/[Git Branches for the Impatient] post.
 
-=== Discarding Changes
+== Discarding Changes
 
 You find the changes you made locally were not a good decision.
 No problem, you can erase these changes with:
@@ -195,7 +193,7 @@ You want to restore just one file to its previous committed state.
 git checkout --[filename]
 ----
 
-=== Configuration Tips
+== Configuration Tips
 
 You shall avoid the end of online character warnings by configuring git to handle them.
 The situation arises because Microsoft OS uses CRLF for the end of lines instead of CR.
@@ -214,7 +212,7 @@ Or on Linux and macOS:
 git config --global core.autocrlf input
 ----
 
-=== Thoughts
+== Thoughts
 
 When using an IDE, consider the https://editorconfig.org[Editor Configuration] approach for the end of line, indentation, and tabs versus spaces.
 All major integrated development environments support this configuration approach.
@@ -227,6 +225,6 @@ The nifty-gritty details can be found in the official https://git-scm.com/book/e
 
 The _Pro Git_ book can be downloaded from https://git-scm.com[Git SCM].
 
-=== Links
+== Links
 
 include::../fragments/_git-series-inks.adoc[]

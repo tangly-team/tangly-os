@@ -5,25 +5,27 @@ date: 2017-07-03
 tags: ["agile"]
 ---
 
-== What does a Scrum Master?
-
 include::../fragments/_config-mb-blog.aodc[]
 
-image::2017-07-01-head.jpg[width=420,height=360,role=left]
+image::2017-07-01-head.png[width=420,height=360,role=left]
 
 What does a Scrum master the whole day?
+
 Are you just a fancy administrator or are you actively removing impediments?
+
 Do you coach your teams toward mastery?
 
 Too often, Scrum masters become Scrum administrators.
+
 They schedule meetings, moderate discussions, write progress reports and draw beautiful slides how to improve the organization.
+
 Or worst, they collect extensive statistics about velocity, planned versus delivered story points or how precise story estimation was.
 
 At the end of the day, your job is to mentor your team to be champions and build awesome products cite:[great-scrum-master,scrum-pocket-guide-3rd,mastering-professional-scrum].
 
 _Wake up!_ You are not a product manager, you shall be a catalyst.
 
-=== Facets of a Scrum Master
+== Facets of a Scrum Master
 
 * Be a https://en.wikipedia.org/wiki/Servant_leadership[servant leader] whose focus is on the needs of the team members and those they serve (the customer), with the goal of achieving results in line with the organization’s values, principles, and business objectives.
 * Teach ensuring agile, lean, Scrum and other approaches are understood and enacted.
@@ -39,7 +41,7 @@ Ask yourself if your team fulfils this definition.
 Work hard to improve if it is not the case.
 Each team is self-managing, cross-functional and customer-focused, co-located, long-lived.
 
-=== Scrum Master Tasks
+== Scrum Master Tasks
 
 * Help your teams to remove impediments cite:[great-scrum-master,scrum-pocket-guide-3rd,mastering-professional-scrum].
 From time to time, you could also remove a specific impediment.
@@ -61,7 +63,7 @@ The board shall be the information radiator of your product development.
 Do not create head sinks in documents.
 * Holding meetings with one person projecting their notebook screen content and all other attendees looking at it.
 
-=== Tips and Tricks
+== Tips and Tricks
 
 [quote,Geoff Watts,Scrum Mastery]
 ____
@@ -86,6 +88,6 @@ is an effective way to move your team to technical excellence.
 If you are new to the role, read "The Great Scrum Master" from Zuzana Šochová.
 A more extensive link:../../2017/list-of-agile-and-lean-books-for-software-engineers-or-students[list of books] can be found here.
 
-=== References
+== References
 
 bibliography::[]

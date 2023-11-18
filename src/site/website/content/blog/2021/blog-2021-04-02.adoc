@@ -5,10 +5,10 @@ date: 2021-04-20
 tags: ["java","series-students"]
 ---
 
-== Self-Service for A Developer is a Game Changer
-
 include::../fragments/_config-mb-blog.aodc[]
 
+[.float-group]
+--
 image::2021-04-02-head.jpg[width=420,height=360,role=left]
 
 Often, I hear complain that the IT department is not reacting to developer's needs.
@@ -16,11 +16,13 @@ They are slow, clumsy and too administrative.
 Harsher words state they are incompetent.
 
 I have observed a clear trend in Switzerland since around 2015 to solve these tensions.
+
 Standard IT services such as docker images, database instances or internal domain names are provided through self-service kiosks.
 
 What are the advantages of this approach?
+--
 
-=== Advantages
+== Advantages
 
 The advantages to providing a self-service kiosk for users in an academical or industrial environment are:
 
@@ -41,7 +43,7 @@ The kiosk solution must be connected to the on-boarding and off-boarding process
 Similar gains are achievable for employees working for smaller or bigger commercial companies.
 The real gains are less animosity and more respect for the IT professionals.
 
-=== Challenges
+== Challenges
 
 The provided self-service products shall cover at least 80% of customer's needs.
 The products must be standardized and do not require manual actions for setup and deployment.
@@ -53,7 +55,7 @@ Avoid fulfilling all requests and concentrate on optimizing the most often reque
 You still need to provide a workable approach for special requests.
 The simplest solution is to advocate using a commercial offering.
 
-=== Approaches
+== Approaches
 
 I am working with teams developing software products in academic and small-company environments.
 The needs boil down to
@@ -72,7 +74,7 @@ The image approach is still working.
 The current major challenge is the immaturity of the software solutions to share efficiently physical GPU.
 I expect viable standard solutions will be available in the next two years.
 
-=== Next Steps
+== Next Steps
 
 Implement a kiosk self-service solution for all regular requests of collaborators and students.
 

@@ -5,41 +5,39 @@ date: 2025-10-01
 tags: ["java", "architecture"]
 ---
 
-== Agile Software Architecture
-
 include::../fragments/_config-mb-blog.aodc[]
 :ref-ros: https://www.ros.org/[Robot Operating System _ROS_]
 
 image::2025-10-01-head.png[width=420,height=360,role=left]
 
-=== First Iteration
+== First Iteration
 
-==== Threads and Monitor
+=== Threads and Monitor
 
-==== Synchronized, Volatile
+=== Synchronized, Volatile
 
-=== Second Iteration
+== Second Iteration
 
-==== Executors
+=== Executors
 
-==== Concurrent Primitives and Collections
+=== Concurrent Primitives and Collections
 
-==== Fork and Join
+=== Fork and Join
 
-=== Third Iteration
+== Third Iteration
 
-==== Parallel Streams
+=== Parallel Streams
 
-==== Completable Future and CompletableStage
+=== Completable Future and CompletableStage
 
-==== Reactive API
+=== Reactive API
 
-==== Forth Iteration
+=== Forth Iteration
 
-==== Virtual Threads
+=== Virtual Threads
 
-==== Structured Concurrency
+=== Structured Concurrency
 
-==== Scoped Values
+=== Scoped Values
 
-=== Good Practices
+== Good Practices

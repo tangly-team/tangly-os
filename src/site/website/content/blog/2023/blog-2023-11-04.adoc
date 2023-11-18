@@ -5,7 +5,6 @@ date: 2023-11-25
 tags: ["hugo"]
 ---
 
-== Static Website Improvements
 include::../fragments/_config-mb-blog.aodc[]
 :ref-asciidoctor-tabs: https://github.com/asciidoctor/asciidoctor-tabs[asciidoctor tabs]
 :ref-asciidoc-docsy-stylesheet: https://github.com/tangly-team/tangly-os/tree/master/src/site/website/assets/scss[Asciidoc Docsy Stylesheet]
@@ -34,7 +33,7 @@ Lately, I needed new features to ameliorate the usability of our open-source doc
 
 I had to deepen my understanding of how Hugo is working with themes.
 
-=== Tabs
+== Tabs
 
 I wanted to display {ref-plantuml} diagrams and the associated code side by side in my article.
 The tab approach is perfect and lets the reader switch between both views in her browser.
@@ -56,7 +55,7 @@ An article using this functionality is link:../../2023/c4-and-uml-with-plantuml[
 
 I hope that the tabular display extension will soon graduate to an official {ref-asciidoc} extension.
 
-=== Attachments
+== Attachments
 
 I am a lecturer at {ref-cs-hslu}.
 All my course materials are under {ref-cc-by-sa}.
@@ -80,6 +79,17 @@ A document using this functionality is link:../../../ideas/learnings/lectures/[L
 The page displays multiple lists of documents.
 The reader can download the material she is interested in.
 
-=== Links
+== Mundane Work
+
+I invested quite some time to improve the layout of the blog articles in the context of the {ref-docsy} theme.
+{ref-hugo} supports {ref-asciidoc} out of the box.
+It does not mean that the layout is perfect.
+
+The {ref-asciidoc} stylesheet had to be extended to support the additional features I am using.
+
+The work is low tech.
+But I am convinced that users will appreciate the improvements.
+
+== Links
 
 include::../fragments/_hugo-links.adoc[]

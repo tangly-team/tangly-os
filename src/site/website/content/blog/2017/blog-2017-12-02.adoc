@@ -5,10 +5,10 @@ date: 2017-12-22
 tags: ["design"]
 ---
 
-== Why Use Current Software Components?
-
 include::../fragments/_config-mb-blog.aodc[]
 
+[.float-group]
+--
 image::2017-12-02-head.jpg[width=420,height=360,role=left]
 
 Often, teams discuss if their digital product should upgrade to the current version of open-source or commercial used components.
@@ -29,8 +29,9 @@ Such an entry can destroy your career potential.
 For example, you are banned from becoming a board of directors members of a lot of companies.].
 
 Below, I provide you with arguments why you should always update all components in a timely fashion.
+--
 
-=== Security and Governance
+== Security and Governance
 
 Social responsibility and liability considerations require your product to be immune to published attacks.
 Your company shall provide reasonable protection to all your customers.
@@ -52,7 +53,7 @@ Recommendations and laws are grafted to force better security
 footnote:[The White House in the USA initiated an _Executive Order on Improving the Nation's Cyber-security_ in 2021.
 The goal seems to be the definition of minimal rules for software products to minimize known security risks.].
 
-=== Upgrades and Genuine Improvements
+== Upgrades and Genuine Improvements
 
 The component developers put tremendous effort to improve the non-functional aspects of their products.
 Performance and scalability improvements between Java versions are impressive.
@@ -61,7 +62,7 @@ You shall not hinder your own customers to rip these low-hanging fruits.
 Actual versions of standards - Unicode, HTTP protocol, time zones - help eliminate incompatibilities and subtle errors from use cases.
 Having older versions will hinder you to support actual timezone changes or extensions in the Unicode standard.
 
-=== Training and Community Support
+== Training and Community Support
 
 Good training and associated certification are only available for actual versions of languages, frameworks or library.
 You will not find any training for Ada, Apache server 1.x, or any object-oriented database.
@@ -69,7 +70,7 @@ You will not find any training for Ada, Apache server 1.x, or any object-oriente
 The articles in Stack Overflow and the community always cover the current version of components.
 So you are on your own for support or code examples for older versions of libraries.
 
-=== Hidden Cost of Backport
+== Hidden Cost of Backport
 
 Writing code for older versions of libraries, frameworks or runtimes means https://en.wikipedia.org/wiki/Backporting[backporting] to older application interfaces and features.
 For example, if you do not have access to auto-closable resources, you have to write your own framework and software checks guarantying closing system resources.
@@ -84,7 +85,7 @@ Otherwise, the code is no more maintainable and changes are error-prone.
 In other words, you have to twice work when backporting, once to build it in, and a second time to later remove it.
 This solution is certainly not the most economical one.
 
-=== Motivation of Team
+== Motivation of Team
 
 No professional developer wants to write source code using JDK 7 or older versions.
 They want to develop using modern and powerful constructs such as lambda, modules, HTTP/2.

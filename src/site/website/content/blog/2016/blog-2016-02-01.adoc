@@ -5,8 +5,6 @@ date: 2016-02-24
 tags: ["agile"]
 ---
 
-== Do Agile Methods - Scrum - Motivate your Team?
-
 include::../fragments/_config-mb-blog.aodc[]
 
 image::2016-02-01-head.jpg[width=420,height=360,role=left]
@@ -39,7 +37,7 @@ We have the following roles:
 
 The Scrum Team is the composition of the development team, Scrum master, and the product owner.
 
-=== Stakeholders
+== Stakeholders
 
 Stakeholders love Scrum.
 Every two weeks they have a new application version they can use, test, and get feedback from all users.
@@ -55,7 +53,7 @@ Explain to your stakeholders a new release is available every two weeks.
 The stakeholders decide how often the solution is deployed into production.
 ====
 
-=== Developers Team
+== Developers Team
 
 Agile methods, such as {ref-scrum}, {ref-xp}, or {ref-less}, are fun for all developers.
 Suddenly, everyone can see your code, so at the beginning you as a developer must cope with different views how good code should be written.
@@ -69,7 +67,7 @@ If you master these responsibilities, you suddenly discover the world of enginee
 It is creating great products with an optimal balance of external quality and costs without ever jeopardizing the quality of the core.
 You can never again deny that you as a developer are in charge.
 
-=== Scrum Master
+== Scrum Master
 
 The Scrum master cite:[mastering-professional-scrum] is cool with a team enjoying Scrum and the flow of success.
 You just have to realize you are not a master.
@@ -77,7 +75,7 @@ You are the enabler for a team of talented engineers.
 
 So you need to discover your _the lonely cowboy riding in the sun_ song why this job is so rewarding.
 
-=== Product Owner
+== Product Owner
 
 As a product owner cite:[professional-product-owner], you control the budget of the product, the priorities.
 At the end of each iteration, you can change all priorities and goals.
@@ -91,7 +89,7 @@ This version must be evaluated, accepted or a list of improvements must be provi
 This rhythm is fast, really fast.
 Once you are up to this speed, you will enjoy the flow.
 
-=== Lessons Learnt
+== Lessons Learnt
 
 Middle management often struggles with the agile approach at the beginning.
 See, for example, the discussion about https://less.works/less/management/index.html[manager role in an agile environment] in the {ref-less} approach.
@@ -99,6 +97,6 @@ Be assured the results are worth the effort.
 
 Reading an experience report or digging in the findings of Kotter, you realize success or failure goes through how you handle middle management.
 
-=== References
+== References
 
 bibliography::[]

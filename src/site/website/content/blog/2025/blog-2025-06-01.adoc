@@ -5,13 +5,11 @@ date: 2025-06-01
 tags: ["organization"]
 ---
 
-== Improving the Quality of a Website
-
 include::../fragments/_config-mb-blog.aodc[]
 
 image::2025-06-01-head.jpg[width=420,height=360,role=left]
 
-=== Spellchecker and Grammar
+== Spellchecker and Grammar
 
 I am not an English native speaker and also not really talented with foreign languages.
 I should find ways to improve the structure of my articles and remove typographical errors.
@@ -30,7 +28,7 @@ You get the hint that the word _master_ should be avoided.
 This hint is quite useless in the context of the {ref-scrum} approach.
 =====
 
-=== Eliminate Dead Links
+== Eliminate Dead Links
 
 The biggest advantage of a website is the capability to link information to the reference document or the official description.
 As a user, I just need to click the link to access details.
@@ -62,7 +60,7 @@ The utility provides the following features:
 The Amazon site refuses connection requests as soon as the frequency hints to a program.
 - List all failed connections with the source page, the link and the error message encountered.
 
-===  Bibliography
+==  Bibliography
 
 We often write technical articles.
 
@@ -78,7 +76,7 @@ Feel free to use it.
 It is released as all our articles under https://creativecommons.org/licenses/by/4.0/[creative commons attribution 4.0 international] _CC BY 4.0_
 footnote:[The license is displayed in the footer of {ref-uri-blog}.].
 
-=== Statistics
+== Statistics
 
 I welcome data helping me to better understand the structure of my technical website.
 
@@ -111,7 +109,7 @@ Average number of book references are published per blog in a specific year?
 |===
 
 [bibliography]
-=== Links
+== Links
 
 - [[[creating-website, 1]]] link:../../2020/creating-a-technical-website-with-hugo-and-asciidoc/[Creating a Technical Website with Hugo and Asciidoc].
 Marcel Baumann. 2020.

@@ -5,8 +5,6 @@ date: 2021-07-05
 tags: ["agile", "architecture"]
 ---
 
-== Why Enterprise Architecture?
-
 include::../fragments/_config-mb-blog.aodc[]
 
 image::2021-07-02-head.jpg[width=420,height=360,role=left]
@@ -38,7 +36,7 @@ The Open Group published a series of white papers <<agile-architecture>>, <<open
 Agile frameworks tend to define and promote agile receipts through collaborative structures.
 Examples are https://en.wikipedia.org/wiki/Community_of_practice[Community of Practice], design workshop, event storming, pair designing.
 
-=== Concepts
+== Concepts
 
 image::2021-07-02-togaf.png[width=420,height=360,role=left]
 https://en.wikipedia.org/wiki/Enterprise_architecture[Enterprise Architecture] _EA_ , when performed in an agile manner, is an important enabler of agile software delivery.
@@ -63,7 +61,7 @@ The easier it is to deploy, the more often it makes sense to deploy.
 Enterprise architecture scales agile::
 An agile approach to enterprise architecture enables organizations to scale agile strategies “horizontally” across their entire IT department.
 
-=== The EA Process
+== The EA Process
 
 Some methods will choose to prescribe a single approach.
 Such as capturing architectural requirements in the form of epics or pre-building _architectural runways_.
@@ -107,7 +105,7 @@ Govern architecture::
 Architectural activities within your organization should be governed in a lightweight, collaborative manner.
 This is an important activity for enterprise architects as well as for your IT governance team.
 
-=== Team Workflow
+== Team Workflow
 
 The workflow within an agile enterprise architecture team is depicted in the following diagram.
 
@@ -146,7 +144,7 @@ These artifacts may include EA models, reference architectures, development guid
 When a new major topic arises, such as the potential adoption of a new platform or a merger with another organization, they schedule agile modeling sessions.
 They explore the newly discovered topics during these sessions.
 
-=== Lessons Learnt
+== Lessons Learnt
 
 image::2021-07-02-aeaf.png[]
 
@@ -176,7 +174,7 @@ Apply them on your software product development using agile approaches like {ref
 Study the rules of {ref-lean} to optimize the value of your product.
 
 [bibliography]
-=== Links
+== Links
 
 - [[[agile-architecture, 1]]] Agile Architecture in the Digital Age.
 Open Group. 2018

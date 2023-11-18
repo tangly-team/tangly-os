@@ -5,8 +5,6 @@ date: 2018-06-19
 tags: ["design"]
 ---
 
-== How to Reach the Software Quality Graal?
-
 include::../fragments/_config-mb-blog.aodc[]
 
 image::2018-06-01-head.jpg[width=420,height=360,role=left]
@@ -41,13 +39,13 @@ Time for a reality check.
 
 Tools such as SonarQube, unit test coverage are just instruments to support your teams to detect _known non-quality_.
 
-=== How to find the Quality Graal?
+== How to find the Quality Graal?
 
 Below, I provide a set of established, old techniques to eliminate non-quality.
 Most of them are around for at least twenty years.
 I encourage you to extend your practices with additional procedures based on your measurements and findings.
 
-==== Extrinsic Quality - Product Quality
+=== Extrinsic Quality - Product Quality
 
 _Is why you buy a specific car_
 
@@ -57,7 +55,7 @@ _Is why you buy a specific car_
 - You give your customer a way to detect bad behavior early and have an opportunity to ask for improvement.
 By fast, we mean daily or perhaps weekly.
 
-==== Intrinsic Quality – Technical Quality
+=== Intrinsic Quality – Technical Quality
 
 _Is why you can daily drive your car and not have to weekly repair it.
 And, later be able to add a charger for your mobile phone without spending a fortune._
@@ -67,7 +65,7 @@ And, later be able to add a charger for your mobile phone without spending a for
 * Clean code – You guarantee the source code is maintainable cite:[clean-code,clean-coder].
 * Clean architecture and domain driven development - You guarantee the product is extendable cite:[clean-architecture,domain-driven-design,implementing-domain-driven-design].
 
-=== Accountability
+== Accountability
 
 The Scrum Team - Development Team, Product Owner and Scrum Master - are responsible and accountable for the intrinsic and extrinsic quality of the delivered products cite:[clean-agile,succeeding-with-agile].
 Insufficient quality is always a collective failure.
@@ -94,7 +92,7 @@ They cowardly try to push the responsibility to the internal quality assurance d
 
 The above ideas are keys to https://tangly-blog.blogspot.com/2018/04/pragmatic-craftsmanship-professional.html[Software Craftsmanship].
 
-=== Kaizen - Small Steps bring First Successes
+== Kaizen - Small Steps bring First Successes
 
 The first steps to improve your product are quite simple are around for at least twenty years cite:[pragmatic-programmer-2nd].
 
@@ -128,6 +126,6 @@ _I acknowledge I am emotionally involved and not fully objective.
 Lately, I saw a Java code of three different commercial products.
 I am still recovering from the missing quality._
 
-=== References
+== References
 
 bibliography::[]

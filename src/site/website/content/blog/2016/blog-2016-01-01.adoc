@@ -5,10 +5,10 @@ date: 2016-01-21
 tags: ["agile"]
 ---
 
-== Minimizing Undone Work when Working with Regulatory Departments
-
 include::../fragments/_config-mb-blog.aodc[]
 
+[.float-group]
+--
 image::2016-01-01-head.jpg[width=420,height=360,role=left]
 
 The {ref-scrum} and agile mantra is to have a _ready-to-ship_ product each time a sprint is completed.
@@ -22,14 +22,18 @@ Regulatory and traditional quality insurance departments request all kinds of do
 They want insurance that their view of quality is fulfilled.
 
 Scrum sees the importance of quality like the lean production approach cite:[scrum-pocket-guide-3rd].
+
 Quality is built into the product.
+
 You do not need any documents proving you have fulfilled this goal.
+
 Your sole goal is to optimize the process to produce the best products, not to repair them after production.
+--
 
 It is the sole responsibility of the Scrum team to guaranty the quality of their product cite:[mastering-professional-scrum].
 Scrum teams also learnt you cannot win against big corporations.
 So you have to define solutions satisfying the QA departments with minimal overhead and almost no undone work.
-We have experience working with quality insurance and https://en.wikipedia.org/wiki/Technischer_%C3%9Cberwachungsverein[TUV] or https://en.wikipedia.org/wiki/Food_and_Drug_Administration[FDA] driven regulatory departments.
+We have experience working with quality insurance and https://en.wikipedia.org/wiki/Technischer_%C3%9Cberwachungsverein[TUV] or https://en.wikipedia.org/wiki/Food_and_Drug_Administration[FDA] regulatory departments.
 We use the following approaches to handle the needs of the regulatory departments, seen as stakeholders in the Scrum terminology.
 
 * Use static analysis tools such as https://pmd.github.io/[PMD], https://checkstyle.sourceforge.io/[Checkstyle], http://findbugs.sourceforge.net/[Findbugs]
@@ -56,13 +60,13 @@ So you can generate release notes stating the list of closed issues with the ass
 
 Similar tools are available in Python .NET, or {cpp} communities.
 
-You can easily satisfy your QA and regulatory stakeholders with a lot of reports nobody will ever read.
+You can satisfy your QA and regulatory stakeholders with a lot of reports nobody will ever read.
 A real {ref-scrum} team corrects weaknesses during the development process and always deliver software of the highest quality.
 The reports can only show the inherent quality of the software and are not worth the paper they are printed on.
 
 But you satisfy powerful stakeholder groups and can more freely work on the most important goal.
 Deliver on time and in budget the best software the customer wants to have.
 
-=== References
+== References
 
 bibliography::[]

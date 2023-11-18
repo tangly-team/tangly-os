@@ -5,8 +5,6 @@ date: 2023-01-01
 tags: ["agile", "organization"]
 ---
 
-== Select An Agile Software Development Partner
-
 include::../fragments/_config-mb-blog.aodc[]
 
 image::2023-01-01-head.png[width=420,height=360,role=left]
@@ -25,7 +23,7 @@ It is a steep investment that takes time to be planned in a regular organization
 The time and the readiness to invest are often not available in a timely manner.].
 It often makes sense for businesses trying to tackle a massive software development project while focusing on the current needs of their clients.
 
-=== Evaluation
+== Evaluation
 
 A professional and planned approach greatly improves the odds of success for the partnership:
 
@@ -89,7 +87,7 @@ Be sure they have clearly outlined what you can expect from working with their t
 +
 Be wary of any potential development partner that struggles to answer these questions or does not provide stories of failure or follow them up with concrete ways they’ve adapted to ensure future success for their clients.
 
-=== Evaluation Criteria
+== Evaluation Criteria
 
 You shall implement a clear and founded evaluation approach:
 
@@ -106,11 +104,11 @@ You shall implement a clear and founded evaluation approach:
 . Consider and evaluate the future of your relationships.
 . Meet the employees that will be working with you.
 
-=== Checklist
+== Checklist
 
 Here our checklist we use to discuss a potential partnership:
 
-==== Hosting and Operations
+=== Hosting and Operations
 
 image::2023-01-01-checklist.png[width=480,height=360,role=left]
 
@@ -125,7 +123,7 @@ How is the process of deploying a new version?
 * How is the process of updating a productive application when security alarms are issued?
 * Document your decisions with a formal SLA document.
 
-==== Software Development
+=== Software Development
 
 * Where are the team members located?
 Are they collocated, in the same area, in the same timezone, distributed over multiple timezones?
@@ -137,7 +135,7 @@ Are they collocated, in the same area, in the same timezone, distributed over mu
 * Where are the source artifacts stored?
 * Can our collaborators have read access to all artifacts under source code management?
 
-==== Governance and Methods
+=== Governance and Methods
 
 * Which approaches are used for insuring the quality of the written source code?
 * How is the technical documentation such as installation scripts, design decisions, component documents written and managed?
@@ -148,12 +146,12 @@ Are they collocated, in the same area, in the same timezone, distributed over mu
 * How do you upgrade an application to a newer version of the technology stack or newer libraries?
 * Which approaches do you use to continuously improve?
 
-==== Build Partnership
+=== Build Partnership
 
 * What is your understanding of a partnership?
 * How would you like to start the partnership between your company and ours?
 
-=== Lessons Learnt
+== Lessons Learnt
 
 Respect your partner cite:[lead-with-respect, leading-quietly].
 You will work together for years.
@@ -168,7 +166,7 @@ Your organizations shall be proficient with agile, lean approaches.
 These frameworks are the most successful approaches for software product development.
 
 [bibliography]
-=== Links
+== Links
 
 - [[[technical-interviews, 1]]] link:../../2023/technical-interviews[Technical Interviews]
 Marcel Baumann. 2023
@@ -185,6 +183,6 @@ Marcel Baumann. 2021
 - [[[detecting-agile-bullshit, 7]]] link:../../2019/detecting-agile-bullshit/[Detecting Agile Bullshit].
 Marcel Baumann. 2019
 
-=== References
+== References
 
 bibliography::[]

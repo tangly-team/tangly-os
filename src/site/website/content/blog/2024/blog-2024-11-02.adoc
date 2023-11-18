@@ -5,13 +5,11 @@ date: 2024-11-02
 tags: ["C++", "architecture"]
 ---
 
-== Is {cpp} better than C?
-
 include::../fragments/_config-mb-blog.aodc[]
 
 image::2024-11-02-head.jpg[width=420,height=360,role=left]
 
-=== Empiricism
+== Empiricism
 
 The GCC compiler project migrated to {cpp} as implementation language:
 
@@ -41,7 +39,7 @@ But he never provided data if the whole development activities are more efficien
 So I assume it is a kind of viceral opinion without scientific and statistical facts.
 
 [bibliography]
-=== Links
+== Links
 
 - [[[llvm, 1]]] https://en.wikipedia.org/wiki/LLVM[LLVM]
 - [[[gcc-cxx-conversion, 2]]] https://gcc.gnu.org/wiki/cxx-conversion[GCC C++ conversion]

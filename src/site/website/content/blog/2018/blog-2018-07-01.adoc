@@ -5,8 +5,6 @@ date: 2018-07-05
 tags: ["design", "architecture"]
 ---
 
-== Architectural Decision Records ADR
-
 include::../fragments/_config-mb-blog.aodc[]
 
 image::2018-07-01-head.jpg[width=420,height=360,role=left]
@@ -19,7 +17,7 @@ It tremendously helps to understand the technical changes during the product lif
 Please try architecture design records to document your key decisions when developing your software product.
 Feel free to identify better approaches
 
-=== Definition
+== Definition
 
 [quote]
 ____
@@ -47,25 +45,25 @@ And my IDE IntelliJ IDEA has a nice plugin for this format.
 Before using ADR, I documented the decision changes as footnote in a Microsoft Word document.
 The ADR approach is way more legible and easier to trace with the help of git repositories.
 
-==== Title
+=== Title
 
 These documents have names that are short noun phrases.
 For example, "ADR 1: Deployment on Ruby on Rails 3.0.10" or "ADR 9: LDAP for Multiple tenant Integration"
 
-==== Context
+=== Context
 
 This section describes the forces at play, including technological, political, social, and product local.
 These forces are probably in tension, and should be called out as such.
 The language in this section is value-neutral.
 It is simply describing facts.
 
-==== Decision
+=== Decision
 
 This section describes our response to these forces.
 It is stated in full sentences, with active voice.
 "We will ..."
 
-==== Status
+=== Status
 
 A decision may be "proposed" if the product stakeholders haven't agreed with it yet, or "accepted" once it is agreed.
 If a later ADR changes or reverses a decision, it may be marked as "deprecated" or "superseded" with a reference to its replacement(s).
@@ -74,13 +72,13 @@ The status and the graph of related decisions can be tracked and visualized usin
 You can also track your decisions without any tools, a regular product has often less than a hundred decisions.
 And you can always write a small parse utility to extract your dependency graph.
 
-==== Consequences
+=== Consequences
 
 This section describes the resulting context, after applying the decision.
 All consequences should be listed here, not just the "positive" ones.
 A particular decision may have positive, negative, and neutral consequences, but all of them affect the team and product in the future.
 
-==== Tips and Tricks
+=== Tips and Tricks
 
 The whole document describing an ADR should be one or two pages long.
 We will write each ADR as if it is a conversation with a future developer.

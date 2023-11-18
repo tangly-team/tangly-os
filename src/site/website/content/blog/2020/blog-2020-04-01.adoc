@@ -5,8 +5,6 @@ date: 2020-04-17
 tags: ["agile", "design", "java", "series-agile-design"]
 ---
 
-== Agile Component Design
-
 include::../fragments/_config-mb-blog.aodc[]
 
 image::2020-04-01-head.jpg[width=420,height=360,role=left]
@@ -29,9 +27,9 @@ You are responsible for *architecture decisions* at component or subsystem level
 
 Below a set of tools to improve the quality of your design.
 
-=== Design Approaches
+== Design Approaches
 
-==== Patterns and Idioms
+=== Patterns and Idioms
 
 The pattern movement was started last millennium.
 Very talented and experienced developers have documented how to solve common problems elegantly and effectively.
@@ -46,7 +44,7 @@ For example, lambda expressions and streams introduced in Java 8 - released Spri
 Records introduced in Java 14 - released Spring 2020 - have a huge impact on how your architecture deals with data transfer objects – DTO – and immutability
 footnote:[Java 17 LTS added full support for https://en.wikipedia.org/wiki/Algebraic_data_type[algebraic data types.] with the record and sealed concepts.].
 
-==== Read Open Source Code
+=== Read Open Source Code
 
 Stop inventing the wheel again and again.
 https://en.wikipedia.org/wiki/Not_invented_here[Avoid Not Invented] Here syndrome.
@@ -60,7 +58,7 @@ Fill free to improve the suggested solutions.
 Become more efficient and use the wisdom of all these developers accessible through the Internet.
 Always verify the quality and adequacy of their proposed solutions.
 
-==== Java Standard API
+=== Java Standard API
 
 Know your programming language and the huge associated standard libraries part of your technology stack.
 Wisdom is coded in this code.
@@ -72,9 +70,9 @@ Decades of trials and errors were needed to finally create a balanced and simple
 The author of https://www.joda.org/joda-time/[Joda Time] experimented years before he wrote the java time package – JSR 310 – introduced in Java 8.
 All these decisions and learning are encoded in this code.
 
-=== Clean Architecture
+== Clean Architecture
 
-==== Clean Code
+=== Clean Code
 
 You want to create a clean architecture cite:[clean-architecture] you are proud of.
 You must first write a clean code cite:[clean-code].
@@ -96,7 +94,7 @@ https://en.wikipedia.org/wiki/Software_architecture_description[Software Archite
 The real architecture is hidden in the source code of your product.
 You still document all major https://en.wikipedia.org/wiki/Architectural_decision[Architectural Decisions].
 
-==== Know Your Programming Language
+=== Know Your Programming Language
 
 If you are developing in Java, you should use the current features of the programming language.
 For example, with Java 14, you have access to:
@@ -111,26 +109,26 @@ This construct is an implementation of automatic resource management.
 * Switch expressions and not only switch statements.
 * Text blocks to write legible multi-line text expression.
 
-==== Aggressive Refactoring
+=== Aggressive Refactoring
 
 The entropy of the source code increases over time.
 Only continuous and aggressive refactoring mitigates the degenerescence of your application cite:[refactoring, refactoring-2nd,refactoring-to-patterns,working-effectively-with-legacy-code].
 Each time you correct an error or add a new functionality refactor your code.
 Remove smells, compiler warnings and migrate older code to use newer and better features of your programming language.
 
-==== Acceptance Test Driven Development
+=== Acceptance Test Driven Development
 
 Your users want a working application.
 Write acceptance tests insuring all relevant functions are tested through your continuous integration pipeline.
 You guarantee your users the application behaves as specified.
 
-==== Test Driven Development
+=== Test Driven Development
 
 Testability and changeability of your application are architectural aspects.
 You must have a way to verify these non-functional requirements.
 Test driven development is a proven approach to fulfill these requirements and validate them continuously.
 
-==== Continuous Integration
+=== Continuous Integration
 
 Continuous integration and delivery are the mechanisms to continuously validate and verify all functional and non-functional requirements are correctly implemented
 cite:[continuous-delivery-pipelines].
@@ -139,7 +137,7 @@ You guarantee your users and customers that any software delivery they get is co
 Each time you find a discrepancy, add a test validating the requirement behind this fault.
 The same error will never happen again.
 
-=== Good Practices
+== Good Practices
 
 Publish your components on a central repository such as _Maven Central_.
 Your users have easy and standardized access to your components and their latest version.
@@ -158,7 +156,7 @@ We write all our documentation in the {ref-asciidoc} format - including https://
 
 Start small and improve your approach every day.
 
-=== Agile Architecture Series
+== Agile Architecture Series
 
 The agile architecture track contains the following blogs
 
@@ -167,7 +165,7 @@ include::../fragments/_series-agile-design-links.adoc[]
 We also published our https://www.tangly.net/insights/continuous-learning/agile-architecture-course[agile architecture course] (3 ECTS) used for teaching computer science students at bachelor level at Swiss technical universities.
 
 [bibliography]
-=== Links
+== Links
 
 * https://www.innoq.com/en/blog/is-domain-driven-design-overrated/[Is Domain Driven Design Overrated?].
 Stefan Tilkov.2021.
@@ -175,6 +173,6 @@ Stefan Tilkov.2021.
 Stefan Tilkov. 2021.
 include::../fragments/_series-agile-design-links.adoc[]
 
-=== References
+== References
 
 bibliography::[]

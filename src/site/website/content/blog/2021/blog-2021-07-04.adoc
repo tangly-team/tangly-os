@@ -5,8 +5,6 @@ date: 2021-07-02
 tags: ["agile"]
 ---
 
-== Product Owner Formation
-
 include::../fragments/_config-mb-blog.aodc[]
 
 image::2021-07-04-head.jpg[width=420,height=360,role=left]
@@ -21,7 +19,7 @@ Being a product owner and requirements engineer is a profession, not a hobby!
 
 Formal training is often the difference between being a professional instead of just pretending to be one.
 
-=== Product Owner Role
+== Product Owner Role
 
 Here the official definition of the product owner role taken from the {ref-scrumguide}.
 
@@ -48,7 +46,7 @@ Those wanting to change the Product Backlog can do so by trying to convince the 
 How can you become a better product owner?
 The first steps to become a great product owner are described in this article.
 
-=== Certifications
+== Certifications
 
 The two big Scrum organizations {ref-scrum-alliance} and {ref-scrum-org} provide a certification path for product owners.
 The certification path has three levels:
@@ -115,7 +113,7 @@ https://www.scrum.org/resources/suggested-reading-professional-scrum-product-own
 
 I published a list of seminal works for interested product owners under link:../../../ideas/learnings/books/#_product_owner[Books].
 
-=== Requirement Engineering Trainings
+== Requirement Engineering Trainings
 
 The most relevant organization is Europe is the https://www.ireb.org/[International Requirements Engineering Board] _IREB_.
 Professional requirements engineers should be IREB certified.
@@ -131,7 +129,7 @@ The organization offers two certifications for _Certified Professional Requireme
 * https://www.ireb.org/en/exams/re-agile/[RE@Agile Primer] - Bridging the gap between RE and Agile
 * https://www.ireb.org/en/exams/advanced/[Advanced Level RE@Agile] - is part of the advanced CPRE AL
 
-=== University Formal Trainings
+== University Formal Trainings
 
 Technical universities in Switzerland provide formal training in requirements engineering and related fields <<agile-requirements>>.
 The formation provides a certificate of advanced study CAS in the field.
@@ -150,7 +148,7 @@ https://en.wikipedia.org/wiki/Usability_engineering[Usability Engineering].
 See, for example, https://uxschweiz.ch/weiterbildung/mashcid/[Master Human Computer Interaction Design].
 
 [bibliography]
-=== LInks
+== LInks
 
 - [[[product-owner-learning-objectives, 1]]]
 https://www.scrumalliance.org/ScrumRedesignDEVSite/media/ScrumAllianceMedia/Files%20and%20PDFs/Learning%20Objectives/E_CSPO_LO_5-20-21.pdf[Scrum Alliance Certified Scrum Product Owner Learning Objectives].
@@ -173,6 +171,6 @@ Marcel Baumann. 2021
 - [[[scrum-guide, 10]]] https://scrumguides.org/scrum-guide.html[Scrum Guide]
 Jeff Sutherland, Ken Schwaber. 2020
 
-=== References
+== References
 
 bibliography::[]

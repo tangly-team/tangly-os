@@ -5,16 +5,22 @@ date: 2017-08-06
 tags: ["agile"]
 ---
 
-== Scrum Masters are not Administrators
-
 include::../fragments/_config-mb-blog.aodc[]
 
+[.float-group]
+--
 image::2017-08-01-head.png[width=420,height=360,role=left]
+
+Readers know I am an early adopter of agile and Scrum approaches.
+
+I experienced how much more effective and fun it is to work in an agile team developing digital products.
 
 Lately I was asked if I was interested in working as a Scrum master
 cite:[great-scrum-master,scrum-pocket-guide-3rd,mastering-professional-scrum].
+
 The job description below was handed me over.
 What an experience it was.
+--
 
 The text with the regular font is the job description.
 I wrote down my comments in italics.
@@ -70,6 +76,6 @@ They were not looking for an agile professional and Scrum master.
 I kindly suggested the authors of the job description shall get an introduction training to Agile, Lean and Scrum.
 I will certainly not recommend this company to my acquaintances.
 
-=== References
+== References
 
 bibliography::[]

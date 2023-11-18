@@ -5,8 +5,6 @@ date: 2025-01-01
 tags: ["architecture", "c++", "embedded"]
 ---
 
-== Distributed Asynchronous Systems
-
 include::../fragments/_config-mb-blog.aodc[]
 :ref-boost: https://www.boost.org/[boost]
 :ref-cap: https://en.wikipedia.org/wiki/CAP_theorem[CAP theorem]
@@ -94,7 +92,7 @@ You can apply the right abstractions for formal design techniques such as hierar
 
 All of this means the event-driven architecture is not only possible in deeply embedded, high-reliability systems, but it is actually ideal for such applications.
 
-=== Distributed Asynchronous Embedded Systems
+== Distributed Asynchronous Embedded Systems
 
 image::2025-01-01-uml-state-machine.png[width=420,height=360,role=left]
 Communication over Messages::
@@ -214,7 +212,7 @@ You can describe a {ref-fsm} _FSM_ using the UML statechart notation.
 Complex events, guards and actions should be documented in tabular form.
 ====
 
-=== Theory
+== Theory
 
 Asynchronous distributed embedded applications communicating through messages have underlying assumptions.
 
@@ -243,7 +241,7 @@ A distributed machine will only support eventual consistency.
 If you want to provide ACID, you would need to lock down all sensors and actuators during a distributed transaction.
 This is obviously not possible if your machine is processing a request or moving material.
 
-=== Lessons Learnt
+== Lessons Learnt
 
 Never try to transform a distributed asynchronous system into a synchronously centrally controlled application.
 It will never work as expected.
@@ -272,7 +270,7 @@ The advocates of this solution just forget about the costs of reliability <<fall
 ====
 
 [biblography]
-=== Links
+== Links
 
 - [[[actor-model, 1]]] https://en.wikipedia.org/wiki/Actor_model[Actor Model]
 - [[[fallacies, 2]]] https://en.wikipedia.org/wiki/Fallacies_of_distributed_computing[Fallacies of Distributed Computing]

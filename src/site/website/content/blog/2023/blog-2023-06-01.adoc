@@ -5,8 +5,6 @@ date: 2023-06-01
 tags: ["jvm-languages", "series-students"]
 ---
 
-== Teaching Closure I
-
 include::../fragments/_config-mb-blog.aodc[]
 
 image::2023-06-01-head.jpg[width=420,height=360,role=left]
@@ -44,7 +42,7 @@ ____
 
 For many tasks, functional programs are easier to understand, less error-prone, and much easier to reuse.
 
-=== Clojure Development Environment
+== Clojure Development Environment
 
 Clojure cite:[programming-clojure] is a splendid approach to learn functional programming idioms.
 The language is well-documented.
@@ -72,7 +70,7 @@ The price is very reasonable.
 The company shall have a stream of income to continue developing this awesome integrated development environment.].
 People are familiar with its functions and do not need to learn a new tool.
 
-=== Declarations
+== Declarations
 
 You can define values and functions:
 
@@ -118,7 +116,7 @@ Use it to minimize global name pollution.
 <2> The _letfn_ expression declares local functions in the scope of the function.
 Use it to minimize global name pollution.
 
-=== Conditional Statements
+== Conditional Statements
 
 You still need to write selection code.
 The usual constructs are:
@@ -145,7 +143,7 @@ If true returns the first expression, if false returns the optional second expre
 The associated expression is evaluated and the result returned.
 If no expression evaluates to true, the else expression is evaluated and returned or nil if not defined.
 
-=== Some Definitions
+== Some Definitions
 
 Symbols are identifiers that are normally used to refer to something else.
 They can be used in program forms to refer to function parameters, let bindings, class names, and global vars.
@@ -167,7 +165,7 @@ They provide very fast equality tests.
 (keyword? (keyword "aKeyword"))                               ;; true
 ----
 
-=== Arithmetic
+== Arithmetic
 
 Clojure supports all the number types of the Java language.
 Here are some examples:
@@ -201,7 +199,7 @@ Here are some examples:
 
 Study the documentation, more arithmetic and logical operators are available.
 
-=== Collections
+== Collections
 
 [source,clojure]
 ----
@@ -229,6 +227,6 @@ The Clojure collections support efficient creation of 'modified' versions, by ut
 The collections are efficient and inherently thread-safe.
 Collections are represented by abstractions, and there may be one or more concrete realizations.
 
-=== References
+== References
 
 bibliography::[]

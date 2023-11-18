@@ -5,8 +5,6 @@ date: 2024-08-01
 tags: ["java"]
 ---
 
-== Questions an Agile Architect Should Discuss
-
 include::../fragments/_config-mb-blog.aodc[]
 :ref-actor-model: https://en.wikipedia.org/wiki/Actor_model[Actor Model]
 
@@ -36,7 +34,7 @@ Identify weaknesses and improvement area.
 Now you have the first draft of your architecture.
 ====
 
-=== Internationalization, localization and accessibility Themes
+== Internationalization, localization and accessibility Themes
 
 What user interface should we define?::
 Acknowledge that a software developer is missing the formal education to create good user interfaces.
@@ -54,7 +52,7 @@ Your organization shall implement a translation process for all involved artifac
 Translation activities are often outsourced to specialized companies.
 You should integrate their processes in your toolchain.
 
-=== Scalability Themes
+== Scalability Themes
 
 How do the system components communicate with each other?::
 Model with asynchronous communication and idempotent commands.
@@ -86,7 +84,7 @@ If necessary, the final application can be deployed as a set of distributed serv
 footnote:[The approach is promoted in multiple technical stacks such as Java Spring framework https://docs.spring.io/spring-modulith/docs/0.4.0/reference/html/[Modulith].
 ====
 
-=== Security Themes
+== Security Themes
 
 How should we log activities and why?::
 Each bounded domain shall implement their own log record repository.
@@ -102,7 +100,7 @@ _Review your internal documented solution_
 How do we authenticate and authorize?::
 JWT and OAuth are regular approach for webservers.
 
-=== Persistent Data Themes
+== Persistent Data Themes
 
 How should we persist data?::
 _Review your internal documented solution_
@@ -113,7 +111,7 @@ _Review your internal documented solution_
 How do we import data into the system?::
 _Review your internal documented solution_
 
-=== Release and Migration Themes
+== Release and Migration Themes
 
 How do we release a version of the product?::
 _Review your internal documented solution_
@@ -126,7 +124,7 @@ _Review your internal documented solution_
 How do we archive data?::
 _Review your internal documented solution_
 
-=== Tips
+== Tips
 
 You are a talented software architect.
 You are in charge to define the blueprint of your digital solution.
@@ -145,7 +143,7 @@ You will be able to solve almost all the design challenges you will be confronte
 A good approach is to start with a modular monolith <<modular-monoliths>>.
 
 [bibliography]
-=== Links
+== Links
 
 - [[[modular-monoliths, 1]]] link:../../2022/modular-monoliths-are-the-new-graal/[Modular Monoliths are the new Graal]
 Marcel Baumann. 2022.
@@ -159,6 +157,6 @@ Marcel Baumann. 2021.
 Marcel Baumann. 2019.
 - [[[actor-model, 6]]] https://en.wikipedia.org/wiki/Actor_model[Actor Model]
 
-=== References
+== References
 
 bibliography::[]

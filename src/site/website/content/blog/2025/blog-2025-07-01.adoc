@@ -5,8 +5,6 @@ date: 2025-07-01
 tags: ["organization", "embedded"]
 ---
 
-== Modern Embedded Software Development
-
 include::../fragments/_config-mb-blog.aodc[]
 
 image::2025-07-01-head.jpg[width=420,height=360,role=left]
@@ -66,7 +64,7 @@ Few companies have development groups of thirty or more people working on one pr
 - Scrum <<agile-architecture-within-scrum>>, <<how-to-detect-fake-scrum>>
 - LeSS <<less-lessons-learnt>>
 
-=== Lessons Learnt
+== Lessons Learnt
 
 You were just promoted to senior designer of a team.
 Which principles should you advocate for?
@@ -92,7 +90,7 @@ Documentation is published as a static website.
 - API will be documented with {ref-doxygen}.
 
 [bibliography]
-=== Links
+== Links
 
 - [[[agile-software-architecture, 1]]] link:../../2025/agile-software-architecture/[Agile Software Architecture]
 - [[[asynchronous-distributed-systems, 2]]] link:../../2025/distributed-systems/[Asynchronous Distributed Systems]
@@ -109,6 +107,6 @@ Documentation is published as a static website.
 - [[[less-lessons-learnt, 13]]] link:../../2021/less-lessons-learnt/[LeSS Lessons Learnt]
 - [[[software-structure-ddd, 14]]] link:../../2022/software-structure-with-ddd/[Software Structure with DDD]
 
-=== References
+== References
 
 bibliography::[]

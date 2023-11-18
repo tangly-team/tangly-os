@@ -5,26 +5,24 @@ date: 2025-05-02
 tags: ["C++", "architecture", "embedded"]
 ---
 
-== Domain-Driven Design with Embedded Microcontroller Applications
-
 include::../fragments/_config-mb-blog.aodc[]
 
 image::2025-05-02-head.png[width=420,height=360,role=left]
 
-=== Bounded Domains in {cpp}
+== Bounded Domains in {cpp}
 
-=== Bounded Domain API
+== Bounded Domain API
 
-=== Entities and Identity
+== Entities and Identity
 
-=== Factory and Repository
+== Factory and Repository
 
-=== Value Objects
+== Value Objects
 
-=== Good Practices
+== Good Practices
 
 [bibliography]
-=== Links
+== Links
 
 - [[[meaningful-identifiers, 1]]] link:../../2021/meaningful-identifiers/[Meaningful Identifiers].
 Marcel Baumann. 2021.
@@ -39,7 +37,7 @@ Marcel Baumann. 2019.
 - [[[ddd-ros2, 6]]] link:../../2024/domain-driven-design-with-ros-2/[Domain-Driven Design with ROS-2].
 Marcel Baumann. 2024
 
-=== References
+== References
 
 bibliography::[]
 

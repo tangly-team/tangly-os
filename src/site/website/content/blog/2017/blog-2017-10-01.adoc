@@ -5,10 +5,10 @@ date: 2017-10-02
 tags: ["agile"]
 ---
 
-== Agile Approaches and Fix Price Contracts
-
 include::../fragments/_config-mb-blog.aodc[]
 
+[.float-group]
+--
 image::2017-10-01-head.gif[width=420,height=360,role=left]
 
 The difficulty with contracts is that it is about trust.
@@ -18,11 +18,14 @@ If no trust exists, the henceforth dreaded process is established.
 After tough negotiations, the development team starts but does not collaborate with the customer.
 They just build what is written in outdated requirements.
 A subpar solution is shipped and the relationship with the customer is deeply damaged.
+
 We can do better.
 We shall collaborate, trust each other and create an awesome product.
 This is the essence of _being agile_.
+
 How shall we be agile and work the lean way in a contractual environment?
 By contractual I mean no time and material approach.
+--
 
 We shall
 
@@ -37,7 +40,7 @@ Select a rolling contract approach to deeply involve both sides.
 * _Fail early and learn_.
 The disputes between contractors and customers shall stay reasonable due to the smaller amounts in play.
 
-=== Contract
+== Contract
 
 Initial success is the timely _realization_ and _deployment_ of the https://en.wikipedia.org/wiki/Minimum_viable_product[MVP].
 The MVP is the anchor of trust.
@@ -66,7 +69,7 @@ You assume you already know everything about the product to build._
 The contract defines a service.
 The delivered product is the output of the service contract but not the sole item of the contractual binding.
 
-=== Tracking
+== Tracking
 
 Signing a contract is the easy part.
 Now you must track progress, manage changes, and reach the agreed goals in a timely and economical way.
@@ -83,7 +86,7 @@ You shall gain visibility of progress, transparent costs, and a tentative end to
 The later questions are solved differently based on the level of trust between the contractor and the customer.
 Try to avoid a full-fledged change management process and systematic escalations.
 
-=== Work Approach
+== Work Approach
 
 The {ref-manifesto} states
 
@@ -133,7 +136,7 @@ The Scrum master, the product owner and the team shall perform these activities.
 Never use external consultants or business analysts.
 The ones writing the stories and estimating them shall implement them.
 
-=== Fallback
+== Fallback
 
 Hide the fact you are working the agile way.
 Do not tell the customer you are working any differently to normal.
@@ -144,7 +147,7 @@ Sign a perfectly normal contract.
 UseAgile techniques and especially {ref-xp} to improve delivery.
 You need to have a _do not ask, do not tell_ type policy because basically you are lying.
 
-=== Conclusion
+== Conclusion
 
 The most successful projects I worked for had selected the money dimension seen as investment budgets.
 Goal correction was communicated early and the contract amended accordingly.

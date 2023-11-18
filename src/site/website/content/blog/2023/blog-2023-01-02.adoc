@@ -5,8 +5,6 @@ date: 2023-01-08
 tags: ["agile", "devops", "organization"]
 ---
 
-== SME IT Responsible
-
 include::../fragments/_config-mb-blog.aodc[]
 
 image::2023-01-02-head.jpg[width=420,height=360,role=left]
@@ -49,7 +47,7 @@ https://github.com/[Microsoft GitHub], https://about.gitlab.com/[GitLab], https:
 The IT responsible shall select the best alternative for his organization. Best means technically adequate and financially sound.
 ====
 
-=== Areas of Works
+== Areas of Works
 
 Every company is now a technology and software development company.
 
@@ -83,7 +81,7 @@ Security and associated firewalls are mandatory to respect corporate governance 
 Monitoring is a must for all enterprise relevant applications.
 Special solutions are seldom needed and shall be provided on a case basis.
 
-=== Typical Responsibilities
+== Typical Responsibilities
 
 An IT director can help the manager of an SME to respond to many problems, such as:
 
@@ -101,7 +99,7 @@ Is the restore process timely?
 * Are the IT teams properly sized and supported?
 * Is the computer system still adapted to the needs of the company?
 
-=== Ideal Profile
+== Ideal Profile
 
 The ideal candidate shall have experience and training in:
 
@@ -131,7 +129,7 @@ A typical scenario is:
 * Do we use commercial solutions of other hyperscalers?
 
 [bibliography]
-=== Links
+== Links
 
 - [[[first-steps-devops,1]]] link:../../2022/first-steps-devops/[First Steps DevOps]
 Marcel Baumann. 2022.
@@ -144,6 +142,6 @@ Marcel Baumann. 2022.
 - [[[zero-defect, 5]]] link:../../2020/advocate-zero-bug-policy-in-your-projects/[Advocate Zero Bug Policy in Your Projects]
 Marcel Baumann. 2020.
 
-=== References
+== References
 
 bibliography::[]

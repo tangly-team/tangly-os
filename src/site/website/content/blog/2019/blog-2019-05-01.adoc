@@ -5,10 +5,10 @@ date: 2019-05-06
 tags: ["agile", "design", "architecture", "series-agile-design"]
 ---
 
-== Agile Architecture Principles
-
 include::../fragments/_config-mb-blog.aodc[]
 
+[.float-group]
+--
 image::2019-05-01-head.jpg[width=420,height=360,role=left]
 
 You are applying the agile, lean approach to your software product development.
@@ -17,10 +17,13 @@ The product market introduction is a success.
 You will successfully sell the solution for the next ten years.
 
 How shall you define the software architecture of your product and ensure a long living and high-quality solution?
-The experts tell you the design is emergent.
-What does it mean?
 
-=== LeSS Architecture Observations
+The experts tell you the design is emergent.
+
+What does it mean?
+--
+
+== LeSS Architecture Observations
 
 The following observations are true for any software product.
 It is irrelevant if developed using agile approaches or traditional older ones.
@@ -40,7 +43,7 @@ Agile architecture comes from the behavior of agile architecting
 * _test-driven development and refactoring_,
 * and other hands-on-the-code behaviors.
 
-=== Quality of Your Architecture
+== Quality of Your Architecture
 
 You shall measure the quality of your design and produced software artifacts.
 
@@ -60,7 +63,7 @@ You find further information in Code Scene as Crime Scene, SonarLint for the Imp
 
 Read the https://less.works/less/technical-excellence/architecture-design.html[LeSS architecture page] for a comprehensive discussion of agile architecting.
 
-=== Good versus bad architecture
+== Good versus bad architecture
 
 [quote]
 ____
@@ -94,7 +97,7 @@ The above hints and practices shall empower your teams to practice successfully 
 Your organization shall train your collaborators, see also the _Shu Ha Ri_ model.
 Smart money goes in training your collaborators.
 
-=== Agile Architecture Series
+== Agile Architecture Series
 
 The agile architecture track contains the following blogs
 

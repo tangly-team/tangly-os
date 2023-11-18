@@ -5,8 +5,6 @@ date: 2021-03-02
 tags: ["java", "design"]
 ---
 
-== MicroStream 4.x
-
 include::../fragments/_config-mb-blog.aodc[]
 
 image::2021-03-02-head.jpg[width=420,height=360,role=left]
@@ -24,7 +22,7 @@ I use the library to prototype bounded domain implementations requiring persiste
 The implementation speed and ease are awesome.
 I hope the current flaws of the product will be removed and allow productive use.
 
-=== Constraints
+== Constraints
 
 Saving a Java Object::
 The library made some strange design decisions.
@@ -41,7 +39,7 @@ If you have access to the collection, just call store on the collection.
 If the collection is hidden inside an object, you are forced to use an _eager_ store.
 If you use standard object-oriented practices, you will have to use the less efficient approach of eager write operations.
 
-=== Design
+== Design
 
 Our provider persists instances for all our bounded domains in need of persistence.
 
@@ -99,9 +97,9 @@ public record ProviderPersistence<T>(@NotNull EmbeddedStorageManager storageMana
 }
 ----
 
-=== Current Flaws
+== Current Flaws
 
-==== In Memory File System
+=== In Memory File System
 
 In-memory file systems are a must for unit and integration testing.
 A continuous integration pipeline does not always have access to a regular file system.
@@ -118,7 +116,7 @@ The execution speed rocks.
 Thanks to the MicroStream developers.
 See their _file systems_ example in their https://github.com/microstream-one/examples[GitHub example repository]
 
-==== Java Records
+=== Java Records
 
 A field cannot be manipulated anymore in record since Java JDK 1.5.1.
 The _MicroStream_ 4.x releases crash when using record in JDK 15 and JDK 16. It only works with JDK 14.
@@ -132,7 +130,7 @@ _--add-exports=java.base/jdk.internal.misc=ALL-UNNAMED_ to have a working approa
 
 I have to verify if the library can cope with sealed declarations.
 
-=== Next Steps
+== Next Steps
 
 * Wait for the release scheduled for April 2021 and pray they will support the record feature.
 Records are an official feature in JDK 16 released in March 2021 and no more a preview feature.

@@ -5,8 +5,6 @@ date: 2025-03-01
 tags: ["java", "c++", "architecture", "embedded"]
 ---
 
-== Logging Concepts
-
 include::../fragments/_config-mb-blog.aodc[]
 
 image::2025-03-01-head.jpg[width=420,height=360,role=left]
@@ -32,7 +30,7 @@ ____
 
 This page aims to discuss the finer details about logging on embedded systems, and cover some interesting topics such as deferred logging.
 
-=== Logging in Distributed Systems
+== Logging in Distributed Systems
 
 Logs are supposed to be a consistent and reliable source of information which makes it easier for us to troubleshoot issues in our systems.
 A standard log file structure that is consistent across all log files is required for good logging.
@@ -86,11 +84,11 @@ To provide the greatest information on a specific event/context, it denotes the 
 These logs allow us to examine variable values as well as complete error stacks.
 ====
 
-==== Java log4j2 Library
+=== Java log4j2 Library
 
 Apache Foundation log4j2 <<log4j2-logging>> defines a modern logging library based on the learnings of https://logging.apache.org/[log4j1.x] and https://www.slf4j.org/[slf4j].
 
-==== {cpp} Library gogl
+=== {cpp} Library gogl
 
 Google Log _glog_ <<google-logging>> defines a series of macros that simplify many common logging tasks.
 
@@ -109,7 +107,7 @@ The boost library is the tremendeous advantage to have an active community and a
 The Boost organization and wider Boost community supports research and education into the best possible uses of {cpp} and libraries developed for it, particularly, but not exclusively those contained in the Boost Library.
 ====
 
-==== ROS-2 Logging
+=== ROS-2 Logging
 
 The logging subsystem in ROS 2 aims to deliver logging messages to a variety of targets, including:
 
@@ -119,7 +117,7 @@ The logging subsystem in ROS 2 aims to deliver logging messages to a variety of 
 By default, log messages in ROS 2 nodes will go out to the console on stderr, to log files on disk, and to the /rosout topic on the ROS 2 network.
 All targets can be individually enabled or disabled on a per-node basis.
 
-=== Lessons Learnt
+== Lessons Learnt
 
 You shall define a logging concept for your product.
 Enforce the log record format in all packages.
@@ -128,12 +126,12 @@ The language shall be English International.
 Verify that your log files can programmatically be parsed and filtered.
 
 [bibliography]
-=== Links
+== Links
 
 - [[[log4j2-logging, 1]]] https://logging.apache.org/log4j/2.x/index.html[log4j2 Java Logging]
 - [[[google-logging, 2]]] https://github.com/google/glog[Google Log]
 - [[[ros2-logging, 3]]] https://docs.ros.org/en/galactic/Concepts/About-Logging.html[About ROS-2 Logging]
 
-=== References
+== References
 
 bibliography::[]

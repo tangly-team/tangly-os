@@ -5,8 +5,6 @@ date: 2019-09-17
 tags: ["agile"]
 ---
 
-== A Commons View on Scrum
-
 include::../fragments/_config-mb-blog.aodc[]
 
 image::2019-09-01-head.jpg[width=420,height=360,role=left]
@@ -39,7 +37,7 @@ They are relevant to nearly any situation where people - such as Scrum teams - m
 
 Below the eight principles are presented with a mapping to Scrum aspects.
 
-=== A clear definition of the contents of the common pool resource and effective exclusion of external unentitled parties
+== A clear definition of the contents of the common pool resource and effective exclusion of external unentitled parties
 
 The Scrum teams define the artifacts and processes exclusively owned by the team.
 Teams take ownership of items such as source code, Scrum board, pull process.
@@ -47,7 +45,7 @@ Other items, such as a refactoring process, incident tickets produce more infigh
 You can measure the maturity of your team accordingly to the clarity, which resources they own exclusively.
 The first step shall often be _collective ownership of source code_ and _common coding style_.
 
-=== The appropriation and provision of common resources that are adapted to local conditions
+== The appropriation and provision of common resources that are adapted to local conditions
 
 Agile teams own commons resources such as * https://martinfowler.com/bliki/CodeOwnership.html[Collective ownership of source code], * Definition of Done DoD, * Sprint Backlog, * Coding Guidelines, * Team rules and work techniques.
 
@@ -57,7 +55,7 @@ They do not own the internal quality of the product.
 More mature teams are able to make the transition with the support of their Scrum master and the organization.
 They truly own the source code and its quality.
 
-=== Collective-choice arrangements that allow most resource appropriators to participate in the decision-making process
+== Collective-choice arrangements that allow most resource appropriators to participate in the decision-making process
 
 {ref-scrum} or {ref-less} have quite a few platforms to support the decision-making process
 
@@ -76,7 +74,7 @@ The events are seldom a platform to collaborate, discuss options and experiment 
 
 Consensus or consent approaches are widely more successful than majority decisions is one of the findings of Elinor.
 
-=== Effective monitoring by monitors who are part of or accountable to the appropriators
+== Effective monitoring by monitors who are part of or accountable to the appropriators
 
 You have to monitor your commons to know if they are healthy.
 You can
@@ -89,7 +87,7 @@ You can
 I regularly state monitoring is the first commitment of team members to be publicly accountable.
 Often it is painful to realize how difficult transparency is.
 
-=== A scale of graduated sanctions for resource appropriators who violate community rules
+== A scale of graduated sanctions for resource appropriators who violate community rules
 
 Rules are only respected if sanctions are implemented upon violations of the agreement.
 Scrum teams can rule that
@@ -104,7 +102,7 @@ As a Scrum master, you must gently empower them to sanction.
 If this rule is not implemented, you will always land in the https://en.wikipedia.org/wiki/Tragedy_of_the_commons[tragedy of the commons] and utterly fail in your agile journey.
 Worse, your product will probably also fail.
 
-=== Mechanisms of conflict resolution that are cheap and of easy access
+== Mechanisms of conflict resolution that are cheap and of easy access
 
 Conflict resolution shall be fast, cheap, and timely.
 Scrum provides excellent approaches:
@@ -122,7 +120,7 @@ The automatic checks are worth the effort as an effective, neutral, and cost-eff
 The Scrum events are platforms to discuss and resolve the discovered violations.
 The Scrum master must facilitate the discussion until the team members have developed their own conflict resolution instruments.
 
-=== Self-determination of the community recognized by higher-level authorities
+== Self-determination of the community recognized by higher-level authorities
 
 Self-determination works only if recognized by the overall authorities and organization.
 Here we leave the team level and need department recognition - for a LeSS approach - or company level recognition - for example to have ownership to remove a team member -.
@@ -160,7 +158,7 @@ I rediscovered the commons rules through a presentation of https://en.wikipedia.
 He inspired us to look at agile approaches through the _commons'_ lens.
 
 [bibliography]
-=== Links
+== Links
 
 - [[[tradegy-commons, 1]]] https://gosei.fi/blog/tragedy-of-commons-1/[Tragedy of Commons or Self-Management].
 Ran Nyman. 2020

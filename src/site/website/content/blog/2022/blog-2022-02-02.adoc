@@ -5,10 +5,10 @@ date: 2022-02-05
 tags: ["agile"]
 ---
 
-== Agile and Nearshore Development
-
 include::../fragments/_config-mb-blog.aodc[]
 
+[.float-group]
+--
 image::2022-02-02-head.jpg[width=420,height=360,role=left]
 
 The majority of software product development initiatives uses an agile approach.
@@ -18,6 +18,7 @@ It is natural that organizations would gravitate towards the many benefits agile
 
 Scarce resources and time-to-market constraints have driven the implementation of shoring development initiatives.
 Awareness that talent can be found at any location speed-up the trend.
+--
 
 The outsourcing market is undergoing constant evolution.
 Traditionally, cost reduction was the key driver for software development outsourcing, but now it doesn't even make the top five, according to
@@ -52,7 +53,7 @@ An agile shoring approach can be very successful.
 Your organization needs to take the transformation seriously.
 You must invest in cultural changes and adapt your processes to realize the full potential.
 
-=== Team Models
+== Team Models
 
 [cols="1,3,3,3",options="header"]
 |===
@@ -89,7 +90,7 @@ You keep product responsibility.
 |Local product development team You delegate product responsibility to the local team.
 |===
 
-=== Nearshore advantages
+== Nearshore advantages
 
 Geographical and Cultural Proximity::
 Nearshore locations are located in or near Europe, making it easy to reach from most European cities via air connection As a European nation.
@@ -103,7 +104,7 @@ Intellectual property protection::
 European security and privacy requirements such as those imposed by ISO, GDPR, PCI and HIPAA are understood.
 Compliance with European legislation can be achieved.
 
-=== Risks
+== Risks
 
 Language::
 All documents and comments in the source code shall be legible for all team members.
@@ -129,7 +130,7 @@ The various departments and locations should have similar approaches to agile fr
 A good solution is to standardize on {ref-scrum}.
 Train and certify all collaborations in {ref-scrum} and your technology stack to create common ground and vocabulary.
 
-=== Checklist
+== Checklist
 
 Ask yourself if your company culture and processes treat all collaborators fairly.
 Is our company willing to:
@@ -146,7 +147,7 @@ Is our company willing to:
 . Support meritocracy?
 Any role can be held by a local or a remote collaborator?
 
-=== Next Development
+== Next Development
 
 The Corona crisis has pushed collaborators to work from home over a long period.
 I also observe that quite a few team are heavily distributed geographically and often live in different countries.
@@ -170,7 +171,7 @@ All-remote work promotes:
 Beware that all-remote approach is a disruptive cultural change for a traditional organization with offices.
 
 [bibliography]
-=== Links
+== Links
 
 - [[[scrum-master, 1]]] link:../../2021/scrum-master-formation/[Scrum Master Formation].
 Marcel Baumann. 2021

@@ -5,8 +5,6 @@ date: 2022-09-10
 tags: ["agile"]
 ---
 
-== Eliminate Your Printer
-
 include::../fragments/_config-mb-blog.aodc[]
 
 image::2022-09-02-head.jpg[width=420,height=360,role=left]
@@ -34,7 +32,7 @@ Optimize your internal process with technology.
 _I challenge you._
 _Your company does not need any printers, fax machines or landlines._
 
-=== Eliminate Your Printer
+== Eliminate Your Printer
 
 You do not need a printer in your company.
 Send your documents as PDF documents.
@@ -54,7 +52,7 @@ We did not print any documents in the years 2021 and 2022.
 This is a powerful contribution to *sustainability*.
 ====
 
-=== Fax Machines are obsolete
+== Fax Machines are obsolete
 
 I cannot understand why anybody wants to send information using a fax machine.
 
@@ -62,7 +60,7 @@ Electronic communication, PDF documents and digital photography are better solut
 
 Simply use emails or chat solutions.
 
-=== Landlines were used in the last millennium
+== Landlines were used in the last millennium
 
 Teams are distributed over the world.
 Collaborators often work at home or at co-working offices.
@@ -75,7 +73,7 @@ Often the cost of a mobile subscription is lower than the cost of a landline.].
 Use a mobile phone for your work interactions.
 Better is to set up channels on Slack or Discord applications.
 
-=== Eliminate Your Paper Archive
+== Eliminate Your Paper Archive
 
 I always found very strange that people print their documents and store them in cabinets.
 
@@ -93,7 +91,7 @@ You can exchange documents and emails securely with collaborators and customers 
 We also support the S/Mime-based approach.
 ====
 
-=== Lessons Learnt
+== Lessons Learnt
 
 - Printers and fax machines are really obsolete.
 We never add a true need to buy one in the last eight years
@@ -126,7 +124,7 @@ Analog paper and digital processes are not compatible.
 ====
 
 [bibliography]
-=== Links
+== Links
 
 - [[[tangly-six-years, 1]]] link:../../2022/the-quest-for-an-agile-company-six-years-tangly-llc/[tangly Six Years]
 - [[[tangly-five-years, 2]]] link:../../2020/the-quest-for-an-agile-company-five-years-tangly-llc/[tangly Five Years]

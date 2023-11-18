@@ -5,8 +5,6 @@ date: 2023-11-10
 tags: ["agile", "git", "series-students"]
 ---
 
-== Semantic Commits for the Impatient
-
 include::../fragments/_config-mb-blog.aodc[]
 :ref-svn: https://subversion.apache.org/[Subversion]
 :ref-semver: http://semver.org/[SemVer]
@@ -29,7 +27,7 @@ The development team can use scripts to filter and aggregate commit information 
 
 This convention dovetails with {ref-semver}, by describing the features, fixes, and breaking changes made in commit messages.
 
-=== Structure
+== Structure
 
 The commit message should be structured as follows:
 
@@ -80,7 +78,7 @@ This type is used when you do not know which other tag you could use.
 
 footers other than BREAKING CHANGE: <description> may be provided and follow a convention similar to git trailer format.
 
-=== How to Create a Semantic Commit with Git
+== How to Create a Semantic Commit with Git
 
 The command line for a complex git commit message is simple:
 
@@ -103,7 +101,7 @@ Your IDE probably provides a comfortable user interface to create a commit messa
 Simply use your preferred IDE to write semantic commits with multiple blocks.
 ====
 
-=== Thoughts
+== Thoughts
 
 Please start with a small list and extend it if needed.
 I suggest: feature, refactor, fix, build, chore
@@ -127,6 +125,6 @@ I seldom use the footer for breaking change information.
 I handle this information through semantic versioning in tags.
 ====
 
-=== Links
+== Links
 
 include::../fragments/_git-series-inks.adoc[]

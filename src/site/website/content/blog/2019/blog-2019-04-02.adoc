@@ -5,10 +5,10 @@ date: 2019-04-15
 tags: ["organization"]
 ---
 
-== Why I still love to use a MacBookPro and macOS in 2019
-
 include::../fragments/_config-mb-blog.aodc[]
 
+[.float-group]
+--
 image::2019-04-02-head.jpg[width=420,height=360,role=left]
 
 As a young developer, I loved Linux, compiled new kernels during evening sessions and struggled days to have the correct drivers for the graphic card and communication components of my notebook.
@@ -17,8 +17,9 @@ I grew older and decided to enjoy my weekends, family and outdoor activities.
 
 And surely I shall have no virus, trojan and other evils in my workstation.
 So I went to macOS and Apple notebooks without regrets.
+--
 
-=== Gains
+== Gains
 
 The major gains using macOS are
 
@@ -42,7 +43,7 @@ It solved the dread of macOS slow or missing application updates.
 Pre-installed Unix utilities are seldom kept up to date by Apple.
 Just use Homebrew and forget about Apple slow updates.
 
-=== Daily Development
+== Daily Development
 
 The tools I really enjoy and use on a daily basis for software development - mainly Java - are
 
@@ -62,7 +63,7 @@ I retired https://www.virtualbox.org/[VirtualBox] because I do not need any virt
 They were replaced with Docker images, I stopped using MacPorts.
 Homebrew is more than enough for my needs.
 
-=== Daily Work
+== Daily Work
 
 The tools I used to perform administrative work are
 

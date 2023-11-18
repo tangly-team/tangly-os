@@ -5,10 +5,10 @@ date: 2019-11-04
 tags: ["agile"]
 ---
 
-== Agile @ Scale
-
 include::../fragments/_config-mb-blog.aodc[]
 
+[.float-group]
+--
 image::2019-11-01-head.jpg[width=420,height=360,role=left]
 
 Your organization has decided to introduce agile at scale in all development departments or better in the whole company.
@@ -17,6 +17,7 @@ Your Chief of Agility _COA_, Chief of Digitalization _COD_ or Chief of Change _C
 After a few drinks, he has selected the appropriate framework for your company.
 
 Welcome to the club of companies introducing agile approaches and having no clues why they do it and how they could be successful.
+--
 
 Here some hardly learnt truths worth knowing when starting such an endeavor.
 
@@ -25,7 +26,7 @@ ____
 Imposing Agile methods introduces a conflict with the values and principles that underlie Agile methods.
 ____
 
-=== Know Popular Scaling Approaches
+== Know Popular Scaling Approaches
 
 The scaling approaches I encounter at customer sites in Switzerland and Europe are
 
@@ -44,7 +45,7 @@ _And I would never state it is the most successful_.
 
 Additional approaches exist, but I did not encounter them lately.
 
-=== Delay Scaling
+== Delay Scaling
 
 The key learning is
 
@@ -74,7 +75,7 @@ Reflect if you really need scaling.
 
 Now you are ready to experiment with scaling.
 
-=== Understand the Principles of Scaling
+== Understand the Principles of Scaling
 
 * Create a _learning organization_.
 It is the building block for agile approaches
@@ -93,7 +94,7 @@ It is the building block for agile approaches
 ** Customer features are product only when used by users.
 ** Velocity and burn-down charts are output.
 
-=== Avoid Common Errors
+== Avoid Common Errors
 
 Study the history and evolution of the various scaling approaches.
 In particular the changes in {ref-safe} are an archaeological treasury what they wrongly stated and how they corrected some identified flaws.
@@ -115,7 +116,7 @@ Scrum of Scrums where only Scrum masters attend, Release Train Engineer, System 
 * _Realize technical excellence is the only approach_ to delivering quality products to the customer.
 Raise the importance of technical excellence, and never forget that when writing software, the technology side is really vital.
 
-=== Final Words
+== Final Words
 
 Establish agile teams.
 Thin your process.
@@ -128,6 +129,6 @@ I wish you successful scaling of agile approaches.
 And I have to warn you the path to success is long and risky.
 Personally I had some successes with Large Scale Scrum - {ref-less}.
 
-=== References
+== References
 
 bibliography::[]

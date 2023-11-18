@@ -5,10 +5,10 @@ date: 2018-04-12
 tags: ["agile", "design"]
 ---
 
-== Pragmatic Craftsmanship – Professional Software Developer
-
 include::../fragments/_config-mb-blog.aodc[]
 
+[.float-group]
+--
 image::2018-04-01-head.png[width=420, height=360, role=left]
 The last months I was often confronted with software products having insufficient quality.
 
@@ -17,9 +17,11 @@ The effort to correct errors in the field eats *30% to 50%* away from the develo
 How can such a dreadful situation occur?
 
 One root cause is the low quality of the source code and ignorance of basic coding design approaches.
-We are not talking about complex design activities or complex patterns; we are discussing basic approaches how to write correct and maintainable code.
 
-=== Master Your Technology Stack
+We are not talking about complex design activities or complex patterns; we are discussing basic approaches how to write correct and maintainable code.
+--
+
+== Master Your Technology Stack
 
 Most of the programmers have no formal training in the technology stack they are using daily.
 Their best friend is the Internet.
@@ -45,7 +47,7 @@ A software developer not knowing the above items is almost certainly not a profe
 For a similar point of view, see the blog of Mike Cohn
 https://www.mountaingoatsoftware.com/blog/the-difference-between-a-professional-and-an-amateur[the difference between a professional and an amateur].
 
-=== Improve Continuously You shall strive for mastery.
+== Improve Continuously You shall strive for mastery.
 
 The feeling having reached a certain mastery level is truly awesome.
 
@@ -61,7 +63,7 @@ You shall write good enough software without errors and using the best practices
 If not, consider changing your profession.
 See my blog post about technical debt discussing the consequences of missing mastery.
 
-=== Software Craftsmanship
+== Software Craftsmanship
 
 https://en.wikipedia.org/wiki/Software_craftsmanship[Software craftsmanship] is an initiative to improve the professionalism of software developers.
 You do not have to agree with them, just look what they are doing.
@@ -99,6 +101,6 @@ How you do it is up to you.
 
 An extensive list of books can be found under link:../../../ideas/learnings/books/[Books].
 
-=== References
+== References
 
 bibliography::[]

@@ -5,10 +5,10 @@ date: 2018-11-01
 tags: ["agile", "series-how-healthy"]
 ---
 
-== How Healthy is Your Product? - Delivery Pipeline Check
-
 include::../fragments/_config-mb-blog.aodc[]
 
+[.float-group]
+--
 image::2018-11-01-head.png[width=420,height=360,role=left]
 
 You are developing your product using agile and lean approaches.
@@ -21,7 +21,9 @@ We will identify strengths, potential weaknesses and hopefully find room for imp
 
 How you build and deliver your software product has direct implications on your liquidity and cash flow.
 Improvements in your delivery pipeline have a direct impact on your finances.
-=== Rules
+--
+
+== Rules
 
 The patient solely decides if a health check shall be performed.
 The effort and depth of a health check are defined together with the patient.
@@ -37,7 +39,7 @@ The real work is to implement consistently the measures.
 I have the same personal challenge when trying to lose weight or improve my running form.
 The long term implementation is the crux.
 
-=== Delivery Pipeline Checks
+== Delivery Pipeline Checks
 
 How reproducible, fast and economic is your product deliver pipeline?
 At the end of the day, you deliver regularly a reproducible and trackable product version to your customers.
@@ -77,7 +79,7 @@ The overall goal is faster time to market and improved delivery frequency.
 The overall features and processes can be implemented through your development organization is less than a year.
 Stop evaluating, start implementing!
 
-=== Continuous Integration Practices
+== Continuous Integration Practices
 
 Check your process to see which continuous practices you are really mastering
 
@@ -94,6 +96,6 @@ The goal is to have docker images, virtual network, and in-memory database to be
 * Everyone can see the build status - _transparency, information radiator_.
 * Automate deployment.
 
-=== Posts in the Health Check Series
+== Posts in the Health Check Series
 
 include::../fragments/_how-healthy-series-links.adoc[]

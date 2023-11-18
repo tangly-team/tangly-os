@@ -5,20 +5,25 @@ date: 2022-04-05
 tags: ["agile", "jvm-languages", "series-students"]
 ---
 
-== Three JVM Languages: Java, Groovy, Clojure
-
 include::../fragments/_config-mb-blog.aodc[]
 
+[.float-group]
+--
 image::2022-04-01-head.png[width=420,height=360,role=left]
 
 Professional software developers shall master their primary technology stack and programming language.
 
 I am a proficient and experienced programmer in Java.
+
 I have written production code in Java for the last twenty years.
+
 I decided to study the language in depth and acquired various Java developer certifications.
+
 I truly love the modern Java language and the available development environments.
 
 I want to understand the strengths and weaknesses of Java.
+--
+
 Knowing the weaknesses of my technology stack empowers me to select alternative design approaches to mitigate the drawbacks.
 
 An exploring approach is to learn more about Groovy and Clojure.
@@ -28,7 +33,7 @@ I still want to stay in the Java ecosystem to better apply my learnings.
 Groovy and Clojure are available on the Java virtual machine and have good interoperability with it.
 One major interest is the functional programming approach cite:[functional-thinking] and how it impacts design and development activities.
 
-=== Clojure
+== Clojure
 
 image::2022-04-01-clojure.png[width=240,height=240,role=text-center]
 
@@ -48,7 +53,7 @@ Clojure is a Lisp dialect not constrained by backward compatibility.
 * Provides approaches to concurrent programming
 * Embraces the JVM platform
 
-==== Expressions and Statements
+=== Expressions and Statements
 
 Expressions are as expected in a programming language.
 
@@ -96,7 +101,7 @@ Languages with implicit conversion function support have similar quality.
 Sadly, Java does not support an extensible numerical tower or implicit type conversions.
 The dreadful way to use _BigInteger_, _BigDecimal_, and the missing complex type are proofs.
 
-==== Functions and Closures
+=== Functions and Closures
 
 Functions are a key construct for a functional language.
 You can define functions and closures using:
@@ -112,7 +117,7 @@ You can define functions and closures using:
 letfn[{(fn <name> [<parameters>] (<expression>))}] (<expression>)
 ----
 
-===== Higher-order Functions and Sequences
+==== Higher-order Functions and Sequences
 
 Sequence abstraction permeates the design and API of Clojure.
 Functional programming and https://clojure.org/guides/higher_order_functions[higher order functions] emphasize the design of functions working on generic data structures.
@@ -144,7 +149,7 @@ If collection contains no items, returns value and f is not called.
 The powerful advantage of dynamic typed language is that algorithms just work with various parameters.
 As long as the parameters support the required functions, there is no need to provide a specific interface.
 
-===== Recursion, Tail Recursion, Currying, Memoization, Destructuring
+==== Recursion, Tail Recursion, Currying, Memoization, Destructuring
 
 Recursion is implemented as expected.
 Recursion is preferred over loops.
@@ -161,7 +166,7 @@ No functions are provided to influence or clear the cached data.
 
 https://clojure.org/guides/destructuring[Destructuring] is well-supported for sequences, structures, and in keyword arguments.
 
-==== Thoughts
+=== Thoughts
 
 Clojure provides https://clojure.org/reference/java_interop[type hints] to help the compiler to find the correct method.
 This feature is necessary to cleanly interface with Java and support edge cases.
@@ -173,7 +178,7 @@ You are in charge of maintaining and verifying the coherence of this type system
 _I prefer to delegate such verification and validation to the compiler._
 _I would postulate that if your type system grows in complexity, it is type to reflect and start using object-orientation and object modelization._
 
-=== Java
+== Java
 
 image::2022-04-01-java.png[width=240,height=240,role=text-center]
 
@@ -184,7 +189,7 @@ Early adaptor distributions are provided to smooth the migration of your code.
 Too many Java developers did not realize that their programming language is evolving.
 They still write archaic and plainly suboptimal code instead of using the new syntax and constructs.
 
-==== Expressions and Statements
+=== Expressions and Statements
 
 The newer and rediscovered features are:
 
@@ -214,7 +219,7 @@ A better idiom for _equals_ without any conditional statement is now recommended
 
 ----
 
-==== Functions and Lambdas
+=== Functions and Lambdas
 
 Lambda expressions are well-supported in Java.
 The _java.util.function_ package provides the expected abstractions.
@@ -223,14 +228,14 @@ Function composition is supported through the provided abstractions.
 Transparent support of functions as a first-class citizen is still not completed.
 The concise method bodies proposal is still not implemented in year 2022.
 
-===== Higher-order Functions and Streams
+==== Higher-order Functions and Streams
 
 Lambdas and streams were introduced in Java 8 and released in March 2014.
 The newer versions of Java have refined the abstractions and added methods to simplify frequent use cases.
 
 The stream library is a well-implemented approach to manipulate sequences with higher-order functions.
 
-===== Recursion, Tail Recursion, Currying, Memoization, Destructuring
+==== Recursion, Tail Recursion, Currying, Memoization, Destructuring
 
 Recursion is well-supported in Java.
 The environment still does not support tail recursion optimization.
@@ -241,7 +246,7 @@ Currying is cumbersome to implement in Java.
 
 Memoization and destructuring are currently not supported.
 
-=== Thoughts
+== Thoughts
 
 Java roots are object-orientation and mutability.
 
@@ -252,7 +257,7 @@ Functions and expressions are still not handled as first-class citizens.
 The current improvements in the switch expression acknowledge the cliff.
 These improvements also slowly empower us to write a more functional code.
 
-=== Groovy
+== Groovy
 
 image::2022-04-01-groovy.png[width=240,height=240,role=text-center]
 
@@ -261,7 +266,7 @@ Great in script-like, Groovy is not necessarily equally useful in normal, produc
 While dynamic typing gives you a productivity boost, it slows down refactoring afterwards when writing code.
 That is a huge drawback if you have dozens of classes in a project tangled by dependencies.
 
-==== Expressions and Statements
+=== Expressions and Statements
 
 One cool feature of Groovy is the support of operators as syntactic sugar.
 I would welcome this feature in Java.
@@ -276,17 +281,17 @@ assert 10 == 10.1g - 0.1G
 
 <1> To create a BigDecimal, we can use the _G_ suffix.
 
-==== Functions and Lambdas
+=== Functions and Lambdas
 
 https://groovy-lang.org/closures.html[Closures] are built-in abstractions.
 
-===== Higher-order Functions and Sequences
+==== Higher-order Functions and Sequences
 
 https://docs.groovy-lang.org/docs/next/html/documentation/#_working_with_collections[Sequences and higher-order functions] are built-in constructs.
 Groovy syntax is certainly groovy and less verbose than Java.
 But Groovy is not functional style friendly.
 
-===== Recursion, Tail Recursion, Currying, Memoization
+==== Recursion, Tail Recursion, Currying, Memoization
 
 Functional programming prefers recursion to iteration.
 Groovy provides a tail recursion optimization mechanism the programmer has to explicitly call.
@@ -324,7 +329,7 @@ def fib = { n ->
 }.memoize()
 ----
 
-=== Thoughts
+== Thoughts
 
 Clojure is brilliant in the support of dynamic dispatch at runtime.
 The refined design of their collections is a proof of their support for functional approaches.
@@ -366,7 +371,7 @@ Easy to do, but you have to write the code.
 And as an engineer, I truly acknowledge the performance edge of Java against Clojure or Groovy.
 Newer approaches based on GraalVM should close the performance gap in the future.
 
-=== Recommendations for A Java Developer
+== Recommendations for A Java Developer
 
 Java 8 and functional features were introduced in March 2014.
 Every Java programmer should now be a functional programming expert.
@@ -388,6 +393,6 @@ Beware that stream and lambda expressions cannot handle checked exceptions.
 * Embrace immutability and the _record_ construct.
 * Understand deconstruction patterns and how you could apply them in our code.
 
-=== References
+== References
 
 bibliography::[]

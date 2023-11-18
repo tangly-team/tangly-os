@@ -5,8 +5,6 @@ date: 2023-09-01
 tags: ["agile", "series-students"]
 ---
 
-== Are Certifications Useful?
-
 include::../fragments/_config-mb-blog.aodc[]
 
 image::2023-09-01-head.jpg[width=420,height=360,role=left]
@@ -25,7 +23,7 @@ Certification or no certification, in the end, what matters most is your actual 
 
 Here are a few things to consider as you decide whether to get an IT certification.
 
-=== Java Certifications
+== Java Certifications
 
 If you are a young and ambitious Java developer, ypu must acquire the Oracle certified Java developer certification cite:[ocp-java-17,ocp-java-11].
 I do not think you will be a better programmer after getting a certificate.
@@ -40,7 +38,7 @@ I also discovered some arcane idioms I never used in productive code.
 I think a young developer should be certified for her main programming language and technology stack she is using daily.
 I also acquired the https://vaadin.com/learn[Vaadin certification] because I regularly developed full-stack applications with Java and https://vaadin.com/[Vaadin].
 
-=== Software Architecture Certifications
+== Software Architecture Certifications
 
 A software architect certainly should possess a certification showing his architectural capabilities.
 
@@ -53,7 +51,7 @@ The foundation now also provides training in agile software architecture in thei
 Another approach is a master degree in software engineering or computer science.
 The curriculum should teach modern ideas cite:[modern-software-engineering,continuous-delivery,building-evolutionary-architectures-2nd,domain-driven-design].
 
-=== Agile Certifications
+== Agile Certifications
 
 Agile approaches and Scrum framework are the regular approach to successfully developer software and digital products.
 I expect a professional software developer to have a formal training how to apply correctly the Scrum approach cite:[professional-product-owner,mastering-professional-scrum].
@@ -75,13 +73,13 @@ I recognize that sadly {ref-safe} is very popular in big companies.
 If you are interested in scaling agile, please consider first a formation and certification in {ref-less}.
 I strongly recommend to first master Scrum and lean approaches before tackling scaling approaches in software product development.
 
-=== Other Certifications
+== Other Certifications
 
 The PMI-ACP <<pmi-acp-certification>> is the agile certification from the project management institute.
 It has value in North America.
 It is quite unknown in Europe.
 
-=== Thoughts
+== Thoughts
 
 A certification is a proof that a professional software engineer invested in his continuous formation.
 Consider acquiring a certification to show your commitment to a specific field in our industry.
@@ -105,7 +103,7 @@ No country in the world would accept only training on the job for a physician, a
 Why does our industry still believe you can work as a professional developer without any formal training?
 
 [bibliography]
-=== Links
+== Links
 
 - [[[scrum-master-certification, 1]]] link:../../2021/scrum-master-formation/[Scrum Master Certification]
 - [[[product-owner-certification, 2]]] link:../../2021/product-owner-formation/[Product Owner Certification]
@@ -115,6 +113,6 @@ Why does our industry still believe you can work as a professional developer wit
 - [[[agile-architecture, 6]]] link:../../2021/agile-software-architecture-is-mainstream/[Agile Software Architecture is Mainstream]
 - [[[togaf-certification, 7]]] https://www.opengroup.org/certifications/togaf-certification-portfolio[TOGAF Certification]
 
-=== References
+== References
 
 bibliography::[]

@@ -5,8 +5,6 @@ date: 2023-09-25
 tags: ["java"]
 ---
 
-== Java 21 LTS
-
 include::../fragments/_config-mb-blog.aodc[]
 :ref-lombok: https://projectlombok.org/[Lombok]
 
@@ -24,7 +22,7 @@ The support for virtual threads is reaching full integration in the official Jav
 Extensions such as scoped values are available as preview feature.
 The tail-call optimization for recursive calls is sadly still missing.
 
-=== Amber Project
+== Amber Project
 
 The https://openjdk.org/projects/amber/[amber] initiative is completing the changes with pattern matching.
 Start adapting your coding idioms and use pattern matching.
@@ -44,7 +42,7 @@ The syntactic improvements initiated by Amber and core group are;
 The string template feature is worth the effort to study the provided functions.
 My code could be considerably simplified when using this functionality.
 
-=== Loom Project
+== Loom Project
 
 The https://openjdk.org/projects/loom/[loom] initiative is completing the major changes associated with virtual threads.
 
@@ -58,7 +56,7 @@ Your design can create as much threads as you want without restrictions.
 _Most of the Java developers never create directly thread instances._
 _The feature is useful for library and framework creators._
 
-=== Panama Project
+== Panama Project
 
 The panama initiative is iterating through their interfaces.
 They synchronize as much as possible their interfaces with the Valhalla and Lilliput activities.
@@ -66,18 +64,18 @@ They synchronize as much as possible their interfaces with the Valhalla and Lill
 - https://openjdk.org/jeps/448[Vector API] _Sixth Incubator_
 - https://openjdk.org/jeps/442[Foreign Function & Memory API] _Third Preview_
 
-=== Valhalla Project
+== Valhalla Project
 
 As usual, the https://openjdk.org/projects/valhalla/[Valhalla] initiative did not release any improvements in the current release.
 
 _It is time that value objects are proposed in the near future._
 _The project is going for ten years._
 
-=== Lilliput and Leyden Projects
+== Lilliput and Leyden Projects
 
 The https://openjdk.org/projects/lilliput/[lilliput] initiative aims to reduce memory usage.
 
-=== Miscellaneous Improvements
+== Miscellaneous Improvements
 
 Obsolete features are removed:
 
@@ -90,7 +88,7 @@ Extensions to existing features:
 - https://openjdk.org/jeps/445[Unnamed Classes and Instance Main Methods (Preview)]
 - https://openjdk.org/jeps/452[Key Encapsulation Mechanism API]
 
-=== Stumbling Blocks
+== Stumbling Blocks
 
 Once again {ref-lombok} up to version 1.18.28 is not working with JDK 21
 footnote:[Version 1.18.30 was released in 2023-09-20 and provides initial support for JDK 21.
@@ -109,7 +107,7 @@ You need the following additions in your gradle configuration.
 All other libraries and tools I am using worked without troubles.
 Major libraries test their current release with early-accesses and solve the problems before the official release a new Java version.
 
-=== Lessons Learnt
+== Lessons Learnt
 
 Gradle toolchain feature simplifies experimenting with a new Java version.
 The current version of {ref-gradle} runs under Java 21.
@@ -128,7 +126,7 @@ Invest effort to enhance source code and use the new features.
 So, you will avoid technical obsolesce and geriatric applications.
 
 [bibliography]
-=== Links
+== Links
 
 - [[[java-20, 1]]] link:../../2023/java-20/[Java 20].
 Marcel Baumann. 2022.

@@ -5,10 +5,10 @@ date: 2018-10-02
 tags: ["agile"]
 ---
 
-== How Should You handle the Definition of Done?
-
 include::../fragments/_config-mb-blog.aodc[]
 
+[.float-group]
+--
 image::2018-10-02-head.jpg[width=420,height=360,role=left]
 
 An agile team is the sole responsible for the internal quality of the product they build and maintain.
@@ -18,7 +18,9 @@ The developers shall be accountable for producing the expected quality and optim
 You as a developer have an ethical, professional and legal responsibility to ensure adequate quality for your products.
 
 Laws protect the confidentiality of their personal and financial data.
+
 It is a potential crime to leak credit card information, geolocation data or the worst personal documents.
+--
 
 Scrum as a clear concept to answer to the seminal question:
 
@@ -27,7 +29,7 @@ _Did we build it right?_
 
 https://less.works/less/framework/definition-of-done.html[Definition of Done] _DoD_ is a major building block to answer this question with a sounding *yes*.
 
-=== Definition of Done
+== Definition of Done
 
 https://www.scrumguides.org/scrum-guide.html[Scrum] and {ref-less} have a stringent discussion concerning _Definition of Done_.
 The key question is
@@ -80,7 +82,7 @@ This causes a lack of transparency and reduces flexibility.
 The product owner has more trouble to change the scope of the application.
 If they forecast too much work, they need to remove completed items, which they have not started yet.
 
-=== Scrum Guide Definition
+== Scrum Guide Definition
 
 The Scrum guide characterizes the _Definition of Done_ as follows:
 
@@ -94,7 +96,7 @@ If it is not an organizational standard, the _Scrum Team_ *must* create a _Defin
 * The _Developers_ are *required to conform* to the _Definition of Done_.
 If there are multiple _Scrum Teams working_ together on a product, they must mutually define and comply with the same _Definition of Done_.
 
-=== Items of a Definition of Done
+== Items of a Definition of Done
 
 * A delivery standard as defined by the team.
 * It contains all requirements to get a user story into production.

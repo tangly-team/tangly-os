@@ -5,13 +5,11 @@ date: 2024-06-01
 tags: ["agile"]
 ---
 
-== Which Questions shall be Asked during the Daily Scrum?
-
 include::../fragments/_config-mb-blog.aodc[]
 
 image::2024-06-01-head.jpg[width=420,height=360,role=left]
 
-=== Daily Scrum
+== Daily Scrum
 
 The official definition of the Daily Scrum as stated in the {ref-scrumguide} is:
 
@@ -29,7 +27,7 @@ _Daily Scrums improve communications, identify impediments, promote quick decisi
 _The Daily Scrum is *not* the only time Developers are allowed to adjust their plan._
 _*They often meet throughout the day for more detailed discussions about adapting or re-planning the rest of the Sprint’s work.*_
 
-=== Daily Scrum Questions
+== Daily Scrum Questions
 
 . Can we achieve the Sprint Goal?
 . Do we have to change the content of the Sprint Backlog to achieve the Sprint Goal?
@@ -43,7 +41,7 @@ _*They often meet throughout the day for more detailed discussions about adaptin
 . What were the biggest learnings in this Sprint?
 . Start with a quote about software engineering or agile!
 
-=== Lessons Learnt
+== Lessons Learnt
 
 A great Scrum master shall make his teams aware of the true goal of a daily Scrum meeting
 cite:[things-every-scrum-practitioner-should-know,scrum-pocket-guide-3rd,great-scrum-master,zombie-scrum-survival-guide,mastering-professional-scrum].
@@ -56,7 +54,7 @@ Certification does not proof deep knowledge.
 But at least you have learnt the definition and read historical and important texts.
 
 [bibliography]
-=== Links
+== Links
 
 - [[[detect-fake-scrum,1]]] link:../../2022/how-to-detect-fake-scrum/[How to Detect Fake Scrum?].
 Marcel Baumann. 2022.
@@ -71,6 +69,6 @@ Marcel Baumann. 2019.
 - [[[do-not-need-to-do-in-scrum,6]]] link:../../2016/what-you-do-not-need-to-do-in-scrum/[What You Do Not Need To Do In Scrum].
 Marcel Baumann. 2016.
 
-=== References
+== References
 
 bibliography::[]

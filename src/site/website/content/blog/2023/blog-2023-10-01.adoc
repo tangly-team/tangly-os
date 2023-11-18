@@ -5,8 +5,6 @@ date: 2023-10-01
 tags: ["agile", "devops", "series-students"]
 ---
 
-== Agile Visual Tools
-
 include::../fragments/_config-mb-blog.aodc[]
 
 image::2023-10-01-head.png[width=420,height=360,role=left]
@@ -22,7 +20,7 @@ You must coordinate the workflow of your team, refine the product backlog, contr
 
 The development team shall inform about progress, incremental deliveries, technical debt, impediments and risks.
 
-=== Why Visual Tools?
+== Why Visual Tools?
 
 Various practices exist to forecast product development progress, like burn-downs, burn-ups, cumulative flow, or velocity diagrams.
 
@@ -45,7 +43,7 @@ Criticism and critics are welcome.
 Bring and sell better solutions.
 ____
 
-=== Scrum Visual Aids
+== Scrum Visual Aids
 
 image::2023-10-01-visibility-accountability.png[width=420,height=360,role=left]
 
@@ -136,7 +134,7 @@ Experienced teams sometimes use additional visual aids to improve effectivity:
 * Issues flow diagrams
 * Cycle-time of stories or cycle-time of errors
 
-=== DevOps Visual Aids
+== DevOps Visual Aids
 
 DORA diagrams are similar visual aids focused on https://en.wikipedia.org/wiki/DevOps[DevOps] activities
 
@@ -148,7 +146,7 @@ image::2023-10-01-dora-metrics.png[width=80%,height=360,role=text-center]
 * https://en.wikipedia.org/wiki/Mean_time_to_recovery[Meantime to Recovery] _MTTR_.
 _Called time to restore service in the above dashboard_.
 
-=== GitHub Tools
+== GitHub Tools
 
 https://github.com[GitHub] is a web development platform that is inspired by your work style.
 It enables you to handle software development projects side-by-side with 40 million developers.
@@ -167,7 +165,7 @@ The updated projects functions better support agile approaches such as Scrum or 
 Various addons are available for more complex diagrams and visualizations.
 Start small, learn and adapt your development tools.
 
-=== Lessons Learnt
+== Lessons Learnt
 
 Visual aids improve your understanding of your product state.
 They support teams to take improvements as a regular activity.
@@ -183,13 +181,13 @@ One well-documented successful approach are the four DORA metrics and associated
 Experienced teams can improve effectivity and efficiency with more advanced technique cite:[site-reliability-engineering,devops-handbook,your-code-as-crime-scene,software-design-x-rays]
 
 [bibliography]
-=== Links
+== Links
 
 - [[[scrum-guide, 1]]] https://scrumguides.org/scrum-guide.html[Scrum Guide].
 Ken Schwaber and Jeff Sutherland. 2020.
 - [[[devops-ideas, 2]]] link:../../2022/introducing-devops-ideas/[Introducing DevOps Ideas].
 Marcel Baumann. 2022.
 
-=== References
+== References
 
 bibliography::[]

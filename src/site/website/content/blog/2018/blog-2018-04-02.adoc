@@ -5,10 +5,10 @@ date: 2018-04-18
 tags: ["agile"]
 ---
 
-== Agile Introduction Success Criteria through the LeSS lens
-
 include::../fragments/_config-mb-blog.aodc[]
 
+[.float-group]
+--
 image::2018-04-02-head.jpg[width=420, height=360, role=left]
 An agile organization is able to deliver or change her direction at any time without additional cost.
 
@@ -18,8 +18,9 @@ Often travelers never reach their true destination.
 The {ref-less} people have a clear set of conditions to increase the odds.
 
 All my experiences confirm these conditions are essential for success.
+--
 
-=== LeSS Criteria
+== LeSS Criteria
 
 Use these criteria as a checklist to evaluate your current agile transformation.
 

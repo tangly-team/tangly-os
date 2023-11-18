@@ -5,8 +5,6 @@ date: 2024-03-21
 tags: ["architecture", "students-java"]
 ---
 
-== Generate Nice Looking Statechart Diagrams
-
 include::../fragments/_config-mb-blog.aodc[]
 :ref-graphviz: https://graphviz.org/[Graphviz]
 :ref-state-machine-cat: https://github.com/sverweij/state-machine-cat[state machine cat]
@@ -36,7 +34,7 @@ As complexity grows, statecharts scale well.
 
 It is worth noting that you are already coding state machines, except that they are hidden in the code.
 
-=== Why Finite State Machines?
+== Why Finite State Machines?
 
 The actor model <<actor-model>> is a powerful approach to create resilient and scalable distributed systems.
 Asynchronous communication between actors avoids global states and painful synchronization primitives such as locks, semaphores or monitors.
@@ -74,7 +72,7 @@ An activity needs to be implemented as a separate thread and must be abruptly st
 We prefer to handle timing constraints as external events sent to the finite state machine instances.
 The source of timeout events is also the timekeeper of the system.
 
-=== How to Document Finite State Machines?
+== How to Document Finite State Machines?
 
 - {ref-plantuml} provides support for all UML diagrams including statecharts.
 All features are supported.
@@ -89,7 +87,7 @@ You can draw all types of graphs, but you are on your own.
 - {ref-state-machine-cat} has the goal to draw beautiful statecharts.
 - {ref-asciidoc} Tables
 
-=== Diagram Generators
+== Diagram Generators
 
 Code-first approach is realized with the tangly open source FSM library.
 The code description of a finite state machine is the source of the diagrams.
@@ -110,7 +108,7 @@ The generator logic is simple.
 
 The link:../../../docs/fsm[OS FSM] defines generators for the above target languages.
 
-=== History
+== History
 
 A standard to describe and execute UML Statecharts is SCXML <<scxml>>.
 The whole approach to document logic with XML notation was doomed.
@@ -118,7 +116,7 @@ This approach is dying out.
 Do not use it.
 
 [bibliography]
-=== Links
+== Links
 
 - [[[state-diagram, 1]]] https://en.wikipedia.org/wiki/State_diagram[State Diagram]
 - [[[uml-fsm, 2]]] https://en.wikipedia.org/wiki/UML_state_machine[UML State Machine]
@@ -127,6 +125,6 @@ Do not use it.
 Marcel Baumann.
 - [[[actor-model, 5]]] https://en.wikipedia.org/wiki/Actor_model[Actor Model]
 
-=== References
+== References
 
 bibliography:[]

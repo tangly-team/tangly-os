@@ -5,10 +5,11 @@ date: 2018-02-21
 tags: ["agile"]
 ---
 
-== Six Levers for better Agile Product Development
 
 include::../fragments/_config-mb-blog.aodc[]
 
+[.float-group]
+--
 image::2018-02-02-head.jpg[width=420,height=360,role=left]
 How can you create better products and services?
 
@@ -17,8 +18,9 @@ How can you delight your customers, your collaborators, and your stakeholders?
 We identified six levers to multiply the effectivity of your agile development teams and empower them to create great services and products.
 
 Please add these tools to your toolbox and create great products.
+--
 
-=== Design Thinking and Customer Experience
+== Design Thinking and Customer Experience
 
 You solve customer problems through intuitive services and products.
 Customer expectations should fit with their experience with your products.
@@ -30,7 +32,7 @@ Go out with your _incomplete_ product as soon as possible.
 Each iteration should deliver an upgraded version of the product.
 The pressure to deliver is huge. A design thinking iteration has a duration of at most one week.
 
-=== Lean Startup and Lean UX
+== Lean Startup and Lean UX
 
 Minimum viable products _MVP_ are first developed as minimally functional products.
 Within 60 days, a physical prototype will be created that customers can test during this time.
@@ -41,7 +43,7 @@ These are not pure mockups but executable applications.
 If it appeals to the customer, the MVP will evolve gradually to a minimum marketable product _MMP_.
 The focus is always on adding customer value.
 
-=== Beyond Budgeting Approaches
+== Beyond Budgeting Approaches
 
 There is no long-term budget plan for products and projects.
 After each cycle of customer feedback, the goals and budget are evaluated again.
@@ -52,7 +54,7 @@ Realizations are further funded, modified or canceled on the basis of initial re
 
 The product financing is following a start-up approach and not based on the yearly budget as usual in larger companies.
 
-=== Co-location and Team ownership
+== Co-location and Team ownership
 
 Work is done across departments, in cross-functional teams.
 All those who can contribute to the success of the product, e.g. company organization, IT, market management, or sales, sit in one room.
@@ -68,7 +70,7 @@ Scrum teams are wholly focused on their product.
 People check three times a day their emails; otherwise the email client is closed and inactive.
 All phones have voicemail.
 
-=== Agile Methods and Craftsmanship
+== Agile Methods and Craftsmanship
 
 Employee training is essential.
 In the value streams, we provide staff with experienced coaches to build knowledge in agile methods and software craftsmanship.
@@ -80,7 +82,7 @@ For bigger product development we use {ref-less} approach.
 Read this link:../../2018/one-way-to-improve-your-scrum-approach/[One Way to Improve Your Scrum Approach]
 for a description of modern agile development procedures.
 
-=== Elastic Infrastructure
+== Elastic Infrastructure
 
 We shall use the state of industry technology.
 This enables test-driven development - ATDD, TDD -, meaning predefined automated software tests that run in real-time.
@@ -91,7 +93,7 @@ Developers have fast notebooks, fast SSD, plenty of RAM, and 4K external screens
 In addition, the technical infrastructure enables software to be scaled and adjustments made immediately - CI, CD, DevOps -.
 The goal is to deliver a software release in production every few hours if needed.
 
-===  Learnt Lessons
+==  Learnt Lessons
 
 . The power of co-location is tremendous.
 The work atmosphere is focused, friendly and productive.

@@ -5,8 +5,6 @@ date: 2021-07-01
 tags: ["agile"]
 ---
 
-== Temporal Aspects of Rolling ERP Planning
-
 include::../fragments/_config-mb-blog.aodc[]
 
 image::2021-07-01-head.jpg[width=420,height=360,role=left]
@@ -28,7 +26,7 @@ These techniques include the following:
 
 What are the consequences of rolling approaches to any CRM or ERP system?
 
-=== Accounting
+== Accounting
 
 Rolling accounting is quite easy.
 
@@ -39,23 +37,23 @@ The data are usable only if your accounting department does not tune the account
 For example, Swiss companies shall separate the rolling accounting from their legal accounting used for VAT or earnings tax purposes.
 A better approach is to define rules avoiding most of the tuning actions.
 
-=== Customers, Activities and Offers
+== Customers, Activities and Offers
 
 No special effort is necessary.
 Customer relationship activities just need to be timely registered.
 
-=== Contracts and Projects
+== Contracts and Projects
 
 Only the contracts and projects active in the selected time interval shall be displayed.
 Efforts booked during the time interval are relevant for the analytics.
 
-=== Invoices
+== Invoices
 
 The invoices sent to the customers or the effectively paid invoices during the selected item interval shall be considered and displayed.
 These invoices are relevant for the computation of the https://en.wikipedia.org/wiki/Cash_flow[cash flow] and the financial success of the associated projects
 and contracts.
 
-=== Implementation
+== Implementation
 
 The tangly ERP was extended to support rolling analytics based on a user-defined time interval.
 The system shall have all raw data available for the chosen time interval.
@@ -66,7 +64,7 @@ The system supports the definition of a time interval to display only currently 
 
 The analytics time interval is independent of the system overall interval.
 
-=== Lessons Learnt
+== Lessons Learnt
 
 https://en.wikipedia.org/wiki/Event-driven_architecture[Event sourcing] concepts are very powerful to implement an ERP providing time-interval based visualization and analysis.
 The concept works well with the https://en.wikipedia.org/wiki/Domain-driven_design[Domain Driven Design] concepts.

@@ -5,8 +5,6 @@ date: 2019-04-13
 tags: ["design"]
 ---
 
-== Code Scene as Crime Scene
-
 include::../fragments/_config-mb-blog.aodc[]
 
 image::2019-04-01-head.jpg[width=420, height=360, role=left]
@@ -25,7 +23,7 @@ This article presents a set of tools you can use to better understand the altern
 Our approach is based on the de facto standard for source code version management https://git-scm.com/[git].
 If your development department is using another tool, you should consider moving to another company.
 
-=== First Steps
+== First Steps
 
 We want to investigate various contexts in our source code history and identify suspects.
 A context can be a single file, a class, a package or a module.
@@ -64,7 +62,7 @@ Find out how many errors were fixed in a specific context – e.g., identified t
 git log -- contextPath | grep 'close #' | wc -l
 ----
 
-=== Deeper Insights
+== Deeper Insights
 
 image:2019-04-01-code-that-matters.png[width=420, height=360, role=left]
 Analysis of various products found out that 5% to 10% of the source code is under active development.
@@ -74,7 +72,7 @@ Just put all your refactoring efforts to improve these 10% of your product curre
 Technical debt reduction should always be prioritized to only these hotspots.
 Simply use the above-described approach to identify the most often changed files during a specific time interval.
 
-==== Identify team and social metrics
+=== Identify team and social metrics
 
 To understand team dynamics, you should group individual developers to their team.
 Simply replace the name of the team member with the team name at the command line using grep or sed.
@@ -84,12 +82,12 @@ If none can be found, you have diffuse code ownership and will have quality issu
 Using the https://en.wikipedia.org/wiki/Domain-driven_design[domain-driven design] _DDD_ terminology, bounded domains are developed and maintained through one team.
 This approach encourages architectural purity, continuous refactoring, and accountability.
 
-==== Manage Off-boarding Risks
+=== Manage Off-boarding Risks
 
 Each time you find a set of source code artifacts only modified by a single individual, you have identified a major off-boarding risk.
 When this developer will leave the department or the company, all knowledge associated with the development and the maintenance of these components will immediately be lost.
 
-=== Visualize
+== Visualize
 
 The above scripts provide information in textual forms.
 Over time, you will become more sophisticated with your inquiries and need better tools.
@@ -97,7 +95,7 @@ Either visualize your findings with https://d3js.org/[d3js] or https://plot.ly/j
 
 Another approach is to write a small framework to analyze the data and to implement more complex queries in your preferred environment.
 
-=== Next Steps
+== Next Steps
 
 The above techniques are part of the toolbox of professional development departments.
 Establish a software craftsmanship culture in your company.
@@ -107,6 +105,6 @@ Find similar ideas in our blogs Pragmatic Craftsmanship, SonarLint for the impat
 
 Two books published in the pragmatic programmer's series are a wonderful deep analysis of source code as a crime scene cite:[your-code-as-crime-scene] and scanning your application source code cite:[software-design-x-rays].
 
-=== References
+== References
 
 bibliography::[]

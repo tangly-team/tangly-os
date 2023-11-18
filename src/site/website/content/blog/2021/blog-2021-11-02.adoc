@@ -5,22 +5,26 @@ date: 2021-11-03
 tags: ["java","gradle"]
 ---
 
-== Gradle 7 Goodies
-
 include::../fragments/_config-mb-blog.aodc[]
 
-image::2021-11-02-head.jpg[width=420,height=360,role=left]
+[.float-group]
+--
+image::2021-11-02-head.png[width=420,height=360,role=left]
 
 {ref-gradle} is my preferred build tool for all Java applications I am developing.
 
 Google chose Gradle as the official build tool for Android.
+
 Not only because build scripts are code, but because Gradle is modeled in a way that is extensible in the most fundamental ways.
+
 Gradle's model also allows it to be used for native development with C/{cpp} and can be expanded to cover any ecosystem.
+
 For example, Gradle is designed with embedding in mind using its Tooling API.
 
 What are my preferred goodies with the major version 7?
+--
 
-=== Java Module Native Support
+== Java Module Native Support
 
 Java modules were introduced with Java 9 in September 2017.
 Adoption was slow.
@@ -33,7 +37,7 @@ Just use the _java-library_ plugin.
 
 The plugin will detect the presence of a _module-info.java_ module declaration file and transparently switch to module compilation.
 
-=== Dependencies Semantic Declaration
+== Dependencies Semantic Declaration
 
 The Gradle team has decided to introduce semantic support for the declaration of dependencies.
 
@@ -43,7 +47,7 @@ The declarations can be used in all subprojects.
 
 Support is provided to group a set of related dependencies and use the alias in the various Gradle modules.
 
-=== IntelliJ Support
+== IntelliJ Support
 
 Jetbrains has improved support of Gradle in their new releases of IntelliJ.
 The 2021 versions offer native support of Gradle.
@@ -53,7 +57,7 @@ You just need to take care of one build configuration and no more need to delve 
 The only glitch is that IntelliJ has its own concept of modules and are not synchronized with the Gradle modules.
 You have to be careful to align both structures to avoid surprises.
 
-=== Jacoco Aggregated Test Coverage Reports
+== Jacoco Aggregated Test Coverage Reports
 
 The support for coverage reports over multiple gradle subprojects is still limited.
 I use the following configuration to generate aggregated coverage report over all gradle modules.
@@ -126,7 +130,7 @@ Gradle has finally new plugins to better generate unit tests and test coverage r
 The new approach to create aggregated reports is described in link:../../2022/multi-module-test-reporting-with-gradle-7.x/[Multi-module Test Reporting with Gradle 7].
 ====
 
-=== Wishes
+== Wishes
 
 I would greatly appreciate if the JaCoCo Gradle plugin is improved and align with the features of the Maven plugin.
 The process to aggregate the coverage reports on a multi-module project is cumbersome and brittle.

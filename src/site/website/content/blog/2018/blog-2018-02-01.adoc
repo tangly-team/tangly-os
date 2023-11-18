@@ -5,10 +5,11 @@ date: 2018-02-09
 tags: ["agile"]
 ---
 
-== Scrum Guide 2017: What changed?
 
 include::../fragments/_config-mb-blog.aodc[]
 
+[.float-group]
+--
 image::2018-02-01-head.jpg[width=420,height=360,role=left]
 
 The Scrum guide was revised in 2016 and got clarification concerning the core values.
@@ -20,8 +21,9 @@ A new revision was published at the end of year 2017, just a year after the addi
 What has changed?
 
 What has the community learnt and committed to the new version of the guide?
+--
 
-=== Scrum is not only for Software
+== Scrum is not only for Software
 
 Scrum was initially developed for managing and developing products.
 Starting in the early 1990s, Scrum has been used extensively, worldwide, to:
@@ -44,7 +46,7 @@ _Scrum is a tool to solve complex problems, any kind of complex problem.
 It is already the industry standard for software projects.
 It is becoming a major standard for all complex products._
 
-=== What does a Scrum Master?
+== What does a Scrum Master?
 
 Changed wording in The Scrum Master section to provide better clarity to the role.
 The text now reads:
@@ -74,7 +76,7 @@ ____
 *This means the whole team talks with stakeholders and users.*
 *The team members have a genuine interest in learning more about the product domain.*
 
-=== Scrum Events
+== Scrum Events
 
 Updated the first paragraph of the Daily Scrum section to read::
 The Daily Scrum is a 15-minute time-boxed event for the Development Team.
@@ -98,7 +100,7 @@ It establishes a daily feedback loop for improvement.*
 
 *For slow learners, time-box means maximum duration.*
 
-=== Scrum Artifacts
+== Scrum Artifacts
 
 Added to the Sprint Backlog section::
 To ensure continuous improvement, it includes at least one high priority way in which the team works, identified in the previous Retrospective meeting.
@@ -111,7 +113,7 @@ One root of the agile manifesto is lean thinking.*
 
 *For slow learners, you inspect the result of the increment and put at least one improvement measure in the next sprint backlog.*
 
-=== Previous Changes
+== Previous Changes
 
 The biggest change for the daily work was introduced in the previous revision.
 Read previous blog <<[scrum-guide-2011>>.
@@ -129,7 +131,7 @@ I welcome the focus on values, principles and core behaviors over detailed check
 Please also read again the http://agilemanifesto.org/principles.html[twelve principles] of the agile manifesto.
 
 [bibliography]
-=== Links
+== Links
 
 - [[[scrum-guide-2011, 1]]] link:../../2016/the-version-of-the-scrum-guide-2011/[Scrum Guide 2011].
 Marcel Baumann. 2016.

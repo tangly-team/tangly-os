@@ -5,8 +5,6 @@ date: 2021-08-05
 tags: ["agile", "devops"]
 ---
 
-== DevOps for Small Applications
-
 include::../fragments/_config-mb-blog.aodc[]
 
 image::2021-08-02-head.png[width=420,height=360,role=left]
@@ -19,7 +17,7 @@ This speed enables organizations to better serve their customers.
 
 A surprising side effect of this speed-up is a documented improvement of the delivered quality.
 
-=== How It Works
+== How It Works
 
 Under a DevOps model, development and operations teams are no longer _siloed_.
 Sometimes, these two teams are merged into a single team where the engineers work across the entire application lifecycle.
@@ -45,7 +43,7 @@ You will merge your Scrum software development teams, quality assurance groups, 
 _You will define cross-functional teams as documented in the {ref-scrumguide}._
 ====
 
-=== Benefits
+== Benefits
 
 Speed::
 Move at high velocity, so you can innovate for customers faster, adapt to changing markets better, and grow more efficient at driving business results.
@@ -73,7 +71,7 @@ Move quickly while retaining control and preserving compliance.
 You can adopt a DevOps model without sacrificing security by using automated compliance policies.
 For example, using infrastructure as code and policy as code, you can define and then track compliance at scale.
 
-=== DevOps Adoption
+== DevOps Adoption
 
 Transitioning to DevOps requires a change in culture and mindset.
 At its simplest, DevOps is about removing the barriers between two traditionally siloed teams, development and operations.
@@ -86,7 +84,7 @@ They take full ownership of their services, often beyond where their stated role
 Quality assurance and security teams may also become tightly integrated with these teams.
 Organizations using a DevOps model have teams that view the entire development and infrastructure lifecycle as part of their responsibilities.
 
-=== DevOps Practices
+== DevOps Practices
 
 https://en.wikipedia.org/wiki/Continuous_integration[Continuous Integration]::
 Continuous integration is a software development practice where developers regularly merge their code changes into a central repository.
@@ -125,7 +123,7 @@ They physically bring together the workflows and responsibilities of development
 Building on top of that, these teams set strong cultural norms around information sharing and facilitating communication through the use of chat applications, issue or project tracking systems, and wikis.
 This helps speed up communication across developers, operations, and even other teams like marketing or sales, allowing all parts of the organization to align more closely on goals and projects.
 
-=== DevOps Tools
+== DevOps Tools
 
 A DevOps toolchain is a set or combination of tools that aid in the delivery, development, and management of software applications throughout the system development life cycle, as coordinated by an organisation that uses DevOps practices.
 
@@ -133,7 +131,7 @@ image:2021-08-02-ci-cd-pipeline.png[role=center]
 
 Generally, DevOps tools fit into one or more activities, which support specific DevOps initiatives: Plan, Create, Verify, Package, Release, Configure, Monitor, and Version Control.
 
-=== What is Java DevOps?
+== What is Java DevOps?
 
 Java DevOps is simply applying DevOps practices and philosophies to Java app development.
 That means that compartmentalized teams are no longer needed when creating Java applications.
@@ -165,7 +163,7 @@ Cloud services can help your development and operations teams interact with infr
 With infrastructure as a code, servers and infrastructure are deployed fast, automatically patched and can easily be duplicated. +
 _Use Docker and Ansible to automate your deployment._
 
-=== Lessons Learnt
+== Lessons Learnt
 
 The motivations for what has become modern _DevOps_ and several standard DevOps practices, such as automated build and test, continuous integration, and continuous delivery originated in the Agile world, which dates to the 1990s.
 Agile development teams using methods such as {ref-xp} could not _satisfy the customer through early and continuous delivery of valuable software_ unless they subsumed the operation responsibilities associated with their applications, many of which they automated.
@@ -194,7 +192,7 @@ Although it is possible to practice DevOps with any architectural style, the mic
 Small size service allows the architecture of an individual service to emerge through continuous refactoring <<continuous-delivery>>  hence reducing the need for a big upfront design, allows for releasing the software early[citation needed] and continuously.
 
 [bibliography]
-=== Literature
+== Literature
 
 - [[[accelerate, 1]]] https://www.amazon.com/dp/B07B9F83WM[Accelerate: Building and Scaling High Performing Technology Organizations].
 Nicole Forsgren & Jez Humble & Gene Kene.

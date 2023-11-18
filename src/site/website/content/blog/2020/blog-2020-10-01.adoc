@@ -4,19 +4,23 @@ linkTitle: "Hugo Asciidoc Website"
 date: 2020-10-02
 tags: ["design", "hugo", "series-students"]
 ---
+include::../fragments/_config-mb-blog.aodc[]
 
-== Creating a technical Website with Hugo and Asciidoc
-:author: Marcel Baumann
-:email: <marcel.baumann@tangly.net>
-:homepage: https://www.tangly.net/
-:company: https://www.tangly.net/[tangly llc]
-
+[.float-group]
+--
 image::2020-10-01-head.jpg[width=420,height=360,role=left]
 
 I hosted my technical blogs on https://www.blogger.com/[blogger] for years.
-If I correctly remember, I started to use blogger ten years ago.
+
+If I correctly remember, I started to use blogger ten years ago It was a good choice at that time.
+
+I could easily write blogs and publish them.
+
 It is a great tool with some drawbacks.
-Over the years, the drawbacks sting more and more:
+Over the years, the deficiencies sting more and more
+--
+
+The major drawbacks are:
 
 * Their editor is brittle, with limited functionality and unreliable.
 The generated HTML is not legible and does not support concepts such as micro fragments, meta information or simple functions such as source code highlighting.
@@ -72,7 +76,7 @@ The bonus is that {ref-asciidoctor} newer versions have native support for _roug
 It is no more necessary to load _pygment_ highlighter and configure CSS files.
 Another huge gain is that _plantuml_ and other diagrams are generated at the right location.
 
-=== Install the Tools
+== Install the Tools
 
 My development platform is a MacBookPro and macOS.
 I use https://brew.sh/[Homebrew] as a package manager.
@@ -103,7 +107,7 @@ sudo npm install -D --save postcss
 <4> Install https://postcss.org/[PostCSS] and additional packages used by docsy to generate deployment site.
 See also https://www.docsy.dev/docs/getting-started/[docsy documentation].
 
-==== Asciidoctor Configuration
+=== Asciidoctor Configuration
 
 Below the configuration of asciidoctor in the _config.toml_ file.
 
@@ -143,9 +147,9 @@ allow = ['^dart-sass-embedded$', '^go$', '^npx$', '^postcss$', '^asciidoctor$']
 
 ====
 
-==== Docsy Configuration
+=== Docsy Configuration
 
-===== Add First Level Folders
+==== Add First Level Folders
 
 Each time you add your own first level folder – meaning at the same level as docs, blog, about, or community, you need to extend the layout to support it.
 For example, I store technical articles in the folder ideas and use the standard template.
@@ -156,7 +160,7 @@ So I need to add (if not, no items are visible in the sidebar).
 cp -R ./layouts/docs ./layouts/ideas
 ----
 
-===== Change layouts
+==== Change layouts
 
 We had to change the partial _footer.html_ to display a better looking copyright clause.
 The original version has hard coded text not really compatible with the creative commons license we are using.
@@ -167,7 +171,7 @@ The layout is updated by overwriting the involved partial file.
 cp $prjDir/src/site/website/docsy/layouts/partials/footer.html $siteDir/themes/docsy/layouts/partials
 ----
 
-==== Enable Local Search Engine
+=== Enable Local Search Engine
 
 One cool feature of {ref-docsy} is local search support through https://lunrjs.com/[lunrjs] engine.
 
@@ -180,7 +184,7 @@ offlineSearchSummaryLength = 200
 offlineSearchMaxResults = 25
 ----
 
-=== Learning
+== Learning
 
 The static website is published under {ref-site}.
 

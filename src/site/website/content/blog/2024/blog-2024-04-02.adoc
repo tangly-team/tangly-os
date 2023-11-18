@@ -5,8 +5,6 @@ date: 2024-04-10
 tags: ["java", "architecture", "agile"]
 ---
 
-== How Do We Develop Digital Products?
-
 include::../fragments/_config-mb-blog.aodc[]
 
 image::2024-04-01-head.png[width=420,height=360,role=left]
@@ -14,7 +12,7 @@ image::2024-04-01-head.png[width=420,height=360,role=left]
 A digital product is often custom hardware and a software product running on top.
 We will not discuss in this blog pure software products running on standard consumer hardware.
 
-=== Key Features
+== Key Features
 
 Concurrent programming::
 actor
@@ -30,7 +28,7 @@ alarms and errors
 Process requests::
 recipe execution
 
-=== Hardware Integration
+== Hardware Integration
 
 - GPIO
 - SPI
@@ -43,17 +41,17 @@ recipe execution
 - EEPROM and Flash
 - Bluetooth
 
-=== Technical Stacks
+== Technical Stacks
 
-==== Java
+=== Java
 
 Modern Java Vaadin Javalin Microstream JSON log4j2 Micrometer
 
-==== {cpp}
+=== {cpp}
 
 Modern {cpp} freeRTOS ROS
 
-=== Design Approaches
+== Design Approaches
 
 Object-oriented principles with PlantUML and C4
 
@@ -63,11 +61,11 @@ Asynchronous message passing and actor model
 
 arc42, asciidoc,
 
-=== Product Development
+== Product Development
 
-==== Agile with Scrum and LeSS
+=== Agile with Scrum and LeSS
 
-==== DevOps
+=== DevOps
 
 Static code analysis
 
@@ -75,11 +73,11 @@ Clean code and systematic refactoring
 
 Continuous Delivery
 
-=== Lessons Learnt
+== Lessons Learnt
 
 [bibliography]
-=== Links
+== Links
 
-=== References
+== References
 
 bibliography:[]

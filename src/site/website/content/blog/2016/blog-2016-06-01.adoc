@@ -5,8 +5,6 @@ date: 2016-06-22
 tags: ["agile"]
 ---
 
-== The Version of the Scrum Guide 2011
-
 include::../fragments/_config-mb-blog.aodc[]
 
 image::2016-06-01-head.jpg[width=320,height=320,role=left]
@@ -25,7 +23,7 @@ I have discussions with the customers and companies I coach about the responsibi
 
 Below key statements I find useful for Scrum masters and agile enthusiasts.
 
-=== Who is responsible for the introduction of the Scrum approach in the company?
+== Who is responsible for the introduction of Scrum?
 
 People often state that management should spread Scrum in the company.
 Ken and Jeff have a clear idea who is in charge of this.
@@ -44,7 +42,7 @@ ____
 The Scrum Master is a main driver for the introduction of Scrum in all departments and levels in the company.
 He needs senior management support, but the Scrum Master daily job is to spread Scrum in the company.
 
-=== Who should coach the product owner to write a better backlog and clarify the vision?
+== Who should coach the product owner?
 
 [quote]
 ____
@@ -62,7 +60,7 @@ The Scrum Master should also coach the product owner and support him in the long
 The vision and goals of the product should always contain an overall planning frame.
 During product development, empirical evidence will trigger revision of the milestones and product planning.
 
-=== What is the meaning of done and a piece of potentially shippable product?
+== What is a potentially shippable product?
 
 [quote]
 ____
@@ -88,7 +86,7 @@ The Scrum team must guaranty that at the end of each sprint all functions of the
 
 Higher quality is reached through extreme programming approach: test driven development, clean code, pair programming, pair check-in, coding dojo, static analysis tools.
 
-=== Does Scrum consider long-term planning?
+== Does Scrum consider long-term planning?
 
 Yes, it is a major activity performed by the Scrum Master and Product Owner.
 See the above point about the Scrum Master coaching the Product Owner.
@@ -102,7 +100,7 @@ During the Sprint:
 * No changes are made that would affect the Sprint Goal; * Development Team composition and quality goals remain constant; and, * Scope may be clarified and re-negotiated between the Product Owner and Development Team as more is learned.
 ____
 
-=== What is measured in a burn-down chart?
+== What is measured in a burn-down chart?
 
 [quote]
 ____

@@ -5,8 +5,6 @@ date: 2021-10-01
 tags: ["agile", "architecture", "series-students"]
 ---
 
-== Agile Design Modeling
-
 include::../fragments/_config-mb-blog.aodc[]
 
 image::2021-10-01-head.jpg[width=420,height=360,role=left]
@@ -19,7 +17,7 @@ They believe you must always abstract your abstractions and not get bogged down 
 
 As always, there is a pragmatic balance somewhere in the middle, but it does raise the interesting question of how you move from one to the other.
 
-=== Key Takeaways
+== Key Takeaways
 
 * Understanding the basics of software architecture is more important than ever before, given the distributed nature of the software systems we are now building, and the distributed nature of the teams building them.
 * The sweet spot of up front design, between too much and none at all, should focus on understanding the significant decisions and trade-offs that influence the shape of a software system.
@@ -37,7 +35,7 @@ We could state the definition of software design and architecture is
 . Architecture evaluation
 . Architecture collaboration
 
-=== Good Practices
+== Good Practices
 
 Domain-Driven Design::
 I would postulate if your agile design follow domain-driven principles, you are safe for the next five years.
@@ -50,7 +48,7 @@ Refactoring::
 Evolutive architecture means you will regularly refactor your code base.
 Refactoring implies you have extensive integration and unit tests available.
 
-=== Ideas
+== Ideas
 
 Explore approaches to improve the quality and adequacy of your architecture:
 
@@ -78,7 +76,7 @@ Agile digital product architects are aware of:
 . The software architecture role is about coding, coaching and collaboration,
 . A good software architecture enables agility.
 
-=== References
+== References
 
 bibliography::[]
 

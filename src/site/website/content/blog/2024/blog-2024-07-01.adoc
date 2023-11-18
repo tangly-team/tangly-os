@@ -5,8 +5,6 @@ date: 2024-07-01
 tags: ["agile", "architecture"]
 ---
 
-== How Should You Document Your Agile Architecture?
-
 include::../fragments/_config-mb-blog.aodc[]
 :ref-docbook: https://en.wikipedia.org/wiki/DocBook[DocBook]
 :ref-kroki: https://kroki.io/[Kroki]
@@ -40,7 +38,7 @@ Some {ref-less} facts about agile software architecture are:
 - Every programmer is some kind of architect, whether wanted or not.
 Every act of programming is some kind of architectural act: good or bad, small or large, intended or not.
 
-=== Tools
+== Tools
 
 Here is a set of tools to explain and document your architecture, design, and source code.
 The tools should support the developers in their daily work activities.
@@ -82,7 +80,7 @@ The traceability reports fulfill the expectations of certification authorities s
 A huge variety of diagram types are available through {ref-kroki} if your product has special documentation constraints.
 The tooling is well-integrated with the {ref-asciidoc} toolchain.
 
-=== Static Website
+== Static Website
 
 A software architecture documentation <<software-architecture-description>> solution shall fulfill the following constraints:
 
@@ -121,7 +119,7 @@ The site is stored in a https://git-scm.com/[Git] repository.
 The generation and publishing of the whole site use a simple script.
 ====
 
-=== arc42 Template
+== arc42 Template
 
 I regularly use the {ref-arc42} template to mitigate lengthy discussions about how extensive software architecture shall be documented.
 The founders of https://www.isaqb.org/[iSAQB] certification institute created the *arc42* template.
@@ -185,7 +183,7 @@ Either your team can use it, or your organization shall provide a better alterna
 
 Technical writers are very satisfied with {ref-asciidoc} and the provided template.
 
-=== Lessons Learnt
+== Lessons Learnt
 
 You must provide documentation to empower new team members cite:[documenting-software-architectures].
 
@@ -213,7 +211,7 @@ Please never use Microsoft Word and Excel for technical documentation.
 This will never work.
 
 [bibliography]
-=== Links
+== Links
 
 - [[[how-to-document-software-architecture, 1]]] link:../../2024/how-to-document-software-architecture/[How to Document Software Architecture].
 Marcel Baumann. 2024.
@@ -230,6 +228,6 @@ https://www.thoughtworks.com/[Thoughtworks]. 2023.
 - [[[structurizr-dsl, 7]]] https://github.com/structurizr/dsl[Structurizr DSL].
 GitHub. 2023.
 
-=== References
+== References
 
 bibliography::[]

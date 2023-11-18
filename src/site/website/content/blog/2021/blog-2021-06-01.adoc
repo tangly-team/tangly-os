@@ -5,8 +5,6 @@ date: 2021-06-01
 tags: ["agile"]
 ---
 
-== Reflections on Agile Fluency Model
-
 include::../fragments/_config-mb-blog.aodc[]
 
 image::2021-06-01-head.jpg[width=420,height=360,role=left]
@@ -23,14 +21,14 @@ Time measured in years not in days.
 Your organization needs years to transition to more agile ways of working.
 Do not rush it.
 
-=== Zones
+== Zones
 
 The model defines four zones in which your company could thrive.
 You are free to choose the zone best suited for your organization.
 Remember the zones are additive.
 If you target the third zone, your teams shall also be fluent in all practices of the first and second zones.
 
-==== Shift Team Culture: _Focusing_ teams produce business value (6 months)
+=== Shift Team Culture: _Focusing_ teams produce business value (6 months)
 
 The team generates their own day-to-day tasks and plan based on their business representative’s needs.
 Team members consider their plan to be the team’s work, not individuals’ work.
@@ -57,7 +55,7 @@ The {ref-scrumguide} defines roles and events enabling a team to achieve the goa
 [.text-center]
 _The organization focuses on agile values and fosters the nurturing of agile teams._
 
-==== Shift Team Skills: _Delivering_ teams deliver on the market cadence (24 months)
+=== Shift Team Skills: _Delivering_ teams deliver on the market cadence (24 months)
 
 Increase External Quality Productivity::
 The team has low defect rates, so less time is wasted fixing bugs and more time is invested in making improvements.
@@ -78,7 +76,7 @@ The {ref-less} people have documented a huge set of experiments helping teams to
 [.text-center]
 _The organization focuses on technical agility and improves timely delivering quality applications._
 
-==== Shift Organizational Structure: _Optimizing_ teams lead their market (5 years)
+=== Shift Organizational Structure: _Optimizing_ teams lead their market (5 years)
 
 Fluent optimizing teams understand what their market wants, what your business needs, and how to meet those needs.
 Or, as in a startup environment, they know what they need to learn and how to go about learning it.
@@ -88,7 +86,7 @@ They also know what to deliver to the market.
 [.text-center]
 _The organization focuses on value and improves the delivery of highly successful applications._
 
-==== Shift Organizational Culture: _Strengthening_ teams make their organizations stronger (unknown)
+=== Shift Organizational Culture: _Strengthening_ teams make their organizations stronger (unknown)
 
 Where Optimizing teams have the ability to understand and fulfill the needs of their market.
 Strengthening teams also play a larger role in their organization.
@@ -102,7 +100,7 @@ They actively work to make that strategy more successful.
 _The organization is a key player and has no real concurrency.
 Employees, customers and stakeholders satisfaction is high._
 
-=== Choose Your Zone
+== Choose Your Zone
 
 [cols="1,2,2,2,1",options="header"]
 .Table Zones
@@ -134,7 +132,7 @@ Employees, customers and stakeholders satisfaction is high._
 |unknown
 |===
 
-=== Learnings
+== Learnings
 
 When Introducing Agile::
 One of the biggest factors affecting team fluency is an organizational support.

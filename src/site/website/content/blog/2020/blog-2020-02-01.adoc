@@ -5,10 +5,10 @@ date: 2020-02-29
 tags: ["agile", "series-agile-design"]
 ---
 
-== How Agile Collaborators Learn
-
 include::../fragments/_config-mb-blog.aodc[]
 
+[.float-group]
+--
 image::2020-02-01-head.jpg[width=420,height=360,role=left]
 
 Most products are developed by a team, and these achievements are the fruit of teamwork.
@@ -19,8 +19,9 @@ Just putting a bunch of people together in the same open office will not produce
 Quite a few companies find that out the hard way.
 
 How can you increase the odds to create an environment where agile teams bloom and perform?
+--
 
-=== Attitude versus Aptitudes
+== Attitude versus Aptitudes
 
 [quote]
 ____
@@ -44,7 +45,7 @@ ____
 You have hired good people.
 Train them to improve and perform better.
 
-=== Continuous Learning and Improvement
+== Continuous Learning and Improvement
 
 [quote,Peter Baeklund]
 ____
@@ -69,7 +70,7 @@ Establish a culture to use current versions of programming languages, tools and 
 On a previous project, we had planned a coding dojo ritual once every two weeks, during which we shared our practices with some perspective over the product.
 It was an occasion to experiment with new technologies, assess their match for the project needs, share new coding techniques, and update our standards together.
 
-=== Formal Training
+== Formal Training
 
 Professional software developers should have formal training in software development.
 You should expect from a person working forty hours a week for the next forty years to pursue a bachelor or a master degree in computer science.
@@ -80,7 +81,7 @@ A specialist refusing to invest in a two-day training is probably not a member y
 
 A professional engineer should read multiple technical books each year.
 
-=== Leadership Responsibilities
+== Leadership Responsibilities
 
 Create https://en.wikipedia.org/wiki/Psychological_safety[psychological safety] in the workplace.
 
@@ -103,7 +104,7 @@ Training is always an investment and never a cost point.
 Look how you budget and account training activities.
 Are they really investment positions?
 
-=== Agile Architecture Series
+== Agile Architecture Series
 
 The agile architecture track contains the following blogs
 
@@ -112,6 +113,6 @@ include::../fragments/_series-agile-design-links.adoc[]
 We also published our <<agile-architecture>> credited with 3 ECTS used for teaching computer science students at bachelor level at Swiss technical universities.
 
 [bibliography]
-=== Links
+== Links
 
 - [[[agile-architecture-course, 1]]] https:/blog.tangly.net/ideas/learnings/lectures/[Agile Architecture Course]

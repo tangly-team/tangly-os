@@ -5,8 +5,6 @@ date: 2023-11-10
 tags: ["agile", "architecture", "series-students"]
 ---
 
-== C4 and UML with PlantUML
-
 include::../fragments/_config-mb-blog.aodc[]
 :ref-java-api: https://docs.oracle.com/en/java/javase/21/docs/api/index.html[Java API]
 
@@ -27,7 +25,7 @@ How to help new team members understand your architecture and key concepts?
 
 We are convinced that {ref-arc42}, {ref-c4}, {ref-uml} and {ref-plantuml} are approaches to better communicate your intent to team members.
 
-=== Include C4 Templates in plantUML
+== Include C4 Templates in plantUML
 
 The {ref-c4} notation is available as a template file <<plantuml-c4>>.
 Include the template in your {ref-plantuml} diagram.
@@ -48,7 +46,7 @@ include::pics/2023-11-02-plantuml-c4.puml[tag=code]
 ----
 ====
 
-=== System Context Diagram
+== System Context Diagram
 
 A System Context diagram is a good starting point for diagramming and documenting a software system, allowing you to step back and see the big picture.
 Draw a diagram showing your system as a box in the center, surrounded by its users and the other systems that it interacts with.
@@ -69,7 +67,7 @@ include::pics/2023-11-02-c4-context-diagram.puml[tag=code]
 ----
 ====
 
-=== Container Diagram
+== Container Diagram
 
 Once you understand how your system fits in to the overall IT environment, a really useful next step is to zoom-in to the system boundary with a Container diagram.
 A "container" is something like a server-side web application, single-page application, desktop application, mobile app, database schema, file system, etc.
@@ -92,7 +90,7 @@ include::pics/2023-11-02-c4-container-diagram.puml[tag=code]
 ----
 ====
 
-=== Component Diagram
+== Component Diagram
 
 Next, you can zoom in and decompose each container further to identify the major structural building blocks and their interactions.
 
@@ -111,7 +109,7 @@ include::pics/2023-11-02-c4-component-diagram.puml[tag=code]
 ----
 ====
 
-=== Code
+== Code
 
 Finally, you can zoom in to each component to show how it is implemented as code; using UML class diagrams, entity relationship diagrams or similar.
 
@@ -132,9 +130,9 @@ include::pics/2023-11-02-c4-code-diagram.puml[tag=code]
 ----
 ====
 
-=== Additional Diagrams
+== Additional Diagrams
 
-==== System Landscape diagram
+=== System Landscape diagram
 
 The C4 model provides a static view of a single software system but, in the real-world, software systems never live in isolation.
 For this reason, and particularly if you are responsible for a collection/portfolio of software systems, it's often useful to understand how all of these software systems fit together within a given enterprise, organisation, department, etc.
@@ -142,13 +140,13 @@ Essentially this is a map of the software systems within the chosen scope, with 
 
 From a practical perspective, a system landscape diagram is really just a system context diagram without a specific focus on a particular software system.
 
-==== Dynamic Diagram
+=== Dynamic Diagram
 
 A dynamic diagram can be useful when you want to show how elements in the static model collaborate at runtime to implement a user story, a use case, a feature, etc.
 This dynamic diagram is based upon a UML communication diagram (previously known as a "UML collaboration diagram").
 It is similar to a UML sequence diagram, although it allows a free-form arrangement of diagram elements with numbered interactions to indicate ordering.
 
-==== Deployment Diagram
+=== Deployment Diagram
 
 A deployment diagram allows you to illustrate how instances of software systems and/or containers in the static model are deployed on to the infrastructure within a given deployment environment such as production, staging, development, etc.
 It is based upon UML deployment diagrams.
@@ -161,7 +159,7 @@ You may also want to include infrastructure nodes such as DNS services, load bal
 Feel free to use icons provided by Amazon Web Services, Azure, etc. to complement your deployment diagrams .
 Make sure any icons you use are included in your diagram legend.
 
-=== Lessons Learnt
+== Lessons Learnt
 
 You should discuss intensively in your team and organization why you create diagrams.
 Each diagram has creation and maintenance costs.
@@ -185,6 +183,7 @@ Key architecture decisions are often tactical decisions and should be documented
 Future team members will understand why you decided to use a specific technology or design pattern.
 
 Public API shall be documented with {ref-openapi} or a similar approach.
+
 Modules and classes are documented with {ref-javadoc}.
 Maintainers will be thankful for high-quality documentation.
 ====
@@ -199,7 +198,7 @@ The {ref-java-api} documentation is a good example of high-quality and legible a
 You can use {ref-doxygen} for applications programmed in {cpp}.
 
 [bibliography]
-=== Links
+== Links
 
 - [[[agile-visual-tools, 1]]] link:../../2023/agile-visual-tools/[Agile Visual Tools].
 Marcel Baumann. 2023.

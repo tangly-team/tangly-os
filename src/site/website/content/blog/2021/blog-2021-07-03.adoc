@@ -5,8 +5,6 @@ date: 2021-07-10
 tags: ["agile", "java", "organization"]
 ---
 
-== Technical Team Lead
-
 include::../fragments/_config-mb-blog.aodc[]
 
 image::2021-07-03-head.png[width=420,height=360,role=left]
@@ -26,7 +24,7 @@ https://en.wikipedia.org/wiki/Mob_programming[Mob Program] with her whole team.
 [.text-center]
 _A technical team lead must be technically savvy_.
 
-=== Job Description
+== Job Description
 
 Here is a standard https://en.wikipedia.org/wiki/Job_description[Job Description] for a Java technical team lead as often published on job platforms.
 
@@ -36,7 +34,7 @@ The Java technical lead will facilitate requirement analyzes, conduct peer revie
 To be successful as a Java technical lead, you should demonstrate sound knowledge of industry best practices, good organizational and leadership skills, and proficiency in Java technologies.
 A top-notch Java technical lead should have good analytical skills, the ability to anticipate issues and frame remedial actions, and excellent teamwork skills.
 
-==== Java Technical Lead Responsibilities
+== Java Technical Lead Responsibilities
 
 * Performing requirement analyzes.
 * Developing high-quality and detailed designs.
@@ -46,7 +44,7 @@ A top-notch Java technical lead should have good analytical skills, the ability 
 * Reviewing the work of other developers and providing feedback.
 * Using coding standards and best practices ensuring quality.
 
-==== Java Technical Lead Requirements
+== Java Technical Lead Requirements
 
 The candidate has a bachelor or master degree in engineering, information systems or related.
 
@@ -62,7 +60,7 @@ As an Internet example, please see https://www.betterteam.com/java-technical-lea
 You can also find job descriptions under https://www.indeed.com[Indeed] and https://www.glassdoor.com[Glassdoor].
 Similar examples can also be found under https://www.linkedin.com[LinkedIn].
 
-=== Responsibilities
+== Responsibilities
 
 Below a description of the responsibilities for a technical lead.
 A technical lead is responsible for the following tasks:

@@ -5,10 +5,10 @@ date: 2019-03-19
 tags: ["agile", "design"]
 ---
 
-== You Need an Engineering Culture
-
 include::../fragments/_config-mb-blog.aodc[]
 
+[.float-group]
+--
 image::2019-03-01-head.jpg[width=420,height=360,role=left]
 
 Agile approaches are not enough.
@@ -18,11 +18,13 @@ Often, coaches and Scrum masters tinker with the processes and invest effort and
 
 But at the end of the day, the success of your application is defined by its adequacy to customer needs and its overall quality.
 You need a solid and professional engineering culture to produce high-quality products and release them at a high rate.
+
 If not, you just release a new set of defects to your paying customers.
+--
 
 How do you establish and nurture a professional and effective engineering culture?
 
-=== Live and breathe Your Values
+== Live and breathe Your Values
 
 Values drive your culture and the daily behavior of all your collaborators.
 But even if you have invested time and blood to identify the right values and put all the mechanisms in place, it might still not have the desired results.
@@ -37,14 +39,14 @@ You need to truly believe at all levels in the organization and not compromise o
 * Promote technical excellence.
 * Do not be penny wise and pound foolish.
 
-=== Communicating
+== Communicating
 
 Make sure that people know the values.
 It should be part of every on-boarding.
 It is one of the first things that new people need to learn.
 But also make sure to remind people as often as possible, e.g., in employee guidelines, during appraisals and town hall meetings.
 
-=== Eat Your Own Dog Food
+== Eat Your Own Dog Food
 
 People look up to you.
 They will imitate your behavior.
@@ -56,14 +58,14 @@ Learn from the {ref-less}] community.
 
 You can find an initial list of questions in our blog post Company Culture Check.
 
-=== Validating
+== Validating
 
 Validate that all teams are living up to their values.
 Find a way to measure it.
 Identify and put actions in place in case you need to improve.
 If a value does not make sense, e.g., the value was defined early on, but in hindsight it doesn't fit with your company, then get rid of it.
 
-=== Last Thoughts
+== Last Thoughts
 
 Building a great engineering culture is not something that you easily do.
 You cannot cheat.

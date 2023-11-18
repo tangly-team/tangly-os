@@ -5,8 +5,6 @@ date: 2021-08-01
 tags: ["agile"]
 ---
 
-== Agile Leadership
-
 include::../fragments/_config-mb-blog.aodc[]
 
 image::2021-08-01-head.jpg[width=420,height=360,role=left]
@@ -34,7 +32,7 @@ Organizational agility cannot exceed the level of personal leadership agility of
 Because agile leadership involves ongoing personal development, it is not something that can be mastered in a single training course.
 ____
 
-=== Agile Leaders engage, and serve the team at the place of work
+== Agile Leaders engage, and serve the team at the place of work
 
 Serving the team is all the rage these days.
 You hear or read about Servant Leadership at every turn.
@@ -51,7 +49,7 @@ Rather than wait for the team, go to the https://en.wikipedia.org/wiki/Gemba[Gem
 You start helping and playing the part only you as a leader can fill.
 This is a true service to the team by being a contributing member of the team.
 
-=== Growing your team is critical
+== Growing your team is critical
 
 By engaging shoulder to shoulder with your teams, you can help them grow.
 As a leader, you can teach them how to navigate complexity.
@@ -97,7 +95,7 @@ It also indicates that a manager cannot let go of command and control practices.
 They continue to micromanage subordinates, although a Scrum team could accomplish the task themselves.
 This behavior demonstrates a level of ignorance that may require support from a higher management level to address.
 
-=== Leading by Example to nurture resilient change
+== Leading by Example to nurture resilient change
 
 * Co-select with the teams proficient and experienced agile coaches and Scrum masters
 * Promote purpose, autonomy, mastery, accountability, strong social connection, small wins
@@ -163,7 +161,7 @@ Be patient.
 Change takes time, a lot of time.
 
 [bibliography]
-=== Links
+== Links
 
 - [[[bill-of-rights, 1]]] link:../../2020/calibrate-your-agile-approach-bill-of-rights[Calibrate Your Agile Approach: Bill of Rights].
 Marcel Baumann. 2020
@@ -173,6 +171,6 @@ Marcel Baumann. 2020
 Developer].
 Marcel Baumann. 2018
 
-=== References
+== References
 
 bibliography::[]

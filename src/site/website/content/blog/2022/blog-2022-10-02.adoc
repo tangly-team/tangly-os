@@ -5,8 +5,6 @@ date: 2022-10-12
 tags: ["java", "architecture"]
 ---
 
-== Modern Java Constructs
-
 include::../fragments/_config-mb-blog.aodc[]
 
 image::2022-10-02-head.jpg[width=420,height=360,role=left]
@@ -34,7 +32,7 @@ Here a set of extensions we use daily in our code.
 
 You can find additional examples in the introductory book _Java by Comparison_ cite:[java-by-comparison] and the more advanced _Effective Java_ cite:[effective-java-3rd].
 
-=== Try with Closeable Resources
+== Try with Closeable Resources
 
 Automatic resource management was introduced in Java 7 in 2011.
 Better handling of final variables was added in Java 9 in 2017.
@@ -55,7 +53,7 @@ A nice feature of the solution is the support of suppressed exception hierarchy 
 <2> The auto-closeable resource is closed by Java runtime when leaving the block either through regular flow or when an exception is thrown.
 The programmer can never forget to close the resource.
 
-=== Streams
+== Streams
 
 You shall always use streams to manipulate data collections.
 Stream operators support similar functionality as SQL dialects.
@@ -86,7 +84,7 @@ The approach moves the developers from imperative programming to a more function
 Modern Java code has seldom loops and conditional statements.
 ====
 
-=== Functional Programming
+== Functional Programming
 
 Null values are acknowledged as a language design fault in modern software engineering.
 
@@ -127,7 +125,7 @@ Just scan your code and find out how often you write such constructs.
 Explore the _java.util.function_ package to increase your functional programming skills.
 ====
 
-=== Pattern Matching
+== Pattern Matching
 
 Pattern matching is another approach for functional programming.
 New versions of Java support more related constructs.
@@ -146,7 +144,7 @@ The simplified and type-aware variable declaration is provided.
 
 ----
 
-=== Records and Sealed Types
+== Records and Sealed Types
 
 Sealed types perfectly model a closed inheritance hierarchy.
 You can control your bounded domain and inhibit any client to change it.
@@ -180,7 +178,7 @@ record ImmutableList<T>(@NotNull T first, @NotNull LList<T> rest) implements LLi
 
 Factory methods can automatically be created using https://projectlombok.org/[Lombok] annotations.
 
-=== Modules
+== Modules
 
 Modules were introduced with Java 9, which was released in September 2017.
 
@@ -211,7 +209,7 @@ module net.tangly.fsm {
 }
 ----
 
-=== Goodies
+== Goodies
 
 https://openjdk.org/projects/loom//[Loom] Threads::
 Java 19 introduces lightweight threads in the library.
@@ -226,6 +224,6 @@ You have access to the SIMD modules in your CPU directly from your Java code.
 Speed-ups can be tremendous.
 The code is still portable for all supported Java platforms.
 
-=== References
+== References
 
 bibliography::[]

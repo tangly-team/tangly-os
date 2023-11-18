@@ -5,10 +5,10 @@ date: 2020-03-31
 tags: ["java"]
 ---
 
-== Java Records Are Here – Available in JDK 14
-
 include::../fragments/_config-mb-blog.aodc[]
 
+[.float-group]
+--
 image::2020-03-01-head.jpg[width=420, height=360, role=left]
 
 We need *justification* not to use immutable objects in our solutions, rather than an *affirmative reason* to use them.
@@ -20,6 +20,7 @@ Records as a clean definition of immutable objects can have a tremendous impact 
 
 You as a designer have to reflect why your abstractions are not immutable and what is the rationale behind.
 From my experience, it improves the quality of your design.
+--
 
 Records guarantee:
 
@@ -41,7 +42,7 @@ Your objects can be used in standard API collections without difficult to find b
 
 The huge advantage of the approach against IDE code generation is the guaranty that these methods are semantically always correct.
 
-=== Advantages
+== Advantages
 
 The key benefits of immutable objects are:
 
@@ -55,7 +56,7 @@ The key benefits of immutable objects are:
 * Support for referential transparency
 * Protection from instantiating logically-invalid objects Protection from inadvertent corruption of existing objects.
 
-=== Design Impact
+== Design Impact
 
 I updated my open source projects to use the record abstraction.
 What a surprise!
@@ -71,7 +72,7 @@ Immutable value objects are a cornerstone in the https://en.wikipedia.org/wiki/D
 When you are using Data Transfer Objects, DTO they should probably always be records.
 In the long run, you should eliminate your DTO, they are just waste and break all the rules of abstraction and information hiding.
 
-=== Tricks and Tips
+== Tricks and Tips
 
 You can define a constructor extension to validate the passed arguments.
 This validation block is automatically inserted at the beginning of the generated constructor.

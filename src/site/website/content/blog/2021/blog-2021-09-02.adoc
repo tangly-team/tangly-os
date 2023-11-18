@@ -5,8 +5,6 @@ date: 2021-09-02
 tags: ["agile", "architecture", "series-students"]
 ---
 
-== What I Learnt Teaching Agile Software Architecture
-
 include::../fragments/_config-mb-blog.aodc[]
 
 image::2021-09-01-head.png[width=420,height=360,role=left]
@@ -32,7 +30,7 @@ One consequence is that students have a shallow understanding of more modern fra
 
 The official proficiencies for the Scrum roles Scrum Master<<scrum-master-formation>>, Product Owner<<product-owner-formation>>, and Developer<<scrum-developer-formation>> are not achieved with the current curriculum.
 
-=== SWAT Lecture Content
+== SWAT Lecture Content
 
 The lecture description is:
 
@@ -70,7 +68,7 @@ Each book is quite compact and can read over a weekend.
 
 The lecturer can also use cite:[domain-driven-design-distilled,implementing-domain-driven-design] for the workshop parts.
 
-=== arc42 Architecture Approach
+== arc42 Architecture Approach
 
 The course discusses the key points defined in approaches such as https://arc42.org/[arc42].
 The same concepts can naturally be found in TOGAF with a slight different terminology.
@@ -163,7 +161,7 @@ Bachelor students have attended formal training in UML and scientific diagrammin
 https://en.wikipedia.org/wiki/Business_Process_Model_and_Notation[BPMN].
 They can produce these artifacts before attending the SWAT course.
 
-=== ISAQB Architecture Program
+== ISAQB Architecture Program
 
 image::2021-09-02-cspa-foundation.png[width=420,height=360,role=left]
 
@@ -256,9 +254,9 @@ Communication, team findings techniques and documentation are discussed in <<cha
 
 Bachelor students have attended formal training in {ref-scrum} and had extensive team workshop to foster communication techniques.
 
-=== Lessons Learnt
+== Lessons Learnt
 
-==== Foundations
+== Foundations
 
 Principles need to be taught at the beginning.
 The students already know concepts such as https://en.wikipedia.org/wiki/KISS_principle[KISS], https://en.wikipedia.org/wiki/SOLID[SOLID],
@@ -282,7 +280,7 @@ We are now defining an overall path for all students to achieve craftsmanship ov
 Students must write professional source code, master design at the component level, and understand agile techniques.
 Approaches such as clean code, test-driven development, refactoring and infrastructure as code shall be studied material.
 
-==== Design and Architecture
+== Design and Architecture
 
 Design concepts must be refined.
 The students understand concepts such as patterns, micro-architecture, layered architecture.
@@ -297,7 +295,7 @@ We are trying to formulate an approach to improve achieved goals.
 We shall either build these concepts into project management lectures or in the semester theses.
 
 [bibliography]
-=== Links
+== Links
 
 - [[[agile-architecture, 1]]] Agile Architecture in the Digital Age.
 Open Group. 2018
@@ -316,6 +314,6 @@ Marcel Baumann. 2019
 - [[[agile-software-architecture, 8]]] link:../../2021/agile-software-architecture-is-mainstream/[Agile Software Architecture is Mainstream]
 Marcel Baumann, 2021
 
-=== References
+== References
 
 bibliography::[]

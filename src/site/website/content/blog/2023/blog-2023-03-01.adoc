@@ -5,8 +5,6 @@ date: 2023-03-01
 tags: ["agile"]
 ---
 
-== Scrum Masters and Agile Coaches
-
 include::../fragments/_config-mb-blog.aodc[]
 
 image::2023-03-01-head.png[width=420,height=360,role=left]
@@ -38,7 +36,7 @@ _The Scrum Master serves the organization in several ways, including:_
 - __ Helping employees and stakeholders understand and enact an empirical approach for complex work.__
 - __ *Removing barriers* between stakeholders and Scrum Teams.__
 
-=== Agile Coaches Profiles
+== Agile Coaches Profiles
 
 Here are some profiles of agile coaches.
 If you read the {ref-scrumguide} you understand these profiles are facets of the Scrum master role.
@@ -47,7 +45,7 @@ A Scrum master is always an agile coach cite:[art-agile-development-2nd,masterin
 
 image::2023-03-01-agile-fluency-model.png[width=640,height=400,role=text-center]
 
-==== Team Coach
+=== Team Coach
 
 We have experienced that despite the remark made by my manager, _the teams will do their things_, teams still need help to grow their agile maturity and business impact.
 
@@ -62,7 +60,7 @@ _I expect a professional Scrum master to possess the above capabilities.
 Teaching, coaching, and mentoring the Scrum team to grasp agility is one of her main responsibilities.
 Scrum masters in an organization shall exchange ideas and tips through a community of practice._
 
-==== Delivery Coach
+=== Delivery Coach
 
 The delivery coach has a strong focus on optimizing the flow of the development process.
 She is the advisor to empower the team to reach *delivering* fluency in the agile fluency model.
@@ -79,7 +77,7 @@ _I expect a technical Scrum master to possess the above capabilities.
 If not, he must hire a technical delivery coach to support his Scrum team.
 Most organizations cannot afford multiple coaches for one team._
 
-==== Agile Counselor
+=== Agile Counselor
 
 The role of leadership is often seen as the biggest challenge in having a successful agile transformation.
 A leader sets the tone for the entire organization cite:[lead-with-lean,lean-manager,lead-with-respect,gold-mine].
@@ -103,7 +101,7 @@ The agile counselor works with the leadership team, which requires business mast
 A team coach preferably supports the team by offering technical support and coach on the process and Agile mindset.
 Being part of the coaches’ team, she will actively participate in the transformation as well.
 
-=== Shall a Coach Be Savvy in Technology?
+== Shall a Coach Be Savvy in Technology?
 
 It certainly helps to understand the technology your teams are using.
 I assume it is quite difficult to be a soccer coach if you have no clue what soccer is and how it is played.
@@ -130,7 +128,7 @@ I wish you happy and successful learning.
 ====
 
 [bibliography]
-=== Links
+== Links
 
 * [[[adriaans, 1]]] Agile Marcom Interview: Catharina Adriaans.
 Agile Consortium. 2020
@@ -148,6 +146,6 @@ Marcel Baumann. 2016
 * [[[scrum-master-formation, 7]]] link:../../2021/scrum-master-formation/[Scrum Master Formation].
 Marcel Baumann. 2021
 
-=== References
+== References
 
 bibliography::[]

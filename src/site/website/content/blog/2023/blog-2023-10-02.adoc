@@ -5,8 +5,6 @@ date: 2023-10-05
 tags: ["agile", "architecture"]
 ---
 
-== Software Architecture Themes and Questions
-
 include::../fragments/_config-mb-blog.aodc[]
 
 image::2023-10-02-head.png[width=320,height=320,role=left]
@@ -29,7 +27,7 @@ Experienced software designers often have a list of questions any software archi
 
 Below the questions I answered every time when implementing a new application.
 
-=== User Experience
+== User Experience
 
 How should the users interact with the product?
 How can the application streamline customer activities and diminish user mistakes?
@@ -55,7 +53,7 @@ Hire a professional interface and usability expert.
 Trained collaborators are key to designing world-class user interfaces.
 ====
 
-=== Configuration
+== Configuration
 
 How should the product be configured during production and at customer site?
 
@@ -77,7 +75,7 @@ Consider JSON or TOML.
 Avoid storing configuration parameters into a relational database.
 ====
 
-=== Data Management
+== Data Management
 
 How are data persisted in the application?
 Which information should be persisted is a requirement.
@@ -101,7 +99,7 @@ Organizations often store information over decades.
 This data must be accessible in the future.
 ====
 
-=== Internal Communication
+== Internal Communication
 
 How do the application components communicate inside the software?
 
@@ -128,7 +126,7 @@ Transaction handling is provided through eventual consistency and storno approac
 By all means avoid the global lock approach which probably will kill your application in the long term.
 ====
 
-=== Errors
+== Errors
 
 How are runtime faults and errors handled in the product?
 
@@ -150,7 +148,7 @@ Error handling is a crosscutting concept in the application.
 Try using the same approach through the whole system to diminish semantic complexity.
 ====
 
-=== Integration
+== Integration
 
 How can you integrate the product into a landscape?
 
@@ -177,7 +175,7 @@ Communication between bounded domains is primary asynchronous and message based.
 Use standards for authentication and authorization to minimize security risks.
 ====
 
-=== Monitoring
+== Monitoring
 
 How could the organization infer that happened during the product use in the field?
 What are the operational processes?
@@ -203,7 +201,7 @@ Do not skip it.
 The solution should support automatic offsite processing to extract relevant scenarios from huge data sets.
 ====
 
-=== Development Practices
+== Development Practices
 
 How should the development team work to produce the right product with the right quality?
 
@@ -231,7 +229,7 @@ Use the current version of your technology stack.
 Laggards are losers in the technology field.
 ====
 
-=== Legal Aspects
+== Legal Aspects
 
 Which legal restrictions apply to the product
 footnote:[Senior designers should be aware of legal and copyright aspects for digital products.]?

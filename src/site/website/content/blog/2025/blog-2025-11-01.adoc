@@ -5,14 +5,12 @@ date: 2025-10-01
 tags: ["c++"]
 ---
 
-== C++ Pointers
-
 include::../fragments/_config-mb-blog.aodc[]
 :ref-ros: https://www.ros.org/[Robot Operating System _ROS_]
 
 image::2025-11-01-head.png[width=420,height=360,role=left]
 
-=== Pointers to Objects and Functions
+== Pointers to Objects and Functions
 
 [source,c++]
 ----
@@ -38,9 +36,9 @@ private:
 default::
 delete::
 
-=== Pointers to Object Methods
+== Pointers to Object Methods
 
-=== Class Contract
+== Class Contract
 
 [source,c++]
 ----
@@ -83,8 +81,8 @@ If you use _auto_ptr_ with standard library functions, you get either compilatio
 Use _explicit_ keyword for constructors with one parameter to avoid implicit type conversions.
 ====
 
-=== Standard Library Support
+== Standard Library Support
 
-=== References
+== References
 
 bibliography:[]

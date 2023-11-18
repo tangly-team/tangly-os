@@ -5,8 +5,6 @@ date: 2024-12-01
 tags: ["agile", "git",  "organization"]
 ---
 
-== Self-Hosted Agile Software Development Servers
-
 include::../fragments/_config-mb-blog.aodc[]
 :ref-forgejo: https://forgejo.org/[Forgejo]
 :ref-c4: https://c4model.com/[C4 Model]
@@ -72,7 +70,7 @@ Better would be to set up a mirror configuration.
 This is sadly seldom supported or allowed in corporate setups.
 ====
 
-=== Source Code Management
+== Source Code Management
 
 image::2024-12-01-forgejo.png[width=420,height=360,role=left]
 
@@ -102,7 +100,7 @@ Privacy::
 From an update checker to default settings.
 Forgejo is built to be privacy first for you and your crew.
 
-=== Continuous Integration, Delivery, and Deployment
+== Continuous Integration, Delivery, and Deployment
 
 Modern software development approaches require access to a continuous build pipeline.
 Either you write your own approach using build script and docker images, or you use a service.
@@ -116,7 +114,7 @@ https://www.atlassian.com/software/bamboo/[Bamboo] are naturally available for d
 Do not underestimate the effort to have the build environment always working.
 You need a dedicated expert who is responsible for the smooth operation of the build environment.
 
-=== Artifact Management
+== Artifact Management
 
 Artifact server is used to store the artifacts created during the delivery activities in the pipeline.
 
@@ -132,7 +130,7 @@ The Java community uses https://maven.apache.org/[Maven] and https://gradle.org/
 The Python community has https://pip.pypa.io/en/stable/[pip3] tool.
 The C and {cpp} community often use https://conan.io/[Conan] and https://vcpkg.io/en/[vcpckg].
 
-=== Software Documentation
+== Software Documentation
 
 The current approach to write technical documentation is to use static website generators.
 {ref-github}, {ref-gitlab}, and {ref-bitbucket} all offer such as solution through their pages concept.
@@ -191,7 +189,7 @@ Modern python developers also make use of type hitting for improved legibility.
 
 The C and {cpp} developers mainly write API documentation with https://www.doxygen.nl/[Doxygen].
 
-=== Project Management Services
+== Project Management Services
 
 You need basic functions to work using agile approaches.
 If a team is working in the same location, use an analog board as a sprint board.
@@ -218,7 +216,7 @@ Otherwise, the solution is quite a pain because you need to manually logout and 
 shall be available to all internal and external team members.
 ====
 
-=== Tips and Tricks
+== Tips and Tricks
 
 The bare minimum of services you need is a central git repository, a possibility to build your software in a clean environment, and a site to publish your documentation.
 
@@ -232,7 +230,7 @@ You shall advertise your approach in your organization.
 Better solutions shall be adopted to improve the efficiency of digital product development and optimize costs.
 
 [bibliography]
-=== Links
+== Links
 
 - [[[creating-website, 1]]] link:../../2020/creating-a-technical-website-with-hugo-and-asciidoc/[Creating a Technical Website with Hugo and Asciidoc].
 Marcel Baumann. 2020.
@@ -241,7 +239,7 @@ Marcel Baumann. 2021.
 - [[[support-comments, 3]]] link:../../2020/support-comments-for-static-hugo-website/[Support Comments for Static Hugo Website].
 Marcel Baumann. 2020.
 
-=== References
+== References
 
 bibliography::[]
 

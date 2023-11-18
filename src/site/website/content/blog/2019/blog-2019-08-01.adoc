@@ -5,8 +5,6 @@ date: 2019-08-12
 tags: ["agile", "architecture", "series-agile-design"]
 ---
 
-== Agile Architecture within Scrum
-
 include::../fragments/_config-mb-blog.aodc[]
 
 image::2019-08-01-head.jpg[width=420,height=360,role=left]
@@ -31,7 +29,7 @@ image::2019-08-01-architecture.jpg[width=420,height=360,role=left]
 
 These characteristics are essential for successful agile development of great software products.
 
-=== What Is The Scrum Approach?
+== What Is The Scrum Approach?
 
 Scrum and the https://scrumguides.org/scrum-guide.html[Scrum Guide] are silent on how architecture activities are performed during sprints.
 We can use the Scrum values, the https://www.scrumguides.org/scrum-guide.html[Scrum Guide] and the
@@ -51,7 +49,7 @@ They attend the daily Scrum meetings, take items off the backlog, and work on th
 Interestingly {ref-less} is more opinionated and describe
 https://less.works/less/technical-excellence/architecture-design.html[Successful Approaches] for agile architecture and design.
 
-=== How Do You Perform Agile Design?
+== How Do You Perform Agile Design?
 
 Scrum is quite silent about technical practices.
 The Scrum fathers and community strongly emphasize adopting https://en.wikipedia.org/wiki/Extreme_programming[eXtreme Programming] practices.
@@ -72,7 +70,7 @@ See our post link:../../2019/agile-code-is-clean-code/[Clean Code],
 
 For a detailed discussion, consult the post link:../../2018/pragmatic-craftsmanship-professional-software-developer/[Pragmatic Craftsmanship].
 
-=== What is the Architect's Role?
+== What is the Architect's Role?
 
 The architect shall
 
@@ -91,7 +89,7 @@ We need a rich pool of architecture and design options in our bag of tricks, ran
 One never knows too much about the quality of architecture, code, and design.
 One does, of course, need to apply that knowledge smoothly, incrementally, little by little.
 
-=== Agile Architecture Series
+== Agile Architecture Series
 
 The agile architecture track contains the following blogs
 

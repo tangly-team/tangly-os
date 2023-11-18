@@ -5,7 +5,6 @@ date: 2018-01-02
 tags: ["java"]
 ---
 
-== Why is it so Cool to Develop with Java?
 
 include::../fragments/_config-mb-blog.aodc[]
 
@@ -26,9 +25,9 @@ I still experience higher maturity in the Java toolchain.
 
 Below, our current set of techniques and tools to multiply our results and bring earlier products to your customers.
 
-=== Java Quality
+== Java Quality
 
-==== Solution Quality
+=== Solution Quality
 
 The most efficient approaches to improving the intrinsic quality of your software solution are
 
@@ -66,7 +65,7 @@ Teams with high scores in stability and throughput spend 44% more time on new wo
 No better way to spread learning in a team!
 ====
 
-=== Code Quality
+== Code Quality
 
 The most efficient tools to detect glitches or legacy constructs in your code are
 
@@ -83,9 +82,9 @@ You are lazy and do not want to use additional tools.
 Please use at least the build-in checkers of IntelliJ IDEA to improve your code.
 It is very unprofessional to have equality problems or boolean condition errors in modern code.
 
-=== Test Quality
+== Test Quality
 
-==== Test Driven Development - TDD
+=== Test Driven Development - TDD
 
 You are serious about development quality code.
 So you are working with the test driven approach TDD and need to write unit tests.
@@ -111,7 +110,7 @@ footnote:[After years of neglect, a Jimfs 1.2 was released in January 2021 and p
 Each time an error is found in productive code, write first a test to reproduce it, then correct the error.
 This approach guarantees the same error will never again occur.
 
-==== Acceptance Test Driven Development - ATDD
+=== Acceptance Test Driven Development - ATDD
 
 You are serious about delivering the functions your customer needs.
 Each story you implement has acceptance criteria.
@@ -125,7 +124,7 @@ Write your acceptance criteria and document your requirements in one step.
 Remember stories are not requirements, they are work items.
 Requirements are coded and documented in your acceptance tests.
 
-=== Continuous Integration
+== Continuous Integration
 
 Agile means reacting to all changes.
 Lean means build-in quality.
@@ -140,7 +139,7 @@ Decide if you prefer the cloud approach – e.g., with TravisCI or Bitbucket Pip
 A smooth running CI pipeline is a boost for team morale and motivation.
 To know that your application compiles and runs through all your automated tests anytime is such a good feeling.
 
-==== Continuous Delivery and Deployment
+=== Continuous Delivery and Deployment
 
 Agile means to react fast the changes.
 You need to deliver and deploy your new solution to your customers in minutes or hours.
@@ -159,14 +158,14 @@ The database shall be a configuration of the delivery and not require a new comp
 Google Cloud AppEngine::
 To deploy various integration environments
 
-=== Design Quality
+== Design Quality
 
 Important decisions and overall structure shall be documented for new team members.
 Architecture Decision Record: A lightweight approach to document architecture decisions using Markdown documents and traceability through the decision history.
 UML: Sometimes I would like to draw some UML diagrams to explain a design solution.
 I am currently using a textual tool to define such diagrams.
 
-==== Development Quality
+=== Development Quality
 
 Analog Board::
 Nothing beats a big analog board in the team room as the ideal information radiator.

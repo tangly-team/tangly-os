@@ -5,8 +5,6 @@ date: 2018-09-25
 tags: ["agile"]
 ---
 
-== Introduce Agile in A Company: Shu Ha Ri
-
 include::../fragments/_config-mb-blog.aodc[]
 
 image::2018-09-01-head.png[width=420,height=360,role=left]
@@ -28,7 +26,7 @@ Try the https://en.wikipedia.org/wiki/Open_Space_Technology[open space] format t
 Below, we provide an approach which must be later tailored to the specific needs of the Company during the above-mentioned workshops.
 The organizational needs for feature oriented planning and development of an application portfolio should be considered.
 
-=== Approach
+== Approach
 
 We work with the Shu Ha Ri agile approach when introducing enterprise agile in the Company.
 All collaborators will progress from the novice level through the proficient level before reaching the expert level.
@@ -38,9 +36,9 @@ This model also maps very well to the “Awareness – Desire – Knowledge – 
 The Company has already reached awareness and desire level because they want to introduce enterprise agile.
 We describe below the activities for the development organization consisting of software development, product management and quality insurance departments, and the activities at company level.
 
-=== Development Organization
+== Development Organization
 
-==== Shu - Novice Level - „Learn the Rules“
+=== Shu - Novice Level - „Learn the Rules“
 
 The duration of the novice level is at least six months.
 The major activities are to align the collaborators and provide the needed knowledge through training and hands-on exercises.
@@ -97,7 +95,7 @@ We recommend
 . An Agile (eXtreme Programming techniques) and Scrum coach responsible for two to three Scrum teams.
 . Coach of coaches for the growth of internal agile and Scrum coaches for the company.
 
-=== Ha – Proficient Level - “Bend the Rules”
+== Ha – Proficient Level - “Bend the Rules”
 
 The duration of the “proficient level” will be up to two years.
 The goal is to reinforce the learning techniques and become proficient in using them.
@@ -118,7 +116,7 @@ We recommend
 See below the chapter “Organization Transformation”.
 . Workshops could be organized for selected products or teams to solve identified major impediments.
 
-=== Ri – Expert Level - “Break the Rules”
+== Ri – Expert Level - “Break the Rules”
 
 The “expert level” will be reached earliest after two years.
 It is reasonable to state that not all collaborators will reach this level of expertise.
@@ -136,7 +134,7 @@ We recommend
 The internal coaches should start taking responsibilities
 . A center of competence for the growth of internal Scrum coaches for the company.
 
-=== Company Transformation
+== Company Transformation
 
 While teams implement Scrum, managers and leaders enable them.
 We work on cultural, organization, and process level to enable agility in the company.
@@ -164,7 +162,7 @@ We strongly support {ref-less} as an ideal candidate for company-wide agile appr
 Top managers must realize that cultural elements must first be modified before the structure and the processes of the company can be adapted.
 . Be patient and do not lose your mojo.
 
-=== Checklist
+== Checklist
 
 Here a checklist example to reflect why and how to transform into an agile organization
 

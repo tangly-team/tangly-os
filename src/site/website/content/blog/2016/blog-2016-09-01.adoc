@@ -5,8 +5,6 @@ date: 2016-09-07
 tags: ["agile", "series-swiss-agile-trends"]
 ---
 
-== Agile Trends Switzerland 2012
-
 include::../fragments/_config-mb-blog.aodc[]
 
 image::2016-09-01-head.jpg[width=420,height=360,role=left]
@@ -22,7 +20,7 @@ The study can be downloaded as PDF from their website.
 
 Below some findings of the study.
 
-=== Major Hurdles When Introducing Agile Approaches
+== Major Hurdles When Introducing Agile Approaches
 
 * 95%: Capabilities to handle organizational changes and the culture
 * 39%: Overall resistance against changes
@@ -42,7 +40,7 @@ The above points in italics are all related to changing processes.
 You can handle two thirds of the hurdles with adequate change management training and a clear change product definition.
 Do not try to introduce Scrum at company level without such an approach.
 
-=== The main Reasons Why Agile Projects are Cancelled
+== The main Reasons Why Agile Projects are Cancelled
 
 * 52%: Missing experience with agile approaches
 * 45%: Company culture clashes with agile principles

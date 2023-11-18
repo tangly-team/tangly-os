@@ -5,10 +5,10 @@ date: 2022-02-01
 tags: ["agile", "tangly"]
 ---
 
-== The Quest for an Agile Company: Six Years tangly llc
-
 include::../fragments/_config-mb-blog.aodc[]
 
+[.float-group]
+--
 image::2022-02-01-head.png[width=420,height=360,role=left]
 
 Historically, big beats small.
@@ -20,6 +20,7 @@ New technologies, evolving customer preferences and changing employee expectatio
 footnote:[The impact of the last pandemic on home office, remote distributed teams and hybrid company models was tremendous and here to stay.].
 
 It is time to move beyond rigid hierarchies, siloed business units, crippling bureaucracy and an increasingly unwieldy matrix.
+--
 
 Agile organizations combine the efficiencies of scale with the speed, flexibility and resilience to compete and win in today’s world.
 
@@ -36,7 +37,7 @@ Companies are asking themselves:
 * How do we empower our people to take more accountability for performance and truly embed customer centricity?
 * How do we organize for both sides of the productivity equation—cost and innovation-driven growth?
 
-=== Challenges of Agile Companies
+== Challenges of Agile Companies
 
 Now, we find the machine paradigm shifting in the face of the organizational challenges brought by the _digital revolution_ that is transforming industries, economies and societies.
 This is expressed in four current trends:
@@ -60,7 +61,7 @@ The new war for talent::
 As creative knowledge- and learning-based tasks become more important, organizations need a distinctive value proposition to acquire and retain the best talent.
 These _knowledge workers_ often have more diverse origins, thoughts, composition and experience and may have different desires, (for example, millennials).
 
-=== Trademarks of Agile Organizations
+== Trademarks of Agile Organizations
 
 Agile organizations are working daily to improve.
 There is no substitute for doing hard work.
@@ -106,7 +107,7 @@ Beware being transparent can be very painful and induce distress.
 Agile is the framework to detect flaws and to measure improvements through an empirical process.
 A huge intentional effort needs to be taken by those in the process, willing to fix or improve such things.
 
-=== Agile Teams
+== Agile Teams
 
 Here a set of capabilities strongly improving the throughput of an agile team.
 Our company is proud of how cool, professional and effective our development teams are.
@@ -138,7 +139,7 @@ The content of a sprint is just a bunch of product backlog items.
 They never adjust the Sprint backlog content to increase the odds of achieving the spring goal
 ====
 
-=== tangly Agility Advantages
+== tangly Agility Advantages
 
 We found out being an agile company bring us concrete and gratifying advantages <<tangly-five-years>> <<tangly-one-year>> <<tangly-zero-years>> .
 
@@ -187,7 +188,7 @@ Your company does not possess any paper archive, printer or fax machine.
 * Expertise how to remove waste and streamline digital processes through a whole organization.
 
 [bibliography]
-=== Links
+== Links
 
 - [[[tangly-five-years, 1]]] link:../../2020/the-quest-for-an-agile-company-five-years-tangly-llc[The Quest for an Agile Company: Five Years tangly llc]
 - [[[tangly-one-year, 2]]] link:../../2019/a-journey-to-be-a-digital-company-tangly-llc[A Journey To Be a Digital Company]

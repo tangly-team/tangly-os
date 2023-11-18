@@ -5,17 +5,20 @@ date: 2021-02-10
 tags: ["agile", "java"]
 ---
 
-== Why Is Java Path API Class Better?
-
 include::../fragments/_config-mb-blog.aodc[]
 
+[.float-group]
+--
 image::2021-02-02-head.jpg[width=420,height=360,role=left]
 
-=== File System NIO
 
 Java NIO _New Input Output_ is an alternative IO API for Java, meaning alternative to the standard Java IO and Java Networking APIs.
 
 Java NIO offers a different IO programming model than the traditional IO APIs.
+
+One major feature of interest is the support of alternate file systems.
+An in-memory file system is ideal for test file related operations in unit and integration tests.
+--
 
 [NOTE]
 ====
@@ -24,10 +27,7 @@ However, this is not what NIO meant originally.
 Also, parts of the NIO APIs are actually blocking - e.g. the file APIs - so the label "Non-blocking" would be slightly misleading.
 ====
 
-One major feature of interest is the support of alternate file systems.
-An in-memory file system is ideal for test file related operations in unit and integration tests.
-
-=== Unit Tests
+== Unit Tests
 
 The https://github.com/google/jimfs[Jimfs] library implements an in-memory file system.
 You can find other implementations of in-memory file systems if you want to use another library.
@@ -55,7 +55,7 @@ Depending on your project and your libraries, this is quite a challenge to pull 
 footnote:[I regularly open issues in various open-source libraries to request an API extension to support Path.
 The maintainer of the library is often not aware you need _Path_ to unit test with in-memory file systems.].
 
-=== Paths
+== Paths
 
 Alternative file system operations require all methods to use path objects instead of file objects.
 File objects contain the name of the accessed file but lose all references to the underlying file system.
@@ -112,7 +112,7 @@ File file = new File("/tmp/myfile.txt");
 Path path = fileSytem.getPath(file.getPath());
 ----
 
-=== Learnt Lessons
+== Learnt Lessons
 
 Legacy libraries heavily use _File_ objects in their algorithms and their public interface.
 Such libraries do *not* work with in-memory file systems.

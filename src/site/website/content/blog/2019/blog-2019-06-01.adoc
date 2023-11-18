@@ -5,21 +5,23 @@ date: 2019-06-13
 tags: ["agile", "series-agile-design"]
 ---
 
-== Agile Code is Clean Code!
-
 include::../fragments/_config-mb-blog.aodc[]
 
+[.float-group]
+--
 image::2019-06-01-head.png[width=420,height=360,role=left]
 
 You are applying the agile, lean approach to your software product development.
+
 Your teams use Scrum or Kanban to deliver running software every two weeks.
 
 To create an agile architecture, you must write agile worthy code.
 Agile code is always clean code.
 
 Start early, do it continuously and soon your code will be clean, legible and free of defects.
+--
 
-=== Architecture versus Code
+== Architecture versus Code
 
 Be honest.
 Having a huge class with thousands of lines of code plainly demonstrates that your organization worked unprofessionally over months in the past.
@@ -30,7 +32,7 @@ As long as your product contains such code monsters, it is worthless to pretend 
 
 Team discipline and early warning systems are the keys to avoid such blunders and kill the monster in the egg.
 
-=== Clean Code and Refactoring
+== Clean Code and Refactoring
 
 The clean code https://en.wikipedia.org/wiki/Test-driven_development[test-driven development] _TDD_ approach to write code was defined last millennium.
 Professional developers adopted this approach to deliver high quality, legible and maintainable code artifacts.
@@ -58,7 +60,7 @@ Just write well engineered, legible and maintainable source code.
 It is a matter of _discipline_.
 It is also a prerequisite to agile architecture.
 
-=== Acceptance Test Driven Development
+== Acceptance Test Driven Development
 
 How do you know what are the requirements of a specific feature?
 Either write a huge amount of outdated documentation or find a better way.
@@ -79,7 +81,7 @@ You want to have a fast build and test time and avoid external dependencies.
 * Use an in-memory database only if you have to.
 They are a fast solution to write acceptance tests but are intrinsically slower than mocks.
 
-=== Code Sociology
+== Code Sociology
 
 The most simple engineering practices are the most powerful.
 Practice consolidates changes in the behavior of your development organization.
@@ -94,7 +96,7 @@ Once good practices are established, you can move to more sophisticated tools - 
 
 Teams ready to learn from the like of Google could evaluate https://trunkbaseddevelopment.com/[Trunk-Based Development] and consider long-lived branches as waste.
 
-==== Code Review
+=== Code Review
 
 A code review can be done in different ways.
 Many teams use {ref-github}, {ref-bitbucket} or ref{ref-gitlab}.
@@ -105,7 +107,7 @@ For example, if a feature is implemented in pair programming or mob programming,
 We decided that it does not have to be reviewed again, but, of course, everybody may look at the commits later on in GitHub and add comments.
 A rule of thumb we agreed upon is that every line of code has to be approved by at least one other developer before it is pushed into our master branch.
 
-==== Pull Requests in Trunk-Based Development
+=== Pull Requests in Trunk-Based Development
 
 The approach is different when using trunk-based development.
 Since we want to merge our commits into the master branch as quickly as possible, we cannot wait until the complete feature is finished.
@@ -122,7 +124,7 @@ Meanwhile, the pull request might grow by a few commits.
 The code is not always reviewed immediately after the commit.
 In most cases, it reaches the master branch much quicker than in Git Flow.
 
-=== Agile Architecture Series
+== Agile Architecture Series
 
 The agile architecture track contains the following blogs
 
@@ -130,6 +132,6 @@ include::../fragments/_series-agile-design-links.adoc[]
 
 We also published our https://www.tangly.net/insights/continuous-learning/agile-architecture-course[agile architecture course] (3 ECTS) used for teaching computer science students at bachelor level at Swiss technical universities.
 
-=== References
+== References
 
 bibliography::[]

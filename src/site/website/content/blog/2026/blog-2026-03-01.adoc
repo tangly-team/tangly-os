@@ -5,8 +5,6 @@ date: 2026-03-05
 tags: ["agile", "C++", "embedded"]
 ---
 
-== Thoughts Developing Embedded Products
-
 include::../fragments/_config-mb-blog.aodc[]
 :ref-actor-model: https://en.wikipedia.org/wiki/Actor_model[Actor Model]
 
@@ -27,7 +25,7 @@ Realtime constraints and industrial norms damper eligible solutions.
 
 What are good approaches to successfully develop digital applications?
 
-=== Approaches
+== Approaches
 
 The digital product and software development process shall be agile.
 Try to use the industrial standard {ref-scrum}.
@@ -39,7 +37,7 @@ The technical decisions shall follow modern software engineering principles cite
 
 The programming language shall be {cpp}.
 
-=== Team Member Capabilities
+== Team Member Capabilities
 
 Train your engineers.
 The areas of knowledge are:
@@ -60,7 +58,7 @@ The introductory book _Realtime {cpp}_ cite:[realtime-cpp] is a rigorous introdu
 You learn how to access hardware resources from {cpp} and what are the costs of various {cpp} constructs.
 ====
 
-=== Thoughts
+== Thoughts
 
 The described approach is tailored for embedded applications running on microcontrollers with limited hardware resources.
 
@@ -72,7 +70,7 @@ Multiple companies provide various clones of these boards.
 They run a linux operating system and have extensive hardware resources.
 
 [bibliography]
-=== Links
+== Links
 
 - [[[agile-software-architecture, 1]]] link:../../2025/agile-software-architecture/[Agile Software Architecture].
 Marcel Baumann.
@@ -91,7 +89,7 @@ Marcel Baumann.
 - [[[sensors-actuators, 8]]] link:../../2023/sensors-and-actuators/[Sensors and Actuators].
 Marcel Baumann.
 
-=== References
+== References
 
 bibliography::[]
 

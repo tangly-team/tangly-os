@@ -5,12 +5,13 @@ date: 2017-12-06
 tags: ["organization"]
 ---
 
-== Clean Your Desk and Define New Year Improvements
-
 include::../fragments/_config-mb-blog.aodc[]
 
+[.float-group]
+--
 image::2017-12-01-head.png[width=420, height=360, role=left]
 It is Christmastime.
+
 Clean your desk and the content of your workstation.
 Upgrade your tools and your development environment to the actual version.
 
@@ -20,10 +21,11 @@ Embrace agile approaches.
 Work focused and avoid overtime.
 Prioritize outcomes instead of outputs.
 Enjoy family life, practice sport, and pursue continuous training.
+--
 
-=== Clean Your Desk
+== Clean Your Desk
 
-==== Digitalize Your Office
+=== Digitalize Your Office
 It is time to sell the last fax device in your office and plan to remove your big printer.
 Burn your paper documentation and discard your folders.
 Please store all the information digitally and have an effective search application in your company.
@@ -36,7 +38,7 @@ Finding relevant data by keyword searching is a huge gain of time.
 Another advantage is no more backup of workstations and notebooks.
 All mission-critical information is always on the company's drives.
 
-==== Socialize with your Team
+=== Socialize with your Team
 
 Organize a real team room.
 Colocate all your team members, design on big whiteboards.
@@ -49,7 +51,7 @@ A Friday beer event is always a welcome event.
 Celebrate success after each major release of your products.
 Another gain is tension just disappears when people talk around snacks and drink together a glass of wine.
 
-=== Upgrade your Toolbox
+== Upgrade your Toolbox
 
 As a Java developer, it is time to use state of the industry tools and improve your daily work
 
@@ -77,9 +79,9 @@ As a Java developer, it is time to use state of the industry tools and improve y
 . Quality with PMD, FindBugs, SonarLint, or the build-in rules of IntelliJ
 . Banish Flash from your workstation
 
-=== New Year Improvements
+== New Year Improvements
 
-==== Sustainable Pace
+=== Sustainable Pace
 
 Agile approaches state you should work at a sustainable pace, forty hours a week. Avoid working overtime during the evenings or weekends.
 
@@ -87,7 +89,7 @@ Enjoy family time, practice sport, give back to the community.
 
 Work with your team, ideally collocated in a team room. Face2Face exchanges and pair working - pair design, pair review, pair programming, pair checkin - are training on the job occasions.
 
-==== Hone your Craftsmanship
+=== Hone your Craftsmanship
 
 Here are some suggestions to hone your craftsmanship
 

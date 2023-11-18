@@ -5,8 +5,6 @@ date: 2024-08-02
 tags: ["C++", "architecture", "embedded"]
 ---
 
-== Domain-Driven Design with ROS-2
-
 include::../fragments/_config-mb-blog.aodc[]
 :ref-fsm: https://en.wikipedia.org/wiki/Finite-state_machine[Finite State Machine]
 :ref-pubsub: https://en.wikipedia.org/wiki/Publish%E2%80%93subscribe_pattern[Publish and Subscribe Pattern]
@@ -40,7 +38,7 @@ Domain-driven design heavily emphasizes object-oriented modeling and event-based
 
 So your architecture should follow the recommendations of this design method and evolve during realization cite:[building-evolutionary-architectures-2nd].
 
-=== Ubiquitous Language
+== Ubiquitous Language
 
 The user language is used to name the abstractions and operations used in the source code.
 
@@ -62,7 +60,7 @@ The UML diagrams reflect the language used in the source code.
 In other words, the truth always lays in the source code.
 ====
 
-=== Bounded Domain as ROS-2 package
+== Bounded Domain as ROS-2 package
 
 A package is an organizational unit for your {ref-ros} ROS-2 code.
 A package is automatically a distribution unit which can be installed on specific hardware.
@@ -100,7 +98,7 @@ Your UML component diagrams and deployment diagrams will almost contain the same
 footnote:[{ref-arc42} documents the component diagrams of a system in chapter 5 and the deployment diagrams in chapter 7.].
 ====
 
-=== Bounded Domain API
+== Bounded Domain API
 
 Three aspects define the interface of each bounded domain in the context of ROS-2.
 
@@ -196,7 +194,7 @@ An event-based system supports observability on all layers.
 A layered message architecture restricts sending commands only to the next underlying layer.
 ====
 
-=== Entities and Identity
+== Entities and Identity
 
 Topic names are the identity mechanism of all internal abstractions <<meaningful-identifiers>> <<entities-identifiers>>.
 
@@ -222,7 +220,7 @@ Asynchronous applications seldom need this kind of identifiers.
 The essence of event-based communication is _fire and forget_.
 ====
 
-=== Factory and Repository
+== Factory and Repository
 
 Embedded devices are often statically configured to avoid memory allocation problems.
 Therefore, we do need to implement any repository to retrieve and construct objects.
@@ -246,13 +244,13 @@ Devices should be configured when starting-up.
 ROS nodes should get their required parameter values when they are launched.
 ====
 
-=== Value Objects
+== Value Objects
 
 All messages sent to nodes are value-immutable objects <<value-objects>>.
 No entities can ever be sent as part of a message.
 You can send the external identifier of an entity as a field in the message.
 
-=== Good Practices
+== Good Practices
 
 ROS-2 Senior Expert::
 A senior expert aware of the architecture tradeoffs of the framework and good practices must be available to guide architectural decisions.
@@ -329,7 +327,7 @@ An activity needs to be implemented as a separate thread and must be abruptly st
 ====
 
 [bibliography]
-=== Links
+== Links
 
 - [[[meaningful-identifiers, 1]]] link:../../2021/meaningful-identifiers/[Meaningful Identifiers].
 Marcel Baumann. 2021.
@@ -350,6 +348,6 @@ Wikipedia.
 - [[[uml-fsm, 9]]] https://en.wikipedia.org/wiki/UML_state_machine[UML State Machine].
 Wikipedia.
 
-=== References
+== References
 
 bibliography::[]

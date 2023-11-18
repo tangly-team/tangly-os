@@ -5,18 +5,11 @@ date: 2018-03-09
 tags: ["java"]
 ---
 
-== Java 10 aka 18.3 Changes
-
 include::../fragments/_config-mb-blog.aodc[]
 
+[.float-group]
+--
 image::2018-03-01-head.png[width=420,height=360,role=left]
-
-[quote,Mark Reinhold]
-____
-For Java to remain competitive, it must not just continue to move forward — it must move forward faster.
-____
-
-=== What has changed?
 
 Oracle has decided to release a new JDK two times a year.
 
@@ -24,8 +17,14 @@ The next release of Java 10 aka 18.3 will be available in March 2018.
 
 JDK 11 aka 18.9 will be released in September 2018.
 Java 11 will also be a long-term support _LTS_ release.
+--
 
-=== The Visible Change
+[quote,Mark Reinhold]
+____
+For Java to remain competitive, it must not just continue to move forward — it must move forward faster.
+____
+
+== The Visible Change
 
 The visible change is the dawn of the keyword *var*.
 Now instead of typing the type declaration of a local variable - local to a method, a block or an instruction - you can just use the keyword var.
@@ -47,7 +46,7 @@ var event = new Event<>(Events.AA_AB);
 The first impression is that the new construct sometimes simplifies the code of the library and very often improves the test cases.
 Perhaps it takes time until I am accustomed to the new way of writing Java code.
 
-=== Under the Hood Changes
+== Under the Hood Changes
 
 The source code of the JDK is consolidated into one repository.
 It makes development work more efficient.
@@ -61,7 +60,7 @@ The extensions are used in library classes to better support locales.
 Open JDK and Oracle JDK are slowly merging.
 For example, CA certificates will be provided to OpenJDK by Oracle.
 
-=== Outlook
+== Outlook
 
 The rhythm of releases is staggering higher.
 Starting Spring 2018, we will have * The new rule as blogged by Mark Reinhold https://mreinhold.org/blog/forward-faster[Moving Java Forward Faster].

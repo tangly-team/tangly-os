@@ -5,8 +5,6 @@ date: 2022-12-01
 tags: ["agile", "devops"]
 ---
 
-== First Steps DevOps
-
 include::../fragments/_config-mb-blog.aodc[]
 
 image::2022-12-01-head.png[width=420,height=360,role=left]
@@ -37,7 +35,7 @@ Frequent and economical deployments require the full automation of the integrati
 Below, we provide a detailed possible approach to deploying DevOps concepts in your organization.
 These recipes are helpful for companies with little knowledge and experience in agile and DevOps approaches for digital product development <<detecting-agile-bullshit>>.
 
-=== https://en.wikipedia.org/wiki/Continuous_integration[Continuous integration]
+== https://en.wikipedia.org/wiki/Continuous_integration[Continuous integration]
 
 In software engineering, continuous integration _CI_ is the practice of merging all developers' working copies to a shared mainline *several times* a day
 footnote:[https://en.wikipedia.org/wiki/Grady_Booch[Grady Booch] first proposed the term Continuous Integration _CI_ in 1991.
@@ -75,7 +73,7 @@ Can you add manual steps to your continuous integration script?::
 No, manual steps are the death of continuous integration and automation.
 It is called *continuous* because it is *automated*.
 
-=== https://en.wikipedia.org/wiki/Continuous_delivery[Continuous delivery]
+== https://en.wikipedia.org/wiki/Continuous_delivery[Continuous delivery]
 
 Continuous delivery _CD_ is a software engineering approach in which teams produce software in short cycles.
 It ensures that the software can be reliably released at any time and, when releasing the software, *without doing so manually*.
@@ -106,7 +104,7 @@ You are free to adopt another naming scheme for https://en.wikipedia.org/wiki/So
 Just document your approach. +
 Implement a function so that your users can find out the version of the product they are using.
 
-=== https://en.wikipedia.org/wiki/Continuous_deployment[Continuous deployment]
+== https://en.wikipedia.org/wiki/Continuous_deployment[Continuous deployment]
 
 Continuous deployment _CD_ is a software engineering approach in which software functionalities are delivered frequently through automated deployments.
 Continuous deployment contrasts with continuous delivery.
@@ -125,7 +123,7 @@ Are commercial platforms available for continuous deployment?::
 Major cloud services https://aws.amazon.com/[Amazon AWS], https://cloud.google.com/[Google Cloud], https://azure.microsoft.com/[Microsoft Azure],
 https://www.heroku.com/[Heroku], etc. provide continuous deployment pipelines and integration with product development platforms.
 
-=== Logging and Monitoring
+== Logging and Monitoring
 
 https://en.wikipedia.org/wiki/Site_reliability_engineering[Site reliability engineering]
 and https://en.wikipedia.org/wiki/DevOps[DevOps] practices are standard approaches in any professional organization running digital products productively.
@@ -159,7 +157,7 @@ The monitoring is currently based on https://www.elastic.co/kibana/[Kibana].
 All productive servers shall be monitored with a similar approach.
 The monitoring approach shall be tuned based on production incidents.]
 
-=== GitHub, GitLab, BitBucket
+== GitHub, GitLab, BitBucket
 
 Modern software development departments use these platforms for collaboration and implementation.
 
@@ -204,7 +202,7 @@ The Sonar scanners verify for example compliance to OWASP vulnerabilities.
 This verification step can be executed on a repository update to remove vulnerabilities in deployed oddo instances.
 ====
 
-=== Legacy System Variations
+== Legacy System Variations
 
 Legacy systems must compromise how they implement their pipelines.
 Source code shall always follow the clean code and DevOps principles.
@@ -253,7 +251,7 @@ When your latest changes are ready for production, you can merge the staging bra
 
 The above process is documented for Odoo version 15 under the https://www.odoo.com/documentation/15.0/administration/odoo_sh/getting_started/branches.html[branches] section.
 
-==== Unprofessional Odoo Approach
+=== Unprofessional Odoo Approach
 
 Beware that the odoo.sh environment does not hinder amateur developers to do foolish things with git.
 
@@ -268,7 +266,7 @@ If you are bold enough, you can merge your development branches into your produc
 It just means you skip the validation of your changes with the production data through a staging branch.
 ____
 
-==== Professional Odoo Approach
+=== Professional Odoo Approach
 
 On the bright side, odoo.sh supports and advocates the following clean code compatible workflow:
 
@@ -283,7 +281,7 @@ You can test your new functions with production data without impeding the produc
 A new production server will be deployed.
 If the deployment is unsuccessful, it will be rolled back to minimise downtime and to improve mean-time to recover.
 
-=== Tips and Tricks
+== Tips and Tricks
 
 Professional developers perform only code changes in the development branches.
 A development branch is often a *feature* branch.
@@ -310,7 +308,7 @@ Assume that you violate development guidelines and corporate governance.].
 As stated by Odoo, you shall write the configuration changes in XML data files overriding the default configuration or views in your branches.
 This is the best practice for a better scalability of your developments as you will use the Git versioning features for all your configuration changes.
 
-=== Lessons Learnt
+== Lessons Learnt
 
 Clean code and DevOps good practices are around for almost two decades.
 Senior developers in your team should have read the seminal books in this area.
@@ -350,7 +348,7 @@ Extensive tutorials and good practices are available.
 Just use the provided tools and approaches to professionally develop and operate your digital platforms.
 
 [bibliography]
-=== Links
+== Links
 
 - [[[dora-metrics, 1]]] https://devops.com/how-dora-metrics-can-measure-and-improve-performance/[How DORA metrics can measure and improve performance]
 - [[[dora-google, 2]]] https://cloud.google.com/blog/products/devops-sre/using-the-four-keys-to-measure-your-devops-performance[Using The Four Keys to Measure Your Devops Performance]
@@ -363,6 +361,6 @@ Marcel Baumann, 2019.
 - [[[introducing-devops-ideas,6]]] link:../../2022/introducing-devops-ideas/[Introducing DevOps Ideas]
 Marcel Baumann, 2022.
 
-=== References
+== References
 
 bibliography::[]

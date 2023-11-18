@@ -5,8 +5,6 @@ date: 2023-12-01
 tags: ["agile", "java", "series-students"]
 ---
 
-== Gradle Good Practices
-
 include::../fragments/_config-mb-blog.aodc[]
 
 image::2023-12-01-head.png[width=420,height=360,role=left]
@@ -28,7 +26,7 @@ Contrarily, parsing and interpreting Maven’s XML is dead simple.
 Breaking Changes:::
 New Gradle versions are often breaking existing plugins, and the poor maintainer of these one-man-open-source-projects cannot keep up with this speed.
 
-=== Maintain Your Build
+== Maintain Your Build
 
 Build rot is the silent degradation of your build system’s effectiveness, a result of poor practices, neglect, or simply the passage of time.
 It is like rust corroding a piece of machinery.
@@ -80,7 +78,7 @@ The time and effort needed to refactor your scripts, once these features are eve
 
 _Refactoring is a mandatory practice to integrate improvements of your build tool into your scripts._
 
-=== Lessons Learnt
+== Lessons Learnt
 
 Developers must understand the intricacies of these tools to use build systems like Maven and Gradle to the greatest effect.
 By promoting a learning culture, you equip your team with the knowledge they need to best leverage these tools.

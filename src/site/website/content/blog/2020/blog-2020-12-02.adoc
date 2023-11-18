@@ -5,18 +5,20 @@ date: 2020-12-11
 tags: ["design", "hugo", "series-students"]
 ---
 
-== Support Comments for Static Hugo Website
-
 include::../fragments/_config-mb-blog.aodc[]
 
+[.float-group]
+--
 image::2020-12-02-head.png[width=420,height=360,role=left]
 
 There are times in software when you are facing a problem, you find an off-the-shelf solution, and a few lines of code later it just works.
 
 Today I lived one of those moments.
-The whole configuration of comments and modification of the {ref-docsy} theme took around one hour.
 
-=== Motivation
+The whole configuration of comments and modification of the {ref-docsy} theme took around one hour.
+--
+
+== Motivation
 
 I wanted to add a comment section to this blog for a while.
 I was reluctant to implement one myself the classical way, using an external service such as disqus.
@@ -24,7 +26,7 @@ This blog is a static website created with {ref-hugo} and does not use a databas
 All pages are written with {ref-asciidoc}, stored in a Git repository and rendered using {ref-hugo}.
 I wanted to store comments in a personally owned repository and protect my readers from an advertisement and personal information collection.
 
-=== Meeting Utterances
+== Meeting Utterances
 
 Some information on the Internet about {ref-utterances} is wrong.
 Facts are:
@@ -54,7 +56,7 @@ _These functions are great for moderation._
 
 The other wonderful aspect of Utterances is how simple the entire setup really is.
 
-=== Setting Up Utterances
+== Setting Up Utterances
 
 The process is described in details on {ref-utterances}.
 The steps are:
@@ -85,12 +87,12 @@ You can skip the code snippet step if you are using Docsy and follow the below i
 <1> <OWNER>/<NAME> is the name of your repository.
 In my case, it would be _marcelbaumann/tangly-team-comments_.
 
-=== Configure Docsy Theme
+== Configure Docsy Theme
 
 I use the Hugo theme https://www.docsy.dev/[Docsy] to style the {ref-site}.
 I put some effort to have a configurable extension through site parameters.
 
-==== Create the comments partial for utterances
+=== Create the comments partial for utterances
 
 The partial file contains the code to display for commenting using utterances.
 It is a modified version of the snippet you can generate on the {ref-utterances} website.
@@ -149,7 +151,7 @@ Currently, Hugo and Docsy only provide out of the box support for Disqus._
 </div>
 ----
 
-=== Add four site variables to config.toml
+== Add four site variables to config.toml
 
 The above changes try to be generic and are configured through site variables in the site configuration file under the _[params]_ block.
 You do not need to edit partial files to tailor them.

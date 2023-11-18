@@ -5,13 +5,11 @@ date: 2025-05-01
 tags: ["jvm-languages", "series-students"]
 ---
 
-== Teaching Closure III
-
 include::../fragments/_config-mb-blog.aodc[]
 
 image::2025-05-01-head.png[width=420,height=360,role=left]
 
-=== More Functional Constructs
+== More Functional Constructs
 
 variadic functions
 
@@ -21,7 +19,7 @@ map filter reduce with lambda expressions
 
 method chaining (f2 f1 x) is equivalent to (-> x f1 f2)
 
-=== Recursions
+== Recursions
 
 Structural Recursion
 
@@ -31,7 +29,7 @@ Tail Recursion
 
 Sequences
 
-=== Programming By Contracts
+== Programming By Contracts
 
 :pre and :post % is the output :tests
 
@@ -43,7 +41,7 @@ transducers
 REPL
 
 [bibliography]
-=== Links
+== Links
 
 - [[[clojure-1, 1]]]  link:../../2023/teaching-clojure-i/[Teaching Clojure I].
 Marcel Baumann. 2023.

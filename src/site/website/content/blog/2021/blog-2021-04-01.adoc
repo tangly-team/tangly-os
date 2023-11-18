@@ -5,14 +5,13 @@ date: 2021-04-01
 tags: ["java"]
 ---
 
-== JDK 16
-
 include::../fragments/_config-mb-blog.aodc[]
 
 image::2021-04-01-head.png[width=420,height=360,role=left]
 
 I truly love the new release rhythm of the Java ecosystem.
 Being able to use new features every six months is awesome.
+
 The migration overhead is held to a minimum thanks to incredible backward compatibility.
 
 The new features greatly simplify the existing code and tremendously increase legibility.
@@ -22,7 +21,7 @@ The promise of advanced pattern matching constructs is sweet.
 
 Polishing of functional programming approach improved my source code quite stupendously.
 
-=== New Features
+== New Features
 
 Java 16 fully supports https://en.wikipedia.org/wiki/Algebraic_data_type[Algebraic Data Types] with the https://openjdk.java.net/jeps/395[record] and
 https://openjdk.java.net/jeps/397[sealed types] features.
@@ -51,7 +50,7 @@ The other new features are more of internal nature.
 Notice that https://openjdk.java.net/jeps/386[Alpine Unix] is now officially supported.
 This port is great new to shrink the size of docker images containing a Java runtime.
 
-=== Troubles With Some Packages
+== Troubles With Some Packages
 
 MicroStream:: https://microstream.one/[MicroStream] persistence library crashes if you are using records.
 ArchUnit:: https://www.archunit.org/[ArchUnit] crashes if you are using records.
@@ -83,7 +82,7 @@ Support modules, auto-closeable resources, records, sealed classes.
 As a maintainer of a successful component or application, you should represent modern Java approaches.
 Did you realize that since Java 8 a new version is released every six months?
 
-=== The Next Changes I am Dreaming Of
+== The Next Changes I am Dreaming Of
 
 Concise Method Body:: Syntactic sugar to write compact delegation classes.
 It provides the same mechanisms for method overwriting as for lambda declarations
@@ -100,7 +99,7 @@ I really, really, really want to use modules in Java 16.
 Therefore, I need a module version for all mainstream Java libraries.
 Until now, the Java developers' community has failed us; support for modules is abysmal.
 
-=== Important Remainder
+== Important Remainder
 
 The next long term supported Java shall be published in September 2021.
 The evolution between LTS 11 and LTS 17 is huge.

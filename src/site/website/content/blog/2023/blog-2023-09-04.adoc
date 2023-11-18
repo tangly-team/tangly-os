@@ -5,8 +5,6 @@ date: 2023-09-27
 tags: ["agile", "git", "series-students"]
 ---
 
-== Git Tag for the Impatient
-
 include::../fragments/_config-mb-blog.aodc[]
 :ref-svn: https://subversion.apache.org/[Subversion]
 
@@ -23,7 +21,7 @@ How can you mark this event in the git repository of the application?
 
 Use tags to recognize this state in the list of changes of your shared {ref-git} repository.
 
-=== Listing Your Tags
+== Listing Your Tags
 
 Listing the existing tags in Git is straightforward.
 Just type git tag (with optional -l or --list):
@@ -37,7 +35,7 @@ v2.0
 
 This command lists the tags in alphabetical order; the order in which they are displayed has no real importance.
 
-=== Creating Tags
+== Creating Tags
 
 Git supports two types of tags: lightweight and annotated.
 
@@ -62,7 +60,7 @@ v1.4.0
 The _-m_ specifies a tagging message, which is stored with the tag.
 If you do not specify a message for an annotated tag, Git launches your editor, and you can type it in.
 
-=== Sharing Tags
+== Sharing Tags
 
 By default, the git push command does not transfer tags to remote servers.
 You will have to explicitly push tags to a shared server after you have created them.
@@ -84,7 +82,7 @@ git checkout -b v2-fixex v2.0.0
 ----
 ====
 
-=== Thoughts
+== Thoughts
 
 You can find a lot of information on https://stackoverflow.com/questions/tagged/git[Stack Overflow].
 Beware when reading the answers on Stack Overflow that Git commands have changed over time.
@@ -94,6 +92,6 @@ The nifty-gritty details can be found in the official https://git-scm.com/book/e
 
 The _Pro Git_ book can be downloaded from https://git-scm.com[Git SCM].
 
-=== Links
+== Links
 
 include::../fragments/_git-series-inks.adoc[]

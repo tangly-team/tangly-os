@@ -5,8 +5,6 @@ date: 2021-03-15
 tags: ["java", "architecture", "series-students"]
 ---
 
-== Agile Software Architecture is Mainstream
-
 include::../fragments/_config-mb-blog.aodc[]
 
 image::2021-03-03-head.jpg[width=420,height=360,role=left]
@@ -35,7 +33,7 @@ We show mercy to all the software architecture and designer traditionalists who 
 
 Laggards, please bow and embrace modern software development approaches.
 
-=== PMI and Disciplined Agile Delivery
+== PMI and Disciplined Agile Delivery
 
 image::2021-03-03-dad.jpg[width=420,height=360,role=left]
 
@@ -56,7 +54,7 @@ The founder of DAD https://en.wikipedia.org/wiki/Scott_Ambler[Scott W. Ambler] h
 
 Anyway, it is a huge step for PMI to move away from traditional heavy project development methods and embrace somehow agile product development.
 
-=== Open Group and The Open Agile Architecture Initiative TOGAF
+== Open Group and The Open Agile Architecture Initiative TOGAF
 
 image::2021-03-03-open-group-agile.png[width=420,height=360,role=left]
 
@@ -88,7 +86,7 @@ The concepts and techniques defined in TOGAF are reasonable.
 The official process how to implement them is flawed.
 You cannot work with short iterations and incrementally improve your solution upon discovering new facts in a timely and efficient manner.
 
-=== iSAQB Agile Software Architecture
+== iSAQB Agile Software Architecture
 
 image::2021-03-03-isaqb.jpg[width=420,height=360,role=left]
 
@@ -106,7 +104,7 @@ On the other hand, expedient anchoring of architecture practices in an agile app
 The above statements are quite shallow.
 I hope they will add more material in the future.
 
-=== Agile Requirements Engineering
+== Agile Requirements Engineering
 
 Interestingly, the requirement community is further on the path to agility.
 The most relevant organization is Europe is the https://www.ireb.org/[International Requirements Engineering Board] _IREB_.
@@ -115,7 +113,7 @@ The organization offers two certifications with emphasis on agile approaches:
 * RE@Agile Primer - Bridging the gap between RE and Agile
 * Advanced Level RE@Agile - is part of the advanced CPRE AL
 
-=== Agile Testing Engineering
+== Agile Testing Engineering
 
 Interestingly, the quality insurance and testing community are further on the path to agility.
 The most relevant organization is Europe is the https://www.istqb.org/[International Software Testing Qualifications Board] _ISTQB_.

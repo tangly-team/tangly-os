@@ -5,13 +5,11 @@ date: 2025-08-01
 tags: ["agile", "series-students"]
 ---
 
-== Deploy Your Java Applications in the Cloud
-
 include::../fragments/_config-mb-blog.aodc[]
 
 image::2025-08-01-head.jpg[width=420,height=360,role=left]
 
-=== Choose a Primary Cloud Provider
+== Choose a Primary Cloud Provider
 
 The selection criteria are:
 
@@ -25,7 +23,7 @@ No user interface interaction or manual login activities are required.
 
 https://www.heroku.com/[Heroku] is one of the seldom providers supporting the current released version of Java.
 
-=== Set up Your Environment
+== Set up Your Environment
 
 I recommend a step-by-step approach
 
@@ -53,7 +51,7 @@ Set up your monitoring solution::
 Monitor your application.
 Find out the response times your users encounter.
 
-=== Thoughts
+== Thoughts
 
 I already have a continuous integration and continuous delivery pipeline setup for the application.
 I am not really interested in setting up it again on a proprietary cloud provider solution.
@@ -62,8 +60,8 @@ GitHub, GitLab, and BitBucket are well-known platforms for agile software develo
 The cloud solution shall concentrate on the functions of deploying an application and monitoring it.
 
 [bibliography]
-=== Links
+== Links
 
-=== References
+== References
 
 bibliography::[]

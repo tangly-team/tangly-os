@@ -5,10 +5,10 @@ date: 2019-10-23
 tags: ["java"]
 ---
 
-== Time to Migrate to a Modern JDK, Laggards!
-
 include::../fragments/_config-mb-blog.aodc[]
 
+[.float-group]
+--
 image::2019-10-01-head.jpg[width=420,height=360,role=left]
 Are you still using _Java 8_ to run your mission-critical systems?
 
@@ -25,8 +25,9 @@ You had one year to migrate to this long-term solution version.
 
 It is time to modernize the fundament of your application and invest a small amount of effort in it.
 The payback is fantastic.
+--
 
-=== Advantages
+== Advantages
 
 * You have economic gains through
 ** Major performance improvements make your application faster.
@@ -54,7 +55,7 @@ You are more flexible with your migration timeline.
 
 image::2019-10-01-jdk-releases.png[float="center"]
 
-=== How to Migrate?
+== How to Migrate?
 
 You do not need to implement Java modules to migrate to Java 9 or beyond.
 It is worth the effort to slowly support the module approach.
@@ -76,7 +77,7 @@ Sun packages have a documented migration path to alternate approaches providing 
 By the way, the _Sun_ company already stated years ago, you should not use these internal packages.
 So it is time to clean up your code.
 
-=== Call for Action
+== Call for Action
 
 Start now your migration to a modern JDK and leave Java 8 behind you.
 

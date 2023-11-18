@@ -5,10 +5,10 @@ date: 2022-06-01
 tags: ["architecture", "domain-driven-design", "java"]
 ---
 
-== Software Structure when using Domain-Driven Design
-
 include::../fragments/_config-mb-blog.aodc[]
 
+[.float-group]
+--
 image::2022-06-01-head.jpg[width=420,height=360,role=left]
 
 https://en.wikipedia.org/wiki/Domain-driven_design[Domain Driven Development] _DDD_ is the preferred software architecture approach for designing digital products.
@@ -19,6 +19,7 @@ Domain-driven design is a holistic approach to understanding, designing and buil
 Seminal books cite:[domain-driven-design,domain-driven-design-distilled,implementing-domain-driven-design] describes the approach and key concepts defining the development method.
 
 Concrete recipes and examples of code structure are still sparse.
+--
 
 How should you structure your namespaces and modules?
 
@@ -35,7 +36,7 @@ ____
 The heart of software is its ability to solve domain-related problems for its user.
 ____
 
-=== Layers in DDD
+== Layers in DDD
 
 Domain-driven design _DDD_ has four layers in the architecture:
 
@@ -59,7 +60,7 @@ The persistence capability is less than fifty lines of code.
 No changes in the domain model was necessary.
 We did not have to add a root persistent class or use annotations._
 
-=== Package Structure
+== Package Structure
 
 A bounded domain shall be configured as a Java module cite:[java-9-modularity].
 The exported services and entities are explicitly listed with the _exports_ directive.
@@ -128,7 +129,7 @@ Different approaches for user interface realization are available and no clear w
 
 I mainly use https://www.vaadin.com[Vaadin] to realize browser- or mobile-first internal applications.
 
-=== Java Considerations
+== Java Considerations
 
 Entities shall have well-documented internal or external identifiers.
 Entities visible to other bounded domains shall always have an external identifier.
@@ -182,7 +183,7 @@ Gradle modules are a natural mapping for bounded domains.
 Use either Java modules or archUnit to enforce that communication always goes through bounded domain interfaces.
 ====
 
-=== Architecture Integrity
+== Architecture Integrity
 
 A Bounded Context is a logical boundary of a domain where particular terms and rules apply consistently.
 Inside this boundary, all terms, definitions and concepts form the Ubiquitous Language.
@@ -208,7 +209,7 @@ Your services are independent and can more easily be refactored.
 * Development scalability is implicitly provided.
 Teams can develop simultaneous and independently bounded domain features.
 
-=== Bounded Domain Relations
+== Bounded Domain Relations
 
 There are five main types of relationships between Bounded Contexts:
 
@@ -226,7 +227,7 @@ Anti-corruption layer::
 this relationship kind is widely used for legacy systems to adapt them to a new architecture and gradually migrate from the legacy codebase.
 The protection layer acts as an adapter to translate data from the upstream and protect from undesired changes
 
-=== Lessons Learnt
+== Lessons Learnt
 
 Great technologies, programming languages and tools are used when building software applications.
 That is good and right.
@@ -249,6 +250,6 @@ ____
 The DDD approach emphasizes systematic refactoring and code improvements cite:[refactoring-2nd,clean-code,clean-coder,clean-architecture].
 It recommends test driven approach for bounded domain development cite:[agile-testing,more-agile-testing,bridging-communication-gap].
 
-=== References
+== References
 
 bibliography::[]

@@ -5,10 +5,10 @@ date: 2022-08-15
 tags: ["agile", "devops"]
 ---
 
-== Transfer a Software Project
-
 include::../fragments/_config-mb-blog.aodc[]
 
+[.float-group]
+--
 image::2022-08-02-head.jpg[width=420,height=360,role=left]
 
 You developed a new digital product for an internal or external customer.
@@ -23,6 +23,7 @@ The handover is a vital part of closing a project
 footnote:[The handover is most of the time implied through the contract or the corporate governance processes of your customer.].
 
 Your customer paid for the development and own the produced artifacts.
+--
 
 You are legally bound to deliver source code, binary artifacts defining the executable application, credentials and documentation to your customer.
 The ownership transfer is either an explicit part of your contract or implicit through the contract type you are working with.
@@ -38,7 +39,7 @@ How can you document the transfer process and provide an acceptance protocol?
 
 Which steps shall you implement to delight your clients?
 
-=== Migration Steps
+== Migration Steps
 
 Most development initiatives are using  {ref-github}, {ref-gitlab} or {ref-bitbucket}.
 The steps are the same for all these platforms.
@@ -69,7 +70,7 @@ Good practice is to sign the transfer protocol. +
 _Relinquish formally ownership of the repository and responsibility to your customer_.
 . Celebrate the successful completion of your project.
 
-=== Update Your Copyrights
+== Update Your Copyrights
 
 The chosen copyrights shall allow the new owner to take over and change all artifacts.
 
@@ -96,7 +97,7 @@ The free software foundation and similar entities consequently sue organizations
 Avoid loosing your reputation and money for infringing copyrights.
 ====
 
-=== Update Your Documentation
+== Update Your Documentation
 
 I strongly suggest using actual good practice documentation as static websites to publish your documentation.
 The huge gain is git based tracking to map a documentation set to a specific release of your solution.
@@ -144,14 +145,14 @@ Here is a simple example of a redirect page for your old website.
 </html>
 ----
 
-=== Update Your CI/CD Pipeline
+== Update Your CI/CD Pipeline
 
 The continuous integration and delivery pipelines cite:[continuous-delivery] shall build all expected artifacts associated with the product.
 Ideally the process shall follow DevOps good practices and be automated.
 
 If not document thoroughly the manual steps.
 
-=== Transfer Your GitHub Repository
+== Transfer Your GitHub Repository
 
 The transfer of a repository from one organization to another one is well-supported in GitHub <<transferring-a-repository>>.
 The whole transfer process is completed in less than five minutes.
@@ -179,7 +180,7 @@ Your remote can have a different name such as _origin_.
 Look at the URL after the remote name to identify the adequate remote.
 ====
 
-=== Good Practices
+== Good Practices
 
 Do not transfer a product with known security flaws to another party.
 Please correct the issues.
@@ -188,7 +189,7 @@ GitHub, SonarQube <<sonarqube>> and other tools provide convenient ways to detec
 Integrate these tools to support the delivery of an application without known vulnerabilities or OWASP smells
 footnote:[GitHub provides DependaBot <<dependabot>> to handle dependency updates for various ecosystems including Python technology stack.].
 
-=== Lessons Learnt
+== Lessons Learnt
 
 Development teams seldom understand the legal implications of copyright infringements.
 All source code files must have a clear copyright banner.
@@ -208,7 +209,7 @@ Beware especially of the consequences of using a GPL or AGPL library in your pro
 Tools such as GitHub or GitLab increase efficiency if you are adopting DevOps practices when working with them cite:[accelerate,devops-handbook,site-reliability-engineering].
 
 [bibliography]
-=== Links
+== Links
 
 - [[[transferring-a-repository, 1]]] https://docs.github.com/en/repositories/creating-and-managing-repositories/transferring-a-repository[Transferring a GitHub Repository]
 - [[[configuring-custom-domain, 2]]] https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site[Configuring Custom Domain]
@@ -216,6 +217,6 @@ Tools such as GitHub or GitLab increase efficiency if you are adopting DevOps pr
 - [[[sonarqube, 4]]] https://www.sonarqube.org/[SonarQube]
 - [[[dependabot, 5]]] https://github.com/dependabot/dependabot-core[GitHub Dependabot]
 
-=== References
+== References
 
 bibliography::[]

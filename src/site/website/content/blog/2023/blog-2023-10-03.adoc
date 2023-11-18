@@ -5,8 +5,6 @@ date: 2023-10-06
 tags: ["java", "organization"]
 ---
 
-== 20th Devoxx Belgium Conference 2023
-
 include::../fragments/_config-mb-blog.aodc[]
 :ref-anemic-domain-model: https://en.wikipedia.org/wiki/Anemic_domain_model[Anemic Domain Model]
 :ref-armeria: https://armeria.dev/[Armeria]
@@ -64,7 +62,7 @@ Nothing to do with how many developers you have or how many applications you are
 
 My favorite tool companies {ref-jetbrains}, {ref-vaadin}, and {ref-oracle} were exhibitors.
 
-=== Day One
+== Day One
 
 The train ride from Brussels airport to Antwerp is around half an hour.
 
@@ -81,7 +79,7 @@ footnote:[Agile conferences have often a real coffee machine and a barista.
 I promise it is not the reason why I also attend agile congresses.].
 The danish pastries were welcome.
 
-==== Test Containers: Needed, Simple, Powerful
+=== Test Containers: Needed, Simple, Powerful
 
 Integration tests verify your application is working as expected.
 
@@ -110,7 +108,7 @@ _My docker compose file is simple and straightforward._
 
 _Why should I add the complexity of test containers?_
 
-==== Java 21
+=== Java 21
 
 The introduction was well-done.
 Honestly, if you read the JSR and articles during the early-adopter phase, you did not get new information during the presentation.
@@ -118,7 +116,7 @@ Honestly, if you read the JSR and articles during the early-adopter phase, you d
 _The presentation is for Java developers lagging behind the latest Java LTS release._
 _Modern developers evaluate a new Java version before it is officially released._
 
-==== Value Types and Patterns Matching
+=== Value Types and Patterns Matching
 
 Data oriented programming separate data and code.
 This approach is against core concepts of object-oriented programming.
@@ -170,7 +168,7 @@ The statement _if (this == obj)_ is a performance killer when compared with the 
 Stop using conditional statements when implementing _equals_ method.
 ====
 
-==== Getting Started with the Structurizr DSL
+=== Getting Started with the Structurizr DSL
 
 Simon Brown provided a nice introduction to {ref-c4}: Context, Container, Component, and Code.
 
@@ -200,12 +198,12 @@ Generators such as {ref-hugo} provides mechanisms to generate links and cross-re
 The idea to add a semantic abstraction layer to diagramming tools is brilliant.
 I think the current solution should be improved to simplify diagram handling.
 
-=== Day Two
+== Day Two
 
 I found a nice coffee shop in town to get a real coffee and a cinnamon roll.
 Loaded with caffeine and sugar, I am ready to tackle the second conference day.
 
-==== Know Your Java?
+=== Know Your Java?
 
 Entertaining and professional presentation of Java quirks.
 The examples show Java software archeology.
@@ -233,7 +231,7 @@ The compiler performs limited checks if your functional code behaves correctly.
 As a young developer, consider taking the Java developer certification examination.
 ====
 
-==== Test-Driven Insights: 10 Hints You Were Missing
+=== Test-Driven Insights: 10 Hints You Were Missing
 
 Funny examples of how to write unit tests for crap code.
 The end of the talk presented good design approaches and the need to refactor.
@@ -255,7 +253,7 @@ _I would never work on a crap software code application._
 _Either the company is resolute with professionalism and supports refactoring._
 _Or I would look out for a serious development environment._
 
-==== Microservices Got Talent: The Event-Driven Beautiful Dance
+=== Microservices Got Talent: The Event-Driven Beautiful Dance
 
 Event-first design is another approach to look at your domain.
 
@@ -287,7 +285,7 @@ Therefore, no error should block the flow and they are hard to debug.
 You can use complex sagas with orchestration tools such as https://temporal.io/[Temporal] or https://camunda.com/[Camunda].
 A trend is to offer PaaS solutions built around a kubernetes cluster.
 
-==== With Java 21, Your Code Runs Even Faster. But How is that Possible?
+=== With Java 21, Your Code Runs Even Faster. But How is that Possible?
 
 The presentation was fun, instructive and well-done.
 The details were inspiring and of high-quality.
@@ -295,9 +293,9 @@ The details were inspiring and of high-quality.
 The speaker showed multiple areas where the JVM was locally massively improved through clever refactoring.
 Worth every second and a nice way to complete the day.
 
-=== Day Three
+== Day Three
 
-==== Keynote
+=== Keynote
 
 The themes are Java and AI.
 Artificial intelligence is a hot topic with few concrete scenarios.
@@ -328,7 +326,7 @@ You have only to support two versions of your library.
 You can use old the cool new features in the newest version without stressing about backward compatibility.
 ====
 
-==== Unlocking the Potential of Bits and Bytes: Reducing Data Footprint for Cost and Eco-Efficiency
+=== Unlocking the Potential of Bits and Bytes: Reducing Data Footprint for Cost and Eco-Efficiency
 
 Beginner introduction of byte encoding for the payload.
 
@@ -339,12 +337,12 @@ Smaller data packages reduce energy consumption, network traffic, and surprising
 {ref-protobuf} is a good compromise to encode payloads.
 Hand coded structures are still factors more compact but require code to encode and decode the payload.
 
-==== PostgreSQL, The Time-Series Database You Actually Want
+=== PostgreSQL, The Time-Series Database You Actually Want
 
 The speaker shows a demonstration of time series in {ref-postgresql}.
 Nice to learn the database supports the feature, and I missed concrete examples why should I use it.
 
-==== Project Leyden
+=== Project Leyden
 
 Brian Goetz explained the various mechanisms to speed startup time and increase performance.
 In the end, Java programs should be more cloud-friendly.
@@ -363,7 +361,7 @@ CDS is active per default _-Xshare:auto_.
 
 Ideally, some improvements shall be delivered with JDK 22.
 
-==== Java at AWS: Lessons Learned from Upgrading and Modernizing a Massive JVM Codebase
+=== Java at AWS: Lessons Learned from Upgrading and Modernizing a Massive JVM Codebase
 
 Speakers presented the huge gains moving from JDK 8 to JDK 17.
 
@@ -392,7 +390,7 @@ Sharing source code is more toxic than sharing binaries.
 Long live maven central.
 ====
 
-==== Java on Arm. New horizons
+=== Java on Arm. New horizons
 
 It was a boring presentation.
 I know a little about ARM processor architecture.
@@ -406,7 +404,7 @@ All Apple computers are running on ARM.
 
 One clear statement was we will run our applications on a platform with a lot of ARM or X86 cores in the future.
 
-==== Coding Your Documentation
+=== Coding Your Documentation
 
 Hubert Klein also known as _mrhaki_ is an advocate of {ref-asciidoc}.
 He has a cool https://blog.mrhaki.com/[blog].
@@ -418,7 +416,7 @@ The presentation was interesting and professional.
 I am an absolute fan of {ref-asciidoc}, {ref-plantuml} and {ref-hugo}.
 I enjoyed seeing how he solved similar problems with the same toolchains.
 
-=== Day Four
+== Day Four
 
 *Surprise, Surprise*.
 The public transportation went on strike today.
@@ -433,7 +431,7 @@ The previous days had summer temperatures.
 You still could have dinner outside on a terrace.
 It was a little chilly, but locals enjoyed the last warm days of this season.
 
-==== Open Telemetry and Continuous Feedback. Things you need to know about your Java code at runtime
+=== Open Telemetry and Continuous Feedback. Things you need to know about your Java code at runtime
 
 The speaker favors integration and production feedbacks how the application behaves.
 
@@ -447,7 +445,7 @@ Observability metrics are provided during development and testing directly in yo
 
 Cool plugin providing developer functionality without having to install multiple docker images as with regular DevOps tools.
 
-==== Lessons learned using Machine Learning in Java
+=== Lessons learned using Machine Learning in Java
 
 Funny presentation how to classify Lego bricks using machine learning.
 
@@ -464,7 +462,7 @@ The difference is tremendous.
 Tutorials how to set up a machine learning environment, train the models, and process application data are sorely missing.
 
 [#awesome-speech-llm]
-==== Java Meets AI: A Hands-On Guide to Building LLM-Powered Applications with LangChain4j
+=== Java Meets AI: A Hands-On Guide to Building LLM-Powered Applications with LangChain4j
 
 *This presentation was the coolest of the whole Devoxx 2023*.
 
@@ -485,14 +483,14 @@ I have to test chat with documents.
 Train with your documents, for example, your blog.
 After training, the chat can answer questions about your own documents or source code.
 
-==== Debugging with IntelliJ IDEA
+=== Debugging with IntelliJ IDEA
 
 Solid presentation of {ref-idea} debugger features with hands-on examples.
 
 _I seldom use the debugger._
 _The tips were good but not really relevant for me._
 
-==== gRPC Supercharged with Armeria
+=== gRPC Supercharged with Armeria
 
 The speaker presented a solid introduction to {ref-grpc} and {ref-armeria}.
 
@@ -507,7 +505,7 @@ I seldom have non-functional requirements requiring such complex architectures.
 The {ref-armeria} framework provides the equivalent of {ref-openapi} for {ref-grpc}.
 Beware that {ref-armeria} is a framework which again implemented an HTTP engine.
 
-==== Building and Deploying Java Client Desktop Applications With JDK 21 and Beyond
+=== Building and Deploying Java Client Desktop Applications With JDK 21 and Beyond
 
 A solid presentation about Swing and JavaFX.
 You can use both libraries in the same application.
@@ -525,7 +523,7 @@ footnote:[You can only create an installer for the platform where you are runnin
 Use a continuous delivery platform to build installer for all the platforms you want to support.].
 For example, it creates a _dmg_ installer for the macOS platform.
 
-==== Open standards for building event-driven applications in the cloud
+=== Open standards for building event-driven applications in the cloud
 
 The speaker provided a good introduction to {ref-asynapi} and {ref-cloudevents}.
 
@@ -534,7 +532,7 @@ Funny to have a speaker at a Java conference stating he did not install Java on 
 It is a proof the speaker did not prepare for this talk.
 It felt like disrespect to the conference attendees.
 
-=== Day Five
+== Day Five
 
 The last conference day.
 I am surprised how tiring it was to listen to so many presentations and trying to memorize interesting concepts.
@@ -547,7 +545,7 @@ It worked well, and I was ahead on time at the airport.
 I decided to enjoy the digital nomad feeling.
 I published this blog at the airport while waiting to board my plane.
 
-==== The developer's guide to making money in the open-source galaxy
+=== The developer's guide to making money in the open-source galaxy
 
 An entertaining presentation about entrepreneurship.
 
@@ -573,7 +571,7 @@ The whole approach is cute, hands-on, and most importantly working.
 He is able to live from an open-source product.
 This is an impressive and sadly seldom achievement.
 
-==== The Panama Dojo: Black-Belt Programming with Java 21 and the FFM API
+=== The Panama Dojo: Black-Belt Programming with Java 21 and the FFM API
 
 Per Minborg provided again a cool high-quality talk about {ref-panama and {ref-ffm}.
 
@@ -588,7 +586,7 @@ With {ref-panama}, it is again good and easier to call C libraries from Java app
 JNI is now officially an obsolete technology.
 Use {ref-ffm} to call external libraries.
 
-=== Learnings
+== Learnings
 
 Please use the *current* release of Java.
 Most speakers rightly make fun of organizations still using Java 8 or older versions.
@@ -630,7 +628,7 @@ I hold video conferences with my daughters and wife every day without trouble.
 I was pleased that no customers called me during the conference.
 
 [bibliography]
-=== Links
+== Links
 
 - [[[certifications-useful, 1]]] link:../../2023/are-certifications-useful/[Are Certifications Useful?]
 Marcel Baumann. 2023.

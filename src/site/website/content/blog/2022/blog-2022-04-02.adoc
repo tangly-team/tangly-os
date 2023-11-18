@@ -5,10 +5,10 @@ date: 2022-04-10
 tags: ["design", "java"]
 ---
 
-== Yet Another Hybrid Method
-
 include::../fragments/_config-mb-blog.aodc[]
 
+[.float-group]
+--
 image::2022-04-02-head.jpg[width=420,height=360,role=left]
 
 SoDa _Software Development Agile_ is a homebrew project development method created at the https://www.hslu.ch[technical university of Lucerne].
@@ -18,6 +18,7 @@ It uses a distorted Scrum for the concept and implementation phase<<detecting-ag
 
 The documentation was not updated the last ten years.
 The approach is clinically dead and should not be promoted for active software development efforts.
+--
 
 A similar approach exists with the official governmental Swiss project method {ref-hermes}.
 At least the documentation of https://www.hermes.admin.ch/en//starting-page.html[Hermes] is better than SoDa.
@@ -47,7 +48,7 @@ For most of these organizations that take a hybrid approach, this is an interim 
 They intend to gradually expand their agile activities beyond the development and testing stages to the rest of the software development lifecycle.
 ____
 
-=== HERMES Swiss Hybrid Method
+== HERMES Swiss Hybrid Method
 
 If you are forced to use a hybrid method in Switzerland, please use Hermes.
 Never try to use SoDa.
@@ -70,7 +71,7 @@ footnote:[The fact the method is only used in Switzerland and only when it is a 
 The method is Swiss and completely unknown in Europe or abroad.
 Swiss commercial or industrial software development initiatives never use Hermes as a development approach.
 
-=== Why Hybrid Methods are Hindering
+== Why Hybrid Methods are Hindering
 
 In his mind-expanding book _The Beginning of Infinity_, physicist David Deutsch describes science and the enlightenment as the quest for _good explanations_.
 He explains how various ideas in human history represent a _beginning of infinity_ that allows us to cope with any conceivable relevant application of these good explanations.
@@ -100,7 +101,7 @@ Stop being a laggard.
 Start using agile approaches and the Scrum framework.
 ====
 
-=== Future Work
+== Future Work
 
 I strongly advocate discarding all hybrid methods.
 No empirical evidence is available that they work is available.
@@ -133,7 +134,7 @@ You must retrain your collaborators into SAFe if you go down this path.
 The duration is typically 8 to 12 weeks long.
 This is too long for agile, DevOps, or Design Thinking approaches.
 
-=== Lessons Learnt
+== Lessons Learnt
 
 image::2022-04-02-agile-vs-waterfall.png[width=420,height=360,role=left]
 
@@ -160,7 +161,7 @@ The majority of hybrid methods I still encounter are bad rehearsal of the RUP de
 The unified process was defined in the nineties and is now obsolete.
 
 [bibliography]
-=== Links
+== Links
 
 - [[[detecting-agile-bullshit, 2]]] link:../../2019/detecting-agile-bullshit/[Detecting Agile Bullshit].
 Marcel Baumann. 2019
@@ -181,6 +182,6 @@ Marcel Baumann. 2020
 - [[[agile-software-architecture, 10]]] link:../..//2021/what-i-learnt-teaching-agile-software-architecture/[What I learnt Teaching Agile Software Architecture].
 Marcel Baumann. 2021
 
-=== References
+== References
 
 bibliography::[]

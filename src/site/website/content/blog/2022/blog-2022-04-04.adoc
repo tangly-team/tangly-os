@@ -5,10 +5,10 @@ date: 2022-04-21
 tags: ["agile", "devops"]
 ---
 
-== Introducing DevOps Ideas
-
 include::../fragments/_config-mb-blog.aodc[]
 
+[.float-group]
+--
 image::2022-04-04-head.png[width=420,height=360,role=left]
 
 Your organization heard of https://en.wikipedia.org/wiki/DevOps[DevOps], and your developers clamor you should adopt the approach.
@@ -21,8 +21,9 @@ Does DevOps really improve the quality of your digital products and customer sat
 Or is it only the next https://en.wikipedia.org/wiki/No_Silver_Bullet[silver bullet] fad used to increase the bonus of consultants and managers?
 
 You also find a simple way to boostrap your DevOps adoption <<bootstrap-devops-adoption>>.
+--
 
-=== What is DevOps?
+== What is DevOps?
 
 Wikipedia provides the following definition
 footnote:[The first conference dedicated to DevOps themes was held in 2009 in Ghent, Belgium.]:
@@ -67,7 +68,7 @@ Supports the infrastructure as a code approach.
 Monitoring:: Applications performance monitoring, end-user experience.
 Emphasize continuous monitoring and alarming, optimize time to recover metric.
 
-=== Development
+== Development
 
 Development in an agile and DevOps environment means:
 
@@ -115,7 +116,7 @@ Deep understanding of empiricism and transparency of all available information a
 
 Google has published exhaustive insights how they implement DevOps mindset cite:[site-reliability-engineering].
 
-=== DevSecOps
+== DevSecOps
 
 Security and corporate governance awareness tremendously grew during the beginning of this decade.
 Systematic cyberattacks and more stringent citizen protection laws displayed lack of competence in a lot of IT departments.
@@ -141,7 +142,7 @@ Measurement, Monitoring, Report and Action::
 The results during software development as well as post-delivery must be continuously controlled by the qualified people at the right time for DevSecOps to succeed.
 
 [#bootstrap-devops-adoption]
-=== Bootstrap Your DevOps Adoption
+== Bootstrap Your DevOps Adoption
 
 You are already using agile approaches to develop your digital products.
 You want to start your journey with DevOps.
@@ -179,7 +180,7 @@ The measures for the next releases are documented and progress is tracked.
 Does the measure improve the overall quality of the product?
 Do the actions measurably improve the associated metrics?
 
-=== Checklist
+== Checklist
 
 . You give access to a product repository.
 I can check out the whole project and build it locally with one command.+
@@ -239,7 +240,7 @@ Production Failure Rate::
 It analyses how frequently your software crashes in production for a particular period through
 https://en.wikipedia.org/wiki/Failure_rate[failure rate].
 
-=== Cultural change
+== Cultural change
 
 DevOps initiatives create cultural changes in companies by transforming the way operations, developers and testers collaborate during the development and delivery processes.
 Getting these groups to work cohesively is a critical challenge in enterprise adoption.
@@ -262,7 +263,7 @@ The 2015 State of DevOps Report discovered that the top seven measures with the 
 . Deployment pain,
 . Lean management practices.
 
-=== Lessons Learnt
+== Lessons Learnt
 
 DevOps will only be successful if your organization adopts agile values.
 
@@ -277,7 +278,7 @@ Be honest with yourself.
 If you do not have concrete and visible initiatives in the areas of development _Dev_, running _Ops_ and continuous improvement, you are just pretending to be a professional.
 But in reality, you are just an amateur.
 
-=== Glossary
+== Glossary
 
 [horizontal]
 Continuous Integration::
@@ -311,7 +312,7 @@ testing the smallest units possible to prove what was written is true.
 Unit testing frameworks are Xunit or NUnit for C# and .Net, Junit for Java, PyUnit for Python, Cppunit for {cpp}.
 
 [bibliography]
-=== Links
+== Links
 
 - [[[technical-debt, 1]]] link:../../2022/technical-debt/[Technical Debt]
 Marcel Baumann. 2022
@@ -324,6 +325,6 @@ Marcel Baumann. 2020
 - [[[how-healthy-is-your-product, 5]]] link:../../2018/how-healthy-is-your-product-delivery-pipeline-check/[How Healthy is Your Product Delivery Pipeline]
 Marcel Baumann. 2018
 
-=== References
+== References
 
 bibliography::[]

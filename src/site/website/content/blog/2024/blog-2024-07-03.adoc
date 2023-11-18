@@ -5,8 +5,6 @@ date: 2024-07-20
 tags: ["C++", "architecture", "embedded"]
 ---
 
-== Modern Embedded Realtime Architecture
-
 include::../fragments/_config-mb-blog.aodc[]
 :ref-actor-model: https://en.wikipedia.org/wiki/Actor_model[Actor Model]
 :ref-message-passing: https://en.wikipedia.org/wiki/Message_passing[Message Passing]
@@ -30,7 +28,7 @@ avoid heap object creation
 MISRA 2023 for C and {cpp}
 
 [bibliography]
-=== Links
+== Links
 
 - [[[actors, 1]]] link:../../2024/actors/[Actors].
 Marcel Baumann. 2024.

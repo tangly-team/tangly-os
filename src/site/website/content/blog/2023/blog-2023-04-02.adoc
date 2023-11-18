@@ -5,7 +5,6 @@ date: 2023-04-09
 tags: ["organization"]
 ---
 
-== My New MacBooPro 16'' M2 Max
 :ref-metal: https://developer.apple.com/metal/[Metal]
 
 include::../fragments/_config-mb-blog.aodc[]
@@ -50,7 +49,7 @@ The older notebook is now my backup computer.
 It can be quite useful.
 A battery replacement on a MacBook notebook takes easily one week in Switzerland.
 
-=== Standard Programs
+== Standard Programs
 
 I installed manually the following applications:
 
@@ -118,7 +117,7 @@ sudo apachectl start
 ----
 ====
 
-=== Brew Packages
+== Brew Packages
 
 https://brew.sh/[Homebrew] is an awesome tool to install libraries, tools and applications on macOS.
 
@@ -173,7 +172,7 @@ sudo -H pip3 install linkchecker                                <1>
 
 <1> the _-H_ sudo option installs the python package for all users.
 
-=== Git and GitHub Configuration
+== Git and GitHub Configuration
 
 I copied the ssh configuration files stored in _.ssh/_ folder on the new machine.
 These configuration files handle the access to the multiple remote repositories I am using.
@@ -194,9 +193,9 @@ chmod 600 ~/.ssh/*
 ----
 ====
 
-=== Local Configuration
+== Local Configuration
 
-==== Folders
+=== Folders
 
 Collaborators shall store projects under a well-defined path.
 
@@ -210,7 +209,7 @@ The official company open-source project is under _/Users/Shared/Projects/tangly
 The {ref-uri-blog} is under _/Users/Shared/Projects/tangly-os-site_.
 The site folder is where the site content is generated using {ref-hugo} and {ref-docsy}.
 
-==== Configuration
+=== Configuration
 
 Here is the startup script
 
@@ -254,7 +253,7 @@ gem update
 ----
 ====
 
-=== Thoughts
+== Thoughts
 
 All developers in our company are using Apple notebooks since the company's inception.
 Our primary development stack is Java.
@@ -290,7 +289,7 @@ footnote:[The price of the Macbook notebook in 2023 was CHF 3'300.
 I buy a new notebook every five years meaning the yearly costs are ridiculous low.].
 
 [bibliography]
-=== Links
+== Links
 
 - [[[o-still-use-macbookpro, 1]]] link:../../2019/why-i-still-love-to-use-a-macbookpro-and-macos-in-2019/[Why I Still Use a MacBookPro notebook and macOS]
 - [[[i-use-macbookpro, 2]]] link:../../2016/why-i-use-a-macbookpro-and-os-x/[Why I Use a MacBookPro Notebook and macOS]

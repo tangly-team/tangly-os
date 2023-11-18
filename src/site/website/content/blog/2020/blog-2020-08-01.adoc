@@ -5,10 +5,10 @@ date: 2020-08-24
 tags: ["java", "design", "domain-driven-design", "crm", "series-identifiers"]
 ---
 
-== Entities, Identifiers, External identifiers and Names
-
 include::../fragments/_config-mb-blog.aodc[]
 
+[.float-group]
+--
 image::2020-08-01-head.png[width=420, height=360, role=left]
 
 A software architect models customer domains and maps them to powerful software abstractions.
@@ -22,8 +22,9 @@ How do you define internal identifiers, which grow with application success?
 How can you bridge the customer world with your software solution?
 
 What are the good practices to create a maintainable, legible and efficient model of your domain model?
+--
 
-=== Entity Concept
+== Entity Concept
 
 We need an approach to model customer domain entities and map them to a legible and maintainable software construct.
 
@@ -44,7 +45,7 @@ The comments can be extended to add audit information such as functional change 
 
 These entity features should be defined as a set of https://en.wikipedia.org/wiki/Mixin[mixin] interfaces.
 
-=== Internal Object Identifiers _oid_
+== Internal Object Identifiers _oid_
 
 The object identifier _oid_ uniquely identifies an instance in a given context.
 This identifier shall be a numerical value to increase the performance of persistent solutions.
@@ -72,7 +73,7 @@ Avoid using the internal identifier to communicate with external systems.
 If you respect this rule, you are free to migrate your objects to another identification scheme in the future.
 New schemes are often helpful when the application grows, or you have later to import and take over a lot of legacy data.
 
-=== External Object Identifiers _id_
+== External Object Identifiers _id_
 
 The external unique identifier id shall uniquely identify an entity instance.
 It is used as an external identifier to communicate with other systems.
@@ -103,7 +104,7 @@ Because the ownership of external identifiers is outside your system, you are de
 The key rule of good systems is that they never change external identifiers.
 As soon as you modify identifiers, they are per definition no more real identifiers.
 
-=== Names _name_
+== Names _name_
 
 The entity name is a human-readable name to distinguish between entity instances.
 Ideally, it should be almost unique.
@@ -116,7 +117,7 @@ For example, the first and last names of a person is the name for a natural enti
 Social security number is a possible external identifier.
 An internal identifier is used as a primary key in the persistence storage.
 
-=== Advices
+== Advices
 
 . Internal object identifiers are identifiers.
 An identifier is immutable and should be numerical for performance reasons.
@@ -163,7 +164,7 @@ public interface HasId extends HasOid {
 We provide a Java library BUS implementing these constructs.
 More information is available under https://blog.tangly.net/[tangly open source components].
 
-=== Extensions
+== Extensions
 
 See our blog how to extend the entity concept with the powerful and flexible concepts of tags and comment approaches.
 

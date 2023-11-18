@@ -5,8 +5,6 @@ date: 2016-07-21
 tags: ["agile", "git", "series-students"]
 ---
 
-== Git Branches for the Impatient
-
 include::../fragments/_config-mb-blog.aodc[]
 :ref-trunk-based-development: https://trunkbaseddevelopment.com/[Trunk-Based Development]
 
@@ -56,7 +54,7 @@ I prefer pair programming and pair check-in sessions against the trunk.
 For a short introduction to how to start using Git in software projects, see the blog
 link:../../2017/git-local-repositories-for-the-impatient/[Git Local Repositories for the Impatient].
 
-=== Create the Branch
+== Create the Branch
 
 You get a list of branches with:
 
@@ -95,7 +93,7 @@ Publish files on branch when you are ready to share your changes.
 Once files are available on remote repository, you should avoid rebasing your branch.
 ====
 
-=== Work on the Branch
+== Work on the Branch
 
 Add your changes and commit them regularly.
 
@@ -140,7 +138,7 @@ Major IDEs provide some support to create and edit a merge request.
 Often {ref-github} is better supported than {ref-gitlab} or {ref-bitbucket}.
 ====
 
-=== Merge the Branch
+== Merge the Branch
 
 Switch to main and synchronize with your remote repository, the _-p_ parameter means __--prune__.
 
@@ -184,7 +182,7 @@ git push
 
 For advanced users, you can first rebase your branch and squash superfluous commits before merging the branch back to trunk.
 
-=== Delete the Branch
+== Delete the Branch
 
 Delete the remote branch (also _git branch -dr origin/feat-#42_).
 
@@ -203,7 +201,7 @@ git branch -d feat-#42
 You are done.
 Now you are ready to implement the next feature.
 
-=== View Local and Remote Branches
+== View Local and Remote Branches
 
 If you want to view branches, use the following commands for the local branches.
 
@@ -221,7 +219,7 @@ git branch -r
 git branch -r --no-merged
 ----
 
-=== Checkout Remote Branch.
+== Checkout Remote Branch.
 
 The -p parameter means --prune
 
@@ -231,7 +229,7 @@ git fetch --all -p
 git checkout #feat_42
 ----
 
-=== Thoughts
+== Thoughts
 
 You can find a lot of information on https://stackoverflow.com/questions/tagged/git[Stack Overflow].
 Beware when reading the answers on Stack Overflow that Git commands have changed over time.
@@ -249,6 +247,6 @@ Use them only in the commit messages.
 
 These same characters work in https://bitbucket.org/[bitbucket].
 
-=== Links
+== Links
 
 include::../fragments/_git-series-inks.adoc[]

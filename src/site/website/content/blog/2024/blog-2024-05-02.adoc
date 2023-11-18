@@ -5,8 +5,6 @@ date: 2024-05-02
 tags: ["java", "C++", "architecture"]
 ---
 
-== Reflections on Actor Models
-
 include::../fragments/_config-mb-blog.aodc[]
 :ref-actor-model: https://en.wikipedia.org/wiki/Actor_model[Actor Model]
 :ref-message-passing: https://en.wikipedia.org/wiki/Message_passing[Message Passing]
@@ -66,7 +64,7 @@ Ideally, messages should be immutable objects.
 The receiver is the owner of a received message and is responsible for its disposal.
 ====
 
-=== Advantages and Downsides
+== Advantages and Downsides
 
 Here are four benefits of this model:
 
@@ -126,7 +124,7 @@ If this verification is overlooked, messages may become mutable and lead to thre
 If an actor failure occurs, other actors may get perpetually stuck awaiting a message from it.
 To avoid this situation, developers have to employ defensive programming techniques and handle exceptions within the scope of each actor.
 
-=== Minimal Actor Library
+== Minimal Actor Library
 
 To send a message to an actor, you need a reference to the receiving entity.
 
@@ -170,6 +168,6 @@ Data processing pipelines should be implemented with flow approaches and not wit
 Multiple publishers and multiple consumers for a data channel should be provided.
 ====
 
-=== References
+== References
 
 bibliography::[]

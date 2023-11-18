@@ -5,28 +5,32 @@ date: 2020-07-15
 tags: ["java", "design", "crm"]
 ---
 
-== A Journey Implementing Digital Invoices
-
 include::../fragments/_config-mb-blog.aodc[]
 
+[.float-group]
+--
 image::2020-07-01-head.png[width=420,height=360,role=left]
 
 Our company has the ambition to digitize all our workflows since our inception.
 We proudly state we never bought a printer or a fax machine.
 Analog machines should become obsolete in the digital age.
-Companies should be more environment aware and save some trees.
+
+Companies should be more environment-aware and save some trees.
 See our blog link:../../2019/a-journey-to-be-a-digital-company-tangly-llc[A Journey to Be a Digital Company].
 
-Switzerland finally introduce a digital payment slip.
+Switzerland finally introduced a digital payment slip.
 It uses a QR code and still assume you need to print it.
+
 The European Union is more innovative and mandates that invoices to government parties must be digital.
 Our company exchanges contracts and invoices with partners and customers using the standardized and well-known PDF format.
+
 It is time to explore extensions to support the new legal requirements in Switzerland and in Europe.
+--
 
 We show open source based solutions, and the tradeoffs we had to accept.
 Beware our solutions are based on the Java stack.
 
-=== Swiss QR Code
+== Swiss QR Code
 
 The https://www.paymentstandards.ch/dam/downloads/ig-qr-bill-en.pdf[Swiss QR-bill] standard is based on a 2D barcode and associated human-readable text mirroring the data encoded in the barcode.
 The barcode approach assumes the invoice will be printed by the buyer.
@@ -48,7 +52,7 @@ The library is under MIT license and is available for Java and .NET stacks.
 The code is under active development.
 The main developer is responsive to suggestions and trouble reports.
 
-=== ZUGFeRD
+== ZUGFeRD
 
 The ZUGFeRD is a German initiative to promote digital invoices in Germany and in Europe.
 The ZUGFeRD approach is to store the invoice data as an XML part in the PDF document of the invoice.
@@ -68,7 +72,7 @@ ZUGFeRD additionally can transform a PDF/A-1 into a PDF/A-3 format.
 
 Other similar libraries are also available, but the ones we found have quite restrictive licenses.
 
-=== PDF Aspects
+== PDF Aspects
 
 The PDF format is universal known.
 Special variants such as PDF/A1 and PDF/A3 are defined for archiving purposes.
@@ -93,7 +97,7 @@ The Mustang library supports the transformation of a PDF/A1 to a PDF/A3 document
 footnote:[LibreOffice can open and manipulate PDF files. You can easily open a PDF file and export it as PDF from LibreOffice.
 The application supports exporting to PDF/A version 1b, 2b and 3b. It also supports PDF/UA.]
 
-=== Approach
+== Approach
 
 We decided to extend our open source library to create digital invoices.
 The extensions support the Swiss QR Code and the ZUGFeRD 2.1 standards.
@@ -121,7 +125,7 @@ We avoided proprietary solutions based on Microsoft Office templates.
 Feel free to use our library and examples.
 They are released under Apache 2.0 license.
 
-=== Learnings
+== Learnings
 
 The source code for the invoice component is available as a Java package.
 More information is available under https://blog.tangly.net/[tangly open source components].

@@ -5,8 +5,6 @@ date: 2021-01-18
 tags: ["java", "git", "devops", "series-students"]
 ---
 
-== Gitlab for Bachelor Students
-
 include::../fragments/_config-mb-blog.aodc[]
 
 image::2021-01-03-head.jpg[720,480,role=left]
@@ -134,7 +132,7 @@ Semester and bachelor theses are easier to realize through the use of known soft
 Students can concentrate on the content of their thesis.
 ====
 
-=== Basic Git Knowledge for Students
+== Basic Git Knowledge for Students
 
 Studying the history of software development practices shows the raise and fall of https://en.wikipedia.org/wiki/Source_Code_Control_System[SCCS],
 https://en.wikipedia.org/wiki/Concurrent_Versions_System[CVS], ClearCase, Visual Source Safe, or
@@ -201,7 +199,7 @@ See our blog link:../../2017/git-local-repositories-for-the-impatient[Git Local 
 
 See our blog link:../../2016/git-branches-for-the-impatient[Git Branches for the Impatient] for more advanced commands.
 
-=== CI Pipelines for Students
+== CI Pipelines for Students
 
 image::2021-01-03-cicd_pipeline.png[720,480,role=left]
 
@@ -275,7 +273,7 @@ test:
 
 ----
 
-=== Java Development Environment
+== Java Development Environment
 
 [WARNING]
 ====
@@ -303,7 +301,7 @@ The quality is good enough, and the feature empowers junior developers to learn 
 
 More advanced scenarios use https://spotbugs.github.io/[SpotBugs] and the associated IDEA plugin.
 
-=== How to Write Unit Tests for a Java Application
+== How to Write Unit Tests for a Java Application
 
 You should write unit and integration tests for your Java application using:
 
@@ -311,7 +309,7 @@ You should write unit and integration tests for your Java application using:
 * https://site.mockito.org/[Mockito]
 * https://assertj.github.io/doc/[AssertJ]
 
-=== How to Document Your Project
+== How to Document Your Project
 
 Static code generators are becoming the standard approach for the technical documentation.
 One huge advantage is you can check the whole documentation into your git repository.
@@ -326,7 +324,7 @@ IntelliJ has native support for markdown and an excellent plugin for Asciidoc.
 
 Gitlab provides the https://docs.gitlab.com/ee/user/project/pages/[Pages] concept to create and publish complete documentation of a product.
 
-=== Diagrams
+== Diagrams
 
 image::2021-01-03-diagrams.png[720,480,role=left]
 
@@ -339,17 +337,17 @@ Asciidoc format has native support for PlantUML diagrams.
 Students have training in technical notation such as UML, BPNM, C4 and others.
 They can now apply these notations to their projects using plantUML.
 
-=== Agile and Scrum
+== Agile and Scrum
 
 Students have training in agile development and the Scrum framework.
 Gitlab allows them to apply these https://about.gitlab.com/solutions/agile-delivery/[Agile Delivery Concepts] to their semester and bachelor projects.
 Lecturers have access to the agile and Scrum artifacts and can qualify the quality of the work.
 
-=== Advanced Git for Complex Team Development
+== Advanced Git for Complex Team Development
 
 Once you master the basic commands, consider learning advanced commands like:
 
-==== Merge
+=== Merge
 
 Merge your branch _my-branch_ back into _trunk_
 
@@ -364,7 +362,7 @@ $ git merge my-branch // <3>
 <2> Switched to branch _trunk_.
 <3> Merge the branch _my-branch_ into _trunk_.
 
-==== Rebase
+=== Rebase
 
 Rebase trunk into your branch _my-branch_.
 Note that after a rebase, the commit ids of the rebased branch are new.
@@ -380,7 +378,7 @@ If you rebase a branch that was pulled from GitHub or GitLab, and then push it b
 git rebase my-branch trunk
 ----
 
-==== Squash
+=== Squash
 
 Git squash is a technique that helps you to take a series of commits and condense it to a few commits.
 
@@ -409,7 +407,7 @@ fixup 1bffc15c 2nd last commit
 pick 474bf0c2 last commit
 ----
 
-==== Cherry Picking
+=== Cherry Picking
 
 Cherry-picking in Git means choosing a commit from one branch and applying it onto another.
 This is in contrast with other ways, such as _merge_ and _rebase_, which normally apply many commits onto another branch.
@@ -429,18 +427,18 @@ git checkout my-branch
 git cherry-pick <commit-hash>
 ----
 
-==== Local and Remote Branch
+=== Local and Remote Branch
 
 Read the post link:../../2016/git-branches-for-the-impatient[Git Branches for the Impatient].
 
-==== Pull Request
+=== Pull Request
 
 Read the documentation of GitLab, BitBucket or GitHub.
 You will use pull requests if you are working in a team for a project.
 Sadly, students rarely work teams during their studies.
 
 [bibliography]
-=== Links
+== Links
 
 * link:../../2017/git-local-repositories-for-the-impatient[Git Local Repositories for the Impatient]
 * link:../../2016/git-branches-for-the-impatient[Git Branches for the Impatient]

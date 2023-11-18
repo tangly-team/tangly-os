@@ -5,8 +5,6 @@ date: 2021-01-12
 tags: ["design", "crm", "domain-driven-design", "series-identifiers"]
 ---
 
-== Meaningful Identifiers
-
 include::../fragments/_config-mb-blog.aodc[]
 
 image::2021-01-02-head.jpg[width=420,height=360,role=left]
@@ -28,7 +26,7 @@ Identifiers are used extensively in virtually all information processing systems
 Identifying entities makes it possible to refer to them, which is essential for any kind of symbolic processing.
 ____
 
-=== External Well-Defined Identifiers
+== External Well-Defined Identifiers
 
 The best identifiers are externally well-defined identifiers.
 A unique and well-defined authority is responsible for defining and publishing them.
@@ -56,14 +54,14 @@ Each country has its own structure and conventions.
 * Social security numbers are a counter-example.
 There are currently only defined locally.
 
-=== External Managed Identifiers
+== External Managed Identifiers
 
 You shall document the source of truth for all externally defined and managed identifiers.
 
 The source of truth shall work as a benevolent responsible.
 It should support all interested parties and guaranty their identifiers can be trusted.
 
-=== Internal Managed Identifiers
+== Internal Managed Identifiers
 
 One possible approach is to define a naming convention such as
 
@@ -84,7 +82,7 @@ You are responsible for documenting these identifiers and the process to create 
 You shall also guaranty that existing identifiers are never recycled.
 If your identifiers are strings, you shall clearly define the supported languages and character sets.
 
-=== https://en.wikipedia.org/wiki/Domain-driven_design[Domain Driven Design]
+== https://en.wikipedia.org/wiki/Domain-driven_design[Domain Driven Design]
 
 Domain Driven Design _DDD_ is a powerful and modern approach to define agile software architecture.
 Some key rules are related to identity.
@@ -102,7 +100,7 @@ An aggregate shall reference another aggregate through the identity of their roo
 
 The concept of identity is therefore central to the domain-driven design approach.
 
-=== Lessons Learnt
+== Lessons Learnt
 
 Always try to find an external, well-defined identifier for your entities.
 Beware of legal aspects when you are using government defined identifiers such as social security numbers, passport numbers or car numbers.

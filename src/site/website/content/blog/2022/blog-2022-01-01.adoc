@@ -5,8 +5,6 @@ date: 2022-01-03
 tags: ["design", "java"]
 ---
 
-== Technical Debt
-
 include::../fragments/_config-mb-blog.aodc[]
 :ref-technical-debt: https://en.wikipedia.org/wiki/Technical_debt[technical debt]
 
@@ -39,7 +37,7 @@ Every minute spent on not-quite-right code counts as interest on that debt.
 Entire engineering organizations can be brought to a stand-still under the debt load of an unconsolidated implementation, object-oriented or otherwise.
 ____
 
-=== How to Eliminate Technical Debt
+== How to Eliminate Technical Debt
 
 * Use static analysis tools to detect technical debt in your source code.
 * Use the features of your IDE
@@ -71,7 +69,7 @@ You will find a https://en.wikipedia.org/wiki/List_of_tools_for_static_code_anal
 A professional software developer shall use these tools to validate and improve her source code.
 ====
 
-=== Should You Reimburse?
+== Should You Reimburse?
 
 image::2022-01-03-technical-debt.png[width=420,height=360,role=left]
 
@@ -88,7 +86,7 @@ You will otherwise bankrupt either your bank account or the source code of your 
 
 https://en.wikipedia.org/wiki/Maintenance[Preventive maintenance] is a learnt technique for technical products.
 
-=== How to Measure Technical Debt
+== How to Measure Technical Debt
 
 Here are some approaches to quantify the technical debt of a product.
 
@@ -123,7 +121,7 @@ That said, you do not want only one engineer taking ownership of an entire proje
 If they get sick or leave your organization, it is game over. +
 _Social aspects can easily be measured in a code repository <<codecrimescene>>._
 
-=== How to Continuously Improve
+== How to Continuously Improve
 
 A powerful approach is zero defect source code <<zero-defect>> approach.
 
@@ -139,7 +137,7 @@ You can start very simply.
 Fixing technical debt is not rocket science.
 It means to have discipline and behave like a professional software developer.
 
-=== Lessons Learnt
+== Lessons Learnt
 
 Technical debt does not appear overnight.
 Debt increases slowly but steadily.
@@ -170,7 +168,7 @@ Amateurs just ignore the consequences and hop to the next product before they go
 ====
 
 [bibliography]
-=== Links
+== Links
 
 * [[[zero-defect, 1]]] link:../../2020/advocate-zero-bug-policy-in-your-projects/[Advocate Zero Bug Policy in Your Projects].
 Marcel Baumann. 2020.
@@ -181,6 +179,6 @@ Marcel Baumann, 2019.
 * [[[metricsandkpi, 4]]] link:../../2018/why-do-you-need-metrics-and-kpi-in-agile-product-development/[Why Do You Need Metrics and KPI in Agile Product Development?].
 Marcel Baumann. 2018.
 
-=== References
+== References
 
 bibliography::[]

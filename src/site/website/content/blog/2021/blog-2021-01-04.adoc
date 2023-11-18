@@ -5,8 +5,6 @@ date: 2021-01-25
 tags: ["java", "git", "series-students"]
 ---
 
-== Software Development for Students
-
 include::../fragments/_config-mb-blog.aodc[]
 
 image::2021-01-04-head.jpg[width=420,height=360,role=left]
@@ -20,7 +18,7 @@ Experience with one of the best of breed tools enforces learning and automatism.
 The focus of a technical university is to teach the concepts and methods.
 The tools are used to practice and to increase student learning.
 
-=== Source Code Version Management with Git
+== Source Code Version Management with Git
 
 https://git-scm.com/[Git] is the standard tool for the distributed source code management system.
 It is supported by all major development IDE and continuous integration environments.
@@ -30,7 +28,7 @@ First-year undergraduates shall master the basic git commands to write their sem
 Second-year sophomores shall master the {ref-git} commands used to work in teams.
 Pull requests are a standard approach to review team colleague works and to consolidate new functions into the application.
 
-=== Modern Java Software Development
+== Modern Java Software Development
 
 Java is the preferred programming language for the majority of teaching institutions around the world.
 The programming language has evolved the last ten years.
@@ -51,7 +49,7 @@ Concepts such as Optional, Streams, immutable objects, and unchecked expressions
 https://gradle.org/[Gradle] is our preferred build tool for Java projects.
 The approach is straight forward.
 
-=== Technical Excellence
+== Technical Excellence
 
 The DevOps and software craftsmanship movement strongly promotes technical excellence and intrinsic quality in software development.
 
@@ -65,7 +63,7 @@ The IDE environment is free for students.
 * Unit tests and integration tests Use the seminal libraries _JUnit5_, _Mockito_, and _AssertJ_
 * Continuous integration pipeline uses the CI pipeline of your product management tool; either _GitLab_, _GitHub_, _Bitbucket_, or _Azure DevOps_.
 
-=== Documentation
+== Documentation
 
 You should only check text artifacts into a {ref-git} repository.
 Modern approaches with https://en.wikipedia.org/wiki/Markdown[Markdown] and {ref-asciidoc} syntax promote this axiom.
@@ -76,7 +74,7 @@ ALl UML diagram types can be described with the tool.
 {ref-asciidoc} has native support for diagrams in general and PlantUML in particular.
 Asciidoc supports additional diagrams and diagramming tools such as https://mermaid-js.github.io/mermaid[Mermaid].
 
-=== Agile and Scrum
+== Agile and Scrum
 
 Agile and Scrum are the standard methods to develop software products in the industry.
 All students shall excel in agile development approaches.
@@ -86,7 +84,7 @@ Students shall understand the agile concepts and main constructs.
 When working in a Scrum environment, they have used the backlog, issues, stories, definition of done.
 They have planned their projects with a vision, a roadmap, epics, and sprints.
 
-=== Gitlab as a Student's Tool
+== Gitlab as a Student's Tool
 
 image::2021-01-04-gitlab.png[width=420,height=360,role=left]
 
@@ -96,7 +94,7 @@ It is the official tool provided in our https://www.hslu.ch/en/lucerne-school-of
 Students learn computer science principles and hands-on how to develop software applications.
 They will use their learning to develop commercial software components when working after the completion of their studies.
 
-=== Gitlab as a Lecturer's Tool
+== Gitlab as a Lecturer's Tool
 
 All the source code and artifacts of a student class are available in Gitlab.
 The development history over a project or a semester is visible in Git.
@@ -104,7 +102,7 @@ The lecturers can access the artifacts or use scripts to extract the data necess
 The grading process can be standardized.
 The decision process is part of the Gitlab data and is auditable.
 
-=== Links
+== Links
 
 The student series is a set of blogs showing how to use central tools for modern software development.
 

@@ -5,10 +5,10 @@ date: 2022-01-05
 tags: ["design", "java"]
 ---
 
-== Immutability in Java
-
 include::../fragments/_config-mb-blog.aodc[]
 
+[.float-group]
+--
 image::2022-01-02-head.jpg[width=420,height=360,role=left]
 
 https://en.wikipedia.org/wiki/Immutable_object[Immutability] is a powerful and simple concept in programming theory that is strangely underused.
@@ -24,8 +24,9 @@ All the information contained in each instance is provided when it is created an
 An example of immutable objects in Java is the _String_ class.
 
 Why are immutable objects so good?
+--
 
-=== Advantages
+== Advantages
 
 There are many reasons for sure, here are the three main ones:
 
@@ -42,7 +43,7 @@ Thread Safety::
 After creation, any number of threads can access immutable objects simultaneously, without any synchronization mechanism.
 It is a huge advantage in the modern world of multicore processors.
 
-=== Immutable Classes
+== Immutable Classes
 
 * The class must be declared as _final_.
 So those mutable child classes cannot be created.
@@ -71,7 +72,7 @@ Use records as Java DTO objects and automatically improve the security of your a
 Therefore, Java records are shallow immutable objects.
 If you pass immutable objects to the constructor, you will achieve deep immutability.
 
-=== Immutable API Classes
+== Immutable API Classes
 
 Java already has an extended and expanding set of immutable classes.
 
@@ -88,7 +89,7 @@ A file may or may not exist, and has some methods modifying and querying the sta
 But the File object itself stays immutable.
 * java.util.Locale - representing a specific geographical, political, or cultural region,
 
-=== Builder Pattern
+== Builder Pattern
 
 Immutable abstractions have often verbose and cumbersome constructors.
 You want to provide a more elegant approach to create instances of your immutable classes.
@@ -101,13 +102,13 @@ The lombok annotations _@Builder_ and _@Superbuilder_ are time savers.
 Provide factory methods to create often used immutable objects.
 Use the builder in the body to write the creation code in one Java statement.
 
-=== Read-only interface pattern
+== Read-only interface pattern
 
 Read-only interface pattern is an alternative to the Immutable object pattern.
 It allows some objects to modify a value object while other objects can only fetch its values.
 
 [bibliography]
-=== Links
+== Links
 
 * [[[java-record, 1]]] link:../../2020/java-records-are-here-available-in-jdk-14/[Java Records are Here].
 Marcel Baumann. 2020

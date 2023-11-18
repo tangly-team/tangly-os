@@ -5,8 +5,6 @@ date: 2025-09-01
 tags: ["agile", "architecture"]
 ---
 
-== Agile Software Architecture
-
 include::../fragments/_config-mb-blog.aodc[]
 :ref-ros: https://www.ros.org/[Robot Operating System _ROS_]
 
@@ -25,7 +23,7 @@ How do you create an agile software architecture?
 
 What techniques help agile team create lasting products?
 
-=== Agile Digital and Software Product Development
+== Agile Digital and Software Product Development
 
 Scrum is the de-facto standard approach to create digital products.
 Small and medium companies develop new services and products with the help of small size teams.
@@ -41,7 +39,7 @@ No answers are provided how to develop the solution.
 Your organization needs to reach technical fluency.
 The teams have to growth their organizational and technical capabilities simultaneously <<reflections-on-agile-fluency-model>>.
 
-=== Functional Requirements
+== Functional Requirements
 
 How do you identify and define the requirements your digital product shall provide?
 
@@ -74,7 +72,7 @@ An alternative approach is to specify the behavior of the solution in the user m
 This technique was popular end of the last millennium.
 The current trend is rather not to create a user manual due to the involved manual effort.
 
-=== Architecture Characteristics
+== Architecture Characteristics
 
 How do you identify and define the architecture and design your digital product shall provide?
 
@@ -130,7 +128,7 @@ A good starting point is the {ref-arc42} toolset.
 {ref-manifesto} and {ref-devops} concepts amplify the success of technical agility.
 ====
 
-=== Lessons Learnt
+== Lessons Learnt
 
 Here questions we discussed with development teams.
 
@@ -196,13 +194,13 @@ We structure our software following DDD principles and the framework assumptions
 {ref-ros} provides packages, modules, and graphs of nodes has structuring bricks.
 
 [bibliography]
-=== Links
+== Links
 
 - [[[reflections-on-agile-fluency-model, 1]]] link:../../2021/reflections-on-agile-fluency-model/[Reflections on Agile Fluency Model].
 Marcel Baumann. 2021.
 - [[[software-structure-with-ddd, 2]]] link:../../2022/software-structure-with-ddd/[Software Structure with DDD].
 Marcel Baumann. 2022.
 
-=== References
+== References
 
 bibliography::[]

@@ -5,8 +5,6 @@ date: 2023-02-10
 tags: ["agile", "tangly", "organization"]
 ---
 
-== The Quest for an Agile Company: Seven Years tangly llc
-
 include::../fragments/_config-mb-blog.aodc[]
 
 image::2023-02-02-head.png[width=420,height=360,role=left]
@@ -25,7 +23,7 @@ Our customers learnt how to deploy updates and new functionalities in a matter o
 
 What is the meaning of being agile and being digital for our company?
 
-=== Being Agile
+== Being Agile
 
 image::2023-02-02-being-agile.png[width=420,height=360,role=left]
 
@@ -58,13 +56,13 @@ Increasing agility is a path.
 Progressing on that path requires vision, belief, persistence and _hard work_.
 ____
 
-==== Social Equality
+=== Social Equality
 
 We aggressively pursue social equality.
 
 The company achieved gender equality and ethnic equality.
 
-==== Social Responsibility
+=== Social Responsibility
 
 image::2023-02-02-transport-co2.png[width=480,height=380,role=left]
 
@@ -94,7 +92,7 @@ Our company does not possess any printers, faxes, or phone landlines.
 All our documents and correspondence materials are digital.
 Our technical library is solely composed of ebooks.
 
-=== Being Digital
+== Being Digital
 
 All our internal processes are digital.
 
@@ -136,9 +134,9 @@ It is cumbersome, and no support for {ref-asciidoc} or https://daringfireball.ne
 Static website concepts and infrastructure as version managed artifacts are sorely missing.
 We initiated a slow withdrawal from their digital offerings.
 
-=== Lessons Learnt
+== Lessons Learnt
 
-==== Website
+=== Website
 
 You want a quality and lively website.
 Collaborators should be empowered to modify content in a timely and cost-effective manner.
@@ -156,7 +154,7 @@ All texts and the configuration are stored in a git repository.
 All collaborators have the rights to enhance the content of our site
 footnote:[Take it easy. Git easily supports fast rollback if a change was catastrophic.].
 
-==== BitBucket Platform
+=== BitBucket Platform
 
 The BitBucket offered functionalities are archaic.
 Their wiki-based approach with Confluence and Jira is the wrong approach for modern digital product development.
@@ -170,7 +168,7 @@ We currently use GitHub as our primary platform and GitLab as a fallback solutio
 
 GitHub supports {ref-asciidoc}, has a reasonable CI offering, and their _CNAME_ support is awesome <<cname-github-pages>>.
 
-==== Internet Platforms
+=== Internet Platforms
 
 Take ownership of the URL for all the sites you own.
 Your blogs and documentation often link to articles or pages on various organization websites
@@ -188,7 +186,7 @@ footnote:[We decided to move our static websites from BitBucket to GitHub.
 We were surprised how many links we had to change.].
 
 [bibliography]
-=== Links
+== Links
 
 - [[[six-years-tangly, 1]]] link:../../2022/the-quest-for-an-agile-company-six-years-tangly-llc/[Six Year tangly llc]
 Marcel Baumann. 2022.

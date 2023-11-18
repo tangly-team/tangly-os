@@ -5,10 +5,10 @@ date: 2019-12-02
 tags: ["organization", "tangly"]
 ---
 
-== A Journey to be a Digital Company - tangly llc
-
 include::../fragments/_config-mb-blog.aodc[]
 
+[.float-group]
+--
 image::2019-12-01-head.jpg[width=420,height=360,role=left]
 
 I long dreamed of working in a digital environment.
@@ -17,6 +17,7 @@ All company documents are stored electronically.
 I can search any artifacts by content and get a list of all interesting items in seconds.
 
 Our software service company is an ideal candidate to validate if this assumption is realistic.
+--
 
 [quote,Frederic Laloux]
 ____
@@ -24,7 +25,7 @@ Profit is like the air we breathe.
 We need air to live, but we do not live to breathe.
 ____
 
-=== What is Digital Working?
+== What is Digital Working?
 
 You shall use digital tools and workflows to perform all your work related tasks.
 We want to increase interactions with our coworkers and remove any tedious activities.
@@ -51,9 +52,9 @@ And you have a positive impact on the environment.
 Less traveling, less paper and less shipping.
 Embrace the digital age and be environment-aware.
 
-=== All Activities and Processes are Digitized
+== All Activities and Processes are Digitized
 
-==== Internal Tools
+=== Internal Tools
 
 At https://www.tangly.net[tangly] we use internally
 
@@ -70,7 +71,7 @@ It would be just overkill for us.
 
 We never had to buy or rent a printer, a landline or a fax machine since founding the company.
 
-=== External Tools
+== External Tools
 
 We use an impressive set of tools to collaborate with our customers and partners
 
@@ -93,7 +94,7 @@ An impressive set of processes with governmental organizations can now be perfor
 * Taxes declaration can be performed with a downloadable government application.
 * Public transportation company tickets can be bought online and delivered electronically on a collaborator's mobile device.
 
-=== What is Working?
+== What is Working?
 
 * We perform marketing and sales through online platforms and avoid any physical ads platform.
 * We communicate through our company's online platform.
@@ -108,7 +109,7 @@ We do not possess a physical archive of documents or contractual documents and n
 The quality and speed of our Internet connect improve yearly.
 It is already above our keenest expectations.
 
-=== What is NOT Working?
+== What is NOT Working?
 
 Surprisingly, most of the processes with private companies providing mandatory services cannot be done electronically due to obsolete information systems and cumbersome processes.
 
@@ -121,7 +122,7 @@ We still must manually input our data in their portals.
 The old interfaces they provide are only partially available through expensive commercial solutions.
 By old interfaces, we mean proprietary formats and proprietary file transfer solutions.
 
-=== Findings
+== Findings
 
 The last four years were a game changer.
 A lot of manual activities are now fully digitized and often automatized.

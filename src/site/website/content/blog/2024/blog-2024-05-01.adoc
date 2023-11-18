@@ -5,8 +5,6 @@ date: 2024-05-01
 tags: ["java", "architecture", "agile"]
 ---
 
-== How to Document Software Architecture?
-
 include::../fragments/_config-mb-blog.aodc[]
 
 image::2024-05-01-head.png[width=420,height=360,role=left]
@@ -45,7 +43,7 @@ You should understand as a software architect:
 - What does _just enough_ upfront design mean?
 - How to identify risks with risk-storming?
 
-=== Documentation Rules
+== Documentation Rules
 
 These are the rules for any technical documentation, including software architecture documentation:
 
@@ -62,7 +60,7 @@ ____
 It is far better to be explicit and wrong than to be vague.
 ____
 
-=== Possible Pitfalls
+== Possible Pitfalls
 
 image:2024-05-01-arc42-c4.png[width=420,height=360,role=text-center]
 
@@ -78,7 +76,7 @@ Don't put any specific things like customer names or similar::
 Don't write customer-specific things in the software architecture documentation, unless your building blocks are structured in a customer-oriented way.
 
 [bibliography]
-=== Links
+== Links
 
 - [[[why-enterprise-architecture, 1]]] link:../../2021/why-enterprise-architecture/[Why Enterprise Architecture?].
 Marcel Baumann. 2021.
@@ -93,6 +91,6 @@ Marcel Baumann. 20218.
 - [[[what-i-learnt-teaching-agile-software-engineering, 6]]] link:../../2021/what-i-learnt-teaching-agile-software-architecture/[What I Learnt Teaching Agile Software Architecture].
 Marcel Baumann. 2021.
 
-=== References
+== References
 
 bibliography::[]

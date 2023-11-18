@@ -5,8 +5,6 @@ date: 2023-04-01
 tags: ["java", "architecture", "series-students"]
 ---
 
-== Software Developer Assumptions
-
 include::../fragments/_config-mb-blog.aodc[]
 
 image::2023-04-01-head.jpg[width=420,height=360,role=left]
@@ -32,7 +30,7 @@ So as well as focusing on learning and modern engineering, we need to focus on m
 We need to focus our tools, techniques and mindset on dealing with the complexity
 cite:[modern-software-engineering,building-evolutionary-architectures-2nd,clean-architecture].
 
-=== Strongly Agree
+== Strongly Agree
 
 I strongly agree with these statements:
 
@@ -66,7 +64,7 @@ Scanners like SpotBugs or SonarLint regularly find errors and smells.
 * Functional programming is another tool, not a panacea.
 The real world has objects and often classes.
 
-=== Positive Experiences
+== Positive Experiences
 
 I learnt to appreciate these approaches:
 
@@ -95,7 +93,7 @@ The deployment steps shall still be fully automated.
 * Static websites written in {ref-asciidoc} and using site generators such as {ref-hugo} are the solution how to document your architecture and technical product
 footnote:[The huge gain is always current documentation and free versioning of the documentation with the source code.].
 
-=== Old Beliefs
+== Old Beliefs
 
 I still think these statements should be applied in current teams:
 
@@ -116,6 +114,6 @@ The key is to write *modular* monoliths.
 footnote:[The spring framework finally recognized that with https://spring.io/projects/spring-modulith[Modulith].].
 * Micro-services require justification.
 
-=== References
+== References
 
 bibliography::[]

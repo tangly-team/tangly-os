@@ -5,8 +5,6 @@ date: 2021-02-01
 tags: ["agile"]
 ---
 
-== LeSS Lessons Learnt
-
 include::../fragments/_config-mb-blog.aodc[]
 
 image::2021-02-01-head.svg[width=420,height=360,role=left]
@@ -29,7 +27,7 @@ My main focus is how the source code is written, the design defined, and the arc
 
 Our goal is to deliver a highly successful product.
 
-=== Agile Approach
+== Agile Approach
 
 My own interpretation of agile as doctrine is:
 
@@ -63,11 +61,11 @@ On hols means proceeding with caution.
 Said bluntly, just do not use it if you can choose.
 ====
 
-=== Ways of working
+== Ways of working
 
 The following three levels of coaching are commonly needed:
 
-==== Organizational LeSS Coaching
+=== Organizational LeSS Coaching
 
 A coach works with multiple teams and the management to improve the organization and its structure.
 A clear vision of how LeSS organization could be:
@@ -85,7 +83,7 @@ image::2021-02-01-coaching.png[width=420,height=360,role=left]
 * Human Resource practices such as appraisals and career paths,
 * Facilitating organizational release/roadmap planning and retrospectives.
 
-==== Team LeSS Coaching
+=== Team LeSS Coaching
 
 A coach works with at most a few teams to improve their team-working and {ref-less} practices.
 It is common for a coach to take on the Scrum Master role.
@@ -102,7 +100,7 @@ A team coach typically focuses on:
 * Improve Scrum practices (and technical practices).
 * Educate and coach the team’s (future) Scrum Master.
 
-==== Technical Practices Coaching
+=== Technical Practices Coaching
 
 A coach works with (or on) a team on their actual codebase in order to improve the technical practices and adopt agile development techniques.
 
@@ -137,7 +135,7 @@ Legacy code is *Code without tests*
 [.text-center]
 Legacy code is *Profitable code that we feel afraid to change*.
 
-=== How Much Coaching?
+== How Much Coaching?
 
 The most successful {ref-less} adoptions we have seen had the following structure:
 
@@ -155,7 +153,7 @@ External technical coaches who focus on training internal technical coaches
 Have some technical coaches work with the teams, but let them focus on training internal coaches.
 After that, reduce, _not eliminate!_ the external technical coaching or let the external coach move to a new area.
 
-=== Be Patient, The Time Horizon is Years
+== Be Patient, The Time Horizon is Years
 
 * Trust your people.
 * Create opportunities.
@@ -166,7 +164,7 @@ After that, reduce, _not eliminate!_ the external technical coaching or let the 
 * At the beginning, follow the {ref-less} rules.
 * Extended responsibility, rounded products provide room and freedom for better decisions.
 
-=== Remember
+== Remember
 
 {ref-less} is {ref-scrum}, it is Large Scaled Scrum Feature teams are economical.
 Cross-functional Technical excellence is the essence of a quality solution.
@@ -178,7 +176,7 @@ Depending on your organization, put him where the budget comes from.
 Move from a component owner to become a component mentor.
 He is responsible for teaching others how to adapt and evolve the component.
 
-=== References
+== References
 
 . link:../../2018/agile-introduction-success-criteria-through-the-less-lens[Agile Introduction Success Criteria Through The LeSS Lens]
 . https://fansofless.com/[Fans of LeSS]

@@ -5,8 +5,6 @@ date: 2018-08-16
 tags: ["agile"]
 ---
 
-== What does an Agile Coach?
-
 include::../fragments/_config-mb-blog.aodc[]
 
 image::2018-08-01-head.jpg[width=420,height=360,role=left]
@@ -20,7 +18,7 @@ Help teams to maximize their autonomy, individual mastery and make sure the team
 Provide Coaching::
 Support teams and individuals to identify potential with their roles and within the agile organization and improve.
 
-=== How Can You Do It?
+== How Can You Do It?
 
 Lateral Leadership::
 Mediating the team through conflicts and help them with making decisions and foster the team's self-organization.
@@ -46,7 +44,7 @@ Create structure to establish a continuous improvement process - also meaning es
 
 Ask yourself how your organisation handles meritocracy.
 
-=== One Approach to Coaching
+== One Approach to Coaching
 
 Agile teams thrive with purpose, autonomy and mastery.
 One approach to coaching is to set your focus on
@@ -74,7 +72,7 @@ Define hypotheses and verify them empirically.
 If you are coaching software development groups, acknowledge you shall possess a profound understanding of technical excellence and software development practices.
 I have never heard of a soccer coach not intimately knowing how the game is played.
 
-=== How to Evaluate Yourself?
+== How to Evaluate Yourself?
 
 Skill in a competency area is not a simple binary.
 Skill mastery is a progression from no knowledge to unconscious mastery.
@@ -110,12 +108,12 @@ Transforming::
 transforming is guiding sustainable change that will allow the individual teams and the organization to be more effective and learn how to change for themselves through leading, facilitation, coaching, facilitating learning, and advising.
 
 [bibliography]
-=== Links
+== Links
 
 - [[[professional-coaching, 1]]] https://blog.crisp.se/2021/06/30/mikaelbrodd/why-professional-coaching-matters-to-an-agile-coach[Why Professional Coaching Matters to an Agile Coach].
 Mikael Brodd.
 Crisp. 2021
 
-=== References
+== References
 
 bibliography::[]

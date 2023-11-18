@@ -5,8 +5,6 @@ date: 2022-11-01
 tags: ["java", "architecture"]
 ---
 
-== Behavior Driven Design
-
 include::../fragments/_config-mb-blog.aodc[]
 
 image::2022-11-01-head.jpg[width=420,height=360,role=left]
@@ -36,7 +34,7 @@ This approach is often called specification by example cite:[bridging-communicat
 
 I strongly advocate that the developers write the acceptance tests and generate the legible description of the tests.
 
-=== Constraints
+== Constraints
 
 image::2022-11-01-ddd-clean-architecture.png[width=420,height=360,role=left]
 
@@ -57,7 +55,7 @@ This strategy is used when we would like to have asynchronous behavior between o
 For instance, the action that the consumer will take based on this event does not matter to him.
 For it is always important to think about notifying past actions.
 
-=== Evolution
+== Evolution
 
 A tension exists who is in charge to write the acceptance tests.
 Experts initially advocated that the product owner or the business analysts should write the tests to validate the work of the development team.
@@ -72,7 +70,7 @@ Modern development platforms provide powerful refactoring tools for source code 
 Refactoring and clean code principles shall permeate a modern software development approach.
 Avoid archaic solutions requiring expensive manual activities.
 
-=== Experiments
+== Experiments
 
 We are using a small framework to write acceptance criteria automated tests and create the associated documentation.
 
@@ -138,6 +136,6 @@ We still try to define metrics to valuate the usefulness of living documentation
 The usual approach is either to write a huge Microsoft Word document or use a specification tool storing the information in a database.
 The advantages of living documentation still need to be quantified.
 
-=== References
+== References
 
 bibliography::[]

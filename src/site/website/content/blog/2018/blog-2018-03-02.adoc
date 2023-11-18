@@ -5,17 +5,18 @@ date: 2018-03-12
 tags: ["agile", "series-swiss-agile-trends"]
 ---
 
-== Agile Trends Switzerland 2018
-
 include::../fragments/_config-mb-blog.aodc[]
 
+[.float-group]
+--
 image::2018-03-02-head.jpg[width=420,height=360,role=left]
 
 How can agile approaches be applied to deliver solutions in a government environment?
 
 Here is an example of a GIS open data portal successfully developed using agile approaches such as Kanban, lean product and technical excellence.
+--
 
-=== GIS Open Data Initiative
+== GIS Open Data Initiative
 
 The Swiss government has initiated an open government data strategy to provide data at federal and state level to all citizens and interested parties.
 The aims are
@@ -36,7 +37,7 @@ The solution is a GIS open data portal supporting self-service.
 It provides over a hundred theme maps with GIS data in multiple formats, resolutions and geographical sizes available through a self-service portal.
 It was realized using agile approaches.
 
-=== Agile Approach
+== Agile Approach
 
 The solution was implemented during the year 2017 and released to the public end of the year.
 
@@ -68,7 +69,7 @@ footnote:[A description of the technical solution in German is no more available
 The REST API is described
 https://are.zh.ch/internet/baudirektion/are/de/geoinformation/geodaten_uebersicht/Open_Data_Kanton_Zuerich/Datenshop-Dienst/_jcr_content/contentPar/downloadlist/downloaditems/schnittstelle_datens.spooler.download.1513149023584.pdf/d-OGD+ZH+-+REST+interface+v1.1.1.pdf[here].
 
-=== Learnings
+== Learnings
 
 Pragmatic approaches to become agile were very successful in this setup.
 These governmental organizations were willing and eager to try them.

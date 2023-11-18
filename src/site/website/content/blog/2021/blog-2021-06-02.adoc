@@ -5,8 +5,6 @@ date: 2021-06-15
 tags: ["agile", "series-swiss-agile-trends"]
 ---
 
-== Agile Trends Switzerland 2021
-
 include::../fragments/_config-mb-blog.aodc[]
 
 image::2021-06-02-head.jpg[width=420,height=360,role=left]
@@ -31,7 +29,7 @@ https://www.hslu.ch/de-ch/informatik/studium/soda/[SoDa], a variation of the dea
 
 The https://swissq.it/en/[SwissQ] report provides empirical data where Swiss companies stand in 2021.
 
-=== Main Success Factors
+== Main Success Factors
 
 The main success factors for an agile transformation are:
 
@@ -45,7 +43,7 @@ A clear majority of 75% of the participants state that agile approaches are more
 The report just states obvious knowledge.
 The participants of the study confirmed these documented facts.
 
-=== Why You Should Not Use Hybrid Methods
+== Why You Should Not Use Hybrid Methods
 
 It seems that hybrid methods are way less successful than agile based on SwissQ data.
 
@@ -72,7 +70,7 @@ On the other hand, organizations are still struggling to build greater company-w
 Only a few have already adopted agility on a portfolio level (15.3%) or strategic level (8.2%).
 The good news is that many companies have started transformation initiatives or are planning to do so in the near future.
 
-=== Used Methods in Switzerland
+== Used Methods in Switzerland
 
 [mermaid,hybrid-methods-2021,svg]
 ....
@@ -103,7 +101,7 @@ pie
     "Others" : 7.9
 ....
 
-=== Findings
+== Findings
 
 The major finding of the agile community during 2020 and 2021 is co-location is not mandatory for a successful agile approach.
 
@@ -117,7 +115,7 @@ Do not be penny wise and pound foolish.
 Invest in professional hardware and buy the adequate number of licenses.
 I always wonder why companies implement communication infrastructure with the free version of Slack or GitHub.
 
-=== Insights
+== Insights
 
 Agile approaches are steadily making progress in Switzerland.
 Empirical data indicate agile approaches are more successful than hybrid ones.
@@ -147,7 +145,7 @@ _To be agile, not to do agile_
 I assume it will take another five years until agile is well-established in product development organizations.
 Below the staying sane advices of {ref-less} community.
 
-=== https://less.works/less/adoption/staying-sane[Staying Sane]
+== https://less.works/less/adoption/staying-sane[Staying Sane]
 
 During an agile, the organization needs to be changed.
 You are involved and probably have no ‘official’ authority to affect the needed changes.

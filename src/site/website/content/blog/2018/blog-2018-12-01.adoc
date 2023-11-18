@@ -5,15 +5,16 @@ date: 2018-12-11
 tags: ["agile", "series-how-healthy"]
 ---
 
-== How Healthy is Your Product? - Product Strategy Check
-
 include::../fragments/_config-mb-blog.aodc[]
 
+[.float-group]
+--
 image::2018-12-01-head.png[width=420,height=360,role=left]
 
 You are developing your product using agile and lean approaches.
 
 How can you check your approach and distill improvements?
+
 Health check of your product and your development approach are certainly a good solution.
 
 This post is the third of a set of articles identifying health checks with different focus.
@@ -21,8 +22,9 @@ We will identify strengths, potential weaknesses and hopefully find room for imp
 
 What is your product strategy?
 How do you involve your customers and stakeholders?
+--
 
-=== Rules
+== Rules
 
 The patient solely decides if a health check shall be performed.
 The effort and depth of a health check is defined together with the patient.
@@ -38,7 +40,7 @@ The real work is to implement consistently the measures.
 I have the same personal challenge when trying to lose weight or improve my running form.
 The long term implementation is the crux.
 
-=== Product Strategy Checks
+== Product Strategy Checks
 
 Vision of the product::
 You can communicate the vision on your product in an elevator pitch and have it hanging in the team workplace.
@@ -69,6 +71,6 @@ The measures guarantee the continuous achievement of the constraints - often def
 
 See the link:../../2018/how-healthy-is-your-product-delivery-pipeline-check/[Delivery Pipeline Check] to enable your organization to provide realtime feedback on how well the above constraints are correctly implemented in the product.
 
-=== Posts in the Health Check Series
+== Posts in the Health Check Series
 
 include::../fragments/_how-healthy-series-links.adoc[]

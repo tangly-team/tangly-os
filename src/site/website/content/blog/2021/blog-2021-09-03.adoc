@@ -5,8 +5,6 @@ date: 2021-09-03
 tags: ["agile"]
 ---
 
-== Scrum Developer Formation
-
 include::../fragments/_config-mb-blog.aodc[]
 
 image::2021-09-03-head.png[width=420,height=360,role=left]
@@ -19,8 +17,7 @@ You should attend professional training.
 
 Formal training is often the difference between being a professional instead of just pretending to be one.
 
-
-=== Scrum Developer Role
+== Scrum Developer Role
 
 Here the official definition of the developer team member role taken from the {ref-scrumguide}.
 
@@ -35,7 +32,7 @@ However, the Developers are always accountable for:
 * Adapting their plan each day toward the Sprint Goal,
 * Holding each other accountable as professionals.
 
-=== Certifications
+== Certifications
 
 The two big Scrum organizations {ref-scrum-alliance} and {ref-scrum-org} provide a certification path for Scrum developers.
 The certification path has three levels:
@@ -152,7 +149,7 @@ Examples for the objectives are provided in <<scrum-developer-learning-objective
 
 I published a list of seminal works for interested Scrum developers under link:../../../ideas/learnings/books/[Books].
 
-=== Agile Software Development Trainings
+== Agile Software Development Trainings
 
 An interesting development is the addition of tailored trainings emphasizing agile approaches.
 The biggest organization https://www.pmi.org[PMI] has a whole agile based on https://www.pmi.org/certifications/agile-certifications[Disciplined Agile
@@ -160,7 +157,7 @@ Design] _DAD_.
 
 I expect the emphasis on agile approaches to significantly increase in the next years.
 
-=== University Formal Trainings
+== University Formal Trainings
 
 Technical universities in Switzerland provide formal training in project leadership, project management and related fields.
 The formation provides a certificate of advanced study CAS in the field.
@@ -172,7 +169,7 @@ Current available certificates of advanced study offering are for example:
 * Ost FH https://www.ost.ch/de/weiterbildung/weiterbildungsangebot/informatik/mas-software-engineering[MAS Software Engineering]
 
 [bibliography]
-=== Links
+== Links
 
 - [[[scrum-developer-learning-objectives, 1]]]
 https://www.scrumalliance.org/ScrumRedesignDEVSite/media/ScrumAllianceMedia/Files%20and%20PDFs/Learning%20Objectives/E_CSD_LO_2021.pdf[Scrum Alliance

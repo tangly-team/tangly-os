@@ -5,8 +5,6 @@ date: 2023-07-01
 tags: ["java", "agile", "series-students"]
 ---
 
-== Onboarding Software Developers in Your agile Team
-
 include::../fragments/_config-mb-blog.aodc[]
 
 image::2023-07-01-head.png[width=420,height=360,role=left]
@@ -20,7 +18,7 @@ Onboarding software developers is just as important for getting the most out of 
 
 Too many companies neglect this phase to their own detriment.
 
-=== Why onboarding matters?
+== Why onboarding matters?
 
 Onboarding, the process of bringing new employees to a point where they are fully integrated into the company and working at full capacity is a _make it or break it_ process for companies wanting to compete in the tech world.
 Whether you are a startup with only a few employees, or an established company with hundreds of employees, the onboarding process is the first opportunity you have to set up new employees for long-term success.
@@ -42,13 +40,13 @@ Each phase is described, and each new collaborator has a contact person for onbo
 
 So what is a realistic expectation for how long it takes to onboard a software engineer?
 
-=== How long should it take?
+== How long should it take?
 
 Before diving into how long the onboarding process should take, it is important to note that there are different types of onboarding and each requires a different approach and timeline.
 There is practical, cultural, and skill onboarding.
 All are necessary to successfully onboard a software developer into your company.
 
-==== Practical onboarding (1 week)
+=== Practical onboarding (1 week)
 
 Practical onboarding involves things like benefits signups, company-wide training videos, HR requirements, equipment setup and account access
 footnote:[Invest in a smooth IT setup. I too often encounter organizations needing months until the new collaborator can finally access all needed applications and resources.
@@ -69,7 +67,7 @@ Do everything you can to make the practical aspect of onboarding seamless, effic
 
 If there is a way to gather information from the employee before their start date, even better.
 
-==== Skill onboarding (3 – 6 months)
+=== Skill onboarding (3 – 6 months)
 
 Just like the practical side of onboarding, skill onboarding should start on the first day for a new employee.
 You want the software developer to be well versed in your code base, processes, and systems, so the earlier they can get access to it, the better.
@@ -91,7 +89,7 @@ Skill onboarding should take anywhere from 3 to 6 months, with monthly reviews e
 footnote:[Skill onboarding can require formal training.
 Budget shall be available for books, online and classroom courses.].
 
-==== Cultural onboarding (6 months – 1 year)
+=== Cultural onboarding (6 months – 1 year)
 
 image::2023-07-01-cultural-onboarding.jpg[width=420,height=360,role=left]
 
@@ -117,7 +115,7 @@ We always suggest that new employees do their first two to four weeks of employm
 If you are working with a near source team and flying them up to headquarters is not realistic, then make a plan to spend a week or two with the new employees.
 Cultural onboarding is about relationship building, and doing so in-person makes a difference.
 
-=== Best practices for onboarding
+== Best practices for onboarding
 
 As a rule, companies of any size should see the first six months as an employees onboarding period.
 Helping employees get acclimated is a necessary step to seeing the return on the sizable investment made in hiring a software developer in the first place.
@@ -130,7 +128,7 @@ Here are a few simple practices for successful onboarding:
 * Give them a feedback loop through regular reviews.
 * Give them time to reach their potential.
 
-=== Lessons Learnt
+== Lessons Learnt
 
 Train your collaborators.
 Our company is an agile software boutique with Java and {cpp} technical stacks.
@@ -154,7 +152,7 @@ Teams use InnerSource to increase visibility, strengthen collaboration, and brea
 ====
 
 [bibliography]
-=== Links
+== Links
 
 - [[[evaluate-cv, 1]]] link:../../2022/evaluate-technical-cvs/[Evaluate Technical CVs].
 Marcel Baumann. 2022.
@@ -179,6 +177,6 @@ Gitlab. 2022.
 - [[[inner-source-patterns, 11]]] https://patterns.innersourcecommons.org/[Inner Source Patterns].
 Gitlab. 2022.
 
-=== References
+== References
 
 bibliography::[]

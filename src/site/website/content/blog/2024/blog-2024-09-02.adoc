@@ -5,8 +5,6 @@ date: 2024-09-02
 tags: ["C++", "embedded"]
 ---
 
-== Embedded Applications with {cpp}, freeRTOS, and STM32
-
 include::../fragments/_config-mb-blog.aodc[]
 :ref-actor-model: https://en.wikipedia.org/wiki/Actor_model[Actor Model]
 :ref-cmsis-os: https://www.keil.com/pack/doc/CMSIS/RTOS2/html/index.html[CMSIS RTOS-2]
@@ -48,7 +46,7 @@ For example, embedded systems in a satellite which must collect various types of
 If at some point the satellite loses control, people from the station should be able to make a diagnosis trying to reestablish the system.
 That is why flexibility is vital while designing an embedded system.
 
-=== {cpp} Application Development
+== {cpp} Application Development
 
 The {cpp} programming language has clear advantages when developing embedded and regular software products:
 
@@ -85,7 +83,7 @@ Use standard tools:
 - {ref-doxygen} to document the source code
 - Package manager
 
-=== Realtime Operating System
+== Realtime Operating System
 
 {ref-actor-model} is a powerful and efficient design approach for reactive and embedded applications.
 Actors require the creation of tasks, message queues for inter-task communication, and timer services.
@@ -102,7 +100,7 @@ They should be relegated as variant implementation of standard library functions
 
 The ARM world has defined an abstraction layer for realtime operating systems and published the functions under {ref-cmsis-os}.
 
-=== RTOS and Application Partitioning
+== RTOS and Application Partitioning
 
 Most mainstream operating systems are built on the assumption that a system has a single privileged operating system running several unprivileged applications.
 Running multiple operating systems on the same platform requires a {ref-hypervisor}.

@@ -5,8 +5,6 @@ date: 2023-05-01
 tags: ["java", "series-students"]
 ---
 
-== Java 20
-
 include::../fragments/_config-mb-blog.aodc[]
 
 image::2023-05-01-head.png[width=420,height=360,role=left]
@@ -43,7 +41,7 @@ The project https://openjdk.org/projects/panama/[Panama] refined the access to f
 - https://openjdk.org/jeps/434[Foreign Functions and Memory API] _Second Preview_
 - https://openjdk.org/jeps/438[Vector API] _Fifth Incubator_
 
-=== Algebraic Types and Pattern Matching
+== Algebraic Types and Pattern Matching
 
 Brian Goetz and his team are adding syntactic sugar constructs to the language.
 Step by step the https://en.wikipedia.org/wiki/Algebraic_data_type[algebraic data types] with records <<java-immutability>> and sealed types and the pattern matching tools move Java to more complete functional programming approaches.
@@ -54,7 +52,7 @@ The switch expression is an elegant and compact solution for conditional selecti
 The next JDK will hopefully again improve the legibility of the code.
 The proposed improvements are anonymous variables in deconstruction expressions and support of primitive types in switch expressions.
 
-=== Virtual Threads and Structured Concurrency
+== Virtual Threads and Structured Concurrency
 
 Death to complex asynchronous programming and nightly debugging sessions.
 The structure of the code visualizes the concurrency flow in your application.
@@ -66,7 +64,7 @@ Work is under way to provide https://openjdk.org/jeps/8304357[scoped values] and
 
 I hope that Loom will deliver another promise and give us optimized tail recursion in the near future.
 
-=== Interfaces to external libraries and memory structures
+== Interfaces to external libraries and memory structures
 
 Java is *not* an island.
 We want to interface to external digital systems and powerful libraries.
@@ -74,7 +72,7 @@ We want to interface to external digital systems and powerful libraries.
 https://en.wikipedia.org/wiki/Java_Native_Interface[JNI] solution is obsolete.
 Panama project provides way better approaches to interface with external libraries.
 
-=== Thoughts
+== Thoughts
 
 Java is steadily improving <<modern-java-development>> if sometimes slowly
 footnote:[I am waiting since 2018 that Brian Goetz proposal of concise method bodies is implemented in a JDK.].
@@ -106,7 +104,7 @@ We should rather state that the majority of Java teams are laggards, also called
 image::2023-05-01-java-trends.png[role=text-center]
 
 [bibliography]
-=== Links
+== Links
 
 - [[[vaadin, 1]]]  link:../../2022/vaadin/[Vaadin].
 Marcel Baumann. 2022.
@@ -123,6 +121,6 @@ Marcel Baumann. 2022
 - [[[modern-java-development, 7]]] link:../../2021/modern-java-development/[Modern Java Development].
 Marcel Baumann. 2021.
 
-=== References
+== References
 
 bibliography::[]

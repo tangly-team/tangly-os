@@ -5,8 +5,6 @@ date: 2023-11-01
 tags: ["agile", "java", "series-students"]
 ---
 
-== Java Certification
-
 include::../fragments/_config-mb-blog.aodc[]
 
 image::2023-11-01-head.png[width=420,height=360,role=left]
@@ -20,7 +18,7 @@ Even if you are not looking to move any time soon, getting certified boosts the 
 
 Certifications can be a great bargaining chip when it comes to negotiating a raise or a promotion.
 
-=== Preparing for the certification
+== Preparing for the certification
 
 The current https://education.oracle.com/java-se-17-developer/pexam_1Z0-829[Java SE 17 Developer] examination process and examination goals are well-documented.
 Beware that only one examination exists.
@@ -65,7 +63,7 @@ footnote:[The registration process will verify that you own a copy of the book.]
 
 This book is for anyone from high school students to those beginning their programming journey to experienced professionals who need a review for the certification.
 
-=== Mockup Questions
+== Mockup Questions
 
 Try the various online mockup questions to get a grasp of the certification examination.
 
@@ -74,7 +72,7 @@ The OCP book contains a full set of questions and answers.
 You will often find answers to Java questions on https://coderanch.com/[Code Ranch].
 The authors of the book are providing hints on the discussion panel.
 
-=== Taking the examination
+== Taking the examination
 
 I strongly recommend attending an onsite examination.
 The setup is more convenient than the online version of the test.
@@ -84,7 +82,7 @@ You will receive a public badge upon successful completion.
 Interested parties can confirm your certification when provided with the link.
 You can, for example, publish your certification badge on the LinkedIn platform.
 
-=== Lessons Learnt
+== Lessons Learnt
 
 - Read all chapters of the book to prepare for the examination.
 - Train with mock questions.
@@ -111,7 +109,7 @@ Find a more effective approach to learning the new features of the Java language
 ====
 
 [bibliography]
-=== Links
+== Links
 
 - [[[ocp-study-guide-java-17, 1]]] https://www.amazon.com/dp/B09WJP11JL/[OCP Oracle Certified Professional Java SE 17 Developer Study Guide: Exam 1Z0-829]
 Scott Selikoff, Jeanne Boyarsky.

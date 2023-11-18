@@ -5,8 +5,6 @@ date: 2023-11-15
 tags: ["agile", "architecture"]
 ---
 
-== Pragmatic Java Application Design
-
 include::../fragments/_config-mb-blog.aodc[]
 :ref-dev-containers: https://containers.dev/[Development Containers]
 :ref-devoxx: https://devoxx.be/[Devoxx Belgium]
@@ -61,7 +59,7 @@ The application will not need regular access to all the historical information.
 Most of the time the application only accesses active customers, contracts, and invoices issued in the current year.
 ====
 
-=== Modular Monolith
+== Modular Monolith
 
 The good approach to design such a system is to use a modular monolith architecture <<modular-monolith>>.
 
@@ -111,7 +109,7 @@ _Honestly, I never created an application with more than eight thousand concurre
 _Products with more parallel users are seldom in Europe._
 ====
 
-=== Lessons Learnt
+== Lessons Learnt
 
 We are professional engineers.
 Form should follow function.
@@ -135,7 +133,7 @@ It has the potential to simplify the setup of a development environment for a te
 The approach also solves the maintenance nightmare to support multiple development environements for older product versions.
 
 [bibliography]
-=== Links
+== Links
 
 - [[[monolith-first,1 ]]] https://martinfowler.com/bliki/MonolithFirst.html[Monolith First]
 Martin Fowler. 2015.
@@ -144,6 +142,6 @@ Marcel Baumann. 2022.
 - [[[behavor-driven-design, 3]]] link:../../2022/behavior-driven-design/[Behavior Driven Design]
 Marcel Baumann. 2022.
 
-=== References
+== References
 
 bibliography::[]

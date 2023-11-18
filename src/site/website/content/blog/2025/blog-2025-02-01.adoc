@@ -5,8 +5,6 @@ date: 2025-02-01
 tags: ["architecture", "domain-driven-design", "c++", "embedded"]
 ---
 
-== DDD Approaches for Embedded Systems
-
 include::../fragments/_config-mb-blog.aodc[]
 :ref-actor-model: https://en.wikipedia.org/wiki/Actor_model[Actor Model]
 :ref-cohesion: https://en.wikipedia.org/wiki/Cohesion_(computer_science)[Cohesion]
@@ -37,7 +35,7 @@ The interfaces between domains are well-defined.
 
 What are good bounded domains in an embedded industrial application?
 
-=== Bounded Domains
+== Bounded Domains
 
 DDD is about designing software based on models of the underlying domain
 cite:[domain-driven-design,implementing-domain-driven-design,domain-driven-design-distilled].
@@ -270,7 +268,7 @@ Explain the whole architecture using {ref-arc42} and {ref-adr}.
 Documentation as code shall be integrated into your agile development approach.
 ====
 
-=== Layers in Bounded Domain
+== Layers in Bounded Domain
 
 A sensor or an actuator is part of one bounded domain.
 Sensor processing is often a data processing pipeline:
@@ -324,7 +322,7 @@ The approach works as long as the periodicity of the PLC algorithm calls is fast
 During the execution of the PLC algorithm, no input values are changed during a specific cycle.
 ====
 
-=== Bounded Domain Interface
+== Bounded Domain Interface
 
 The interface shall be the only dependency a user has with a bounded domain.
 The interface shall formally be documented to ensure legibility and maintainability.
@@ -348,7 +346,7 @@ Your users will be very thankful and your component will be more successful.
 The interface of a bounded domain shall promote concurrent asynchronous communication.
 Try the following approach.
 
-==== Incoming Queries and Commands
+=== Incoming Queries and Commands
 
 An asynchronous command cannot have an immediate return value.
 Otherwise, it is a synchronous call.
@@ -381,7 +379,7 @@ Asynchronous approach requires multithreaded systems.
 Asynchronous command and query requests is the only scalable and resilient approach for complex concurrent systems.
 ====
 
-==== Outgoing Queries and Commands
+=== Outgoing Queries and Commands
 
 Asynchronous outgoing queries and commands can simply be used and will perform well.
 
@@ -400,7 +398,7 @@ In other words, a simple query should not have complex computations and should n
 As long as the servicing entity is not overworked, the system stays responsive.
 ====
 
-==== Events to publish state changes
+=== Events to publish state changes
 
 Events should always be transmitted as asynchronous messages published on topics.
 Interested parties register to related topics.
@@ -418,9 +416,9 @@ Avoid callbacks to propagate events.
 Callbacks introduce a dependency between the caller and the callee.
 The callee is responsible to implement parallel handling of multiple callbacks and protection of variables accessed from multiple callbacks.
 
-=== Crosscutting Concerns
+== Crosscutting Concerns
 
-==== Configuration
+=== Configuration
 
 The application shall be configured to reflect the available hardware components.
 Two approaches are available.
@@ -449,7 +447,7 @@ Rebooting an embedded linux system takes hundreds of milliseconds.
 Update the configuration, reboot, wait a second and continue working.
 ====
 
-==== Startup and Shutdown
+=== Startup and Shutdown
 
 A machine must be started and stopped.
 Each hardware component shall provide the same state machine and state changes.
@@ -507,7 +505,7 @@ A https://en.wikipedia.org/wiki/Board_support_package[Board Support Package] _BS
 It contains essential software a hardware device needs to work with the computer operating System or the sole application.
 ====
 
-==== User Interface
+=== User Interface
 
 You have two major design approaches for the visualization of the machine.
 You implement an event store containing all changes relevant to the current state of the machine.
@@ -518,7 +516,7 @@ Beware that during the polling operation to retrieve the current state, new even
 
 The same approaches can be used to visualize the state of the jobs planned or under execution.
 
-==== Alarming
+=== Alarming
 
 Alarms are information defining problems in the product.
 A human operator shall receive all alarms and decide if they influence his decisions.
@@ -528,11 +526,11 @@ Alarms are also used to bring the device to a save state if the error detected i
 Alarms should have a unique type identifier, a severity level and a human-readable text.
 Alarms are sent to a product wide topic and made available to all interested parties.
 
-==== Logging
+=== Logging
 
 Logging approaches are discussed in a separate article <<logging>>.
 
-==== Dependency Injection
+=== Dependency Injection
 
 Instances need reference to other objects in the system to fulfill their responsibilities.
 Either you hard-code the dependencies or you use a dependency injection approach.
@@ -556,7 +554,7 @@ The construction of the embedded application is a set of code snippets creating 
 The order of the calls is an acyclic graph with one implicit or explicit root object.
 ====
 
-=== Lessons Learnt
+== Lessons Learnt
 
 The {ref-kiss} is essential to construct a maintainable and stable solution.
 
@@ -568,7 +566,7 @@ Communication should always be message-based.
 Avoid using synchronization primitives such as mutex, semaphores, or monitors.
 
 [bibliography]
-=== Links
+== Links
 
 - [[[modular-monolith, 1]]] https://martinfowler.com/bliki/MonolithFirst.html[Monolith First]
 Martin Fowler. 2015.
@@ -583,6 +581,6 @@ Marcel Baumann. 2024.
 - [[[actors, 6]]] link:../../blog/2024/actors/[Actors]
 Marcel Baumann.2024.
 
-=== References
+== References
 
 bibliography::[]
