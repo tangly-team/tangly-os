@@ -4,10 +4,11 @@
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- *          https://apache.org/licenses/LICENSE-2.0
+ *          http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ *
  */
 
 package net.tangly.erp.crm.ports;
@@ -72,8 +73,8 @@ import static net.tangly.gleam.model.TsvEntity.get;
 
 /**
  * Provide import and export functions for CRM entities persisted in tab separated files. These files are often defined for integration testing or integration of legacy systems not
- * providing programmatic API. The description of the TSV file structure and the mapping rules are of declarative nature. One 2 one relations are mapped through the oid of the
- * referenced entity if defined, otherwise an empty string. One 2 many relations are mapped through a tab separated list of the oid of the referenced entities if at least one is
+ * providing programmatic API. The description of the TSV file structure and the mapping rules are of declarative nature. One2one relations are mapped through the oid of the
+ * referenced entity if defined, otherwise an empty string. One2many relations are mapped through a tab separated list for the oid of the referenced entities if at least one is
  * defined, otherwise an empty string.
  */
 public class CrmTsvHdl {
