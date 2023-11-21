@@ -291,9 +291,19 @@ public abstract class ItemView<T> extends VerticalLayout {
                 menu().addItem(Mode.DUPLICATE_TEXT, event -> event.getItem().ifPresent(form::duplicate));
                 menu().addItem(Mode.DELETE_TEXT, event -> event.getItem().ifPresent(form::delete));
             }
+            addActions(menu());
             SingleSelect<Grid<T>, T> selection = grid.asSingleSelect();
             selection.addValueChangeListener(e -> form.value(e.getValue()));
         }
+    }
+
+    /**
+     * Adds custom actions to the context menu. Overwrite the menu if you want to add actions to the context menu. The mode of the view is available through the  {@link #mode()}}
+     * method. The menu can also be retrieved through the {@link #menu()} method.
+     *
+     * @param menu context menu of the grid
+     */
+    protected void addActions(@NotNull GridContextMenu<T> menu) {
     }
 
     protected HeaderRow createHeaderRow() {

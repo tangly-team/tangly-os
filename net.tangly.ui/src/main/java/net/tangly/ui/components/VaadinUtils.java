@@ -4,10 +4,11 @@
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- *          https://apache.org/licenses/LICENSE-2.0
+ *          http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ *
  */
 
 package net.tangly.ui.components;
@@ -24,6 +25,7 @@ import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.select.Select;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.renderer.ComponentRenderer;
+import net.tangly.core.EmailAddress;
 import net.tangly.core.HasTags;
 import net.tangly.core.Tag;
 import net.tangly.core.crm.CrmTags;
@@ -37,6 +39,7 @@ import java.text.NumberFormat;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Locale;
+import java.util.Objects;
 import java.util.function.Function;
 
 public final class VaadinUtils {
@@ -136,12 +139,34 @@ public final class VaadinUtils {
     }
 
     public static <T extends HasTags> ComponentRenderer<Anchor, T> linkedInComponentRenderer(Function<HasTags, String> linkedInUrl) {
-        return new ComponentRenderer<>(item -> {
+        return new ComponentRenderer<>(e -> {
             Anchor anchor = new Anchor();
-            Tag tag = item.findBy(CrmTags.CRM_IM_LINKEDIN).orElse(null);
+            Tag tag = e.findBy(CrmTags.CRM_IM_LINKEDIN).orElse(null);
             String linkedInRef = (tag != null) ? tag.value() : null;
             anchor.setText(linkedInRef);
-            anchor.setHref((linkedInRef != null) ? linkedInUrl.apply(item) : "");
+            anchor.setHref((linkedInRef != null) ? linkedInUrl.apply(e) : "");
+            anchor.setTarget("_blank");
+            return anchor;
+        });
+    }
+
+    public static <T> ComponentRenderer<Anchor, T> emailAddressComponentRenderer(Function<T, EmailAddress> getter) {
+        return new ComponentRenderer<>(e -> {
+            Anchor anchor = new Anchor();
+            String email = getter.apply(e).text();
+            anchor.setText(email);
+            anchor.setHref(Objects.nonNull(email) ? "mailto:" + email : "");
+            anchor.setTarget("_blank");
+            return anchor;
+        });
+    }
+
+    public static <T> ComponentRenderer<Anchor, T> urlComponentRenderer(Function<T, String> getter) {
+        return new ComponentRenderer<>(item -> {
+            Anchor anchor = new Anchor();
+            String url = getter.apply(item);
+            anchor.setText(url);
+            anchor.setHref(Objects.nonNull(url) ? "https://" + url : "");
             anchor.setTarget("_blank");
             return anchor;
         });
@@ -181,11 +206,10 @@ public final class VaadinUtils {
     }
 
     public static List<LocalDate> quarterLegends(LocalDate from, LocalDate to) {
-        return List.of(LocalDate.parse("2015-12-31"), LocalDate.parse("2016-03-31"), LocalDate.parse("2016-06-30"), LocalDate.parse("2016-09-30"),
-            LocalDate.parse("2016-12-31"), LocalDate.parse("2017-03-31"), LocalDate.parse("2017-06-30"), LocalDate.parse("2017-09-30"),
-            LocalDate.parse("2017-12-31"), LocalDate.parse("2018-03-31"), LocalDate.parse("2018-06-30"), LocalDate.parse("2018-09-30"),
-            LocalDate.parse("2018-12-31"), LocalDate.parse("2019-03-31"), LocalDate.parse("2019-06-30"), LocalDate.parse("2019-09-30"),
-            LocalDate.parse("2019-12-31"), LocalDate.parse("2020-03-31"), LocalDate.parse("2020-06-30"), LocalDate.parse("2020-09-30"),
+        return List.of(LocalDate.parse("2015-12-31"), LocalDate.parse("2016-03-31"), LocalDate.parse("2016-06-30"), LocalDate.parse("2016-09-30"), LocalDate.parse("2016-12-31"),
+            LocalDate.parse("2017-03-31"), LocalDate.parse("2017-06-30"), LocalDate.parse("2017-09-30"), LocalDate.parse("2017-12-31"), LocalDate.parse("2018-03-31"),
+            LocalDate.parse("2018-06-30"), LocalDate.parse("2018-09-30"), LocalDate.parse("2018-12-31"), LocalDate.parse("2019-03-31"), LocalDate.parse("2019-06-30"),
+            LocalDate.parse("2019-09-30"), LocalDate.parse("2019-12-31"), LocalDate.parse("2020-03-31"), LocalDate.parse("2020-06-30"), LocalDate.parse("2020-09-30"),
             LocalDate.parse("2020-12-31"));
     }
 

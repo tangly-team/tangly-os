@@ -72,8 +72,8 @@ This is how software architecture documentation emerges, evolves, and stays curr
 Do not include tutorials or Q&A sections::
 The most important thing in arc42 is the structure.
 The structure does not provide a space for guides or Q&A sections.
-Don't put any specific things like customer names or similar::
-Don't write customer-specific things in the software architecture documentation, unless your building blocks are structured in a customer-oriented way.
+Do not put any specific things like customer names or similar::
+Do not write customer-specific things in the software architecture documentation, unless your building blocks are structured in a customer-oriented way.
 
 [bibliography]
 == Links

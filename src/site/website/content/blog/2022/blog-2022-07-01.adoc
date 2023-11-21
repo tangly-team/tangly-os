@@ -22,11 +22,11 @@ There are plenty of good reasons to become a Scrum master.
 The job is fascinating, in demand and pays well.
 
 The most important reason to become a Scrum master is that it is the right job for your personality, interests and skills.
---
 
 What is the role of Scrum master?
 
 If you choose to accept this mission, what will *you* do every day <<what-does-scrum-master>>?
+--
 
 == What is a Scrum Master?
 

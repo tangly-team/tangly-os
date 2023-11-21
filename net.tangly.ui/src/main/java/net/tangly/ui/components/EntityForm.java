@@ -41,7 +41,7 @@ public abstract class EntityForm<T extends Entity, V extends EntityView<T>> exte
     private One2ManyOwnedField<Comment> comments;
     private One2ManyOwnedField<Tag> tags;
 
-    public EntityForm(@NotNull V parent, Function<Long, T> supplier) {
+    protected EntityForm(@NotNull V parent, Function<Long, T> supplier) {
         super(parent);
         this.supplier = supplier;
         if (HasComments.class.isAssignableFrom(entityClass())) {
@@ -55,7 +55,7 @@ public abstract class EntityForm<T extends Entity, V extends EntityView<T>> exte
     @Override
     protected void init() {
         entity = new EntityField<>();
-        entity.bind(binder(), true);
+        entity.bind(binder());
 
         FormLayout form = new FormLayout();
         form.add(entity);
@@ -71,8 +71,17 @@ public abstract class EntityForm<T extends Entity, V extends EntityView<T>> exte
     }
 
     @Override
+    /**
+     * Duplicate the entity and clears the object identifier field.
+     * @see ItemForm#duplicate(Object)
+     */ public void duplicate(@NotNull T entity) {
+        super.duplicate(entity);
+        this.entity.clearOid();
+    }
+
+    @Override
     protected T createOrUpdateInstance(T entity) throws ValidationException {
-        T updatedEntity = Objects.nonNull(entity) ? entity : supplier().apply(fromBinder(HasOid.OID));
+        T updatedEntity = Objects.nonNull(entity) ? entity : supplier().apply(HasOid.UNDEFINED_OID);
         binder().writeBean(updatedEntity);
         return updatedEntity;
     }

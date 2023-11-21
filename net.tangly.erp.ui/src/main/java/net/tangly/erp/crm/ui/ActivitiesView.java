@@ -13,10 +13,8 @@
 
 package net.tangly.erp.crm.ui;
 
-import com.vaadin.flow.component.combobox.ComboBox;
 import com.vaadin.flow.component.datepicker.DatePicker;
 import com.vaadin.flow.component.formlayout.FormLayout;
-import com.vaadin.flow.component.grid.HeaderRow;
 import com.vaadin.flow.component.textfield.IntegerField;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.ValidationException;
@@ -24,10 +22,12 @@ import net.tangly.core.codes.CodeType;
 import net.tangly.erp.crm.domain.Activity;
 import net.tangly.erp.crm.domain.ActivityCode;
 import net.tangly.erp.crm.services.CrmBoundedDomain;
+import net.tangly.ui.asciidoc.AsciiDocField;
 import net.tangly.ui.components.EntityView;
 import net.tangly.ui.components.ItemForm;
 import net.tangly.ui.components.ItemView;
 import net.tangly.ui.components.Mode;
+import net.tangly.ui.components.VaadinUtils;
 import org.jetbrains.annotations.NotNull;
 
 import java.time.LocalDate;
@@ -73,21 +73,15 @@ class ActivitiesView extends ItemView<Activity> {
     }
 
     static class ActivityForm extends ItemForm<Activity, ActivitiesView> {
-        protected DatePicker date;
-        protected ComboBox<ActivityCode> code;
-        protected IntegerField durationInMinutes;
-        protected TextField author;
-        protected TextField text;
-        protected TextField details;
 
         public ActivityForm(@NotNull ActivitiesView parent) {
             super(parent);
-            init();
         }
 
         @Override
-        public void clear() {
-
+        protected void init() {
+            addTabAt("details", details(), 0);
+            addTabAt("text", text(), 1);
         }
 
         @Override
@@ -95,15 +89,14 @@ class ActivitiesView extends ItemView<Activity> {
             return null;
         }
 
-        protected void init() {
-            FormLayout form = new FormLayout();
-            date = new DatePicker(DATE);
-            code = ItemForm.createCodeField(CodeType.of(ActivityCode.class), "code");
-            durationInMinutes = new IntegerField(DURATION_IN_MINUTES);
-            author = new TextField(AUTHOR);
-            text = new TextField(EntityView.TEXT);
-            details = new TextField(DETAILS);
-            //            fields(Set.of(date, code, durationInMinutes, author, text, details));
+        private FormLayout details() {
+            var form = new FormLayout();
+            var date = new DatePicker(DATE);
+            var code = ItemForm.createCodeField(CodeType.of(ActivityCode.class), "code");
+            var durationInMinutes = new IntegerField(DURATION_IN_MINUTES);
+            var author = new TextField(AUTHOR);
+            var text = new TextField(EntityView.TEXT);
+            var details = new TextField(DETAILS);
 
             form.add(date, code, durationInMinutes, author, text, details);
             form.setColspan(text, 3);
@@ -115,14 +108,22 @@ class ActivitiesView extends ItemView<Activity> {
             binder().forField(author).bind(Activity::author, Activity::author);
             binder().forField(text).bind(Activity::text, Activity::text);
             binder().forField(details).bind(Activity::details, Activity::details);
+            return form;
         }
-    }
 
-    private final transient CrmBoundedDomain domain;
+        private FormLayout text() {
+            var text = new AsciiDocField("Text");
+            var form = new FormLayout();
+            VaadinUtils.set3ResponsiveSteps(form);
+            form.add(text, 3);
+            binder().bind(text, Activity::text, null);
+            return form;
+        }
+
+    }
 
     public ActivitiesView(@NotNull CrmBoundedDomain domain, @NotNull Mode mode) {
         super(Activity.class, domain, domain.realm().activities(), new ActivityFilter(), mode);
-        this.domain = domain;
         form(new ActivityForm(this));
         init();
     }
@@ -136,12 +137,5 @@ class ActivitiesView extends ItemView<Activity> {
         grid.addColumn(Activity::text).setKey(EntityView.TEXT).setHeader(EntityView.TEXT_LABEL).setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Activity::details).setKey(AUTHOR).setHeader("Author").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Activity::details).setKey(DETAILS).setHeader("Details").setAutoWidth(true).setResizable(true).setSortable(true);
-
-        grid.getHeaderRows().clear();
-        HeaderRow headerRow = grid().appendHeaderRow();
-        if (filter() instanceof ActivityFilter filter) {
-            headerRow.getCell(grid.getColumnByKey(AUTHOR)).setComponent(createTextFilterField(filter::author));
-        }
-        buildMenu();
     }
 }

@@ -15,7 +15,7 @@ Retired
 
 === Links
 
-Superseded by: link:../../../../docs/domains/architecture/adr/os-005-publish-maven-central-artifact/[OS-0005]
+Superseded by: link:../os-005-publish-maven-central-artifact/[OS-0005]
 
 === Context
 

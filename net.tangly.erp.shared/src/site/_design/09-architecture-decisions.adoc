@@ -19,9 +19,9 @@ ifndef::imagesdir[:imagesdir: ./pics]
 
 === ERP UI Decisions
 
-. link:../adr/ERPUI-001-asciidoc-for-all-texts/[Asciidoc for all Texts]
+. link:../adr/erpui-001-asciidoc-for-all-texts//[Asciidoc for all Texts]
 
 === FSM Decisions
 
-. link:../adr/FSM-001-move-abstractions-to-JDK-classes/[Move Abstractions to JDK Classes]
-. link:../adr/FSM-002-publish-maven-central-artifact[Publish Maven Central Artifacts]
+. link:../adr/fsm-001-move-abstractions-to-jdk-classes/[Move Abstractions to JDK Classes]
+. link:../adr/fsm-002-publish-maven-central-artifact[Publish Maven Central Artifacts]

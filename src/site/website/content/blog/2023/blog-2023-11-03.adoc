@@ -79,7 +79,7 @@ EclipseStore and HyperSQL::
 Are cost-effective and stable approaches for persistence.
 Logging log4j2::
 Is a powerful and established logging approach for your productive systems.
-Monitoring Micrometer::
+Monitoring with Micrometer::
 Is an industry standard to monitor your productive solutions on premises or in the cloud.
 Vaadin, SO Charts::
 Is a Java-based approach to creating modern user interfaces.
@@ -88,6 +88,10 @@ PDF Box::
 Is a powerful library to generate your PDF output documents.
 FacturX and Swiss QR Code::
 Are used to create compliant invoices in Europe and Switzerland.
+
+Limit the number of external libraries you are using in your products.
+Each additional framework increases maintenance costs and slow down your innovation progress.
+Java open-source projects are often laggards in adopting modern Java constructs.
 
 The application could have a huge success and be sold as a product to customers.
 You must now support thousands of concurrent users and more persistent data.
@@ -123,7 +127,7 @@ Beware that if your market grows exponentially, you will have to rewrite your so
 
 This approach is the best for your company and your cash flow.
 
-At this moment, you will better understand your customers and have the necessary budget to create a truly complex solution.
+Once your product is successful and attracts swarms of customers, you will better understand your customers and have the necessary budget to create a truly complex solution.
 
 Track new technologies.
 Evaluate their adequacy for your organization and products.

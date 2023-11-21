@@ -16,6 +16,8 @@ package net.tangly.erp.invoices.ui;
 import com.vaadin.flow.component.HtmlComponent;
 import com.vaadin.flow.component.datepicker.DatePicker;
 import com.vaadin.flow.component.formlayout.FormLayout;
+import com.vaadin.flow.component.grid.contextmenu.GridContextMenu;
+import com.vaadin.flow.component.html.Hr;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.ValidationException;
 import com.vaadin.flow.router.PageTitle;
@@ -46,14 +48,19 @@ class InvoicesView extends ItemView<Invoice> {
 
         @Override
         protected void init() {
-            TextField id = new TextField("Id", "id");
-            TextField name = new TextField("Name", "name");
-            DatePicker invoicedDate = new DatePicker("Invoiced Date");
-            DatePicker dueDate = new DatePicker("DUe Date");
+            addTabAt("details", details(), 0);
+        }
+
+        private FormLayout details() {
+            var id = new TextField("Id", "id");
+            var name = new TextField("Name", "name");
+            var invoicedDate = new DatePicker("Invoiced Date");
+            var dueDate = new DatePicker("DUe Date");
             AsciiDocField text = new AsciiDocField(EntityView.TEXT_LABEL);
             text.setWidthFull();
 
-            FormLayout form = new FormLayout();
+            var form = new FormLayout();
+            VaadinUtils.set3ResponsiveSteps(form);
             form.add(id, name, invoicedDate, dueDate);
             form.add(new HtmlComponent("br"));
             form.add(text, 3);
@@ -62,11 +69,7 @@ class InvoicesView extends ItemView<Invoice> {
             binder().bind(invoicedDate, Invoice::date, Invoice::date);
             binder().bind(dueDate, Invoice::dueDate, Invoice::dueDate);
             binder().bind(text, Invoice::text, Invoice::text);
-        }
-
-        @Override
-        public void clear() {
-
+            return form;
         }
 
         @Override
@@ -79,7 +82,20 @@ class InvoicesView extends ItemView<Invoice> {
 
     public InvoicesView(@NotNull InvoicesBoundedDomain domain, @NotNull Mode mode) {
         super(Invoice.class, domain, domain.realm().invoices(), new InvoiceFilter(), mode);
+        form(new InvoiceForm(this));
+
         init();
+    }
+
+    @Override
+    public InvoicesBoundedDomain domain() {
+        return (InvoicesBoundedDomain) super.domain();
+    }
+
+
+    protected void addActions(@NotNull GridContextMenu<Invoice> menu) {
+        menu().add(new Hr());
+        menu().addItem("Print", event -> event.getItem().ifPresent(e -> new CmdCreateInvoiceDocument(e, this.domain()).execute()));
     }
 
     protected void init() {
@@ -90,6 +106,5 @@ class InvoicesView extends ItemView<Invoice> {
         grid.addColumn(Invoice::dueDate).setKey("dueDate").setHeader("Due Date").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(o -> VaadinUtils.format(o.amountWithoutVat())).setKey("amountWithoutVat").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Invoice::text).setKey("text").setHeader("Text").setAutoWidth(true).setResizable(true).setSortable(true);
-        //        decorators.addItemAction("Print", e -> new CmdCreateInvoiceDocument(value(), domain).execute());
     }
 }

@@ -170,7 +170,6 @@ public abstract class ItemForm<T, U extends ItemView<T>> {
         return parent().entityClass();
     }
 
-
     // region CRUD operations available through the popup menu
 
     /**
@@ -280,7 +279,6 @@ public abstract class ItemForm<T, U extends ItemView<T>> {
 
     // region Entity related functions
 
-
     protected abstract void init();
 
     /**
@@ -326,7 +324,6 @@ public abstract class ItemForm<T, U extends ItemView<T>> {
         }
         return deletedItem;
     }
-
 
     // endregion
 

@@ -1,13 +1,14 @@
 /*
- * Copyright 2006-2022 Marcel Baumann
+ * Copyright 2006-2023 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- *          https://apache.org/licenses/LICENSE-2.0
+ *          http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ *
  */
 
 package net.tangly.erp.invoices.services;
@@ -22,14 +23,24 @@ import java.time.LocalDate;
  */
 public interface InvoicesPort {
     /**
+     * Returns true if the invoice document exists.
+     *
+     * @param invoice invoice to be tested
+     * @return true if the invoice document exists
+     */
+    boolean doesInvoiceDocumentExist(@NotNull Invoice invoice);
+
+    /**
      * Export an invoice to a file. The method is responsible to infer the path to the generated invoice document.
      * <p><em>implNote</em> The asciidoc document is deleted upon creation of the pdf document.</p>
      *
      * @param invoice     invoice to be exported
      * @param withQrCode  flag if the Swiss QR cde should be added to the invoice document
      * @param withEN16931 flag if the EN16931 digital invoice should be added to the invoice document
+     * @param overwrite   flag if an existing document should be overwritten
+     * @see #exportInvoiceDocument(Invoice, boolean, boolean, boolean)
      */
-    void exportInvoiceDocument(@NotNull Invoice invoice, boolean withQrCode, boolean withEN16931);
+    void exportInvoiceDocument(@NotNull Invoice invoice, boolean withQrCode, boolean withEN16931, boolean overwrite);
 
     /**
      * Exports all selected invoices as artifact to a file. The method is responsible to infer the path to the generated invoice document.
@@ -39,7 +50,8 @@ public interface InvoicesPort {
      * @param withEN16931 flag if the EN16931 digital invoice should be added to the invoice document
      * @param from        optional start of the relevant time interval for the invoiced date
      * @param to          optional end of the relevant time interval for the invoiced date
+     * @param overwrite   flag if an existing document should be overwritten
      */
-    void exportInvoiceDocuments(boolean withQrCode, boolean withEN16931, LocalDate from, LocalDate to);
+    void exportInvoiceDocuments(boolean withQrCode, boolean withEN16931, boolean overwrite, LocalDate from, LocalDate to);
 
 }

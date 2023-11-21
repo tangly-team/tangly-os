@@ -1,13 +1,14 @@
 /*
- * Copyright 2006-2022 Marcel Baumann
+ * Copyright 2006-2023 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- *          https://apache.org/licenses/LICENSE-2.0
+ *          http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ *
  */
 
 package net.tangly.erp.invoices.ui;
@@ -52,18 +53,24 @@ class ArticlesView extends ItemView<Article> {
 
         @Override
         protected void init() {
-            TextField id = new TextField("Id", "id");
+            addTabAt("details", details(), 0);
+        }
+
+        private FormLayout details() {
+            var id = new TextField("Id", "id");
             id.setRequired(true);
-            TextField name = new TextField("Name", "name");
+            var name = new TextField("Name", "name");
             name.setRequired(true);
-            TextField text = new TextField("Text", "text");
+            var text = new TextField("Text", "text");
             ComboBox<ArticleCode> code = ItemForm.createCodeField(CodeType.of(ArticleCode.class), "code");
-            TextField unit = new TextField("Unit", "unit");
+            var unit = new TextField("Unit", "unit");
             unit.setRequired(true);
-            BigDecimalField unitPrice = new BigDecimalField("Unit Price", "unit price");
-            BigDecimalField vatRate = new BigDecimalField("VAT Rate", "VAT rate");
+            var unitPrice = new BigDecimalField("Unit Price", "unit price");
+            var vatRate = new BigDecimalField("VAT Rate", "VAT rate");
             FormLayout form = new FormLayout();
+            VaadinUtils.set3ResponsiveSteps(form);
             form.add(id, name, text, code, unit, unitPrice, vatRate);
+
             binder().bindReadOnly(id, Article::id);
             binder().bindReadOnly(name, Article::name);
             binder().bindReadOnly(text, Article::text);
@@ -71,11 +78,7 @@ class ArticlesView extends ItemView<Article> {
             binder().bindReadOnly(unit, Article::unit);
             binder().bindReadOnly(unitPrice, Article::unitPrice);
             binder().bindReadOnly(vatRate, Article::vatRate);
-        }
-
-        @Override
-        public void clear() {
-
+            return form;
         }
 
         @Override
@@ -86,6 +89,7 @@ class ArticlesView extends ItemView<Article> {
 
     public ArticlesView(@NotNull InvoicesBoundedDomain domain, @NotNull Mode mode) {
         super(Article.class, domain, domain.realm().articles(), new ArticleFilter(), mode);
+        form(new ArticleForm(this));
         init();
     }
 

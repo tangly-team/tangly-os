@@ -6,14 +6,16 @@ tags: ["agile", "devops"]
 ---
 
 include::../fragments/_config-mb-blog.aodc[]
+:ref-devops: https://en.wikipedia.org/wiki/DevOps[DevOps]
+:ref-theory-xy: https://en.wikipedia.org/wiki/Theory_X_and_Theory_Y[Theory X and Theory Y]
 
 image::2021-08-02-head.png[width=420,height=360,role=left]
 
-https://en.wikipedia.org/wiki/DevOps[DevOps] is the combination of cultural philosophies, practices and tools that increase an organization’s ability to deliver at high velocity.
+{ref-devops} is the combination of cultural philosophies, practices and tools that increase an organization’s ability to deliver at high velocity.
 
 It evolves and improves products at a faster pace than organizations using traditional software development and infrastructure management processes.
 
-This speed enables organizations to better serve their customers.
+This speed enables organizations to better serve their customers cite:[lean-enterprise,phoenix-project].
 
 A surprising side effect of this speed-up is a documented improvement of the delivered quality.
 
@@ -168,7 +170,7 @@ _Use Docker and Ansible to automate your deployment._
 The motivations for what has become modern _DevOps_ and several standard DevOps practices, such as automated build and test, continuous integration, and continuous delivery originated in the Agile world, which dates to the 1990s.
 Agile development teams using methods such as {ref-xp} could not _satisfy the customer through early and continuous delivery of valuable software_ unless they subsumed the operation responsibilities associated with their applications, many of which they automated.
 
-Because {ref-scrum} emerged as the dominant Agile framework in the early 2000s, and it omitted the engineering practices that were part of many Agile teams, the movement to automate operations functions splintered from Agile and expanded into what has become modern DevOps <<accelerate>>.
+Because {ref-scrum} emerged as the dominant Agile framework in the early 2000s, and it omitted the engineering practices that were part of many Agile teams, the movement to automate operations functions splintered from Agile and expanded into what has become modern DevOps cite[accelerate].
 Today, DevOps focuses on the deployment of developed software, whether it is developed via Agile or other methodologies.
 
 To practice DevOps effectively, software applications have to meet a set of architecturally significant requirements such as: deployability, modifiability, testability, and monitorability.
@@ -180,7 +182,7 @@ You need a cultural change to successfully implement DevOps workflows.
 
 Bigger companies often have trouble with the changes.
 Command and control cultures always fail.
-It boils down if your culture trusts your collaborators - often called https://en.wikipedia.org/wiki/Theory_X_and_Theory_Y[Theory X and Theory Y] beliefs.
+It boils down if your culture trusts your collaborators - often called {ref-theory-xy} beliefs.
 
 Interestingly, the DevOps transformation is similar to an agile transformation.
 The approaches, recipes and failures are similar.
@@ -189,20 +191,9 @@ Smaller organizations are often more affine with trust.
 ====
 
 Although it is possible to practice DevOps with any architectural style, the microservices architectural style is becoming the standard for building continuously deployed systems.
-Small size service allows the architecture of an individual service to emerge through continuous refactoring <<continuous-delivery>>  hence reducing the need for a big upfront design, allows for releasing the software early[citation needed] and continuously.
+Small size service allows the architecture of an individual service to emerge through continuous refactoring
+cite:[continuous-delivery,continuous-delivery-pipelines,devops-handbook] hence reducing the need for a big upfront design, allows for releasing the software early[citation needed] and continuously.
 
-[bibliography]
-== Literature
+== References
 
-- [[[accelerate, 1]]] https://www.amazon.com/dp/B07B9F83WM[Accelerate: Building and Scaling High Performing Technology Organizations].
-Nicole Forsgren & Jez Humble & Gene Kene.
-IT Revolution. 2018
-- [[[devops-handbook, 2]]]  https://www.amazon.com/dp/B01M9ASFQ3[The DevOps Handbook: How to create World-Class Agility, Reliability, Security in Technology
-Organizations].
-Gene Kim & Jez Humble & Patrick Debois & John Willis.
-IT Revolution. 2016
-- [[[phoenix-project, 3]]] https://www.amazon.com/dp/0988262592[The Phoenix Project: A Novel about IT, DevOps, and Helping Your Business Win].
-Gene Kim & Kevin Behr. 2013
-- [[[continuous-delivery, 4]]] https://www.amazon.com/dp/0321601912[Continuous Delivery: Reliable Software Releases through Build, Test and Deployment
-Automation].
-Jez Humble & David Farley. 2011
+bibliography::[]

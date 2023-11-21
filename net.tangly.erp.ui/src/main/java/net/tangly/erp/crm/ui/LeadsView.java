@@ -13,6 +13,7 @@
 
 package net.tangly.erp.crm.ui;
 
+import com.vaadin.flow.component.combobox.ComboBox;
 import com.vaadin.flow.component.datepicker.DatePicker;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.icon.Icon;
@@ -21,8 +22,11 @@ import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.ValidationException;
 import com.vaadin.flow.data.renderer.ComponentRenderer;
 import com.vaadin.flow.router.PageTitle;
+import net.tangly.core.EmailAddress;
+import net.tangly.core.PhoneNr;
 import net.tangly.core.codes.CodeType;
 import net.tangly.core.crm.GenderCode;
+import net.tangly.erp.crm.domain.ActivityCode;
 import net.tangly.erp.crm.domain.Lead;
 import net.tangly.erp.crm.domain.LeadCode;
 import net.tangly.erp.crm.services.CrmBoundedDomain;
@@ -30,6 +34,7 @@ import net.tangly.ui.asciidoc.AsciiDocField;
 import net.tangly.ui.components.ItemForm;
 import net.tangly.ui.components.ItemView;
 import net.tangly.ui.components.Mode;
+import net.tangly.ui.components.VaadinUtils;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
@@ -48,6 +53,17 @@ public class LeadsView extends ItemView<Lead> {
     }
 
     static class LeadForm extends ItemForm<Lead, LeadsView> {
+        private DatePicker date;
+        private TextField firstname;
+        private TextField lastname;
+        private ComboBox<GenderCode> gender;
+        private TextField company;
+        private TextField phoneNr;
+        private TextField email;
+        private TextField linkedIn;
+        private ComboBox<LeadCode> leadCode;
+        private ComboBox<ActivityCode> activityCode;
+        private AsciiDocField text;
 
         public LeadForm(@NotNull LeadsView parent) {
             super(parent);
@@ -56,43 +72,53 @@ public class LeadsView extends ItemView<Lead> {
 
         @Override
         protected void init() {
-            var date = new DatePicker("Date");
-            var firstname = new TextField("Firstname", "firstname");
-            var lastname = new TextField("Lastname", "lastname");
-            lastname.setRequired(true);
-            var gender = ItemForm.createCodeField(CodeType.of(GenderCode.class), "Gender");
-            var company = new TextField("Company", "company");
-            var phoneNr = new TextField("Phone", "phone number");
-            var email = new TextField("Email", "email");
-            var linkedIn = new TextField("Linked", "linkedIn");
-            var code = ItemForm.createCodeField(CodeType.of(LeadCode.class), "Code");
-            var text = new AsciiDocField("Text");
-
-            FormLayout form = new FormLayout();
-            form.add(date, firstname, lastname, gender, company, phoneNr, email, linkedIn, code, text);
-            form.add(text, 3);
-            addTabAt("lead", form, 0);
-
-            binder().bind(date, Lead::date, null);
-            binder().bind(firstname, Lead::firstname, null);
-            binder().bind(lastname, Lead::lastname, null);
-            binder().bind(gender, Lead::gender, null);
-            binder().bind(company, Lead::company, null);
-            binder().bind(phoneNr, o -> o.phoneNr().number(), null);
-            binder().bind(email, o -> o.email().text(), null);
-            binder().bind(linkedIn, Lead::linkedIn, null);
-            binder().bind(code, Lead::code, null);
-            binder().bind(text, Lead::text, null);
+            addTabAt("details", details(), 0);
+            addTabAt("text", text(), 1);
         }
 
-        @Override
-        public void clear() {
+        private FormLayout details() {
+            date = new DatePicker("Date");
+            firstname = new TextField("Firstname", "firstname");
+            lastname = new TextField("Lastname", "lastname");
+            lastname.setRequired(true);
+            gender = ItemForm.createCodeField(CodeType.of(GenderCode.class), "Gender");
+            company = new TextField("Company", "company");
+            phoneNr = new TextField("Phone", "phone number");
+            email = new TextField("Email", "email");
+            linkedIn = new TextField("Linked", "linkedIn");
+            leadCode = ItemForm.createCodeField(CodeType.of(LeadCode.class), "Lead Code");
+            activityCode = ItemForm.createCodeField(CodeType.of(ActivityCode.class), "Activity Code");
 
+            var form = new FormLayout();
+            VaadinUtils.set3ResponsiveSteps(form);
+            form.add(date, firstname, lastname, gender, company, phoneNr, email, linkedIn, leadCode, activityCode);
+
+            binder().bindReadOnly(date, Lead::date);
+            binder().bindReadOnly(firstname, Lead::firstname);
+            binder().bindReadOnly(lastname, Lead::lastname);
+            binder().bindReadOnly(gender, Lead::gender);
+            binder().bindReadOnly(company, Lead::company);
+            binder().bindReadOnly(phoneNr, o -> Objects.nonNull(o.phoneNr()) ? o.phoneNr().number() : null);
+            binder().bindReadOnly(email, o -> Objects.nonNull(o.email()) ? o.email().text() : null);
+            binder().bindReadOnly(linkedIn, Lead::linkedIn);
+            binder().bindReadOnly(leadCode, Lead::code);
+            binder().bindReadOnly(activityCode, Lead::activity);
+            return form;
+        }
+
+        private FormLayout text() {
+            text = new AsciiDocField("Text");
+            var form = new FormLayout();
+            VaadinUtils.set3ResponsiveSteps(form);
+            form.add(text, 3);
+            binder().bind(text, Lead::text, null);
+            return form;
         }
 
         @Override
         protected Lead createOrUpdateInstance(Lead entity) throws ValidationException {
-            return null;
+            return new Lead(date.getValue(), leadCode.getValue(), firstname.getValue(), lastname.getValue(), gender.getValue(), company.getValue(), PhoneNr.of(phoneNr.getValue()),
+                EmailAddress.of(email.getValue()), linkedIn.getValue(), activityCode.getValue(), text.getValue());
         }
     }
 
@@ -117,6 +143,5 @@ public class LeadsView extends ItemView<Lead> {
         grid.addColumn(o -> (Objects.nonNull(o.email()) ? o.email().text() : null)).setKey("email").setHeader("Email").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Lead::linkedIn).setKey("linkedIn").setHeader("LinkedIn").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Lead::activity).setKey("activity").setHeader("Activity").setAutoWidth(true).setResizable(true).setSortable(true);
-        //                new GridDecorators.FilterCode<>(filters, (CodeType<LeadCode>) domain.registry().find(LeadCode.class).orElseThrow(), Lead::code, "Code"));
     }
 }

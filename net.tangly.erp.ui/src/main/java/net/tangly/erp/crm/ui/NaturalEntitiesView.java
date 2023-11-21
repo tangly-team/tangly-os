@@ -29,7 +29,6 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.server.StreamResource;
 import net.tangly.core.EmailAddress;
 import net.tangly.core.PhoneNr;
-import net.tangly.core.TypeRegistry;
 import net.tangly.core.codes.CodeType;
 import net.tangly.core.crm.CrmTags;
 import net.tangly.core.crm.GenderCode;
@@ -55,12 +54,12 @@ class NaturalEntitiesView extends EntityView<NaturalEntity> {
     static class NaturalEntityForm extends EntityForm<NaturalEntity, NaturalEntitiesView> {
         private final Image image;
 
-        public NaturalEntityForm(@NotNull NaturalEntitiesView parent, @NotNull TypeRegistry registry) {
+        public NaturalEntityForm(@NotNull NaturalEntitiesView parent) {
             super(parent, NaturalEntity::new);
             image = new Image();
             image.setWidth(200, Unit.PIXELS);
             image.setHeight(200, Unit.PIXELS);
-            init();
+            super.init();
             addTabAt("details", details(), 1);
         }
 
@@ -98,19 +97,12 @@ class NaturalEntitiesView extends EntityView<NaturalEntity> {
             binder().bind(homeSite, e -> e.site(VcardType.home).orElse(null), null);
             return form;
         }
-
-        @Override
-        protected NaturalEntity createOrUpdateInstance(NaturalEntity entity) {
-            return null;
-        }
     }
 
-    private final transient CrmBoundedDomain domain;
 
     public NaturalEntitiesView(@NotNull CrmBoundedDomain domain, @NotNull Mode mode) {
         super(NaturalEntity.class, domain, domain.realm().naturalEntities(), mode);
-        this.domain = domain;
-        form(new NaturalEntityForm(this, domain.registry()));
+        form(new NaturalEntityForm(this));
         init();
     }
 

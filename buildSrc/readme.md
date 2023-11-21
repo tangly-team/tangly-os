@@ -18,7 +18,7 @@ Configuration and dependencies specific to Java applications
 The set of Gradle command line special commands we seldom use:
 
 * To publish all modules in local maven repository         `gradle publishMavenJavaPublicationToMavenLocal`
-* To publish all modules in maven central repository        `gradle publishMavenJavaPublicationToMavenRepository -Pmode=prod`
+* To publish all modules in maven central repository       `gradle publishMavenJavaPublicationToMavenRepository -Pmode=prod`
 * To generate static and aggregate code coverage metrics   `gradle build jacocoReport jacocoTestReport -Pmode=prod` \
   Generate test coverage reports.
 * To detect vulnerabilities                                `gradle ossIndexAudit --info -Pmode=int`

@@ -1,7 +1,7 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
     "title": "invoice archive schema",
-    "description": "schema to export to other systems or archive invoices",
+    "description": "schema to describe invoices",
     "definitions": {
         "address": {
             "type": "object",

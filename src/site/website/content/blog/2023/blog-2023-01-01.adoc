@@ -72,11 +72,11 @@ Evaluate travel time and not the distance to your partner offices. +
 If you are open to working remotely with an onshore company, hold early conversations using the potential conferencing, documentation, and chat systems.
 You want to ensure your development team can provide help by video as much is lost in exclusively email team communications. +
 +
-Do not forget to account for travel in your budget if you shall expect it from your software development team.
+Remember to account for travel in your budget if you shall expect it from your software development team.
 If you are thinking of offshoring the work, be sure you consider how you will handle the difference in time zones and communication styles.
 Many companies offer low-cost solutions that include working with offshore teams to handle services like the help desk, product support, and simple development.
 Start Searching::
-Do not forget to keep track of your search as you go.
+Remember to keep track of your search as you go.
 Create a document that records potential companies, their attributes, who you are talked to, what you have learned, and any decisions you have made.
 Ask Tough Questions::
 Learn what challenges they have faced with previous clients and what they did to overcome them.

@@ -4,7 +4,12 @@ date: 2019-05-01
 weight: 10
 ---
 
-=== How To Build and Run
+= Application User Interface Demonstration
+:ref-groupId: net.tangly
+:ref-artifactId: ui-app
+
+
+== How To Build and Run
 
 The whole application can be build and executed with:
 

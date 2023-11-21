@@ -109,7 +109,7 @@ Pulling has similar effects with less risk of compromising the work of your cont
 
 == Merge
 
-The git merge command will merge any changes that were made to the code base on a separate branch to your current branch as a new commit.
+The git merge command will merge any changes made to the code base on a separate branch to your current branch as a new commit.
 
 For example, if you are currently working in a branch named dev and would like to merge any new changes that were made in a branch named new-features, you would issue the following command:
 
@@ -205,9 +205,9 @@ git push --force origin my-feature
 
 == Thoughts
 
-Both _git merge_ and _git rebase_ are very useful commands.
+Both _git merge_ and _git rebase_ are handy commands.
 One is not better than the other.
-However, there are some very important differences between the two commands that you and your team should take into consideration.
+However, there are some crucial differences between the two commands that you and your team should take into consideration.
 
 Whenever _git merge_ is run, an extra merge commit is created.
 Whenever you are working in your local repository, having too many merge commits can make the commit history look confusing.

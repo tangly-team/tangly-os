@@ -1,7 +1,7 @@
 ---
 title: "Semantic Commits for the Impatient"
 linkTitle: "Semantic Commits"
-date: 2023-11-10
+date: 2023-11-20
 tags: ["agile", "git", "series-students"]
 ---
 
@@ -18,7 +18,7 @@ A developer infers the importance of the task by looking to the type of the comm
 The message communicates the nature of changes to teammates, the public, and other stakeholders.
 
 Contributors of project repositories know that a well-designed Git commit message is the best way to communicate the context about a change to other developers.
-And in fact, they help themselves in the future.
+And in fact, they will help themselves in the future.
 A diff will tell you what has changed, but only the confirmation message can say why.
 
 It provides an easy set of rules for creating an explicit commit history which makes it easier to write automated tools on top of.
@@ -89,7 +89,7 @@ git commit -m "fix(core): remove deprecated and defunct wtf* apis"              
            -m "PR Close #33949"
 ----
 
-<1> We use multiple _-m_ in order to concatenate paragraphs instead of simple lines.
+<1> We use multiple _-m_ to concatenate paragraphs instead of simple lines.
 The header and body are supposed to be separated by a blank line.
 That is distinctly true due to the paragraphs.
 <2> Summary in present tense.

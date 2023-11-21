@@ -48,7 +48,7 @@ assertj = { module = "org.assertj:assertj-core", version.ref = "assertj-version"
 eo-yaml = "com.amihaiemil.web:eo-yaml:5.2.1"
 
 flyway = { module = "org.flywaydb:flyway-core", version.ref = "flyway-version" }
-flywy-hsqldb = { module = "}org.flywaydb:flyway-database-hsqldb", version.ref = "flyway-version" }
+flywy-hsqldb = { module = "org.flywaydb:flyway-database-hsqldb", version.ref = "flyway-version" }
 
 hsqldb = "org.hsqldb:hsqldb:2.7.2"
 iban4j = "org.iban4j:iban4j:3.2.7-RELEASE"

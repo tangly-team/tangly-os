@@ -15,7 +15,7 @@ With the extensive built-in feature set of Hugo and the feature-rich text format
 In most static site generators including Hugo, https://en.wikipedia.org/wiki/Markdown[Markdown] is the one and only first-class citizen when it comes to creating posts.
 
 However, in recent Hugo versions, external helpers are an official feature.
-It calls appropriate external programs to certain type of files.
+It calls appropriate external programs to a certain type of files.
 Fortunately, {ref-asciidoc} based files are automatically compiled with https://asciidoctor.org/[Asciidoctor], so we do not need to do anything.
 Just have it installed and you are ready to go.
 
@@ -25,16 +25,16 @@ This theme is currently the best match I found to combine product documentation 
 I love to write my documentation and blogs using {ref-asciidoc} notation
 footnote:[If you are new to asciidoc, you can experiment https://asciidoclive.com/[online].].
 The official site is {ref-asciidoc}.
-A major tool chain can be found under https://docs.asciidoctor.org/home/[AsciiDoctor].].
+A major tool chain can be found under {ref-asciidoctor}.].
 
 [NOTE]
 ====
 Hugo supports Asciidoctor through external helpers.
 External helpers are relatively new and more like an experimental feature.
-There is a proposal on improving it by adding user configurations so at least there is hope for this particular feature to expand.
+There is a proposal on improving it by adding user configurations, so at least there is hope for this particular feature to expand.
 ====
 
-The features of https://en.wikipedia.org/wiki/AsciiDoc[AsciiDoc] are equivalent to https://en.wikipedia.org/wiki/DocBook[DocBook].
+The features of {ref-asciidoc} are equivalent to https://en.wikipedia.org/wiki/DocBook[DocBook].
 The readers with grey hair probably remember https://en.wikipedia.org/wiki/Standard_Generalized_Markup_Language[SGML], the ancestor of DocBook.
 The librarians could remember https://en.wikipedia.org/wiki/LaTeX[LaTeX] created by https://en.wikipedia.org/wiki/Leslie_Lamport[Leslie Lamport].
 He created it to describe https://en.wikipedia.org/wiki/Temporal_logic[temporal logic] aspects of cluster communication for the

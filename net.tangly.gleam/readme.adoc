@@ -5,13 +5,11 @@ weight: 10
 ---
 
 = Gleam Library
+:ref-groupId: net.tangly
+:ref-artifactId: gleam
 
-image:https://img.shields.io/badge/license-Apache%202-blue.svg[Apache License 2.0]
-image:https://img.shields.io/maven-central/v/net.tangly/gleam.svg[Maven Central]
-https://javadoc.io/badge2/net.tangly/gleam/[https://javadoc.io/badge2/net.tangly/gleam/javadoc.svg[javadoc]]
-image:https://img.shields.io/bitbucket/pipelines/tangly-team/tangly-os.svg[Bitbucket Pipelines]
-image:https://img.shields.io/sonar/https/sonarcloud.io/tangly-os-at-tangly.net/coverage.svg[Sonar Coverage]
-image:https://img.shields.io/bitbucket/issues-raw/tangly/tangly-os.svg[Bitbucket open issues]
+
+include::../src/main/fragments/_badges.adoc[]
 
 == Purpose
 

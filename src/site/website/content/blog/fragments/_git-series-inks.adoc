@@ -4,7 +4,7 @@ Marcel Baumann. 2016.
 Marcel Baumann. 2017.
 - link:../../2023/git-rebase-and-merge-for-the-impatient/[Git Rebase and Merge for the Impatient]
 Marcel Baumann. 2023.
-- link:../../2023//git-tag-for-the-impatient/[Git Tag for the Impatient]
+- link:../../2023/git-tag-for-the-impatient/[Git Tag for the Impatient]
 Marcel Baumann. 2023.
 - link:../../2023/semantic-commits-for-the-impatient/[Semantic Commits for the Impatient]
 Marcel Baumann. 2023.

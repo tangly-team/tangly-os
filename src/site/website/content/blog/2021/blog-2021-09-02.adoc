@@ -6,6 +6,7 @@ tags: ["agile", "architecture", "series-students"]
 ---
 
 include::../fragments/_config-mb-blog.aodc[]
+:ref-togaf: https://publications.opengroup.org/standards/togaf[TOGAF]
 
 image::2021-09-01-head.png[width=420,height=360,role=left]
 
@@ -19,7 +20,7 @@ All materials are released under the https://creativecommons.org/[Creative Commo
 The course contents are aligned with the big software architecture programs.
 
 The https://www.opengroup.org/[Open Group] organization is the steward of https://publications.opengroup.org/standards/togaf[TOGAF] standard.
-https://publications.opengroup.org/standards/togaf[TOGAF] is the worldwide industrial standard for enterprise software architecture.
+{ref-togaf} is the worldwide industrial standard for enterprise software architecture.
 
 The group has realized that software and enterprise architecture must incorporate the agile principles <<agile-architecture>>, <<open-agile-architecture>>.
 
@@ -57,9 +58,9 @@ The fourteen lecture themes are:
 .. [[chapter-13, Domain Driven Design]]Domain Driven Design Workshop
 .. [[chapter-14, Excellence for Architects]]Team and Technical Excellence for Architects
 
-The link:../../../ideas/learnings/lectures[slides of the SWAT course] are available for all interested parties.
+The link:../../../../../ideas/learnings/lectures[slides of the SWAT course] are available for all interested parties.
 
-The course provides link:../../../ideas/learnings/lectures/#software-architecture-and-techniques-lectures[mandatory and optional literature] for studying.
+The course provides link:../../../../ideas/learnings/lectures/#software-architecture-and-techniques-lectures[mandatory and optional literature] for studying.
 
 The reference texts are cite:[domain-driven-design,refactoring,building-evolutionary-architectures,working-effectively-with-legacy-code].
 

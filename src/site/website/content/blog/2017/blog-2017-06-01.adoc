@@ -6,6 +6,7 @@ tags: ["agile"]
 ---
 
 include::../fragments/_config-mb-blog.aodc[]
+:ref-hermes: https://www.hermes.admin.ch/onlinepublikation/index.xhtml[HERMES]
 :ref-standish: https://www.infoq.com/articles/standish-chaos-2015[Standish Group report]
 
 [.float-group]
@@ -34,7 +35,7 @@ Wagile::
 is a team which continues to follow basically a Waterfall product but uses the language of Agile and adds a few agile practices.
 For example, the team may present burn-down charts together with Gantt charts.
 Or the team computes individual resource allocation for the next three months.
-You can also replace Waterfall with V-Model, http://www.hermes.admin.ch/onlinepublikation/index.xhtml[HERMES], RUP, and even sometimes {ref-safe}.
+You can also replace Waterfall with V-Model, {ref-hermes}, RUP, and even sometimes {ref-safe}.
 ScrumBut::
 describes a team which claims to follow Scrum but misses various practices.
 For example, _We do Scrum, but we don’t have a Product Owner_.

@@ -5,8 +5,10 @@ The components are
 
 * link:net.tangly.bdd/readme.adoc [_BDD_] behavior driven development library
 * link:net.tangly.commons/readme.adoc[_COMMONS_] commons library
+* link:net.tangly.core/readme.adoc[_CORE_] core library Core business abstractions such address, bank connection,and legal entity are provided.
 * link:net.tangly.dev/readme.adoc[_DEV_] development tools library
-link:net.tangly.fsm/readme.adoc[_FSM_] hierarchical finite state machine library
+* link:net.tangly.fsm/readme.adoc[_FSM_] hierarchical finite state machine library.
+The library also provides an actor abstraction and Java-based event bus.
 * link:net.tangly.gleam/readme.adoc[_GLEAM_] declarative model transformation frameworks library.
 Approaches for TSV and JSON representations are available.
 * link:net.tangly.ports/readme.adoc[_PORTS_] ports library providing examples to connect a business domain model to external systems
@@ -24,7 +26,6 @@ The documentation is located under https://blog.tangly.net/[tangly-team].
 The repository is hosted under GitHub https://github.com/marcelbaumann/tangly-os.git[tangly OS GitHub].
 
 A mirror is also hosted under GitLab https://gitlab.com/marcelbaumann/tangly-os[tangly OS GitLab].
-
 A legacy mirror is also hosted under BitBucket https://bitbucket.org/tangly-team/tangly-os.git[tangly OS BitBucket].
 
 The issue tracker for errors, improvements, and corrections is https://bitbucket.org/tangly-team/tangly-os/issues[tangly OS issues].
@@ -113,4 +114,5 @@ Please contact tangly llc or send an email to _info@tangly.net_.
 
 Individual developers are
 
-* https://linkedin.com/in/marcelbaumann[Marcel Baumann]
+* https://linkedin.com/in/marcelbaumann/[Marcel Baumann]
+* https://linkedin.com/in/junghana/[Alexandra Junghans]

@@ -15,7 +15,7 @@ Implemented
 
 === Links
 
-Supersede: link:../../../../../fsm/adr/fsm-002-publish-maven-central-artifact[FSM-0002]
+Supersede: link:../fsm-002-publish-maven-central-artifact[FSM-0002]
 
 === Context
 
@@ -45,4 +45,4 @@ See link:../../../../../../ideas/components-publication[release and publication 
 * We have to establish a public website to host the documentation of public-published libraries.
  The static website is {ref-site}
 * We have to support semantic versioning for all future releases of public-published libraries.
-See link:../../../../../ideas/components-publication[release and publication process].
+See link:../../../../../../ideas/components-publication[release and publication process].

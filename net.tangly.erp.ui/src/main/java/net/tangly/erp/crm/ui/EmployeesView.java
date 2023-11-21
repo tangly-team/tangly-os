@@ -15,16 +15,17 @@ package net.tangly.erp.crm.ui;
 
 import com.vaadin.flow.component.HtmlComponent;
 import com.vaadin.flow.component.formlayout.FormLayout;
-import com.vaadin.flow.data.binder.ValidationException;
 import com.vaadin.flow.router.PageTitle;
 import net.tangly.core.TypeRegistry;
 import net.tangly.core.crm.CrmTags;
+import net.tangly.core.crm.LegalEntity;
+import net.tangly.core.crm.NaturalEntity;
 import net.tangly.erp.crm.domain.Employee;
 import net.tangly.erp.crm.services.CrmBoundedDomain;
 import net.tangly.ui.components.EntityForm;
 import net.tangly.ui.components.EntityView;
 import net.tangly.ui.components.Mode;
-import net.tangly.ui.components.VaadinUtils;
+import net.tangly.ui.components.One2OneField;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -32,51 +33,45 @@ import org.jetbrains.annotations.NotNull;
  */
 @PageTitle("crm-employees")
 class EmployeesView extends EntityView<Employee> {
-    private final transient CrmBoundedDomain domain;
 
     static class EmployeeForm extends EntityForm<Employee, EmployeesView> {
         public EmployeeForm(@NotNull EmployeesView parent, @NotNull TypeRegistry registry) {
             super(parent, Employee::new);
             init();
+            addTabAt("details", details(), 1);
         }
 
-        public void init() {
-            //            One2OneField<LegalEntity> organization = new One2OneField<>("Organization", new LegalEntitiesView(domain, mode));
-            //            organization.setReadOnly(readonly);
-            //            One2OneField<NaturalEntity> person = new One2OneField<>("Person", new NaturalEntitiesView(domain, mode));
-            //            person.setReadOnly(readonly);
-
+        private FormLayout details() {
+            One2OneField<LegalEntity> organization = new One2OneField<>("Organization", LegalEntity.class, parent().domain().realm().legalEntities());
+            One2OneField<NaturalEntity> person = new One2OneField<>("Person", NaturalEntity.class, parent().domain().realm().naturalEntities());
             FormLayout form = new FormLayout();
-            VaadinUtils.set3ResponsiveSteps(form);
+            form.add(person);
             form.add(new HtmlComponent("br"));
-            //            form.add(person, organization);
+            form.add(organization);
 
-            //            binder().forField(organization).bind(Employee::organization, Employee::organization);
-            //            binder().forField(person).bind(Employee::person, Employee::person);
-        }
-
-        @Override
-        protected Employee createOrUpdateInstance(Employee entity) throws ValidationException {
-            return null;
+            binder().forField(organization).bind(Employee::organization, Employee::organization);
+            binder().forField(person).bind(Employee::person, Employee::person);
+            return form;
         }
     }
 
     public EmployeesView(@NotNull CrmBoundedDomain domain, @NotNull Mode mode) {
         super(Employee.class, domain, domain.realm().employees(), mode);
-        this.domain = domain;
         form(new EmployeeForm(this, domain.registry()));
         init();
+    }
+
+    @Override
+    public CrmBoundedDomain domain() {
+        return (CrmBoundedDomain) super.domain();
     }
 
     @Override
     protected void init() {
         var grid = grid();
         addEntityColumns(grid);
-
         grid.addColumn(o -> o.value(CrmTags.CRM_EMPLOYEE_TITLE).orElse(null)).setKey("title").setHeader("Title").setAutoWidth(true).setResizable(true).setSortable(true);
-
         addEntityFilterFields(grid(), filter());
         buildMenu();
     }
-
 }

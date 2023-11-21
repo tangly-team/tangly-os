@@ -6,24 +6,35 @@ tags: ["C++", "architecture", "embedded"]
 ---
 
 include::../fragments/_config-mb-blog.aodc[]
-:ref-can-bus: https://en.wikipedia.org/wiki/CAN_bus[CAN bus]
+:ref-bluetooth: https://en.wikipedia.org/wiki/Bluetooth[Bluetooth]
+:ref-canbus: https://en.wikipedia.org/wiki/CAN_bus[CAN bus]
+:ref-ethernet: https://en.wikipedia.org/wiki/Ethernet[Ethernet]
 :ref-kiss: https://en.wikipedia.org/wiki/KISS_principle[Keeep It Simple, Stupid]
 :ref-proto-buf: https://en.wikipedia.org/wiki/Protocol_Buffers[Protocol Buffers]
 :ref-spi: https://en.wikipedia.org/wiki/Serial_Peripheral_Interface[Serial Peripherical Interface]
 
 image::2023-12-04-head.jpg[width=420,height=360,role=left]
 
-== Model
-
+[.float-group]
+--
 Embedded design maps domain abstractions to the underlying hardware.
+
+A temperature sensor is a domain abstraction of a physical hardware temperature sensor.
 
 A valve is a domain abstraction of a physical hardware valve.
 A physical valve can be a simple opened-closed device, or a proportional device.
 
-The microcontroller board controls the valve through a GPIO, a PWM or a CAN bus controller.
-These hardware components map the domain object to the electronics controlling the physical device.
+The microcontroller board reads the temperature sensor through a SPI or I2C bus.
+It controls the valve through a GPIO, a PWM or a CAN bus controller.
 
-[plantuml,device-model,svg]
+These hardware components map the domain object to the electronics controlling the physical device.
+--
+
+== Model
+
+The {cpp} declaration of a valve object could be:
+
+[plantuml,device-model,svg,role="text-center"]
 ----
 set separator ::
 
@@ -46,22 +57,22 @@ class HAL::GPIO {}
 class HAL::PWM {}
 class HAL::CANController {}
 
-class Vinci::ValveGpio {}
+class BSP::ValveGpio {}
 ValveGpio ..> ValveOnOff
 ValveGpio o- "1" GPIO : gpio
 
-class Vinci::ValvePwm {}
+class BSP::ValvePwm {}
 ValvePwm ..> ValveOnOff
 ValvePwm o- "1" PWM : pwm
 
-class Vinci::ValveCan {}
+class BSP::ValveCan {}
 ValveCan ..> ValveProgressive
 ValveCan o- "1" CANController : can
 ----
 
 The designers should decide if a _progressive valve_ is a kind of _on/off valve_ or not.
 
-All instances of the namespaces _HAL_ and _Vinci_ are static and created when the application starts.
+All instances of the namespaces _HAL_ and _BSP_ are static and created when the application starts.
 
 The algorithms should ideally only access the abstractions defined in the _model_ namespace.
 
@@ -101,8 +112,15 @@ private:
 ----
 
 <1> A physical device cannot be replicated.
-<2> A physical device cannot be copied.
+<2> A physical device cannot be copied. +
+You should evaluate if a default constructor does make sense.
+Often the constructor needs other objects connecting the abstraction to the hardware.
+This pattern is a hand-coded dependency injection through constructor parameters. +
+The default move constructor and move operator can be useful.
 <3> Imply that the application resets the system when booting.
+
+Constant mapping between the electronic wiring and logical representation shall be provided.
+The application should only need to change the mapping when the hardware layout is changed or a microcontroller revision is used.
 
 == Interrupt Routines
 

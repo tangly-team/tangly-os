@@ -37,7 +37,6 @@ import java.util.Collection;
  */
 @PageTitle("crm-legal-entities")
 class LegalEntitiesView extends EntityView<LegalEntity> {
-    private final CrmBoundedDomain domain;
 
     /**
      * The form has all properties of an entity through inheritance. Additional properties are defined in the <i>details</i> tab.
@@ -70,13 +69,13 @@ class LegalEntitiesView extends EntityView<LegalEntity> {
 
     public LegalEntitiesView(@NotNull CrmBoundedDomain domain, @NotNull Mode mode) {
         super(LegalEntity.class, domain, domain.realm().legalEntities(), mode);
-        this.domain = domain;
         form(new LegalEntityForm(this, domain.registry()));
         init();
     }
 
+    @Override
     public CrmBoundedDomain domain() {
-        return domain;
+        return (CrmBoundedDomain) super.domain();
     }
 
     @Override

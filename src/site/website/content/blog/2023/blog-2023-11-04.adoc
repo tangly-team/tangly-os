@@ -1,7 +1,7 @@
 ---
 title: "Static Website Improvements"
 linkTitle: "Improved Website"
-date: 2023-11-25
+date: 2023-11-20
 tags: ["hugo"]
 ---
 
@@ -75,7 +75,7 @@ I decided to add the necessary code as a local extension to the docsy theme.
 . Add the {ref-hugo} shortcodes to the theme under {ref-hugo-shortcodes} in the file _attachments.html_
 . Add my _scss_ stylesheet under {ref-asciidoc-docsy-stylesheet} in the file _shortcodes.scss_.
 
-A document using this functionality is link:../../../ideas/learnings/lectures/[Lectures].
+A document using this functionality is https:/blog.tangly.net/ideas/learnings/lectures/[Lectures].
 The page displays multiple lists of documents.
 The reader can download the material she is interested in.
 
@@ -84,6 +84,8 @@ The reader can download the material she is interested in.
 I invested quite some time to improve the layout of the blog articles in the context of the {ref-docsy} theme.
 {ref-hugo} supports {ref-asciidoc} out of the box.
 It does not mean that the layout is perfect.
+
+Another tedious activity is to remove broken links from the website.
 
 The {ref-asciidoc} stylesheet had to be extended to support the additional features I am using.
 

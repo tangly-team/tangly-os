@@ -1,13 +1,14 @@
 /*
- * Copyright 2006-2022 Marcel Baumann
+ * Copyright 2006-2023 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- *          https://apache.org/licenses/LICENSE-2.0
+ *          http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ *
  */
 
 package net.tangly.ui.components;
@@ -68,7 +69,6 @@ public class EntityField<T extends Entity> extends CustomField<T> {
     @Override
     public void setReadOnly(boolean readOnly) {
         super.setReadOnly(readOnly);
-        oid.setReadOnly(readOnly);
         id.setReadOnly(readOnly);
         name.setReadOnly(readOnly);
         from.setReadOnly(readOnly);
@@ -87,14 +87,18 @@ public class EntityField<T extends Entity> extends CustomField<T> {
         text.clear();
     }
 
-    public void bind(@NotNull Binder<T> binder, boolean isMutable) {
+    public void clearOid() {
+        oid.clear();
+    }
+
+    public void bind(@NotNull Binder<T> binder) {
         binder.bindReadOnly(oid, o -> (int) o.oid());
-        binder.bind(id, HasId::id, isMutable ? HasId::id : null);
-        binder.bind(name, HasName::name, isMutable ? HasName::name : null);
+        binder.bind(id, HasId::id, HasId::id);
+        binder.bind(name, HasName::name, HasName::name);
         binder.forField(from).withValidator(o -> (o == null) || (to.getValue() == null) || (o.isBefore(to.getValue())), "From date must be before to date")
-            .bind(HasDateRange::from, isMutable ? HasDateRange::from : null);
+            .bind(HasDateRange::from, HasDateRange::from);
         binder.forField(to).withValidator(o -> (o == null) || (from.getValue() == null) || (o.isAfter(from.getValue())), "To date must be after from date")
-            .bind(HasDateRange::to, isMutable ? HasDateRange::to : null);
-        binder.bind(text, HasText::text, isMutable ? HasText::text : null);
+            .bind(HasDateRange::to, HasDateRange::to);
+        binder.bind(text, HasText::text, HasText::text);
     }
 }

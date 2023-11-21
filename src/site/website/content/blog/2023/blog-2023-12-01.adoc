@@ -7,13 +7,34 @@ tags: ["agile", "java", "series-students"]
 
 include::../fragments/_config-mb-blog.aodc[]
 
+[.float-group]
+--
 image::2023-12-01-head.png[width=420,height=360,role=left]
+{ref-gradle} build tool is a fast, dependable, and adaptable open-source build automation tool with an elegant and extensible declarative build language.
+
+Gradle is a popular build system for the JVM and is the default system for Android and Kotlin Multi-Platform projects.
+
+It has a rich community plugin ecosystem.
+
+Gradle is fast, scalable, and can build projects of any size and complexity.
+
+Long ago I migrated all my projects from Maven to Gradle.
+
+In the first years, I sometimes regretted this decision due to missing or faulty plugins.
+
+The plugins have now reached a level of maturity that you can do everything with Gradle
+footnote:[I had to wait until {ref-vaadin} provided an official supported Gradle plugin.].
+--
+
+== Pros and Cons
 
 Advantages::
 Great Flexibility:::
 You can do everything within the build script as you write them with the full-fledged programming language Groovy.
 Great Performance:::
 Gradle does an awesome job in speeding up your builds with features like incremental builds, daemons, and clustered builds.
+Great IDE Support:::
+Jetbrains IntelliJ IDE has extensive Gradle support.
 Drawbacks::
 Steep learning curve:::
 Moreover, the whole team has to learn Gradle or you will be depending on the single Gradle ninja in your team.
@@ -21,7 +42,7 @@ Groovy or Kotlin DSL:::
 The dynamic Groovy DSL and the heterogeneous plugin APIs will make you google everything.
 Unexpected side effects, behavior, and interdependencies between plugins.
 It often feels like magic.
-As Groovy is dynamically typed, it is really hard for IDEs to provide good and fast (!) tooling.
+As Groovy is dynamically typed, it is really hard for IDEs to provide good and fast tooling.
 Contrarily, parsing and interpreting Maven’s XML is dead simple.
 Breaking Changes:::
 New Gradle versions are often breaking existing plugins, and the poor maintainer of these one-man-open-source-projects cannot keep up with this speed.
@@ -30,10 +51,9 @@ New Gradle versions are often breaking existing plugins, and the poor maintainer
 
 Build rot is the silent degradation of your build system’s effectiveness, a result of poor practices, neglect, or simply the passage of time.
 It is like rust corroding a piece of machinery.
+
 In this case, it gradually eats into the heart of your build system, causing it to slow down, become unpredictable, or become more challenging to maintain.
 This phenomenon can manifest within any build tool, but for our exploration.
-I zoom in on two of the most popular Java build tools: Maven and Gradle.
-I surface the most common sources of build rot and then describe how Developer Productivity Engineering practices can be deployed to address build rot pains.
 
 What are the most common sources of build rot?
 
@@ -44,17 +64,29 @@ But neglecting regular updates to these dependencies can add vulnerable librarie
 
 An overly complex pom.xml file, cluttered with unnecessary dependencies or outdated plugins, can significantly extend build times and become a maintenance nightmare.
 
+[IMPORTANT]
+====
 _Use the https://github.com/ben-manes/gradle-versions-plugin[Versions Plugin] to identify outdated dependencies and plugins._ +
 _Define all your dependencies in a central https://docs.gradle.org/current/userguide/platforms.html[version catalog] configuration file._
+
+Check your dependencies once a week and systematically update them.
+Just use the latest version and run your unit and integration tests.
+If everything is green, you are good to go.
+====
 
 Over-customization::
 Gradle’s flexibility is one of its strong suits and yet it can ironically invite build rot.
 Over-customization, while seemingly advantageous in the short run, can result in a convoluted build.gradle files.
 These scripts can become so complicated that they require more effort to first comprehend and then maintain.
 
+[IMPORTANT]
+====
 _Define standard build processes as plugins in your https://docs.gradle.org/current/userguide/organizing_gradle_projects.html[buildSrc]._ +
 _Eliminate all imperative logic from regular build.gradle scripts._
 _Better follow the conventions and processes of standard plugins instead of creating custom logic._
+
+We use this approach in our projects and {ref-repository} to ensure a consistent build process across all projects.
+====
 
 Redundant tasks and misconfigured scripts::
 Moreover, this complexity can have a significant impact on build speed.
@@ -84,8 +116,12 @@ Developers must understand the intricacies of these tools to use build systems l
 By promoting a learning culture, you equip your team with the knowledge they need to best leverage these tools.
 Regular training and knowledge-sharing sessions can help reduce build rot and enhance productivity.
 
+Each team of developers should have one savvy build tool expert.
+Do not rely on external consultants or the build tool vendor to solve your problems.
+
 Update regularly your tools, plugins, and dependencies ensures you are leveraging the most efficient, optimized versions of libraries.
 This practice mitigates potential security issues and prevents the accumulation of _update debt_.
 
 Observability is critical in managing build rot.
-Tracking build and test times, identifying trends, and analyzing the impact of changes all offer valuable insights.
+
+Track your build and test times, identify trends, and analyze the impact of changes.

@@ -5,13 +5,10 @@ weight: 10
 ---
 
 = ERP User Interface Component
+:ref-groupId: net.tangly.erp
+:ref-artifactId: ui
 
-image:https://img.shields.io/badge/license-Apache%202-blue.svg[Apache License 2.0]
-image:https://img.shields.io/maven-central/v/net.tangly/erp/ui.svg[Maven Central]
-https://javadoc.io/badge2/net.tangly/erp/ui/[image:https://javadoc.io/doc/net.tangly.erp/uijavadoc.svg[javadoc]]
-image:https://img.shields.io/bitbucket/pipelines/tangly-team/tangly-os.svg[Bitbucket Pipelines]
-image:https://img.shields.io/sonar/https/sonarcloud.io/tangly-os-at-tangly.net/coverage.svg[Sonar Coverage]
-image:https://img.shields.io/bitbucket/issues-raw/tangly/tangly-os.svg[Bitbucket open issues]
+include::../src/main/fragments/_badges.adoc[]
 
 == Purpose
 

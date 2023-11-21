@@ -18,7 +18,6 @@ import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.ColumnTextAlign;
 import com.vaadin.flow.component.grid.HeaderRow;
 import com.vaadin.flow.component.select.Select;
-import com.vaadin.flow.data.binder.ValidationException;
 import com.vaadin.flow.data.renderer.NumberRenderer;
 import net.tangly.core.crm.LegalEntity;
 import net.tangly.erp.crm.domain.Contract;
@@ -38,7 +37,6 @@ import java.util.Locale;
  */
 
 class ContractsView extends EntityView<Contract> {
-    private final transient CrmBoundedDomain domain;
 
     static class ContractForm extends net.tangly.ui.components.EntityForm<Contract, ContractsView> {
         public ContractForm(@NotNull ContractsView parent) {
@@ -47,18 +45,7 @@ class ContractsView extends EntityView<Contract> {
             addTabAt("details", details(), 1);
         }
 
-        @Override
-        protected Contract createOrUpdateInstance(Contract entity) throws ValidationException {
-            return null;
-        }
-
-        private CrmBoundedDomain crmDomain() {
-            return ((CrmBoundedDomain) parent().domain());
-        }
-
         private FormLayout details() {
-            FormLayout form = new FormLayout();
-
             BankConnectionField bankConnection = new BankConnectionField();
             Select<Locale> locale = new Select<>();
             locale.setLabel("Language");
@@ -67,11 +54,13 @@ class ContractsView extends EntityView<Contract> {
             currency.setLabel("Currency");
             currency.setItems(Currency.getInstance("CHF"), Currency.getInstance("EUR"));
 
-            form.add(new HtmlComponent("br"));
-            One2OneField<LegalEntity> seller = new One2OneField<>("Seller", LegalEntity.class, crmDomain().realm().legalEntities());
-            One2OneField<LegalEntity> sellee = new One2OneField<>("Sellee", LegalEntity.class, crmDomain().realm().legalEntities());
+            One2OneField<LegalEntity> seller = new One2OneField<>("Seller", LegalEntity.class, parent().domain().realm().legalEntities());
+            One2OneField<LegalEntity> sellee = new One2OneField<>("Sellee", LegalEntity.class, parent().domain().realm().legalEntities());
 
-            form.add(bankConnection, locale, currency, seller, sellee);
+            FormLayout form = new FormLayout();
+            form.add(bankConnection, locale, currency);
+            form.add(new HtmlComponent("br"));
+            form.add(seller, sellee);
 
             binder().forField(bankConnection).bind(Contract::bankConnection, Contract::bankConnection);
             binder().forField(locale).bind(Contract::locale, Contract::locale);
@@ -84,9 +73,13 @@ class ContractsView extends EntityView<Contract> {
 
     public ContractsView(@NotNull CrmBoundedDomain domain, @NotNull Mode mode) {
         super(Contract.class, domain, domain.realm().contracts(), mode);
-        this.domain = domain;
         form(new ContractForm(this));
         init();
+    }
+
+    @Override
+    public CrmBoundedDomain domain() {
+        return (CrmBoundedDomain) super.domain();
     }
 
     @Override

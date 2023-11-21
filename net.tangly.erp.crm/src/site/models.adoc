@@ -85,10 +85,22 @@ class InteractionCode <<(C, yellow) Code>> {}
 
 class Address <<(R, green) Record>> {}
 
-class LegalEntity  <<(E,orchid) Entity>> {
-    Address address()
-    String vatNr()
+class Entity {
+    String id
+    String name
+    String text
 }
+
+class Lead <<(E,orchid) Entity>> {
+}
+
+Entity <|.. Lead
+
+class LegalEntity <<(E,orchid) Entity>> {
+}
+Entity <|.. LegalEntity
+LegalEntity *-- "1" Address : address
+
 
 class NaturalEntity <<(E,orchid) Entity>> {
     String socialNr;
@@ -96,12 +108,14 @@ class NaturalEntity <<(E,orchid) Entity>> {
     String lastname;
     Address address()
 }
-NaturalEntity o-- "0..1" Photo : photo
-NaturalEntity o-- "1" GenderCode : gender
+Entity <|.. NaturalEntity
+NaturalEntity o- "0..1" Photo : photo
+NaturalEntity o- "1" GenderCode : gender
+NaturalEntity *- "1" Address : address
 
-class Employee {
+class Employee <<(E,orchid) Entity>> {
 }
-
+Entity <|.. Employee
 Employee o-- "1" NaturalEntity : employee
 Employee o-- "1" LegalEntity : employer
 
@@ -112,23 +126,28 @@ class Activity {
     String text;
     String details;
 }
-Activity o-- "1" ActivityCode : code
+Activity o- "1" ActivityCode : code
 
+Note bottom of Activity
+    Activities are created in
+    the context of an interaction.
+end note
 
 class Interaction <<(E,orchid) Entity>> {
     BigDecimal potential;
     BigDecimal probability;
 }
-Interaction *-- "1" LegalEntity : entity
-Interaction o-- "n" Activity : activities
-Interaction o-- "1" InteractionCode : code
+Entity <|.. Interaction
+Interaction o-- "1" LegalEntity : entity
+Interaction *-- "n" Activity : activities
+Interaction o- "1" InteractionCode : code
 
 class Contract <<(E,orchid) Entity>> {
-  Address address;
 }
-
+Entity <|.. Contract
 Contract *-- "1" LegalEntity : seller
 Contract *-- "1" LegalEntity : sellee
+Contract *-- "1" Address : address
 
 @enduml
 ....
