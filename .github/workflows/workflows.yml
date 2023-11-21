@@ -13,8 +13,7 @@ jobs:
                     java-version: '21'
                     cache: 'gradle'
             -   run: |
-              #     ./gradlew build test    due to strange prblems with the vaadin plugin
-                         ./gradlew classes testClasses test javadoc jar
+                    ./gradlew classes testClasses test javadoc jar
                     ./gradlew build net.tangly.erp.ui:installDist '-Pvaadin.productionMode' --no-daemon
             -   uses: actions/upload-artifact@v3
                 with:
