@@ -70,11 +70,13 @@ public abstract class EntityForm<T extends Entity, V extends EntityView<T>> exte
         }
     }
 
-    @Override
     /**
      * Duplicate the entity and clears the object identifier field.
+     *
      * @see ItemForm#duplicate(Object)
-     */ public void duplicate(@NotNull T entity) {
+     */
+    @Override
+    public void duplicate(@NotNull T entity) {
         super.duplicate(entity);
         this.entity.clearOid();
     }

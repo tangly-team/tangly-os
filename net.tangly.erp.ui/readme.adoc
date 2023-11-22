@@ -138,30 +138,5 @@ This approach is mandatory if the image is deployed in https://www.heroku.com/[H
 ====
 The deployment on the Heroku cloud was removed due to changes in the usage conditions of the platform.
 
-Therefore, we do not deply anymore our applications on Heroku.
+Therefore, we do not deploy anymore our applications on Heroku.
 ====
-
-
-== Contribution
-
-You are welcome to contribute to the product with pull requests on Bitbucket.
-You can download the source files from the
-https://bitbucket.org/tangly-team/tangly-os.git[bitbucket git repository] and build the library with the provided gradle configuration file.
-
-If you find a bug or request a new feature, please use the https://bitbucket.org/tangly-team/tangly-os/issues[issue tracker].
-
-== License
-
-The source code is licensed under https://www.apache.org/licenses/LICENSE-2.0[Apache license 2.0].
-
-The documentation and examples are licensed under https://creativecommons.org/licenses/by/4.0/[Creative Common (CC Attribution 4.0 International)].
-
-== Awesome Sponsors and Developers
-
-Corporate sponsors are
-
-* https://www.tangly.net[tangly llc]
-
-Individual developers are
-
-* https://linkedin.com/in/marcelbaumann[Marcel Baumann]

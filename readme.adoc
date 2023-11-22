@@ -23,7 +23,7 @@ Approaches for TSV and JSON representations are available.
 
 The documentation is located under https://blog.tangly.net/[tangly-team].
 
-The repository is hosted under GitHub https://github.com/marcelbaumann/tangly-os.git[tangly OS GitHub].
+The *primary repository* is hosted under GitHub https://github.com/marcelbaumann/tangly-os.git[tangly OS GitHub].
 
 A mirror is also hosted under GitLab https://gitlab.com/marcelbaumann/tangly-os[tangly OS GitLab].
 A legacy mirror is also hosted under BitBucket https://bitbucket.org/tangly-team/tangly-os.git[tangly OS BitBucket].
@@ -98,21 +98,30 @@ You are presented with a selection of deployment options.
 The variable _BB_AUTH_STRING_ is defined through _REPOSITORY-OWNER-NAME_:_APP-PASSWORD_.
 The continuous deployment is a manual step to limit the usage of pipeline minutes and diminish associated costs.
 
+== Contributions
+
+You are welcome to contribute to the product.
+Participate in https://github.com/orgs/tangly-team/discussions[discussions] or create https://github.com/tangly-team/tangly-os/issues[issues] on GitHub.
+
+You can download the source files from the https://github.com/tangly-team/tangly-os[Open Source GitHub Repository].
+
+Build the library with the provided Gradle configuration.
+
+If you find a bug or want to request a feature, please use https://github.com/tangly-team/tangly-os/issues[issue tracker].
+
+== License
+
+The source code is licensed under https://www.apache.org/licenses/LICENSE-2.0[Apache license 2.0].
+
+The documentation and examples are licensed under https://creativecommons.org/licenses/by/4.0/[Creative Common (CC Attribution 4.0 International)].
+
 == Awesome Sponsors and Developers
 
 Corporate sponsors are:
 
 * https://www.tangly.net[tangly llc]
 
-[TIP]
-====
-Feature sponsorship allows an organization to sponsor specific new features or improvements.
-If your organization would benefit from the addition of a new feature or capability to tangly OS components, you can fund its development.
+Individual developers are:
 
-Please contact tangly llc or send an email to _info@tangly.net_.
-====
-
-Individual developers are
-
-* https://linkedin.com/in/marcelbaumann/[Marcel Baumann]
+* https://linkedin.com/in/marcelbaumann[Marcel Baumann]
 * https://linkedin.com/in/junghana/[Alexandra Junghans]

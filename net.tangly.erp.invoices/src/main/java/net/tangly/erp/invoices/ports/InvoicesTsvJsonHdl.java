@@ -4,10 +4,11 @@
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- *          https://apache.org/licenses/LICENSE-2.0
+ *          http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ *
  */
 
 package net.tangly.erp.invoices.ports;
@@ -27,7 +28,9 @@ import org.jetbrains.annotations.NotNull;
 import java.io.Reader;
 import java.nio.file.Path;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
+import java.util.Objects;
 import java.util.function.Function;
 
 import static net.tangly.core.tsv.TsvHdlCore.ID;
@@ -70,6 +73,10 @@ public class InvoicesTsvJsonHdl {
         var invoiceJson = new InvoiceJson(realm);
         var invoice = invoiceJson.imports(reader, source);
         if ((invoice != null) && invoice.check()) {
+            // locale is  not a mandatory field and default locale is English
+            if (Objects.isNull(invoice.locale())) {
+                invoice.locale(Locale.ENGLISH);
+            }
             realm.invoices().update(invoice);
             EventData.log(EventData.IMPORT, MODULE, EventData.Status.SUCCESS, "Imported Invoice", Map.ofEntries(Map.entry("invoice", invoice)));
             return invoice;

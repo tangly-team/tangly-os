@@ -39,14 +39,14 @@ public class FsmTest {
     /**
      * The finite state machine internal states for the test configuration.
      */
-    enum States {
+    public enum States {
         Root, A, AA, AB, B, BA, BB, C
     }
 
     /**
      * The finite state machine internal events for the test configuration.
      */
-    enum Events {
+    public enum Events {
         A_A, A_C, AA_AA, AA_AB, AA_B, AA_BB, AB_AA, AB_AB, B_C, BA_A, BA_BB, BB_BA, BB_BB, BB_C, C_C
     }
 
