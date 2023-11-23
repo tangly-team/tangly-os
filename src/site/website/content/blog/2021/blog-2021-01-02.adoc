@@ -6,7 +6,10 @@ tags: ["design", "crm", "domain-driven-design", "series-identifiers"]
 ---
 
 include::../fragments/_config-mb-blog.aodc[]
+:ref-ddd: https://en.wikipedia.org/wiki/Domain-driven_design[Domain-Driven Design]
 
+[.float-group]
+--
 image::2021-01-02-head.jpg[width=420,height=360,role=left]
 
 Identifiers are a key concept to successfully model complex business domains.
@@ -17,18 +20,23 @@ Could you imagine a country without a car registration number of vehicles, inter
 Identifiers are *identifiers*.
 
 Identifiers cannot be changed at any time.
+
 Updating identifiers means introducing mapping relations between the old and the new values.
+--
 
 [quote]
 ____
-In computer science, identifiers _IDs_ are lexical tokens that name entities. +
-Identifiers are used extensively in virtually all information processing systems. +
+In computer science, identifiers _IDs_ are lexical tokens that name entities.
+
+Identifiers are used extensively in virtually all information processing systems.
+
 Identifying entities makes it possible to refer to them, which is essential for any kind of symbolic processing.
 ____
 
 == External Well-Defined Identifiers
 
 The best identifiers are externally well-defined identifiers.
+
 A unique and well-defined authority is responsible for defining and publishing them.
 Ideally, the authorities should only create new identifiers and never delete existing ones.
 The published information is available to all interested parties.
@@ -82,9 +90,9 @@ You are responsible for documenting these identifiers and the process to create 
 You shall also guaranty that existing identifiers are never recycled.
 If your identifiers are strings, you shall clearly define the supported languages and character sets.
 
-== https://en.wikipedia.org/wiki/Domain-driven_design[Domain Driven Design]
+== {ref-ddd}
 
-Domain Driven Design _DDD_ is a powerful and modern approach to define agile software architecture.
+Domain Driven Design _DDD_ is a powerful and modern approach to define agile software architecture cite:[domain-driven-design,implementing-domain-driven-design].
 Some key rules are related to identity.
 
 Entity has a well-defined identity::
@@ -93,7 +101,7 @@ Any instance of an entity abstraction must have a unique identifier.
 Identify aggregate through identity::
 An aggregate is a group of objects that are bound together by a root entity, called the aggregate root.
 Objects outside the aggregate are allowed to hold references to the root but not to any other object of the aggregate.
-The aggregate root is responsible for checking the consistency of changes in the aggregate.
+The aggregate root is responsible for checking the consistency of changes in the aggregate. +
 An aggregate is found and referenced through the identifier of the aggregate root entity.
 Reference over aggregate through identity::
 An aggregate shall reference another aggregate through the identity of their root entity instance.

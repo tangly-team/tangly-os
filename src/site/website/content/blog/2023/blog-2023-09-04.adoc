@@ -74,7 +74,7 @@ git push origin --tags
 [TIP]
 ====
 If you want to correct an error from a tagged version, you should create a branch.
-If you simply check out the tag, you are in a detached head mode.
+If you check out the tag, you are in a detached head mode.
 
 [source,console]
 ----

@@ -144,9 +144,9 @@ Advanced approaches can reduce training and improve cultural match.
 
 [TIP]
 ====
-InnerSource <<inner-source>> <<inner-source-patterns>> is a software development strategy that applies open source best practices to proprietary code.
+InnerSource <<inner-source>> <<inner-source-patterns>> is a software development strategy that applies open-source best practices to proprietary code.
 
-InnerSource can help establish an open source culture within an organization while retaining software for internal use.
+InnerSource can help establish an open-source culture within an organization while retaining software for internal use.
 
 Teams use InnerSource to increase visibility, strengthen collaboration, and break down silos.
 ====

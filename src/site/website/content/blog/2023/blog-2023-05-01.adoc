@@ -10,7 +10,7 @@ include::../fragments/_config-mb-blog.aodc[]
 image::2023-05-01-head.png[width=420,height=360,role=left]
 
 Java 20 was released on time to the public.
-The release is available for download since 21^st^ March 2023.
+The release has been available for download since 21^st^ March 2023.
 
 Interestingly, the new Java release contains only incubating or preview https://openjdk.org/jeps/0[JEP] proposals.
 No final improvements are part of this version.

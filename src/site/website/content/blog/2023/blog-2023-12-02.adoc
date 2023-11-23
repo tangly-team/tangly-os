@@ -1,7 +1,7 @@
 ---
 title: "Semantic Commits for the Impatient"
 linkTitle: "Semantic Commits"
-date: 2023-11-20
+date: 2023-11-23
 tags: ["agile", "git", "series-students"]
 ---
 
@@ -46,13 +46,13 @@ That is the code.
 
 The commit contains the following structural elements to communicate intent to the consumers of your library:
 
-fix:: a commit of the type fix patches a bug in your codebase.
+fix:: A commit of the type fix patches a bug in your codebase.
 This correlates with *PATCH* in Semantic Versioning.
 It is used to identify production changes related to backward-compatible bug fixes.
-feature:: a commit of the type feat introduces a new feature to the codebase.
+feature:: A commit of the type feat introduces a new feature to the codebase.
 It is used to identify production changes related to new backward-compatible abilities or functionality.
 This correlates with *MINOR* in Semantic Versioning.
-BREAKING CHANGE:: a commit that has a footer BREAKING CHANGE:, or appends a ! after the type/scope, introduces a breaking API change.
+BREAKING CHANGE:: A commit that has a footer BREAKING CHANGE:, or appends a ! after the type/scope, introduces a breaking API change.
 This correlates with *MAJOR* in Semantic Versioning.
 A BREAKING CHANGE can be part of commits of any type.
 
@@ -98,7 +98,7 @@ That is distinctly true due to the paragraphs.
 ====
 Your IDE probably provides a comfortable user interface to create a commit message as a set of paragraphs.
 
-Simply use your preferred IDE to write semantic commits with multiple blocks.
+Use your preferred IDE to write semantic commits with multiple blocks.
 ====
 
 == Thoughts

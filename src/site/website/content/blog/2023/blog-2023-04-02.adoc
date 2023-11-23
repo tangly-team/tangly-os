@@ -286,7 +286,7 @@ I was surprised how much faster write operations on the build-in solid state dis
 
 It is worth the price I paid
 footnote:[The price of the Macbook notebook in 2023 was CHF 3'300.
-I buy a new notebook every five years meaning the yearly costs are ridiculous low.].
+I buy a new notebook every five years, meaning the yearly costs are ridiculous low.].
 
 [bibliography]
 == Links

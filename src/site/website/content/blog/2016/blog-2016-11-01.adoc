@@ -43,7 +43,7 @@ If not, this manager made a mistake by hiring or keeping you.
 Courage::
 You are ready to say “I am wrong” because being wrong opens the door for improvement.
 Focus::
-You daily optimise the customers’ value and thrive for excellence.
+You daily optimize the customers’ value and thrive for excellence.
 As a developer, you do not work on projects, you work on excellent products.
 You provide value to your customers.
 Openness::
@@ -63,7 +63,7 @@ Give them a purpose, a goal, empower them and let them climb the mountain.
 Thriving people need purpose, excellence and autonomy.
 They are happier, healthier and more productive.
 Deliver value continuously::
-Maintain sustainable pace and stability, all divisions of the organisation should focus on customer value.
+Maintain sustainable pace and stability, all divisions of the organization should focus on customer value.
 At the end of the day, successful products are the only reason you get your paycheck.
 Make safety a prerequisite::
 People do their best in their daily work, you believe in McGregor Y theory.
@@ -117,9 +117,9 @@ Below a list of mind openers (available as Amazon ebooks):
 
 [horizontal]
 Reinventing organisations:: A guide to creating organisations inspired by the next stage of human consciousness by Frederic Laloux,
-Accelerate:: Building strategy agility for a fast moving world by John P. Kotter.
+Accelerate:: Building strategy agility for a fast-moving world by John P. Kotter.
 Beyond budgeting:: How managers can break free from the annual performance trap;
-The Leader’s Dilemma:: How to build an empowered and adaptive organisation without losing control; both books by Jeremy Hope,
+The Leader’s Dilemma:: How to build an empowered and adaptive organization without losing control; both books by Jeremy Hope,
 Holacracy:: the new management system for a rapidly changing world by Brian J. Robertson,
 Deliver Happiness:: A path to profits, passion and purpose by Tony Hsieh.
 The Lean Startup:: How today’s entrepreneurs use continuous innovation to create radically successful businesses by Eric Ries,
@@ -130,7 +130,7 @@ The Gold Mine::: A novel of lean turnaround; all three books by Freddy Balle,
 The Lean Mindset:: Ask the right questions by Mary Poppendieck,
 Social Intelligence:: The new science of human relationships, by Daniel Goleman
 Management 3.0:: Leading agile developers, developing agile leaders by Jurgen Appelo,
-The Fifth Discipline:: The art and practice of the learning organisation by Peter M. Senge,
+The Fifth Discipline:: The art and practice of the learning organization by Peter M. Senge,
 Fearless Change:: Patterns for introducing new ideas; More Fearless Change: Strategies for making your ideas happen; both books by Linda Rising,
 Excellence Novels::
 Build to Last::: Successful habits of visionary companies;

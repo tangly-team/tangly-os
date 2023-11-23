@@ -148,7 +148,7 @@ _Called time to restore service in the above dashboard_.
 
 == GitHub Tools
 
-https://github.com[GitHub] is a web development platform that is inspired by your work style.
+https://github.com[GitHub] is a web development platform inspired by your work style.
 It enables you to handle software development projects side-by-side with 40 million developers.
 
 The main features are:

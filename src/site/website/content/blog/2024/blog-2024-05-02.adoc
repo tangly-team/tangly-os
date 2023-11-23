@@ -1,6 +1,6 @@
 ---
-title: "Actors"
-linkTitle: "Actors"
+title: "Actor Model"
+linkTitle: "Actor Model"
 date: 2024-05-02
 tags: ["java", "C++", "architecture"]
 ---
@@ -32,6 +32,7 @@ There is a strong need for higher-level frameworks ensuring safe concurrent prog
 
 The {ref-actor-model} is one of the approaches to safe concurrency.
 The model is based on {ref-message-passing}.
+The actor model originated in 1973 and was first described by Carl Hewitt.
 
 Although multiple actors can run at the same time, an actor will process a given message sequentially.
 This means that if you send three messages to the same actor, it will sequencially process one at a time.
@@ -55,13 +56,20 @@ An actor shall only access local data and information from the current message.
 Each actor owns a private mailbox or message queue.
 The owning actor is the sole instance empowered to retrieve messages.
 
+_Information hiding prohibits direct access to the mailbox from other actors_.
+_Use the provided send(Message msg) operation to send a message to another actor_.
+
 Any actor can send a message to another actor.
 Multiple actors can send messages to a specific actor.
+
+_The send operation is performed in the context of the sender actor and associated thread._
 
 The sender cannot modify an already sent message.
 Ideally, messages should be immutable objects.
 
 The receiver is the owner of a received message and is responsible for its disposal.
+
+_The retrieving of a message from the message queue and further processing is performed in the context of the receiver actor and associated thread._
 ====
 
 == Advantages and Downsides

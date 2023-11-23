@@ -26,7 +26,7 @@ Here are the steps for the impatient.
 Six hours after the first phone call, they sent me the electronic documents.
 The next day, the documents were delivered in paper form.
 It was really impressive.
-. Before you can find a company, you must deposit the capital into a special account.
+. Before you are allowed to found a company, you must deposit the capital into a special account.
 I choose https://www.postfinance.ch/[Postfinance].
 It is a well-known Swiss institute and their fee is only CHF 145.
 They insisted I met one of their collaborators to fill their forms.
@@ -40,9 +40,9 @@ The next day the company was founded, and I received the official paper document
 They were very nice but told me they had a lot of work.
 Two weeks later, they finally registered the company and sent me the papers and an invoice for CHF 780.
 . A few phone calls later https://www.postfinance.ch/[Postfinance] converted the account into a regular account.
-They give me access to the founding capital minus their fee
+They give me access to the founding capital minus their fee.
 
-During the waiting time, I started to organise for the mandatory insurances you need in Switzerland
+During the waiting time, I started to organize for the mandatory insurances you need in Switzerland
 
 * BVG – the best offer was from https://www.axa.ch/[Axa]
 footnote:[The company was called Axa Winthertur.].
@@ -64,7 +64,7 @@ On the bright side, their collaborators are very supportive.
 They only use paper mail.
 Upon inquiry, their collaborators told me their processes are incapable of handling modern communication ways.
 * Upon foundation, you get pseudo-official letters from various companies to sell dubious services.
-Just throw them away.
+Throw them away.
 * The industry development office of Kanton Zug has no clues about start-up companies; the ones in Zürich and Lucerne seem better.
 
 [.text-center]

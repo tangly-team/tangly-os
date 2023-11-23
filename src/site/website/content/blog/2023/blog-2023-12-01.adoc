@@ -47,6 +47,14 @@ Contrarily, parsing and interpreting Maven’s XML is dead simple.
 Breaking Changes:::
 New Gradle versions are often breaking existing plugins, and the poor maintainer of these one-man-open-source-projects cannot keep up with this speed.
 
+[NOTE]
+====
+Best practices how {ref-gradle} scripts should be structured have quite changed over the years.
+The {ref-gradle} team has learned a lot and has improved the tooling.
+
+As a drawback, I had to regularly refactor my scripts to keep them up to date.
+====
+
 == Maintain Your Build
 
 Build rot is the silent degradation of your build system’s effectiveness, a result of poor practices, neglect, or simply the passage of time.

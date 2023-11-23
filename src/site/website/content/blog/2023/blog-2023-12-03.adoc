@@ -29,7 +29,8 @@ Commands can be transmitted other various buses and protocols.
 
 An operator can send a command over a {ref-canbus}, {ref-spi}, {ref-ethernet} or {ref-bluetooth} connection.
 
-The processed commands are the instructions independent of the transmission layer and communication protocol.
+The processed commands are the instructions executed on the machine.
+They are independent of the transmission layer and communication protocol.
 
 How could you design such a versatile interface using modern software construct from Java or {cpp}?
 
@@ -113,10 +114,11 @@ Each command is defined through an instance of a class.
 The sealed structure guarantees that the compiler will mark all code segments needing edition when a new command type is added.
 The sealed class structure and the pattern matching approach is a compiler-validated visitor pattern.
 
-We decided to store the result of a query into the command object.
-A computed answer belongs to the query initiating the processing.
+We decided to store the result of a query into an answer object.
+A computed answer can have a reference to the query initiating the processing.
 
 You can pack the result into a future wrapper to support asynchronous command processing.
+The interpreter itself behaves as a synchronous command processor matching answers to the related query command.
 ====
 
 == Interpreters and Dispatcher
@@ -154,6 +156,7 @@ interface CmdInterpreter  {
     byte[] transform(Cmd cmd)
 
     void process(Cmd command)
+    void process(Cmd command, CmdChannel channel)
 }
 
 class CmdDispatcher {
@@ -182,7 +185,9 @@ Why should we support multiple channels to propagate commands?
 
 An operator would input commands as text on a command line.
 
-An external software system would send commands through a bus such as {ref-ethernet}, {ref-can-bus} or {ref-spi}.
+An external software system would send commands through a bus such as {ref-ethernet}, {ref-canbus} or {ref-spi}.
+
+I recommend {ref-proto-buf} for binary encoding of commands, queries, and answers.
 ====
 
 == Thoughts

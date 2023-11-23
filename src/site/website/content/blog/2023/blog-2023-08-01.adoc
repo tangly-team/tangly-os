@@ -62,7 +62,7 @@ Governance typically addresses areas such as:
 
 * The evolution and support of roles and responsibilities to streamline how people work together.
 * Definition of decision rights and decision-making processes to streamline interactions between people.
-* The evolution and support of common procedures and guidelines to ensure appropriate commonality of activities and artifacts.
+* The evolution and support of common procedures and guidelines to ensure the appropriate commonality of activities and artifacts.
 * The evolution and support of common guidance to motivate the efforts of teams across your organization.
 * Promotion of ethics and social responsibility.
 * Effective and timely investment to sustain and extend the organization over the long term.
@@ -95,7 +95,7 @@ Second, teams also need to work effectively with their colleagues.
 To do this, you must adopt processes and organizational structures that encourage people to collaborate together and to learn from one another.
 Risks are monitored and mitigated at appropriate organizational levels::
 Although addressing risk at the team-level is a good start, it is not sufficient from an organizational point of view.
-Many small risks that are acceptable individually can add up to a very large risk for your organization.
+Many small risks that are acceptable individually can add up to a huge risk for your organization.
 For example, one team using a new technology platform is an experiment.
 Fifty teams adopting that new platform at the same time is a significant risk if the platform proves to be problematic.
 Someone must be looking at risks from a portfolio perspective and guide teams accordingly.
@@ -178,7 +178,7 @@ This information is often used over decades.
 Corporate governance requirements are non-functional requirements.
 They impact the architecture and design of the solution.
 The selected solutions are often constrained.
-Highly secure systems cannot, for example, use NodeJS due to known flaws in the security area.
+Highly secure systems cannot, for example, use Node.js due to known flaws in the security area.
 
 Awareness of corporate governance issues and legal consequences are often overlooked and not well-understood in many organizations.
 Education and awareness campaigns are necessary to increase professionalism

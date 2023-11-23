@@ -11,7 +11,7 @@ include::../fragments/_config-mb-blog.aodc[]
 image::2023-09-02-head.jpg[width=420,height=360,role=left]
 
 Java 21 LTS was released on time to the public.
-The release is available for download since 21^st^ September 2023.
+The release has been available for download since 21^st^ September 2023.
 
 Pattern matching is maturing nicely.
 The hope is that more solutions will more advanced data stream manipulation and functional programming algorithms.
@@ -51,7 +51,7 @@ The https://openjdk.org/projects/loom/[loom] initiative is completing the major 
 - https://openjdk.org/jeps/453[Structured Concurrency] _Preview_
 
 Virtual threads are now official part of the Java universe.
-Your design can create as much threads as you want without restrictions.
+Your design can create as many threads as you want without restrictions.
 
 _Most of the Java developers never create directly thread instances._
 _The feature is useful for library and framework creators._
@@ -98,14 +98,14 @@ The project uses internal unsafe functions, which are no more supported in this 
 [TIP]
 ====
 The edge snapshot release has experimental support for JDK 21.
-You need the following additions in your gradle configuration.
+You need the following additions in your {ref-gradle} configuration.
 
-- add the repository _maven { url "https://projectlombok.org/edge-releases"}_
+- add the repository _maven { url "https://projectlombok.org/edge-releases" }_
 - use the dependency _org.projectlombok:lombok:edge-SNAPSHOT_ for the library and the annotation processor
 ====
 
 All other libraries and tools I am using worked without troubles.
-Major libraries test their current release with early-accesses and solve the problems before the official release a new Java version.
+Major libraries test their current release with early-access and solve the problems before the official release a new Java version.
 
 == Lessons Learnt
 

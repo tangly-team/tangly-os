@@ -6,11 +6,15 @@ tags: ["design", "domain-driven-design", "crm", "series-identifiers"]
 ---
 
 include::../fragments/_config-mb-blog.aodc[]
+:ref-ddd: https://en.wikipedia.org/wiki/Domain-driven_design[Domain-Driven Design]
+:ref-eclipse-store: https://eclipsestore.io/[Eclipse Store]
+:ref-microstream: https://microstream.one/[MicroStream]
 
 image::2021-01-01-head.png[width=420,height=360,role=left]
 
 This post discusses the value object pattern, and the factory pattern, which are tactical patterns in the domain-driven design
-https://en.wikipedia.org/wiki/Domain-driven_design[DDD] approach.
+{ref-ddd} approach.
+
 
 Value objects represent typed values that have no conceptual identity in your domain.
 They can help you write better codes that are less error-prone, more performant and more expressive.
@@ -132,7 +136,7 @@ This factory could provide multiple ways to create new instances.
 
 == Value Objects in Persistent Store
 
-We encourage experimenting with the https://microstream.one/[MicroStream] approach for small projects.
+We encourage experimenting with the {ref-microstream} approach for small projects footnote:[The Eclipse foundation took over the MicroStream library in 2023 under the new name {ref-eclipse-store}.
 The effort to persist a Java object graph is very small.
 
 You can always move to a no SQL solution when your application is successful and time comes to harden it.

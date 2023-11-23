@@ -14,10 +14,12 @@ image::2020-09-01-head.jpg[width=420, height=360, role=left]
 A software architect models customer domains and maps them to _excellent_ software constructs.
 The solution shall support future customer groups and expand to store additional information.
 
-_Tags_, also called labels provide an informal ontology to classify customer data.
+_Tags_, also called labels, provide an informal ontology to classify customer data.
+
 Tags are extensible and are machine-readable.
 
 _Comments_ empower users to store relevant unstructured information.
+
 Comments are only for human beings.
 
 What are good approaches to provide searchable tags and labels and avoid wild growth of useless records?
@@ -29,6 +31,7 @@ Can you as a designer govern the ontology defined through labels?
 
 Tags add semantic information to business entities.
 Tags are often defined as a crowd ontology without enforced schemas.
+
 Invest in domain modeling to define and maintain tags, and you will move tags to full-fledged ontology into your domain models.
 This ontology supports meaningful search, segmentation and reporting over historical and geographical raw data.
 
@@ -41,7 +44,7 @@ A tag has three parts:
 * A _mandatory name_ to uniquely identify the tag in the context of its optional namespace.
 * An _optional value_ providing details to the tag.
 
-For example, we could define a tag such as _geo:longitude=50.167958_ to provide the meta information of longitude to an entity.
+For example, we could define a tag such as _geo:longitude=50.167958_ to provide the meta-information of longitude to an entity.
 This tag has a namespace _geo_, a name _longitude_ and a double value _50.167958_.
 
 Additional information is available under link:../../../docs/core/models/ Below the source code in modern Java is
@@ -70,7 +73,7 @@ The edition feature is part of the workflow and not part of the domain model.
 
 An author can be another computer system.
 It can provide information about its actions through comments.
-If the deletion of comments is disabled, the comment history is an audit trail documenting what happened overtime with an entity instance.
+If the deletion of comments is disabled, the comment history is an audit trail documenting what happened over time with an entity instance.
 
 [WARNING]
 ====
@@ -78,7 +81,7 @@ Beware that the authors define an external identifier space.
 If your application requires a user account, you can connect the author with the user account.
 The consequence is that you should only disable these accounts and never delete them.
 
-Policy should be defined to handle the fact that collaborators quit the company overtime and are no more active users; but they are still referenced as authors.
+Policy should be defined to handle the fact that collaborators quit the company over time and are no more active users; but they are still referenced as authors.
 ====
 
 The code in Java is

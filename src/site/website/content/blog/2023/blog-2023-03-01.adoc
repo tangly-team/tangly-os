@@ -104,7 +104,7 @@ Being part of the coaches’ team, she will actively participate in the transfor
 == Shall a Coach Be Savvy in Technology?
 
 It certainly helps to understand the technology your teams are using.
-I assume it is quite difficult to be a soccer coach if you have no clue what soccer is and how it is played.
+I assume it is quite challenging to be a soccer coach if you have no clue what soccer is and how it is played.
 
 Realize that smaller companies can seldom afford an agile coach and also a technology coach for one team.
 So it is really helpful to at least be able to discuss technical aspects with your coachees.
