@@ -1,6 +1,6 @@
 [versions]
 assertj-version = '3.24.2'
-flyway-version = '10.0.1'
+flyway-version = '10.1.0'
 jackson-version = '2.12.3'
 jersey-version = '2.35'
 javalin-version = '5.6.3'
@@ -56,7 +56,7 @@ iban4j = "org.iban4j:iban4j:3.2.7-RELEASE"
 ical4j-core = "org.mnode.ical4j:ical4j:3.2.1"
 ical4j-vcard = "org.mnode.ical4j:ical4j-vcard:1.0.7"
 
-google-libphonenumber = "com.googlecode.libphonenumber:libphonenumber:8.13.25"
+google-libphonenumber = "com.googlecode.libphonenumber:libphonenumber:8.13.26"
 google-protobuf = "com.google.protobuf:protobuf-java:3.24.3"
 
 jackson-databind = { module = "com.fasterxml.jackson.core:jackson-databind", version.ref = "jackson-version" }
