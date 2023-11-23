@@ -21,7 +21,7 @@ import java.lang.annotation.Target;
 /**
  * A feature or a story describes the behavior of the build system. You can use a story template or free text to describe the behavior of the system. For each feature, a set of
  * scenarios or tests are defined in the form "Given a context When a specific event happens, then the expected outcomes are as described". The "Given When Then" scenarios are
- * described in unit tests using the features of JUnit 5 such as test class and nested classes to document and implement the "Given When" and test methods to realize the "Then"
+ * described in unit tests using the features of JUnit5 such as test class and nested classes to document and implement the "Given When" and test methods to realize the "Then"
  * part. The display name annotation is used to produce readable and executable behavior-driven tests.
  **/
 @Target(ElementType.PACKAGE)
@@ -50,7 +50,7 @@ public @interface Feature {
     String id() default "";
 
     /**
-     * Return the tags associated with the feature. Tags provide domain specific classification and additional information.
+     * Return the tags associated with the feature. Tags provide domain-specific classification and additional information.
      *
      * @return tags defined in the feature
      */

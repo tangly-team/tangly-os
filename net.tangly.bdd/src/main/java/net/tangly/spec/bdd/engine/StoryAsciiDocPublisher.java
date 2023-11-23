@@ -26,7 +26,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 
 /**
- * The publisher creates a <i>AsciiDoc</i> report of the behavior driven design tests documentation generated as JSON during JUnit 5 runs. The publisher is provided as an example
+ * The publisher creates a <i>AsciiDoc</i> report of the behavior-driven design tests documentation generated as JSON during JUnit 5 runs. The publisher is provided as an example
  * for realizing a developer driven living documentation.
  */
 public class StoryAsciiDocPublisher {

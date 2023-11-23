@@ -149,7 +149,7 @@ public class StoreTestStoryOne {
 
 === Get Started
 
-. Add the library to your gradle or maven build.
+. Add the library to your Gradle or maven build.
 . Write your scenarios as test methods as shown in the above examples.
 . Run your JUnit 5 tests.
 

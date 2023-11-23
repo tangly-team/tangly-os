@@ -26,7 +26,8 @@ import java.util.List;
 /**
  * Recall that our custom extension generates BDD reports after executing the tests. Some parts of these reports are pulled from the elements of the “@Story” annotation. We use the
  * beforeAll callback to store these strings. Later at the end of the execution lifecycle, we retrieve these strings to generate reports. A simple POJO is used for this purpose.
- * We name this class “StoryDetails”. The following code snippet demonstrates the process of creating an instance of this class and saves the elements of the annotation into the
+ * We name this class <i>StoryDetails</i>. The following code snippet demonstrates the process of creating an instance of this class and saves the elements of the annotation
+ * into the
  * instance.
  */
 public class StoryRun {
