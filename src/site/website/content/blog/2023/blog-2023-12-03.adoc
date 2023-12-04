@@ -155,7 +155,6 @@ interface CmdInterpreter  {
     String[] transform(Cmd cmd)
     byte[] transform(Cmd cmd)
 
-    void process(Cmd command)
     void process(Cmd command, CmdChannel channel)
 }
 
@@ -163,7 +162,7 @@ class CmdDispatcher {
     void register(CmdInterpreter, int group)
     void register(CmdChannel)
 
-    void process(Cmd command)
+    void processCmd(CmdChannel channel)
 }
 
 CmdDispatcher *-- "0..n" CmdInterpreter : interpreters
@@ -171,21 +170,24 @@ CmdDispatcher *-- "0..n" CmdInterpreter : interpreters
 interface CmdChannel {
     byte[] readData()
     void writeData(byte[] data)
+   int groupFor(byte[] data)
 
     String[] readText();
     void writeText(String[] text)
+    int groupFor(String[] text)
 }
 ----
 
 A channel receives and transmits command data.
+The channel should be able to extract the message group from a raw message.
 
 [TIP]
 ====
 Why should we support multiple channels to propagate commands?
 
 An operator would input commands as text on a command line.
-
 An external software system would send commands through a bus such as {ref-ethernet}, {ref-canbus} or {ref-spi}.
+Multiple channels are a requirement for a versatile command interpreter.
 
 I recommend {ref-proto-buf} for binary encoding of commands, queries, and answers.
 ====

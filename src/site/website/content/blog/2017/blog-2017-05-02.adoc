@@ -12,7 +12,7 @@ image::2017-05-02-head.png[width=420,height=360,role=left]
 
 You shall put your source code and text documentation under a version management system.
 
-The actual industrial standard for version control system is https://git-scm.com/[git], a distributed version control system -
+The actual industrial standard for version control systems is https://git-scm.com/[git], a distributed version control system -
 https://en.wikipedia.org/wiki/Distributed_version_control[DVCS] -.
 It tracks changes in any set of computer files, usually used for coordinating work among programmers who are collaboratively developing source code during software development.
 
@@ -24,7 +24,7 @@ Install git on your development machine.
 
 Binaries are available for all major platforms and can be found under https://git-scm.com/downloads[Downloads]
 GUI clients are also provided for all major platforms
-footnote:[Major platforms are Unix, Linux, macOs, and Microsoft Windows.].
+footnote:[Major platforms are Unix, Linux, macOS, and Microsoft Windows.].
 
 If you want higher security, you should install _ssh_.
 The operation is trivial for linux and macOS systems.
@@ -51,7 +51,7 @@ You have want to have a local copy of an existing git repository:
 git clone <repository link>     <1>
 ----
 
-<1> The link is either a https or a ssh link to the remote repository.
+<1> The link is either an https or an ssh link to the remote repository.
 
 Once you have a local copy of a shared repository, you can update your copy with the changes of the remote repository using:
 
@@ -86,7 +86,7 @@ Your IDE shall support this feature and would add files or folder to ignore thro
 
 == Commit Changes
 
-To commit your changes you simply:
+To commit your changes, you simply:
 
 [source,console]
 ----
@@ -122,7 +122,7 @@ git commit --amend   <1>
 ----
 
 <1> Please do not amend shared commits.
-Amending a commit that is shared with another user will potentially require confusing and lengthy merge conflict resolutions.
+Amending a commit shared with another user will potentially require confusing and lengthy merge conflict resolutions.
 
 Once you are satisfied with your changes, you can propagate them to the remote repository using:
 

@@ -11,13 +11,13 @@ include::../fragments/_config-mb-blog.aodc[]
 --
 image::2022-02-02-head.jpg[width=420,height=360,role=left]
 
-The majority of software product development initiatives uses an agile approach.
+The majority of software product development initiatives use an agile approach.
 The most popular framework is currently {ref-scrum}.
 
 It is natural that organizations would gravitate towards the many benefits agile ideas provide.
 
 Scarce resources and time-to-market constraints have driven the implementation of shoring development initiatives.
-Awareness that talent can be found at any location speed-up the trend.
+Awareness that talent can be found at any location speeds up the trend.
 --
 
 The outsourcing market is undergoing constant evolution.
@@ -119,7 +119,7 @@ Meeting times should be good for all participants.
 Location of documents, source code, and artifacts should have the same availability and comfort for all members.
 Company Binding::
 Effort must be put in the integration of the nearshore teams.
-Churn-rates can be as high as 50% per year.
+Churn rates can be as high as 50% per year.
 Capabilities::
 Talent is a precious resource.
 Companies are fighting to acquire talented developers all over the world.
@@ -138,7 +138,7 @@ Is our company willing to:
 . Write all project documentation, source code, emails and chats in English?
 . Hold all meetings, workshops and discussions in English?
 . Train all collaborators in cultural aspects?
-. Host physical meetings using round-robin on all locations?
+. Host physical meetings using round-robin in all locations?
 . Schedule all meetings so that all locations have similar constraints for early or late work?
 . Share financial and strategic information to align all collaborators?
 . Set up the infrastructure to not differentiate between company offices and nearshore locations?
@@ -150,11 +150,11 @@ Any role can be held by a local or a remote collaborator?
 == Next Development
 
 The Corona crisis has pushed collaborators to work from home over a long period.
-I also observe that quite a few team are heavily distributed geographically and often live in different countries.
+I also observe that quite a few teams are heavily distributed geographically and often live in different countries.
 
 This constellation is not more a nearshore team.
-The organization has moved to an all-remote setup without common office location
-footnote:[Companies such as GitLab, SonarCloud, Attlassian adopted this model years ago.].
+The organization has moved to an all-remote setup without a common office location
+footnote:[Companies such as GitLab, SonarCloud, and Attlassian adopted this model years ago.].
 
 All-remote work promotes:
 

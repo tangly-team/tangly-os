@@ -1,0 +1,76 @@
+---
+title: "How To Improve"
+linkTitle: "How To Improve"
+date: 2024-02-15
+tags: ["agile", "tangly", "organization"]
+---
+
+include::../fragments/_config-mb-blog.aodc[]
+
+image::2024-02-03-head.png[width=420,height=360,role=left]
+
+You attend a famous or a local technical school.
+You are the proud owner of a bachelor or a master degree in science.
+
+You write productive code with your colleagues in your current company.
+
+How can you continuously improve in your profession?
+
+How can you master the new features and possibilities of the technologies you use daily?
+
+How can you learn new approaches and good practices emerging over the world?
+
+== Attend Local User Groups
+
+Java, Python, C++, .Net, Clojure
+
+Scrum and agile
+
+Embedded
+
+== Read Books and Articles
+
+Youtube videos
+
+Ask questions on blog platforms, Stack Overflow.
+
+== Attend Formal Trainings
+
+A professional engineer shall attend around five training days a year.
+Attend technical conferences.
+
+In the post-Corona time, you can find a lot of online conferences.
+You can also attend a conference onsite.
+Travel costs in Europe are very reasonable.
+
+Book a training either online or in a physical course room.
+
+Ask yourself if a certification makes sense for you.
+
+Invest in a CAS or a MAS study.
+
+Volunteer for a presentation
+
+== Write Articles
+
+Write a blog article about a technical in your current project.
+
+An engineer is also a coach and a teacher.
+Master the art of writing presentations and articles.
+
+== Participate to Open Source Product
+
+== Tips and Tricks
+
+Budget five days of formal training per year.
+
+Read a technical book each quarter.
+
+Work regularly on an open source project or write blogs.
+
+Read code.
+The best way to improve technically is to study interesting approaches.
+You need to apply the learnings to truly understand them.
+
+[bibliography]
+== Links

@@ -36,7 +36,7 @@ The possibilities inside are unlimited.
 It is like chess, the game has a simple set of rules.
 The variants how to play a game are limitless.
 
-This article is not about http://www.scrum.org/ScrumBut[Scrum But] impediments describing common errors how meetings are held, artefacts created or roles lived.
+This article is not about http://www.scrum.org/ScrumBut[Scrum But] impediments describing common errors how meetings are held, artifacts created or roles lived.
 
 We are talking about misunderstandings once you have reached this first level of mastership.
 Before talking about misunderstandings, we should remember the most important facet of Scrum.

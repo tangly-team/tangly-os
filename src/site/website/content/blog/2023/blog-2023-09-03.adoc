@@ -100,7 +100,7 @@ git rebase main                                 <1>
 
 [CAUTION]
 ====
-git rebase rewrites the commit history.
+Git rebase rewrites the commit history.
 It can be harmful to do it in shared branches.
 It can cause complex and hard to resolve merge conflicts.
 In these cases, instead of rebasing your branch against the default branch, consider pulling it with _git pull origin main_.

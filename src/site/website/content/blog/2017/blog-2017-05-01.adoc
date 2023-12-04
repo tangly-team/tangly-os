@@ -75,7 +75,7 @@ The coach works with multiple teams and the management to improve the organizati
 ** Delegate decision-making processes to your teams.
 ** Remove functional silos.
 ** Redefine the roles of product managers, middle managers, quality managers.
-** Eliminate waste: processes and artefacts not adding any value to the customer products.
+** Eliminate waste: processes and artifacts not adding any value to the customer products.
 Team coaching::
 The coach works with one or a few teams to improve their team-working and LeSS practices.
 It is common for a coach to take on the Scrum Master role.
@@ -86,7 +86,7 @@ It is common for a coach to take on the Scrum Master role.
 ** Learn, teach, coach through the stages of Shu Ha Ri (守破離).
 ** Empower the team to turn into the best of breed.
 Technical coaching::
-The coach works with (or on) a team on their actual codebase in order to improve technical practices and adopt agile development techniques such as simple design, refactoring, unit testing, test-driven development and acceptance test-driven development.
+The coach works with (or on) a team on their actual codebase to improve technical practices and adopt agile development techniques such as simple design, refactoring, unit testing, test-driven development and acceptance test-driven development.
 ** Discovering _code/design smells_.
 Places where code/design could be improved.
 ** Explaining modern, _clean_ code that is simple and easier to change and maintain.

@@ -18,7 +18,7 @@ Quite a few of the discussions are about job opportunities, and how interesting 
 
 I selected two articles to help everybody to decide if your software development job is worth the effort.
 
-Just go through the questions and ask yourself if the current product provides the current settings.
+Go through the questions and ask yourself if the current product provides the current settings.
 --
 
 == Joel Test
@@ -37,7 +37,7 @@ He will never again see the same issue.
 * Are you testers and quality experts integrated into your Scrum team and sitting in the same room?
 Do you think about testers and quality experts of roles and not people?
 * Do new candidates code and perform a refactoring to achieve clean code during their interview?
-footnote:[The link to article _The Cody Powel test: 8 questions to identify a lame programming job_ was removed.
+footnote:[The link to article _The Cody Powel test: Eight questions to identify a lame programming job_ was removed.
 The questions are up-to-date.
 His final remark is worth remembering.].
 
@@ -54,7 +54,7 @@ My personal list is:
 * Are you working in an agile team, preferably a Scrum team?
 * Has your team a sustainable development rhythm?
 * Are you using good software practice daily, such as TDD, ATDD, refactoring, check-in in Git master, CI/CD, deliver each day?
-* Can you contribute to the open source projects you are using during work time?
+* Can you contribute to the open-source projects you are using during work time?
 * If you are developing in Java, are you using IntelliJ IDEA as your IDE?
 
 Take ten minutes to decide if your current job is good enough.

@@ -6,42 +6,53 @@ tags: ["agile", "java", "series-students"]
 ---
 
 include::../fragments/_config-mb-blog.aodc[]
+:ref-ant: https://ant.apache.org[Ant]
+:ref-groovy: https://groovy-lang.org[Groovy]
+:ref-kotlin: https://kotlinlang.org[Kotlin]
+:ref-swift: https://swift.org[Swift]
 
 [.float-group]
 --
 image::2023-12-01-head.png[width=420,height=360,role=left]
-{ref-gradle} build tool is a fast, dependable, and adaptable open-source build automation tool with an elegant and extensible declarative build language.
+{ref-gradle} is a fast, dependable, and adaptable open-source build automation tool with an elegant and extensible declarative build language.
+Java is the primary supported programming language.
 
-Gradle is a popular build system for the JVM and is the default system for Android and Kotlin Multi-Platform projects.
+{ref-gradle} is a popular build system for the JVM and is the default system for Android and Kotlin Multi-Platform projects.
 
 It has a rich community plugin ecosystem.
+{ref-groovy}, {ref-kotlin}, {cpp}, and {ref-swift} stacks are well-supported.
 
 Gradle is fast, scalable, and can build projects of any size and complexity.
 
-Long ago I migrated all my projects from Maven to Gradle.
+Long ago I migrated all my projects from {ref-maven} to {ref-gradle}
+footnote:[Last millennium I had to migrate all my projects from {ref-ant} to {ref-maven}.].
 
 In the first years, I sometimes regretted this decision due to missing or faulty plugins.
 
 The plugins have now reached a level of maturity that you can do everything with Gradle
-footnote:[I had to wait until {ref-vaadin} provided an official supported Gradle plugin.].
+footnote:[I had to wait until {ref-vaadin} provided an official supported {ref-gradle} plugin.].
 --
 
 == Pros and Cons
 
-Advantages::
+=== Advantages
+
 Great Flexibility:::
-You can do everything within the build script as you write them with the full-fledged programming language Groovy.
+You can do everything within the build script as you write them with the full-fledged programming language Groovy or Kotlin based DSL. +
+XML is a data modeling language and probably the worst programming language ever used.
+The {ref-maven} approach to declarative builds is a reasonable idea, but the XML syntax is a nightmare.
 Great Performance:::
 Gradle does an awesome job in speeding up your builds with features like incremental builds, daemons, and clustered builds.
 Great IDE Support:::
 Jetbrains IntelliJ IDE has extensive Gradle support.
-Drawbacks::
+
+=== Drawbacks
+
 Steep learning curve:::
 Moreover, the whole team has to learn Gradle or you will be depending on the single Gradle ninja in your team.
 Groovy or Kotlin DSL:::
 The dynamic Groovy DSL and the heterogeneous plugin APIs will make you google everything.
-Unexpected side effects, behavior, and interdependencies between plugins.
-It often feels like magic.
+Unexpected side effects, behavior, and interdependencies between plugins often feel like magic.
 As Groovy is dynamically typed, it is really hard for IDEs to provide good and fast tooling.
 Contrarily, parsing and interpreting Maven’s XML is dead simple.
 Breaking Changes:::
@@ -50,14 +61,15 @@ New Gradle versions are often breaking existing plugins, and the poor maintainer
 [NOTE]
 ====
 Best practices how {ref-gradle} scripts should be structured have quite changed over the years.
-The {ref-gradle} team has learned a lot and has improved the tooling.
+The {ref-gradle} team has learned a lot and has impressively improved the tooling.
 
-As a drawback, I had to regularly refactor my scripts to keep them up to date.
+As a drawback, I had to regularly refactor my scripts to keep them up to date with best practices.
 ====
 
 == Maintain Your Build
 
-Build rot is the silent degradation of your build system’s effectiveness, a result of poor practices, neglect, or simply the passage of time.
+Build rot is the silent degradation of your build system’s effectiveness.
+It is a result of poor practices, neglect, or simply the passage of time.
 It is like rust corroding a piece of machinery.
 
 In this case, it gradually eats into the heart of your build system, causing it to slow down, become unpredictable, or become more challenging to maintain.
@@ -70,7 +82,7 @@ Poorly managed dependencies are one characteristic of build rot common to Maven 
 Both build systems offer powerful dependency management capabilities.
 But neglecting regular updates to these dependencies can add vulnerable libraries to your build, directly impact build speed, and introduce compatibility issues.
 
-An overly complex pom.xml file, cluttered with unnecessary dependencies or outdated plugins, can significantly extend build times and become a maintenance nightmare.
+An overly complex Gradle _build.gradle_ or maven _pom.xml_ file, cluttered with unnecessary dependencies or outdated plugins, can significantly extend build times and become a maintenance nightmare.
 
 [IMPORTANT]
 ====
@@ -78,7 +90,7 @@ _Use the https://github.com/ben-manes/gradle-versions-plugin[Versions Plugin] to
 _Define all your dependencies in a central https://docs.gradle.org/current/userguide/platforms.html[version catalog] configuration file._
 
 Check your dependencies once a week and systematically update them.
-Just use the latest version and run your unit and integration tests.
+Use the latest version and run your unit and integration tests.
 If everything is green, you are good to go.
 ====
 
@@ -120,7 +132,7 @@ _Refactoring is a mandatory practice to integrate improvements of your build too
 
 == Lessons Learnt
 
-Developers must understand the intricacies of these tools to use build systems like Maven and Gradle to the greatest effect.
+Developers must understand the intricacies of these tools to use build systems like {ref-maven} and {ref-gradle} to the greatest effect.
 By promoting a learning culture, you equip your team with the knowledge they need to best leverage these tools.
 Regular training and knowledge-sharing sessions can help reduce build rot and enhance productivity.
 
@@ -129,6 +141,12 @@ Do not rely on external consultants or the build tool vendor to solve your probl
 
 Update regularly your tools, plugins, and dependencies ensures you are leveraging the most efficient, optimized versions of libraries.
 This practice mitigates potential security issues and prevents the accumulation of _update debt_.
+
+I mean it.
+Update *every* week.
+Run your continuous delivery pipeline to validate your changes.
+You reduce the risk of breaking changes and can react immediately.
+The updates remove known bugs and security issues.
 
 Observability is critical in managing build rot.
 

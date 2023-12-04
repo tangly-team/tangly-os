@@ -18,7 +18,7 @@ Organizations often mix agile with Scrum.
 One of the most common misconceptions about {ref-scrum} is that it is synonymous with agile.
 {ref-manifesto} is an umbrella term that refers to a family of approaches that share common values and principles.
 
-Scrum is a commonly used agile framework that offers suggestions for how work can be organized to maximize value to the end-user.
+Scrum is a commonly used agile framework that offers suggestions for how work can be organized to maximize the value of the end-user.
 --
 
 While Scrum is implemented at a product development team level, agile has a focus on the entire organization including its leadership and company culture.
@@ -62,7 +62,7 @@ image::2022-03-01-scrum-empirism.png[width=420,height=360,role=left]
 
 The problem is when a team begins to use an agile framework incorrectly.
 
-The team begins to focus more on their adherence to the process than they do to staying true to Agile values.
+The team begins to focus more on their adherence to the process than they do to stay true to Agile values.
 
 This is Dark Agile <<detecting-agile-bullshit>>.
 

@@ -1,7 +1,7 @@
 ---
 title: "Semantic Commits for the Impatient"
 linkTitle: "Semantic Commits"
-date: 2023-11-23
+date: 2023-12-02
 tags: ["agile", "git", "series-students"]
 ---
 
@@ -9,7 +9,7 @@ include::../fragments/_config-mb-blog.aodc[]
 :ref-svn: https://subversion.apache.org/[Subversion]
 :ref-semver: http://semver.org/[SemVer]
 
-image::2023-12-02-head.png[width=420,height=360,role=left]
+image::2023-11-02-head.png[width=420,height=360,role=left]
 
 The *conventional commits* specification is a lightweight convention on top of commit messages.
 The additional information classifies the type of work performed in the commit.

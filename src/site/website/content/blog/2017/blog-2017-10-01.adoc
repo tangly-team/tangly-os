@@ -105,7 +105,7 @@ Here is the approach is to define and finalize a fixed price https://en.wikipedi
 Please remember the manifesto, it is all about collaboration and responding to change.
 
 * Create the product vision and initial backlog together.
-Write good epics and identify main topics.
+Write good epics and identify the main topics.
 Topics identify the minimum outcomes to maximize solution value.
 ** Commit to the vision and defined MVP.
 ** Define a budget for the product.
