@@ -39,7 +39,7 @@ awaitility = "org.awaitility:awaitility:4.2.0"
 slf4j-simple = "org.slf4j:slf4j-simple:2.0.9"
 
 apache-pdfbox = "org.apache.pdfbox:pdfbox:3.0.1"
-arch-unit = "com.tngtech.archunit:archunit-junit5-api:1.2.0"
+arch-unit = "com.tngtech.archunit:archunit-junit5-api:1.2.1"
 
 asciidoctorj = "org.asciidoctor:asciidoctorj:2.5.10"
 asciidoctorj-pdf = "org.asciidoctor:asciidoctorj-pdf:2.3.9"
@@ -105,7 +105,7 @@ microstream-storage = { module = "one.microstream:microstream-storage-embedded",
 microstream-jdk8 = { module = "one.microstream:microstream-persistence-binary-jdk8", version.ref = "microstream-version" }
 microstream-jdk17 = { module = "one.microstream:microstream-persistence-binary-jdk17", version.ref = "microstream-version" }
 
-mockito = "org.mockito:mockito-junit-jupiter:5.7.0"
+mockito = "org.mockito:mockito-junit-jupiter:5.8.0"
 
 scribe = "com.github.scribejava:scribejava-apis:8.3.1"
 
