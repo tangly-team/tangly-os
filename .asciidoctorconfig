@@ -6,6 +6,7 @@
 :icons: font
 
 :ref-adr: https://adr.github.io/[Architecture Design Records ADR]
+:ref-ant: https://ant.apache.org/[Apache Ant]
 :ref-arc42: https://arc42.org/[arc42]
 :ref-asciidoc: https://asciidoc.org/[Asciidoc]
 :ref-asciidoctor: https://asciidoctor.org/[Asciidoctor]
