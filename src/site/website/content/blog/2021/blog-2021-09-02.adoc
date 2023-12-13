@@ -58,9 +58,9 @@ The fourteen lecture themes are:
 .. [[chapter-13, Domain Driven Design]]Domain Driven Design Workshop
 .. [[chapter-14, Excellence for Architects]]Team and Technical Excellence for Architects
 
-The link:../../../../../ideas/learnings/lectures[slides of the SWAT course] are available for all interested parties.
+The link:../../../ideas/learnings/lectures[slides of the SWAT course] are available for all interested parties.
 
-The course provides link:../../../../ideas/learnings/lectures/#software-architecture-and-techniques-lectures[mandatory and optional literature] for studying.
+The course provides link:../../../ideas/learnings/lectures/#software-architecture-and-techniques-lectures[mandatory and optional literature] for studying.
 
 The reference texts are cite:[domain-driven-design,refactoring,building-evolutionary-architectures,working-effectively-with-legacy-code].
 
