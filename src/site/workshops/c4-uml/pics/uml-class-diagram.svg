@@ -1,0 +1,123 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<!--
+  - Copyright 2023 Marcel Baumann
+  -
+  - Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
+  - the License at
+  -
+  -          http://www.apache.org/licenses/LICENSE-2.0
+  -
+  - Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
+  - OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+  -
+  -->
+
+<svg contentStyleType='text/css' height='281px' preserveAspectRatio='none' style='width:670px;height:281px;background:#FFFFFF;' version='1.1' viewBox='0 0 670 281' width='670px'
+     xmlns='http://www.w3.org/2000/svg' zoomAndPan='magnify'>
+    <defs/>
+    <g>
+        <g id='elem_Actor'>
+            <rect codeLine='1' fill='#F1F1F1' height='122.5742' id='Actor' rx='2.5' ry='2.5' style='stroke:#181818;stroke-width:0.5;' width='276' x='9' y='7'/>
+            <ellipse cx='121.75' cy='27.3105' fill='#B4A7E5' rx='11' ry='11' style='stroke:#181818;stroke-width:1.0;'/>
+            <path
+                d='M118.1777,23.5757 L118.1777,21.4175 L125.5571,21.4175 L125.5571,23.5757 L123.0918,23.5757 L123.0918,31.6523 L125.5571,31.6523 L125.5571,33.8105 L118.1777,33.8105 L118.1777,31.6523 L120.6431,31.6523 L120.6431,23.5757 Z '
+                fill='#000000'/>
+            <text fill='#000000' font-family='sans-serif' font-size='12' font-style='italic' lengthAdjust='spacing' textLength='46' x='140.25' y='23.6016'>«Active»</text>
+            <text fill='#000000' font-family='sans-serif' font-size='14' font-style='italic' lengthAdjust='spacing' textLength='37' x='144.75' y='39.668'>Actor</text>
+            <line style='stroke:#181818;stroke-width:0.5;' x1='10' x2='284' y1='47.6211' y2='47.6211'/>
+            <line style='stroke:#181818;stroke-width:0.5;' x1='10' x2='284' y1='55.6211' y2='55.6211'/>
+            <ellipse cx='20' cy='66.6211' fill='#84BE84' rx='3' ry='3' style='stroke:#038048;stroke-width:1.0;'/>
+            <text fill='#000000' font-family='sans-serif' font-size='14' lengthAdjust='spacing' text-decoration='underline' textLength='250' x='29' y='73.1563'>send(Actor actor,
+                Message message)
+            </text>
+            <ellipse cx='20' cy='83.1094' fill='#84BE84' rx='3' ry='3' style='stroke:#038048;stroke-width:1.0;'/>
+            <text fill='#000000' font-family='sans-serif' font-size='14' lengthAdjust='spacing' textLength='93' x='29' y='89.6445'>String name()</text>
+            <polygon fill='#FFFF44' points='20,94.5977,24,98.5977,20,102.5977,16,98.5977' style='stroke:#B38D22;stroke-width:1.0;'/>
+            <text fill='#000000' font-family='sans-serif' font-size='14' lengthAdjust='spacing' textLength='181' x='29' y='106.1328'>receive(Message message)</text>
+            <polygon fill='#FFFF44' points='20,111.0859,24,115.0859,20,119.0859,16,115.0859' style='stroke:#B38D22;stroke-width:1.0;'/>
+            <text fill='#000000' font-family='sans-serif' font-size='14' font-style='italic' lengthAdjust='spacing' textLength='186' x='29' y='122.6211'>process(Message message)
+            </text>
+        </g>
+        <g id='elem_Queue'>
+            <rect codeLine='7' fill='#F1F1F1' height='48' id='Queue' rx='2.5' ry='2.5' style='stroke:#181818;stroke-width:0.5;' width='89' x='407.5' y='44.28'/>
+            <ellipse cx='422.5' cy='60.28' fill='#ADD1B2' rx='11' ry='11' style='stroke:#181818;stroke-width:1.0;'/>
+            <path
+                d='M424.9731,66.4231 Q424.3921,66.7219 423.7529,66.8713 Q423.1138,67.0207 422.4082,67.0207 Q419.9014,67.0207 418.5815,65.3689 Q417.2617,63.717 417.2617,60.5959 Q417.2617,57.4665 418.5815,55.8147 Q419.9014,54.1628 422.4082,54.1628 Q423.1138,54.1628 423.7612,54.3122 Q424.4087,54.4616 424.9731,54.7605 L424.9731,57.4831 Q424.3423,56.9021 423.7488,56.6323 Q423.1553,56.3625 422.5244,56.3625 Q421.1797,56.3625 420.4949,57.4292 Q419.8101,58.4958 419.8101,60.5959 Q419.8101,62.6877 420.4949,63.7544 Q421.1797,64.821 422.5244,64.821 Q423.1553,64.821 423.7488,64.5512 Q424.3423,64.2815 424.9731,63.7004 Z '
+                fill='#000000'/>
+            <text fill='#000000' font-family='sans-serif' font-size='14' lengthAdjust='spacing' textLength='45' x='436.5' y='65.571'>Queue</text>
+            <rect fill='#FFFFFF' height='16.1328' style='stroke:#000000;stroke-width:1.0;stroke-dasharray:2.0,2.0;' width='10' x='489.5' y='41.28'/>
+            <text fill='#000000' font-family='sans-serif' font-size='12' font-style='italic' lengthAdjust='spacing' textLength='8' x='490.5' y='53.8816'>T</text>
+            <line style='stroke:#181818;stroke-width:0.5;' x1='408.5' x2='495.5' y1='76.28' y2='76.28'/>
+            <line style='stroke:#181818;stroke-width:0.5;' x1='408.5' x2='495.5' y1='84.28' y2='84.28'/>
+        </g>
+        <g id='elem_Message'>
+            <rect codeLine='9' fill='#F1F1F1' height='56.6211' id='Message' rx='2.5' ry='2.5' style='stroke:#181818;stroke-width:0.5;' width='91' x='555.5' y='39.97'/>
+            <ellipse cx='570.5' cy='60.2805' fill='#ADD1B2' rx='11' ry='11' style='stroke:#181818;stroke-width:1.0;'/>
+            <path
+                d='M572.9731,66.4236 Q572.3921,66.7224 571.7529,66.8719 Q571.1138,67.0213 570.4082,67.0213 Q567.9014,67.0213 566.5815,65.3694 Q565.2617,63.7176 565.2617,60.5965 Q565.2617,57.4671 566.5815,55.8152 Q567.9014,54.1634 570.4082,54.1634 Q571.1138,54.1634 571.7612,54.3128 Q572.4087,54.4622 572.9731,54.761 L572.9731,57.4837 Q572.3423,56.9026 571.7488,56.6328 Q571.1553,56.3631 570.5244,56.3631 Q569.1797,56.3631 568.4949,57.4297 Q567.8101,58.4964 567.8101,60.5965 Q567.8101,62.6883 568.4949,63.7549 Q569.1797,64.8216 570.5244,64.8216 Q571.1553,64.8216 571.7488,64.5518 Q572.3423,64.282 572.9731,63.701 Z '
+                fill='#000000'/>
+            <text fill='#000000' font-family='sans-serif' font-size='12' font-style='italic' lengthAdjust='spacing' textLength='44' x='592' y='56.5716'>«struct»</text>
+            <text fill='#000000' font-family='sans-serif' font-size='14' lengthAdjust='spacing' textLength='59' x='584.5' y='72.638'>Message</text>
+            <line style='stroke:#181818;stroke-width:0.5;' x1='556.5' x2='645.5' y1='80.5911' y2='80.5911'/>
+            <line style='stroke:#181818;stroke-width:0.5;' x1='556.5' x2='645.5' y1='88.5911' y2='88.5911'/>
+        </g>
+        <g id='elem_MessageType'>
+            <rect codeLine='11' fill='#F1F1F1' height='48' id='MessageType' rx='2.5' ry='2.5' style='stroke:#181818;stroke-width:0.5;' width='124' x='539' y='226.57'/>
+            <ellipse cx='554' cy='242.57' fill='#EB937F' rx='11' ry='11' style='stroke:#181818;stroke-width:1.0;'/>
+            <path
+                d='M557.6143,249.07 L549.8945,249.07 L549.8945,236.6769 L557.6143,236.6769 L557.6143,238.8351 L552.3433,238.8351 L552.3433,241.508 L557.1162,241.508 L557.1162,243.6662 L552.3433,243.6662 L552.3433,246.9118 L557.6143,246.9118 Z '
+                fill='#000000'/>
+            <text fill='#000000' font-family='sans-serif' font-size='14' lengthAdjust='spacing' textLength='92' x='568' y='247.861'>MessageType</text>
+            <line style='stroke:#181818;stroke-width:0.5;' x1='540' x2='662' y1='258.57' y2='258.57'/>
+            <line style='stroke:#181818;stroke-width:0.5;' x1='540' x2='662' y1='266.57' y2='266.57'/>
+        </g>
+        <g id='elem_ActorCpp'>
+            <rect codeLine='18' fill='#F1F1F1' height='48' id='ActorCpp' rx='2.5' ry='2.5' style='stroke:#181818;stroke-width:0.5;' width='97' x='29.5' y='226.57'/>
+            <ellipse cx='44.5' cy='242.57' fill='#ADD1B2' rx='11' ry='11' style='stroke:#181818;stroke-width:1.0;'/>
+            <path
+                d='M46.9731,248.7131 Q46.3921,249.0119 45.7529,249.1613 Q45.1138,249.3107 44.4082,249.3107 Q41.9014,249.3107 40.5815,247.6589 Q39.2617,246.007 39.2617,242.8859 Q39.2617,239.7565 40.5815,238.1047 Q41.9014,236.4528 44.4082,236.4528 Q45.1138,236.4528 45.7612,236.6022 Q46.4087,236.7516 46.9731,237.0505 L46.9731,239.7731 Q46.3423,239.1921 45.7488,238.9223 Q45.1553,238.6525 44.5244,238.6525 Q43.1797,238.6525 42.4949,239.7192 Q41.8101,240.7858 41.8101,242.8859 Q41.8101,244.9777 42.4949,246.0444 Q43.1797,247.111 44.5244,247.111 Q45.1553,247.111 45.7488,246.8412 Q46.3423,246.5715 46.9731,245.9904 Z '
+                fill='#000000'/>
+            <text fill='#000000' font-family='sans-serif' font-size='14' lengthAdjust='spacing' textLength='65' x='58.5' y='247.861'>ActorCpp</text>
+            <line style='stroke:#181818;stroke-width:0.5;' x1='30.5' x2='125.5' y1='258.57' y2='258.57'/>
+            <line style='stroke:#181818;stroke-width:0.5;' x1='30.5' x2='125.5' y1='266.57' y2='266.57'/>
+        </g>
+        <g id='elem_ActorCmsis'>
+            <rect codeLine='21' fill='#F1F1F1' height='48' id='ActorCmsis' rx='2.5' ry='2.5' style='stroke:#181818;stroke-width:0.5;' width='110' x='162' y='226.57'/>
+            <ellipse cx='177' cy='242.57' fill='#ADD1B2' rx='11' ry='11' style='stroke:#181818;stroke-width:1.0;'/>
+            <path
+                d='M179.4731,248.7131 Q178.8921,249.0119 178.2529,249.1613 Q177.6138,249.3107 176.9082,249.3107 Q174.4014,249.3107 173.0815,247.6589 Q171.7617,246.007 171.7617,242.8859 Q171.7617,239.7565 173.0815,238.1047 Q174.4014,236.4528 176.9082,236.4528 Q177.6138,236.4528 178.2612,236.6022 Q178.9087,236.7516 179.4731,237.0505 L179.4731,239.7731 Q178.8423,239.1921 178.2488,238.9223 Q177.6553,238.6525 177.0244,238.6525 Q175.6797,238.6525 174.9949,239.7192 Q174.3101,240.7858 174.3101,242.8859 Q174.3101,244.9777 174.9949,246.0444 Q175.6797,247.111 177.0244,247.111 Q177.6553,247.111 178.2488,246.8412 Q178.8423,246.5715 179.4731,245.9904 Z '
+                fill='#000000'/>
+            <text fill='#000000' font-family='sans-serif' font-size='14' lengthAdjust='spacing' textLength='78' x='191' y='247.861'>ActorCmsis</text>
+            <line style='stroke:#181818;stroke-width:0.5;' x1='163' x2='271' y1='258.57' y2='258.57'/>
+            <line style='stroke:#181818;stroke-width:0.5;' x1='163' x2='271' y1='266.57' y2='266.57'/>
+        </g>
+        <g id='link_Message_MessageType'>
+            <path codeLine='13' d='M601,111 C601,146.97 601,197.57 601,226.63 ' fill='none' id='Message-backto-MessageType' style='stroke:#181818;stroke-width:1.0;'/>
+            <polygon fill='#181818' points='601,98.06,597,104.06,601,110.06,605,104.06,601,98.06' style='stroke:#181818;stroke-width:1.0;'/>
+            <text fill='#000000' font-family='sans-serif' font-size='13' lengthAdjust='spacing' textLength='27' x='602' y='173.1384'>type</text>
+            <text fill='#000000' font-family='sans-serif' font-size='13' lengthAdjust='spacing' textLength='8' x='591.925' y='215.7906'>1</text>
+        </g>
+        <g id='link_Actor_Queue'>
+            <path codeLine='15' d='M285.48,48.06 C312.29,46.44 340.17,46.39 366.25,49.28 C379.89,50.79 394.54,53.63 407.76,56.66 ' fill='none' id='Actor-backto-Queue'
+                  style='stroke:#181818;stroke-width:1.0;'/>
+            <polygon fill='#181818' points='302.25,30.28,299.9244,37.1058,305.3307,41.8778,307.6563,35.052,302.25,30.28' style='stroke:#181818;stroke-width:1.0;'/>
+            <text fill='#000000' font-family='sans-serif' font-size='13' lengthAdjust='spacing' textLength='62' x='303.25' y='43.8484'>messages</text>
+            <text fill='#000000' font-family='sans-serif' font-size='13' lengthAdjust='spacing' textLength='8' x='391.4688' y='50.9688'>1</text>
+        </g>
+        <g id='link_Queue_Message'>
+            <path codeLine='16' d='M496.31,80.02 C511.38,81.09 528.5,81.31 544.42,80.69 ' fill='none' id='Queue-to-Message'
+                  style='stroke:#181818;stroke-width:1.0;stroke-dasharray:7.0,7.0;'/>
+            <polygon fill='#181818' points='554.22,80.13,545.0259,76.5989,549.2266,80.3875,545.438,84.5883,554.22,80.13' style='stroke:#181818;stroke-width:1.0;'/>
+        </g>
+        <g id='link_Actor_ActorCpp'>
+            <path codeLine='19' d='M116.26,149.59 C105.55,177.6 94.34,206.88 86.84,226.46 ' fill='none' id='Actor-backto-ActorCpp'
+                  style='stroke:#181818;stroke-width:1.0;stroke-dasharray:7.0,7.0;'/>
+            <polygon fill='none' points='110.05,147.25,123.74,131.07,123.12,152.25,110.05,147.25' style='stroke:#181818;stroke-width:1.0;'/>
+        </g>
+        <g id='link_Actor_ActorCmsis'>
+            <path codeLine='22' d='M178.18,149.59 C189.06,177.6 200.43,206.88 208.03,226.46 ' fill='none' id='Actor-backto-ActorCmsis'
+                  style='stroke:#181818;stroke-width:1.0;stroke-dasharray:7.0,7.0;'/>
+            <polygon fill='none' points='171.31,152.25,170.6,131.07,184.37,147.18,171.31,152.25' style='stroke:#181818;stroke-width:1.0;'/>
+        </g>
+    </g>
+</svg>

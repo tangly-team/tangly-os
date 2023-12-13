@@ -24,7 +24,7 @@ Go through the questions and ask yourself if the current product provides the cu
 == Joel Test
 
 The Joel Test is slightly outdated.
-Keep his questions and just do the following changes:
+Keep his questions and do the following changes:
 
 * Can you replace https://en.wikipedia.org/wiki/Concurrent_Versions_System[CVS] with {ref-git} to reflect the current state of the industry?
 * Move from daily builds to continuous builds at check-in.
@@ -37,8 +37,8 @@ He will never again see the same issue.
 * Are you testers and quality experts integrated into your Scrum team and sitting in the same room?
 Do you think about testers and quality experts of roles and not people?
 * Do new candidates code and perform a refactoring to achieve clean code during their interview?
-footnote:[The link to article _The Cody Powel test: Eight questions to identify a lame programming job_ was removed.
-The questions are up-to-date.
+footnote:[The link to article _The Cody Powel test: Eight questions to identify a dull programming job_ was removed.
+The questions are up to date.
 His final remark is worth remembering.].
 
 No matter how great the potential projects and teammates might be, I do not think you can do truly meaningful work in an environment where you, the developer, are not empowered to succeed.

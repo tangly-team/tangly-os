@@ -1,7 +1,7 @@
 ---
-title: "Command Interpreter Revisited"
+title: "Command Interpreter"
 linkTitle: "Interpreter"
-date: 2023-12-12
+date: 2023-12-10
 tags: ["java", "C++", "architecture"]
 ---
 
@@ -10,6 +10,8 @@ include::../fragments/_config-mb-blog.aodc[]
 :ref-canbus: https://en.wikipedia.org/wiki/CAN_bus[CAN bus]
 :ref-ethernet: https://en.wikipedia.org/wiki/Ethernet[Ethernet]
 :ref-kiss: https://en.wikipedia.org/wiki/KISS_principle[Keeep It Simple, Stupid]
+:ref-json: https://en.wikipedia.org/wiki/JSON[JSON]
+:ref-json-schema: https://json-schema.org[JSON Schema]
 :ref-proto-buf: https://en.wikipedia.org/wiki/Protocol_Buffers[Protocol Buffers]
 :ref-spi: https://en.wikipedia.org/wiki/Serial_Peripheral_Interface[Serial Peripherical Interface]
 
@@ -18,21 +20,20 @@ image::2023-12-03-head.jpg[width=420,height=360,role=left]
 Most digital products have a command interpreter.
 
 External systems send requests to the system and often await an answer.
-This behavior could be modeled with a command interpreter.
+A command interpreter can model this behavior.
 
-The channels used to provide requests and return answers are variable.
+The channels used to transmit requests and return answers are variable.
+Messages can be transmitted other various buses and protocols.
+
+An operator can send a command over a {ref-canbus}, {ref-spi}, {ref-ethernet} or {ref-bluetooth} connection.
 
 A regular command line interpreter inputs commands as a string containing a request and associated parameters.
 The answer is displayed as a string.
 
-Commands can be transmitted other various buses and protocols.
-
-An operator can send a command over a {ref-canbus}, {ref-spi}, {ref-ethernet} or {ref-bluetooth} connection.
-
 The processed commands are the instructions executed on the machine.
 They are independent of the transmission layer and communication protocol.
 
-How could you design such a versatile interface using modern software construct from Java or {cpp}?
+How could you design such a versatile interface using modern software constructs from Java or {cpp}?
 
 Which design delegates most of the validation to the compiler
 footnote:[A powerful software quality approach is to delegate validation activities to the compiler.]?
@@ -45,7 +46,8 @@ It works well, but the compiler will not validate the descriptors.
 The solution does not well integrate with modern communication protocols such as {ref-proto-buf}.
 
 A modern approach would be to encode the command universe as a sealed class hierarchy in Java.
-A similar approach could be a variant template instance in {cpp}.
+
+A similar approach could be based on a variant template instance in {cpp}.
 
 The key concept is to encode the command structure into declarations instead of defining a domain model to describe them.
 The sole drawback of this approach is that you cannot dynamically add a command type.
@@ -190,6 +192,30 @@ An external software system would send commands through a bus such as {ref-ether
 Multiple channels are a requirement for a versatile command interpreter.
 
 I recommend {ref-proto-buf} for binary encoding of commands, queries, and answers.
+====
+
+== Channels
+
+The channel decodes all commands send through it into a command instances.
+The channel has knowledge of the command structure.
+This is needed to decode the command and dispatch it to the right interpreter.
+
+This approach delegates the encoding and decoding of commands to messages to the channel.
+This approach is the standard one for bus communication.
+
+The payload of the message does not need to be interpreted by the channel.
+This activity can be delegated to the interpreter.
+
+Consider using a factory pattern for the decoding operations.
+
+[TIP]
+====
+If you are using the Google {ref-proto-buf} library, you will have to describe the structure of all messages send over the channel.
+The library will generate the code to encode and decode the messages.
+
+The same can be said if your transmission format is {ref-json} and you want to validate the structure of the messages with a {ref-json-schema}.
+
+The above describes constraints are in line with how major encoding approaches are designed.
 ====
 
 == Thoughts

@@ -6,7 +6,6 @@ tags: ["agile", "java", "series-students"]
 ---
 
 include::../fragments/_config-mb-blog.aodc[]
-:ref-ant: https://ant.apache.org[Ant]
 :ref-groovy: https://groovy-lang.org[Groovy]
 :ref-kotlin: https://kotlinlang.org[Kotlin]
 :ref-swift: https://swift.org[Swift]

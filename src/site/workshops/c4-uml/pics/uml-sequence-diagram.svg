@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<!--
+  - Copyright 2023 Marcel Baumann
+  -
+  - Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
+  - the License at
+  -
+  -          http://www.apache.org/licenses/LICENSE-2.0
+  -
+  - Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
+  - OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+  -
+  -->
+
+<svg contentStyleType='text/css' height='267px' preserveAspectRatio='none' style='width:410px;height:267px;background:#FFFFFF;' version='1.1' viewBox='0 0 410 267' width='410px'
+     xmlns='http://www.w3.org/2000/svg' zoomAndPan='magnify'>
+    <defs/>
+    <g>
+        <rect fill='#FFFFFF' height='155.5527' style='stroke:#181818;stroke-width:1.0;' width='10' x='96.5' y='67.7988'/>
+        <rect fill='#FFFFFF' height='117.2422' style='stroke:#181818;stroke-width:1.0;' width='10' x='101.5' y='97.1094'/>
+        <rect fill='#FFFFFF' height='29.3105' style='stroke:#181818;stroke-width:1.0;' width='10' x='355.5' y='126.4199'/>
+        <line style='stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;' x1='27' x2='27' y1='36.4883' y2='232.3516'/>
+        <line style='stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;' x1='101' x2='101' y1='36.4883' y2='232.3516'/>
+        <line style='stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;' x1='266.5' x2='266.5' y1='36.4883' y2='232.3516'/>
+        <line style='stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;' x1='360.5' x2='360.5' y1='36.4883' y2='232.3516'/>
+        <rect fill='#E2E2F0' height='30.4883' rx='2.5' ry='2.5' style='stroke:#181818;stroke-width:0.5;' width='45' x='5' y='5'/>
+        <text fill='#000000' font-family='sans-serif' font-size='14' lengthAdjust='spacing' textLength='31' x='12' y='25.5352'>User</text>
+        <rect fill='#E2E2F0' height='30.4883' rx='2.5' ry='2.5' style='stroke:#181818;stroke-width:0.5;' width='45' x='5' y='231.3516'/>
+        <text fill='#000000' font-family='sans-serif' font-size='14' lengthAdjust='spacing' textLength='31' x='12' y='251.8867'>User</text>
+        <rect fill='#E2E2F0' height='30.4883' rx='2.5' ry='2.5' style='stroke:#181818;stroke-width:0.5;' width='61' x='71' y='5'/>
+        <text fill='#000000' font-family='sans-serif' font-size='14' lengthAdjust='spacing' textLength='47' x='78' y='25.5352'>Engine</text>
+        <rect fill='#E2E2F0' height='30.4883' rx='2.5' ry='2.5' style='stroke:#181818;stroke-width:0.5;' width='61' x='71' y='231.3516'/>
+        <text fill='#000000' font-family='sans-serif' font-size='14' lengthAdjust='spacing' textLength='47' x='78' y='251.8867'>Engine</text>
+        <rect fill='#E2E2F0' height='30.4883' rx='2.5' ry='2.5' style='stroke:#181818;stroke-width:0.5;' width='64' x='234.5' y='5'/>
+        <text fill='#000000' font-family='sans-serif' font-size='14' lengthAdjust='spacing' textLength='50' x='241.5' y='25.5352'>Receipt</text>
+        <rect fill='#E2E2F0' height='30.4883' rx='2.5' ry='2.5' style='stroke:#181818;stroke-width:0.5;' width='64' x='234.5' y='231.3516'/>
+        <text fill='#000000' font-family='sans-serif' font-size='14' lengthAdjust='spacing' textLength='50' x='241.5' y='251.8867'>Receipt</text>
+        <rect fill='#E2E2F0' height='30.4883' rx='2.5' ry='2.5' style='stroke:#181818;stroke-width:0.5;' width='88' x='316.5' y='5'/>
+        <text fill='#000000' font-family='sans-serif' font-size='14' lengthAdjust='spacing' textLength='74' x='323.5' y='25.5352'>Interpreter</text>
+        <rect fill='#E2E2F0' height='30.4883' rx='2.5' ry='2.5' style='stroke:#181818;stroke-width:0.5;' width='88' x='316.5' y='231.3516'/>
+        <text fill='#000000' font-family='sans-serif' font-size='14' lengthAdjust='spacing' textLength='74' x='323.5' y='251.8867'>Interpreter</text>
+        <rect fill='#FFFFFF' height='155.5527' style='stroke:#181818;stroke-width:1.0;' width='10' x='96.5' y='67.7988'/>
+        <rect fill='#FFFFFF' height='117.2422' style='stroke:#181818;stroke-width:1.0;' width='10' x='101.5' y='97.1094'/>
+        <rect fill='#FFFFFF' height='29.3105' style='stroke:#181818;stroke-width:1.0;' width='10' x='355.5' y='126.4199'/>
+        <polygon fill='#181818' points='84.5,63.7988,94.5,67.7988,84.5,71.7988,88.5,67.7988' style='stroke:#181818;stroke-width:1.0;'/>
+        <line style='stroke:#181818;stroke-width:1.0;' x1='27.5' x2='90.5' y1='67.7988' y2='67.7988'/>
+        <text fill='#000000' font-family='sans-serif' font-size='13' lengthAdjust='spacing' textLength='50' x='34.5' y='63.0566'>DoWork</text>
+        <polygon fill='#181818' points='254.5,93.1094,264.5,97.1094,254.5,101.1094,258.5,97.1094' style='stroke:#181818;stroke-width:1.0;'/>
+        <line style='stroke:#181818;stroke-width:1.0;' x1='111.5' x2='260.5' y1='97.1094' y2='97.1094'/>
+        <text fill='#000000' font-family='sans-serif' font-size='13' lengthAdjust='spacing' textLength='136' x='118.5' y='92.3672'>&lt;&lt; createRequest &gt;&gt;</text>
+        <polygon fill='#181818' points='343.5,122.4199,353.5,126.4199,343.5,130.4199,347.5,126.4199' style='stroke:#181818;stroke-width:1.0;'/>
+        <line style='stroke:#181818;stroke-width:1.0;' x1='266.5' x2='349.5' y1='126.4199' y2='126.4199'/>
+        <text fill='#000000' font-family='sans-serif' font-size='13' lengthAdjust='spacing' textLength='50' x='273.5' y='121.6777'>DoWork</text>
+        <polygon fill='#181818' points='277.5,151.7305,267.5,155.7305,277.5,159.7305,273.5,155.7305' style='stroke:#181818;stroke-width:1.0;'/>
+        <line style='stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;' x1='271.5' x2='359.5' y1='155.7305' y2='155.7305'/>
+        <text fill='#000000' font-family='sans-serif' font-size='13' lengthAdjust='spacing' textLength='65' x='283.5' y='150.9883'>WorkDone</text>
+        <line style='stroke:#A80036;stroke-width:2.0;' x1='351.5' x2='369.5' y1='146.7305' y2='164.7305'/>
+        <line style='stroke:#A80036;stroke-width:2.0;' x1='351.5' x2='369.5' y1='164.7305' y2='146.7305'/>
+        <polygon fill='#181818' points='122.5,181.041,112.5,185.041,122.5,189.041,118.5,185.041' style='stroke:#181818;stroke-width:1.0;'/>
+        <line style='stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;' x1='116.5' x2='265.5' y1='185.041' y2='185.041'/>
+        <text fill='#000000' font-family='sans-serif' font-size='13' lengthAdjust='spacing' textLength='98' x='128.5' y='180.2988'>RequestCreated</text>
+        <polygon fill='#181818' points='38.5,210.3516,28.5,214.3516,38.5,218.3516,34.5,214.3516' style='stroke:#181818;stroke-width:1.0;'/>
+        <line style='stroke:#181818;stroke-width:1.0;' x1='32.5' x2='95.5' y1='214.3516' y2='214.3516'/>
+        <text fill='#000000' font-family='sans-serif' font-size='13' lengthAdjust='spacing' textLength='33' x='44.5' y='209.6094'>Done</text>
+    </g>
+</svg>

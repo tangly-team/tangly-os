@@ -103,7 +103,7 @@ Your test conditions are complex.
 You want to have a legible code, start using hamcrest to write clear assertions in your tests.
 
 Please never access a database or a file system when running unit tests.
-If you low-level tests with files, just use an
+If you low-level tests with files, use an
 https://github.com/google/jimfs[in-memory file system mock].
 footnote:[After years of neglect, a Jimfs 1.2 was released in January 2021 and published on maven central.]
 
@@ -177,15 +177,15 @@ We have splendid experience with Atlassian and Google App solutions to mitigate 
 But a collocated team still rocks.
 IntelliJ IDEA::
 This IDE is the choice for refactoring, powerful context suggestions, and efficient programming.
-If you use Eclipse or Netbeans, just try a friendly refactoring competition with an IDEA convert.
+If you use Eclipse or Netbeans, try a friendly refactoring competition with an IDEA convert.
 Git::
 Stop using Subversion, CVS, TFS or other geriatric tools.
 Agile development, efficient integration in delivery pipelines, and extensive refactoring require Git.
-Just migrate now to {ref-git} and leave dreaded message _Tree conflict detected, please solve manually_ behind you.
+Migrate now to {ref-git} and leave dreaded message _Tree conflict detected, please solve manually_ behind you.
 
 These tools shall be used in the agile way.
 You do not have long-lived branches in your source code management tool.
-Either you have only short-lived local branches or better, you just work against the trunk.
+Either you have only short-lived local branches or better, you work against the trunk.
 Complex branching strategies are just a waste for a lean practitioner.
 
 I decided to collect all these hints in the same long post.

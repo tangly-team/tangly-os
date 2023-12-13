@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<!--
+  - Copyright 2023 Marcel Baumann
+  -
+  - Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
+  - the License at
+  -
+  -          http://www.apache.org/licenses/LICENSE-2.0
+  -
+  - Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
+  - OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+  -
+  -->
+
+<svg contentStyleType='text/css' height='355px' preserveAspectRatio='none' style='width:237px;height:355px;background:#FFFFFF;' version='1.1' viewBox='0 0 237 355' width='237px'
+     xmlns:xlink='http://www.w3.org/1999/xlink' xmlns='http://www.w3.org/2000/svg' zoomAndPan='magnify'>
+    <defs/>
+    <g>
+        <ellipse cx='102' cy='16' fill='#222222' rx='10' ry='10' style='stroke:none;stroke-width:1.0;'/>
+        <rect fill='#F1F1F1' height='34.1328' rx='12.5' ry='12.5' style='stroke:#181818;stroke-width:0.5;' width='88' x='58' y='67'/>
+        <text fill='#000000' font-family='sans-serif' font-size='12' lengthAdjust='spacing' textLength='68' x='68' y='88.6016'>Initialization</text>
+        <g id='elem_#130'>
+            <polygon fill='#F1F1F1' points='102,142.13,114,154.13,102,166.13,90,154.13,102,142.13' style='stroke:#181818;stroke-width:0.5;'/>
+        </g>
+        <rect fill='#F1F1F1' height='34.1328' rx='12.5' ry='12.5' style='stroke:#181818;stroke-width:0.5;' width='95' x='11.5' y='240.26'/>
+        <text fill='#000000' font-family='sans-serif' font-size='12' lengthAdjust='spacing' textLength='75' x='21.5' y='261.8616'>Some Activity</text>
+        <rect fill='#F1F1F1' height='34.1328' rx='12.5' ry='12.5' style='stroke:#181818;stroke-width:0.5;' width='108' x='7' y='315.4'/>
+        <text fill='#000000' font-family='sans-serif' font-size='12' lengthAdjust='spacing' textLength='88' x='17' y='337.0016'>Another activity</text>
+        <ellipse cx='146' cy='332.46' fill='none' rx='10' ry='10' style='stroke:#222222;stroke-width:1.0;'/>
+        <ellipse cx='146.5' cy='332.96' fill='#222222' rx='6' ry='6' style='stroke:none;stroke-width:1.0;'/>
+        <rect fill='#F1F1F1' height='34.1328' rx='12.5' ry='12.5' style='stroke:#181818;stroke-width:0.5;' width='106' x='91' y='186.13'/>
+        <text fill='#000000' font-family='sans-serif' font-size='12' lengthAdjust='spacing' textLength='86' x='101' y='207.7316'>Something else</text>
+        <g id='link_start_Initialization'>
+            <path d='M102,26.46 C102,35.4 102,49.13 102,60.83 ' fill='none' id='start-to-Initialization' style='stroke:#181818;stroke-width:1.0;'/>
+            <polygon fill='#181818' points='102,65.72,106,56.72,102,60.72,98,56.72,102,65.72' style='stroke:#181818;stroke-width:1.0;'/>
+        </g>
+        <g id='link_Initialization_#130'>
+            <path d='M102,101.54 C102,111.94 102,125.34 102,135.88 ' fill='none' id='Initialization-to-#130' style='stroke:#181818;stroke-width:1.0;'/>
+            <polygon fill='#181818' points='102,140.71,106,131.71,102,135.71,98,131.71,102,140.71' style='stroke:#181818;stroke-width:1.0;'/>
+            <text fill='#000000' font-family='sans-serif' font-size='11' lengthAdjust='spacing' textLength='55' x='33.5938' y='131.5978'>Some Test</text>
+        </g>
+        <g id='link_#130_Some Activity'>
+            <path d='M93.47,158.14 C82.71,162.45 64.68,171.52 57,186.13 C49.24,200.9 50.35,219.94 53.06,234.46 ' fill='none' id='#130-to-Some Activity'
+                  style='stroke:#181818;stroke-width:1.0;'/>
+            <polygon fill='#181818' points='54.21,238.98,56.2971,229.3548,53.1937,234.0844,48.4641,230.981,54.21,238.98' style='stroke:#181818;stroke-width:1.0;'/>
+            <text fill='#000000' font-family='sans-serif' font-size='11' lengthAdjust='spacing' textLength='22' x='58' y='207.8348'>true</text>
+        </g>
+        <g id='link_Some Activity_Another activity'>
+            <path d='M59.44,274.56 C59.72,284.72 60.08,297.94 60.39,309.08 ' fill='none' id='Some Activity-to-Another activity' style='stroke:#181818;stroke-width:1.0;'/>
+            <polygon fill='#181818' points='60.55,314.03,64.2913,304.9194,60.4072,309.032,56.2946,305.1479,60.55,314.03' style='stroke:#181818;stroke-width:1.0;'/>
+        </g>
+        <g id='link_Another activity_end'>
+            <path d='M115.45,332.46 C120.37,332.46 125.29,332.46 130.2,332.46 ' fill='none' id='Another activity-to-end' style='stroke:#181818;stroke-width:1.0;'/>
+            <polygon fill='#181818' points='134.98,332.46,125.98,328.46,129.98,332.46,125.98,336.46,134.98,332.46' style='stroke:#181818;stroke-width:1.0;'/>
+        </g>
+        <g id='link_#130_Something else'>
+            <path d='M107.49,161.28 C112.06,166.4 118.83,174 125.31,181.26 ' fill='none' id='#130-to-Something else' style='stroke:#181818;stroke-width:1.0;'/>
+            <polygon fill='#181818' points='128.29,184.71,125.2803,175.3323,124.9602,180.9801,119.3124,180.6599,128.29,184.71' style='stroke:#181818;stroke-width:1.0;'/>
+            <text fill='#000000' font-family='sans-serif' font-size='11' lengthAdjust='spacing' textLength='25' x='119.33' y='171.0648'>false</text>
+        </g>
+        <g id='link_Something else_end'>
+            <path d='M144.26,220.58 C144.65,245.35 145.38,292.02 145.76,316.15 ' fill='none' id='Something else-to-end' style='stroke:#181818;stroke-width:1.0;'/>
+            <polygon fill='#181818' points='145.85,321.04,149.721,311.9838,145.7786,316.0405,141.7218,312.0981,145.85,321.04' style='stroke:#181818;stroke-width:1.0;'/>
+            <text fill='#000000' font-family='sans-serif' font-size='11' lengthAdjust='spacing' textLength='83' x='146' y='261.9648'>Ending process</text>
+        </g>
+    </g>
+</svg>

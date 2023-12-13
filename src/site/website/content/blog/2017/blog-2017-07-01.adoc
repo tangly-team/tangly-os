@@ -47,7 +47,7 @@ Each team is self-managing, cross-functional and customer-focused, co-located, l
 From time to time, you could also remove a specific impediment.
 * Evangelise agile, lean values and principles.
 * Moderate Scrum meetings.
-Do not forget to regulate delegate moderation to your team.
+Remember to regulate delegate moderation to your team.
 * Gently transform your department and organization to become more agile.
 ** Remove yearly evaluation, practice biweekly face to face meetings.
 ** Remove any individual bonus, either introduce team bonuses.

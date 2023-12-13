@@ -195,4 +195,4 @@ Try to reform them.
 - https://pubs.opengroup.org/architecture/togaf9-doc/arch/chap44.html[TOGAF Architecture Governance].
 https://www.opengroup.org/[THe Open Group]. 2022.
 - https://www.pmi.org/disciplined-agile/process/governance[PMI Disciplined Agile Corporate Governance].
-https://pmi.org[PMI]. 2022
+https://www.pmi.org/[PMI]. 2022

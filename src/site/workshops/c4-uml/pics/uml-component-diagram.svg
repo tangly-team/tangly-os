@@ -1,0 +1,121 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<!--
+  - Copyright 2023 Marcel Baumann
+  -
+  - Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
+  - the License at
+  -
+  -          http://www.apache.org/licenses/LICENSE-2.0
+  -
+  - Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
+  - OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+  -
+  -->
+
+<svg contentStyleType='text/css' height='273px' preserveAspectRatio='none' style='width:1228px;height:273px;background:#FFFFFF;' version='1.1' viewBox='0 0 1228 273' width='1228px'
+     xmlns='http://www.w3.org/2000/svg' zoomAndPan='magnify'>
+    <defs/>
+    <g>
+        <g id='cluster_Application'>
+            <path
+                d='M8.5,64 L91.5,64 A3.75,3.75 0 0 1 94,66.5 L101,86.4883 L365.5,86.4883 A2.5,2.5 0 0 1 368,88.9883 L368,158.99 A2.5,2.5 0 0 1 365.5,161.49 L8.5,161.49 A2.5,2.5 0 0 1 6,158.99 L6,66.5 A2.5,2.5 0 0 1 8.5,64 '
+                style='stroke:#000000;stroke-width:1.5;fill:none;'/>
+            <line style='stroke:#000000;stroke-width:1.5;fill:none;' x1='6' x2='101' y1='86.4883' y2='86.4883'/>
+            <text fill='#000000' font-family='sans-serif' font-size='14' font-weight='bold' lengthAdjust='spacing' textLength='82' x='10' y='79.5352'>Application</text>
+        </g>
+        <g id='cluster_Drivers'>
+            <rect height='203.98' rx='2.5' ry='2.5' style='stroke:#181818;stroke-width:1.0;fill:none;' width='261' x='392' y='64'/>
+            <text fill='#000000' font-family='sans-serif' font-size='14' font-weight='bold' lengthAdjust='spacing' textLength='52' x='496.5' y='79.5352'>Drivers</text>
+        </g>
+        <g id='cluster_##6756'>
+            <path
+                d='M685.0047,92.8745 C688.5374,87.4787 692.7436,87.2156 697.2118,91.7211 C699.9616,84.7492 706.1417,85.6107 709.7333,90.8585 C713.0828,84.7681 717.8725,83.7708 722.7964,89.0495 C726.074,83.7282 731.7756,82.4962 734.9892,89.1149 C737.6239,82.0111 742.0783,82.047 747.0771,86.6802 C750.1676,82.5504 754.8196,81.5516 757.5277,87.0934 C761.426,81.0841 766.5267,81.3063 769.348,88.0887 C773.7049,83.2031 777.7172,83.6945 781.1194,89.173 C785.1012,83.2073 790.0535,82.475 794.4578,88.7111 C797.5388,83.2689 802.8399,83.8248 805.2488,89.3712 C809.7391,84.6911 815.3957,84.925 817.2778,92.0329 C820.7408,84.7456 826.5352,85.1361 830.719,91.3133 C840.5725,94.4113 841.144,101.9038 833.7959,108.1461 C842.5359,111.2019 843.5468,116.2492 838.9528,123.7201 C843.8306,129.1766 842.4737,135.7717 835.142,137.9609 C842.6186,145.4626 839.0814,151.218 830.8887,154.75 C826.6852,160.369 822.5405,162.0889 817.9381,155.1618 C815.103,161.6407 809.7127,162.0154 805.8042,156.2232 C802.138,161.2388 798.5404,162.129 794.6186,156.4914 C791.1697,162.6435 786.4859,162.482 782.7733,156.7543 C779.3817,163.9046 775.214,163.5889 770.3338,158.2352 C766.031,164.5464 761.6968,165.1934 757.4764,158.1558 C753.2871,164.3172 748.8512,164.4531 745.2286,157.6216 C741.398,162.8363 737.2559,162.6268 734.1283,156.9079 C730.4913,161.9291 725.4971,161.3999 722.2085,156.4896 C719.0319,162.3099 714.0161,162.2365 710.6435,156.689 C706.0623,162.4793 700.738,161.7541 697.9799,154.8677 C694.2127,160.591 690.3813,160.2341 686.1498,155.3873 C679.0317,152.8287 675.3804,145.7626 682.7368,139.9946 C672.8478,136.2578 671.8063,130.612 678.7259,122.9256 C672.601,116.0947 675.2461,109.9858 683.6904,108.0012 C676.6854,103.4998 676.975,96.0695 685.0047,92.8745 '
+                style='stroke:#181818;stroke-width:1.0;fill:none;'/>
+        </g>
+        <g id='cluster_Persistence'>
+            <path d='M861,16 C861,6 1036,6 1036,6 C1036,6 1211,6 1211,16 L1211,175.49 C1211,185.49 1036,185.49 1036,185.49 C1036,185.49 861,185.49 861,175.49 L861,16 '
+                  style='stroke:#181818;stroke-width:1.0;fill:none;'/>
+            <path d='M861,16 C861,26 1036,26 1036,26 C1036,26 1211,26 1211,16 ' fill='none' style='stroke:#181818;stroke-width:1.0;'/>
+            <text fill='#000000' font-family='sans-serif' font-size='14' font-weight='bold' lengthAdjust='spacing' textLength='82' x='995' y='41.5352'>Persistence</text>
+        </g>
+        <g id='cluster_Configuration Data'>
+            <path
+                d='M1021.5,64 L1160.5,64 A3.75,3.75 0 0 1 1163,66.5 L1170,86.4883 L1184.5,86.4883 A2.5,2.5 0 0 1 1187,88.9883 L1187,158.99 A2.5,2.5 0 0 1 1184.5,161.49 L1021.5,161.49 A2.5,2.5 0 0 1 1019,158.99 L1019,66.5 A2.5,2.5 0 0 1 1021.5,64 '
+                style='stroke:#000000;stroke-width:1.5;fill:none;'/>
+            <line style='stroke:#000000;stroke-width:1.5;fill:none;' x1='1019' x2='1170' y1='86.4883' y2='86.4883'/>
+            <text fill='#000000' font-family='sans-serif' font-size='14' font-weight='bold' lengthAdjust='spacing' textLength='138' x='1023' y='79.5352'>Configuration Data</text>
+        </g>
+        <g id='cluster_Logger'>
+            <rect height='97.49' rx='2.5' ry='2.5' style='stroke:#181818;stroke-width:1.0;fill:none;' width='110' x='885' y='64'/>
+            <path d='M944,64 L944,73.4883 L934,83.4883 L885,83.4883 ' fill='none' style='stroke:#181818;stroke-width:1.0;'/>
+            <text fill='#000000' font-family='sans-serif' font-size='14' font-weight='bold' lengthAdjust='spacing' textLength='49' x='888' y='78.5352'>Logger</text>
+        </g>
+        <g id='elem_HTTP'>
+            <ellipse cx='222' cy='122.25' fill='#F1F1F1' rx='8' ry='8' style='stroke:#181818;stroke-width:0.5;'/>
+            <text fill='#000000' font-family='sans-serif' font-size='14' lengthAdjust='spacing' textLength='36' x='204' y='152.7852'>HTTP</text>
+        </g>
+        <g id='elem_Loader'>
+            <rect fill='#F1F1F1' height='46.4883' rx='2.5' ry='2.5' style='stroke:#181818;stroke-width:0.5;' width='87' x='265.5' y='99'/>
+            <rect fill='#F1F1F1' height='10' style='stroke:#181818;stroke-width:0.5;' width='15' x='332.5' y='104'/>
+            <rect fill='#F1F1F1' height='2' style='stroke:#181818;stroke-width:0.5;' width='4' x='330.5' y='106'/>
+            <rect fill='#F1F1F1' height='2' style='stroke:#181818;stroke-width:0.5;' width='4' x='330.5' y='110'/>
+            <text fill='#000000' font-family='sans-serif' font-size='14' lengthAdjust='spacing' textLength='47' x='280.5' y='132.5352'>Loader</text>
+        </g>
+        <g id='elem_Process Manager'>
+            <rect fill='#F1F1F1' height='46.4883' rx='2.5' ry='2.5' style='stroke:#181818;stroke-width:0.5;' width='156' x='22' y='99'/>
+            <rect fill='#F1F1F1' height='10' style='stroke:#181818;stroke-width:0.5;' width='15' x='158' y='104'/>
+            <rect fill='#F1F1F1' height='2' style='stroke:#181818;stroke-width:0.5;' width='4' x='156' y='106'/>
+            <rect fill='#F1F1F1' height='2' style='stroke:#181818;stroke-width:0.5;' width='4' x='156' y='110'/>
+            <text fill='#000000' font-family='sans-serif' font-size='14' lengthAdjust='spacing' textLength='116' x='37' y='132.5352'>Process Manager</text>
+        </g>
+        <g id='elem_FTP'>
+            <ellipse cx='417' cy='228.74' fill='#F1F1F1' rx='8' ry='8' style='stroke:#181818;stroke-width:0.5;'/>
+            <text fill='#000000' font-family='sans-serif' font-size='14' lengthAdjust='spacing' textLength='25' x='404.5' y='259.2752'>FTP</text>
+        </g>
+        <g id='elem_Second Component'>
+            <rect fill='#F1F1F1' height='46.4883' rx='2.5' ry='2.5' style='stroke:#181818;stroke-width:0.5;' width='175' x='461.5' y='205.49'/>
+            <rect fill='#F1F1F1' height='10' style='stroke:#181818;stroke-width:0.5;' width='15' x='616.5' y='210.49'/>
+            <rect fill='#F1F1F1' height='2' style='stroke:#181818;stroke-width:0.5;' width='4' x='614.5' y='212.49'/>
+            <rect fill='#F1F1F1' height='2' style='stroke:#181818;stroke-width:0.5;' width='4' x='614.5' y='216.49'/>
+            <text fill='#000000' font-family='sans-serif' font-size='14' lengthAdjust='spacing' textLength='135' x='476.5' y='239.0252'>Second Component</text>
+        </g>
+        <g id='elem_First Component'>
+            <rect fill='#F1F1F1' height='46.4883' rx='2.5' ry='2.5' style='stroke:#181818;stroke-width:0.5;' width='155' x='408.5' y='99'/>
+            <rect fill='#F1F1F1' height='10' style='stroke:#181818;stroke-width:0.5;' width='15' x='543.5' y='104'/>
+            <rect fill='#F1F1F1' height='2' style='stroke:#181818;stroke-width:0.5;' width='4' x='541.5' y='106'/>
+            <rect fill='#F1F1F1' height='2' style='stroke:#181818;stroke-width:0.5;' width='4' x='541.5' y='110'/>
+            <text fill='#000000' font-family='sans-serif' font-size='14' lengthAdjust='spacing' textLength='115' x='423.5' y='132.5352'>First Component</text>
+        </g>
+        <g id='elem_Maintenance'>
+            <rect fill='#F1F1F1' height='46.4883' rx='2.5' ry='2.5' style='stroke:#181818;stroke-width:0.5;' width='127' x='693.5' y='99'/>
+            <rect fill='#F1F1F1' height='10' style='stroke:#181818;stroke-width:0.5;' width='15' x='800.5' y='104'/>
+            <rect fill='#F1F1F1' height='2' style='stroke:#181818;stroke-width:0.5;' width='4' x='798.5' y='106'/>
+            <rect fill='#F1F1F1' height='2' style='stroke:#181818;stroke-width:0.5;' width='4' x='798.5' y='110'/>
+            <text fill='#000000' font-family='sans-serif' font-size='14' lengthAdjust='spacing' textLength='87' x='708.5' y='132.5352'>Maintenance</text>
+        </g>
+        <g id='elem_Configuration'>
+            <rect fill='#F1F1F1' height='46.4883' rx='2.5' ry='2.5' style='stroke:#181818;stroke-width:0.5;' width='136' x='1035' y='99'/>
+            <rect fill='#F1F1F1' height='10' style='stroke:#181818;stroke-width:0.5;' width='15' x='1151' y='104'/>
+            <rect fill='#F1F1F1' height='2' style='stroke:#181818;stroke-width:0.5;' width='4' x='1149' y='106'/>
+            <rect fill='#F1F1F1' height='2' style='stroke:#181818;stroke-width:0.5;' width='4' x='1149' y='110'/>
+            <text fill='#000000' font-family='sans-serif' font-size='14' lengthAdjust='spacing' textLength='96' x='1050' y='132.5352'>Configuration</text>
+        </g>
+        <g id='elem_Trace'>
+            <rect fill='#F1F1F1' height='46.4883' rx='2.5' ry='2.5' style='stroke:#181818;stroke-width:0.5;' width='78' x='901' y='99'/>
+            <rect fill='#F1F1F1' height='10' style='stroke:#181818;stroke-width:0.5;' width='15' x='959' y='104'/>
+            <rect fill='#F1F1F1' height='2' style='stroke:#181818;stroke-width:0.5;' width='4' x='957' y='106'/>
+            <rect fill='#F1F1F1' height='2' style='stroke:#181818;stroke-width:0.5;' width='4' x='957' y='110'/>
+            <text fill='#000000' font-family='sans-serif' font-size='14' lengthAdjust='spacing' textLength='38' x='916' y='132.5352'>Trace</text>
+        </g>
+        <g id='link_HTTP_Loader'>
+            <path d='M231.18,122.25 C242.53,122.25 253.87,122.25 265.22,122.25 ' fill='none' id='HTTP-Loader' style='stroke:#181818;stroke-width:1.0;'/>
+        </g>
+        <g id='link_FTP_Second Component'>
+            <path d='M426.28,228.74 C437.95,228.74 449.61,228.74 461.28,228.74 ' fill='none' id='FTP-Second Component' style='stroke:#181818;stroke-width:1.0;'/>
+        </g>
+        <g id='link_First Component_FTP'>
+            <path d='M471.03,145.92 C457.23,166.81 437.23,197.1 425.83,214.36 ' fill='none' id='First Component-to-FTP' style='stroke:#181818;stroke-width:1.0;'/>
+            <polygon fill='#181818' points='422.59,218.27,430.8896,212.9674,425.347,214.0988,424.2156,208.5562,422.59,218.27' style='stroke:#181818;stroke-width:1.0;'/>
+        </g>
+    </g>
+</svg>

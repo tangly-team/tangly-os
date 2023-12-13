@@ -1,7 +1,7 @@
 ---
 title: "Sensors and Actuators"
 linkTitle: "Sensors and Actuators"
-date: 2023-12-15
+date: 2023-12-12
 tags: ["C++", "architecture", "embedded"]
 ---
 
@@ -9,6 +9,7 @@ include::../fragments/_config-mb-blog.aodc[]
 :ref-bluetooth: https://en.wikipedia.org/wiki/Bluetooth[Bluetooth]
 :ref-canbus: https://en.wikipedia.org/wiki/CAN_bus[CAN bus]
 :ref-dependency-injection: https://en.wikipedia.org/wiki/Dependency_injection[Dependency Injection]
+:ref-i2c: https://en.wikipedia.org/wiki/I%C2%B2C[I2C]
 :ref-ethernet: https://en.wikipedia.org/wiki/Ethernet[Ethernet]
 :ref-kiss: https://en.wikipedia.org/wiki/KISS_principle[Keeep It Simple, Stupid]
 :ref-proto-buf: https://en.wikipedia.org/wiki/Protocol_Buffers[Protocol Buffers]
@@ -141,7 +142,11 @@ Polling is cumbersome and expensive.
 Either the programmer guesses a polling frequency and misses sometimes data.
 Or he chooses a high-frequency sampling rate and wastes computing resources.
 
-Two major interrupt approaches exist:
+[sidebar]
+Interrupt routines are written in _C_ or in _assembler_.
+The {cpp} language is not supported in interrupt routines.
+
+Three major interrupt approaches exist:
 
 - The interrupt routine reads the new value of the sensor and stores the data at a defined location.
 The application accesses the sensor stored value when needed.
@@ -151,6 +156,42 @@ The drawback is that the program is not informed when a new value is received.
 - The interrupt routine reads the new value and sends the value as a message to interested parties.
 +
 The approach is a reactive system triggering the application each time input data is received.
+- The interrupt routine calls a callback function.
+The callback function is a function pointer to a static {cpp} function and often has the reference of the object abstracting the sensor.
+Below is a potential implementation of the callback function and callback registration is shown.
++
+[source,cpp]
+----
+/**
+ * @brief Register a callback function to be called when data is received.
+ * @param callback The callback function.
+ * @param self The reference to the object.
+ */
+void registerCallback(void (*callback)(void* self, byte* data, int length), void* self);
+
+class Sensor {
+public:
+/**
+ * @brief Declares the static callback function.
+ * @param self The reference to the object.
+ * @param data The data received.
+ * @param length The length of the data.
+ */
+ static void callback(void* self, byte* data, int length) {
+    Sensor* self = reinterpret_cast<Sensor*>(data);
+    self->callback(data, length);
+}
+
+/**
+ * @brief Object callback function.
+ * @param data The data received.
+ * @param length The length of the data.
+ */
+void callback(byte* data, int length) {
+    // 1. do something with the data. If the sensor is a thread, protect the object data with a mutex or a lock.
+    // 2. if the sensor is an actor, create a message with the payload and send it to own mailbox.
+}
+----
 
 The interrupt routine or the underlying hardware can handle sensor inputs in two ways:
 
@@ -168,6 +209,41 @@ I recommend interrupt triggering input data gathering and reacting to input *cha
 
 This design approach minimizes microcontroller resource consumption and simplifies the control algorithms.
 ====
+
+== Tasks and Synchronization
+
+=== Actuators
+
+Actuators are often plain old objects.
+Modern microcontrollers provide memory-mapped registers to propagate the value to the actuator hardware.
+The update operation often writes a new value to a memory-mapped register.
+The writing into one register is atomic and does not need additional synchronization.
+
+If the update operation is more complex and writes multiple registers, the operation should be protected by a mutex.
+
+Beware that mutexes can create deadlocks.
+The cleanest approach is to use mutexes with priority inheritance.
+Therefore, a task will never have to wait for a lower priority task to release a lock or a mutex.
+
+Another trick is to set all writing tasks to the same priority.
+This guarantees that an update operation is not interrupted by another task requesting the same resource.
+
+[CAUTION]
+====
+You could also implement the actuator with a tread.
+
+This approach is often overkill.
+It complicates unnecessary application design.
+====
+
+=== Sensors
+
+Sensors shall always be implemented as a thread.
+Otherwise, a client calling an actuator with a synchronous call and waiting for a sensor result will block the whole system.
+
+Another trick is to use an interrupt routine to trigger the sensor reading and publish the data on a message queue.
+The interrupt routine takes the role of the thread.
+This guarantees that clients are not blocked by the sensor reading because they get the data asynchronously.
 
 == Lessons Learnt
 

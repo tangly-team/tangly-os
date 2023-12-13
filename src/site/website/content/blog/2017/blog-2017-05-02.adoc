@@ -51,7 +51,7 @@ You have want to have a local copy of an existing git repository:
 git clone <repository link>     <1>
 ----
 
-<1> The link is either an https or an ssh link to the remote repository.
+<1> The link is either the https or an ssh link to the remote repository.
 
 Once you have a local copy of a shared repository, you can update your copy with the changes of the remote repository using:
 

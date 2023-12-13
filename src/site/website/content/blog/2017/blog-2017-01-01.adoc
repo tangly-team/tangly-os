@@ -59,7 +59,7 @@ Show your different solutions to the problem.
 
 [TIP]
 ====
-As a stakeholder I want to see:
+As a stakeholder, I want to see:
 
 * At least three approaches.
 * Show your ROI estimation for each approach.
@@ -141,7 +141,7 @@ A T person is a master in one technical area
 - This is the leg of the T
 - And knows about a lot of domains. This is the roof of the T.
 
-In fact, Square-shaped team members would be better but are very hard to find.
+In fact, Square-shaped team members would be better but are arduous to find.
 To increase your ROI, the specialist of the team should perform the tasks it is best suited for.
 
 But a good team also does risk management to ensure that another person can do the job if the main specialist is not available.
@@ -287,7 +287,7 @@ image:2017-01-01-Process.jpg[width=420,height=360,role=left]
 Scrum is a framework.
 You can use it to manage different things, including complex product development.
 
-Scrum is defined in the Scrum Guide and consists of roles, events and meetings, artefacts, and a set of rules binding them together.
+Scrum is defined in the Scrum Guide and consists of roles, events and meetings, artifacts, and a set of rules binding them together.
 It is based on empirical process control and bottom-up thinking.
 
 [TIP]

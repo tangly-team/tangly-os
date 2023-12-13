@@ -98,7 +98,7 @@ Working software over comprehensive documentation
 
 Customer collaboration over contract negotiation
 
-Responding to change over following a plan
+Responding to changes over following a plan
 ____
 
 Here is the approach is to define and finalize a fixed price https://en.wikipedia.org/wiki/Agile_contracts[agile contract].

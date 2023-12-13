@@ -1,0 +1,282 @@
+---
+title: "Bus Sensors and Actuators"
+linkTitle: "Bus Actuators"
+date: 2023-12-15
+tags: ["C++", "architecture", "embedded"]
+---
+
+include::../fragments/_config-mb-blog.aodc[]
+:ref-bluetooth: https://en.wikipedia.org/wiki/Bluetooth[Bluetooth]
+:ref-canbus: https://en.wikipedia.org/wiki/CAN_bus[CAN bus]
+:ref-canlely: https://opensource.lely.com/canopen/[lely CANOpen]
+:ref-canopennode: https://github.com/CANopenNode/CANopenNode[CANopenNode]
+:ref-ethernet: https://en.wikipedia.org/wiki/Ethernet[Ethernet]
+:ref-i2c: https://en.wikipedia.org/wiki/I%C2%B2C[I2C]
+:ref-poe: https://en.wikipedia.org/wiki/Power_over_Ethernet[Power over Ethernet]
+:ref-spi: https://en.wikipedia.org/wiki/Serial_Peripheral_Interface[Serial Peripherical Interface]
+
+[.float-group]
+--
+image::2023-12-05-head.jpg[width=420,height=360,role=left]
+
+Your embedded system has a set of sensors and actors.
+
+Some sensors and actors are connected to a bus.
+Typical buses are {ref-canbus}, {ref-spi}, {ref-ethernet}, {ref-bluetooth}, or {ref-i2c} standards.
+
+The bus is a shared medium used to communicate with a set of external active or passive components.
+
+Which design rules shall you follow when designing sensors and actors using a bus architecture?
+
+Do you need to consider threading design?
+
+Should you use synchronous or asynchronous communication?
+
+Should you provide queues for sending and receiving messages?
+--
+
+== Synchronous Sending
+
+Your application can always send messages to a bus synchronously.
+These messages are in general commands to physical devices connected through the bus.
+
+=== Synchronous Unbuffered Sending
+
+The send function is a blocking operation until the message is transformed into a frame and sent over the bus.
+You should select this approach only if the frame creation and the bus frame transmission is fast.
+
+Beware that bus contention can slow down the frame transmission.
+
+_I do not recommend this approach if you send burst of messages or messages with bigger payloads._
+
+*_The approach works well for transmitting irregular short frames and is simple to implement._*
+
+[CAUTION]
+====
+Analyze the application call stack for all synchronous sending operations.
+
+If some driver functions use blocking calls such as polling waits, the thread, the process and in the worst case, the processor core can be blocked until the call returns.
+
+If the instruction is a slow initialization request, the system freezes for tens of seconds.
+====
+
+=== Asynchronous Buffered Sending
+
+Modern bus drivers are able to buffer messages and return immediately.
+Often {ref-canbus} drivers are implemented with a transmission queue.
+This approach provides asynchronous processing of a synchronous transmission request.
+The caller still has to handle the case when the queue is full.
+
+Beware that transmission errors are not reported back synchronously to the caller.
+An asynchronous error can be reported through a callback function.
+
+_This approach requires a *thread* to process the queue._
+_The processing thread is either part of the bus driver or part of the application._
+
+_Microcontrollers sometimes implement the thread as an interrupt service routine._
+_I would try to avoid the interrupt routine approach if you have a RTOS available._
+
+*_This approach scales well for hundreds of devices and thousands of messages per second._*
+*_The sole limitation is the bus bandwidth._*
+
+== Asynchronous Receiving
+
+Please never use a synchronous receiving operation approach.
+If you do so, you will block the thread until a message is received.
+The waiting time is unpredictable.
+If the sending function call graph also handles the sending of the message, you will end up in a deadlock.
+
+This is a major design rule.
+You must at least once break the synchronous application calling sequence of sending and receiving frames.
+Therefore, you need at least two threads in your solution.
+_One application thread and one bus driver thread._
+
+=== Asynchronous Callbacks
+
+The bus driver can call a callback function when a message is received.
+The asynchronous called function is executed in the context of the bus driver.
+Therefore, the callback function shall delegate further processing to another thread.
+
+[TIP]
+====
+{ref-canlely} asynchronous callback when a PDO is written in the memory of the device representation.
+
+_The documentation clearly states the user is responsible to provide needed threads for processing._
+
+The design of the {ref-canlely} is an example of shared memory implementation.
+The device state is replicated in the local application.
+The bus receives frames and updates the local device state objects.
+
+Changes are propagated to the application with registered asynchronous callbacks.
+
+{ref-canopennode} is another example of a {ref-canbus} driver.
+All code of the {ref-canopennode} driver is non-blocking.
+====
+
+The callback shall not block the bus driver thread.
+It should hand over the payload to another thread for further processing.
+The handover is easily done by sending a message to the processing thread.
+
+*_This approach is implemented through the actor model._*
+*_All realtime operating systems support this approach through tasks and message queues._*
+
+== Performance
+
+Use a synchronous calling sequence for all sending operations only if the bus frame transmission is fast.
+
+Break a synchronization calling sequence for all receiving operations.
+
+The actor model is an ideal solution for asynchronous message processing.
+
+[.text-center]
+image:2023-12-05-can.png[role="text-center"]
+
+[TIP]
+====
+The {ref-canlely} design is based on a set of clever decisions.
+
+The implementation is completely passive.
+The library does not perform any I/O besides maybe reading some files from the disk.
+
+It does not create threads nor does it access the system clock.
+Instead, it relies on the user to send and receive bus frames and update the clock.
+This allows the library to be easily embedded in a wide variety of applications.
+_This implies that the user shall provide at least one thread to run the library._
+
+The library is also *asynchronous*.
+Issuing a request is *always* a non-blocking operation.
+If the request is confirmed, the API accepts a callback function which is invoked once the request completes with success or failure.
+This allows the stack to run in a single thread, even when processing dozens of simultaneous requests.
+This configuration is not uncommon for a master node.
+
+Threading is delegated to the user of the driver.
+The calling application is responsible for creating threads and protecting shared resources accessed through the callbacks.
+====
+
+[plantuml,svg,caption="Bus Sensor and Actor Architecture",role="text-center"]
+----
+@startuml
+
+participant Motor1
+participant Drv
+participant Motor2
+
+activate Motor1
+Motor1 -> Drv : sendMsg(msg)
+Motor1 -> Motor1 : nextMsg()
+deactivate Motor1
+note left: actor request the sending of a bus\nmessage and wait on next msg.
+
+activate Drv
+Drv<--] : frameReceived
+Drv -> Drv : rxFrame()
+note right: process received frame.
+Drv -> Motor1 : callback(msg)
+deactivate Drv
+
+activate Motor2
+Motor2 -> Drv : sendMsg(msg)
+Motor2 -> Motor2 : nextMsg()
+deactivate Motor2
+note right: actor request the sending of a bus\nmessage and wait on next msg.
+
+
+activate Drv
+Drv<--] : frameReceived
+Drv -> Drv : rxFrame()
+Drv -> Motor2 : callback(msg)
+Drv -> Drv : txFrame()
+Drv-->] : frameSent
+Drv -> Drv : txFrame()
+note right: transmit frame.
+Drv-->] : frameSent
+deactivate Drv
+
+activate Motor1
+Motor1 -> Motor1 : processRxMsg()
+Motor1 -> Motor1 : nextMsg()
+deactivate Motor1
+note left: actor process the message containing\nthe rx frame and wait on next msg.
+
+activate Drv
+Drv<--] : frameReceived
+Drv -> Drv : rxFrame()
+Drv -> Motor2 : callback(msg)
+deactivate Drv
+
+activate Motor2
+Motor2 -> Motor2 : processRxMsg()
+Motor2 -> Motor2 : nextMsg()
+Motor2 -> Motor2 : processRxMsg()
+Motor2 -> Motor2 : nextMsg()
+deactivate Motor2
+note right: actor process the two messages containing\nthe rx frame\and wait on next msg.
+
+@enduml
+----
+
+The operation _sendMsg_ simply adds a message to the driver mailbox.
+The operation _callback_ similarly adds a message to the motor actor mailbox.
+These operations are fast and non-blocking.
+Shared resources are the mailboxes.
+The RTOS explicitly protects these objects against concurrent modifications.
+
+[TIP]
+====
+The callback mechanism shall implement a selector.
+The callback function shall dispatch the message to the correct actor mailbox.
+
+The selector is a simple mapping between the device identifier and the actor object if exactly one actor is responsible for the device.
+Otherwise, a more complex registration mechanism mapping a list of actors to a device identifier is required.
+
+Both approaches are implemented with a few tens of source code lines.
+The {cpp} or Java standard libraries provide the required data structures and algorithms.
+====
+
+The activation blocks show when a thread is active in a single core processor.
+If multiple cores are available to the application, the threads can run in parallel when messages are delivered in actor mailboxes.
+
+In both cases, most of the time, actors are suspended waiting for the next message.
+
+== Lessons Learnt
+
+Do not ignore threading design when designing sensors and actors using a bus architecture.
+Bus architectures are common in embedded systems.
+Classical buses are {ref-canbus}, {ref-spi}, {ref-ethernet}, {ref-i2c} standards.
+
+[TIP]
+====
+Future Tesla cars will use a {ref-ethernet} bus to connect all sensors and actors.
+{ref-canbus} is discarded as a legacy bus.
+
+Subsystems will be connected through a {ref-ethernet} switch and have local processing capabilities.
+The latency is below 1 millisecond and is suitable for control by wire approaches.
+
+Power is provided through a {ref-ethernet} cable and {ref-poe}.
+The standard voltage for the whole car is 48V.
+
+The approach tremendously simplifies the wiring of the car.
+====
+
+Multiple devices connected to a bus are per nature asynchronous.
+You cannot predict when a device will send a message.
+Therefore, the reception and processing of a received message must be asynchronous and run in a separate thread.
+
+Always provide send and receive queues for sending and receiving messages for sophisticated devices.
+The queues are used to decouple the bus driver from the application.
+All receive and transmit operations are asynchronous.
+This design implies asynchronous handling of protocol error codes.
+
+Small embedded systems shall use the RTOS provided primitives for communication between the driver and the application.
+
+Do not use abstraction layers to isolate the used realtime kernel.
+It makes the code more complex and less efficient.
+Modern development environments with powerful refactoring tools make the change of the RTOS simple.
+
+_Be honest._
+_You seldom replace the selected RTOS with another one in your device family._
+
+_If you have a complex realtime system, evaluate using a linux based operating system._
+_Use linux design patterns to implement your application._
+_Training will be easier._
+_Numerous external suppliers can provide support._
