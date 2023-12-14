@@ -31,28 +31,28 @@ It is irrelevant if developed using agile approaches or traditional older ones.
 . _The sum of all source code artifacts is the true design blueprint or software architecture_.
 . The real software architecture evolves (better or worse) every day of the product, as people do programming.
 . The _real living architecture needs to be grown every day_ through acts of programming by master programmers.
-. A software architect who is not in touch with the evolving source code of the product is out of touch with reality.
+. A software architect not being in touch with the evolving source code of the product is out of touch with reality.
 . _Every programmer is some kind of architect_ — whether wanted or not.
 Every act of programming is some kind of architectural act — good or bad, small or large, intended or not.
 
 Agile architecture comes from the behavior of agile architecting
 
-* hands-on master-programmer architects, a culture of excellence in code,
-* ban emphasis on pair-programming coaching for high-quality code/design,
-* agile modeling design workshops,
-* _test-driven development and refactoring_,
-* and other hands-on-the-code behaviors.
+* Hands-on master-programmer architects, a culture of excellence in code,
+* Van emphasis on pair-programming coaching for high-quality code/design,
+* Agile modeling design workshops,
+* _Test-driven development and refactoring_,
+* And other hands-on-the-code behaviors.
 
 == Quality of Your Architecture
 
 You shall measure the quality of your design and produced software artifacts.
 
-* Static analysis tools - validate your source code -,
-* Test driven development - validate your design -,
-* Acceptance test driven development - validate your functional requirements -,
-* Fitness functions - validate your non-functional requirements -,
-* Pair programming - improve the produced artifacts through wisdom of the crowd -,
-* Pair review and pull requests - validate your developers' work -.
+* Static analysis tools to validate your source code,
+* Test driven development to validate your design,
+* Acceptance test driven development to validate your functional requirements,
+* Fitness functions to validate your non-functional requirements,
+* Pair programming to improve the produced artifacts through wisdom of the crowd,
+* Pair review and pull requests to validate your developers' work.
 
 The above validation activities are backed through tools.
 But these tools can only detect non-quality and never provide a proof you achieved quality.

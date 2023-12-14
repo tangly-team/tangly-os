@@ -28,7 +28,8 @@ If your development department is using another tool, you should consider moving
 We want to investigate various contexts in our source code history and identify suspects.
 A context can be a single file, a class, a package or a module.
 
-Gather overall information concerning your repository – use the optionals --before and --after to restrict the time range you are interested in -
+Gather overall information concerning your repository .
+Use the optionals --before and --after to restrict the time range you are interested in.
 
 [source,console]
 ----
