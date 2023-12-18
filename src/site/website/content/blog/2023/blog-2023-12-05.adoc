@@ -280,3 +280,8 @@ _If you have a complex realtime system, evaluate using a linux based operating s
 _Use linux design patterns to implement your application._
 _Training will be easier._
 _Numerous external suppliers can provide support._
+
+[bibliography]
+== Links
+
+include::../fragments/_series-agile-design-links.adoc[]

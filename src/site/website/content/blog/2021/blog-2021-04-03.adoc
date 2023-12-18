@@ -25,8 +25,8 @@ https://en.wikipedia.org/wiki/Acceptance_testing[Acceptance Testing] verifies th
 You get the mechanism to avoid regression problems when releasing your application for free.
 
 The associated theory was published in seminal books more than a *decade* ago.
-Just start applying the principles.
-You can later still improve your approach based on your learnings.
+Start applying the principles.
+You can later still improve your approach based on your learning.
 
 A nice overview was published in the _Professional Product Owner_ cite:[professional-product-owner] written by the stewards of the product owner certification path of https://www.scrum.org[Scrum.org].
 

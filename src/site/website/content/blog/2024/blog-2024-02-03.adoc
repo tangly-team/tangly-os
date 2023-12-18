@@ -7,36 +7,87 @@ tags: ["agile", "tangly", "organization"]
 
 include::../fragments/_config-mb-blog.aodc[]
 
+[.float-group]
+--
 image::2024-02-03-head.png[width=420,height=360,role=left]
 
 You attend a famous or a local technical school.
 You are the proud owner of a bachelor or a master degree in science.
 
+You are a certified engineer.
+
 You write productive code with your colleagues in your current company.
 
 How can you continuously improve in your profession?
 
-How can you master the new features and possibilities of the technologies you use daily?
+How can you become proficient in the new features and possibilities of the technologies you use daily?
 
 How can you learn new approaches and good practices emerging over the world?
+--
 
 == Attend Local User Groups
 
-Java, Python, C++, .Net, Clojure
+Professional engineers strive through discussion and exchanges with peers.
+A powerful and cost-effective approach is to meet regularly in user groups.
 
-Scrum and agile
+You can find a lot of user groups in your area.
 
-Embedded
+You find Java, Python, C++, C#/.Net, and Clojure user groups in the Zurich, Zug, and Lucerne areas.
+
+Attend the group gatherings.
+You will learn new approaches and expand your professional network.
+
+[sidebar]
+====
+At the beginning of my career, I attended the monthly meetings of the local Java and agile user group.
+
+Later, I presented a few times concepts and approaches I used in my projects.
+====
+
+The same is true for Scrum and agile user groups.
+Agile breakfast meetings are held regularly in various Swiss locations for the last fifteen years.
+
+Embedded development is more of a niche area.
+You have to search online where embedded development groups are active.
 
 == Read Books and Articles
 
-Youtube videos
+The digital world is beautiful.
+You can order an ebook and start reading it in less than a minute.
 
-Ask questions on blog platforms, Stack Overflow.
+Digital books are quite affordable.
+You can legally share them with your team members.
+
+I challenge you.
+*Read at least four technical books* each year.
+Commute using public transport, and you have found your timeslot to read these books.
+
+Watch YouTube technical videos.
+You find free high-quality material for almost any topic.
+Beware of outdated date information is also polluting sites.
+
+[TIP]
+====
+You can also buy more formal training material from online platforms and recognized universities.
+====
+
+Ask questions on blog platforms or Stack Overflow.
+
+[IMPORTANT]
+====
+It is one of my favorite checks as a technical manager.
+I ask collaborators where they ask questions and how they search for answers.
+
+If I cannot find any trace of their activities, I am worried.
+
+I want to have knowledge workers in my team.
+I want them to tap into the collective knowledge of the world through the internet.
+====
 
 == Attend Formal Trainings
 
 A professional engineer shall attend around five training days a year.
+
 Attend technical conferences.
 
 In the post-Corona time, you can find a lot of online conferences.
@@ -47,30 +98,64 @@ Book a training either online or in a physical course room.
 
 Ask yourself if a certification makes sense for you.
 
+[WARNING]
+====
 Invest in a CAS or a MAS study.
 
-Volunteer for a presentation
+If you are working daily in a technical area for years, please have a degree corresponding to your professional activities.
+====
+
+A very powerful approach to becoming proficient in a matter is to volunteer for a presentation
 
 == Write Articles
 
-Write a blog article about a technical in your current project.
+Write a blog article about a technical theme in your current project.
+Writing about a problem is a powerful way to understand it better.
 
 An engineer is also a coach and a teacher.
-Master the art of writing presentations and articles.
+Get the hang of the art of writing presentations and articles.
 
-== Participate to Open Source Product
+== Participate in Open Source Products
+
+Your company is using open-source products daily.
+The digital product you are developing is based on open-source libraries and frameworks.
+
+Please give back to the community.
+Contribute to the open-source products you are using.
+
+You can start with small contributions like documentation or bug fixes.
 
 == Tips and Tricks
 
-Budget five days of formal training per year.
+Your organization shall formally have a budget of five days for formal training per year.
+The budget shall be available for each employee and has a time and a cost position.
 
 Read a technical book each quarter.
+*Buy the book yourself.*
+You earn good money and can afford it.
 
-Work regularly on an open source project or write blogs.
+Work regularly on an open-source project or write blogs.
 
+[TIP]
+====
 Read code.
-The best way to improve technically is to study interesting approaches.
-You need to apply the learnings to truly understand them.
+Platforms like GitHub or GitLab are a treasure trove of code.
 
-[bibliography]
-== Links
+Code snippets can be found on Stack Overflow or in blogs.
+
+The best way to improve technically is to study interesting approaches.
+
+You need to apply the learnings to truly understand them.
+====
+
+== References
+
+- bibitem:[show-and-tell]
+- bibitem:[strategic-storytelling]
+- bibitem:[sense-of-style]
+- bibitem:[presentation-zen]
+- bibitem:[presentation-zen-design]
+- bibitem:[skilled-facilitator]
+- bibitem:[learn-or-die]
+- bibitem:[presentation-patterns]
+

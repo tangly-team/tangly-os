@@ -19,7 +19,7 @@ How do you organize such a company?
 
 How do collaborators work together?
 
-Should have permanent office spaces or opt for coworking space and why?
+Should have permanent office spaces or opt for coworking space, and why?
 
 == Experience with Coworking Space
 
@@ -30,7 +30,7 @@ The people were friendly.
 
 The coffee machine was reasonably good.
 During Summer, we could take a swim in the nearby lake.
-You only need to take a five-minutes walk.
+You only need to take a five-minute walk.
 
 We found out we were often at customer locations and had few opportunities to discuss company business in the coworking space.
 The other attendees were working in different industries.
@@ -66,14 +66,14 @@ Cool user interface and powerful command line tools.
 ====
 
 As a digital nomad, I have my whole office in one traveling bag
-footnote:[I am a fan of the traveller bags of timbuk2.
-I owned their bags for the last twenty-five years and was always satisified with the quality and look.
-I pack the notebook, a mouse, a keyboard, a power supply and some adapters.].
+footnote:[I am a fan of the traveler bags of timbuk2.
+I owned their bags for the last twenty-five years and was always satisfied with the quality and look.
+I pack my notebook, a mouse, a keyboard, a power supply and some adapters in the bag.].
 
 == Nurture a Company Blog
 
 The {ref-uri-blog} exists since the inception of the company.
-We published steadily at least one article every month.
+We steadily published at least one article every month.
 The main themes are agile approaches, technical fluency, and coaching experience.
 
 image::2024-02-02-blogging.jpg[width=420,height=360,role=left]
@@ -102,12 +102,27 @@ We love coaching, mentoring, and training.
 We are engineers and software craftsmen.
 We are pragmatic and agile.
 
-All collaborators indentify with these values and apply them in our daily work.
+All collaborators identify with these values and apply them in our daily work.
 
 More subtle ethical values are discussed in company meetings.
 I am fascinated that we have a strong common understanding of ethical values.
 
 It is fun to work at {ref-tangly}.
+
+[.sidenode]
+====
+Our digital and agile culture sometimes clashes with less progressive organizations.
+
+We had a kafka experience with the commercial register of Canton Zug.
+They have no digital process and worst no checklist how you to add a chief executive officer to the company.
+We needed five iterations to get the correct wording so that they accepted our request.
+Each request required the printout of a protocol, sign of the paper version, and personal delivery to their office.
+
+You could implement the same process digitally and be through it in less than ten minutes.
+The state organization already has a certified process to deliver legal documents in both directions for years.
+
+We just smiled and acknowledged we can provide a lot of consulting and implementation to improve such old-fashioned and inefficient processes.
+====
 
 [bibliography]
 == Links

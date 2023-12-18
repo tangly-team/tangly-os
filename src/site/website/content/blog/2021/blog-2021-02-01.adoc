@@ -102,7 +102,7 @@ A team coach typically focuses on:
 
 === Technical Practices Coaching
 
-A coach works with (or on) a team on their actual codebase in order to improve the technical practices and adopt agile development techniques.
+A coach works with (or on) a team on their actual codebase to improve the technical practices and adopt agile development techniques.
 
 [.text-center]
 *A technical coach is an expert on software development techniques*
@@ -118,7 +118,7 @@ A coach typically focuses on:
 
 * Discovering “code/design smells”.
 * Places where code/design could be improved.
-* Explaining modern, “clean” code that is simple and easier to change and maintain.
+* Explaining modern, “clean” code that is legible and easier to change and maintain.
 * Refactoring “smells” into clean code.
 * Writing unit tests.
 * Test-driven development.
@@ -161,7 +161,7 @@ After that, reduce, _not eliminate!_ the external technical coaching or let the 
 * Thrive for craftsmanship.
 * Let the team use internal social pressure.
 * Eliminate specialization, push mastery.
-* At the beginning, follow the {ref-less} rules.
+* In the beginning, follow the {ref-less} rules.
 * Extended responsibility, rounded products provide room and freedom for better decisions.
 
 == Remember

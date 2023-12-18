@@ -144,4 +144,4 @@ Another standard but cumbersome approach is to move to JPA.
 
 Related concepts are discussed in our blog series
 
-include::../fragments/_identifiers-series-links.adoc[]
+include::../fragments/_series-identifiers-links.adoc[]

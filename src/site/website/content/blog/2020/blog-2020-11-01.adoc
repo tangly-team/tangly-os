@@ -137,4 +137,4 @@ The unit tests contain examples for enumeration codes, JSON codes and SQL databa
 
 Related concepts are discussed in our blog series
 
-include::../fragments/_identifiers-series-links.adoc[]
+include::../fragments/_series-identifiers-links.adoc[]

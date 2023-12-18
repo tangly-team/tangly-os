@@ -229,4 +229,4 @@ The _Pro Git_ book can be downloaded from https://git-scm.com[Git SCM].
 
 == Links
 
-include::../fragments/_git-series-inks.adoc[]
+include::../fragments/_series-git-links.adoc[]

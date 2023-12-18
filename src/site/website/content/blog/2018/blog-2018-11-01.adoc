@@ -98,4 +98,4 @@ The goal is to have docker images, virtual network, and in-memory database to be
 
 == Posts in the Health Check Series
 
-include::../fragments/_how-healthy-series-links.adoc[]
+include::../fragments/_series-how-healthy-links.adoc[]

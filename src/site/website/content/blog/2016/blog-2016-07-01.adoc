@@ -249,4 +249,4 @@ These same characters work in https://bitbucket.org/[bitbucket].
 
 == Links
 
-include::../fragments/_git-series-inks.adoc[]
+include::../fragments/_series-git-links.adoc[]

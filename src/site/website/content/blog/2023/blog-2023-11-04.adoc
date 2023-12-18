@@ -92,6 +92,7 @@ The {ref-asciidoc} stylesheet had to be extended to support the additional featu
 The work is low tech.
 But I am convinced that users will appreciate the improvements.
 
+[bibliography]
 == Links
 
 include::../fragments/_hugo-links.adoc[]

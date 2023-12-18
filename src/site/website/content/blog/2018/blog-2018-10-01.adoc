@@ -77,4 +77,4 @@ Any product should have a battery of measures deployed to continuously monitor t
 
 == Posts in the Health Check Series
 
-include::../fragments/_how-healthy-series-links.adoc[]
+include::../fragments/_series-how-healthy-links.adoc[]

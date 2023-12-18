@@ -213,6 +213,7 @@ Funny is that the blogger software and the docsy theme are from the same company
 
 _This blog article is naturally written in {ref-asciidoc} syntax_.
 
+[bibliography]
 == Links
 
 include::../fragments/_hugo-links.adoc[]

@@ -203,6 +203,17 @@ This is needed to decode the command and dispatch it to the right interpreter.
 This approach delegates the encoding and decoding of commands to messages to the channel.
 This approach is the standard one for bus communication.
 
+[sidebar]
+====
+You can implement a two-step decoding process for maximum flexibility.
+
+The first step is to decode the message type and encodind format before dispatching the message to the right interpreter.
+The interpreter will decode the message payload and transform it into a command instance.
+
+This approach shall only be used if you need to support multiple complex encoding formats due to its complexity.
+Most decoding libraries for JSON, proto buffers, or command line parsers are ill-suited for this approach.
+====
+
 The payload of the message does not need to be interpreted by the channel.
 This activity can be delegated to the interpreter.
 
@@ -225,3 +236,8 @@ The solution is constrained by the decision to use the compiler toolchain to val
 
 This approach melts object-orientation with functional aspects.
 It reflects the evolution of modern programming languages blending object-orientation and functional approaches.
+
+[bibliography]
+== Links
+
+include::../fragments/_series-agile-design-links.adoc[]

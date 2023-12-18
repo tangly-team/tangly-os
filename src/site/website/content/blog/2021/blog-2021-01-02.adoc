@@ -118,4 +118,4 @@ You will bear the burden of documenting, manage and evolve the scheme as soon as
 
 Related concepts are discussed in our blog series
 
-include::../fragments/_identifiers-series-links.adoc[]
+include::../fragments/_series-identifiers-links.adoc[]

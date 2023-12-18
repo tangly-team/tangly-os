@@ -183,7 +183,7 @@ Another blog shows a constrained form of tags using the concept of reference cod
 
 Related concepts are discussed in our blog series
 
-include::../fragments/_identifiers-series-links.adoc[]
+include::../fragments/_series-identifiers-links.adoc[]
 
 == References
 

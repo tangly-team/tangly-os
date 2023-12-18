@@ -9,7 +9,19 @@ include::../fragments/_config-mb-blog.aodc[]
 
 image::2024-02-01-head.png[width=420,height=360,role=left]
 
+== Java Streams
+
 cite:[modern-software-engineering,effective-java-3rd]
+
+== Pattern Matching
+
+== Collectors
+
+== Gatherers
+
+== Parallel Streams
+
+== Lessons Learnt
 
 [bibliography]
 == Links

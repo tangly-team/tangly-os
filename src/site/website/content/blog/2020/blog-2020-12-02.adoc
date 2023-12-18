@@ -171,6 +171,7 @@ comments_utterances_issue_term = "pathname"
 comments_utterances_theme = "github-light"
 ----
 
+[bibliography]
 == Links
 
 include::../fragments/_hugo-links.adoc[]

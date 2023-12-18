@@ -1,0 +1,16 @@
+// - [[[distributed-asynchronous-systems, 1]]] link:../../2025/distributed-systems/[Distributed Asynchronous Systems].
+// Marcel Baumann. 2025.
+// - [[[actor-model, 2]]] link:../../2024/actor-model/[Actor Model].
+// - [[[actors-in-cpp, 3]]] link:../../2024/actors-in-cpp/[Actors in {cpp}].
+// Marcel Baumann. 2024
+// - [[[actors-cmsis-cpp, 4]]] link:../../2024/actors-with-cmsis-os-in-cpp/[Actors with CMSIS in {cpp}].
+// Marcel Baumann. 2024.
+// - [[[embedded-applications, 5]]] link:../../2024/embedded-applications/[Embedded Applications].
+// Marcel Baumann. 2024.
+// - [[[domain-driven-ros2, 6]]] link:../../domain-driven-design-with-ros-2/[Domain Driven Design with ROS2].
+- [[[bus-sensors-actuators, 7]]] link:../../2023/bus-sensors-and-actuators/[Bus Sensors and Actuators].
+Marcel Baumann. 2023.
+- [[[sensors-actuators, 8]]] link:../../2023/sensors-and-actuators/[Sensors and Actuators].
+Marcel Baumann. 2023.
+- [[[command-interpreter, 9]]] link:../../2023/command-interpreter/[Command Interpreter].
+Marcel Baumann. 2023.

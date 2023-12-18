@@ -104,4 +104,4 @@ Do your managers know the four most important sentences and practice them daily?
 
 == Posts in the Health Check Series
 
-include::../fragments/_how-healthy-series-links.adoc[]
+include::../fragments/_series-how-healthy-links.adoc[]

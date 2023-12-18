@@ -110,8 +110,8 @@ Interestingly, the requirement community is further on the path to agility.
 The most relevant organization is Europe is the https://www.ireb.org/[International Requirements Engineering Board] _IREB_.
 The organization offers two certifications with emphasis on agile approaches:
 
-* RE@Agile Primer - Bridging the gap between RE and Agile
-* Advanced Level RE@Agile - is part of the advanced CPRE AL
+* RE@Agile Primer to Bridge the gap between RE and Agile
+* Advanced Level RE@Agile is part of the advanced CPRE AL
 
 == Agile Testing Engineering
 

@@ -90,6 +90,7 @@ The instantiation of objects should define the initialization of abstractions an
 Do we start our system and bring all devices to a well-defined initial state?
 
 Or do we start our system, retrieve the state of all devices and initialize our objects accordingly?
+
 This approach is only possible if each hardware component has sensors providing its current state.
 ====
 
@@ -178,8 +179,8 @@ public:
  * @param length The length of the data.
  */
  static void callback(void* self, byte* data, int length) {
-    Sensor* self = reinterpret_cast<Sensor*>(data);
-    self->callback(data, length);
+    Sensor* sensor = reinterpret_cast<Sensor*>(self);
+    sensor->callback(data, length);
 }
 
 /**
@@ -263,12 +264,7 @@ Use the actor pattern to implement thread communication <<distributed-asynchrono
 [bibliography]
 == Links
 
-- [[[distributed-asynchronous-systems, 3]]] link:../../2025/distributed-systems/[Distributed Asynchronous Systems].
-Marcel Baumann.
-- [[[actors-in-cpp, 4]]] link:../../2024/actors-in-cpp/[Actors in {cpp}].
-Marcel Baumann.
-- [[[actors-cmsis-cpp, 5]]] link:../../2024/actors-with-cmsis-os-in-cpp/[Actors with CMSIS in {cpp}].
-Marcel Baumann.
+include::../fragments/_series-agile-design-links.adoc[]
 
 == References
 

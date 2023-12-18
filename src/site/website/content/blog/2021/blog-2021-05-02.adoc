@@ -35,7 +35,8 @@ I could not resist and decided to get the cool logo and the associated certifica
 The official goals of the certification cover:
 
 Working with Java data types::
-- Use primitives and wrapper classes, including, operators, parentheses, type promotion and casting.
+- Use primitives and wrapper classes.
+This includes operators, parentheses, type promotion and casting.
 - Handle text using String and StringBuilder classes.
 - Use local variable type inference, including lambda parameters.
 Controlling Program Flow::

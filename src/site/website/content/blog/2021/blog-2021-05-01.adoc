@@ -83,7 +83,7 @@ Both approaches are quite a poor choice to achieve a successful agile transforma
 Read the technology radar of https://www.thoughtworks.com[Thoughtworks] for a detailed discussion why SAFe is a poor choice.
 
 Satisfaction with the agile way of working is high; satisfaction with the transformation process is low.
-The focus is still processes over people.
+The focus is still on processes over people.
 The JIRA tool is omnipresent and workflows are documented in acribic details.
 
 This has left many, about 40% to be exact, stuck in a hybrid approach, i.e., a combination of waterfall and agile.
@@ -105,7 +105,7 @@ Agile transformation has stalled during the second wave in many companies.
 Only individual elements of the third wave, such as portfolio management, have been tackled.
 At the same time, transformation has often only occurred on the surface; the company’s DNA and culture have not (yet) adapted to the new era.
 
-Executives must now take on the hard topics, such as new organizational forms, management behavior, dedicated agile executives.
+Executives must now take on the hard topics, such as new organizational forms, management behavior, and dedicated agile executives.
 They must make difficult and painful decisions regarding new leadership teams.
 ____
 

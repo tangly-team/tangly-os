@@ -73,4 +73,4 @@ See the link:../../2018/how-healthy-is-your-product-delivery-pipeline-check/[Del
 
 == Posts in the Health Check Series
 
-include::../fragments/_how-healthy-series-links.adoc[]
+include::../fragments/_series-how-healthy-links.adoc[]

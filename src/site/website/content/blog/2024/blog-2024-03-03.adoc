@@ -11,6 +11,13 @@ image::2024-03-03-head.png[width=420,height=360,role=left]
 
 == Include Common Blocks
 
+Quite a few articles are part of a series.
+All related articles share common references.
+To avoid duplication, I use the `include` directive to include a common block of references.
+
+The huge advantage is I only need to update the common block when a new article is published in the series.
+All articles are updated without manual intervention.
+
 == Bibliography
 
 == Taxonomies
@@ -19,6 +26,7 @@ image::2024-03-03-head.png[width=420,height=360,role=left]
 
 == Lessons Learnt
 
+[bibliography]
 == Links
 
 include::../fragments/_hugo-links.adoc[]

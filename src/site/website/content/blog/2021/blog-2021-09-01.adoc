@@ -164,6 +164,7 @@ For example the presentation of a speech is made available directly in the stati
 This feature is currently experimental and queued as a pull request in the Docsy GitHub repository
 footnote:[This feature removed my dependency to Google drive to host downloadable artifacts.].
 
+[bibliography]
 == Links
 
 include::../fragments/_hugo-links.adoc[]

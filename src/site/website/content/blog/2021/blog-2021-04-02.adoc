@@ -61,9 +61,9 @@ I am working with teams developing software products in academic and small-compa
 The needs boil down to
 
 * Provide docker images to developers.
-The images shall be accessible from the company Intranet and often form the Internet,
-* Provide virtual images only exceptionally,
-* Provide git repositories,
+The images shall be accessible from the company Intranet and often from the Internet.
+* Provide virtual images only exceptionally.
+* Provide git repositories.
 * Provide development tools such as GitHub, GitLab or Bitbucket solutions including Pages for documentation.
 
 Most often, virtual images are only needed when the user needs a Microsoft or macOS environment.

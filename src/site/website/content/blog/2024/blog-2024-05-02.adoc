@@ -28,7 +28,7 @@ The latest evolutions are virtual threads enabling the creation of thousands of 
 C and {cpp} have threading support and synchronization primitives were added with the 2011 revision.
 Later versions added small refinement to the synchronization mechanisms.
 
-There is a strong need for higher-level frameworks ensuring safe concurrent programming cite:[pattern-oriented-software-architecture-vol-2].
+There is a strong need for higher-level frameworks ensuring safe concurrent programming cite:[pattern-oriented-software-architecture-vol-2,reactive-messaging-patterns-with-actor-model].
 
 The {ref-actor-model} is one of the approaches to safe concurrency.
 The model is based on {ref-message-passing}.

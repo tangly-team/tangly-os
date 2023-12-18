@@ -9,6 +9,42 @@ include::../fragments/_config-mb-blog.aodc[]
 
 image::2024-01-01-head.png[width=420,height=360,role=left]
 
+== Algebraic Data Types
+
+Shallow and deep immutability
+
+== Records
+
+Compact
+
+Shallow immutability
+
+Secure serialization
+
+== Sealed Hierarchies
+
+Design idiom Pattern maching Compiler checks
+
+=== Visitor Pattern Revisited
+
+== Enumerations
+
+Enumerations have been available since Java 5.
+Enumerations are a powerful language feature to define immutable objects.
+They provide secure serialization and a perfect implementation for singletons.
+
+== Lessons Learnt
+
+No more loops in Modern Java
+
+No more tests on null in Modern Java.
+Use optional monad.
+Avoid Map and prefer records
+
+Pattern implementation in the functional world
+
+Immutability
+
 cite:[modern-software-engineering,effective-java-3rd]
 
 [bibliography]

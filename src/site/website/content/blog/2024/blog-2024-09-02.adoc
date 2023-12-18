@@ -124,3 +124,8 @@ It would be necessary to implement and maintain a proprietary scheduling engine 
 This approach is called {ref-paravirtualization} and requires a partial rewrite of the realtime kernel.
 For example, you could implement the services and data structures specified in the CMSIS_OS version 2 module
 footnote:[The effort to implement such a layer is huge. Validation and verification activities would be necessary for regulated markets.].
+
+[bibliography]
+== Links
+
+include::../fragments/_series-agile-design-links.adoc[]
