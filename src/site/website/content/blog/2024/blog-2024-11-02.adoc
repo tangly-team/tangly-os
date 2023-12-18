@@ -13,7 +13,7 @@ image::2024-11-02-head.jpg[width=420,height=360,role=left]
 
 The GCC compiler project migrated to {cpp} as implementation language:
 
-- {cpp} is a standardized, well known, popular language.
+- {cpp} is a standardized, well-known, popular language.
 - {cpp} is nearly a superset of C90 used in GCC.
 - The C subset of {cpp} is just as efficient as C.
 - {cpp} supports cleaner code in several significant cases.
@@ -24,7 +24,7 @@ The GCC compiler project migrated to {cpp} as implementation language:
 The LLVM and CLang compiler project is written in {cpp}
 
 The two most famous compiler suites are written in {cpp}.
-The experience seems to be very positive.
+The experience seems very positive.
 
 The robot operating system ROS promotes {cpp} and Python.
 Strangely, the core libraries are still written in C.
@@ -36,7 +36,36 @@ Development is either done in C or in Rust.
 It seems that the father of Linux Linus Torvald has a strange aversion to {cpp}.
 He stated that reviewing merge requests are way easier with C code instead of {cpp}.
 But he never provided data if the whole development activities are more efficient in C or in {cpp}.
-So I assume it is a kind of viceral opinion without scientific and statistical facts.
+So I assume it is a kind of visceral opinion without scientific and statistical facts.
+
+== Programming Idioms
+
+Prohibit the copy of objects by declaring the copy constructor and the assignment operator as deleted operations.
+A good practice is to prevent copying resources such as threads, file handles, sockets, buses, sensors, or actuators.
+
+The default constructor seldom makes sense.
+You need to initialize the object with data mapping to the real world.
+
+[source,cpp]
+----
+class Thread {
+public:
+    Thread(uint_32 threadId);
+    Thread(const Thread&) = delete;
+    Thread& operator=(const Thread&) = delete;
+    ~Thread() = default;
+}
+----
+
+When passing data through a byte array or a void pointer always pass the size of the data as a separate parameter.
+The method uses the information to check the size of the data and to avoid buffer overflows.
+
+[source,cpp]
+----
+void process(const void* data, size_t size);
+void process(const uint8_t* data, size_t size);
+void process(byte* data, size_t size);
+----
 
 [bibliography]
 == Links

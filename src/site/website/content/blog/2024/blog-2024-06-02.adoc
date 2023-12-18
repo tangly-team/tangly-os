@@ -64,6 +64,10 @@ _The action of sending a message from one actor to another implies the transfer 
 _We strongly suggest implementing messages as immutable value objects_.
 ====
 
+=== Messages
+
+==== Message Abstraction
+
 The message abstraction structure is
 
 [source,cpp]
@@ -90,6 +94,8 @@ The message abstraction structure is
 If you use variants, either put the variant index or define constants for the various payload types.
 The kind field is when more a legacy field because variants provide build-in check mechanisms.
 <2> The payload of the message.
+
+==== Application Messages
 
 Each application will define the payload for the messages sent between actors.
 We recommend defining an overall message type for all messages defined in the application.
@@ -142,6 +148,123 @@ In this case, you must use a message allocator with explicit acquire and release
 
 A reference implementation is provided with the _vinci_ library.
 ====
+
+=== Actors
+
+==== Actor Abstraction
+
+The actor abstraction structure is
+
+[source,cpp]
+----
+/**
+ * Define the abstraction of an actor. An actor is an active object with a private mailbox
+ * containing a queue of messages.
+ * Copy constructor and assignment operator are deleted to avoid copying of the actor.
+ * @tparam T type of the message payload
+ */
+template<typename T>
+class Actor {
+ public:
+  /**
+   * Maximum length of an actor name. To avoid heap usage, static sized char strings are
+   * used.
+   */
+    static const int ACTOR_NAME_SIZE = 32;
+
+    virtual ~Actor();
+
+    /**
+     * Return the human-readable name of the actor.
+     * @return name of the actor
+     */
+    const char* name() const noexcept;
+
+    /**
+     * Join with the actor thread.
+     */
+    virtual void join() = 0;
+
+    /**
+     * Send a message to the given actor.
+     * @param actor actor receiving the message
+     * @param msg message to be sent
+     */
+    static void send(Actor<T>& actor, Message<T>* msg);
+
+protected:
+    /**
+     * Constructor of the class.
+     * @param name name of the actor. The name should be human-readable and a unique
+     * identifier of the active object.
+     * @param pool pool providing message instances.
+     */
+    Actor(const char* name, MessagePool<T>& pool) : _pool{pool} {
+        strncpy(_name, name, ACTOR_NAME_SIZE);
+    }
+
+    Actor(const Actor<T>&) = delete;
+    Actor<T>& operator=(const Actor<T>&) = delete;
+
+    /**
+     * Process the next received message. Overwrite the method to implement the business
+     * logic of your actor.
+     * The returned message can be nullptr if the waitDelay is set to a value bigger than 0.
+     * @param  msg message to process
+     * @return flag indicating if the processing should continue
+     */
+    virtual bool processMsg(Message<T>* msg) = 0;
+
+    /**
+     * Receive a message.
+     * @param msg received message.
+    ` */
+    virtual void receive(Message<T>* msg) = 0;
+
+    /**
+     * Get the next message of the message queue. The call is blocks until message is
+     * received
+     * @return the next message
+     */
+    virtual Message<T>* message() = 0;
+
+    /**
+     * Get the next message of the message queue. The call is blocks until message is
+     * received or timeout occurs.
+     * @param ticks timeout in ticks
+     * @return the next message or nullptr if timeout occurred
+     */
+    virtual Message<T>* message(const uint32_t ticks) = 0;
+
+    /**
+     * Suspend the actor for the specified time.
+     * @param ticks delay in milliseconds
+     */
+    virtual void delay(const uint32_t ticks) = 0;
+
+    /**
+     * Run the body of the actor. Overwrite this method only for special needs no covered by
+     * the regular actor semantic.
+     * The default behavior is to wait for the next message and process it with the @ref
+     * processMsg(const Message<T>&).
+     */
+    virtual void runBody();
+
+    inline MessagePool<T>& pool() { return _pool; };
+
+    inline uint32_t waitDelay() { return _waitDelay; };
+
+    inline void waitDelay(uint32_t waitDelay) {
+        _waitDelay = waitDelay;
+    };
+private:
+    char _name[ACTOR_NAME_SIZE];
+    MessagePool<T>& _pool;
+    uint32_t _waitDelay = 0;
+};
+----
+
+==== Application Actors
 
 The processing logic for an actor has the following form.
 The actions and guards should only have one parameter to pass the message being processed.
