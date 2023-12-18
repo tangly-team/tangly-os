@@ -8,7 +8,7 @@ jolt-version = '0.1.1'
 junit-version = '5.10.1'
 log4j2-version = '2.20.0'
 openapi-version = "5.6.3-2"
-microstream-version = '08.01.01-MS-GA'
+eclipsestore-version = '1.0.0'
 mustang-version = '2.9.0'
 vaadin-version = '24.3.0'
 
@@ -101,9 +101,7 @@ mustang-validator = { module = "org.mustangproject:validator", version.ref = "mu
 
 qrbill = "net.codecrete.qrbill:qrbill-generator:3.2.0"
 
-microstream-storage = { module = "one.microstream:microstream-storage-embedded", version.ref = "microstream-version" }
-microstream-jdk8 = { module = "one.microstream:microstream-persistence-binary-jdk8", version.ref = "microstream-version" }
-microstream-jdk17 = { module = "one.microstream:microstream-persistence-binary-jdk17", version.ref = "microstream-version" }
+eclispsestore-storage = { module = "org.eclipse.store:storage-embedded", version.ref = "eclipsestore-version" }
 
 mockito = "org.mockito:mockito-junit-jupiter:5.8.0"
 
@@ -119,4 +117,4 @@ vaadin-test = "com.github.mvysny.kaributesting:karibu-testing-v23:2.1.0"
 [bundles]
 test-deps = ["junit-api", "assertj", "mockito", "arch-unit"]
 jackson-deps = ["jackson-databind", "jackson-parameters", "jackson-datatype", "jackson-jsr310"]
-microstream-deps = ["microstream-storage", "microstream-jdk8", "microstream-jdk17"]
+microstream-deps = ["eclispsestore-storage"]

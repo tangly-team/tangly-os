@@ -29,7 +29,7 @@ dependencies {
     implementation(libs.vaadin.embedded.jetty)
     implementation(libs.vaadin.socharts)
     implementation(libs.vaadin.pdfviewer)
-    implementation(libs.microstream.storage)
+    implementation(libs.eclispsestore.storage)
     implementation(libs.asciidoctorj)
 
     testImplementation(libs.vaadin.test)

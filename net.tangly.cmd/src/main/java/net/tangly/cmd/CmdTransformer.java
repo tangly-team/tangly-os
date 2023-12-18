@@ -13,17 +13,12 @@
 
 package net.tangly.cmd;
 
-/**
- * The command channel is an interface class connecting an external format and channel to one or multiple command interpreters. A channel supports one protocol format and one and
- * receives commands for one or multiple interpreters.
- * <p>A dispatcher should be provided if multiple domains are accessed through the same protocol channel such as a terminal or a CAN bus.</p>
- */
-public interface CmdChannel {
-    enum ChannelKind {TEXT, BINARY, JSON, PROTOBUF, OBJECT}
+public interface CmdTransformer<D, C> {
+    boolean canTransformFrom(D data);
 
-    default ChannelKind supports() {
-        return ChannelKind.TEXT;
-    }
+    boolean canTransformTo(Object cmd);
 
-    void transmit(String group, String command, Object payload);
+    C transformFrom(D data);
+
+    D transformTo(C cmd);
 }

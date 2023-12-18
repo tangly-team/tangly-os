@@ -1,0 +1,51 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+
+package ledgerCommands;
+
+option java_multiple_files = true;
+option java_package = "net.tangly.cmd.ledgerCommands";
+option java_outer_classname = "LedgerCommands";
+
+message LedgerMsgs {
+    string group = 1;
+    string name = 2;
+    oneof msg {
+        CmdBookTransactionData cmdBookTransactionData = 3;
+        CmdBookSplitTransaction cmdBookSplitTransaction = 4;
+        CmdGetAccountBalance cmdGetAccountBalance = 5;
+        AnswerGetAccountBalance answerGetAccountBalance = 6;
+    }
+}
+
+message CmdBookTransactionData {
+    string accountIdFrom = 1;
+    string accountIdTo = 2;
+    google.protobuf.Timestamp date = 3;
+    string amount = 4;
+    optional string text = 5;
+}
+
+message BookingData {
+    string accountId = 1;
+    string amount = 2;
+    optional string text = 3;
+}
+
+message CmdBookSplitTransaction {
+    google.protobuf.Timestamp date = 1;
+    repeated BookingData from = 2;
+    repeated BookingData to = 3;
+}
+
+message CmdGetAccountBalance {
+    string accountId = 1;
+    google.protobuf.Timestamp date = 2;
+}
+
+message AnswerGetAccountBalance {
+    string accountId = 1;
+    google.protobuf.Timestamp date = 2;
+    string amount = 3;
+}

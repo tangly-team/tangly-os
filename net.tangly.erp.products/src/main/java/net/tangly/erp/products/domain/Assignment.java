@@ -1,13 +1,14 @@
 /*
- * Copyright 2006-2022 Marcel Baumann
+ * Copyright 2006-2023 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- *          https://apache.org/licenses/LICENSE-2.0
+ *          http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ *
  */
 
 package net.tangly.erp.products.domain;
@@ -18,7 +19,7 @@ import java.util.Objects;
 
 /**
  * An assignment defines the connection of an employee to a project for a duration. The start date shall be equal or greater to the start date of project. The end date is optional,
- * if defined it shall smaller or equal to the end date of the project.
+ * if defined, it shall be smaller or equal to the end date of the project.
  * <p>The collaborator identifier uniquely identifies the natural entity performing the work associated with the assignement. The assumption is that we have
  * a social security number of each collaborator working on a product under our supervision. The collaborator identifier of the assignment is therefore the social security number
  * of a collaborator.</p>
@@ -54,8 +55,7 @@ public class Assignment extends EntityExtendedImp {
 
     @Override
     public boolean equals(Object obj) {
-        return (obj instanceof Assignment o) && super.equals(o) && Objects.equals(product(), o.product()) &&
-            Objects.equals(collaboratorId(), o.collaboratorId());
+        return (obj instanceof Assignment o) && super.equals(o) && Objects.equals(product(), o.product()) && Objects.equals(collaboratorId(), o.collaboratorId());
     }
 
     @Override

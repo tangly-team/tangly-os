@@ -16,16 +16,9 @@ package net.tangly.cmd;
 import org.jetbrains.annotations.NotNull;
 
 class LedgerInterpreter extends CmdInterpreter<LedgerCmd> {
-    final static int GROUP_LEDGER = 1;
-
     @Override
-    public int group() {
-        return GROUP_LEDGER;
-    }
-
-    @Override
-    public boolean canProcess(Cmd command) {
-        return command instanceof LedgerCmd;
+    public boolean canProcess(String group, String cmdName) {
+        return LedgerCmd.GROUP.equals(group);
     }
 
     @Override
@@ -34,6 +27,7 @@ class LedgerInterpreter extends CmdInterpreter<LedgerCmd> {
             case CmdBookTransaction bookTransaction -> System.out.println(CmdBookTransaction.NAME);
             case CmdBookSplitTransaction cmdBookSplitTransaction -> System.out.println(CmdBookSplitTransaction.NAME);
             case CmdGetAccountBalance cmdGetAccountBalance -> System.out.println(CmdGetAccountBalance.NAME);
+            case AnswerGetAccountBalance answerGetAccountBalance -> System.out.println(CmdGetAccountBalance.NAME);
         }
         return cmd;
     }

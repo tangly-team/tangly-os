@@ -26,17 +26,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class LegalEntityTest {
     @Test
-    void testLinkedInUrl() {
-        final var PLUSCODE = "8FVC5FM5+Q6G";
-        var entity = new LegalEntity(Entity.UNDEFINED_OID);
-        entity.add(Tag.of(CrmTags.CRM_IM_LINKEDIN, "organizationLinkedIn"));
-        assertThat(CrmTags.organizationLinkedInUrl(entity)).isEqualTo("https://www.linkedin.com/company/organizationLinkedIn");
-        entity.add(Tag.of(CrmTags.CRM_SCHOOL, null));
-        assertThat(CrmTags.organizationLinkedInUrl(entity)).isEqualTo("https://www.linkedin.com/school/organizationLinkedIn");
-        assertThat(entity.toString().length()).isNotZero();
-    }
-
-    @Test
     void testPosition() {
         final var pluscode = "8FVC5FM5+Q6G";
         final var longitude = 47.18459018924399;

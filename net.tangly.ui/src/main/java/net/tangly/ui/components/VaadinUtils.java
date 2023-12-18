@@ -27,8 +27,8 @@ import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.renderer.ComponentRenderer;
 import net.tangly.core.EmailAddress;
 import net.tangly.core.HasTags;
+import net.tangly.core.Strings;
 import net.tangly.core.Tag;
-import net.tangly.core.crm.CrmTags;
 import net.tangly.core.crm.LegalEntity;
 import org.jetbrains.annotations.NotNull;
 
@@ -138,22 +138,24 @@ public final class VaadinUtils {
         });
     }
 
-    public static <T extends HasTags> ComponentRenderer<Anchor, T> linkedInComponentRenderer(Function<HasTags, String> linkedInUrl) {
+    public static <T> ComponentRenderer<Anchor, T> linkedInComponentRenderer(Function<T, String> property, boolean isOrganization) {
+        final String ORGANIZATION_LINKEDIN = "https://www.linkedin.com/company/";
+        final String PERSON_LINKEDIN = "https://www.linkedin.com/in/";
         return new ComponentRenderer<>(e -> {
             Anchor anchor = new Anchor();
-            Tag tag = e.findBy(CrmTags.CRM_IM_LINKEDIN).orElse(null);
-            String linkedInRef = (tag != null) ? tag.value() : null;
-            anchor.setText(linkedInRef);
-            anchor.setHref((linkedInRef != null) ? linkedInUrl.apply(e) : "");
+            String linkedInUrl = property.apply(e);
+            String linkedInRef = Strings.isNullOrBlank(linkedInUrl) ? null : (isOrganization ? ORGANIZATION_LINKEDIN : PERSON_LINKEDIN) + linkedInUrl;
+            anchor.setText(linkedInUrl);
+            anchor.setHref(linkedInRef);
             anchor.setTarget("_blank");
             return anchor;
         });
     }
 
-    public static <T> ComponentRenderer<Anchor, T> emailAddressComponentRenderer(Function<T, EmailAddress> getter) {
+    public static <T> ComponentRenderer<Anchor, T> emailAddressComponentRenderer(Function<T, EmailAddress> property) {
         return new ComponentRenderer<>(e -> {
             Anchor anchor = new Anchor();
-            String email = getter.apply(e).text();
+            String email = property.apply(e).text();
             anchor.setText(email);
             anchor.setHref(Objects.nonNull(email) ? "mailto:" + email : "");
             anchor.setTarget("_blank");

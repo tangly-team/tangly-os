@@ -27,6 +27,8 @@ module net.tangly.commons {
     requires org.apache.logging.log4j;
     requires jakarta.mail;
     requires org.eclipse.angus.mail;
-//    requires org.asciidoctor.asciidoctorj.api;
+    // waiting for release 3.x
+    requires org.asciidoctor.asciidoctorj.api
+    requires org.asciidoctro.asciidoctorj;
     requires static transitive org.jetbrains.annotations;
 }

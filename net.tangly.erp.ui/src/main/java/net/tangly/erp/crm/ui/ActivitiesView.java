@@ -15,13 +15,17 @@ package net.tangly.erp.crm.ui;
 
 import com.vaadin.flow.component.datepicker.DatePicker;
 import com.vaadin.flow.component.formlayout.FormLayout;
+import com.vaadin.flow.component.grid.contextmenu.GridContextMenu;
+import com.vaadin.flow.component.html.Hr;
 import com.vaadin.flow.component.textfield.IntegerField;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.ValidationException;
 import net.tangly.core.codes.CodeType;
+import net.tangly.core.providers.ProviderInMemory;
 import net.tangly.erp.crm.domain.Activity;
 import net.tangly.erp.crm.domain.ActivityCode;
 import net.tangly.erp.crm.services.CrmBoundedDomain;
+import net.tangly.ui.app.domain.Cmd;
 import net.tangly.ui.asciidoc.AsciiDocField;
 import net.tangly.ui.components.EntityView;
 import net.tangly.ui.components.ItemForm;
@@ -31,18 +35,27 @@ import net.tangly.ui.components.VaadinUtils;
 import org.jetbrains.annotations.NotNull;
 
 import java.time.LocalDate;
+import java.util.List;
+import java.util.Objects;
 
 /**
  * Regular CRUD view on activity abstraction.
  */
 class ActivitiesView extends ItemView<Activity> {
-    private static final String DATE = "date";
     private static final String CODE = "code";
     private static final String DURATION_IN_MINUTES = "durationInMinutes";
     private static final String AUTHOR = "author";
 
     private static final String AUTHOR_LABEL = "Author";
     private static final String DETAILS = "details";
+
+    record CmdRefreshActivities(ActivitiesView view) implements Cmd {
+        @Override
+        public void execute() {
+            List interactions = view.domain().realm().interactions().items().stream().flatMap(e -> e.activities().stream()).toList();
+            view.provider(ProviderInMemory.of(interactions));
+        }
+    }
 
     static class ActivityFilter extends ItemFilter<Activity> {
         private LocalDate date;
@@ -76,6 +89,7 @@ class ActivitiesView extends ItemView<Activity> {
 
         public ActivityForm(@NotNull ActivitiesView parent) {
             super(parent);
+            init();
         }
 
         @Override
@@ -86,19 +100,20 @@ class ActivitiesView extends ItemView<Activity> {
 
         @Override
         protected Activity createOrUpdateInstance(Activity entity) throws ValidationException {
-            return null;
+            var updatedEntity = Objects.nonNull(entity) ? entity : new Activity();
+            binder().writeBean(updatedEntity);
+            return updatedEntity;
         }
 
         private FormLayout details() {
             var form = new FormLayout();
-            var date = new DatePicker(DATE);
+            var date = new DatePicker(EntityView.DATE_LABEL);
             var code = ItemForm.createCodeField(CodeType.of(ActivityCode.class), "code");
             var durationInMinutes = new IntegerField(DURATION_IN_MINUTES);
             var author = new TextField(AUTHOR);
             var text = new TextField(EntityView.TEXT);
-            var details = new TextField(DETAILS);
 
-            form.add(date, code, durationInMinutes, author, text, details);
+            form.add(date, code, durationInMinutes, author, text);
             form.setColspan(text, 3);
             form.setResponsiveSteps(new FormLayout.ResponsiveStep("0", 1), new FormLayout.ResponsiveStep("320px", 2), new FormLayout.ResponsiveStep("500px", 3));
 
@@ -107,16 +122,15 @@ class ActivitiesView extends ItemView<Activity> {
             binder().forField(durationInMinutes).bind(Activity::duration, Activity::duration);
             binder().forField(author).bind(Activity::author, Activity::author);
             binder().forField(text).bind(Activity::text, Activity::text);
-            binder().forField(details).bind(Activity::details, Activity::details);
             return form;
         }
 
         private FormLayout text() {
-            var text = new AsciiDocField("Text");
+            var details = new AsciiDocField("Details");
             var form = new FormLayout();
             VaadinUtils.set3ResponsiveSteps(form);
-            form.add(text, 3);
-            binder().bind(text, Activity::text, null);
+            form.add(details, 3);
+            binder().forField(details).bind(Activity::details, Activity::details);
             return form;
         }
 
@@ -129,13 +143,22 @@ class ActivitiesView extends ItemView<Activity> {
     }
 
     @Override
+    public CrmBoundedDomain domain() {
+        return (CrmBoundedDomain) super.domain();
+    }
+
+    protected void addActions(@NotNull GridContextMenu<Activity> menu) {
+        menu().add(new Hr());
+        menu().addItem("RefreshAll", event -> new CmdRefreshActivities(this).execute());
+    }
+
+    @Override
     protected void init() {
         var grid = grid();
-        grid.addColumn(Activity::date).setKey(DATE).setHeader("Date").setResizable(true).setSortable(true).setFlexGrow(0).setWidth("10em");
+        grid.addColumn(Activity::date).setKey(EntityView.DATE).setHeader(EntityView.DATE_LABEL).setResizable(true).setSortable(true).setFlexGrow(0).setWidth("10em");
         grid.addColumn(Activity::code).setKey(CODE).setHeader("Code").setResizable(true).setSortable(true).setFlexGrow(0).setWidth("10em");
         grid.addColumn(Activity::duration).setKey(DURATION_IN_MINUTES).setHeader("Duration").setResizable(true).setSortable(true).setFlexGrow(0).setWidth("5em");
+        grid.addColumn(Activity::author).setKey(AUTHOR).setHeader("Author").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Activity::text).setKey(EntityView.TEXT).setHeader(EntityView.TEXT_LABEL).setAutoWidth(true).setResizable(true).setSortable(true);
-        grid.addColumn(Activity::details).setKey(AUTHOR).setHeader("Author").setAutoWidth(true).setResizable(true).setSortable(true);
-        grid.addColumn(Activity::details).setKey(DETAILS).setHeader("Details").setAutoWidth(true).setResizable(true).setSortable(true);
     }
 }

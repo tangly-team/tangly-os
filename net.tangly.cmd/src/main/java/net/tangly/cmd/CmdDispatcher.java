@@ -35,10 +35,6 @@ public class CmdDispatcher {
         channels.add(channel);
     }
 
-    public Cmd transform(String commandName, Object payload) throws IllegalArgumentException {
-        return null;
-    }
-
     // TODO should return a completable future? CompletableFuture.supplyAsync(execute).thenAccept(send answer)
     public <T extends Cmd> void execute(Cmd command, CmdChannel channel) {
         interpreters.stream().filter(o -> o.canProcess(command)).findAny().ifPresent(o -> ((CmdInterpreter<T>) o).execute((T) command, channel));

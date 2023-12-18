@@ -19,15 +19,18 @@ import org.jetbrains.annotations.NotNull;
  * The interpreter decides if the request is synchronous or asynchronous. If the system follows the CQRS approach, commands should be asynchronous and queries can be synchronous
  * because processing time shall be negligible. Naturally, you still can implement a synchronous or asynchronous approach for all requests. Beware of the consequences on the
  * real-time behavior and response times.
- * <p>The command interpreter defines the boundary of bounded domain.</p>
+ * <p>The command interpreter defines the boundary of bounded domain. The interpreter owns the commands and the functionality to transform Java objets into external
+ * representations.</p>
  *
  * @param <T> type of commands which can be processed
  */
 public abstract class CmdInterpreter<T extends Cmd> {
 
-    public abstract int group();
+    public abstract boolean canProcess(String group, String cmdName);
 
-    public abstract boolean canProcess(Cmd command);
+    boolean canProcess(@NotNull Cmd cmd) {
+        return canProcess(cmd.group(), cmd.name());
+    }
 
     /**
      * THe method can implement at least three modes:

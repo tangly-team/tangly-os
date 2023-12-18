@@ -16,7 +16,7 @@ package net.tangly.core.providers;
 import net.tangly.commons.generator.IdGenerator;
 import net.tangly.commons.lang.ReflectionUtilities;
 import net.tangly.core.HasOid;
-import one.microstream.storage.embedded.types.EmbeddedStorageManager;
+import org.eclipse.store.storage.embedded.types.EmbeddedStorageManager;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;

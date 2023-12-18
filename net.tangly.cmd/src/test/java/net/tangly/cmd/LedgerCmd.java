@@ -17,39 +17,51 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 
-public sealed interface LedgerCmd extends Cmd permits CmdBookTransaction, CmdBookSplitTransaction, CmdGetAccountBalance {
+public sealed interface LedgerCmd extends Cmd permits CmdBookTransaction, CmdBookSplitTransaction, CmdGetAccountBalance, AnswerGetAccountBalance {
+    String GROUP = "ledger";
+
+    default String group() {
+        return GROUP;
+    }
+
 }
 
-record CmdBookTransaction(String name, boolean hasAnswer, int id, String accountIdFrom, String accountIdTo, LocalDate date, BigDecimal amount, String text) implements LedgerCmd {
+record CmdBookTransaction(String name, boolean hasAnswer, String accountIdFrom, String accountIdTo, LocalDate date, BigDecimal amount, String text) implements LedgerCmd {
     static String NAME = "book-transaction";
     static boolean HAS_ANSWER = false;
 
-    CmdBookTransaction(int id, String accountIdFrom, String accountIdTo, LocalDate date, BigDecimal amount, String text) {
-        this(NAME, HAS_ANSWER, id, accountIdFrom, accountIdTo, date, amount, text);
+    CmdBookTransaction(String accountIdFrom, String accountIdTo, LocalDate date, BigDecimal amount, String text) {
+        this(NAME, HAS_ANSWER, accountIdFrom, accountIdTo, date, amount, text);
     }
 }
 
 record Booking(String accountId, BigDecimal amount, String text) {
 }
 
-record CmdBookSplitTransaction(String name, boolean hasAnswer, int id, List<Booking> from, List<Booking> to, LocalDate date) implements LedgerCmd {
+record CmdBookSplitTransaction(String name, boolean hasAnswer, List<Booking> from, List<Booking> to, LocalDate date) implements LedgerCmd {
     static String NAME = "book-split-transaction";
     static boolean HAS_ANSWER = false;
 
-    CmdBookSplitTransaction(int id, List<Booking> from, List<Booking> to, LocalDate date) {
-        this(NAME, HAS_ANSWER, id, from, to, date);
+    CmdBookSplitTransaction(List<Booking> from, List<Booking> to, LocalDate date) {
+        this(NAME, HAS_ANSWER, from, to, date);
     }
 }
 
-record AccountBalance(String accountId, LocalDate date, BigDecimal amount) {
-}
-
-record CmdGetAccountBalance(String name, boolean hasAnswer, int id, String accountId, LocalDate date) implements LedgerCmd {
+record CmdGetAccountBalance(String name, boolean hasAnswer, String accountId, LocalDate date) implements LedgerCmd {
     static String NAME = "get-account-balance";
     static boolean HAS_ANSWER = true;
 
-    CmdGetAccountBalance(int id, String accountId, LocalDate date) {
-        this(NAME, HAS_ANSWER, id, accountId, date);
+    CmdGetAccountBalance(String accountId, LocalDate date) {
+        this(NAME, HAS_ANSWER, accountId, date);
+    }
+}
+
+record AnswerGetAccountBalance(String name, boolean hasAnswer, String accountId, LocalDate date, BigDecimal amount) implements LedgerCmd {
+    static String NAME = "account-balance";
+    static boolean HAS_ANSWER = false;
+
+    AnswerGetAccountBalance(String accountId, LocalDate date, BigDecimal amount) {
+        this(NAME, HAS_ANSWER, accountId, date, amount);
     }
 }
 

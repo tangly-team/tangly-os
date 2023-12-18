@@ -51,6 +51,10 @@ public class EntityView<T extends Entity> extends ItemView<T> {
     public static final String TO = "to";
     public static final String TO_LABEL = "To";
 
+    public static final String DATE = "date";
+    public static final String DATE_LABEL = "Date";
+
+
     public static final String ISO_DATE_FORMAT = "yyyy-MM-dd";
 
     public static <T extends Entity> EntityView<T> of(@NotNull Class<T> entityClass, BoundedDomain<?, ?, ?, ?> domain, @NotNull Provider<T> provider, @NotNull Mode mode) {

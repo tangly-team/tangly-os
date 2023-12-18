@@ -32,7 +32,7 @@ dependencies {
     implementation project(':net.tangly.gleam')
 
     implementation(libs.jimfs)
-    implementation(libs.microstream.storage)
+    implementation(libs.eclispsestore.storage)
 
     testImplementation(libs.apache.pdfbox)
 }

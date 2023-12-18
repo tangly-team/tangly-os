@@ -69,21 +69,26 @@ public class InvoicesAdapter implements InvoicesPort {
         Path invoiceAsciiDocPath = invoiceFolder.resolve(invoice.name() + AsciiDoctorHelper.ASCIIDOC_EXT);
         asciiDocGenerator.exports(invoice, invoiceAsciiDocPath, Collections.emptyMap());
         Path invoicePdfPath = invoiceFolder.resolve(invoice.name() + AsciiDoctorHelper.PDF_EXT);
-        AsciiDoctorHelper.createPdf(invoiceAsciiDocPath, invoicePdfPath);
-        try {
-            Files.delete(invoiceAsciiDocPath);
-        } catch (IOException e) {
-            throw new UncheckedIOException(e);
+        if (!overwrite && Files.exists(invoicePdfPath)) {
+            EventData.log(EventData.EXPORT, "net.tangly.crm.ports", EventData.Status.SUCCESS, "Invoice PDF already exists {}",
+                Map.of("invoice", invoice, "invoicePath", invoicePdfPath, "withQrCode", withQrCode, "withEN16931", withEN16931, "overwrite", overwrite));
+        } else {
+            AsciiDoctorHelper.createPdf(invoiceAsciiDocPath, invoicePdfPath);
+            try {
+                Files.delete(invoiceAsciiDocPath);
+            } catch (IOException e) {
+                throw new UncheckedIOException(e);
+            }
+            if (withQrCode) {
+                var qrGenerator = new InvoiceQrCode();
+                qrGenerator.exports(invoice, invoicePdfPath, Collections.emptyMap());
+            }
+            if (withEN16931) {
+                var en164391Generator = new InvoiceZugFerd();
+                en164391Generator.exports(invoice, invoicePdfPath, Collections.emptyMap());
+            }
+            EventData.log(EventData.EXPORT, "net.tangly.crm.ports", EventData.Status.SUCCESS, "Invoice exported to PDF {}",
+                Map.of("invoice", invoice, "invoicePath", invoicePdfPath, "withQrCode", withQrCode, "withEN16931", withEN16931, "overwrite", overwrite));
         }
-        if (withQrCode) {
-            var qrGenerator = new InvoiceQrCode();
-            qrGenerator.exports(invoice, invoicePdfPath, Collections.emptyMap());
-        }
-        if (withEN16931) {
-            var en164391Generator = new InvoiceZugFerd();
-            en164391Generator.exports(invoice, invoicePdfPath, Collections.emptyMap());
-        }
-        EventData.log(EventData.EXPORT, "net.tangly.crm.ports", EventData.Status.SUCCESS, "Invoice exported to PDF {}",
-            Map.of("invoice", invoice, "invoicePath", invoicePdfPath, "withQrCode", withQrCode, "withEN16931", withEN16931));
     }
 }

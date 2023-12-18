@@ -4,15 +4,15 @@
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- *          https://apache.org/licenses/LICENSE-2.0
+ *          http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ *
  */
 
 package net.tangly.erp.products.ports;
 
-import net.tangly.commons.lang.ReflectionUtilities;
 import net.tangly.core.providers.Provider;
 import net.tangly.erp.ports.TsvHdl;
 import net.tangly.erp.products.domain.Assignment;
@@ -30,7 +30,6 @@ import java.util.List;
 import java.util.Optional;
 
 import static net.tangly.core.tsv.TsvHdlCore.TEXT;
-import static net.tangly.erp.ports.TsvHdl.OID;
 import static net.tangly.erp.ports.TsvHdl.convertFoidTo;
 import static net.tangly.erp.ports.TsvHdl.createTsvEntityFields;
 
@@ -91,11 +90,11 @@ public class ProductsTsvHdl {
     }
 
     private TsvEntity<Effort> createTsvEffort() {
-        List<TsvProperty<Effort, ?>> fields = List.of(TsvProperty.of(OID, Effort::oid, (entity, value) -> ReflectionUtilities.set(entity, OID, value), Long::parseLong),
-            TsvProperty.of("date", Effort::date, Effort::date, TsvProperty.CONVERT_DATE_FROM), TsvProperty.ofInt("durationInMinutes", Effort::duration, Effort::duration),
-            TsvProperty.ofString(TEXT, Effort::text, Effort::text),
-            TsvProperty.of("assignmentOid", Effort::assignment, Effort::assignment, e -> findAssignmentByOid(e).orElse(null), convertFoidTo()),
-            TsvProperty.ofString("contractId", Effort::contractId, Effort::contractId));
+        List<TsvProperty<Effort, ?>> fields =
+            List.of(TsvProperty.of("date", Effort::date, Effort::date, TsvProperty.CONVERT_DATE_FROM), TsvProperty.ofInt("durationInMinutes", Effort::duration, Effort::duration),
+                TsvProperty.ofString(TEXT, Effort::text, Effort::text),
+                TsvProperty.of("assignmentOid", Effort::assignment, Effort::assignment, e -> findAssignmentByOid(e).orElse(null), convertFoidTo()),
+                TsvProperty.ofString("contractId", Effort::contractId, Effort::contractId));
         return TsvEntity.of(Effort.class, fields, Effort::new);
     }
 }

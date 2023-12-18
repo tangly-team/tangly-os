@@ -123,6 +123,6 @@ class NaturalEntitiesView extends EntityView<NaturalEntity> {
         grid.addColumn(NaturalEntity::firstname).setKey("firstname").setHeader("First Name").setSortable(true).setAutoWidth(true).setResizable(true);
         grid.addColumn(new ComponentRenderer<>(o -> (o.gender() == GenderCode.male) ? new Icon(VaadinIcon.MALE) : new Icon(VaadinIcon.FEMALE))).setKey("gender").setHeader("Gender")
             .setResizable(true).setResizable(true);
-        grid.addColumn(VaadinUtils.linkedInComponentRenderer(CrmTags::individualLinkedInUrl)).setKey("linkedIn").setHeader("LinkedIn").setAutoWidth(true);
+        grid.addColumn(VaadinUtils.linkedInComponentRenderer(CrmTags::linkedInTag, false)).setKey("linkedIn").setHeader("LinkedIn").setAutoWidth(true);
     }
 }

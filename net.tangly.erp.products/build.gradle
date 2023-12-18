@@ -28,6 +28,6 @@ dependencies {
     implementation project(':net.tangly.erp.shared')
     implementation project(':net.tangly.gleam')
 
-    implementation(libs.microstream.storage)
+    implementation(libs.eclispsestore.storage)
     implementation(libs.apache.commons.csv)
 }

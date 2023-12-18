@@ -1,13 +1,14 @@
 /*
- * Copyright 2006-2022 Marcel Baumann
+ * Copyright 2006-2023 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- *          https://apache.org/licenses/LICENSE-2.0
+ *          http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ *
  */
 
 package net.tangly.core.crm;
@@ -143,24 +144,7 @@ public final class CrmTags {
         return CRM + ":im-" + Objects.requireNonNull(im);
     }
 
-    /**
-     * Create the LinkedIn profile link for a natural entity
-     *
-     * @param entity person which LinkedIn profile should be displayed
-     * @return link to the LinkedIn profile
-     */
-    public static String individualLinkedInUrl(@NotNull HasTags entity) {
-        return entity.findBy(CrmTags.CRM_IM_LINKEDIN).map(Tag::value).map(o -> "https://www.linkedin.com/in/" + o).orElse(null);
-    }
-
-    /**
-     * Create the LinkedIn company profile lik for a legal entity. LinkedIn handles regular organizations and schools in different ways.
-     *
-     * @param entity organization which LinkedIn profile should be displayed
-     * @return link to the LinkedIn profile
-     */
-    public static String organizationLinkedInUrl(@NotNull HasTags entity) {
-        var school = entity.findBy(CrmTags.CRM_SCHOOL);
-        return entity.findBy(CrmTags.CRM_IM_LINKEDIN).map(Tag::value).map(o -> "https://www.linkedin.com/" + (school.isPresent() ? "school/" : "company/") + o).orElse(null);
+    public static String linkedInTag(@NotNull HasTags entity) {
+        return entity.findBy(CrmTags.CRM_IM_LINKEDIN).map(Tag::value).orElse(null);
     }
 }

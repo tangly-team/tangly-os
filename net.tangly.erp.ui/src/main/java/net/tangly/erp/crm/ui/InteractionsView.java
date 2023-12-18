@@ -16,7 +16,7 @@ package net.tangly.erp.crm.ui;
 import com.vaadin.flow.component.combobox.ComboBox;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.ColumnTextAlign;
-import com.vaadin.flow.component.textfield.TextField;
+import com.vaadin.flow.component.textfield.BigDecimalField;
 import com.vaadin.flow.data.renderer.NumberRenderer;
 import com.vaadin.flow.router.PageTitle;
 import net.tangly.core.codes.CodeType;
@@ -49,15 +49,15 @@ class InteractionsView extends EntityView<Interaction> {
         }
 
         private FormLayout details() {
-            TextField potential = VaadinUtils.createTextField("Potential", "potential");
-            TextField probability = VaadinUtils.createTextField("Probability", "probability");
+            var potential = new BigDecimalField("Potential", "potential");
+            var probability = new BigDecimalField("Probability", "probability");
             ComboBox<InteractionCode> code = ItemForm.createCodeField(CodeType.of(InteractionCode.class), "code");
 
             FormLayout form = new FormLayout();
             form.add(potential, probability, code);
 
-            binder().bind(potential, e -> VaadinUtils.format(e.potential()), (e, v) -> e.potential(VaadinUtils.toBigDecimal(v)));
-            binder().bind(probability, e -> VaadinUtils.format(e.probability()), (e, v) -> e.probability(VaadinUtils.toBigDecimal(v)));
+            binder().bind(potential, Interaction::potential, Interaction::potential);
+            binder().bind(probability, Interaction::probability, Interaction::probability);
             binder().forField(code).bind(Interaction::code, Interaction::code);
             return form;
         }

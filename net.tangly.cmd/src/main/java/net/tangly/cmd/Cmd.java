@@ -18,11 +18,11 @@ package net.tangly.cmd;
  */
 public interface Cmd {
     /**
-     * Return an identifier unique in the context it is used.
+     * Return the group of the command. The group is used to group commands for a specific interpreter
      *
-     * @return identifier of the command instance
+     * @return group of the command.
      */
-    int id();
+    String group();
 
     /**
      * Human-readable identifier of the command instruction. Programmatically, the command instruction is identified through its class.

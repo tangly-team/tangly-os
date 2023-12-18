@@ -26,7 +26,7 @@ dependencies {
     implementation project(':net.tangly.core')
     implementation project(':net.tangly.gleam')
     implementation(libs.apache.commons.csv)
-    implementation(libs.microstream.storage)
+    implementation(libs.eclispsestore.storage)
 
     testImplementation project(':net.tangly.core')
     testImplementation(libs.javalin)

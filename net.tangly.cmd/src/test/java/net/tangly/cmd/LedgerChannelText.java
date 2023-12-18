@@ -27,7 +27,7 @@ import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 
-public class LedgerChannelText extends CmdChannel {
+public class LedgerChannelText implements CmdChannel, CmdTransformer<String, LedgerCmd> {
     final static String BOOKING_DESCRIPTION = "[account=account-id,amount=xx.xx,text=\"text of the booking\"]";
     final static String CMD_BOOK_TRANSACTION = "book-transaction";
     final static String CMD_BOOK_SPLIT_TRANSACTION = "book-split-transaction";
@@ -41,44 +41,16 @@ public class LedgerChannelText extends CmdChannel {
         this.commands = createCommands();
     }
 
-    @Override
-    public boolean canProcess(String command) {
-        return CMD_BOOK_TRANSACTION.equals(command) || CMD_BOOK_SPLIT_TRANSACTION.equals(command) || QUERY_GET_ACCOUNT_BALANCE.equals(command);
-    }
-
     public void process(String[] args) {
-        CommandLineParser parser = new DefaultParser();
-        try {
-            // parse the command line arguments
-            if ("help".equals(args[0])) {
-                HelpFormatter formatter = new HelpFormatter();
-                formatter.setWidth(120);
-                commands.keySet().forEach(o -> formatter.printHelp(o, commands.get(o), true));
-            } else {
-                CommandLine line = parser.parse(commands.get(args[0]), args);
-                LedgerCmd cmd = switch (args[0]) {
-                    case CMD_BOOK_TRANSACTION ->
-                        new CmdBookTransaction(generatedId(), line.getOptionValue("from"), line.getOptionValue("to"), LocalDate.parse(line.getOptionValue("date")),
-                            new BigDecimal(line.getOptionValue("amount")), line.getOptionValue("text"));
-                    case CMD_BOOK_SPLIT_TRANSACTION -> null;
-                    case QUERY_GET_ACCOUNT_BALANCE -> new CmdGetAccountBalance(generatedId(), line.getOptionValue("account"), LocalDate.parse(line.getOptionValue("date")));
-                    default -> null;
-                };
-                if (cmd != null) {
-                    interpreter.execute(cmd, this);
-                }
+        if ("help".equals(args[0])) {
+            HelpFormatter formatter = new HelpFormatter();
+            formatter.setWidth(120);
+            commands.keySet().forEach(o -> formatter.printHelp(o, commands.get(o), true));
+        } else {
+            LedgerCmd cmd = transformFrom(args);
+            if (cmd != null) {
+                interpreter.execute(cmd, this);
             }
-        } catch (ParseException exp) {
-            // oops, something went wrong
-            System.err.println("Parsing failed.  Reason: " + exp.getMessage());
-        }
-    }
-
-    @Override
-    public void transmit(int cmdId, Object payload) {
-        switch (payload) {
-            case AccountBalance balance -> System.out.println(balance);
-            default -> throw new IllegalArgumentException("Unexpected type: " + payload);
         }
     }
 
@@ -119,4 +91,61 @@ public class LedgerChannelText extends CmdChannel {
         commands.put(CmdGetAccountBalance.NAME, options);
         return commands;
     }
+
+    // region CmdChannel Functions
+    @Override
+    public void transmit(String group, String commandName, Object payload) {
+        switch (payload) {
+            case AnswerGetAccountBalance balance -> System.out.println(balance);
+            default -> throw new IllegalArgumentException("Unexpected type: " + payload);
+        }
+    }
+
+    // endregion CmdChannel Functions
+
+    // region CmdTransformer Functions
+
+    @Override
+    public boolean canTransformFrom(String data) {
+        var datas = data.split(" ");
+        return (datas.length > 0) && commands.containsKey(datas[0]);
+    }
+
+    @Override
+    public boolean canTransformTo(Object cmd) {
+        return cmd instanceof LedgerCmd;
+    }
+
+    @Override
+    public LedgerCmd transformFrom(String data) {
+        return transformFrom(data.split(" "));
+    }
+
+    public LedgerCmd transformFrom(String[] data) {
+        CommandLineParser parser = new DefaultParser();
+        try {
+            CommandLine line = parser.parse(commands.get(data[0]), data);
+            return switch (data[0]) {
+                case CMD_BOOK_TRANSACTION -> new CmdBookTransaction(line.getOptionValue("from"), line.getOptionValue("to"), LocalDate.parse(line.getOptionValue("date")),
+                    new BigDecimal(line.getOptionValue("amount")), line.getOptionValue("text"));
+                case CMD_BOOK_SPLIT_TRANSACTION -> null;
+                case QUERY_GET_ACCOUNT_BALANCE -> new CmdGetAccountBalance(line.getOptionValue("account"), LocalDate.parse(line.getOptionValue("date")));
+                default -> null;
+            };
+        } catch (ParseException exp) {
+            // oops, something went wrong
+            System.err.println("Parsing failed.  Reason: " + exp.getMessage());
+        }
+        return null;
+    }
+
+    @Override
+    public String transformTo(LedgerCmd cmd) {
+        return switch (cmd) {
+            case AnswerGetAccountBalance balance -> balance.toString();
+            default -> null;
+        };
+    }
+
+    // endregion CmdTransformer
 }
