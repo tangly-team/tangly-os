@@ -16,6 +16,7 @@ package net.tangly.erp.products.domain;
 import net.tangly.core.HasDate;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 /**
  * An effort defines work performed on a project. It is possible to specify an additional contract to identify the financial link to the duration. A duration is always performed by
@@ -80,6 +81,11 @@ public class Effort implements HasDate {
     @Override
     public boolean equals(Object o) {
         return (o instanceof Effort other) && (date().equals(other.date())) && (duration() == other.duration()) && (assignment().equals(other.assignment()));
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(date(), duration(), assignment());
     }
 
     @Override
