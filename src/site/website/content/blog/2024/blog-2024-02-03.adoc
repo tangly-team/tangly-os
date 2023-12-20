@@ -44,7 +44,7 @@ At the beginning of my career, I attended the monthly meetings of the local Java
 Later, I presented a few times concepts and approaches I used in my projects.
 ====
 
-The same is true for Scrum and agile user groups.
+The same is true for Scrum and agile user groups <<scrum-dev-formation>><<scrum-master-formation>><<product-owner-formation>>.
 Agile breakfast meetings are held regularly in various Swiss locations for the last fifteen years.
 
 Embedded development is more of a niche area.
@@ -147,6 +147,13 @@ The best way to improve technically is to study interesting approaches.
 
 You need to apply the learnings to truly understand them.
 ====
+
+[bibliography]
+== Links
+
+- [[[scrum-dev-formation, 1]]] link:../../2021/scrum-developer-formation/[Scrum Developer Formation]
+- [[[scrum-master-formation, 2]]] link:../../2021/scrum-master-formation/[Scrum Master Formation]
+- [[[product-owner-formation, 3]]] link:../../2021/product-owner-formation/[Product Owner Formation]
 
 == References
 

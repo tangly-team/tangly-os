@@ -23,7 +23,7 @@ Too many companies neglect this phase to their own detriment.
 Onboarding, the process of bringing new employees to a point where they are fully integrated into the company and working at full capacity is a _make it or break it_ process for companies wanting to compete in the tech world.
 Whether you are a startup with only a few employees, or an established company with hundreds of employees, the onboarding process is the first opportunity you have to set up new employees for long-term success.
 
-It can cost employers anywhere from 30-50% of an employee’s yearly salary to replace a developer that leaves.
+It can cost employers anywhere from 30–50% of an employee’s yearly salary to replace a developer that leaves.
 So when an organization loses employees to a bad onboarding process, the company feels it.
 And if there is an insufficient onboarding process, new hires will leave.
 

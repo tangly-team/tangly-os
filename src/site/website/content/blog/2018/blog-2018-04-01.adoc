@@ -55,8 +55,8 @@ The feeling having reached a certain mastery level is truly awesome.
 * Lean a new language or framework every two years.
 * Read books such as The pragmatic Programmer cite:[pragmatic-programmer-2nd].
 * Know approaches such http://www.extremeprogramming.org/[eXtreme Programming], and read the book cite:[extreme-programmking-explained].
-* Work with https://www.scrumguides.org/[Scrum], https://en.wikipedia.org/wiki/Kanban[Kanban], {ref-less} -.
-Agile approaches are definitively state of the industry techniques -.
+* Work with https://www.scrumguides.org/[Scrum], https://en.wikipedia.org/wiki/Kanban[Kanban], {ref-less}.
+Agile approaches are definitively state of the industry techniques.
 * Master container approaches with https://www.docker.com/[Docker] - containers are here to stay and will replace virtual machines -.
 
 You shall write good enough software without errors and using the best practices of the industry.
@@ -66,7 +66,7 @@ See my blog post about technical debt discussing the consequences of missing mas
 == Software Craftsmanship
 
 https://en.wikipedia.org/wiki/Software_craftsmanship[Software craftsmanship] is an initiative to improve the professionalism of software developers.
-You do not have to agree with them, just look what they are doing.
+You do not have to agree with them, look what they are doing.
 
 For a detailed discussion, read the book The Software Craftsman: Professionalism, Pragmatism, Pride by Sandro Mancuso.
 

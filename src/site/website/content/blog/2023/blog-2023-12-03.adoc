@@ -207,7 +207,7 @@ This approach is the standard one for bus communication.
 ====
 You can implement a two-step decoding process for maximum flexibility.
 
-The first step is to decode the message type and encodind format before dispatching the message to the right interpreter.
+The first step is to decode the message type and encoding format before dispatching the message to the right interpreter.
 The interpreter will decode the message payload and transform it into a command instance.
 
 This approach shall only be used if you need to support multiple complex encoding formats due to its complexity.

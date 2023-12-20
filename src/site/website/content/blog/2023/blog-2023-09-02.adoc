@@ -105,7 +105,7 @@ You need the following additions in your {ref-gradle} configuration.
 ====
 
 All other libraries and tools I am using worked without troubles.
-Major libraries test their current release with early-access and solve the problems before the official release a new Java version.
+Major libraries test their current release with early-access and solve the problems before the official release of a new Java version.
 
 == Lessons Learnt
 

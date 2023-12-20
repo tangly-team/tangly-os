@@ -1,0 +1,16 @@
+---
+title: "EclipseStore"
+linkTitle: "EclipseStore"
+date: 2024-01-25
+tags: ["java", "domain-driven-design"]
+---
+
+include::../fragments/_config-mb-blog.aodc[]
+
+image::2024-01-03-head.png[width=420,height=360,role=left]
+
+== EclipseStore
+
+== Migration tangly ERP
+
+== Lessons learnt
