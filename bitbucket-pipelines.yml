@@ -1,4 +1,4 @@
-image: eclipse-temurin:20
+image: eclipse-temurin:21
 clone:
   depth: full
 pipelines:
@@ -10,6 +10,8 @@ pipelines:
           - gradlewrapper
           - node
         script:
+            - apt update
+            - apt install protobuf-compiler
             - ./gradlew build
             - ./gradlew build net.tangly.erp.ui:installDist net.tangly.erp.ui:installShadowDist -Pvaadin.productionMode
         artifacts:
