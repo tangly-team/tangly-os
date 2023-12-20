@@ -15,6 +15,7 @@ jobs:
                     distribution: 'temurin'
                     java-version: '21'
                     cache: 'gradle'
+            -   uses: arduino/setup-protoc@v2
             -   run: |
                     ./gradlew build
                     ./gradlew build net.tangly.erp.ui:installDist '-Pvaadin.productionMode' --no-daemon
