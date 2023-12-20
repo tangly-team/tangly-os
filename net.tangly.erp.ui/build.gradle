@@ -39,6 +39,9 @@ application {
     mainClassName = "net.tangly.erp.ui.Main"
 }
 
+// strange error when using vaadinPrepareFrontend task, the workaround is to declare an explicit dependency
+project.tasks['vaadinPrepareFrontend'].dependsOn('sourcesJar')
+
 jar {
     // needed for the shadow jar otherwise get a runtime error in LogManager.getLogger() when starting the application
     manifest {

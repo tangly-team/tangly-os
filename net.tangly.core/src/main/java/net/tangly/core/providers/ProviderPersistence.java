@@ -13,6 +13,10 @@
 
 package net.tangly.core.providers;
 
+import org.eclipse.serializer.persistence.binary.jdk17.types.BinaryHandlersJDK17;
+import org.eclipse.serializer.persistence.binary.jdk8.types.BinaryHandlersJDK8;
+import org.eclipse.store.storage.embedded.types.EmbeddedStorage;
+import org.eclipse.store.storage.embedded.types.EmbeddedStorageFoundation;
 import org.eclipse.store.storage.embedded.types.EmbeddedStorageManager;
 import org.jetbrains.annotations.NotNull;
 
@@ -31,6 +35,9 @@ public class ProviderPersistence<T> implements Provider<T> {
     private final List<T> items;
 
     public ProviderPersistence(@NotNull EmbeddedStorageManager storageManager, List<T> items) {
+        final EmbeddedStorageFoundation<?> foundation = EmbeddedStorage.Foundation();
+        foundation.onConnectionFoundation(BinaryHandlersJDK8::registerJDK8TypeHandlers);
+        foundation.onConnectionFoundation(BinaryHandlersJDK17::registerJDK17TypeHandlers);
         this.storageManager = storageManager;
         this.items = items;
     }

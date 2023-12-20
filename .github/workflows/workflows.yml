@@ -16,7 +16,7 @@ jobs:
                     java-version: '21'
                     cache: 'gradle'
             -   run: |
-                    ./gradlew classes testClasses test javadoc jar
+                    ./gradlew build
                     ./gradlew build net.tangly.erp.ui:installDist '-Pvaadin.productionMode' --no-daemon
             -   uses: actions/upload-artifact@v3
                 with:

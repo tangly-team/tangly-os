@@ -32,6 +32,9 @@ application {
     mainClassName = "net.tangly.app.ui.Main"
 }
 
+// strange error when using vaadinPrepareFrontend task, the workaround is to declare an explicit dependency
+project.tasks['vaadinPrepareFrontend'].dependsOn('sourcesJar')
+
 dependencies {
     implementation project(':net.tangly.core')
     implementation project(':net.tangly.ui')
