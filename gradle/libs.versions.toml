@@ -1,6 +1,6 @@
 [versions]
 assertj-version = '3.24.2'
-flyway-version = '10.3.0'
+flyway-version = '10.4.1'
 jackson-version = '2.12.3'
 jersey-version = '2.35'
 javalin-version = '5.6.3'
@@ -10,7 +10,7 @@ log4j2-version = '2.20.0'
 openapi-version = "5.6.3-2"
 eclipsestore-version = '1.0.0'
 mustang-version = '2.9.0'
-vaadin-version = '24.3.1'
+vaadin-version = '24.3.2'
 
 [plugins]
 vaadin = { id = "com.vaadin", version.ref = "vaadin-version" }
@@ -42,7 +42,7 @@ apache-pdfbox = "org.apache.pdfbox:pdfbox:3.0.1"
 arch-unit = "com.tngtech.archunit:archunit-junit5-api:1.2.1"
 
 asciidoctorj = "org.asciidoctor:asciidoctorj:2.5.10"
-asciidoctorj-pdf = "org.asciidoctor:asciidoctorj-pdf:2.3.9"
+asciidoctorj-pdf = "org.asciidoctor:asciidoctorj-pdf:2.3.10"
 
 assertj = { module = "org.assertj:assertj-core", version.ref = "assertj-version" }
 eo-yaml = "com.amihaiemil.web:eo-yaml:5.2.1"
