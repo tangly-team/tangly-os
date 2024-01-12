@@ -1,15 +1,15 @@
 [versions]
-assertj-version = '3.24.2'
-flyway-version = '10.4.1'
+assertj-version = '3.25.1'
+flyway-version = '10.5.0'
 jackson-version = '2.12.3'
 jersey-version = '2.35'
 javalin-version = '5.6.3'
 jolt-version = '0.1.1'
 junit-version = '5.10.1'
 log4j2-version = '2.20.0'
-openapi-version = "5.6.3-2"
+openapi-version = "5.6.3-3"
 eclipsestore-version = '1.0.0'
-mustang-version = '2.9.0'
+mustang-version = '2.10.0'
 vaadin-version = '24.3.2'
 
 [plugins]
@@ -56,7 +56,7 @@ iban4j = "org.iban4j:iban4j:3.2.7-RELEASE"
 ical4j-core = "org.mnode.ical4j:ical4j:3.2.1"
 ical4j-vcard = "org.mnode.ical4j:ical4j-vcard:1.0.7"
 
-google-libphonenumber = "com.googlecode.libphonenumber:libphonenumber:8.13.27"
+google-libphonenumber = "com.googlecode.libphonenumber:libphonenumber:8.13.28"
 google-protobuf = "com.google.protobuf:protobuf-java:3.24.3"
 
 jackson-databind = { module = "com.fasterxml.jackson.core:jackson-databind", version.ref = "jackson-version" }
@@ -83,7 +83,7 @@ json-assert = "org.skyscreamer:jsonassert:1.5.0"
 json-jolt-core = { module = "com.bazaarvoice.jolt:jolt-core", version.ref = "jolt-version" }
 json-jolt-utils = { module = "com.bazaarvoice.jolt:jolt-utils", version.ref = "jolt-version" }
 
-jsoup = "org.jsoup:jsoup:1.17.1"
+jsoup = "org.jsoup:jsoup:1.17.2"
 
 junit-api = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "junit-version" }
 junit-engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "junit-version" }
@@ -111,13 +111,15 @@ mockito = "org.mockito:mockito-junit-jupiter:5.8.0"
 scribe = "com.github.scribejava:scribejava-apis:8.3.1"
 
 vaadin-core = { module = "com.vaadin:vaadin-core", version.ref = "vaadin-version" }
-vaadin-pdfviewer = "org.vaadin.addons.componentfactory:vcf-pdf-viewer:2.8.0"
+vaadin-pdfviewer = "org.vaadin.addons.componentfactory:vcf-pdf-viewer:2.8.1"
 
 vaadin-embedded-jetty = "com.github.mvysny.vaadin-boot:vaadin-boot:12.2"
+
 vaadin-socharts = "com.storedobject.chart:so-charts:3.2.4"
 vaadin-test = "com.github.mvysny.kaributesting:karibu-testing-v23:2.1.0"
+
 
 [bundles]
 test-deps = ["junit-api", "assertj", "mockito", "arch-unit"]
 jackson-deps = ["jackson-databind", "jackson-parameters", "jackson-datatype", "jackson-jsr310"]
-microstream-deps = ["eclispsestore-storage", "eclispsestore-jdk8", "eclispsestore-jdk17"]
+eclipsestore-deps = ["eclispsestore-storage", "eclispsestore-jdk8", "eclispsestore-jdk17"]
