@@ -106,7 +106,7 @@ eclispsestore-jdk8 = { module = "org.eclipse.serializer:persistence-binary-jdk8"
 eclispsestore-jdk17 = { module = "org.eclipse.serializer:persistence-binary-jdk17", version.ref = "eclipsestore-version" }
 
 
-mockito = "org.mockito:mockito-junit-jupiter:5.8.0"
+mockito = "org.mockito:mockito-junit-jupiter:5.9.0"
 
 scribe = "com.github.scribejava:scribejava-apis:8.3.1"
 
@@ -116,7 +116,7 @@ vaadin-pdfviewer = "org.vaadin.addons.componentfactory:vcf-pdf-viewer:2.8.1"
 vaadin-embedded-jetty = "com.github.mvysny.vaadin-boot:vaadin-boot:12.2"
 
 vaadin-socharts = "com.storedobject.chart:so-charts:3.2.4"
-vaadin-test = "com.github.mvysny.kaributesting:karibu-testing-v23:2.1.0"
+vaadin-test = "com.github.mvysny.kaributesting:karibu-testing-v23:2.1.1"
 
 
 [bundles]
