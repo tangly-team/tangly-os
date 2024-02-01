@@ -137,6 +137,8 @@ npm install --global state-machine-cat                                <7>
 
 gem install asciidoctor-bibtex asciidoctor-diagram asciidoctor-chart  <8>
 gem install asciidoctor-rouge asciidoctor-kroki asciidoctor-revealjs
+gem install --prerelease asciidoctor-tabs
+gem update system & gem update
 
 brew install --cask netnewswire                                       <9>
 brew install --cask asciidocfx                                        <10>
@@ -253,6 +255,17 @@ gem update
 ----
 ====
 
+== House Keeping
+
+Once the new machine is up and running, I need to clean up the backup drive and remove the backups of the old machine.
+
+[source,console]
+----
+sudo tmutil delete -p /Volumes/Backup/Backups.backupdb/<MACHINE-NAME>
+----
+
+Beware that the delete operation take a very long time.
+
 == Thoughts
 
 All developers in our company are using Apple notebooks since the company's inception.
@@ -293,3 +306,4 @@ I buy a new notebook every five years, meaning the yearly costs are ridiculous l
 
 - [[[o-still-use-macbookpro, 1]]] link:../../2019/why-i-still-love-to-use-a-macbookpro-and-macos-in-2019/[Why I Still Use a MacBookPro notebook and macOS]
 - [[[i-use-macbookpro, 2]]] link:../../2016/why-i-use-a-macbookpro-and-os-x/[Why I Use a MacBookPro Notebook and macOS]
+- [[[install-ruby, 3]]] https://mac.install.guide/ruby/[Install Ruby on macOS]

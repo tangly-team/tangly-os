@@ -7,6 +7,8 @@ tags: ["agile", "tangly", "organization"]
 
 include::../fragments/_config-mb-blog.aodc[]
 
+[.float-group]
+--
 image::2024-02-02-head.jpg[width=420,height=360,role=left]
 
 We are an agile boutique.
@@ -20,6 +22,7 @@ How do you organize such a company?
 How do collaborators work together?
 
 Should have permanent office spaces or opt for coworking space, and why?
+--
 
 == Experience with Coworking Space
 

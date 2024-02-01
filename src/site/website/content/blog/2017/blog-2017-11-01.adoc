@@ -6,6 +6,7 @@ tags: ["agile"]
 ---
 
 include::../fragments/_config-mb-blog.aodc[]
+:ref-kaizen: https://en.wikipedia.org/wiki/Kaizen/[Kaizen]
 
 [.float-group]
 --

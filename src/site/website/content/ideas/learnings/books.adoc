@@ -107,7 +107,7 @@ description: bibliography agile and technical excellence books
 ====
 * bibitem:[pragmatic-programmer-2nd]
 * bibitem:[software-craftsman]
-* bibitem:[extreme-programmking-explained]
+* bibitem:[extreme-programming-explained]
 * bibitem:[agile-testing]
 * bibitem:[more-agile-testing]
 * bibitem:[clean-code]

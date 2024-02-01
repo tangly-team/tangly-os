@@ -1,13 +1,17 @@
 ---
 title: "Advanced Streams"
 linkTitle: "Advanced Streams"
-date: 2024-02-01
+date: 2024-02-05
 tags: ["java", "students-java"]
 ---
 
 include::../fragments/_config-mb-blog.aodc[]
 
+[.float-group]
+--
 image::2024-02-01-head.png[width=420,height=360,role=left]
+
+--
 
 == Java Streams
 
@@ -22,6 +26,15 @@ cite:[modern-software-engineering,effective-java-3rd]
 == Parallel Streams
 
 == Lessons Learnt
+
+Modern Java applications extensively use streams.
+The source code <verzichtet> to use loops and conditional statements.
+
+The new gatherers simplify this functional and declarative programming style.
+
+Modern IDE like IntelliJ provides reasonable support to debug complex stream expressions.
+I seldom need to activate the debugger.
+The declarative style tremendously reduces the risks of errors in the application.
 
 [bibliography]
 == Links

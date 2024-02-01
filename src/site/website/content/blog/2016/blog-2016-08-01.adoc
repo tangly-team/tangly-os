@@ -82,7 +82,7 @@ It is interesting to compare the above list with the reference list of the Certi
 . bibitem:[user-stories-applied]
 . bibitem:[the-deadline]
 . bibitem:[peopleware]
-. bibitem:[extreme-programmking-explained]
+. bibitem:[extreme-programming-explained]
 . bibitem:[lean-from-the-trenches]
 . bibitem:[kanban]
 

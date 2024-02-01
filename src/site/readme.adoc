@@ -1,16 +1,17 @@
-== Docsy Theme for Hugo
+cd w== Docsy Theme for Hugo
 
 The _docsy_ theme was customized to support specific needs of the tangly OS documentation static website.
 
 === Tips
 
-Each section has a configuration in the front matter in the index file. The type of the section is specified to allow Hugo to retrieve the corresponding templates.
+Each section has a configuration in the front matter in the index file.
+The type of the section is specified to allow Hugo to retrieve the corresponding templates.
 
 Use https://linkchecker.github.io/linkchecker/[Link Checker] to validate all links on the website.
 
 How to kill the hugo process hanging in a port:
 
-[source, bash]
+[source,bash]
 ----
  kill -9 $(lsof -t -i:1313)
 ----
@@ -50,15 +51,20 @@ Exploration was started to improve the styling of https://asciidoc.org[asciidoc]
 * assets/scss/_shortcodes_.scss _used by the attachment extension_.
 * assets/scss/_styles_projects.scss _regular extension hook for Hugo Docsy template_.
 
-== Local Development
+== RevealJS Toolchain
 
-To setup the ruby toolchain, you should execute:
+To set up the ruby toolchain, you should execute:
 
 [source,console]
 ----
-bundle config --local path .bundle/gems
+cd workshops                                    <1>
+bundle config --local path .bundle/gems         <2>
 bundle
 ----
+
+<1> change into the _workshops_ folder
+<2> download and configure needed packages.
+The _Gemfile_ in the _workshops_ folder defines all needed dependencies
 
 The code to generate a presentation workshop slides deck is:
 

@@ -1,25 +1,248 @@
 ---
-title: "Cursive for Clojure"
-linkTitle: "Cursive"
-date: 2024-01-02
-tags: ["jvm-languages", "series-students"]
+title: "EclipseStore"
+linkTitle: "EclipseStore"
+date: 2024-01-25
+tags: ["java", "domain-driven-design"]
 ---
 
 include::../fragments/_config-mb-blog.aodc[]
+:ref-apache-commons-cvs: https://commons.apache.org/proper/commons-csv/[Apache Commons CSV]
+:ref-helidon: https://helidon.io/[Helidon]
+:ref-jimfs: https://github.com/google/jimfs[jimfs]
+:ref-micronaut: https://micronaut.io/[Micronaut]
 
-image::2024-01-02-head.svg[width=420,height=360,role=left]
+image::2024-01-02-head.png[width=420,height=360,role=left]
 
-== Install Cursive
+{ref-eclipsestore}
+footnote:[{ref-eclipsestore} was previously called {ref-microstream}.
+The Java frameworks {ref-helidon} and {ref-micronaut} support natively EclipseStore for their persistence layer.]
+is a Java-native persistence layer built for cloud-native microservices and serverless systems.
+EclipseStore is the only data storage solution that uses the native Java object model instead of database-specific structure or format.
 
-== REPL
+It enables storing any Java object graph of any size and complexity transaction-safe into any binary data storage such as plain files, persistent volumes, or cloud object storage.
 
-== Unit Testing
+Snapshots of the object graph differences are regularly saved to the storage.
+ACID transaction journal guarantees full consistency.
 
-== Tips and Tricks
+Each diff is stored as a bytecode representation appended to the storage using Eclipse Serializers optimized byte format.
+Objects are retrieved from the storage and restored in memory fully automated by just accessing the objects in your object graph via getter.
+
+Lazy-Loading enables to run EclipseStore also with low memory capacity even lower than 1 GB.
+At system start, only object IDs are loaded into RAM.
+Related object reference subgraphs are restored in memory on-demand only.
+
+== EclipseStore Hello World
+
+Using {ref-eclipsestore} is really simple.
+
+First you have to add the dependency to your {ref-gradle} build file.
+
+[source,groovy]
+----
+implementation("org.eclipse.store:storage-embedded:<current-version>")                    // <1>
+implementation("org.eclipse.serializer:persistence-binary-jdk8:<current-version>")
+implementation("org.eclipse.serializer:persistence-binary-jdk17:<current-version>")
+----
+
+<1> This dependency is required for the embedded storage manager.
+The other dependencies are optimizations for modern Java versions.
+
+Second, you create a storage manager and store a string as the root object to write the canonical Hello World example.
+
+[source,java]
+----
+EmbeddedStorageManager storageManager = EmbeddedStorage.start();                          // <1>
+storageManager.setRoot("Hello World");                                                    // <2>
+storageManager.storeRoot();                                                               // <3>
+----
+
+<1> Start the database manager
+<2> Set the entity (graph) as root
+<3> Store root to persistent storage
+
+== Entities and Aggregates
+
+Domain-driven design promotes the concept of entities and aggregates.
+EclipseStore optimally supports the storage and retrieval of aggregates.
+
+The provider abstraction is a data access objects for a collection of aggregates with the same type for the root entity.
+
+[source,java]
+----
+public interface Provider<T> {
+    static <E extends HasOid, Long> Optional<E> findByOid(@NotNull Provider<E> provider,
+            long oid) {
+        return provider.findBy(E::oid, oid);
+    }
+
+    static <E extends HasId, String> Optional<E> findById(@NotNull Provider<E> provider,
+            @NotNull String id) {
+        return provider.findBy(E::id, id);
+    }
+
+    /**
+     * Return a list containing all known instances of the entity type.
+     *
+     * @return list of all instances
+     */
+    List<T> items();
+
+    /**
+     * Update the data associated with the entity. If the entity is new, the update is handled
+     * as a create operation. The update is transitive and all referenced entities are also
+     * updated. The entity given as parameter becomes the instance managed through the provider.
+     *
+     * @param entity entity to update
+     */
+    void update(@NotNull T entity);
+
+    /**
+     * Delete the data associated with the entity. The object identifier is invalidated.
+     *
+     * @param entity entity to delete
+     */
+    void delete(@NotNull T entity);
+
+    /**
+     * Delete all the entities managed by the provider.
+     */
+    void deleteAll();
+
+
+    /**
+     * Replace an existing value with a new one. A null value is ignored.
+     *
+     * @param oldValue remove the old value if not null
+     * @param newValue add the new value if not null
+     */
+    default void replace(T oldValue, T newValue) {
+        if (Objects.nonNull(oldValue)) {
+            delete(oldValue);
+        }
+        if (Objects.nonNull(newValue)) {
+            update(newValue);
+        }
+    }
+
+    /**
+     * Update the data associated with all entities.
+     *
+     * @param items entities to update
+     */
+    default void updateAll(@NotNull Iterable<? extends T> items) {
+        items.forEach(this::update);
+    }
+
+
+    /**
+     * Return the first entity which property matches the value.
+     *
+     * @param getter getter to retrieve the property
+     * @param value  value to compare with
+     * @param <U>    type of the property
+     * @return optional of the first matching entity otherwise empty
+     */
+    default <U> Optional<T> findBy(@NotNull Function<T, U> getter, U value) {
+        return items().stream().filter(o -> value.equals(getter.apply(o))).findAny();
+    }
+}
+----
+
+Transactions must be realized at the provider level.
+
+- Created aggregates only need transactional integrity when added to the provider.
+- Deleted aggregates only need transactional integrity when removed from the provider.
+- Modified aggregates need transaction integrity when updating entities and value objects of the aggregate and persisting the changes to the provider.
+- Read aggregates only need transactional integrity when the aggregate is retrieved from the provider.
+Potential changes to the aggregate initiated by another client can be propagated to all clients by using an event bus.
+
+The root object for a complete bounded domain would be:
+
+[source,java]
+----
+class DomainEntities {
+    static class Data {                                                                   // <1>
+        private final List<Lead> leads;
+        private final List<NaturalEntity> naturalEntities;
+
+        Data() {
+            leads = new ArrayList<>();
+            naturalEntities = new ArrayList<>();
+        }
+    }
+
+    private final Data data;
+    private final Provider<Lead> leads;
+    private final Provider<NaturalEntity> naturalEntities;
+
+    public DomainEntities(@NotNull Path path) {
+        this.data = new Data();
+        storageManager = EmbeddedStorage.start(data, path);                               // <2>
+
+        leads = ProviderPersistence.of(storageManager, data.leads);                       // <3>
+        naturalEntities = ProviderPersistence.of(storageManager, data.naturalEntities);
+    }
+
+    public Provider<Lead> leads() {                                                       // <4>
+        return this.leads;
+    }
+
+    public Provider<NaturalEntity> naturalEntities() {
+        return this.naturalEntities;
+    }
+}
+----
+
+<1> The data class contains all the data of the bounded domain.
+<2> The storage manager is initialized with the data instance and the path to the storage.
+The instance is populated with the persistent data if the storage exists.
+<3> The provider is initialized with the storage manager and the list of entities.
+<4> The provider interface is accessible through a getter.
+
+== Advanced Considerations
+
+For a huge set of aggregates, you should introduce a sharding concept to distribute the aggregates over multiple providers.
+For example, accounting transactions can be shard by the year of the transaction date.
+
+Beware that if an accounting transaction needs one KB of storage, a million transactions need one GB of storage.
+Few companies have more than a million transactions per year.
+
+If your bounded domain runs as a separate Java virtual machine, you should limit your memory consumption to around 32 GB.
+This restriction covers a lot of concrete use cases.
+
+Almost all internal management systems of a company can be realized within these memory limits.
+You do not need to implement sophisticated sharding concepts.
+
+== Migration tangly ERP
+
+We migrated our open source components from {ref-microstream} to {ref-eclipsestore} as soon as the first stable release was available.
+The migration was straight forward and took only a few hours.
+
+We did not use the provided migration assistant and instead use the refactoring tools of our _IntelliJ IDEA_ IDE.
+
+All unit tests passed without any changes.
+
+The situation is more complicated if you have to migrate a production system with persistent data.
+Our application has an export and import capability to CVS formatted files for all bounded domains
+footnote:[We use the {ref-apache-commons-cvs} library for the export and import operations.].
+We used this capability to export the data, migrate the application, and import the data again with the new version.
+
+== Lessons learnt
+
+EclipseStore is a great persistence layer for Java applications.
+The effort to persist complex bounded domain object graphs is minimal.
+
+Especially in the early phases of a project, you can focus on the domain entities and not on the persistence layer.
+The integration of the {ref-eclipsestore} persistence layer is straightforward and takes only a few hours.
+You can postpone the decision for the persistence layer to a later phase.
+
+This approach is optimal for domain-driven design.
+
+We combine EclipseStore with an in-memory file system {ref-jimfs} to create extensive integration tests with synthetic data.
+The execution speed of the tests is great.
 
 [bibliography]
 == Links
 
-- [[[cursive, 1]]] https://cursive-ide.com/[Cursive]
-
-- [[[intellij, 3]]] https://www.jetbrains.com/idea/[IntelliJ IDEA]
+- [[[eclipsestore, 1]]] http://localhost:1313/blog/2024/eclipsestore/[EclipseStore]
+- [[[microstream,2]]] https://microstream.one/[MicroStream]

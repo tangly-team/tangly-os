@@ -42,7 +42,7 @@ pygmentsStyle = "tango"
 [permalinks]
 blog = "/:section/:year/:title/"
 
-## Configuration for BlackFriday markdown parser: https://github.com/russross/blackfriday
+## Configuration for BlackFriday Markdown parser: https://github.com/russross/blackfriday
 [blackfriday]
 plainIDAnchors = true
 hrefTargetBlank = true
@@ -69,7 +69,7 @@ style = "tango"
 # Uncomment if you want your chosen highlight style used for code blocks without a specified language
 guessSyntax = "true"
 
-# rouge is bundled with Asciidoctor 2.0 and should no more be added as extension, the rouge-css style include html marking in the html file (from the
+# Rouge is bundled with Asciidoctor 2.0 and should no more be added as an extension, the rouge-css style include html marking in the html file (from the
 # Asciidoctor expert Dan Allen). The working folder allows asciidoctor-diagram and plantuml to generate diagrams in the correct folder.
 # additional extensions not in the official hugo extensions list can be loaded in safeMode is set to unsafe.
 # use html5 output because we could not find any useable stylesheet for html5s backend.
@@ -78,7 +78,8 @@ safeMode = "unsafe"
 workingFolderCurrent = true
 backend = "html5"
 failureLevel = "fatal"
-extensions = ["asciidoctor-diagram", "asciidoctor-bibtex", "asciidoctor-kroki", "asciidoctor-tabs"]
+#extensions = ["asciidoctor-diagram", "asciidoctor-bibtex", "asciidoctor-kroki", "asciidoctor-tabs"]
+extensions = ["asciidoctor-diagram", "asciidoctor-kroki", "asciidoctor-tabs"]
 [markup.asciidocExt.attributes]
 experimental = true
 allow-uri-read = true
@@ -92,6 +93,7 @@ copyright = "CC-BY-SA 4.0"
 stem = "asciimath"
 bibtex-file = "/Users/Shared/Projects/tangly-os/src/main/resources/references.bib"
 bibtex-style = "ieee-with-url"
+bibtex-throw = "false"
 ref-adr = "https://adr.github.io/[Architecture Design Records ADR]"
 ref-ant = "https://ant.apache.org/[Apache Ant]"
 ref-arc42 = "https://arc42.org/[arc42]"
@@ -106,6 +108,7 @@ ref-craftsmanship = "https://manifesto.softwarecraftsmanship.org/[Software Craft
 ref-devops = "https://en.wikipedia.org/wiki/DevOps[DevOps]"
 ref-docsy = "https://www.docsy.dev/[Docsy]"
 ref-doxygen = "https://www.doxygen.nl/[Doxygen]"
+ref-eclipsestore = "https://eclipsestore.io/[Eclipse Store]"
 ref-flow = "https://en.wikipedia.org/wiki/Flow_(psychology)[Flow]"
 ref-git = "https://git-scm.com/[Git]"
 ref-github = "https://github.com/[GitHub]"
@@ -113,7 +116,6 @@ ref-gitlab = "https://gitlab.com/[GitLab]"
 ref-gradle = "https://gradle.org/[Gradle Build Tool]"
 ref-hermes = "https://www.hermes.admin.ch/en/[HERMES]"
 ref-hugo = "https://gohugo.io/[Hugo]"
-ref-kaizen = "https://en.wikipedia.org/wiki/Kaizen[Kaizen]"
 ref-kanban = "https://en.wikipedia.org/wiki/Kanban[Kanban]"
 ref-javadoc = "https://www.oracle.com/java/technologies/javase/javadoc.html[JavaDoc]"
 ref-junit5 = "https://junit.org/junit5/[JUnit 5]"
@@ -135,7 +137,6 @@ ref-scrum-alliance = "https://www.scrumalliance.org/[Scrum Alliance]"
 ref-scrum-org = "https://www.scrum.org/[Scrum.org]"
 ref-scrumguide = "https://www.scrumguides.org/[Scrum Guide]"
 ref-site = "https://blog.tangly.net/[Open Source Components]"
-ref-sociocracy = "https://sociocracy30.org/[Sociocracy]"
 ref-tangly = "https://www.tangly.net/[tangly]"
 ref-tangly-doc-url = "https://blog.tangly.net/docs"
 ref-tangly-blog-url = "https://blog.tangly.net/blog"
@@ -148,7 +149,7 @@ ref-utterances = "https://utteranc.es/[utteranc.es]"
 ref-xp = "http://www.extremeprogramming.org/[eXtreme Programming]"
 
 var-current-ver = "0.2.7"
-var-current-release-date = "2023-06-30"
+var-current-release-date = "2024-03-31"
 
 languageCode = "en-us"
 defaultContentLanguage = "en"
@@ -173,7 +174,7 @@ disable_toc = true
 [sc_attachments]
 other = "Attachments"
 
-# Everything below this are Site Params
+# Everything below this is defined as Site Params
 
 [params]
 copyright = "tangly llc - Attribution 4.0 International (CC BY 4.0)"
@@ -207,7 +208,7 @@ archived_version = false
 # current doc set.
 version = "2022.06"
 
-# A link to latest version of the docs. Used in the "version-banner" partial to
+# A link to the latest version of the docs. Used in the "version-banner" partial to
 # point people to the main doc site.
 url_latest_version = "https://blog.tangly.net"
 
@@ -235,9 +236,9 @@ url = "https://bitbucket.org/tangly-team/tangly-os/"
 
 # User interface configuration
 [params.ui]
-# Enable to show the side bar menu in its compact state.
+# Enable to show the sidebar menu in its compact state.
 sidebar_menu_compact = false
-# Enable to show the side bar menu as foldable.
+# Enable to show the sidebar menu as foldable.
 sidebar_menu_foldable = true
 #  Set to true to disable breadcrumb navigation.
 breadcrumb_disable = false

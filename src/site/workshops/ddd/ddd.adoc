@@ -21,6 +21,33 @@ The attribution is https://blog.tangly.net/[tangly llc].
 Additional slide decks can be found under {ref-tangly-workshops}.
 --
 
+== Domain Implementation
+
+== Persistence
+
+=== Factories and Repositories
+
+=== Entities and Aggregates
+
+=== Transaction Context
+
+=== EclipseStore
+
+[source,java]
+----
+// Initialize a storage manager ("the database") with purely defaults.
+final EmbeddedStorageManager storageManager = EmbeddedStorage.start();
+
+// print the last loaded root instance,
+// replace it with a current version and store it
+System.out.println(storageManager.root());
+storageManager.setRoot("Hello World! @ " + new Date());
+storageManager.storeRoot();
+
+// shutdown storage
+storageManager.shutdown();
+----
+
 [%notitle]
 [.lightbg,background-opacity="0.5"]
 == Discussion
