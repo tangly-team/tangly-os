@@ -30,7 +30,7 @@ dependencies {
     implementation(libs.apache.commons.codec)
     implementation(libs.apache.commons.csv)
     implementation(libs.apache.commons.io)
-    implementation(libs.bundles.microstream.deps)
+    implementation(libs.bundles.eclipsestore.deps)
     implementation(libs.json.core)
     implementation(libs.arch.unit)
 

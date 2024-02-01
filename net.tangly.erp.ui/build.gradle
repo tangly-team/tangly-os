@@ -82,7 +82,12 @@ dependencies {
     implementation(libs.apache.log4j2.core)
     implementation(libs.apache.log4j2.slf4j)
     implementation(libs.apache.commons.cli)
-    implementation(libs.bundles.microstream.deps)
+    implementation(libs.bundles.eclipsestore.deps)
 
+//    implementation(libs.javalin) {
+//        exclude(group = "org.eclipse.jetty")
+//        exclude(group = "org.eclipse.jetty.websocket")
+//        exclude(group = "com.fasterxml.jackson.core")
+//    }
     testImplementation(libs.vaadin.test)
 }

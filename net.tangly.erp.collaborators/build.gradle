@@ -30,7 +30,4 @@ dependencies {
 
     testImplementation project(':net.tangly.core')
     testImplementation(libs.javalin)
-    implementation(libs.javalin.openapi.plugin)
-    implementation(libs.javalin.swagger.plugin)
-    implementation(libs.javalin.redoc.plugin)
 }

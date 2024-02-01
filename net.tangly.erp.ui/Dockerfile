@@ -15,11 +15,13 @@ RUN mkdir -p /var/tangly-erp/reports
 
 COPY build/install/net.tangly.erp.ui/ /app/
 COPY src/main/config/app-in-memory-no-imports.properties /app/
-WORKDIR /app/bin
+
 RUN groupadd erp
 RUN useradd -m -g erp erp
 RUN chown -R erp:erp /app
 RUN chown -R erp:erp /var/tangly-erp
+
 USER erp
+WORKDIR /app/bin
 EXPOSE $PORT
 ENTRYPOINT ["./net.tangly.erp.ui",  "-p $PORT -m true -c ../config/app-in-memory-no-imports.properties"]

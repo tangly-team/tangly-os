@@ -17,8 +17,8 @@ jobs:
                     cache: 'gradle'
             -   uses: arduino/setup-protoc@v2
             -   run: |
-                    ./gradlew classes testClasses test javadoc jar
-                    ./gradlew build net.tangly.erp.ui:installDist '-Pvaadin.productionMode' --no-daemon
+                    ./gradlew build
+            #                    ./gradlew build -Pvaadin.productionMode=true (not working with a circular dependency error)
             -   uses: actions/upload-artifact@v3
                 with:
                     name: distributions
