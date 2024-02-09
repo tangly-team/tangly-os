@@ -19,6 +19,7 @@
 :ref-devops: https://en.wikipedia.org/wiki/DevOps[DevOps]
 :ref-docsy: https://www.docsy.dev/[Docsy]
 :ref-doxygen: https://www.doxygen.nl/[Doxygen]
+:ref-eclipsestore: https://eclipsestore.io/[Eclipse Store]
 :ref-flow: https://en.wikipedia.org/wiki/Flow_(psychology)/[Flow]
 :ref-git: https://git-scm.com/[Git]
 :ref-github: https://github.com/[GitHub]
@@ -26,7 +27,6 @@
 :ref-gradle: https://gradle.org/[Gradle Build Tool]
 :ref-hermes: https://www.hermes.admin.ch/en/[HERMES]
 :ref-hugo: https://gohugo.io/[Hugo]
-:ref-kaizen: https://en.wikipedia.org/wiki/Kaizen/[Kaizen]
 :ref-kanban: https://en.wikipedia.org/wiki/Kanban/[Kanban]
 :ref-javadoc: https://www.oracle.com/java/technologies/javase/javadoc.html[JavaDoc]
 :ref-junit5: https://junit.org/junit5/[JUnit 5]
@@ -48,7 +48,6 @@
 :ref-scrum: https://scrumguides.org/[Scrum]
 :ref-scrumguide: http://www.scrumguides.org/[Scrum Guide]
 :ref-site: https://blog.tangly.net/[Open Source Components]
-:ref-sociocracy: https://sociocracy30.org/[Sociocracy]
 :ref-tangly: https://www.tangly.net/[tangly]
 :ref-tangly-blog-url: https://blog.tangly.net/blog
 :ref-tangly-doc-url: https://blog.tangly.net/docs

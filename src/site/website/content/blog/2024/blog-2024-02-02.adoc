@@ -1,7 +1,7 @@
 ---
 title: "The Quest for an Agile Company: Eight Years tangly llc"
 linkTitle: "8 Years tangly"
-date: 2024-02-10
+date: 2024-02-15
 tags: ["agile", "tangly", "organization"]
 ---
 
@@ -12,10 +12,12 @@ include::../fragments/_config-mb-blog.aodc[]
 image::2024-02-02-head.jpg[width=420,height=360,role=left]
 
 We are an agile boutique.
+
 We often work as Scrum master and technical agile coaches.
 Our collaborators love to coaching, mentoring, and training.
 
 We regularly work at the customer site.
+We also more and more often work online with our international customers.
 
 How do you organize such a company?
 
@@ -42,6 +44,9 @@ We had seldom common interests, and regularly we helped them solve their compute
 Honestly, I prefer to develop software at home.
 The displays have higher resolution and quality.
 
+Video calls are more relaxed at home and less expensive.
+No commute time is necessary.
+
 So the coworking approach did not have a lot of advantages for us.
 We decided to stop renting the office space after one year.
 We do not see the purpose of having a rented office.
@@ -61,17 +66,19 @@ A programmer is more efficient with a US english keyboard and an ergonomic mouse
 
 [NOTE]
 ====
-We are specialized on the Java technology stack.
+We are specialized in the Java technology stack.
 Sometimes we need to work with {cpp}.
 
 Apple notebooks are an ideal choice for our needs <<my-macbook>>.
 Cool user interface and powerful command line tools.
 ====
 
-As a digital nomad, I have my whole office in one traveling bag
-footnote:[I am a fan of the traveler bags of timbuk2.
+As a digital nomad, I have my whole office in one traveling bag footnote:[I am a fan of the traveler bags from the company _timbuk2_.
 I owned their bags for the last twenty-five years and was always satisfied with the quality and look.
-I pack my notebook, a mouse, a keyboard, a power supply and some adapters in the bag.].
+I pack my notebook, a mouse, a keyboard, a headset, a power supply and some adapters in the bag.
+
+The USB-C standard is a powerfull improvement.
+I can charge all devices using one Apple 140 W adapter.].
 
 == Nurture a Company Blog
 

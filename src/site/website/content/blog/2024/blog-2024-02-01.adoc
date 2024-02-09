@@ -1,7 +1,7 @@
 ---
 title: "Advanced Streams"
 linkTitle: "Advanced Streams"
-date: 2024-02-05
+date: 2024-02-10
 tags: ["java", "students-java"]
 ---
 
@@ -11,26 +11,119 @@ include::../fragments/_config-mb-blog.aodc[]
 --
 image::2024-02-01-head.png[width=420,height=360,role=left]
 
+The Stream API is a powerful and simple to understand set of tools for processing the sequence of elements.
+The standard collections were retrofitted with the stream() method, which allows us to convert a collection to a stream.
+
+Modern Java code has almost no loops and conditional statements.
+It relies on the Stream API and the functional programming style.
+
+When used properly, it allows us to reduce a huge amount of boilerplate code, create more readable programs, and improve productivity cite:[modern-software-engineering,effective-java-3rd].
 --
 
-== Java Streams
+== Creating Streams
 
-cite:[modern-software-engineering,effective-java-3rd]
+There are many ways to create a stream instance of different sources.
+Once created, the instance will not modify its source, therefore allowing the creation of multiple instances from a single source.
 
-== Pattern Matching
+[source,java]
+----
+public Stream<String> streamOf(List<String> list) {
+    return list == null || list.isEmpty() ? Stream.empty() : list.stream();                 // <1>
+}
+
+public Stream<String> streamOf(String[] array) {
+    return array == null || array.length == 0 ? Stream.empty() : Arrays.stream(array);      // <2>
+}
+
+IntStream intStream = IntStream.range(1, 3);                                                // <3>
+LongStream longStream = LongStream.rangeClosed(1, 3);
+----
+
+== Map and Filter
+
+The map() method is used to transform one object into another by applying a function.
+It produces a new stream after applying a function to each element of the original stream.
+The new stream could be of different type.
+
+The filter() method is used to eliminate elements based on a condition.
+It produces a new stream that contains elements of the original stream that pass a given test specified by a _Predicate_.
+
+The flatMap() method is used to transform one object into another by applying a function that returns a stream.
+A stream can hold complex data structures like Stream<List<String>>.
+In cases like this, flatMap() helps us to flatten the data structure to simplify further operations:
 
 == Collectors
 
+There are three variations of this method, which differ by their signatures and returning types.
+They can have the following parameters:
+
+Identity:: the initial value for an accumulator, or a default value if a stream is empty and there is nothing to accumulate
+Accumulator:: a function which specifies the logic of the aggregation of elements.
+As the accumulator creates a new value for every step of reducing, the quantity of new values equals the stream’s size and only the last value is useful.
+This is not very good for the performance.
+Combiner:: a function which aggregates the results of the accumulator.
+We only call combiner in a parallel mode to reduce the results of accumulators from different threads.
+
+The reduction of a stream can also be executed by another terminal operation, the collect() method.
+It accepts an argument of the type Collector, which specifies the mechanism of reduction.
+There are already created, predefined collectors for most common operations.
+They can be accessed with the help of the Collectors type.
+
+In this section, we will use the following List as a source for all streams:
+
+List<Product> productList = Arrays.asList(new Product(23, "potatoes"), new Product(14, "orange"), new Product(13, "lemon"), new Product(23, "bread"), new Product(13, "sugar")); Copy Converting a stream to the Collection (Collection, List or Set):
+
+List<String> collectorCollection = productList.stream().map(Product::getName).collect(Collectors.toList()); Copy Reducing to String:
+
+String listToString = productList.stream().map(Product::getName) .collect(Collectors.joining(", ", "[", "]")); Copy The joiner() method can have from one to three parameters (delimiter, prefix, suffix).
+The most convenient thing about using joiner() is that the developer doesn’t need to check if the stream reaches its end to apply the suffix and not to apply a delimiter.
+Collector will take care of that.
+
+Processing the average value of all numeric elements of the stream:
+
+double averagePrice = productList.stream() .collect(Collectors.averagingInt(Product::getPrice)); Copy Processing the sum of all numeric elements of the stream:
+
+int summingPrice = productList.stream() .collect(Collectors.summingInt(Product::getPrice)); Copy The methods averagingXX(), summingXX() and summarizingXX() can work with primitives (int, long, double) and with their wrapper classes (Integer, Long, Double).
+One more powerful feature of these methods is providing the mapping.
+As a result, the developer doesn’t need to use an additional map() operation before the collect() method.
+
+Grouping of stream’s elements according to the specified function:
+
+Map<Integer, List<Product>> collectorMapOfLists = productList.stream() .collect(Collectors.groupingBy(Product::getPrice)); Copy In the example above, the stream was reduced to the Map, which groups all products by their price.
+
+[TIP]
+====
+To iterate over a collection and apply a function to each element, use the forEach() convenience method.
+You do not need to create a stream for this purpose.
+====
+
 == Gatherers
 
+The Java Stream API was released with Java 8 in March 2014 and has given us a fundamentally new tool for processing data streams.
+
+However, the limited set of intermediate operations – filter, map, flatMap, mapMulti, distinct, sorted, peak, limit, skip, takeWhile, and dropWhile – means that more complex data transformations cannot be expressed by the Stream API.
+
 == Parallel Streams
+
+Before Java 8, parallelization was complex.
+The emergence of the ExecutorService and the ForkJoin simplified a developer’s life a little bit, but it was still worth remembering how to create a specific executor, how to run it, and so on.
+Java 8 introduced a way of accomplishing parallelism in a functional style.
+
+The API allows us to create parallel streams, which perform operations in a parallel mode.
+When the source of a stream is a Collection or an array, it can be achieved with the help of the _parallelStream()_.
+
+Under the hood, Stream API automatically uses the ForkJoin framework to execute operations in parallel.
+By default, the common thread pool will be used and there is no way (at least for now) to assign some custom thread pool to it.
 
 == Lessons Learnt
 
 Modern Java applications extensively use streams.
-The source code <verzichtet> to use loops and conditional statements.
+The source code does not use loops and conditional statements anymore.
+The code is more readable and maintainable.
 
 The new gatherers simplify this functional and declarative programming style.
+Custom gatherers and collectors are seldom written.
+Most of the time, the predefined gatherers and collectors are sufficient.
 
 Modern IDE like IntelliJ provides reasonable support to debug complex stream expressions.
 I seldom need to activate the debugger.

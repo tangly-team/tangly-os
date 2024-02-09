@@ -7,24 +7,119 @@ tags: ["hugo"]
 
 include::../fragments/_config-mb-blog.aodc[]
 
+[.float-group]
+--
 image::2024-03-03-head.png[width=420,height=360,role=left]
+
+The static website build tool {ref-hugo} is awesome.
+
+The extensive built-in feature set of {ref-hugo} and the feature-rich text-formatting options that {ref-asciidoc} offers provide a blogging experience composed of easy content management and fun writing experience.
+
+{ref-hugo} suppports natively {ref-asciidoc} syntax.
+{ref-asciidoc} files are automatically compiled with {ref-asciidoctor}, so we do not need to do anything.
+Have it installed and you are ready to go.
+
+The {ref-hugo} theme {ref-docsy} is ideal to create a good-looking software documentation site.
+This theme is currently the best match I found to combine product documentation with blogging.
+--
+
+I can generate the whole static website and publish it in less than two minutes.
+Major activities are easy to perform.
+
+[mermaid,blog-journey,svg]
+----
+journey
+    title Blog Activities
+    section Write Blogs
+        write text in English: 5
+        improve text with assistents: 3
+        create diagrams as text: 5
+        typesetting articles: 2
+    section Update Blogs
+        Global find and replace: 5
+        Correct typos: 3
+        Improve syntax: 5
+    section Cross-References
+        Add book references: 4
+        Add blog references: 3
+        Add often used site links: 3
+    section Extract-Shared-Data
+        Define common variables: 2
+        Define common text blocks: 2
+        Define common references: 3
+----
+
+In this article I want to share some improvements I made to my website using features of {ref-asciidoc} and {ref-hugo}.
 
 == Include Common Blocks
 
 Quite a few articles are part of a series.
 All related articles share common references.
-To avoid duplication, I use the `include` directive to include a common block of references.
+To avoid duplication, I use the _include_ directive to include a common block of references.
 
 The huge advantage is I only need to update the common block when a new article is published in the series.
 All articles are updated without manual intervention.
 
+This approach is easy to maintain and avoid errors.
+It shows the power of {ref-asciidoc} and {ref-hugo}.
+These techniques are not possible with regular blogging platforms.
+
 == Bibliography
 
+I use the _asciidoctor-bibtex_ plugin to include references in my articles.
+
+The reference file is a regular bibtex file.
+I use _JabRef_ to manage my references.
+To simplify the life of my readers, I include a link to the amazon page of the book so that they can easily have a quick look at the book.
+
+I am very satisfied with the result.
+I acknowledge that the importance of professional references is triggered by the fact that I am a technical university lecturer.
+
 == Taxonomies
+
+I use taxonomies to categorize my articles.
+Taxonomy support in {ref-hugo} is very powerful.
+I had to adapt slightly the {ref-docsy} theme to nicely display the taxonomies in the sidebar.
+
+== Diagrams as Code
+
+I use {ref-plantuml} to generate UML diagrams and mindmaps.
+
+The {ref-mermaid} plugin provides additional diagram types:
 
 == RevealJS
 
 == Lessons Learnt
+
+Beware of your toolchain.
+After updating some ruby modules, I could not generate bibtex citation references anymore
+footnote:[The problem was an incompatibility between ruby 2.x and 3.x of one gem called _bibtex-ruby_ used by the asciidoctor bibtex extension.
+Therefore, all unit tests of the package still run under the older version of ruby.
+People who updated to the newer ruby discovered the problem.
+The {ref-asciidoc} community solved the issue in a few weeks.].
+I posted the issue on the asciidoctor GitHub, and some weeks later a new version was released.
+The gem asciidoctor-bibtex-0.9.0 fixed the issue.
+
+The following statements are helpful for ruby applications.
+Beware that {ref-asciidoctor} is a ruby application.
+
+[source,console]
+----
+gem list                                                    <1>
+gem outdated                                                <2>
+gem update                                                  <3>
+gem cleanup                                                 <4>
+
+ruby -v                                                     <5>
+----
+
+<1> list all installed gems
+<2> list all outdated gems
+<3> update all installed gems
+<4> remove old versions of gems
+<5> show the current ruby version
+
+The consequence is that I should set up a CI pipeline to check if the toolchain is still working.
 
 [bibliography]
 == Links

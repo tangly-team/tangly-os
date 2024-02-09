@@ -76,15 +76,15 @@ _The retrieving of a message from the message queue and further processing is pe
 
 Here are four benefits of this model:
 
-. It removes the need for lock-based synchronization.
+. It removes the need for lock-based synchronization and decreases temporal coupling.
 Actors change only their private state.
 Other actors’ states are off-limits to them. +
 There is no shared state in the actor model, so there is no possibility of that disaster when multiple threads try to modify the same data.
-. It was designed for distributed computing.
+. It was designed for distributed computing and is resilient to receiver failures.
 Every actor has a mailbox that stores messages until they can be processed.
 It does not matter if the actor runs locally, on another core, or on another device.
 As long as it can receive messages, it makes no difference.
-. It allows for better scalability.
+. It allows for better scalability and the receiver controls consumption rate.
 If your actor-based solution sees an increase in traffic load
 footnote:[A higher traffic load has a direct impact on the number of unprocessed messages in actor mailboxes.], you can create more actors
 footnote:[The creation of additional actors is prohibited in security relevant applications.
