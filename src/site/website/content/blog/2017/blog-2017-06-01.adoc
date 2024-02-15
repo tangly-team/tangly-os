@@ -32,7 +32,7 @@ image::2017-06-01-agile-vs-waterfall.jpg[role=text-center]
 Below are common patterns and errors when doing agile instead of being agile
 
 Wagile::
-is a team which continues to follow basically a Waterfall product but uses the language of Agile and adds a few agile practices.
+is a team which continues to basically follow a Waterfall product but uses the language of Agile and adds a few agile practices.
 For example, the team may present burn-down charts together with Gantt charts.
 Or the team computes individual resource allocation for the next three months.
 You can also replace Waterfall with V-Model, {ref-hermes}, RUP, and even sometimes {ref-safe}.
@@ -64,7 +64,7 @@ Once the consultants leave, some teams return to their old ways of working.
 Advisers and consultants can be a great help when introducing Agile.
 They need to build capacity in the development team to continue learning and evolving when the consultants are gone.
 Failure to go far enough::
-To maximize the benefits of Agile Software Development, the people, processes and organization that interface and work with the Agile team needs to understand Agile.
+To maximize the benefits of Agile Software Development, the people, processes and organization that interface and work with the Agile team need to understand Agile.
 It should adjust their expectations and working techniques too.
 Agile is not a drop-in technology that can be swapped in to replace another failing method.
 Isolated Agile teams will find it difficult to be completely Agile.

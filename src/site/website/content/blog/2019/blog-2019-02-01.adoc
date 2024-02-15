@@ -41,17 +41,18 @@ ____
 A short check with a feedback workshop presenting the insights requires around two work days.
 A deeper and more intensive check requests more effort, between one and four weeks.
 
-Upon completion, you can also hire a coach to implement selected findings and improve durably the health of your application.
+Upon completion, you can also hire a coach to implement selected findings and durably improve the health of your application.
 The findings are often clear and the measures are straightforward.
 
 image::2019-02-01-daily-learnings.jpg[]
-The real work is to implement consistently the measures.
+
+The real work is to consistently implement the measures.
 
 Understand how powerful daily small improvements can be.
 Small improvements accumulate earnings over time.
 
 I have the same personal challenge when trying to lose weight or improve my running form.
-The long term implementation is the crux.
+The long-term implementation is the crux.
 
 The biggest flag to identifying a learning and improvement focused culture is perhaps this statement
 
@@ -80,13 +81,13 @@ A set of questions to detect cultural flaws for a lean and agile focused company
 . Can software developers install tools and libraries on their workstation?
 . How is the working environment of your talented developers?
 .. Do they have a team area with a dedicated desk for each team member?
-.. Do they have multiple high-resolution displays to work with - high-resolution means 4K or higher -?
-.. Do they have root access - admin rights - to their development workstation?
+.. Do they have multiple high-resolution displays to work with high resolution means 4K or higher?
+.. Do they have root access meaning administrator rights to their development workstation?
 .. Do they have access to technical books and articles?
 .. Do they have a height-adjustable desk?
 .. Do they have big whiteboard and flip charts to work on in the team area?
 .. Do they have rooms to meet and work as a team in the vicinity and available?
-.. Do they use the best development tools of trade - and not only the basic and cheap version -?
+.. Do they use the best development tools of trade, and not only the basic and cheap version?
 .. Do they have access to fast and stable continuous integration and deployment pipelines?
 .. Do they develop and document in English?
 . Can you work on refactoring and clean code without a product backlog item or task?

@@ -102,6 +102,31 @@ Feel free to tailor your agile approach to how you develop digital products.
 The twelve principles are a good compass for the true North of agility.
 --
 
+=== Agile and Technical Agile History
+
+[mermaid,agile-history,svg]
+----
+timeline
+    title Agile History
+    section 1990s
+        1993 : Kanban
+        1995 : Scrum Framework
+        1999 : eXtreme Programming
+             : TDD
+    section 2000s
+        2001 : Agile Manifesto
+        2003 : Domain Driven Design
+        2005 : Scrum Guide
+             : Hexagonal Architecture
+        2007 : GitHub
+        2010 : Continuous Delivery
+    section 2010s
+        2011 : Microsevervices
+        2015 : DevOps
+        2016 : DORA
+        2017 : Evolutionary Architectures
+----
+
 === Scrum Rules the World
 
 [.streched]

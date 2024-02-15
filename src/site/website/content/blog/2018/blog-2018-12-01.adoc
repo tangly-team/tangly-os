@@ -33,9 +33,9 @@ The findings are considered confidential.
 A short check with a feedback workshop presenting the insights requires around two work days.
 
 A deeper and more intensive check requests more effort, between one and four weeks.
-Upon completion, you can also hire a coach to implement selected findings and improve durably the health of your application.
+Upon completion, you can also hire a coach to implement selected findings and durably improve the health of your application.
 The findings are often clear and the measures are straightforward.
-The real work is to implement consistently the measures.
+The real work is to consistently implement the measures.
 
 I have the same personal challenge when trying to lose weight or improve my running form.
 The long term implementation is the crux.
@@ -54,7 +54,7 @@ You have a story map grouping the stories and epics to reflect your release plan
 Customer involvement::
 You have customer interaction in every sprint.
 Not only during the review event, but also during the planning meeting and architecture discussion.
-Review with customer involvement:: Realized stories are discussed during the review and demonstration meeting and timely feedback is provided to allow backlog refinement before the next planning meeting.
+Review with customer involvement:: Realized stories are discussed during the review and demonstration meeting, and timely feedback is provided to allow backlog refinement before the next planning meeting.
 A mature organization has acceptance criteria for each story and automated verification of the criteria at any time.
 Early and regular delivery of a product increment::
 You get feedback on the delivered and installed product increment.

@@ -79,7 +79,7 @@ Your development teams
 * are experts in the used programming language and stack.
 * understand object-oriented, functional and rule-based programming.
 * know all major patterns and idioms of the used development stack.
-* practice https://en.wikipedia.org/wiki/Test-driven_development[TDD], https://en.wikipedia.org/wiki/Acceptance_test%E2%80%93driven_development[ATDD], clean code, refactoring, embrace CI/CD and DevOps,
+* practice https://en.wikipedia.org/wiki/Test-driven_development[TDD], https://en.wikipedia.org/wiki/Acceptance_test%E2%80%93driven_development[ATDD], clean code, refactoring, embrace CI/CD and DevOps.
 * read source code from open source projects to learn better ways.
 * know https://en.wikipedia.org/wiki/SMART_criteria[SMART], https://en.wikipedia.org/wiki/INVEST_(mnemonic)[INVEST],
 https://de.wikipedia.org/wiki/Solid_(Software)[SOLID], https://en.wikipedia.org/wiki/KISS_principle[KISS],

@@ -25,7 +25,7 @@ Please add these tools to your toolbox and create great products.
 You solve customer problems through intuitive services and products.
 Customer expectations should fit with their experience with your products.
 That is why they should be involved in the whole definition and realization process.
-At the beginning, to understand the need and to test first ideas.
+In the beginning, to understand the need and to test first ideas.
 During the implementation, they are directly asked for feedback, which then flows into further development steps.
 
 Go out with your _incomplete_ product as soon as possible.

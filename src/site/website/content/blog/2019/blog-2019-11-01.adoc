@@ -104,7 +104,7 @@ Eliminate hardening iterations, integration phases, milestones when software sho
 Your teams shall deliver workable software on demand, multiple times a week or a day.
 * _Organize around products_.
 Customers buy products.
-Eliminate product based organizations.
+Eliminate product-based organizations.
 *_Have one backlog for the whole product_.
 Multiple backlogs must be otherwise synchronized and local optimization is de facto applied.
 This approach is against all lean principles.

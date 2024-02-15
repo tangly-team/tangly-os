@@ -44,7 +44,7 @@ The solution was implemented during the year 2017 and released to the public end
 We identified these key elements to explain the success of the whole product development.
 The whole organization and all involved managers shall
 
-* trust the team will solve adequately and pragmatically the customer needs.
+* trust the team will adequately and pragmatically solve the customer needs.
 Trust your team and create a work environment to support them.
 For example, you should
 ** Promote technical excellence.

@@ -27,7 +27,7 @@ ____
 == The Visible Change
 
 The visible change is the dawn of the keyword *var*.
-Now instead of typing the type declaration of a local variable - local to a method, a block or an instruction - you can just use the keyword var.
+Now instead of typing the type declaration of a local variable - local to a method, a block or an instruction - you can use the keyword var.
 The constraint is that the variable is initialized at declaration.
 Stay tune for more support in JDK 11.
 

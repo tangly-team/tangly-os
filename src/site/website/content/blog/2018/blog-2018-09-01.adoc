@@ -11,7 +11,7 @@ image::2018-09-01-head.png[width=420,height=360,role=left]
 
 First teams have successfully used Scrum to develop applications.
 The news spread out and everybody wants to apply Scrum.
-It is time to introduce Enterprise wide Agile with Scrum or Kanban or XP.
+It is time to introduce enterprise-wide Agile with Scrum or Kanban or XP.
 
 Your Company wants to introduce Enterprise Agility in their product development, quality assurance and sales departments.
 The company as a whole shall transition to an agile organization and all teams shall adopt {ref-scrum}.
@@ -38,7 +38,7 @@ We describe below the activities for the development organization consisting of 
 
 == Development Organization
 
-=== Shu - Novice Level - „Learn the Rules“
+=== Shu - Novice Level - _Learn the Rules_
 
 The duration of the novice level is at least six months.
 The major activities are to align the collaborators and provide the needed knowledge through training and hands-on exercises.
@@ -113,7 +113,7 @@ We recommend
 . An Agile (eXtreme Programming techniques) and Scrum coach responsible for four to five Scrum teams.
 . Two coaches of coaches for the growth of internal Scrum coaches for the company.
 . Start to blend team coaching with company-wide changes.
-See below the chapter “Organization Transformation”.
+See below the chapter “Organization Transformation.”
 . Workshops could be organized for selected products or teams to solve identified major impediments.
 
 == Ri – Expert Level - “Break the Rules”

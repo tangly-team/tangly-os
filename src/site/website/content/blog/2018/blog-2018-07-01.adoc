@@ -32,9 +32,9 @@ short present tense imperative phrase, less than 50 characters, like a git commi
 Status::
 proposed, accepted, rejected, deprecated, superseded
 Context::
-what is the issue that we're seeing that is motivating this decision or change.
+what is the issue that we're seeing that is motivating this decision or change?
 Decision::
-what is the change that we're actually proposing or doing.
+what is the change that we're actually proposing or doing?
 Consequences::
 what becomes easier or more difficult to do because of this change.
 
@@ -76,7 +76,7 @@ And you can always write a small parse utility to extract your dependency graph.
 
 This section describes the resulting context, after applying the decision.
 All consequences should be listed here, not just the "positive" ones.
-A particular decision may have positive, negative, and neutral consequences, but all of them affect the team and product in the future.
+A particular decision may have positive, negative, and neutral consequences, but all of them will affect the team and product in the future.
 
 === Tips and Tricks
 

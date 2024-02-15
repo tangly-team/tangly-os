@@ -6,6 +6,7 @@ tags: ["organization"]
 ---
 
 include::../fragments/_config-mb-blog.aodc[]
+:ref-homebrew: https://brew.sh[Homebrew]
 
 image::2016-03-01-head.jpg[width=420,height=360,role=left]
 I loved Linux as a young developer.
@@ -27,8 +28,8 @@ The major gains upon migrating to OS X are:
 * No virus scanners are necessary, the speed-up during complex programming and development activities is tremendous.
 * No trouble when updating the operating system, updates are automatic, and often no new start is required.
 * Unix Command Line and Tools are available in the console.
-https://brew.sh/[Homebrew] or https://www.macports.org/[MacPorts] projects provide all known and less-known utilities and programs available under Linux
-footnote:[I use currently Homebrew. The available packages and the handling are excellent.].
+{ref-homebrew} or https://www.macports.org/[MacPorts] projects provide all known and less-known utilities and programs available under Linux
+footnote:[I currently use {ref-homebrew}. The available packages and the handling are excellent.].
 * A long-lived notebook is still working and looking nice after five years of daily usage.
 The performance is more than adequate for software development with Java 8/9/10/11 stack and {cpp}.
 
@@ -41,7 +42,7 @@ The tools I really enjoy and use on a daily basis for software development as I 
 
 * https://www.jetbrains.com/idea/[IntelliJ IDEA] IDE,
 * Atlassian Cloud applications - BitBucket, HipChat, CI pipeline -,
-* https://brew.sh/[Homebrew] as package manager for utilities,
+* {ref-homebrew} as package manager for utilities,
 * Docker as container manager,
 * VirtualBox when I need a full-fledged virtual machine,
 footnote:[The need of virtual machines for daily work is fading away.].

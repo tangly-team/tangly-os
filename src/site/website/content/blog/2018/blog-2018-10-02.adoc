@@ -86,7 +86,7 @@ If they forecast too much work, they need to remove completed items, which they 
 
 The Scrum guide characterizes the _Definition of Done_ as follows:
 
-* The _Definition of Done_ is a *formal description* of the state of the _Increment_ when it meets the *quality measures required for the product*.
+* The _Definition of Done_ is a *formal description* of the state for the _Increment_ when it meets the *quality measures required for the product*.
 * The moment a _Product Backlog Item_ meets the _Definition of Done_, an _Increment_ is born.
 * The _Definition of Done_ creates *transparency* by providing everyone a shared understanding of what work was completed as part of the _Increment_.
 If a _Product Backlog Item_ does not meet the _Definition of Done_, *it cannot be released or even presented* at the _Sprint Review_.

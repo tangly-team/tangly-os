@@ -73,7 +73,7 @@ Insufficient quality is always a collective failure.
 Truly, if the intrinsic quality of the source code is low, it is undeniably a failure.
 A failure of the development team and of each software developer writing the code; and a failure of the Scrum master holding and teaching agile and Scrum values.
 
-When there is high pressure on delivery, people have a tendency to pay less attention to processes and standards.
+When there is high pressure on delivery, people tend to pay less attention to processes and standards.
 That is one of the reasons why in Scrum we have the role of Scrum master responsible for understanding and enacting agile practices and rules.
 
 And no physician will ever cut corners just because he is in a stressful situation.

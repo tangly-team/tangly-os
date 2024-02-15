@@ -45,7 +45,8 @@ Do you perform each sprint the top things a Scrum Master usually forgets to focu
 . Play back the team's progress against the proposed release plan.
 . Integrate all tests into continuous integration, delivery and deployment.
 . Coach your team members to understand the benefits of refactoring, removing waste and focus on quality.
-. Teach Kaizen. Coach team to peer review and continuously improve towards perfection.
+. Teach Kaizen.
+Coach team to peer-review and continuously improve towards perfection.
 . Teach pair programming on a daily basis.
 . Expand with the team and the organization the definition of done. Beware it can trigger an organizational change.
 

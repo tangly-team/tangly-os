@@ -70,7 +70,7 @@ You can never again deny that you as a developer are in charge.
 == Scrum Master
 
 The Scrum master cite:[mastering-professional-scrum] is cool with a team enjoying Scrum and the flow of success.
-You just have to realize you are not a master.
+You have to realize you are not a master.
 You are the enabler for a team of talented engineers.
 
 So you need to discover your _the lonely cowboy riding in the sun_ song why this job is so rewarding.

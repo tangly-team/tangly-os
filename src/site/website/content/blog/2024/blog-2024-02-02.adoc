@@ -7,13 +7,17 @@ tags: ["agile", "tangly", "organization"]
 
 include::../fragments/_config-mb-blog.aodc[]
 
+:ref-brewup: https://brew.sh[Homebrew]
+
 [.float-group]
 --
 image::2024-02-02-head.jpg[width=420,height=360,role=left]
 
-We are an agile boutique.
+We are an agile and software technology boutique.
 
-We often work as Scrum master and technical agile coaches.
+We often work as Scrum masters, product owners and technical agile coaches.
+Regularly we are involved in the architecture and development of software products.
+
 Our collaborators love to coaching, mentoring, and training.
 
 We regularly work at the customer site.
@@ -35,7 +39,7 @@ The people were friendly.
 
 The coffee machine was reasonably good.
 During Summer, we could take a swim in the nearby lake.
-You only need to take a five-minute walk.
+You only need to take a five-minute walk to reach the beach.
 
 We found out we were often at customer locations and had few opportunities to discuss company business in the coworking space.
 The other attendees were working in different industries.
@@ -44,7 +48,7 @@ We had seldom common interests, and regularly we helped them solve their compute
 Honestly, I prefer to develop software at home.
 The displays have higher resolution and quality.
 
-Video calls are more relaxed at home and less expensive.
+Video calls are more relaxed at home and less expensive in time.
 No commute time is necessary.
 
 So the coworking approach did not have a lot of advantages for us.
@@ -52,7 +56,10 @@ We decided to stop renting the office space after one year.
 We do not see the purpose of having a rented office.
 The office will most often be empty.
 Internal meetings are seldom held in office space.
-We prefer to meet in a nice coffee or at a cool location.
+We prefer to meet in a nice coffee shop or at a cool location.
+
+Team communication is performed asynchronously using our company chat and synchronously using video calls.
+Slack is a wonderful platform for this purpose.
 
 == Support Various Working Models
 
@@ -64,6 +71,8 @@ As a developer, I need a fast machine with a high-quality display.
 I also like to have my own keyboard and mouse when I connect to external displays.
 A programmer is more efficient with a US english keyboard and an ergonomic mouse.
 
+When working at home, you should have a desk with adjustable height and a good chair.
+
 [NOTE]
 ====
 We are specialized in the Java technology stack.
@@ -71,20 +80,28 @@ Sometimes we need to work with {cpp}.
 
 Apple notebooks are an ideal choice for our needs <<my-macbook>>.
 Cool user interface and powerful command line tools.
+
+{ref-brewup} is a powerful package manager for macOS.
+We use it to install and update most software we are using.
+All required software packages for Java and {cpp} development are available through {ref-brewup}.
 ====
 
-As a digital nomad, I have my whole office in one traveling bag footnote:[I am a fan of the traveler bags from the company _timbuk2_.
+As a digital nomad, I have my whole office in one traveling bag
+footnote:[I am a fan of the traveler bags from the company _timbuk2_.
 I owned their bags for the last twenty-five years and was always satisfied with the quality and look.
 I pack my notebook, a mouse, a keyboard, a headset, a power supply and some adapters in the bag.
-
-The USB-C standard is a powerfull improvement.
+The USB-C standard is a powerful improvement.
 I can charge all devices using one Apple 140 W adapter.].
+
+All our company processes are digital and described in our company documentation.
 
 == Nurture a Company Blog
 
 The {ref-uri-blog} exists since the inception of the company.
 We steadily published at least one article every month.
-The main themes are agile approaches, technical fluency, and coaching experience.
+The main themes are agile approaches, technical fluency, Java stack, and coaching experience.
+
+Lately we wrote about our experiences as lecturers at technical universities and workshop facilitators.
 
 image::2024-02-02-blogging.jpg[width=420,height=360,role=left]
 
@@ -114,7 +131,7 @@ We are pragmatic and agile.
 
 All collaborators identify with these values and apply them in our daily work.
 
-More subtle ethical values are discussed in company meetings.
+More subtle ethical values are discussed in company meetings or during coffee breaks.
 I am fascinated that we have a strong common understanding of ethical values.
 
 It is fun to work at {ref-tangly}.
@@ -123,10 +140,12 @@ It is fun to work at {ref-tangly}.
 ====
 Our digital and agile culture sometimes clashes with less progressive organizations.
 
-We had a kafka experience with the commercial register of Canton Zug.
-They have no digital process and worst no checklist how you to add a chief executive officer to the company.
+We had a Kafkaesque experience with the commercial register department of Canton Zug.
+They have no digital process.
+Worst no checklist how you to add a chief executive officer to a limited liability company.
+
 We needed five iterations to get the correct wording so that they accepted our request.
-Each request required the printout of a protocol, sign of the paper version, and personal delivery to their office.
+Each request required the printout of a protocol, analog signing of the paper version, and personal delivery to their office.
 
 You could implement the same process digitally and be through it in less than ten minutes.
 The state organization already has a certified process to deliver legal documents in both directions for years.
@@ -137,13 +156,13 @@ We just smiled and acknowledged we can provide a lot of consulting and implement
 [bibliography]
 == Links
 
-- [[[seven-years-tangly, 1]]] link:../../2023/the-quest-for-an-agile-company-seven-years-tangly-llc/[Seven Year tangly llc]
+- [[[seven-years-tangly, 1]]] link:../../2023/the-quest-for-an-agile-company-seven-years-tangly-llc/[Seven Years tangly llc]
 Marcel Baumann. 2022.
-- [[[six-years-tangly, 2]]] link:../../2022/the-quest-for-an-agile-company-six-years-tangly-llc/[Six Year tangly llc]
+- [[[six-years-tangly, 2]]] link:../../2022/the-quest-for-an-agile-company-six-years-tangly-llc/[Six Years tangly llc]
 Marcel Baumann. 2022.
-- [[[five-years-tangly, 3]]] link:../../2020/the-quest-for-an-agile-company-five-years-tangly-llc/[Five Year tangly llc]
+- [[[five-years-tangly, 3]]] link:../../2020/the-quest-for-an-agile-company-five-years-tangly-llc/[Five Years tangly llc]
 Marcel Baumann. 2020.
-- [[[four-years-tangly, 4]]] link:../../2019/a-journey-to-be-a-digital-company-tangly-llc/[Four Year tangly llc]
+- [[[four-years-tangly, 4]]] link:../../2019/a-journey-to-be-a-digital-company-tangly-llc/[Four Years tangly llc]
 Marcel Baumann. 2019.
 - [[[no-printer, 5]]] link:../../2022/eliminate-your-printer/[Eliminate Your Printer]
 Marcel Baumann. 2022.
@@ -156,6 +175,8 @@ Marcel Baumann. 2020.
 - [[[improving-website, 9]]] link:../../../2021/improving-a-static-web-site-build-with-hugo-and-docsy/[Improving a Static Website build with Hugo and Docsy]
 Marcel Baumann. 2021
 - [[[my-macbook, 10]]] link:../../2023/my-new-macbookpro/[My New MacBook Pro]
+Marcel Baumann. 2023.
+- [[[why-macbook, 11]]] link:../../2016/why-i-use-a-macbookpro-and-os-x/[Why I use a MacBook Pro Notebook and OS X]
 
 == References
 

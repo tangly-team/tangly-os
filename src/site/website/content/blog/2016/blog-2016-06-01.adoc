@@ -49,7 +49,7 @@ ____
 The Scrum Master serves the Product Owner in several ways, including:
 
 * _Finding_ techniques for effective Product Backlog management.
-* _Clearly, communicating vision_, goals, and Product Backlog items to the Development Team.
+* _Communicating vision_, goals, and Product Backlog items clearly to the Development Team.
 * Teaching the Development Team to create clear and concise Product Backlog items.
 * _Understanding long-term product planning_ in an empirical environment.
 * Understanding and practicing agility.

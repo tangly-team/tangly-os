@@ -1,6 +1,6 @@
-<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<?xml version='1.0' encoding='US-ASCII' standalone='no'?>
 <!--
-  - Copyright 2023 Marcel Baumann
+  - Copyright 2024 Marcel Baumann
   -
   - Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
   - the License at
@@ -12,104 +12,98 @@
   -
   -->
 
-<svg contentStyleType='text/css' height='381px' preserveAspectRatio='none' style='width:1532px;height:381px;background:#FFFFFF;' version='1.1' viewBox='0 0 1532 381' width='1532px'
+<svg contentStyleType='text/css' height='372px' preserveAspectRatio='none' style='width:1532px;height:372px;background:#FFFFFF;' version='1.1' viewBox='0 0 1532 372' width='1532px'
      xmlns='http://www.w3.org/2000/svg' zoomAndPan='magnify'>
     <defs/>
     <g>
         <path d='M19.5,7 L1506.75,7 A12.5,12.5 0 0 1 1519.25,19.5 L1519.25,33.4883 L7,33.4883 L7,19.5 A12.5,12.5 0 0 1 19.5,7 ' fill='#F1F1F1'
               style='stroke:#F1F1F1;stroke-width:1.0;'/>
-        <path d='M7,33.4883 L1519.25,33.4883 L1519.25,355.8648 A12.5,12.5 0 0 1 1506.75,368.3648 L19.5,368.3648 A12.5,12.5 0 0 1 7,355.8648 L7,33.4883 ' fill='#FFFFFF'
-              style='stroke:#FFFFFF;stroke-width:1.0;'/>
-        <rect height='361.3648' rx='12.5' ry='12.5' style='stroke:#181818;stroke-width:0.5;fill:none;' width='1512.25' x='7' y='7'/>
-        <line style='stroke:#181818;stroke-width:0.5;fill:none;' x1='7' x2='1519.25' y1='33.4883' y2='33.4883'/>
+        <rect fill='none' height='359.3648' rx='12.5' ry='12.5' style='stroke:#181818;stroke-width:0.5;' width='1512.25' x='7' y='7'/>
+        <line style='stroke:#181818;stroke-width:0.5;' x1='7' x2='1519.25' y1='33.4883' y2='33.4883'/>
         <text fill='#000000' font-family='sans-serif' font-size='14' lengthAdjust='spacing' textLength='32' x='747.125' y='25.5352'>Root</text>
-        <ellipse cx='592.5' cy='54.4883' fill='#222222' rx='10' ry='10' style='stroke:none;stroke-width:1.0;'/>
-        <rect fill='#F1F1F1' height='40' rx='12.5' ry='12.5' style='stroke:#181818;stroke-width:0.5;' width='50' x='567.5' y='209.4283'/>
-        <text fill='#000000' font-family='sans-serif' font-size='14' lengthAdjust='spacing' textLength='21' x='582' y='234.7193'>Off</text>
-        <rect fill='#F1F1F1' height='40' rx='12.5' ry='12.5' style='stroke:#181818;stroke-width:0.5;' width='97' x='19' y='209.4283'/>
-        <text fill='#000000' font-family='sans-serif' font-size='14' lengthAdjust='spacing' textLength='87' x='24' y='234.7193'>Maintenance</text>
+        <ellipse cx='592.5' cy='54.4883' fill='#222222' rx='10' ry='10' style='stroke:#222222;stroke-width:1.0;'/>
+        <rect fill='#F1F1F1' height='40' rx='12.5' ry='12.5' style='stroke:#181818;stroke-width:0.5;' width='50' x='567.5' y='208.9283'/>
+        <text fill='#000000' font-family='sans-serif' font-size='14' lengthAdjust='spacing' textLength='21' x='582' y='234.2193'>Off</text>
+        <rect fill='#F1F1F1' height='40' rx='12.5' ry='12.5' style='stroke:#181818;stroke-width:0.5;' width='97' x='19' y='208.9283'/>
+        <text fill='#000000' font-family='sans-serif' font-size='14' lengthAdjust='spacing' textLength='87' x='24' y='234.2193'>Maintenance</text>
         <path d='M913.25,101.4883 L1497.75,101.4883 A12.5,12.5 0 0 1 1510.25,113.9883 L1510.25,127.9766 L900.75,127.9766 L900.75,113.9883 A12.5,12.5 0 0 1 913.25,101.4883 '
               fill='#F1F1F1' style='stroke:#F1F1F1;stroke-width:1.0;'/>
-        <path d='M900.75,127.9766 L1510.25,127.9766 L1510.25,344.8648 A12.5,12.5 0 0 1 1497.75,357.3648 L913.25,357.3648 A12.5,12.5 0 0 1 900.75,344.8648 L900.75,127.9766 '
-              fill='#FFFFFF' style='stroke:#FFFFFF;stroke-width:1.0;'/>
-        <rect height='255.8766' rx='12.5' ry='12.5' style='stroke:#181818;stroke-width:0.5;fill:none;' width='609.5' x='900.75' y='101.4883'/>
-        <line style='stroke:#181818;stroke-width:0.5;fill:none;' x1='900.75' x2='1510.25' y1='127.9766' y2='127.9766'/>
+        <rect fill='none' height='254.8766' rx='12.5' ry='12.5' style='stroke:#181818;stroke-width:0.5;' width='609.5' x='900.75' y='101.4883'/>
+        <line style='stroke:#181818;stroke-width:0.5;' x1='900.75' x2='1510.25' y1='127.9766' y2='127.9766'/>
         <text fill='#000000' font-family='sans-serif' font-size='14' lengthAdjust='spacing' textLength='20' x='1195.5' y='120.0234'>On</text>
-        <ellipse cx='937.75' cy='148.9766' fill='#222222' rx='10' ry='10' style='stroke:none;stroke-width:1.0;'/>
+        <ellipse cx='937.75' cy='148.9766' fill='#222222' rx='10' ry='10' style='stroke:#222222;stroke-width:1.0;'/>
         <rect fill='#F1F1F1' height='40' rx='12.5' ry='12.5' style='stroke:#181818;stroke-width:0.5;' width='50' x='912.75' y='251.1766'/>
         <text fill='#000000' font-family='sans-serif' font-size='14' lengthAdjust='spacing' textLength='28' x='923.75' y='276.4676'>DAB</text>
         <path d='M1146.75,195.9766 L1488.75,195.9766 A12.5,12.5 0 0 1 1501.25,208.4766 L1501.25,222.4648 L1134.25,222.4648 L1134.25,208.4766 A12.5,12.5 0 0 1 1146.75,195.9766 '
               fill='#F1F1F1' style='stroke:#F1F1F1;stroke-width:1.0;'/>
-        <path d='M1134.25,222.4648 L1501.25,222.4648 L1501.25,333.8648 A12.5,12.5 0 0 1 1488.75,346.3648 L1146.75,346.3648 A12.5,12.5 0 0 1 1134.25,333.8648 L1134.25,222.4648 '
-              fill='#FFFFFF' style='stroke:#FFFFFF;stroke-width:1.0;'/>
-        <rect height='150.3883' rx='12.5' ry='12.5' style='stroke:#181818;stroke-width:0.5;fill:none;' width='367' x='1134.25' y='195.9766'/>
-        <line style='stroke:#181818;stroke-width:0.5;fill:none;' x1='1134.25' x2='1501.25' y1='222.4648' y2='222.4648'/>
+        <rect fill='none' height='150.3883' rx='12.5' ry='12.5' style='stroke:#181818;stroke-width:0.5;' width='367' x='1134.25' y='195.9766'/>
+        <line style='stroke:#181818;stroke-width:0.5;' x1='1134.25' x2='1501.25' y1='222.4648' y2='222.4648'/>
         <text fill='#000000' font-family='sans-serif' font-size='14' lengthAdjust='spacing' textLength='20' x='1307.75' y='214.5117'>FM</text>
-        <ellipse cx='1171.25' cy='243.4648' fill='#222222' rx='10' ry='10' style='stroke:none;stroke-width:1.0;'/>
+        <ellipse cx='1171.25' cy='243.4648' fill='#222222' rx='10' ry='10' style='stroke:#222222;stroke-width:1.0;'/>
         <rect fill='#F1F1F1' height='40' rx='12.5' ry='12.5' style='stroke:#181818;stroke-width:0.5;' width='50' x='1146.25' y='290.4648'/>
         <text fill='#000000' font-family='sans-serif' font-size='14' lengthAdjust='spacing' textLength='27' x='1157.75' y='315.7559'>Play</text>
         <rect fill='#F1F1F1' height='40' rx='12.5' ry='12.5' style='stroke:#181818;stroke-width:0.5;' width='78' x='1415.25' y='290.4648'/>
         <text fill='#000000' font-family='sans-serif' font-size='14' lengthAdjust='spacing' textLength='68' x='1420.25' y='315.7559'>AutoTune</text>
         <g id='link_*start*FM_Play'>
-            <path d='M1171.25,253.7748 C1171.25,261.7148 1171.25,273.5048 1171.25,284.1948 ' fill='none' id='*start*FM-to-Play' style='stroke:#181818;stroke-width:1.0;'/>
-            <polygon fill='#181818' points='1171.25,288.9848,1175.25,279.9848,1171.25,283.9848,1167.25,279.9848,1171.25,288.9848' style='stroke:#181818;stroke-width:1.0;'/>
+            <path d='M1171.25,253.7748 C1171.25,263.1848 1171.25,272.0048 1171.25,283.9848 ' fill='none' id='*start*FM-to-Play' style='stroke:#181818;stroke-width:1.0;'/>
+            <polygon fill='#181818' points='1171.25,289.9848,1175.25,280.9848,1171.25,284.9848,1167.25,280.9848,1171.25,289.9848' style='stroke:#181818;stroke-width:1.0;'/>
         </g>
         <g id='link_Play_AutoTune'>
             <path
-                d='M1196.5,325.4148 C1201.1,327.5048 1205.97,329.3248 1210.75,330.4648 C1231.28,335.3648 1379.98,334.2248 1400.75,330.4648 C1403.68,329.9348 1406.65,329.2548 1409.63,328.4648 '
+                d='M1196.5,325.4148 C1201.1,327.5048 1205.97,329.3248 1210.75,330.4648 C1231.28,335.3648 1379.98,334.2248 1400.75,330.4648 C1405.43,329.6148 1404.5011,330.1357 1409.2211,328.6957 '
                 fill='none' id='Play-to-AutoTune' style='stroke:#181818;stroke-width:1.0;'/>
-            <polygon fill='#181818' points='1413.96,326.9448,1404.2047,325.5903,1409.1551,328.3279,1406.4176,333.2782,1413.96,326.9448' style='stroke:#181818;stroke-width:1.0;'/>
+            <polygon fill='#181818' points='1414.96,326.9448,1405.1845,325.7452,1410.1776,328.4039,1407.5189,333.397,1414.96,326.9448' style='stroke:#181818;stroke-width:1.0;'/>
             <text fill='#000000' font-family='sans-serif' font-size='13' lengthAdjust='spacing' textLength='188' x='1211.75' y='327.0332'>StationLost / PlayToAutoTune</text>
         </g>
         <g id='link_AutoTune_Play'>
-            <path d='M1414.89,310.4648 C1357.97,310.4648 1253.84,310.4648 1202.11,310.4648 ' fill='none' id='AutoTune-to-Play' style='stroke:#181818;stroke-width:1.0;'/>
-            <polygon fill='#181818' points='1197.36,310.4648,1206.36,314.4648,1202.36,310.4648,1206.36,306.4648,1197.36,310.4648' style='stroke:#181818;stroke-width:1.0;'/>
+            <path d='M1414.89,310.4648 C1355.78,310.4648 1251.74,310.4648 1202.36,310.4648 ' fill='none' id='AutoTune-to-Play' style='stroke:#181818;stroke-width:1.0;'/>
+            <polygon fill='#181818' points='1196.36,310.4648,1205.36,314.4648,1201.36,310.4648,1205.36,306.4648,1196.36,310.4648' style='stroke:#181818;stroke-width:1.0;'/>
             <text fill='#000000' font-family='sans-serif' font-size='13' lengthAdjust='spacing' textLength='200' x='1205.75' y='304.0332'>StationFound / AutoTuneToPlay</text>
         </g>
         <g id='link_*start*On_DAB'>
-            <path d='M937.75,159.4066 C937.75,177.7266 937.75,218.6466 937.75,245.2966 ' fill='none' id='*start*On-to-DAB' style='stroke:#181818;stroke-width:1.0;'/>
-            <polygon fill='#181818' points='937.75,250.0766,941.75,241.0766,937.75,245.0766,933.75,241.0766,937.75,250.0766' style='stroke:#181818;stroke-width:1.0;'/>
+            <path d='M937.75,159.4066 C937.75,179.1066 937.75,218.9666 937.75,245.0766 ' fill='none' id='*start*On-to-DAB' style='stroke:#181818;stroke-width:1.0;'/>
+            <polygon fill='#181818' points='937.75,251.0766,941.75,242.0766,937.75,246.0766,933.75,242.0766,937.75,251.0766' style='stroke:#181818;stroke-width:1.0;'/>
         </g>
         <g id='link_DAB_FM'>
-            <path d='M962.98,271.1766 C997.57,271.1766 1062.91,271.1766 1128.18,271.1766 ' fill='none' id='DAB-to-FM' style='stroke:#181818;stroke-width:1.0;'/>
-            <polygon fill='#181818' points='1133.09,271.1766,1124.09,267.1766,1128.09,271.1766,1124.09,275.1766,1133.09,271.1766' style='stroke:#181818;stroke-width:1.0;'/>
+            <path d='M962.98,271.1766 C998.62,271.1766 1060.88,271.1766 1128.09,271.1766 ' fill='none' id='DAB-to-FM' style='stroke:#181818;stroke-width:1.0;'/>
+            <polygon fill='#181818' points='1134.09,271.1766,1125.09,267.1766,1129.09,271.1766,1125.09,275.1766,1134.09,271.1766' style='stroke:#181818;stroke-width:1.0;'/>
             <text fill='#000000' font-family='sans-serif' font-size='13' lengthAdjust='spacing' textLength='152' x='972.5' y='264.7449'>ToggleMode / DABToFM</text>
         </g>
         <g id='link_FM_DAB'>
-            <path d='M1133.98,292.2666 C1068.15,297.5866 1002.57,299.6866 971.5,291.1766 C970.42,290.8766 969.33,290.5366 968.25,290.1566 ' fill='none' id='FM-to-DAB'
+            <path d='M1133.98,292.2666 C1068.15,297.5866 1002.57,299.6866 971.5,291.1766 C968.61,290.3766 971.1729,291.7698 968.3629,290.4798 ' fill='none' id='FM-to-DAB'
                   style='stroke:#181818;stroke-width:1.0;'/>
-            <polygon fill='#181818' points='963.91,287.9766,970.7245,295.0873,968.5375,289.8703,973.7545,287.6832,963.91,287.9766' style='stroke:#181818;stroke-width:1.0;'/>
+            <polygon fill='#181818' points='962.91,287.9766,969.4204,295.3667,967.454,290.0626,972.7581,288.0962,962.91,287.9766' style='stroke:#181818;stroke-width:1.0;'/>
             <text fill='#000000' font-family='sans-serif' font-size='13' lengthAdjust='spacing' textLength='152' x='972.5' y='287.7449'>ToggleMode / FMToDAB</text>
         </g>
         <g id='link_*start*Root_Off'>
-            <path d='M592.5,64.7883 C592.5,90.6283 592.5,163.9683 592.5,203.0983 ' fill='none' id='*start*Root-to-Off' style='stroke:#181818;stroke-width:1.0;'/>
-            <polygon fill='#181818' points='592.5,208.0783,596.5,199.0783,592.5,203.0783,588.5,199.0783,592.5,208.0783' style='stroke:#181818;stroke-width:1.0;'/>
+            <path d='M592.5,64.7583 C592.5,91.9083 592.5,165.6183 592.5,202.6283 ' fill='none' id='*start*Root-to-Off' style='stroke:#181818;stroke-width:1.0;'/>
+            <polygon fill='#181818' points='592.5,208.6283,596.5,199.6283,592.5,203.6283,588.5,199.6283,592.5,208.6283' style='stroke:#181818;stroke-width:1.0;'/>
         </g>
         <g id='link_Maintenance_Off'>
             <path
-                d='M116.28,236.5783 C150.93,241.2783 198.58,247.0083 240.75,249.4283 C330.38,254.5883 353.17,255.3883 442.75,249.4283 C483.97,246.6883 531.15,239.7483 561.36,234.8183 '
+                d='M116.28,236.0783 C150.93,240.7883 198.58,246.5083 240.75,248.9283 C330.38,254.0883 353.17,254.8883 442.75,248.9283 C486.72,246.0083 531.5516,239.2947 561.2516,234.3447 '
                 fill='none' id='Maintenance-to-Off' style='stroke:#181818;stroke-width:1.0;'/>
-            <polygon fill='#181818' points='566.17,233.8583,556.6383,231.3789,561.2369,234.6733,557.9424,239.2718,566.17,233.8583' style='stroke:#181818;stroke-width:1.0;'/>
-            <text fill='#000000' font-family='sans-serif' font-size='13' lengthAdjust='spacing' textLength='200' x='241.75' y='245.9966'>TogglePower / MaintainedToOff</text>
+            <polygon fill='#181818' points='567.17,233.3583,557.6349,230.8923,562.238,234.1803,558.9501,238.7834,567.17,233.3583' style='stroke:#181818;stroke-width:1.0;'/>
+            <text fill='#000000' font-family='sans-serif' font-size='13' lengthAdjust='spacing' textLength='200' x='241.75' y='245.4966'>TogglePower / MaintainedToOff</text>
         </g>
         <g id='link_Off_Maintenance'>
-            <path d='M567.06,229.4283 C486.29,229.4283 234.44,229.4283 122.3,229.4283 ' fill='none' id='Off-to-Maintenance' style='stroke:#181818;stroke-width:1.0;'/>
-            <polygon fill='#181818' points='117.42,229.4283,126.42,233.4283,122.42,229.4283,126.42,225.4283,117.42,229.4283' style='stroke:#181818;stroke-width:1.0;'/>
-            <text fill='#000000' font-family='sans-serif' font-size='13' lengthAdjust='spacing' textLength='432' x='125.75' y='222.9966'>TogglePower [Maintenance is On] / log
+            <path d='M567.06,228.9283 C484.85,228.9283 231.37,228.9283 122.42,228.9283 ' fill='none' id='Off-to-Maintenance' style='stroke:#181818;stroke-width:1.0;'/>
+            <polygon fill='#181818' points='116.42,228.9283,125.42,232.9283,121.42,228.9283,125.42,224.9283,116.42,228.9283' style='stroke:#181818;stroke-width:1.0;'/>
+            <text fill='#000000' font-family='sans-serif' font-size='13' lengthAdjust='spacing' textLength='432' x='125.75' y='222.4966'>TogglePower [Maintenance is On] / log
                 transition Off to Maintenance
             </text>
         </g>
         <g id='link_Off_On'>
-            <path d='M617.67,229.4283 C666.69,229.4283 780.2,229.4283 894.54,229.4283 ' fill='none' id='Off-to-On' style='stroke:#181818;stroke-width:1.0;'/>
-            <polygon fill='#181818' points='899.33,229.4283,890.33,225.4283,894.33,229.4283,890.33,233.4283,899.33,229.4283' style='stroke:#181818;stroke-width:1.0;'/>
-            <text fill='#000000' font-family='sans-serif' font-size='13' lengthAdjust='spacing' textLength='264' x='627.12' y='222.9966'>TogglePower [Maintenance Off] / OffToOn
+            <path d='M617.67,228.9283 C667.52,228.9283 778.05,228.9283 894.33,228.9283 ' fill='none' id='Off-to-On' style='stroke:#181818;stroke-width:1.0;'/>
+            <polygon fill='#181818' points='900.33,228.9283,891.33,224.9283,895.33,228.9283,891.33,232.9283,900.33,228.9283' style='stroke:#181818;stroke-width:1.0;'/>
+            <text fill='#000000' font-family='sans-serif' font-size='13' lengthAdjust='spacing' textLength='264' x='627.12' y='222.4966'>TogglePower [Maintenance Off] / OffToOn
             </text>
         </g>
         <g id='link_On_Off'>
-            <path d='M900.49,248.5583 C811.76,252.4683 727.06,254.1383 683.62,249.4283 C663.37,247.2383 641.02,242.3683 623.53,237.9883 ' fill='none' id='On-to-Off'
+            <path d='M900.49,248.0583 C811.76,251.9683 727.06,253.6383 683.62,248.9283 C661.08,246.4883 641.7476,242.2354 623.5976,237.5254 ' fill='none' id='On-to-Off'
                   style='stroke:#181818;stroke-width:1.0;'/>
-            <polygon fill='#181818' points='618.79,236.5183,626.5132,242.63,623.6331,237.7612,628.5018,234.8811,618.79,236.5183' style='stroke:#181818;stroke-width:1.0;'/>
-            <text fill='#000000' font-family='sans-serif' font-size='13' lengthAdjust='spacing' textLength='149' x='684.62' y='245.9966'>TogglePower / OnToOff</text>
+            <polygon fill='#181818' points='617.79,236.0183,625.4967,242.1507,622.6297,237.2742,627.5062,234.4072,617.79,236.0183' style='stroke:#181818;stroke-width:1.0;'/>
+            <text fill='#000000' font-family='sans-serif' font-size='13' lengthAdjust='spacing' textLength='149' x='684.62' y='245.4966'>TogglePower / OnToOff</text>
         </g>
     </g>
 </svg>

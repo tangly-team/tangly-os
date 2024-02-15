@@ -59,4 +59,4 @@ See link:../../2018/pragmatic-craftsmanship-professional-software-developer/[Sof
 
 A huge advantage of https://less.works[LeSS] is that it is https://www.scrumguides.org/[Scrum].
 You do not need to learn new methodologies, terminology or processes.
-Just apply all your hard-earned learnings from your Scrum transformation.
+Apply all your hard-earned learnings from your Scrum transformation.

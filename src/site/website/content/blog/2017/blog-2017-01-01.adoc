@@ -242,7 +242,7 @@ The product owner must create a vision, an initial release plan, identify the ke
 Or the role of requirement engineering is part of the team.
 * The team provides technical feedback and input about potential technologies for all stories, discuss the non-functional requirements and refine the acceptance criteria.
 * As a simple check, the team guaranty together with the product owner that each story is valuable.
-Use INVEST - Independent, Negotiable, Valuable (ROI), Estimable, Size appropriately, Testable -.
+Use INVEST - Independent, Negotiable, Valuable (ROI), Estimable, Size appropriately, Testable - approach.
 ====
 
 If not why?

@@ -63,7 +63,7 @@ to monitor and validate all non-functional requirements.
 
 The well-established practices from the object-oriented and DevOps communities are:
 
-* Develop very early a working skeleton.
+* Develop a working skeleton very early.
 * Clean architecture implies clean code and requires clean coders in your team.
 See our post link:../../2019/agile-code-is-clean-code/[Clean Code],
 * Aggressive refactoring and understand technical debt, Continuous integration, continuous delivery, and continuous deployment.

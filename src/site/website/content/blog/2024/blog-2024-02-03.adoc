@@ -41,7 +41,7 @@ You will learn new approaches and expand your professional network.
 ====
 At the beginning of my career, I attended the monthly meetings of the local Java and agile user group.
 
-Later, I presented a few times concepts and approaches I used in my projects.
+Later I presented a few times concepts and approaches I used in my projects.
 ====
 
 The same is true for Scrum and agile user groups <<scrum-dev-formation>><<scrum-master-formation>><<product-owner-formation>>.
@@ -146,6 +146,8 @@ Code snippets can be found on Stack Overflow or in blogs.
 The best way to improve technically is to study interesting approaches.
 
 You need to apply the learnings to truly understand them.
+
+Buy a technical book quaterly and read it.
 ====
 
 [bibliography]

@@ -169,36 +169,34 @@ I prefer
 
 == Class Diagram
 
-image::uml-class-diagram.svg[]
+[plantuml,uml-class-diagram,svg]
+----
+@startuml
+interface Actor <<Active>> {
+  + {static} send(Actor actor, Message message)
+  + String name()
+  # receive(Message message)
+  # {abstract} process(Message message)
+}
+class Queue<T> {}
 
-// [plantuml,uml-class-diagram,svg]
-// ----
-// @startuml
-// interface Actor <<Active>> {
-//   + {static} send(Actor actor, Message message)
-//   + String name()
-//   # receive(Message message)
-//   # {abstract} process(Message message)
-// }
-// class Queue<T> {}
-//
-// class Message <<struct>> {}
-//
-// enum MessageType
-//
-// Message *-- "1" MessageType : type
-//
-// Actor *- "1" Queue : messages
-// Queue .> Message
-//
-// class ActorCpp {}
-// Actor <|.. ActorCpp
-//
-// class ActorCmsis {}
-// Actor <|.. ActorCmsis
-//
-// @enduml
-// ----
+class Message <<struct>> {}
+
+enum MessageType
+
+Message *-- "1" MessageType : type
+
+Actor *- "1" Queue : messages
+Queue .> Message
+
+class ActorCpp {}
+Actor <|.. ActorCpp
+
+class ActorCmsis {}
+Actor <|.. ActorCmsis
+
+@enduml
+----
 
 === Relations
 
@@ -287,30 +285,28 @@ Java or C++ modules are components.
 
 === Component Diagram
 
-image::uml-component-diagram.svg[]
-
-// [plantuml,uml-component-diagram,svg]
-// ....
-// package "Application" {
-//   HTTP - [Loader]
-//   [Process Manager]
-// }
-// rectangle "Drivers" {
-//   FTP - [Second Component]
-//   [First Component] --> FTP
-// }
-// cloud {
-//   [Maintenance]
-// }
-// database "Persistence" {
-//   folder "Configuration Data" {
-//     [Configuration]
-//   }
-//   frame "Logger" {
-//     [Trace]
-//   }
-// }
-// ....
+[plantuml,uml-component-diagram,svg]
+....
+package "Application" {
+  HTTP - [Loader]
+  [Process Manager]
+}
+rectangle "Drivers" {
+  FTP - [Second Component]
+  [First Component] --> FTP
+}
+cloud {
+  [Maintenance]
+}
+database "Persistence" {
+  folder "Configuration Data" {
+    [Configuration]
+  }
+  frame "Logger" {
+    [Trace]
+  }
+}
+....
 
 === Thoughts
 
@@ -359,24 +355,22 @@ The same information can be represented using a sequence diagram and different o
 
 === Sequence Diagram
 
-image:uml-sequence-diagram.svg[]
-
-// [plantuml,uml-sequence-diagram,svg]
-// ....
-// participant User
-// User -> Engine: DoWork
-// activate Engine
-// Engine -> Receipt: << createRequest >>
-// activate Engine
-// Receipt -> Interpreter: DoWork
-// activate Interpreter
-// Interpreter --> Receipt: WorkDone
-// destroy Interpreter
-// Receipt --> Engine: RequestCreated
-// deactivate Receipt
-// Engine -> User: Done
-// deactivate Engine
-// ....
+[plantuml,uml-sequence-diagram,svg]
+....
+participant User
+User -> Engine: DoWork
+activate Engine
+Engine -> Receipt: << createRequest >>
+activate Engine
+Receipt -> Interpreter: DoWork
+activate Interpreter
+Interpreter --> Receipt: WorkDone
+destroy Interpreter
+Receipt --> Engine: RequestCreated
+deactivate Receipt
+Engine -> User: Done
+deactivate Engine
+....
 
 [.notes]
 --
@@ -412,42 +406,40 @@ Hierarchical state machines require a nested set or at least a table representat
 
 === State Machine Diagram
 
-image:uml-state-diagram.svg[]
+[plantuml,uml-state-diagram,svg]
+....
+hide empty description
 
-// [plantuml,uml-state-diagram,svg]
-// ....
-// hide empty description
-//
-// state Root {
-//     [*] --> Off
-//     state Maintenance
-//     Maintenance -> Off : TogglePower / MaintainedToOff
-//
-//     state Off
-//     Off -> Maintenance : TogglePower [Maintenance is On] / log transition Off to Maintenance
-//     Off -> On : TogglePower [Maintenance Off] / OffToOn
-//
-//
-//     state On {
-//         [*] --> DAB
-//         state DAB
-//         DAB -> FM : ToggleMode / DABToFM
-//
-//         state FM {
-//             [*] --> Play
-//             state Play
-//             Play -> AutoTune : StationLost / PlayToAutoTune
-//
-//             state AutoTune
-//             AutoTune -> Play : StationFound / AutoTuneToPlay
-//
-//             FM -> DAB : ToggleMode / FMToDAB
-//         }
-//
-//         On -> Off : TogglePower / OnToOff
-//     }
-// }
-// ....
+state Root {
+    [*] --> Off
+    state Maintenance
+    Maintenance -> Off : TogglePower / MaintainedToOff
+
+    state Off
+    Off -> Maintenance : TogglePower [Maintenance is On] / log transition Off to Maintenance
+    Off -> On : TogglePower [Maintenance Off] / OffToOn
+
+
+    state On {
+        [*] --> DAB
+        state DAB
+        DAB -> FM : ToggleMode / DABToFM
+
+        state FM {
+            [*] --> Play
+            state Play
+            Play -> AutoTune : StationLost / PlayToAutoTune
+
+            state AutoTune
+            AutoTune -> Play : StationFound / AutoTuneToPlay
+
+            FM -> DAB : ToggleMode / FMToDAB
+        }
+
+        On -> Off : TogglePower / OnToOff
+    }
+}
+....
 
 
 == Requirements Aspects
@@ -457,26 +449,24 @@ image:uml-state-diagram.svg[]
 
 === Use Case Diagram
 
-image:uml-use-case-diagram.svg[]
+[plantuml,uml-use-case-diagram,svg]
+....
+left to right direction
 
-// [plantuml,uml-use-case-diagram,svg]
-// ....
-// left to right direction
-//
-// actor developer
-// database repo as "central\nrepo"
-// agent jenkins as "Jenkins"
-//
-// rectangle admin as "Gerrit / Gitlab" {
-//     agent ui as "front"
-//     database repo_local as "local\nrepo"
-// }
-//
-// developer --> ui : push
-// ui --> repo_local : push
-// ui -left-> jenkins: "\npush "
-// ui ..> repo : replication
-// ....
+actor developer
+database repo as "central\nrepo"
+agent jenkins as "Jenkins"
+
+rectangle admin as "Gerrit / Gitlab" {
+    agent ui as "front"
+    database repo_local as "local\nrepo"
+}
+
+developer --> ui : push
+ui --> repo_local : push
+ui -left-> jenkins: "\npush "
+ui ..> repo : replication
+....
 
 [.notes]
 --
@@ -485,21 +475,19 @@ As the most known diagram type of the behavioral UML types, use case diagrams gi
 
 === Activity Diagram
 
-image:uml-activity-diagram.svg[]
+[plantuml,uml-activity-diagram,svg]
+....
+(*) --> "Initialization"
 
-// [plantuml,uml-activity-diagram,svg]
-// ....
-// (*) --> "Initialization"
-//
-// if "Some Test" then
-//   -->[true] "Some Activity"
-//   --> "Another activity"
-//   -right-> (*)
-// else
-//   ->[false] "Something else"
-//   -->[Ending process] (*)
-// endif
-// ....
+if "Some Test" then
+  -->[true] "Some Activity"
+  --> "Another activity"
+  -right-> (*)
+else
+  ->[false] "Something else"
+  -->[Ending process] (*)
+endif
+....
 
 [.notes]
 --

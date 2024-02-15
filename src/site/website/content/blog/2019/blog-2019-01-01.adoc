@@ -100,7 +100,7 @@ For a team working on agile, the answer to all of these questions should be a fo
 * Are you ever asked to try prototypes of new software features and observed using them?
 * What is the time it takes for a requested feature to show up in the application?
 
-For a team working on agile, the answer to all of these questions should be a form of “yes”.
+For a team working on agile, the answer to all of these questions should be a form of _yes_.
 
 == Questions for Program Leadership
 

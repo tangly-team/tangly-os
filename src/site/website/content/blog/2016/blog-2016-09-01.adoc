@@ -8,9 +8,11 @@ tags: ["agile", "series-swiss-agile-trends"]
 include::../fragments/_config-mb-blog.aodc[]
 
 image::2016-09-01-head.jpg[width=420,height=360,role=left]
+
 What are the main hurdles to introducing agile approaches in Swiss companies?
 
-* Introducing agile company-wide is a cultural change process.Such a change takes time and sometimes hurts.
+* Introducing agile company-wide is a cultural change process.
+Such a change takes time and sometimes hurts.
 * Without the commitment of senior management, the initiative will fail.
 * Doubt that lean or agile works, doubt you can find agile experts, doubt that your projects can be realised with agile approaches.
 * In the end, what matters are collaborator purpose, customer satisfaction, business value.
@@ -62,7 +64,8 @@ Do not try to introduce Scrum at company level without such an approach.
 We wrote in previous link:../../2016/scrum-master-is-a-full-time-role[Scrum master is a full time job] that the Scrum Master is of tremendous importance.
 You need a skilled and enthusiastic Scrum Master; avoid Scrum Administrator.
 The new version of the Scrum guide clearly stated who is responsible for the introduction of the Scrum approach in the company?
-Often people state that the management should spread Scrum in the company. Ken and Jeff have a clear idea who is in charge of this.
+Often people state that the management should spread Scrum in the company.
+Ken and Jeff have a clear idea who is in charge of this.
 
 [quote]
 ____

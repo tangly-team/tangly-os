@@ -20,7 +20,7 @@ Each time you check some code into your Git repository, all configured checks sh
 
 Liberated your team works adding functions and no more spend unaccounted hours in setting up infrastructure.
 
-This trend is propagating to other technology stacks such as Python or C#, but less for PHP or Javascript/NodeJS worlds.
+This trend is propagating to other technology stacks such as Python or C#, but less for PHP or Javascript/Node.js worlds.
 I still experience higher maturity in the Java toolchain.
 
 Below, our current set of techniques and tools to multiply our results and bring earlier products to your customers.

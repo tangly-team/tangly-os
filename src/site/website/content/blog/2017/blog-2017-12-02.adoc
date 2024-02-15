@@ -75,7 +75,7 @@ So you are on your own for support or code examples for older versions of librar
 Writing code for older versions of libraries, frameworks or runtimes means https://en.wikipedia.org/wiki/Backporting[backporting] to older application interfaces and features.
 For example, if you do not have access to auto-closable resources, you have to write your own framework and software checks guarantying closing system resources.
 You should always free system resources in your application.
-The literature states this is neither easy nor error free.
+The literature states this is neither straightforward nor error free.
 It is the root reason why such a feature was added to Java.
 
 Teams often forget the consequences of back porting.

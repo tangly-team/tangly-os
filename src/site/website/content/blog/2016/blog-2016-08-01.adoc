@@ -19,7 +19,7 @@ The main interest of PMI-ACP certification is their collection of concepts taken
 It could be worth your money to buy the book "The PMI-ACP Exam: How to pass on Your First Try", Andy Crowe, First Edition 2012.
 The book itself is not rocket science, but it contains two hundred questions which are similar to the ones you will encounter during the examination.
 
-To get your 21 PDUs necessary for the examination you must attend a training course.
+To get your 21 PDUs necessary for the examination, you must attend a training course.
 I booked an online course at Simplilearn for a reasonable price.
 The content was reasonable.
 The test questions were good.
@@ -94,7 +94,7 @@ image:2016-08-01-active-listening.png[float="right"]
 
 * http://en.wikipedia.org/wiki/Active_listening[Active Listening]
 * ARCSThe _Attention Relevance Confidence Satisfaction_ is relevant for motivational theory and process for systematic motivational design
-* Affinity Estimation - e.g., story points or tee-shirt sizes -.
+* Affinity Estimation, e.g., story points or tee-shirt sizes.
 The Affinity Estimating exercise is best conducted on Product Backlogs larger than 20 items.
 It is best when you have at least 40 items which allow for groupings to easily become apparent.
 * ATDD Acceptance Test Driven Development - Discuss, Distill, Develop, and Demo - see also http://en.wikipedia.org/wiki/Behavior_Driven_Development[Behaviour Driven Development] _BDD_

@@ -56,7 +56,7 @@ The described approach is a good practice since the beginning of this millennium
 All above-mentioned tools are open source and free to use.
 Your organization has *no excuse* to write crap code.
 
-Just write well engineered, legible and maintainable source code.
+Write well-engineered, legible and maintainable source code.
 It is a matter of _discipline_.
 It is also a prerequisite to agile architecture.
 
@@ -88,8 +88,8 @@ Practice consolidates changes in the behavior of your development organization.
 
 * https://en.wikipedia.org/wiki/Pair_programming[Pair Programming] - is a training on the job and crowd wisdom approach to steadily improving knowledge and quality -.
 * https://en.wikipedia.org/wiki/Test-driven_development[TDD] and https://en.wikipedia.org/wiki/Acceptance_test%E2%80%93driven_development[ATDD] - are a safety net to guaranty quality attributes in your source code.
-* https://en.wikipedia.org/wiki/DevOps[DevOps] starting with git, docker, continuous integration, delivery and deployment - to speed up development and eliminate tedious manual errors.
-* Lack of accountability equates to lack of trust - your teams are accountable for the quality of your product.
+* https://en.wikipedia.org/wiki/DevOps[DevOps] starting with git, docker, continuous integration, delivery and deployment to speed up development and eliminate tedious manual errors.
+* Lack of accountability equates to lack of trust your teams are accountable for the quality of your product.
 You should trust them.
 
 Once good practices are established, you can move to more sophisticated tools - such as git history code analysis - to uncover weaknesses in your development department.
@@ -100,7 +100,7 @@ Teams ready to learn from the like of Google could evaluate https://trunkbasedde
 
 A code review can be done in different ways.
 Many teams use {ref-github}, {ref-bitbucket} or ref{ref-gitlab}.
-A very common approach for our code reviews is using merge requests.
+A widespread approach for our code reviews is using merge requests.
 However, there are situations where pull requests are not necessary.
 For example, if a feature is implemented in pair programming or mob programming, then the code is already reviewed while it is written.
 

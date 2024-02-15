@@ -32,17 +32,17 @@ The findings are considered confidential.
 A short check with a feedback workshop presenting the insights requires around two work days.
 
 A deeper and more intensive check requests more effort, between one and four weeks.
-Upon completion, you can also hire a coach to implement selected findings and improve durably the health of your application.
+Upon completion, you can also hire a coach to implement selected findings and durably improve the health of your application.
 The findings are often clear and the measures are straightforward.
-The real work is to implement consistently the measures.
+The real work is to consistently implement the measures.
 
 I have the same personal challenge when trying to lose weight or improve my running form.
-The long term implementation is the crux.
+The long-term implementation is the crux.
 
 == Delivery Pipeline Checks
 
 How reproducible, fast and economic is your product deliver pipeline?
-At the end of the day, you deliver regularly a reproducible and trackable product version to your customers.
+At the end of the day, you regularly deliver a reproducible and trackable product version to your customers.
 
 One nice aspect about delivery pipeline checks is that a whole set of tools and methods emerged with the https://en.wikipedia.org/wiki/DevOps[DevOps] movement.
 You still need an expert to tune the diagnostic to your company's specific needs, but the approach is well-documented.

@@ -67,7 +67,7 @@ If a value does not make sense, e.g., the value was defined early on, but in hin
 
 == Last Thoughts
 
-Building a great engineering culture is not something that you easily do.
+Building a great engineering culture is not something that you do.
 You cannot cheat.
 It will not automatically happen by copying the values and organization structure from another company such as Spotify.
 You need to really invest in creating a culture that works for your company.

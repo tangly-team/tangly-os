@@ -7,16 +7,18 @@ tags: ["hugo"]
 
 include::../fragments/_config-mb-blog.aodc[]
 
+:ref-revealjs: https://revealjs.com/[reveal.js]
+
 [.float-group]
 --
 image::2024-03-03-head.png[width=420,height=360,role=left]
 
 The static website build tool {ref-hugo} is awesome.
 
-The extensive built-in feature set of {ref-hugo} and the feature-rich text-formatting options that {ref-asciidoc} offers provide a blogging experience composed of easy content management and fun writing experience.
+The extensive built-in feature set of {ref-hugo} and the feature-rich typesetting that {ref-asciidoc} offers provide a blogging experience composed of easy content management and fun writing experience.
 
 {ref-hugo} suppports natively {ref-asciidoc} syntax.
-{ref-asciidoc} files are automatically compiled with {ref-asciidoctor}, so we do not need to do anything.
+{ref-asciidoc} files are automatically compiled with {ref-asciidoctor}, so we do not need to configure anything.
 Have it installed and you are ready to go.
 
 The {ref-hugo} theme {ref-docsy} is ideal to create a good-looking software documentation site.
@@ -24,12 +26,14 @@ This theme is currently the best match I found to combine product documentation 
 --
 
 I can generate the whole static website and publish it in less than two minutes.
+All artifacts are under version control.
+
 Major activities are easy to perform.
 
 [mermaid,blog-journey,svg]
 ----
 journey
-    title Blog Activities
+    title Blog Creation Activities
     section Write Blogs
         write text in English: 5
         improve text with assistents: 3
@@ -70,7 +74,7 @@ I use the _asciidoctor-bibtex_ plugin to include references in my articles.
 
 The reference file is a regular bibtex file.
 I use _JabRef_ to manage my references.
-To simplify the life of my readers, I include a link to the amazon page of the book so that they can easily have a quick look at the book.
+To simplify the life of my readers, I include a link to the amazon page of the book so that they can easily have a quick look at the referenced publication.
 
 I am very satisfied with the result.
 I acknowledge that the importance of professional references is triggered by the fact that I am a technical university lecturer.
@@ -87,7 +91,31 @@ I use {ref-plantuml} to generate UML diagrams and mindmaps.
 
 The {ref-mermaid} plugin provides additional diagram types:
 
+- Customer journey maps
+- pie, quadrant and XY charts
+- Timelines
+- C4 diagrams as with {ref-plantuml}
+
 == RevealJS
+
+I regularly give presentations at technical universities and workshops.
+I was looking for a way to use {ref-asciidoc} power to create and publish my slides on my website.
+{ref-asciidoctor} provides a nice converter to {ref-revealjs}.
+
+I can now create my slides in {ref-asciidoc} and publish them on my website.
+The command to generate the slides for a presentation is:
+
+[source,console]
+----
+bundle exec asciidoctor-revealjs
+    -r asciidoctor-diagram -r asciidoctor-bibtex                               <1>
+    -a revealjsdir=https://cdn.jsdelivr.net/npm/reveal.js@5.5.0.4              <2>
+    <folder>/<presenation>.adoc                                                <3>
+----
+
+<1> Load the diagram and bibtex extensions used in the presentation
+<2> Select the reveal.js distribution
+<3> The presentation file
 
 == Lessons Learnt
 
@@ -105,12 +133,12 @@ Beware that {ref-asciidoctor} is a ruby application.
 
 [source,console]
 ----
-gem list                                                    <1>
-gem outdated                                                <2>
-gem update                                                  <3>
-gem cleanup                                                 <4>
+gem list                                                                       <1>
+gem outdated                                                                   <2>
+gem update                                                                     <3>
+gem cleanup                                                                    <4>
 
-ruby -v                                                     <5>
+ruby -v                                                                        <5>
 ----
 
 <1> list all installed gems
@@ -120,6 +148,11 @@ ruby -v                                                     <5>
 <5> show the current ruby version
 
 The consequence is that I should set up a CI pipeline to check if the toolchain is still working.
+
+The support of {ref-docsy} for {ref-asciidoc} is limited.
+I had to extend the theme to support styling of {ref-asciidoc} texts and to display taxonomies in the sidebar.
+
+Additional tinkering supports the download of referenced documents.
 
 [bibliography]
 == Links

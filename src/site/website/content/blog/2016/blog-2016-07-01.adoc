@@ -28,7 +28,7 @@ Git branches have two important qualities.
 * A branch is like an idea.
 Once you implemented the idea, feature or fix, you just merge back to trunk and delete the branch.
 * Multiple branches coexist in a repository.
-Ideally branches should be short-lived to avoid waste.
+Ideally, branches should be short-lived to avoid waste.
 * The history of the branch commits is still visible upon deletion of the branch.
 
 [NOTE]
