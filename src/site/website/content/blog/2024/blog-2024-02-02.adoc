@@ -91,7 +91,7 @@ footnote:[I am a fan of the traveler bags from the company _timbuk2_.
 I owned their bags for the last twenty-five years and was always satisfied with the quality and look.
 I pack my notebook, a mouse, a keyboard, a headset, a power supply and some adapters in the bag.
 The USB-C standard is a powerful improvement.
-I can charge all devices using one Apple 140 W adapter.].
+I can charge all my devices using one Apple 140 W adapter.].
 
 All our company processes are digital and described in our company documentation.
 
