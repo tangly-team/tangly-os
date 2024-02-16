@@ -1,5 +1,5 @@
 /*!
- * Copyright 2015-2023 Marcel Baumann
+ * Copyright 2015-2024 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -100,6 +100,21 @@ audio, canvas, video {
     clear: both
 }
 
+.sidebarblock {
+    border: 1px solid #dbdbd6;
+    margin-bottom: 1.25em;
+    padding: 1.25em;
+    background: #f3f3f2;
+    border-radius: 4px;
+
+    > .content {
+        > .title {
+            color: #7a2518;
+            margin-top: 0;
+            text-align: center;
+        }
+    }
+}
 
 .admonitionblock > table {
     border-collapse: separate !important;

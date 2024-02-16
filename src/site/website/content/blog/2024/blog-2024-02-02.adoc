@@ -131,12 +131,22 @@ We are pragmatic and agile.
 
 All collaborators identify with these values and apply them in our daily work.
 
+[sidebar]
+****
+https://www.linkedin.com/in/junghana/[Alexandra Junghans] is the new president of the management board since 2024.
+
+Our company promotes female engineers to the highest leadership positions.
+
+We are proud to have her as our leader.
+She is a great engineer, coach and mentor.
+****
+
 More subtle ethical values are discussed in company meetings or during coffee breaks.
 I am fascinated that we have a strong common understanding of ethical values.
 
 It is fun to work at {ref-tangly}.
 
-[.sidenode]
+[NOTE]
 ====
 Our digital and agile culture sometimes clashes with less progressive organizations.
 
