@@ -1,6 +1,6 @@
 [versions]
 assertj-version = '3.25.3'
-flyway-version = '10.7.2'
+flyway-version = '10.8.1'
 jackson-version = '2.12.3'
 jersey-version = '2.35'
 javalin-version = '6.0.1'
