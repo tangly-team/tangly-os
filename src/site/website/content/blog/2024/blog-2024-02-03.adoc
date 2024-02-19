@@ -11,12 +11,15 @@ include::../fragments/_config-mb-blog.aodc[]
 --
 image::2024-02-03-head.png[width=420,height=360,role=left]
 
-You attend a famous or a local technical school.
+You attended a famous or a local technical school.
 You are the proud owner of a bachelor or a master degree in science.
 
 You are a certified engineer.
 
-You write productive code with your colleagues in your current company.
+You are now a full-time software developer.
+You write daily productive code with your colleagues in your current company.
+
+Hopefully you studied software engineering at least as a minor.
 
 How can you continuously improve in your profession?
 
@@ -25,12 +28,14 @@ How can you become proficient in the new features and possibilities of the techn
 How can you learn new approaches and good practices emerging over the world?
 --
 
+Below are approaches I used over the years to improve my technical skills and progress in my career.
+
 == Attend Local User Groups
 
-Professional engineers strive through discussion and exchanges with peers.
+Professional engineers strive through discussions and exchanges with peers.
 A powerful and cost-effective approach is to meet regularly in user groups.
 
-You can find a lot of user groups in your area.
+You can find a lot of user groups in your Swiss area.
 
 You find Java, Python, C++, C#/.Net, and Clojure user groups in the Zurich, Zug, and Lucerne areas.
 
@@ -41,7 +46,7 @@ You will learn new approaches and expand your professional network.
 ====
 At the beginning of my career, I attended the monthly meetings of the local Java and agile user group.
 
-Later I presented a few times concepts and approaches I used in my projects.
+Later, I presented a few times concepts and approaches I used in my projects.
 ====
 
 The same is true for Scrum and agile user groups <<scrum-dev-formation>><<scrum-master-formation>><<product-owner-formation>>.
@@ -60,11 +65,13 @@ You can legally share them with your team members.
 
 I challenge you.
 *Read at least four technical books* each year.
-Commute using public transport, and you have found your timeslot to read these books.
+
+Commute using public transport, and you already have found your timeslot to read these books.
 
 Watch YouTube technical videos.
 You find free high-quality material for almost any topic.
-Beware of outdated date information is also polluting sites.
+
+_Beware of outdated information is also polluting the site_.
 
 [TIP]
 ====
@@ -79,9 +86,10 @@ It is one of my favorite checks as a technical manager.
 I ask collaborators where they ask questions and how they search for answers.
 
 If I cannot find any trace of their activities, I am worried.
+An engineer without any online presence is probably not learning actively new approaches.
 
 I want to have knowledge workers in my team.
-I want them to tap into the collective knowledge of the world through the internet.
+I want them to tap into the collective knowledge of the world through the Internet.
 ====
 
 == Attend Formal Trainings
@@ -103,9 +111,12 @@ Ask yourself if a certification makes sense for you.
 Invest in a CAS or a MAS study.
 
 If you are working daily in a technical area for years, please have a degree corresponding to your professional activities.
+
+Training on the job is not enough.
+You need to have a formal education.
 ====
 
-A very powerful approach to becoming proficient in a matter is to volunteer for a presentation
+A very powerful approach to becoming proficient in a matter is to volunteer for a presentation.
 
 == Write Articles
 
@@ -114,6 +125,8 @@ Writing about a problem is a powerful way to understand it better.
 
 An engineer is also a coach and a teacher.
 Get the hang of the art of writing presentations and articles.
+
+The {ref-tangly-blog} is a good example of how you can publish on technical themes.
 
 == Participate in Open Source Products
 

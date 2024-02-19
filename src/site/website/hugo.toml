@@ -138,7 +138,7 @@ ref-scrumguide = "https://www.scrumguides.org/[Scrum Guide]"
 ref-site = "https://blog.tangly.net/[Open Source Components]"
 ref-tangly = "https://www.tangly.net/[tangly]"
 ref-tangly-doc-url = "https://blog.tangly.net/docs"
-ref-tangly-blog-url = "https://blog.tangly.net/blog"
+ref-tangly-blog = "https://blog.tangly.net/blog[tangly blog]"
 ref-uml = "https://en.wikipedia.org/wiki/Unified_Modeling_Language[UML]"
 ref-uri-blog = "https://blog.tangly.net/[tangly blog]"
 ref-uri-prj-doc = "https://blog.tangly.net/[tangly OS documentation]"
@@ -245,8 +245,7 @@ breadcrumb_disable = false
 sidebar_search_disable = false
 #  Set to false if you don't want to display a logo (/assets/icons/logo.svg) in the top nav bar
 navbar_logo = true
-# Set to true to disable the About link in the site footer
-footer_about_disable = false
+footer_about_enable = false
 
 [params.ui.feedback]
 enable = false

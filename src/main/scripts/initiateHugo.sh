@@ -1,5 +1,5 @@
 #
-# Copyright 2006-2023 Marcel Baumann
+# Copyright 2006-2024 Marcel Baumann
 #
 # Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
 # the License at
@@ -26,7 +26,7 @@ cd $siteDir
 
 # download docsy theme and the submodules they depend on using npm
 cd themes
-git clone --branch v0.8.0 https://github.com/google/docsy.git
+git clone --branch v0.9.1 https://github.com/google/docsy.git
 cd docsy
 npm install
 

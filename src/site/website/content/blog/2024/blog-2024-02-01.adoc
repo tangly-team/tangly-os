@@ -73,6 +73,7 @@ The _filter()_ method is used to eliminate elements based on a condition.
 It produces a new stream that contains elements of the original stream that pass a given test specified by a _Predicate_.
 
 The _flatMap()_ method is used to transform one object into another by applying a function that returns a stream.
+
 A stream can hold complex data structures like _Stream<List<String>>_.
 In cases like this, _flatMap()_ helps us to flatten the data structure to simplify further operations.
 

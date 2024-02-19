@@ -125,9 +125,20 @@ The community is supportive and professional.
 == Company Culture
 
 We are a small agile and Java boutique.
+
 We love coaching, mentoring, and training.
 We are engineers and software craftsmen.
+We love developing digital products and writing software.
+
 We are pragmatic and agile.
+
+[quote,Michael Porter]
+____
+Strategy is about making choices, trade-offs.
+It is about deliberately choosing to be different.
+
+The essence of strategy formulation is coping with competition.
+____
 
 All collaborators identify with these values and apply them in our daily work.
 
@@ -187,7 +198,3 @@ Marcel Baumann. 2021
 - [[[my-macbook, 10]]] link:../../2023/my-new-macbookpro/[My New MacBook Pro]
 Marcel Baumann. 2023.
 - [[[why-macbook, 11]]] link:../../2016/why-i-use-a-macbookpro-and-os-x/[Why I use a MacBook Pro Notebook and OS X]
-
-== References
-
-bibliography::[]
