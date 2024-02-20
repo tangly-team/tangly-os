@@ -68,7 +68,7 @@ If you are responsible for the meeting event, please:
 You should politely ask unprepared attendees to leave the meeting
 footnote:[If meeting preparation is difficult in your organization, implement the Amazon meeting rules.
 Amazon adds a silent half an hour block at the beginning of the meeting to allow attendees to read the documentation.
-It is silent time, everybody reads; nobody talks.].
+It is a silent time, everybody reads; nobody talks.].
 
 . Write a protocol describing the activities during the meeting.
 A well-written protocol has the following sections:

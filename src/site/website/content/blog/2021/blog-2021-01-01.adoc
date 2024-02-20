@@ -63,7 +63,7 @@ It should have an external identifier and has a postal address, multiple phone n
 Check your domain model and validate these assumptions.
 
 * Postal address, phone numbers, email addresses are value objects and have no external or internal identifiers.
-* They are always owned by other value objects or more often by entities such as people, companies, delivery forms.
+* They are always owned by other value objects or more often by entities such as people, companies, and delivery forms.
 * They are immutable objects.
 * Business processes can replace such an object with a new instance without impeding other domain instances.
 * Programmed in modern Java, these value objects should be *records* to guaranty immutability at the language level.
@@ -134,7 +134,7 @@ This factory could provide multiple ways to create new instances.
 
 == Value Objects in Persistent Store
 
-We encourage experimenting with the {ref-microstream} approach for small projects footnote:[The Eclipse foundation took over the MicroStream library in 2023 under the new name {ref-eclipse-store}.
+We encourage experimenting with the {ref-microstream} approach for small projects footnote:[The Eclipse foundation took over the MicroStream library in 2023 under the new name {ref-eclipsestore}.
 The effort to persist a Java object graph is very small.
 
 You can always move to a no SQL solution when your application is successful and time comes to harden it.

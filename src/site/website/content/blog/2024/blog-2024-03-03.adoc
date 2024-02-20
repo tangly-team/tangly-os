@@ -17,7 +17,7 @@ The static website build tool {ref-hugo} is awesome.
 
 The extensive built-in feature set of {ref-hugo} and the feature-rich typesetting that {ref-asciidoc} offers provide a blogging experience composed of easy content management and fun writing experience.
 
-{ref-hugo} suppports natively {ref-asciidoc} syntax.
+{ref-hugo} supports natively {ref-asciidoc} syntax.
 {ref-asciidoc} files are automatically compiled with {ref-asciidoctor}, so we do not need to configure anything.
 Have it installed and you are ready to go.
 

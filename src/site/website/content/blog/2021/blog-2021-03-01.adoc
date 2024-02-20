@@ -17,7 +17,7 @@ include::../fragments/_config-mb-blog.aodc[]
 --
 image::2021-03-01-head.jpg[width=420,height=360,role=left]
 
-Java development activities won traction since the decision to release a new version to the community every six months.
+Java development activities have won traction since the decision to release a new version to the community every six months.
 Preview and incubator features promote feedback from the community and users.
 
 Some tool builders, such as {ref-jetbrains} are working proactively and provide support for JDK in developments.
@@ -64,7 +64,7 @@ The https://en.wikipedia.org/wiki/Ada_(programming_language)[Ada] programming la
 Streams and Lambda::
 Support for functional programming approaches.
 Streams are declarative and support internal iterators. +
-_The Booch Ada component library supported internal iterators since 1985_.
+_The Booch Ada component library has supported internal iterators since 1985_.
 Record::
 Very compact notation to define a data class and transparent handling of properties.
 Records are immutable objects and finally use modern naming for getters

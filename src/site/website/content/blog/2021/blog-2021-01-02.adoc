@@ -69,7 +69,7 @@ You shall document the source of truth for all externally defined and managed id
 The source of truth shall work as a benevolent responsible.
 It should support all interested parties and guaranty their identifiers can be trusted.
 
-== Internal Managed Identifiers
+== Internal-Managed Identifiers
 
 One possible approach is to define a naming convention such as
 
@@ -96,7 +96,7 @@ Domain Driven Design _DDD_ is a powerful and modern approach to define agile sof
 Some key rules are related to identity.
 
 Entity has a well-defined identity::
-An entity is an object that is not defined by its attributes, but rather by a thread of continuity and its identity.
+An entity is an object not defined by its attributes, but rather by a thread of continuity and its identity.
 Any instance of an entity abstraction must have a unique identifier.
 Identify aggregate through identity::
 An aggregate is a group of objects that are bound together by a root entity, called the aggregate root.

@@ -148,7 +148,7 @@ They are also involved with team and technical coaching.
 
 External team coaches who help the teams become better and focus on training the Scrum Masters.
 
-External technical coaches who focus on training internal technical coaches
+External technical coaches who focus on training internal technical coaches.
 
 Have some technical coaches work with the teams, but let them focus on training internal coaches.
 After that, reduce, _not eliminate!_ the external technical coaching or let the external coach move to a new area.

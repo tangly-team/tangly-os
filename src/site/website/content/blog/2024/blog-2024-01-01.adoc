@@ -25,7 +25,7 @@ A draft proposal for with constructors was published in the JEP list in January 
 Pattern matching capabilities empower the developer to implement complex algorithms in a compact and legible way.
 
 Patterns such as visitor pattern are obsolete.
-You can write the same functionality with one pattern matching switch case and the compiler would validate completeness for you.
+You can write the same functionality with one pattern matching switch case, and the compiler would validate completeness for you.
 
 The compiler checks the exhaustiveness of the pattern matching.
 Source code is more maintainable and less error-prone.

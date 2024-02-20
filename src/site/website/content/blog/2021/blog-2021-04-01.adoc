@@ -111,7 +111,7 @@ A security flaw with an older Java version moves on thin ice if your customers s
 
 Especially if you do not have one of these *expensive support and security* packages sold by Oracle for legacy Java versions.
 
-It should be a strategic goal for every company to have a clear migration concept for all Java applications to be ported to the LTS Java version 17.
+It should be a strategic goal for every company to have a clear migration concept for all Java applications to be ported to LTS Java version 17.
 This LTS version should be removed in September 2021.
 Early releases are already available to support migration initiatives.
 This migration shall be implemented through teams until the end of year 2021.

@@ -7,7 +7,7 @@ tags: ["java", "architecture", "agile"]
 
 include::../fragments/_config-mb-blog.aodc[]
 
-image::2024-05-01-head.png[width=420,height=360,role=left]
+image::2024-05-01-head.png[width=420,height=360,role=center]
 
 A solution architecture document _SAD_ is a document that describes the structure of a software solution.
 It includes the architecture of its components, the relationships between those components, and the principles that guide its design.
@@ -15,7 +15,7 @@ It includes the architecture of its components, the relationships between those 
 The solution architecture document is typically used as a reference for designing, building, and maintaining a software system.
 Developers, architects, and other stakeholders use it to understand the overall design of the system and how it fits into the larger business or technical environment.
 
-image:2024-05-01-architecture-doc.png[width=420,height=360,role=text-centered]
+image:2024-05-01-architecture-doc.png[width=480,height=360,align="center",role=text-center]
 
 cite:[modern-software-engineering,effective-java-3rd]
 cite:[building-evolutionary-architectures-2nd,building-evolutionary-architectures]

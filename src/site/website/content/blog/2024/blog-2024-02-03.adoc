@@ -136,7 +136,18 @@ The digital product you are developing is based on open-source libraries and fra
 Please give back to the community.
 Contribute to the open-source products you are using.
 
+[TIP]
+====
+Potential employers are looking at your {ref-github} or {ref-gitlab} profile.
+
+They want to see if you are active in the community and what kind of code you are writing.
+Younger developers have often started to contribute to open-source projects during their studies.
+
+Experience with GitHub or GitLab also shows that you are familiar with modern {ref-devops} practices.
+====
+
 You can start with small contributions like documentation or bug fixes.
+Or you could store code snippets you find useful in your daily work on the platform.
 
 == Tips and Tricks
 

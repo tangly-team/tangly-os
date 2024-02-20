@@ -28,7 +28,7 @@ The associated theory was published in seminal books more than a *decade* ago.
 Start applying the principles.
 You can later still improve your approach based on your learning.
 
-A nice overview was published in the _Professional Product Owner_ cite:[professional-product-owner] written by the stewards of the product owner certification path of https://www.scrum.org[Scrum.org].
+A nice overview was published in the _Professional Product Owner_ cite:[professional-product-owner] written by the stewards of the product owner certification path under {ref-scrum-org}.
 
 If you prefer videos, search for Gojko Adzic, Roman Pichler, Mike Cohn or Christian Hassa.
 These experts are often speakers at conferences.

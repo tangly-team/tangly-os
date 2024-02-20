@@ -17,6 +17,7 @@ Put simply, a statechart is a beefed-up state machine <<state-diagram>> <<uml-fs
 The syntax is formally defined in the {ref-uml} standard.
 
 The beefing up solves a lot of the problems that state machines have, especially state explosion that happens as state machines grow.
+
 One of the goals of this site is to help explain what statecharts are and how they are useful.
 
 Statecharts offer a surprising array of benefits:
@@ -92,7 +93,7 @@ You can draw all types of graphs, but you are on your own.
 Code-first approach is realized with the tangly open source FSM library.
 The code description of a finite state machine is the source of the diagrams.
 
-The generator logic is simple.
+The generator logic is straightforward.
 
 . Generate the diagram preamble.
 . Traverse recursively the hierarchical states.
@@ -106,7 +107,7 @@ The generator logic is simple.
 .. Generate the source state name, the target state name, the event, optional guard, and action.
 . Generate the diagram postamble.
 
-The link:../../../docs/fsm[OS FSM] defines generators for the above target languages.
+The link:../../../docs/fsm[OS FSM] defines generators for Java language and documentation targets.
 
 == History
 
