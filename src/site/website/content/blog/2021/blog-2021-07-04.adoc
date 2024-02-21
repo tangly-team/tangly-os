@@ -111,7 +111,7 @@ Be a professional knowledge worker and support your organization on the agile pa
 A reading list can be found under
 https://www.scrum.org/resources/suggested-reading-professional-scrum-product-owner[Suggested Reading for Professional Scrum Product Owner].
 
-I published a list of seminal works for interested product owners under link:../../../ideas/learnings/books/#_product_owner[Books].
+I published a list of seminal works for interested product owners under link:{ref-tangly-blog-url}/ideas/learnings/books/#_product_owner[Books].
 
 == Requirement Engineering Trainings
 

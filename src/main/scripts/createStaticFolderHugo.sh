@@ -1,5 +1,5 @@
 #
-# Copyright 202-2023 Marcel Baumann
+# Copyright 202-2024 Marcel Baumann
 #
 # Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
 # the License at
@@ -34,5 +34,5 @@ mkdir -p $websiteStaticDir/domains/products/api-products
 mkdir -p $websiteStaticDir/domains/shared/api-shared
 mkdir -p $websiteStaticDir/domains/ui/api-ui
 
-mkdir -p $websiteStaticDir/docs/ideas/agilearchitecture/agile-architecture-scene-images
-mkdir -p $websiteStaticDir/docs/ideas/architecturecodescene/architecture-code-scene-images
+mkdir -p $websiteStaticDir/ideas/agilearchitecture/agile-architecture-scene-images
+mkdir -p $websiteStaticDir/ideas/architecturecodescene/architecture-code-scene-images

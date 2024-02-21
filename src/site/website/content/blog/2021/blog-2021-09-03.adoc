@@ -147,7 +147,7 @@ CI improves the probability of having done PBIs at the end of the https://scrumg
 You can self-study the Scrum developer objectives <<scrum-developer-learning-objectives>> and <<scrum-developer-advanced-learning-objectives>>.
 Examples for the objectives are provided in <<scrum-developer-learning-objectives-examples>> and <<scrum-developer-advanced-learning-objectives-examples>>.
 
-I published a list of seminal works for interested Scrum developers under link:../../../ideas/learnings/books/[Books].
+I published a list of seminal works for interested Scrum developers under link:{ref-tangly-blog-url}/ideas/learnings/books/[Books].
 
 == Agile Software Development Trainings
 

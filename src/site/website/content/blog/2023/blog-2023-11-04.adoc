@@ -75,7 +75,7 @@ I decided to add the necessary code as a local extension to the docsy theme.
 . Add the {ref-hugo} shortcodes to the theme under {ref-hugo-shortcodes} in the file _attachments.html_
 . Add my _scss_ stylesheet under {ref-asciidoc-docsy-stylesheet} in the file _shortcodes.scss_.
 
-A document using this functionality is https:/blog.tangly.net/ideas/learnings/lectures/[Lectures].
+A document using this functionality is {ref-tangly-blog-url}/ideas/learnings/lectures/[Lectures].
 The page displays multiple lists of documents.
 The reader can download the material she is interested in.
 

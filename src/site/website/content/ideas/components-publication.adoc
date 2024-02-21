@@ -216,7 +216,7 @@ We use the selection algorithm of Hugo to activate our tailoring and extensions.
 
 ==== Create Website
 
-The tangly open source components website is hosted under {ref-tangly-doc-url}[Documentation].
+The tangly open source components website is hosted under {ref-tangly-blog-url}/docs[Documentation].
 
 Read the instructions in the asciidoctor script file under the scripts' folder.
 Four scripts are provided to generate the Hugo static site with associated structure and theme.

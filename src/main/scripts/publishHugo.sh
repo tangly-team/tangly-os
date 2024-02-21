@@ -1,5 +1,5 @@
 #
-# Copyright 2006-2023 Marcel Baumann
+# Copyright 2006-2024 Marcel Baumann
 #
 # Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
 # the License at
@@ -19,6 +19,9 @@ cd $siteDir
 # initiate empty public folder with git to enable optional completion step and publishing in our pages repository (GitHub, GitLab, orBitBucket)
 git clone --no-checkout git@github.com:tangly-team/tangly-team.github.io.git public
 hugo --destination public
+
+# hack due to strange behavior of hugo
+cp -r $siteDir/content/ideas/learnings/lectures/swat-lectures $siteDir/public/ideas/learnings/lectures
 
 # commit will push all changes to the git repository and trigger an update of the website, GitHub default branch is main
 # upon deployment links can be validated using

@@ -99,7 +99,7 @@ Software craftsmanship is
 Your goal shall to become a professional developer and reach mastery.
 How you do it is up to you.
 
-An extensive list of books can be found under link:../../../ideas/learnings/books/[Books].
+An extensive list of books can be found under link:{ref-tangly-blog-url}/ideas/learnings/books/[Books].
 
 == References
 

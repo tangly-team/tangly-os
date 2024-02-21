@@ -70,7 +70,7 @@ Our collaborators are active as part-time lecturers at technical universities.
 We teach digital and software engineering courses at bachelor level.
 The training material is often released under https://creativecommons.org/[Creative Commons] license.
 
-Find our _Agile Software Architecture and Techniques_ and _Programming Concepts and Paradigms_ under link:../../../ideas/learnings/lectures/[Lectures].
+Find our _Agile Software Architecture and Techniques_ and _Programming Concepts and Paradigms_ under link:{ref-tangly-blog-url}/ideas/learnings/lectures/[Lectures].
 
 We support Swiss initiatives such as https://www.nationalerzukunftstag.ch/informationen-fuer-eltern/englisch[Future Day] to nurture
 https://en.wikipedia.org/wiki/Science,_technology,_engineering,_and_mathematics[STEM] interests of kids and young adults

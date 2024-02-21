@@ -1,14 +1,14 @@
 ---
-title: "SWAT Lectures"
+title: "SWAT Lecture"
 date: 2019-05-01
-weight: 40
+weight: 30
 ---
 
-== SWAT Lectures
+== SWAT Lecture
 
 === Introduction
 
-The software architecture and techniques _SWAT_ lecture conveys the basics of systematic agile design of a software architecture.
+The software architecture and techniques _SWAT_ lecture conveys the basics of systematic agile design for a software architecture.
 The approach is adequate for the problem of (agile architectural thinking) as well as methods of agile quality assurance.
 Students apply the learnt principles of their semester or private software projects.
 
@@ -21,7 +21,7 @@ Slides and reference literature are in English and published under link:../#agil
 === Description
 
 stem:[2/3] of the lecture is the presentation of new concepts.
-stem:[1/3] of the lecture is used to discuss the literature and support the students in the application of the concepts of their software project.
+stem:[1/3] of the lecture is used to discuss the literature and support the students in the application of the concepts for their software project.
 
 The reference books are cite:[building-evolutionary-architectures-2nd,building-evolutionary-architectures,refactoring].
 
@@ -58,7 +58,7 @@ a|- Agile architecture principles
 |Agile Approaches with Scrum, eXtreme Programming, LeSS
 a|- Architect roles
 - Technology stacks
-- DevOps impact with continuous integration _CI_, continuous delivery _CD_, and continuous deployment _CD_.
+- DevOps impact on continuous integration _CI_, continuous delivery _CD_, and continuous deployment _CD_.
 
 |Lecture 5
 |Refactoring

@@ -7,6 +7,8 @@ tags: ["design", "architecture"]
 
 include::../fragments/_config-mb-blog.aodc[]
 
+:ref-adr: https://en.wikipedia.org/wiki/Architectural_decision[Architectural Decision]
+
 image::2018-07-01-head.jpg[width=420,height=360,role=left]
 Architecture Decision Record ADR is compact and traceable documents of all important decisions taken during the realization of a product.
 Use {ref-asciidoc} or https://en.wikipedia.org/wiki/Markdown[Markdown] and Git to have agile and lean documentation of your major decisions.
@@ -21,7 +23,7 @@ Feel free to identify better approaches
 
 [quote]
 ____
-An Architectural Decision (AD) is a software design choice that addresses a functional or non-functional requirement that is architecturally significant.
+An {ref-adr} is a software design choice that addresses a functional or non-functional requirement that is architecturally significant.
 A decision can be documented in an architecture design record (ADR).
 ____
 
@@ -36,7 +38,7 @@ what is the issue that we're seeing that is motivating this decision or change?
 Decision::
 what is the change that we're actually proposing or doing?
 Consequences::
-what becomes easier or more difficult to do because of this change.
+what becomes easier or more challenging to do because of this change.
 
 I use {ref-asciidoc} format to write all our architecture design records.
 You can add to the same git repository as the product, visualize differences and if desired, generate a nice looking document.

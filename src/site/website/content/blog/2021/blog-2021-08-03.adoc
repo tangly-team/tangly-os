@@ -136,7 +136,7 @@ A reading list can be found under
 https://www.scrum.org/resources/suggested-reading-professional-scrum-master[Suggested Reading Professional Scrum Master]. Seminal cited books are
 cite:[scrum-managing-for-results,scrum-pocket-guide-3rd].
 
-I published a list of seminal works for interested Scrum masters under link:../../../ideas/learnings/books/[Books].
+I published a list of seminal works for interested Scrum masters under link:{ref-tangly-blog-url}/ideas/learnings/books/[Books].
 
 == Project Leadership Trainings
 

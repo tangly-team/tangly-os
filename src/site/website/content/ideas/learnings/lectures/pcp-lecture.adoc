@@ -1,17 +1,17 @@
 ---
-title: "PCP Lectures"
+title: "PCP Lecture"
 date: 2019-05-01
 weight: 40
 ---
 
-== PCP Lectures
+== PCP Lecture
 
 === Introduction
 
 The programming concepts and paradigms _PCP_ convey the basic for functional programming and modern java programming.
 The Clojure language cite:[programming-clojure] is used to teach functional programming approaches.
 The focus is on immutability, functions as first-class citizens, and parallel programming.
-Later, we analyze how far it is possible to use these techniques in the modern Java language.
+We analyze later how far it is possible to use these techniques in the modern Java language.
 
 Slides and reference literature are in English and published under link:../#modern-java-and-selected-jvm-languages-lectures[Slides and Literature].
 
@@ -31,7 +31,7 @@ The modern Java cite:[java-by-comparison,java-puzzlers,effective-java-3rd,things
 |Lecture 1
 |Algebraic Data Types
 a|- Records
-- Sealed types — interfaces, abstract classes, classes, and records -
+- Sealed types with interfaces, abstract classes, classes, and records
 - Pattern matching and deconstruction in the conditional statements _if_ and _switch_
 - Implement the visitor pattern with a functional approach
 

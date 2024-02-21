@@ -4,7 +4,7 @@ linkTitle: "Knowledge"
 weight: 30
 ---
 
-:ref-kaizen: https://en.wikipedia.org/wiki/Kaizen/[Kaizen]
+:ref-kaizen: https://en.wikipedia.org/wiki/Kaizen[Kaizen]
 :ref-sociocracy: https://sociocracy30.org/[Sociocracy]
 
 == Knowledge Base
@@ -32,9 +32,9 @@ Agile Software Architecture and Design::
 - link:../../ideas/agile-architecture/[Agile Architecture]
 - link:../../tags/architecture[Agile Architecture Blogs]
 - link:../../tags/series-agile-design/[Agile Design Blogs]
-- link:../../ideas/learnings/lectures/swat-lecture/[Agile Software Architecture and Techniques Lecture]
-- link:../../ideas/learnings/workshops/arc42/arc42.html[arc 42 Workshop]
-- link:../../ideas/learnings/workshops/c4-uml/c4-uml.html[C4 and UML Workshop]
+- link:{ref-tangly-blog-url}/ideas/learnings/lectures/swat-lecture/[Agile Software Architecture and Techniques Lecture]
+- link:{ref-tangly-blog-url}/ideas/learnings/workshops/arc42/arc42.html[arc 42 Workshop]
+- link:{ref-tangly-blog-url}/ideas/learnings/workshops/c4-uml/c4-uml.html[C4 and UML Workshop]
 - {ref-c4}, {ref-plantuml}, {ref-mermaid}, {ref-uml}, {ref-state-machine-cat}
 - {ref-actor-model}, {ref-openapi}, {ref-asynapi}
 Domain-Driven Design::

@@ -193,7 +193,7 @@ Marcel Baumann. 2016.
 Marcel Baumann. 2020.
 - [[[support-comments, 8]]] link:../../2020/support-comments-for-static-hugo-website/[Support Comments for Static Hugo Website]
 Marcel Baumann. 2020.
-- [[[improving-website, 9]]] link:../../../2021/improving-a-static-web-site-build-with-hugo-and-docsy/[Improving a Static Website build with Hugo and Docsy]
+- [[[improving-website, 9]]] link:../../2021/improving-a-static-web-site-build-with-hugo-and-docsy/[Improving a Static Website build with Hugo and Docsy]
 Marcel Baumann. 2021
 - [[[my-macbook, 10]]] link:../../2023/my-new-macbookpro/[My New MacBook Pro]
 Marcel Baumann. 2023.
