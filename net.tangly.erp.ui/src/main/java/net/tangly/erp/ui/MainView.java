@@ -1,14 +1,14 @@
 /*
- * Copyright 2006-2020 Marcel Baumann
+ * Copyright 2006-2024 Marcel Baumann
  *
- *  Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain
- *  a copy of the License at
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
+ * the License at
  *
- *          http:www.apache.org/licenses/LICENSE-2.0
+ *          http://www.apache.org/licenses/LICENSE-2.0
  *
- *  Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- *  WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations
- *  under the License.
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
+ * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ *
  */
 
 package net.tangly.erp.ui;
@@ -23,6 +23,7 @@ import com.vaadin.flow.component.tabs.Tabs;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.server.StreamResource;
+import net.tangly.core.domain.BoundedDomain;
 import net.tangly.erp.Erp;
 import net.tangly.erp.crm.domain.Subject;
 import net.tangly.erp.crm.ui.CmdChangePassword;
@@ -48,11 +49,13 @@ import java.util.Objects;
 public class MainView extends AppLayout {
     private final Map<String, BoundedDomainUi> uiDomains;
     private final MenuBar menuBar;
+    private final String defaultDomainName;
 
 
     public MainView() {
+        defaultDomainName = Erp.instance().crmBoundedDomain().name();
         uiDomains = new HashMap<>();
-        if (Erp.instance().invoicesBoundedDomain() != null) {
+        if (Erp.instance().crmBoundedDomain() != null) {
             put(new CrmBoundedDomainUi(Erp.instance().crmBoundedDomain(), Erp.instance().invoicesBoundedDomain()));
         }
         if (Erp.instance().productsBoundedDomain() != null) {
@@ -78,14 +81,13 @@ public class MainView extends AppLayout {
         menuBar.setOpenOnHover(true);
         addToNavbar(new DrawerToggle(), image, menuBar, menuBar());
         drawerMenu();
-        uiDomains.get("Customers").select(this, menuBar);
+        select(defaultDomainName);
     }
 
     @Override
     protected void onAttach(@NotNull AttachEvent attachEvent) {
         super.onAttach(attachEvent);
-        if (Objects.isNull(VaadinUtils.getAttribute(this, "subject"))
-            && Objects.nonNull(Erp.instance().crmBoundedDomain())) {
+        if (Objects.isNull(VaadinUtils.getAttribute(this, "subject")) && Objects.nonNull(Erp.instance().crmBoundedDomain())) {
             new CmdLogin(Erp.instance().crmBoundedDomain()).execute();
         }
     }
@@ -97,23 +99,31 @@ public class MainView extends AppLayout {
         var adminSubmenu = admin.getSubMenu();
         adminSubmenu.addItem("Logout", e -> new CmdLogout().execute());
         adminSubmenu.addItem("Change Password ...", e -> new CmdChangePassword(Erp.instance().crmBoundedDomain(), (Subject) VaadinUtils.getAttribute(this, "subject")).execute());
+        adminSubmenu.addItem("Shutdown", e -> uiDomains.values().stream().map(BoundedDomainUi::domain).forEach(BoundedDomain::shutdown));
         return menuBar;
     }
 
     private void drawerMenu() {
-        Tabs tabs = new Tabs(new Tab("Customers"), new Tab("Products"), new Tab("Invoices"), new Tab("Ledger"));
+        Tabs tabs = new Tabs(new Tab(tabNameFor(Erp.instance().crmBoundedDomain())), new Tab(tabNameFor(Erp.instance().productsBoundedDomain())),
+            new Tab(tabNameFor(Erp.instance().invoicesBoundedDomain())), new Tab(tabNameFor(Erp.instance().ledgerBoundedDomain())));
         tabs.setOrientation(Tabs.Orientation.VERTICAL);
         addToDrawer(tabs);
-        tabs.addSelectedChangeListener(event -> {
-            BoundedDomainUi domainUi = uiDomains.get(event.getSelectedTab().getLabel());
-            if (domainUi != null) {
-                menuBar.removeAll();
-                domainUi.select(this, menuBar);
-            }
-        });
+        tabs.addSelectedChangeListener(event -> select(event.getSelectedTab().getLabel()));
+    }
+
+    private String tabNameFor(@NotNull BoundedDomain<?, ?, ?, ?> domain) {
+        return domain.name().substring(0, 1).toUpperCase() + domain.name().substring(1);
     }
 
     private void put(@NotNull BoundedDomainUi domainUi) {
         uiDomains.put(domainUi.name(), domainUi);
+    }
+
+    private void select(@NotNull String name) {
+        var domainUi = uiDomains.get(name.toLowerCase());
+        if (domainUi != null) {
+            menuBar.removeAll();
+            domainUi.select(this, menuBar);
+        }
     }
 }

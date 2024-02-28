@@ -16,7 +16,8 @@ Implemented
 === Context
 
 image::OS-004-head.png[width=420,height=360,role=left]
-A legible, well-structured and up-to-date technical documentation of released open source components is a service to all our users.
+
+Legible, well-structured and up-to-date technical documentation of released open source components is a service to all our users.
 Due to the small size of our team, we want a straight forward tool chain to generate the website.
 In the future, we could move our product to another hosting platform.
 The solution should be built on a standard to minimize porting overhead.
@@ -35,7 +36,7 @@ I will strongly fight against proprietary solutions.
 * Committers are forced to document in {ref-asciidoc}.
 * Tooling is slightly more brittle because {ref-asciidoctor} integration in {ref-hugo} is work in progress.
  {ref-asciidoctor} is also undergoing changes such as the native support of rouge syntax highlighter.
- The improvements in both tools were impressive the last year, but we have to update regularly our toolchain and update all {ref-asciidoc} documents.
+The improvements in both tools were impressive the last year, but we have to regularly update our toolchain and update all {ref-asciidoc} documents.
 
 === Learnings
 
@@ -50,5 +51,5 @@ We use currently the Google sponsored theme {ref-docsy} for our static website.
 [bibliography]
 === Links
 
-- [[[creating-technical-website, 1]]] link:{ref-tangly-blog-url}/2020/creating-a-technical-website-with-hugo-and-asciidoc/[Creating a Technical Website with Hugo and AsciiDoc]
-- [[[support-comments, 2]]] link:{ref-tangly-blog-url}/2020/support-comments-for-static-hugo-website/[Support Comments for Static Hugo Website]
+- [[[creating-technical-website, 1]]] link:{ref-tangly-blog}/2020/creating-a-technical-website-with-hugo-and-asciidoc/[Creating a Technical Website with Hugo and AsciiDoc]
+- [[[support-comments, 2]]] link:{ref-tangly-blog}/2020/support-comments-for-static-hugo-website/[Support Comments for Static Hugo Website]

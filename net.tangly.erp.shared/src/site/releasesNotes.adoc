@@ -9,7 +9,7 @@ weight: 20
 This document provides a high-level view of the changes introduced in the ERP Shared library by release.
 For a detailed view of what has changed, refer to the https://bitbucket.org/tangly-team/tangly-os[repository] commits.
 
-=== 0.2.7 (2023-11-31)
+=== 0.2.7 (2024-03-31)
 
 * Update of library dependencies, update to JDK-21, and modern Gradle approach to build solutions.
 

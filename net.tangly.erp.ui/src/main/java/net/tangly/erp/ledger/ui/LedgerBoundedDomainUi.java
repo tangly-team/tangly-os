@@ -1,13 +1,14 @@
 /*
- * Copyright 2006-2022 Marcel Baumann
+ * Copyright 2006-2024 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- *          https://apache.org/licenses/LICENSE-2.0
+ *          http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ *
  */
 
 package net.tangly.erp.ledger.ui;
@@ -25,8 +26,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
 
-public class LedgerBoundedDomainUi implements BoundedDomainUi {
-    private final LedgerBoundedDomain domain;
+public class LedgerBoundedDomainUi extends BoundedDomainUi<LedgerBoundedDomain> {
     private final AccountsView accountsView;
     private final TransactionsView transactionsView;
     private final AnalyticsLedgerView analyticsView;
@@ -34,17 +34,12 @@ public class LedgerBoundedDomainUi implements BoundedDomainUi {
     private Component currentView;
 
     public LedgerBoundedDomainUi(@NotNull LedgerBoundedDomain domain) {
-        this.domain = domain;
+        super(domain);
         accountsView = new AccountsView(domain, Mode.EDIT);
         transactionsView = new TransactionsView(domain, Mode.EDIT);
         analyticsView = new AnalyticsLedgerView(domain);
         domainView = new DomainView(domain);
         currentView = transactionsView;
-    }
-
-    @Override
-    public String name() {
-        return "Ledger";
     }
 
     @Override
@@ -55,7 +50,7 @@ public class LedgerBoundedDomainUi implements BoundedDomainUi {
         subMenu.addItem("Transactions", e -> select(layout, transactionsView));
 
         addAnalytics(layout, menuBar, analyticsView);
-        addAdministration(layout, menuBar, domain, domainView, new CmdFilesUploadLedger(domain));
+        addAdministration(layout, menuBar, domainView, new CmdFilesUploadLedger(domain()));
         select(layout, currentView);
     }
 
@@ -63,5 +58,11 @@ public class LedgerBoundedDomainUi implements BoundedDomainUi {
     public void select(@NotNull AppLayout layout, Component view) {
         currentView = Objects.isNull(view) ? currentView : view;
         layout.setContent(currentView);
+    }
+
+    @Override
+    public void refreshViews() {
+        accountsView.refresh();
+        transactionsView.refresh();
     }
 }

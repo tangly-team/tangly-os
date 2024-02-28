@@ -1,5 +1,5 @@
 /*
- * Copyright 2023-2023 Marcel Baumann
+ * Copyright 2023-2024 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -219,6 +219,12 @@ public abstract class ItemView<T> extends VerticalLayout {
         return grid().getSelectedItems();
     }
 
+    public void refresh() {
+        if (Objects.nonNull(dataView)) {
+            dataView.refreshAll();
+        }
+    }
+
     public static Component createTextFilterField(@NotNull Consumer<String> consumer) {
         var field = new TextField();
         field.setValueChangeMode(ValueChangeMode.EAGER);
@@ -291,10 +297,10 @@ public abstract class ItemView<T> extends VerticalLayout {
                 menu().addItem(Mode.DUPLICATE_TEXT, event -> event.getItem().ifPresent(form::duplicate));
                 menu().addItem(Mode.DELETE_TEXT, event -> event.getItem().ifPresent(form::delete));
             }
-            addActions(menu());
             SingleSelect<Grid<T>, T> selection = grid.asSingleSelect();
             selection.addValueChangeListener(e -> form.value(e.getValue()));
         }
+        addActions(menu());
     }
 
     /**

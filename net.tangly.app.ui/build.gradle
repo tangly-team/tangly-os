@@ -16,7 +16,7 @@ plugins {
 }
 
 project.ext.groupId = 'net.tangly'
-project.ext.artifactId = 'ui-app'
+project.ext.artifactId = 'app-ui'
 project.version = "${projectVersion}"
 project.ext.moduleName = "${project.ext.groupId}.${project.ext.artifactId}"
 project.ext.inceptionYear = '1996'

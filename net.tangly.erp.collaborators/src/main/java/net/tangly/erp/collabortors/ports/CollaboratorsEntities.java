@@ -1,5 +1,5 @@
 /*
- * Copyright 2022-2023 Marcel Baumann
+ * Copyright 2022-2024 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -27,6 +27,7 @@ import org.jetbrains.annotations.NotNull;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class CollaboratorsEntities implements CollaboratorsRealm {
     private static final long OID_SEQUENCE_START = 1000;
@@ -35,6 +36,7 @@ public class CollaboratorsEntities implements CollaboratorsRealm {
     private final Provider<Organization> organizations;
     private final Provider<Contract> contracts;
     private final EmbeddedStorageManager storageManager;
+
     public CollaboratorsEntities(@NotNull Path path) {
         this.data = new Data();
         storageManager = EmbeddedStorage.start(data, path);
@@ -69,7 +71,9 @@ public class CollaboratorsEntities implements CollaboratorsRealm {
 
     @Override
     public void close() throws Exception {
-
+        if (Objects.nonNull(storageManager)) {
+            storageManager.close();
+        }
     }
 
     static class Data {

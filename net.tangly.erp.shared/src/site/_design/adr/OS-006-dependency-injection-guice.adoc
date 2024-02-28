@@ -44,10 +44,10 @@ Care will be taken to allow users to use a different dependency injection framew
 
 * A dependency injection module shall be provided for each relevant module.
 
-Honestly we are not providing the module for our modules.
+Honestly, we are not providing the module for our modules.
 Our applications are quite simple and use a handful of services.
 This simple solution of a static repository works fine.
-This approach is muchj simpler to reason about, much faster to start, much easier to debug and to maintain.
+This approach is much simpler to reason about, much faster to start, much easier to debug and to maintain.
 
 [source,java]
 ----

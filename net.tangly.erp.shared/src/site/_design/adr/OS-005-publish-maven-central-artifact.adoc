@@ -31,7 +31,7 @@ They shall have access to our libraries through official and well-documented cha
 === Decision
 
 The libraries shall be published as artifacts on maven central and be accessible to a wide range of developers and organizations.
-A website shall be set up to provide an adequate documentation for users.
+A website shall be set up to provide adequate documentation for users.
 
 The https://blog.tangly.net[Technical Documentation] will use a static web approach to minimize costs and provide good legibility.
 All open source components will be hosted on the same site.
@@ -41,8 +41,8 @@ The libraries will be published on Maven Central to maximize potential usage.
 === Consequences
 
 * We have to establish a publishing process at the company level to deploy signed artifacts to maven central repository.
-See link:../../../../../ideas/components-publication[release and publication process].
+See link:{ref-tangly-blog-url}/ideas/components-publication[release and publication process].
 * We have to establish a public website to host the documentation of public-published libraries.
  The static website is {ref-site}
 * We have to support semantic versioning for all future releases of public-published libraries.
-See link:../../../../../ideas/components-publication[release and publication process].
+See link:{ref-tangly-blog-url}/ideas/components-publication[release and publication process].

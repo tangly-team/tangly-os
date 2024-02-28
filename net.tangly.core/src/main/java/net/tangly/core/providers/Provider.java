@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2023 Marcel Baumann
+ * Copyright 2006-2024 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -23,9 +23,10 @@ import java.util.Optional;
 import java.util.function.Function;
 
 /**
- * Defines the provider abstraction responsible for handling instances of a specific type.
- * The provider declares the regular CRUD operations: <i>Create, Read, Update, and Delete</i>.
- * The provider is the repository and often the factory in the domain-driven design terminology.
+ * Define the provider abstraction responsible for handling instances of a specific type. The provider declares the regular CRUD operations: <i>Create, Read, Update, and
+ * Delete</i>. The provider is the repository and often the factory in the domain-driven design terminology.
+ * <p>You should store domain-driven domain aggregates in a provider. Each aggregate should have a root with an identifier. All objects of an aggregate are owned by the
+ * aggregate and are always edited through the root. The concept defines a natural job and transactional boundary.</p>
  * <dl>
  *     <dt>Create</dt><dd>The creation operation is integrated with the update operation {@link Provider#update(Object)}</dd>
  *     <dt>Read</dt><dd>The read all items operation maps to the {@link Provider#items()} operation.
@@ -68,6 +69,12 @@ public interface Provider<T> {
     void delete(@NotNull T entity);
 
     /**
+     * Delete all the entities managed by the provider.
+     */
+    void deleteAll();
+
+
+    /**
      * Replace an existing value with a new one. A null value is ignored.
      *
      * @param oldValue remove the old value if not null
@@ -90,6 +97,7 @@ public interface Provider<T> {
     default void updateAll(@NotNull Iterable<? extends T> items) {
         items.forEach(this::update);
     }
+
 
     /**
      * Return the first entity which property matches the value.

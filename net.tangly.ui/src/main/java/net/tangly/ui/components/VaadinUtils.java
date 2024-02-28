@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2023 Marcel Baumann
+ * Copyright 2006-2024 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -146,7 +146,7 @@ public final class VaadinUtils {
             String linkedInUrl = property.apply(e);
             String linkedInRef = Strings.isNullOrBlank(linkedInUrl) ? null : (isOrganization ? ORGANIZATION_LINKEDIN : PERSON_LINKEDIN) + linkedInUrl;
             anchor.setText(linkedInUrl);
-            anchor.setHref(linkedInRef);
+            anchor.setHref(Objects.nonNull(linkedInRef) ? linkedInRef : "");
             anchor.setTarget("_blank");
             return anchor;
         });

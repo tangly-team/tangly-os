@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2023 Marcel Baumann
+ * Copyright 2006-2024 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -15,6 +15,7 @@ package net.tangly.ui.app.domain;
 
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.tabs.TabSheet;
+import com.vaadin.flow.component.tabs.TabSheetVariant;
 import net.tangly.core.domain.BoundedDomain;
 import org.jetbrains.annotations.NotNull;
 
@@ -31,6 +32,8 @@ public class DomainView extends VerticalLayout {
     public DomainView(@NotNull BoundedDomain<?, ?, ?, ?> domain) {
         this.domain = domain;
         tabSheet = new TabSheet();
+        tabSheet.setWidthFull();
+        tabSheet.addThemeVariants(TabSheetVariant.LUMO_TABS_SMALL);
         initialize();
     }
 

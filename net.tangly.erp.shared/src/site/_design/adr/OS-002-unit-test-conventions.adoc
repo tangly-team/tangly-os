@@ -21,7 +21,7 @@ For example, you want to generate human-readable paper invoices.
 
 === Decision
 
-We recommend the following conventions when writing unit tests creating files.
+We recommend the following conventions when writing unit tests which need to create files.
 Use Google Java in memory file system https://github.com/google/jimfs[Jimfs].
 Additional file systems can only be used in Java if all operations are performed through Path objects.
 Path objects have a reference to the file system; File objects always referenced the default file system.
@@ -41,4 +41,4 @@ Use in-memory file systems.
 We shall remove all references to File instances.
 File instances do not support alternative file systems.
 Therefore, we shall use libraries providing a workaround File instances either by using Path instances or reader and writer to access files.
-* Operations to the physical file system have the risk that rights problems could rise in some continuous integration environment.
+* Operations on the physical file system have the risk that rights problems could rise in some continuous integration environment.

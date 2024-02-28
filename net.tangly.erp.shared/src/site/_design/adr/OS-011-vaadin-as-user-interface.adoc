@@ -22,7 +22,7 @@ Our primary and almost exclusive technical stack is link:../os-003-use-modern-ja
 A major weakness of the Java ecosystem is the user interface aspects.
 https://en.wikipedia.org/wiki/Swing_(Java)[Swing] is old and no more actively supported by Oracle or other major players.
 https://openjfx.io/[JavaFX] has a small active community.
-The platform never had huge acceptance.
+The platform never had a huge acceptance.
 
 We could use various JavaScript frameworks to realize our user interfaces.
 The drawback is supporting an additional technology stack.
@@ -40,7 +40,7 @@ Vaadin has some impressive aspects:
 * Mobile first and progressive Web applications are natively supported with all visual components.
 * The solution can be hosed in a docker image.
 * User interface components are based on https://www.webcomponents.org/[Web Components] and https://lit.dev/[Lit HTML].
-* If desired, you can write user interface components in Typescript and connect them the Vaadin ecosystem.
+* If desired, you can write user interface components in Typescript and connect them to the Vaadin ecosystem.
 
 A strength of Vaadin has extensive support for migrating legacy Java solutions to a modern Java technical stack.
 

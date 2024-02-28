@@ -17,7 +17,7 @@ Implemented
 
 {ref-asciidoc} is a well-established approach to write rich text documentation or comments.
 The casual user can learn and use the notation without excessive effort.
-The legibility and professional appearance of asciidoc texts are markantly higher than plain text.
+The legibility and professional appearance of asciidoc texts are striking higher than plain text.
 Asciidoc is an open standard and used in various environments and tools
 footnote:[The alternative would be to use {ref-markdown} notation.
 The expression power of {ref-asciidoc} is higher and better standardized.].
@@ -27,10 +27,10 @@ The expression power of {ref-asciidoc} is higher and better standardized.].
 All texts and comments in the ERP components shall use {ref-asciidoc} notation to improve legibility.
 
 Alternatives would be proprietary formats such as Microsoft Word or similar notations such as {ref-markdown}.
-Our open-source approach to product development rejects any propriatary formats.
+Our open-source approach to product development rejects any proprietary formats.
 Asciidoc is a very powerful and successful format
 footnote:[The team acknowledged we have a preference for {ref-asciidoc}.
-We use the notation for all our achitecture documents based on the {ref-arc42} template.].
+We use the notation for all our architecture documents based on the {ref-arc42} template.].
 The associated complexity for the users is probably an overkill for casual users of our product.
 
 Text and comments in our system should have a limited length complexity.
@@ -42,6 +42,6 @@ Asciidoc is an optimal balance between expression power and ease of use.
 Asciidoc is backward compatible with text fields.
 No migration of existing records is needed.
 
-The user interface components shall be extended to support a {ref-asciidoc} visualiation and editing component.
-Vaadin currently does not provide native support for Asciidoc or Markdow.
+The user interface components shall be extended to support a {ref-asciidoc} visualization and editing component.
+Vaadin currently does not provide native support for {ref-asciidoc} or {ref-markdown}.
 The tangly-os components will be extended to provide such a component until Vaadin supports in the future such an approach.

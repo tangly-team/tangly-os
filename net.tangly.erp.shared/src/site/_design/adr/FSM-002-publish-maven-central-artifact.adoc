@@ -28,7 +28,7 @@ More customers will validate the usefulness of the library and identify extensio
 The library shall be published on maven central and be accessible to a wide range of developers and organizations.
 A website shall be set up to provide adequate documentation for users.
 
-The {ref-tangly-doc-url}/fsm/[FSM website] will use a static web approach to minimize costs and provide good legibility.
+The {ref-tangly-blog-url}/docs/fsm/[FSM website] will use a static web approach to minimize costs and provide good legibility.
 
 The library will be published on Maven Central to maximize potential usage.
 

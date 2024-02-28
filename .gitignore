@@ -2,6 +2,7 @@
 .DS_Store
 *.bat
 *.class
+*.lock
 *.log
 *.war
 *.ear

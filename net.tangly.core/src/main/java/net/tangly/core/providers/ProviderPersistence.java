@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2023 Marcel Baumann
+ * Copyright 2006-2024 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -24,7 +24,7 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * Provider with instances cached in memory and persisted onto the file system or a database.
+ * Provider where all instances are cached in memory and persisted onto the file system or a database.
  * <p>The update method uses an eager storage strategy to insure that all instance variables of a Java object are persisted. This approach is necessary due
  * to the implementation restrictions of MicroStream. The current regular store operation does not persist fields based on collections.</p>
  *
@@ -34,7 +34,7 @@ public class ProviderPersistence<T> implements Provider<T> {
     private final EmbeddedStorageManager storageManager;
     private final List<T> items;
 
-    public ProviderPersistence(@NotNull EmbeddedStorageManager storageManager, List<T> items) {
+    public ProviderPersistence(@NotNull EmbeddedStorageManager storageManager, @NotNull List<T> items) {
         final EmbeddedStorageFoundation<?> foundation = EmbeddedStorage.Foundation();
         foundation.onConnectionFoundation(BinaryHandlersJDK8::registerJDK8TypeHandlers);
         foundation.onConnectionFoundation(BinaryHandlersJDK17::registerJDK17TypeHandlers);
@@ -42,7 +42,7 @@ public class ProviderPersistence<T> implements Provider<T> {
         this.items = items;
     }
 
-    public static <T> ProviderPersistence<T> of(@NotNull EmbeddedStorageManager storageManager, List<T> items) {
+    public static <T> ProviderPersistence<T> of(@NotNull EmbeddedStorageManager storageManager, @NotNull List<T> items) {
         return new ProviderPersistence<>(storageManager, items);
     }
 
@@ -78,5 +78,12 @@ public class ProviderPersistence<T> implements Provider<T> {
     @Override
     public void delete(@NotNull T entity) {
         items.remove(entity);
+        storageManager.store(items);
+    }
+
+    @Override
+    public void deleteAll() {
+        items.clear();
+        storageManager.store(items);
     }
 }

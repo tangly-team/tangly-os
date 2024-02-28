@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2023 Marcel Baumann
+ * Copyright 2006-2024 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -92,12 +92,14 @@ class InvoicesView extends ItemView<Invoice> {
         return (InvoicesBoundedDomain) super.domain();
     }
 
-
+    @Override
     protected void addActions(@NotNull GridContextMenu<Invoice> menu) {
+        super.addActions(menu);
         menu().add(new Hr());
         menu().addItem("Print", event -> event.getItem().ifPresent(e -> new CmdCreateInvoiceDocument(e, this.domain()).execute()));
     }
 
+    @Override
     protected void init() {
         var grid = grid();
         grid.addColumn(Invoice::id).setKey("id").setHeader("Id").setAutoWidth(true).setResizable(true).setSortable(true);

@@ -33,9 +33,9 @@ Conversions are inefficient, lead to enormous loss of performance and latencies,
 https://microstream.one/[MicroStream] was selected as persistence approach for the first versions of the ERP solution.
 
 . Almost no impedance mismatch between the Java application and persistence store.
-. An elegant approach to provide one persistence container for each bounded domain the same application.
+. An elegant approach to providing one persistence container for each bounded domain the same application.
 . MicroStream has formally announced their software library will be published under an open source license.
-. The library supports current versions of the JDK and all constructs of the language including preview constructs.
+. The library supports current versions of the JDK and all constructs of the language, including preview constructs.
 . The support of the company is good.
 The answers are fast and professional.
 
@@ -45,6 +45,18 @@ A huge advantage is the ease of migrating a java model from Microstream to JPA.
 Experience shows that the effort is often less than five working days
 footnote:[Under the assumption that enough unit and integration tests are available to validate the migrated solution.].
 
+[NOTE]
+.EclipseStore
+====
+The decision to use MicroStream was a good approach.
+The library was moved to the Eclipse umbrella in 2024 and is now part of the Eclipse Foundation.
+
+The library is now called {ref-eclipsestore} and is actively maintained and developed.
+Famous microservices frameworks like Quarkus and Helidon are using the library as one of their default persistence solutions.
+
+A companion library provides seamless serialization of Java object graphs.
+====
+
 === Consequences
 
 * Knowledge in MicroStream library <<microstream-4>> must be build-up.
@@ -52,7 +64,7 @@ footnote:[Under the assumption that enough unit and integration tests are availa
 ** A clear separation of data from functions is required.
 ** Lambdas cannot currently be persisted.
 Therefore, all data containers with lambda variables must either be redesigned or declared as transient.
-* Work on a design enabling domain driven design with MicroStream approach.
+* Work on a design enabling domain-driven design with MicroStream approach.
 
 The MicroStream approach supports a very effective way to persist data.
 The effort to define storage and map Java objects to a persistent representation are minimal.
@@ -68,4 +80,4 @@ MicroStream does not provide functions in this area.
 [bibliography]
 === Links
 
-- [[[microstream-4, 1]]] link:{ref-tangly-blog-url}/2021/microstream-4.x/[MicroStream 4.x]
+- [[[microstream-4, 1]]] link:{ref-tangly-blog}/2021/microstream-4.x/[MicroStream 4.x]

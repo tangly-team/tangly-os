@@ -1,5 +1,5 @@
 /*
- * Copyright 2023-2023 Marcel Baumann
+ * Copyright 2023-2024 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -27,6 +27,7 @@ import net.tangly.core.domain.Handler;
 import net.tangly.core.domain.Realm;
 import net.tangly.core.providers.Provider;
 import net.tangly.core.providers.ProviderInMemory;
+import org.jetbrains.annotations.NotNull;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -35,6 +36,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.IntStream;
 
 /**
@@ -67,6 +69,13 @@ public class BoundedDomainEntities
         return List.of(new DomainEntity<>(DOMAIN, EntityThree.class, realm().threeEntities()), new DomainEntity<>(DOMAIN, EntityFour.class, realm().fourEntities()));
     }
 
+    @Override
+    public Map<TagType<?>, Integer> countTags(@NotNull Map<TagType<?>, Integer> counts) {
+        addTagCounts(registry(), realm().threeEntities(), counts);
+        addTagCounts(registry(), realm().fourEntities(), counts);
+        return counts;
+    }
+
     /**
      * Define a code to test and demonstrate the application code support features.
      */
@@ -88,6 +97,7 @@ public class BoundedDomainEntities
             return true;
         }
     }
+
 
     /**
      * Entity Three demonstrates oid, id, name, time interval, text, comment and tag features.

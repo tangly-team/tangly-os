@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2023 Marcel Baumann
+ * Copyright 2006-2024 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -14,6 +14,7 @@
 package net.tangly.ui.app.domain;
 
 import com.vaadin.flow.component.grid.HeaderRow;
+import com.vaadin.flow.component.grid.contextmenu.GridContextMenu;
 import net.tangly.core.TagType;
 import net.tangly.core.domain.BoundedDomain;
 import net.tangly.core.providers.ProviderInMemory;
@@ -43,7 +44,6 @@ public class TagTypesView extends ItemView<TagType> {
     @Override
     protected void init() {
         var grid = grid();
-
         grid.addColumn(TagType::namespace).setKey(NAMESPACE).setHeader(NAMESPACE_LABEL).setSortable(true).setAutoWidth(true).setResizable(true);
         grid.addColumn(TagType::name).setKey(NAME).setHeader("Name").setSortable(true).setAutoWidth(true).setResizable(true);
         grid.addColumn(TagType::canHaveValue).setKey("canHaveValue").setHeader("Can Have Value").setSortable(true).setAutoWidth(true).setResizable(true);
@@ -56,8 +56,12 @@ public class TagTypesView extends ItemView<TagType> {
             headerRow.getCell(grid.getColumnByKey(NAMESPACE)).setComponent(createTextFilterField(filter::namespace));
             headerRow.getCell(grid.getColumnByKey(NAME)).setComponent(createTextFilterField(filter::name));
         }
+    }
 
-        // TODO addMenuSection(List.of(Map.entry("Count Tags", e -> update(domain.countTags(new HashMap<>())))));
+    @Override
+    protected void addActions(@NotNull GridContextMenu<TagType> menu) {
+        super.addActions(menu);
+        menu().addItem("Count Tags", e -> update(this.domain().countTags(new HashMap<>())));
     }
 
     static class TagTypeFilter extends ItemFilter<TagType> {
@@ -84,7 +88,7 @@ public class TagTypesView extends ItemView<TagType> {
     }
 
     public void update(@NotNull Map<TagType<?>, Integer> counts) {
-        counts.clear();
+        this.counts.clear();
         this.counts.putAll(counts);
         grid().getDataProvider().refreshAll();
     }

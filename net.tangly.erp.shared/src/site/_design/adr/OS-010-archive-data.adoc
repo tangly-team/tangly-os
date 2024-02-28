@@ -23,7 +23,7 @@ The file’s size is at the possible minimum, and the performance of the convert
 
 === Decision
 
-TSV is the preferred to import data into the application or export information from the solution.
+TSV is preferred to import data into the application or export information from the solution.
 The format is also the preferred solution to import data into or export data from the solution.
 
 === Consequences

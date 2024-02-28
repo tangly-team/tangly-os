@@ -1,13 +1,14 @@
 /*
- * Copyright 2006-2023 Marcel Baumann
+ * Copyright 2006-2024 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- *          https://apache.org/licenses/LICENSE-2.0
+ *          http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ *
  */
 
 package net.tangly.gleam.model;
@@ -18,6 +19,7 @@ import org.apache.commons.csv.CSVRecord;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.function.BiConsumer;
 import java.util.function.Function;
 import java.util.function.Supplier;
@@ -79,17 +81,22 @@ public record TsvEntity<T>(Class<T> clazz, List<TsvProperty<T, ?>> fields, Funct
     }
 
     /**
-     * Export an entity as a row in a TSV file. Upon completion of the export, the caller shall call. If defined, the export lambda is executed, otherwise the exports lambdas for
+     * Export an entity as a row in a TSV file. Upon completion of the export, the caller shall call. If defined, the export lambda is executed; otherwise the exports lambdas for
      * all fields are executed. The exclusive operation modes are due to the constraints of the underlying CSV Apache Commons library.
      *
-     * @param entity  entity to be exported as TSV record
+     * @param entity  entity to be exported as TSV record. The value can be null
      * @param printer printer to write TSV record
      */
-    public void exports(@NotNull T entity, @NotNull CSVPrinter printer) {
-        if (exports() != null) {
-            exports().accept(entity, printer);
+    public void exports(T entity, @NotNull CSVPrinter printer) {
+        if (Objects.nonNull(entity)) {
+            if (exports() != null) {
+                exports().accept(entity, printer);
+            } else {
+                fields().forEach(property -> property.exports(entity, printer));
+            }
         } else {
-            fields().forEach(property -> property.exports(entity, printer));
+            // entity is null, print empty fields for the columns into the TSV file
+            fields().forEach(property -> TsvProperty.print(printer, null));
         }
     }
 

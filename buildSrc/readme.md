@@ -1,6 +1,6 @@
 # Purpose
 
-The definition of plugins to configure a multimodule gradle project uses the current good practices for Gradle project.
+The definition of plugins to configure a multimodule Gradle project uses the current good practices for Gradle project.
 
 We use the newer central configuratio feature for all plugins and libraries used in the project.
 

@@ -58,8 +58,8 @@ JDK 18 and 19 give improvements in pattern matching and thread programming.
 [bibliography]
 === Links
 
-- [[[modernize-java-landscape, 1]]] link:{ref-tangly-blog-url}/2022/modernize-your-java-landscape/[Modernize your Java Landscape]
-- [[[immutability-in-java, 2]]] link:{ref-tangly-blog-url}/2022/immutability-in-java/[Immutability in Java]
-- [[[jdk-17, 3]]] link:{ref-tangly-blog-url}/2021/jdk-17/[JDK 17]
-- [[[jdk-16, 4]]] link:{ref-tangly-blog-url}/2021/jdk-16/[JDK 16]
-- [[[modern-java-development, 5]]] link:{ref-tangly-blog-url}/2021/modern-java-development/[Modern Java Development]
+- [[[modernize-java-landscape, 1]]] link:{ref-tangly-blog}/2022/modernize-your-java-landscape/[Modernize your Java Landscape]
+- [[[immutability-in-java, 2]]] link:{ref-tangly-blog}/2022/immutability-in-java/[Immutability in Java]
+- [[[jdk-17, 3]]] link:{ref-tangly-blog}/2021/jdk-17/[JDK 17]
+- [[[jdk-16, 4]]] link:{ref-tangly-blog}/2021/jdk-16/[JDK 16]
+- [[[modern-java-development, 5]]] link:{ref-tangly-blog}/2021/modern-java-development/[Modern Java Development]

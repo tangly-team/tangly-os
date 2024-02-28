@@ -1,5 +1,5 @@
 /*
- * Copyright 2022-2023 Marcel Baumann
+ * Copyright 2022-2024 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -34,24 +34,18 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
 
-public class BoundedDomainEntitiesUi implements BoundedDomainUi {
-    private final BoundedDomainEntities domain;
+public class BoundedDomainEntitiesUi extends BoundedDomainUi<BoundedDomainEntities> {
     private final EntityThreeView entityThreeView;
     private final EntityFourView entityFourView;
     private final DomainView domainView;
     private transient Component currentView;
 
     public BoundedDomainEntitiesUi(@NotNull BoundedDomainEntities domain) {
-        this.domain = domain;
+        super(domain);
         entityThreeView = new EntityThreeView(BoundedDomainEntities.EntityThree.class, domain, domain.realm().threeEntities(), Mode.VIEW);
         entityFourView = new EntityFourView(BoundedDomainEntities.EntityFour.class, domain, domain.realm().fourEntities(), Mode.EDIT);
         domainView = new DomainView(domain);
         currentView = entityThreeView;
-    }
-
-    @Override
-    public String name() {
-        return domain.name();
     }
 
     @Override
@@ -60,7 +54,7 @@ public class BoundedDomainEntitiesUi implements BoundedDomainUi {
         SubMenu subMenu = menuItem.getSubMenu();
         subMenu.addItem("Entity Three", e -> select(layout, entityThreeView));
         subMenu.addItem("Entity Four", e -> select(layout, entityFourView));
-        addAdministration(layout, menuBar, domain, domainView, null);
+        addAdministration(layout, menuBar, domainView, null);
         select(layout, currentView);
     }
 

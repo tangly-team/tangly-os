@@ -1,13 +1,14 @@
 /*
- * Copyright 2006-2023 Marcel Baumann
+ * Copyright 2006-2024 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- *          https://apache.org/licenses/LICENSE-2.0
+ *          http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ *
  */
 
 package net.tangly.erp.ports;
@@ -155,9 +156,11 @@ public final class TsvHdl {
     }
 
     private static <T, U> void imports(@NotNull Reader in, String source, @NotNull TsvEntity<T> tsvEntity, BiFunction<TsvEntity<T>, CSVRecord, U> function) {
+        CSVRecord loggedRecord = null;
         try (in) {
             int counter = 0;
             for (CSVRecord csv : FORMAT.parse(in)) {
+                loggedRecord = csv;
                 Object imported = function.apply(tsvEntity, csv);
                 if (!(imported instanceof EntityExtended entity) || (entity.validate())) {
                     ++counter;
@@ -170,17 +173,19 @@ public final class TsvHdl {
             }
             EventData.log(EventData.IMPORT, MODULE, EventData.Status.INFO, tsvEntity.clazz().getSimpleName() + " imported objects", Map.of("filename", source, "count", counter));
         } catch (Exception e) {
-            EventData.log(EventData.IMPORT, MODULE, EventData.Status.FAILURE, "Entities not imported from TSV file", Map.of("filename", source), e);
+            EventData.log(EventData.IMPORT, MODULE, EventData.Status.FAILURE, "Entities not imported from TSV file", Map.of("filename", source, "csv-record", loggedRecord), e);
             throw new RuntimeException(e);
         }
     }
 
     public static <T, U> void exports(@NotNull Path path, @NotNull TsvEntity<T> tsvEntity, @NotNull List<U> items, @NotNull BiConsumer<U, CSVPrinter> lambda) {
+        U loggedEntity = null;
         try (CSVPrinter out = new CSVPrinter(Files.newBufferedWriter(path, StandardCharsets.UTF_8), FORMAT)) {
             int counter = 0;
             tsvEntity.headers().forEach(e -> TsvProperty.print(out, e));
             out.println();
             for (U entity : items) {
+                loggedEntity = entity;
                 lambda.accept(entity, out);
                 out.println();
                 ++counter;
@@ -189,7 +194,7 @@ public final class TsvHdl {
             }
             EventData.log(EventData.EXPORT, MODULE, EventData.Status.INFO, "exported to TSV file", Map.of("filename", path, "counter", counter));
         } catch (Exception e) {
-            EventData.log(EventData.EXPORT, MODULE, EventData.Status.FAILURE, "Entities exported to TSV file", Map.of("filename", path), e);
+            EventData.log(EventData.EXPORT, MODULE, EventData.Status.FAILURE, "Entities exported to TSV file", Map.of("filename", path, "entity", loggedEntity), e);
             throw new RuntimeException(e);
         }
     }

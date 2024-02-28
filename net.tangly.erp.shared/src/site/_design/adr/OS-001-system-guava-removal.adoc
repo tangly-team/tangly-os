@@ -28,7 +28,7 @@ These improvements make Guava functions more and more obsolete.
 
 https://github.com/google/guava[Guava] is an external library of high quality but still an additional dependency in the application.
 We always follow the rule to use language and standard library constructs over using external libraries.
-Guava tries to support older JDKs and, therefore does not use more modern approaches defined in new API versions.
+Guava tries to support older JDKs and, therefore, does not use more modern approaches defined in new API versions.
 We consider Guava has a legacy library.
 We are dedicated to writing modern Java using the latest official releases of the language and runtime environment.
 
@@ -41,7 +41,7 @@ footnote:[If a specific function is only available in Guava and your project str
 All Guava usages shall be replaced by JDK standard functions.
 The main advantages are:
 
-. Current JDK versions provide their own implementation e.g., in the Objects class.
+. Current JDK versions provide their own implementation, e.g., in the Objects class.
 . Guava dependency is removed from our source code and compiled artifacts.
 . Guava is not optimized for idioms used in current JDK such as streams and extensive use of lambdas.
 Guava needs years to support new concepts such as algebraic data types.

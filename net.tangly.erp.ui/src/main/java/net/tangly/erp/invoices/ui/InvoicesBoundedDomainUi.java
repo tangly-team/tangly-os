@@ -1,13 +1,14 @@
 /*
- * Copyright 2006-2022 Marcel Baumann
+ * Copyright 2006-2024 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- *          https://apache.org/licenses/LICENSE-2.0
+ *          http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ *
  */
 
 package net.tangly.erp.invoices.ui;
@@ -25,24 +26,18 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
 
-public class InvoicesBoundedDomainUi implements BoundedDomainUi {
-    private final InvoicesBoundedDomain domain;
+public class InvoicesBoundedDomainUi extends BoundedDomainUi<InvoicesBoundedDomain> {
     private final ArticlesView articlesView;
     private final InvoicesView invoicesView;
     private final DomainView domainView;
     private Component currentView;
 
     public InvoicesBoundedDomainUi(@NotNull InvoicesBoundedDomain domain) {
-        this.domain = domain;
+        super(domain);
         articlesView = new ArticlesView(domain, Mode.EDIT);
         invoicesView = new InvoicesView(domain, Mode.EDIT);
         domainView = new DomainView(domain);
         currentView = invoicesView;
-    }
-
-    @Override
-    public String name() {
-        return "Invoices";
     }
 
     @Override
@@ -52,7 +47,7 @@ public class InvoicesBoundedDomainUi implements BoundedDomainUi {
         subMenu.addItem("Articles", e -> select(layout, articlesView));
         subMenu.addItem("Invoices", e -> select(layout, invoicesView));
 
-        addAdministration(layout, menuBar, domain, domainView, new CmdFilesUploadInvoices(domain));
+        addAdministration(layout, menuBar, domainView, new CmdFilesUploadInvoices(domain()));
         select(layout, currentView);
     }
 
@@ -60,5 +55,11 @@ public class InvoicesBoundedDomainUi implements BoundedDomainUi {
     public void select(@NotNull AppLayout layout, Component view) {
         currentView = Objects.isNull(view) ? currentView : view;
         layout.setContent(currentView);
+    }
+
+    @Override
+    public void refreshViews() {
+        articlesView.refresh();
+        invoicesView.refresh();
     }
 }

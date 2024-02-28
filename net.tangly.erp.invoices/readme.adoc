@@ -43,4 +43,4 @@ The library can be included in Gradle as
  implementation "net.tangly.erp:invoices:0.2.7"
 ----
 
-The documentation can be found under {ref-tangly-doc-url}/domains/invoices/[Business documentation].
+The documentation can be found under {ref-tangly-blog-url}/docs/domains/invoices/[Business documentation].

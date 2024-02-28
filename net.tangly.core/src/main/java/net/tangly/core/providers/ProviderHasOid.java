@@ -1,5 +1,5 @@
 /*
- * Copyright 2021-2023 Marcel Baumann
+ * Copyright 2021-2024 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -49,8 +49,8 @@ public class ProviderHasOid<T extends HasOid> implements Provider<T> {
     }
 
     /**
-     * Checks if the entity can be added through the provider. The entity can be added either if no entity with the same oid is already stored in the provider or the stored entity,
-     * and the entity we shall add is the same Java object.
+     * Checks if the entity can be added through the provider. The entity can be added either if no entity with the same oid is already stored in the provider, or the stored
+     * entity and the entity we shall add is the same Java object.
      *
      * @param entity entity to be added
      * @return flag indicating if it is allowed to add the object
@@ -73,7 +73,7 @@ public class ProviderHasOid<T extends HasOid> implements Provider<T> {
         if (canBeAdded(entity)) {
             provider.update(entity);
         } else {
-            throw new IllegalArgumentException("Different Objects with duplicate oid " + entity);
+            throw new IllegalArgumentException(STR."Different Objects with duplicate oid \{entity}");
         }
     }
 
@@ -81,4 +81,11 @@ public class ProviderHasOid<T extends HasOid> implements Provider<T> {
     public void delete(@NotNull T entity) {
         provider.delete(entity);
     }
+
+    @Override
+    public void deleteAll() {
+        provider.deleteAll();
+    }
+
+
 }

@@ -1,13 +1,14 @@
 /*
- * Copyright 2006-2022 Marcel Baumann
+ * Copyright 2006-2024 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- *          https://apache.org/licenses/LICENSE-2.0
+ *          http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ *
  */
 
 package net.tangly.erp.crm.ui;
@@ -26,8 +27,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
 
-public class CrmBoundedDomainUi implements BoundedDomainUi {
-    private final CrmBoundedDomain domain;
+public class CrmBoundedDomainUi extends BoundedDomainUi<CrmBoundedDomain> {
     private final LeadsView leadsView;
     private final NaturalEntitiesView naturalEntitiesView;
     private final LegalEntitiesView legalEntitiesView;
@@ -41,23 +41,18 @@ public class CrmBoundedDomainUi implements BoundedDomainUi {
     private Component currentView;
 
     public CrmBoundedDomainUi(@NotNull CrmBoundedDomain crmDomain, @NotNull InvoicesBoundedDomain invoicesDomain) {
-        this.domain = crmDomain;
-        leadsView = new LeadsView(domain, Mode.EDIT);
-        naturalEntitiesView = new NaturalEntitiesView(domain, Mode.EDIT);
-        legalEntitiesView = new LegalEntitiesView(domain, Mode.EDIT);
-        employeesView = new EmployeesView(domain, Mode.EDIT);
-        contractsView = new ContractsView(domain, Mode.EDIT);
-        interactionsView = new InteractionsView(domain, Mode.EDIT);
-        activitiesView = new ActivitiesView(domain, Mode.VIEW);
-        subjectsView = new SubjectsView(domain, Mode.EDIT);
-        analyticsView = new AnalyticsCrmView(domain, invoicesDomain);
-        domainView = new DomainView(domain);
+        super(crmDomain);
+        leadsView = new LeadsView(domain(), Mode.EDIT);
+        naturalEntitiesView = new NaturalEntitiesView(domain(), Mode.EDIT);
+        legalEntitiesView = new LegalEntitiesView(domain(), Mode.EDIT);
+        employeesView = new EmployeesView(domain(), Mode.EDIT);
+        contractsView = new ContractsView(domain(), Mode.EDIT);
+        interactionsView = new InteractionsView(domain(), Mode.EDIT);
+        activitiesView = new ActivitiesView(domain(), Mode.VIEW);
+        subjectsView = new SubjectsView(domain(), Mode.EDIT);
+        analyticsView = new AnalyticsCrmView(domain(), invoicesDomain);
+        domainView = new DomainView(domain());
         currentView = naturalEntitiesView;
-    }
-
-    @Override
-    public String name() {
-        return "Customers";
     }
 
     @Override
@@ -74,7 +69,7 @@ public class CrmBoundedDomainUi implements BoundedDomainUi {
         subMenu.addItem("Subjects", e -> select(layout, subjectsView));
 
         addAnalytics(layout, menuBar, analyticsView);
-        addAdministration(layout, menuBar, domain, domainView, new CmdFilesUploadCrm(domain));
+        addAdministration(layout, menuBar, domainView, new CmdFilesUploadCrm(domain()));
         select(layout, currentView);
     }
 
@@ -82,5 +77,17 @@ public class CrmBoundedDomainUi implements BoundedDomainUi {
     public void select(@NotNull AppLayout layout, Component view) {
         currentView = Objects.isNull(view) ? currentView : view;
         layout.setContent(currentView);
+    }
+
+    @Override
+    public void refreshViews() {
+        leadsView.refresh();
+        naturalEntitiesView.refresh();
+        legalEntitiesView.refresh();
+        employeesView.refresh();
+        contractsView.refresh();
+        interactionsView.refresh();
+        activitiesView.refresh();
+        subjectsView.refresh();
     }
 }

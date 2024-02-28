@@ -1,5 +1,5 @@
 /*
- * Copyright 2023-2023 Marcel Baumann
+ * Copyright 2023-2024 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -39,8 +39,7 @@ import java.util.Objects;
  * <p>The simple entities are displayed using the {@link EntityView}, {@link net.tangly.ui.components.EntityFilter}, and {@link EntityForm}.
  * These visual classes have logic to display all properties of a simple entity.</p>
  */
-public class BoundedDomainSimpleEntitiesUi implements BoundedDomainUi {
-    private final BoundedDomainSimpleEntities domain;
+public class BoundedDomainSimpleEntitiesUi extends BoundedDomainUi<BoundedDomainSimpleEntities> {
     private final EntityOneView entityOneView;
     private final EntityTwoView entityTwoView;
     private Component currentView;
@@ -51,15 +50,10 @@ public class BoundedDomainSimpleEntitiesUi implements BoundedDomainUi {
      * @param domain domain to visualize
      */
     public BoundedDomainSimpleEntitiesUi(BoundedDomainSimpleEntities domain) {
-        this.domain = domain;
+        super(domain);
         entityOneView = new EntityOneView(BoundedDomainSimpleEntities.SimpleEntityOne.class, domain, domain.realm().oneEntities(), Mode.VIEW);
         entityTwoView = new EntityTwoView(BoundedDomainSimpleEntities.simpleEntityTwo.class, domain, domain.realm().twoEntities(), Mode.EDIT);
         currentView = entityOneView;
-    }
-
-    @Override
-    public String name() {
-        return domain.name();
     }
 
     @Override

@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2023 Marcel Baumann
+ * Copyright 2006-2024 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -66,6 +66,13 @@ public class ProductsHdl implements ProductsHandler {
         handler.exportProducts(folder.resolve(PRODUCTS_TSV));
         handler.exportAssignments(folder.resolve(ASSIGNMENTS_TSV));
         handler.exportEfforts(folder.resolve(EFFORTS_TSV));
+    }
+
+    @Override
+    public void clearEntities() {
+        realm().efforts().deleteAll();
+        realm().assignments().deleteAll();
+        realm().products().deleteAll();
     }
 
     TsvEntity<Product> createTsvProduct() {

@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2023 Marcel Baumann
+ * Copyright 2006-2024 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -31,6 +31,7 @@ import org.jetbrains.annotations.NotNull;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class ProductsEntities implements ProductsRealm {
     static class Data {
@@ -76,10 +77,6 @@ public class ProductsEntities implements ProductsRealm {
         storageManager.storeRoot();
     }
 
-    public void shutdown() {
-        storageManager.shutdown();
-    }
-
     @Override
     public Provider<Product> products() {
         return products;
@@ -97,7 +94,9 @@ public class ProductsEntities implements ProductsRealm {
 
     @Override
     public void close() throws Exception {
-        storageManager.close();
+        if (Objects.nonNull(storageManager)) {
+            storageManager.close();
+        }
     }
 
     private IdGenerator generator() {
