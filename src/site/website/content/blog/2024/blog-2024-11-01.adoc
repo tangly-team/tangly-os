@@ -16,7 +16,7 @@ This pattern is called https://en.wikipedia.org/wiki/Create,_read,_update_and_de
 
 [TIP]
 ====
-DDD practitioners complain that it was hard to gain commitment from business stakeholders, or even to engage them at all.
+DDD practitioners complain that it was hard to gain commitment from business stakeholders, or even to completely engage them.
 My own experience suggested that it was nearly impossible to engage business managers with UML diagrams.
 It was much easier to engage them in rapid prototyping where they could see and interact with the results.
 
@@ -41,7 +41,8 @@ The key concepts are filtering and ordering of the selected items per column.
 
 == Operations with a Selected Entity
 
-The standard read, update, delete and create operations are supported. An additional create variant is the duplicate operation to minimize user inputs.
+The standard read, update, delete and create operations are supported.
+An additional creation variant is the duplicate operation to minimize user inputs.
 
 == Business Operations
 

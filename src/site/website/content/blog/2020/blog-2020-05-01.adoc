@@ -94,4 +94,4 @@ The following configuration is needed in Gradle to compile, test, execute and ge
    }
 ----
 
-Beware that https://www.jacoco.org/[JaCoCo] shall only release a version supporting code coverage for JDK 14 and, in particular record not before June 2020.
+Beware that https://www.jacoco.org/[JaCoCo] shall only release a version supporting code coverage for JDK 14 and, in particular, record not before June 2020.

@@ -66,7 +66,7 @@ All documents are stored in our product or company online drives.
 We use analog boards if the team members are collocated.
 We are trying to avoid JIRA.
 It would be just overkill for us.
-* Slack is our preferred chat platform,
+* Slack is our preferred chat platform.
 * https://www.banana.ch/[Banana] is our accounting solution.
 
 We never had to buy or rent a printer, a landline or a fax machine since founding the company.
@@ -75,13 +75,13 @@ We never had to buy or rent a printer, a landline or a fax machine since foundin
 
 We use an impressive set of tools to collaborate with our customers and partners
 
-* Google email, calendar and meetup for communication,
-* https://www.bitbucket.org/[Bitbucket] and continuous integration, delivery and deployment pipelines for software development,
-* Maven Central to distribute public binary software artifacts,
-* Slack is our preferred chat platform,
-* Google Groups for technical discussion,
-* Blogger to publish articles to our community,
-* LinkedIn for marketing,
+* Google email, calendar and meetup for communication.
+* https://www.bitbucket.org/[Bitbucket] and continuous integration, delivery and deployment pipelines for software development.
+* Maven Central to distribute public binary software artifacts.
+* Slack is our preferred chat platform.
+* Google Groups for technical discussion.
+* Blogger to publish articles to our community.
+* LinkedIn for marketing.
 * GPG and S/MIME to securely exchange confidential documentation or protect sensitive emails.
 
 An impressive set of processes with governmental organizations can now be performed electronically in Switzerland

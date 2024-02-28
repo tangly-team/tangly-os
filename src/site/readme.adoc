@@ -16,6 +16,31 @@ How to kill the hugo process hanging in a port:
  kill -9 $(lsof -t -i:1313)
 ----
 
+Add exectution rights to the script files.
+
+[source,console]
+----
+ chmod guo+rx ./scripts/*.sh
+----
+
+The following commands will deploy the site locally.
+
+[source,console]
+----
+./scripts/initiateHugo.sh                                            <1>
+./scripts/populateHugo.sh                                            <2>
+hugo server --destination public --disableFastRender -F              <3>
+
+./scripts/popupateHugo.sh                                            <4>
+./scripts/publishHugo.sh                                             <5>
+----
+
+<1> Initialize the Hugo environment in a local folder.
+<2> Populate with all content files from the _tangly-OS_ repository.
+<3> Run the Hugo server locally for testing.
+<4> After stoppping the server, populate the site with a clean copy of the content.
+<5> Generate the static website and publish it to github pages.
+
 === Customisation
 
 ==== Header and Footer

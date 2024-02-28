@@ -34,7 +34,7 @@ Some {ref-less} facts about agile software architecture are:
 - The sum of all source code artifacts is the true design blueprint or software architecture.
 - The real software architecture evolves for the better or worse every day of the product, as people program.
 - The real living architecture needs to be grown every day through acts of programming by master programmers.
-- A software architect who is not in touch with the evolving source code of the product is out of touch with reality.
+- A software architect not in touch with the evolving source code of the product is out of touch with reality.
 - Every programmer is some kind of architect, whether wanted or not.
 Every act of programming is some kind of architectural act: good or bad, small or large, intended or not.
 

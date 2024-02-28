@@ -9,6 +9,20 @@ include::../fragments/_config-mb-blog.aodc[]
 
 image::2024-04-01-head.png[width=420,height=360,role=left]
 
+Enhance the maintainability, reliability, and observability of multithreaded code by adopting a concurrent programming style that reduces the likelihood of thread leaks and cancellation delay.
+These are common risks associated with cancellation and shutdown.
+
+Writing concurrent software is one of the greatest challenges for software developers.
+Java’s thread model makes it a strong contender among concurrent languages, but multithreading has always been inherently tricky.
+Structured concurrency allows you to use multiple threads with structured programming syntax.
+In essence, it provides a way to write concurrent software using familiar program flows and constructs.
+This lets developers focus on the business at hand, instead of the orchestration of threading.
+As the JEP for structured concurrency says, "If a task splits into concurrent subtasks, then they all return to the same place, namely the task's code block."
+
+Virtual threads, now an official feature of Java, create the possibility of cheaply spawning threads to gain concurrent performance.
+Structured concurrency provides the simple syntax to do so.
+As a result, Java now has a unique and highly-optimized threading system that is also easy to understand.
+
 cite:[modern-software-engineering,effective-java-3rd]
 
 == Concurrent Stream Processing

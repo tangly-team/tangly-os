@@ -16,10 +16,10 @@ We proudly state we never bought a printer or a fax machine.
 Analog machines should become obsolete in the digital age.
 
 Companies should be more environment-aware and save some trees.
-See our blog link:../../2019/a-journey-to-be-a-digital-company-tangly-llc[A Journey to Be a Digital Company].
+See our blog on link:../../2019/a-journey-to-be-a-digital-company-tangly-llc[A Journey to Be a Digital Company].
 
 Switzerland finally introduced a digital payment slip.
-It uses a QR code and still assume you need to print it.
+It uses a QR code and still assumes you need to print it.
 
 The European Union is more innovative and mandates that invoices to government parties must be digital.
 Our company exchanges contracts and invoices with partners and customers using the standardized and well-known PDF format.
@@ -27,7 +27,7 @@ Our company exchanges contracts and invoices with partners and customers using t
 It is time to explore extensions to support the new legal requirements in Switzerland and in Europe.
 --
 
-We show open source based solutions, and the tradeoffs we had to accept.
+We show open source-based solutions, and the tradeoffs we had to accept.
 Beware our solutions are based on the Java stack.
 
 == Swiss QR Code
@@ -47,7 +47,7 @@ In other words, the standard does not foresee that the due date of the invoice s
 Stated bluntly, the committee in charge of the standard realized they missed and stuck all missing elements in the so-called SWICO field.
 It is clear that it is impossible to define a digital payment workflow without information on such a due date, and the VAT percentages and amounts.
 
-The library https://github.com/manuelbl/SwissQRBill[Swiss QR Bill] is a mature and easy to use solution to read and to write legal Swiss QR codes.
+The library https://github.com/manuelbl/SwissQRBill[Swiss QR Bill] is a mature and a simple solution to read and to write legal Swiss QR codes.
 The library is under MIT license and is available for Java and .NET stacks.
 The code is under active development.
 The main developer is responsive to suggestions and trouble reports.
@@ -117,7 +117,7 @@ Our current approach is
 Currently, we do not generate PDF/A1 documents as required in the ZUGFeRD standard.
 PDFBox could provide the tool box to generate in this format, but it would be quite an endeavor.
 An extension to PDFBox with similar functionality to iText would ideally become available in the future.
-Otherwise, we have to write the missing code; in particular the embedding of fonts, pictures and files into the PDF document.
+Otherwise, we have to write the missing code; in particular, the embedding of fonts, pictures and files into the PDF document.
 
 We selected the AsciiDoc format to provide a simple approach to custom templates for invoices.
 We avoided proprietary solutions based on Microsoft Office templates.

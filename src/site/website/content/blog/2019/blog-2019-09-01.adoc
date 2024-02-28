@@ -38,7 +38,7 @@ They are relevant to nearly any situation where people - such as Scrum teams - m
 
 Below the eight principles are presented with a mapping to Scrum aspects.
 
-== A clear definition of the contents of the common pool resource and effective exclusion of external unentitled parties
+== A clear definition of the contents for the common pool resource and effective exclusion of external unentitled parties
 
 The Scrum teams define the artifacts and processes exclusively owned by the team.
 Teams take ownership of items such as source code, Scrum board, pull process.

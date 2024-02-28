@@ -87,7 +87,7 @@ It is not an agile transformation if it does not simplify how you work.
 It is not an agile transformation of Scrum if it does not increase the actual collaboration between customers, teams and stakeholders.
 ____
 
-Just look at all these companies trying to copycat Spotify ways of working.
+Look at all these companies trying to copycat Spotify ways of working.
 Their dreadful hope is that the copycat will solve all their flaws.
 Agile is not magic nor a https://en.wikipedia.org/wiki/No_Silver_Bullet[silver bullet]!
 
@@ -102,7 +102,7 @@ Fully understand that:
 * Agile does not fix poor HR compensation processes that do not set the right people's behavior.
 
 Agile makes it all visible and transparent.
-Beware being transparent can be very painful and induce distress.
+Beware being transparent can be excruciating and induce distress.
 
 Agile is the framework to detect flaws and to measure improvements through an empirical process.
 A huge intentional effort needs to be taken by those in the process, willing to fix or improve such things.
@@ -147,7 +147,7 @@ We found out being an agile company bring us concrete and gratifying advantages 
 ____
 The decision about what to abandon is by far the most important and most neglected.
 
-No organization which purposefully and systematically abandons the unproductive and obsolete ever wants for opportunities.
+No organization that purposefully and systematically abandons the unproductive and obsolete ever wants for opportunities.
 ____
 
 Social and Cultural Advantages::
@@ -156,19 +156,19 @@ Social and Cultural Advantages::
 * We stand to our collaborators and love to see them growth.
 * Motivation, ownership and accountability are high.
 Financial Advantages and Enhanced Operational Efficiency::
-* Timely invoicing process allows us to send all monthly invoices the first day of the following month
-footnote:[I regularly interact with companies forgetting to invoice you delivered services.
-They are often quite thankful when I remember them to send the invoice for their work!].
+* The timely invoicing process allows us to send all monthly invoices on the first day of the following month
+footnote:[I regularly interact with companies forgetting to invoice their delivered services.
+They are often quite thankful when I remind them to send the invoice for their work!].
 * Our company can finally process all federal, local and VAT taxes electronically.
 The local government systems now support digital sending and processing for tax declarations.
 * Realtime financial cockpit
 ** Cash-flow overview provides security how our company is doing and how our liquidity is evolving.
 ** Rolling budgeting optimizes investments when the market shifts
 footnote:[The Corona catastrophe was a huge test we successfully mastered.].
-** The sales pipeline provides indicators how we should perform the next months.
+** The sales pipeline provides indicators of how we should perform the next months.
 ** Paperless processes remove scanning, archiving and printing activities.
 Technological Advantages and Increased Developer Productivity::
-* Agile software development approaches with technical focus provides as strong market proposition.
+* Agile software development approaches with technical focus provide as strong market proposition.
 Motivated collaborators love to work on such initiatives.
 footnote:[To be honest, the biggest problem we have is to find collaborators with the required skill set.].
 * Technological leadership for the Java technology stack delights our collaborators and is a huge market advantage.

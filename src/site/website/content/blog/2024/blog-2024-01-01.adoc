@@ -103,7 +103,7 @@ _Use optional monad_.
 
 Avoid Map and prefer records.
 _Embrace immutable structures_.
-_Beware of shallow immutability vs deep immutability_.
+_Beware of shallow immutability versus deep immutability_.
 
 Pattern implementation in the functional world.
 No more visitor pattern.

@@ -97,7 +97,7 @@ This process is part of the enterprise architecture activities of your ecosystem
 
 External identifier ownership is often a murky situation when working with legacy systems.
 You often have multiple sources of external identifiers, sometimes overlapping and sometimes not covering all instances.
-You have to formulate a long-term strategy to clean up your landscape and handle the problems until these clean-up activities are completed.
+You have to formulate a long-term strategy to clean up your landscape and handle the problems until these cleanup activities are completed.
 By handling, we mean administrative and import rules matching the various external identifiers to the same object.
 
 One possible solution is to use tags.
@@ -145,7 +145,7 @@ Identifiers are a key element to model entities using the domain driven design _
 We have a new social security number, which is used in social insurance workflows.
 _The same number is also used in medical insurance workflows._
 
-We also have a federal identity card number, a federal passport number, a federal driver's license number.
+We also have a federal identity card number, a federal passport number, and a federal driver's license number.
 Additional used identifiers are medical card insurance numbers, a state tax personal identification number.
 
 All these external identifiers shall reference the same natural person.

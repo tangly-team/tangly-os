@@ -117,7 +117,7 @@ Processing the average value for all numeric elements of the stream:
 
 [source,java]
 ----
-// Copy Processing the sum of all numeric elements of the stream:
+// Copy Processing the sum of all numeric elements for the stream:
 double averagePrice = productList.stream() .collect(Collectors.averagingInt(Product::getPrice));
 
 // Copy The methods averagingXX(), summingXX() and summarizingXX() can work with primitives

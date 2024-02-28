@@ -87,7 +87,7 @@ Create https://en.wikipedia.org/wiki/Psychological_safety[psychological safety] 
 
 image::2020-02-01-psychological-safety.jpg[width=420,height=360,role=left]
 
-The major responsibility of senior management is hire the best collaborators, retain and develop top collaborators, and respectfully off-board departing collaborators.
+The major responsibility of senior management is to hire the best collaborators, retain and develop top collaborators, and respectfully off-board departing collaborators.
 
 * Hiring and on-boarding collaborators,
 * Nurturing and development of collaborators,

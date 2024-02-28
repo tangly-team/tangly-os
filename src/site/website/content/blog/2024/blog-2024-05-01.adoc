@@ -73,7 +73,12 @@ Do not include tutorials or Q&A sections::
 The most important thing in arc42 is the structure.
 The structure does not provide a space for guides or Q&A sections.
 Do not put any specific things like customer names or similar::
-Do not write customer-specific things in the software architecture documentation, unless your building blocks are structured in a customer-oriented way.
+Do not write customer-specific things in the software architecture documentation unless your building blocks are structured in a customer-oriented way.
+Do not generate documentation site::
+Manual activities to generate the product documentation are a waste of time.
+Modern approaches are documentation as code and static site generators. +
+{ref-github} and {ref-gitlab} provide the _pages_ feature to host your documentation as static website.
+The generation can be integrated into the CI/CD pipeline.
 
 [bibliography]
 == Links

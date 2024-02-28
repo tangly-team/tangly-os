@@ -120,7 +120,7 @@ Both support parallel builds.
 Not taking advantage of this feature can lead to unnecessarily long build times.
 Similarly, not properly organizing your project into modules can result in unnecessary rebuilds of unchanged code, further slowing down your build process.
 
-_Modern software engineering practices promote modularity and low-coupling between components._
+_Modern software engineering practices promote modularity and low coupling between components._
 
 Deprecated features and APIs::
 Sticking with deprecated features or APIs in your build scripts can also contribute to build rot.

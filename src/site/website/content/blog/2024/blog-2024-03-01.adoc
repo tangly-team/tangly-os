@@ -7,42 +7,85 @@ tags: ["java", "students-java"]
 
 include::../fragments/_config-mb-blog.aodc[]
 
+[.float-group]
+--
 image::2024-03-01-head.png[width=420,height=360,role=left]
 
-Java 9 introduces a new level of abstraction above packages, known as the Java Platform Module System (JPMS), or “Modules” for short.
-Modules emphasize at compilation time modern software enngineering principles such as encapsulation, and modularity
-cite:[modern-software-engineering,effective-java-3rd].
+Java 9 introduces a new level of abstraction above packages, known as the Java Platform Module System _JPMS_, or _Modules_ for short cite:[java-9-modularity].
+
+Modules emphasize at compilation time modern software engineering principles such as encapsulation, and modularity
+cite:[modern-software-engineering,effective-java-3rd,building-evolutionary-architectures-2nd].
+
+Java 9 was released in September 2017.
+
+Most Java developers are still not using this powerful and elegant construct to modularize their applications.
+--
 
 == Modules
 
-A Module is a group of closely related packages and resources along with a new module descriptor file.
+A _module_ is a group of closely related Java packages and resources along with a new module descriptor file.
+A module is distributed as a regular jar file.
 
 Each module is responsible for its resources, like media or configuration files.
 
-Previously we’d put all resources into the root level of our project and manually manage which resources belonged to different parts of the application.
+Previously, we put all resources into the root level of our project.
+We manually manage which resources belonged to different parts of the application.
+It works, but it is not really a good way to define modular systems.
 
 With modules, we can ship required images and XML files with the module that needs it, making our projects much easier to manage.
 
-When we create a module, we include a descriptor file that defines several aspects of our new module:
-
 === Module Descriptor
 
-Name:: the name of our module
-Dependencies:: a list of other modules that this module depends on
-Public Packages:: a list of all packages we want accessible from outside the module
-Services Offered:: we can provide service implementations that can be consumed by other modules
-Services Consumed:: allows the current module to be a consumer of a service
-Reflection Permissions:: explicitly allows other classes to use reflection to access the private members of a package
+When we create a module, we include a descriptor file that defines several aspects of our new module:
 
-The module naming rules are similar to how we name packages (dots are allowed, dashes are not).
+Name:: the name of our module.
+_Please use the same conventions as for package names_.
+Dependencies:: a list of other modules that this module depends on.
+Public Packages:: a list of all packages we want accessible from outside the module.
+Services Offered:: we can provide service implementations that can be consumed by other modules.
+Services Consumed:: allows the current module to be a consumer of a service.
+Reflection Permissions:: explicitly allows other classes to use reflection to access the private members of a package.
+_Please minimize the use of reflection_.
+
+The module naming rules should be similar to how we name packages.
 It is common to do Reverse-DNS _net.tangly.mymodule_ style names.
 
-We need to list all packages we want to be public because by default all packages are module private.
+=== Module Directives
 
-requires requires static requires transitive exports exports ... to uses provides ... with open opens opens ... to
+We need to list all packages we want to be public because by default, all packages are module private.
+
+Used Dependencies:: We can declare dependencies on other modules.
+requires _module list_::: depends on the named module
+requires static _module list_::: depends on the named module, but that users of our library will never want to use.
+requires transitive _module list_::: depends on the named module and makes it available to users of our module.
+Provided Abstractions:: By default, a module does not expose any of its API to other modules.
+exports _package list_::: We use the _exports_ directive to expose all public members of the named package.
+_The export quantum is a package, not a class or interface_.
+exports _package list_ to _module list_::: Similar to the exports directive, we declare a package as exported.
+We additionally list which modules we are allowing to import this package as required.
+_This mechanism is similar to the friend concept in {cpp}_.
+Services:: A service is an implementation of a specific interface or abstract class that can be consumed by other classes.
+uses _classname_::: We designate the services our module consumes with this directive.
+provides _service name_ with _class list_::: A module can also be a service provider that other modules can consume.
+The first part of the directive is the _provides_ keyword.
+Here is where we put the interface or abstract class name.
+Next, we have the _with_ directive where we provide the implementation class name that either implements the interface or extends the abstract class.
+Reflection::
+open::: If we want to continue to allow full reflection as older versions of Java did, we can simply open the entire module up to reflection.
+opens _package list_::: If we need to allow reflection of private types, but we don’t want all of our code exposed, we can use the opens directive to expose specific packages.
+But remember, this will open the package up to the entire world, so be careful with this directive.
+opens _package list_ to _module list_::: We can selectively open our packages to a pre-approved list of modules, in this case, using the opens…to directive.
 
 [source,java]
 ----
+module net.tangly.fsm {
+    exports net.tangly.fsm;
+    exports net.tangly.fsm.dsl;
+    exports net.tangly.fsm.utilities;
+
+    requires org.apache.logging.log4j;
+    requires static transitive org.jetbrains.annotations;
+}
 ----
 
 === Module Types
@@ -61,15 +104,86 @@ The name of the module will be derived from the name of the JAR.
 Automatic modules will have full read access to every other module loaded by the path.
 Unnamed Module::
 When a class or JAR is loaded onto the classpath, but not the module path, it’s automatically added to the unnamed module.
-It’s a catch-all module to maintain backward compatibility with previously-written Java code.
+It is a catch-all module to maintain backward compatibility with previously written Java code.
 
 == Services
 
+Java services are used to do something like a plug-in to the core application.
+
+Service Interface:: It is an interface or abstract class that a Service defines.
+Service Provider:: Has specific implementations of a service interface.
+A Service could have zero, one, or many service providers.
+ServiceLoader:: The main class used to discover and load a service implementation.
+
 [source,java]
 ----
+module ch.hslu.pcp.services {                                        <1>
+    exports ch.hslu.pcp.services;
+}
+
+module ch.hslu.pcp.serviceSwiss {                                    <2>
+    requires ch.hslu.pcp.services;
+    provides ch.hslu.pcp.services.Service with ch.hslu.pcp.serviceSwiss.ServiceSwiss;
+}
+
+module ch.hslu.pcp.locator {                                         <3>
+    requires ch.hslu.pcp.services;
+    uses ch.hslu.pcp.services.Service;
+    exports ch.hslu.pcp.locator;
+}
+
+module ch.hslu.pcp.consumer {                                        <4>
+    requires ch.hslu.pcp.services;
+    requires ch.hslu.pcp.locator;
+}
 ----
 
+<1> Export the package containing the interface describing the service
+<2> Implement the service and provide it to interested parties
+<3> Optional locator responsible to find all implementations of a specific service interface
+<4> Consumer calling an implementation of the service.
+If you do not implement an explicit locator, the consumer is responsible to find a suitable implementation.
+
 == Migration Strategy
+
+A sore point of the Java module is the abysmal slow adoption of modules in Java applications.
+Projects of the Apache foundation needed years to support at least automatic module names.
+
+You have two migration strategies.
+Either top-down or bottom-up.
+In both cases, it can only be nicely completed if the used libraries have an automatic module name or a module descriptor.
+
+Before starting the migration process, you should create the dependency graph for all modules and library _jar_ files used in the application.
+Beware that the same package name cannot be declared in multiple jar files.
+
+[TIP]
+====
+Use the {ref-gradle} or {ref-maven} mechanisms to create the transitive dependency graph of your application.
+
+The module approach does not work with cyclic dependencies.
+If your dependency graph has cyclic dependencies, you need to refactor your code to remove the cycles.
+====
+
+=== Top-Down
+
+. Place all projects on the module path.
+. Pick the highest-level project that has not yet been migrated.
+. Add a module-info file to that project to convert the automatic module into a named module.
+Again, remember to add any exports or requires directives. +
+You can use the automatic module name of other modules when writing the _requires_ directive since most of the projects on the module path do not have names yet.
+. Repeat with the next-lowest-level project until you are done.
+
+=== Bottom-Up
+
+. Pick the lowest-level project that has not yet been migrated.
+Do you remember the way we ordered them by dependencies in the previous section?
+Use that order to identify the lowest-level project.
+. Add a module-info.java file to that project.
+Be sure to add any exports to expose any package used by higher-level JAR files.
+Also, add a _requires_ directive for any modules it depends on.
+. Move this newly migrated named module from the classpath to the module path.
+. Ensure any projects that have not yet been migrated stay as unnamed modules on the classpath.
+. Repeat with the next-lowest-level project until you are done.
 
 [bibliography]
 == Links

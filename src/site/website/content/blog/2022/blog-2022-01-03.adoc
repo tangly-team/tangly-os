@@ -17,7 +17,7 @@ I review hundreds of CVs and must select a few candidates we should invite.
 Each interview will cost hundreds of Euros to the company.
 I must minimize the number of interviews and increase the probability of a match.
 
-Over the years I developed a checklist to select promising candidates.
+Over the years, I developed a checklist to select promising candidates.
 
 The below checklist is biased to the Java technology check.
 When I use the verb *explain* in a list item, I mean that I got a hint the candidate is aware of the concept and has used it in his applications.
@@ -29,7 +29,7 @@ Similar lists can be created for Javascript/Typescript, Python, Ruby, {cpp}, or 
 
 Education:: Which kind of education did the candidate pursue during his career?
 Formal Training::: I expect a software developer to have formal training in computer science or related fields.
-A formal training is given by an accredited institution.
+Dormal training is given by an accredited institution.
 The student receives a recognized certificate.
 * The following information should be available:
 ** Title of the formation and information if it is a bachelor, a master, or an alternative title,
@@ -59,7 +59,7 @@ A user interface developer should know about usability, accessibility, design an
 ** Link to an authority providing proof of the certificate of the formation.
 Spoken Languages:::
 The workplace is international.
-Relevant computer science documentation are in English.
+Relevant computer science documentation is in English.
 * The candidate shall be fluent in English in written and spoken forms. +
 _A software specialist not being fluent in English is an imposter because he cannot read actual technical information_.
 * The organization can request specific languages.
@@ -83,7 +83,7 @@ I am looking for:
 * Knowledge of design patterns and Java idioms,
 * Explain object-oriented approaches - abstraction, https://en.wikipedia.org/wiki/SOLID[SOLID], https://en.wikipedia.org/wiki/KISS_principle[KISS],
 https://en.wikipedia.org/wiki/You_aren%27t_gonna_need_it[YAGNI], https://en.wikipedia.org/wiki/Algebraic_data_type[algebraic data types].
-* Explain functional approaches - Optional<T>, Streams, immutability, idempotence, Functor, Monad,
+* Explain functional approaches such as Optional<T>, Streams, immutability, idempotence, Functor, Monad.
 * Explain application concepts such as internationalization _i18n_, localization _l16n_, or accessibility _a11y_.
 * Explain exception handling approaches in backend and frontend applications.
 * Explain test driven development build on JUnit 5, Mockito and AssertJ and the variants TDD, BDD, ATDD.

@@ -1,7 +1,7 @@
 ---
 title: "Nice Statechart Diagrams"
 linkTitle: "Nice Statecharts "
-date: 2024-03-21
+date: 2024-03-10
 tags: ["architecture", "students-java"]
 ---
 
@@ -38,7 +38,7 @@ It is worth noting that you are already coding state machines, except that they 
 == Why Finite State Machines?
 
 The actor model <<actor-model>> is a powerful approach to create resilient and scalable distributed systems.
-Asynchronous communication between actors avoids global states and painful synchronization primitives such as locks, semaphores or monitors.
+Asynchronous communication between actors avoids global states and painful synchronization of primitives such as locks, semaphores or monitors.
 Each actor defines his behavior with a finite state machine.
 Messages sent to an actor are the events triggering the firing of transitions.
 
@@ -109,12 +109,25 @@ The generator logic is straightforward.
 
 The link:../../../docs/fsm[OS FSM] defines generators for Java language and documentation targets.
 
+[TIP]
+====
+The visual and tabular documentation is always synchrone with the source code.
+
+This approach has one source of truth and minimizes documentation effort.
+====
+
 == History
 
 A standard to describe and execute UML Statecharts is SCXML <<scxml>>.
 The whole approach to document logic with XML notation was doomed.
 This approach is dying out.
 Do not use it.
+
+Simple flat finite state machines can easily be implemented with two levels of nested switch cases.
+Ask yourself if an external library is worth the effort.
+
+Libraries are mandatory if your state machines have hierarchical or history states.
+Entry and exit states are also easier to implement with a library.
 
 [bibliography]
 == Links

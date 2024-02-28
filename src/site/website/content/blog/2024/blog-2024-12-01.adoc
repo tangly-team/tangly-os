@@ -164,7 +164,7 @@ Wikis often have the following problems:
 You want to deploy the documentation associated with a specific release of your application.
 You often need multiple wiki versions at the same time to support the delivered version, the version under testing and the version under active development.
 - Support for diagramming in the wiki pages is often limited or only available through commercial plugins.
-You should never to generate or copy manually diagrams.
+You should never generate or manually copy diagrams.
 {ref-asciidoctor} support more than thirty https://docs.asciidoctor.org/diagram-extension/latest/[diagram types] out of the box.
 Source code highlighting for huge range of programming languages is also available in {ref-asciidoc}.
 - You must use a wiki supporting storing all contents in a git repository.
@@ -212,7 +212,7 @@ Channels and rooms in the chat application
 footnote:[Slack is probably the best chat application I know.
 The second best would be Discord.
 Microsoft Teams is a reasonable solution if all team members work in the same company.
-Otherwise, the solution is quite a pain because you need to manually logout and login each time you want access to a channel of another organization.]
+Otherwise, the solution is quite a pain because you need to manually log out and login each time you want access to a channel of another organization.]
 shall be available to all internal and external team members.
 ====
 

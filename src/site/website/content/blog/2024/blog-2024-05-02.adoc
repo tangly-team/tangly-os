@@ -1,7 +1,7 @@
 ---
 title: "Actor Model"
 linkTitle: "Actor Model"
-date: 2024-05-02
+date: 2024-05-10
 tags: ["java", "C++", "architecture"]
 ---
 
@@ -15,7 +15,7 @@ Concurrent programming has always been tricky.
 Accessing a shared state from multiple threads is a central problem, where hard-to-catch errors may easily appear.
 
 Protected access to identified shared variables is easy to realize.
-Mechanisms to avoid deadlocks or starvation are cubersome to implement and almost impossible to validate.
+Mechanisms to avoid deadlocks or starvation are cumbersome to implement and almost impossible to validate.
 
 The need for concurrent programming has increased tremendously with the fact that all modern processors and many microcontrollers have multiple cores.
 
@@ -35,7 +35,7 @@ The model is based on {ref-message-passing}.
 The actor model originated in 1973 and was first described by Carl Hewitt.
 
 Although multiple actors can run at the same time, an actor will process a given message sequentially.
-This means that if you send three messages to the same actor, it will sequencially process one at a time.
+This means that if you send three messages to the same actor, it will sequentially process one at a time.
 To have these three messages being executed concurrently, you need to create three actors and send one message each.
 
 Messages are sent asynchronously to an actor that needs to store them somewhere while it is processing another message.
@@ -152,7 +152,7 @@ The _net.tangly.fsm_ library provides the abstractions to elegantly implement ap
 
 - A library providing actors and asynchronous message passing communication.
 - A timer manager to schedule time triggered tasks.
-This approach simplifies slightly the programming of actors.
+This approach slightly simplifies the programming of actors.
 An actor only needs to wait on regular messages or timeout messages on its mailbox.
 - Hierarchical state machines as described in the UML standard.
 - A flow library to publish and subscribe data and realize transformation pipelines.

@@ -72,13 +72,13 @@ You could recompile and run your solution with the new Java version without code
 
 Changes are necessary if you use deprecated packages or access Sun internal packages.
 All deprecated packages have a compatible alternate implementation.
-Often you just need to update the import statements.
+Often you need to update the import statements.
 Sun packages have a documented migration path to alternate approaches providing similar functionality.
 By the way, the _Sun_ company already stated years ago, you should not use these internal packages.
 So it is time to clean up your code.
 
 == Call for Action
 
-Start now your migration to a modern JDK and leave Java 8 behind you.
+Start your migration to a modern JDK now and leave Java 8 behind you.
 
 Anyway, you can only tinker with the date, you will have to migrate at some point.

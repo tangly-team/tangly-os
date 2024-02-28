@@ -43,7 +43,8 @@ He must determine the extent of source code and architectural decay, and identif
 
 Legacy applications are often critical to business and have been in use for years, sometimes decades.
 Since business is evolving, there is constant pressure to support additional requirements.
-However, changing these applications is difficult and you end up spending an increasing number of resources maintaining the software.
+However, changing these applications is challenging.
+You end up spending an increasing number of resources maintaining the software.
 
 There are many reasons why maintaining legacy software is a difficult problem.
 Often, most, if not all, of the original developers are gone, and no one understands how the application is implemented.
@@ -61,7 +62,7 @@ And you will better understand how your users are working with your product.
 * _Understand how it is deployed_.
 You need a reproducible and in the long-run automated process to deploy a new version of your application.
 We are talking about continuous delivery and even continuous deployment.
-* _Understand how it is build_.
+* _Understand how it is built_.
 You need a reproducible and automated build process.
 This process must be integrated into your continuous integration and delivery pipeline.
 * _Understand how it is structured_.
@@ -116,7 +117,7 @@ The latest revision of the method was published in August 2000, almost a quarter
 The approach relies heavily on human review activities.
 The execution of these tasks is expensive and slow.
 The time horizon of an ATAM review is between one and two weeks.
-The results are heavily document centric.
+The results are heavily document-centric.
 No formal or programmatic validation of the findings is usually provided.
 
 This process is too slow in the context of a DevOps or Scrum development approach.

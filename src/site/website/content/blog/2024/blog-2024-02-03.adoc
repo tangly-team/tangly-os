@@ -118,6 +118,19 @@ You need to have a formal education.
 
 A very powerful approach to becoming proficient in a matter is to volunteer for a presentation.
 
+[TIP]
+====
+I am a lecturer at various technical universities for the last thirty-five years.
+I like teaching and interacting with bright young students.
+
+You certainly have to invest in this activity.
+It is very rewarding and a powerful approach to stay current in the fields you are teaching.
+You are paid to stay up to date.
+Students provide good and sometimes harsh feedback on how competent you are.
+
+_Consider teaching as giving back to the community_.
+====
+
 == Write Articles
 
 Write a blog article about a technical theme in your current project.

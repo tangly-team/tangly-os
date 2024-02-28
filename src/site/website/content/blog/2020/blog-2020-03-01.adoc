@@ -51,10 +51,11 @@ The key benefits of immutable objects are:
 * Absence of hidden side effects
 * Protection against null reference errors
 * *Ease of caching*
-* Prevention of identity mutation - _see contract for API standard collections_ -
+* Prevention of identity mutation, _see contract for API standard collections_
 * Avoidance of temporal coupling between methods
 * Support for referential transparency
-* Protection from instantiating logically-invalid objects Protection from inadvertent corruption of existing objects.
+* Protection from instantiating logically invalid objects
+* Protection from inadvertent corruption of existing objects.
 
 == Design Impact
 

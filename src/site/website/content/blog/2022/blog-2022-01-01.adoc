@@ -48,11 +48,11 @@ to perform simple refactorings and improve the quality of your code.
 * Use your IDE to find and remove commented-out lines of code.
 {ref-git} was created to keep track of your modifications.
 Keep your source code free of obsolete and unused code.
-* Use a gradle plugin
+* Use a {ref-gradle} plugin
 footnote:[I use the https://github.com/ben-manes/gradle-versions-plugin[com.github.ben-manes.versions] for this purpose.
 The plugin handles nicely multi-modules projects.
 The plugin also supports the central declaration of dependencies feature in Gradle.]
-To update your libraries and remove technologically obsolesce.
+To update your libraries and remove technical obsolescence.
 * Please use the current version of your technical stack and build toolchain. +
 Update your Java version when the next one is coming out.
 You have access to better libraries, interfaces, and runtime engines.

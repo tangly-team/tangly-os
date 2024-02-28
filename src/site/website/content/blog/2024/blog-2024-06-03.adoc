@@ -1,7 +1,7 @@
 ---
 title: "Actors with CMSIS OS in Cpp"
 linkTitle: "C++ cmsis Actors"
-date: 2024-06-10
+date: 2024-06-15
 tags: ["C++", "architecture", "embedded"]
 ---
 
@@ -281,7 +281,7 @@ The variant abstraction from the standard library provides runtime checks that t
 
 Your actor class only needs to override the _processMsg(Message<Data>* msg)_ method.
 The body of this method should process all expected message types.
-Do not forget to release each message you retrieved from the message queue with the _message()_ function.
+Remember to release each message you retrieved from the message queue with the _message()_ function.
 
 If you have a complex logic, consider implementing a flat finite state machine as a double nested switch in the method.
 

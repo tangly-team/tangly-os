@@ -6,6 +6,7 @@ tags: ["organization"]
 ---
 
 :ref-metal: https://developer.apple.com/metal/[Metal]
+:ref-integrity: https://peacockmedia.software/mac/integrity/[Integrity]
 
 include::../fragments/_config-mb-blog.aodc[]
 
@@ -54,7 +55,7 @@ A battery replacement on a MacBook notebook takes easily one week in Switzerland
 I installed manually the following applications:
 
 Browsers::
-- Google Chrome
+- Google Chrome is my primary browser.
 - Firefox
 - _Safari is installed with macOS._
 Office Applications::
@@ -78,7 +79,8 @@ The worst missing feature is bulk download of purchased books.
 I like to explore my library during commute train travel.
 You do not have wireless access to trains in Switzerland.
 The books shall be stored in the notebook otherwise you cannot read them.]._
-- JabRef for bibliography references.
+- JabRef for bibliography references
+footnote:[I love the bibtex to keep track to all my literature references.].
 - Google Drive to access all our company drives.
 - Switch Drive for the Swiss technical university drives.
 - Spotify to listen to music.
@@ -98,6 +100,7 @@ I only use the LTS version for legacy activities.
 I am not aware of any scenarios why an organization should use an older Java version and have an advantage.].
 - https://visualvm.github.io/[VisualVM]
 - https://www.docker.com/[Docker Desktop] is used for clean validation and local deployment of complex applications.
+- {ref-integrity} to check the links on my websites.
 
 [TIP]
 ====
@@ -125,7 +128,7 @@ image::2023-04-02-homebrew.png[width=600,height=360,role=text-center]
 
 [source,console]
 ----
-brew install maven gradle git git-lfs node pmd                        <1>
+brew install maven gradle git git-lfs node pmd ruby                   <1>
 brew install hugo asciidoctor graphviz plantuml mermaid-cli python    <2>
 brew install clojure leiningen                                        <3>
 brew install wget rsync ghostscript                                   <4>
@@ -141,10 +144,9 @@ gem install --prerelease asciidoctor-tabs
 gem update system & gem update
 
 brew install --cask netnewswire                                       <9>
-brew install --cask asciidocfx                                        <10>
 npm install @mermaid-js/mermaid-cli
 
-brew install cmake ninja doxygen                                      <11>
+brew install cmake ninja doxygen                                      <10>
 ----
 
 <1> Development tools for Java projects.
@@ -161,18 +163,11 @@ Due to macOS Ventura, you need to enable the application with _xattr_ command.
 <8> Install the ruby packages used with asciidoctor to create the static websites.
 <9> Install a newsreader for RSS feeds.
 It is also used to check if https://blog.tangly.net[tangly blog] RSS feed is working.
-<10> Install {ref-asciidoc} editor and support for {ref-plantuml} and {ref-mermaid} diagram support.
-<11> Development tools for {cpp} projects.
+<10> Development tools for {cpp} projects.
 
 I use a URL link checker to validate my websites.
-The link checker is a python package.
-
-[source,console]
-----
-sudo -H pip3 install linkchecker                                <1>
-----
-
-<1> the _-H_ sudo option installs the python package for all users.
+The link checker was a python package.
+I replaced it with {ref-integrity} application.
 
 == Git and GitHub Configuration
 

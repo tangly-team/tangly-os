@@ -36,7 +36,20 @@ ____
 The heart of software is its ability to solve domain-related problems for its user.
 ____
 
+== History
+
+It originated in the 1980s and 1990s, with Richard P. Gabriel being an early pioneer who introduced _domain models_ as mental models of the business guiding software and digital product development.
+
+Eric Evans further developed DDD in the late 1990s and early 2000s.
+His book _Domain-Driven Design: Tackling Complexity in the Heart of Software_ cite:[domain-driven-design]
+defined DDD as creating software based on a deep understanding of the business domain.
+It outlined principles for creating domain models, including using object-relational mapping (ORM) tools.
+
+Today, DDD is widely accepted and applied across various domains like financial services, healthcare, and e-commerce.
+
 == Layers in DDD
+
+image::2022-06-01-layers.png[width=360,height=360,float=left,align=center]
 
 Domain-driven design _DDD_ has four layers in the architecture:
 
@@ -48,16 +61,17 @@ Vaadin allows us to use the single technology stack Java to develop all backend 
 Application::
 This is a thin layer between the interface and the domain, it could call domain services to serve the solution purposes.
 Domain::
-The heart of the software, this layer holds domain logic and business knowledge. +
+At The heart of the software, this layer holds domain logic and business knowledge. +
 _A major goal is to avoid any tainting of the core domain model from other layers._
-_Try to avoid extending domain entities with implementation specific root classes or to a lesser degree annotations._
+_Try to avoid extending domain entities with implementation-specific root classes or to a lesser degree annotations._
 Infrastructure::
 A supporting layer for the other layers.
-This layer contains supporting libraries or external services like a database or UI supporting library. +
+This layer contains supporting libraries or external services like a database or UI supporting library.
+
 _I use libraries to minimize effort in support functions such as persistence, JSON transformation, archiving, and reporting.
 The microstream library is a good example of this approach.
 The persistence capability is less than fifty lines of code.
-No changes in the domain model was necessary.
+No changes in the domain model were necessary.
 We did not have to add a root persistent class or use annotations._
 
 == Package Structure
@@ -74,7 +88,7 @@ The Java compiler validates the module dependencies and interfaces.
 Services::
 defines the bounded domain context.
 The domain uses the library to implement a bounded domain.
-The ports, handlers and realms are declared in the context package for small bounded domains.
+The ports, handlers, and realms are declared in the context package for small bounded domains.
 Complex domains can declare these interfaces in separate packages for legibility.
 Logic::
 contains common business logic and features.
