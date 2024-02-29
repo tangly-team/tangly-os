@@ -13,7 +13,6 @@
 
 package net.tangly.erp.ledger.ui;
 
-import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.contextmenu.MenuItem;
 import com.vaadin.flow.component.contextmenu.SubMenu;
@@ -24,14 +23,11 @@ import net.tangly.ui.app.domain.DomainView;
 import net.tangly.ui.components.Mode;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Objects;
-
 public class LedgerBoundedDomainUi extends BoundedDomainUi<LedgerBoundedDomain> {
     private final AccountsView accountsView;
     private final TransactionsView transactionsView;
     private final AnalyticsLedgerView analyticsView;
     private final DomainView domainView;
-    private Component currentView;
 
     public LedgerBoundedDomainUi(@NotNull LedgerBoundedDomain domain) {
         super(domain);
@@ -39,7 +35,7 @@ public class LedgerBoundedDomainUi extends BoundedDomainUi<LedgerBoundedDomain> 
         transactionsView = new TransactionsView(domain, Mode.EDIT);
         analyticsView = new AnalyticsLedgerView(domain);
         domainView = new DomainView(domain);
-        currentView = transactionsView;
+        currentView(transactionsView);
     }
 
     @Override
@@ -51,13 +47,7 @@ public class LedgerBoundedDomainUi extends BoundedDomainUi<LedgerBoundedDomain> 
 
         addAnalytics(layout, menuBar, analyticsView);
         addAdministration(layout, menuBar, domainView, new CmdFilesUploadLedger(domain()));
-        select(layout, currentView);
-    }
-
-    @Override
-    public void select(@NotNull AppLayout layout, Component view) {
-        currentView = Objects.isNull(view) ? currentView : view;
-        layout.setContent(currentView);
+        select(layout);
     }
 
     @Override

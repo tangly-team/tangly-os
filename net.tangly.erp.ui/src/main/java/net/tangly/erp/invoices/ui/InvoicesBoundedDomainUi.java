@@ -13,7 +13,6 @@
 
 package net.tangly.erp.invoices.ui;
 
-import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.contextmenu.MenuItem;
 import com.vaadin.flow.component.contextmenu.SubMenu;
@@ -24,20 +23,17 @@ import net.tangly.ui.app.domain.DomainView;
 import net.tangly.ui.components.Mode;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Objects;
-
 public class InvoicesBoundedDomainUi extends BoundedDomainUi<InvoicesBoundedDomain> {
     private final ArticlesView articlesView;
     private final InvoicesView invoicesView;
     private final DomainView domainView;
-    private Component currentView;
 
     public InvoicesBoundedDomainUi(@NotNull InvoicesBoundedDomain domain) {
         super(domain);
         articlesView = new ArticlesView(domain, Mode.EDIT);
         invoicesView = new InvoicesView(domain, Mode.EDIT);
         domainView = new DomainView(domain);
-        currentView = invoicesView;
+        currentView(invoicesView);
     }
 
     @Override
@@ -48,13 +44,7 @@ public class InvoicesBoundedDomainUi extends BoundedDomainUi<InvoicesBoundedDoma
         subMenu.addItem("Invoices", e -> select(layout, invoicesView));
 
         addAdministration(layout, menuBar, domainView, new CmdFilesUploadInvoices(domain()));
-        select(layout, currentView);
-    }
-
-    @Override
-    public void select(@NotNull AppLayout layout, Component view) {
-        currentView = Objects.isNull(view) ? currentView : view;
-        layout.setContent(currentView);
+        select(layout);
     }
 
     @Override

@@ -13,7 +13,6 @@
 
 package net.tangly.erp.products.ui;
 
-import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.contextmenu.MenuItem;
 import com.vaadin.flow.component.contextmenu.SubMenu;
@@ -24,14 +23,11 @@ import net.tangly.ui.app.domain.DomainView;
 import net.tangly.ui.components.Mode;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Objects;
-
 public class ProductsBoundedDomainUi extends BoundedDomainUi<ProductsBoundedDomain> {
     private final ProductsView productsView;
     private final AssignmentsView assignmentsView;
     private final EffortsView effortsView;
     private final DomainView domainView;
-    private Component currentView;
 
     public ProductsBoundedDomainUi(@NotNull ProductsBoundedDomain domain) {
         super(domain);
@@ -39,7 +35,7 @@ public class ProductsBoundedDomainUi extends BoundedDomainUi<ProductsBoundedDoma
         assignmentsView = new AssignmentsView(domain, Mode.EDIT);
         effortsView = new EffortsView(domain, Mode.DELETE);
         domainView = new DomainView(domain);
-        currentView = productsView;
+        currentView(productsView);
     }
 
     @Override
@@ -51,13 +47,7 @@ public class ProductsBoundedDomainUi extends BoundedDomainUi<ProductsBoundedDoma
         subMenu.addItem("Efforts", e -> select(layout, effortsView));
 
         addAdministration(layout, menuBar, domainView, new CmdFilesUploadProducts(domain()));
-        select(layout, currentView);
-    }
-
-    @Override
-    public void select(@NotNull AppLayout layout, Component view) {
-        currentView = Objects.isNull(view) ? currentView : view;
-        layout.setContent(currentView);
+        select(layout);
     }
 
     @Override

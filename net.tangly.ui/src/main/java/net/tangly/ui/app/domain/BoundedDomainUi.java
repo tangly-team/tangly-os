@@ -21,6 +21,8 @@ import com.vaadin.flow.component.menubar.MenuBar;
 import net.tangly.core.domain.BoundedDomain;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Objects;
+
 /**
  * Define the interface for the visualization of a bounded domain. The user interface is a set of views to display entities, commands, and dialogs to modify entities.
  * <p>Commands can trigger domain changes which should be reflected in the user interface. Some commands update the current displayed view, others update multiple views of the
@@ -34,10 +36,10 @@ public abstract class BoundedDomainUi<T extends BoundedDomain<?, ?, ?, ?>> {
     public static final String IMPORT = "Import";
     public static final String EXPORT = "Export";
     public static final String CLEAR = "Clear";
-
     public static final String LOAD = "Load";
 
     private final T domain;
+    private Component currentView;
 
     public BoundedDomainUi(@NotNull T domain) {
         this.domain = domain;
@@ -70,7 +72,14 @@ public abstract class BoundedDomainUi<T extends BoundedDomain<?, ?, ?, ?>> {
      * @param layout layout to display within
      * @param view   new current view if not null otherwise the current view is refreshed
      */
-    public abstract void select(@NotNull AppLayout layout, Component view);
+    public void select(@NotNull AppLayout layout, Component view) {
+        currentView = Objects.isNull(view) ? currentView : view;
+        layout.setContent(currentView);
+    }
+
+    public void select(@NotNull AppLayout layout) {
+        select(layout, currentView);
+    }
 
     public void refreshViews() {
     }
@@ -106,5 +115,13 @@ public abstract class BoundedDomainUi<T extends BoundedDomain<?, ?, ?, ?>> {
     private void executeGlobalAction(@NotNull Runnable action) {
         action.run();
         refreshViews();
+    }
+
+    protected void currentView(Component currentView) {
+        this.currentView = currentView;
+    }
+
+    protected Component currentView() {
+        return currentView;
     }
 }

@@ -13,7 +13,6 @@
 
 package net.tangly.erp.crm.ui;
 
-import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.contextmenu.MenuItem;
 import com.vaadin.flow.component.contextmenu.SubMenu;
@@ -24,8 +23,6 @@ import net.tangly.ui.app.domain.BoundedDomainUi;
 import net.tangly.ui.app.domain.DomainView;
 import net.tangly.ui.components.Mode;
 import org.jetbrains.annotations.NotNull;
-
-import java.util.Objects;
 
 public class CrmBoundedDomainUi extends BoundedDomainUi<CrmBoundedDomain> {
     private final LeadsView leadsView;
@@ -38,7 +35,6 @@ public class CrmBoundedDomainUi extends BoundedDomainUi<CrmBoundedDomain> {
     private final SubjectsView subjectsView;
     private final AnalyticsCrmView analyticsView;
     private final DomainView domainView;
-    private Component currentView;
 
     public CrmBoundedDomainUi(@NotNull CrmBoundedDomain crmDomain, @NotNull InvoicesBoundedDomain invoicesDomain) {
         super(crmDomain);
@@ -52,7 +48,7 @@ public class CrmBoundedDomainUi extends BoundedDomainUi<CrmBoundedDomain> {
         subjectsView = new SubjectsView(domain(), Mode.EDIT);
         analyticsView = new AnalyticsCrmView(domain(), invoicesDomain);
         domainView = new DomainView(domain());
-        currentView = naturalEntitiesView;
+        currentView(naturalEntitiesView);
     }
 
     @Override
@@ -70,13 +66,7 @@ public class CrmBoundedDomainUi extends BoundedDomainUi<CrmBoundedDomain> {
 
         addAnalytics(layout, menuBar, analyticsView);
         addAdministration(layout, menuBar, domainView, new CmdFilesUploadCrm(domain()));
-        select(layout, currentView);
-    }
-
-    @Override
-    public void select(@NotNull AppLayout layout, Component view) {
-        currentView = Objects.isNull(view) ? currentView : view;
-        layout.setContent(currentView);
+        select(layout);
     }
 
     @Override
