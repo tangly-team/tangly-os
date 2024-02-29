@@ -14,25 +14,11 @@
 package net.tangly.erp.products.ports;
 
 import net.tangly.core.domain.Handler;
-import net.tangly.core.providers.Provider;
-import net.tangly.erp.ports.TsvHdl;
-import net.tangly.erp.products.domain.Assignment;
-import net.tangly.erp.products.domain.Effort;
-import net.tangly.erp.products.domain.Product;
 import net.tangly.erp.products.services.ProductsHandler;
 import net.tangly.erp.products.services.ProductsRealm;
-import net.tangly.gleam.model.TsvEntity;
-import net.tangly.gleam.model.TsvProperty;
 import org.jetbrains.annotations.NotNull;
 
 import java.nio.file.Path;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
-
-import static net.tangly.core.tsv.TsvHdlCore.TEXT;
-import static net.tangly.erp.ports.TsvHdl.convertFoidTo;
-import static net.tangly.erp.ports.TsvHdl.createTsvEntityFields;
 
 public class ProductsHdl implements ProductsHandler {
     public static final String PRODUCTS_TSV = "products.tsv";
@@ -74,35 +60,4 @@ public class ProductsHdl implements ProductsHandler {
         realm().assignments().deleteAll();
         realm().products().deleteAll();
     }
-
-    TsvEntity<Product> createTsvProduct() {
-        List<TsvProperty<Product, ?>> fields = createTsvEntityFields();
-        fields.add(TsvProperty.of("contractIds", Product::contractIds, Product::contractIds, e -> Arrays.asList(e.split(",", -1)), e -> String.join(",", e)));
-        return TsvHdl.of(Product.class, fields, Product::new);
-    }
-
-    TsvEntity<Assignment> createTsvAssignment() {
-        List<TsvProperty<Assignment, ?>> fields = createTsvEntityFields();
-        fields.add(TsvProperty.ofString("collaboratorId", Assignment::collaboratorId, Assignment::collaboratorId));
-        fields.add(TsvProperty.of("productOid", Assignment::product, Assignment::product, e -> findProductByOid(e).orElse(null), convertFoidTo()));
-        return TsvHdl.of(Assignment.class, fields, Assignment::new);
-    }
-
-    TsvEntity<Effort> createTsvEffort() {
-        List<TsvProperty<Effort, ?>> fields =
-            List.of(TsvProperty.of("date", Effort::date, Effort::date, TsvProperty.CONVERT_DATE_FROM), TsvProperty.ofInt("durationInMinutes", Effort::duration, Effort::duration),
-                TsvProperty.ofString(TEXT, Effort::text, Effort::text),
-                TsvProperty.of("assignmentOid", Effort::assignment, Effort::assignment, e -> findAssignmentByOid(e).orElse(null), convertFoidTo()),
-                TsvProperty.ofString("contractId", Effort::contractId, Effort::contractId));
-        return TsvEntity.of(Effort.class, fields, Effort::new);
-    }
-
-    public Optional<Product> findProductByOid(String identifier) {
-        return (identifier != null) ? Provider.findByOid(realm.products(), Long.parseLong(identifier)) : Optional.empty();
-    }
-
-    public Optional<Assignment> findAssignmentByOid(String identifier) {
-        return (identifier != null) ? Provider.findByOid(realm.assignments(), Long.parseLong(identifier)) : Optional.empty();
-    }
-
 }

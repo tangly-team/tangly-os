@@ -1,5 +1,5 @@
 /*
- * Copyright 2022-2023 Marcel Baumann
+ * Copyright 2022-2024 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -44,12 +44,6 @@ public class ProductsTsvHdl {
         this.realm = realm;
     }
 
-    private static TsvEntity<Product> createTsvProduct() {
-        List<TsvProperty<Product, ?>> fields = createTsvEntityFields();
-        fields.add(TsvProperty.of("contractIds", Product::contractIds, Product::contractIds, e -> Arrays.asList(e.split(",", -1)), e -> String.join(",", e)));
-        return TsvHdl.of(Product.class, fields, Product::new);
-    }
-
     public void importProducts(@NotNull Reader reader, String source) {
         TsvHdl.importEntities(reader, source, createTsvProduct(), realm.products());
     }
@@ -80,6 +74,12 @@ public class ProductsTsvHdl {
 
     public Optional<Assignment> findAssignmentByOid(String identifier) {
         return (identifier != null) ? Provider.findByOid(realm.assignments(), Long.parseLong(identifier)) : Optional.empty();
+    }
+
+    private static TsvEntity<Product> createTsvProduct() {
+        List<TsvProperty<Product, ?>> fields = createTsvEntityFields();
+        fields.add(TsvProperty.of("contractIds", Product::contractIds, Product::contractIds, e -> Arrays.asList(e.split(",", -1)), e -> String.join(",", e)));
+        return TsvHdl.of(Product.class, fields, Product::new);
     }
 
     private TsvEntity<Assignment> createTsvAssignment() {

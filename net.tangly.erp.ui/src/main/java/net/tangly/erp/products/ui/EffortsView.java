@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2023 Marcel Baumann
+ * Copyright 2006-2024 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -29,6 +29,7 @@ import net.tangly.ui.components.VaadinUtils;
 import org.jetbrains.annotations.NotNull;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 /**
  * Regular CRUD view on efforts abstraction. The grid and edition dialog wre optimized for usability.
@@ -70,8 +71,8 @@ class EffortsView extends ItemView<Effort> {
         }
 
         public boolean test(@NotNull Effort entity) {
-            return matches(entity.contractId(), contractId) && matches(entity.assignment().id(), assignmentId) && matches(entity.assignment().collaboratorId(), collaboratorId) &&
-                matches(entity.text(), text);
+            return matches(entity.contractId(), contractId) && matches(Objects.nonNull(entity.assignment()) ? entity.assignment().id() : null, assignmentId) &&
+                matches(Objects.nonNull(entity.assignment()) ? entity.assignment().collaboratorId() : null, collaboratorId) && matches(entity.text(), text);
         }
     }
 
@@ -127,11 +128,12 @@ class EffortsView extends ItemView<Effort> {
     @Override
     protected void init() {
         var grid = grid();
-        grid.addColumn(o -> o.assignment().id()).setKey("assignment").setHeader("Assignment").setAutoWidth(true).setResizable(true).setSortable(true);
-        grid.addColumn(o -> o.assignment().name()).setKey("collaborator").setHeader("Collaborator").setAutoWidth(true).setResizable(true).setSortable(true);
+        grid.addColumn(o -> Objects.nonNull(o.assignment()) ? o.assignment().id() : null).setKey("assignment").setHeader("Assignment").setAutoWidth(true).setResizable(true)
+            .setSortable(true);
+        grid.addColumn(o -> Objects.nonNull(o.assignment()) ? o.assignment().name() : null).setKey("collaborator").setHeader("Collaborator").setAutoWidth(true).setResizable(true)
+            .setSortable(true);
         grid.addColumn(Effort::date).setKey("date").setHeader("Date").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Effort::duration).setKey("duration").setHeader("Duration").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Effort::contractId).setKey("contractId").setHeader("ContractId").setAutoWidth(true).setResizable(true).setSortable(true);
-
     }
 }

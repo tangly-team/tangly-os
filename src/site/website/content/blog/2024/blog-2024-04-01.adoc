@@ -1,6 +1,6 @@
 ---
-title: "Structured Concurrency"
-linkTitle: "Structured Concurrency"
+title: "Structure Your Concurrency"
+linkTitle: "Structure Concurrency"
 date: 2024-04-01
 tags: ["java", "students-java"]
 ---
@@ -9,111 +9,61 @@ include::../fragments/_config-mb-blog.aodc[]
 
 image::2024-04-01-head.png[width=420,height=360,role=left]
 
-Enhance the maintainability, reliability, and observability of multithreaded code by adopting a concurrent programming style that reduces the likelihood of thread leaks and cancellation delay.
-These are common risks associated with cancellation and shutdown.
+Writing concurrent software is one of the greatest challenges for software developers cite:[modern-software-engineering,effective-java-3rd].
 
-Writing concurrent software is one of the greatest challenges for software developers.
-Java’s thread model makes it a strong contender among concurrent languages, but multithreading has always been inherently tricky.
-Structured concurrency allows you to use multiple threads with structured programming syntax.
-In essence, it provides a way to write concurrent software using familiar program flows and constructs.
-This lets developers focus on the business at hand, instead of the orchestration of threading.
-As the JEP for structured concurrency says, "If a task splits into concurrent subtasks, then they all return to the same place, namely the task's code block."
+Java thread model makes it a strong contender among concurrent languages, but multithreading has always been inherently tricky.
+
+The introduction of _virtual threads_ empowered Java to provide a unique and highly-optimized threading system that is also easy to understand.
+You can now create millions of threads without the overhead of creating a native operating system thread.
+
+Now you need mechanisms to manage this huge number of threads.
 
 Virtual threads, now an official feature of Java, create the possibility of cheaply spawning threads to gain concurrent performance.
-Structured concurrency provides the simple syntax to do so.
 As a result, Java now has a unique and highly-optimized threading system that is also easy to understand.
 
-cite:[modern-software-engineering,effective-java-3rd]
+How do you cope with a huge number of threads?
+
+How do you process huge collections?
+
+How do you process data flows with back pressure?
+
+How do you design distributed and reactive systems?
 
 == Structured Concurrency
 
-Writing concurrent software is one of the greatest challenges for software developers.
-Java thread model makes it a strong contender among concurrent languages, but multithreading has always been inherently tricky.
-Structured concurrency allows you to use multiple threads with structured programming syntax.
-In essence, it provides a way to write concurrent software using familiar program flows and constructs.
-This lets developers focus on the business at hand, instead of the orchestration of threading.
+Structured concurrency enhances the maintainability, reliability, and observability of multithreaded code.
+It adopts a concurrent programming style that reduces the likelihood of thread leaks and cancellation delay.
+These are common risks associated with cancellation and shutdown.
 
-Virtual threads, now an official feature of Java, create the possibility of cheaply spawning threads to gain concurrent performance.
-Structured concurrency provides the simple syntax to do so.
-As a result, Java now has a unique and highly-optimized threading system that is also easy to understand.
+As the JEP for structured concurrency says, _If a task splits into concurrent subtasks, then they all return to the same place, namely the task's code block_.
 
 Structured concurrency is a programming paradigm that provides a way to write concurrent software using familiar program flows and constructs.
 It guarantees that all concurrent tasks are properly managed and cleaned up when leaving the scope of the _try with resources_ block.
 
 [source,java]
 ----
-package com.infoworld;
-
-import java.util.concurrent.*;
-import java.util.concurrent.StructuredTaskScope.*;
-
-public class App {
-    public String getPlanet(int planetId) throws Exception {
-      System.out.println("BEGIN getPlanet()");
-    String url = "https://swapi.dev/api/planets/" + planetId + "/";
-    String ret = "?";
-
-    CloseableHttpClient httpClient = HttpClients.createDefault();
-
-    HttpGet request = new HttpGet(url);
-    CloseableHttpResponse response = httpClient.execute(request);
-
-    // Check the response status code
-    if (response.getStatusLine().getStatusCode() != 200) {
-      System.err.println("Error fetching planet information for ID: " + planetId);
-      throw new RuntimeException("Error fetching planet information for ID: " + planetId);
-    } else {
-      // Parse the JSON response and extract planet information
-        ret = EntityUtils.toString(response.getEntity());
-        System.out.println("Got a Planet: " + ret);
-      }
-
-      // Close the HTTP response and client
-      response.close();
-      httpClient.close();
-      return ret;
-    }
-
-    void sync() throws Exception {
-        int[] planetIds = {1,2,3,4,5};
-        for (int planetId : planetIds) {
-          getPlanet(planetId);
-        }
-    }
-
-    void sc() throws Exception {
-      int[] planetIds = {1,2,3,4,5};
-        try (var scope = new StructuredTaskScope<Object>()) {
-          for (int planetId : planetIds) {
-            scope.fork(() -> getPlanet(planetId));
-          }
-          scope.join();
-        }catch (Exception e){
-          System.out.println("Error: " + e);
-        }
-    }
-    public static void main(String[] args) {
-      var myApp = new App();
-      // ...
-      System.out.println("\n\r-- BEGIN Structured Concurrency");
-      try {
-        myApp.sc();
-      } catch (Exception e){
-        System.err.println("Error: " + e);
-      }
-    }
+try (var scope = new StructuredTaskScope.ShutdownOnFailure()) {
+    Future<Shelter> shelter = scope.fork(this::getShelter);
+    Future<List<Dog>> dogs = scope.fork(this::getDogs);
+    scope.join();
+    Response response = new Response(shelter.resultNow(), dogs.resultNow());
+    // ...
 }
 ----
 
 == Concurrent Stream Processing
 
-Java 8 introduced the Stream API, which provides a way to process data in a declarative manner.
+Java 8 introduced the Stream API, which provides a way to process data in a declarative manner cite:[functional-programming-java].
 
 Java Streams support parallel processing, but the parallelism is not structured.
 The parallelism is processing bound and not I/O bound.
 Therefore, the maximum number of active threads should be limited to the number of available processor cores.
 
 The parallel stream is cleanup upon completion of the terminal operation.
+
+[source,java]
+----
+----
 
 == Concurrent Data Flow Processing
 
@@ -123,9 +73,25 @@ It is a specification for asynchronous stream processing with non-blocking back 
 The processing pipeline is composed of a source, a set of operators, and a sink.
 The reactive library takes care of the threading and back pressure.
 
+[source,java]
+----
+----
+
+== Distributed and Reactive Systems
+
+[source,java]
+----
+----
+
 == Lessons Learnt
 
 Between virtual threads and structured concurrency, Java developers have a compelling new mechanism for breaking up almost any code into concurrent tasks without much overhead.
+
+Use parallel streams when processing huge collections
+
+Use reactive programming when processing data flows with back pressure, different sampling rates, and complex event processing.
+
+Use the actor model when designing distributed and reactive systems.
 
 [bibliography]
 == Links
@@ -136,7 +102,7 @@ Marcel Baumann. 2024
 Marcel Baumann. 2024
 - [[[modern-java-modules, 3]]] link:../../2024/java-modules[Java Modules]
 Marcel Baumann. 2024
-- [[[modern-java-structured-concurency, 4]]] link:../../2024/structured-concurrency[Structured Concurrency]
+- [[[modern-java-structured-concurency, 4]]] link:../../2024/structure-your-concurrency[Structured Concurrency]
 Marcel Baumann. 2024
 
 == References

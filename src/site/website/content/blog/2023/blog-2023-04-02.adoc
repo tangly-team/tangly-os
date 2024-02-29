@@ -38,7 +38,7 @@ footnote:[To be fair, I am not involved in machine learning or vision applicatio
 Apple support for standard ML libraries is abysmal.
 The company decided to create their own standard with {ref-metal} and do not assume the consequences.].
 It is a pleasure to work with it.
-The only visible difference with the older notebook is the new version has a bulkier build.
+The only visible difference with the older notebook is the newer version has a bulkier build.
 
 I decided to set up the machine from the ground up.
 I want to find out which programs I am really using in my work.
@@ -49,6 +49,7 @@ We store company related or personal data either on Cloud drives or in Git repos
 The older notebook is now my backup computer.
 It can be quite useful.
 A battery replacement on a MacBook notebook takes easily one week in Switzerland.
+You have to send the notebook to an approved reseller and have no access during this time.
 
 == Standard Programs
 
@@ -61,9 +62,9 @@ Browsers::
 Office Applications::
 - https://asciidocfx.com/[AsciiDocFX] _as I write all technical documents using {ref-asciidoc} markup language._
 - https://www.libreoffice.org/[LibreOffice] _is my primary office suite for all documents._
-- Microsoft Office _is optional in case I receive a related file.
+** Microsoft Office _is optional in case I receive a related file.
 I do not use it for productive work._
-- Apple Office Suite _is optional in case I receive a related file.
+** Apple Office Suite _is optional in case I receive a related file.
 I do not use it for productive work._
 - Conference Tools: Slack, Zoom, Discord, Microsoft Teams
 footnote:[I love the Jabra Evolve2-65 headset for audio and video sessions.
