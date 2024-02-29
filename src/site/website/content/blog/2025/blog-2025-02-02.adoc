@@ -71,6 +71,16 @@ _italics_
 
 image::2025-02-02-iterations.png[width=420,height=360,role=left]
 
+Working as a lecturer and coach for technical universities is very rewarding.
+I have the privilege to work with students and professors on the latest research and development projects.
+
+My current courses and projects were
+
+- Software Architecture and Techniques
+- Programming Concepts and Paradigms
+- https://www.hslu.ch/de-ch/hochschule-luzern/forschung/projekte/detail/?pid=5928[Competence Platforms for Teacher Students]
+- https://www.hslu.ch/de-ch/hochschule-luzern/forschung/projekte/detail/?pid=5571[BGE Digital Pathfinder]
+
 [bibliography]
 == Links
 
