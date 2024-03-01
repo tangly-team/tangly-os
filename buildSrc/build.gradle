@@ -23,6 +23,6 @@ dependencies {
     // currently version catalog libs.versions.toml is not supported in convention plugin mechanism
     implementation 'com.github.spotbugs.snom:spotbugs-gradle-plugin:5.0.5'
     implementation 'org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:3.3'
-    implementation 'info.solidsoft.gradle.pitest:gradle-pitest-plugin:1.7.0'
+    implementation 'info.solidsoft.gradle.pitest:gradle-pitest-plugin:1.15.0'
     implementation 'com.github.ben-manes:gradle-versions-plugin:0.41.0'
 }
