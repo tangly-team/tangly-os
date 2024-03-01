@@ -15,7 +15,7 @@ jobs:
                     distribution: 'temurin'
                     java-version: '21'
                     cache: 'gradle'
-            -   uses: arduino/setup-protoc@v2
+            -   uses: arduino/setup-protoc@v3
             -   run: |
                     ./gradlew build
             #       ./gradlew build -Pvaadin.productionMode=true (not working with a circular dependency error)
