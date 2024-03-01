@@ -20,7 +20,7 @@ sonatype = "org.sonatype.gradle.plugins.scan:2.2.2"
 pitest = "info.solidsoft.pitest:1.7.0"
 errorprone = "net.ltgt.errorprone:3.0.1"
 jib = "com.google.cloud.tools.jib:3.2.0"
-mannes = "com.github.ben-manes.versions:0.41.0"
+mannes = "com.github.ben-manes.versions:0.51.0"
 
 [libraries]
 annotations = "org.jetbrains:annotations:24.1.0"
