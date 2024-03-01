@@ -53,35 +53,54 @@ try (var scope = new StructuredTaskScope.ShutdownOnFailure()) {
 
 == Concurrent Stream Processing
 
+[.float-group]
+--
+image::2024-04-01-parallel-stream.png[width=420,height=360,role=left]
+
 Java 8 introduced the Stream API, which provides a way to process data in a declarative manner cite:[functional-programming-java].
 
 Java Streams support parallel processing, but the parallelism is not structured.
+
 The parallelism is processing bound and not I/O bound.
 Therefore, the maximum number of active threads should be limited to the number of available processor cores.
 
 The parallel stream is cleanup upon completion of the terminal operation.
+--
 
 [source,java]
 ----
+List<Integer> listOfNumbers = Arrays.asList(1, 2, 3, 4);
+int sum = listOfNumbers.parallelStream().reduce(5, Integer::sum);
 ----
 
 == Concurrent Data Flow Processing
+
+[.float-group]
+--
+image::2024-04-01-reactive.png[width=420,height=360,role=left]
 
 Concurrent data flow processing is based on the Reactive Streams API.
 It is a specification for asynchronous stream processing with non-blocking back pressure.
 
 The processing pipeline is composed of a source, a set of operators, and a sink.
-The reactive library takes care of the threading and back pressure.
 
-[source,java]
-----
-----
+The reactive library takes care of the threading and back pressure.
+--
 
 == Distributed and Reactive Systems
 
-[source,java]
-----
-----
+[.float-group]
+--
+image::2024-04-01-actor.png[width=420,height=360,role=left]
+
+The actor model is a programming model for concurrency in a distributed system.
+It is based on the concept of actors, which are independent entities that communicate with each other by sending messages.
+
+Each actor has its own mailbox and processes messages one at a time.
+An actor only accesses its own state and does not share state with other actors.
+
+An actor is an active object that encapsulates state and behavior and is implemented as a concurrent process.
+--
 
 == Lessons Learnt
 
