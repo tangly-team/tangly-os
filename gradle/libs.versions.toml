@@ -105,7 +105,7 @@ eclispsestore-storage = { module = "org.eclipse.store:storage-embedded", version
 eclispsestore-jdk8 = { module = "org.eclipse.serializer:persistence-binary-jdk8", version.ref = "eclipsestore-version" }
 eclispsestore-jdk17 = { module = "org.eclipse.serializer:persistence-binary-jdk17", version.ref = "eclipsestore-version" }
 
-mockito = "org.mockito:mockito-junit-jupiter:5.10.0"
+mockito = "org.mockito:mockito-junit-jupiter:5.11.0"
 
 scribe = "com.github.scribejava:scribejava-apis:8.3.1"
 
