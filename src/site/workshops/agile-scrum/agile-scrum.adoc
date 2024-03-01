@@ -445,7 +445,26 @@ image::software-craftsmanship.png[]
 
 === DevOps
 
-image:devops-lifecycle.jpg[]]
+image:devops-lifecycle.jpg[]
+
+=== Metrics
+
+image:dora-metrics.jpg[]]
+
+[.notes]
+--
+Empirism is key for agile approaches and is a pilar of Scrum.
+
+Choose your metrics.
+A basic set of metrics could be the DORA metrics.
+These metrics are not the only ones, but they are a good starting point.
+They are kind standard in the DevOps community.
+
+. Frequency of deployments
+. The amount of time between acceptance and deployment
+. How frequently deployments fail
+. How long it takes to restore service—or recover from a failure
+--
 
 === Team Dynamics
 
@@ -454,7 +473,7 @@ image::team-responsibilities.png[]
 === Think Lean and Agile
 
 - A *team* works on a *product*.
-Avoid story factories.s
+Avoid story factories.
 - Deliver *often*.
 Collect *feedback*.
 - Exhaustive requirements document at the beginning of the project is a fallacy.

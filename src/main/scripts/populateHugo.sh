@@ -45,7 +45,7 @@ siteWorkshopsDir=$siteDir/static/ideas/learnings/workshops/
 function copy_workshop () {
     cp -R $workshopsDir/$1/pics/* $siteWorkshopsDir/$1/pics
     pushd $workshopsDir
-    bundle exec asciidoctor-revealjs -a revealjsdir=$revealjsDir $1/$1.adoc
+    bundle exec asciidoctor-revealjs -r asciidoctor-diagram -r asciidoctor-kroki -a revealjsdir=$revealjsDir $1/$1.adoc
     popd
     mv $workshopsDir/$1/$1.html  $siteWorkshopsDir/$1/
 }
