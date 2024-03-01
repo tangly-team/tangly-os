@@ -8,18 +8,23 @@ weight: 40
 
 === Concepts
 
-Invoices define a business bounded domain as defined in domain-driven design approach.
+Invoices define a business-bounded domain as defined in domain-driven design approach.
 They are not constrained through external entities such as products, contracts or legal entities.
 External entities can provide hints to streamline the creation of regular invoices.
 The invoice article identifier is available as an external identifier to the article bounded domain.
 Similar identifiers are available for legal entities.
 
-VAT rates are defined within an article definition.
-Therefore, different VAT rates require different article definitions.
-For example, in Switzerland, a service company has two VAT rates.
-One for regular services and one for services exempted from VAT taxes.
-
 The currency is defined at the invoice level, meaning all invoice items and subtotals should use the same currency.
+
+==== VAT Rates
+
+We initially stored VAT rates to the article abstraction.
+Experience showed that VAT rates are subject to change and should be stored in the invoice line.
+
+Each invoice line has a VAT rate and a computed VAT amount baed on the geographical location, time when the inovice line was created and the VAT rate.
+
+The application does not try to provide a comprehensive VAT rate database and delegates the responsibility to the user to select the correct VAT rates.
+Reasonable hints are provided through the user interface to streamline the selection process.
 
 === Archiving
 
@@ -34,7 +39,7 @@ The JSON file is an adequate archive format which can digitally be processed.
 ....
 @startuml
 
-package net.tangly.bus.crmRealm {
+package net.tangly.erp.crmRealm {
     class LegalEntity {}
 
     class BankConnection << (R,orchid) >> {
@@ -46,7 +51,7 @@ package net.tangly.bus.crmRealm {
     class Contract {}
 }
 
-package net.tangly.bus.invoices {
+package net.tangly.erp.invoices {
 class Product << (R,orchid) >> {
     String productId
     String description
