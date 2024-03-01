@@ -15,7 +15,7 @@ vaadin-version = '24.3.5'
 [plugins]
 vaadin = { id = "com.vaadin", version.ref = "vaadin-version" }
 spotbugs = "com.github.spotbugs:5.0.5"
-sonarqube = "org.sonarqube:3.3"
+sonarqube = "org.sonarqube:4.4.1.3373"
 sonatype = "org.sonatype.gradle.plugins.scan:2.2.2"
 pitest = "info.solidsoft.pitest:1.7.0"
 errorprone = "net.ltgt.errorprone:3.0.1"
@@ -27,8 +27,8 @@ annotations = "org.jetbrains:annotations:24.1.0"
 antlr-st4 = "org.antlr:ST4:4.3.4"
 apache-commons-cli = "commons-cli:commons-cli:1.5.0"
 apache-commons-csv = "org.apache.commons:commons-csv:1.10.0"
-apache-commons-codec = "commons-codec:commons-codec:1.16.0"
-apache-commons-io = "commons-io:commons-io:2.11.0"
+apache-commons-codec = "commons-codec:commons-codec:1.16.1"
+apache-commons-io = "commons-io:commons-io:2.15.1"
 
 apache-log4j2-api = { module = "org.apache.logging.log4j:log4j-api", version.ref = "log4j2-version" }
 apache-log4j2-core = { module = "org.apache.logging.log4j:log4j-core", version.ref = "log4j2-version" }
