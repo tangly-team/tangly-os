@@ -1,5 +1,5 @@
 {
-    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
     "title": "invoice archive schema",
     "description": "schema to describe invoices",
     "definitions": {
@@ -134,14 +134,12 @@
                         },
                         "vatRate": {
                             "type": "string"
-                        },
-
-                        "required": [
-                            "article",
-                            "quantity",
-                            "vatRate"
-                        ]
-                    }
+                        }
+                    },
+                    "required": [
+                        "quantity",
+                        "vatRate"
+                    ]
                 }
             ]
         },
@@ -161,11 +159,11 @@
                             },
                             "minItems": 1,
                             "uniqueItems": true
-                        },
-                        "required": [
-                            "items"
-                        ]
-                    }
+                        }
+                    },
+                    "required": [
+                        "items"
+                    ]
                 }
             ]
         }
@@ -173,6 +171,7 @@
     "type": "object",
     "properties": {
         "id": {
+            "description": "unique identifier of the invoice",
             "type": "string"
         },
         "name": {
@@ -245,4 +244,3 @@
     ],
     "additionalProperties": false
 }
-
