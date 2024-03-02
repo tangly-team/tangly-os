@@ -45,11 +45,11 @@
             "article": {
                 "unitPrice": 200,
                 "unit": "hour",
-                "vatRate": 0,
                 "description": "Agile training at recognized technical university",
                 "id": "5003"
             },
             "quantity": 1,
+            "vatRate": "0.0",
             "position": 1,
             "text": "Pauschalentschädigung für Expertinnen und Experten (mündliche Modulendprüfung inkl. Spesen)"
         },
@@ -57,11 +57,11 @@
             "article": {
                 "unitPrice": "25",
                 "unit": "unit",
-                "vatRate": "0",
                 "description": "Examination work per student",
                 "id": "5004"
             },
             "quantity": "20",
+            "vatRate": "0.0",
             "position": 2,
             "text": "Studenten mündliche Prüfung"
         },

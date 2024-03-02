@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2023 Marcel Baumann
+ * Copyright 2006-2024 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -117,7 +117,7 @@ public class InvoiceZugFerd implements IExportableTransaction, InvoiceGenerator 
     static record Item(@NotNull InvoiceItem item) implements IZUGFeRDExportableItem {
         @Override
         public IZUGFeRDExportableProduct getProduct() {
-            return new Product(item.article());
+            return new Product(item.article(), item.vatRate());
         }
 
         @Override
@@ -144,7 +144,7 @@ public class InvoiceZugFerd implements IExportableTransaction, InvoiceGenerator 
     /**
      * Implements a ZugFerd exportable product and maps the product to the ZugFerd abstraction.
      */
-    static record Product(@NotNull Article article) implements IZUGFeRDExportableProduct {
+    static record Product(@NotNull Article article, BigDecimal vatRate) implements IZUGFeRDExportableProduct {
         @Override
         public String getUnit() {
             return article.unit();
@@ -162,7 +162,7 @@ public class InvoiceZugFerd implements IExportableTransaction, InvoiceGenerator 
 
         @Override
         public BigDecimal getVATPercent() {
-            return article.vatRate().multiply(HUNDRED);
+            return vatRate.multiply(HUNDRED);
         }
     }
 

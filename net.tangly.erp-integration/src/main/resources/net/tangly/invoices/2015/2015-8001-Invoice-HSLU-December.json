@@ -45,11 +45,11 @@
             "article": {
                 "unitPrice": "140",
                 "unit": "hour",
-                "vatRate": "0",
                 "description": "Agile training at recognized technical university",
                 "id": "5001"
             },
             "quantity": "4",
+            "vatRate": "0.0",
             "position": 1,
             "text": "Vorlesung Enterprise Application (Shop Architecture) - Kotr/Kost 11185"
         }

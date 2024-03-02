@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2023 Marcel Baumann
+ * Copyright 2006-2024 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -77,13 +77,12 @@ class ArticlesView extends ItemView<Article> {
             binder().bindReadOnly(code, Article::code);
             binder().bindReadOnly(unit, Article::unit);
             binder().bindReadOnly(unitPrice, Article::unitPrice);
-            binder().bindReadOnly(vatRate, Article::vatRate);
             return form;
         }
 
         @Override
         protected Article createOrUpdateInstance(Article entity) throws ValidationException {
-            return new Article(fromBinder("id"), fromBinder("name"), fromBinder("text"), fromBinder("code"), fromBinder("unitPrice"), fromBinder("unit"), fromBinder("vatRate"));
+            return new Article(fromBinder("id"), fromBinder("name"), fromBinder("text"), fromBinder("code"), fromBinder("unitPrice"), fromBinder("unit"));
         }
     }
 
@@ -102,7 +101,6 @@ class ArticlesView extends ItemView<Article> {
         grid.addColumn(Article::unit).setKey("unit").setHeader("Unit").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(new NumberRenderer<>(Article::unitPrice, VaadinUtils.FORMAT)).setKey("unitPrice").setHeader("Unit Price").setAutoWidth(true).setResizable(true)
             .setTextAlign(ColumnTextAlign.END);
-        grid.addColumn(Article::vatRate).setKey("vatRate").setHeader("VAT Rate").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Article::text).setKey("text").setHeader("Text").setAutoWidth(true).setResizable(true).setSortable(true);
     }
 }

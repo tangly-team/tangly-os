@@ -1,13 +1,14 @@
 /*
- * Copyright 2006-2022 Marcel Baumann
+ * Copyright 2006-2024 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- *          https://apache.org/licenses/LICENSE-2.0
+ *          http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ *
  */
 
 package net.tangly.erp.invoices.domain;
@@ -32,11 +33,12 @@ import java.util.TreeMap;
 
 /**
  * <p>The abstraction of an invoice with a set of positions, subtotals, and a total. The items and the subtotals have a position
- * to order them in the invoice to provide human readable outputs. An invoice and its components have no dependencies to external entities. Therefore, an
- * invoice is complete and can be archived. For example, you can change the VAT percentage or a product price without any consequence on existing invoices.</p>
- * <p>The invoice assumes that a VAT rate applies to a specific product associated with a given invoice item. This assumption is reasonable for
- * quite a lot of businesses, in particular in the service industry. Often an invoice references only one VAT rate, convenience methods are provided to
- * streamline this scenario.</p>
+ * to order them in the invoice to provide human readable outputs. An invoice and its components have no dependencies to external entities. Therefore, an invoice is complete and
+ * can be archived. For example, you can change the VAT percentage or a product price without any consequence on existing invoices.</p>
+ * <p>The invoice assumes that a VAT rate applies to a specific product associated with a given invoice item.
+ * Each item line has an associated article and a VAT rate. A subtotoal does not have an article or a VAT rate. This assumption is reasonable for quite a lot of businesses, in
+ * particular in the service industry.</p>
+ * <p>Often an invoice references only one VAT rate, convenience methods are provided to streamline this scenario.</p>
  */
 public class Invoice implements HasId, HasName, HasDate, HasText {
     /**
@@ -45,8 +47,8 @@ public class Invoice implements HasId, HasName, HasDate, HasText {
     private String id;
 
     /**
-     * The name is a human-readable identifier of the invoice. The name is also used as file name if the invoice is stored in a JSON file or an artifact is generated.
-     * Humans can associate the invoice with the various artifacts generated out of it.
+     * The name is a human-readable identifier of the invoice. The name is also used as file name if the invoice is stored in a JSON file or an artifact is generated. Humans can
+     * associate the invoice with the various artifacts generated out of it.
      */
     public String name;
     private String text;
@@ -72,8 +74,8 @@ public class Invoice implements HasId, HasName, HasDate, HasText {
     private LocalDate paidDate;
 
     /**
-     * Currency of the invoice. We do not support multi-currency invoices. Please create one invoice for each currency.
-     * The decision is logical due to the complexities of handling value added taxes and exchange rates.
+     * Currency of the invoice. We do not support multi-currency invoices. Please create one invoice for each currency. The decision is logical due to the complexities of handling
+     * value added taxes and exchange rates.
      */
     private Currency currency;
 
@@ -157,13 +159,14 @@ public class Invoice implements HasId, HasName, HasDate, HasText {
     }
 
     /**
-     * Return a map of VAT rates and associated VAT amounts for the whole invoice.
+     * Return a map of VAT rates and associated VAT amounts for the whole invoice. An invoice line has a VAT rate and a computed VAT amount. A subtotal does not have a VAT rate but
+     * has a aggregated VAT amount
      *
      * @return map of entries VAT rate and associated VAT amounts
      */
     public Map<BigDecimal, BigDecimal> vatAmounts() {
         Map<BigDecimal, BigDecimal> vatAmounts = new TreeMap<>();
-        this.items().forEach(o -> vatAmounts.put(o.article().vatRate(), vatAmounts.getOrDefault(o.article().vatRate(), BigDecimal.ZERO).add(o.vat())));
+        items().stream().filter(InvoiceItem::isItem).forEach(o -> vatAmounts.put(o.vatRate(), vatAmounts.getOrDefault(o.vatRate(), BigDecimal.ZERO).add(o.vat())));
         return vatAmounts;
     }
 
@@ -173,12 +176,11 @@ public class Invoice implements HasId, HasName, HasDate, HasText {
      * @return flag if the invoice has multiple VAT rates
      */
     public boolean hasMultipleVatRates() {
-        return this.items().stream().filter(InvoiceItem::isItem).map(o -> o.article().vatRate()).distinct().count() > 1;
+        return this.items().stream().filter(InvoiceItem::isItem).map(o -> o.vatRate()).distinct().count() > 1;
     }
 
     /**
-     * Return the unique VAT rate if defined otherwise empty optional. It is a convenience method to support service companies having exactly one VAT rate for
-     * all their products.
+     * Return the unique VAT rate if defined otherwise empty optional. It is a convenience method to support service companies having exactly one VAT rate for all their products.
      *
      * @return unique VAT rate if defined
      */
@@ -308,15 +310,15 @@ public class Invoice implements HasId, HasName, HasDate, HasText {
     }
 
     public boolean check() {
-        return Objects.nonNull(contractId()) && Objects.nonNull(invoicingEntity()) && Objects.nonNull(invoicedEntity()) &&
-            Objects.nonNull(invoicingConnection()) && Objects.nonNull(currency) && name().startsWith(id());
+        return Objects.nonNull(contractId()) && Objects.nonNull(invoicingEntity()) && Objects.nonNull(invoicedEntity()) && Objects.nonNull(invoicingConnection()) &&
+            Objects.nonNull(currency) && name().startsWith(id());
     }
 
     @Override
     public String toString() {
         return """
             Invoice[id=%s, name=%s, text=%s, invoicingEntity=%s, invoicedEntity=%s, invoicingConnection=%s, contractId=%s, deliveryDate=%s, invoicedDate=%s, dueDate=%s, currency=%s, locale=%s, paymentConditions=%s, items=%s]
-            """.formatted(id(), name(), text(), invoicingEntity(), invoicedEntity(), invoicingConnection(), contractId(), deliveryDate(), date(), dueDate(),
-            currency(), locale(), paymentConditions(), items());
+            """.formatted(id(), name(), text(), invoicingEntity(), invoicedEntity(), invoicingConnection(), contractId(), deliveryDate(), date(), dueDate(), currency(), locale(),
+            paymentConditions(), items());
     }
 }

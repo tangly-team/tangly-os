@@ -32,7 +32,6 @@ import java.math.BigDecimal;
  * @param code      code of the product
  * @param unitPrice unit price of the product
  * @param unit      unit type of the product such as day, hour,or fix for a workshop
- * @param vatRate   VAT rate of the product, requested for specific VAT tax regimes
  */
 public record Article(@NotNull String id, String name, String text, @NotNull ArticleCode code, @NotNull BigDecimal unitPrice, String unit) implements HasId, HasName, HasText {
 }

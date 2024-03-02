@@ -48,11 +48,11 @@
             "article": {
                 "unitPrice": "190",
                 "unit": "hour",
-                "vatRate": "0",
                 "description": "Agile training at recognized technical university",
                 "id": "5002"
             },
             "quantity": "49",
+            "vatRate": "0.0",
             "position": 1,
             "text": "Vorlesung Software Architecture and Techniques (Kost/Kotr 160\u2019000)"
         }

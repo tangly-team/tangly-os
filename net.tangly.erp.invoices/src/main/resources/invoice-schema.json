@@ -93,16 +93,12 @@
                 },
                 "unit": {
                     "type": "string"
-                },
-                "vatRate": {
-                    "type": "string"
                 }
             },
             "required": [
                 "id",
                 "unitPrice",
-                "unit",
-                "vatRate"
+                "unit"
             ],
             "additionalProperties": false
         },
@@ -136,9 +132,14 @@
                         "quantity": {
                             "type": "string"
                         },
+                        "vatRate": {
+                            "type": "string"
+                        },
+
                         "required": [
                             "article",
-                            "quantity"
+                            "quantity",
+                            "vatRate"
                         ]
                     }
                 }

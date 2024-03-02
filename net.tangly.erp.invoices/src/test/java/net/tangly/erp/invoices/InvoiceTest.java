@@ -1,13 +1,14 @@
 /*
- * Copyright 2006-2022 Marcel Baumann
+ * Copyright 2006-2024 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- *          https://apache.org/licenses/LICENSE-2.0
+ *          http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ *
  */
 
 package net.tangly.erp.invoices;
@@ -95,15 +96,14 @@ class InvoiceTest {
     }
 
     private Invoice newRegularInvoice(InvoicesRealm realm) {
-        realm.articles().update(new Article("0001", "Agile coaching", "", ArticleCode.work, new BigDecimal(1400), "day", VAT_REGULAR));
-        realm.articles().update(new Article("0002", "Technical project management", "", ArticleCode.work, new BigDecimal("1400"), "day", VAT_REGULAR));
+        realm.articles().update(new Article("0001", "Agile coaching", "", ArticleCode.work, new BigDecimal(1400), "day"));
+        realm.articles().update(new Article("0002", "Technical project management", "", ArticleCode.work, new BigDecimal("1400"), "day"));
 
         Invoice invoice = newInvoice("2017-0001", "Coaching contract Planta 20XX-5946 und ARE-20XX-6048");
-        invoice.add(new InvoiceItem(1, realm.articles().findBy(Article::id, "0001").orElseThrow(), "GIS goes Agile project", new BigDecimal("4")));
-        invoice.add(
-            new InvoiceItem(2, realm.articles().findBy(Article::id, "0001").orElseThrow(), "Java architecture coaching project", new BigDecimal("1.5")));
+        invoice.add(new InvoiceItem(1, realm.articles().findBy(Article::id, "0001").orElseThrow(), "GIS goes Agile project", new BigDecimal("4"), VAT_REGULAR));
+        invoice.add(new InvoiceItem(2, realm.articles().findBy(Article::id, "0001").orElseThrow(), "Java architecture coaching project", new BigDecimal("1.5"), VAT_REGULAR));
         invoice.add(new Subtotal(3, "Subtotal Project Leading GEO 2017 83200 Planta 20XX-5946", List.of(invoice.getAt(1), invoice.getAt(2))));
-        invoice.add(new InvoiceItem(4, realm.articles().findBy(Article::id, "0002").orElseThrow(), "OGD technical project management", new BigDecimal("2.25")));
+        invoice.add(new InvoiceItem(4, realm.articles().findBy(Article::id, "0002").orElseThrow(), "OGD technical project management", new BigDecimal("2.25"), VAT_REGULAR));
         invoice.add(new Subtotal(5, "Subtotal Agile Coaching 3130 0 80000", List.of(invoice.getAt(4))));
         invoice.paymentConditions(PAYMENT_CONDITIONS_30_DAYS);
         invoice.currency(Currency.getInstance("CHF"));
@@ -112,30 +112,30 @@ class InvoiceTest {
     }
 
     public static Invoice newTeachingInvoice() {
-        Article teaching = new Article("0011", "Agile training", "", ArticleCode.work, new BigDecimal(2000), "day", BigDecimal.ZERO);
+        Article teaching = new Article("0011", "Agile training", "", ArticleCode.work, new BigDecimal(2000), "day");
         Invoice invoice = newInvoice("2017-0002", "Agile Training and Workshop");
-        invoice.add(new InvoiceItem(1, teaching, "Scrum Agile Workshop", new BigDecimal("2")));
+        invoice.add(new InvoiceItem(1, teaching, "Scrum Agile Workshop", new BigDecimal("2"), BigDecimal.ZERO));
         invoice.paymentConditions(PAYMENT_CONDITIONS_30_DAYS);
         invoice.currency(Currency.getInstance("CHF"));
         return invoice;
     }
 
     public static Invoice newComplexInvoice() {
-        Article coaching = new Article("0001", "Agile coaching", "", ArticleCode.work, new BigDecimal(1400), "day", VAT_REGULAR);
-        Article project = new Article("0002", "Technical project management", "", ArticleCode.work, new BigDecimal("1400"), "day", VAT_REGULAR);
-        Article travelExpenses = new Article("9900", "Travel Expenses", "", ArticleCode.expenses, BigDecimal.ONE, "CHF", BigDecimal.ZERO);
+        Article coaching = new Article("0001", "Agile coaching", "", ArticleCode.work, new BigDecimal(1400), "day");
+        Article project = new Article("0002", "Technical project management", "", ArticleCode.work, new BigDecimal("1400"), "day");
+        Article travelExpenses = new Article("9900", "Travel Expenses", "", ArticleCode.expenses, BigDecimal.ONE, "CHF");
 
         Invoice invoice = newInvoice("2017-0003", "Coaching contract Planta 20XX-5946 und ARE-20XX-6048");
 
-        invoice.add(new InvoiceItem(1, coaching, "GIS goes Agile project", new BigDecimal("4")));
-        invoice.add(new InvoiceItem(2, coaching, "Java architecture coaching project", new BigDecimal("1.5")));
+        invoice.add(new InvoiceItem(1, coaching, "GIS goes Agile project", new BigDecimal("4"), VAT_REGULAR));
+        invoice.add(new InvoiceItem(2, coaching, "Java architecture coaching project", new BigDecimal("1.5"), VAT_REGULAR));
         invoice.add(new Subtotal(3, "Subtotal Leading GEO 2017 83200 Planta 20XX-5946", List.of(invoice.getAt(1), invoice.getAt(2))));
 
-        invoice.add(new InvoiceItem(4, project, "OGD technical project management", new BigDecimal("2.25")));
+        invoice.add(new InvoiceItem(4, project, "OGD technical project management", new BigDecimal("2.25"), VAT_REGULAR));
         invoice.add(new Subtotal(5, "Subtotal Agile Coaching 3130 0 80000", List.of(invoice.getAt(4))));
 
-        invoice.add(new InvoiceItem(6, travelExpenses, "Travel Expenses Paris", new BigDecimal("1250")));
-        invoice.add(new InvoiceItem(7, travelExpenses, "Travel Expenses Berlin", new BigDecimal("1750")));
+        invoice.add(new InvoiceItem(6, travelExpenses, "Travel Expenses Paris", new BigDecimal("1250"), BigDecimal.ZERO));
+        invoice.add(new InvoiceItem(7, travelExpenses, "Travel Expenses Berlin", new BigDecimal("1750"), BigDecimal.ZERO));
         invoice.add(new Subtotal(8, "Travel Expenses (no VAT taxes)", List.of(invoice.getAt(6), invoice.getAt(7))));
 
         invoice.paymentConditions(PAYMENT_CONDITIONS_30_DAYS);
