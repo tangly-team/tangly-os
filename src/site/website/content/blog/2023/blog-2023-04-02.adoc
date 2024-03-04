@@ -53,6 +53,8 @@ You have to send the notebook to an approved reseller and have no access during 
 
 == Standard Programs
 
+First, update the operating system to the newest version.
+
 I installed manually the following applications:
 
 Browsers::
@@ -94,7 +96,7 @@ The complete accounting activities including VAT declarations are performed with
 - https://www.videolan.org/vlc/[vlc] as multimedia player
 Developer Tools::
 - https://www.jetbrains.com/idea/[JetBrains IntelliJ IDEA] with AsciiDoc, Cursive, SonarLint, Statistics, Grazie Professional, and Snyk plugins.
-- Java JDK 17 LTS, JDK 20, and JDK 21 including the documentation for the latest JDK
+- Java JDK 17 LTS, JDK 20, and JDK 21 including the documentation for the latest JDK.
 footnote:[I always install the last long-term support _LTS_ Java version, the last official release, and the version under development.
 I use the development version to validate all projects to ensure they will run when the new version is officially released.
 I only use the LTS version for legacy activities.
@@ -120,6 +122,13 @@ If you never started the Apache server, you need to execute once:
 sudo apachectl start
 ----
 ====
+
+You can either migrate your whole user account to the new machine or copy manually the needed files
+
+- Copy the _ssh_ keys files and _zhrc_ configuration files.
+- Copy the music, photos and video files.
+The fastest approach is to copy the files from the backup drive to the new machine.
+- Download all the Kindle books you want to read offline on the train.
 
 == Brew Packages
 
@@ -231,7 +240,7 @@ alias java20="export JAVA_HOME=`/usr/libexec/java_home -v 20`; java -version"
 alias java21="export JAVA_HOME=`/usr/libexec/java_home -v 21`; java -version"
 alias java22="export JAVA_HOME=`/usr/libexec/java_home -v 22`; java -version"
 
-java20                                                                          <3>
+java21                                                                          <3>
 ----
 
 <1> Add homebrew to the path.
@@ -251,7 +260,7 @@ gem update
 ----
 ====
 
-== House Keeping
+== Housekeeping
 
 Once the new machine is up and running, I need to clean up the backup drive and remove the backups of the old machine.
 
@@ -296,6 +305,10 @@ I was surprised how much faster write operations on the build-in solid state dis
 It is worth the price I paid
 footnote:[The price of the Macbook notebook in 2023 was CHF 3'300.
 I buy a new notebook every five years, meaning the yearly costs are ridiculous low.].
+footnote:[Due to customer policy, I had to give back my 2023 MacBook and buy a new notebook in 2024.
+I got a MacBookPro M3 Pro with 36 GB of RAM and 1 TB SSD for the price of CHF 3'000.
+The above instructions were used to set up the notebook from scratch in less than two hours.
+The JDK versions just needed to be upgraded to the newly released ones.].
 
 [bibliography]
 == Links

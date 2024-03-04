@@ -39,6 +39,7 @@ Additional slide decks can be found under {ref-tangly-workshops}.
 [.notes]
 --
 Why should an organization embrace agile approaches to develop new digital products?
+Is it just a management fad or is there a real benefit?
 --
 
 [.lightbg,background-opacity="0.4"]
@@ -55,6 +56,7 @@ image::agile-organizations.png[background,size=cover]
 Customer-centric means all collaborators can communicate directly with customers.
 
 Professionals have a degree in software engineering and regularly attend trainings.
+I want to see a certificate, an open-source project, a blog, or an Internet trace.
 
 Transparent communication in networks allows any collaborator to communicate with another employee.
 --
@@ -102,12 +104,12 @@ Feel free to tailor your agile approach to how you develop digital products.
 The twelve principles are a good compass for the true North of agility.
 --
 
-=== Agile and Technical Agile History
+=== Agile Timeline
 
+[.streched]
 [mermaid,agile-history,svg]
 ----
 timeline
-    title Agile History
     section 1990s
         1993 : Kanban
         1995 : Scrum Framework
@@ -453,7 +455,7 @@ image:dora-metrics.jpg[]]
 
 [.notes]
 --
-Empirism is key for agile approaches and is a pilar of Scrum.
+Empiricism is key for agile approaches and is a pilar of Scrum.
 
 Choose your metrics.
 A basic set of metrics could be the DORA metrics.

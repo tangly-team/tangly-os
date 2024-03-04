@@ -18,7 +18,7 @@ The syntax is formally defined in the {ref-uml} standard.
 
 The beefing up solves a lot of the problems that state machines have, especially state explosion that happens as state machines grow.
 
-One of the goals of this site is to help explain what statecharts are and how they are useful.
+We explain below what statecharts are and how they are useful.
 
 Statecharts offer a surprising array of benefits:
 
@@ -31,7 +31,8 @@ And the behavior can be tested independently of the component.
 Studies have shown that statechart based code has lower bug counts than traditional code.
 - Statecharts lend themselves to dealing with exceptional situations that might otherwise be overlooked.
 As complexity grows, statecharts scale well.
-- A statechart is a great communicator: Non-developers can understand the statecharts, while QA can use statecharts as an exploratory tool.
+- A statechart is a great communicator.
+Non-developers can understand the statecharts, while the quality group can use statecharts as an exploratory tool.
 
 It is worth noting that you are already coding state machines, except that they are hidden in the code.
 
@@ -39,7 +40,10 @@ It is worth noting that you are already coding state machines, except that they 
 
 The actor model <<actor-model>> is a powerful approach to create resilient and scalable distributed systems.
 Asynchronous communication between actors avoids global states and painful synchronization of primitives such as locks, semaphores or monitors.
+
 Each actor defines his behavior with a finite state machine.
+The behavior is documented with a statechart.
+
 Messages sent to an actor are the events triggering the firing of transitions.
 
 [IMPORTANT]
@@ -48,19 +52,23 @@ Finite state machines and statecharts are part of the {ref-uml} notation <<state
 
 Finite state machines should be deterministic.
 The set of all relevant _events_ must be identified and documented.
+_Consider encoding the events as an enumeration in your programming language_.
 
 At most, one transition can be fired when a specific event is processed.
 Use guard conditions to restrict which transition could be fired when multiple efferent transitions have the same triggering event.
+
 A guard is a predicate used to decide if a transition can be fired.
 If your transition guards are using timeouts, you need a global time reference with the expected resolution.
 
 A state in a finite state machine must have a duration.
 The actor implementing the finite state machine is in a state and waits for an input meaning a message, or a timeout event.
+_Consider encoding the states as an enumeration in your programming language_.
 
 A transition has a trigger event, an optional guard and an optional action.
 The guard is a predicate to decide if the transition can be fired or not.
 A transition has semantically no duration.
 The action of a transition must be processed in a brief time.
+
 Try to limit the parameter list of an action to the owner of the finite state machine and the triggering event.
 
 Entry and exit actions are executed when the state is entered or exited.
@@ -73,7 +81,14 @@ An activity needs to be implemented as a separate thread and must be abruptly st
 We prefer to handle timing constraints as external events sent to the finite state machine instances.
 The source of timeout events is also the timekeeper of the system.
 
+_This approach relieves the designer of implementing a synchronous global time reference_.
+_Global synchronous time is tricky to implement in distributed systems with multiple processors_.
+_It is also arduous to test and sources of hard to find bugs_.
+
 == How to Document Finite State Machines?
+
+High-quality documentation tools are readily available to document your finite state machines.
+Most of the tools are open source and free to use.
 
 - {ref-plantuml} provides support for all UML diagrams including statecharts.
 All features are supported.
@@ -91,6 +106,8 @@ You can draw all types of graphs, but you are on your own.
 == Diagram Generators
 
 Code-first approach is realized with the tangly open source FSM library.
+
+The library executes finite state machines and generates documentation from the code.
 The code description of a finite state machine is the source of the diagrams.
 
 The generator logic is straightforward.
@@ -111,7 +128,7 @@ The link:../../../docs/fsm[OS FSM] defines generators for Java language and docu
 
 [TIP]
 ====
-The visual and tabular documentation is always synchrone with the source code.
+The visual and tabular documentation is always synchronous with the source code.
 
 This approach has one source of truth and minimizes documentation effort.
 ====
@@ -125,6 +142,7 @@ Do not use it.
 
 Simple flat finite state machines can easily be implemented with two levels of nested switch cases.
 Ask yourself if an external library is worth the effort.
+_I recommend defining the set of events and states as enumerations_.
 
 Libraries are mandatory if your state machines have hierarchical or history states.
 Entry and exit states are also easier to implement with a library.

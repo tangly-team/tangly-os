@@ -7,15 +7,21 @@ tags: ["java", "architecture", "agile"]
 
 include::../fragments/_config-mb-blog.aodc[]
 
-image::2024-05-01-head.png[width=420,height=360,role=center]
+[.float-group]
+--
+image::2024-05-01-head.png[width=420,height=360,role=left]
 
 A solution architecture document _SAD_ is a document that describes the structure of a software solution.
+
 It includes the architecture of its components, the relationships between those components, and the principles that guide its design.
 
 The solution architecture document is typically used as a reference for designing, building, and maintaining a software system.
-Developers, architects, and other stakeholders use it to understand the overall design of the system and how it fits into the larger business or technical environment.
 
-image:2024-05-01-architecture-doc.png[width=480,height=360,align="center",role=text-center]
+Developers, architects, and other stakeholders use it to understand the overall design of the system and how it fits into the larger business or technical environment.
+--
+
+[.text-center]
+image:2024-05-01-architecture-doc.png[width=640,height=360,align="text-center"]
 
 cite:[modern-software-engineering,effective-java-3rd]
 cite:[building-evolutionary-architectures-2nd,building-evolutionary-architectures]
@@ -30,6 +36,7 @@ The documentation makes it possible to evaluate the software architecture from t
 Software architecture documentation supports architectural work.
 Software architecture documentation guides the development team in implementing new product features.
 
+[.text-center]
 image:2024-05-01-C4-5-things.png[width=420,height=360,role=text-center]
 
 You should understand as a software architect:
@@ -62,11 +69,12 @@ ____
 
 == Possible Pitfalls
 
-image:2024-05-01-arc42-c4.png[width=420,height=360,role=text-center]
+[.text-center]
+image:2024-05-01-arc42-c4.png[width=420,height=360,role=left]
 
 Upfront document everything::
-Don't document everything in advance.
-Think of the arc42 template as a cabinet for documentation.
+Do not document everything in advance.
+Think of the arc42 template as a cabinet for documentation. +
 You put something on a shelf as you work on it.
 This is how software architecture documentation emerges, evolves, and stays current.
 Do not include tutorials or Q&A sections::
