@@ -12,12 +12,14 @@ include::../fragments/_config-mb-blog.aodc[]
 image::2024-05-03-head.jpg[width=420,height=360,role=left]
 
 I am an engineer.
-I love to solve problems and provide cool solutions.
+I love to solve problems and provide cool solutions
+cite:[facts-and-fallacies-software-engineering].
 
 I love my software development job.
 I am sixty years old.
 I started programming before I was 20.
 And I still tremendously love developing digital products and writing programs.
+Tinkering on source code to have a maintainable and efficient solution is my passion.
 
 I love technology and to work improving live quality for humanity.
 
@@ -50,7 +52,27 @@ My preferred technology stacks are modern Java and modular monolith applications
 
 == Teacher and Coach
 
+I regularly complain that quite a few software developers are not well-trained.
+I have therefore to actively initiate a change.
+
+I love to teach students at technical universities and coach software engineers.
+
+I found it incredibly rewarding to observe talented developers grasping advanced software engineering concepts
+cite:[modern-software-engineering].
+Ideally, these coachees are someday better than I.
+
 == Entrepreneur
+
+A professional software engineer considers various aspects when developing a digital product
+cite:[phoenix-project,unicorn-project].
+
+- The functional requirements to ensure that _you build the right product_.
+- The non-functional requirements to ensure that _you build the product right_.
+- Corporate governance, legal, social and ethical constraint to ensure that _you build a good product_.
+- Financial considerations to ensure that _you create a sellable product_.
+
+I thrive in the entrepreneurial aspects of financial and legal constraints necessary for a successful product
+cite:[awakening-the-entrepreneur-within].
 
 == References
 

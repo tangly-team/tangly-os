@@ -141,6 +141,7 @@ This approach is dying out.
 Do not use it.
 
 Simple flat finite state machines can easily be implemented with two levels of nested switch cases.
+A flat state machine does not have any hierarchical, orthogonal or history states. +
 Ask yourself if an external library is worth the effort.
 _I recommend defining the set of events and states as enumerations_.
 

@@ -51,6 +51,8 @@ try (var scope = new StructuredTaskScope.ShutdownOnFailure()) {
 }
 ----
 
+When exiting the try-with-resources block, the structured concurrency framework ensures that all concurrent tasks are properly managed and cleaned up.
+
 == Concurrent Stream Processing
 
 [.float-group]
@@ -105,8 +107,11 @@ An actor is an active object that encapsulates state and behavior and is impleme
 == Lessons Learnt
 
 Between virtual threads and structured concurrency, Java developers have a compelling new mechanism for breaking up almost any code into concurrent tasks without much overhead.
+An application developer almost never uses concurrency primitives or thread pools directly.
 
-Use parallel streams when processing huge collections
+Library developers can use the new concurrency primitives to build high-performance libraries that are easy to use.
+
+Use parallel streams when processing huge collections.
 
 Use reactive programming when processing data flows with back pressure, different sampling rates, and complex event processing.
 

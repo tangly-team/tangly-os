@@ -14,6 +14,8 @@
 prjRootDir=/Users/Shared/Projects/
 prjName=tangly-os
 prjDir=$prjRootDir$prjName
+workshopsDir=$prjDir/src/site/workshops
+
 
 siteRootDir=/Users/Shared/Projects/
 siteName=tangly-os-site
@@ -35,6 +37,11 @@ cd $siteDir
 npm install -D autoprefixer
 npm install -D postcss
 npm install -D postcss-cli
+
+# setup workshops creation and install needed ruby package for asciidoc revealjs
+cd $workshopsDir
+bundle config --local path .bundle/gems
+bundle
 
 # beware that the content uses rouge, bibliography, plantuml, and mermaid to generate highlighted code, references and diagrams
 echo "start server with hugo server --destination public --disableFastRender -> site is accessible under localhost:1313"

@@ -83,11 +83,15 @@ I acknowledge that the importance of professional references is triggered by the
 
 I use taxonomies to categorize my articles.
 Taxonomy support in {ref-hugo} is very powerful.
+You can define multiple orthogonal taxonomies.
+
+I use only one dimension to categorize my articles.
+
 I had to adapt slightly the {ref-docsy} theme to nicely display the taxonomies in the sidebar.
 
 == Diagrams as Code
 
-I use {ref-plantuml} to generate UML diagrams and mindmaps.
+I use {ref-plantuml} to generate UML or C4 diagrams and mindmaps.
 
 The {ref-mermaid} plugin provides additional diagram types:
 
@@ -98,7 +102,7 @@ The {ref-mermaid} plugin provides additional diagram types:
 
 == RevealJS
 
-I regularly give presentations at technical universities and workshops.
+I regularly give presentations at technical universities and internal workshops.
 I was looking for a way to use {ref-asciidoc} power to create and publish my slides on my website.
 {ref-asciidoctor} provides a nice converter to {ref-revealjs}.
 
@@ -116,6 +120,9 @@ bundle exec asciidoctor-revealjs
 <1> Load the diagram and bibtex extensions used in the presentation
 <2> Select the reveal.js distribution
 <3> The presentation file
+
+The generated presentation can be distributed as a single HTML file.
+Any browser can display the slides and support navigation and the presenter mode.
 
 == Lessons Learnt
 
