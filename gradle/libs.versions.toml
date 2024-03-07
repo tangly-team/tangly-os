@@ -45,7 +45,7 @@ asciidoctorj = "org.asciidoctor:asciidoctorj:2.5.10"
 asciidoctorj-pdf = "org.asciidoctor:asciidoctorj-pdf:2.3.13"
 
 assertj = { module = "org.assertj:assertj-core", version.ref = "assertj-version" }
-eo-yaml = "com.amihaiemil.web:eo-yaml:5.2.1"
+eo-yaml = "com.amihaiemil.web:eo-yaml:7.2.0"
 
 flyway = { module = "org.flywaydb:flyway-core", version.ref = "flyway-version" }
 flywy-hsqldb = { module = "org.flywaydb:flyway-database-hsqldb", version.ref = "flyway-version" }

@@ -298,6 +298,18 @@ Remember the {ref-manifesto-principles}.
 See {ref-yagni}.
 --
 
+=== _Other Meetings_
+
+- You need conversations with stakeholders and users to fulfill the *product goal*.
+- All other meetings are a waste of time! +
+_Progress meetings, status meetings, and steering committees are a waste of time and money_.
+
+[.notes]
+--
+Your job is to create an awesome product.
+Your job is never to attend meetings to satisfy the curiosity of others or your own organization.
+--
+
 == Scrum Roles
 
 [.streched]

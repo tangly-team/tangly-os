@@ -10,11 +10,31 @@ weight: 50
 ....
 @startuml
 
-class Assignment {}
+class Assignment {
+    -String colloboratorId
+}
 
-class Effort {}
+Assignment "1" -- "1" Product
 
-class Project {}
+class Effort {
+    - LocalDate date
+    - int durationInMinutes
+    - String contractId
+    - String text
+}
+
+Effort "n" -- "1" Assignment
+
+class Expense {}
+Expense "n" -- "1" Assignment
 
 @enduml
 ....
+
+== Efforts
+
+=== Importing Efforts
+
+=== Reporting Efforts
+
+

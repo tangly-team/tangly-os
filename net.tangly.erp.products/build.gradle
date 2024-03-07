@@ -30,4 +30,5 @@ dependencies {
 
     implementation(libs.eclispsestore.storage)
     implementation(libs.apache.commons.csv)
+    implementation(libs.eo.yaml)
 }
