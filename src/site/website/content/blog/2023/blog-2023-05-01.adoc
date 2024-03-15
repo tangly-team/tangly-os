@@ -60,7 +60,7 @@ The structure of the code visualizes the concurrency flow in your application.
 The Loom project is the kid on the block.
 The https://en.wikipedia.org/wiki/Structured_concurrency[structured concurrency] approach has the promise to tremendously simplify concurrent programming.
 
-Work is under way to provide https://openjdk.org/jeps/8304357[scoped values] and deprecate thread local storage.
+Work is under way to provide https://openjdk.org/jeps/446[scoped values] and deprecate thread local storage.
 
 I hope that Loom will deliver another promise and give us optimized tail recursion in the near future.
 

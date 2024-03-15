@@ -7,7 +7,7 @@ tags: ["agile", "git", "series-students"]
 
 include::../fragments/_config-mb-blog.aodc[]
 :ref-svn: https://subversion.apache.org/[Subversion]
-:ref-semver: http://semver.org/[SemVer]
+:ref-semver: https://semver.org/[SemVer]
 
 image::2023-11-02-head.png[width=420,height=360,role=left]
 

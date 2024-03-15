@@ -36,7 +36,7 @@ The exam objectives certainly forced me to learn the new features of the languag
 I also discovered some arcane idioms I never used in productive code.
 
 I think a young developer should be certified for her main programming language and technology stack she is using daily.
-I also acquired the https://vaadin.com/learn[Vaadin certification] because I regularly developed full-stack applications with Java and https://vaadin.com/[Vaadin].
+I also acquired the https://vaadin.com/developers[Vaadin certification] because I regularly developed full-stack applications with Java and https://vaadin.com/[Vaadin].
 
 == Software Architecture Certifications
 

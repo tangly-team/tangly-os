@@ -39,8 +39,8 @@ Key themes are:
   citizens, currying, recursion are discussed.
 - [Pattern matching](https://en.wikipedia.org/wiki/Pattern_matching) extensions in switch, if and instanceof expressions.
 - Module concept in Java environment
-- Advanced concepts such as [Valhalla](https://openjdk.java.net/projects/valhalla/), [Loom](https://openjdk.java.net/projects/loom/),
-  [Panama](https://openjdk.java.net/projects/panama/), and [Amber](https://openjdk.java.net/projects/amber/) and their impact on JVM programming
+- Advanced concepts such as [Valhalla](https://openjdk.org/projects/valhalla/), [Loom](https://openjdk.org/projects/loom/),
+  [Panama](https://openjdk.org/projects/panama/), and [Amber](https://openjdk.org/projects/amber/) and their impact on JVM programming
 - [Clojure](https://clojure.org/) and [Groovy](https://groovy-lang.org/) are extensively used to explain better implementations of the above concepts.
 
 {{< attachments folder="moja-lectures" recursive=false exclude=".md,.adoc,.DS_Store" title="Modern Java Lectures" >}}

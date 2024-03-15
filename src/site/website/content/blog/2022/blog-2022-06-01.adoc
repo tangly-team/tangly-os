@@ -141,7 +141,7 @@ The user interface for a bounded domain is stored in a separate package and ofte
 The bounded domain implementation shall not constrain the technologies used to provide a user interface.
 Different approaches for user interface realization are available and no clear winner can currently be identified.
 
-I mainly use https://www.vaadin.com[Vaadin] to realize browser- or mobile-first internal applications.
+I mainly use https://vaadin.com[Vaadin] to realize browser- or mobile-first internal applications.
 
 == Java Considerations
 

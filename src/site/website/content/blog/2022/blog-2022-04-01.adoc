@@ -240,7 +240,7 @@ The stream library is a well-implemented approach to manipulate sequences with h
 Recursion is well-supported in Java.
 The environment still does not support tail recursion optimization.
 I almost feel sorry that a modern programming language is missing such a well-known optimization.
-The Java community somewhat promised us that in the future we could get this optimization through the project https://openjdk.java.net/projects/loom/[Loom].
+The Java community somewhat promised us that in the future we could get this optimization through the project https://openjdk.org/projects/loom/[Loom].
 
 Currying is cumbersome to implement in Java.
 

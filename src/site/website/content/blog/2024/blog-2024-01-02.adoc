@@ -244,5 +244,5 @@ The execution speed of the tests is great.
 [bibliography]
 == Links
 
-- [[[eclipsestore, 1]]] http://localhost:1313/blog/2024/eclipsestore/[EclipseStore]
+- [[[eclipsestore, 1]]] link:../../2024/eclipsestore/[EclipseStore]
 - [[[microstream,2]]] https://microstream.one/[MicroStream]

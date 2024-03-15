@@ -5,8 +5,8 @@ date: 2021-03-01
 tags: ["java"]
 ---
 
-:ref-amber: https://openjdk.java.net/projects/amber/[Amber]
-:ref-coin: https://openjdk.java.net/projects/coin/[Coin]
+:ref-amber: https://openjdk.org/projects/amber/[Amber]
+:ref-coin: https://openjdk.org/projects/coin/[Coin]
 :ref-jetbrains: https://www.jetbrains.com/[JetBrains]
 :ref-jacoco: https://www.eclemma.org/jacoco/[JaCoCo]
 :ref-slf4j: https://www.slf4j.org/[slf4j]

@@ -23,8 +23,8 @@ Polishing of functional programming approach improved my source code quite stupe
 
 == New Features
 
-Java 16 fully supports https://en.wikipedia.org/wiki/Algebraic_data_type[Algebraic Data Types] with the https://openjdk.java.net/jeps/395[record] and
-https://openjdk.java.net/jeps/397[sealed types] features.
+Java 16 fully supports https://en.wikipedia.org/wiki/Algebraic_data_type[Algebraic Data Types] with the https://openjdk.org/jeps/395[record] and
+https://openjdk.org/jeps/397[sealed types] features.
 
 An immutable data class including a constructor, getters, _equals(Object o)_, _hashCode()_, and _toString()_ can be declared in one line:
 
@@ -33,7 +33,7 @@ An immutable data class including a constructor, getters, _equals(Object o)_, _h
 public record Person(int id, String firstname, String lastname) {}
 ----
 
-The first step with modern pattern matching constructs was provided with https://openjdk.java.net/jeps/394[Pattern Matching for Instanceof].
+The first step with modern pattern matching constructs was provided with https://openjdk.org/jeps/394[Pattern Matching for Instanceof].
 
 As a small but nice gain of pattern matching, you can now implement the _boolean equals(Object o)_ method in Java in one statement and without if clause.
 An example would be:
@@ -47,7 +47,7 @@ public boolean equals(Object o) {
 
 The other new features are more of internal nature.
 
-Notice that https://openjdk.java.net/jeps/386[Alpine Unix] is now officially supported.
+Notice that https://openjdk.org/jeps/386[Alpine Unix] is now officially supported.
 This port is great new to shrink the size of docker images containing a Java runtime.
 
 == Troubles With Some Packages

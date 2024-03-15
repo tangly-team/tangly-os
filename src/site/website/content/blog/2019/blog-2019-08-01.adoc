@@ -33,8 +33,8 @@ These characteristics are essential for successful agile development of great so
 
 == What Is The Scrum Approach?
 
-Scrum and the https://scrumguides.org/scrum-guide.html[Scrum Guide] are silent on how architecture activities are performed during sprints.
-We can use the Scrum values, the https://www.scrumguides.org/scrum-guide.html[Scrum Guide] and the
+Scrum and the {ref-scrumguide} are silent on how architecture activities are performed during sprints.
+We can use the Scrum values, the {ref-scrumguide} and the
 https://agilemanifesto.org/principles.html[Agile Manifesto Principles] to infer approaches.
 
 The architect shall be part of the Scrum development team.

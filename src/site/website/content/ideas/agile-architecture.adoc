@@ -16,7 +16,7 @@ description: An introduction to software architecture in agile product developme
 == Agile Architecture Principles
 
 You are applying the agile and lean approach to your software products development.
-Your teams use https://www.scrumguides.org/scrum-guide.html[Scrum] or https://en.wikipedia.org/wiki/Kanban_(development)[Kanban] to deliver running software at least every two weeks.
+Your teams use {ref-scrumguide} or https://en.wikipedia.org/wiki/Kanban_(development)[Kanban] to deliver running software at least every two weeks.
 The product launch is a tremendous success.
 You will likely sell the solution for the next ten years.
 

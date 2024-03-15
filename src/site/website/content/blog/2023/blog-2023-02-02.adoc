@@ -74,7 +74,7 @@ Find our _Agile Software Architecture and Techniques_ and _Programming Concepts 
 
 We support Swiss initiatives such as https://www.nationalerzukunftstag.ch/informationen-fuer-eltern/englisch[Future Day] to nurture
 https://en.wikipedia.org/wiki/Science,_technology,_engineering,_and_mathematics[STEM] interests of kids and young adults
-footnote:[The percentage of MINT female students in Switzerland is around 11% (statistics from http://www.ictswitzerland.ch/[ICT Switzerland], Position Paper, 2020-02-25).
+footnote:[The percentage of MINT female students in Switzerland is around 11% (statistics from https://digitalswitzerland.com/[ICT Switzerland], Position Paper, 2020-02-25).
 This is a cultural and gender equality catastrophe.
 Neither the Swiss federal nor state governments have a MINT program with goals and budgets.
 Volunteer initiatives try to improve this shameful situation for decades.].

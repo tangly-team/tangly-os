@@ -31,7 +31,7 @@ https://less.works/less/framework/definition-of-done.html[Definition of Done] _D
 
 == Definition of Done
 
-https://www.scrumguides.org/scrum-guide.html[Scrum] and {ref-less} have a stringent discussion concerning _Definition of Done_.
+{ref-scrumguide} and {ref-less} have a stringent discussion concerning _Definition of Done_.
 The key question is
 
 [.text-center]
