@@ -23,9 +23,11 @@ websiteDir=$prjDir/src/site/website
 siteRootDir=/Users/Shared/Projects/
 siteName=tangly-os-site
 siteDir=$siteRootDir$siteName
+$siteWorkshopsDir=$siteDir/static/
 
 # copy the documentation of project module into the folders used by Hugo and the theme
 function copy_module() {
+  mkdir -p $siteDir/static/docs/$1/api-$1
   cp $prjDir/net.tangly.$1/readme.* $siteDir/content/docs/$1/
   cp -R $prjDir/net.tangly.$1/src/site/* $siteDir/content/docs/$1/
   cp -R $prjDir/net.tangly.$1/build/docs/javadoc/* $siteDir/static/docs/$1/api-$1
@@ -33,6 +35,7 @@ function copy_module() {
 
 # copy the documentation of bounded domain project module into the folders used by Hugo and the theme
 function copy_domain_module() {
+  mkdir -p $siteDir/static/docs/domains/$1/api-$1
   cp $prjDir/net.tangly.erp.$1/readme.* $siteDir/content/docs/domains/$1/
   cp -R $prjDir/net.tangly.erp.$1/src/site/* $siteDir/content/docs/domains/$1/
   cp -R $prjDir/net.tangly.erp.$1/build/docs/javadoc/* $siteDir/static/docs/domains/$1/api-$1
@@ -43,6 +46,7 @@ siteWorkshopsDir=$siteDir/static/ideas/learnings/workshops/
 
 # copy the pictures and the revealjs slides into the workshops folder in the static part of the site
 function copy_workshop () {
+    mkdir -p $siteWorkshopsDir/$1/pics
     cp -R $workshopsDir/$1/pics/* $siteWorkshopsDir/$1/pics
     pushd $workshopsDir
     bundle exec asciidoctor-revealjs -r asciidoctor-diagram -r asciidoctor-kroki -a revealjsdir=$revealjsDir $1/$1.adoc

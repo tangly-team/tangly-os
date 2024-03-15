@@ -157,7 +157,3 @@ Entry and exit states are also easier to implement with a library.
 - [[[fsm, 4]]] link:{ref-tangly-blog-url}/docs/fsm/[Hierarchical Finite State Machine].
 Marcel Baumann.
 - [[[actor-model, 5]]] https://en.wikipedia.org/wiki/Actor_model[Actor Model]
-
-== References
-
-bibliography:[]

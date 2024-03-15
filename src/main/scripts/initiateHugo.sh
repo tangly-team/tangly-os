@@ -20,6 +20,7 @@ workshopsDir=$prjDir/src/site/workshops
 siteRootDir=/Users/Shared/Projects/
 siteName=tangly-os-site
 siteDir=$siteRootDir$siteName
+$siteWorkshopsDir=$siteDir/static/
 
 cd $siteRootDir
 rm -rf $siteName
@@ -44,4 +45,4 @@ bundle config --local path .bundle/gems
 bundle
 
 # beware that the content uses rouge, bibliography, plantuml, and mermaid to generate highlighted code, references and diagrams
-echo "start server with hugo server --destination public --disableFastRender -> site is accessible under localhost:1313"
+echo "start server with hugo server --destination public --disableFastRender -> site is accessible under localhost:1313 -F"

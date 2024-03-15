@@ -17,6 +17,8 @@ The static website build tool {ref-hugo} is awesome.
 
 The extensive built-in feature set of {ref-hugo} and the feature-rich typesetting that {ref-asciidoc} offers provide a blogging experience composed of easy content management and fun writing experience.
 
+Source code highlighting and diagrams are extensively supported.
+
 {ref-hugo} supports natively {ref-asciidoc} syntax.
 {ref-asciidoc} files are automatically compiled with {ref-asciidoctor}, so we do not need to configure anything.
 Have it installed and you are ready to go.
@@ -66,7 +68,8 @@ All articles are updated without manual intervention.
 
 This approach is easy to maintain and avoid errors.
 It shows the power of {ref-asciidoc} and {ref-hugo}.
-These techniques are not possible with regular blogging platforms.
+
+_These techniques are not possible with regular blogging platforms_.
 
 == Bibliography
 
@@ -75,6 +78,8 @@ I use the _asciidoctor-bibtex_ plugin to include references in my articles.
 The reference file is a regular bibtex file.
 I use _JabRef_ to manage my references.
 To simplify the life of my readers, I include a link to the amazon page of the book so that they can easily have a quick look at the referenced publication.
+
+The link is defined as a regular attribute in the bibtex file.
 
 I am very satisfied with the result.
 I acknowledge that the importance of professional references is triggered by the fact that I am a technical university lecturer.
@@ -85,7 +90,7 @@ I use taxonomies to categorize my articles.
 Taxonomy support in {ref-hugo} is very powerful.
 You can define multiple orthogonal taxonomies.
 
-I use only one dimension to categorize my articles.
+I use only one taxonomy dimension to categorize my articles.
 
 I had to adapt slightly the {ref-docsy} theme to nicely display the taxonomies in the sidebar.
 
@@ -100,6 +105,16 @@ The {ref-mermaid} plugin provides additional diagram types:
 - Timelines
 - C4 diagrams as with {ref-plantuml}
 
+I use the _asciidoctor-kroki_ extension to generate all diagrams without installing any diagram generation software on my machine.
+
+[NOTE]
+====
+If you work for a paranoid organization, you can install a local _kroki_ server.
+The responsible for the project provide Docker images.
+
+This approach guarantees that no data is sent to an external server.
+====
+
 == RevealJS
 
 I regularly give presentations at technical universities and internal workshops.
@@ -112,17 +127,19 @@ The command to generate the slides for a presentation is:
 [source,console]
 ----
 bundle exec asciidoctor-revealjs
-    -r asciidoctor-diagram -r asciidoctor-bibtex                               <1>
+    -r asciidoctor-diagram -r asciidoctor-bibtex -r asciidoctor-kroki          <1>
     -a revealjsdir=https://cdn.jsdelivr.net/npm/reveal.js@5.5.0.4              <2>
     <folder>/<presenation>.adoc                                                <3>
 ----
 
-<1> Load the diagram and bibtex extensions used in the presentation
+<1> Load the diagram, bibtex and kroki extensions used in the presentation
 <2> Select the reveal.js distribution
-<3> The presentation file
+<3> The presentation file to process
 
 The generated presentation can be distributed as a single HTML file.
 Any browser can display the slides and support navigation and the presenter mode.
+
+_The presentation contains the notes you wrote for each slide and has all the functionality of a RevealJS slide deck_.
 
 == Lessons Learnt
 

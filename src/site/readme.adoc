@@ -96,7 +96,7 @@ The code to generate a presentation workshop slides deck is:
 [source,console]
 ----
  bundle exec asciidoctor-revealjs
-    -r asciidoctor-diagram -r asciidoctor-bibtex
+    -r asciidoctor-diagram -r asciidoctor-bibtex -r asciidoctor-kroki
     -a revealjsdir=https://cdn.jsdelivr.net/npm/reveal.js@5.5.0.4 <folder>/<presenation>.adoc   <1>
 ----
 

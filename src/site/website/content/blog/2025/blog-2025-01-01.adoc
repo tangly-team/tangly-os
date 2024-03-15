@@ -13,7 +13,7 @@ include::../fragments/_config-mb-blog.aodc[]
 :ref-ros: https://www.ros.org/[ROS]
 :ref-micro-os-II: https://en.wikipedia.org/wiki/Micro-Controller_Operating_Systems[μC/OS-II]
 :ref-qnx: https://en.wikipedia.org/wiki/QNX[QNX]
-:ref-free-rtos: https://www.freertos.org/[freeRTOS]
+:ref-freertos: https://www.freertos.org/index.html[freeRTOS]
 
 image::2025-01-01-head.png[width=420,height=360,role=left]
 
@@ -26,7 +26,7 @@ It provides a higher level of abstraction than the usual _threading_ and _synchr
 footnote:[I also state the obvious.
 All the embedded and distributed solutions I developed the last 35 years follow these design principles.
 Task communication is exclusively over message passing or topics.
-Various RTOS such RT68, {ref-micro-os-II}, {ref-qnx}, {ref-free-rtos}, {ref-ros} provide all the necessary abstractions.
+Various RTOS such RT68, {ref-micro-os-II}, {ref-qnx}, {ref-freertos}, {ref-ros} provide all the necessary abstractions.
 Platforms such as Linux or Java have these constructs since inception.
 Therefore, I never had any deadlocks, lifelocks or starvation in any of the systems I worked on.].
 

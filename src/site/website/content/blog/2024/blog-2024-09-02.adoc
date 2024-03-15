@@ -9,7 +9,7 @@ include::../fragments/_config-mb-blog.aodc[]
 :ref-actor-model: https://en.wikipedia.org/wiki/Actor_model[Actor Model]
 :ref-cmsis-os: https://www.keil.com/pack/doc/CMSIS/RTOS2/html/index.html[CMSIS RTOS-2]
 :ref-fsm: https://en.wikipedia.org/wiki/Finite-state_machine[Finite State Machine]
-:ref-free-rtos: https://www.freertos.org/[freeRTOS]
+:ref-freertos: https://www.freertos.org/index.html[freeRTOS]
 :ref-hypervisor: https://en.wikipedia.org/wiki/Hypervisor[Hypervisor]
 :ref-paravirtualization: https://en.wikipedia.org/wiki/Paravirtualization[paravirtualization]
 

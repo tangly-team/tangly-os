@@ -4,8 +4,14 @@ linkTitle: "Knowledge"
 weight: 30
 ---
 
+:ref-canbus: https://en.wikipedia.org/wiki/CAN_bus[CAN bus]
+:ref-cmsis-rtos2: https://arm-software.github.io/CMSIS_5/RTOS2/html/index.html[CMSIS-RTOS v2]
+:ref-freertos: https://www.freertos.org/index.html[freeRTOS]
 :ref-kaizen: https://en.wikipedia.org/wiki/Kaizen[Kaizen]
+:ref-micro-os-II: https://en.wikipedia.org/wiki/Micro-Controller_Operating_Systems[μC/OS-II]
 :ref-sociocracy: https://sociocracy30.org/[Sociocracy]
+:ref-trunk-based-development: https://trunkbaseddevelopment.com/[Trunk-Based Development]
+
 
 == Knowledge Base
 
@@ -51,4 +57,4 @@ Embedded Devices::
 - link:../../tags/embedded[Embedded Devices Blogs]
 - link:../../tags/c++[{cpp} Blogs]
 - {ref-doxygen}
-- {ref-cmsis-rtos2}, {ref-can-bus}, {ref-micro-os-II}
+- {ref-cmsis-rtos2}, {ref-can-bus}, {ref-freertos} {ref-micro-os-II}

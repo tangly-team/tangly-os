@@ -20,7 +20,7 @@ The API is under the stewardship of ARM company.
 
 Any kernel with a {ref-cmsis-rtos2} compatible layer is eligible.
 
-STM provides the CMSIS integration with {ref-free-rtos} for all STM32 microcontrollers.
+STM provides the CMSIS integration with {ref-freertos} for all STM32 microcontrollers.
 
 == Library
 

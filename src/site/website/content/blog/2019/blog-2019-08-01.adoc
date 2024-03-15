@@ -14,10 +14,12 @@ Your teams use Scrum or Kanban to deliver running software every two weeks.
 Agile architecture is a key element to improve the quality of your solution and reduce the overall cycle-time of your product delivery.
 
 Your journey toward greater business agility starts by identifying what outcomes are most important to your company’s success.
+
 Outcomes are codified in functional and non-functional requirements your product shall fulfill.
 A key component is to find out how to create a great resilient architecture within the Scrum framework.
 
 What Is Agile Architecture?
+
 An agile architecture shall have four characteristics.
 
 image::2019-08-01-architecture.jpg[width=420,height=360,role=left]
@@ -25,7 +27,7 @@ image::2019-08-01-architecture.jpg[width=420,height=360,role=left]
 . _Allow change quickly_ because we cannot foresee the future.
 . _Always verifiable_ because we want changes without impeding integrity.
 . _Support rapid development_ because we want effective and efficient implementation of new features.
-. _Always working_ because we want continuous deployment to have customers' feedback -.
+. _Always working_ because we want continuous deployment to have customers' feedback.
 
 These characteristics are essential for successful agile development of great software products.
 
@@ -65,10 +67,10 @@ The well-established practices from the object-oriented and DevOps communities a
 
 * Develop a working skeleton very early.
 * Clean architecture implies clean code and requires clean coders in your team.
-See our post link:../../2019/agile-code-is-clean-code/[Clean Code],
+See our article link:../../2019/agile-code-is-clean-code/[Clean Code],
 * Aggressive refactoring and understand technical debt, Continuous integration, continuous delivery, and continuous deployment.
 
-For a detailed discussion, consult the post link:../../2018/pragmatic-craftsmanship-professional-software-developer/[Pragmatic Craftsmanship].
+For a detailed discussion, consult the article link:../../2018/pragmatic-craftsmanship-professional-software-developer/[Pragmatic Craftsmanship].
 
 == What is the Architect's Role?
 
@@ -76,9 +78,9 @@ The architect shall
 
 * Be part of the team, work daily with team members and attend all team events.
 * Maintain the pace of development.
-* Often Communicate and early as a coach and mentor - _meaning pair programming and design sessions_ -.
+* Often communicate and early as a coach and mentor, _meaning pair programming and design sessions_.
 * Be fluent in domain-driven development, hexagonal architecture, refactoring, and clean code.
-* Use architecture design record ADR and light documentation to describe architecture decisions - meaning no lengthy Software Architecture Document SAD or overwhelming UML models -.
+* Use architecture design record ADR and light documentation to describe architecture decisions - meaning no lengthy Software Architecture Document _SAD_ or overwhelming {ref-uml} models -.
 * Be a master programmer and write code in the application technological stack.
 He writes actual source code as current good practices are.
 * Have rich knowledge of architecture and design.
@@ -87,7 +89,7 @@ We have mentioned refactoring, which is how we evolve an ever-improving design a
 To do that, we need to know the difference between good architecture and design and not-so-good.
 We need a rich pool of architecture and design options in our bag of tricks, ranging from elementary options to the more complex and rich options that we may need as the system grows.
 One never knows too much about the quality of architecture, code, and design.
-One does, of course, need to apply that knowledge smoothly, incrementally, little by little.
+One does need to apply that knowledge smoothly, incrementally, little by little.
 
 == Agile Architecture Series
 
