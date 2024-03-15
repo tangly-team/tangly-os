@@ -27,7 +27,9 @@ is only needed because administration is strongly hierarchical and unable to ada
 Bachelors in Swiss technical universities are still trained with obsolete methodologies such as
 https://www.hslu.ch/de-ch/informatik/studium/soda/[SoDa], a variation of the dead https://en.wikipedia.org/wiki/Rational_Unified_Process[RUP] method.
 
-The https://swissq.it/en/[SwissQ] report provides empirical data where Swiss companies stand in 2021.
+The SwissQ report provides empirical data where Swiss companies stand in 2021
+footnote:xebia[The SwissQ company was acquired by https://xebia.com/switzerland-de/[Xebia] and access to the data was removed.
+The reports are archived on this site under {ref-tangly-blog-url}/expertise/knowledge/history/[SwissQ Reports].].
 
 == Main Success Factors
 
@@ -181,4 +183,4 @@ Maybe you are wrong and they were right?
 Did we mention _patience_?
 I wish a fruitful and successful transformation to better way of working and of creating awesome products.
 
-You can download the Trends Benchmark Report 2021 from https://report.swissq.it/[SwissQ Reports].
+You can download the Trends Benchmark Report 2021 from SwissQ footnote:xebia[].

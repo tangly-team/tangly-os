@@ -1,7 +1,7 @@
 - [[[eight-years-tangly, 1]]] link:../../2024/the-quest-for-an-agile-company-eight-years-tangly-llc/[Eight Years tangly llc]
-Marcel Baumann 2023.
+Marcel Baumann 2024.
 - [[[seven-years-tangly, 2]]] link:../../2023/the-quest-for-an-agile-company-seven-years-tangly-llc/[Seven Years tangly llc]
-Marcel Baumann. 2022.
+Marcel Baumann. 2023.
 - [[[six-years-tangly, 3]]] link:../../2022/the-quest-for-an-agile-company-six-years-tangly-llc/[Six Years tangly llc]
 Marcel Baumann. 2022.
 - [[[no-printer, 6]]] link:../../2022/eliminate-your-printer/[Eliminate Your Printer]

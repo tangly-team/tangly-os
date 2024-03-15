@@ -17,7 +17,10 @@ Such a change takes time and sometimes hurts.
 * Doubt that lean or agile works for big projects, doubt you can convince your collaborators and middle management, doubt your customers agree with lean,
 * In the end, what matters are collaborator purpose, customer satisfaction, business value.
 
-https://swissq.it/en/[SwissQ] has published a "SwissQ Agile Trends & Benchmarks Switzerland 2013".
+SwissQ
+footnote:[The SwissQ company was acquired by https://xebia.com/switzerland-de/[Xebia] and access to the data was removed.
+The reports are archived on this site under {ref-tangly-blog-url}/expertise/knowledge/history/[SwissQ Reports].]
+has published a "SwissQ Agile Trends & Benchmarks Switzerland 2013".
 The study can be downloaded as PDF from their website.
 See link:../../2016/agile-trends-switzerland-2012[Agile Trends in Switzerland 2012].
 

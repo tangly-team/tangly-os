@@ -9,8 +9,10 @@ include::../fragments/_config-mb-blog.aodc[]
 
 image::2017-04-02-head.jpg[width=420,height=360,role=left]
 It is time to throw a big party in Switzerland.
-More than 60% of all projects are now realized using an agile approach (to see Agile Trends in Switzerland 2017] by
-https://swissq.it/en/agile/[SwissQ]), Scrum being the most popular one, Kanban as the second one.
+More than 60% of all projects are now realized using an agile approach (to see Agile Trends in Switzerland 2017] by SwissQ
+footnote:[The SwissQ company was acquired by https://xebia.com/switzerland-de/[Xebia] and access to the data was removed.
+The reports are archived on this site under {ref-tangly-blog-url}/expertise/knowledge/history/[SwissQ Reports].].
+Scrum being the most popular one, Kanban as the second one.
 What a change in just one year.
 In 2016, we had 40% of projects being agile, one year later we have 60%.
 _Time to adapt and become agile_.

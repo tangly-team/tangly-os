@@ -23,7 +23,6 @@ websiteDir=$prjDir/src/site/website
 siteRootDir=/Users/Shared/Projects/
 siteName=tangly-os-site
 siteDir=$siteRootDir$siteName
-$siteWorkshopsDir=$siteDir/static/
 
 # copy the documentation of project module into the folders used by Hugo and the theme
 function copy_module() {
