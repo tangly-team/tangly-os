@@ -42,8 +42,9 @@ dependencies {
     implementation(libs.vaadin.core)
     implementation(libs.vaadin.embedded.jetty)
     implementation("io.javalin:javalin:6.1.3") {
-        exclude group: 'org.eclipse.jetty', module: 'jetty-server'
-        exclude group: 'org.eclipse.jetty', module: 'websocket'
+        exclude group: 'org.eclipse.jetty'
+        exclude group: 'org.eclipse.jetty.websocket'
+        exclude group: 'com.fasterxml.jackson.core'
     }
 
     testImplementation(libs.vaadin.test)

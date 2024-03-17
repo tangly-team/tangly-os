@@ -25,7 +25,9 @@ import java.io.IOException;
 
 @WebServlet(name = "RestServlet", urlPatterns = {"/rest/*"})
 public class ApiServlet extends HttpServlet {
-    private final Servlet javalin = Javalin.create().get("/rest", ctx -> ctx.result("Hello!")).javalinServlet();
+    private final transient Servlet javalin = Javalin.create().get("/rest/hello", ctx -> ctx.result("Hello!"))
+        .javalinServlet();
+
 
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
