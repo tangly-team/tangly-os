@@ -14,7 +14,7 @@ package net.tangly.erp;
 
 import com.google.common.jimfs.Jimfs;
 import net.tangly.erp.invoices.ports.InvoicesEntities;
-import net.tangly.erp.invoices.ports.InvoicesHdl;
+import net.tangly.erp.invoices.ports.InvoicesAdapter;
 import net.tangly.erp.invoices.services.InvoicesBusinessLogic;
 import net.tangly.erp.invoices.services.InvoicesRealm;
 import org.jetbrains.annotations.NotNull;
@@ -34,14 +34,14 @@ class InvoicesBusinessLogicTest {
             var store = new ErpStore(fs);
             store.createRepository();
 
-            var handler = new InvoicesHdl(new InvoicesEntities(), store.invoicesRoot());
+            var handler = new InvoicesAdapter(new InvoicesEntities(), store.invoicesRoot());
             handler.importEntities();
 
             verifyBusinessLogic(handler.realm());
 
             handler.exportEntities();
 
-            handler = new InvoicesHdl(new InvoicesEntities(), store.invoicesRoot());
+            handler = new InvoicesAdapter(new InvoicesEntities(), store.invoicesRoot());
             handler.importEntities();
         }
     }

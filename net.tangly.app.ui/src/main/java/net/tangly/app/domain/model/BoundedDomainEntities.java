@@ -23,7 +23,7 @@ import net.tangly.core.codes.Code;
 import net.tangly.core.codes.CodeType;
 import net.tangly.core.domain.BoundedDomain;
 import net.tangly.core.domain.DomainEntity;
-import net.tangly.core.domain.Handler;
+import net.tangly.core.domain.Port;
 import net.tangly.core.domain.Realm;
 import net.tangly.core.providers.Provider;
 import net.tangly.core.providers.ProviderInMemory;
@@ -45,14 +45,14 @@ import java.util.stream.IntStream;
  * <p>Read-only mode is also exercised for exhaustive validation of the user interface library.</p>
  */
 public class BoundedDomainEntities
-    extends BoundedDomain<BoundedDomainEntities.AppRealm, BoundedDomainEntities.AppBusinessLogic, BoundedDomainEntities.AppHandler, BoundedDomainEntities.AppPort> {
+    extends BoundedDomain<BoundedDomainEntities.AppRealm, BoundedDomainEntities.AppBusinessLogic, BoundedDomainEntities.AppPort> {
     public static final String DOMAIN = "Entities";
     public static final String TAG_MANDATORY_STRING_VALUE = "tag-mandatory-string-value";
     public static final String TAG_OPTIONAL_STRING_VALUE = "tag-optional-string-value";
     public static final String TAG_WITH_NO_VALUE = "tag-with-no-value";
 
-    private BoundedDomainEntities(AppRealm realm, AppBusinessLogic logic, AppHandler handler, AppPort port) {
-        super(DOMAIN, realm, logic, handler, port, new TypeRegistry());
+    private BoundedDomainEntities(AppRealm realm, AppBusinessLogic logic, AppPort port) {
+        super(DOMAIN, realm, logic, port, new TypeRegistry());
         registry().register(TagType.ofMandatoryString(DOMAIN, TAG_MANDATORY_STRING_VALUE));
         registry().register(TagType.ofOptionalString(DOMAIN, TAG_OPTIONAL_STRING_VALUE));
         registry().register(TagType.ofWithNoValue(DOMAIN, TAG_WITH_NO_VALUE));
@@ -61,7 +61,7 @@ public class BoundedDomainEntities
 
     public static BoundedDomainEntities create() {
         AppRealm realm = new AppRealm();
-        return new BoundedDomainEntities(realm, new AppBusinessLogic(), new AppHandler(realm), new AppPort());
+        return new BoundedDomainEntities(realm, new AppBusinessLogic(), new AppPort(realm));
     }
 
     @Override
@@ -219,10 +219,10 @@ public class BoundedDomainEntities
     public static class AppBusinessLogic {
     }
 
-    public static class AppHandler implements Handler<AppRealm> {
+    public static class AppPort implements Port<AppRealm> {
         private final AppRealm realm;
 
-        public AppHandler(AppRealm realm) {
+        public AppPort(AppRealm realm) {
             this.realm = realm;
         }
 
@@ -231,6 +231,4 @@ public class BoundedDomainEntities
         }
     }
 
-    public static class AppPort {
-    }
 }

@@ -27,9 +27,9 @@ public class DomainView extends VerticalLayout {
     private static final String ENTITIES = "Entities";
     private static final String TAGS = "Tags";
     private final TabSheet tabSheet;
-    private final transient BoundedDomain<?, ?, ?, ?> domain;
+    private final transient BoundedDomain<?, ?, ?> domain;
 
-    public DomainView(@NotNull BoundedDomain<?, ?, ?, ?> domain) {
+    public DomainView(@NotNull BoundedDomain<?, ?, ?> domain) {
         this.domain = domain;
         tabSheet = new TabSheet();
         tabSheet.setWidthFull();

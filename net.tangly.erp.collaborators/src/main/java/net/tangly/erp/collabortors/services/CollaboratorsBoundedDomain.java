@@ -16,9 +16,10 @@ import net.tangly.core.TypeRegistry;
 import net.tangly.core.domain.BoundedDomain;
 import org.jetbrains.annotations.NotNull;
 
-public class CollaboratorsBoundedDomain extends BoundedDomain<CollaboratorsRealm, CollaboratorsBusinessLogic, CollaboratorsHandler, CollaboratorsPort> {
+public class CollaboratorsBoundedDomain extends BoundedDomain<CollaboratorsRealm, CollaboratorsBusinessLogic, CollaboratorsPort> {
     public static final String DOMAIN = "collaborators";
-    public CollaboratorsBoundedDomain(@NotNull CollaboratorsRealm realm, @NotNull CollaboratorsBusinessLogic logic, @NotNull CollaboratorsHandler handler, @NotNull CollaboratorsPort port, TypeRegistry registry) {
-        super(DOMAIN, realm, logic, handler, port, registry);
+
+    public CollaboratorsBoundedDomain(@NotNull CollaboratorsRealm realm, @NotNull CollaboratorsBusinessLogic logic, @NotNull CollaboratorsPort port, TypeRegistry registry) {
+        super(DOMAIN, realm, logic, port, registry);
     }
 }

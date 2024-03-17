@@ -28,7 +28,7 @@ import java.util.Objects;
  * <p>Commands can trigger domain changes which should be reflected in the user interface. Some commands update the current displayed view, others update multiple views of the
  * domain interface.</p>
  */
-public abstract class BoundedDomainUi<T extends BoundedDomain<?, ?, ?, ?>> {
+public abstract class BoundedDomainUi<T extends BoundedDomain<?, ?, ?>> {
     public static final String ENTITIES = "Entities";
     public static final String ADMINISTRATION = "Administration";
     public static final String ANALYTICS = "Analytics";
@@ -98,9 +98,9 @@ public abstract class BoundedDomainUi<T extends BoundedDomain<?, ?, ?, ?>> {
         MenuItem menuItem = menuBar.addItem(ADMINISTRATION);
         SubMenu subMenu = menuItem.getSubMenu();
         subMenu.addItem(STATISTICS, _ -> select(layout, domainView));
-        subMenu.addItem(IMPORT, _ -> executeGlobalAction(domain.handler()::importEntities));
-        subMenu.addItem(EXPORT, _ -> domain.handler().exportEntities());
-        subMenu.addItem(CLEAR, _ -> executeGlobalAction(domain.handler()::clearEntities));
+        subMenu.addItem(IMPORT, _ -> executeGlobalAction(domain.port()::importEntities));
+        subMenu.addItem(EXPORT, _ -> domain.port().exportEntities());
+        subMenu.addItem(CLEAR, _ -> executeGlobalAction(domain.port()::clearEntities));
         if (loadDialog != null) {
             subMenu.addItem(LOAD, _ -> executeGlobalAction(loadDialog::execute));
         }

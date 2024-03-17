@@ -18,7 +18,7 @@ import net.tangly.core.Entity;
 import net.tangly.core.TypeRegistry;
 import net.tangly.core.domain.BoundedDomain;
 import net.tangly.core.domain.DomainEntity;
-import net.tangly.core.domain.Handler;
+import net.tangly.core.domain.Port;
 import net.tangly.core.domain.Realm;
 import net.tangly.core.providers.Provider;
 import net.tangly.core.providers.ProviderInMemory;
@@ -35,16 +35,16 @@ import java.util.stream.LongStream;
  * instances.
  */
 public class BoundedDomainSimpleEntities extends
-    BoundedDomain<BoundedDomainSimpleEntities.AppRealm, BoundedDomainSimpleEntities.AppBusinessLogic, BoundedDomainSimpleEntities.AppHandler, BoundedDomainSimpleEntities.AppPort> {
+    BoundedDomain<BoundedDomainSimpleEntities.AppRealm, BoundedDomainSimpleEntities.AppBusinessLogic, BoundedDomainSimpleEntities.AppPort> {
     public static final String DOMAIN = "Simple Entities";
 
-    private BoundedDomainSimpleEntities(AppRealm realm, AppBusinessLogic logic, AppHandler handler, AppPort port) {
-        super(DOMAIN, realm, logic, handler, port, new TypeRegistry());
+    private BoundedDomainSimpleEntities(AppRealm realm, AppBusinessLogic logic, AppPort port) {
+        super(DOMAIN, realm, logic, port, new TypeRegistry());
     }
 
     public static BoundedDomainSimpleEntities create() {
         AppRealm realm = new AppRealm();
-        return new BoundedDomainSimpleEntities(realm, new AppBusinessLogic(), new AppHandler(realm), new AppPort());
+        return new BoundedDomainSimpleEntities(realm, new AppBusinessLogic(), new AppPort(realm));
     }
 
     @Override
@@ -96,18 +96,15 @@ public class BoundedDomainSimpleEntities extends
     public static class AppBusinessLogic {
     }
 
-    public static class AppHandler implements Handler<AppRealm> {
+    public static class AppPort implements Port<AppRealm> {
         private final AppRealm realm;
 
-        public AppHandler(@NotNull AppRealm realm) {
+        public AppPort(@NotNull AppRealm realm) {
             this.realm = realm;
         }
 
         public AppRealm realm() {
             return realm;
         }
-    }
-
-    public static class AppPort {
     }
 }

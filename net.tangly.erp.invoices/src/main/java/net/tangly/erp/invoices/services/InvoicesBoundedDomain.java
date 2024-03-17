@@ -24,16 +24,13 @@ import net.tangly.erp.invoices.domain.InvoiceLegalEntity;
 
 import java.util.List;
 
-public class InvoicesBoundedDomain extends BoundedDomain<InvoicesRealm, InvoicesBusinessLogic, InvoicesHandler, InvoicesPort> {
+public class InvoicesBoundedDomain extends BoundedDomain<InvoicesRealm, InvoicesBusinessLogic, InvoicesPort> {
     public static final String DOMAIN = "invoices";
 
-    public InvoicesBoundedDomain(InvoicesRealm realm, InvoicesBusinessLogic logic, InvoicesHandler handler, InvoicesPort port, TypeRegistry registry) {
-        super(DOMAIN, realm, logic, handler, port, registry);
-    }
-
-    @Override
-    public void startup() {
+    public InvoicesBoundedDomain(InvoicesRealm realm, InvoicesBusinessLogic logic, InvoicesPort port, TypeRegistry registry) {
+        super(DOMAIN, realm, logic, port, registry);
         registry().register(CodeType.of(ArticleCode.class));
+
     }
 
     @Override

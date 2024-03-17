@@ -24,6 +24,7 @@ import com.storedobject.chart.YAxis;
 import net.tangly.erp.ledger.ports.LedgerAdapter;
 import net.tangly.erp.ledger.services.LedgerBoundedDomain;
 import net.tangly.erp.ledger.services.LedgerBusinessLogic;
+import net.tangly.erp.ledger.services.LedgerPort;
 import net.tangly.ui.app.domain.AnalyticsView;
 import net.tangly.ui.components.VaadinUtils;
 import org.apache.logging.log4j.LogManager;

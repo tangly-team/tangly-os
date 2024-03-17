@@ -12,11 +12,10 @@
 
 package net.tangly.erp.invoices.ui;
 
-import net.tangly.erp.invoices.ports.InvoicesHdl;
+import net.tangly.erp.invoices.ports.InvoicesAdapter;
 import net.tangly.erp.invoices.ports.InvoicesTsvJsonHdl;
 import net.tangly.erp.invoices.services.InvoicesBoundedDomain;
 import net.tangly.erp.invoices.services.InvoicesBusinessLogic;
-import net.tangly.erp.invoices.services.InvoicesHandler;
 import net.tangly.erp.invoices.services.InvoicesPort;
 import net.tangly.erp.invoices.services.InvoicesRealm;
 import net.tangly.ui.app.domain.CmdFilesUpload;
@@ -27,16 +26,16 @@ import java.util.Set;
 /**
  * The command defines how to upload entities provided as a set of TSV files onto the domain.
  */
-public class CmdFilesUploadInvoices extends CmdFilesUpload<InvoicesRealm, InvoicesBusinessLogic, InvoicesHandler, InvoicesPort> {
+public class CmdFilesUploadInvoices extends CmdFilesUpload<InvoicesRealm, InvoicesBusinessLogic, InvoicesPort> {
     CmdFilesUploadInvoices(@NotNull InvoicesBoundedDomain domain) {
         super(domain, TSV_MIME, JSON_MIME);
         registerAllFinishedListener(event -> {
             var handler = new InvoicesTsvJsonHdl(domain.realm());
             Set<String> files = buffer().getFiles();
-            if (files.contains(InvoicesHdl.ARTICLES_TSV)) {
-                processInputStream(InvoicesHdl.ARTICLES_TSV, handler::importArticles);
+            if (files.contains(InvoicesAdapter.ARTICLES_TSV)) {
+                processInputStream(InvoicesAdapter.ARTICLES_TSV, handler::importArticles);
             }
-            files.stream().filter(o -> o.endsWith(InvoicesHdl.JSON_EXT)).forEach(o -> {
+            files.stream().filter(o -> o.endsWith(InvoicesAdapter.JSON_EXT)).forEach(o -> {
                 processInputStream(o, handler::importInvoice);
             });
             close();

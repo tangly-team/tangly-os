@@ -29,20 +29,17 @@ import net.tangly.erp.crm.domain.Interaction;
 import net.tangly.erp.crm.domain.InteractionCode;
 import net.tangly.erp.crm.domain.LeadCode;
 import net.tangly.erp.crm.domain.Subject;
+import net.tangly.erp.crm.ports.CrmAdapter;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 import java.util.Map;
 
-public class CrmBoundedDomain extends BoundedDomain<CrmRealm, CrmBusinessLogic, CrmHandler, CrmPort> {
+public class CrmBoundedDomain extends BoundedDomain<CrmRealm, CrmBusinessLogic, CrmAdapter> {
     public static final String DOMAIN = "customers";
 
-    public CrmBoundedDomain(CrmRealm realm, CrmBusinessLogic logic, CrmHandler handler, CrmPort port, TypeRegistry registry) {
-        super(DOMAIN, realm, logic, handler, port, registry);
-    }
-
-    @Override
-    public void startup() {
+    public CrmBoundedDomain(CrmRealm realm, CrmBusinessLogic logic, CrmAdapter port, TypeRegistry registry) {
+        super(DOMAIN, realm, logic, port, registry);
         CrmTags.registerTags(registry());
         registry().register(CodeType.of(ActivityCode.class));
         registry().register(CodeType.of(GenderCode.class));

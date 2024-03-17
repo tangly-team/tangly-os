@@ -12,13 +12,14 @@
 
 package net.tangly.erp.ledger.services;
 
+import net.tangly.core.domain.Port;
+
 import java.time.LocalDate;
 
 /**
- * Defines the export port for the ledger bounded domain. It is the secondary port in DDD terminology.
+ * Defines the import port for the ledger bounded domain. It is the primary port in DDD terminology.
  */
-
-public interface LedgerPort {
+public interface LedgerPort extends Port<LedgerRealm> {
     /**
      * Exports a ledger report with profits and losses, and assets and liabilities information for a specific time interval.
      *
@@ -28,5 +29,6 @@ public interface LedgerPort {
      * @param withVat flag indicating if VAT information should be part of the report
      * @param withTransactions flag indicating if the transactions should be part of the report
      */
-     void exportLedgerDocument(String name, LocalDate from, LocalDate to, boolean withVat, boolean withTransactions);
+    void exportLedgerDocument(String name, LocalDate from, LocalDate to, boolean withVat, boolean withTransactions);
+
 }

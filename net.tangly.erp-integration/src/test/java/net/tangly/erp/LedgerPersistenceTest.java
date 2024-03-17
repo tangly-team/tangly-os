@@ -15,7 +15,7 @@ package net.tangly.erp;
 import com.google.common.jimfs.Configuration;
 import com.google.common.jimfs.Jimfs;
 import net.tangly.erp.ledger.ports.LedgerEntities;
-import net.tangly.erp.ledger.ports.LedgerHdl;
+import net.tangly.erp.ledger.ports.LedgerAdapter;
 import org.junit.jupiter.api.Test;
 
 import java.nio.file.FileSystem;
@@ -29,13 +29,13 @@ public class LedgerPersistenceTest {
             var store = new ErpStore(fs);
             store.createRepository();
 
-            var handler = new LedgerHdl(new LedgerEntities(store.ledgerRoot()), store.ledgerRoot());
+            var handler = new LedgerAdapter(new LedgerEntities(store.ledgerRoot()), store.ledgerRoot());
             handler.importEntities();
             assertThat(handler.realm().accounts().items().isEmpty()).isFalse();
             assertThat(handler.realm().transactions().items().isEmpty()).isFalse();
             handler.realm().close();
 
-            handler = new LedgerHdl(new LedgerEntities(store.ledgerRoot()), store.ledgerRoot());
+            handler = new LedgerAdapter(new LedgerEntities(store.ledgerRoot()), store.ledgerRoot());
             assertThat(handler.realm().accounts().items().isEmpty()).isFalse();
             assertThat(handler.realm().transactions().items().isEmpty()).isFalse();
             handler.realm().close();

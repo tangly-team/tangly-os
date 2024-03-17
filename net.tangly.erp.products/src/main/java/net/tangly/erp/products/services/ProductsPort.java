@@ -12,15 +12,16 @@
 
 package net.tangly.erp.products.services;
 
+import net.tangly.core.domain.Port;
 import net.tangly.erp.products.domain.Assignment;
 import org.jetbrains.annotations.NotNull;
 
 import java.time.LocalDate;
 
 /**
- * Defines the export port for the products bounded domain. It is the secondary port in the DDD terminology.
+ * Defines the import port for the products bounded domain. It is the primary port in the DDD terminology.
  */
-public interface ProductsPort {
+public interface ProductsPort extends Port<ProductsRealm> {
     /**
      * Exports all efforts of the assignment in the given period of time. The export shall be a asciidoc document.
      * @param assignment assignment which efforts are of interest
@@ -28,4 +29,5 @@ public interface ProductsPort {
      * @param to end of the considered time interval
      */
     void exportEffortsDocument(@NotNull Assignment assignment, LocalDate from, LocalDate to);
+
 }

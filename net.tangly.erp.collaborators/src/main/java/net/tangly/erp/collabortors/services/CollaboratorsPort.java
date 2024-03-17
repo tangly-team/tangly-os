@@ -12,5 +12,6 @@
 
 package net.tangly.erp.collabortors.services;
 
-public interface CollaboratorsPort {
-}
+import net.tangly.core.domain.Port;
+
+public interface CollaboratorsPort extends Port<CollaboratorsRealm> { }

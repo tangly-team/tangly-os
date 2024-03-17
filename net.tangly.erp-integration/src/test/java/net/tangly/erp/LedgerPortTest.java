@@ -15,9 +15,8 @@ package net.tangly.erp;
 import com.google.common.jimfs.Configuration;
 import com.google.common.jimfs.Jimfs;
 import net.tangly.erp.ledger.ports.ClosingReportAsciiDoc;
-import net.tangly.erp.ledger.ports.LedgerAdapter;
 import net.tangly.erp.ledger.ports.LedgerEntities;
-import net.tangly.erp.ledger.ports.LedgerHdl;
+import net.tangly.erp.ledger.ports.LedgerAdapter;
 import net.tangly.erp.ledger.ports.LedgerTsvHdl;
 import net.tangly.erp.ledger.services.LedgerRealm;
 import org.junit.jupiter.api.Test;
@@ -55,9 +54,9 @@ class LedgerPortTest {
             store.createRepository();
 
             var handler = new LedgerTsvHdl(new LedgerEntities());
-            var path = store.ledgerRoot().resolve(LedgerHdl.journalForYear(2015));
+            var path = store.ledgerRoot().resolve(LedgerAdapter.journalForYear(2015));
             handler.importJournal(Files.newBufferedReader(path, StandardCharsets.UTF_8), path.toString());
-            path = store.ledgerRoot().resolve(LedgerHdl.journalForYear(2016));
+            path = store.ledgerRoot().resolve(LedgerAdapter.journalForYear(2016));
             handler.importJournal(Files.newBufferedReader(path, StandardCharsets.UTF_8), path.toString());
 
             var report = new ClosingReportAsciiDoc(handler.ledger());
@@ -69,7 +68,7 @@ class LedgerPortTest {
 
     private LedgerRealm createLedger(ErpStore store) {
         store.createRepository();
-        var ledgerHdl = new LedgerHdl(new LedgerEntities(), store.ledgerRoot());
+        var ledgerHdl = new LedgerAdapter(new LedgerEntities(), store.ledgerRoot());
         ledgerHdl.importEntities();
         return ledgerHdl.realm();
     }

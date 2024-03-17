@@ -20,7 +20,7 @@ import com.vaadin.flow.component.upload.AllFinishedEvent;
 import com.vaadin.flow.component.upload.Upload;
 import com.vaadin.flow.component.upload.receivers.MultiFileMemoryBuffer;
 import net.tangly.core.domain.BoundedDomain;
-import net.tangly.core.domain.Handler;
+import net.tangly.core.domain.Port;
 import net.tangly.core.domain.Realm;
 import org.jetbrains.annotations.NotNull;
 
@@ -37,12 +37,12 @@ import java.util.function.BiConsumer;
  * The mime type <code>text/tab-separated-values</code>is documented under <a href="https://en.wikipedia.org/wiki/Tab-separated_values">TSV Mime Type</a>.
  * The mime type <code>application/json</code> is documented under <a href="https://en.wikipedia.org/wiki/Media_type">Mime types</a>.
  */
-public abstract class CmdFilesUpload<R extends Realm, B, H extends Handler<?>, P> implements Cmd {
+public abstract class CmdFilesUpload<R extends Realm, B, P extends Port<R>> implements Cmd {
     public static final String TSV_MIME = "text/tab-separated-values";
     public static final String JSON_MIME = "application/json";
     public static final String CANCEL = "Cancel";
     public static final String TITLE = "Upload Files";
-    protected final BoundedDomain<R, B, H, P> domain;
+    protected final BoundedDomain<R, B, P> domain;
     private final MultiFileMemoryBuffer buffer;
     private final Upload multiFileUpload;
     private Dialog dialog;
@@ -53,7 +53,7 @@ public abstract class CmdFilesUpload<R extends Realm, B, H extends Handler<?>, P
      * @param domain            damain to which entities and aggregates are updated
      * @param acceptedFileTypes the allowed file types to be uploaded
      */
-    protected CmdFilesUpload(@NotNull BoundedDomain<R, B, H, P> domain, String... acceptedFileTypes) {
+    protected CmdFilesUpload(@NotNull BoundedDomain<R, B, P> domain, String... acceptedFileTypes) {
         this.domain = domain;
         buffer = new MultiFileMemoryBuffer();
         multiFileUpload = new Upload(buffer);

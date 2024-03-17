@@ -23,24 +23,27 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 
 /**
- * Define the import port for the bounded domain. It is a primary port in the DDD terminology.
+ * Define the inbound and outbound communication port to the bounded domain. It is a secondary port in the DDD terminology.
+ * <p>The realm is available to the port due to the default import and export functionality specific to this framework.</p>
  *
  * @param <R> Realm of the bounded domain
  */
-public interface Handler<R extends Realm> {
+public interface Port<R extends Realm> {
     /**
      * Import all entities of the bounded domain from the file system.
      *
      * @see #exportEntities()
      */
-    default void importEntities() {}
+    default void importEntities() {
+    }
 
     /**
      * Export all entities of the bounded domain to the file system.
      *
      * @see #importEntities()
      */
-    default void exportEntities() {}
+    default void exportEntities() {
+    }
 
     /**
      * Clear all entities of the bounded domain.

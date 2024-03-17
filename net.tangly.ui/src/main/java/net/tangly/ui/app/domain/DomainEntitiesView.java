@@ -43,7 +43,7 @@ public class DomainEntitiesView extends ItemView<DomainEntity> {
         }
     }
 
-    public DomainEntitiesView(@NotNull BoundedDomain<?, ?, ?, ?> domain) {
+    public DomainEntitiesView(@NotNull BoundedDomain<?, ?, ?> domain) {
         super(DomainEntity.class, domain, ProviderInMemory.of(domain.entities()), new DomainEntitiesFilter(), Mode.LIST);
         init();
     }

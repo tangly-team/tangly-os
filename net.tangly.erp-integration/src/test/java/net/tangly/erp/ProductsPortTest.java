@@ -15,7 +15,7 @@ package net.tangly.erp;
 import com.google.common.jimfs.Jimfs;
 import net.tangly.erp.products.ports.EffortReportEngine;
 import net.tangly.erp.products.ports.ProductsEntities;
-import net.tangly.erp.products.ports.ProductsHdl;
+import net.tangly.erp.products.ports.ProductsAdapter;
 import net.tangly.erp.products.services.ProductsBusinessLogic;
 import org.junit.jupiter.api.Test;
 
@@ -34,7 +34,7 @@ class ProductsPortTest {
             store.createRepository();
             var entities = new ProductsEntities();
             var logic = new ProductsBusinessLogic(entities);
-            var handler = new ProductsHdl(entities, store.productsRoot());
+            var handler = new ProductsAdapter(entities, logic, store.productsRoot());
             handler.importEntities();
             EffortReportEngine reporter = new EffortReportEngine(logic);
 //            reporter.create(Provider.findByOid(entities.assignments(), ASSIGNMENT_OID).orElseThrow(), LocalDate.of(2020, Month.JANUARY, 1),

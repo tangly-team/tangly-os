@@ -18,22 +18,19 @@ import net.tangly.core.HasOid;
 import net.tangly.core.TypeRegistry;
 import net.tangly.erp.crm.domain.Subject;
 import net.tangly.erp.crm.ports.CrmEntities;
-import net.tangly.erp.crm.ports.CrmHdl;
+import net.tangly.erp.crm.ports.CrmAdapter;
 import net.tangly.erp.crm.services.CrmBoundedDomain;
 import net.tangly.erp.crm.services.CrmBusinessLogic;
-import net.tangly.erp.invoices.ports.InvoicesAdapter;
 import net.tangly.erp.invoices.ports.InvoicesEntities;
-import net.tangly.erp.invoices.ports.InvoicesHdl;
+import net.tangly.erp.invoices.ports.InvoicesAdapter;
 import net.tangly.erp.invoices.services.InvoicesBoundedDomain;
 import net.tangly.erp.invoices.services.InvoicesBusinessLogic;
-import net.tangly.erp.ledger.ports.LedgerAdapter;
 import net.tangly.erp.ledger.ports.LedgerEntities;
-import net.tangly.erp.ledger.ports.LedgerHdl;
+import net.tangly.erp.ledger.ports.LedgerAdapter;
 import net.tangly.erp.ledger.services.LedgerBoundedDomain;
 import net.tangly.erp.ledger.services.LedgerBusinessLogic;
-import net.tangly.erp.products.ports.ProductsAdapter;
 import net.tangly.erp.products.ports.ProductsEntities;
-import net.tangly.erp.products.ports.ProductsHdl;
+import net.tangly.erp.products.ports.ProductsAdapter;
 import net.tangly.erp.products.services.ProductsBoundedDomain;
 import net.tangly.erp.products.services.ProductsBusinessLogic;
 import org.apache.logging.log4j.LogManager;
@@ -147,8 +144,7 @@ public class Erp {
             return null;
         } else {
             var realm = (databases() == null) ? new InvoicesEntities() : new InvoicesEntities(Path.of(databases(), InvoicesBoundedDomain.DOMAIN));
-            return new InvoicesBoundedDomain(realm, new InvoicesBusinessLogic(realm), new InvoicesHdl(realm, Path.of(imports(), InvoicesBoundedDomain.DOMAIN)),
-                new InvoicesAdapter(realm, Path.of(reports(), InvoicesBoundedDomain.DOMAIN)), registry);
+            return new InvoicesBoundedDomain(realm, new InvoicesBusinessLogic(realm), new InvoicesAdapter(realm, Path.of(reports())), registry);
         }
     }
 
@@ -160,7 +156,7 @@ public class Erp {
             if (realm.subjects().items().isEmpty()) {
                 realm.subjects().update(createAdminSubject());
             }
-            return new CrmBoundedDomain(realm, new CrmBusinessLogic(realm), new CrmHdl(realm, Path.of(imports(), CrmBoundedDomain.DOMAIN)), null, registry);
+            return new CrmBoundedDomain(realm, new CrmBusinessLogic(realm), new CrmAdapter(realm, Path.of(imports())), registry);
         }
     }
 
@@ -170,8 +166,7 @@ public class Erp {
         } else {
             var realm = (databases() == null) ? new ProductsEntities() : new ProductsEntities(Path.of(databases(), ProductsBoundedDomain.DOMAIN));
             var logic = new ProductsBusinessLogic(realm);
-            return new ProductsBoundedDomain(realm, logic, new ProductsHdl(realm, Path.of(imports(), ProductsBoundedDomain.DOMAIN)),
-                new ProductsAdapter(logic, Path.of(reports(), ProductsBoundedDomain.DOMAIN)), registry);
+            return new ProductsBoundedDomain(realm, logic, new ProductsAdapter(realm, logic, Path.of(imports(), ProductsBoundedDomain.DOMAIN)), registry);
         }
     }
 
@@ -193,8 +188,7 @@ public class Erp {
             return null;
         } else {
             var realm = (databases() == null) ? new LedgerEntities() : new LedgerEntities(Path.of(databases(), LedgerBoundedDomain.DOMAIN));
-            return new LedgerBoundedDomain(realm, new LedgerBusinessLogic(realm), new LedgerHdl(realm, Path.of(imports(), LedgerBoundedDomain.DOMAIN)),
-                new LedgerAdapter(realm, Path.of(reports(), LedgerBoundedDomain.DOMAIN)), registry);
+            return new LedgerBoundedDomain(realm, new LedgerBusinessLogic(realm), new LedgerAdapter(realm, Path.of(reports())), registry);
         }
     }
 

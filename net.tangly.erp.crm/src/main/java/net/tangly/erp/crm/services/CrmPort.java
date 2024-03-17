@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -12,8 +12,9 @@
 
 package net.tangly.erp.crm.services;
 
+import net.tangly.core.domain.Port;
+
 /**
- * Defines the export port for the bounded domain. It is a secondary port in the DDD terminology.
+ * Defines the import port for the bounded domain. It is a primary port in the DDD terminology.
  */
-public interface CrmPort {
-}
+public interface CrmPort extends Port<CrmRealm> { }

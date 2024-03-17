@@ -12,11 +12,10 @@
 
 package net.tangly.erp.ledger.ui;
 
-import net.tangly.erp.ledger.ports.LedgerHdl;
+import net.tangly.erp.ledger.ports.LedgerAdapter;
 import net.tangly.erp.ledger.ports.LedgerTsvHdl;
 import net.tangly.erp.ledger.services.LedgerBoundedDomain;
 import net.tangly.erp.ledger.services.LedgerBusinessLogic;
-import net.tangly.erp.ledger.services.LedgerHandler;
 import net.tangly.erp.ledger.services.LedgerPort;
 import net.tangly.erp.ledger.services.LedgerRealm;
 import net.tangly.ui.app.domain.CmdFilesUpload;
@@ -27,16 +26,16 @@ import java.util.Set;
 /**
  * The command defines how to upload entities provided as a set of TSV files onto the domain.
  */
-public class CmdFilesUploadLedger extends CmdFilesUpload<LedgerRealm, LedgerBusinessLogic, LedgerHandler, LedgerPort> {
+public class CmdFilesUploadLedger extends CmdFilesUpload<LedgerRealm, LedgerBusinessLogic, LedgerPort> {
     public CmdFilesUploadLedger(@NotNull LedgerBoundedDomain domain) {
         super(domain, TSV_MIME);
         registerAllFinishedListener(event -> {
             var handler = new LedgerTsvHdl(domain.realm());
             Set<String> files = buffer().getFiles();
-            if (files.contains(LedgerHdl.LEDGER)) {
-                processInputStream(LedgerHdl.LEDGER, handler::importChartOfAccounts);
+            if (files.contains(LedgerAdapter.LEDGER)) {
+                processInputStream(LedgerAdapter.LEDGER, handler::importChartOfAccounts);
             }
-            files.stream().filter(o -> o.endsWith(LedgerHdl.JOURNAL)).forEach(o -> {
+            files.stream().filter(o -> o.endsWith(LedgerAdapter.JOURNAL)).forEach(o -> {
                 processInputStream(o, handler::importJournal);
             });
             close();

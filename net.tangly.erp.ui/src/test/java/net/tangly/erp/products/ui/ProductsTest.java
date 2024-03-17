@@ -15,9 +15,8 @@ package net.tangly.erp.products.ui;
 import com.github.mvysny.kaributesting.v10.MockVaadin;
 import net.tangly.core.TypeRegistry;
 import net.tangly.erp.Erp;
-import net.tangly.erp.products.ports.ProductsAdapter;
 import net.tangly.erp.products.ports.ProductsEntities;
-import net.tangly.erp.products.ports.ProductsHdl;
+import net.tangly.erp.products.ports.ProductsAdapter;
 import net.tangly.erp.products.services.ProductsBoundedDomain;
 import net.tangly.erp.products.services.ProductsBusinessLogic;
 import org.junit.jupiter.api.BeforeAll;
@@ -29,7 +28,7 @@ class ProductsTest {
     static ProductsBoundedDomain ofDomain() {
         var realm = new ProductsEntities();
         var logic = new ProductsBusinessLogic(realm);
-        return new ProductsBoundedDomain(realm, logic, new ProductsHdl(realm, null), new ProductsAdapter(logic, null), new TypeRegistry());
+        return new ProductsBoundedDomain(realm, logic, new ProductsAdapter(realm, null, null), new TypeRegistry());
     }
 
     @BeforeAll

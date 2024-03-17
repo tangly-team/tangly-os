@@ -10,8 +10,30 @@
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
  */
 
-package net.tangly.erp.collabortors.services;
+package net.tangly.erp.collabortors.ports;
 
-import net.tangly.core.domain.Handler;
+import net.tangly.erp.collabortors.services.CollaboratorsPort;
+import net.tangly.erp.collabortors.services.CollaboratorsRealm;
 
-public interface CollaboratorsHandler extends Handler<CollaboratorsRealm> { }
+public class CollaboratorsAdaptor implements CollaboratorsPort {
+    private final CollaboratorsRealm realm;
+
+    public CollaboratorsAdaptor(CollaboratorsRealm realm) {
+        this.realm = realm;
+    }
+
+    @Override
+    public void importEntities() {
+
+    }
+
+    @Override
+    public void exportEntities() {
+
+    }
+
+    @Override
+    public CollaboratorsRealm realm() {
+        return realm;
+    }
+}

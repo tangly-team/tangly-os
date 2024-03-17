@@ -15,9 +15,8 @@ package net.tangly.erp.invoices.ui;
 import com.github.mvysny.kaributesting.v10.MockVaadin;
 import net.tangly.core.TypeRegistry;
 import net.tangly.erp.Erp;
-import net.tangly.erp.invoices.ports.InvoicesAdapter;
 import net.tangly.erp.invoices.ports.InvoicesEntities;
-import net.tangly.erp.invoices.ports.InvoicesHdl;
+import net.tangly.erp.invoices.ports.InvoicesAdapter;
 import net.tangly.erp.invoices.services.InvoicesBoundedDomain;
 import net.tangly.erp.invoices.services.InvoicesBusinessLogic;
 import org.junit.jupiter.api.BeforeAll;
@@ -28,8 +27,7 @@ import org.junit.jupiter.api.Tag;
 class InvoicesTest {
     static InvoicesBoundedDomain ofDomain() {
         var realm = new InvoicesEntities();
-        return new InvoicesBoundedDomain(realm, new InvoicesBusinessLogic(realm), new InvoicesHdl(realm, null), new InvoicesAdapter(realm, null),
-            new TypeRegistry());
+        return new InvoicesBoundedDomain(realm, new InvoicesBusinessLogic(realm), new InvoicesAdapter(realm, null), new TypeRegistry());
     }
 
     @BeforeAll

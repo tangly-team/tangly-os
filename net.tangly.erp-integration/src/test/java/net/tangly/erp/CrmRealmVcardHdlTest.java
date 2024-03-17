@@ -15,7 +15,7 @@ package net.tangly.erp;
 import com.google.common.jimfs.Configuration;
 import com.google.common.jimfs.Jimfs;
 import net.tangly.erp.crm.ports.CrmEntities;
-import net.tangly.erp.crm.ports.CrmHdl;
+import net.tangly.erp.crm.ports.CrmAdapter;
 import net.tangly.erp.crm.ports.CrmVcardHdl;
 import org.junit.jupiter.api.Test;
 
@@ -31,7 +31,7 @@ class CrmRealmVcardHdlTest {
         try (FileSystem fs = Jimfs.newFileSystem(Configuration.unix())) {
             var store = new ErpStore(fs);
             store.createRepository();
-            var crmHdl = new CrmHdl(realm, store.crmRoot());
+            var crmHdl = new CrmAdapter(realm, store.crmRoot());
             crmHdl.importEntities();
             var handler = new CrmVcardHdl(crmHdl.realm());
             handler.importVCards(store.vcardsRoot());

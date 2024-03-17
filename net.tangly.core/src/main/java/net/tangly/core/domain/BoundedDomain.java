@@ -30,25 +30,22 @@ import java.util.Optional;
  *
  * @param <R> realm handles all entities and values objects of the domain model
  * @param <B> business logic provides complex domain business logic functions
- * @param <H> handler provides an interface to interact with the bounded domain from outer layers
- * @param <P> port empowers the business domain to communicate with outer layers or external systems
+ * @param <P> port empowers the business domain to communicate with outer layers or external systems.
+ *            The communication is generally asynchronous
  */
-public class BoundedDomain<R extends Realm, B, H extends Handler<?>, P> {
+public class BoundedDomain<R extends Realm, B, P extends Port<R>> {
     private final String name;
     private final R realm;
-    private final H handler;
     private final P port;
     private final B logic;
     private final transient TypeRegistry registry;
 
-    public BoundedDomain(@NotNull String name, @NotNull R realm, @NotNull B logic, @NotNull H handler, @NotNull P port, TypeRegistry registry) {
+    public BoundedDomain(@NotNull String name, @NotNull R realm, @NotNull B logic, @NotNull P port, TypeRegistry registry) {
         this.name = name;
         this.realm = realm;
         this.logic = logic;
-        this.handler = handler;
         this.port = port;
         this.registry = registry;
-        startup();
     }
 
     protected static <I extends HasOid & HasTags> void addTagCounts(@NotNull TypeRegistry registry, @NotNull Provider<I> provider, Map<TagType<?>, Integer> counts) {
@@ -73,10 +70,6 @@ public class BoundedDomain<R extends Realm, B, H extends Handler<?>, P> {
 
     public B logic() {
         return logic;
-    }
-
-    public H handler() {
-        return handler;
     }
 
     public P port() {

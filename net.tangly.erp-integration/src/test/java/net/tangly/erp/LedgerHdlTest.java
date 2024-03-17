@@ -16,7 +16,7 @@ import com.google.common.jimfs.Configuration;
 import com.google.common.jimfs.Jimfs;
 import net.tangly.erp.ledger.domain.Account;
 import net.tangly.erp.ledger.ports.LedgerEntities;
-import net.tangly.erp.ledger.ports.LedgerHdl;
+import net.tangly.erp.ledger.ports.LedgerAdapter;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -32,7 +32,7 @@ class LedgerHdlTest {
             var store = new ErpStore(fs);
             store.createRepository();
 
-            var handler = new LedgerHdl(new LedgerEntities(), store.ledgerRoot());
+            var handler = new LedgerAdapter(new LedgerEntities(), store.ledgerRoot());
             handler.importEntities();
             assertThat(handler.realm().accounts().items().stream().filter(Account::isAggregate).filter(o -> o.aggregatedAccounts().isEmpty()).findAny())
                 .isEmpty();
@@ -53,7 +53,7 @@ class LedgerHdlTest {
             var store = new ErpStore(fs);
             store.createRepository();
 
-            var handler = new LedgerHdl(new LedgerEntities(), store.ledgerRoot());
+            var handler = new LedgerAdapter(new LedgerEntities(), store.ledgerRoot());
             handler.importEntities();
             int nrOfAccounts = handler.realm().accounts().items().size();
             int nrOfBookableAccounts = handler.realm().bookableAccounts().size();
@@ -61,7 +61,7 @@ class LedgerHdlTest {
             int nrOfProfitAndLossAccounts = handler.realm().profitAndLoss().size();
 
             handler.exportEntities();
-            handler = new LedgerHdl(new LedgerEntities(), store.ledgerRoot());
+            handler = new LedgerAdapter(new LedgerEntities(), store.ledgerRoot());
             handler.importEntities();
             assertThat(handler.realm().accounts().items().size()).isEqualTo(nrOfAccounts);
             assertThat(handler.realm().bookableAccounts().size()).isEqualTo(nrOfBookableAccounts);
@@ -75,7 +75,7 @@ class LedgerHdlTest {
         try (FileSystem fs = Jimfs.newFileSystem(Configuration.unix())) {
             var store = new ErpStore(fs);
             store.createRepository();
-            var handler = new LedgerHdl(new LedgerEntities(), store.ledgerRoot());
+            var handler = new LedgerAdapter(new LedgerEntities(), store.ledgerRoot());
             handler.importEntities();
             assertThat(handler.realm().transactions(LocalDate.of(2015, 1, 1), LocalDate.of(2016, 12, 31)).isEmpty()).isFalse();
         }
@@ -86,13 +86,13 @@ class LedgerHdlTest {
         try (FileSystem fs = Jimfs.newFileSystem(Configuration.unix())) {
             var store = new ErpStore(fs);
             store.createRepository();
-            var handler = new LedgerHdl(new LedgerEntities(), store.ledgerRoot());
+            var handler = new LedgerAdapter(new LedgerEntities(), store.ledgerRoot());
             handler.importEntities();
             int nrOfTransactions = handler.realm().transactions().items().size();
 
             handler.exportEntities();
 
-            handler = new LedgerHdl(new LedgerEntities(), store.ledgerRoot());
+            handler = new LedgerAdapter(new LedgerEntities(), store.ledgerRoot());
             handler.importEntities();
             assertThat(handler.realm().transactions().items().size()).isEqualTo(nrOfTransactions);
         }

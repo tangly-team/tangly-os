@@ -121,7 +121,7 @@ public abstract class ItemView<T> extends VerticalLayout {
     }
 
     private final Class<T> entityClass;
-    private final BoundedDomain<?, ?, ?, ?> domain;
+    private final BoundedDomain<?, ?, ?> domain;
     private Provider<T> provider;
 
     private GridListDataView<T> dataView;
@@ -143,7 +143,7 @@ public abstract class ItemView<T> extends VerticalLayout {
      * @param filter      optional filter for the grid
      * @param mode        mode of the view
      */
-    protected ItemView(@NotNull Class<T> entityClass, BoundedDomain<?, ?, ?, ?> domain, @NotNull Provider<T> provider, ItemFilter<T> filter, @NotNull Mode mode) {
+    protected ItemView(@NotNull Class<T> entityClass, BoundedDomain<?, ?, ?> domain, @NotNull Provider<T> provider, ItemFilter<T> filter, @NotNull Mode mode) {
         this.entityClass = entityClass;
         this.domain = domain;
         this.filter = filter;
@@ -163,7 +163,7 @@ public abstract class ItemView<T> extends VerticalLayout {
         return entityClass;
     }
 
-    public BoundedDomain<?, ?, ?, ?> domain() {
+    public BoundedDomain<?, ?, ?> domain() {
         return domain;
     }
 

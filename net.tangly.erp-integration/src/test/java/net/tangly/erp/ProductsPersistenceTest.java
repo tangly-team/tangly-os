@@ -15,7 +15,7 @@ package net.tangly.erp;
 import com.google.common.jimfs.Configuration;
 import com.google.common.jimfs.Jimfs;
 import net.tangly.erp.products.ports.ProductsEntities;
-import net.tangly.erp.products.ports.ProductsHdl;
+import net.tangly.erp.products.ports.ProductsAdapter;
 import org.junit.jupiter.api.Test;
 
 import java.nio.file.FileSystem;
@@ -29,14 +29,14 @@ class ProductsPersistenceTest {
             var store = new ErpStore(fs);
             store.createRepository();
 
-            var handler = new ProductsHdl(new ProductsEntities(store.productsRoot()), store.productsRoot());
+            var handler = new ProductsAdapter(new ProductsEntities(store.productsRoot()), null, store.productsRoot());
             handler.importEntities();
             assertThat(handler.realm().products().items().isEmpty()).isFalse();
             assertThat(handler.realm().assignments().items().isEmpty()).isFalse();
             assertThat(handler.realm().efforts().items().isEmpty()).isFalse();
             handler.realm().close();
 
-            handler = new ProductsHdl(new ProductsEntities(store.productsRoot()), store.productsRoot());
+            handler = new ProductsAdapter(new ProductsEntities(store.productsRoot()), null, store.productsRoot());
             assertThat(handler.realm().products().items().isEmpty()).isFalse();
             assertThat(handler.realm().assignments().items().isEmpty()).isFalse();
             assertThat(handler.realm().efforts().items().isEmpty()).isFalse();

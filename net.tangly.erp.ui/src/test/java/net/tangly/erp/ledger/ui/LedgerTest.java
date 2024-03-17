@@ -15,9 +15,8 @@ package net.tangly.erp.ledger.ui;
 import com.github.mvysny.kaributesting.v10.MockVaadin;
 import net.tangly.core.TypeRegistry;
 import net.tangly.erp.Erp;
-import net.tangly.erp.ledger.ports.LedgerAdapter;
 import net.tangly.erp.ledger.ports.LedgerEntities;
-import net.tangly.erp.ledger.ports.LedgerHdl;
+import net.tangly.erp.ledger.ports.LedgerAdapter;
 import net.tangly.erp.ledger.services.LedgerBoundedDomain;
 import net.tangly.erp.ledger.services.LedgerBusinessLogic;
 import org.junit.jupiter.api.BeforeAll;
@@ -28,7 +27,7 @@ import org.junit.jupiter.api.Tag;
 class LedgerTest {
     static LedgerBoundedDomain ofDomain() {
         var realm = new LedgerEntities();
-        return new LedgerBoundedDomain(realm, new LedgerBusinessLogic(realm), new LedgerHdl(realm, null), new LedgerAdapter(realm, null), new TypeRegistry());
+        return new LedgerBoundedDomain(realm, new LedgerBusinessLogic(realm), new LedgerAdapter(realm, null), new TypeRegistry());
     }
 
     @BeforeAll

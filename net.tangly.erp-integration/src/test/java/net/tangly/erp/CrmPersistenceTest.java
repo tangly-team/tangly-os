@@ -15,7 +15,7 @@ package net.tangly.erp;
 import com.google.common.jimfs.Configuration;
 import com.google.common.jimfs.Jimfs;
 import net.tangly.erp.crm.ports.CrmEntities;
-import net.tangly.erp.crm.ports.CrmHdl;
+import net.tangly.erp.crm.ports.CrmAdapter;
 import org.junit.jupiter.api.Test;
 
 import java.nio.file.FileSystem;
@@ -29,7 +29,7 @@ class CrmPersistenceTest {
             var store = new ErpStore(fs);
             store.createRepository();
 
-            var handler = new CrmHdl(new CrmEntities(store.crmRoot()), store.crmRoot());
+            var handler = new CrmAdapter(new CrmEntities(store.crmRoot()), store.crmRoot());
             handler.importEntities();
             assertThat(handler.realm().naturalEntities().items().isEmpty()).isFalse();
             assertThat(handler.realm().legalEntities().items().isEmpty()).isFalse();
@@ -38,7 +38,7 @@ class CrmPersistenceTest {
             assertThat(handler.realm().interactions().items().isEmpty()).isFalse();
             handler.realm().close();
 
-            handler = new CrmHdl(new CrmEntities(store.crmRoot()), store.crmRoot());
+            handler = new CrmAdapter(new CrmEntities(store.crmRoot()), store.crmRoot());
             assertThat(handler.realm().naturalEntities().items().isEmpty()).isFalse();
             assertThat(handler.realm().legalEntities().items().isEmpty()).isFalse();
             assertThat(handler.realm().employees().items().isEmpty()).isFalse();

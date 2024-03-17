@@ -15,7 +15,7 @@ package net.tangly.erp;
 import com.google.common.jimfs.Configuration;
 import com.google.common.jimfs.Jimfs;
 import net.tangly.erp.invoices.ports.InvoicesEntities;
-import net.tangly.erp.invoices.ports.InvoicesHdl;
+import net.tangly.erp.invoices.ports.InvoicesAdapter;
 import org.junit.jupiter.api.Test;
 
 import java.nio.file.FileSystem;
@@ -29,12 +29,12 @@ class InvoicesPersistenceTest {
             var store = new ErpStore(fs);
             store.createRepository();
 
-            var handler = new InvoicesHdl(new InvoicesEntities(store.invoicesRoot()), store.invoicesRoot());
+            var handler = new InvoicesAdapter(new InvoicesEntities(store.invoicesRoot()), store.invoicesRoot());
             handler.importEntities();
             assertThat(handler.realm().invoices().items().isEmpty()).isFalse();
             handler.realm().close();
 
-            handler = new InvoicesHdl(new InvoicesEntities(store.invoicesRoot()), store.invoicesRoot());
+            handler = new InvoicesAdapter(new InvoicesEntities(store.invoicesRoot()), store.invoicesRoot());
             assertThat(handler.realm().invoices().items().isEmpty()).isFalse();
             handler.realm().close();
         }

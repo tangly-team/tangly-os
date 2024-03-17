@@ -23,10 +23,10 @@ class TestDomain {
         }
     }
 
-    static class TestHandler implements Handler<TestRealm> {
+    static class TestPort implements Port<TestRealm> {
         private final TestRealm realm;
 
-        TestHandler(TestRealm realm) {
+        TestPort(TestRealm realm) {
             this.realm = realm;
         }
 
@@ -46,19 +46,19 @@ class TestDomain {
         }
     }
 
-    static class TestBoundedDomain extends BoundedDomain<TestRealm, Void, TestHandler, Void> {
-        TestBoundedDomain(TestRealm realm, TestHandler handler) {
-            super("TestBoundedDomain", realm, null, handler, null, null);
+    static class TestBoundedDomain extends BoundedDomain<TestRealm, Void, TestPort> {
+        TestBoundedDomain(TestRealm realm, TestPort port) {
+            super("TestBoundedDomain", realm, null, port, null);
         }
     }
 
     @Test
     void createDomain() {
         var realm = new TestRealm();
-        var handler = new TestHandler(realm);
+        var handler = new TestPort(realm);
         var domain = new TestBoundedDomain(realm, handler);
 
         assertThat(domain.realm()).isEqualTo(realm);
-        assertThat(domain.handler()).isEqualTo(handler);
+        assertThat(domain.port()).isEqualTo(handler);
     }
 }

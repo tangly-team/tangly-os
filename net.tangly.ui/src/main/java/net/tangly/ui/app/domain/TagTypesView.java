@@ -35,7 +35,7 @@ public class TagTypesView extends ItemView<TagType> {
     final String NAME_LABEL = " Name";
     private final transient HashMap<TagType<?>, Integer> counts;
 
-    public TagTypesView(@NotNull BoundedDomain<?, ?, ?, ?> domain) {
+    public TagTypesView(@NotNull BoundedDomain<?, ?, ?> domain) {
         super(TagType.class, domain, ProviderInMemory.of(domain.registry().tagTypes()), new TagTypeFilter(), Mode.LIST);
         this.counts = new HashMap<>();
         init();

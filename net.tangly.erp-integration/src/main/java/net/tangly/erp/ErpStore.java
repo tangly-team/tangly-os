@@ -13,9 +13,9 @@
 
 package net.tangly.erp;
 
-import net.tangly.erp.crm.ports.CrmHdl;
-import net.tangly.erp.invoices.ports.InvoicesHdl;
-import net.tangly.erp.products.ports.ProductsHdl;
+import net.tangly.erp.crm.ports.CrmAdapter;
+import net.tangly.erp.invoices.ports.InvoicesAdapter;
+import net.tangly.erp.products.ports.ProductsAdapter;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
@@ -118,22 +118,22 @@ public record ErpStore(@NotNull FileSystem fs) {
             Files.createDirectory(fs.getPath(ORGANIZATION, DATABASE));
             Files.createDirectory(crmDb());
 
-            copy(CRM_PACKAGE_NAME, crmRoot(), CrmHdl.LEADS_TSV);
-            copy(CRM_PACKAGE_NAME, crmRoot(), CrmHdl.NATURAL_ENTITIES_TSV);
-            copy(CRM_PACKAGE_NAME, crmRoot(), CrmHdl.LEGAL_ENTITIES_TSV);
-            copy(CRM_PACKAGE_NAME, crmRoot(), CrmHdl.EMPLOYEES_TSV);
-            copy(CRM_PACKAGE_NAME, crmRoot(), CrmHdl.CONTRACTS_TSV);
-            copy(CRM_PACKAGE_NAME, crmRoot(), CrmHdl.INTERACTIONS_TSV);
-            copy(CRM_PACKAGE_NAME, crmRoot(), CrmHdl.ACTIVITIES_TSV);
-            copy(CRM_PACKAGE_NAME, crmRoot(), CrmHdl.SUBJECTS_TSV);
-            copy(CRM_PACKAGE_NAME, crmRoot(), CrmHdl.COMMENTS_TSV);
-            copy(PRODUCTS_PACKAGE_NAME, productsRoot(), ProductsHdl.PRODUCTS_TSV);
-            copy(PRODUCTS_PACKAGE_NAME, productsRoot(), ProductsHdl.ASSIGNMENTS_TSV);
-            copy(PRODUCTS_PACKAGE_NAME, productsRoot(), ProductsHdl.EFFORTS_TSV);
+            copy(CRM_PACKAGE_NAME, crmRoot(), CrmAdapter.LEADS_TSV);
+            copy(CRM_PACKAGE_NAME, crmRoot(), CrmAdapter.NATURAL_ENTITIES_TSV);
+            copy(CRM_PACKAGE_NAME, crmRoot(), CrmAdapter.LEGAL_ENTITIES_TSV);
+            copy(CRM_PACKAGE_NAME, crmRoot(), CrmAdapter.EMPLOYEES_TSV);
+            copy(CRM_PACKAGE_NAME, crmRoot(), CrmAdapter.CONTRACTS_TSV);
+            copy(CRM_PACKAGE_NAME, crmRoot(), CrmAdapter.INTERACTIONS_TSV);
+            copy(CRM_PACKAGE_NAME, crmRoot(), CrmAdapter.ACTIVITIES_TSV);
+            copy(CRM_PACKAGE_NAME, crmRoot(), CrmAdapter.SUBJECTS_TSV);
+            copy(CRM_PACKAGE_NAME, crmRoot(), CrmAdapter.COMMENTS_TSV);
+            copy(PRODUCTS_PACKAGE_NAME, productsRoot(), ProductsAdapter.PRODUCTS_TSV);
+            copy(PRODUCTS_PACKAGE_NAME, productsRoot(), ProductsAdapter.ASSIGNMENTS_TSV);
+            copy(PRODUCTS_PACKAGE_NAME, productsRoot(), ProductsAdapter.EFFORTS_TSV);
             copy(LEDGER_PACKAGE_NAME, ledgerRoot(), "ledger.tsv");
             copy(LEDGER_PACKAGE_NAME, ledgerRoot(), "2015-journal.tsv");
             copy(LEDGER_PACKAGE_NAME, ledgerRoot(), "2016-journal.tsv");
-            copy(INVOICES_PACKAGE_NAME, invoicesRoot(), InvoicesHdl.ARTICLES_TSV);
+            copy(INVOICES_PACKAGE_NAME, invoicesRoot(), InvoicesAdapter.ARTICLES_TSV);
             copy(INVOICES_PACKAGE_NAME + "2015/", invoicesRoot().resolve("2015"), "2015-8001-Invoice-HSLU-December.json");
             copy(INVOICES_PACKAGE_NAME + "2016/", invoicesRoot().resolve("2016"), "2016-8001-Invoice-HSLU-October.json");
             copy(INVOICES_PACKAGE_NAME + "2017/", invoicesRoot().resolve("2017"), "2017-8001-Invoice-HSLU-February.json");

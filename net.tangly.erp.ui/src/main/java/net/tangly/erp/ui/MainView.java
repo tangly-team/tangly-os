@@ -111,7 +111,7 @@ public class MainView extends AppLayout {
         tabs.addSelectedChangeListener(event -> select(event.getSelectedTab().getLabel()));
     }
 
-    private String tabNameFor(@NotNull BoundedDomain<?, ?, ?, ?> domain) {
+    private String tabNameFor(@NotNull BoundedDomain<?, ?, ?> domain) {
         return domain.name().substring(0, 1).toUpperCase() + domain.name().substring(1);
     }
 

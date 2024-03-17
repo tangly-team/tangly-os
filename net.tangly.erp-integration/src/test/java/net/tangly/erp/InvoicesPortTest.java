@@ -15,9 +15,8 @@ package net.tangly.erp;
 
 import com.google.common.jimfs.Jimfs;
 import net.tangly.erp.invoices.artifacts.InvoicesUtilities;
-import net.tangly.erp.invoices.ports.InvoicesAdapter;
 import net.tangly.erp.invoices.ports.InvoicesEntities;
-import net.tangly.erp.invoices.ports.InvoicesHdl;
+import net.tangly.erp.invoices.ports.InvoicesAdapter;
 import org.apache.pdfbox.io.RandomAccessReadBuffer;
 import org.apache.pdfbox.pdfparser.PDFParser;
 import org.apache.pdfbox.pdmodel.PDDocument;
@@ -39,7 +38,7 @@ class InvoicesPortTest {
             store.createRepository();
 
             var port = new InvoicesAdapter(new InvoicesEntities(), store.invoiceReportsRoot());
-            var handler = new InvoicesHdl(new InvoicesEntities(), store.invoicesRoot());
+            var handler = new InvoicesAdapter(new InvoicesEntities(), store.invoicesRoot());
             handler.importEntities();
             port.exportInvoiceDocuments(true, true, true, null, null);
 

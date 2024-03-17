@@ -24,11 +24,11 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 import java.util.Map;
 
-public class ProductsBoundedDomain extends BoundedDomain<ProductsRealm, ProductsBusinessLogic, ProductsHandler, ProductsPort> {
+public class ProductsBoundedDomain extends BoundedDomain<ProductsRealm, ProductsBusinessLogic, ProductsPort> {
     public static final String DOMAIN = "products";
 
-    public ProductsBoundedDomain(ProductsRealm realm, ProductsBusinessLogic logic, ProductsHandler handler, ProductsPort port, TypeRegistry registry) {
-        super(DOMAIN, realm, logic, handler, port, registry);
+    public ProductsBoundedDomain(ProductsRealm realm, ProductsBusinessLogic logic, ProductsPort port, TypeRegistry registry) {
+        super(DOMAIN, realm, logic, port, registry);
     }
 
     @Override

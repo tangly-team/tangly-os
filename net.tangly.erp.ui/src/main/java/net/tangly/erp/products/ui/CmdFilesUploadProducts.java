@@ -12,11 +12,10 @@
 
 package net.tangly.erp.products.ui;
 
-import net.tangly.erp.products.ports.ProductsHdl;
+import net.tangly.erp.products.ports.ProductsAdapter;
 import net.tangly.erp.products.ports.ProductsTsvHdl;
 import net.tangly.erp.products.services.ProductsBoundedDomain;
 import net.tangly.erp.products.services.ProductsBusinessLogic;
-import net.tangly.erp.products.services.ProductsHandler;
 import net.tangly.erp.products.services.ProductsPort;
 import net.tangly.erp.products.services.ProductsRealm;
 import net.tangly.ui.app.domain.CmdFilesUpload;
@@ -27,21 +26,21 @@ import java.util.Set;
 /**
  * The command defines how to upload entities provided as a set of TSV files onto the domain.
  */
-public class CmdFilesUploadProducts extends CmdFilesUpload<ProductsRealm, ProductsBusinessLogic, ProductsHandler, ProductsPort> {
+public class CmdFilesUploadProducts extends CmdFilesUpload<ProductsRealm, ProductsBusinessLogic, ProductsPort> {
     CmdFilesUploadProducts(@NotNull ProductsBoundedDomain domain) {
         super(domain, TSV_MIME);
         registerAllFinishedListener(
             (event -> {
                 var handler = new ProductsTsvHdl(domain.realm());
                 Set<String> files = buffer().getFiles();
-                if (files.contains(ProductsHdl.PRODUCTS_TSV)) {
-                    processInputStream(ProductsHdl.PRODUCTS_TSV, handler::importProducts);
+                if (files.contains(ProductsAdapter.PRODUCTS_TSV)) {
+                    processInputStream(ProductsAdapter.PRODUCTS_TSV, handler::importProducts);
                 }
-                if (files.contains(ProductsHdl.ASSIGNMENTS_TSV)) {
-                    processInputStream(ProductsHdl.ASSIGNMENTS_TSV, handler::importAssignments);
+                if (files.contains(ProductsAdapter.ASSIGNMENTS_TSV)) {
+                    processInputStream(ProductsAdapter.ASSIGNMENTS_TSV, handler::importAssignments);
                 }
-                if (files.contains(ProductsHdl.EFFORTS_TSV)) {
-                    processInputStream(ProductsHdl.EFFORTS_TSV, handler::importEfforts);
+                if (files.contains(ProductsAdapter.EFFORTS_TSV)) {
+                    processInputStream(ProductsAdapter.EFFORTS_TSV, handler::importEfforts);
                 }
                 close();
             }));
