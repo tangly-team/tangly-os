@@ -22,7 +22,13 @@ Like the XRechnung, ZUGFeRD uses the EN16931 calculation rules and the according
 
 Apparently, all german states accept ZUGFeRD invoices and E-Rechnung-Bund mentions the ZUGFeRD 2.1.1 XRechnung reference profile as an alternative to the XRechnung.
 
-== Mustang Library
+== Libraries
+
+=== Mustang Library
+
+=== Swiss QR Code
+
+=== SEPA QR Payment Code
 
 == tangly ERP
 

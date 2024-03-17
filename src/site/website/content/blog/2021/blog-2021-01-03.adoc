@@ -18,7 +18,7 @@ They predate agile development approaches.
 
 Technical schools should provide an in-depth experience in these areas to prepare their students for their future activities after completing their bachelor.
 
-The below mind map consolidates concepts, tools and approaches based on the https://about.gitlab.com/[GitLab] tooling established in some universities.
+The below mind map consolidates concepts, tools and approaches based on the {ref-gitlab} tooling established in some universities.
 The approach emphasizes *agile* and *DevOps* concepts and approaches.
 
 [plantuml,target=students-proficiencies,format=svg]
@@ -102,9 +102,9 @@ Some Swiss technical universities - ZHAW, University of Bern - use the academic 
 CI and CD pipelines are not part of the GitHub product and must be installed separately.
 The academic program means you receive GitHub licenses.
 Your organization is responsible for running the software on the premises.
-* https://about.gitlab.com/[Gitlab] is an open-source solution and a strong contender for GitHub.
+* {ref-gitlab} is an open-source solution and a strong contender for GitHub.
 CI and CD pipelines are part of the product.
-* https://bitbucket.org/dashboard/overview[Bitbucket] is a closed-source solution of Atlassian.
+* {ref-bitbucket} is a closed-source solution of Atlassian.
 CI and CD pipelines are part of the product.
 Atlassian also owns JIRA, Confluence and Trello.
 * https://azure.microsoft.com/en-us/services/devops/[Azure Devops] is a closed-source solution and Microsoft answers to .NET development.
@@ -118,12 +118,12 @@ The project is hosed on GitHub.
 * https://gitolite.com/[Gitolite] allows you to set up git hosting on a central server.
 It has fine-grained access control, and many more powerful features.
 
-Schools often select https://about.gitlab.com/[GitLab] due to his open source license and the tremendous DevOps functionality.
+Schools often select {ref-gitlab} due to his open source license and the tremendous DevOps functionality.
 The gitlab solution supports source code versioning, DevOps pipelines, agile development approaches, and quality insurance for the produced artifacts.
 
 [NOTE]
 ====
-The technical university of Lucerne https://www.hslu.ch/en/[HSLU] has selected https://about.gitlab.com/[the GitLab] platform as the standard DevOps environment.
+The technical university of Lucerne https://www.hslu.ch/en/[HSLU] has selected {ref-gitlab} platform as the standard DevOps environment.
 
 Well-known companies in Switzerland such as Roche Diagnostics, UBS<<ubs-gitlab>>, Siemens<<siemens-gitlab>> have also standardized on this platform.
 

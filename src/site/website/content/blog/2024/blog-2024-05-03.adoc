@@ -19,7 +19,8 @@ I love my software development job.
 I am sixty years old.
 I started programming before I was 20.
 And I still tremendously love developing digital products and writing programs.
-Tinkering on source code to have a maintainable and efficient solution is my passion.
+
+My passion is tinkering with source code to have a maintainable and efficient solution.
 
 I love technology and to work improving live quality for humanity.
 
@@ -46,7 +47,7 @@ So if founded {ref-tangly} in 2015.
 Our agile and Java boutique is quite successful since then.
 
 I love designing and writing software using modern approaches
-cite:[domain-driven-design,building-evolutionary-architectures-2ndworking-effectively-with-legacy-code,refactoring-2nd].
+cite:[domain-driven-design,building-evolutionary-architectures-2nd,working-effectively-with-legacy-code,refactoring-2nd].
 
 My preferred technology stacks are modern Java and modular monolith applications.
 

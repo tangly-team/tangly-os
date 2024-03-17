@@ -8,6 +8,7 @@ tags: ["hugo"]
 include::../fragments/_config-mb-blog.aodc[]
 
 :ref-revealjs: https://revealjs.com/[reveal.js]
+:ref-integrity: https://peacockmedia.software/mac/integrity/free.html[integrity]
 
 [.float-group]
 --
@@ -143,6 +144,8 @@ _The presentation contains the notes you wrote for each slide and has all the fu
 
 == Lessons Learnt
 
+=== Toolchain
+
 Beware of your toolchain.
 After updating some ruby modules, I could not generate bibtex citation references anymore
 footnote:[The problem was an incompatibility between ruby 2.x and 3.x of one gem called _bibtex-ruby_ used by the asciidoctor bibtex extension.
@@ -150,7 +153,7 @@ Therefore, all unit tests of the package still run under the older version of ru
 People who updated to the newer ruby discovered the problem.
 The {ref-asciidoc} community solved the issue in a few weeks.].
 I posted the issue on the asciidoctor GitHub, and some weeks later a new version was released.
-The gem asciidoctor-bibtex-0.9.0 fixed the issue.
+The gem _asciidoctor-bibtex-0.9.0_ fixed the issue.
 
 The following statements are helpful for ruby applications.
 Beware that {ref-asciidoctor} is a ruby application.
@@ -173,10 +176,17 @@ ruby -v                                                                        <
 
 The consequence is that I should set up a CI pipeline to check if the toolchain is still working.
 
+=== Asciidoc Stylesheet
+
 The support of {ref-docsy} for {ref-asciidoc} is limited.
 I had to extend the theme to support styling of {ref-asciidoc} texts and to display taxonomies in the sidebar.
 
 Additional tinkering supports the download of referenced documents.
+
+=== Link Integrity
+
+When your website is growing, you need tools to ensure consistency of links.
+I use {ref-integrity} to validate all hyperlinks on my website.
 
 [bibliography]
 == Links

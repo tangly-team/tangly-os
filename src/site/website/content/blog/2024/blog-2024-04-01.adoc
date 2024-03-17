@@ -11,6 +11,10 @@ image::2024-04-01-head.png[width=420,height=360,role=left]
 
 Writing concurrent software is one of the greatest challenges for software developers cite:[modern-software-engineering,effective-java-3rd].
 
+A professional software developer must understand the principles of concurrent programming and the tools available to write concurrent software.
+
+Only concurrent applications can access all cores of modern multicore processors and provide the best performance.
+
 Java thread model makes it a strong contender among concurrent languages, but multithreading has always been inherently tricky.
 
 The introduction of _virtual threads_ empowered Java to provide a unique and highly-optimized threading system that is also easy to understand.
@@ -21,13 +25,12 @@ Now you need mechanisms to manage this huge number of threads.
 Virtual threads, now an official feature of Java, create the possibility of cheaply spawning threads to gain concurrent performance.
 As a result, Java now has a unique and highly-optimized threading system that is also easy to understand.
 
-How do you cope with a huge number of threads?
+Application designers often face the following questions:
 
-How do you process huge collections?
-
-How do you process data flows with back pressure?
-
-How do you design distributed and reactive systems?
+- How do you cope with a huge number of threads?
+- How do you process huge collections?
+- How do you process data flows with back pressure?
+- How do you design distributed and reactive systems?
 
 == Structured Concurrency
 
@@ -53,6 +56,13 @@ try (var scope = new StructuredTaskScope.ShutdownOnFailure()) {
 
 When exiting the try-with-resources block, the structured concurrency framework ensures that all concurrent tasks are properly managed and cleaned up.
 
+[NOTE]
+====
+Modern Java programmers never create threads directly.
+
+Complex or slow algoritms shall be parallelized using structured concurrency to exploit modern multicore processors.
+====
+
 == Concurrent Stream Processing
 
 [.float-group]
@@ -74,6 +84,17 @@ The parallel stream is cleanup upon completion of the terminal operation.
 List<Integer> listOfNumbers = Arrays.asList(1, 2, 3, 4);
 int sum = listOfNumbers.parallelStream().reduce(5, Integer::sum);
 ----
+
+[NOTE]
+====
+Java streams library provides a rich set of functionalities that can work with any stream.
+The approach is similar to the sequence library in functional programming languages such as Clojure.
+
+Modern Java cpde processeses any collection through sreams.
+Huge collections are very efficiently processed in parallel streams on modern multicore processors.
+
+This approach transforms imperative code into a declarative style, which is easier to read and maintain.
+====
 
 == Concurrent Data Flow Processing
 
@@ -104,10 +125,20 @@ An actor only accesses its own state and does not share state with other actors.
 An actor is an active object that encapsulates state and behavior and is implemented as a concurrent process.
 --
 
+[NOTE]
+====
+I strongly recommend using the actor model when designing distributed and reactive systems.
+Avoid low-level concurrency primitives and thread pools.
+
+Design your system as a set of actors that communicate with each other by sending messages.
+Eliminate shared mutable state and use message passing to communicate between actors.
+====
+
 == Lessons Learnt
 
 Between virtual threads and structured concurrency, Java developers have a compelling new mechanism for breaking up almost any code into concurrent tasks without much overhead.
 An application developer almost never uses concurrency primitives or thread pools directly.
+Beware of these design approaches and select wisely based on the requirements of the application.
 
 Library developers can use the new concurrency primitives to build high-performance libraries that are easy to use.
 

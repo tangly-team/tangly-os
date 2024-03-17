@@ -20,7 +20,7 @@ Several DevOps aspects came from the Agile method.
 Seminal books cite:[accelerate,devops-handbook,phoenix-project,site-reliability-engineering] and good practices were published around the same time.
 
 The DevOps approach belongs to the regular instruments of professional software developers.
-Major development platforms, https://github.com/[GitHub], https://gitlab.com/[GitLab], https://bitbucket.org/[BitBucket]
+Major development platforms, {ref-github}, {ref-gitlab}, {ref-bitbucket}
 and https://azure.microsoft.com/de-de/services/devops/[Microsoft Azure DevOps] do support continuous integration, delivery and deployments for years.
 
 The DORA metrics define a standard approach to measure the quality and efficiency of a DevOps or agile process implementation in an organization.

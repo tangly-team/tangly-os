@@ -45,7 +45,7 @@ These toolchains are expected to fit into one or more of the following categorie
 
 [NOTE]
 ====
-The major software product development platforms https://gitlab.com/[GitLab], https://github.com/[GitHub] or https://bitbucket.org/dashboard/overview[BitBucket]
+The major software product development platforms {ref-gitlab}, {ref-github} or {ref-bitbucket}
 are classical examples of toolchains integration.
 ====
 

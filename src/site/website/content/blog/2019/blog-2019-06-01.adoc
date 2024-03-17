@@ -7,18 +7,27 @@ tags: ["agile", "series-agile-design"]
 
 include::../fragments/_config-mb-blog.aodc[]
 
+:ref-archunit: https://www.archunit.org/[ArchUnit]
+:ref-jacoco: https://www.eclemma.org/jacoco/[JaCoCo]
+:ref-junit5: https://junit.org/junit5/[JUnit 5]
+:ref-mockito: https://site.mockito.org/[Mockito]
+:ref-sonarlint: https://www.sonarlint.org/[SonarLint]
+:ref-spotbugs: https://spotbugs.github.io/[Spotbugs]
+
 [.float-group]
 --
 image::2019-06-01-head.png[width=420,height=360,role=left]
 
 You are applying the agile, lean approach to your software product development.
 
-Your teams use Scrum or Kanban to deliver running software every two weeks.
+Congratulations, you are applying state of the industry good practices.
+
+Your teams use {ref-scrum} or {ref-kanban} to deliver running software every two weeks.
 
 To create an agile architecture, you must write agile worthy code.
 Agile code is always clean code.
 
-Start early, do it continuously and soon your code will be clean, legible and free of defects.
+Start early, do it continuously and soon your code will be clean, legible and free of known defects.
 --
 
 == Architecture versus Code
@@ -29,31 +38,46 @@ Such monsters are not born over one-night coding session.
 It takes time and incompetence to create such maintenance nightmares.
 
 As long as your product contains such code monsters, it is worthless to pretend to have a nice and thought through architecture.
+Your organization is still trying to achieve software craftsmanship.
 
 Team discipline and early warning systems are the keys to avoid such blunders and kill the monster in the egg.
+
+[NOTE]
+====
+Be honest.
+
+Merge requests, code reviews, and pair programming done professionally should avoid such code monsters.
+
+Train your developers to write clean code and refactor continuously.
+Have professional engineers in your teams to enforce the discipline.
+====
 
 == Clean Code and Refactoring
 
 The clean code https://en.wikipedia.org/wiki/Test-driven_development[test-driven development] _TDD_ approach to write code was defined last millennium.
 Professional developers adopted this approach to deliver high quality, legible and maintainable code artifacts.
 
-image::2019-06-01-red-green-refactor.png[role="text-center"]
+[.float-group]
+--
+image::2019-06-01-red-green-refactor.png[width=420,height=360,role=left]
 
 *Red*:: Write a test and run it, validating the test harness.
-*Green*:: Write the minimum amount of code to implement the functionality validated in the previously developed test.
+*Green*:: Write the minimum amount of code to implement the functionality validated in the previously developed test. +
 Update the code and run the tests until the test suite shows successful execution.
 *Refactor*:: The code to reach a clean code level.
 Continuously run the tests for guaranteed compliant changes.
+--
 
 If you are a Java developer, you will
 
-* Use JUnit 5 and Mockito 2 to implement the first step.
+* Use {ref-junit5} and {ref-mockito} to implement the first step.
 * Use a powerful IDE such an IntelliJ IDEA to write and enhance the functional code.
-* Use tools such as SonarLint, Jacoco, Spotbugs, ArchUnit to refactor your functional code and test cases.
+* Use tools such as {ref-sonarlint}, {ref-jacoco}, {ref-spotbugs}, {ref-archunit} to refactor your functional code and test cases.
 Clean code applies to productive and test code.
 
 The described approach is a good practice since the beginning of this millennium.
 All above-mentioned tools are open source and free to use.
+
 Your organization has *no excuse* to write crap code.
 
 Write well-engineered, legible and maintainable source code.
@@ -86,33 +110,36 @@ They are a fast solution to write acceptance tests but are intrinsically slower 
 The most simple engineering practices are the most powerful.
 Practice consolidates changes in the behavior of your development organization.
 
-* https://en.wikipedia.org/wiki/Pair_programming[Pair Programming] - is a training on the job and crowd wisdom approach to steadily improving knowledge and quality -.
+* https://en.wikipedia.org/wiki/Pair_programming[Pair Programming] is a training on the job and crowd wisdom approach to steadily improving knowledge and quality.
 * https://en.wikipedia.org/wiki/Test-driven_development[TDD] and https://en.wikipedia.org/wiki/Acceptance_test%E2%80%93driven_development[ATDD] - are a safety net to guaranty quality attributes in your source code.
 * https://en.wikipedia.org/wiki/DevOps[DevOps] starting with git, docker, continuous integration, delivery and deployment to speed up development and eliminate tedious manual errors.
 * Lack of accountability equates to lack of trust your teams are accountable for the quality of your product.
 You should trust them.
 
-Once good practices are established, you can move to more sophisticated tools - such as git history code analysis - to uncover weaknesses in your development department.
+Once good practices are established, you can move to more sophisticated tools.
+For example, you can perform git history code analysis to uncover weaknesses in your development department.
 
 Teams ready to learn from the like of Google could evaluate https://trunkbaseddevelopment.com/[Trunk-Based Development] and consider long-lived branches as waste.
 
 === Code Review
 
 A code review can be done in different ways.
-Many teams use {ref-github}, {ref-bitbucket} or ref{ref-gitlab}.
+Many teams use {ref-github}, {ref-gitlab} or {ref-bitbucket}.
 A widespread approach for our code reviews is using merge requests.
 However, there are situations where pull requests are not necessary.
 For example, if a feature is implemented in pair programming or mob programming, then the code is already reviewed while it is written.
 
 We decided that it does not have to be reviewed again, but everybody may look at the commits later on in GitHub and add comments.
-A rule of thumb we agreed upon is that every line of code has to be approved by at least one other developer before it is pushed into our master branch.
+A rule of thumb we agreed upon is that every line of code has to be approved by at least one other developer before it is pushed into our main branch.
 
 === Pull Requests in Trunk-Based Development
 
 The approach is different when using trunk-based development.
-Since we want to merge our commits into the master branch as quickly as possible, we cannot wait until the complete feature is finished.
-Unlike in the original trunk-based development approach, we still use feature branches, but we have much less divergence from the master branch than in Git Flow.
+Since we want to merge our commits into the main branch as quickly as possible, we cannot wait until the complete feature is finished.
+
+Unlike in the original trunk-based development approach, we still use feature branches, but we have much less divergence from the main branch than in Git Flow.
 We create a pull request as soon as the first commit is pushed into the feature branch.
+
 Of course, that requires that no commit breaks anything or causes tests to fail.
 Remember that unfinished features can always be disabled with feature toggles.
 
@@ -122,7 +149,7 @@ Instead, the code reviews are done when another developer is open for it.
 Meanwhile, the pull request might grow by a few commits.
 
 The code is not always reviewed immediately after the commit.
-In most cases, it reaches the master branch much quicker than in Git Flow.
+In most cases, it reaches the main branch much quicker than in Git Flow.
 
 == Agile Architecture Series
 
