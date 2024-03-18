@@ -13,13 +13,12 @@
 
 package net.tangly.erp.products.ui;
 
-import net.tangly.erp.invoices.ports.InvoicesAdapter;
-import net.tangly.erp.invoices.ports.InvoicesTsvJsonHdl;
-import net.tangly.erp.products.services.*;
+import net.tangly.erp.products.services.ProductsBoundedDomain;
+import net.tangly.erp.products.services.ProductsBusinessLogic;
+import net.tangly.erp.products.services.ProductsPort;
+import net.tangly.erp.products.services.ProductsRealm;
 import net.tangly.ui.app.domain.CmdFilesUpload;
 import org.jetbrains.annotations.NotNull;
-
-import java.util.Set;
 
 /**
  * The command defines how to upload entities provided as a set of YAML files onto the domain.

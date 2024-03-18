@@ -20,6 +20,7 @@ import net.tangly.erp.products.domain.Assignment;
 import net.tangly.erp.products.domain.Effort;
 import net.tangly.erp.products.ports.ProductsEntities;
 import net.tangly.erp.products.ports.ProductsAdapter;
+import net.tangly.erp.products.services.ProductsBusinessLogic;
 import net.tangly.erp.products.services.ProductsRealm;
 import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.Test;
@@ -45,7 +46,8 @@ class ProductsHdlTest {
             var store = new ErpStore(fs);
             store.createRepository();
 
-            var handler = new ProductsAdapter(new ProductsEntities(), null, store.productsRoot());
+            var realm = new ProductsEntities();
+            var handler = new ProductsAdapter(realm, new ProductsBusinessLogic(realm), store.productsRoot());
             handler.importEntities();
             verifyProducts(handler.realm());
             verifyAssignments(handler.realm(), 0, null);
