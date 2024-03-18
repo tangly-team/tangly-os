@@ -35,8 +35,6 @@ import java.util.Objects;
  * @param <E> Enumeration of all potential events
  */
 public class GeneratorStateMachineCat<O, S extends Enum<S>, E extends Enum<E>> extends Generator<O, S, E> {
-    private static final String ARROW = "==>";
-
     /**
      * Constructor of the class.
      *

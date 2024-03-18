@@ -26,9 +26,9 @@ class CrmBusinessLogicTest {
     void testCrmTags() {
         var registry = new TypeRegistry();
         CrmTags.registerTags(registry);
-        assertThat(registry.namespaces().size()).isEqualTo(2);
+        assertThat(registry.namespaces()).hasSize(2);
         assertThat(registry.namespaces()).contains(CrmTags.CRM, CrmTags.GEO);
         assertThat(registry.tagNamesForNamespace(CrmTags.GEO)).contains(CrmTags.LATITUDE, CrmTags.LONGITUDE, CrmTags.ALTITUDE, CrmTags.PLUSCODE);
-        assertThat(registry.tagNamesForNamespace(CrmTags.CRM).isEmpty()).isFalse();
+        assertThat(registry.tagNamesForNamespace(CrmTags.CRM)).isNotEmpty();
     }
 }

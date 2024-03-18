@@ -71,6 +71,7 @@ public abstract class EntityExtendedImp implements EntityExtended {
         return name;
     }
 
+    @Override
     public void name(String name) {
         this.name = name;
     }

@@ -95,8 +95,8 @@ class EntityTest {
         // When
         item.add(tag);
         // Then
-        assertThat(item.tags().size()).isEqualTo(1);
-        assertThat(item.tags().contains(tag)).isTrue();
+        assertThat(item.tags()).hasSize(1);
+        assertThat(item.tags()).contains(tag);
         assertThat(item.findByNamespace("namespace").size()).isEqualTo(1);
         assertThat(item.findBy("namespace", "tag")).isPresent();
         assertThat(item.findBy("namespace:tag")).isPresent();
@@ -107,8 +107,8 @@ class EntityTest {
         // When
         item.remove(tag);
         // Then
-        assertThat(item.tags().size()).isZero();
-        assertThat(item.findByNamespace("namespace").isEmpty()).isTrue();
+        assertThat(item.tags()).isEmpty();
+        assertThat(item.findByNamespace("namespace")).isEmpty();
         assertThat(item.findBy("namespace", "tag")).isNotPresent();
         assertThat(item.value("namespace:tag")).isEmpty();
     }
@@ -122,9 +122,9 @@ class EntityTest {
         // When - Then
         assertThat(item.tags()).isEmpty();
         item.update(tag);
-        assertThat(item.tags().size()).isEqualTo(1);
+        assertThat(item.tags()).hasSize(1);
         item.update(tag);
-        assertThat(item.tags().size()).isEqualTo(1);
+        assertThat(item.tags()).hasSize(1);
         item.update("namespace:tag", "format");
     }
 
@@ -137,11 +137,11 @@ class EntityTest {
         String rawTags = item.rawTags();
         Collection<Tag> tags = item.tags();
         item.removeAllTags();
-        assertThat(item.tags().isEmpty()).isTrue();
+        assertThat(item.tags()).isEmpty();
         item.rawTags(rawTags);
-        assertThat(item.tags().isEmpty()).isFalse();
-        assertThat(item.tags().size()).isEqualTo(3);
-        assertThat(item.findByNamespace("gis").size()).isEqualTo(2);
+        assertThat(item.tags()).isNotEmpty();
+        assertThat(item.tags()).hasSize(3);
+        assertThat(item.findByNamespace("gis")).hasSize(2);
     }
 
     @Test
@@ -152,11 +152,11 @@ class EntityTest {
         // When
         item.add(comment);
         // Then
-        assertThat(item.comments().size()).isEqualTo(1);
-        assertThat(item.comments().contains(comment)).isTrue();
+        assertThat(item.comments()).hasSize(1);
+        assertThat(item.comments()).contains(comment);
         // When
         item.remove(comment);
-        assertThat(item.comments().isEmpty()).isTrue();
+        assertThat(item.comments()).isEmpty();
     }
 
     @Test
@@ -173,17 +173,17 @@ class EntityTest {
         comment = Comment.of(LocalDateTime.of(2000, Month.JANUARY, 1, 0, 0), "John Doe", "This is comment 3", Tag.of("gis", "longitude", "0.0"), Tag.of("gis", "latitude", "0.0"));
         item.add(comment);
         // When
-        assertThat(item.findByAuthor("John Doe").size()).isEqualTo(3);
+        assertThat(item.findByAuthor("John Doe")).hasSize(3);
 
-        assertThat(item.findByTime(LocalDateTime.MIN, LocalDateTime.MAX).size()).isEqualTo(3);
-        assertThat(item.findByTime(LocalDateTime.of(1700, 1, 1, 0, 0), LocalDateTime.of(2100, 1, 1, 0, 0)).size()).isEqualTo(3);
-        assertThat(item.findByTime(LocalDateTime.of(1799, 1, 1, 0, 0), LocalDateTime.of(2100, 1, 1, 0, 0)).size()).isEqualTo(3);
-        assertThat(item.findByTime(LocalDateTime.of(1800, 1, 1, 0, 0), LocalDateTime.of(2000, 1, 1, 0, 0)).size()).isEqualTo(3);
-        assertThat(item.findByTime(LocalDateTime.of(1900, 1, 1, 0, 0), LocalDateTime.of(2000, 1, 1, 0, 0)).size()).isEqualTo(2);
-        assertThat(item.findByTime(LocalDateTime.of(1900, 1, 1, 0, 0), LocalDateTime.of(1990, 1, 1, 0, 0)).size()).isEqualTo(1);
+        assertThat(item.findByTime(LocalDateTime.MIN, LocalDateTime.MAX)).hasSize(3);
+        assertThat(item.findByTime(LocalDateTime.of(1700, 1, 1, 0, 0), LocalDateTime.of(2100, 1, 1, 0, 0))).hasSize(3);
+        assertThat(item.findByTime(LocalDateTime.of(1799, 1, 1, 0, 0), LocalDateTime.of(2100, 1, 1, 0, 0))).hasSize(3);
+        assertThat(item.findByTime(LocalDateTime.of(1800, 1, 1, 0, 0), LocalDateTime.of(2000, 1, 1, 0, 0))).hasSize(3);
+        assertThat(item.findByTime(LocalDateTime.of(1900, 1, 1, 0, 0), LocalDateTime.of(2000, 1, 1, 0, 0))).hasSize(2);
+        assertThat(item.findByTime(LocalDateTime.of(1900, 1, 1, 0, 0), LocalDateTime.of(1990, 1, 1, 0, 0))).hasSize(1);
 
-        assertThat(item.findByTag("gis", "longitude").size()).isEqualTo(3);
-        assertThat(item.findByTag("gis", "latitude").size()).isEqualTo(2);
-        assertThat(item.findByTag("gis", "none").isEmpty()).isTrue();
+        assertThat(item.findByTag("gis", "longitude")).hasSize(3);
+        assertThat(item.findByTag("gis", "latitude")).hasSize(2);
+        assertThat(item.findByTag("gis", "none")).isEmpty();
     }
 }

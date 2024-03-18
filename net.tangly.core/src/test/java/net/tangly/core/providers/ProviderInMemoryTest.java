@@ -35,23 +35,23 @@ class ProviderInMemoryTest {
     @Test
     void testConstructors() {
         var provider = ProviderInMemory.of(entities());
-        assertThat(provider.items().size()).isEqualTo(SIZE);
-        assertThat(ProviderInMemory.of(entities()).items().size()).isEqualTo(SIZE);
+        assertThat(provider.items()).hasSize(SIZE);
+        assertThat(ProviderInMemory.of(entities()).items()).hasSize(SIZE);
 
         provider = ProviderInMemory.of();
         provider.updateAll(entities());
-        assertThat(provider.items().size()).isEqualTo(SIZE);
+        assertThat(provider.items()).hasSize(SIZE);
     }
 
     @Test
     void testUpdates() {
         var entities = entities();
         var provider = ProviderInMemory.of(entities);
-        assertThat(provider.items().size()).isEqualTo(SIZE);
+        assertThat(provider.items()).hasSize(SIZE);
         entities.forEach(provider::update);
-        assertThat(provider.items().size()).isEqualTo(SIZE);
+        assertThat(provider.items()).hasSize(SIZE);
         provider.delete(entities.get(0));
-        assertThat(provider.items().size()).isEqualTo(SIZE - 1);
+        assertThat(provider.items()).hasSize(SIZE - 1);
     }
 
     @Test
@@ -64,7 +64,7 @@ class ProviderInMemoryTest {
     @Test
     void testOidHandling() {
         var provider = ProviderHasOid.of(new LongIdGenerator(0), entities());
-        assertThat(provider.items().size()).isEqualTo(SIZE);
+        assertThat(provider.items()).hasSize(SIZE);
         provider.items().forEach(o -> assertThat(o.oid != HasOid.UNDEFINED_OID));
     }
 }

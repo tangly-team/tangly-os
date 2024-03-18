@@ -24,7 +24,7 @@ import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProviderPersistenceTest implements ProviderTest {
+class ProviderPersistenceTest implements ProviderTest {
     static class Data {
         private List<Aggregate> aggregates;
 

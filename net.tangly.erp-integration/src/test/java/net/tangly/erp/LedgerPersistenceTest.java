@@ -14,15 +14,15 @@ package net.tangly.erp;
 
 import com.google.common.jimfs.Configuration;
 import com.google.common.jimfs.Jimfs;
-import net.tangly.erp.ledger.ports.LedgerEntities;
 import net.tangly.erp.ledger.ports.LedgerAdapter;
+import net.tangly.erp.ledger.ports.LedgerEntities;
 import org.junit.jupiter.api.Test;
 
 import java.nio.file.FileSystem;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class LedgerPersistenceTest {
+class LedgerPersistenceTest {
     @Test
     void persistLedgerRealmLocalTest() throws Exception {
         try (FileSystem fs = Jimfs.newFileSystem(Configuration.unix())) {
@@ -31,13 +31,13 @@ public class LedgerPersistenceTest {
 
             var handler = new LedgerAdapter(new LedgerEntities(store.ledgerRoot()), store.ledgerRoot());
             handler.importEntities();
-            assertThat(handler.realm().accounts().items().isEmpty()).isFalse();
-            assertThat(handler.realm().transactions().items().isEmpty()).isFalse();
+            assertThat(handler.realm().accounts().items()).isNotEmpty();
+            assertThat(handler.realm().transactions().items()).isNotEmpty();
             handler.realm().close();
 
             handler = new LedgerAdapter(new LedgerEntities(store.ledgerRoot()), store.ledgerRoot());
-            assertThat(handler.realm().accounts().items().isEmpty()).isFalse();
-            assertThat(handler.realm().transactions().items().isEmpty()).isFalse();
+            assertThat(handler.realm().accounts().items()).isNotEmpty();
+            assertThat(handler.realm().transactions().items()).isNotEmpty();
             handler.realm().close();
         }
     }

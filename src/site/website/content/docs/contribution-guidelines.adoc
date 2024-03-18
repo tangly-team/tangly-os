@@ -29,7 +29,7 @@ You can create the set of git remotes with the following instructions.
 git remote add origin-github git@github.com:marcelbaumann/tangly-os.git                  // <1>
 git remote add origin-gitlab git@gitlab.com:marcelbaumann/tangly-os.git                  // <2>
 git remote add origin-bitbucket git@bitbucket.org:tangly-team/tangly-os.git              // <3>
-git remote add origin-hslu https://gitlab.enterpriselab.ch/tangly/tangly-os.git          // <4>
+git remote add origin-hslu https://gitlab.switch.ch/tangly/tangly-os.git                 // <4>
 
 git remote -v                                                                            // <5>
 git push <remote> master                                                                 // <6>

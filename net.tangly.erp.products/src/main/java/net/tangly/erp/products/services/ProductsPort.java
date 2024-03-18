@@ -14,8 +14,10 @@ package net.tangly.erp.products.services;
 
 import net.tangly.core.domain.Port;
 import net.tangly.erp.products.domain.Assignment;
+import org.eclipse.serializer.exceptions.IORuntimeException;
 import org.jetbrains.annotations.NotNull;
 
+import java.nio.file.Path;
 import java.time.LocalDate;
 
 /**
@@ -23,10 +25,20 @@ import java.time.LocalDate;
  */
 public interface ProductsPort extends Port<ProductsRealm> {
     /**
+     * Imports all efforts defined in the YAML file located at the given path.
+     * An effort is identified by the combination of the assignment identifier and the date of the effort. The assigement identifies uniquely the collaborator working on the effort.
+     *
+     * @param path    path to the YAML defining the efforts to be imported
+     * @param replace if true, the existing efforts are replaced by the imported ones, otherwise the imported efforts are only imported if not preesent
+     */
+    public void importEfforts(@NotNull Path path, boolean replace) throws IORuntimeException;
+
+    /**
      * Exports all efforts of the assignment in the given period of time. The export shall be a asciidoc document.
+     *
      * @param assignment assignment which efforts are of interest
-     * @param from start of the considered time interval
-     * @param to end of the considered time interval
+     * @param from       start of the considered time interval
+     * @param to         end of the considered time interval
      */
     void exportEffortsDocument(@NotNull Assignment assignment, LocalDate from, LocalDate to);
 

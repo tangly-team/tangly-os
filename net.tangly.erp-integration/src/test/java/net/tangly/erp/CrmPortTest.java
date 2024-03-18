@@ -94,19 +94,19 @@ class CrmPortTest {
     }
 
     private void verifyNaturalEntities(@NotNull CrmRealm realm, int nrOfEntities, NaturalEntity entity) {
-        assertThat(realm.naturalEntities().items().isEmpty()).isFalse();
+        assertThat(realm.naturalEntities().items()).isNotEmpty();
         assertThat(Provider.findByOid(realm.naturalEntities(), 1)).isPresent();
         Realm.checkEntities(realm.naturalEntities());
         if (entity != null) {
             assertThat(realm.naturalEntities().items()).hasSize(nrOfEntities);
             Optional<NaturalEntity> copy = realm.naturalEntities().findBy(NaturalEntity::socialNr, entity.socialNr());
             assertThat(copy).isNotEmpty();
-            assertThat(copy.get()).isEqualTo(entity);
+            assertThat(copy).contains(entity);
         }
     }
 
     private void verifyLegalEntities(@NotNull CrmRealm realm, int nrOfEntities, LegalEntity entity) {
-        assertThat(realm.legalEntities().items().isEmpty()).isFalse();
+        assertThat(realm.legalEntities().items()).isNotEmpty();
         assertThat(Provider.findByOid(realm.legalEntities(), 100)).isPresent();
         assertThat(realm.legalEntities().findBy(LegalEntity::id, "DE123456789")).isPresent();
         assertThat(realm.legalEntities().findBy(LegalEntity::name, "Vaadin GmbH")).isPresent();
@@ -115,25 +115,25 @@ class CrmPortTest {
             assertThat(realm.legalEntities().items()).hasSize(nrOfEntities);
             Optional<LegalEntity> copy = findById(realm.legalEntities(), entity.id());
             assertThat(copy).isNotEmpty();
-            assertThat(copy.get()).isEqualTo(entity);
+            assertThat(copy).contains(entity);
         }
     }
 
     private void verifyEmployees(@NotNull CrmRealm realm) {
-        assertThat(realm.employees().items().isEmpty()).isFalse();
+        assertThat(realm.employees().items()).isNotEmpty();
         assertThat(Provider.findByOid(realm.employees(), 200)).isPresent();
         Realm.checkEntities(realm.employees());
     }
 
     private void verifyContracts(@NotNull CrmRealm realm, int nrOfEntities, Contract entity) {
-        assertThat(realm.contracts().items().isEmpty()).isFalse();
+        assertThat(realm.contracts().items()).isNotEmpty();
         assertThat(Provider.findByOid(realm.contracts(), 500)).isPresent();
         Realm.checkEntities(realm.contracts());
         if (entity != null) {
             assertThat(realm.contracts().items()).hasSize(nrOfEntities);
             Optional<Contract> copy = findById(realm.contracts(), entity.id());
             assertThat(copy).isNotEmpty();
-            assertThat(copy.get()).isEqualTo(entity);
+            assertThat(copy).contains(entity);
         }
     }
 
@@ -148,14 +148,14 @@ class CrmPortTest {
     }
 
     private void verifySubjects(@NotNull CrmRealm realm) {
-        assertThat(realm.subjects().items().isEmpty()).isTrue();
+        assertThat(realm.subjects().items()).isEmpty();
         Realm.checkEntities(realm.subjects());
     }
 
     private void verifyComments(@NotNull CrmRealm realm) {
-        assertThat(Provider.findByOid(realm.naturalEntities(), 1).orElseThrow().comments().isEmpty()).isFalse();
-        assertThat(Provider.findByOid(realm.naturalEntities(), 6).orElseThrow().comments().isEmpty()).isFalse();
-        assertThat(Provider.findByOid(realm.legalEntities(), 102).orElseThrow().comments().isEmpty()).isFalse();
+        assertThat(Provider.findByOid(realm.naturalEntities(), 1).orElseThrow().comments()).isNotEmpty();
+        assertThat(Provider.findByOid(realm.naturalEntities(), 6).orElseThrow().comments()).isNotEmpty();
+        assertThat(Provider.findByOid(realm.legalEntities(), 102).orElseThrow().comments()).isNotEmpty();
     }
 
     private NaturalEntity createNaturalEntity() {

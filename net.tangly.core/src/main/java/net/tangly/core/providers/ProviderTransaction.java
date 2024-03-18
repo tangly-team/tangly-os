@@ -53,6 +53,6 @@ public class ProviderTransaction<T> implements Provider<T> {
 
     @Override
     public void deleteAll() {
-        execute(() -> deleteAll());
+        execute(this::deleteAll);
     }
 }

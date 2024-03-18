@@ -31,11 +31,11 @@ class InvoicesPersistenceTest {
 
             var handler = new InvoicesAdapter(new InvoicesEntities(store.invoicesRoot()), store.invoicesRoot());
             handler.importEntities();
-            assertThat(handler.realm().invoices().items().isEmpty()).isFalse();
+            assertThat(handler.realm().invoices().items()).isNotEmpty();
             handler.realm().close();
 
             handler = new InvoicesAdapter(new InvoicesEntities(store.invoicesRoot()), store.invoicesRoot());
-            assertThat(handler.realm().invoices().items().isEmpty()).isFalse();
+            assertThat(handler.realm().invoices().items()).isNotEmpty();
             handler.realm().close();
         }
     }

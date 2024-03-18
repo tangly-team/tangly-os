@@ -39,6 +39,6 @@ class NaturalEntityTest {
         assertThat(entity.plusCode()).hasValue(HasLocation.PlusCode.of(pluscode));
         assertThat(entity.position()).hasValue(HasLocation.GeoPosition.of(longitude, latitude));
         assertThat(entity.address()).hasValue(address);
-        assertThat(entity.toString().length()).isNotZero();
+        assertThat(entity.toString()).isNotEmpty();
     }
 }

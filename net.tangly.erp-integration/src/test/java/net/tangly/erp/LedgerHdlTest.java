@@ -36,7 +36,7 @@ class LedgerHdlTest {
             handler.importEntities();
             assertThat(handler.realm().accounts().items().stream().filter(Account::isAggregate).filter(o -> o.aggregatedAccounts().isEmpty()).findAny())
                 .isEmpty();
-            assertThat(handler.realm().assets().isEmpty()).isFalse();
+            assertThat(handler.realm().assets()).isNotEmpty();
             assertThat(handler.realm().liabilities()).isNotEmpty();
             assertThat(handler.realm().profitAndLoss()).isNotEmpty();
             assertThat(handler.realm().accountBy("100")).isPresent();
@@ -63,10 +63,10 @@ class LedgerHdlTest {
             handler.exportEntities();
             handler = new LedgerAdapter(new LedgerEntities(), store.ledgerRoot());
             handler.importEntities();
-            assertThat(handler.realm().accounts().items().size()).isEqualTo(nrOfAccounts);
-            assertThat(handler.realm().bookableAccounts().size()).isEqualTo(nrOfBookableAccounts);
-            assertThat(handler.realm().liabilities().size()).isEqualTo(nrOfLiabilitiesAccounts);
-            assertThat(handler.realm().profitAndLoss().size()).isEqualTo(nrOfProfitAndLossAccounts);
+            assertThat(handler.realm().accounts().items()).hasSize(nrOfAccounts);
+            assertThat(handler.realm().bookableAccounts()).hasSize(nrOfBookableAccounts);
+            assertThat(handler.realm().liabilities()).hasSize(nrOfLiabilitiesAccounts);
+            assertThat(handler.realm().profitAndLoss()).hasSize(nrOfProfitAndLossAccounts);
         }
     }
 
@@ -77,7 +77,7 @@ class LedgerHdlTest {
             store.createRepository();
             var handler = new LedgerAdapter(new LedgerEntities(), store.ledgerRoot());
             handler.importEntities();
-            assertThat(handler.realm().transactions(LocalDate.of(2015, 1, 1), LocalDate.of(2016, 12, 31)).isEmpty()).isFalse();
+            assertThat(handler.realm().transactions(LocalDate.of(2015, 1, 1), LocalDate.of(2016, 12, 31))).isNotEmpty();
         }
     }
 
@@ -94,7 +94,7 @@ class LedgerHdlTest {
 
             handler = new LedgerAdapter(new LedgerEntities(), store.ledgerRoot());
             handler.importEntities();
-            assertThat(handler.realm().transactions().items().size()).isEqualTo(nrOfTransactions);
+            assertThat(handler.realm().transactions().items()).hasSize(nrOfTransactions);
         }
     }
 }

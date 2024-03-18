@@ -67,7 +67,7 @@ public class BoundedDomain<R extends Realm, B, P extends Port<R>> {
     }
 
     protected static <I extends HasTags> void addTagCounts(@NotNull TypeRegistry registry, @NotNull List<I> entities, Map<TagType<?>, Integer> counts) {
-        entities.stream().flatMap(e -> e.tags().stream()).map(registry::find).flatMap(Optional::stream).forEach(e -> counts.merge(e, 1, (oldValue, _$) -> oldValue++));
+        entities.stream().flatMap(e -> e.tags().stream()).map(registry::find).flatMap(Optional::stream).forEach(e -> counts.merge(e, 1, (oldValue, _) -> oldValue++));
     }
 
     public Map<TagType<?>, Integer> countTags(@NotNull Map<TagType<?>, Integer> counts) {

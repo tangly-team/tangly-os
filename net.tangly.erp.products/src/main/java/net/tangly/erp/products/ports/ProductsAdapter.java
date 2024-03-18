@@ -25,6 +25,7 @@ import net.tangly.erp.products.domain.Effort;
 import net.tangly.erp.products.services.ProductsBusinessLogic;
 import net.tangly.erp.products.services.ProductsPort;
 import net.tangly.erp.products.services.ProductsRealm;
+import org.eclipse.serializer.exceptions.IORuntimeException;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
@@ -79,39 +80,45 @@ public class ProductsAdapter implements ProductsPort {
         realm().products().deleteAll();
     }
 
-    public void importEfforts(@NotNull Path path, boolean replace) throws IOException {
+    @Override
+    public void importEfforts(@NotNull Path path, boolean replace) throws IORuntimeException {
 
-        InputStream stream = Files.newInputStream(path);
-        YamlMapping data = Yaml.createYamlInput(stream).readYamlMapping();
-        long assignmentId = data.longNumber("assignmentId");
-        String contractId = data.string("contractId");
-        String collaborator = data.string("collaborator");
-        YamlSequence efforts = data.yamlSequence("efforts");
+        try {
+            InputStream stream = Files.newInputStream(path);
+            YamlMapping data = Yaml.createYamlInput(stream).readYamlMapping();
+            long assignmentId = data.longNumber("assignmentId");
+            String contractId = data.string("contractId");
+            String collaborator = data.string("collaborator");
+            YamlSequence efforts = data.yamlSequence("efforts");
 
-        Assignment assignment = Provider.findByOid(logic.realm().assignments(), assignmentId).orElse(null);
-        efforts.children().forEach((YamlNode effort) -> {
-            LocalDate date = effort.asMapping().date("date");
-            int duration = effort.asMapping().integer("duration");
-            String text = effort.asMapping().string("text");
-            Optional<Effort> foundEffort = logic.findEffortFor(assignmentId, collaborator, date);
-            if (foundEffort.isPresent()) {
-                logic.realm().efforts().delete(foundEffort.get());
-                logic.realm().efforts().update(foundEffort.get());
-                if (replace) {
+            Assignment assignment = Provider.findByOid(logic.realm().assignments(), assignmentId).orElse(null);
+            efforts.children().forEach((YamlNode effort) -> {
+                LocalDate date = effort.asMapping().date("date");
+                int duration = effort.asMapping().integer("duration");
+                String text = effort.asMapping().string("text");
+                Optional<Effort> foundEffort = logic.findEffortFor(assignmentId, collaborator, date);
+                if (foundEffort.isPresent()) {
                     logic.realm().efforts().delete(foundEffort.get());
                     logic.realm().efforts().update(foundEffort.get());
+                    if (replace) {
+                        logic.realm().efforts().delete(foundEffort.get());
+                        logic.realm().efforts().update(foundEffort.get());
+                    } else {
+                        // TODO log warning effort duplicate cannot be added.
+                    }
                 } else {
-                    // TODO log warning effort duplicate cannot be added.
+                    logic.realm().efforts().update(foundEffort.get());
                 }
-            } else {
-                logic.realm().efforts().update(foundEffort.get());
-            }
-        });
+            });
+        } catch (IOException e) {
+            throw new IORuntimeException(e);
+        }
     }
 
-    public void exportEffortsDocument(Assignment assignment, LocalDate from, LocalDate to) {
+    @Override
+    public void exportEffortsDocument(@NotNull Assignment assignment, LocalDate from, LocalDate to) {
         String collaborator = assignment.name().replace(",", "_").replace(" ", "");
-        var assignmentDocumentPath = folder.resolve(assignment.id() + "-" + collaborator + "-" + from.toString() + "_" + to.toString() + AsciiDoctorHelper.ASCIIDOC_EXT);
+        var assignmentDocumentPath = folder.resolve(STR."\{assignment.id()}-\{collaborator}-\{from.toString()}_\{to.toString()}\{AsciiDoctorHelper.ASCIIDOC_EXT}");
         var helper = new EffortReportEngine(logic);
         helper.createAsciiDocReport(assignment, from, to, assignmentDocumentPath);
     }

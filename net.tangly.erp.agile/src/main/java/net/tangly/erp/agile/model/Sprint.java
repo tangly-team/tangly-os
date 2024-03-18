@@ -42,11 +42,12 @@ public class Sprint extends ExternalEntityImp implements ExternalEntity, HasDate
         this.interval = Objects.nonNull(range) ? range : DateRange.INFINITE;
     }
 
-
+    @Override
     public void from(LocalDate from) {
         interval = interval.from(from);
     }
 
+    @Override
     public void to(LocalDate to) {
         interval = interval.to(to);
     }

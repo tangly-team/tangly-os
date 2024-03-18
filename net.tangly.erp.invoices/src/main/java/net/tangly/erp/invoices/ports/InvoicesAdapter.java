@@ -41,6 +41,8 @@ import static net.tangly.erp.ports.TsvHdl.MODULE;
  */
 public class InvoicesAdapter implements InvoicesPort {
     public static final String REPORTS = "reports";
+    public static final String INVOICE = "invoice";
+    public static final String INVOICE_PATH = "invoicePath";
     public static final String ARTICLES_TSV = "articles.tsv";
     public static final String JSON_EXT = ".json";
     private final InvoicesRealm realm;
@@ -95,7 +97,7 @@ public class InvoicesAdapter implements InvoicesPort {
             var invoiceFolder = InvoicesUtilities.resolvePath(folder, o);
             var invoicePath = invoiceFolder.resolve(o.name() + JSON_EXT);
             invoiceJson.exports(o, invoicePath, Collections.emptyMap());
-            EventData.log(EventData.EXPORT, MODULE, EventData.Status.SUCCESS, "Invoice exported to JSON {}", Map.of("invoice", o, "invoicePath", invoicePath));
+            EventData.log(EventData.EXPORT, MODULE, EventData.Status.SUCCESS, "Invoice exported to JSON {}", Map.of(INVOICE, o, INVOICE_PATH, invoicePath));
         });
     }
 
@@ -127,7 +129,7 @@ public class InvoicesAdapter implements InvoicesPort {
         Path invoicePdfPath = invoiceFolder.resolve(invoice.name() + AsciiDoctorHelper.PDF_EXT);
         if (!overwrite && Files.exists(invoicePdfPath)) {
             EventData.log(EventData.EXPORT, "net.tangly.crm.ports", EventData.Status.SUCCESS, "Invoice PDF already exists {}",
-                Map.of("invoice", invoice, "invoicePath", invoicePdfPath, "withQrCode", withQrCode, "withEN16931", withEN16931, "overwrite", overwrite));
+                Map.of(INVOICE, invoice, INVOICE_PATH, invoicePdfPath, "withQrCode", withQrCode, "withEN16931", withEN16931, "overwrite", overwrite));
         } else {
             AsciiDoctorHelper.createPdf(invoiceAsciiDocPath, invoicePdfPath);
             try {
@@ -144,7 +146,7 @@ public class InvoicesAdapter implements InvoicesPort {
                 en164391Generator.exports(invoice, invoicePdfPath, Collections.emptyMap());
             }
             EventData.log(EventData.EXPORT, "net.tangly.crm.ports", EventData.Status.SUCCESS, "Invoice exported to PDF {}",
-                Map.of("invoice", invoice, "invoicePath", invoicePdfPath, "withQrCode", withQrCode, "withEN16931", withEN16931, "overwrite", overwrite));
+                Map.of(INVOICE, invoice, INVOICE_PATH, invoicePdfPath, "withQrCode", withQrCode, "withEN16931", withEN16931, "overwrite", overwrite));
         }
     }
 }

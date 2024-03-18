@@ -20,13 +20,18 @@ import net.tangly.erp.products.services.ProductsRealm;
 import net.tangly.ui.app.domain.CmdFilesUpload;
 import org.jetbrains.annotations.NotNull;
 
+import java.nio.file.Paths;
+import java.util.Set;
+
 /**
  * The command defines how to upload entities provided as a set of YAML files onto the domain.
  */
-public class CmdFilesUploadefforts extends CmdFilesUpload<ProductsRealm, ProductsBusinessLogic, ProductsPort> {
-    CmdFilesUploadefforts(@NotNull ProductsBoundedDomain domain) {
+public class CmdFilesUploadEfforts extends CmdFilesUpload<ProductsRealm, ProductsBusinessLogic, ProductsPort> {
+    CmdFilesUploadEfforts(@NotNull ProductsBoundedDomain domain) {
         super(domain, TSV_MIME, JSON_MIME);
         registerAllFinishedListener(event -> {
+            Set<String> files = buffer().getFiles();
+            files.forEach(o -> domain.port().importEfforts(Paths.get(o), true));
             close();
         });
     }

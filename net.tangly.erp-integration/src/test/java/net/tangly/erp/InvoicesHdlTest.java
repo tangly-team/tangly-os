@@ -47,11 +47,11 @@ class InvoicesHdlTest {
 
 
     private void verifyInvoices(@NotNull InvoicesRealm realm) {
-        assertThat(realm.invoices().items().isEmpty()).isFalse();
+        assertThat(realm.invoices().items()).isNotEmpty();
         realm.invoices().items().forEach(o -> assertThat(o.check()).isTrue());
     }
 
     private void verifyArticles(@NotNull InvoicesRealm realm) {
-        assertThat(realm.articles().items().isEmpty()).isFalse();
+        assertThat(realm.articles().items()).isNotEmpty();
     }
 }

@@ -31,15 +31,15 @@ class ProductsPersistenceTest {
 
             var handler = new ProductsAdapter(new ProductsEntities(store.productsRoot()), null, store.productsRoot());
             handler.importEntities();
-            assertThat(handler.realm().products().items().isEmpty()).isFalse();
-            assertThat(handler.realm().assignments().items().isEmpty()).isFalse();
-            assertThat(handler.realm().efforts().items().isEmpty()).isFalse();
+            assertThat(handler.realm().products().items()).isNotEmpty();
+            assertThat(handler.realm().assignments().items()).isNotEmpty();
+            assertThat(handler.realm().efforts().items()).isNotEmpty();
             handler.realm().close();
 
             handler = new ProductsAdapter(new ProductsEntities(store.productsRoot()), null, store.productsRoot());
-            assertThat(handler.realm().products().items().isEmpty()).isFalse();
-            assertThat(handler.realm().assignments().items().isEmpty()).isFalse();
-            assertThat(handler.realm().efforts().items().isEmpty()).isFalse();
+            assertThat(handler.realm().products().items()).isNotEmpty();
+            assertThat(handler.realm().assignments().items()).isNotEmpty();
+            assertThat(handler.realm().efforts().items()).isNotEmpty();
             handler.realm().close();
         }
     }

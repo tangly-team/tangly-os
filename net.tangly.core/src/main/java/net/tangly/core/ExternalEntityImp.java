@@ -16,13 +16,7 @@ package net.tangly.core;
 import org.jetbrains.annotations.NotNull;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 public class ExternalEntityImp implements ExternalEntity {
     private String id;
@@ -53,6 +47,7 @@ public class ExternalEntityImp implements ExternalEntity {
         return name;
     }
 
+    @Override
     public void name(String name) {
         this.name = name;
     }
@@ -72,6 +67,7 @@ public class ExternalEntityImp implements ExternalEntity {
         return date;
     }
 
+    @Override
     public void date(LocalDate date) {
         this.date = date;
     }

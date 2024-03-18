@@ -13,8 +13,6 @@
 
 package net.tangly.core.providers;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -27,7 +25,6 @@ import java.util.List;
  * @param <T> type of the instances handled in the provider
  */
 public class ProviderInMemory<T> implements Provider<T> {
-    private static final Logger logger = LogManager.getLogger();
     private final List<T> items;
 
     public ProviderInMemory() {

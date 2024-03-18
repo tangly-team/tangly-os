@@ -31,19 +31,19 @@ class CrmPersistenceTest {
 
             var handler = new CrmAdapter(new CrmEntities(store.crmRoot()), store.crmRoot());
             handler.importEntities();
-            assertThat(handler.realm().naturalEntities().items().isEmpty()).isFalse();
-            assertThat(handler.realm().legalEntities().items().isEmpty()).isFalse();
-            assertThat(handler.realm().employees().items().isEmpty()).isFalse();
-            assertThat(handler.realm().contracts().items().isEmpty()).isFalse();
-            assertThat(handler.realm().interactions().items().isEmpty()).isFalse();
+            assertThat(handler.realm().naturalEntities().items()).isNotEmpty();
+            assertThat(handler.realm().legalEntities().items()).isNotEmpty();
+            assertThat(handler.realm().employees().items()).isNotEmpty();
+            assertThat(handler.realm().contracts().items()).isNotEmpty();
+            assertThat(handler.realm().interactions().items()).isNotEmpty();
             handler.realm().close();
 
             handler = new CrmAdapter(new CrmEntities(store.crmRoot()), store.crmRoot());
-            assertThat(handler.realm().naturalEntities().items().isEmpty()).isFalse();
-            assertThat(handler.realm().legalEntities().items().isEmpty()).isFalse();
-            assertThat(handler.realm().employees().items().isEmpty()).isFalse();
-            assertThat(handler.realm().contracts().items().isEmpty()).isFalse();
-            assertThat(handler.realm().interactions().items().isEmpty()).isFalse();
+            assertThat(handler.realm().naturalEntities().items()).isNotEmpty();
+            assertThat(handler.realm().legalEntities().items()).isNotEmpty();
+            assertThat(handler.realm().employees().items()).isNotEmpty();
+            assertThat(handler.realm().contracts().items()).isNotEmpty();
+            assertThat(handler.realm().interactions().items()).isNotEmpty();
             handler.realm().close();
         }
     }

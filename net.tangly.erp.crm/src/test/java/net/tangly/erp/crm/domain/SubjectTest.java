@@ -27,7 +27,7 @@ class SubjectTest {
         subject.newPassword("aeon");
         assertThat(Subject.encryptPassword(password, subject.passwordSalt())).isEqualTo(subject.passwordHash());
         assertThat(subject.authenticate(password)).isTrue();
-        assertThat(subject.toString().length()).isNotZero();
+        assertThat(subject.toString()).isNotEmpty();
     }
 
     @Test
