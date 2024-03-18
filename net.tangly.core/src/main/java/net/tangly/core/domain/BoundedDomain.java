@@ -27,6 +27,12 @@ import java.util.Optional;
 
 /**
  * A bounded domain as defined in the DDD approach has a domain-specific model and a set of adapters.
+ * <p>The lifecycle of a bounded domain is:</p>
+ * <ol>
+ *     <li>Bounded domain creation</li>
+ *     <li>Startup of the domain after construction</li>
+ *     <li>Shutdown of the domain after startup</li>
+ * </ol>
  *
  * @param <R> realm handles all entities and values objects of the domain model
  * @param <B> business logic provides complex domain business logic functions
@@ -40,6 +46,14 @@ public class BoundedDomain<R extends Realm, B, P extends Port<R>> {
     private final B logic;
     private final transient TypeRegistry registry;
 
+    /**
+     * Constructor of the bounded domain.
+     * @param name human-readable name of the domain
+     * @param realm realm handles all entities and values objects of the domain model
+     * @param logic logic provides complex domain business logic functions
+     * @param port port empowers the business domain to communicate with external systems
+     * @param registry registry where the tagged values and code types defined for the domain model are registered
+     */
     public BoundedDomain(@NotNull String name, @NotNull R realm, @NotNull B logic, @NotNull P port, TypeRegistry registry) {
         this.name = name;
         this.realm = realm;

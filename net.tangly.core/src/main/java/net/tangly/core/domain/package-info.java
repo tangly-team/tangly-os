@@ -14,7 +14,13 @@
  * Defines the core abstractions for a bounded domain implementation. Entities defined in the domain can have oid, id, name, tags and comments.
  * The realm interface is the entry point for the repository and factory abstractions.
  * Repositories retrieve domain objects from persistence technologies.
- * Factories create new object trees. The regular persistence approach is based on Microstream.
+ * Factories create new object trees. The regular persistence approach is based on EclipseStore.
  * The solution is well integrated in Java so that retrieval and creation operations are simple to implement.
+ * <p>The key abstractions are:</p>
+ * <dl>
+ *     <dt>Bounded Domain</dt><dd>Defines the bounded domain model and the domain services.</dd>
+ *     <dt>Realm</dt><dd>Defines the repositories interfance to retrieve all domein entities.</dd>
+ *     <dt>Port</dt><dd>Port interface for all inbound and outpound communication.</dd>
+ * </dl>
  */
 package net.tangly.core.domain;
