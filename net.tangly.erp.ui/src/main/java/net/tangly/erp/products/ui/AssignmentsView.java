@@ -30,11 +30,11 @@ class AssignmentsView extends EntityView<Assignment> {
 
     public AssignmentsView(@NotNull ProductsBoundedDomain domain, @NotNull Mode mode) {
         super(Assignment.class, domain, domain.realm().assignments(), mode);
-        init();
+        initEntityView();
     }
 
     @Override
-    protected void init() {
+    protected void initEntityView() {
         addEntityColumns(grid());
         addEntityFilterFields(grid(), filter());
         //        decorators.addItemAction("Add Effort", e -> new CmdCreateEffort(value(), domain).execute());

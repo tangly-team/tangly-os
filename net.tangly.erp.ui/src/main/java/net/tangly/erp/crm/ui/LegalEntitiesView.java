@@ -70,7 +70,7 @@ class LegalEntitiesView extends EntityView<LegalEntity> {
     public LegalEntitiesView(@NotNull CrmBoundedDomain domain, @NotNull Mode mode) {
         super(LegalEntity.class, domain, domain.realm().legalEntities(), mode);
         form(new LegalEntityForm(this, domain.registry()));
-        init();
+        initEntityView();
     }
 
     @Override
@@ -78,9 +78,8 @@ class LegalEntitiesView extends EntityView<LegalEntity> {
         return (CrmBoundedDomain) super.domain();
     }
 
-    @Override
-    protected void init() {
-        super.init();
+    private void init() {
+        super.initEntityView();
         var grid = grid();
         grid.addColumn(VaadinUtils.linkedInComponentRenderer(CrmTags::linkedInTag, true)).setKey("linkedIn").setHeader("LinkedIn").setAutoWidth(true);
         grid.addColumn(VaadinUtils.urlComponentRenderer(CrmTags.CRM_SITE_WORK)).setKey("webSite").setHeader("Web Site").setAutoWidth(true);

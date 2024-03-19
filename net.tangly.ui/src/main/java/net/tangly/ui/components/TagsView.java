@@ -181,8 +181,7 @@ public class TagsView extends ItemView<Tag> {
         init();
     }
 
-    @Override
-    protected void init() {
+    private void init() {
         setHeight("15em");
         Grid<Tag> grid = grid();
         grid.addColumn(Tag::namespace).setKey(NAMESPACE).setHeader(NAMESPACE_LABEL).setSortable(true).setResizable(true).setFlexGrow(0).setWidth("10em");

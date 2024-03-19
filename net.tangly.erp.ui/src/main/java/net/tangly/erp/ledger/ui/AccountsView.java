@@ -121,8 +121,7 @@ class AccountsView extends ItemView<Account> {
         init();
     }
 
-    @Override
-    protected void init() {
+    private void init() {
         var grid = grid();
         grid.addColumn(Account::name).setKey("name").setHeader("Name").setAutoWidth(true).setResizable(true);
         grid.addColumn(Account::group).setKey("group").setHeader("Group").setAutoWidth(true).setResizable(true);

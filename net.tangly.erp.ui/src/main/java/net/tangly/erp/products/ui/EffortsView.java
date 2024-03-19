@@ -125,8 +125,7 @@ class EffortsView extends ItemView<Effort> {
         init();
     }
 
-    @Override
-    protected void init() {
+    private void init() {
         var grid = grid();
         grid.addColumn(o -> Objects.nonNull(o.assignment()) ? o.assignment().id() : null).setKey("assignment").setHeader("Assignment").setAutoWidth(true).setResizable(true)
             .setSortable(true);

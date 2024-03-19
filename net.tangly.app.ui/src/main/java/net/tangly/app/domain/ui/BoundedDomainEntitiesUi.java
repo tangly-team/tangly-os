@@ -69,7 +69,7 @@ public class BoundedDomainEntitiesUi extends BoundedDomainUi<BoundedDomainEntiti
                                @NotNull Provider<BoundedDomainEntities.EntityThree> provider, Mode mode) {
             super(entityClass, domain, provider, mode);
             form(new EntityThreeForm(this));
-            init();
+            initEntityView();
         }
 
         public static class EntityThreeForm extends EntityForm<BoundedDomainEntities.EntityThree, EntityThreeView> {
@@ -85,7 +85,7 @@ public class BoundedDomainEntitiesUi extends BoundedDomainUi<BoundedDomainEntiti
                               @NotNull Provider<BoundedDomainEntities.EntityFour> provider, Mode mode) {
             super(entityClass, domain, provider, mode);
             form(new EntityFourForm(this));
-            init();
+            initEntityView();
         }
 
         @Override

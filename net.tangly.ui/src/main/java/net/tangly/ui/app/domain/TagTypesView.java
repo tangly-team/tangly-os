@@ -41,8 +41,7 @@ public class TagTypesView extends ItemView<TagType> {
         init();
     }
 
-    @Override
-    protected void init() {
+    private void init() {
         var grid = grid();
         grid.addColumn(TagType::namespace).setKey(NAMESPACE).setHeader(NAMESPACE_LABEL).setSortable(true).setAutoWidth(true).setResizable(true);
         grid.addColumn(TagType::name).setKey(NAME).setHeader("Name").setSortable(true).setAutoWidth(true).setResizable(true);

@@ -76,7 +76,7 @@ public class BoundedDomainSimpleEntitiesUi extends BoundedDomainUi<BoundedDomain
                              @NotNull Provider<BoundedDomainSimpleEntities.SimpleEntityOne> provider, @NotNull Mode mode) {
             super(entityClass, domain, provider, mode);
             form(new EntityOneView.EntityOneForm(this));
-            init();
+            initEntityView();
         }
 
         public static class EntityOneForm extends EntityForm<BoundedDomainSimpleEntities.SimpleEntityOne, EntityOneView> {
@@ -98,7 +98,7 @@ public class BoundedDomainSimpleEntitiesUi extends BoundedDomainUi<BoundedDomain
                              @NotNull Provider<BoundedDomainSimpleEntities.simpleEntityTwo> provider, @NotNull Mode mode) {
             super(entityClass, domain, provider, mode);
             form(new EntityTwoForm(this));
-            init();
+            initEntityView();
         }
 
         public static class EntityTwoForm extends EntityForm<BoundedDomainSimpleEntities.simpleEntityTwo, EntityTwoView> {

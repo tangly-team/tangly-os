@@ -154,8 +154,7 @@ class ActivitiesView extends ItemView<Activity> {
         menu().addItem("RefreshAll", event -> new CmdRefreshActivities(this).execute());
     }
 
-    @Override
-    protected void init() {
+    private void init() {
         var grid = grid();
         grid.addColumn(Activity::date).setKey(EntityView.DATE).setHeader(EntityView.DATE_LABEL).setResizable(true).setSortable(true).setFlexGrow(0).setWidth("10em");
         grid.addColumn(Activity::code).setKey(CODE).setHeader("Code").setResizable(true).setSortable(true).setFlexGrow(0).setWidth("10em");

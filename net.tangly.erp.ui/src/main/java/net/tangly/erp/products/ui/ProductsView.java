@@ -24,11 +24,11 @@ class ProductsView extends EntityView<Product> {
     public ProductsView(@NotNull ProductsBoundedDomain domain, @NotNull Mode mode) {
         // TODO do we need the mode parameter?
         super(Product.class, domain, domain.realm().products(), Mode.LIST);
-        init();
+        initEntityView();
     }
 
     @Override
-    protected void init() {
+    protected void initEntityView() {
         addEntityColumns(grid());
         addEntityFilterFields(grid(), filter());
         buildMenu();

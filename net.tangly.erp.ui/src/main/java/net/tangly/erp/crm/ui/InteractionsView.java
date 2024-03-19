@@ -68,7 +68,7 @@ class InteractionsView extends EntityView<Interaction> {
     public InteractionsView(@NotNull CrmBoundedDomain domain, @NotNull Mode mode) {
         super(Interaction.class, domain, domain.realm().interactions(), mode);
         form(new InteractionForm(this));
-        init();
+        initEntityView();
     }
 
     @Override
@@ -77,7 +77,7 @@ class InteractionsView extends EntityView<Interaction> {
     }
 
     @Override
-    protected void init() {
+    protected void initEntityView() {
         var grid = grid();
         grid.addColumn(Interaction::code).setKey("state").setHeader("State").setAutoWidth(true).setResizable(true).setSortable(true).setFrozen(true);
         grid.addColumn(e -> VaadinUtils.format(e.potential())).setKey("potential").setHeader("Potential").setAutoWidth(true).setResizable(true).setSortable(true).setFrozen(true);

@@ -58,7 +58,7 @@ class EmployeesView extends EntityView<Employee> {
     public EmployeesView(@NotNull CrmBoundedDomain domain, @NotNull Mode mode) {
         super(Employee.class, domain, domain.realm().employees(), mode);
         form(new EmployeeForm(this, domain.registry()));
-        init();
+        initEntityView();
     }
 
     @Override
@@ -67,7 +67,7 @@ class EmployeesView extends EntityView<Employee> {
     }
 
     @Override
-    protected void init() {
+    protected void initEntityView() {
         var grid = grid();
         addEntityColumns(grid);
         grid.addColumn(o -> o.value(CrmTags.CRM_EMPLOYEE_TITLE).orElse(null)).setKey("title").setHeader("Title").setAutoWidth(true).setResizable(true).setSortable(true);

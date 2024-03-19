@@ -128,8 +128,7 @@ public class LeadsView extends ItemView<Lead> {
         init();
     }
 
-    @Override
-    protected void init() {
+    private void init() {
         var grid = grid();
         grid.addColumn(Lead::date).setKey("date").setHeader("Date").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Lead::code).setKey("code").setHeader("Code").setAutoWidth(true).setResizable(true).setSortable(true);

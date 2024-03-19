@@ -74,7 +74,7 @@ class ContractsView extends EntityView<Contract> {
     public ContractsView(@NotNull CrmBoundedDomain domain, @NotNull Mode mode) {
         super(Contract.class, domain, domain.realm().contracts(), mode);
         form(new ContractForm(this));
-        init();
+        initEntityView();
     }
 
     @Override
@@ -83,7 +83,7 @@ class ContractsView extends EntityView<Contract> {
     }
 
     @Override
-    protected void init() {
+    protected void initEntityView() {
         var grid = grid();
         grid.addColumn(e -> e.sellee().name()).setKey("customer").setHeader("Customer").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Contract::currency).setKey("currency").setHeader("Currency").setAutoWidth(true).setResizable(true).setSortable(true);

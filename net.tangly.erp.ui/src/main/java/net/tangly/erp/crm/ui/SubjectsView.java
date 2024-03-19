@@ -66,11 +66,11 @@ class SubjectsView extends EntityView<Subject> {
     public SubjectsView(@NotNull CrmBoundedDomain domain, @NotNull Mode mode) {
         super(Subject.class, domain, domain.realm().subjects(), mode);
         this.domain = domain;
-        init();
+        initEntityView();
     }
 
     @Override
-    protected void init() {
+    protected void initEntityView() {
     }
 
 }

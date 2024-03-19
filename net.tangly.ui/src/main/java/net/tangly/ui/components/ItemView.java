@@ -156,9 +156,7 @@ public abstract class ItemView<T> extends VerticalLayout {
         add(grid);
         mode(mode);
     }
-
-    protected abstract void init();
-
+    
     public Class<T> entityClass() {
         return entityClass;
     }

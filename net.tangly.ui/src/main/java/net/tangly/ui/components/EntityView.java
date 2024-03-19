@@ -59,7 +59,7 @@ public class EntityView<T extends Entity> extends ItemView<T> {
 
     public static <T extends Entity> EntityView<T> of(@NotNull Class<T> entityClass, BoundedDomain<?, ?, ?> domain, @NotNull Provider<T> provider, @NotNull Mode mode) {
         EntityView<T> view = new EntityView<>(entityClass, domain, provider, mode);
-        view.init();
+        view.initEntityView();
         return view;
     }
 
@@ -72,8 +72,7 @@ public class EntityView<T extends Entity> extends ItemView<T> {
         return (EntityFilter<T>) super.filter();
     }
 
-    @Override
-    protected void init() {
+    protected void initEntityView() {
         addEntityColumns(grid());
         addEntityFilterFields(grid(), filter());
         buildMenu();

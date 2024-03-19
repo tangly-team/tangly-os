@@ -92,8 +92,7 @@ class ArticlesView extends ItemView<Article> {
         init();
     }
 
-    @Override
-    protected void init() {
+    private void init() {
         Grid<Article> grid = grid();
         grid.addColumn(Article::id).setKey("id").setHeader("Id").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Article::name).setKey("name").setHeader("Name").setAutoWidth(true).setResizable(true).setSortable(true);

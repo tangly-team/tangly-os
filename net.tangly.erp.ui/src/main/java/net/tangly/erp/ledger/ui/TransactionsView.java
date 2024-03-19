@@ -156,8 +156,7 @@ class TransactionsView extends ItemView<Transaction> {
         init();
     }
 
-    @Override
-    protected void init() {
+    private void init() {
         Grid<Transaction> grid = grid();
         grid.addColumn(Transaction::date).setKey("date").setHeader("Date").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Transaction::text).setKey("text").setHeader("Text").setAutoWidth(true).setResizable(true).setSortable(true);

@@ -136,8 +136,7 @@ public class CommentsView extends ItemView<Comment> {
         init();
     }
 
-    @Override
-    protected void init() {
+    private void init() {
         setHeight("15em");
         Grid<Comment> grid = grid();
         grid.addColumn(Comment::created).setKey(CREATED).setHeader(CREATED_LABEL).setSortable(true).setResizable(true).setFlexGrow(0).setWidth("10em");

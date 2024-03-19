@@ -48,8 +48,7 @@ public class DomainEntitiesView extends ItemView<DomainEntity> {
         init();
     }
 
-    @Override
-    protected void init() {
+    private void init() {
         var grid = grid();
         grid.addColumn(DomainEntity::domain).setKey("domain").setHeader("Domain").setSortable(true).setAutoWidth(true).setResizable(true);
         grid.addColumn(DomainEntity::name).setKey("name").setHeader("Name").setSortable(true).setAutoWidth(true).setResizable(true);

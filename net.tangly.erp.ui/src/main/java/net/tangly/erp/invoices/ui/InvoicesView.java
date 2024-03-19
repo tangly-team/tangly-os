@@ -99,8 +99,7 @@ class InvoicesView extends ItemView<Invoice> {
         menu().addItem("Print", event -> event.getItem().ifPresent(e -> new CmdCreateInvoiceDocument(e, this.domain()).execute()));
     }
 
-    @Override
-    protected void init() {
+    private void init() {
         var grid = grid();
         grid.addColumn(Invoice::id).setKey("id").setHeader("Id").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Invoice::name).setKey("name").setHeader("Name").setAutoWidth(true).setResizable(true).setSortable(true);
