@@ -19,7 +19,7 @@ import java.util.Map;
 import java.util.function.BiConsumer;
 
 /**
- * The exception mapper processes an exception and executes associated instructions with the helper. For example a HTTP error code and answer can be generated
+ * The exception mapper processes an exception and executes associated instructions with the helper. For example, an HTTP error code and answer can be generated
  * based on the kind of the exception.
  *
  * @param <H> handler used to process the exception
@@ -44,8 +44,8 @@ public class ExceptionMapper<H> {
     }
 
     /**
-     * The class exception cannot be unregister to insure we are always handling any exception. If specific behavior is requested you can overwrite it using
-     * bind method.
+     * The class exception cannot be unregistered to insure we are always handling any exception.
+     * If specific behavior is requested, you can overwrite it using bind method.
      *
      * @param clazz class instance to unregister
      */

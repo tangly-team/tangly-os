@@ -193,8 +193,8 @@ class StateMachineImp<O, S extends Enum<S>, E extends Enum<E>> implements StateM
 
     @Override
     public String toString() {
-        return new StringJoiner(", ", this.getClass().getSimpleName() + "[", "]").add("name=" + name).add("activeStates=" + activeStates)
-            .add("history=" + history).toString();
+        return new StringJoiner(", ", STR."\{this.getClass().getSimpleName()}[", "]").add(STR."name=\{name}").add(STR."activeStates=\{activeStates}")
+            .add(STR."history=\{history}").toString();
     }
 
     /**

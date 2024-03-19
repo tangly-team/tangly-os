@@ -55,7 +55,7 @@ public final class BitUtilities {
      * Writes length number of bits from data into the byte stream at the bit position. The assumption is that bits are appended and the stream is initialized
      * to 0.
      *
-     * @param stream   stream of bits encoded as array of bytes. The stream cannot be null
+     * @param stream   stream of bits encoded as an array of bytes. The stream cannot be null
      * @param data     byte of data to be inserted into the bit stream
      * @param position start index in bits in the stream, starting at 0
      * @param length   number of bits to insert into the stream. The format is constrained in [1..8]
@@ -69,7 +69,7 @@ public final class BitUtilities {
         int bitIndex = position % BYTE;
         int nrOfBits = 0;
         if (bitIndex != 0) {
-            // the current byte has free room and we find how much bits can be appended.
+            // the current byte has free room, and we find how many bits can be appended.
             if (bitIndex + length > BYTE) {
                 nrOfBits = BYTE - bitIndex;
             } else {
@@ -92,7 +92,7 @@ public final class BitUtilities {
     /**
      * Extracts length number of bits from the byte stream at the bit position.
      *
-     * @param stream   stream of bits encoded as array of bytes. The stream cannot be null
+     * @param stream   stream of bits encoded as an array of bytes. The stream cannot be null
      * @param position start index in bits in the stream, starting at 0
      * @param length   number of bits to insert into the stream. The format is constrained in [1..8]
      * @return the extracted data from the byte stream
@@ -124,7 +124,7 @@ public final class BitUtilities {
      * Writes length number of bits from data into the byte stream at the bit position. The assumption is that bits are appended and the stream is initialized
      * to 0.
      *
-     * @param stream   stream of bits encoded as array of bytes. The stream cannot be null
+     * @param stream   stream of bits encoded as an array of bytes. The stream cannot be null
      * @param data     word of data to be inserted into the bit stream
      * @param position start index in bits in the stream, starting at 0
      * @param length   number of bits to insert into the stream. The format is constrained in [1..16]
@@ -146,7 +146,7 @@ public final class BitUtilities {
     /**
      * Extracts length number of bits from the byte stream at the bit position.
      *
-     * @param stream   stream of bits encoded as array of bytes. The stream cannot be null
+     * @param stream   stream of bits encoded as an array of bytes. The stream cannot be null
      * @param position start index in bits in the stream, starting at 0
      * @param length   number of bits to insert into the stream. The format is constrained in [1..16]
      * @return the extracted data from the byte stream
@@ -166,7 +166,7 @@ public final class BitUtilities {
      * Writes length number of bits from data into the byte stream at the bit position. The assumption is that bits are appended and the stream is initialized
      * to 0.
      *
-     * @param stream   stream of bits encoded as array of bytes. The stream cannot be null
+     * @param stream   stream of bits encoded as an array of bytes. The stream cannot be null
      * @param data     long word of data to be inserted into the bit stream
      * @param position start index in bits in the stream, starting at 0
      * @param length   number of bits to insert into the stream. The format is constrained in [1..32]
@@ -188,7 +188,7 @@ public final class BitUtilities {
     /**
      * Extracts length number of bits from the byte stream starting at the bit position.
      *
-     * @param stream   stream of bits encoded as array of bytes. The stream cannot be null
+     * @param stream   stream of bits encoded as an array of bytes. The stream cannot be null
      * @param position start index in bits in the stream, starting at 0
      * @param length   number of bits to insert into the stream. The format is constrained in [1..32]
      * @return the extracted data from the byte stream
@@ -205,7 +205,7 @@ public final class BitUtilities {
     }
 
     /**
-     * Transforms the stream of byte into a human readable sequence of hexadecimal values.
+     * Transforms the stream of byte into a human-readable sequence of hexadecimal values.
      *
      * @param stream the byte stream to transform. The stream must not be null
      * @return the hexadecimal representation of the byte stream

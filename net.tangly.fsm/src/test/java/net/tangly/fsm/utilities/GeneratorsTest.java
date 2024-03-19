@@ -76,7 +76,7 @@ class GeneratorsTest {
     }
 
     private static <O, S extends Enum<S>, E extends Enum<E>> void createStatechart(Generator<O, S, E> generator) throws IOException {
-        try (PrintWriter writer = new PrintWriter(Files.newBufferedWriter(path().resolve(generator.name() + "." + generator.extension()), StandardCharsets.UTF_8))) {
+        try (PrintWriter writer = new PrintWriter(Files.newBufferedWriter(path().resolve(STR."\{generator.name()}.\{generator.extension()}"), StandardCharsets.UTF_8))) {
             generator.generate(writer);
         }
     }

@@ -18,9 +18,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class TestDomain {
     static class TestRealm implements Realm {
-        @Override
-        public void close() throws Exception {
-        }
     }
 
     static class TestPort implements Port<TestRealm> {
@@ -28,16 +25,6 @@ class TestDomain {
 
         TestPort(TestRealm realm) {
             this.realm = realm;
-        }
-
-        @Override
-        public void importEntities() {
-
-        }
-
-        @Override
-        public void exportEntities() {
-
         }
 
         @Override

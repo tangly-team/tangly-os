@@ -47,7 +47,7 @@ public interface Checker {
     default String createMessage(Level level, ResourceBundle bundle, String key, Object... parameters) {
         MessageFormat formatter = new MessageFormat("");
         formatter.applyPattern(bundle.getString(key));
-        return level.getText() + "-" + key + "-" + formatter.format(parameters);
+        return STR."\{level.getText()}-\{key}-\{formatter.format(parameters)}";
     }
 
     /**

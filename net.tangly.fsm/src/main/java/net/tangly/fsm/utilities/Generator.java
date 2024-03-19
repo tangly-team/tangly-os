@@ -88,7 +88,7 @@ public abstract class Generator<O, S extends Enum<S>, E extends Enum<E>> {
         var writer = new StringWriter();
         generate(new PrintWriter(writer));
         var newText = writer.toString();
-        var filePath = path.resolve(name + "." + extension());
+        var filePath = path.resolve(STR."\{name}.\{extension()}");
         boolean shouldBeUpdated;
         if (Files.exists(filePath)) {
             String oldText = Files.readString(filePath, StandardCharsets.UTF_8);

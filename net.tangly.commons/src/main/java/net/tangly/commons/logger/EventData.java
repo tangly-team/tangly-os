@@ -29,7 +29,7 @@ import java.util.Objects;
  *
  * @param event     event triggering the creation of an audit log
  * @param timestamp timestanmp when the audit log was created
- * @param component component source of the audit log. By convention we use the module name or if necessary the package name
+ * @param component component source of the audit log. By convention, we use the module name or if necessary the package name
  * @param status    status associated with the audit log
  * @param text      text of the audit log
  * @param data      data specific to the audit log

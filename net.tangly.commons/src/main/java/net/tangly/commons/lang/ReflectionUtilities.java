@@ -31,7 +31,7 @@ public final class ReflectionUtilities {
 
     public static <T> void set(@NotNull T entity, @NotNull String name, @NotNull Object value) {
         set(entity, findField(entity.getClass(), name).orElseThrow(
-            () -> new NoSuchElementException("Missing Field From " + entity.getClass().getSimpleName() + " field " + name)), value);
+            () -> new NoSuchElementException(STR."Missing Field From \{entity.getClass().getSimpleName()} field \{name}")), value);
     }
 
     public static <T> void set(@NotNull T entity, @NotNull Field field, @NotNull Object value) {

@@ -57,7 +57,7 @@ class ActorTimerMgrTest {
     @Test
     void createCmdTest() {
         Actors<Message> actors = new Actors<>();
-        ActorTimerMgr<Message> timerMgr = new ActorTimerMgr<>("test-timer-manager", o -> (o instanceof MessageTimerCmd cmd) ? cmd.cmd() : null, o -> new MessageTimer(o));
+        ActorTimerMgr<Message> timerMgr = new ActorTimerMgr<>("test-timer-manager", o -> (o instanceof MessageTimerCmd cmd) ? cmd.cmd() : null, MessageTimer::new);
         actors.register(timerMgr);
         ClientActor<Message> actor = new ClientActor<>();
         actors.register(actor);
@@ -65,14 +65,14 @@ class ActorTimerMgrTest {
 
         assertThat(actor.numberOfReceivedMsgs()).isZero();
 
-        timerMgr.createTimer(timer, o -> new MessageTimerCmd(o));
+        timerMgr.createTimer(timer, MessageTimerCmd::new);
         await().atMost(Duration.ofSeconds(1)).untilAsserted(() -> assertThat(actor.numberOfReceivedMsgs()).isNotZero());
 
         timer = Timer.ofRecurring(actor, "Recurring", 100, TimeUnit.MILLISECONDS);
-        timerMgr.createTimer(timer, o -> new MessageTimerCmd(o));
+        timerMgr.createTimer(timer, MessageTimerCmd::new);
         await().atMost(Duration.ofSeconds(1)).untilAsserted(() -> assertThat(actor.numberOfReceivedMsgs()).isBetween(5, 6));
 
-        timerMgr.cancelTimer(actor, "Cancel", o -> new MessageTimerCmd(o));
+        timerMgr.cancelTimer(actor, "Cancel", MessageTimerCmd::new);
         System.out.println(actor.numberOfReceivedMsgs());
         await().atMost(Duration.ofSeconds(1)).untilAsserted(() -> assertThat(actor.numberOfReceivedMsgs()).isBetween(5, 10));
     }
@@ -80,7 +80,7 @@ class ActorTimerMgrTest {
     @Test
     void testRecurringTimer() {
         Actors<Message> actors = new Actors<>();
-        ActorTimerMgr<Message> timerMgr = new ActorTimerMgr<>("test-timer-manager", o -> (o instanceof MessageTimerCmd cmd) ? cmd.cmd() : null, o -> new MessageTimer(o));
+        ActorTimerMgr<Message> timerMgr = new ActorTimerMgr<>("test-timer-manager", o -> (o instanceof MessageTimerCmd cmd) ? cmd.cmd() : null, MessageTimer::new);
         actors.register(timerMgr);
     }
 }

@@ -13,7 +13,7 @@
 package net.tangly.commons.lang.functional;
 
 /**
- * Defines a typed pair as long as JDK API is not providing the abstraction. Pairs can for example be used to return two values from a function. The regular
+ * Defines a typed pair as long as JDK API is not providing the abstraction. Pairs can, for example, be used to return two values from a function. The regular
  * approach is Java is to define an additional record type.
  *
  * @param <T> left type of the pair
@@ -21,6 +21,6 @@ package net.tangly.commons.lang.functional;
  */
 public record Pair<T, U>(T left, U right) {
     public static <T, U> Pair<T,U> of(T left, U right) {
-        return new Pair<T, U>(left, right);
+        return new Pair<>(left, right);
     }
 }

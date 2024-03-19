@@ -29,7 +29,7 @@ class ProviderInMemoryTest {
     }
 
     static List<Entity> entities() {
-        return LongStream.range(0, SIZE).mapToObj(o -> new Entity(o, "name" + o)).toList();
+        return LongStream.range(0, SIZE).mapToObj(o -> new Entity(o, STR."name\{o}")).toList();
     }
 
     @Test
@@ -50,15 +50,15 @@ class ProviderInMemoryTest {
         assertThat(provider.items()).hasSize(SIZE);
         entities.forEach(provider::update);
         assertThat(provider.items()).hasSize(SIZE);
-        provider.delete(entities.get(0));
+        provider.delete(entities.getFirst());
         assertThat(provider.items()).hasSize(SIZE - 1);
     }
 
     @Test
     void testFindBy() {
         var provider = ProviderInMemory.of(entities());
-        assertThat(provider.findBy(o -> o.name(), "name" + (SIZE - 1))).isPresent();
-        assertThat(provider.findBy(o -> o.name(), "name" + SIZE)).isNotPresent();
+        assertThat(provider.findBy(Entity::name, STR."name\{SIZE - 1}")).isPresent();
+        assertThat(provider.findBy(Entity::name, STR."name\{SIZE}")).isNotPresent();
     }
 
     @Test

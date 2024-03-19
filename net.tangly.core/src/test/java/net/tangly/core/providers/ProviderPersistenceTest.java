@@ -26,7 +26,7 @@ import java.util.List;
 
 class ProviderPersistenceTest implements ProviderTest {
     static class Data {
-        private List<Aggregate> aggregates;
+        private final List<Aggregate> aggregates;
 
         Data() {
             aggregates = new ArrayList<>();

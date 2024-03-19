@@ -40,7 +40,7 @@ public class LegalEntity extends EntityExtendedImp implements EntityExtended, Cr
      * @return link to Zefix information
      */
     public static String organizationZefixUrl(@NotNull LegalEntity entity) {
-        return "https://www.zefix.ch/en/search/entity/list?name=" + entity.id() + "&searchType=exact";
+        return STR."https://www.zefix.ch/en/search/entity/list?name=\{entity.id()}&searchType=exact";
     }
 
     @Override

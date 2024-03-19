@@ -28,7 +28,7 @@ public record PhoneNr(@NotNull String number) {
 
     public PhoneNr {
         if (!isValid(number)) {
-            throw new IllegalArgumentException("Illegal phone number " + number);
+            throw new IllegalArgumentException(STR."Illegal phone number \{number}");
         }
     }
 

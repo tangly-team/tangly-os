@@ -138,7 +138,7 @@ class ExceptionMapperTest {
             h.action();
             h.action(e);
         });
-        // defined to infer the non call of this lambda
+        // defined to infer the call of this lambda
         mapper.register(URISyntaxException.class, Handler::action);
         // overwrite of default exception lambda
         mapper.register(Exception.class, Handler::undefined);

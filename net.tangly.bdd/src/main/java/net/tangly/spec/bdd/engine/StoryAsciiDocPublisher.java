@@ -54,14 +54,14 @@ public class StoryAsciiDocPublisher {
     }
 
     private void publishFeature(@NotNull JSONObject feature) {
-        header("Feature: " + feature.getString(BddConstants.NAME), 2);
+        header(STR."Feature: \{feature.getString(BddConstants.NAME)}", 2);
         paragraph(feature.getString(BddConstants.DESCRIPTION));
         publishTags(feature);
         feature.getJSONArray(BddConstants.STORIES).forEach(item ->publishStory((JSONObject) item));
     }
 
     private void publishStory(@NotNull JSONObject story) {
-        header("Story: " + story.getString(BddConstants.NAME), 3);
+        header(STR."Story: \{story.getString(BddConstants.NAME)}", 3);
         paragraph(story.getString(BddConstants.DESCRIPTION));
         publishTags(story);
         story.getJSONArray(BddConstants.SCENARIOS).forEach(item -> publishScenario((JSONObject) item));

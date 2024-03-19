@@ -22,7 +22,7 @@ import java.text.DecimalFormat;
 import java.util.Arrays;
 
 public class AsciiDocHelper {
-    public static final String NEWLINE = " +" + System.lineSeparator();
+    public static final String NEWLINE = STR." +\{System.lineSeparator()}";
     private static final DecimalFormat DF = new DecimalFormat("#,##0.00");
 
     private final PrintWriter writer;
@@ -36,11 +36,11 @@ public class AsciiDocHelper {
     }
 
     public static String bold(String text) {
-        return "*" + text + "*";
+        return STR."*\{text}*";
     }
 
     public static String italics(String text) {
-        return text.length() > 0 ? ("_" + text + "_") : "";
+        return !text.isEmpty() ? (STR."_\{text}_") : "";
     }
 
     /**
@@ -54,7 +54,7 @@ public class AsciiDocHelper {
         if (value.compareTo(BigDecimal.ZERO) > 0) {
             return DF.format(value);
         } else if (value.compareTo(BigDecimal.ZERO) < 0) {
-            return "[red]#" + DF.format(value) + "#";
+            return STR."[red]#\{DF.format(value)}#";
         } else {
             return "";
         }
@@ -82,7 +82,7 @@ public class AsciiDocHelper {
             writer.append(".").println(tableName);
         }
         if (attributes != null) {
-            writer.println("[" + attributes + "]");
+            writer.println(STR."[\{attributes}]");
         }
         writer.println("|===");
         if (headerCells.length != 0) {

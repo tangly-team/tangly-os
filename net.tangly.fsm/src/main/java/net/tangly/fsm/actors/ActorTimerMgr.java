@@ -95,8 +95,8 @@ public class ActorTimerMgr<T> extends ActorImp<T> implements Actor<T> {
 
     private void processTimeout() {
         long currentTime = System.nanoTime();
-        while (!timers.isEmpty() && (timers.get(0).alarmTimeInNanoSeconds() <= currentTime)) {
-            Timer timer = timers.get(0);
+        while (!timers.isEmpty() && (timers.getFirst().alarmTimeInNanoSeconds() <= currentTime)) {
+            Timer timer = timers.getFirst();
             Actor.send(timer.client(), builder.apply(timer));
             timers.remove(timer);
             if (timer.recurring()) {
@@ -116,7 +116,7 @@ public class ActorTimerMgr<T> extends ActorImp<T> implements Actor<T> {
     }
 
     private long waitFor() {
-        return timers.isEmpty() ? 0 : Math.max(timers.get(0).alarmTimeInNanoSeconds - System.nanoTime(), 1);
+        return timers.isEmpty() ? 0 : Math.max(timers.getFirst().alarmTimeInNanoSeconds - System.nanoTime(), 1);
     }
 
     private final List<Timer<T>> timers;

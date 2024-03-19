@@ -102,7 +102,7 @@ public class ImapSession implements Closeable {
         List<Object> parts = null;
         List<Message> messages = messages(messageId);
         if (!messages.isEmpty()) {
-            Message msg = messages.get(0);
+            Message msg = messages.getFirst();
             try {
                 parts = selectTextParts((MimeMultipart) msg.getContent());
             } catch (IOException | MessagingException e) {

@@ -65,7 +65,7 @@ class Server extends ActorFsm<Server, ServerStates, Events> {
 
     private void processRequest(Event<Events> event) {
         nrRequests++;
-        var clientName = (String) (event.parameters().get(0));
+        var clientName = (String) (event.parameters().getFirst());
         actors.sendTo(Event.of(Events.Response, name(), clientName), actors.actorNamed(clientName).get().id());
     }
 }

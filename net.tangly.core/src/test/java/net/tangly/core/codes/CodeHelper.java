@@ -68,7 +68,7 @@ class CodeHelper {
      */
     public static <T extends Code> CodeType<T> build(Class<T> clazz, CodeFactory<T> factory, DataSource dataSource, String tableName) throws
             SQLException {
-        final String SQL_QUERY = "SELECT id, code, enabled FROM " + tableName;
+        final String SQL_QUERY = STR."SELECT id, code, enabled FROM \{tableName}";
         try (Connection connection = dataSource.getConnection(); Statement statement = connection.createStatement();
              ResultSet resultSet = statement.executeQuery(SQL_QUERY)) {
             List<T> codes = new ArrayList<>();

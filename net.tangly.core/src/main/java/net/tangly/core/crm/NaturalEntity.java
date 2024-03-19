@@ -58,7 +58,7 @@ public class NaturalEntity extends EntityExtendedImp implements EntityExtended, 
     }
 
     public String fullname() {
-        return name() + ((firstname() != null) ? ", " + firstname() : "");
+        return name() + ((firstname() != null) ? STR.", \{firstname()}" : "");
     }
 
     public GenderCode gender() {

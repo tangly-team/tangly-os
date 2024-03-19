@@ -22,7 +22,7 @@ import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
 /**
- * Defines an immutable list structure as used in Lisp, Scheme or Clojure. The fundamental data structure in many functional languages is the immutable list. It is constructed
+ * Defines an immutable list structure as used in Lisp, Scheme, or Clojure. The fundamental data structure in many functional languages is the immutable list. It is constructed
  * from two building
  * blocks:
  * <dl>
@@ -191,7 +191,7 @@ public sealed interface LList<T> permits LList.Nil, LList.ImmutableList {
 
         @Override
         public String toString() {
-            return first() + (rest().isEmpty() ? "" : ", " + rest());
+            return first() + (rest().isEmpty() ? "" : STR.", \{rest()}");
         }
     }
 }

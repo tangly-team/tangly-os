@@ -63,25 +63,25 @@ public final class CrmTags {
     public static final String CRM_ADDRESS_DELIVERY = CRM + ADDRESS + DELIVERY;
     public static final String CRM_CUSTOMER_SEGMENT = CRM + SEGMENT;
 
-    public static final String CRM_SITE_HOME = CRM + ":site-" + VcardType.home.name();
-    public static final String CRM_SITE_WORK = CRM + ":site-" + VcardType.work.name();
+    public static final String CRM_SITE_HOME = STR."\{CRM}:site-\{VcardType.home.name()}";
+    public static final String CRM_SITE_WORK = STR."\{CRM}:site-\{VcardType.work.name()}";
 
     public static final String LINKEDIN = "linkedIn";
     public static final String SKYPE = "skype";
     public static final String GOOGLE = "google";
 
-    public static final String CRM_IM_LINKEDIN = CRM + ":im-" + LINKEDIN;
+    public static final String CRM_IM_LINKEDIN = STR."\{CRM}:im-\{LINKEDIN}";
 
-    public static final String CRM_VAT_NUMBER = CRM + ":vat-number";
-    public static final String CRM_BANK_CONNECTION = CRM + ":bank-connection";
-    public static final String CRM_RESPONSIBLE = CRM + ":responsible";
+    public static final String CRM_VAT_NUMBER = STR."\{CRM}:vat-number";
+    public static final String CRM_BANK_CONNECTION = STR."\{CRM}:bank-connection";
+    public static final String CRM_RESPONSIBLE = STR."\{CRM}:responsible";
 
-    public static final String CRM_EMPLOYEE_TITLE = CRM + ":title";
-    public static final String CRM_SCHOOL = CRM + ":school";
+    public static final String CRM_EMPLOYEE_TITLE = STR."\{CRM}:title";
+    public static final String CRM_SCHOOL = STR."\{CRM}:school";
 
-    public static final String GEO_LATITUDE = GEO + ":" + LATITUDE;
-    public static final String GEO_LONGITUDE = GEO + ":" + LONGITUDE;
-    public static final String GEO_PLUSCODE = GEO + ":" + PLUSCODE;
+    public static final String GEO_LATITUDE = STR."\{GEO}:\{LATITUDE}";
+    public static final String GEO_LONGITUDE = STR."\{GEO}:\{LONGITUDE}";
+    public static final String GEO_PLUSCODE = STR."\{GEO}:\{PLUSCODE}";
 
     /**
      * Private constructor of a utility class.
@@ -98,22 +98,22 @@ public final class CrmTags {
     }
 
     public static void registerTags(@NotNull TypeRegistry registry) {
-        registry.register(TagType.ofMandatory(CRM, "email-" + VcardType.home.name(), EmailAddress.class, EmailAddress::of));
-        registry.register(TagType.ofMandatory(CRM, "email-" + VcardType.work.name(), EmailAddress.class, EmailAddress::of));
-        registry.register(TagType.ofMandatory(CRM, "phone-" + VcardType.mobile.name(), PhoneNr.class, PhoneNr::of));
-        registry.register(TagType.ofMandatory(CRM, "phone-" + VcardType.home.name(), PhoneNr.class, PhoneNr::of));
-        registry.register(TagType.ofMandatory(CRM, "phone-" + VcardType.work.name(), PhoneNr.class, PhoneNr::of));
-        registry.register(TagType.ofMandatory(CRM, "address-" + VcardType.home.name(), Address.class, Address::of));
-        registry.register(TagType.ofMandatory(CRM, "address-" + VcardType.work.name(), Address.class, Address::of));
-        registry.register(TagType.ofMandatory(CRM, "address-" + BILLING, Address.class, Address::of));
-        registry.register(TagType.ofMandatory(CRM, "address-" + DELIVERY, Address.class, Address::of));
+        registry.register(TagType.ofMandatory(CRM, STR."email-\{VcardType.home.name()}", EmailAddress.class, EmailAddress::of));
+        registry.register(TagType.ofMandatory(CRM, STR."email-\{VcardType.work.name()}", EmailAddress.class, EmailAddress::of));
+        registry.register(TagType.ofMandatory(CRM, STR."phone-\{VcardType.mobile.name()}", PhoneNr.class, PhoneNr::of));
+        registry.register(TagType.ofMandatory(CRM, STR."phone-\{VcardType.home.name()}", PhoneNr.class, PhoneNr::of));
+        registry.register(TagType.ofMandatory(CRM, STR."phone-\{VcardType.work.name()}", PhoneNr.class, PhoneNr::of));
+        registry.register(TagType.ofMandatory(CRM, STR."address-\{VcardType.home.name()}", Address.class, Address::of));
+        registry.register(TagType.ofMandatory(CRM, STR."address-\{VcardType.work.name()}", Address.class, Address::of));
+        registry.register(TagType.ofMandatory(CRM, STR."address-\{BILLING}", Address.class, Address::of));
+        registry.register(TagType.ofMandatory(CRM, STR."address-\{DELIVERY}", Address.class, Address::of));
 
-        registry.register(TagType.ofMandatory(CRM, "site-" + VcardType.home.name(), URL.class, CrmTags::of));
-        registry.register(TagType.ofMandatory(CRM, "site-" + VcardType.work.name(), URL.class, CrmTags::of));
+        registry.register(TagType.ofMandatory(CRM, STR."site-\{VcardType.home.name()}", URL.class, CrmTags::of));
+        registry.register(TagType.ofMandatory(CRM, STR."site-\{VcardType.work.name()}", URL.class, CrmTags::of));
         registry.register(TagType.ofMandatoryString(CRM, "title"));
-        registry.register(TagType.ofMandatoryString(CRM, "im-" + LINKEDIN));
-        registry.register(TagType.ofMandatoryString(CRM, "im-" + SKYPE));
-        registry.register(TagType.ofMandatoryString(CRM, "im-" + GOOGLE));
+        registry.register(TagType.ofMandatoryString(CRM, STR."im-\{LINKEDIN}"));
+        registry.register(TagType.ofMandatoryString(CRM, STR."im-\{SKYPE}"));
+        registry.register(TagType.ofMandatoryString(CRM, STR."im-\{GOOGLE}"));
         registry.register(TagType.ofMandatoryString(CRM, "vat-number"));
         registry.register(TagType.ofMandatory(CRM, "bank-connection", BankConnection.class, BankConnection::of));
         registry.register(TagType.ofMandatoryString(CRM, "responsible"));
@@ -125,23 +125,23 @@ public final class CrmTags {
     }
 
     public static String phoneTag(@NotNull String kind) {
-        return CRM + ":phone-" + Objects.requireNonNull(kind);
+        return STR."\{CRM}:phone-\{Objects.requireNonNull(kind)}";
     }
 
     public static String emailTag(@NotNull String kind) {
-        return CRM + ":email-" + Objects.requireNonNull(kind);
+        return STR."\{CRM}:email-\{Objects.requireNonNull(kind)}";
     }
 
     public static String addressTag(@NotNull String kind) {
-        return CRM + ":address-" + Objects.requireNonNull(kind);
+        return STR."\{CRM}:address-\{Objects.requireNonNull(kind)}";
     }
 
     public static String siteTag(@NotNull String kind) {
-        return CRM + ":site-" + Objects.requireNonNull(kind);
+        return STR."\{CRM}:site-\{Objects.requireNonNull(kind)}";
     }
 
     public static String imTag(@NotNull String im) {
-        return CRM + ":im-" + Objects.requireNonNull(im);
+        return STR."\{CRM}:im-\{Objects.requireNonNull(im)}";
     }
 
     public static String linkedInTag(@NotNull HasTags entity) {

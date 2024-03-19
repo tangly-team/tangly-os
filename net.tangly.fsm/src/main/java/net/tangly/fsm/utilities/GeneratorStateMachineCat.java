@@ -70,7 +70,7 @@ public class GeneratorStateMachineCat<O, S extends Enum<S>, E extends Enum<E>> e
                 indent(writer, depth + 1).append(state.id().name()).append(".history,").println();
             }
             var substates = state.substates().stream().sorted(Comparator.comparing(State::id)).toList();
-            var lastSubstate = substates.get(substates.size() - 1);
+            var lastSubstate = substates.getLast();
             for (var substate : substates) {
                 writeState(substate, depth + 1, writer, (substate.equals(lastSubstate)) ? ";" : ",");
             }

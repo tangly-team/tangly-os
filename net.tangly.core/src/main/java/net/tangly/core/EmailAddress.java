@@ -29,10 +29,10 @@ public record EmailAddress(@NotNull String recipient, @NotNull String domain) {
 
     public EmailAddress {
         if (Strings.isNullOrBlank(domain)) {
-            throw new IllegalArgumentException("Illegal domain " + domain);
+            throw new IllegalArgumentException(STR."Illegal domain \{domain}");
         }
         if (Strings.isNullOrBlank(recipient)) {
-            throw new IllegalArgumentException("Illegal recipient " + recipient);
+            throw new IllegalArgumentException(STR."Illegal recipient \{recipient}");
         }
     }
 
@@ -62,6 +62,6 @@ public record EmailAddress(@NotNull String recipient, @NotNull String domain) {
      * @return text representation
      */
     public String text() {
-        return recipient() + "@" + domain();
+        return STR."\{recipient()}@\{domain()}";
     }
 }

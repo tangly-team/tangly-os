@@ -44,7 +44,7 @@ public class StoryExtension implements BeforeAllCallback, AfterAllCallback, Befo
     @Override
     public void beforeAll(ExtensionContext context) {
         if (!isStory(context)) {
-            throw new IllegalStateException("Use @Story annotation to use Story Extension. Class: " + context.getRequiredTestClass());
+            throw new IllegalStateException(STR."Use @Story annotation to use Story Extension. Class: \{context.getRequiredTestClass()}");
         }
         var clazz = context.getRequiredTestClass();
         var storyRun = new StoryRun(clazz);
@@ -61,7 +61,7 @@ public class StoryExtension implements BeforeAllCallback, AfterAllCallback, Befo
     @Override
     public void beforeEach(ExtensionContext context) {
         if (!isScenario(context)) {
-            throw new IllegalStateException("Use @Scenario annotation to use the StoryExtension service. Method: " + context.getRequiredTestMethod());
+            throw new IllegalStateException(STR."Use @Scenario annotation to use the StoryExtension service. Method: \{context.getRequiredTestMethod()}");
         }
         // Prepare a scene instance corresponding to the given test method.
         var scene = new Scene(context.getRequiredTestMethod());

@@ -32,7 +32,7 @@ class TryTest {
         assertThat(tries.isFailure()).isFalse();
         assertThat(tries.get()).isEqualTo(success);
 
-        tries = Try.<String>failure(new RuntimeException());
+        tries = Try.failure(new RuntimeException());
         assertThat(tries.isSuccess()).isFalse();
         assertThat(tries.isFailure()).isTrue();
 
@@ -47,12 +47,12 @@ class TryTest {
     @Test
     void testSuccessTry() {
         final double value = 1.1;
-        var tries = Try.of(() -> Double.valueOf(value));
+        var tries = Try.of(() -> value);
         assertThat(tries.isFailure()).isFalse();
         assertThat(tries.isSuccess()).isTrue();
         assertThat(tries.get()).isEqualTo(value);
-        assertThatExceptionOfType(IllegalStateException.class).isThrownBy(() -> tries.getThrown());
-        assertThat(tries.map(o -> o.intValue()).get()).isEqualTo(Double.valueOf(value).intValue());
+        assertThatExceptionOfType(IllegalStateException.class).isThrownBy(tries::getThrown);
+        assertThat(tries.map(Double::intValue).get()).isEqualTo(Double.valueOf(value).intValue());
         assertThat(tries.flatMap(o -> Try.success(String.valueOf(o))).isSuccess()).isTrue();
         assertThat(tries.flatMap(o -> Try.success(String.valueOf(o))).get()).isEqualTo(String.valueOf(value));
     }
@@ -65,8 +65,8 @@ class TryTest {
         assertThat(tries.isFailure()).isTrue();
         assertThat(tries.isSuccess()).isFalse();
         assertThat(tries.getThrown()).isInstanceOf(RuntimeException.class);
-        assertThatExceptionOfType(RuntimeException.class).isThrownBy(() -> tries.get());
-        assertThatExceptionOfType(RuntimeException.class).isThrownBy(() -> tries.map(o -> o.toString()).get());
+        assertThatExceptionOfType(RuntimeException.class).isThrownBy(tries::get);
+        assertThatExceptionOfType(RuntimeException.class).isThrownBy(() -> tries.map(Object::toString).get());
         assertThat(tries.flatMap(o -> Try.failure(new IllegalStateException())).isFailure()).isTrue();
         assertThat(tries.flatMap(o -> Try.failure(new IllegalStateException())).getThrown()).isInstanceOf(RuntimeException.class);
     }

@@ -24,7 +24,7 @@ import java.util.Locale;
 
 
 /**
- * A gravatar is a dynamic image resource that is requested from the gravatar.com server. The class calculates the gravatar url and fetches gravatar images.
+ * A gravatar is a dynamic image resource requested from the gravatar.com server. The class calculates the gravatar url and fetches gravatar images.
  * See
  * <a href="https://en.gravatar.com/site/implement/images/">Gravatar</a>.
  */
@@ -44,20 +44,20 @@ public final class Gravatar {
     }
 
     private String getUrl(String email, int sizeInPixels, GravatarRating rating, GravatarImage image) {
-        return GRAVATAR_URL + DigestUtils.md5Hex(email.toLowerCase(Locale.US).strip()) + ".jpg" + formatUrlParameters(sizeInPixels, rating, image);
+        return STR."\{GRAVATAR_URL}\{DigestUtils.md5Hex(email.toLowerCase(Locale.US).strip())}.jpg\{formatUrlParameters(sizeInPixels, rating, image)}";
     }
 
     private static String formatUrlParameters(int sizeInPixels, GravatarRating rating, GravatarImage image) {
         List<String> params = new ArrayList<>();
         if (sizeInPixels != 0) {
-            params.add("s=" + sizeInPixels);
+            params.add(STR."s=\{sizeInPixels}");
         }
         if (rating != GravatarRating.GENERAL_AUDIENCES) {
-            params.add("r=" + rating.code());
+            params.add(STR."r=\{rating.code()}");
         }
         if (image != GravatarImage.GRAVATAR_ICON) {
-            params.add("d=" + image.code());
+            params.add(STR."d=\{image.code()}");
         }
-        return params.isEmpty() ? "" : ("?" + String.join("&", params));
+        return params.isEmpty() ? "" : (STR."?\{String.join("&", params)}");
     }
 }

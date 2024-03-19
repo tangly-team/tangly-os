@@ -101,6 +101,6 @@ public record Tag(String namespace, @NotNull String name, String value) {
     }
 
     public String text() {
-        return (!Strings.isNullOrBlank(namespace()) ? namespace() + ":" : "") + name() + (value() != null ? "=" + value() : "");
+        return (!Strings.isNullOrBlank(namespace()) ? STR."\{namespace()}:" : "") + name() + (value() != null ? STR."=\{value()}" : "");
     }
 }

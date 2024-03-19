@@ -21,7 +21,7 @@ import java.util.Objects;
 import java.util.Optional;
 
 /**
- * Models an incomplete local date such as a birthday. Incomplete dates are defined for example in the VCard standard.
+ * Models an incomplete local date such as a birthday. Incomplete dates are defined, for example, in the VCard standard.
  *
  * @param year  year of the date if defined otherwise 0
  * @param month month of the date if defined otherwise 0

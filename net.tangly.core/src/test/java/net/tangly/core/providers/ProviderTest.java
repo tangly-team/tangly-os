@@ -33,11 +33,11 @@ public interface ProviderTest {
     }
 
     static List<Entity> simpleEntities() {
-        return LongStream.range(0, SIZE).mapToObj(o -> new Entity(o, "name" + o)).toList();
+        return LongStream.range(0, SIZE).mapToObj(o -> new Entity(o, STR."name\{o}")).toList();
     }
 
     static List<Aggregate> aggregates() {
         return LongStream.range(0, SIZE)
-            .mapToObj(o -> new Aggregate(o, "name" + o, IntStream.range(0, AGGREGATE_SIZE).mapToObj(i -> new ValueObject("name" + i + " of " + o, i)).toList())).toList();
+            .mapToObj(o -> new Aggregate(o, STR."name\{o}", IntStream.range(0, AGGREGATE_SIZE).mapToObj(i -> new ValueObject(STR."name\{i} of \{o}", i)).toList())).toList();
     }
 }

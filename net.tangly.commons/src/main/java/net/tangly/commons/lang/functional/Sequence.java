@@ -26,7 +26,7 @@ public interface Sequence<T> {
     /**
      * Return the rest of the sequence witouth the first item of the sequence.
      *
-     * @return rest of the sequence, can be empty
+     * @return rest of the sequence, it can be empty
      */
     @Contract(pure = true)
     Sequence<T> rest();
@@ -35,7 +35,7 @@ public interface Sequence<T> {
      * Construct a new immutable list by addind the new front item to the existing sequence.
      *
      * @param item     item to add to the sequence
-     * @param sequence sequence where the item will be added in th front of the sequence
+     * @param sequence sequence where the item will be added in the front of the sequence
      * @return new immutable list
      */
     @Contract(pure = true)

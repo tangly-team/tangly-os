@@ -31,10 +31,10 @@ import java.util.Objects;
 public record Address(String street, String extended, String poBox, String postcode, String locality, String region, String country) {
     public Address {
         if (Strings.isNullOrBlank(country)) {
-            throw new IllegalArgumentException("Illegal country " + country);
+            throw new IllegalArgumentException(STR."Illegal country \{country}");
         }
         if (Strings.isNullOrBlank(locality)) {
-            throw new IllegalArgumentException("Illegal locality " + locality);
+            throw new IllegalArgumentException(STR."Illegal locality \{locality}");
         }
     }
 

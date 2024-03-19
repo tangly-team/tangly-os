@@ -11,7 +11,7 @@
  */
 
 /**
- * A collection of abstractions and utility functions missing in the standard java API. The hope is that in the long term all these concepts shall be provided
+ * A collection of abstractions and utility functions missing in the standard java API. The hope is that in the long term, all these concepts shall be provided
  * through standard JDK abstractions.
  */
 package net.tangly.commons.lang;
