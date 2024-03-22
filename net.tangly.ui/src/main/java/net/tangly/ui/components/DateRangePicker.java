@@ -48,7 +48,7 @@ public class DateRangePicker extends CustomField<DateRange> {
     protected void setPresentationValue(DateRange range) {
         String fromText = Objects.isNull(range.from()) ? (range.isInfinite() ? "" : "-") : range.from().toString();
         String toText = Objects.isNull(range.to()) ? (range.isInfinite() ? "" : "-") : range.to().toString();
-        String text = "<div style=\"font-size:0.75em;\">" + fromText + " <br> " + toText + "</div>";
+        String text = STR."<div style=\"font-size:0.75em;\">\{fromText} <br> \{toText}</div>";
         rangeText.setIcon(new Html(text));
     }
 

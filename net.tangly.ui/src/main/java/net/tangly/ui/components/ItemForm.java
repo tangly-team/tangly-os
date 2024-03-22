@@ -14,6 +14,7 @@
 package net.tangly.ui.components;
 
 import com.vaadin.flow.component.Component;
+import com.vaadin.flow.component.HasValue;
 import com.vaadin.flow.component.Key;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
@@ -254,7 +255,7 @@ public abstract class ItemForm<T, U extends ItemView<T>> {
      * fields are cleared as regular fields because both implements <i>HasValue</i> and therefore are eligble for the binder.
      */
     protected void clear() {
-        binder.getFields().forEach(o -> o.clear());
+        binder.getFields().forEach(HasValue::clear);
     }
 
     /**

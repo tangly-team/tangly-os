@@ -189,7 +189,7 @@ public class Account implements HasId, HasName {
      */
     public BigDecimal balance(LocalDate date) {
         return isAggregate() ? aggregatedAccounts.stream().map(o -> o.balance(date)).reduce(BigDecimal::add).orElse(BigDecimal.ZERO) :
-            entries.stream().filter(o -> date.compareTo(o.date()) >= 0).map(Account::booking).reduce(BigDecimal::add).orElse(BigDecimal.ZERO);
+            entries.stream().filter(o -> !date.isBefore(o.date())).map(Account::booking).reduce(BigDecimal::add).orElse(BigDecimal.ZERO);
     }
 
     public List<AccountEntry> getEntriesFor(LocalDate from, LocalDate to) {

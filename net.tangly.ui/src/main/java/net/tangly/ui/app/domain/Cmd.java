@@ -19,7 +19,7 @@ import java.util.Collections;
 import java.util.Set;
 
 /**
- * The interface defines the abstraction for the command pattern. A command is an action mostly executed through the user interface as client. A command is an object whose role
+ * The interface defines the abstraction for the command pattern. A command is an action mostly executed through the user interface as a client. A command is an object whose role
  * is to store all the information required for executing an action, including the method to call, the method arguments, and the object (known as the receiver) that implements
  * the method.
  */

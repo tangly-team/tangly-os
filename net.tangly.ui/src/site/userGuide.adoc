@@ -33,7 +33,7 @@ She can decide to propage the changes to the model or discard them through _save
 
 A domain entity shall be displayed and manipulated using the entity view.
 
-A domain entity has an internal object identifier, an external identifier, a human-readable name, a temporaral period when the entity is active, and a textual description.
+A domain entity has an internal object identifier, an external identifier, a human-readable name, a temporal period when the entity is active, and a textual description.
 
 The entity can optionally have a set of tags and a list of comments.
 
@@ -48,7 +48,7 @@ public class MyEntityView extends EntityView<MyEntity> {
 }
 ----
 
-The comments and the tags of an entity are modelled as a _one2many_ immutable owned object relations.
+The comments and the tags of an entity are modeled as an _one2many_ immutable owned object relations.
 
 === Relationship Components
 

@@ -33,7 +33,7 @@ public class Transaction implements HasDate, HasText {
         private LocalDate date;
         private String reference;
         private String text;
-        private List<AccountEntry> splits;
+        private final List<AccountEntry> splits;
 
         Builder() {
             splits = new ArrayList<>();
@@ -67,8 +67,8 @@ public class Transaction implements HasDate, HasText {
         Transaction build() {
             List<AccountEntry> debits = splits.stream().filter(AccountEntry::isDebit).toList();
             List<AccountEntry> credits = splits.stream().filter(AccountEntry::isCredit).toList();
-            BigDecimal amount = (debits.size() == 1) ? debits.get(0).amount() : ((credits.size() == 1) ? credits.get(0).amount() : BigDecimal.ZERO);
-            return new Transaction(date, text, reference, amount, (debits.size() == 1) ? debits.get(0) : null, (credits.size() == 1) ? credits.get(0) : null,
+            BigDecimal amount = (debits.size() == 1) ? debits.getFirst().amount() : ((credits.size() == 1) ? credits.getFirst().amount() : BigDecimal.ZERO);
+            return new Transaction(date, text, reference, amount, (debits.size() == 1) ? debits.getFirst() : null, (credits.size() == 1) ? credits.getFirst() : null,
                 (debits.size() > 1) ? debits : ((credits.size() > 1) ? credits : null));
         }
     }

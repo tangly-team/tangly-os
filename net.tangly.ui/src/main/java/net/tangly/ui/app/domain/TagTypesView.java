@@ -26,7 +26,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Displays all tags and their usage, often use for administrative information for a bounded domain.
+ * Displays all tags and their usage, often used for administrative information for a bounded domain.
  */
 public class TagTypesView extends ItemView<TagType> {
     final String NAMESPACE = "namespace";

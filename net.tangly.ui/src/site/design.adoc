@@ -118,8 +118,8 @@ One-to-Many Relations:: To be written
 
 CRUD forms are programmatically defined to offer full content and layout control to the developer.
 The programmer populates a form layout and provides it to the CRUD class.
-The buttons of the form and associated actions are handled by the CRUD class.
-Callbacks are provided to inform the entity form class defining the form layout if the user accepted or cancelled his changes in the form.
+The CRUD class handles the buttons of the form and associated actions.
+Callbacks are provided to inform the entity form class defining the form layout if the user accepted or canceled his changes in the form.
 
 ==== Crud List View and Details Form
 

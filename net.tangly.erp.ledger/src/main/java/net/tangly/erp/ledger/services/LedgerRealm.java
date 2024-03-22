@@ -82,9 +82,9 @@ public interface LedgerRealm extends Realm {
     default void addVat(@NotNull Transaction transaction) {
         Transaction booked = transaction;
         // handle VAT for credit entries in a non split-transaction, the payment is split between amount for the company, and due vat to government
-        Optional<BigDecimal> vatDuePercent = transaction.creditSplits().get(0).getVatDue();
+        Optional<BigDecimal> vatDuePercent = transaction.creditSplits().getFirst().getVatDue();
         if (!transaction.isSplit() && vatDuePercent.isPresent()) {
-            AccountEntry credit = transaction.creditSplits().get(0);
+            AccountEntry credit = transaction.creditSplits().getFirst();
             BigDecimal vatDue = credit.amount().multiply(vatDuePercent.get());
             List<AccountEntry> splits = List.of(new AccountEntry(credit.accountId(), credit.date(), credit.amount().subtract(vatDue), credit.text(), false, credit.tags()),
                 new AccountEntry("2201", credit.date(), vatDue, null, false));

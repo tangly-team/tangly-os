@@ -16,12 +16,12 @@ weight: 40
 
 === Introduction
 
-The tangly ERP application promotes the various open source components our {ref:tangly} company develops, supports, and publishes.
+The tangly ERP application promotes the various open source components our {ref-tangly} company develops, supports, and publishes.
 
 We are a strong supporter of the _eat your own dog food_ approach.
 The application is used to run daily business and all financial processes of our company.
 All data since the inception were moved in the application.
-This approach is ideal for the industrialisation and validation of all features.
+This approach is ideal for the industrialization and validation of all features.
 
 We are proud to provide quite a few advanced functions in the released application.
 
@@ -31,15 +31,15 @@ The standard is also know as _Factur-X_ and _ZUGFeRD_ version 2.1 in France and 
 E-invoices are mandatory for some business in Germany and France.
 Switzerland is a slow adapter.
 * Sliding windows for all financial reports to support rolling financial planning and reporting.
-{ref:bbrt} advocates similar approaches for digital and agile company-wide transformation.
+{ref-bbrt} advocates similar approaches for digital and agile company-wide transformation.
 
 The first objective of Factur-X is to enable suppliers, invoice issuers, to create added-value e-invoices.
 The e-invoices shall contain a maximum of information in structured form, according to their ability to produce them in this form.
-Let customers recipients free to use the invoice data or the readable presentation, depending on their needs, and their invoice process maturity on automation.
+Let the customer recipients free to use the invoice data or the readable presentation, depending on their needs, and their invoice process maturity on automation.
 
 === Components
 
-The application provides independant components to manage all aspects of a service company
+The application provides independent components to manage all aspects of a service company
 
 Customer Relationships::
 To be written

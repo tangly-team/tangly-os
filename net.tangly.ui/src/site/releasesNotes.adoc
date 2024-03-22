@@ -6,7 +6,7 @@ weight: 20
 
 == Commons UI Library Change Logs
 
-This document provides a high-level view of the changes introduced in Common UI library by release.
+This document provides a high-level view of the changes introduced in the Common UI library by release.
 For a detailed view of what has changed, refer to the https://bitbucket.org/tangly-team/tangly-os[repository] commits.
 
 === 0.2.7 (2024-03-31)
@@ -20,7 +20,7 @@ Improvements::
 * CRM analytics are provided to have an analytics reporting of key indicators
 * Support for localized invoice generation and support of CHF and EUR as currency
 * Upgrade to Vaadin 19
-* Provides full run and debug mode through IntelliJ IDEA and gradle.
+* Provides full run and debug mode through IntelliJ IDEA and Gradle.
 Removed all dependencies to maven.
 * Provides embedded Jetty standalone mode for production deployment
 

@@ -28,7 +28,7 @@ To run quickly from the command-line in development mode:
 The app will use npm to download all javascript libraries (will take a long time) and will start in development mode.
 Your app will be running on http://localhost:8080.
 
-If in trouble you can find and kill the server on a specific port address, here 8080 with the following commands.
+If in trouble, you can find and kill the server on a specific port address, here 8080 with the following commands.
 
 [source,bash]
 ----

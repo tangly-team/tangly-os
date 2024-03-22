@@ -18,7 +18,7 @@ The advantages of the Gleam JSON mapping library are:
 * Support immutable *record* constructs of Java.
 The field values are retrieved from CSV record in the first step.
 The record is constructed with values in the second step.
-* Support heteregeneous collections and can instantiate the expected instances through a user provided discriminator function.
+* Support heterogeneous collections and can instantiate the expected instances through a user provided discriminator function.
 * Use lambda for reading and writing properties
 
 The JSON manipulation uses the https://github.com/stleary/JSON-java[JSON-Java] library.
@@ -84,7 +84,7 @@ public static JsonEntity<BankConnection> createJsonBankConnection() {
 ----
 
 <1> Defines the import method to retrieve the values to create a bank connection, create an immutable Java record object, and validate the properties.
-<2> Returns a JSON entity defining an import method to construct an instance, and regular properties to create the JSON represenation.
+<2> Returns a JSON entity defining an import method to construct an instance, and regular properties to create the JSON representation.
 
 The _InvoiceJson_ class is a good example using most of the factory methods provided in the JSON conversion library.
 
@@ -126,7 +126,7 @@ Definition of the mapping of properties to TSV columns::
 To be written
 Definition of a constructor for the Java object::
 To be written
-Definition of tranformation methods::
+Definition of transformation methods::
 To be written
 
 [source,java]
@@ -150,9 +150,9 @@ static TsvEntity<BankConnection> createTsvBankConnection() {
 
 <1> Define the import method to retrieve the values to create a bank connection, create an immutable Java record object, and validate the properties.
 The constants _IBAN_, _BIC_, and _INSTITUTE_ define the column headers in the TSV file.
-<2> Declare a property of type string to a colom named IBAN with a getter and no setter to identify a read-only property.
+<2> Declare a property of type string to a column named IBAN with a getter and no setter to identify a read-only property.
 These declarations are used to transform a Java object into a TSV record.
-<3> Return a TSV entity defining an import method to construct an instance, and regular properties to create the TSV represenation.
+<3> Return a TSV entity defining an import method to construct an instance, and regular properties to create the TSV representation.
 
 === Transform a 1-1, 1-n, or 0-n Relation
 

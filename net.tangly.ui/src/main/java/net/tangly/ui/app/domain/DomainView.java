@@ -20,7 +20,7 @@ import net.tangly.core.domain.BoundedDomain;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * Provides a view on the domain with tabs monitoring the instances of domain specific entities and tags used in the bounded domain. The list of domain entities is provided with
+ * Provides a view on the domain with tabs monitoring the instances of domain-specific entities and tags used in the bounded domain. The list of domain entities is provided with
  * statistics. Similar information is available for tag usage in the domain.
  */
 public class DomainView extends VerticalLayout {

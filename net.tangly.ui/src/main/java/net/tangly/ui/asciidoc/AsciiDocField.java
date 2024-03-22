@@ -98,7 +98,7 @@ public class AsciiDocField extends CustomField<String> {
     }
 
     private void updatePreview(String value) {
-        Html item = new Html(String.format("<div>%s</div>", asciidoctor.convert(Strings.nullToEmpty(value), new HashMap<String, Object>())));
+        Html item = new Html(String.format("<div>%s</div>", asciidoctor.convert(Strings.nullToEmpty(value), new HashMap<>())));
         previewField.removeAll();
         previewField.add(item);
     }

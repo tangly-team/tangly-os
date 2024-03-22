@@ -51,7 +51,7 @@ public record TsvProperty<T, U>(List<String> columns, Function<T, U> getter, BiC
     public static final Function<String, LocalDateTime> CONVERT_DATETIME_FROM = e -> (e != null) ? LocalDateTime.parse(e) : null;
 
     public static <T, U> TsvProperty<T, U> of(@NotNull TsvEntity<U> entity, Function<T, U> getter, BiConsumer<T, U> setter) {
-        List<String> columns = entity.fields().stream().map(e -> e.columns().get(0)).toList();
+        List<String> columns = entity.fields().stream().map(e -> e.columns().getFirst()).toList();
         return of(columns, getter, setter, entity::imports, entity::exports);
     }
 
