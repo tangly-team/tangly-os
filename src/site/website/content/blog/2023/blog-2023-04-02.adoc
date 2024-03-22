@@ -245,6 +245,8 @@ java21                                                                          
 
 <1> Add homebrew to the path.
 <2> Command to select a JDK version and set it as default under macOS.
+Beware the command changes only between different JDK versions.
+You cannot switch between multiple JDK vendors with the same JDK version using this command.
 <3> Select the default JDK version.
 
 [IMPORTANT]
@@ -258,6 +260,23 @@ Regularly run the following commands to update your homebrew and ruby packages.
 brewup
 gem update
 ----
+====
+
+[TIP]
+====
+If you install a JDK with brew, read the brew output.
+Do not forget to create the link to the java installation.
+_This step is necessary because brew installs a JDK as keg-only package._
+_MacOS expects JDKs to be installed in the /Library/Java/JavaVirtualMachines directory._
+
+[source,console]
+----
+sudo ln -sfn /opt/homebrew/opt/openjdk/libexec/openjdk.jdk
+             /Library/Java/JavaVirtualMachines/openjdk.jdk
+
+----
+
+You can check the installed JDKs with the command _/usr/libexec/java_home -V_.
 ====
 
 == Housekeeping

@@ -12,7 +12,7 @@ image::2023-06-01-head.jpg[width=420,height=360,role=left]
 Functional programming is hype for the last ten years.
 You find a lot of blogs and videos stating object-oriented languages are doomed.
 
-Almost all the most popular languages have added support to functional concepts in the last years.
+Almost all most popular languages have added some support to functional concepts in the last years.
 
 Java introduced lambda expressions and single abstract method interfaces _SAM_ with Java 8 in March 2014.
 Java developers are empowered to write functional code for almost ten years.
@@ -81,8 +81,8 @@ You can define values and functions:
 (def computed (map square data))                              <3>
 ----
 
-<1> Define a square function _defn_ with one parameter and return the square value of the parameter.
-<2> Define a list _def_ with five elements and store it the reference named _data_.
+<1> Define _defn_ a square function with one parameter and return the square value of the parameter.
+<2> Define _def_ a list with five elements and store it the reference named _data_.
 <3> Apply the square method on all items of the _data_ list.
 The computed list is stored in the reference named _computed_.
 
@@ -222,10 +222,20 @@ Study the documentation, more arithmetic and logical operators are available.
 ----
 
 All the Clojure collections are immutable and persistent.
-The Clojure collections support efficient creation of 'modified' versions, by utilizing structural sharing.
+The Clojure collections support efficient creation of _modified- versions, by utilizing structural sharing.
 
 The collections are efficient and inherently thread-safe.
 Collections are represented by abstractions, and there may be one or more concrete realizations.
+
+[bibliography]
+== Links
+
+- [[[clojure-1, 1]]]  link:../../2023/teaching-clojure-i/[Teaching Clojure I].
+Marcel Baumann. 2023.
+- [[[clojure-2, 2]]]  link:../../2023/teaching-clojure-ii/[Teaching Clojure II].
+Marcel Baumann. 2023.
+- [[[clojure-groovy-java, 3]]] link:../../2022/java-groovy-clojure/[Clojure, Groovy, Java]
+Marcel Baumann. 2022.
 
 == References
 

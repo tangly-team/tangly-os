@@ -238,17 +238,17 @@ You still can go a long way and write more functional and legible code using the
 
 The major constructs are:
 
-- Lambda Functions and Java Functional Idioms
-- Streams and Monoids
-- Algebraic Data Types and Pattern Matching
-- Structured Concurrency and Virtual Threads
+- Lambda functions and Java functional Idioms
+- Streams and monoids
+- Algebraic data types and pattern matching
+- Structured concurrency and virtual threads
 
 Functional Java means no more _for_, _while_, and _do_ loops
 footnote:[Recursion is sufficient to have a Turing complete language. Loops are not required.].
 
 Functional Java means no more checks if a value has the value _null_.
 
-Virtual Threads means no more asynchronous programming.
+Virtual threads means no more asynchronous programming.
 
 [CAUTION]
 ====
@@ -280,6 +280,10 @@ I wish you happy coding in the functional world of Clojure.
 
 - [[[clojure-1, 1]]]  link:../../2023/teaching-clojure-i/[Teaching Clojure I].
 Marcel Baumann. 2023.
+- [[[clojure-2, 2]]]  link:../../2023/teaching-clojure-ii/[Teaching Clojure II].
+Marcel Baumann. 2023.
+- [[[clojure-groovy-java, 3]]] link:../../2022/java-groovy-clojure/[Clojure, Groovy, Java]
+Marcel Baumann. 2022.
 
 == References
 
