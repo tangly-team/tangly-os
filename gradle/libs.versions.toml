@@ -56,7 +56,7 @@ iban4j = "org.iban4j:iban4j:3.2.7-RELEASE"
 ical4j-core = "org.mnode.ical4j:ical4j:3.2.1"
 ical4j-vcard = "org.mnode.ical4j:ical4j-vcard:1.0.7"
 
-google-libphonenumber = "com.googlecode.libphonenumber:libphonenumber:8.13.32"
+google-libphonenumber = "com.googlecode.libphonenumber:libphonenumber:8.13.33"
 google-protobuf = "com.google.protobuf:protobuf-java:3.25.3"
 
 jackson-databind = { module = "com.fasterxml.jackson.core:jackson-databind", version.ref = "jackson-version" }
