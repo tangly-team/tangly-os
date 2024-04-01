@@ -33,7 +33,7 @@ Invoices should have a unique identifier for accounting purposes.
 A good practice is to use the identifier as part of the archived file to streamline traceability.
 Invoices can be stored in a database, exported as a PDF file or as a JSON file.
 The PDF file is human-readable and adequate for document archiving and legal auditing.
-The JSON file is an adequate archive format which can digitally be processed.
+The JSON file is an adequate archive format that can digitally be processed.
 
 [plantuml,bus-invoice-uml,svg]
 ....

@@ -24,7 +24,7 @@ The whole application can be build and executed with:
 ./gradlew run
 ----
 
-The application is available under http://localhost:8080[Demonstration].
+The application is available under \http://localhost:8080.
 
 === Entities, Identifiers, Tags, Comments
 

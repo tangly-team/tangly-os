@@ -83,7 +83,7 @@ You can build and run the generated Java Vaadin application as fat jar locally. 
 
 * <1> The production mode parameter is mandatory.
 Otherwise, the distribution frontend is not built, and the application cannot run without JavaScript build tools.
-* <2> Head to http://localhost:8080/erp/.
+* <2> Head to \http://localhost:8080/erp/.
 The default port is 8080, and the application starts with in-memory storage.
 The environment variables are set in the run script.
 * <3> Start the application with java command.
