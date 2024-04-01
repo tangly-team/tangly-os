@@ -16,7 +16,7 @@ vaadin-version = '24.3.7'
 vaadin = { id = "com.vaadin", version.ref = "vaadin-version" }
 spotbugs = "com.github.spotbugs:6.0.8"
 sonarqube = "org.sonarqube:4.4.1.3373"
-sonatype = "org.sonatype.gradle.plugins.scan:2.2.2"
+sonatype = "org.sonatype.gradle.plugins.scan:2.7.0"
 pitest = "info.solidsoft.pitest:1.7.0"
 errorprone = "net.ltgt.errorprone:3.0.1"
 jib = "com.google.cloud.tools.jib:3.2.0"
