@@ -1,6 +1,6 @@
 ---
 title: "Structure Your Concurrency"
-linkTitle: "Structure Concurrency"
+linkTitle: "Structure Your Concurrency"
 date: 2024-04-01
 tags: ["java", "students-java"]
 ---
@@ -105,7 +105,26 @@ image::2024-04-01-reactive.png[width=420,height=360,role=left]
 Concurrent data flow processing is based on the Reactive Streams API.
 It is a specification for asynchronous stream processing with non-blocking back pressure.
 
+On one side, functional programming is the process of building software by composing pure functions, avoiding shared state, mutable data, and side effects.
+
+On the other side, reactive programming is an asynchronous programming paradigm concerned with data streams and the propagation of change.
+
+Together, functional reactive programming forms a combination of functional and reactive techniques that can represent an elegant approach to event-driven programming.
+Values change over time and where the consumer reacts to the data as it comes in.
+
 The processing pipeline is composed of a source, a set of operators, and a sink.
+
+[source, java]
+----
+String[] letters = {"a", "b", "c", "d", "e", "f", "g"};
+Observable<String> observable = Observable.from(letters);
+observable.subscribe(
+  i -> result += i,                                        //OnNext
+  Throwable::printStackTrace,                              //OnError
+  () -> result += "_Completed"                             //OnCompleted
+);
+assertTrue(result.equals("abcdefg_Completed"));
+----
 
 The reactive library takes care of the threading and back pressure.
 --
@@ -157,7 +176,7 @@ Marcel Baumann. 2024
 Marcel Baumann. 2024
 - [[[modern-java-modules, 3]]] link:../../2024/java-modules[Java Modules]
 Marcel Baumann. 2024
-- [[[modern-java-structured-concurency, 4]]] link:../../2024/structure-your-concurrency[Structured Concurrency]
+- [[[modern-java-structured-concurency, 4]]] link:../../2024/structure-your-concurrency[Structure Your Concurrency]
 Marcel Baumann. 2024
 
 == References

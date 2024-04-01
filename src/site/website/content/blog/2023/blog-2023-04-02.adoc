@@ -329,6 +329,12 @@ I got a MacBookPro M3 Pro with 36 GB of RAM and 1 TB SSD for the price of CHF 3'
 The above instructions were used to set up the notebook from scratch in less than two hours.
 The JDK versions just needed to be upgraded to the newly released ones.].
 
+The only feature I am truly missing is a finer control of the audio outputs.
+I would like to send the music stream to the loudspeakers and the conference call to the headset.
+My loudspeakers deliver high-quality sound but do not have a microphone.
+The headset has a microphone and is used for incoming calls.
+Currently, all audio streams are aggregated and sent to exactly one output device.
+
 [bibliography]
 == Links
 

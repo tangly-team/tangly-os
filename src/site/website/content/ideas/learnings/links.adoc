@@ -36,9 +36,9 @@ These sites and blogs are a source of knowledge and experience.
 link:../lectures/agile-books/KanbanAndScrum.epub[Kanban and Scrum]
 ** Kniberg has also very professional and interesting YouTube presentations.
 * https://martinfowler.com[Martin Fowler Blog] Martin Fowler is working at Thoughtworks and has written seminal books.
-* https://leanarch.eu/[Viktor Grgic Blog]
+* https://vgrgic.wordpress.com/author/vgrgic/[Viktor Grgic Blog]
 * Stefan Wolpers https://age-of-product.com/[Age of Product Blog] tons of materials, and a weekly newsletter with links to interesting articles
-** link:../../../blog/[tangly Blog] our learnings over the years with the support of our customers -.
+** link:../../../blog/[tangly Blog] our learning over the years with the support of our customers -.
 
 === Seminal references are found under
 

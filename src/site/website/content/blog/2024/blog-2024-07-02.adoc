@@ -12,6 +12,20 @@ include::../fragments/_config-mb-blog.aodc[]
 
 image::2024-07-02-head.jpg[width=420,height=360,role=left]
 
+On this page we describe the ZUGFeRD format for electronic invoices.
+The name ZUGFeRD (pronounced »Tsoogfaird«) is a pun on the German word »Zugpferd« which means »draft horse«.
+It indicates that the new invoicing standard is positioned to play a major role regarding efficient electronic invoicing.
+ZUGFeRD allows the exchange of invoices between supplier and payer without any requirements for prior arrangements.
+ZUGFeRD invoices can be deployed universally and are not limited to specific industry sectors or company sizes.
+Private enterprises as well as public administration can efficiently organize their invoice processing with ZUGFeRD.
+
+The standard has been created by a working group which comprises members from the public administration, three German federal ministries, industry associations in the financial, tax and software sectors, and other organizations.
+The working group is called »Forum elektronische Rechnung Deutschland« (FeRD) which means »Forum for electronic invoices Germany«.
+The organisation responsible for Factur-X is FNFE-MPE (»Forum National de la Facture Electronique et des Marchés Publics Electroniques«).
+
+The standart will be based on the European Norm EN 16931 which defines the semantic data model of an electronic invoice.
+It will be mandatory for all B2B and B2G invoices in the European Union from 2028 onwards.
+
 == Hybrid Approaches
 
 == Standards

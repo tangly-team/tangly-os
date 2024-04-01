@@ -43,7 +43,7 @@ _*They often meet throughout the day for more detailed discussions about adaptin
 
 == Lessons Learnt
 
-A great Scrum master shall make his teams aware of the true goal of a daily Scrum meeting
+A great Scrum master shall make her teams aware of the true goal of a daily Scrum meeting
 cite:[things-every-scrum-practitioner-should-know,scrum-pocket-guide-3rd,great-scrum-master,zombie-scrum-survival-guide,mastering-professional-scrum].
 
 Avoid doing Scrum, ask yourself how to be agile and continuously improve.
