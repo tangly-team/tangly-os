@@ -11,6 +11,9 @@
 #
 #
 
+# The script creates the static folders used by Hugo to generate the static website.
+# This is necessary because git prune all empty directories.
+
 prjRootDir=/Users/Shared/Projects/
 prjName=tangly-os
 prjDir=$prjRootDir$prjName

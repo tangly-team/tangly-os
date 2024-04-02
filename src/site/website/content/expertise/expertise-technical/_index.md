@@ -6,7 +6,7 @@ weight: 20
 
 {{< cardpane >}}
 {{% card header="**Agile Architecture**" %}}
-Domain Driven Design
+[Domain Driven Design](../../blog/2022/modular-monoliths-are-the-new-graal)
 
 [Refactoring](../../blog/2020/legacy-systems-refactoring)
 
