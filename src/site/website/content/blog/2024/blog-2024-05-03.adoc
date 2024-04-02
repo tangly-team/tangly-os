@@ -16,11 +16,14 @@ I love to solve problems and provide cool solutions
 cite:[facts-and-fallacies-software-engineering].
 
 I love my software development job.
-I am sixty years old.
+I am already sixty years old.
 I started programming before I was 20.
-And I still tremendously love developing digital products and writing software programs.
+
+And I still tremendously love developing digital products and writing software applications.
 
 My passion is tinkering with source code to have a maintainable and efficient solution.
+I love to work with other developers and to coach them to become better software engineers.
+Some of the products I developed last millennium are still in use today.
 
 I love technology and to work improving live quality for humanity.
 

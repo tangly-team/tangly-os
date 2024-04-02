@@ -23,12 +23,17 @@ Developers, architects, and other stakeholders use it to understand the overall 
 [.text-center]
 image:2024-05-01-architecture-doc.png[width=640,height=360,align="text-center"]
 
+Modern software development practices, such as agile and DevOps, have changed the way we think about software architecture
 cite:[modern-software-engineering,effective-java-3rd]
 cite:[building-evolutionary-architectures-2nd,building-evolutionary-architectures]
 cite:[large-scale-scrum,practices-for-scaling-lean-and-agile-development,scaling-lean-and-agile-development]
-cite:[documenting-software-architectures]
+cite:[documenting-software-architectures].
 
-store in a git repository static website {ref-asciidoc} diagrams as a code link to an ADR link to source code documentation.
+Tooling and practices have evolved to support the creation of lightweight, agile software architecture documentation.
+{ref-arc42} natively supports Asciidoc and Markdown based documentation.
+All documents are stored as text artifacts in a git repository.
+The documenation is generated as static website {ref-asciidoc}.
+Diagrams with {ref-c4} or {ref-uml}, {ref-adr} are linked to source code documentation.
 
 Software architecture documentation creates a common understanding.
 Software architecture documentation creates a common understanding of the solution behind the system for various stakeholders.
@@ -55,11 +60,14 @@ You should understand as a software architect:
 These are the rules for any technical documentation, including software architecture documentation:
 
 . Write documentation from the reader’s point of view.
+. Document that you have realized, not your wishes.
 . Avoid unnecessary repetition.
+Minimalism is key.
 . Avoid ambiguity.
-. Use a standard organization.
-. Record rationale.
+. Use a standard organization such as {ref-arc42}.
+. Record rationale and decisions with {ref-adr}.
 . Keep documentation current but not too current.
+Generate your documentation as a static website.
 . Review documentation for fitness of purpose.
 
 [quote,Frederick Brooks jr.,1995]

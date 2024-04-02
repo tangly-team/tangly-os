@@ -5,7 +5,7 @@ weight: 20
 ---
 
 {{< cardpane >}}
-{{< card header="**Agile Architecture**" >}}
+{{% card header="**Agile Architecture**" %}}
 Domain Driven Design
 
 [Refactoring](../../blog/2020/legacy-systems-refactoring)
@@ -16,9 +16,9 @@ Cloud Native
 
 Cost Effective Internal Applications
 
-{{< /card >}}
+{{% /card %}}
 
-{{< card header="**Effective Agile Techniques**" >}}
+{{% card header="**Effective Agile Techniques**" %}}
 [Clean Code](../../blog/2018/why-is-it-so-cool-to-develop-with-java)
 
 [Continuous Integration CI](../../blog/2018/why-is-it-so-cool-to-develop-with-java)
@@ -30,12 +30,13 @@ Cost Effective Internal Applications
 [Acceptance Test Driven Development ATDD](../../blog/2018/why-is-it-so-cool-to-develop-with-java)
 
 GitLab, GitHub, Atlassian and JetBrain Tool Stacks
-{{< /card >}}
+
+{{% /card %}}
 {{< /cardpane >}}
 
 {{< cardpane >}}
-{{< card header="**Java Technology Stack**" >}}
-Java Expert (11, 17, 19)
+{{% card header="**Java Technology Stack**" %}}
+Java Expert (17, 21, 22)
 
 [Migrate to lambda and streams](../../blog/2021/modern-java-development/)
 
@@ -46,10 +47,9 @@ Java System, Solution and Enterprise Architect Expert
 Mobile Frontend and Java Backend with Vaadin
 
 Enterprise application with Spring
+{{%/card %}}
 
-{{< /card >}}
-
-{{< card header="**Java Application Modernization**" >}}
+{{% card header="**Java Application Modernization**" %}}
 [Upgrade your Java Product to current Technologies](../../blog/2017/why-use-current-software-components/)
 
 Outsource Modernization and Maintenance of Java Applications
@@ -58,5 +58,5 @@ Remove Security Weaknesses
 
 Harden your Product against Hacking
 
-{{< /card >}}
+{{% /card %}}
 {{< /cardpane >}}
