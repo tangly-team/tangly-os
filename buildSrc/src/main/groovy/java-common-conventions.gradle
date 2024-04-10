@@ -1,3 +1,16 @@
+/*
+ * Copyright 2024 Marcel Baumann
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
+ * the License at
+ *
+ *          https://apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
+ * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ *
+ */
+
 plugins {
     id 'java'
     id 'maven-publish'
@@ -38,7 +51,7 @@ dependencies {
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(21)
+        languageVersion = JavaLanguageVersion.of(22)
     }
     withJavadocJar()
     withSourcesJar()
@@ -50,12 +63,19 @@ tasks.withType(JavaCompile).configureEach {
     options.incremental = true
     options.warnings = true
     options.deprecation = true
-    options.compilerArgs += ["-parameters", "--enable-preview", "-Xlint:all,-serial,-varargs,-processing,-try", "-Xdoclint:none"]
+    options.compilerArgs += ["-parameters",
+                             "--enable-preview",
+                             "-Xlint:all,-serial,-varargs,-processing,-try",
+                             "-Xdoclint:none"]
 }
 
 tasks.withType(Test).configureEach {
     useJUnitPlatform()
-    jvmArgs += ['--add-exports=java.base/jdk.internal.misc=ALL-UNNAMED', '--enable-preview', '-XX:+ShowCodeDetailsInExceptionMessages']
+    jvmArgs += ['--add-exports=java.base/jdk.internal.misc=ALL-UNNAMED',
+                '--add-opens=java.base/sun.nio.ch=ALL-UNNAMED',
+                '--add-opens=java.base/java.io=ALL-UNNAMED',
+                '--enable-preview',
+                '-XX:+ShowCodeDetailsInExceptionMessages']
     reports.junitXml.mergeReruns = true
     options {
         setExcludeTags(['integration'] as Set)
@@ -70,7 +90,7 @@ tasks.withType(Javadoc).configureEach {
         addBooleanOption('Xdoclint:none', true)
         addStringOption("Xmaxwarns", "1")
         addBooleanOption('-enable-preview', true)
-        addStringOption('-release', '21')
+        addStringOption('-release', '22')
         addStringOption('-snippet-path', "${projectDir}/src/test/java")
         addBooleanOption('quiet')
     }
@@ -180,7 +200,7 @@ configurations.all {
 }
 
 jacoco {
-    toolVersion = "0.8.10"
+    toolVersion = "0.8.12"
 }
 
 jacocoTestReport {
