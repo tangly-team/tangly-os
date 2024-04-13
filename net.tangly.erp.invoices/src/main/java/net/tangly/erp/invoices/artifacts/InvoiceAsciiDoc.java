@@ -1,10 +1,10 @@
 /*
- * Copyright 2006-2023 Marcel Baumann
+ * Copyright 2006-2024 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- *          http://www.apache.org/licenses/LICENSE-2.0
+ *          https://apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -34,10 +34,7 @@ import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
-import static net.tangly.commons.utilities.AsciiDocHelper.NEWLINE;
-import static net.tangly.commons.utilities.AsciiDocHelper.bold;
-import static net.tangly.commons.utilities.AsciiDocHelper.format;
-import static net.tangly.commons.utilities.AsciiDocHelper.italics;
+import static net.tangly.commons.utilities.AsciiDocHelper.*;
 
 
 /**
@@ -74,11 +71,11 @@ public class InvoiceAsciiDoc implements InvoiceGenerator {
             helper.tableRow("", "", bundle.getString("invoiceDueDate"), invoice.dueDate().toString());
             helper.tableEnd();
 
-            writer.println("*" + invoice.text() + "*");
+            writer.println(STR."*\{invoice.text()}*");
             writer.println();
 
             helper.tableHeader(null, "options=\"header\", grid=\"none\", frame=\"none\", stripes=\"none\", cols=\"4,^1, >1,>1\"", bundle.getString("position"),
-                bundle.getString("quantity"), bundle.getString("price"), bundle.getString("amount") + " (" + invoice.currency().getCurrencyCode() + ")");
+                bundle.getString("quantity"), bundle.getString("price"), STR."\{bundle.getString("amount")} (\{invoice.currency().getCurrencyCode()})");
             invoice.lines().stream().sorted(Comparator.comparingInt(InvoiceLine::position)).forEach(
                 o -> helper.tableRow((o.isAggregate() ? italics(o.text()) : o.text()), o.isItem() ? format(o.quantity()) : "", format(o.unitPrice()),
                     o.isAggregate() ? italics(format(o.amount())) : format(o.amount())));
@@ -88,13 +85,12 @@ public class InvoiceAsciiDoc implements InvoiceGenerator {
 
             helper.tableHeader(null, "frame=\"none\",grid=\"none\", options=\"noheader\", cols=\"2,4\"");
             helper.tableRow(bundle.getString("bankConnection"),
-                bundle.getString("iban") + ": " + invoice.invoicingConnection().iban() + NEWLINE + bundle.getString("bic") + ": " +
-                    invoice.invoicingConnection().bic() + " (" + invoice.invoicingConnection().institute() + ")");
+                STR."\{bundle.getString("iban")}: \{invoice.invoicingConnection().iban()}\{NEWLINE}\{bundle.getString("bic")}: \{invoice.invoicingConnection().bic()} (\{invoice.invoicingConnection().institute()})");
             helper.tableEnd();
 
             helper.tableHeader(null, "frame=\"none\",grid=\"none\", options=\"noheader\", cols=\"2,4\"");
-            helper.tableRow(bundle.getString("companyId") + ":", invoice.invoicedEntity().id());
-            helper.tableRow(bundle.getString("companyVat") + ":", invoice.invoicingEntity().vatNr());
+            helper.tableRow(STR."\{bundle.getString("companyId")}:", invoice.invoicedEntity().id());
+            helper.tableRow(STR."\{bundle.getString("companyVat")}:", invoice.invoicingEntity().vatNr());
             helper.tableEnd();
 
             if (!Strings.isNullOrEmpty(invoice.paymentConditions())) {
@@ -110,19 +106,17 @@ public class InvoiceAsciiDoc implements InvoiceGenerator {
         helper.tableRow(bundle.getString("totalWithoutVat"), "", "", format(invoice.amountWithoutVat()));
         if (invoice.hasMultipleVatRates()) {
             String vats = invoice.vatAmounts().entrySet().stream()
-                .map(o -> o.getKey().multiply(HUNDRED).stripTrailingZeros().toPlainString() + "% : " + o.getValue().stripTrailingZeros().toPlainString())
+                .map(o -> STR."\{o.getKey().multiply(HUNDRED).stripTrailingZeros().toPlainString()}% : \{o.getValue().stripTrailingZeros().toPlainString()}")
                 .collect(Collectors.joining(", ", "(", ")"));
-            helper.tableRow(italics(bundle.getString("vatAmount") + " " + vats), "", "", italics(format(invoice.vat())));
+            helper.tableRow(italics(STR."\{bundle.getString("vatAmount")} \{vats}"), "", "", italics(format(invoice.vat())));
         } else {
             helper.tableRow(italics(bundle.getString("vatAmount")), "",
-                italics(invoice.uniqueVatRate().orElseThrow().multiply(HUNDRED).stripTrailingZeros().toPlainString()) + "%", italics(format(invoice.vat())));
+                STR."\{italics(invoice.uniqueVatRate().orElseThrow().multiply(HUNDRED).stripTrailingZeros().toPlainString())}%", italics(format(invoice.vat())));
         }
         helper.tableRow(bold(bundle.getString("total")), "", "", bold(format(invoice.amountWithVat())));
     }
 
     private static String addressText(@NotNull InvoiceLegalEntity entity, @NotNull Address address) {
-        return entity.name() + NEWLINE + (Strings.isNullOrEmpty(address.extended()) ? "" : (address.extended() + NEWLINE)) +
-            (Strings.isNullOrEmpty(address.street()) ? "" : (address.street() + NEWLINE)) +
-            (Strings.isNullOrEmpty(address.poBox()) ? "" : (address.poBox() + NEWLINE)) + address.postcode() + " " + address.locality();
+        return STR."\{entity.name()}\{NEWLINE}\{Strings.isNullOrEmpty(address.extended()) ? "" : (address.extended() + NEWLINE)}\{Strings.isNullOrEmpty(address.street()) ? "" : (address.street() + NEWLINE)}\{Strings.isNullOrEmpty(address.poBox()) ? "" : (address.poBox() + NEWLINE)}\{address.postcode()} \{address.locality()}";
     }
 }

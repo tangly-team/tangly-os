@@ -4,7 +4,7 @@
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- *          http://www.apache.org/licenses/LICENSE-2.0
+ *          https://apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -21,14 +21,7 @@ import net.tangly.erp.invoices.domain.InvoiceLegalEntity;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
-import org.mustangproject.ZUGFeRD.IExportableTransaction;
-import org.mustangproject.ZUGFeRD.IZUGFeRDAllowanceCharge;
-import org.mustangproject.ZUGFeRD.IZUGFeRDExportableContact;
-import org.mustangproject.ZUGFeRD.IZUGFeRDExportableItem;
-import org.mustangproject.ZUGFeRD.IZUGFeRDExportableProduct;
-import org.mustangproject.ZUGFeRD.IZUGFeRDExportableTradeParty;
-import org.mustangproject.ZUGFeRD.IZUGFeRDTradeSettlementPayment;
-import org.mustangproject.ZUGFeRD.ZUGFeRDExporterFromA3;
+import org.mustangproject.ZUGFeRD.*;
 
 import java.io.BufferedOutputStream;
 import java.io.IOException;
@@ -231,7 +224,7 @@ public class InvoiceZugFerd implements IExportableTransaction, InvoiceGenerator 
 
     @Override
     public String getOwnOrganisationFullPlaintextInfo() {
-        return invoice.invoicedEntity().name() + " " + invoice.invoicingEntity().address().text();
+        return STR."\{invoice.invoicedEntity().name()} \{invoice.invoicingEntity().address().text()}";
     }
 
     @Override

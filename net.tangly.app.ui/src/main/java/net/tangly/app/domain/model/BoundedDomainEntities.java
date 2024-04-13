@@ -4,7 +4,7 @@
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- *          http://www.apache.org/licenses/LICENSE-2.0
+ *          https://apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -13,12 +13,7 @@
 
 package net.tangly.app.domain.model;
 
-import net.tangly.core.Comment;
-import net.tangly.core.EntityExtended;
-import net.tangly.core.EntityExtendedImp;
-import net.tangly.core.Tag;
-import net.tangly.core.TagType;
-import net.tangly.core.TypeRegistry;
+import net.tangly.core.*;
 import net.tangly.core.codes.Code;
 import net.tangly.core.codes.CodeType;
 import net.tangly.core.domain.BoundedDomain;
@@ -32,11 +27,7 @@ import org.jetbrains.annotations.NotNull;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Month;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.IntStream;
 
 /**
@@ -46,7 +37,7 @@ import java.util.stream.IntStream;
  */
 public class BoundedDomainEntities
     extends BoundedDomain<BoundedDomainEntities.AppRealm, BoundedDomainEntities.AppBusinessLogic, BoundedDomainEntities.AppPort> {
-    public static final String DOMAIN = "Entities";
+    public static final String DOMAIN = "entities";
     public static final String TAG_MANDATORY_STRING_VALUE = "tag-mandatory-string-value";
     public static final String TAG_OPTIONAL_STRING_VALUE = "tag-optional-string-value";
     public static final String TAG_WITH_NO_VALUE = "tag-with-no-value";
@@ -177,22 +168,22 @@ public class BoundedDomainEntities
         private void load() {
             final int NR_OF_ITEMS = 100;
             IntStream.rangeClosed(1, NR_OF_ITEMS).forEach(o -> {
-                var entity = createEntityThree(o, Integer.toString(o), "Entity three-" + o, LocalDate.of(2000, Month.JANUARY, 1), LocalDate.of(2000, Month.DECEMBER, 31),
-                    "Entity _three_ text-" + o);
-                entity.add(Comment.of(LocalDateTime.of(2000, Month.JANUARY, 1, 12, 12), "John Doe", "First comment for _entity_ three " + o));
-                entity.add(Comment.of(LocalDateTime.of(2000, Month.JANUARY, 1, 12, 15), "John Doe", "Second comment for _entity_ three " + o));
-                entity.add(Tag.of(DOMAIN, TAG_MANDATORY_STRING_VALUE, "value" + o));
-                entity.add(Tag.of(DOMAIN, TAG_OPTIONAL_STRING_VALUE, ((o % 2) == 0) ? "value-optional-" + o : null));
+                var entity = createEntityThree(o, Integer.toString(o), STR."Entity three-\{o}", LocalDate.of(2000, Month.JANUARY, 1), LocalDate.of(2000, Month.DECEMBER, 31),
+                    STR."Entity _three_ text-\{o}");
+                entity.add(Comment.of(LocalDateTime.of(2000, Month.JANUARY, 1, 12, 12), "John Doe", STR."First comment for _entity_ three \{o}"));
+                entity.add(Comment.of(LocalDateTime.of(2000, Month.JANUARY, 1, 12, 15), "John Doe", STR."Second comment for _entity_ three \{o}"));
+                entity.add(Tag.of(DOMAIN, TAG_MANDATORY_STRING_VALUE, STR."value\{o}"));
+                entity.add(Tag.of(DOMAIN, TAG_OPTIONAL_STRING_VALUE, ((o % 2) == 0) ? STR."value-optional-\{o}" : null));
                 entity.add(Tag.ofEmpty(DOMAIN, TAG_WITH_NO_VALUE));
                 threeEntities().update(entity);
             });
             IntStream.rangeClosed(1, NR_OF_ITEMS).forEach(o -> {
-                var entity = createEntityFour(o, Integer.toString(o), "Entity four-" + o, LocalDate.of(2010, Month.JANUARY, 1), LocalDate.of(2010, Month.DECEMBER, 31),
-                    "Entity _four_ text-" + o);
-                entity.add(Comment.of(LocalDateTime.of(2000, Month.JANUARY, 1, 18, 18), "John Doe", "First comment for entity four " + o));
-                entity.add(Comment.of(LocalDateTime.of(2000, Month.JANUARY, 1, 18, 18), "John Doe", "Second comment for entity four " + o));
-                entity.add(Tag.of(DOMAIN, TAG_MANDATORY_STRING_VALUE, "value" + o));
-                entity.add(Tag.of(DOMAIN, TAG_OPTIONAL_STRING_VALUE, ((o % 2) == 0) ? "value-optional-" + o : null));
+                var entity = createEntityFour(o, Integer.toString(o), STR."Entity four-\{o}", LocalDate.of(2010, Month.JANUARY, 1), LocalDate.of(2010, Month.DECEMBER, 31),
+                    STR."Entity _four_ text-\{o}");
+                entity.add(Comment.of(LocalDateTime.of(2000, Month.JANUARY, 1, 18, 18), "John Doe", STR."First comment for entity four \{o}"));
+                entity.add(Comment.of(LocalDateTime.of(2000, Month.JANUARY, 1, 18, 18), "John Doe", STR."Second comment for entity four \{o}"));
+                entity.add(Tag.of(DOMAIN, TAG_MANDATORY_STRING_VALUE, STR."value\{o}"));
+                entity.add(Tag.of(DOMAIN, TAG_OPTIONAL_STRING_VALUE, ((o % 2) == 0) ? STR."value-optional-\{o}" : null));
                 entity.add(Tag.ofEmpty(DOMAIN, TAG_WITH_NO_VALUE));
                 entity.one2one(Provider.findByOid(threeEntities(), o).orElseThrow());
                 entity.addOne2Many(Provider.findByOid(threeEntities(), o).orElseThrow());

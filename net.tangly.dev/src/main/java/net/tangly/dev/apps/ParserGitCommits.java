@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2022 Marcel Baumann
+ * Copyright 2006-2024 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -8,6 +8,7 @@
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ *
  */
 
 package net.tangly.dev.apps;
@@ -26,11 +27,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * <p><code>git log --numstat --pretty=format:'[%h] %an %ad %s' --date=short</code></p>
@@ -64,7 +61,7 @@ public class ParserGitCommits {
     }
 
     public Commit of(List<String> lines) {
-        String[] tokens = lines.get(0).split(" ", 4);
+        String[] tokens = lines.getFirst().split(" ", 4);
         Committer committer = findOrCreateCommitter(tokens[1]);
         Commit commit = new Commit(tokens[0], committer, LocalDate.parse(tokens[2]), tokens[3]);
         lines.stream().skip(1).forEach(o -> of(commit, o));

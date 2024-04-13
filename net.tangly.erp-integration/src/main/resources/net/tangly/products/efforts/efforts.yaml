@@ -1,0 +1,12 @@
+assignmentOid: 401
+contractId: STG-2020
+collaborator: marcelbaumann
+efforts:
+    -   date: 2021-06-25
+        duration: 60
+        text: >
+            The effort is related to the development of the new product catalog.
+    -   date: 2021-06-26
+        duration: 120
+        text: >
+            The effort is related to the development of the new product catalog.

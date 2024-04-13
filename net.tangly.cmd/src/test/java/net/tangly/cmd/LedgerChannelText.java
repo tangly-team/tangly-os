@@ -1,10 +1,10 @@
 /*
- * Copyright 2023 Marcel Baumann
+ * Copyright 2023-2024 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- *          http://www.apache.org/licenses/LICENSE-2.0
+ *          https://apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -13,13 +13,7 @@
 
 package net.tangly.cmd;
 
-import org.apache.commons.cli.CommandLine;
-import org.apache.commons.cli.CommandLineParser;
-import org.apache.commons.cli.DefaultParser;
-import org.apache.commons.cli.HelpFormatter;
-import org.apache.commons.cli.Option;
-import org.apache.commons.cli.Options;
-import org.apache.commons.cli.ParseException;
+import org.apache.commons.cli.*;
 import org.jetbrains.annotations.NotNull;
 
 import java.math.BigDecimal;
@@ -97,7 +91,7 @@ public class LedgerChannelText implements CmdChannel, CmdTransformer<String, Led
     public void transmit(String group, String commandName, Object payload) {
         switch (payload) {
             case AnswerGetAccountBalance balance -> System.out.println(balance);
-            default -> throw new IllegalArgumentException("Unexpected type: " + payload);
+            default -> throw new IllegalArgumentException(STR."Unexpected type: \{payload}");
         }
     }
 
@@ -134,7 +128,7 @@ public class LedgerChannelText implements CmdChannel, CmdTransformer<String, Led
             };
         } catch (ParseException exp) {
             // oops, something went wrong
-            System.err.println("Parsing failed.  Reason: " + exp.getMessage());
+            System.err.println(STR."Parsing failed.  Reason: \{exp.getMessage()}");
         }
         return null;
     }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2023 Marcel Baumann
+ * Copyright 2006-2024 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -8,6 +8,7 @@
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ *
  */
 
 package net.tangly.erp.ledger.ports;
@@ -18,6 +19,7 @@ import net.tangly.core.Tag;
 import net.tangly.erp.ledger.domain.Account;
 import net.tangly.erp.ledger.domain.AccountEntry;
 import net.tangly.erp.ledger.domain.Transaction;
+import net.tangly.erp.ledger.services.LedgerBoundedDomain;
 import net.tangly.erp.ledger.services.LedgerRealm;
 import net.tangly.erp.ports.TsvHdl;
 import org.apache.commons.csv.CSVPrinter;
@@ -34,11 +36,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 /**
  * The ledger CSV handler can import ledger plans and journal of transactions. The import assumes that the program language and ledger template use English.
@@ -120,15 +118,15 @@ public class LedgerTsvHdl {
                     }
                     ledger.add(account);
                     ++counter;
-                    EventData.log(EventData.IMPORT, TsvHdl.MODULE, EventData.Status.INFO, STR."\{Account.class.getSimpleName()} imported",
+                    EventData.log(EventData.IMPORT, LedgerBoundedDomain.DOMAIN, EventData.Status.INFO, STR."\{Account.class.getSimpleName()} imported",
                         Map.of(SOURCE, source, "object", account));
 
                 }
-                EventData.log(EventData.IMPORT, TsvHdl.MODULE, EventData.Status.INFO, STR."\{Account.class.getSimpleName()} imported objects",
+                EventData.log(EventData.IMPORT, LedgerBoundedDomain.DOMAIN, EventData.Status.INFO, STR."\{Account.class.getSimpleName()} imported objects",
                     Map.of(SOURCE, source, "count", counter));
             }
         } catch (IOException e) {
-            EventData.log(EventData.IMPORT, TsvHdl.MODULE, EventData.Status.FAILURE, "Entities not imported from", Map.of(SOURCE, source), e);
+            EventData.log(EventData.IMPORT, LedgerBoundedDomain.DOMAIN, EventData.Status.FAILURE, "Entities not imported from", Map.of(SOURCE, source), e);
             throw new UncheckedIOException(e);
         }
     }
@@ -166,13 +164,13 @@ public class LedgerTsvHdl {
                     out.println();
                 }
                 ++counter;
-                EventData.log(EventData.EXPORT, TsvHdl.MODULE, EventData.Status.SUCCESS, STR."\{Account.class.getSimpleName()} exported to charter of accounts",
+                EventData.log(EventData.EXPORT, LedgerBoundedDomain.DOMAIN, EventData.Status.SUCCESS, STR."\{Account.class.getSimpleName()} exported to charter of accounts",
                     Map.of(SOURCE, path, "entity", account));
             }
-            EventData.log(EventData.EXPORT, TsvHdl.MODULE, EventData.Status.INFO, "exported to charter of accounts",
+            EventData.log(EventData.EXPORT, LedgerBoundedDomain.DOMAIN, EventData.Status.INFO, "exported to charter of accounts",
                 Map.of(SOURCE, path, "counter", counter));
         } catch (IOException e) {
-            EventData.log(EventData.EXPORT, TsvHdl.MODULE, EventData.Status.FAILURE, "Accounts exported to", Map.of(SOURCE, path), e);
+            EventData.log(EventData.EXPORT, LedgerBoundedDomain.DOMAIN, EventData.Status.FAILURE, "Accounts exported to", Map.of(SOURCE, path), e);
 
             throw new UncheckedIOException(e);
         }
@@ -240,13 +238,13 @@ public class LedgerTsvHdl {
                     }
                     ledger.addVat(transaction);
                     ++counter;
-                    EventData.log(EventData.IMPORT, TsvHdl.MODULE, EventData.Status.SUCCESS, STR."\{Transaction.class.getSimpleName()} imported to journal",
+                    EventData.log(EventData.IMPORT, LedgerBoundedDomain.DOMAIN, EventData.Status.SUCCESS, STR."\{Transaction.class.getSimpleName()} imported to journal",
                         Map.of(SOURCE, source, "entity", transaction));
                 }
             }
-            EventData.log(EventData.IMPORT, TsvHdl.MODULE, EventData.Status.INFO, "imported to journal", Map.of(SOURCE, source, "counter", counter));
+            EventData.log(EventData.IMPORT, LedgerBoundedDomain.DOMAIN, EventData.Status.INFO, "imported to journal", Map.of(SOURCE, source, "counter", counter));
         } catch (IOException e) {
-            EventData.log(EventData.IMPORT, TsvHdl.MODULE, EventData.Status.FAILURE, "Transactions imported from", Map.of(SOURCE, source), e);
+            EventData.log(EventData.IMPORT, LedgerBoundedDomain.DOMAIN, EventData.Status.FAILURE, "Transactions imported from", Map.of(SOURCE, source), e);
             throw new UncheckedIOException(e);
         }
     }
@@ -283,7 +281,7 @@ public class LedgerTsvHdl {
                 }
                 ++counter;
             }
-            EventData.log(EventData.EXPORT, TsvHdl.MODULE, EventData.Status.INFO, "exported from journal", Map.of(SOURCE, path, "counter", counter));
+            EventData.log(EventData.EXPORT, LedgerBoundedDomain.DOMAIN, EventData.Status.INFO, "exported from journal", Map.of(SOURCE, path, "counter", counter));
         } catch (IOException e) {
             throw new UncheckedIOException(e);
         }

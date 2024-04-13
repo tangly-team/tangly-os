@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022 Marcel Baumann
+ * Copyright 2016-2024 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -8,6 +8,7 @@
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ *
  */
 
 package net.tangly.erp;
@@ -17,20 +18,20 @@ import net.tangly.core.Entity;
 import net.tangly.core.HasOid;
 import net.tangly.core.TypeRegistry;
 import net.tangly.erp.crm.domain.Subject;
-import net.tangly.erp.crm.ports.CrmEntities;
 import net.tangly.erp.crm.ports.CrmAdapter;
+import net.tangly.erp.crm.ports.CrmEntities;
 import net.tangly.erp.crm.services.CrmBoundedDomain;
 import net.tangly.erp.crm.services.CrmBusinessLogic;
-import net.tangly.erp.invoices.ports.InvoicesEntities;
 import net.tangly.erp.invoices.ports.InvoicesAdapter;
+import net.tangly.erp.invoices.ports.InvoicesEntities;
 import net.tangly.erp.invoices.services.InvoicesBoundedDomain;
 import net.tangly.erp.invoices.services.InvoicesBusinessLogic;
-import net.tangly.erp.ledger.ports.LedgerEntities;
 import net.tangly.erp.ledger.ports.LedgerAdapter;
+import net.tangly.erp.ledger.ports.LedgerEntities;
 import net.tangly.erp.ledger.services.LedgerBoundedDomain;
 import net.tangly.erp.ledger.services.LedgerBusinessLogic;
-import net.tangly.erp.products.ports.ProductsEntities;
 import net.tangly.erp.products.ports.ProductsAdapter;
+import net.tangly.erp.products.ports.ProductsEntities;
 import net.tangly.erp.products.services.ProductsBoundedDomain;
 import net.tangly.erp.products.services.ProductsBusinessLogic;
 import org.apache.logging.log4j.LogManager;
@@ -174,7 +175,7 @@ public class Erp {
         try {
             properties.load(Thread.currentThread().getContextClassLoader().getResourceAsStream("META-INF/application.properties"));
         } catch (IOException e) {
-            logger.atError().log("Application Configuration Load Error", e);
+            logger.atError().log("Application Configuration Load Error {}", e);
         }
     }
 
@@ -193,7 +194,7 @@ public class Erp {
     }
 
     private boolean isEnabled(@NotNull String domain) {
-        return Boolean.valueOf(properties.getProperty(domain + ".enabled", "false"));
+        return Boolean.parseBoolean(properties.getProperty(STR."\{domain}.enabled", "false"));
     }
 
     private String databases() {

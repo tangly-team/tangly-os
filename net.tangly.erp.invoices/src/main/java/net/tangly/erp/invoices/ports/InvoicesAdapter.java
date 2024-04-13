@@ -4,7 +4,7 @@
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- *          http://www.apache.org/licenses/LICENSE-2.0
+ *          https://apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -19,6 +19,7 @@ import net.tangly.core.DateRange;
 import net.tangly.core.domain.Port;
 import net.tangly.erp.invoices.artifacts.*;
 import net.tangly.erp.invoices.domain.Invoice;
+import net.tangly.erp.invoices.services.InvoicesBoundedDomain;
 import net.tangly.erp.invoices.services.InvoicesPort;
 import net.tangly.erp.invoices.services.InvoicesRealm;
 import org.jetbrains.annotations.NotNull;
@@ -33,8 +34,6 @@ import java.util.Collections;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Stream;
-
-import static net.tangly.erp.ports.TsvHdl.MODULE;
 
 /**
  * Define the workflow defined for bounded domain activities in particular the import and export of files.
@@ -81,7 +80,7 @@ public class InvoicesAdapter implements InvoicesPort {
                     throw new UncheckedIOException(e);
                 }
             });
-            EventData.log(EventData.IMPORT, MODULE, EventData.Status.INFO, "Invoices were imported out of",
+            EventData.log(EventData.IMPORT, InvoicesBoundedDomain.DOMAIN, EventData.Status.INFO, "Invoices were imported out of",
                 Map.of("nrOfImportedInvoices", Integer.toString(nrOfImportedInvoices.get()), "nrOfInvoices", Integer.toString(nrOfInvoices.get())));
         } catch (IOException e) {
             throw new UncheckedIOException(e);
@@ -97,7 +96,7 @@ public class InvoicesAdapter implements InvoicesPort {
             var invoiceFolder = InvoicesUtilities.resolvePath(folder, o);
             var invoicePath = invoiceFolder.resolve(o.name() + JSON_EXT);
             invoiceJson.exports(o, invoicePath, Collections.emptyMap());
-            EventData.log(EventData.EXPORT, MODULE, EventData.Status.SUCCESS, "Invoice exported to JSON {}", Map.of(INVOICE, o, INVOICE_PATH, invoicePath));
+            EventData.log(EventData.EXPORT, InvoicesBoundedDomain.DOMAIN, EventData.Status.SUCCESS, "Invoice exported to JSON {}", Map.of(INVOICE, o, INVOICE_PATH, invoicePath));
         });
     }
 

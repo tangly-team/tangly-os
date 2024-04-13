@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2023 Marcel Baumann
+ * Copyright 2006-2024 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -66,7 +66,7 @@ public class MainView extends AppLayout {
     private static Tabs create(Map<String, BoundedDomainUi> uiDomains) {
         List<Tab> tabs = new ArrayList<>();
         uiDomains.forEach((key, value) -> tabs.add(new Tab(key)));
-        return new Tabs(tabs.toArray(new Tab[tabs.size()]));
+        return new Tabs(tabs.toArray(new Tab[0]));
     }
 
     public void add(@NotNull BoundedDomainUi domainUi) {

@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2022 Marcel Baumann
+ * Copyright 2006-2024 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -8,6 +8,7 @@
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ *
  */
 
 package net.tangly.erp.invoices.artifacts;
@@ -31,7 +32,7 @@ public final class InvoicesUtilities {
 
     /**
      * Resolve the path to where an invoice should be located in the file system. The convention is <em>base directory/invoices/year</em>. If folders do not
-     * exist they are created.
+     *  exist, they are created.
      *
      * @param directory base directory containing all invoice reports and documents
      * @param invoice   invoice to write

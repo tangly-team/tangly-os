@@ -4,7 +4,7 @@
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- *          http://www.apache.org/licenses/LICENSE-2.0
+ *          https://apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -18,6 +18,7 @@ import net.tangly.erp.invoices.artifacts.InvoiceJson;
 import net.tangly.erp.invoices.domain.Article;
 import net.tangly.erp.invoices.domain.ArticleCode;
 import net.tangly.erp.invoices.domain.Invoice;
+import net.tangly.erp.invoices.services.InvoicesBoundedDomain;
 import net.tangly.erp.invoices.services.InvoicesRealm;
 import net.tangly.erp.ports.TsvHdl;
 import net.tangly.gleam.model.TsvEntity;
@@ -33,10 +34,7 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.function.Function;
 
-import static net.tangly.core.tsv.TsvHdlCore.ID;
-import static net.tangly.core.tsv.TsvHdlCore.NAME;
-import static net.tangly.core.tsv.TsvHdlCore.TEXT;
-import static net.tangly.erp.ports.TsvHdl.MODULE;
+import static net.tangly.core.tsv.TsvHdlCore.*;
 import static net.tangly.gleam.model.TsvEntity.get;
 
 /**
@@ -62,26 +60,26 @@ public class InvoicesTsvJsonHdl {
     }
 
     public void exportArticles(@NotNull Path path) {
-        TsvHdl.exportEntities(path, createTsvArticle(), realm.articles());
+        TsvHdl.exportEntities(InvoicesBoundedDomain.DOMAIN, path, createTsvArticle(), realm.articles());
     }
 
     public void importArticles(@NotNull Reader reader, String source) {
-        TsvHdl.importEntities(reader, source, createTsvArticle(), realm.articles());
+        TsvHdl.importEntities(InvoicesBoundedDomain.DOMAIN, reader, source, createTsvArticle(), realm.articles());
     }
 
     public Invoice importInvoice(@NotNull Reader reader, String source) {
         var invoiceJson = new InvoiceJson(realm);
         var invoice = invoiceJson.imports(reader, source);
         if ((invoice != null) && invoice.check()) {
-            // locale is  not a mandatory field and default locale is English
+            // locale is not a mandatory field and default locale is English
             if (Objects.isNull(invoice.locale())) {
                 invoice.locale(Locale.ENGLISH);
             }
             realm.invoices().update(invoice);
-            EventData.log(EventData.IMPORT, MODULE, EventData.Status.SUCCESS, "Imported Invoice", Map.ofEntries(Map.entry("invoice", invoice)));
+            EventData.log(EventData.IMPORT, InvoicesBoundedDomain.DOMAIN, EventData.Status.SUCCESS, "Imported Invoice", Map.ofEntries(Map.entry("invoice", invoice)));
             return invoice;
         } else {
-            EventData.log(EventData.IMPORT, MODULE, EventData.Status.WARNING, "Invalid Invoice", Map.ofEntries(Map.entry("invoice", source)));
+            EventData.log(EventData.IMPORT, InvoicesBoundedDomain.DOMAIN, EventData.Status.WARNING, "Invalid Invoice", Map.ofEntries(Map.entry("invoice", source)));
             return null;
         }
     }

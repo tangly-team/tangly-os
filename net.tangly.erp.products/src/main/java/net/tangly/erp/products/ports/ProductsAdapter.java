@@ -4,7 +4,7 @@
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- *          http://www.apache.org/licenses/LICENSE-2.0
+ *          https://apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -17,11 +17,13 @@ import com.amihaiemil.eoyaml.Yaml;
 import com.amihaiemil.eoyaml.YamlMapping;
 import com.amihaiemil.eoyaml.YamlNode;
 import com.amihaiemil.eoyaml.YamlSequence;
+import net.tangly.commons.logger.EventData;
 import net.tangly.commons.utilities.AsciiDoctorHelper;
 import net.tangly.core.domain.Port;
 import net.tangly.core.providers.Provider;
 import net.tangly.erp.products.domain.Assignment;
 import net.tangly.erp.products.domain.Effort;
+import net.tangly.erp.products.services.ProductsBoundedDomain;
 import net.tangly.erp.products.services.ProductsBusinessLogic;
 import net.tangly.erp.products.services.ProductsPort;
 import net.tangly.erp.products.services.ProductsRealm;
@@ -33,6 +35,7 @@ import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.LocalDate;
+import java.util.Map;
 import java.util.Optional;
 
 public class ProductsAdapter implements ProductsPort {
@@ -55,6 +58,11 @@ public class ProductsAdapter implements ProductsPort {
     @Override
     public ProductsRealm realm() {
         return realm;
+    }
+
+    @Override
+    public ProductsBusinessLogic logic() {
+        return logic;
     }
 
     @Override
@@ -82,32 +90,36 @@ public class ProductsAdapter implements ProductsPort {
 
     @Override
     public void importEfforts(@NotNull Path path, boolean replace) throws IORuntimeException {
-
         try {
             InputStream stream = Files.newInputStream(path);
             YamlMapping data = Yaml.createYamlInput(stream).readYamlMapping();
-            long assignmentId = data.longNumber("assignmentId");
             String contractId = data.string("contractId");
             String collaborator = data.string("collaborator");
-            YamlSequence efforts = data.yamlSequence("efforts");
-
+            long assignmentId = data.longNumber("assignmentOid");
             Assignment assignment = Provider.findByOid(logic.realm().assignments(), assignmentId).orElse(null);
+
+            YamlSequence efforts = data.yamlSequence("efforts");
             efforts.children().forEach((YamlNode effort) -> {
                 LocalDate date = effort.asMapping().date("date");
                 int duration = effort.asMapping().integer("duration");
                 String text = effort.asMapping().string("text");
+                Effort newEffort = new Effort(assignment, contractId, date, duration, text);
                 Optional<Effort> foundEffort = logic.findEffortFor(assignmentId, collaborator, date);
                 if (foundEffort.isPresent()) {
-                    logic.realm().efforts().delete(foundEffort.get());
-                    logic.realm().efforts().update(foundEffort.get());
                     if (replace) {
                         logic.realm().efforts().delete(foundEffort.get());
-                        logic.realm().efforts().update(foundEffort.get());
+                        logic.realm().efforts().update(newEffort);
+                        EventData.log(EventData.IMPORT, ProductsBoundedDomain.DOMAIN, EventData.Status.INFO, " effort replaced already exists.",
+                            Map.of("filename", path, "entity", newEffort));
+
                     } else {
-                        // TODO log warning effort duplicate cannot be added.
+                        EventData.log(EventData.IMPORT, ProductsBoundedDomain.DOMAIN, EventData.Status.WARNING, " effort could not be imported because it already exists.",
+                            Map.of("filename", path, "entity", newEffort));
                     }
                 } else {
-                    logic.realm().efforts().update(foundEffort.get());
+                    logic.realm().efforts().update(newEffort);
+                    EventData.log(EventData.IMPORT, ProductsBoundedDomain.DOMAIN, EventData.Status.INFO, " effort added.",
+                        Map.of("filename", path, "entity", newEffort));
                 }
             });
         } catch (IOException e) {

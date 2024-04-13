@@ -4,7 +4,7 @@
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- *          http://www.apache.org/licenses/LICENSE-2.0
+ *          https://apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -18,12 +18,8 @@ import net.tangly.commons.utilities.JsonUtilities;
 import net.tangly.core.Address;
 import net.tangly.core.BankConnection;
 import net.tangly.core.EmailAddress;
-import net.tangly.erp.invoices.domain.Article;
-import net.tangly.erp.invoices.domain.Invoice;
-import net.tangly.erp.invoices.domain.InvoiceItem;
-import net.tangly.erp.invoices.domain.InvoiceLegalEntity;
-import net.tangly.erp.invoices.domain.InvoiceLine;
-import net.tangly.erp.invoices.domain.Subtotal;
+import net.tangly.erp.invoices.domain.*;
+import net.tangly.erp.invoices.services.InvoicesBoundedDomain;
 import net.tangly.erp.invoices.services.InvoicesRealm;
 import net.tangly.gleam.model.JsonArray;
 import net.tangly.gleam.model.JsonEntity;
@@ -37,11 +33,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.io.Reader;
-import java.io.StringReader;
-import java.io.UncheckedIOException;
+import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -54,7 +46,6 @@ import java.util.function.Function;
 
 public class InvoiceJson implements InvoiceGenerator {
     private static final Logger logger = LogManager.getLogger();
-    private static final String COMPONENT = "net.tangly.ports";
     private final InvoicesRealm realm;
 
     public InvoiceJson(@NotNull InvoicesRealm realm) {
@@ -67,10 +58,10 @@ public class InvoiceJson implements InvoiceGenerator {
         var invoiceJson = entity.exports(invoice);
         try (BufferedWriter writer = Files.newBufferedWriter(path, StandardCharsets.UTF_8)) {
             writer.write(invoiceJson.toString(4));
-            EventData.log(EventData.EXPORT, COMPONENT, EventData.Status.SUCCESS, "Invoice exported to JSON",
+            EventData.log(EventData.EXPORT, InvoicesBoundedDomain.DOMAIN, EventData.Status.SUCCESS, "Invoice exported to JSON",
                 Map.ofEntries(Map.entry("filename", path), Map.entry("entity", invoice)));
         } catch (IOException e) {
-            EventData.log(EventData.EXPORT, COMPONENT, EventData.Status.FAILURE, "Invoice exported to JSON", Map.ofEntries(Map.entry("filename", path)), e);
+            EventData.log(EventData.EXPORT, InvoicesBoundedDomain.DOMAIN, EventData.Status.FAILURE, "Invoice exported to JSON", Map.ofEntries(Map.entry("filename", path)), e);
             throw new UncheckedIOException(e);
         }
     }
@@ -78,7 +69,7 @@ public class InvoiceJson implements InvoiceGenerator {
     /**
      * Import a JSON invoice into the domain.
      *
-     * @param reader reader for the character stream of the JSON file. JSON files are always character based. The reader is closed upon use.
+     * @param reader reader for the character stream of the JSON file. JSON files are always character-based. The reader is closed upon use.
      * @param source name of the JSON source
      * @return the newly created domain invoice object
      */
@@ -94,13 +85,13 @@ public class InvoiceJson implements InvoiceGenerator {
                 if (!invoice.check()) {
                     logger.atInfo().log("Invoice {} is invalid", invoice.name());
                 }
-                EventData.log(EventData.IMPORT, COMPONENT, EventData.Status.SUCCESS, "Invoice imported",
+                EventData.log(EventData.IMPORT, InvoicesBoundedDomain.DOMAIN, EventData.Status.SUCCESS, "Invoice imported",
                     Map.ofEntries(Map.entry("filename", source), Map.entry("entity", invoice)));
             } else {
-                EventData.log(EventData.IMPORT, COMPONENT, EventData.Status.FAILURE, "Invalid JSON schema file", Map.ofEntries(Map.entry("filename", source)));
+                EventData.log(EventData.IMPORT, InvoicesBoundedDomain.DOMAIN, EventData.Status.FAILURE, "Invalid JSON schema file", Map.ofEntries(Map.entry("filename", source)));
             }
         } catch (Exception e) {
-            EventData.log(EventData.IMPORT, COMPONENT, EventData.Status.FAILURE, "Error during import of JSON", Map.ofEntries(Map.entry("filename", source)), e);
+            EventData.log(EventData.IMPORT, InvoicesBoundedDomain.DOMAIN, EventData.Status.FAILURE, "Error during import of JSON", Map.ofEntries(Map.entry("filename", source)), e);
         }
 
         return invoice;

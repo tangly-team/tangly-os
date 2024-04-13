@@ -4,7 +4,7 @@
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- *          http://www.apache.org/licenses/LICENSE-2.0
+ *          https://apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -13,31 +13,20 @@
 
 package net.tangly.erp.invoices.domain;
 
-import net.tangly.core.BankConnection;
-import net.tangly.core.HasDate;
-import net.tangly.core.HasId;
-import net.tangly.core.HasName;
-import net.tangly.core.HasText;
+import net.tangly.core.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Currency;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.TreeMap;
+import java.util.*;
 
 /**
  * <p>The abstraction of an invoice with a set of positions, subtotals, and a total. The items and the subtotals have a position
  * to order them in the invoice to provide human readable outputs. An invoice and its components have no dependencies to external entities. Therefore, an invoice is complete and
  * can be archived. For example, you can change the VAT percentage or a product price without any consequence on existing invoices.</p>
- * <p>The invoice assumes that a VAT rate applies to a specific product associated with a given invoice item.
- * Each item line has an associated article and a VAT rate. A subtotoal does not have an article or a VAT rate. This assumption is reasonable for quite a lot of businesses, in
- * particular in the service industry.</p>
+ * <p>The invoice assumes that a VAT rate applies to a given invoice item. The rate is dependent on the service sold and the customer.
+ * For example educational services are VAT free in Switzerland. </p>
+ * <p></p>Each item line has an associated article and a VAT rate. A subtotal does not have an article or a VAT rate. This assumption is reasonable for quite a lot of
+ * businesses, in particular in the service industry.</p>
  * <p>Often an invoice references only one VAT rate, convenience methods are provided to streamline this scenario.</p>
  */
 public class Invoice implements HasId, HasName, HasDate, HasText {
@@ -132,7 +121,7 @@ public class Invoice implements HasId, HasName, HasDate, HasText {
     // region VAT
 
     /**
-     * Return the amount of the invoice without VAT tax.
+     * Return the amount of the invoice without the VAT tax.
      *
      * @return invoice amount without VAT tax
      */
@@ -160,7 +149,7 @@ public class Invoice implements HasId, HasName, HasDate, HasText {
 
     /**
      * Return a map of VAT rates and associated VAT amounts for the whole invoice. An invoice line has a VAT rate and a computed VAT amount. A subtotal does not have a VAT rate but
-     * has a aggregated VAT amount
+     * has an aggregated VAT amount
      *
      * @return map of entries VAT rate and associated VAT amounts
      */
@@ -176,7 +165,7 @@ public class Invoice implements HasId, HasName, HasDate, HasText {
      * @return flag if the invoice has multiple VAT rates
      */
     public boolean hasMultipleVatRates() {
-        return this.items().stream().filter(InvoiceItem::isItem).map(o -> o.vatRate()).distinct().count() > 1;
+        return this.items().stream().filter(InvoiceItem::isItem).map(InvoiceItem::vatRate).distinct().count() > 1;
     }
 
     /**

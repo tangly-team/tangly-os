@@ -1,16 +1,15 @@
 [versions]
 assertj-version = '3.25.3'
-flyway-version = '10.10.0'
+flyway-version = '10.11.0'
 jackson-version = '2.16.1'
-jersey-version = '2.35'
-javalin-version = '6.1.3'
 jolt-version = '0.1.1'
 junit-version = '5.10.2'
 log4j2-version = '2.23.0'
-openapi-version = "5.6.3-3"
+javalin-version = '5.6.4'
+openapi-version = "5.6.4"
 eclipsestore-version = '1.3.1'
 mustang-version = '2.10.0'
-vaadin-version = '24.3.8'
+vaadin-version = '24.3.9'
 
 [plugins]
 vaadin = { id = "com.vaadin", version.ref = "vaadin-version" }
@@ -39,7 +38,7 @@ awaitility = "org.awaitility:awaitility:4.2.1"
 slf4j-simple = "org.slf4j:slf4j-simple:2.0.9"
 
 apache-pdfbox = "org.apache.pdfbox:pdfbox:3.0.2"
-arch-unit = "com.tngtech.archunit:archunit-junit5-api:1.2.1"
+arch-unit = "com.tngtech.archunit:archunit-junit5-api:1.3.0"
 
 asciidoctorj = "org.asciidoctor:asciidoctorj:2.5.10"
 asciidoctorj-pdf = "org.asciidoctor:asciidoctorj-pdf:2.3.15"
@@ -56,13 +55,8 @@ iban4j = "org.iban4j:iban4j:3.2.7-RELEASE"
 ical4j-core = "org.mnode.ical4j:ical4j:3.2.1"
 ical4j-vcard = "org.mnode.ical4j:ical4j-vcard:1.0.7"
 
-google-libphonenumber = "com.googlecode.libphonenumber:libphonenumber:8.13.33"
+google-libphonenumber = "com.googlecode.libphonenumber:libphonenumber:8.13.34"
 google-protobuf = "com.google.protobuf:protobuf-java:3.25.3"
-
-jackson-databind = { module = "com.fasterxml.jackson.core:jackson-databind", version.ref = "jackson-version" }
-jackson-parameters = { module = "com.fasterxml.jackson.module:jackson-module-parameter-names", version.ref = "jackson-version" }
-jackson-datatype = { module = "com.fasterxml.jackson.datatype:jackson-datatype-jdk8", version.ref = "jackson-version" }
-jackson-jsr310 = { module = "com.fasterxml.jackson.datatype:jackson-datatype-jsr310", version.ref = "jackson-version" }
 
 jakarta-mail = "jakarta.mail:jakarta.mail-api:2.1.3"
 eclipse-angus-mail = "org.eclipse.angus:angus-mail:2.0.3"
@@ -70,11 +64,6 @@ eclipse-angus-mail = "org.eclipse.angus:angus-mail:2.0.3"
 jbibtext = "org.jbibtex:jbibtex:1.0.20"
 jimfs = "com.google.jimfs:jimfs:1.3.0"
 
-#redoc is at /redoc and swagger is at /swagger, only supported in version 5.x
-javalin = { module = "io.javalin:javalin", version.ref = "javalin-version" }
-javalin-openapi-plugin = { module = "io.javalin.community.openapi:javalin-openapi-plugin", version.ref = "openapi-version" }
-javalin-swagger-plugin = { module = "io.javalin.community.openapi:javalin-swagger-plugin", version.ref = "openapi-version" }
-javalin-redoc-plugin = { module = "io.javalin.community.openapi:javalin-redoc-plugin", version.ref = "openapi-version" }
 
 #Java 9 module compliant version of https://github.com/stleary/JSON-java
 json-core = "com.guicedee.services:json:1.2.2.1"
@@ -107,9 +96,11 @@ eclispsestore-jdk8 = { module = "org.eclipse.serializer:persistence-binary-jdk8"
 eclispsestore-jdk17 = { module = "org.eclipse.serializer:persistence-binary-jdk17", version.ref = "eclipsestore-version" }
 
 mockito = "org.mockito:mockito-junit-jupiter:5.11.0"
-
 scribe = "com.github.scribejava:scribejava-apis:8.3.1"
 
+javalin = { module = "io.javalin:javalin", version.ref = "javalin-version" }
+javalin-openapi = { module = "io.javalin.community.openapi:javalin-openapi-plugin", version.ref = "openapi-version" }
+javalin-swagger = { module = "io.javalin.community.openapi:javalin-swagger-plugin", version.ref = "openapi-version" }
 vaadin-core = { module = "com.vaadin:vaadin-core", version.ref = "vaadin-version" }
 vaadin-pdfviewer = "org.vaadin.addons.componentfactory:vcf-pdf-viewer:2.8.1"
 vaadin-embedded-jetty = "com.github.mvysny.vaadin-boot:vaadin-boot:12.2"
@@ -118,5 +109,4 @@ vaadin-test = "com.github.mvysny.kaributesting:karibu-testing-v23:2.1.5"
 
 [bundles]
 test-deps = ["junit-api", "assertj", "mockito", "arch-unit"]
-jackson-deps = ["jackson-databind", "jackson-parameters", "jackson-datatype", "jackson-jsr310"]
 eclipsestore-deps = ["eclispsestore-storage", "eclispsestore-jdk8", "eclispsestore-jdk17"]

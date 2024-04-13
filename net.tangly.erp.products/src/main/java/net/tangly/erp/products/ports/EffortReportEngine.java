@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2022 Marcel Baumann
+ * Copyright 2006-2024 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -8,6 +8,7 @@
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ *
  */
 
 package net.tangly.erp.products.ports;
@@ -73,7 +74,7 @@ public class EffortReportEngine {
         }
         int totalDuration = logic.collect(assignment, from, to).stream().map(Effort::duration).reduce(0, Integer::sum);
         BigDecimal totalHours = new BigDecimal(totalDuration).divide(new BigDecimal(60));
-        helper.tableRow("Total Time", "(time in minutes " + totalDuration + ")", totalHours.toString());
+        helper.tableRow("Total Time", STR."(time in minutes \{totalDuration})", totalHours.toString());
         helper.tableEnd();
     }
 
@@ -85,7 +86,7 @@ public class EffortReportEngine {
     private void generateEffortsTotalForContract(@NotNull List<Effort> efforts, @NotNull String contractId, @NotNull AsciiDocHelper helper) {
         int totalDuration = efforts.stream().map(Effort::duration).reduce(0, Integer::sum);
         BigDecimal totalHours = new BigDecimal(totalDuration).divide(new BigDecimal(60));
-        helper.tableRow("Total Time for Contract " + contractId, "(time in minutes " + totalDuration + ")", totalHours.toString());
+        helper.tableRow(STR."Total Time for Contract \{contractId}", STR."(time in minutes \{totalDuration})", totalHours.toString());
         helper.tableRow("", "", "");
     }
 }

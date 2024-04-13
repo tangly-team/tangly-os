@@ -1,10 +1,10 @@
 /*
- * Copyright 2006-2023 Marcel Baumann
+ * Copyright 2006-2024 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- *          http://www.apache.org/licenses/LICENSE-2.0
+ *          https://apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -14,28 +14,15 @@
 package net.tangly.erp.crm.ports;
 
 import net.tangly.commons.lang.ReflectionUtilities;
-import net.tangly.core.Comment;
-import net.tangly.core.EmailAddress;
-import net.tangly.core.Entity;
-import net.tangly.core.HasComments;
-import net.tangly.core.HasOid;
-import net.tangly.core.HasTags;
-import net.tangly.core.PhoneNr;
+import net.tangly.core.*;
 import net.tangly.core.crm.GenderCode;
 import net.tangly.core.crm.LegalEntity;
 import net.tangly.core.crm.NaturalEntity;
 import net.tangly.core.crm.VcardType;
 import net.tangly.core.providers.Provider;
 import net.tangly.core.tsv.TsvHdlCore;
-import net.tangly.erp.crm.domain.Activity;
-import net.tangly.erp.crm.domain.ActivityCode;
-import net.tangly.erp.crm.domain.Contract;
-import net.tangly.erp.crm.domain.Employee;
-import net.tangly.erp.crm.domain.Interaction;
-import net.tangly.erp.crm.domain.InteractionCode;
-import net.tangly.erp.crm.domain.Lead;
-import net.tangly.erp.crm.domain.LeadCode;
-import net.tangly.erp.crm.domain.Subject;
+import net.tangly.erp.crm.domain.*;
+import net.tangly.erp.crm.services.CrmBoundedDomain;
 import net.tangly.erp.crm.services.CrmRealm;
 import net.tangly.erp.ports.TsvHdl;
 import net.tangly.gleam.model.TsvEntity;
@@ -48,25 +35,10 @@ import java.io.Reader;
 import java.nio.file.Path;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Currency;
-import java.util.List;
-import java.util.Locale;
-import java.util.Objects;
-import java.util.Optional;
+import java.util.*;
 import java.util.function.Function;
 
-import static net.tangly.core.crm.CrmTags.CRM_EMAIL_HOME;
-import static net.tangly.core.crm.CrmTags.CRM_EMAIL_WORK;
-import static net.tangly.core.crm.CrmTags.CRM_EMPLOYEE_TITLE;
-import static net.tangly.core.crm.CrmTags.CRM_IM_LINKEDIN;
-import static net.tangly.core.crm.CrmTags.CRM_PHONE_HOME;
-import static net.tangly.core.crm.CrmTags.CRM_PHONE_MOBILE;
-import static net.tangly.core.crm.CrmTags.CRM_PHONE_WORK;
-import static net.tangly.core.crm.CrmTags.CRM_SCHOOL;
-import static net.tangly.core.crm.CrmTags.CRM_SITE_HOME;
-import static net.tangly.core.crm.CrmTags.CRM_SITE_WORK;
-import static net.tangly.core.crm.CrmTags.CRM_VAT_NUMBER;
+import static net.tangly.core.crm.CrmTags.*;
 import static net.tangly.core.tsv.TsvHdlCore.DATE;
 import static net.tangly.core.tsv.TsvHdlCore.TEXT;
 import static net.tangly.gleam.model.TsvEntity.get;
@@ -94,7 +66,7 @@ public class CrmTsvHdl {
     }
 
     public void importComments(@NotNull Reader reader, String source) {
-        var comments = TsvHdl.importRelations(reader, source, createTsvComment());
+        var comments = TsvHdl.importRelations(CrmBoundedDomain.DOMAIN, reader, source, createTsvComment());
         TsvHdl.addComments(realm.naturalEntities(), comments);
         TsvHdl.addComments(realm.legalEntities(), comments);
         TsvHdl.addComments(realm.employees(), comments);
@@ -111,74 +83,74 @@ public class CrmTsvHdl {
         realm.contracts().items().forEach(o -> comments.addAll(updateAndCollectComments(o)));
         realm.subjects().items().forEach(o -> comments.addAll(updateAndCollectComments(o)));
         realm.interactions().items().forEach(o -> comments.addAll(updateAndCollectComments(o)));
-        TsvHdl.exportRelations(path, createTsvComment(), comments);
+        TsvHdl.exportRelations(CrmBoundedDomain.DOMAIN, path, createTsvComment(), comments);
     }
 
     public void importLeads(@NotNull Reader reader, String source) {
-        TsvHdl.importEntities(reader, source, createTsvLead(), realm.leads());
+        TsvHdl.importEntities(CrmBoundedDomain.DOMAIN, reader, source, createTsvLead(), realm.leads());
     }
 
     public void exportLeads(@NotNull Path path) {
-        TsvHdl.exportEntities(path, createTsvLead(), realm.leads());
+        TsvHdl.exportEntities(CrmBoundedDomain.DOMAIN, path, createTsvLead(), realm.leads());
     }
 
     public void importNaturalEntities(@NotNull Reader reader, String source) {
-        TsvHdl.importEntities(reader, source, createTsvNaturalEntity(), realm.naturalEntities());
+        TsvHdl.importEntities(CrmBoundedDomain.DOMAIN, reader, source, createTsvNaturalEntity(), realm.naturalEntities());
     }
 
     public void exportNaturalEntities(@NotNull Path path) {
-        TsvHdl.exportEntities(path, createTsvNaturalEntity(), realm.naturalEntities());
+        TsvHdl.exportEntities(CrmBoundedDomain.DOMAIN, path, createTsvNaturalEntity(), realm.naturalEntities());
     }
 
     public void importLegalEntities(@NotNull Reader reader, String source) {
-        TsvHdl.importEntities(reader, source, createTsvLegalEntity(), realm.legalEntities());
+        TsvHdl.importEntities(CrmBoundedDomain.DOMAIN, reader, source, createTsvLegalEntity(), realm.legalEntities());
     }
 
     public void exportLegalEntities(@NotNull Path path) {
-        TsvHdl.exportEntities(path, createTsvLegalEntity(), realm.legalEntities());
+        TsvHdl.exportEntities(CrmBoundedDomain.DOMAIN, path, createTsvLegalEntity(), realm.legalEntities());
     }
 
     public void importEmployees(@NotNull Reader reader, String source) {
-        TsvHdl.importEntities(reader, source, createTsvEmployee(), realm.employees());
+        TsvHdl.importEntities(CrmBoundedDomain.DOMAIN, reader, source, createTsvEmployee(), realm.employees());
     }
 
     public void exportEmployees(@NotNull Path path) {
-        TsvHdl.exportEntities(path, createTsvEmployee(), realm.employees());
+        TsvHdl.exportEntities(CrmBoundedDomain.DOMAIN, path, createTsvEmployee(), realm.employees());
     }
 
     public void importContracts(@NotNull Reader reader, String source) {
-        TsvHdl.importEntities(reader, source, createTsvContract(), realm.contracts());
+        TsvHdl.importEntities(CrmBoundedDomain.DOMAIN, reader, source, createTsvContract(), realm.contracts());
     }
 
     public void exportContracts(@NotNull Path path) {
-        TsvHdl.exportEntities(path, createTsvContract(), realm.contracts());
+        TsvHdl.exportEntities(CrmBoundedDomain.DOMAIN, path, createTsvContract(), realm.contracts());
     }
 
     public void importSubjects(@NotNull Reader reader, String source) {
-        TsvHdl.importEntities(reader, source, createTsvSubject(), realm.subjects());
+        TsvHdl.importEntities(CrmBoundedDomain.DOMAIN, reader, source, createTsvSubject(), realm.subjects());
     }
 
     public void exportSubjects(@NotNull Path path) {
-        TsvHdl.exportEntities(path, createTsvSubject(), realm.subjects());
+        TsvHdl.exportEntities(CrmBoundedDomain.DOMAIN, path, createTsvSubject(), realm.subjects());
     }
 
     public void importInteractions(@NotNull Reader reader, String source) {
-        TsvHdl.importEntities(reader, source, createTsvInteraction(), realm.interactions());
+        TsvHdl.importEntities(CrmBoundedDomain.DOMAIN, reader, source, createTsvInteraction(), realm.interactions());
     }
 
     public void exportInteractions(@NotNull Path path) {
-        TsvHdl.exportEntities(path, createTsvInteraction(), realm.interactions());
+        TsvHdl.exportEntities(CrmBoundedDomain.DOMAIN, path, createTsvInteraction(), realm.interactions());
     }
 
     public void importActivities(@NotNull Reader reader, String source) {
-        var activities = TsvHdl.importRelations(reader, source, createTsvActivity());
+        var activities = TsvHdl.importRelations(CrmBoundedDomain.DOMAIN, reader, source, createTsvActivity());
         realm.interactions().items().forEach(e -> addActivities(realm.interactions(), e, activities));
     }
 
     public void exportActivities(@NotNull Path path) {
         List<TsvRelation<Activity>> activities = new ArrayList<>();
         realm.interactions().items().forEach(o -> activities.addAll(updateAndCollectActivities(o)));
-        TsvHdl.exportRelations(path, createTsvActivity(), activities);
+        TsvHdl.exportRelations(CrmBoundedDomain.DOMAIN, path, createTsvActivity(), activities);
     }
 
     private static <T extends HasComments & HasOid> List<TsvRelation<Comment>> updateAndCollectComments(T entity) {

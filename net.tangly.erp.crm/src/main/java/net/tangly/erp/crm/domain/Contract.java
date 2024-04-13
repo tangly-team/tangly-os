@@ -1,10 +1,10 @@
 /*
- * Copyright 2006-2023 Marcel Baumann
+ * Copyright 2006-2024 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- *          http://www.apache.org/licenses/LICENSE-2.0
+ *          https://apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -14,25 +14,14 @@
 package net.tangly.erp.crm.domain;
 
 
-import net.tangly.core.Address;
-import net.tangly.core.BankConnection;
-import net.tangly.core.DateRange;
-import net.tangly.core.Entity;
-import net.tangly.core.EntityExtended;
-import net.tangly.core.EntityExtendedImp;
+import net.tangly.core.*;
 import net.tangly.core.crm.CrmEntity;
 import net.tangly.core.crm.LegalEntity;
 import net.tangly.core.crm.VcardType;
 import org.jetbrains.annotations.NotNull;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Currency;
-import java.util.List;
-import java.util.Locale;
-import java.util.Objects;
-import java.util.Optional;
+import java.util.*;
 
 /**
  * A legal contract between two parties, one being the seller, and one being the sellee. The properties of the entity define the identifiers of the contract and the time interval.
@@ -61,8 +50,8 @@ public class Contract extends EntityExtendedImp implements EntityExtended, CrmEn
      * @param amountWithoutVat additional amount for the contract
      * @param range            date range of the contract extension
      */
-    record ContractExtension(long oid, @NotNull String id, @NotNull String name, @NotNull DateRange range, String text, @NotNull String contractId,
-                             @NotNull BigDecimal amountWithoutVat) implements Entity {
+    public record ContractExtension(long oid, @NotNull String id, @NotNull String name, @NotNull DateRange range, String text, @NotNull String contractId,
+                                    @NotNull BigDecimal amountWithoutVat) implements Entity {
     }
 
     public Contract(long oid) {

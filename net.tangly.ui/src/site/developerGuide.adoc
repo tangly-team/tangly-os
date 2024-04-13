@@ -19,14 +19,15 @@ To run quickly from the command-line in development mode:
 ----
 ./gradlew run <1>
 ----
-<1> Your app will be running on http://localhost:8080.
+
+<1> Your app will be running on \http://localhost:8080.
 
 ==== Run From IDE
 
 * Run _./gradle vaadinPrepareFrontend_ in the project, to configure Vaadin for npm mode.
 * Run/Debug the EmbeddedJetty class as an application (run the _main()- method).
 The app will use npm to download all javascript libraries (will take a long time) and will start in development mode.
-Your app will be running on http://localhost:8080.
+Your app will be running on \http://localhost:8080.
 
 If in trouble, you can find and kill the server on a specific port address, here 8080 with the following commands.
 

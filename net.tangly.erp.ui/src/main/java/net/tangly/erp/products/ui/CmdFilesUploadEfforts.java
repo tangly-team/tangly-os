@@ -25,6 +25,7 @@ import java.util.Set;
 
 /**
  * The command defines how to upload entities provided as a set of YAML files onto the domain.
+ * Overwrite the dialog definition to add the checkbox for overwrite existing efforts.
  */
 public class CmdFilesUploadEfforts extends CmdFilesUpload<ProductsRealm, ProductsBusinessLogic, ProductsPort> {
     CmdFilesUploadEfforts(@NotNull ProductsBoundedDomain domain) {

@@ -4,7 +4,7 @@
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- *          http://www.apache.org/licenses/LICENSE-2.0
+ *          https://apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -76,6 +76,8 @@ import java.util.function.Consumer;
  * <h2>Menu Extensions</h2>
  * <p>Views can add menu options to perform an action on the selected item or on the whole list. A set of related actions are
  * added to the popup menu with a separation. Multiple blocks can be added.</p>
+ * <p>Separate menu actions specific to selected items from global menu actions. The first block should be the view CRUD operations. A second optional block should contain actions
+ * for selected items. A third optional blocks should contains global actions not related to selected items.</p>
  * {@snippet :
  * var items = List.of(new AbstractMap.SimpleImmutableEntry(Mode.EDIT_TEXT,
  * (ComponentEventListener<GridContextMenu.GridContextMenuItemClickEvent<T>>)((e)->form.edit(e.getItem().orElse(null)))));
@@ -156,7 +158,7 @@ public abstract class ItemView<T> extends VerticalLayout {
         add(grid);
         mode(mode);
     }
-    
+
     public Class<T> entityClass() {
         return entityClass;
     }
@@ -193,7 +195,7 @@ public abstract class ItemView<T> extends VerticalLayout {
         return isFormEmbedded;
     }
 
-    public void isFormEmbedded(boolean isFormEmbedded) {
+    public final void isFormEmbedded(boolean isFormEmbedded) {
         this.isFormEmbedded = isFormEmbedded;
     }
 

@@ -4,7 +4,7 @@
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- *          http://www.apache.org/licenses/LICENSE-2.0
+ *          https://apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -17,6 +17,7 @@ import net.tangly.commons.logger.EventData;
 import net.tangly.commons.utilities.AsciiDoctorHelper;
 import net.tangly.core.domain.Port;
 import net.tangly.erp.ledger.domain.Transaction;
+import net.tangly.erp.ledger.services.LedgerBoundedDomain;
 import net.tangly.erp.ledger.services.LedgerPort;
 import net.tangly.erp.ledger.services.LedgerRealm;
 import org.jetbrains.annotations.NotNull;
@@ -31,8 +32,6 @@ import java.time.LocalDate;
 import java.time.Month;
 import java.util.Map;
 import java.util.stream.Stream;
-
-import static net.tangly.erp.ports.TsvHdl.MODULE;
 
 /**
  * Provide workflows for ledger activities.
@@ -76,9 +75,9 @@ public class LedgerAdapter implements LedgerPort {
             stream.filter(file -> !Files.isDirectory(file) && file.getFileName().toString().endsWith(JOURNAL)).forEach(o -> {
                 try (Reader reader = Files.newBufferedReader(o, StandardCharsets.UTF_8)) {
                     handler.importJournal(reader, o.toString());
-                    EventData.log(EventData.IMPORT, MODULE, EventData.Status.SUCCESS, "Journal imported {}", Map.of("journalPath", o));
+                    EventData.log(EventData.IMPORT, LedgerBoundedDomain.DOMAIN, EventData.Status.SUCCESS, "Journal imported {}", Map.of("journalPath", o));
                 } catch (IOException e) {
-                    EventData.log(EventData.IMPORT, MODULE, EventData.Status.FAILURE, "Journal import failed {}", Map.of("journalPath", o));
+                    EventData.log(EventData.IMPORT, LedgerBoundedDomain.DOMAIN, EventData.Status.FAILURE, "Journal import failed {}", Map.of("journalPath", o));
                 }
             });
         } catch (IOException e) {
@@ -93,7 +92,7 @@ public class LedgerAdapter implements LedgerPort {
         realm().transactions().items().stream().map(Transaction::date).map(LocalDate::getYear).distinct().forEach(o -> {
             Path journal = folder.resolve(journalForYear(o));
             handler.exportJournal(journal, LocalDate.of(o, Month.JANUARY, 1), LocalDate.of(o, Month.DECEMBER, 31));
-            EventData.log(EventData.EXPORT, MODULE, EventData.Status.SUCCESS, "Journal exported {}", Map.of("journalPath", journal.toString(), "year", o));
+            EventData.log(EventData.EXPORT, LedgerBoundedDomain.DOMAIN, EventData.Status.SUCCESS, "Journal exported {}", Map.of("journalPath", journal.toString(), "year", o));
         });
     }
 

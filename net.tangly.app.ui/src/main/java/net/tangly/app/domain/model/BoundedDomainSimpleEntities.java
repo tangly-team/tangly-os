@@ -1,5 +1,5 @@
 /*
- * Copyright 2023-2023 Marcel Baumann
+ * Copyright 2023-2024 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -36,7 +36,7 @@ import java.util.stream.LongStream;
  */
 public class BoundedDomainSimpleEntities extends
     BoundedDomain<BoundedDomainSimpleEntities.AppRealm, BoundedDomainSimpleEntities.AppBusinessLogic, BoundedDomainSimpleEntities.AppPort> {
-    public static final String DOMAIN = "Simple Entities";
+    public static final String DOMAIN = "simpleEntities";
 
     private BoundedDomainSimpleEntities(AppRealm realm, AppBusinessLogic logic, AppPort port) {
         super(DOMAIN, realm, logic, port, new TypeRegistry());
@@ -87,9 +87,9 @@ public class BoundedDomainSimpleEntities extends
             LocalDate from = LocalDate.of(2000, Month.JANUARY, 1);
             LocalDate to = LocalDate.of(2000, Month.DECEMBER, 31);
             LongStream.rangeClosed(1, 100)
-                .forEach(o -> oneEntities().update(new SimpleEntityOne(o, Long.toString(o), "Simple entity one-" + o, DateRange.of(from, to), "Simple entity _one_ text-" + o)));
+                .forEach(o -> oneEntities().update(new SimpleEntityOne(o, Long.toString(o), STR."Simple entity one-\{o}", DateRange.of(from, to), STR."Simple entity _one_ text-\{o}")));
             LongStream.rangeClosed(1, 100)
-                .forEach(o -> twoEntities().update(new simpleEntityTwo(o, Long.toString(o), "simple entity two-" + o, DateRange.of(from, to), "Simple entity _two_ text-" + o)));
+                .forEach(o -> twoEntities().update(new simpleEntityTwo(o, Long.toString(o), STR."simple entity two-\{o}", DateRange.of(from, to), STR."Simple entity _two_ text-\{o}")));
         }
     }
 

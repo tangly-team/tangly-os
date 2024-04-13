@@ -4,7 +4,7 @@
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- *          http://www.apache.org/licenses/LICENSE-2.0
+ *          https://apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -18,6 +18,7 @@ import net.tangly.erp.ports.TsvHdl;
 import net.tangly.erp.products.domain.Assignment;
 import net.tangly.erp.products.domain.Effort;
 import net.tangly.erp.products.domain.Product;
+import net.tangly.erp.products.services.ProductsBoundedDomain;
 import net.tangly.erp.products.services.ProductsRealm;
 import net.tangly.gleam.model.TsvEntity;
 import net.tangly.gleam.model.TsvProperty;
@@ -45,27 +46,27 @@ public class ProductsTsvHdl {
     }
 
     public void importProducts(@NotNull Reader reader, String source) {
-        TsvHdl.importEntities(reader, source, createTsvProduct(), realm.products());
+        TsvHdl.importEntities(ProductsBoundedDomain.DOMAIN, reader, source, createTsvProduct(), realm.products());
     }
 
     public void exportProducts(@NotNull Path path) {
-        TsvHdl.exportEntities(path, createTsvProduct(), realm.products());
+        TsvHdl.exportEntities(ProductsBoundedDomain.DOMAIN, path, createTsvProduct(), realm.products());
     }
 
     public void importAssignments(@NotNull Reader reader, String source) {
-        TsvHdl.importEntities(reader, source, createTsvAssignment(), realm.assignments());
+        TsvHdl.importEntities(ProductsBoundedDomain.DOMAIN, reader, source, createTsvAssignment(), realm.assignments());
     }
 
     public void exportAssignments(@NotNull Path path) {
-        TsvHdl.exportEntities(path, createTsvAssignment(), realm.assignments());
+        TsvHdl.exportEntities(ProductsBoundedDomain.DOMAIN, path, createTsvAssignment(), realm.assignments());
     }
 
     public void importEfforts(@NotNull Reader reader, String source) {
-        TsvHdl.importEntities(reader, source, createTsvEffort(), realm.efforts());
+        TsvHdl.importEntities(ProductsBoundedDomain.DOMAIN, reader, source, createTsvEffort(), realm.efforts());
     }
 
     public void exportEfforts(@NotNull Path path) {
-        TsvHdl.exportEntities(path, createTsvEffort(), realm.efforts());
+        TsvHdl.exportEntities(ProductsBoundedDomain.DOMAIN, path, createTsvEffort(), realm.efforts());
     }
 
     public Optional<Product> findProductByOid(String identifier) {

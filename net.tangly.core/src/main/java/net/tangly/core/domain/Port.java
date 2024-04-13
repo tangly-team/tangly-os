@@ -4,7 +4,7 @@
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- *          http://www.apache.org/licenses/LICENSE-2.0
+ *          https://apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -30,7 +30,8 @@ import java.nio.file.Path;
  */
 public interface Port<R extends Realm> {
     /**
-     * Import all entities of the bounded domain from the file system.
+     * Import all entities of the bounded domain from the file system. All TSV, JSON, TOML, and YAML files are imported.
+     * The domain is responsible for the order of the import and the handling of the entities. A bounded domain should not depend on other domains to perform the operation.
      *
      * @see #exportEntities()
      */
@@ -38,7 +39,7 @@ public interface Port<R extends Realm> {
     }
 
     /**
-     * Export all entities of the bounded domain to the file system.
+     * Export all entities of the bounded domain to the file system as TSV, JSON, TOML, and YAML files. A bounded domain should not depend on other domains to perform the operation.
      *
      * @see #importEntities()
      */
