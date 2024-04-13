@@ -348,7 +348,7 @@ Pattern matching is part of modern Java language but not of {cpp} language.
 
 This design approach improves the maintainability of the application cite:[modern-software-engineering,continuous-delivery,continuous-delivery-pipelines].
 
-More comlex state machines can be implemented with the help of statechart notation <<finite-state-machines>>.
+More complex state machines can be implemented with the help of statechart notation <<finite-state-machines>>.
 
 == Message Handling
 
@@ -421,7 +421,7 @@ The advantage is more static checks from the compiler and better libraries.
 
 - [[[actors, 1]]] link:../../2024/actors/[Actors]
 Marcel Baumann. 2024.
--[[[finite-state-machines, 2]]] link:../../2024/nice-statechart-diagrams/[Finite State Machines]
+- [[[finite-state-machines, 2]]] link:../../2024/nice-statechart-diagrams/[Finite State Machines]
 Marcel Baumann. 2024.
 
 == References

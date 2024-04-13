@@ -525,7 +525,7 @@ For example, it creates a _dmg_ installer for the macOS platform.
 
 === Open standards for building event-driven applications in the cloud
 
-The speaker provided a good introduction to {ref-asynapi} and {ref-cloudevents}.
+The speaker provided a good introduction to {ref-asyncapi} and {ref-cloudevents}.
 
 [sidebar]
 Funny to have a speaker at a Java conference stating he did not install Java on his notebook and showing C# examples.

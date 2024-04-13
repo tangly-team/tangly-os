@@ -42,7 +42,7 @@ Agile Software Architecture and Design::
 - link:{ref-tangly-blog-url}/ideas/learnings/workshops/arc42/arc42.html[arc 42 Workshop]
 - link:{ref-tangly-blog-url}/ideas/learnings/workshops/c4-uml/c4-uml.html[C4 and UML Workshop]
 - {ref-c4}, {ref-plantuml}, {ref-mermaid}, {ref-uml}, {ref-state-machine-cat}
-- {ref-actor-model}, {ref-openapi}, {ref-asynapi}
+- {ref-actor-model}, {ref-openapi}, {ref-asyncapi}
 Domain-Driven Design::
 - link:../../tags/domain-driven-design/[Domain-Driven Design]
 - link:../../ideas/learnings/workshops/ddd/ddd.html[DDD Workshop]
@@ -57,4 +57,4 @@ Embedded Devices::
 - link:../../tags/embedded[Embedded Devices Blogs]
 - link:../../tags/c++[{cpp} Blogs]
 - {ref-doxygen}
-- {ref-cmsis-rtos2}, {ref-can-bus}, {ref-freertos} {ref-micro-os-II}
+- {ref-cmsis-rtos2}, {ref-canbus}, {ref-freertos} {ref-micro-os-II}

@@ -34,7 +34,7 @@ your training and coaching sessions. Your success is important to us.
 It is easy to be overwhelmed by newly inherited legacy Java code.
 Legacy code can be difficult to work with.
 It can be helpful to have an extra set of eyes and a bunch of techniques for dealing with it.
-I can help review your software to identify areas of risk and create approaches for mitigation.
+We help review your software to identify areas of risk and create approaches for mitigation.
 
 - Review, prioritize, and organize existing legacy code
 - Retrofit unit tests into legacy code, so it’s safe to refactor and modernize
@@ -48,7 +48,7 @@ I can help review your software to identify areas of risk and create approaches 
   Every project is unique, and so are its challenges.
   Through interviews, questionnaires, and surveys, we provide you with a detailed assessment of your software development process and project along with
   recommendations.
-  I also offer online and remote assessments.
+  We offer online and remote assessments.
 
 - Articulate and refine your product definition
 - Evaluate your agile software development processes

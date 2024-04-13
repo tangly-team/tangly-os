@@ -33,7 +33,7 @@ Beware our solutions are based on the Java stack.
 == Swiss QR Code
 
 The https://www.paymentstandards.ch/dam/downloads/ig-qr-bill-en.pdf[Swiss QR-bill] standard is based on a 2D barcode and associated human-readable text mirroring the data encoded in the barcode.
-The barcode approach assumes the invoice will be printed by the buyer.
+The barcode approach assumes the buyer will print the invoice.
 The interested parties have to scan the barcode to digitize the invoice information.
 This approach clearly breaks digitalization efforts.
 
@@ -57,13 +57,13 @@ The main developer is responsive to suggestions and trouble reports.
 The ZUGFeRD is a German initiative to promote digital invoices in Germany and in Europe.
 The ZUGFeRD approach is to store the invoice data as an XML part in the PDF document of the invoice.
 The standard is also called _Factur-X_ in France.
-It is compatible to the European B2G invoices standard, namely http://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32014L0055[EN16931].
+It is compatible with the European B2G invoices standard, namely http://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32014L0055[EN16931].
 It can also be used for B2B invoices.
 
 XML is not really a human-readable format.
 A JSON-based approach would have been more friendly.
-The advantage is that the standard contains all relevant information for an invoice and streamline the digital processing of invoices.
-You can easily define a workflow extracting and parsing the XML payload from all received invoices, and feeding the information to your ERP system for further processing.
+The advantage is that the standard contains all relevant information for an invoice and streamlines the digital processing of invoices.
+You can define a workflow extracting and parsing the XML payload from all received invoices, and feeding the information to your ERP system for further processing.
 
 The library https://github.com/ZUGFeRD/mustangproject[Mustang ZUGFerD] is a mature and usable solution to read and write digital ZUGFeRD invoices.
 The library is under Apache 2.0 license.
@@ -74,7 +74,7 @@ Other similar libraries are also available, but the ones we found have quite res
 
 == PDF Aspects
 
-The PDF format is universal known.
+The PDF format is universally known.
 Special variants such as PDF/A1 and PDF/A3 are defined for archiving purposes.
 
 The Apache foundation hosts the library https://pdfbox.apache.org/[PDFBox].
@@ -88,13 +88,13 @@ The famous _iText_ library provides all these features, but sadly is no more ope
 https://ghostscript.com/[Ghostscript] provides command line support to transform a PDF document in a PDF/A version.
 
 The online service https://www.pdftron.com/pdf-tools/pdfa-converter/[pdftron] provides free PDF translation to the archive format.
-The https://www.scribus.net/[Scribus] application support archive format export.
+The https://www.scribus.net/[Scribus] application supports archive format export.
 The drawback is that these approaches are they require manual steps
 footnote:[https://www.onlyoffice.com/[OnlyOffice] also support PDF/A creation.
 They provide a free local installation package for Linux, macOS, and Windows].
 
 The Mustang library supports the transformation of a PDF/A1 to a PDF/A3 document.
-footnote:[LibreOffice can open and manipulate PDF files. You can easily open a PDF file and export it as PDF from LibreOffice.
+footnote:[LibreOffice can open and manipulate PDF files. You can open a PDF file and export it as PDF from LibreOffice.
 The application supports exporting to PDF/A version 1b, 2b and 3b. It also supports PDF/UA.]
 
 == Approach
@@ -106,13 +106,10 @@ This document is sent electronically to the customer.
 
 Our current approach is
 
-[source]
-----
-*Generate* AsciiDoc Invoice from our invoice model (Java source code)
-*Generate* PDF version of Invoice using AsciiDocPDF
-    *Add* Swiss QR code as last page in the PDF invoice document
-    *Add* ZUGFeRD XML payload in the PDF invoice document
-----
+. *Generate* AsciiDoc Invoice from our invoice model (Java source code)
+. *Generate* the PDF output format of Invoice using AsciiDocPDF
+.. *Add* Swiss QR code as last page in the PDF invoice document
+.. *Add* ZUGFeRD XML payload in the PDF invoice document
 
 Currently, we do not generate PDF/A1 documents as required in the ZUGFeRD standard.
 PDFBox could provide the tool box to generate in this format, but it would be quite an endeavor.
@@ -148,5 +145,5 @@ Use *java.nio.Files* to create input streams, output streams, buffered readers, 
 The investment to create the generators and test them against regular invoices of https://www.tangly.net[tangly llc] was around four man-days.
 
 You can find more information about how to digitize your company in a blog describing our journey to a digital company.
-We are quite proud no having any Microsoft Office our Outlook tools.
+We are quite proud of not having any Microsoft Office our Outlook tools.
 Our whole toolchain is based on open source solutions and performs flawlessly since the foundation of our company.

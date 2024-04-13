@@ -32,7 +32,7 @@ cite:[documenting-software-architectures].
 Tooling and practices have evolved to support the creation of lightweight, agile software architecture documentation.
 {ref-arc42} natively supports Asciidoc and Markdown based documentation.
 All documents are stored as text artifacts in a git repository.
-The documenation is generated as static website {ref-asciidoc}.
+The documentation is generated as static website {ref-asciidoc}.
 Diagrams with {ref-c4} or {ref-uml}, {ref-adr} are linked to source code documentation.
 
 Software architecture documentation creates a common understanding.

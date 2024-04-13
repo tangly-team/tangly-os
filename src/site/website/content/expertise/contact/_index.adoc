@@ -18,7 +18,7 @@ _Switzerland_
 | *LinkedIn:*       | https://www.linkedin.com/company/tangly-llc/[tangly llc]
 |===
 
----
+'''
 
 *Company Identification*
 
@@ -28,7 +28,7 @@ _Switzerland_
 | *VAT Number:* | CHE-357-875.339 MWST
 |===
 
----
+'''
 
 *Bank Connection*
 
@@ -38,7 +38,7 @@ _Switzerland_
 | *Bank BIC:*    | POFICHBEXXX _(Postfinanz Schweiz)_
 |===
 
----
+'''
 
 *Company Location*
 
