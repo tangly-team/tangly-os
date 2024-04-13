@@ -12,44 +12,52 @@ The company is an agile consulting and Java stack boutique organization.
 A service company has no inventory, production, or logistics departments.
 
 A service company has a strong focus on customers, products, projects and associcated efforts.
-Cash-flow is dictated by the timely invoicing of performed activities.
+Cashfflow is dictated by the timely invoicing of performed activities.
 The cash drain is mainly salaries and social costs.
 
-=== Command Line Domain Access
+=== Products
 
-The goal is to provide a command line access to the various ERP domains.
-Specific and bulk operations shall be supported.
+Collaborators can be assigned to projects.
+They document their activities in time sheets describing the performed efforts.
 
-Command line applications do not access the persistent storage or database.
-They only access services or external artifacts.
-These applications can be used in parallel to the main ERP system without any interferences.
+Efforts are written down in a YAML file for each day, and each assignment.
+The assignment uniquely identifies the product and the collaborator At most one effort shall be recorded per day and per assignment.
 
-==== Invoices
+THe efforts are imported through the user interface.
 
-* Generate an invoice document for a JSON invoice and a template.
-Optionally the SwissQR code or the FacturX data are added to the human readable and printable invoice document.
-* Generate all invoices doucuments for a tree of directories containing JSON invoices and a set of templates.
-Optionally SwissQR code or FacturX data can be added.
+[plantuml,effort-import,svg,align="center"]
+....
+@startsalt
+{^"Import Effort Files"
+{+
+Selected Files
+.
+.
+"               "
+} | *
 
-The invoices need the product descriptions and the invoices.
-No database or other services are needed.
+  []  Overwrite
 
-[source,bash]
-----
-create-invoices [-qrswiss] [-facturX] [-from <iso-date>] [-to <iso-date>] // <1>
-create-invoices -i <invoice-id> [-qrswiss] [-facturX]// <2>
-report-contract -c <contract-id> [-from <iso-date>] [-to <iso-date>] // <3>
-report-sellee -s <sellee-id> [-from <iso-date>] [-to <iso-date>] // <4>
-report-range -d <invoiceDate|dueDate|paidDate>] [-from <iso-date>] [-to <iso-date>] // <5>
-----
+  [Cancel] | [  OK   ]
+}
+@endsalt
+....
 
-<1> create all invoice artifacts with the created date in the time range specified with from and to date.
-Open intervals are supported.
-The artifact can optionally contain a QrSwiss code and a facturX B2B data package.
-Existing files will be overwritten.
-<2> create the invoice artifact for the given invoice identifier.
-The artifact can optionally contain a QrSwiss code and a facturX B2B data package.
-Existing files will be overwritten.
-<3> create a report over all invoices related to a contract.
-<4> -
-<5> -
+Efforts are reported per collaborator, assignement and date interval.
+
+[plantuml,effort-report,svg,align="center"]
+....
+@startsalt
+{
+  Assignement | "//Assignement OID//"
+  Project     | "//Project ID//"
+  Collaborator| "//Collaborator ID//"
+  ContractId  | ^ContractId^
+  From        | "2020-01-01"
+  To          | "2020-01-31"
+  ReportName  | "2020-01-johndoe-contractId"
+
+  [Cancel] | [  OK   ]
+}
+@endsalt
+....

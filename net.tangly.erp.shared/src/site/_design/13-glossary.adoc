@@ -7,10 +7,11 @@ ifndef::imagesdir[:imagesdir: ./pics]
 |===
 |Term |Definition|Remarks
 
-|ADR|Architecture Design Record
-|DDD|Domain-Driven Design
-|DoD|Definition of Done
-|FSM|Finite State Machine
-|SDL|Specification and Description Language
-|UML|Unified Modeling Language
+|ADR|Architecture Design Record |
+|DDD|Domain-Driven Design |
+|DoD|Definition of Done |
+|FSM|Finite State Machine |
+|SDL|Specification and Description Language |
+|UML|Unified Modeling Language |
+|VAT|Value-Added Tax |
 |===
