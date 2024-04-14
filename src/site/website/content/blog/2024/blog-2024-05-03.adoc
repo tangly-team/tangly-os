@@ -5,7 +5,7 @@ date: 2024-05-20
 tags: ["java", "tangly"]
 ---
 
-include::../fragments/_config-mb-blog.aodc[]
+include::../fragments/_config-mb-blog.adoc[]
 
 [.float-group]
 --

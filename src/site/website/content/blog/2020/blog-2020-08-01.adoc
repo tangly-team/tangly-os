@@ -5,7 +5,7 @@ date: 2020-08-24
 tags: ["java", "design", "domain-driven-design", "crm", "series-identifiers"]
 ---
 
-include::../fragments/_config-mb-blog.aodc[]
+include::../fragments/_config-mb-blog.adoc[]
 
 [.float-group]
 --

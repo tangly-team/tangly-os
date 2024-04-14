@@ -5,7 +5,7 @@ date: 2021-01-04
 tags: ["design", "domain-driven-design", "crm", "series-identifiers"]
 ---
 
-include::../fragments/_config-mb-blog.aodc[]
+include::../fragments/_config-mb-blog.adoc[]
 :ref-ddd: https://en.wikipedia.org/wiki/Domain-driven_design[Domain-Driven Design]
 
 image::2021-01-01-head.png[width=420,height=360,role=left]

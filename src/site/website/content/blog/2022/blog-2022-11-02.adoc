@@ -5,7 +5,7 @@ date: 2022-11-07
 tags: ["java", "gradle"]
 ---
 
-include::../fragments/_config-mb-blog.aodc[]
+include::../fragments/_config-mb-blog.adoc[]
 
 image::2022-11-02-head.jpg[width=420,height=360,role=left]
 

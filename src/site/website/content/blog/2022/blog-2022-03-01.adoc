@@ -5,7 +5,7 @@ date: 2022-03-10
 tags: ["agile", "series-students"]
 ---
 
-include::../fragments/_config-mb-blog.aodc[]
+include::../fragments/_config-mb-blog.adoc[]
 
 [.float-group]
 --

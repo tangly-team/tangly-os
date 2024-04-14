@@ -4,7 +4,7 @@ linkTitle: "Hugo Asciidoc Website"
 date: 2020-10-02
 tags: ["design", "hugo", "series-students"]
 ---
-include::../fragments/_config-mb-blog.aodc[]
+include::../fragments/_config-mb-blog.adoc[]
 
 [.float-group]
 --

@@ -5,7 +5,7 @@ date: 2021-01-18
 tags: ["java", "git", "devops", "series-students"]
 ---
 
-include::../fragments/_config-mb-blog.aodc[]
+include::../fragments/_config-mb-blog.adoc[]
 
 image::2021-01-03-head.jpg[720,480,role=left]
 

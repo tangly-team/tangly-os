@@ -5,7 +5,7 @@ date: 2024-09-02
 tags: ["C++", "embedded"]
 ---
 
-include::../fragments/_config-mb-blog.aodc[]
+include::../fragments/_config-mb-blog.adoc[]
 :ref-actor-model: https://en.wikipedia.org/wiki/Actor_model[Actor Model]
 :ref-cmsis-os: https://www.keil.com/pack/doc/CMSIS/RTOS2/html/index.html[CMSIS RTOS-2]
 :ref-fsm: https://en.wikipedia.org/wiki/Finite-state_machine[Finite State Machine]

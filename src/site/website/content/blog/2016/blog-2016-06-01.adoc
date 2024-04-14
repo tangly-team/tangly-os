@@ -5,7 +5,7 @@ date: 2016-06-22
 tags: ["agile"]
 ---
 
-include::../fragments/_config-mb-blog.aodc[]
+include::../fragments/_config-mb-blog.adoc[]
 
 image::2016-06-01-head.jpg[width=320,height=320,role=left]
 

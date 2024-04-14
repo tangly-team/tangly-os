@@ -5,7 +5,7 @@ date: 2017-04-15
 tags: ["agile"]
 ---
 
-include::../fragments/_config-mb-blog.aodc[]
+include::../fragments/_config-mb-blog.adoc[]
 
 image::2017-04-02-head.jpg[width=420,height=360,role=left]
 It is time to throw a big party in Switzerland.

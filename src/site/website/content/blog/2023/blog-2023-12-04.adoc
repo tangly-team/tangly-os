@@ -5,7 +5,7 @@ date: 2023-12-12
 tags: ["C++", "architecture", "embedded"]
 ---
 
-include::../fragments/_config-mb-blog.aodc[]
+include::../fragments/_config-mb-blog.adoc[]
 :ref-bluetooth: https://en.wikipedia.org/wiki/Bluetooth[Bluetooth]
 :ref-canbus: https://en.wikipedia.org/wiki/CAN_bus[CAN bus]
 :ref-dependency-injection: https://en.wikipedia.org/wiki/Dependency_injection[Dependency Injection]

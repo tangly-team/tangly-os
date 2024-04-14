@@ -5,7 +5,7 @@ date: 2023-10-06
 tags: ["java", "organization"]
 ---
 
-include::../fragments/_config-mb-blog.aodc[]
+include::../fragments/_config-mb-blog.adoc[]
 :ref-anemic-domain-model: https://en.wikipedia.org/wiki/Anemic_domain_model[Anemic Domain Model]
 :ref-armeria: https://armeria.dev/[Armeria]
 :ref-avro: https://avro.apache.org/[Avro]

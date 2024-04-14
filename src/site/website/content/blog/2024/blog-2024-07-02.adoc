@@ -5,7 +5,7 @@ date: 2024-07-10
 tags: ["java"]
 ---
 
-include::../fragments/_config-mb-blog.aodc[]
+include::../fragments/_config-mb-blog.adoc[]
 :ref-docbook: https://en.wikipedia.org/wiki/DocBook[DocBook]
 :ref-kroki: https://kroki.io/[Kroki]
 :ref-structurizr: https://structurizr.com/[Structurizr]

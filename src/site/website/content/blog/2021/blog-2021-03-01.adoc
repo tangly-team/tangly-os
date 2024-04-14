@@ -11,7 +11,7 @@ tags: ["java"]
 :ref-jacoco: https://www.eclemma.org/jacoco/[JaCoCo]
 :ref-slf4j: https://www.slf4j.org/[slf4j]
 
-include::../fragments/_config-mb-blog.aodc[]
+include::../fragments/_config-mb-blog.adoc[]
 
 [.float-group]
 --

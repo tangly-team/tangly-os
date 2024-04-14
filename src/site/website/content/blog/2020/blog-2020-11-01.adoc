@@ -5,7 +5,7 @@ date: 2020-11-02
 tags: ["java", "design", "crm", "series-identifiers"]
 ---
 
-include::../fragments/_config-mb-blog.aodc[]
+include::../fragments/_config-mb-blog.adoc[]
 
 image::2020-11-01-head.jpg[width=420, height=360, role=left]
 Reference codes are an old concept.

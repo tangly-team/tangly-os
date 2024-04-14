@@ -5,7 +5,7 @@ date: 2025-02-01
 tags: ["architecture", "domain-driven-design", "c++", "embedded"]
 ---
 
-include::../fragments/_config-mb-blog.aodc[]
+include::../fragments/_config-mb-blog.adoc[]
 :ref-actor-model: https://en.wikipedia.org/wiki/Actor_model[Actor Model]
 :ref-cohesion: https://en.wikipedia.org/wiki/Cohesion_(computer_science)[Cohesion]
 :ref-eventual-consistency: https://en.wikipedia.org/wiki/Eventual_consistency[Eventual Consistency]

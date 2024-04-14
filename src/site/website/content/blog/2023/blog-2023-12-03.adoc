@@ -5,7 +5,7 @@ date: 2023-12-10
 tags: ["java", "C++", "architecture"]
 ---
 
-include::../fragments/_config-mb-blog.aodc[]
+include::../fragments/_config-mb-blog.adoc[]
 :ref-bluetooth: https://en.wikipedia.org/wiki/Bluetooth[Bluetooth]
 :ref-canbus: https://en.wikipedia.org/wiki/CAN_bus[CAN bus]
 :ref-ethernet: https://en.wikipedia.org/wiki/Ethernet[Ethernet]

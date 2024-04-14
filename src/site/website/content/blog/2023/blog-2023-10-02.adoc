@@ -5,7 +5,7 @@ date: 2023-10-05
 tags: ["agile", "architecture"]
 ---
 
-include::../fragments/_config-mb-blog.aodc[]
+include::../fragments/_config-mb-blog.adoc[]
 
 image::2023-10-02-head.png[width=320,height=320,role=left]
 

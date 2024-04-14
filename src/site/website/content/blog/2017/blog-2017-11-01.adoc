@@ -5,7 +5,7 @@ date: 2017-11-23
 tags: ["agile"]
 ---
 
-include::../fragments/_config-mb-blog.aodc[]
+include::../fragments/_config-mb-blog.adoc[]
 :ref-kaizen: https://en.wikipedia.org/wiki/Kaizen[Kaizen]
 
 [.float-group]

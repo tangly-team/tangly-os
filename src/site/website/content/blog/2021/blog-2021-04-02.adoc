@@ -5,7 +5,7 @@ date: 2021-04-20
 tags: ["java","series-students"]
 ---
 
-include::../fragments/_config-mb-blog.aodc[]
+include::../fragments/_config-mb-blog.adoc[]
 
 [.float-group]
 --

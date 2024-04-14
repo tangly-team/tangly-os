@@ -5,7 +5,7 @@ date: 2023-09-25
 tags: ["java"]
 ---
 
-include::../fragments/_config-mb-blog.aodc[]
+include::../fragments/_config-mb-blog.adoc[]
 :ref-lombok: https://projectlombok.org/[Lombok]
 
 image::2023-09-02-head.jpg[width=420,height=360,role=left]

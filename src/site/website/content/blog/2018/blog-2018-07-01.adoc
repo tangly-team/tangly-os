@@ -5,7 +5,7 @@ date: 2018-07-05
 tags: ["design", "architecture"]
 ---
 
-include::../fragments/_config-mb-blog.aodc[]
+include::../fragments/_config-mb-blog.adoc[]
 
 :ref-adr: https://en.wikipedia.org/wiki/Architectural_decision[Architectural Decision]
 

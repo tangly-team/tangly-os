@@ -5,7 +5,7 @@ date: 2024-01-25
 tags: ["java", "domain-driven-design"]
 ---
 
-include::../fragments/_config-mb-blog.aodc[]
+include::../fragments/_config-mb-blog.adoc[]
 :ref-apache-commons-cvs: https://commons.apache.org/proper/commons-csv/[Apache Commons CSV]
 :ref-helidon: https://helidon.io/[Helidon]
 :ref-jimfs: https://github.com/google/jimfs[jimfs]

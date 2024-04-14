@@ -5,7 +5,7 @@ date: 2021-09-02
 tags: ["agile", "architecture", "series-students"]
 ---
 
-include::../fragments/_config-mb-blog.aodc[]
+include::../fragments/_config-mb-blog.adoc[]
 :ref-togaf: https://publications.opengroup.org/standards/togaf[TOGAF]
 
 image::2021-09-01-head.png[width=420,height=360,role=left]

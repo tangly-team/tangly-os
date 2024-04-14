@@ -5,7 +5,7 @@ date: 2025-01-01
 tags: ["architecture", "c++", "embedded"]
 ---
 
-include::../fragments/_config-mb-blog.aodc[]
+include::../fragments/_config-mb-blog.adoc[]
 :ref-boost: https://www.boost.org/[boost]
 :ref-cap: https://en.wikipedia.org/wiki/CAP_theorem[CAP theorem]
 :ref-fsm: https://en.wikipedia.org/wiki/Finite-state_machine[finite state machine]

@@ -5,7 +5,7 @@ date: 2016-12-02
 tags: ["agile"]
 ---
 
-include::../fragments/_config-mb-blog.aodc[]
+include::../fragments/_config-mb-blog.adoc[]
 
 image::2016-12-01-head.jpg[width=420,height=360,role=left]
 I often hear discussions asking who is performing the _traditional_ product leader tasks in Scrum.

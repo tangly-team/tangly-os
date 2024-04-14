@@ -5,7 +5,7 @@ date: 2019-06-13
 tags: ["agile", "series-agile-design"]
 ---
 
-include::../fragments/_config-mb-blog.aodc[]
+include::../fragments/_config-mb-blog.adoc[]
 
 :ref-archunit: https://www.archunit.org/[ArchUnit]
 :ref-jacoco: https://www.eclemma.org/jacoco/[JaCoCo]

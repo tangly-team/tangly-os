@@ -5,7 +5,7 @@ date: 2020-05-01
 tags: ["java","gradle"]
 ---
 
-include::../fragments/_config-mb-blog.aodc[]
+include::../fragments/_config-mb-blog.adoc[]
 
 [.float-group]
 --

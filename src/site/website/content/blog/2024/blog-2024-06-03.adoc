@@ -5,7 +5,7 @@ date: 2024-06-15
 tags: ["C++", "architecture", "embedded"]
 ---
 
-include::../fragments/_config-mb-blog.aodc[]
+include::../fragments/_config-mb-blog.adoc[]
 :ref-actor-model: https://en.wikipedia.org/wiki/Actor_model[Actor Model]
 :ref-freertos: https://www.freertos.org/index.html[freeRTOS]
 :ref-message-passing: https://en.wikipedia.org/wiki/Message_passing[Message Passing]

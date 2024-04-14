@@ -5,7 +5,7 @@ date: 2026-02-05
 tags: ["agile", ]
 ---
 
-include::../fragments/_config-mb-blog.aodc[]
+include::../fragments/_config-mb-blog.adoc[]
 
 We hope that the metaphor of the universe will steer you away from having to manage all artifacts in the form of a document.
 You should just have these artifacts tangible in some form that allows all stakeholders involved to communicate about them in a reasonable way.

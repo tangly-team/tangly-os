@@ -5,7 +5,7 @@ date: 2019-05-06
 tags: ["agile", "design", "architecture", "series-agile-design"]
 ---
 
-include::../fragments/_config-mb-blog.aodc[]
+include::../fragments/_config-mb-blog.adoc[]
 
 [.float-group]
 --

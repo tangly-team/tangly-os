@@ -5,7 +5,7 @@ date: 2023-11-15
 tags: ["agile", "architecture"]
 ---
 
-include::../fragments/_config-mb-blog.aodc[]
+include::../fragments/_config-mb-blog.adoc[]
 :ref-dev-containers: https://containers.dev/[Development Containers]
 :ref-devoxx: https://devoxx.be/[Devoxx Belgium]
 

@@ -5,7 +5,7 @@ date: 2023-12-01
 tags: ["agile", "java", "series-students"]
 ---
 
-include::../fragments/_config-mb-blog.aodc[]
+include::../fragments/_config-mb-blog.adoc[]
 :ref-groovy: https://groovy-lang.org[Groovy]
 :ref-kotlin: https://kotlinlang.org[Kotlin]
 :ref-swift: https://swift.org[Swift]

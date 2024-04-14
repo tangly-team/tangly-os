@@ -5,7 +5,7 @@ date: 2023-09-26
 tags: ["agile", "git", "series-students"]
 ---
 
-include::../fragments/_config-mb-blog.aodc[]
+include::../fragments/_config-mb-blog.adoc[]
 :ref-svn: https://subversion.apache.org/[Subversion]
 
 image::2023-09-03-head.png[width=420,height=360,role=left]

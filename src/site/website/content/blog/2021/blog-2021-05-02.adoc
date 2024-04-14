@@ -5,7 +5,7 @@ date: 2021-05-15
 tags: ["agile", "java"]
 ---
 
-include::../fragments/_config-mb-blog.aodc[]
+include::../fragments/_config-mb-blog.adoc[]
 
 [.float-group]
 --

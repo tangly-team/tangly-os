@@ -5,7 +5,7 @@ date: 2023-11-20
 tags: ["hugo"]
 ---
 
-include::../fragments/_config-mb-blog.aodc[]
+include::../fragments/_config-mb-blog.adoc[]
 :ref-asciidoctor-tabs: https://github.com/asciidoctor/asciidoctor-tabs[asciidoctor tabs]
 :ref-asciidoc-docsy-stylesheet: https://github.com/tangly-team/tangly-os/tree/master/src/site/website/assets/scss[Asciidoc Docsy Stylesheet]
 :ref-asciidoc-tabs-js: https://github.com/tangly-team/tangly-os/tree/master/src/site/website/static/js[Asciidoc Tabs Javascript]

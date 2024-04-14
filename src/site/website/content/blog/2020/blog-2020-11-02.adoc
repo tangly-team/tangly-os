@@ -5,7 +5,7 @@ date: 2020-11-06
 tags: ["agile", "tangly"]
 ---
 
-include::../fragments/_config-mb-blog.aodc[]
+include::../fragments/_config-mb-blog.adoc[]
 
 [.float-group]
 --

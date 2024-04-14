@@ -5,7 +5,7 @@ date: 2017-06-08
 tags: ["agile"]
 ---
 
-include::../fragments/_config-mb-blog.aodc[]
+include::../fragments/_config-mb-blog.adoc[]
 :ref-hermes: https://www.hermes.admin.ch/onlinepublikation/index.xhtml[HERMES]
 :ref-standish: https://www.infoq.com/articles/standish-chaos-2015[Standish Group report]
 

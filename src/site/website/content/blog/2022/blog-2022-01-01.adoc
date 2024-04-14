@@ -5,7 +5,7 @@ date: 2022-01-03
 tags: ["design", "java"]
 ---
 
-include::../fragments/_config-mb-blog.aodc[]
+include::../fragments/_config-mb-blog.adoc[]
 :ref-technical-debt: https://en.wikipedia.org/wiki/Technical_debt[technical debt]
 
 image::2022-01-03-head.png[width=420,height=360,role=left]

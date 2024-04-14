@@ -5,7 +5,7 @@ date: 2024-08-02
 tags: ["C++", "architecture", "embedded"]
 ---
 
-include::../fragments/_config-mb-blog.aodc[]
+include::../fragments/_config-mb-blog.adoc[]
 :ref-fsm: https://en.wikipedia.org/wiki/Finite-state_machine[Finite State Machine]
 :ref-pubsub: https://en.wikipedia.org/wiki/Publish%E2%80%93subscribe_pattern[Publish and Subscribe Pattern]
 :ref-seperation-of-concerns: https://en.wikipedia.org/wiki/Separation_of_concerns[Seperation of Concerns]

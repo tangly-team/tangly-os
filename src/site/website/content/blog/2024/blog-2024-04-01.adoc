@@ -5,7 +5,7 @@ date: 2024-04-01
 tags: ["java", "students-java"]
 ---
 
-include::../fragments/_config-mb-blog.aodc[]
+include::../fragments/_config-mb-blog.adoc[]
 
 image::2024-04-01-head.png[width=420,height=360,role=left]
 
