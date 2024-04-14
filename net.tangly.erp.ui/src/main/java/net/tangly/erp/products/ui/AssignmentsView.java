@@ -18,6 +18,7 @@ import com.vaadin.flow.component.html.Hr;
 import com.vaadin.flow.router.PageTitle;
 import net.tangly.erp.products.domain.Assignment;
 import net.tangly.erp.products.services.ProductsBoundedDomain;
+import net.tangly.ui.app.domain.Cmd;
 import net.tangly.ui.components.EntityView;
 import net.tangly.ui.components.Mode;
 import org.jetbrains.annotations.NotNull;
@@ -36,11 +37,9 @@ class AssignmentsView extends EntityView<Assignment> {
     protected void addActions(@NotNull GridContextMenu<Assignment> menu) {
         super.addActions(menu);
         menu().add(new Hr());
-        menu().addItem("Print", e -> new CmdCreateAssignmentDocument(e.getItem().orElse(null), domain()).execute());
-        // TODO add effort workflow?
+        menu().addItem("Print", e -> Cmd.ofItemCmd(e, (Assignment a) -> new CmdCreateAssignmentDocument(a, domain()).execute()));
         menu().add(new Hr());
-        // TODO add import form YAML
-
+        menu().addItem("Import", e -> Cmd.ofGlobalCmd(e, () -> new CmdFilesUploadEfforts(domain()).execute()));
     }
 
     @Override

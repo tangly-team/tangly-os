@@ -39,17 +39,24 @@ The JSON file is an adequate archive format that can digitally be processed.
 ....
 @startuml
 
-package net.tangly.erp.crmRealm {
-    class LegalEntity {}
-
+package net.tangly.core {
     class BankConnection << (R,orchid) >> {
         String iban
         String bic
         String institute
     }
 
-    class Contract {}
+   class Address << (R,orchid) >> {}
 }
+
+package net.tangly.erp.crmRealm {
+    class LegalEntity {
+        String id
+}
+
+    class Contract {
+        String id
+    }
 
 package net.tangly.erp.invoices {
 class Product << (R,orchid) >> {
@@ -59,6 +66,19 @@ class Product << (R,orchid) >> {
     String unit
     BigDecimal vatRate
 }
+
+class invoiceLegalEntity << (R,orchid) >> {
+    String id
+    String name
+    String vatNr
+    EmailAddress email
+}
+
+invoiceLegalEntity *-- Address : address
+
+
+note bottom: id of invoice legal entitty is also the identifier \nfor the legal entity instance in the CRM package.
+
 
 class Invoice {
     String id
@@ -71,11 +91,11 @@ class Invoice {
     String paymentConditions
 }
 
-note right: contractId is the identifier for the contract instance in the CRM package.
+note right: contractId is the identifier for the contract \ninstance in the CRM package.
 
-Invoice *-- InvoiceLine : lines
-Invoice o--> LegalEntity : invoicingEntity
-Invoice o--> LegalEntity : invoicedEntity
+Invoice *-- "*" InvoiceLine : lines
+Invoice o--> "1" invoiceLegalEntity : invoicingEntity
+Invoice o--> "1" invoiceLegalEntity : invoicedEntity
 Invoice *--> BankConnection : invoicingConnection
 
 interface InvoiceLine {}

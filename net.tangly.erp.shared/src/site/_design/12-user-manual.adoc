@@ -1,21 +1,33 @@
 ifndef::imagesdir[:imagesdir: ./pics]
 
+:ref-naked-objects: https://en.wikipedia.org/wiki/Naked_objects[Naked Objects]
+
 == User Manual
 
 === Idea
 
-The tangly services ERP provides the functionalities to manage a service company offerings and legal documents.
+The tangly services ERP provides the functionalities to manage service company offerings and legal documents.
 
 The first customer ever using the application is https://www.tangly.net[tangly llc] company.
 The company is an agile consulting and Java stack boutique organization.
 
 A service company has no inventory, production, or logistics departments.
 
-A service company has a strong focus on customers, products, projects and associcated efforts.
-Cashfflow is dictated by the timely invoicing of performed activities.
+A service company has a strong focus on customers, digital products, projects and associated efforts.
+Cash flow is dictated by the timely invoicing of performed activities.
 The cash drain is mainly salaries and social costs.
 
-=== Products
+The application follows the principles of {ref-naked-objects} to provide a user interface
+
+Business entities are displayed in a grid.
+CRUD operations are available for each entity.
+Context menus provide access to business operations.
+
+== Products
+
+=== Effort Tracking Workflow
+
+====  Efforts Description
 
 Collaborators can be assigned to projects.
 They document their activities in time sheets describing the performed efforts.
@@ -23,7 +35,42 @@ They document their activities in time sheets describing the performed efforts.
 Efforts are written down in a YAML file for each day, and each assignment.
 The assignment uniquely identifies the product and the collaborator At most one effort shall be recorded per day and per assignment.
 
+=== Effort Files
+
+Efforts can be documented in YAML files.
+
+[source,yaml]
+----
+assignmentOid: 401                                                                 # <1>
+contractId: STG-2020                                                               # <2>
+collaborator: marcelbaumann                                                        # <3>
+efforts:                                                                           # <4>
+    -   date: 2021-06-25                                                           # <5>
+        duration: 60                                                               # <6>
+        text: >                                                                    # <7>
+            The effort is related to the development of the new product catalog.
+    -   date: 2021-06-26
+        duration: 120
+        text: >
+            The effort is related to the development of the new product catalog.
+----
+
+<1> Unique object identifier of the assignment.
+<2> Unique identifier of the contract.
+Each contract is associated with a digital product development.
+Multiple assignments can be associated with a contract.
+Multiple contracts can be associated with a product development.
+_We use the term product and not project to emphasize the focus on digital products._
+<3> Unique identifier of the collaborator.
+<4> List of efforts.
+At most one effort per day, collaborator, assignment and contract should be created.
+<5> Date of the effort in ISO format.
+The date should be in the duration range of the assignment.
+<6> Duration of the effort in minutes.
+<7> Description of the effort using the asciidoc syntax.
+
 THe efforts are imported through the user interface.
+The assignment view provide a business operation to import efforts in the context menu.
 
 [plantuml,effort-import,svg,align="center"]
 ....
@@ -43,13 +90,17 @@ Selected Files
 @endsalt
 ....
 
-Efforts are reported per collaborator, assignement and date interval.
+Efforts are reported per collaborator, assignment and date interval.
+
+==== Effort Reporting
+
+Collaborator activities are grouped per assignment and often per month to generate an activity report and associated invoice.
 
 [plantuml,effort-report,svg,align="center"]
 ....
 @startsalt
 {
-  Assignement | "//Assignement OID//"
+  Assignment  | "//Assignment OID//"
   Project     | "//Project ID//"
   Collaborator| "//Collaborator ID//"
   ContractId  | ^ContractId^
@@ -59,5 +110,44 @@ Efforts are reported per collaborator, assignement and date interval.
 
   [Cancel] | [  OK   ]
 }
+@endsalt
+....
+
+=== Invoices
+
+[plantuml,invoice-import,svg,align="center"]
+....
+@startsalt
+{^"Import Invoices"
+{+
+Selected Files
+.
+.
+"               "
+} | *
+
+  []  Overwrite
+
+  [Cancel] | [  OK   ]
+}
+
+@endsalt
+....
+
+[plantuml,invoice-report,svg,align="center"]
+....
+@startsalt
+{
+  Invoice ID   | "//InvoiceId//"
+  Invoice Name | "//invoice name//"
+  ReportName   | "invoice name"
+
+  []  EN16931
+  []  QRCode
+  []  Overwrite
+
+  [Cancel] | [  OK   ]
+}
+
 @endsalt
 ....

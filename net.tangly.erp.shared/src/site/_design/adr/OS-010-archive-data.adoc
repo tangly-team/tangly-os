@@ -41,7 +41,7 @@ The complex documents defining invoices are exported as imported using a JSON fo
 ====
 We use the https://commons.apache.org/proper/commons-csv/[Apache Commons CSV Library] to parse and write TSV files.
 
-The libray functions are good enough for our designs.
+The library functions are good enough for our designs.
 The library is well-maintained and under Apache 2.0 open source license.
 ====
 

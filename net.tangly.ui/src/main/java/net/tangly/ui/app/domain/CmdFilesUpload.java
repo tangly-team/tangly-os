@@ -16,6 +16,10 @@ package net.tangly.ui.app.domain;
 import com.vaadin.flow.component.ComponentEventListener;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.dialog.Dialog;
+import com.vaadin.flow.component.html.Span;
+import com.vaadin.flow.component.icon.VaadinIcon;
+import com.vaadin.flow.component.notification.Notification;
+import com.vaadin.flow.component.notification.NotificationVariant;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.upload.AllFinishedEvent;
 import com.vaadin.flow.component.upload.Upload;
@@ -41,7 +45,8 @@ public abstract class CmdFilesUpload<R extends Realm, B, P extends Port<R>> impl
     public static final String TITLE = "Upload Files";
     protected final BoundedDomain<R, B, P> domain;
     private final MultiFileMemoryBuffer buffer;
-    private final Upload multiFileUpload;
+    private final Upload upload;
+    private final Span errorField;
     private Dialog dialog;
 
     /**
@@ -53,8 +58,9 @@ public abstract class CmdFilesUpload<R extends Realm, B, P extends Port<R>> impl
     protected CmdFilesUpload(@NotNull BoundedDomain<R, B, P> domain, String... acceptedFileTypes) {
         this.domain = domain;
         buffer = new MultiFileMemoryBuffer();
-        multiFileUpload = new Upload(buffer);
-        multiFileUpload.setAcceptedFileTypes();
+        upload = new Upload(buffer);
+        errorField = new Span();
+        upload.setAcceptedFileTypes();
     }
 
     @Override
@@ -62,10 +68,23 @@ public abstract class CmdFilesUpload<R extends Realm, B, P extends Port<R>> impl
         dialog = new Dialog();
         dialog.setWidth("2oem");
         var component = new VerticalLayout();
-        component.add(multiFileUpload);
+        errorField.setVisible(false);
+        errorField.getStyle().set("color", "red");
+
+        upload.addFailedListener(e -> showErrorMessage(e.getReason().getMessage()));
+        upload.addFileRejectedListener(e -> showErrorMessage(e.getErrorMessage()));
+
+        component.add(upload, errorField);
         dialog.add(component);
         dialog.setHeaderTitle(TITLE);
-        dialog.getFooter().add(new Button(CANCEL, e -> dialog.close()));
+        Button close = new Button("Close", VaadinIcon.COGS.create(), e -> dialog.close());
+        upload.addFileRejectedListener(event -> {
+            String errorMessage = event.getErrorMessage();
+            Notification notification = Notification.show(errorMessage, 5000,
+                Notification.Position.MIDDLE);
+            notification.addThemeVariants(NotificationVariant.LUMO_ERROR);
+        });
+        dialog.getFooter().add(new Button(CANCEL, e -> dialog.close()), close);
         dialog.open();
     }
 
@@ -75,22 +94,22 @@ public abstract class CmdFilesUpload<R extends Realm, B, P extends Port<R>> impl
 
     protected void close() {
         dialog.close();
-        multiFileUpload.clearFileList();
+        upload.clearFileList();
         dialog = null;
     }
 
     /**
-     * Registers the listener in charge to load and update the provided entities for the domain. The listene shall define the correct import order and handle missing files.
+     * Register the listener in charge to load and update the provided entities for the domain. The listene shall define the correct import order and handle missing files.
      * The method could be called in the constructor of the subclass.
      *
      * @param listener listener to register.
      */
     protected void registerAllFinishedListener(@NotNull ComponentEventListener<AllFinishedEvent> listener) {
-        multiFileUpload.addAllFinishedListener(listener);
+        upload.addAllFinishedListener(listener);
     }
 
     /**
-     * Processes the input stream with the provided consumer.
+     * Process the input stream with the provided consumer.
      *
      * @param filename name of the file uploaded in the buffer, which is processed
      * @param consumer consumer processing the input file
@@ -101,5 +120,10 @@ public abstract class CmdFilesUpload<R extends Realm, B, P extends Port<R>> impl
         } catch (IOException e) {
             throw new UncheckedIOException(e);
         }
+    }
+
+    private void showErrorMessage(String message) {
+        errorField.setVisible(true);
+        errorField.setText(message);
     }
 }

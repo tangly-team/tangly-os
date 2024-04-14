@@ -42,7 +42,7 @@ Vaadin has some impressive aspects:
 * User interface components are based on https://www.webcomponents.org/[Web Components] and https://lit.dev/[Lit HTML].
 * If desired, you can write user interface components in Typescript and connect them to the Vaadin ecosystem.
 
-A strength of Vaadin has extensive support for migrating legacy Java solutions to a modern Java technical stack.
+Vaadin platform has extensive support for migrating legacy Java solutions to a modern Java technical stack.
 
 === Consequences
 
@@ -69,6 +69,6 @@ The drawback is:
 ====
 Our market is the creation of management and organization internal applications.
 
-These solutions have seldom more than five hundred of parallel users.
-Therefore, we never had scalabity or performance problems with Vaadin based programs.
+These solutions have seldom more than five hundred parallel users.
+Therefore, we never had any scalability or performance problems with Vaadin based programs.
 ====

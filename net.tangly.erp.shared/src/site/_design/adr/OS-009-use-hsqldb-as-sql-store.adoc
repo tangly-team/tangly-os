@@ -5,7 +5,7 @@ date: 2022-01-01
 weight: 9
 ---
 
-== OS-009 Use HSQLDB as an SQL store
+== OS-009 Uses HSQLDB as an SQL store
 
 Date: 2022-01-01
 
@@ -44,4 +44,4 @@ The drawbacks are:
 * Best of breed products such PostgreSQL, Oracle, or SQL server are not preferred solutions.
 Operations departments have extensive experience with these products but none with HSQLDB.
 * The size of the database is limited.
-The current limitation is in the level of tens of terabytes.
+The current limitation is in tens of terabytes.

@@ -69,7 +69,7 @@ public class MainView extends AppLayout {
         return new Tabs(tabs.toArray(new Tab[0]));
     }
 
-    public void add(@NotNull BoundedDomainUi domainUi) {
+    public final void add(@NotNull BoundedDomainUi domainUi) {
         uiDomains.put(domainUi.name(), domainUi);
     }
 

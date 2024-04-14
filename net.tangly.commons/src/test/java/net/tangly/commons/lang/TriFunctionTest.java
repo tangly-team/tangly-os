@@ -1,5 +1,5 @@
 /*
- * Copyright 2022-2024 Marcel Baumann
+ * Copyright 2024 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -11,15 +11,20 @@
  *
  */
 
-package net.tangly.erp;
+package net.tangly.commons.lang;
 
+import net.tangly.commons.lang.functional.TriFunction;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-public class ErpTest {
+class TriFunctionTest {
     @Test
-    void dummyTest() {
-        assertThat(true).isTrue();
+    void testTriFunction() {
+        TriFunction<Integer, Integer, Integer, Integer> add = (a, b, c) -> a + b + c;
+        assertThat(add.apply(1, 2, 3)).isEqualTo(6);
+        TriFunction<Integer, Integer, Integer, Integer> multiply = (a, b, c) -> a * b * c;
+        assertThat(multiply.apply(1, 2, 4)).isEqualTo(8);
+        assertThat(add.andThen(o -> o * 2).apply(1, 2, 3)).isEqualTo(12);
     }
 }

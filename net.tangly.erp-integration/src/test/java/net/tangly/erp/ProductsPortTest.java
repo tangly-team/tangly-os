@@ -22,7 +22,9 @@ import net.tangly.erp.products.services.ProductsPort;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.file.FileSystem;
+import java.nio.file.Files;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -32,6 +34,7 @@ class ProductsPortTest {
     @Test
     void testImportEfforts() throws IOException {
         try (FileSystem fs = Jimfs.newFileSystem(com.google.common.jimfs.Configuration.unix())) {
+            final String filename = "efforts.yaml";
             var store = new ErpStore(fs);
             var handler = createAdapter(store);
 
@@ -40,7 +43,8 @@ class ProductsPortTest {
             handler.realm().efforts().deleteAll();
             assertThat(handler.realm().efforts().items()).isEmpty();
 
-            handler.importEfforts(store.effortsRoot().resolve("efforts.yaml"), true);
+            InputStream stream = Files.newInputStream(store.effortsRoot().resolve(filename));
+            handler.importEfforts(stream, filename, true);
             assertThat(handler).isNotNull();
             assertThat(handler.realm().efforts().items()).isNotEmpty();
         }

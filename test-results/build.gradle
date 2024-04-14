@@ -1,4 +1,17 @@
 /*
+ * Copyright 2024 Marcel Baumann
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
+ * the License at
+ *
+ *          https://apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
+ * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ *
+ */
+
+/*
     gradle testAggregateTestReport generates an aggregate report over all unit tests. Run first gradle test.
     gradle testCodeCoverageReport  generates a code coverage aggregate report over all unit tests. Run first gradle jacocoTestReport
     Remark: application plugin and configuration are necessary for the correct working of the coverage plugin.
@@ -20,11 +33,11 @@ project.description = "tangly OS components"
 
 dependencies {
     testReportAggregation project(':net.tangly.bdd')
+    testReportAggregation project(':net.tangly.cmd')
     testReportAggregation project(':net.tangly.commons')
     testReportAggregation project(':net.tangly.core')
     testReportAggregation project(':net.tangly.dev')
     testReportAggregation project(':net.tangly.erp.agile')
-    testReportAggregation project(':net.tangly.erp.apps')
     testReportAggregation project(':net.tangly.erp.collaborators')
     testReportAggregation project(':net.tangly.erp.crm')
     testReportAggregation project(':net.tangly.erp.invoices')
@@ -36,13 +49,14 @@ dependencies {
     testReportAggregation project(':net.tangly.fsm')
     testReportAggregation project(':net.tangly.gleam')
     testReportAggregation project(':net.tangly.ui')
+    testReportAggregation project(':net.tangly.web')
 
     jacocoAggregation project(':net.tangly.bdd')
+    jacocoAggregation project(':net.tangly.cmd')
     jacocoAggregation project(':net.tangly.commons')
     jacocoAggregation project(':net.tangly.core')
     jacocoAggregation project(':net.tangly.dev')
     jacocoAggregation project(':net.tangly.erp.agile')
-    jacocoAggregation project(':net.tangly.erp.apps')
     jacocoAggregation project(':net.tangly.erp.collaborators')
     jacocoAggregation project(':net.tangly.erp.crm')
     jacocoAggregation project(':net.tangly.erp.invoices')
@@ -51,11 +65,10 @@ dependencies {
     jacocoAggregation project(':net.tangly.erp.shared')
     jacocoAggregation project(':net.tangly.erp.ui')
     jacocoAggregation project(':net.tangly.erp-integration')
-    // TODO find out why gradle plugin does not accept the fsm sub project
-    // jacocoAggregation project(':net.tangly.fsm')
+    jacocoAggregation project(':net.tangly.fsm')
     jacocoAggregation project(':net.tangly.gleam')
     jacocoAggregation project(':net.tangly.ui')
-
+    jacocoAggregation project(':net.tangly.web')
 }
 
 application {

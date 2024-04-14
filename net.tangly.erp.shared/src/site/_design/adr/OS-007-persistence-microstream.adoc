@@ -81,3 +81,4 @@ MicroStream does not provide functions in this area.
 === Links
 
 - [[[microstream-4, 1]]] link:{ref-tangly-blog}/2021/microstream-4.x/[MicroStream 4.x]
+- [[[eclipsestore, 2]]] link:{ref-tangly-blog}/2024/eclipsestore/[EclipseStore]

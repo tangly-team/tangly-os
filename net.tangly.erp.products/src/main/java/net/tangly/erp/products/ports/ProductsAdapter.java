@@ -32,7 +32,6 @@ import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.LocalDate;
 import java.util.Map;
@@ -89,9 +88,8 @@ public class ProductsAdapter implements ProductsPort {
     }
 
     @Override
-    public void importEfforts(@NotNull Path path, boolean replace) throws IORuntimeException {
+    public void importEfforts(@NotNull InputStream stream, @NotNull String source, boolean replace) throws IORuntimeException {
         try {
-            InputStream stream = Files.newInputStream(path);
             YamlMapping data = Yaml.createYamlInput(stream).readYamlMapping();
             String contractId = data.string("contractId");
             String collaborator = data.string("collaborator");
@@ -110,16 +108,16 @@ public class ProductsAdapter implements ProductsPort {
                         logic.realm().efforts().delete(foundEffort.get());
                         logic.realm().efforts().update(newEffort);
                         EventData.log(EventData.IMPORT, ProductsBoundedDomain.DOMAIN, EventData.Status.INFO, " effort replaced already exists.",
-                            Map.of("filename", path, "entity", newEffort));
+                            Map.of("filename", source, "entity", newEffort));
 
                     } else {
                         EventData.log(EventData.IMPORT, ProductsBoundedDomain.DOMAIN, EventData.Status.WARNING, " effort could not be imported because it already exists.",
-                            Map.of("filename", path, "entity", newEffort));
+                            Map.of("filename", source, "entity", newEffort));
                     }
                 } else {
                     logic.realm().efforts().update(newEffort);
                     EventData.log(EventData.IMPORT, ProductsBoundedDomain.DOMAIN, EventData.Status.INFO, " effort added.",
-                        Map.of("filename", path, "entity", newEffort));
+                        Map.of("filename", source, "entity", newEffort));
                 }
             });
         } catch (IOException e) {
