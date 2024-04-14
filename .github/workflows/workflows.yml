@@ -13,6 +13,11 @@ jobs:
             -   uses: actions/setup-java@v4
                 with:
                     distribution: 'temurin'
+                    java-version: '21'
+                    cache: 'gradle'
+            -   uses: actions/setup-java@v4
+                with:
+                    distribution: 'temurin'
                     java-version: '22'
                     cache: 'gradle'
             -   uses: arduino/setup-protoc@v3
