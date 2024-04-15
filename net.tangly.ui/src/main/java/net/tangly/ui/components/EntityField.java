@@ -1,10 +1,10 @@
 /*
- * Copyright 2006-2023 Marcel Baumann
+ * Copyright 2006-2024 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- *          http://www.apache.org/licenses/LICENSE-2.0
+ *          https://apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -23,8 +23,6 @@ import net.tangly.core.Entity;
 import net.tangly.core.HasDateRange;
 import net.tangly.core.HasId;
 import net.tangly.core.HasName;
-import net.tangly.core.HasText;
-import net.tangly.ui.asciidoc.AsciiDocField;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -38,7 +36,6 @@ public class EntityField<T extends Entity> extends CustomField<T> {
     private final TextField name;
     private final DatePicker from;
     private final DatePicker to;
-    private final AsciiDocField text;
 
     public EntityField() {
         oid = new IntegerField(EntityView.OID, EntityView.OID_LABEL);
@@ -48,10 +45,7 @@ public class EntityField<T extends Entity> extends CustomField<T> {
         name.setClearButtonVisible(true);
         from = new DatePicker(EntityView.FROM_LABEL);
         to = new DatePicker(EntityView.TO_LABEL);
-        text = new AsciiDocField(EntityView.TEXT_LABEL);
-        text.setWidthFull();
         add(new HorizontalLayout(oid, id, name, from, to));
-        add(text);
     }
 
     @Override
@@ -73,7 +67,6 @@ public class EntityField<T extends Entity> extends CustomField<T> {
         name.setReadOnly(readOnly);
         from.setReadOnly(readOnly);
         to.setReadOnly(readOnly);
-        text.setReadOnly(readOnly);
     }
 
     @Override
@@ -84,7 +77,6 @@ public class EntityField<T extends Entity> extends CustomField<T> {
         name.clear();
         from.clear();
         to.clear();
-        text.clear();
     }
 
     public void clearOid() {
@@ -99,6 +91,5 @@ public class EntityField<T extends Entity> extends CustomField<T> {
             .bind(HasDateRange::from, HasDateRange::from);
         binder.forField(to).withValidator(o -> (o == null) || (from.getValue() == null) || (o.isAfter(from.getValue())), "To date must be after from date")
             .bind(HasDateRange::to, HasDateRange::to);
-        binder.bind(text, HasText::text, HasText::text);
     }
 }

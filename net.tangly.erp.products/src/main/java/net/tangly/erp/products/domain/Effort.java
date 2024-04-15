@@ -14,6 +14,7 @@
 package net.tangly.erp.products.domain;
 
 import net.tangly.core.HasDate;
+import net.tangly.core.HasText;
 
 import java.time.LocalDate;
 import java.util.Objects;
@@ -23,7 +24,7 @@ import java.util.Objects;
  * one employee. Administrative data specify the duration, the date and an optional description. Efforts can be used to generate work ports such as monthly ports and used to
  * calculate the spent time on a contract or a project.
  */
-public class Effort implements HasDate {
+public class Effort implements HasDate, HasText {
     private Assignment assignment;
     private String contractId;
     private LocalDate date;

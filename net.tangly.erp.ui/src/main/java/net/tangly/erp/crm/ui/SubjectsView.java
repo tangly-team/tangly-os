@@ -1,10 +1,10 @@
 /*
- * Copyright 2006-2023 Marcel Baumann
+ * Copyright 2006-2024 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- *          http://www.apache.org/licenses/LICENSE-2.0
+ *          https://apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -19,11 +19,7 @@ import com.vaadin.flow.component.textfield.EmailField;
 import com.vaadin.flow.data.binder.ValidationException;
 import net.tangly.erp.crm.domain.Subject;
 import net.tangly.erp.crm.services.CrmBoundedDomain;
-import net.tangly.ui.components.EntityField;
-import net.tangly.ui.components.EntityForm;
-import net.tangly.ui.components.EntityView;
-import net.tangly.ui.components.Mode;
-import net.tangly.ui.components.VaadinUtils;
+import net.tangly.ui.components.*;
 import org.jetbrains.annotations.NotNull;
 
 class SubjectsView extends EntityView<Subject> {
@@ -68,9 +64,4 @@ class SubjectsView extends EntityView<Subject> {
         this.domain = domain;
         initEntityView();
     }
-
-    @Override
-    protected void initEntityView() {
-    }
-
 }

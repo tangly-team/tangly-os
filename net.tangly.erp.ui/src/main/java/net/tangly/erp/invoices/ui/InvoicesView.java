@@ -39,11 +39,6 @@ class InvoicesView extends ItemView<Invoice> {
     static class InvoiceForm extends ItemForm<Invoice, InvoicesView> {
         InvoiceForm(@NotNull InvoicesView parent) {
             super(parent);
-            init();
-        }
-
-        @Override
-        protected void init() {
             addTabAt("details", details(), 0);
         }
 

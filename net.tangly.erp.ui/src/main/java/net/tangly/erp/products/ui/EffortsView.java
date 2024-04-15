@@ -21,7 +21,6 @@ import com.vaadin.flow.data.binder.ValidationException;
 import com.vaadin.flow.router.PageTitle;
 import net.tangly.erp.products.domain.Effort;
 import net.tangly.erp.products.services.ProductsBoundedDomain;
-import net.tangly.ui.asciidoc.AsciiDocField;
 import net.tangly.ui.components.ItemForm;
 import net.tangly.ui.components.ItemView;
 import net.tangly.ui.components.Mode;
@@ -80,22 +79,20 @@ class EffortsView extends ItemView<Effort> {
 
         EffortForm(@NotNull EffortsView parent) {
             super(parent);
-            init();
+            addTabAt("details", details(), 0);
+            addTabAt("text", text(), 1);
         }
 
-        @Override
-        protected void init() {
+        protected FormLayout details() {
             TextField assignment = VaadinUtils.createTextField("Assignment", "assignment", true, false);
             TextField collaborator = VaadinUtils.createTextField("Collaborator", "collaborator", true, false);
             TextField collaboratorId = VaadinUtils.createTextField("Collaborator ID", "collaborator id", true, false);
+            TextField contractId = new TextField("Contract Id", "contractId");
             DatePicker date = VaadinUtils.createDatePicker("Date");
             IntegerField duration = new IntegerField("Duration", "duration");
-            TextField contractId = new TextField("Contract Id", "contractId");
-            AsciiDocField text = new AsciiDocField("Text");
 
             FormLayout form = new FormLayout();
             form.add(assignment, collaborator, collaboratorId, contractId, date, duration);
-            form.add(text, 3);
 
             binder().bind(assignment, o -> o.assignment().id(), null);
             binder().bind(collaborator, o -> o.assignment().name(), null);
@@ -103,20 +100,18 @@ class EffortsView extends ItemView<Effort> {
             binder().bind(contractId, Effort::contractId, Effort::contractId);
             binder().bind(date, Effort::date, Effort::date);
             binder().bind(duration, Effort::duration, Effort::duration);
-            binder().bind(text, Effort::text, Effort::text);
+            return form;
         }
 
         @Override
         protected Effort createOrUpdateInstance(Effort entity) throws ValidationException {
-            return null;
+            return Objects.isNull(entity) ? new Effort() : entity;
         }
     }
 
-    private final transient ProductsBoundedDomain domain;
-
     public EffortsView(@NotNull ProductsBoundedDomain domain, @NotNull Mode mode) {
         super(Effort.class, domain, domain.realm().efforts(), new EffortFilter(), mode);
-        this.domain = domain;
+        form(new EffortForm(this));
         init();
     }
 

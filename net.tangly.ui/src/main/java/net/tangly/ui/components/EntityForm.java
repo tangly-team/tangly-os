@@ -1,10 +1,10 @@
 /*
- * Copyright 2023-2023 Marcel Baumann
+ * Copyright 2023-2024 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- *          http://www.apache.org/licenses/LICENSE-2.0
+ *          https://apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -16,13 +16,7 @@ package net.tangly.ui.components;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.data.binder.ValidationException;
-import net.tangly.core.Comment;
-import net.tangly.core.Entity;
-import net.tangly.core.EntityExtended;
-import net.tangly.core.HasComments;
-import net.tangly.core.HasOid;
-import net.tangly.core.HasTags;
-import net.tangly.core.Tag;
+import net.tangly.core.*;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
@@ -52,21 +46,21 @@ public abstract class EntityForm<T extends Entity, V extends EntityView<T>> exte
         }
     }
 
-    @Override
-    protected void init() {
+    protected final void initEntityForm() {
         entity = new EntityField<>();
         entity.bind(binder());
 
         FormLayout form = new FormLayout();
         form.add(entity);
         addTabAt("entity", form, 0);
+        addTabAt("text", text(), 1);
         if (tags != null) {
             binderCast().bind(tags, o -> ((EntityExtended) o).tags(), (o, v) -> ((EntityExtended) o).tags(tags.generateModelValue()));
-            addTabAt("tags", tags, 1);
+            addTabAt("tags", tags, 2);
         }
         if (comments != null) {
             binderCast().bind(comments, o -> ((EntityExtended) o).comments(), (o, v) -> ((EntityExtended) o).comments(comments.generateModelValue()));
-            addTabAt("comments", comments, 2);
+            addTabAt("comments", comments, 3);
         }
     }
 

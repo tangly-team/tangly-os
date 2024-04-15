@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2024 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -8,9 +8,14 @@
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ *
  */
 
 package net.tangly.commons.lang;
+
+import org.jetbrains.annotations.NotNull;
+
+import java.util.function.Consumer;
 
 /**
  * A reference to an object, emulating the concept of typed pointer to typed variable. The indirection can be updated to emulate indirection such as pointer to
@@ -61,8 +66,9 @@ public class Reference<T> {
      * Set the referenced object.
      *
      * @param reference referenced object
+     * @see #get()
      */
-    public void reference(T reference) {
+    public void set(T reference) {
         this.reference = reference;
     }
 
@@ -70,9 +76,39 @@ public class Reference<T> {
      * Return the reference object.
      *
      * @return referenced object
+     * @see #set(Object)
      */
 
-    public T reference() {
+    public T get() {
         return reference;
+    }
+
+    /**
+     * If a value is not present, returns true, otherwise false.
+     *
+     * @return true if a value is not present, otherwise false
+     */
+    public boolean isEmpty() {
+        return reference == null;
+    }
+
+    /**
+     * If a value is present, returns true, otherwise false.
+     *
+     * @return true if a value is present, otherwise false
+     */
+    public boolean isPresent() {
+        return reference != null;
+    }
+
+    /**
+     * If a value is present, performs the given action with the value, otherwise does nothing.
+     *
+     * @paranm action the action to be performed, if a value is present
+     */
+    public void ifPresent(@NotNull Consumer<? super T> action) {
+        if (reference != null) {
+            action.accept(reference);
+        }
     }
 }

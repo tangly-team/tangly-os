@@ -16,9 +16,11 @@ package net.tangly.erp.products.ui;
 import com.vaadin.flow.component.grid.contextmenu.GridContextMenu;
 import com.vaadin.flow.component.html.Hr;
 import com.vaadin.flow.router.PageTitle;
+import net.tangly.core.TypeRegistry;
 import net.tangly.erp.products.domain.Assignment;
 import net.tangly.erp.products.services.ProductsBoundedDomain;
 import net.tangly.ui.app.domain.Cmd;
+import net.tangly.ui.components.EntityForm;
 import net.tangly.ui.components.EntityView;
 import net.tangly.ui.components.Mode;
 import org.jetbrains.annotations.NotNull;
@@ -28,8 +30,16 @@ import org.jetbrains.annotations.NotNull;
  */
 @PageTitle("products-assignements")
 class AssignmentsView extends EntityView<Assignment> {
+    class AssignmentForm extends EntityForm<Assignment, AssignmentsView> {
+        public AssignmentForm(@NotNull AssignmentsView parent, @NotNull TypeRegistry registry) {
+            super(parent, Assignment::new);
+            initEntityForm();
+        }
+    }
+
     public AssignmentsView(@NotNull ProductsBoundedDomain domain, @NotNull Mode mode) {
         super(Assignment.class, domain, domain.realm().assignments(), mode);
+        form(new AssignmentForm(this, domain.registry()));
         initEntityView();
     }
 

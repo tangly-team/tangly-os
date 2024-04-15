@@ -4,7 +4,7 @@
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- *          http://www.apache.org/licenses/LICENSE-2.0
+ *          https://apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -19,12 +19,7 @@ import com.vaadin.flow.component.contextmenu.MenuItem;
 import com.vaadin.flow.component.contextmenu.SubMenu;
 import com.vaadin.flow.component.menubar.MenuBar;
 import net.tangly.app.domain.model.BoundedDomainSimpleEntities;
-import net.tangly.core.DateRange;
-import net.tangly.core.HasDateRange;
-import net.tangly.core.HasId;
-import net.tangly.core.HasName;
-import net.tangly.core.HasOid;
-import net.tangly.core.HasText;
+import net.tangly.core.*;
 import net.tangly.core.providers.Provider;
 import net.tangly.ui.app.domain.BoundedDomainUi;
 import net.tangly.ui.components.EntityForm;
@@ -82,7 +77,7 @@ public class BoundedDomainSimpleEntitiesUi extends BoundedDomainUi<BoundedDomain
         public static class EntityOneForm extends EntityForm<BoundedDomainSimpleEntities.SimpleEntityOne, EntityOneView> {
             public EntityOneForm(@NotNull EntityOneView parent) {
                 super(parent, null);
-                init();
+                initEntityForm();
             }
 
             @Override
@@ -104,7 +99,7 @@ public class BoundedDomainSimpleEntitiesUi extends BoundedDomainUi<BoundedDomain
         public static class EntityTwoForm extends EntityForm<BoundedDomainSimpleEntities.simpleEntityTwo, EntityTwoView> {
             public EntityTwoForm(@NotNull EntityTwoView parent) {
                 super(parent, null);
-                init();
+                initEntityForm();
             }
 
             @Override

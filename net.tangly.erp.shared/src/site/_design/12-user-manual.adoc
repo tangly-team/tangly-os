@@ -23,17 +23,27 @@ Business entities are displayed in a grid.
 CRUD operations are available for each entity.
 Context menus provide access to business operations.
 
+== Common Concepts
+
+The import of data is a common operation for each bounded domain.
+All available data will be imported.
+Overwriting existing data is disabled.
+
+Bounded domains are independent of each other.
+The order of import is not relevant.
+Each bounded domain has its own import operation and is responsible for the ordering of the associated import operations.
+
 == Products
 
 === Effort Tracking Workflow
 
-====  Efforts Description
-
-Collaborators can be assigned to projects.
+Collaborators can be assigned to products.
+An assignement connects a collaborator to a product, a time interval and a contract.
 They document their activities in time sheets describing the performed efforts.
 
 Efforts are written down in a YAML file for each day, and each assignment.
-The assignment uniquely identifies the product and the collaborator At most one effort shall be recorded per day and per assignment.
+The assignment uniquely identifies the product and the collaborator.
+NO more than one effort shall be recorded per day and per assignment.
 
 === Effort Files
 
@@ -43,34 +53,40 @@ Efforts can be documented in YAML files.
 ----
 assignmentOid: 401                                                                 # <1>
 contractId: STG-2020                                                               # <2>
-collaborator: marcelbaumann                                                        # <3>
+collaborator: johndoe                                                              # <3>
 efforts:                                                                           # <4>
-    -   date: 2021-06-25                                                           # <5>
+    -
+        date: 2021-06-25                                                           # <5>
         duration: 60                                                               # <6>
         text: >                                                                    # <7>
-            The effort is related to the development of the new product catalog.
-    -   date: 2021-06-26
+            The effort is related to the _development_ of the new product catalog.
+    -
+        date: 2021-06-26
         duration: 120
         text: >
-            The effort is related to the development of the new product catalog.
+            The effort is related to the _development_ of the new product catalog.
 ----
 
 <1> Unique object identifier of the assignment.
+The human-readable identifier is not used because it is not unique.
 <2> Unique identifier of the contract.
+The human-readable identifier shall be unique.
 Each contract is associated with a digital product development.
 Multiple assignments can be associated with a contract.
 Multiple contracts can be associated with a product development.
 _We use the term product and not project to emphasize the focus on digital products._
 <3> Unique identifier of the collaborator.
+The human-readable identifier shall be unique.
 <4> List of efforts.
 At most one effort per day, collaborator, assignment and contract should be created.
 <5> Date of the effort in ISO format.
 The date should be in the duration range of the assignment.
+If not the effort is ignored.
 <6> Duration of the effort in minutes.
 <7> Description of the effort using the asciidoc syntax.
 
-THe efforts are imported through the user interface.
-The assignment view provide a business operation to import efforts in the context menu.
+The efforts are imported through the user interface.
+The assignment view provides a business operation to import efforts in the context menu.
 
 [plantuml,effort-import,svg,align="center"]
 ....

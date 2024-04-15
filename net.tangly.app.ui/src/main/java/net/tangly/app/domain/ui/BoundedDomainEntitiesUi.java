@@ -4,7 +4,7 @@
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- *          http://www.apache.org/licenses/LICENSE-2.0
+ *          https://apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -24,12 +24,7 @@ import net.tangly.app.domain.model.BoundedDomainEntities;
 import net.tangly.core.providers.Provider;
 import net.tangly.ui.app.domain.BoundedDomainUi;
 import net.tangly.ui.app.domain.DomainView;
-import net.tangly.ui.components.EntityForm;
-import net.tangly.ui.components.EntityView;
-import net.tangly.ui.components.ItemForm;
-import net.tangly.ui.components.Mode;
-import net.tangly.ui.components.One2ManyReferencesField;
-import net.tangly.ui.components.One2OneField;
+import net.tangly.ui.components.*;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
@@ -75,7 +70,7 @@ public class BoundedDomainEntitiesUi extends BoundedDomainUi<BoundedDomainEntiti
         public static class EntityThreeForm extends EntityForm<BoundedDomainEntities.EntityThree, EntityThreeView> {
             public EntityThreeForm(@NotNull EntityThreeView parent) {
                 super(parent, BoundedDomainEntities.EntityThree::new);
-                init();
+                initEntityForm();
             }
         }
     }
@@ -103,9 +98,8 @@ public class BoundedDomainEntitiesUi extends BoundedDomainUi<BoundedDomainEntiti
                 init();
             }
 
-            @Override
-            protected void init() {
-                super.init();
+            private void init() {
+                super.initEntityForm();
                 one2one = new One2OneField<>("one2one", BoundedDomainEntities.EntityThree.class, parent().domain().realm().threeEntities());
                 binder().bind(one2one, BoundedDomainEntities.EntityFour::one2one, BoundedDomainEntities.EntityFour::one2one);
                 code = ItemForm.createCodeField(parent().registry().find(BoundedDomainEntities.ActivityCode.class).orElseThrow(), "Activity Code");

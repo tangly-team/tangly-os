@@ -4,7 +4,7 @@
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- *          http://www.apache.org/licenses/LICENSE-2.0
+ *          https://apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -26,12 +26,10 @@ import net.tangly.erp.crm.domain.Activity;
 import net.tangly.erp.crm.domain.ActivityCode;
 import net.tangly.erp.crm.services.CrmBoundedDomain;
 import net.tangly.ui.app.domain.Cmd;
-import net.tangly.ui.asciidoc.AsciiDocField;
 import net.tangly.ui.components.EntityView;
 import net.tangly.ui.components.ItemForm;
 import net.tangly.ui.components.ItemView;
 import net.tangly.ui.components.Mode;
-import net.tangly.ui.components.VaadinUtils;
 import org.jetbrains.annotations.NotNull;
 
 import java.time.LocalDate;
@@ -89,11 +87,6 @@ class ActivitiesView extends ItemView<Activity> {
 
         public ActivityForm(@NotNull ActivitiesView parent) {
             super(parent);
-            init();
-        }
-
-        @Override
-        protected void init() {
             addTabAt("details", details(), 0);
             addTabAt("text", text(), 1);
         }
@@ -124,16 +117,6 @@ class ActivitiesView extends ItemView<Activity> {
             binder().forField(text).bind(Activity::text, Activity::text);
             return form;
         }
-
-        private FormLayout text() {
-            var details = new AsciiDocField("Details");
-            var form = new FormLayout();
-            VaadinUtils.set3ResponsiveSteps(form);
-            form.add(details, 3);
-            binder().forField(details).bind(Activity::details, Activity::details);
-            return form;
-        }
-
     }
 
     public ActivitiesView(@NotNull CrmBoundedDomain domain, @NotNull Mode mode) {

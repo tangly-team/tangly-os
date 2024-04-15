@@ -135,7 +135,7 @@ public class LedgerTsvHdl {
      * Exports the chart of accounts to the provided file.
      *
      * @param path path to the file
-     * @see #importChartOfAccounts(Reader, String)
+     * @see #importChartOfAccounts(Reader, String, boolean)
      */
     public void exportChartOfAccounts(Path path) {
         try (CSVPrinter out = new CSVPrinter(Files.newBufferedWriter(path, StandardCharsets.UTF_8), TsvHdl.FORMAT)) {

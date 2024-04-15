@@ -1,10 +1,10 @@
 /*
- * Copyright 2006-2023 Marcel Baumann
+ * Copyright 2006-2024 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- *          http://www.apache.org/licenses/LICENSE-2.0
+ *          https://apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -67,11 +67,6 @@ public class LeadsView extends ItemView<Lead> {
 
         public LeadForm(@NotNull LeadsView parent) {
             super(parent);
-            init();
-        }
-
-        @Override
-        protected void init() {
             addTabAt("details", details(), 0);
             addTabAt("text", text(), 1);
         }
@@ -103,15 +98,6 @@ public class LeadsView extends ItemView<Lead> {
             binder().bindReadOnly(linkedIn, Lead::linkedIn);
             binder().bindReadOnly(leadCode, Lead::code);
             binder().bindReadOnly(activityCode, Lead::activity);
-            return form;
-        }
-
-        private FormLayout text() {
-            text = new AsciiDocField("Text");
-            var form = new FormLayout();
-            VaadinUtils.set3ResponsiveSteps(form);
-            form.add(text, 3);
-            binder().bind(text, Lead::text, null);
             return form;
         }
 

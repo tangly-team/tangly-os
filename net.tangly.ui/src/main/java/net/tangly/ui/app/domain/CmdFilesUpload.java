@@ -15,6 +15,7 @@ package net.tangly.ui.app.domain;
 
 import com.vaadin.flow.component.ComponentEventListener;
 import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.checkbox.Checkbox;
 import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.icon.VaadinIcon;
@@ -24,6 +25,7 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.upload.AllFinishedEvent;
 import com.vaadin.flow.component.upload.Upload;
 import com.vaadin.flow.component.upload.receivers.MultiFileMemoryBuffer;
+import net.tangly.commons.lang.functional.TriConsumer;
 import net.tangly.core.domain.BoundedDomain;
 import net.tangly.core.domain.Port;
 import net.tangly.core.domain.Realm;
@@ -47,6 +49,7 @@ public abstract class CmdFilesUpload<R extends Realm, B, P extends Port<R>> impl
     private final MultiFileMemoryBuffer buffer;
     private final Upload upload;
     private final Span errorField;
+    private final Checkbox overwrite;
     private Dialog dialog;
 
     /**
@@ -60,6 +63,7 @@ public abstract class CmdFilesUpload<R extends Realm, B, P extends Port<R>> impl
         buffer = new MultiFileMemoryBuffer();
         upload = new Upload(buffer);
         errorField = new Span();
+        overwrite = new Checkbox("Overwrite");
         upload.setAcceptedFileTypes();
     }
 
@@ -86,6 +90,10 @@ public abstract class CmdFilesUpload<R extends Realm, B, P extends Port<R>> impl
         });
         dialog.getFooter().add(new Button(CANCEL, e -> dialog.close()), close);
         dialog.open();
+    }
+
+    public boolean overwrite() {
+        return overwrite.getValue();
     }
 
     protected MultiFileMemoryBuffer buffer() {
@@ -117,6 +125,20 @@ public abstract class CmdFilesUpload<R extends Realm, B, P extends Port<R>> impl
     protected void processInputStream(@NotNull String filename, @NotNull BiConsumer<Reader, String> consumer) {
         try (Reader reader = new BufferedReader(new InputStreamReader(buffer.getInputStream(filename)))) {
             consumer.accept(reader, filename);
+        } catch (IOException e) {
+            throw new UncheckedIOException(e);
+        }
+    }
+
+    /**
+     * Process the input stream with the provided consumer.
+     *
+     * @param filename name of the file uploaded in the buffer, which is processed
+     * @param consumer consumer processing the input file
+     */
+    protected void processInputStream(@NotNull String filename, @NotNull TriConsumer<Reader, String, Boolean> consumer) {
+        try (Reader reader = new BufferedReader(new InputStreamReader(buffer.getInputStream(filename)))) {
+            consumer.accept(reader, filename, overwrite());
         } catch (IOException e) {
             throw new UncheckedIOException(e);
         }

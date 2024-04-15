@@ -1,10 +1,10 @@
 /*
- * Copyright 2006-2023 Marcel Baumann
+ * Copyright 2006-2024 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- *          http://www.apache.org/licenses/LICENSE-2.0
+ *          https://apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -37,7 +37,7 @@ class EmployeesView extends EntityView<Employee> {
     static class EmployeeForm extends EntityForm<Employee, EmployeesView> {
         public EmployeeForm(@NotNull EmployeesView parent, @NotNull TypeRegistry registry) {
             super(parent, Employee::new);
-            init();
+            initEntityForm();
             addTabAt("details", details(), 1);
         }
 
@@ -58,7 +58,7 @@ class EmployeesView extends EntityView<Employee> {
     public EmployeesView(@NotNull CrmBoundedDomain domain, @NotNull Mode mode) {
         super(Employee.class, domain, domain.realm().employees(), mode);
         form(new EmployeeForm(this, domain.registry()));
-        initEntityView();
+        init();
     }
 
     @Override
@@ -66,8 +66,7 @@ class EmployeesView extends EntityView<Employee> {
         return (CrmBoundedDomain) super.domain();
     }
 
-    @Override
-    protected void initEntityView() {
+    private void init() {
         var grid = grid();
         addEntityColumns(grid);
         grid.addColumn(o -> o.value(CrmTags.CRM_EMPLOYEE_TITLE).orElse(null)).setKey("title").setHeader("Title").setAutoWidth(true).setResizable(true).setSortable(true);

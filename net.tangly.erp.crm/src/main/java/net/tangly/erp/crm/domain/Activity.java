@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2022 Marcel Baumann
+ * Copyright 2006-2024 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -8,6 +8,7 @@
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ *
  */
 
 package net.tangly.erp.crm.domain;
@@ -35,7 +36,6 @@ public class Activity implements HasDate, HasText {
     private int durationInMinutes;
     private String author;
     private String text;
-    private String details;
 
     public Activity() {
     }
@@ -88,14 +88,6 @@ public class Activity implements HasDate, HasText {
         this.text = text;
     }
 
-    public String details() {
-        return details;
-    }
-
-    public void details(String details) {
-        this.details = details;
-    }
-
     public boolean check() {
         return Objects.nonNull(code) && (durationInMinutes > 0);
     }
@@ -104,6 +96,6 @@ public class Activity implements HasDate, HasText {
     public String toString() {
         return """
             Activity[date=%s, code=%s, durationInMinutes=%s, author=%s, text=%s, details=%s]
-            """.formatted(date(), code(), duration(), author(), text(), details());
+            """.formatted(date(), code(), duration(), author(), text());
     }
 }

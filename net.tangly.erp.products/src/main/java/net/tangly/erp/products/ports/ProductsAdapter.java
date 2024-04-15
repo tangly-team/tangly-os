@@ -93,8 +93,8 @@ public class ProductsAdapter implements ProductsPort {
             YamlMapping data = Yaml.createYamlInput(stream).readYamlMapping();
             String contractId = data.string("contractId");
             String collaborator = data.string("collaborator");
-            long assignmentId = data.longNumber("assignmentOid");
-            Assignment assignment = Provider.findByOid(logic.realm().assignments(), assignmentId).orElse(null);
+            long assignmentOid = data.longNumber("assignmentOid");
+            Assignment assignment = Provider.findByOid(logic.realm().assignments(), assignmentOid).orElse(null);
 
             YamlSequence efforts = data.yamlSequence("efforts");
             efforts.children().forEach((YamlNode effort) -> {
@@ -102,7 +102,7 @@ public class ProductsAdapter implements ProductsPort {
                 int duration = effort.asMapping().integer("duration");
                 String text = effort.asMapping().string("text");
                 Effort newEffort = new Effort(assignment, contractId, date, duration, text);
-                Optional<Effort> foundEffort = logic.findEffortFor(assignmentId, collaborator, date);
+                Optional<Effort> foundEffort = logic.findEffortFor(assignmentOid, collaborator, date);
                 if (foundEffort.isPresent()) {
                     if (replace) {
                         logic.realm().efforts().delete(foundEffort.get());
