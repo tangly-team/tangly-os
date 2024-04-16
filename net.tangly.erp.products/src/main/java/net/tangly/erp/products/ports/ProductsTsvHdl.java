@@ -29,6 +29,7 @@ import java.nio.file.Path;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import static net.tangly.core.tsv.TsvHdlCore.TEXT;
 import static net.tangly.erp.ports.TsvHdl.convertFoidTo;
@@ -79,7 +80,7 @@ public class ProductsTsvHdl {
 
     private static TsvEntity<Product> createTsvProduct() {
         List<TsvProperty<Product, ?>> fields = createTsvEntityFields();
-        fields.add(TsvProperty.of("contractIds", Product::contractIds, Product::contractIds, e -> Arrays.asList(e.split(",", -1)), e -> String.join(",", e)));
+        fields.add(TsvProperty.of("contractIds", Product::contractIds, Product::contractIds, e -> Arrays.asList(e.split(",", 0)), e -> e.stream().collect(Collectors.joining())));
         return TsvHdl.of(Product.class, fields, Product::new);
     }
 
