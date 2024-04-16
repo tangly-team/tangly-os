@@ -1,10 +1,10 @@
 /*
- * Copyright 2006-2023 Marcel Baumann
+ * Copyright 2006-2024 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- *          http://www.apache.org/licenses/LICENSE-2.0
+ *          https://apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -53,6 +53,16 @@ class EntityTest {
         }
     }
 
+    static class ExternalEntity extends ExternalEntityImp {
+        static ExternalEntity of(String id) {
+            return new ExternalEntity(id);
+        }
+
+        ExternalEntity(String id) {
+            super(id);
+        }
+    }
+
     @Test
     void testHasInterval() {
         var entity = NamedEntity.of(Entity.UNDEFINED_OID);
@@ -89,101 +99,122 @@ class EntityTest {
 
     @Test
     void testModifyTags() {
+        testModifyTags(NamedEntity.of(Entity.UNDEFINED_OID));
+        testModifyTags(ExternalEntity.of("id"));
+    }
+
+    private void testModifyTags(HasTags hasTags) {
         // Given
-        var item = NamedEntity.of(Entity.UNDEFINED_OID);
         var tag = new Tag("namespace", "tag", "format");
         // When
-        item.add(tag);
+        hasTags.add(tag);
         // Then
-        assertThat(item.tags()).hasSize(1);
-        assertThat(item.tags()).contains(tag);
-        assertThat(item.findByNamespace("namespace").size()).isEqualTo(1);
-        assertThat(item.findBy("namespace", "tag")).isPresent();
-        assertThat(item.findBy("namespace:tag")).isPresent();
-        assertThat(item.containsTag("namespace", "tag")).isTrue();
-        assertThat(item.containsTag("namespace:tag")).isTrue();
-        assertThat(item.value("namespace:tag").orElseThrow()).isEqualTo("format");
+        assertThat(hasTags.tags()).hasSize(1);
+        assertThat(hasTags.tags()).contains(tag);
+        assertThat(hasTags.findByNamespace("namespace").size()).isEqualTo(1);
+        assertThat(hasTags.findBy("namespace", "tag")).isPresent();
+        assertThat(hasTags.findBy("namespace:tag")).isPresent();
+        assertThat(hasTags.containsTag("namespace", "tag")).isTrue();
+        assertThat(hasTags.containsTag("namespace:tag")).isTrue();
+        assertThat(hasTags.value("namespace:tag").orElseThrow()).isEqualTo("format");
 
         // When
-        item.remove(tag);
+        hasTags.remove(tag);
         // Then
-        assertThat(item.tags()).isEmpty();
-        assertThat(item.findByNamespace("namespace")).isEmpty();
-        assertThat(item.findBy("namespace", "tag")).isNotPresent();
-        assertThat(item.value("namespace:tag")).isEmpty();
+        assertThat(hasTags.tags()).isEmpty();
+        assertThat(hasTags.findByNamespace("namespace")).isEmpty();
+        assertThat(hasTags.findBy("namespace", "tag")).isNotPresent();
+        assertThat(hasTags.value("namespace:tag")).isEmpty();
     }
+
 
     @Test
     void testUpdateTags() {
+        testUpdateTags(NamedEntity.of(Entity.UNDEFINED_OID));
+        testUpdateTags(ExternalEntity.of("id"));
+    }
+
+    void testUpdateTags(HasTags hasTags) {
         // Given
-        var item = NamedEntity.of(Entity.UNDEFINED_OID);
         var tag = new Tag("namespace", "tag", "format");
 
         // When - Then
-        assertThat(item.tags()).isEmpty();
-        item.update(tag);
-        assertThat(item.tags()).hasSize(1);
-        item.update(tag);
-        assertThat(item.tags()).hasSize(1);
-        item.update("namespace:tag", "format");
+        assertThat(hasTags.tags()).isEmpty();
+        hasTags.update(tag);
+        assertThat(hasTags.tags()).hasSize(1);
+        hasTags.update(tag);
+        assertThat(hasTags.tags()).hasSize(1);
+        hasTags.update("namespace:tag", "format");
     }
 
     @Test
     void testSerializeTags() {
-        var item = NamedEntity.of(Entity.UNDEFINED_OID);
-        item.add(Tag.of("namespace", "tag", "format"));
-        item.add(Tag.of("gis", "longitude", "0.0"));
-        item.add(Tag.of("gis", "latitude", "0.0"));
-        String rawTags = item.rawTags();
-        Collection<Tag> tags = item.tags();
-        item.removeAllTags();
-        assertThat(item.tags()).isEmpty();
-        item.rawTags(rawTags);
-        assertThat(item.tags()).isNotEmpty();
-        assertThat(item.tags()).hasSize(3);
-        assertThat(item.findByNamespace("gis")).hasSize(2);
+        testSerializeTags(NamedEntity.of(Entity.UNDEFINED_OID));
+        testSerializeTags(ExternalEntity.of("id"));
+    }
+
+    private void testSerializeTags(HasTags hasTags) {
+        hasTags.add(Tag.of("namespace", "tag", "format"));
+        hasTags.add(Tag.of("gis", "longitude", "0.0"));
+        hasTags.add(Tag.of("gis", "latitude", "0.0"));
+        String rawTags = hasTags.rawTags();
+        Collection<Tag> tags = hasTags.tags();
+        hasTags.clear();
+        assertThat(hasTags.tags()).isEmpty();
+        hasTags.rawTags(rawTags);
+        assertThat(hasTags.tags()).isNotEmpty();
+        assertThat(hasTags.tags()).hasSize(3);
+        assertThat(hasTags.findByNamespace("gis")).hasSize(2);
     }
 
     @Test
     void testModifyComments() {
+        testModifyComments(NamedEntity.of(Entity.UNDEFINED_OID));
+        testModifyComments(ExternalEntity.of("id"));
+    }
+
+    private void testModifyComments(HasComments hasComments) {
         // Given
-        var item = NamedEntity.of(Entity.UNDEFINED_OID);
         var comment = new Comment("John Doe", "This is a comment");
         // When
-        item.add(comment);
+        hasComments.add(comment);
         // Then
-        assertThat(item.comments()).hasSize(1);
-        assertThat(item.comments()).contains(comment);
+        assertThat(hasComments.comments()).hasSize(1);
+        assertThat(hasComments.comments()).contains(comment);
         // When
-        item.remove(comment);
-        assertThat(item.comments()).isEmpty();
+        hasComments.remove(comment);
+        assertThat(hasComments.comments()).isEmpty();
     }
 
     @Test
     void testFilterComments() {
+        testFilterComments(NamedEntity.of(Entity.UNDEFINED_OID));
+        testFilterComments(ExternalEntity.of("id"));
+    }
+
+    private void testFilterComments(HasComments hasComments) {
         // Given
-        var item = NamedEntity.of(Entity.UNDEFINED_OID);
         var comment = Comment.of(LocalDateTime.of(1800, Month.JANUARY, 1, 0, 0), "John Doe", "This is comment 1");
         comment.add(new Tag("gis", "longitude", "0.0"));
         comment.add(new Tag("gis", "latitude", "0.0"));
-        item.add(comment);
+        hasComments.add(comment);
         comment = Comment.of(LocalDateTime.of(1900, Month.JANUARY, 1, 0, 0), "John Doe", "This is comment 2");
         comment.add(new Tag("gis", "longitude", "0.0"));
-        item.add(comment);
+        hasComments.add(comment);
         comment = Comment.of(LocalDateTime.of(2000, Month.JANUARY, 1, 0, 0), "John Doe", "This is comment 3", Tag.of("gis", "longitude", "0.0"), Tag.of("gis", "latitude", "0.0"));
-        item.add(comment);
+        hasComments.add(comment);
         // When
-        assertThat(item.findByAuthor("John Doe")).hasSize(3);
+        assertThat(hasComments.findByAuthor("John Doe")).hasSize(3);
 
-        assertThat(item.findByTime(LocalDateTime.MIN, LocalDateTime.MAX)).hasSize(3);
-        assertThat(item.findByTime(LocalDateTime.of(1700, 1, 1, 0, 0), LocalDateTime.of(2100, 1, 1, 0, 0))).hasSize(3);
-        assertThat(item.findByTime(LocalDateTime.of(1799, 1, 1, 0, 0), LocalDateTime.of(2100, 1, 1, 0, 0))).hasSize(3);
-        assertThat(item.findByTime(LocalDateTime.of(1800, 1, 1, 0, 0), LocalDateTime.of(2000, 1, 1, 0, 0))).hasSize(3);
-        assertThat(item.findByTime(LocalDateTime.of(1900, 1, 1, 0, 0), LocalDateTime.of(2000, 1, 1, 0, 0))).hasSize(2);
-        assertThat(item.findByTime(LocalDateTime.of(1900, 1, 1, 0, 0), LocalDateTime.of(1990, 1, 1, 0, 0))).hasSize(1);
+        assertThat(hasComments.findByTime(LocalDateTime.MIN, LocalDateTime.MAX)).hasSize(3);
+        assertThat(hasComments.findByTime(LocalDateTime.of(1700, 1, 1, 0, 0), LocalDateTime.of(2100, 1, 1, 0, 0))).hasSize(3);
+        assertThat(hasComments.findByTime(LocalDateTime.of(1799, 1, 1, 0, 0), LocalDateTime.of(2100, 1, 1, 0, 0))).hasSize(3);
+        assertThat(hasComments.findByTime(LocalDateTime.of(1800, 1, 1, 0, 0), LocalDateTime.of(2000, 1, 1, 0, 0))).hasSize(3);
+        assertThat(hasComments.findByTime(LocalDateTime.of(1900, 1, 1, 0, 0), LocalDateTime.of(2000, 1, 1, 0, 0))).hasSize(2);
+        assertThat(hasComments.findByTime(LocalDateTime.of(1900, 1, 1, 0, 0), LocalDateTime.of(1990, 1, 1, 0, 0))).hasSize(1);
 
-        assertThat(item.findByTag("gis", "longitude")).hasSize(3);
-        assertThat(item.findByTag("gis", "latitude")).hasSize(2);
-        assertThat(item.findByTag("gis", "none")).isEmpty();
+        assertThat(hasComments.findByTag("gis", "longitude")).hasSize(3);
+        assertThat(hasComments.findByTag("gis", "latitude")).hasSize(2);
+        assertThat(hasComments.findByTag("gis", "none")).isEmpty();
     }
 }

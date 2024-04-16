@@ -13,6 +13,8 @@
 
 package net.tangly.erp.products.ui;
 
+import com.vaadin.flow.component.formlayout.FormLayout;
+import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.PageTitle;
 import net.tangly.core.TypeRegistry;
 import net.tangly.erp.products.domain.Product;
@@ -22,12 +24,26 @@ import net.tangly.ui.components.EntityView;
 import net.tangly.ui.components.Mode;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
+
 @PageTitle("products-products")
 class ProductsView extends EntityView<Product> {
     class ProductForm extends EntityForm<Product, ProductsView> {
         public ProductForm(@NotNull ProductsView parent, @NotNull TypeRegistry registry) {
             super(parent, Product::new);
             initEntityForm();
+            addTabAt("details", details(), 1);
+        }
+
+        private FormLayout details() {
+            FormLayout form = new FormLayout();
+            TextField ids = new TextField("Contract IDs");
+            form.add(ids);
+            binder().bind(ids, o -> o.contractIds().stream().collect(Collectors.joining(",")),
+                (o, v) -> o.contractIds(List.of(v.split(","))));
+            return form;
         }
     }
 

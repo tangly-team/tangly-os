@@ -53,7 +53,7 @@ Efforts can be documented in YAML files.
 ----
 assignmentOid: 401                                                                 # <1>
 contractId: STG-2020                                                               # <2>
-collaborator: johndoe                                                              # <3>
+collaborator: john-doe                                                             # <3>
 efforts:                                                                           # <4>
     -
         date: 2021-06-25                                                           # <5>
@@ -75,8 +75,9 @@ Each contract is associated with a digital product development.
 Multiple assignments can be associated with a contract.
 Multiple contracts can be associated with a product development.
 _We use the term product and not project to emphasize the focus on digital products._
-<3> Unique identifier of the collaborator.
+<3> Unique internal identifier of the collaborator.
 The human-readable identifier shall be unique.
+It is typically available in companies to distinguish collaborators with the same first and last name.
 <4> List of efforts.
 At most one effort per day, collaborator, assignment and contract should be created.
 <5> Date of the effort in ISO format.

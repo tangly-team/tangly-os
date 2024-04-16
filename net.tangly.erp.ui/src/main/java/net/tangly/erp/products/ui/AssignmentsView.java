@@ -13,16 +13,20 @@
 
 package net.tangly.erp.products.ui;
 
+import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.contextmenu.GridContextMenu;
 import com.vaadin.flow.component.html.Hr;
+import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.PageTitle;
 import net.tangly.core.TypeRegistry;
 import net.tangly.erp.products.domain.Assignment;
+import net.tangly.erp.products.domain.Product;
 import net.tangly.erp.products.services.ProductsBoundedDomain;
 import net.tangly.ui.app.domain.Cmd;
 import net.tangly.ui.components.EntityForm;
 import net.tangly.ui.components.EntityView;
 import net.tangly.ui.components.Mode;
+import net.tangly.ui.components.One2OneField;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -34,6 +38,18 @@ class AssignmentsView extends EntityView<Assignment> {
         public AssignmentForm(@NotNull AssignmentsView parent, @NotNull TypeRegistry registry) {
             super(parent, Assignment::new);
             initEntityForm();
+            addTabAt("details", details(), 1);
+
+        }
+
+        private FormLayout details() {
+            FormLayout form = new FormLayout();
+            One2OneField productField = new One2OneField("Product", Product.class, domain().realm().products());
+            TextField collaboratorId = new TextField("Collaborator ID");
+            form.add(productField, collaboratorId);
+            binder().bind(productField, Assignment::product, Assignment::product);
+            binder().bind(collaboratorId, Assignment::collaboratorId, Assignment::collaboratorId);
+            return form;
         }
     }
 

@@ -94,9 +94,9 @@ class EffortsView extends ItemView<Effort> {
             FormLayout form = new FormLayout();
             form.add(assignment, collaborator, collaboratorId, contractId, date, duration);
 
-            binder().bind(assignment, o -> o.assignment().id(), null);
-            binder().bind(collaborator, o -> o.assignment().name(), null);
-            binder().bind(collaboratorId, o -> o.assignment().collaboratorId(), null);
+            binder().bindReadOnly(assignment, o -> o.assignment().id());
+            binder().bindReadOnly(collaborator, o -> o.assignment().name());
+            binder().bindReadOnly(collaboratorId, o -> o.assignment().collaboratorId());
             binder().bind(contractId, Effort::contractId, Effort::contractId);
             binder().bind(date, Effort::date, Effort::date);
             binder().bind(duration, Effort::duration, Effort::duration);

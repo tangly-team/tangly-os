@@ -156,7 +156,7 @@ public class Comment implements HasTags {
     }
 
     @Override
-    public void removeAllTags() {
+    public void clear() {
         tags.clear();
     }
 
