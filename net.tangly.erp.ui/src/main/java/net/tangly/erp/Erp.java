@@ -145,7 +145,7 @@ public class Erp {
             return null;
         } else {
             var realm = (databases() == null) ? new InvoicesEntities() : new InvoicesEntities(Path.of(databases(), InvoicesBoundedDomain.DOMAIN));
-            return new InvoicesBoundedDomain(realm, new InvoicesBusinessLogic(realm), new InvoicesAdapter(realm, Path.of(reports())), registry);
+            return new InvoicesBoundedDomain(realm, new InvoicesBusinessLogic(realm), new InvoicesAdapter(realm, Path.of(reports(InvoicesBoundedDomain.DOMAIN))), registry);
         }
     }
 
@@ -157,7 +157,7 @@ public class Erp {
             if (realm.subjects().items().isEmpty()) {
                 realm.subjects().update(createAdminSubject());
             }
-            return new CrmBoundedDomain(realm, new CrmBusinessLogic(realm), new CrmAdapter(realm, Path.of(imports())), registry);
+            return new CrmBoundedDomain(realm, new CrmBusinessLogic(realm), new CrmAdapter(realm, Path.of(imports(CrmBoundedDomain.DOMAIN))), registry);
         }
     }
 
@@ -167,7 +167,7 @@ public class Erp {
         } else {
             var realm = (databases() == null) ? new ProductsEntities() : new ProductsEntities(Path.of(databases(), ProductsBoundedDomain.DOMAIN));
             var logic = new ProductsBusinessLogic(realm);
-            return new ProductsBoundedDomain(realm, logic, new ProductsAdapter(realm, logic, Path.of(imports()), Path.of(reports())), registry);
+            return new ProductsBoundedDomain(realm, logic, new ProductsAdapter(realm, logic, Path.of(imports(ProductsBoundedDomain.DOMAIN)), Path.of(reports(productsBoundedDomain.DOMAIN))), registry);
         }
     }
 
@@ -189,7 +189,7 @@ public class Erp {
             return null;
         } else {
             var realm = (databases() == null) ? new LedgerEntities() : new LedgerEntities(Path.of(databases(), LedgerBoundedDomain.DOMAIN));
-            return new LedgerBoundedDomain(realm, new LedgerBusinessLogic(realm), new LedgerAdapter(realm, Path.of(imports()), Path.of(reports())), registry);
+            return new LedgerBoundedDomain(realm, new LedgerBusinessLogic(realm), new LedgerAdapter(realm, Path.of(imports(LedgerBoundedDomain.DOMAIN)), Path.of(reports(LedgerBoundedDomain.DOMAIN))), registry);
         }
     }
 
@@ -201,11 +201,11 @@ public class Erp {
         return properties.getProperty(DATABASES_DIRECTORY_PROPERTY);
     }
 
-    private String imports() {
-        return properties.getProperty(IMPORTS_DIRECTORY_PROPERTY);
+    private String imports(String domain) {
+        return STR."\{properties.getProperty(IMPORTS_DIRECTORY_PROPERTY)}/\{domain}";
     }
 
-    private String reports() {
-        return properties.getProperty(REPORTS_DIRECTORY_PROPERTY);
+    private String reports(String domain) {
+        return STR."\{properties.getProperty(REPORTS_DIRECTORY_PROPERTY)}/\{domain}";
     }
 }
