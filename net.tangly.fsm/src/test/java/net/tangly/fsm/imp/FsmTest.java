@@ -1,10 +1,10 @@
 /*
- * Copyright 2006-2023 Marcel Baumann
+ * Copyright 2006-2024 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- *          http://www.apache.org/licenses/LICENSE-2.0
+ *          https://apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -27,9 +27,7 @@ import java.util.function.BiConsumer;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
 
 /**
  * The test class verifies the expected behavior of hierarchical machine declaration, instantiation of finite state machines, and firing of various transitions.
@@ -39,14 +37,14 @@ public class FsmTest {
     /**
      * The finite state machine internal states for the test configuration.
      */
-    public enum States {
+    enum States {
         Root, A, AA, AB, B, BA, BB, C
     }
 
     /**
      * The finite state machine internal events for the test configuration.
      */
-    public enum Events {
+    enum Events {
         A_A, A_C, AA_AA, AA_AB, AA_B, AA_BB, AB_AA, AB_AB, B_C, BA_A, BA_BB, BB_BA, BB_BB, BB_C, C_C
     }
 

@@ -21,7 +21,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.regex.Pattern;
 
-public class PortUtilities {
+public final class PortUtilities {
     private static final Pattern PATTERN = Pattern.compile("\\d{4}-.*");
 
     private PortUtilities() {

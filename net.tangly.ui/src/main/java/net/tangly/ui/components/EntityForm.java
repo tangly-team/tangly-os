@@ -31,23 +31,27 @@ import java.util.function.Function;
  */
 public abstract class EntityForm<T extends Entity, V extends EntityView<T>> extends ItemForm<T, V> {
     private final Function<Long, T> supplier;
-    private EntityField<T> entity;
-    private One2ManyOwnedField<Comment> comments;
-    private One2ManyOwnedField<Tag> tags;
+    private final EntityField<T> entity;
+    private final One2ManyOwnedField<Comment> comments;
+    private final One2ManyOwnedField<Tag> tags;
 
     protected EntityForm(@NotNull V parent, Function<Long, T> supplier) {
         super(parent);
         this.supplier = supplier;
+        entity = new EntityField<>();
         if (HasComments.class.isAssignableFrom(entityClass())) {
             comments = new One2ManyOwnedField<>(new CommentsView(parent.domain(), parent.mode()));
+        } else {
+            comments = null;
         }
         if (HasTags.class.isAssignableFrom(entityClass())) {
             tags = new One2ManyOwnedField<>(new TagsView(parent.domain(), parent.mode()));
+        } else {
+            tags = null;
         }
     }
 
     protected final void initEntityForm() {
-        entity = new EntityField<>();
         entity.bind(binder());
 
         FormLayout form = new FormLayout();

@@ -43,9 +43,9 @@ class AssignmentsView extends EntityView<Assignment> {
         }
 
         private FormLayout details() {
-            FormLayout form = new FormLayout();
-            One2OneField productField = new One2OneField("Product", Product.class, domain().realm().products());
-            TextField collaboratorId = new TextField("Collaborator ID");
+            var form = new FormLayout();
+            var productField = new One2OneField<>("Product", Product.class, domain().realm().products());
+            var collaboratorId = new TextField("Collaborator ID");
             form.add(productField, collaboratorId);
             binder().bind(productField, Assignment::product, Assignment::product);
             binder().bind(collaboratorId, Assignment::collaboratorId, Assignment::collaboratorId);

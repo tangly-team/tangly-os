@@ -53,11 +53,11 @@ public class InvoicesAdapter implements InvoicesPort {
     /**
      * Path to the root folder of all invoices and product description. Invoices should be grouped by year.
      */
-    private final Path folder;
+    private final Path dataFolder;
 
-    public InvoicesAdapter(@NotNull InvoicesRealm realm, @NotNull Path invoicesFolder) {
+    public InvoicesAdapter(@NotNull InvoicesRealm realm, @NotNull Path dataFolder) {
         this.realm = realm;
-        this.folder = invoicesFolder;
+        this.dataFolder = dataFolder;
     }
 
     @Override
@@ -68,14 +68,14 @@ public class InvoicesAdapter implements InvoicesPort {
     @Override
     public void importEntities() {
         var handler = new InvoicesTsvJsonHdl(realm());
-        Port.importEntities(folder, ARTICLES_TSV, handler::importArticles);
+        Port.importEntities(dataFolder, ARTICLES_TSV, handler::importArticles);
         var invoiceJson = new InvoiceJson(realm);
-        try (Stream<Path> stream = Files.walk(folder)) {
+        try (Stream<Path> stream = Files.walk(dataFolder)) {
             AtomicInteger nrOfInvoices = new AtomicInteger();
             AtomicInteger nrOfImportedInvoices = new AtomicInteger();
             stream.filter(file -> !Files.isDirectory(file) && file.getFileName().toString().endsWith(JSON_EXT)).forEach(o -> {
                 nrOfInvoices.getAndIncrement();
-                try (Reader reader = Files.newBufferedReader(folder.resolve(o))) {
+                try (Reader reader = Files.newBufferedReader(dataFolder.resolve(o))) {
                     var invoice = handler.importInvoice(reader, o.toString());
                     if ((invoice != null)) {
                         nrOfImportedInvoices.getAndIncrement();
@@ -94,10 +94,10 @@ public class InvoicesAdapter implements InvoicesPort {
     @Override
     public void exportEntities() {
         var handler = new InvoicesTsvJsonHdl(realm());
-        handler.exportArticles(folder.resolve(ARTICLES_TSV));
+        handler.exportArticles(dataFolder.resolve(ARTICLES_TSV));
         var invoiceJson = new InvoiceJson(realm);
         realm.invoices().items().forEach(o -> {
-            var invoiceFolder = PortUtilities.resolvePath(folder, o.name());
+            var invoiceFolder = PortUtilities.resolvePath(dataFolder, o.name());
             var invoicePath = invoiceFolder.resolve(o.name() + JSON_EXT);
             invoiceJson.exports(o, invoicePath, Collections.emptyMap());
             EventData.log(EventData.EXPORT, InvoicesBoundedDomain.DOMAIN, EventData.Status.SUCCESS, "Invoice exported to JSON {}", Map.of(INVOICE, o, INVOICE_PATH, invoicePath));
@@ -112,7 +112,7 @@ public class InvoicesAdapter implements InvoicesPort {
 
     @Override
     public boolean doesInvoiceDocumentExist(@NotNull Invoice invoice) {
-        Path invoiceFolder = PortUtilities.resolvePath(folder, invoice.name());
+        Path invoiceFolder = PortUtilities.resolvePath(dataFolder, invoice.name());
         Path invoicePdfPath = invoiceFolder.resolve(invoice.name() + AsciiDoctorHelper.PDF_EXT);
         return Files.exists(invoicePdfPath);
     }
@@ -126,7 +126,7 @@ public class InvoicesAdapter implements InvoicesPort {
     @Override
     public void exportInvoiceDocument(@NotNull Invoice invoice, boolean withQrCode, boolean withEN16931, boolean overwrite) {
         var asciiDocGenerator = new InvoiceAsciiDoc(invoice.locale());
-        Path invoiceFolder = PortUtilities.resolvePath(folder, invoice.name());
+        Path invoiceFolder = PortUtilities.resolvePath(dataFolder, invoice.name());
         Path invoiceAsciiDocPath = invoiceFolder.resolve(invoice.name() + AsciiDoctorHelper.ASCIIDOC_EXT);
         asciiDocGenerator.exports(invoice, invoiceAsciiDocPath, Collections.emptyMap());
         Path invoicePdfPath = invoiceFolder.resolve(invoice.name() + AsciiDoctorHelper.PDF_EXT);

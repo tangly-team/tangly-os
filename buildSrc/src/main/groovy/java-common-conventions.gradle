@@ -16,9 +16,10 @@ plugins {
     id 'maven-publish'
     id 'signing'
     id 'jacoco'
+    id 'pmd' apply false
     id 'org.sonarqube'
-    // id 'com.github.spotbugs' apply false
-    // id 'info.solidsoft.pitest' apply false
+//    id 'com.github.spotbugs'
+    id 'info.solidsoft.pitest'
 }
 
 repositories {
@@ -223,46 +224,18 @@ sonarqube {
     }
 }
 
-if (project.hasProperty('mode') && project.property('mode').equals('prod')) {
-    apply plugin: 'com.github.spotbugs'
-    apply plugin: 'org.sonatype.gradle.plugins.scan'
-    apply plugin: 'pmd'
-    apply plugine: 'checkstyle'
-
-    pmd {
-        ruleSetFiles = files(rootProject.file('src/main/resources/pmd-tangly.xml'))
-        toolVersion = "6.33.0"
-        ignoreFailures = true
-        incrementalAnalysis = true
-        rulesMinimumPriority = 3
-    }
-
-    checkstyle {
-        configFile file("src/main/resources/checkstyle/checkstyle.xml")
-    }
-
-    spotbugs {
-        ignoreFailures = true
-        effort = "default"
-        reportLevel = "low"
-        omitVisitors = []
-        toolVersion = '4.6.0'
-    }
-    [spotbugsMain, spotbugsTest].each { task ->
-        task.configure {
-            reports {
-                html {
-                    enabled = true
-                    stylesheet = 'fancy-hist.xsl'
-                }
-            }
-        }
-    }
-
-    tasks.withType(Pmd) {
-        reports {
-            xml.enabled false
-            html.enabled true
-        }
-    }
+pmd {
+    ruleSetFiles = files(rootProject.file('src/main/resources/pmd-tangly.xml'))
+    toolVersion = "7.0.0"
+    ignoreFailures = true
+    incrementalAnalysis = true
+    rulesMinimumPriority = 3
 }
+
+//spotbugs {
+//    ignoreFailures = true
+//    effort = "default"
+//    reportLevel = "low"
+//    omitVisitors = []
+//    toolVersion = '4.8.3'
+//}

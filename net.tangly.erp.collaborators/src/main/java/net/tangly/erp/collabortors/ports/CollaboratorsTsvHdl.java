@@ -26,7 +26,7 @@ import java.util.function.Function;
 
 public class CollaboratorsTsvHdl {
 
-    private CollaboratorsRealm realm;
+    private final CollaboratorsRealm realm;
 
     public CollaboratorsTsvHdl(CollaboratorsRealm realm) {
         this.realm = realm;

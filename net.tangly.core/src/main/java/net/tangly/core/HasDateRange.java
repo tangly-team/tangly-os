@@ -1,10 +1,10 @@
 /*
- * Copyright 2006-2023 Marcel Baumann
+ * Copyright 2006-2024 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- *          http://www.apache.org/licenses/LICENSE-2.0
+ *          https://apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -95,7 +95,7 @@ public interface HasDateRange {
      * Test if the date range is partially inside the date range specified in the filter.
      *
      * @param range date range to test against
-     * @param <T>      type of instances to test
+     * @param <T>   type of instances to test
      */
     record RangeFilter<T extends HasDateRange>(@NotNull DateRange range) implements Predicate<T> {
         public RangeFilter(LocalDate from, LocalDate to) {
@@ -103,9 +103,6 @@ public interface HasDateRange {
         }
 
         public boolean test(@NotNull T entity) {
-            if (entity.range() == null) {
-                System.out.println("Oops");
-            }
             return (Objects.isNull(range.to()) || Objects.isNull(entity.from()) || !entity.from().isBefore(range.to())) &&
                 (Objects.isNull(range.from()) || Objects.isNull(entity.to()) || !entity.to().isBefore(range.from()));
         }

@@ -18,7 +18,7 @@ import net.tangly.erp.products.domain.Assignment;
 import org.eclipse.serializer.exceptions.IORuntimeException;
 import org.jetbrains.annotations.NotNull;
 
-import java.io.InputStream;
+import java.io.Reader;
 import java.time.LocalDate;
 
 /**
@@ -31,11 +31,11 @@ public interface ProductsPort extends Port<ProductsRealm> {
      * Imports all efforts defined in the YAML file located at the given path.
      * An effort is identified by the combination of the assignment identifier and the date of the effort. The assigement identifies uniquely the collaborator working on the effort.
      *
-     * @param stream  input stream containing the efforts to import
+     * @param reader  reader containing the efforts to import
      * @param source  source of the efforts used to audit the import operation
      * @param replace if true, the existing efforts are replaced by the imported ones, otherwise the imported efforts are only imported if not preesent
      */
-    void importEfforts(@NotNull InputStream stream, @NotNull String source, boolean replace) throws IORuntimeException;
+    void importEfforts(@NotNull Reader reader, @NotNull String source, boolean replace) throws IORuntimeException;
 
     /**
      * Exports all efforts of the assignment in the given period of time. The export shall be a asciidoc document.

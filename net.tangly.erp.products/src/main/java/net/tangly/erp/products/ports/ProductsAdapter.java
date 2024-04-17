@@ -31,16 +31,21 @@ import org.eclipse.serializer.exceptions.IORuntimeException;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
-import java.io.InputStream;
+import java.io.Reader;
+import java.io.UncheckedIOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.LocalDate;
 import java.util.Map;
 import java.util.Optional;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.stream.Stream;
 
 public class ProductsAdapter implements ProductsPort {
     public static final String PRODUCTS_TSV = "products.tsv";
     public static final String ASSIGNMENTS_TSV = "assignments.tsv";
     public static final String EFFORTS_TSV = "efforts.tsv";
+    public static final String YAML_EXT = ".yaml";
 
     private final ProductsRealm realm;
 
@@ -72,6 +77,20 @@ public class ProductsAdapter implements ProductsPort {
         Port.importEntities(dataFolder, PRODUCTS_TSV, handler::importProducts);
         Port.importEntities(dataFolder, ASSIGNMENTS_TSV, handler::importAssignments);
         Port.importEntities(dataFolder, EFFORTS_TSV, handler::importEfforts);
+        try (Stream<Path> stream = Files.walk(dataFolder)) {
+            AtomicInteger nrOfImportedEffortFiles = new AtomicInteger();
+            stream.filter(file -> !Files.isDirectory(file) && file.getFileName().toString().endsWith(YAML_EXT)).forEach(o -> {
+                try (Reader reader = Files.newBufferedReader(dataFolder.resolve(o))) {
+                    importEfforts(reader, o.toString(), true);
+                    nrOfImportedEffortFiles.getAndIncrement();
+                } catch (IOException e) {
+                    throw new UncheckedIOException(e);
+                }
+            });
+            EventData.log(EventData.IMPORT, ProductsBoundedDomain.DOMAIN, EventData.Status.INFO, "Efforts were imported out of", Map.of("nrOfImportedEffortFiles", Integer.toString(nrOfImportedEffortFiles.get())));
+        } catch (IOException e) {
+            throw new UncheckedIOException(e);
+        }
     }
 
     @Override
@@ -90,13 +109,13 @@ public class ProductsAdapter implements ProductsPort {
     }
 
     @Override
-    public void importEfforts(@NotNull InputStream stream, @NotNull String source, boolean replace) throws IORuntimeException {
+    public void importEfforts(@NotNull Reader stream, @NotNull String source, boolean replace) throws IORuntimeException {
         try {
             YamlMapping data = Yaml.createYamlInput(stream).readYamlMapping();
             String contractId = data.string("contractId");
             String collaborator = data.string("collaborator");
             long assignmentOid = data.longNumber("assignmentOid");
-            Assignment assignment = Provider.findByOid(logic.realm().assignments(), assignmentOid).orElse(null);
+            Assignment assignment = Provider.findByOid(realm().assignments(), assignmentOid).orElse(null);
 
             YamlSequence efforts = data.yamlSequence("efforts");
             efforts.children().forEach((YamlNode effort) -> {
@@ -109,17 +128,14 @@ public class ProductsAdapter implements ProductsPort {
                     if (replace) {
                         logic.realm().efforts().delete(foundEffort.get());
                         logic.realm().efforts().update(newEffort);
-                        EventData.log(EventData.IMPORT, ProductsBoundedDomain.DOMAIN, EventData.Status.INFO, " effort replaced already exists.",
-                            Map.of("filename", source, "entity", newEffort));
+                        EventData.log(EventData.IMPORT, ProductsBoundedDomain.DOMAIN, EventData.Status.INFO, " effort replaced already exists.", Map.of("filename", source, "entity", newEffort));
 
                     } else {
-                        EventData.log(EventData.IMPORT, ProductsBoundedDomain.DOMAIN, EventData.Status.WARNING, " effort could not be imported because it already exists.",
-                            Map.of("filename", source, "entity", newEffort));
+                        EventData.log(EventData.IMPORT, ProductsBoundedDomain.DOMAIN, EventData.Status.WARNING, " effort could not be imported because it already exists.", Map.of("filename", source, "entity", newEffort));
                     }
                 } else {
                     logic.realm().efforts().update(newEffort);
-                    EventData.log(EventData.IMPORT, ProductsBoundedDomain.DOMAIN, EventData.Status.INFO, " effort added.",
-                        Map.of("filename", source, "entity", newEffort));
+                    EventData.log(EventData.IMPORT, ProductsBoundedDomain.DOMAIN, EventData.Status.INFO, " effort added.", Map.of("filename", source, "entity", newEffort));
                 }
             });
         } catch (IOException e) {

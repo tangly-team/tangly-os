@@ -20,6 +20,7 @@ import net.tangly.erp.products.services.ProductsRealm;
 import net.tangly.ui.app.domain.CmdFilesUpload;
 import org.jetbrains.annotations.NotNull;
 
+import java.io.InputStreamReader;
 import java.util.Set;
 
 /**
@@ -31,7 +32,7 @@ public class CmdFilesUploadEfforts extends CmdFilesUpload<ProductsRealm, Product
         super(domain, TSV_MIME, JSON_MIME);
         registerAllFinishedListener(event -> {
             Set<String> files = buffer().getFiles();
-            files.forEach(o -> domain.port().importEfforts(buffer().getInputStream(o), o, true));
+            files.forEach(o -> domain.port().importEfforts(new InputStreamReader(buffer().getInputStream(o)), o, true));
             close();
         });
     }

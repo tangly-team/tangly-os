@@ -11,20 +11,13 @@
  *
  */
 
-package net.tangly.commons.lang;
-
-import net.tangly.commons.lang.functional.Pair;
-import org.junit.jupiter.api.Test;
+package net.tangly.erp;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class PairTest {
-    @Test
-    void pairTest() {
-        final String leftValue = "leftValue";
-        final Integer rightValue = 42;
-        Pair<String, Integer> pair = Pair.of(leftValue, rightValue);
-        assertThat(pair.left()).isEqualTo(leftValue);
-        assertThat(pair.right()).isEqualTo(rightValue);
+class Test {
+    @org.junit.jupiter.api.Test
+    void dummyTest() {
+        assertThat(true).isTrue();
     }
 }

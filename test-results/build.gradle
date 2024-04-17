@@ -18,7 +18,7 @@
  */
 
 plugins {
-    id 'java-app-conventions'
+    id 'application'
     id 'test-report-aggregation'
     id 'jacoco-report-aggregation'
 }
@@ -30,6 +30,10 @@ project.ext.moduleName = "${project.ext.groupId}.${project.ext.artifactId}"
 project.ext.inceptionYear = '1996'
 project.description = "tangly OS components"
 
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
 
 dependencies {
     testReportAggregation project(':net.tangly.bdd')
@@ -69,10 +73,8 @@ dependencies {
     jacocoAggregation project(':net.tangly.gleam')
     jacocoAggregation project(':net.tangly.ui')
     jacocoAggregation project(':net.tangly.web')
-}
 
-application {
-    mainClassName = "net.tangly.erp.ui.Main"
+    testImplementation(libs.bundles.test.deps)
 }
 
 reporting {

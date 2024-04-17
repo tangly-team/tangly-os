@@ -24,7 +24,7 @@ import net.tangly.erp.products.services.ProductsPort;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
-import java.io.InputStream;
+import java.io.Reader;
 import java.nio.file.FileSystem;
 import java.nio.file.Files;
 import java.time.LocalDate;
@@ -47,7 +47,7 @@ class ProductsPortTest {
             handler.realm().efforts().deleteAll();
             assertThat(handler.realm().efforts().items()).isEmpty();
 
-            InputStream stream = Files.newInputStream(store.dataRoot().resolve(ProductsBoundedDomain.DOMAIN, "2020", filename));
+            Reader stream = Files.newBufferedReader(store.dataRoot().resolve(ProductsBoundedDomain.DOMAIN, "2020", filename));
             handler.importEfforts(stream, filename, true);
             assertThat(handler).isNotNull();
             assertThat(handler.realm().efforts().items()).isNotEmpty();

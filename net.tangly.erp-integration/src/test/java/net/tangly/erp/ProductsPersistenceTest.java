@@ -18,6 +18,7 @@ import com.google.common.jimfs.Jimfs;
 import net.tangly.erp.products.ports.ProductsAdapter;
 import net.tangly.erp.products.ports.ProductsEntities;
 import net.tangly.erp.products.services.ProductsBoundedDomain;
+import net.tangly.erp.products.services.ProductsBusinessLogic;
 import org.junit.jupiter.api.Test;
 
 import java.nio.file.FileSystem;
@@ -30,17 +31,16 @@ class ProductsPersistenceTest {
         try (FileSystem fs = Jimfs.newFileSystem(Configuration.unix())) {
             var store = new ErpStore(fs);
             store.createRepository();
-
-            var handler = new ProductsAdapter(new ProductsEntities(store.dbRoot().resolve(ProductsBoundedDomain.DOMAIN)), null,
-                store.dataRoot().resolve(ProductsBoundedDomain.DOMAIN), store.reportsRoot().resolve(ProductsBoundedDomain.DOMAIN));
+            var realm = new ProductsEntities(store.dbRoot().resolve(ProductsBoundedDomain.DOMAIN));
+            var handler = new ProductsAdapter(realm, new ProductsBusinessLogic(realm), store.dataRoot().resolve(ProductsBoundedDomain.DOMAIN), store.reportsRoot().resolve(ProductsBoundedDomain.DOMAIN));
             handler.importEntities();
             assertThat(handler.realm().products().items()).isNotEmpty();
             assertThat(handler.realm().assignments().items()).isNotEmpty();
             assertThat(handler.realm().efforts().items()).isNotEmpty();
             handler.realm().close();
 
-            handler = new ProductsAdapter(new ProductsEntities(store.dbRoot().resolve(ProductsBoundedDomain.DOMAIN)), null,
-                store.dataRoot().resolve(ProductsBoundedDomain.DOMAIN), store.reportsRoot().resolve(ProductsBoundedDomain.DOMAIN));
+            realm = new ProductsEntities(store.dbRoot().resolve(ProductsBoundedDomain.DOMAIN));
+            handler = new ProductsAdapter(realm, new ProductsBusinessLogic(realm), store.dataRoot().resolve(ProductsBoundedDomain.DOMAIN), store.reportsRoot().resolve(ProductsBoundedDomain.DOMAIN));
             assertThat(handler.realm().products().items()).isNotEmpty();
             assertThat(handler.realm().assignments().items()).isNotEmpty();
             assertThat(handler.realm().efforts().items()).isNotEmpty();
