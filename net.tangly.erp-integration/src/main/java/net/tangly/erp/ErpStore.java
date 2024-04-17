@@ -27,72 +27,42 @@ import java.nio.file.*;
  * The entities are stored in TSV and JSON file as resources of the test component. The store copies all the resources in an in-memory file system for efficient tests.
  */
 public record ErpStore(@NotNull FileSystem fs) {
-    static final String PACKAGE_NAME = "net/tangly/";
+    static final String ORGANIZATION = "/organization/";
+    static final String DATABASE = "db/";
+    static final String DATA = "data/";
+    static final String REPORTS = "reports/";
+
     static final String CRM = "customers/";
-    static final String EFFORTS = "efforts/";
     static final String LEDGER = "ledger/";
     static final String PRODUCTS = "products/";
     static final String INVOICES = "invoices/";
-    static final String REPORTS = "reports/";
+
     static final String VCARDS = "vcards/";
     static final String PICTURES = "pictures/";
+
+    static final String PACKAGE_NAME = "net/tangly/";
     static final String CRM_PACKAGE_NAME = PACKAGE_NAME + CRM;
     static final String LEDGER_PACKAGE_NAME = PACKAGE_NAME + LEDGER;
     static final String PRODUCTS_PACKAGE_NAME = PACKAGE_NAME + PRODUCTS;
     static final String INVOICES_PACKAGE_NAME = PACKAGE_NAME + INVOICES;
+
     static final String VCARDS_PACKAGE_NAME = CRM_PACKAGE_NAME + VCARDS;
     static final String PICTURES_PACKAGE_NAME = CRM_PACKAGE_NAME + PICTURES;
     static final String REPORTS_PACKAGE_NAME = PACKAGE_NAME + REPORTS;
-    static final String ORGANIZATION = "/organization/";
-    static final String DATABASE = "db/";
 
-    public Path organizationRoot() {
-        return fs.getPath(ORGANIZATION);
+
+    public Path dbRoot() {
+        return fs.getPath(ORGANIZATION, "db/");
     }
 
-    public Path crmDb() {
-        return fs.getPath(ORGANIZATION, "db/customers/");
-    }
-
-    public Path crmRoot() {
-        return fs.getPath(ORGANIZATION, CRM);
-    }
-
-    public Path ledgerRoot() {
-        return fs.getPath(ORGANIZATION, LEDGER);
-    }
-
-    public Path invoicesRoot() {
-        return fs.getPath(ORGANIZATION, INVOICES);
-    }
-
-    public Path productsRoot() {
-        return fs.getPath(ORGANIZATION, PRODUCTS);
-    }
-
-    public Path vcardsRoot() {
-        return crmRoot().resolve(VCARDS);
-    }
-
-    public Path picturesRoot() {
-        return crmRoot().resolve(PICTURES);
+    public Path dataRoot() {
+        return fs.getPath(ORGANIZATION, "data");
     }
 
     public Path reportsRoot() {
-        return fs.getPath(ORGANIZATION, REPORTS);
+        return fs.getPath(ORGANIZATION, "reports");
     }
 
-    public Path effortsRoot() {
-        return productsRoot().resolve(EFFORTS);
-    }
-
-    public Path ledgerReportsRoot() {
-        return reportsRoot().resolve(LEDGER);
-    }
-
-    public Path invoiceReportsRoot() {
-        return reportsRoot().resolve(INVOICES);
-    }
 
     /**
      * Sets up the test environment for integration tests of the CRM domain: CRM entities, invoices, and ledger.
@@ -100,60 +70,71 @@ public record ErpStore(@NotNull FileSystem fs) {
     public void createRepository() {
         try {
             Files.createDirectory(fs.getPath(ORGANIZATION));
-            Files.createDirectory(fs.getPath(ORGANIZATION, CRM));
-            Files.createDirectory(fs.getPath(ORGANIZATION, CRM, VCARDS));
-            Files.createDirectory(fs.getPath(ORGANIZATION, CRM, PICTURES));
-            Files.createDirectory(fs.getPath(ORGANIZATION, LEDGER));
-            Files.createDirectory(fs.getPath(ORGANIZATION, PRODUCTS));
-            Files.createDirectory(fs.getPath(ORGANIZATION, PRODUCTS, EFFORTS));
-            Files.createDirectory(fs.getPath(ORGANIZATION, INVOICES));
-            Files.createDirectory(fs.getPath(ORGANIZATION, INVOICES, "2015/"));
-            Files.createDirectory(fs.getPath(ORGANIZATION, INVOICES, "2016/"));
-            Files.createDirectory(fs.getPath(ORGANIZATION, INVOICES, "2017/"));
-            Files.createDirectory(fs.getPath(ORGANIZATION, INVOICES, "2018/"));
-            Files.createDirectory(fs.getPath(ORGANIZATION, INVOICES, "2019/"));
-            Files.createDirectory(fs.getPath(ORGANIZATION, INVOICES, "2020/"));
-            Files.createDirectory(fs.getPath(ORGANIZATION, INVOICES, "2021/"));
-            Files.createDirectory(fs.getPath(ORGANIZATION, REPORTS));
-            Files.createDirectory(fs.getPath(ORGANIZATION, REPORTS, LEDGER));
-            Files.createDirectory(fs.getPath(ORGANIZATION, REPORTS, INVOICES));
-            Files.createDirectory(fs.getPath(ORGANIZATION, DATABASE));
-            Files.createDirectory(crmDb());
 
-            copy(CRM_PACKAGE_NAME, crmRoot(), CrmAdapter.LEADS_TSV);
-            copy(CRM_PACKAGE_NAME, crmRoot(), CrmAdapter.NATURAL_ENTITIES_TSV);
-            copy(CRM_PACKAGE_NAME, crmRoot(), CrmAdapter.LEGAL_ENTITIES_TSV);
-            copy(CRM_PACKAGE_NAME, crmRoot(), CrmAdapter.EMPLOYEES_TSV);
-            copy(CRM_PACKAGE_NAME, crmRoot(), CrmAdapter.CONTRACTS_TSV);
-            copy(CRM_PACKAGE_NAME, crmRoot(), CrmAdapter.INTERACTIONS_TSV);
-            copy(CRM_PACKAGE_NAME, crmRoot(), CrmAdapter.ACTIVITIES_TSV);
-            copy(CRM_PACKAGE_NAME, crmRoot(), CrmAdapter.SUBJECTS_TSV);
-            copy(CRM_PACKAGE_NAME, crmRoot(), CrmAdapter.COMMENTS_TSV);
+            createDomainPaths(CRM);
+            Files.createDirectory(dataRoot().resolve(CRM, VCARDS));
+            Files.createDirectory(dataRoot().resolve(CRM, PICTURES));
 
-            copy(PRODUCTS_PACKAGE_NAME, productsRoot(), ProductsAdapter.PRODUCTS_TSV);
-            copy(PRODUCTS_PACKAGE_NAME, productsRoot(), ProductsAdapter.ASSIGNMENTS_TSV);
-            copy(PRODUCTS_PACKAGE_NAME, productsRoot(), ProductsAdapter.EFFORTS_TSV);
-            copy(PRODUCTS_PACKAGE_NAME + EFFORTS, effortsRoot(), "efforts.yaml");
+            createDomainPaths(LEDGER);
 
-            copy(LEDGER_PACKAGE_NAME, ledgerRoot(), "ledger.tsv");
-            copy(LEDGER_PACKAGE_NAME, ledgerRoot(), "2015-journal.tsv");
-            copy(LEDGER_PACKAGE_NAME, ledgerRoot(), "2016-journal.tsv");
-            copy(INVOICES_PACKAGE_NAME, invoicesRoot(), InvoicesAdapter.ARTICLES_TSV);
+            createDomainPaths(PRODUCTS);
+            createYearFolders(dataRoot().resolve(PRODUCTS));
+            createYearFolders(reportsRoot().resolve(PRODUCTS));
 
-            copy(STR."\{INVOICES_PACKAGE_NAME}2015/", invoicesRoot().resolve("2015"), "2015-8001-Invoice-HSLU-December.json");
-            copy(STR."\{INVOICES_PACKAGE_NAME}2016/", invoicesRoot().resolve("2016"), "2016-8001-Invoice-HSLU-October.json");
-            copy(STR."\{INVOICES_PACKAGE_NAME}2017/", invoicesRoot().resolve("2017"), "2017-8001-Invoice-HSLU-February.json");
-            copy(STR."\{INVOICES_PACKAGE_NAME}2017/", invoicesRoot().resolve("2017"), "2017-8022-Invoice-HSLU-December.json");
-            copy(STR."\{INVOICES_PACKAGE_NAME}2018/", invoicesRoot().resolve("2018"), "2018-8001-Invoice-HSLU-January.json");
-            copy(STR."\{INVOICES_PACKAGE_NAME}2018/", invoicesRoot().resolve("2018"), "2018-8022-Invoice-HSLU-November.json");
-            copy(STR."\{INVOICES_PACKAGE_NAME}2019/", invoicesRoot().resolve("2019"), "2019-8020-Invoice-HSLU-December.json");
-            copy(STR."\{INVOICES_PACKAGE_NAME}2020/", invoicesRoot().resolve("2020"), "2020-8001-Invoice-HSLU-May.json");
+            createDomainPaths(INVOICES);
+            createYearFolders(dataRoot().resolve(INVOICES));
+            createYearFolders(reportsRoot().resolve(INVOICES));
 
-            copy(VCARDS_PACKAGE_NAME, vcardsRoot(), "1-MarcelBaumann.vcf");
-            copy(PICTURES_PACKAGE_NAME, picturesRoot(), "marcelbaumann.jpeg");
+            var crmRoot = dataRoot().resolve(CRM);
+            copy(CRM_PACKAGE_NAME, crmRoot, CrmAdapter.LEADS_TSV);
+            copy(CRM_PACKAGE_NAME, crmRoot, CrmAdapter.NATURAL_ENTITIES_TSV);
+            copy(CRM_PACKAGE_NAME, crmRoot, CrmAdapter.LEGAL_ENTITIES_TSV);
+            copy(CRM_PACKAGE_NAME, crmRoot, CrmAdapter.EMPLOYEES_TSV);
+            copy(CRM_PACKAGE_NAME, crmRoot, CrmAdapter.CONTRACTS_TSV);
+            copy(CRM_PACKAGE_NAME, crmRoot, CrmAdapter.INTERACTIONS_TSV);
+            copy(CRM_PACKAGE_NAME, crmRoot, CrmAdapter.ACTIVITIES_TSV);
+            copy(CRM_PACKAGE_NAME, crmRoot, CrmAdapter.SUBJECTS_TSV);
+            copy(CRM_PACKAGE_NAME, crmRoot, CrmAdapter.COMMENTS_TSV);
+            copy(VCARDS_PACKAGE_NAME, crmRoot.resolve(VCARDS), "1-MarcelBaumann.vcf");
+            copy(PICTURES_PACKAGE_NAME, crmRoot.resolve(PICTURES), "marcelbaumann.jpeg");
+
+            var productsRoot = dataRoot().resolve(PRODUCTS);
+            copy(PRODUCTS_PACKAGE_NAME, productsRoot, ProductsAdapter.PRODUCTS_TSV);
+            copy(PRODUCTS_PACKAGE_NAME, productsRoot, ProductsAdapter.ASSIGNMENTS_TSV);
+            copy(PRODUCTS_PACKAGE_NAME, productsRoot, ProductsAdapter.EFFORTS_TSV);
+            copy(STR."\{PRODUCTS_PACKAGE_NAME}2020/", productsRoot.resolve("2020"), "2020-efforts.yaml");
+
+            var ledgerRoot = dataRoot().resolve(LEDGER);
+            copy(LEDGER_PACKAGE_NAME, ledgerRoot, "ledger.tsv");
+            copy(LEDGER_PACKAGE_NAME, ledgerRoot, "2015-journal.tsv");
+            copy(LEDGER_PACKAGE_NAME, ledgerRoot, "2016-journal.tsv");
+
+            var invoicesRoot = dataRoot().resolve(INVOICES);
+            copy(INVOICES_PACKAGE_NAME, invoicesRoot, InvoicesAdapter.ARTICLES_TSV);
+            copy(STR."\{INVOICES_PACKAGE_NAME}2015/", invoicesRoot.resolve("2015"), "2015-8001-Invoice-HSLU-December.json");
+            copy(STR."\{INVOICES_PACKAGE_NAME}2016/", invoicesRoot.resolve("2016"), "2016-8001-Invoice-HSLU-October.json");
+            copy(STR."\{INVOICES_PACKAGE_NAME}2017/", invoicesRoot.resolve("2017"), "2017-8001-Invoice-HSLU-February.json");
+            copy(STR."\{INVOICES_PACKAGE_NAME}2017/", invoicesRoot.resolve("2017"), "2017-8022-Invoice-HSLU-December.json");
+            copy(STR."\{INVOICES_PACKAGE_NAME}2018/", invoicesRoot.resolve("2018"), "2018-8001-Invoice-HSLU-January.json");
+            copy(STR."\{INVOICES_PACKAGE_NAME}2018/", invoicesRoot.resolve("2018"), "2018-8022-Invoice-HSLU-November.json");
+            copy(STR."\{INVOICES_PACKAGE_NAME}2019/", invoicesRoot.resolve("2019"), "2019-8020-Invoice-HSLU-December.json");
+            copy(STR."\{INVOICES_PACKAGE_NAME}2020/", invoicesRoot.resolve("2020"), "2020-8001-Invoice-HSLU-May.json");
+
             copy(REPORTS_PACKAGE_NAME, reportsRoot(), "trefoil.svg");
         } catch (IOException e) {
             throw new UncheckedIOException(e);
+        }
+    }
+
+    private void createDomainPaths(String domain) throws IOException {
+        Files.createDirectories(fs.getPath(ORGANIZATION, DATA, domain));
+        Files.createDirectories(fs.getPath(ORGANIZATION, DATABASE, domain));
+        Files.createDirectories(fs.getPath(ORGANIZATION, REPORTS, domain));
+    }
+
+    private void createYearFolders(Path folder) throws IOException {
+        for (int year = 2015; year <= 2024; year++) {
+            Files.createDirectory(folder.resolve(STR."\{year}"));
         }
     }
 

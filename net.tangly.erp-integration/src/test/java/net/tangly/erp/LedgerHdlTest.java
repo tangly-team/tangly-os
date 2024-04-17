@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2022 Marcel Baumann
+ * Copyright 2006-2024 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -8,6 +8,7 @@
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ *
  */
 
 package net.tangly.erp;
@@ -15,8 +16,9 @@ package net.tangly.erp;
 import com.google.common.jimfs.Configuration;
 import com.google.common.jimfs.Jimfs;
 import net.tangly.erp.ledger.domain.Account;
-import net.tangly.erp.ledger.ports.LedgerEntities;
 import net.tangly.erp.ledger.ports.LedgerAdapter;
+import net.tangly.erp.ledger.ports.LedgerEntities;
+import net.tangly.erp.ledger.services.LedgerBoundedDomain;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -32,10 +34,9 @@ class LedgerHdlTest {
             var store = new ErpStore(fs);
             store.createRepository();
 
-            var handler = new LedgerAdapter(new LedgerEntities(), store.ledgerRoot());
+            var handler = new LedgerAdapter(new LedgerEntities(), store.dataRoot().resolve(LedgerBoundedDomain.DOMAIN), store.reportsRoot().resolve(LedgerBoundedDomain.DOMAIN));
             handler.importEntities();
-            assertThat(handler.realm().accounts().items().stream().filter(Account::isAggregate).filter(o -> o.aggregatedAccounts().isEmpty()).findAny())
-                .isEmpty();
+            assertThat(handler.realm().accounts().items().stream().filter(Account::isAggregate).filter(o -> o.aggregatedAccounts().isEmpty()).findAny()).isEmpty();
             assertThat(handler.realm().assets()).isNotEmpty();
             assertThat(handler.realm().liabilities()).isNotEmpty();
             assertThat(handler.realm().profitAndLoss()).isNotEmpty();
@@ -53,7 +54,9 @@ class LedgerHdlTest {
             var store = new ErpStore(fs);
             store.createRepository();
 
-            var handler = new LedgerAdapter(new LedgerEntities(), store.ledgerRoot());
+            var ledgerData = store.dataRoot().resolve(LedgerBoundedDomain.DOMAIN);
+            var ledgerReport = store.reportsRoot().resolve(LedgerBoundedDomain.DOMAIN);
+            var handler = new LedgerAdapter(new LedgerEntities(), ledgerData, ledgerReport);
             handler.importEntities();
             int nrOfAccounts = handler.realm().accounts().items().size();
             int nrOfBookableAccounts = handler.realm().bookableAccounts().size();
@@ -61,7 +64,7 @@ class LedgerHdlTest {
             int nrOfProfitAndLossAccounts = handler.realm().profitAndLoss().size();
 
             handler.exportEntities();
-            handler = new LedgerAdapter(new LedgerEntities(), store.ledgerRoot());
+            handler = new LedgerAdapter(new LedgerEntities(), ledgerData, ledgerReport);
             handler.importEntities();
             assertThat(handler.realm().accounts().items()).hasSize(nrOfAccounts);
             assertThat(handler.realm().bookableAccounts()).hasSize(nrOfBookableAccounts);
@@ -75,7 +78,7 @@ class LedgerHdlTest {
         try (FileSystem fs = Jimfs.newFileSystem(Configuration.unix())) {
             var store = new ErpStore(fs);
             store.createRepository();
-            var handler = new LedgerAdapter(new LedgerEntities(), store.ledgerRoot());
+            var handler = new LedgerAdapter(new LedgerEntities(), store.dataRoot().resolve(LedgerBoundedDomain.DOMAIN), store.reportsRoot().resolve(LedgerBoundedDomain.DOMAIN));
             handler.importEntities();
             assertThat(handler.realm().transactions(LocalDate.of(2015, 1, 1), LocalDate.of(2016, 12, 31))).isNotEmpty();
         }
@@ -86,13 +89,15 @@ class LedgerHdlTest {
         try (FileSystem fs = Jimfs.newFileSystem(Configuration.unix())) {
             var store = new ErpStore(fs);
             store.createRepository();
-            var handler = new LedgerAdapter(new LedgerEntities(), store.ledgerRoot());
+            var ledgerData = store.dataRoot().resolve(LedgerBoundedDomain.DOMAIN);
+            var ledgerReport = store.reportsRoot().resolve(LedgerBoundedDomain.DOMAIN);
+            var handler = new LedgerAdapter(new LedgerEntities(), ledgerData, ledgerReport);
             handler.importEntities();
             int nrOfTransactions = handler.realm().transactions().items().size();
 
             handler.exportEntities();
 
-            handler = new LedgerAdapter(new LedgerEntities(), store.ledgerRoot());
+            handler = new LedgerAdapter(new LedgerEntities(), ledgerData, ledgerReport);
             handler.importEntities();
             assertThat(handler.realm().transactions().items()).hasSize(nrOfTransactions);
         }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2022 Marcel Baumann
+ * Copyright 2006-2024 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -8,6 +8,7 @@
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ *
  */
 
 package net.tangly.erp.products.ui;
@@ -19,11 +20,14 @@ import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.textfield.TextField;
+import net.tangly.commons.utilities.AsciiDoctorHelper;
 import net.tangly.erp.products.domain.Assignment;
 import net.tangly.erp.products.services.ProductsBoundedDomain;
 import net.tangly.ui.app.domain.Cmd;
 import net.tangly.ui.components.VaadinUtils;
 import org.jetbrains.annotations.NotNull;
+
+import java.time.LocalDate;
 
 public class CmdCreateAssignmentDocument implements Cmd {
     public final String TITLE = "Create Assignment Document";
@@ -72,5 +76,10 @@ public class CmdCreateAssignmentDocument implements Cmd {
     protected void close() {
         dialog.close();
         dialog = null;
+    }
+
+    private String assignmentFileName(@NotNull String assignment, @NotNull String collaborator, LocalDate from, LocalDate to) {
+        return STR."\{assignment}-\{collaborator}-\{from.toString()}_\{to.toString()}\{AsciiDoctorHelper.ASCIIDOC_EXT}";
+
     }
 }

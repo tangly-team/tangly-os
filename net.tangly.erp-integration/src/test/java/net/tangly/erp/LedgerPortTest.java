@@ -19,6 +19,7 @@ import net.tangly.erp.ledger.ports.ClosingReportAsciiDoc;
 import net.tangly.erp.ledger.ports.LedgerAdapter;
 import net.tangly.erp.ledger.ports.LedgerEntities;
 import net.tangly.erp.ledger.ports.LedgerTsvHdl;
+import net.tangly.erp.ledger.services.LedgerBoundedDomain;
 import net.tangly.erp.ledger.services.LedgerRealm;
 import org.junit.jupiter.api.Test;
 
@@ -41,10 +42,11 @@ class LedgerPortTest {
         final String filenameWithoutExtension = "2016-period";
         try (FileSystem fs = Jimfs.newFileSystem(Configuration.unix())) {
             var store = new ErpStore(fs);
-            var adapter = new LedgerAdapter(createLedger(store), store.ledgerRoot());
+            var adapter = new LedgerAdapter(createLedger(store), store.dataRoot().resolve(LedgerBoundedDomain.DOMAIN), store.reportsRoot().resolve(LedgerBoundedDomain.DOMAIN));
+            var reportsPath = store.reportsRoot().resolve(LedgerBoundedDomain.DOMAIN);
             adapter.exportLedgerDocument(filenameWithoutExtension, LocalDate.of(2015, 10, 1), LocalDate.of(2016, 12, 31), true, true);
-            assertThat(Files.exists(store.ledgerRoot().resolve(STR."\{filenameWithoutExtension}.adoc"))).isFalse();
-            assertThat(Files.exists(store.ledgerRoot().resolve(STR."\{filenameWithoutExtension}.pdf"))).isTrue();
+            assertThat(Files.exists(reportsPath.resolve(STR."\{filenameWithoutExtension}.adoc"))).isFalse();
+            assertThat(Files.exists(reportsPath.resolve(STR."\{filenameWithoutExtension}.pdf"))).isTrue();
         }
     }
 
@@ -55,9 +57,10 @@ class LedgerPortTest {
             store.createRepository();
 
             var handler = new LedgerTsvHdl(new LedgerEntities());
-            var path = store.ledgerRoot().resolve(LedgerAdapter.journalForYear(2015));
+            var ledgerDataPath = store.dataRoot().resolve(LedgerBoundedDomain.DOMAIN);
+            var path = ledgerDataPath.resolve(LedgerAdapter.journalForYear(2015));
             handler.importJournal(Files.newBufferedReader(path, StandardCharsets.UTF_8), path.toString());
-            path = store.ledgerRoot().resolve(LedgerAdapter.journalForYear(2016));
+            path = ledgerDataPath.resolve(LedgerAdapter.journalForYear(2016));
             handler.importJournal(Files.newBufferedReader(path, StandardCharsets.UTF_8), path.toString());
 
             var report = new ClosingReportAsciiDoc(handler.ledger());
@@ -69,7 +72,7 @@ class LedgerPortTest {
 
     private LedgerRealm createLedger(ErpStore store) {
         store.createRepository();
-        var ledgerHdl = new LedgerAdapter(new LedgerEntities(), store.ledgerRoot());
+        var ledgerHdl = new LedgerAdapter(new LedgerEntities(), store.dataRoot().resolve(LedgerBoundedDomain.DOMAIN), store.reportsRoot().resolve(LedgerBoundedDomain.DOMAIN));
         ledgerHdl.importEntities();
         return ledgerHdl.realm();
     }

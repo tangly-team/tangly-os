@@ -33,6 +33,12 @@ Bounded domains are independent of each other.
 The order of import is not relevant.
 Each bounded domain has its own import operation and is responsible for the ordering of the associated import operations.
 
+Import files are located under _tangle-erp/import/bounded-domain_.
+
+Generated reports are located under _tangle-erp/reports/bounded-domain_.
+
+Database files are located under _tangle-erp/db/bounded-domain_.
+
 == Products
 
 === Effort Tracking Workflow
@@ -129,6 +135,19 @@ Collaborator activities are grouped per assignment and often per month to genera
 }
 @endsalt
 ....
+
+==== Product Effort Aggregateion
+
+Each tab has a date range selection field.
+
+contracts:: Sum of efforts order by contract identifier
+- Sum all efforts per contractId for the product in a contract tab
+- Sum all efforts for the product in overall in a contract tab
+collaborators:: Sum of efforts order by collaborator internal id
+- Sum all efforts per collaborator for a specific contract id for the product in a collaborar tab
+- Sum all efforts per collaborator for the product in a collaborator tab
+assignments:: Sum of efforts order by assignment oid
+- Sum all efforts per assignment for the product in an assignment tab
 
 === Invoices
 

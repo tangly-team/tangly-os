@@ -167,7 +167,7 @@ public class Erp {
         } else {
             var realm = (databases() == null) ? new ProductsEntities() : new ProductsEntities(Path.of(databases(), ProductsBoundedDomain.DOMAIN));
             var logic = new ProductsBusinessLogic(realm);
-            return new ProductsBoundedDomain(realm, logic, new ProductsAdapter(realm, logic, Path.of(imports(), ProductsBoundedDomain.DOMAIN)), registry);
+            return new ProductsBoundedDomain(realm, logic, new ProductsAdapter(realm, logic, Path.of(imports()), Path.of(reports())), registry);
         }
     }
 
@@ -189,7 +189,7 @@ public class Erp {
             return null;
         } else {
             var realm = (databases() == null) ? new LedgerEntities() : new LedgerEntities(Path.of(databases(), LedgerBoundedDomain.DOMAIN));
-            return new LedgerBoundedDomain(realm, new LedgerBusinessLogic(realm), new LedgerAdapter(realm, Path.of(reports())), registry);
+            return new LedgerBoundedDomain(realm, new LedgerBusinessLogic(realm), new LedgerAdapter(realm, Path.of(imports()), Path.of(reports())), registry);
         }
     }
 

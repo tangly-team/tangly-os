@@ -1,0 +1,22 @@
+assignmentOid: 401
+contractId: STG-2020
+collaborator: marcelbaumann
+efforts:
+    -
+        date: 2021-06-25
+        duration: 60
+        text: >
+            The effort is related to the _development_ of the new product catalog.
+    -
+        date: 2021-06-26
+        duration: 120
+        text: >
+            The effort is related to the _development_ of the new product catalog.
+    -
+        date: 2021-06-27
+        duration: 30
+        text: >
+            we shall test the _asciidoc syntax_ for the *effort* description.
+
+            - first item in the list
+            - second item in the list

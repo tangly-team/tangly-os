@@ -14,9 +14,11 @@
 package net.tangly.erp;
 
 import com.google.common.jimfs.Jimfs;
+import net.tangly.core.providers.Provider;
 import net.tangly.erp.products.ports.EffortReportEngine;
 import net.tangly.erp.products.ports.ProductsAdapter;
 import net.tangly.erp.products.ports.ProductsEntities;
+import net.tangly.erp.products.services.ProductsBoundedDomain;
 import net.tangly.erp.products.services.ProductsBusinessLogic;
 import net.tangly.erp.products.services.ProductsPort;
 import org.junit.jupiter.api.Test;
@@ -25,6 +27,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.FileSystem;
 import java.nio.file.Files;
+import java.time.LocalDate;
+import java.time.Month;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -34,7 +38,7 @@ class ProductsPortTest {
     @Test
     void testImportEfforts() throws IOException {
         try (FileSystem fs = Jimfs.newFileSystem(com.google.common.jimfs.Configuration.unix())) {
-            final String filename = "efforts.yaml";
+            final String filename = "2020-efforts.yaml";
             var store = new ErpStore(fs);
             var handler = createAdapter(store);
 
@@ -43,10 +47,11 @@ class ProductsPortTest {
             handler.realm().efforts().deleteAll();
             assertThat(handler.realm().efforts().items()).isEmpty();
 
-            InputStream stream = Files.newInputStream(store.effortsRoot().resolve(filename));
+            InputStream stream = Files.newInputStream(store.dataRoot().resolve(ProductsBoundedDomain.DOMAIN, "2020", filename));
             handler.importEfforts(stream, filename, true);
             assertThat(handler).isNotNull();
             assertThat(handler.realm().efforts().items()).isNotEmpty();
+            assertThat(handler.realm().efforts().items().size()).isEqualTo(3);
         }
     }
 
@@ -57,8 +62,8 @@ class ProductsPortTest {
             var handler = createAdapter(store);
             handler.importEntities();
             EffortReportEngine reporter = new EffortReportEngine(handler.logic());
-//            reporter.create(Provider.findByOid(entities.assignments(), ASSIGNMENT_OID).orElseThrow(), LocalDate.of(2020, Month.JANUARY, 1),
-//                LocalDate.of(2020, Month.JANUARY, 31), store.reportsRoot());
+            reporter.createAsciiDocReport(Provider.findByOid(handler.realm().assignments(), ASSIGNMENT_OID).orElseThrow(), LocalDate.of(2020, Month.JANUARY, 1),
+                LocalDate.of(2020, Month.JANUARY, 31), store.reportsRoot().resolve(ProductsBoundedDomain.DOMAIN, "efforts.adoc"));
             assertThat(reporter).isNotNull();
         }
     }
@@ -67,6 +72,6 @@ class ProductsPortTest {
         store.createRepository();
         var entities = new ProductsEntities();
         var logic = new ProductsBusinessLogic(entities);
-        return new ProductsAdapter(entities, logic, store.productsRoot());
+        return new ProductsAdapter(entities, logic, store.dataRoot().resolve(ProductsBoundedDomain.DOMAIN), store.reportsRoot().resolve(ProductsBoundedDomain.DOMAIN));
     }
 }

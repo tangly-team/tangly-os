@@ -17,7 +17,11 @@ import net.tangly.commons.logger.EventData;
 import net.tangly.commons.utilities.AsciiDoctorHelper;
 import net.tangly.core.DateRange;
 import net.tangly.core.domain.Port;
-import net.tangly.erp.invoices.artifacts.*;
+import net.tangly.core.domain.PortUtilities;
+import net.tangly.erp.invoices.artifacts.InvoiceAsciiDoc;
+import net.tangly.erp.invoices.artifacts.InvoiceJson;
+import net.tangly.erp.invoices.artifacts.InvoiceQrCode;
+import net.tangly.erp.invoices.artifacts.InvoiceZugFerd;
 import net.tangly.erp.invoices.domain.Invoice;
 import net.tangly.erp.invoices.services.InvoicesBoundedDomain;
 import net.tangly.erp.invoices.services.InvoicesPort;
@@ -93,7 +97,7 @@ public class InvoicesAdapter implements InvoicesPort {
         handler.exportArticles(folder.resolve(ARTICLES_TSV));
         var invoiceJson = new InvoiceJson(realm);
         realm.invoices().items().forEach(o -> {
-            var invoiceFolder = InvoicesUtilities.resolvePath(folder, o);
+            var invoiceFolder = PortUtilities.resolvePath(folder, o.name());
             var invoicePath = invoiceFolder.resolve(o.name() + JSON_EXT);
             invoiceJson.exports(o, invoicePath, Collections.emptyMap());
             EventData.log(EventData.EXPORT, InvoicesBoundedDomain.DOMAIN, EventData.Status.SUCCESS, "Invoice exported to JSON {}", Map.of(INVOICE, o, INVOICE_PATH, invoicePath));
@@ -108,7 +112,7 @@ public class InvoicesAdapter implements InvoicesPort {
 
     @Override
     public boolean doesInvoiceDocumentExist(@NotNull Invoice invoice) {
-        Path invoiceFolder = InvoicesUtilities.resolvePath(folder, invoice);
+        Path invoiceFolder = PortUtilities.resolvePath(folder, invoice.name());
         Path invoicePdfPath = invoiceFolder.resolve(invoice.name() + AsciiDoctorHelper.PDF_EXT);
         return Files.exists(invoicePdfPath);
     }
@@ -122,7 +126,7 @@ public class InvoicesAdapter implements InvoicesPort {
     @Override
     public void exportInvoiceDocument(@NotNull Invoice invoice, boolean withQrCode, boolean withEN16931, boolean overwrite) {
         var asciiDocGenerator = new InvoiceAsciiDoc(invoice.locale());
-        Path invoiceFolder = InvoicesUtilities.resolvePath(folder, invoice);
+        Path invoiceFolder = PortUtilities.resolvePath(folder, invoice.name());
         Path invoiceAsciiDocPath = invoiceFolder.resolve(invoice.name() + AsciiDoctorHelper.ASCIIDOC_EXT);
         asciiDocGenerator.exports(invoice, invoiceAsciiDocPath, Collections.emptyMap());
         Path invoicePdfPath = invoiceFolder.resolve(invoice.name() + AsciiDoctorHelper.PDF_EXT);

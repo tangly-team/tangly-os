@@ -46,12 +46,14 @@ public class ProductsAdapter implements ProductsPort {
 
     private final ProductsBusinessLogic logic;
 
-    private final Path folder;
+    private final Path dataFolder;
+    private final Path reportFolder;
 
-    public ProductsAdapter(@NotNull ProductsRealm realm, @NotNull ProductsBusinessLogic logic, @NotNull Path folder) {
+    public ProductsAdapter(@NotNull ProductsRealm realm, @NotNull ProductsBusinessLogic logic, @NotNull Path dataFolder, Path reportFolder) {
         this.realm = realm;
         this.logic = logic;
-        this.folder = folder;
+        this.dataFolder = dataFolder;
+        this.reportFolder = reportFolder;
     }
 
     @Override
@@ -67,17 +69,17 @@ public class ProductsAdapter implements ProductsPort {
     @Override
     public void importEntities() {
         var handler = new ProductsTsvHdl(realm());
-        Port.importEntities(folder, PRODUCTS_TSV, handler::importProducts);
-        Port.importEntities(folder, ASSIGNMENTS_TSV, handler::importAssignments);
-        Port.importEntities(folder, EFFORTS_TSV, handler::importEfforts);
+        Port.importEntities(dataFolder, PRODUCTS_TSV, handler::importProducts);
+        Port.importEntities(dataFolder, ASSIGNMENTS_TSV, handler::importAssignments);
+        Port.importEntities(dataFolder, EFFORTS_TSV, handler::importEfforts);
     }
 
     @Override
     public void exportEntities() {
         var handler = new ProductsTsvHdl(realm());
-        handler.exportProducts(folder.resolve(PRODUCTS_TSV));
-        handler.exportAssignments(folder.resolve(ASSIGNMENTS_TSV));
-        handler.exportEfforts(folder.resolve(EFFORTS_TSV));
+        handler.exportProducts(dataFolder.resolve(PRODUCTS_TSV));
+        handler.exportAssignments(dataFolder.resolve(ASSIGNMENTS_TSV));
+        handler.exportEfforts(dataFolder.resolve(EFFORTS_TSV));
     }
 
     @Override
@@ -128,7 +130,7 @@ public class ProductsAdapter implements ProductsPort {
     @Override
     public void exportEffortsDocument(@NotNull Assignment assignment, LocalDate from, LocalDate to) {
         String collaborator = assignment.name().replace(",", "_").replace(" ", "");
-        var assignmentDocumentPath = folder.resolve(STR."\{assignment.id()}-\{collaborator}-\{from.toString()}_\{to.toString()}\{AsciiDoctorHelper.ASCIIDOC_EXT}");
+        var assignmentDocumentPath = reportFolder.resolve(STR."\{assignment.id()}-\{collaborator}-\{from.toString()}_\{to.toString()}\{AsciiDoctorHelper.ASCIIDOC_EXT}");
         var helper = new EffortReportEngine(logic);
         helper.createAsciiDocReport(assignment, from, to, assignmentDocumentPath);
     }

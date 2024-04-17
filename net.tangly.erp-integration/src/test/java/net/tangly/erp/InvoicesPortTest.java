@@ -1,10 +1,10 @@
 /*
- * Copyright 2006-2023 Marcel Baumann
+ * Copyright 2006-2024 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- *          http://www.apache.org/licenses/LICENSE-2.0
+ *          https://apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -14,9 +14,10 @@
 package net.tangly.erp;
 
 import com.google.common.jimfs.Jimfs;
-import net.tangly.erp.invoices.artifacts.InvoicesUtilities;
-import net.tangly.erp.invoices.ports.InvoicesEntities;
+import net.tangly.core.domain.PortUtilities;
 import net.tangly.erp.invoices.ports.InvoicesAdapter;
+import net.tangly.erp.invoices.ports.InvoicesEntities;
+import net.tangly.erp.invoices.services.InvoicesBoundedDomain;
 import org.apache.pdfbox.io.RandomAccessReadBuffer;
 import org.apache.pdfbox.pdfparser.PDFParser;
 import org.apache.pdfbox.pdmodel.PDDocument;
@@ -37,12 +38,14 @@ class InvoicesPortTest {
             var store = new ErpStore(fs);
             store.createRepository();
 
-            var port = new InvoicesAdapter(new InvoicesEntities(), store.invoiceReportsRoot());
-            var handler = new InvoicesAdapter(new InvoicesEntities(), store.invoicesRoot());
+            var invoicesData = store.dataRoot().resolve(InvoicesBoundedDomain.DOMAIN);
+            var invoicesReport = store.reportsRoot().resolve(InvoicesBoundedDomain.DOMAIN);
+            var port = new InvoicesAdapter(new InvoicesEntities(), invoicesReport);
+            var handler = new InvoicesAdapter(new InvoicesEntities(), invoicesData);
             handler.importEntities();
             port.exportInvoiceDocuments(true, true, true, null, null);
 
-            handler.realm().invoices().items().forEach(o -> assertThat(Files.exists(InvoicesUtilities.resolvePath(store.invoicesRoot(), o))).isTrue());
+            handler.realm().invoices().items().forEach(o -> assertThat(Files.exists(PortUtilities.resolvePath(invoicesData, o.name()))).isTrue());
         }
     }
 

@@ -13,6 +13,7 @@
 
 package net.tangly.erp.ledger.ports;
 
+import lombok.NonNull;
 import net.tangly.commons.logger.EventData;
 import net.tangly.commons.utilities.AsciiDoctorHelper;
 import net.tangly.core.domain.Port;
@@ -53,25 +54,27 @@ public class LedgerAdapter implements LedgerPort {
     public static final String LONG_TERM_THIRD_PARTY_CAPITAL_ACCOUNT = "2A";
     public static final String EQUITY_ACCOUNT = "28";
     public static final String CASH_ON_HAND_ACCOUNT = "100";
-    private final LedgerRealm ledger;
-    private final Path folder;
+    private final LedgerRealm realm;
+    private final Path dataFolder;
+    private final Path reportsFolder;
 
-    public LedgerAdapter(@NotNull LedgerRealm ledger, @NotNull Path folder) {
-        this.ledger = ledger;
-        this.folder = folder;
+    public LedgerAdapter(@NotNull LedgerRealm realm, @NonNull Path dataFolder, @NotNull Path reportsFolder) {
+        this.realm = realm;
+        this.dataFolder = dataFolder;
+        this.reportsFolder = reportsFolder;
     }
 
     @Override
     public LedgerRealm realm() {
-        return ledger;
+        return realm;
     }
 
     @Override
     public void importEntities() {
-        try (Stream<Path> stream = Files.walk(folder)) {
-            var handler = new LedgerTsvHdl(ledger);
-            Port.importEntities(folder, LEDGER, handler::importChartOfAccounts);
-            ledger.build();
+        try (Stream<Path> stream = Files.walk(dataFolder)) {
+            var handler = new LedgerTsvHdl(realm);
+            Port.importEntities(dataFolder, LEDGER, handler::importChartOfAccounts);
+            realm.build();
             stream.filter(file -> !Files.isDirectory(file) && file.getFileName().toString().endsWith(JOURNAL)).forEach(o -> {
                 try (Reader reader = Files.newBufferedReader(o, StandardCharsets.UTF_8)) {
                     handler.importJournal(reader, o.toString());
@@ -87,10 +90,10 @@ public class LedgerAdapter implements LedgerPort {
 
     @Override
     public void exportEntities() {
-        var handler = new LedgerTsvHdl(ledger);
-        handler.exportChartOfAccounts(folder.resolve(LEDGER));
+        var handler = new LedgerTsvHdl(realm);
+        handler.exportChartOfAccounts(dataFolder.resolve(LEDGER));
         realm().transactions().items().stream().map(Transaction::date).map(LocalDate::getYear).distinct().forEach(o -> {
-            Path journal = folder.resolve(journalForYear(o));
+            Path journal = dataFolder.resolve(journalForYear(o));
             handler.exportJournal(journal, LocalDate.of(o, Month.JANUARY, 1), LocalDate.of(o, Month.DECEMBER, 31));
             EventData.log(EventData.EXPORT, LedgerBoundedDomain.DOMAIN, EventData.Status.SUCCESS, "Journal exported {}", Map.of("journalPath", journal.toString(), "year", o));
         });
@@ -104,11 +107,11 @@ public class LedgerAdapter implements LedgerPort {
 
     @Override
     public void exportLedgerDocument(String name, LocalDate from, LocalDate to, boolean withVat, boolean withTransactions) {
-        var report = new ClosingReportAsciiDoc(ledger);
-        report.create(from, to, folder.resolve(name + AsciiDoctorHelper.ASCIIDOC_EXT), withVat, withTransactions);
-        AsciiDoctorHelper.createPdf(folder.resolve(name + AsciiDoctorHelper.ASCIIDOC_EXT), folder.resolve(name + AsciiDoctorHelper.PDF_EXT));
+        var report = new ClosingReportAsciiDoc(realm);
+        report.create(from, to, reportsFolder.resolve(name + AsciiDoctorHelper.ASCIIDOC_EXT), withVat, withTransactions);
+        AsciiDoctorHelper.createPdf(reportsFolder.resolve(name + AsciiDoctorHelper.ASCIIDOC_EXT), reportsFolder.resolve(name + AsciiDoctorHelper.PDF_EXT));
         try {
-            Files.delete(folder.resolve(name + AsciiDoctorHelper.ASCIIDOC_EXT));
+            Files.delete(reportsFolder.resolve(name + AsciiDoctorHelper.ASCIIDOC_EXT));
         } catch (IOException e) {
             throw new UncheckedIOException(e);
         }
