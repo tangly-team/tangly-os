@@ -59,9 +59,9 @@ public class InvoiceJson implements InvoiceGenerator {
         try (BufferedWriter writer = Files.newBufferedWriter(path, StandardCharsets.UTF_8)) {
             writer.write(invoiceJson.toString(4));
             EventData.log(EventData.EXPORT, InvoicesBoundedDomain.DOMAIN, EventData.Status.SUCCESS, "Invoice exported to JSON",
-                Map.ofEntries(Map.entry("filename", path), Map.entry("entity", invoice)));
+                Map.ofEntries(Map.entry(EventData.FILENAME, path), Map.entry(EventData.ENTITY, invoice)));
         } catch (IOException e) {
-            EventData.log(EventData.EXPORT, InvoicesBoundedDomain.DOMAIN, EventData.Status.FAILURE, "Invoice exported to JSON", Map.ofEntries(Map.entry("filename", path)), e);
+            EventData.log(EventData.EXPORT, InvoicesBoundedDomain.DOMAIN, EventData.Status.FAILURE, "Invoice exported to JSON", Map.ofEntries(Map.entry(EventData.FILENAME, path)), e);
             throw new UncheckedIOException(e);
         }
     }
@@ -86,12 +86,13 @@ public class InvoiceJson implements InvoiceGenerator {
                     logger.atInfo().log("Invoice {} is invalid", invoice.name());
                 }
                 EventData.log(EventData.IMPORT, InvoicesBoundedDomain.DOMAIN, EventData.Status.SUCCESS, "Invoice imported",
-                    Map.ofEntries(Map.entry("filename", source), Map.entry("entity", invoice)));
+                    Map.ofEntries(Map.entry(EventData.FILENAME, source), Map.entry(EventData.ENTITY, invoice)));
             } else {
-                EventData.log(EventData.IMPORT, InvoicesBoundedDomain.DOMAIN, EventData.Status.FAILURE, "Invalid JSON schema file", Map.ofEntries(Map.entry("filename", source)));
+                EventData.log(EventData.IMPORT, InvoicesBoundedDomain.DOMAIN, EventData.Status.FAILURE, "Invalid JSON schema file", Map.ofEntries(Map.entry(EventData.FILENAME, source)));
             }
         } catch (Exception e) {
-            EventData.log(EventData.IMPORT, InvoicesBoundedDomain.DOMAIN, EventData.Status.FAILURE, "Error during import of JSON", Map.ofEntries(Map.entry("filename", source)), e);
+            EventData.log(EventData.IMPORT, InvoicesBoundedDomain.DOMAIN, EventData.Status.FAILURE, "Error during import of JSON", Map.ofEntries(Map.entry(EventData.FILENAME, source)),
+                e);
         }
 
         return invoice;

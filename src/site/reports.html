@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright 2006-2022 Marcel Baumann
+  ~ Copyright 2006-2024 Marcel Baumann
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
   ~ the License at
@@ -8,6 +8,7 @@
   ~
   ~ Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
   ~ OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+  ~
   -->
 
 <!DOCTYPE html>
@@ -15,77 +16,136 @@
 <head>
     <meta charset="UTF-8">
     <title>tangly-os Libraries Reports</title>
+    <style>
+        ul {
+            columns: 2;
+            -webkit-columns: 2;
+            -moz-columns: 2;
+        }
+    </style>
 </head>
 <body>
 <h2>Introduction</h2>
 <p>This landing page provides links to various developer reports. Developers are encouraged to use the feature to improve the quality and legibility
     of their sourcecode.</p>
-<p> The contents of the page is only available after a full build of the product using gradle. The command is
-    <code> gradle build test jacocoTestReport jacocoRootReport</code>.</p>
-<p>The repository is <a href="https://bitbucket.org/tangly-team/tangly-os/src/master/">Bitbucket Repository</a>.</p>
-<p>The SonarQube Overview of last build is <a href="https://sonarcloud.io/dashboard?id=tangly-os-at-tangly.net">Quality Gate Last Build</a>.</p>
-<p>You shall run <code>./gradlew build jacocoTestReport jacocoRootReport -Pmode=int</code> to generate all quality reports described below.</p>
-<p>If you run <code>gradle build</code> only the coverage per module is generated.</p>
+<p>The repository is <a href="https://github.com/tangly-team/tangly-os/">GitHub Repository</a>.</p>
+
 <h2>Coverage and Quality Reports</h2>
 <h3>tangly-os Project</h3>
-<strong><a href="../../build/reports/jacoco/jacocoRootReport/html/index.html">Merged Module Jacoco Coverage</a></strong><br><br>
+<strong><a href="../../test-results/build/reports/jacoco/testCodeCoverageReport/html/index.html">Merged Module Jacoco Coverage</a></strong><br><br>
+<strong><a href="../../test-results/build/reports/tests/test/index.html">Merged Unit Tests</a></strong><br><br>
 
-<h3>BDD</h3>
-<ul>
-    <li><a href="../../net.tangly.bdd/build/reports/jacoco/test/html/index.html"> jacoco coverage report</a></li>
-    <li><a href="../../net.tangly.bdd/build/reports/pmd/main.html">PMD report</a></li>
-    <li><a href="../../net.tangly.bdd/build/reports/spotbugs/main.html">Spotbugs report</a></li>
-</ul>
-
-<h3>Business</h3>
-<ul>
-    <li><a href="../../net.tangly.bus/build/reports/jacoco/test/html/index.html">jacoco coverage report</a></li>
-    <li><a href="../../net.tangly.bus/build/reports/pmd/main.html">PMD report</a></li>
-    <li><a href="../../net.tangly.bus/build/reports/spotbugs/main.html">Spotbugs report</a></li>
-</ul>
-
-<h3>Commons</h3>
-<ul>
-    <li><a href="../../net.tangly.commons/build/reports/jacoco/test/html/index.html">jacoco coverage report</a></li>
-    <li><a href="../../net.tangly.commons/build/reports/pmd/main.html">PMD report</a></li>
-    <li><a href="../../net.tangly.commons/build/reports/spotbugs/main.html">Spotbugs report</a></li>
-</ul>
-
-<h3>Core</h3>
-<ul>
-    <li><a href="../../net.tangly.core/build/reports/jacoco/test/html/index.html">jacoco coverage report</a></li>
-    <li><a href="../../net.tangly.core/build/reports/pmd/main.html">PMD report</a></li>
-    <li><a href="../../net.tangly.core/build/reports/spotbugs/main.html">Spotbugs report</a></li>
-</ul>
-
-<h3>DEV</h3>
-<ul>
-    <li><a href="../../net.tangly.dev/build/reports/jacoco/test/html/index.html">jacoco coverage report</a></li>
-    <li><a href="../../net.tangly.dev/build/reports/pmd/main.html">PMD report</a></li>
-    <li><a href="../../net.tangly.dev/build/reports/spotbugs/main.html">Spotbugs report</a></li>
-</ul>
-
-<h3>FSM</h3>
-<ul>
-    <li><a href="../../net.tangly.fsm/build/reports/jacoco/test/html/index.html">jacoco coverage report</a></li>
-    <li><a href="../../net.tangly.fsm/build/reports/pmd/main.html">PMD report</a></li>
-    <li><a href="../../net.tangly.fsm/build/reports/spotbugs/main.html">Spotbugs report</a></li>
-</ul>
-
-<h3>Gleam</h3>
-<ul>
-    <li><a href="../../net.tangly.gleam/build/reports/jacoco/test/html/index.html">jacoco coverage report</a></li>
-    <li><a href="../../net.tangly.gleam/build/reports/pmd/main.html">PMD report</a></li>
-    <li><a href="../../net.tangly.gleam/build/reports/spotbugs/main.html">Spotbugs report</a></li>
-</ul>
-
-<h3>PORTS</h3>
-<ul>
-    <li><a href="../../net.tangly.ports/build/reports/jacoco/test/html/index.html">jacoco coverage report</a></li>
-    <li><a href="../../net.tangly.ports/build/reports/pmd/main.html">PMD report</a></li>
-    <li><a href="../../net.tangly.ports/build/reports/spotbugs/main.html">Spotbugs report</a></li>
-</ul>
-
+<h2>ERP</h2>
+<dl>
+    <dt>agile</dt>
+    <dd>
+        <ul>
+            <li><a href="../../net.tangly.erp.agile/build/reports/pmd/main.html">PMD report</a></li>
+            <li><a href="../../net.tangly.erp.agile/build/reports/spotbugs/main.html">Spotbugs report</a></li>
+        </ul>
+    </dd>
+    <dt>collablorators</dt>
+    <dd>
+        <ul>
+            <li><a href="../../net.tangly.erp.collaborators/build/reports/pmd/main.html">PMD report</a></li>
+            <li><a href="../../net.tangly.erp.collaborators/build/reports/spotbugs/main.html">Spotbugs report</a></li>
+        </ul>
+    </dd>
+    <dt>crm</dt>
+    <dd>
+        <ul>
+            <li><a href="../../net.tangly.erp.crm/build/reports/pmd/main.html">PMD report</a></li>
+            <li><a href="../../net.tangly.erp.crm/build/reports/spotbugs/main.html">Spotbugs report</a></li>
+        </ul>
+    </dd>
+    <dt>invoices</dt>
+    <dd>
+        <ul>
+            <li><a href="../../net.tangly.erp.invoices/build/reports/pmd/main.html">PMD report</a></li>
+            <li><a href="../../net.tangly.erp.invoices/build/reports/spotbugs/main.html">Spotbugs report</a></li>
+        </ul>
+    </dd>
+    <dt>ledger</dt>
+    <dd>
+        <ul>
+            <li><a href="../../net.tangly.erp.ledger/build/reports/pmd/main.html">PMD report</a></li>
+            <li><a href="../../net.tangly.erp.ledger/build/reports/spotbugs/main.html">Spotbugs report</a></li>
+        </ul>
+    </dd>
+    <dt>products</dt>
+    <dd>
+        <ul>
+            <li><a href="../../net.tangly.erp.products/build/reports/pmd/main.html">PMD report</a></li>
+            <li><a href="../../net.tangly.erp.products/build/reports/spotbugs/main.html">Spotbugs report</a></li>
+        </ul>
+    </dd>
+    <dt>shared</dt>
+    <dd>
+        <ul>
+            <li><a href="../../net.tangly.erp.shared/build/reports/pmd/main.html">PMD report</a></li>
+            <li><a href="../../net.tangly.erp.shared/build/reports/spotbugs/main.html">Spotbugs report</a></li>
+        </ul>
+    </dd>
+    <dt>ui</dt>
+    <dd>
+        <ul>
+            <li><a href="../../net.tangly.erp.ui/build/reports/pmd/main.html">PMD report</a></li>
+            <li><a href="../../net.tangly.erp.ui/build/reports/spotbugs/main.html">Spotbugs report</a></li>
+        </ul>
+</dl>
+<h2>Libraries</h2>
+<dl>
+    <dt>BDD</dt>
+    <dd>
+        <ul>
+            <li><a href="../../net.tangly.bdd/build/reports/pmd/main.html">PMD report</a></li>
+            <li><a href="../../net.tangly.bdd/build/reports/spotbugs/main.html">Spotbugs report</a></li>
+        </ul>
+    </dd>
+    <dt>Commons</dt>
+    </dt>
+    <dd>
+        <ul>
+            <li><a href="../../net.tangly.commons/build/reports/pmd/main.html">PMD report</a></li>
+            <li><a href="../../net.tangly.commons/build/reports/spotbugs/main.html">Spotbugs report</a></li>
+        </ul>
+    </dd>
+    <dt>Core</dt>
+    <dd>
+        <ul>
+            <li><a href="../../net.tangly.core/build/reports/pmd/main.html">PMD report</a></li>
+            <li><a href="../../net.tangly.core/build/reports/spotbugs/main.html">Spotbugs report</a></li>
+        </ul>
+    </dd>
+    <dt>dev</dt>
+    <dd>
+        <ul>
+            <li><a href="../../net.tangly.dev/build/reports/pmd/main.html">PMD report</a></li>
+            <li><a href="../../net.tangly.dev/build/reports/spotbugs/main.html">Spotbugs report</a></li>
+        </ul>
+    </dd>
+    <dt>FSM</dt>
+    <dd>
+        <ul>
+            <li><a href="../../net.tangly.fsm/build/reports/pmd/main.html">PMD report</a></li>
+            <li><a href="../../net.tangly.fsm/build/reports/spotbugs/main.html">Spotbugs report</a></li>
+        </ul>
+    </dd>
+    <dt>Gleam</dt>
+    <dd>
+        <ul>
+            <li><a href="../../net.tangly.gleam/build/reports/pmd/main.html">PMD report</a></li>
+            <li><a href="../../net.tangly.gleam/build/reports/spotbugs/main.html">Spotbugs report</a></li>
+        </ul>
+    </dd>
+    <dt>Ports</dt>
+    <dd>
+        <ul>
+            <li><a href="../../net.tangly.ports/build/reports/pmd/main.html">PMD report</a></li>
+            <li><a href="../../net.tangly.ports/build/reports/spotbugs/main.html">Spotbugs report</a></li>
+        </ul>
+    </dd>
+</dl>
 <h2>References</h2>
 <ul>
     <li><a href="https://blog.tangly.net/">Static Web Page tangly llc Components</a></li>
@@ -101,7 +161,7 @@
         <strong>tangly</strong>
         workspace in the channel <strong>tangly-os</strong></li>
     <li>Description of ticket manipulation commands in your git comments in <a
-            href="https://confluence.atlassian.com/bitbucket/resolve-issues-automatically-when-users-push-code-221451126.html">official
+        href="https://confluence.atlassian.com/bitbucket/resolve-issues-automatically-when-users-push-code-221451126.html">official
         bitbucket reference</a></li>
 </ul>
 </body>

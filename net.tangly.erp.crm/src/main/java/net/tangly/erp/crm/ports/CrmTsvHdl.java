@@ -50,7 +50,6 @@ import static net.tangly.gleam.model.TsvEntity.get;
  * defined, otherwise an empty string.
  */
 public class CrmTsvHdl {
-    private static final String SOCIAL_NR = "socialNr";
     private static final String FIRSTNAME = "firstname";
     private static final String LASTNAME = "lastname";
     private static final String CREATED = "created";

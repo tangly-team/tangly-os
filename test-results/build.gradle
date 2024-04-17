@@ -33,6 +33,13 @@ project.description = "tangly OS components"
 repositories {
     mavenLocal()
     mavenCentral()
+    mavenLocal()
+    mavenCentral()
+    maven { setUrl("https://plugins.gradle.org/m2/") }
+    maven { url "https://maven.vaadin.com/vaadin-addons" }
+    maven { url "https://raw.github.com/ZUGFeRD/mustangproject/mvn-repo" }
+    maven { url "https://repo.microstream.one/repository/maven-public/" }
+    maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
 }
 
 dependencies {

@@ -42,10 +42,12 @@ public class Effort implements HasDate, HasText {
         this.text = text;
     }
 
+    @Override
     public String text() {
         return text;
     }
 
+    @Override
     public void text(String text) {
         this.text = text;
     }
@@ -58,6 +60,7 @@ public class Effort implements HasDate, HasText {
         this.durationInMinutes = effort;
     }
 
+    @Override
     public LocalDate date() {
         return date;
     }
@@ -89,8 +92,7 @@ public class Effort implements HasDate, HasText {
 
     @Override
     public boolean equals(Object o) {
-        return (o instanceof Effort other) && (date().equals(other.date())) && (duration() == other.duration()) &&
-            (Objects.nonNull(assignment()) && assignment().equals(other.assignment()));
+        return (o instanceof Effort other) && (date().equals(other.date())) && (duration() == other.duration()) && (Objects.nonNull(assignment()) && assignment().equals(other.assignment()));
     }
 
     @Override
