@@ -26,19 +26,20 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class CrmPersistenceTest {
     @Test
-    void persistCrmRealmLocalTest() throws Exception {
+    void persistCrmRealmToDbTest() throws Exception {
         try (FileSystem fs = Jimfs.newFileSystem(Configuration.unix())) {
             var store = new ErpStore(fs);
             store.createRepository();
-
             var crmDb = store.dbRoot().resolve(CrmBoundedDomain.DOMAIN);
             var crmData = store.dataRoot().resolve(CrmBoundedDomain.DOMAIN);
+
             var handler = new CrmAdapter(new CrmEntities(crmDb), crmData);
             handler.importEntities();
             assertThat(handler.realm().naturalEntities().items()).isNotEmpty();
             assertThat(handler.realm().legalEntities().items()).isNotEmpty();
             assertThat(handler.realm().employees().items()).isNotEmpty();
             assertThat(handler.realm().contracts().items()).isNotEmpty();
+            assertThat(handler.realm().contracts().items().stream().flatMap(o -> o.contractExtensions().stream()).toList()).isNotEmpty();
             assertThat(handler.realm().interactions().items()).isNotEmpty();
             handler.realm().close();
 
@@ -47,7 +48,46 @@ class CrmPersistenceTest {
             assertThat(handler.realm().legalEntities().items()).isNotEmpty();
             assertThat(handler.realm().employees().items()).isNotEmpty();
             assertThat(handler.realm().contracts().items()).isNotEmpty();
+            assertThat(handler.realm().contracts().items().stream().flatMap(o -> o.contractExtensions().stream()).toList()).isNotEmpty();
             assertThat(handler.realm().interactions().items()).isNotEmpty();
+            handler.realm().close();
+        }
+    }
+
+    @Test
+    void exportCrmRealmToTsvTest() throws Exception {
+        try (FileSystem fs = Jimfs.newFileSystem(Configuration.unix())) {
+            var store = new ErpStore(fs);
+            store.createRepository();
+
+            // given
+            var handler = new CrmAdapter(new CrmEntities(store.dbRoot().resolve(CrmBoundedDomain.DOMAIN)), store.dataRoot().resolve(CrmBoundedDomain.DOMAIN));
+            handler.importEntities();
+            long nrNaturalEntities = handler.realm().naturalEntities().items().size();
+            long nrLegalEntities = handler.realm().legalEntities().items().size();
+            long nrEmployees = handler.realm().employees().items().size();
+            long nrContracts = handler.realm().contracts().items().size();
+            long nrContractExtensions = handler.realm().contracts().items().stream().flatMap(o -> o.contractExtensions().stream()).count();
+            long nrInteractions = handler.realm().interactions().items().size();
+
+            // when
+            handler.exportEntities();
+            handler.realm().naturalEntities().deleteAll();
+            handler.realm().legalEntities().deleteAll();
+            handler.realm().employees().deleteAll();
+            handler.realm().contracts().deleteAll();
+            handler.realm().interactions().deleteAll();
+            handler.realm().close();
+            handler = new CrmAdapter(new CrmEntities(store.dbRoot().resolve(CrmBoundedDomain.DOMAIN)), store.dataRoot().resolve(CrmBoundedDomain.DOMAIN));
+            handler.importEntities();
+
+            // then
+            assertThat(handler.realm().naturalEntities().items().size()).isEqualTo(nrNaturalEntities);
+            assertThat(handler.realm().legalEntities().items().size()).isEqualTo(nrLegalEntities);
+            assertThat(handler.realm().employees().items().size()).isEqualTo(nrEmployees);
+            assertThat(handler.realm().contracts().items().size()).isEqualTo(nrContracts);
+            assertThat(handler.realm().contracts().items().stream().flatMap(o -> o.contractExtensions().stream()).count()).isEqualTo(nrContractExtensions);
+            assertThat(handler.realm().interactions().items().size()).isEqualTo(nrInteractions);
             handler.realm().close();
         }
     }

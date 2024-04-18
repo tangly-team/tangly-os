@@ -27,10 +27,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class ProductsPersistenceTest {
     @Test
-    void persistProductsRealmLocalTest() throws Exception {
+    void persistProductsRealmToDbTest() throws Exception {
         try (FileSystem fs = Jimfs.newFileSystem(Configuration.unix())) {
             var store = new ErpStore(fs);
             store.createRepository();
+
             var realm = new ProductsEntities(store.dbRoot().resolve(ProductsBoundedDomain.DOMAIN));
             var handler = new ProductsAdapter(realm, new ProductsBusinessLogic(realm), store.dataRoot().resolve(ProductsBoundedDomain.DOMAIN), store.reportsRoot().resolve(ProductsBoundedDomain.DOMAIN));
             handler.importEntities();
@@ -44,6 +45,38 @@ class ProductsPersistenceTest {
             assertThat(handler.realm().products().items()).isNotEmpty();
             assertThat(handler.realm().assignments().items()).isNotEmpty();
             assertThat(handler.realm().efforts().items()).isNotEmpty();
+            handler.realm().close();
+        }
+    }
+
+    @Test
+    void exportProductsRealmToTsvTest() throws Exception {
+        try (FileSystem fs = Jimfs.newFileSystem(Configuration.unix())) {
+            var store = new ErpStore(fs);
+            store.createRepository();
+
+            // given
+            var realm = new ProductsEntities(store.dbRoot().resolve(ProductsBoundedDomain.DOMAIN));
+            var handler = new ProductsAdapter(realm, new ProductsBusinessLogic(realm), store.dataRoot().resolve(ProductsBoundedDomain.DOMAIN), store.reportsRoot().resolve(ProductsBoundedDomain.DOMAIN));
+            handler.importEntities();
+            long nrProducts = handler.realm().products().items().size();
+            long nrAssignments = handler.realm().assignments().items().size();
+            long nrEffots = handler.realm().efforts().items().size();
+
+            // when
+            handler.exportEntities();
+            handler.realm().products().deleteAll();
+            handler.realm().assignments().deleteAll();
+            handler.realm().efforts().deleteAll();
+            handler.realm().close();
+            realm = new ProductsEntities(store.dbRoot().resolve(ProductsBoundedDomain.DOMAIN));
+            handler = new ProductsAdapter(realm, new ProductsBusinessLogic(realm), store.dataRoot().resolve(ProductsBoundedDomain.DOMAIN), store.reportsRoot().resolve(ProductsBoundedDomain.DOMAIN));
+            handler.importEntities();
+
+            // then
+            assertThat(handler.realm().products().items().size()).isEqualTo(nrProducts);
+            assertThat(handler.realm().assignments().items().size()).isEqualTo(nrAssignments);
+            assertThat(handler.realm().efforts().items().size()).isEqualTo(nrEffots);
             handler.realm().close();
         }
     }

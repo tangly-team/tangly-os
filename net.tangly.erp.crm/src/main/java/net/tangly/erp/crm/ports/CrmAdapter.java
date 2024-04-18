@@ -4,7 +4,7 @@
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- *          http://www.apache.org/licenses/LICENSE-2.0
+ *          https://apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -30,6 +30,7 @@ public final class CrmAdapter implements CrmPort {
     public static final String NATURAL_ENTITIES_TSV = "natural-entities.tsv";
     public static final String EMPLOYEES_TSV = "employees.tsv";
     public static final String CONTRACTS_TSV = "contracts.tsv";
+    public static final String CONTRACT_EXTENSIONS_TSV = "contract-extensions.tsv";
     public static final String INTERACTIONS_TSV = "interactions.tsv";
     public static final String ACTIVITIES_TSV = "activities.tsv";
     public static final String SUBJECTS_TSV = "subjects.tsv";
@@ -56,6 +57,7 @@ public final class CrmAdapter implements CrmPort {
         Port.importEntities(folder, NATURAL_ENTITIES_TSV, handler::importNaturalEntities);
         Port.importEntities(folder, EMPLOYEES_TSV, handler::importEmployees);
         Port.importEntities(folder, CONTRACTS_TSV, handler::importContracts);
+        Port.importEntities(folder, CONTRACT_EXTENSIONS_TSV, handler::importContractExtensions);
         Port.importEntities(folder, INTERACTIONS_TSV, handler::importInteractions);
         Port.importEntities(folder, ACTIVITIES_TSV, handler::importActivities);
         Port.importEntities(folder, SUBJECTS_TSV, handler::importSubjects);
@@ -72,6 +74,7 @@ public final class CrmAdapter implements CrmPort {
         handler.exportNaturalEntities(folder.resolve(NATURAL_ENTITIES_TSV));
         handler.exportEmployees(folder.resolve(EMPLOYEES_TSV));
         handler.exportContracts(folder.resolve(CONTRACTS_TSV));
+        handler.exportContractExtensions(folder.resolve(CONTRACT_EXTENSIONS_TSV));
         handler.exportInteractions(folder.resolve(INTERACTIONS_TSV));
         handler.exportActivities(folder.resolve(ACTIVITIES_TSV));
         handler.exportSubjects(folder.resolve(SUBJECTS_TSV));

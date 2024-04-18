@@ -26,20 +26,42 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class InvoicesPersistenceTest {
     @Test
-    void persistProductsRealmLocalTest() throws Exception {
+    void persistInvoicesRealmToDbTest() throws Exception {
         try (FileSystem fs = Jimfs.newFileSystem(Configuration.unix())) {
             var store = new ErpStore(fs);
             store.createRepository();
 
-            var invoicesDb = store.dbRoot().resolve(InvoicesBoundedDomain.DOMAIN);
-            var invoicesData = store.dataRoot().resolve(InvoicesBoundedDomain.DOMAIN);
-            var handler = new InvoicesAdapter(new InvoicesEntities(invoicesDb), invoicesData);
+            var handler = new InvoicesAdapter(new InvoicesEntities(store.dbRoot().resolve(InvoicesBoundedDomain.DOMAIN)), store.dataRoot().resolve(InvoicesBoundedDomain.DOMAIN));
             handler.importEntities();
+            assertThat(handler.realm().articles().items()).isNotEmpty();
             assertThat(handler.realm().invoices().items()).isNotEmpty();
             handler.realm().close();
 
-            handler = new InvoicesAdapter(new InvoicesEntities(invoicesDb), invoicesData);
+            handler = new InvoicesAdapter(new InvoicesEntities(store.dbRoot().resolve(InvoicesBoundedDomain.DOMAIN)), store.dataRoot().resolve(InvoicesBoundedDomain.DOMAIN));
+            assertThat(handler.realm().articles().items()).isNotEmpty();
             assertThat(handler.realm().invoices().items()).isNotEmpty();
+            handler.realm().close();
+        }
+    }
+
+    @Test
+    void exportInvoicesRealmToTsvTest() throws Exception {
+        try (FileSystem fs = Jimfs.newFileSystem(Configuration.unix())) {
+            var store = new ErpStore(fs);
+            store.createRepository();
+
+            var handler = new InvoicesAdapter(new InvoicesEntities(store.dbRoot().resolve(InvoicesBoundedDomain.DOMAIN)), store.dataRoot().resolve(InvoicesBoundedDomain.DOMAIN));
+            handler.importEntities();
+            long nrArticles = handler.realm().articles().items().size();
+            long nrInvoices = handler.realm().invoices().items().size();
+            handler.exportEntities();
+            handler.realm().invoices().deleteAll();
+            handler.realm().close();
+
+            handler = new InvoicesAdapter(new InvoicesEntities(store.dbRoot().resolve(InvoicesBoundedDomain.DOMAIN)), store.dataRoot().resolve(InvoicesBoundedDomain.DOMAIN));
+            handler.importEntities();
+            assertThat(handler.realm().articles().items().size()).isEqualTo(nrArticles);
+            assertThat(handler.realm().invoices().items().size()).isEqualTo(nrInvoices);
             handler.realm().close();
         }
     }

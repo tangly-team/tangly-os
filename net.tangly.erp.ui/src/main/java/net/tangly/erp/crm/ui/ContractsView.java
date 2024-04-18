@@ -39,6 +39,7 @@ class ContractsView extends EntityView<Contract> {
             super(parent, Contract::new);
             initEntityForm();
             addTabAt("details", details(), 1);
+            // TODO add tab for contract extensions and add field in details for the total amount of the contract
         }
 
         private FormLayout details() {
@@ -53,7 +54,7 @@ class ContractsView extends EntityView<Contract> {
             One2OneField<LegalEntity> seller = new One2OneField<>("Seller", LegalEntity.class, parent().domain().realm().legalEntities());
             One2OneField<LegalEntity> sellee = new One2OneField<>("Sellee", LegalEntity.class, parent().domain().realm().legalEntities());
 
-            FormLayout form = new FormLayout();
+            var form = new FormLayout();
             form.add(bankConnection, locale, currency);
             form.add(new HtmlComponent("br"));
             form.add(seller, sellee);

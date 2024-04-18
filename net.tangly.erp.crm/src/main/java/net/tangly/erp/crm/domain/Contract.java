@@ -14,11 +14,13 @@
 package net.tangly.erp.crm.domain;
 
 
-import net.tangly.core.*;
+import net.tangly.core.Address;
+import net.tangly.core.BankConnection;
+import net.tangly.core.EntityExtended;
+import net.tangly.core.EntityExtendedImp;
 import net.tangly.core.crm.CrmEntity;
 import net.tangly.core.crm.LegalEntity;
 import net.tangly.core.crm.VcardType;
-import org.jetbrains.annotations.NotNull;
 
 import java.math.BigDecimal;
 import java.util.*;
@@ -44,15 +46,6 @@ public class Contract extends EntityExtendedImp implements EntityExtended, CrmEn
     private Currency currency;
     private final List<ContractExtension> contractExtensions;
 
-    /**
-     * A contract extension extends the budget for an existing contract. The conditions of the contract stay the same.
-     *
-     * @param amountWithoutVat additional amount for the contract
-     * @param range            date range of the contract extension
-     */
-    public record ContractExtension(long oid, @NotNull String id, @NotNull String name, @NotNull DateRange range, String text, @NotNull String contractId,
-                                    @NotNull BigDecimal amountWithoutVat) implements Entity {
-    }
 
     public Contract(long oid) {
         super(oid);

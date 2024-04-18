@@ -41,12 +41,6 @@ public interface HasDateRange {
      */
     DateRange range();
 
-    /**
-     * Set the starting date when the entity is existing and active.
-     *
-     * @param range the new period for the entity
-     * @see #range()
-     */
     default void range(DateRange range) {
         throw new IllegalCallerException("Trait is in immutable form");
     }
