@@ -1,0 +1,128 @@
+---
+title: "Modern Java Rant"
+linkTitle: "Java Rant"
+date: 2024-04-20
+tags: ["java", "agile"]
+---
+
+include::../fragments/_config-mb-blog.adoc[]
+
+:ref-asciidoctorj: https://docs.asciidoctor.org/asciidoctorj/latest/[AsciidoctorJ]
+:ref-idea: https://www.jetbrains.com/idea/[IntelliJ IDEA]
+:ref-javalin: https://javalin.io/[Javalin]
+:ref-jetty: https://www.eclipse.org/jetty/[Jetty]
+:ref-jpms: https://en.wikipedia.org/wiki/Java_Platform_Module_System[Java Platform Module System]
+:ref-vaadin: https://vaadin.com/[Vaadin]
+:ref-vaadin-boot: https://github.com/mvysny/vaadin-boot[vaadin-boot]
+
+
+image::2024-04-02-head.jpg[width=420,height=360,role=left]
+
+The Java community releases a new version every six months.
+This is a good thing, it means that the language is evolving at a steady pace.
+
+New language features are added in each release.
+Much effort is put into improving the performance of the JVM and solving small issues.
+
+The community provides beta releases for developers to test and provide feedback during the six months before the next release.
+You have the possibility and time to migrate and test your code before the official release.
+
+Security vulnerabilities are patched every three months.
+This is a dream for agile and DevOps teams.
+
+Sadly, many developers are still using outdated versions of Java, which can lead to security vulnerabilities and other issues.
+
+I try to always work with the current release of Java, but I have to admit that it is not always easy.
+Below a rant about some of the issues I have encountered.
+Solving these issues or finding workarounds cost me quite some hours of my time.
+
+=== IntelliJ IDEA Slow Approach
+
+I love IntelliJ IDEA, but it is slow to support new Java versions.
+I have an ultimate license for decades and never give up the hope that they will improve their release cycle.
+
+They almost always release a new version of IntelliJ IDEA weeks after the official release of Java.
+I do not understand why they could not switch their release date to match the Java release date.
+
+The early access program for Java should empower them to test their IDE with the new Java version before the official release.
+
+_At least they provide preview support for some of the new JDK features in the current version of IntelliJ IDEA._
+
+=== Gradle Collapse
+
+Gradle is my preferred build tool.
+
+Gradle community is not capable of delivering a new version of Gradle supporting the current JDK version for months after the official release.
+The reason is they use old versions of Groovy and Kotlin instead of regularly updating with the current stable versions.
+
+_Yes, you can run Gradle with an older version of Java and compile the code with a newer version of Java._
+_It makes your GitHub actions more complex and brittle._
+The standard scripts do not support installing multiple JDK versions in the image building your application
+footnote:[If you have a code snippet to install multiple JDKs, run Gradle with an older version and let Gradle toolchain find the current JDK to build, let me know.
+I will add your solution with name in this blog.]._
+
+=== JPMS Laggards
+
+I cannot fully modularize my applications due to the lack of support for JPMS in many libraries.
+
+{ref-jpms} is available since Java 9. This version was released on September 21, 2017.
+Maintainers had *seven* years to migrate their code to JPMS.
+The minimal effort is to provide an automatic name.
+
+_You have to write one line in your manifest file of your jar file to support JPMS._
+
+The {ref-asciidoctorj} package has still no automatic name.
+Some Apache libraries have no automatic names.
+
+=== Javalin Debacle
+
+I like the {ref-javalin} REST framework.
+It is a small and lightweight framework and uses the {ref-jetty} server.
+
+The team quite screwed up the migration to the current Jetty version released more than one year ago.
+_Developers should not use internal Jetty classes in their code
+footnote:[If {ref-jetty} would use JPMS, they could hide these classes inside a module.
+No external developers could use them.]._
+
+I develop applications with {ref-vaadin} and {ref-javalin}.
+A cool developer Martin Vysny has created a nice library {ref-vaadin-boot} to integrate both frameworks.
+The {ref-vaadin} application uses an embedded {ref-jetty} server and can be deployed as a single jar file.
+The whole setup is about 20 lines of code.
+It is a pleasure to work with this library.
+
+Now Javalin hinders the use of the current Jetty version
+footnote:[Martin has found a workaround, but the drawback is that we have to use a quite older version of Javalin.].
+
+=== Good Practices
+
+I understand that open source developers have limited resources to migrate their code to the current Java version.
+I find the practice advocated by Brian Goetz ideal.
+
+. Support the latest LTS version of Java in your stable release.
+. All new development and improvements should be done with the current Java version.
+. Do not support any other Java versions.
+Provide a package for the current Java version and a package for the latest LTS version.
+Do not backport any new features to the LTS version.
+Remember, a new LTS version is released every two years.
+Just fix painful bugs.
+. You have no excuse not to define an automatic name for your library.
+
+[TIP]
+====
+Today you shall only support JDK 21 LTS and JDK 22.
+
+The early access program for JDK 23 is available.
+You can already test your code with JDK 23.
+====
+
+The huge advantage is that you only have to maintain two versions of your code.
+Because all new features are only available with the current Java version, your users have a strong motivation to migrate to the current Java version.
+
+_As a developer, it is more fun to write code with the latest Java version and use the latest features._
+
+_Please remember never to use internal classes of a library in your code.- _It will bite you._
+
+_Update your JDK every three months to install the latest security patches._
+
+_Update continously your dependencies to the latest stable version._
+_{ref-gradle} has plugins and {ref-github} has dependabot to simplify or automate the work._
