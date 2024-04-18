@@ -26,7 +26,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class LedgerPersistenceTest {
     @Test
-    void persistLedgerRealmLocalTest() throws Exception {
+    void persistLedgerRealmToDbTest() throws Exception {
         try (FileSystem fs = Jimfs.newFileSystem(Configuration.unix())) {
             var store = new ErpStore(fs);
             store.createRepository();
@@ -43,6 +43,32 @@ class LedgerPersistenceTest {
             handler = new LedgerAdapter(new LedgerEntities(ledgerDb), ledgerData, ledgerReport);
             assertThat(handler.realm().accounts().items()).isNotEmpty();
             assertThat(handler.realm().transactions().items()).isNotEmpty();
+            handler.realm().close();
+        }
+    }
+
+    @Test
+    void exportProductsRealmToTsvTest() throws Exception {
+        try (FileSystem fs = Jimfs.newFileSystem(Configuration.unix())) {
+            var store = new ErpStore(fs);
+            store.createRepository();
+
+            var ledgerDb = store.dbRoot().resolve(LedgerBoundedDomain.DOMAIN);
+            var ledgerData = store.dataRoot().resolve(LedgerBoundedDomain.DOMAIN);
+            var ledgerReport = store.reportsRoot().resolve(LedgerBoundedDomain.DOMAIN);
+            var handler = new LedgerAdapter(new LedgerEntities(ledgerDb), ledgerData, ledgerReport);
+            handler.importEntities();
+            long nrAccounts = handler.realm().accounts().items().size();
+            long nrTransactions = handler.realm().transactions().items().size();
+            handler.exportEntities();
+            handler.realm().accounts().deleteAll();
+            handler.realm().transactions().deleteAll();
+            handler.realm().close();
+
+            handler = new LedgerAdapter(new LedgerEntities(ledgerDb), ledgerData, ledgerReport);
+            handler.importEntities();
+            assertThat(handler.realm().accounts().items().size()).isEqualTo(nrAccounts);
+            assertThat(handler.realm().transactions().items().size()).isEqualTo(nrTransactions);
             handler.realm().close();
         }
     }
