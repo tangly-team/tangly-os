@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2023 Marcel Baumann
+ * Copyright 2006-2024 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -11,8 +11,11 @@
  *
  */
 
-@Feature(value = "Sell items to customers", id = "sell-items", description = "The customer can buy various items from the store. Upon " +
-    "completion the stock of the store reflects the purchasing action.", tags = {"Feature Example", "Mandatory"})
+@Feature(value = "Sell items to customers", id = "sell-items",
+    description = """
+        The customer can buy various items from the store. Upon completion the stock of the store reflects the purchasing action.
+        The store carries black and blue sweaters. The store should *refuse* to sell more sweaters than it has in stock.""",
+    tags = {"Feature Example", "Mandatory"})
 package net.tangly.spec.bdd.one;
 
 import net.tangly.spec.bdd.Feature;

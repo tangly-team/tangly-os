@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2023 Marcel Baumann
+ * Copyright 2006-2024 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -11,8 +11,9 @@
  *
  */
 
-@Feature(value = "Refund items to customers", id = "refund-items", description =
-    "The customer can return items to the store and be refunded. Upon completion the stock of the store reflects the purchasing " + "action.")
+@Feature(value = "Refund items to customers", id = "refund-items",
+    description = """
+        The customer can return items to the store and be refunded. Upon completion the stock of the store reflects the purchasing action.""")
 package net.tangly.spec.bdd.two;
 
 import net.tangly.spec.bdd.Feature;
