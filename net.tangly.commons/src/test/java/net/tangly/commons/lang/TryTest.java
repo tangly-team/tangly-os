@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2024 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -8,33 +8,60 @@
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ *
  */
 
 package net.tangly.commons.lang;
 
 import net.tangly.commons.lang.functional.Try;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
+
+import java.util.function.Consumer;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatExceptionOfType;
 
 class TryTest {
     @Test
-    void testConstructors() {
+    void testSuccessfulTry() throws Throwable {
         final String success = "Success";
+        RuntimeException failure = new RuntimeException();
+
         Try<String> tries = Try.success(success);
         assertThat(tries.isSuccess()).isTrue();
         assertThat(tries.isFailure()).isFalse();
         assertThat(tries.get()).isEqualTo(success);
 
+        Consumer<String> successConsumer = Mockito.mock(Consumer.class);
+        tries.onSuccess(successConsumer);
+        Mockito.verify(successConsumer).accept(success);
+
+        Consumer<Throwable> failureConsumer = Mockito.mock(Consumer.class);
+        tries.onFailure(failureConsumer);
+        Mockito.verify(failureConsumer, Mockito.never()).accept(failure);
+
         tries = Try.of(() -> success);
         assertThat(tries.isSuccess()).isTrue();
         assertThat(tries.isFailure()).isFalse();
         assertThat(tries.get()).isEqualTo(success);
+    }
 
-        tries = Try.failure(new RuntimeException());
+    @Test
+    void tryFailedTry() throws Throwable {
+        final String success = "Success";
+        RuntimeException failure = new RuntimeException();
+
+        Try<String> tries = Try.failure(failure);
         assertThat(tries.isSuccess()).isFalse();
         assertThat(tries.isFailure()).isTrue();
+        Consumer<Throwable> failureConsumer = Mockito.mock(Consumer.class);
+        tries.onFailure(failureConsumer);
+        Mockito.verify(failureConsumer).accept(failure);
+
+        Consumer<String> successConsumer = Mockito.mock(Consumer.class);
+        tries.onSuccess(successConsumer);
+        Mockito.verify(successConsumer, Mockito.never()).accept(Mockito.anyString());
 
         tries = Try.of(() -> {
             throw new RuntimeException();
@@ -45,7 +72,7 @@ class TryTest {
     }
 
     @Test
-    void testSuccessTry() {
+    void testSuccessTry() throws Throwable {
         final double value = 1.1;
         var tries = Try.of(() -> value);
         assertThat(tries.isFailure()).isFalse();
