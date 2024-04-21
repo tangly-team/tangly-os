@@ -63,7 +63,7 @@ Avoid multi-threading synchronization headaches with locks, mutexes, or semaphor
 How can we scale the solution?::
 Select a framework providing horizontal scaling.
 The preferred abstraction model is the {ref-actor-model}.
-A web server library such as https://www.eclipse.org/jetty/[Jetty] supports unlimited parallel user sessions without writing one line of code.
+A web server library such as https:/eclipse.dev/jetty/[Jetty] supports unlimited parallel user sessions without writing one line of code.
 A robotic framework such as https://www.ros.org/[ROS-2] delivers concurrency on node level for free.
 Should we prepare for sharding, geolocation, vertical scaling?::
 Try to design business logic and data persistence along with natural slicing rules.

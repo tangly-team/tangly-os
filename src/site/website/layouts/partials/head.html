@@ -78,7 +78,7 @@
   {{ if (or $enableGtagForUniversalAnalytics (hasPrefix .Site.GoogleAnalytics "G-")) -}}
     {{ template "_internal/google_analytics_gtag.html" . -}}
   {{ else -}}
-    {{ template "_internal/google_analytics_async.html" . -}}
+    {{ template "_internal/google_analytics.html" . -}}
   {{ end -}}
 {{ end -}}
 
@@ -90,11 +90,9 @@
   crossorigin="anonymous" />
 {{ end -}}
 
-{{ if ne .Site.Params.algolia_docsearch nil -}}
+{{ if ne .Site.Params.search.algolia nil -}}
 {{ warnf `Config 'params.algolia_docsearch' is deprecated: use 'params.search.algolia'
       For details, see https://www.docsy.dev/docs/adding-content/search/#algolia-docsearch.` -}}
 {{ end -}}
 
 {{ end -}}
-
-

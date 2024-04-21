@@ -72,7 +72,7 @@ Here is where we put the interface or abstract class name.
 Next, we have the _with_ directive where we provide the implementation class name that either implements the interface or extends the abstract class.
 Reflection::
 open::: If we want to continue to allow full reflection as older versions of Java did, we can simply open the entire module up to reflection.
-opens _package list_::: If we need to allow reflection of private types, but we don’t want all of our code exposed, we can use the opens directive to expose specific packages.
+opens _package list_::: If we need to allow reflection of private types, but we do not want all of our code exposed, we can use the opens directive to expose specific packages.
 But remember, this will open the package up to the entire world, so be careful with this directive.
 opens _package list_ to _module list_::: We can selectively open our packages to a pre-approved list of modules, in this case, using the opens…to directive.
 
@@ -103,7 +103,7 @@ We can include unofficial modules by adding existing JAR files to the module pat
 The name of the module will be derived from the name of the JAR.
 Automatic modules will have full read access to every other module loaded by the path.
 Unnamed Module::
-When a class or JAR is loaded onto the classpath, but not the module path, it’s automatically added to the unnamed module.
+When a class or JAR is loaded onto the classpath, but not the module path, it is automatically added to the unnamed module.
 It is a catch-all module to maintain backward compatibility with previously written Java code.
 
 == Services

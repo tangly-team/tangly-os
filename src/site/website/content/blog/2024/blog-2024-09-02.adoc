@@ -30,7 +30,7 @@ Fault-Tolerance::
 Is the capability of an embedded system to survive in the presence of faults.
 Faults can be caused by power cuts, hardware damaged parts, overwarming, and more.
 The embedded software must be capable of detecting faults and making decisions according to how critical a fault is.
-As an example, an embedded system working inside an airplane must be capable of identifying any possible fault and make decisions in order to keep the aircrew safe.
+As an example, an embedded system working inside an airplane must be capable of identifying any possible fault and make decisions to keep the aircrew safe.
 Decisions can be as simple as sending an alert or as complex as performing changes in the command control.
 Portability::
 Is the measure of how easy it is to use the same embedded software in multiple environments.
@@ -93,7 +93,7 @@ Support for interrupt routines shall also be available.
 ====
 The C language and {cpp} language have added support for multi-threaded and synchronization primitives since version 11.
 
-This standard API could become the preferred approach to develop multi-threaded and realtime application.
+This standard API could become the preferred approach to developing multi-threaded and realtime application.
 The various RTOS could disappear as standalone solutions.
 They should be relegated as variant implementation of standard library functions.
 ====
@@ -110,7 +110,7 @@ Application partitioning is not available to STM32 microcontrollers.
 Transparent partitioning requires a hypervisor to virtualize access to hardware components.
 The ARM Cortex M cores used in the STM32 products do not provide the needed hardware support to implement a hypervisor
 footnote:[AArch64 64-bit architecture introduced in 2011 provides the needed support.
-The https://www.embedded-office.com/[Embedded Office] company provides an example of such a solution for safety critical applications.].
+The https://www.embedded-office.com/[Embedded Office] company provides an example of such a solution for safety-critical applications.].
 
 The privileged and unprivileged modes are not sufficient to define a hypervisor.
 RTOS cannot be run in the unprivileged mode because they need access to the processor registers and interrupts.

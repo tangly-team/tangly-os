@@ -21,7 +21,7 @@ My own experience suggested that it was nearly impossible to engage business man
 It was much easier to engage them in rapid prototyping where they could see and interact with the results.
 
 Even if you could engage the sponsors to design a domain model, by the time you have finished developing the system on top, most of its benefits had disappeared.
-It is nice creating an agile domain object model, but if any change to that model also dictates the modification of layers above and underneath, then that agility is worthless.
+It is nice creating an agile domain object model, but if any change to that model also dictates the modification of the layers above and underneath, then that agility is worthless.
 
 The other concern that gave rise to the birth of https://en.wikipedia.org/wiki/Naked_objects[Naked Objects] was how to make user interfaces of mainstream business systems expressive.
 Most business systems are not at all expressive.

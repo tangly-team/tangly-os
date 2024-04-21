@@ -81,14 +81,14 @@ Internal object identifiers are a technical solution for incomplete domain entit
 Incomplete often means that the digitalization of your bounded domain is hindered.
 
 For example, in Switzerland it was long prohibited to use the social security number as identifier for natural persons.
-The federal government has change the laws in 2022. But you still cannot access the social number of children.
+The federal government changed the laws in 2022. But you still cannot access the social number of children.
 The identifier is defined but is not accessible.
 
 Therefore, you are forced to create an internal identifier to uniquely identify natural persons in Switzerland.
 Similar difficulties exist in Europe to access the European natural person identifier
-footnote:[Naturally, the Swiss social number is not compatible with the European one to spice-up your modeling problems.
+footnote:[Naturally, the Swiss social number is not compatible with the European one to spice up your modeling problems.
 An example of well-defined external identifier is the plate number of a car.
-This identifier is valid worldwide.].
+This identifier is worldwide valid.].
 ====
 
 Entities often have temporal information associated with them.

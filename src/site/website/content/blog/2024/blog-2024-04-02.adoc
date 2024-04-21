@@ -10,7 +10,7 @@ include::../fragments/_config-mb-blog.adoc[]
 :ref-asciidoctorj: https://docs.asciidoctor.org/asciidoctorj/latest/[AsciidoctorJ]
 :ref-idea: https://www.jetbrains.com/idea/[IntelliJ IDEA]
 :ref-javalin: https://javalin.io/[Javalin]
-:ref-jetty: https://www.eclipse.org/jetty/[Jetty]
+:ref-jetty: https://eclipse.dev/jetty/[Jetty]
 :ref-jpms: https://en.wikipedia.org/wiki/Java_Platform_Module_System[Java Platform Module System]
 :ref-vaadin: https://vaadin.com/[Vaadin]
 :ref-vaadin-boot: https://github.com/mvysny/vaadin-boot[vaadin-boot]
@@ -36,9 +36,9 @@ I try to always work with the current release of Java, but I have to admit that 
 Below a rant about some of the issues I have encountered.
 Solving these issues or finding workarounds cost me quite some hours of my time.
 
-=== IntelliJ IDEA Slow Approach
+== IntelliJ IDEA Slow Approach
 
-I love IntelliJ IDEA, but it is slow to support new Java versions.
+I love {ref-idea}, but it is slow to support new Java versions.
 I have an ultimate license for decades and never give up the hope that they will improve their release cycle.
 
 They almost always release a new version of IntelliJ IDEA weeks after the official release of Java.
@@ -48,20 +48,20 @@ The early access program for Java should empower them to test their IDE with the
 
 _At least they provide preview support for some of the new JDK features in the current version of IntelliJ IDEA._
 
-=== Gradle Collapse
+== Gradle Collapse
 
-Gradle is my preferred build tool.
+{ref-gradle} is my preferred build tool.
 
 Gradle community is not capable of delivering a new version of Gradle supporting the current JDK version for months after the official release.
 The reason is they use old versions of Groovy and Kotlin instead of regularly updating with the current stable versions.
 
 _Yes, you can run Gradle with an older version of Java and compile the code with a newer version of Java._
 _It makes your GitHub actions more complex and brittle._
-The standard scripts do not support installing multiple JDK versions in the image building your application
+The standard GitHub scripts do not support installing multiple JDK versions in the image building your application
 footnote:[If you have a code snippet to install multiple JDKs, run Gradle with an older version and let Gradle toolchain find the current JDK to build, let me know.
 I will add your solution with name in this blog.]._
 
-=== JPMS Laggards
+== JPMS Laggards
 
 I cannot fully modularize my applications due to the lack of support for JPMS in many libraries.
 
@@ -73,11 +73,13 @@ _You have to write one line in your manifest file of your jar file to support JP
 
 The {ref-asciidoctorj} package has still no automatic name.
 Some Apache libraries have no automatic names.
+A lot of well-known libraries do not document the automatic name in their documentation.
 
-=== Javalin Debacle
+== Javalin Debacle
 
 I like the {ref-javalin} REST framework.
-It is a small and lightweight framework and uses the {ref-jetty} server.
+It is a small and lightweight web framework and uses the {ref-jetty} as embedded server.
+It has build-in support for {ref-openapi}
 
 The team quite screwed up the migration to the current Jetty version released more than one year ago.
 _Developers should not use internal Jetty classes in their code
@@ -93,7 +95,7 @@ It is a pleasure to work with this library.
 Now Javalin hinders the use of the current Jetty version
 footnote:[Martin has found a workaround, but the drawback is that we have to use a quite older version of Javalin.].
 
-=== Good Practices
+== Good Practices
 
 I understand that open source developers have limited resources to migrate their code to the current Java version.
 I find the practice advocated by Brian Goetz ideal.
@@ -116,13 +118,18 @@ You can already test your code with JDK 23.
 ====
 
 The huge advantage is that you only have to maintain two versions of your code.
+You focus on developing new features only with the current Java version.
+No need to backport any new features to the LTS version.
+
 Because all new features are only available with the current Java version, your users have a strong motivation to migrate to the current Java version.
 
 _As a developer, it is more fun to write code with the latest Java version and use the latest features._
 
-_Please remember never to use internal classes of a library in your code.- _It will bite you._
+_Please remember never to use internal classes of a library in your code_.
+_It will bite you_.
 
 _Update your JDK every three months to install the latest security patches._
 
-_Update continously your dependencies to the latest stable version._
+_Continuously update your dependencies to the latest stable version._ +
 _{ref-gradle} has plugins and {ref-github} has dependabot to simplify or automate the work._
+_You need a continuous integration pipeline and sufficient automatic tests to validate your code with the latest dependencies._

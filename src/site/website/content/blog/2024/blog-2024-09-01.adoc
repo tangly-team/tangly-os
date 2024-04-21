@@ -20,7 +20,7 @@ All application data is loaded in-memory using the MicroStream
 [TIP]
 ====
 Consultants often condemn server-side solutions.
-They declare these solutions not scalable and useable in a productive context.
+They declare these solutions not scalable and usable in a productive context.
 
 I concur that it would not be possible to implement Twitter with this approach.
 But how much memory does a Vaadin application need?
