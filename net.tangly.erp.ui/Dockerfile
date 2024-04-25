@@ -5,12 +5,13 @@
 # To run the image use:
 # docker run --rm -ti -p 8080:8080 -e PORT=8080  -v /var/tangly-erp:/var/tangly-erp tanglyllc/tangly-erp:latest
 
-FROM eclipse-temurin:21
+FROM eclipse-temurin:22
 
 RUN mkdir -p /var/tangly-erp
 RUN mkdir -p /var/tangly-erp/import
 RUN mkdir -p /var/tangly-erp/db
 RUN mkdir -p /var/tangly-erp/reports
+RUN mkdir -p /app
 
 COPY build/install/net.tangly.erp.ui/ /app/
 COPY src/main/config/app-in-memory-no-imports.properties /app/

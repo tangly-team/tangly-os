@@ -35,11 +35,11 @@ public class AnalyticsLedgerView extends AnalyticsView {
 
     public AnalyticsLedgerView(@NotNull LedgerBoundedDomain domain) {
         this.ledgerLogic = domain.logic();
-        initialize();
+        init();
         update();
     }
 
-    protected void initialize() {
+    private void init() {
         profitAndLossSoChart = createAndRegisterChart(ProfitAndLoss);
         financialSoChart = createAndRegisterChart("Assets");
         setSizeFull();

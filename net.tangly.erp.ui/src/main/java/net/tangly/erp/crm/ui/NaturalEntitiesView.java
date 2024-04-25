@@ -69,7 +69,7 @@ class NaturalEntitiesView extends EntityView<NaturalEntity> {
             }
         }
 
-        protected FormLayout details() {
+        private FormLayout details() {
             FormLayout form = new FormLayout();
             TextField firstname = VaadinUtils.createTextField("Firstname", "firstname");
             TextField lastname = VaadinUtils.createTextField("Lastname", "lastname");

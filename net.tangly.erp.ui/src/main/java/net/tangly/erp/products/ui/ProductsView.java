@@ -30,7 +30,7 @@ import java.util.stream.Collectors;
 
 @PageTitle("products-products")
 class ProductsView extends EntityView<Product> {
-    class ProductForm extends EntityForm<Product, ProductsView> {
+    static class ProductForm extends EntityForm<Product, ProductsView> {
         public ProductForm(@NotNull ProductsView parent, @NotNull TypeRegistry registry) {
             super(parent, Product::new);
             initEntityForm();

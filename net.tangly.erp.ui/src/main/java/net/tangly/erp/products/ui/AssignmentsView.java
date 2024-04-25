@@ -63,7 +63,7 @@ class AssignmentsView extends EntityView<Assignment> {
     protected void addActions(@NotNull GridContextMenu<Assignment> menu) {
         super.addActions(menu);
         menu().add(new Hr());
-        menu().addItem("Print", e -> Cmd.ofItemCmd(e, (Assignment a) -> new CmdCreateAssignmentDocument(a, domain()).execute()));
+        menu().addItem("Print", e -> Cmd.ofItemCmd(e, (Assignment a) -> new CmdCreateEffortsReport(a, domain()).execute()));
         menu().add(new Hr());
         menu().addItem("Import", e -> Cmd.ofGlobalCmd(e, () -> new CmdFilesUploadEfforts(domain()).execute()));
     }

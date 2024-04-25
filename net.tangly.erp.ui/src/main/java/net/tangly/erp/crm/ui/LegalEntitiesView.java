@@ -33,7 +33,6 @@ import java.util.Collection;
  */
 @PageTitle("crm-legal-entities")
 class LegalEntitiesView extends EntityView<LegalEntity> {
-
     /**
      * The form has all properties of an entity through inheritance. Additional properties are defined in the <i>details</i> tab.
      */
@@ -57,9 +56,7 @@ class LegalEntitiesView extends EntityView<LegalEntity> {
         }
 
         private CustomField<Collection<Employee>> employees() {
-            One2ManyReferencesField<Employee> employees =
-                new One2ManyReferencesField<>(Employee.class, ProviderView.of(parent().domain().realm().employees(), o -> value().oid() == o.organization().oid()));
-            return employees;
+            return new One2ManyReferencesField<>(Employee.class, ProviderView.of(parent().domain().realm().employees(), o -> value().oid() == o.organization().oid()));
         }
     }
 

@@ -65,7 +65,7 @@ You can build and run the generated Java Vaadin application locally. _Run from t
 
 [source,shell]
 ----
-  ./gradlew build installDist -Pvaadin.productionMode                       <1>
+  ./gradlew build installDist -Pvaadin.-Pvaadin.forceProductionBuild=true   <1>
   net.tangly.erp.ui/build/install/net.tangly.erp.ui/bin/net.tangly.erp.ui   <2>
 ----
 

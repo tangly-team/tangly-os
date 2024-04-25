@@ -58,7 +58,7 @@ public class Erp {
 
     private static final Logger logger = LogManager.getLogger();
     private static Erp self;
-    private static Lock lock = new ReentrantLock();
+    private static final Lock lock = new ReentrantLock();
     private final TypeRegistry registry;
     private final Properties properties;
     private CrmBoundedDomain crmBoundedDomain;
@@ -167,7 +167,7 @@ public class Erp {
         } else {
             var realm = (databases() == null) ? new ProductsEntities() : new ProductsEntities(Path.of(databases(), ProductsBoundedDomain.DOMAIN));
             var logic = new ProductsBusinessLogic(realm);
-            return new ProductsBoundedDomain(realm, logic, new ProductsAdapter(realm, logic, Path.of(imports(ProductsBoundedDomain.DOMAIN)), Path.of(reports(productsBoundedDomain.DOMAIN))), registry);
+            return new ProductsBoundedDomain(realm, logic, new ProductsAdapter(realm, logic, Path.of(imports(ProductsBoundedDomain.DOMAIN)), Path.of(reports(ProductsBoundedDomain.DOMAIN))), registry);
         }
     }
 

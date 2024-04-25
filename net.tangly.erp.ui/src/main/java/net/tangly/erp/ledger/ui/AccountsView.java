@@ -60,10 +60,10 @@ class AccountsView extends ItemView<Account> {
     static class AccountForm extends ItemForm<Account, AccountsView> {
         AccountForm(@NotNull AccountsView view) {
             super(view);
-            initForm();
+            init();
         }
 
-        protected void initForm() {
+        private void init() {
             TextField id = VaadinUtils.createTextField("Id", "id");
             id.setRequired(true);
             TextField name = VaadinUtils.createTextField("Name", "name");

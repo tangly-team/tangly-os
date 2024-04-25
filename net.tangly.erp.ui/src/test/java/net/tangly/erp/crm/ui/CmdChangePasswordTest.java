@@ -54,10 +54,10 @@ class CmdChangePasswordTest extends CrmTest {
         assertThat(subject.authenticate("old-password")).isTrue();
         cmd.execute();
         Component form = form(cmd);
-        _setValue(_get(form, PasswordField.class, spec -> spec.withCaption(CURRENT_PASSWORD)), "dummy-password");
-        _setValue(_get(form, PasswordField.class, spec -> spec.withCaption(NEW_PASSWORD)), "new-password");
-        _setValue(_get(form, PasswordField.class, spec -> spec.withCaption(CONFIRM_PASSWORD)), "new-password");
-        _click(_get(form, Button.class, spec -> spec.withCaption(EXECUTE)));
+        _setValue(_get(form, PasswordField.class, spec -> spec.withLabel(CURRENT_PASSWORD)), "dummy-password");
+        _setValue(_get(form, PasswordField.class, spec -> spec.withLabel(NEW_PASSWORD)), "new-password");
+        _setValue(_get(form, PasswordField.class, spec -> spec.withLabel(CONFIRM_PASSWORD)), "new-password");
+        _click(_get(form, Button.class, spec -> spec.withText(EXECUTE)));
         assertThat(subject.authenticate("old-password")).isTrue();
         assertThat(subject.authenticate("new-password")).isFalse();
     }
@@ -71,10 +71,10 @@ class CmdChangePasswordTest extends CrmTest {
         assertThat(subject.authenticate("old-password")).isTrue();
         cmd.execute();
         Component form = form(cmd);
-        _setValue(_get(form, PasswordField.class, spec -> spec.withCaption(CURRENT_PASSWORD)), "dummy-password");
-        _setValue(_get(form, PasswordField.class, spec -> spec.withCaption(NEW_PASSWORD)), "new-password");
-        _setValue(_get(form, PasswordField.class, spec -> spec.withCaption(CONFIRM_PASSWORD)), "new-password");
-        _click(_get(form, Button.class, spec -> spec.withCaption(CANCEL)));
+        _setValue(_get(form, PasswordField.class, spec -> spec.withLabel(CURRENT_PASSWORD)), "dummy-password");
+        _setValue(_get(form, PasswordField.class, spec -> spec.withLabel(NEW_PASSWORD)), "new-password");
+        _setValue(_get(form, PasswordField.class, spec -> spec.withLabel(CONFIRM_PASSWORD)), "new-password");
+        _click(_get(form, Button.class, spec -> spec.withText(CANCEL)));
         assertThat(subject.authenticate("old-password")).isTrue();
         assertThat(subject.authenticate("new-password")).isFalse();
     }

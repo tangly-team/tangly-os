@@ -21,6 +21,7 @@ import com.vaadin.flow.component.select.Select;
 import com.vaadin.flow.data.renderer.NumberRenderer;
 import net.tangly.core.crm.LegalEntity;
 import net.tangly.erp.crm.domain.Contract;
+import net.tangly.erp.crm.domain.ContractExtension;
 import net.tangly.erp.crm.services.CrmBoundedDomain;
 import net.tangly.ui.components.*;
 import org.jetbrains.annotations.NotNull;
@@ -33,13 +34,12 @@ import java.util.Locale;
  */
 
 class ContractsView extends EntityView<Contract> {
-
-    static class ContractForm extends net.tangly.ui.components.EntityForm<Contract, ContractsView> {
+    static class ContractForm extends EntityForm<Contract, ContractsView> {
         public ContractForm(@NotNull ContractsView parent) {
             super(parent, Contract::new);
             initEntityForm();
             addTabAt("details", details(), 1);
-            // TODO add tab for contract extensions and add field in details for the total amount of the contract
+            addTabAt("extensions", extensions(), 2);
         }
 
         private FormLayout details() {
@@ -66,6 +66,12 @@ class ContractsView extends EntityView<Contract> {
             binder().forField(sellee).bind(Contract::sellee, Contract::sellee);
             return form;
         }
+
+        private One2ManyOwnedField<ContractExtension> extensions() {
+            One2ManyOwnedField<ContractExtension> extensions = new One2ManyOwnedField<>(new ContractExtensionsView(parent().domain(), parent().mode()));
+            binder().bind(extensions, Contract::contractExtensions, (o, v) -> o.contractExtensions(extensions.generateModelValue()));
+            return extensions;
+        }
     }
 
     public ContractsView(@NotNull CrmBoundedDomain domain, @NotNull Mode mode) {
@@ -83,8 +89,7 @@ class ContractsView extends EntityView<Contract> {
         var grid = grid();
         grid.addColumn(e -> e.sellee().name()).setKey("customer").setHeader("Customer").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Contract::currency).setKey("currency").setHeader("Currency").setAutoWidth(true).setResizable(true).setSortable(true);
-        grid.addColumn(new NumberRenderer<>(Contract::amountWithoutVat, VaadinUtils.FORMAT)).setKey("amount").setHeader("Amount").setAutoWidth(true).setResizable(true)
-            .setSortable(true).setTextAlign(ColumnTextAlign.END);
+        grid.addColumn(new NumberRenderer<>(Contract::amountWithoutVat, VaadinUtils.FORMAT)).setKey("amount").setHeader("Amount").setAutoWidth(true).setResizable(true).setSortable(true).setTextAlign(ColumnTextAlign.END);
 
         grid.getHeaderRows().clear();
         HeaderRow headerRow = grid().appendHeaderRow();

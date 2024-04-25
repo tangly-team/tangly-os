@@ -78,10 +78,10 @@ class TransactionsView extends ItemView<Transaction> {
     static class TransactionForm extends ItemForm<Transaction, TransactionsView> {
         TransactionForm(@NotNull TransactionsView view) {
             super(view);
-            initForm();
+            init();
         }
 
-        protected void initForm() {
+        private void init() {
             DatePicker date = VaadinUtils.createDatePicker("date");
             TextField text = VaadinUtils.createTextField("Text", "text");
             TextField reference = VaadinUtils.createTextField("Reference", "reference");
@@ -94,12 +94,12 @@ class TransactionsView extends ItemView<Transaction> {
             creditAccount.setClearButtonVisible(true);
             TextField amount = VaadinUtils.createTextField("Amount", "amount");
 
-            binder().bind(date, Transaction::date, null);
-            binder().bind(debitAccount, Transaction::debitAccount, null);
-            binder().bind(creditAccount, Transaction::creditAccount, null);
-            binder().bind(amount, o -> o.text().toString(), null);
-            binder().bind(text, Transaction::text, null);
-            binder().bind(reference, Transaction::reference, null);
+            binder().bindReadOnly(date, Transaction::date);
+            binder().bindReadOnly(debitAccount, Transaction::debitAccount);
+            binder().bindReadOnly(creditAccount, Transaction::creditAccount);
+            binder().bindReadOnly(amount, o -> o.amount().toString());
+            binder().bindReadOnly(text, Transaction::text);
+            binder().bindReadOnly(reference, Transaction::reference);
             // TODO debit and credit including splits
             FormLayout form = new FormLayout();
             form.add(date, reference, text, debitAccount, creditAccount, amount);
