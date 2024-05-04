@@ -1,3 +1,9 @@
+---
+title: "Glossary"
+date: 2019-05-01
+weight: 130
+---
+
 ifndef::imagesdir[:imagesdir: ./pics]
 
 [[section-glossary]]

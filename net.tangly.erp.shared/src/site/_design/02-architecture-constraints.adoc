@@ -1,3 +1,9 @@
+---
+title: "Architecture Constraints"
+date: 2019-05-01
+weight: 20
+---
+
 ifndef::imagesdir[:imagesdir: ./pics]
 
 [[section-architecture-constraints]]

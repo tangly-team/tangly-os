@@ -1,3 +1,9 @@
+---
+title: "Architecture Decisions"
+date: 2019-05-01
+weight: 90
+---
+
 ifndef::imagesdir[:imagesdir: ./pics]
 
 [[section-design-decisions]]

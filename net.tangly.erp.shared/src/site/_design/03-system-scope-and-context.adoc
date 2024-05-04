@@ -1,3 +1,9 @@
+---
+title: "System Scope and Context"
+date: 2019-05-01
+weight: 30
+---
+
 ifndef::imagesdir[:imagesdir: ./pics]
 
 [[section-system-scope-and-context]]

@@ -1,3 +1,9 @@
+---
+title: "Runtime View"
+date: 2019-05-01
+weight: 60
+---
+
 ifndef::imagesdir[:imagesdir: ./pics]
 
 [[section-runtime-view]]

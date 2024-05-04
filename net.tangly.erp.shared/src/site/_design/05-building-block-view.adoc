@@ -1,3 +1,9 @@
+---
+title: "Building Block View"
+date: 2019-05-01
+weight: 50
+---
+
 ifndef::imagesdir[:imagesdir: ./pics]
 
 [[section-building-block-view]]
@@ -33,7 +39,7 @@ See https://docs.arc42.org/section-5/[Building Block View] in the arc42 document
 
 ****
 
-=== Whitebox Overall System
+=== White box Overall System
 
 [role="arc42help"]
 ****

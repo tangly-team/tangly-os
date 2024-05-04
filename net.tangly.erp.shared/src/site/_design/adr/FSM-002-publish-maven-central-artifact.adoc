@@ -2,7 +2,7 @@
 title: "FSM-002: Publish Maven Central Artifacts"
 linkTitle: "Publish Maven Central Artifacts"
 date: 2020-01-01
-weight: 2
+weight: 202
 ---
 
 == FSM-002 Publish Artifacts on Public Java Components Repository

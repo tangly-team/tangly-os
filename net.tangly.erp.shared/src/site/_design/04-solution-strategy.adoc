@@ -1,3 +1,9 @@
+---
+title: "Solution Strategy"
+date: 2019-05-01
+weight: 40
+---
+
 ifndef::imagesdir[:imagesdir: ./pics]
 
 [[section-solution-strategy]]

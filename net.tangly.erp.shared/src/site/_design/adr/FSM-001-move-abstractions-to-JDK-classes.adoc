@@ -2,7 +2,7 @@
 title: "FSM 001: Move Abstractions to JDK Classes"
 LinkTitle: "Move Abstractions to JDK Classes"
 date: 2019-05-01
-weight: 1
+weight: 201
 ---
 
 == FSM-001 Replace Guard and Action classes with JDK BiPredicate and BiFunction Classes

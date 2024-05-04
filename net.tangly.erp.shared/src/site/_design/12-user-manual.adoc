@@ -1,3 +1,9 @@
+---
+title: "User Manual"
+date: 2019-05-01
+weight: 120
+---
+
 ifndef::imagesdir[:imagesdir: ./pics]
 
 :ref-naked-objects: https://en.wikipedia.org/wiki/Naked_objects[Naked Objects]
@@ -44,7 +50,7 @@ Database files are located under _tangle-erp/db/bounded-domain_.
 === Effort Tracking Workflow
 
 Collaborators can be assigned to products.
-An assignement connects a collaborator to a product, a time interval and a contract.
+An assignment connects a collaborator to a product, a time interval and a contract.
 They document their activities in time sheets describing the performed efforts.
 
 Efforts are written down in a YAML file for each day, and each assignment.
@@ -136,9 +142,10 @@ Collaborator activities are grouped per assignment and often per month to genera
 @endsalt
 ....
 
-==== Product Effort Aggregateion
+==== Product Effort Aggregation
 
-Each tab has a date range selection field.
+The product effort aggregation statistics display the efforts per product, collaborator, assignment, and contract.
+You can choose a specific product and a date range to display the efforts.
 
 contracts:: Sum of efforts order by contract identifier
 - Sum all efforts per contractId for the product in a contract tab

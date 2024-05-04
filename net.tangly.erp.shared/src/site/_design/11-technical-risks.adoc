@@ -1,3 +1,9 @@
+---
+title: "Technical Risks and Debts"
+date: 2019-05-01
+weight: 110
+---
+
 ifndef::imagesdir[:imagesdir: ./pics]
 
 [[section-technical-risks]]

@@ -28,7 +28,7 @@ The drawback is that our clients have to use the current JDK released version.
 
 The major advantage is that you are using the latest version you do not need to pay license fees for each server you have running.
 Older Oracle versions always require a support contract and associated fees.
-The other approach is to use an alternate distribution such as https://openjdk.java.net/[OpenJDK].
+The other approach is to use an alternate distribution such as https://openjdk.org/[OpenJDK].
 
 === Decision
 

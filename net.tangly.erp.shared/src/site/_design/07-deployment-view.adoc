@@ -1,3 +1,9 @@
+---
+title: "Deployment View"
+date: 2019-05-01
+weight: 70
+---
+
 ifndef::imagesdir[:imagesdir: ./pics]
 
 [[section-deployment-view]]
@@ -12,10 +18,10 @@ The deployment view describes:
 
 2. mapping of (software) building blocks to that infrastructure elements.
 
-Often systems are executed in different environments, e.g. development environment, test environment, production environment.
-In such cases you should document all relevant environments.
+Often systems are executed in different environments, e.g., development environment, test environment, production environment.
+In such cases, you should document all relevant environments.
 
-Especially document a deployment view if your software is executed as distributed system with more than one computer, processor, server or container or when you design and construct your own hardware processors and chips.
+Especially document a deployment view if your software is executed as a distributed system with more than one computer, processor, server or container or when you design and construct your own hardware processors and chips.
 
 From a software perspective it is sufficient to capture only those elements of an infrastructure that are needed to show a deployment of your building blocks.
 Hardware architects can go beyond that and describe an infrastructure to any level of detail they need to capture.
@@ -27,7 +33,7 @@ Therefore, there is a need to know the infrastructure.
 
 .Form
 Maybe a highest level deployment diagram is already contained in section 3.2. as technical context with your own infrastructure as ONE black box.
-In this section one can zoom into this black box using additional deployment diagrams:
+In this section, one can zoom into this black box using additional deployment diagrams:
 
 * UML offers deployment diagrams to express that view.
 Use it, probably with nested diagrams, when your infrastructure is more complex.
@@ -44,12 +50,12 @@ See https://docs.arc42.org/section-7/[Deployment View] in the arc42 documentatio
 ****
 Describe (usually in a combination of diagrams, tables, and text):
 
-* distribution of a system to multiple locations, environments, computers, processors, .., as well as physical connections between them
+* distribution of a system to multiple locations, environments, computers, processors, as well as physical connections between them
 * important justifications or motivations for this deployment structure
 * quality and/or performance features of this infrastructure
 * mapping of software artifacts to elements of this infrastructure
 
-For multiple environments or alternative deployments please copy and adapt this section of arc42 for all relevant environments.
+For multiple environments or alternative deployments, please copy and adapt this section of arc42 for all relevant environments.
 ****
 
 _**<Overview Diagram>**_
