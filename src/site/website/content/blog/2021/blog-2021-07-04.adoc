@@ -162,11 +162,11 @@ Marcel Baumann. 2020
 Marcel Baumann. 2021
 - [[[detecting-agile-bullshit, 6]]] link:../../2019/detecting-agile-bullshit/[Detecting Agile Bullshit].
 Marcel Baumann. 2019
-- [[[scrum-master-formation, 7]]] link:../../2021/scrum-master-formation[Scrum Master Formation].
+- [[[scrum-master-formation, 7]]] link:../../2021/scrum-master-formation/[Scrum Master Formation].
 Marcel Baumann. 2021
-- [[[product-owner-formation, 8]]] link:../../2021/product-owner-formation[Product Owner Formation].
+- [[[product-owner-formation, 8]]] link:../../2021/product-owner-formation/[Product Owner Formation].
 Marcel Baumann. 2021
-- [[[scrum-developer-formation, 9]]] link:../../2021/scrum-developer-formation[Scrum Developer Formation].
+- [[[scrum-developer-formation, 9]]] link:../../2021/scrum-developer-formation/[Scrum Developer Formation].
 Marcel Baumann. 2021
 - [[[scrum-guide, 10]]] https://scrumguides.org/scrum-guide.html[Scrum Guide]
 Jeff Sutherland, Ken Schwaber. 2020

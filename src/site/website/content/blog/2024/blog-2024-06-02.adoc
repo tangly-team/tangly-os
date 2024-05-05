@@ -32,7 +32,7 @@ An actor is a computational entity that, in response to a message it receives, c
 - Create a finite number of new actors.
 - Designate the behavior to be used for the next message it receives.
 
-== Actor Abstractions
+== Actors
 
 [plantuml,target=actors,format=svg]
 ....
@@ -65,8 +65,6 @@ _We strongly suggest implementing messages as immutable value objects_.
 ====
 
 === Messages
-
-==== Message Abstraction
 
 The message abstraction structure is
 
@@ -104,7 +102,6 @@ We recommend defining an overall message type for all messages defined in the ap
 ----
 struct PayloadOne {};                                                          <1>
 struct PayloadTwo {};
-
 
 struct Data;                                                                   <2>
 
@@ -149,11 +146,9 @@ In this case, you must use a message allocator with explicit acquire and release
 A reference implementation is provided with the _vinci_ library.
 ====
 
-=== Actors
+=== Actor Implementation
 
-==== Actor Abstraction
-
-The actor abstraction structure is
+The actor structure source code is:
 
 [source,cpp]
 ----
@@ -264,7 +259,7 @@ private:
 };
 ----
 
-==== Application Actors
+==== Implementating Actors
 
 The processing logic for an actor has the following form.
 The actions and guards should only have one parameter to pass the message being processed.

@@ -304,11 +304,11 @@ Open Group. 2018
 Open Group. 2019. (ISBN: 1-947754-62-1)
 - [[[enterprise-architecture, 3]]] link:../../2021/why-enterprise-architecture/[Why Enterprise Architecture?].
 Marcel Baumann. 20221
-- [[[scrum-master-formation, 4]]] link:../../2021/scrum-master-formation[Scrum Master Formation].
+- [[[scrum-master-formation, 4]]] link:../../2021/scrum-master-formation/[Scrum Master Formation].
 Marcel Baumann. 2021
-- [[[product-owner-formation, 5]]] link:../../2021/product-owner-formation[Product Owner Formation].
+- [[[product-owner-formation, 5]]] link:../../2021/product-owner-formation/[Product Owner Formation].
 Marcel Baumann. 2021
-- [[[scrum-developer-formation, 6]]] link:../../2021/scrum-developer-formation[Scrum Developer Formation].
+- [[[scrum-developer-formation, 6]]] link:../../2021/scrum-developer-formation/[Scrum Developer Formation].
 Marcel Baumann. 2021
 - [[[agile-architecture-principles, 7]]] link:../../2019/agile-architecture-principles/[Agile Architecture Principles].
 Marcel Baumann. 2019

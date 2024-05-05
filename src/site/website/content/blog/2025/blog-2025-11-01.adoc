@@ -1,88 +1,58 @@
 ---
-title: "C++ Pointers"
-linkTitle: "C++ Pointers"
-date: 2025-10-01
-tags: ["c++"]
+title: "Electronic Invoices"
+linkTitle: "e-invoice"
+date: 2025-11-10
+tags: ["java"]
 ---
 
 include::../fragments/_config-mb-blog.adoc[]
-:ref-ros: https://www.ros.org/[Robot Operating System _ROS_]
+:ref-docbook: https://en.wikipedia.org/wiki/DocBook[DocBook]
+:ref-kroki: https://kroki.io/[Kroki]
+:ref-structurizr: https://structurizr.com/[Structurizr]
 
-image::2025-11-01-head.png[width=420,height=360,role=left]
+image::2025-11-01-head.jpg[width=420,height=360,role=left]
 
-== Pointers to Objects and Functions
+On this page we describe the ZUGFeRD format for electronic invoices.
+The name ZUGFeRD (pronounced »Tsoogfaird«) is a pun on the German word »Zugpferd« which means »draft horse«.
+It indicates that the new invoicing standard is positioned to play a major role regarding efficient electronic invoicing.
+ZUGFeRD allows the exchange of invoices between supplier and payer without any requirements for prior arrangements.
+ZUGFeRD invoices can be deployed universally and are not limited to specific industry sectors or company sizes.
+Private enterprises as well as public administration can efficiently organize their invoice processing with ZUGFeRD.
 
-[source,c++]
-----
-class Alarm {
-public:
-    static Alarm of();
-    static Alarm ofUp();
-    static Alarm_ofDown();
-private:
-    bool active();
-    bool active_up();
-    bool active_down();
-    bool (*Alarm::check)();
-    int limit;
-}
-----
+The standard has been created by a working group which comprises members from the public administration, three German federal ministries, industry associations in the financial, tax and software sectors, and other organizations.
+The working group is called »Forum elektronische Rechnung Deutschland« _FeRD,_ which means »Forum for electronic invoices Germany«.
+The organization responsible for Factur-X is FNFE-MPE (»Forum National de la Facture Electronique et des Marchés Publics Electroniques«).
 
-[source,c++]
-----
+The standart will be based on the European Norm EN 16931 which defines the semantic data model of an electronic invoice.
+It will be mandatory for all B2B and B2G invoices in the European Union from 2028 onwards.
 
-----
+== Hybrid Approaches
 
-default::
-delete::
+== Standards
 
-== Pointers to Object Methods
+EN16931
 
-== Class Contract
+Like the XRechnung, ZUGFeRD uses the EN16931 calculation rules and the according codelists for the allowed attribute values.
 
-[source,c++]
-----
-class Alarm {
-public:
-    Alarm();
-    Alarm(const Alarm& alarm);
-    Alarm(Alarm&& rvalue);
-    Alarm& operator=(const Alarm& alarm);
-    Alarm operator=(Alarm&& rvalue);
-    ~Alarm();
-}
-----
+Apparently, all german states accept ZUGFeRD invoices and E-Rechnung-Bund mentions the ZUGFeRD 2.1.1 XRechnung reference profile as an alternative to the XRechnung.
 
-If no user-defined copy assignment operators are provided for a class type footnote:[A class type is a class, a record, or an enum.], the compiler will always declare one as an inline public member of the class.
+== Libraries
 
-Constructor::
-Default constructor:::
-is a constructor without parameters.
-All properties are initialized with default values.
-Constructor with one parameter::
-can be used as an implicit or explicit type conversation method.
-Use to the keyword _explicit_ to disable implicit conversations generated through the compiler.
-Regular constructor:::
-Is a constructor with two or more parameters.
-Copy Constructor::
-Move Constructor::
-Copy Operator::
-Move Operator::
-Destructor::
+=== Mustang Library
 
-[CAUTION]
-====
-_auto_ptr_ is obsolete because it does not implement correctly the above contract.
-If you use _auto_ptr_ with standard library functions, you get either compilation errors or undefined behavior during runtime.
-====
+=== Swiss QR Code
 
-[TIP]
-====
-Use _explicit_ keyword for constructors with one parameter to avoid implicit type conversions.
-====
+== tangly ERP
 
-== Standard Library Support
+== Lessons Learnt
 
-== References
+Governmental organizations are moving incredibly slowly.
+I wrote an article on how to implement digital invoices in 2020, and now in 2024 we are still not using them on a wide scale.
+The European Union has mandated the use of electronic invoices in some cases starting int2025.
+Digital invoices will be mandatory in 2028.
+One bright decision is that the XML data is the source of true and the PDF is just a visual representation of the invoice.
 
-bibliography:[]
+[bibliography]
+== Links
+
+- [[[digital-invoices,1]]] link:../../2020/a-journey-implementing-digital-invoices/[A Journey Implementing Digital Invoices]

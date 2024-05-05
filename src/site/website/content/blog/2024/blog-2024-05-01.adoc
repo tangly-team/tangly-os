@@ -1,5 +1,5 @@
 ---
-title: "How to Document Software Architecture"
+title: "How to Document Your Software Architecture"
 linkTitle: "Document Architecture"
 date: 2024-05-01
 tags: ["java", "architecture", "agile"]
@@ -7,50 +7,75 @@ tags: ["java", "architecture", "agile"]
 
 include::../fragments/_config-mb-blog.adoc[]
 
+:ref-software-architecture: https://en.wikipedia.org/wiki/Software_architecture[Software architecture]
+:ref-javadoc: https://en.wikipedia.org/wiki/Javadoc[Javadoc]
+
 [.float-group]
 --
 image::2024-05-01-head.png[width=420,height=360,role=left]
 
-A solution architecture document _SAD_ is a document that describes the structure of a software solution.
+You are creating the next digital software masterpiece.
+
+How can you document your software architecture in a way that is useful for your team and stakeholders?
+
+A software architecture document _SAD_ is a document that describes the structure of a software solution.
 
 It includes the architecture of its components, the relationships between those components, and the principles that guide its design.
 
 The solution architecture document is typically used as a reference for designing, building, and maintaining a software system.
+--
 
 Developers, architects, and other stakeholders use it to understand the overall design of the system and how it fits into the larger business or technical environment.
---
+
+Below an example of a software architecture document content
+footnote:[I add a chapter describing the user manual and user interface when document our applications.].
 
 [.text-center]
 image:2024-05-01-architecture-doc.png[width=640,height=360,align="text-center"]
 
-Modern software development practices, such as agile and DevOps, have changed the way we think about software architecture
-cite:[modern-software-engineering,effective-java-3rd]
-cite:[building-evolutionary-architectures-2nd,building-evolutionary-architectures]
-cite:[large-scale-scrum,practices-for-scaling-lean-and-agile-development,scaling-lean-and-agile-development]
-cite:[documenting-software-architectures].
+== Modern Approaches
+
+Modern software development practices, such as {ref-manifesto} and {ref-devops}, have changed the way we think about software architecture
+cite:[modern-software-engineering,effective-java-3rd,building-evolutionary-architectures-2nd,building-evolutionary-architectures,large-scale-scrum,practices-for-scaling-lean-and-agile-development,scaling-lean-and-agile-development,documenting-software-architectures].
 
 Tooling and practices have evolved to support the creation of lightweight, agile software architecture documentation.
-{ref-arc42} natively supports Asciidoc and Markdown based documentation.
+The {ref-arc42} approach natively supports {ref-asciidoc} and {ref-markdown} based documentation
+footnote:[The worst solution is to write Microsoft Word documents and store them in a SharePoint site.
+Such documents can neither be searched nor archived.
+Jira wiki documentation has similar drawbacks.].
 All documents are stored as text artifacts in a git repository.
-The documentation is generated as static website {ref-asciidoc}.
+The documentation is generated as static website {ref-asciidoc}
+footnote:[I love {ref-asciidoc} and {ref-hugo} to create technical static website.
+I use {ref-plantuml} and {ref-mermaid} to create diagrams.].
 Diagrams with {ref-c4} or {ref-uml}, {ref-adr} are linked to source code documentation.
 
-Software architecture documentation creates a common understanding.
+[TIP]
+====
+The architecture documents shall be online, searchable and actual.
+
+The artifacts shall be versioned to support documenting various releases of the application.
+
+The documents shall be created as part of a continuous integration pipeline.
+This approach eliminates the need for manual documentation generation.
+====
+
+== Architecture Documentation Goals
+
 Software architecture documentation creates a common understanding of the solution behind the system for various stakeholders.
 The documentation makes it possible to evaluate the software architecture from the perspective of the various stakeholders.
-Software architecture documentation supports architectural work.
-Software architecture documentation guides the development team in implementing new product features.
+
+Software architecture documentation supports architectural work and guides the development team in implementing new product features.
 
 [.text-center]
 image:2024-05-01-C4-5-things.png[width=420,height=360,role=text-center]
 
-You should understand as a software architect:
+You should as a software architect understand:
 
-- The essence of software architecture.
+- What is the essence of {ref-software-architecture}?
 - Why should the software architecture role include coding, coaching and collaboration?
-- The things that you really need to think about before coding.
+- What are the things that you really need to think about before coding?
 - How to visualize your software architecture using {ref-c4}?
-- A lightweight approach to documenting your software.
+- How to document your application with a lightweight and collaborative approach?.
 - Why there is no conflict between agile and architecture?
 - What does _just enough_ upfront design mean?
 - How to identify risks with risk-storming?
@@ -60,15 +85,21 @@ You should understand as a software architect:
 These are the rules for any technical documentation, including software architecture documentation:
 
 . Write documentation from the reader’s point of view.
+Embrace approaches such as {ref-javadoc}
+footnote:[JavaDoc lately added support to Markdown syntax and code snippets.
+It markantly simplifies the redaction of quality documentation.].
 . Document that you have realized, not your wishes.
 . Avoid unnecessary repetition.
+Reference and link to information, do not copy it.
 Minimalism is key.
 . Avoid ambiguity.
-. Use a standard organization such as {ref-arc42}.
+. Use a standard structure such as {ref-arc42}.
 . Record rationale and decisions with {ref-adr}.
 . Keep documentation current but not too current.
 Generate your documentation as a static website.
+Avoid manual steps when updating your documentation.
 . Review documentation for fitness of purpose.
+A new collaborator in the team is the optimal guinea pig to test the documentation.
 
 [quote,Frederick Brooks jr.,1995]
 ____

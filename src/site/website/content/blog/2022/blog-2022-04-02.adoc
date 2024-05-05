@@ -165,11 +165,11 @@ The unified process was defined in the nineties and is now obsolete.
 
 - [[[detecting-agile-bullshit, 2]]] link:../../2019/detecting-agile-bullshit/[Detecting Agile Bullshit].
 Marcel Baumann. 2019
-- [[[scrum-master-formation, 3]]] link:../../2021/scrum-master-formation[Scrum Master Formation].
+- [[[scrum-master-formation, 3]]] link:../../2021/scrum-master-formation/[Scrum Master Formation].
 Marcel Baumann. 2021
-- [[[product-owner-formation, 4]]] link:../../2021/product-owner-formation[Product Owner Formation].
+- [[[product-owner-formation, 4]]] link:../../2021/product-owner-formation/[Product Owner Formation].
 Marcel Baumann. 2021
-- [[[scrum-developer-formation, 5]]] link:../../2021/scrum-developer-formation[Scrum Developer Formation].
+- [[[scrum-developer-formation, 5]]] link:../../2021/scrum-developer-formation/[Scrum Developer Formation].
 Marcel Baumann. 2021
 - [[[scrum-guide, 6]]] link:https://scrumguides.org/scrum-guide.html[Scrum Guide].
 Jeff Sutherland, Ken Schwaber. 2020
