@@ -4,7 +4,7 @@
 # Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
 # the License at
 #
-#          http://www.apache.org/licenses/LICENSE-2.0
+#          https://apache.org/licenses/LICENSE-2.0
 #
 # Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
 # OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -74,17 +74,16 @@ cp $prjDir/src/main/resources/references.bib $siteDir/data/
 copy_module bdd
 cp $prjDir/net.tangly.bdd/build/bdd-reports/bdd-report.adoc $siteDir/content/docs/bdd/
 
+copy_module apps
 copy_module commons
 copy_module core
 copy_module dev
 copy_module fsm
 cp $prjDir/net.tangly.fsm/src/test/resources/files/* $siteDir/content/docs/fsm/examples/
-
 copy_module gleam
 copy_module ui
 
 copy_domain_module agile
-copy_domain_module apps
 copy_domain_module collaborators
 copy_domain_module crm
 copy_domain_module invoices

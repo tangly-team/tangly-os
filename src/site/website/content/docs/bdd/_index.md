@@ -1,11 +1,11 @@
 ---
 title: "BDD - Behavior Driven Development"
 linkTitle: "BDD"
-weight: 10
+weight: 15
 ---
 
 The readme, user manual, documentation of the component and architecture consideration of the components.
 
-The API documentation can be found under [Javadoc](/docs/bdd/api-bdd/index.html).  
+All architectural design records for the project are available [here](../domains/architecture/09-architecture-decisions/).
 
-
+The API documentation can be found under [Javadoc](/docs/bdd/api-bdd/index.html).

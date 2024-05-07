@@ -80,8 +80,8 @@ Host gitlab.com
   Hostname gitlab.com
   PreferredAuthentications publickey
   IdentityFile ~/.ssh/marcel-baumann-tangly              <1>
-Host gitlab.enterprise.ch
-  HostName gitlab.enterprise.ch
+Host gitlab.switch.ch
+  HostName gitlab.switch.ch
   IdentityFile ~/.ssh/marcel-baumann-hslu                <1>
 ----
 <1> Replace with the name of the file containing your ssh key.

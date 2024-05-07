@@ -1,7 +1,0 @@
----
-title: "Architecture Design Record (ADR)"
-linkTitle: "ADR"
-date: 2019-05-01
----
-
-The list of all architectural design record defined for the commons component.

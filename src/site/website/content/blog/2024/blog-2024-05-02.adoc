@@ -157,7 +157,7 @@ An actor only needs to wait on regular messages or timeout messages on its mailb
 - Hierarchical state machines as described in the UML standard.
 - A flow library to publish and subscribe data and realize transformation pipelines.
 
-A similar _net::tangly::vinci_ library provides similar abstractions to elegantly implement applications with {cpp}:
+A similar library _net::tangly::vinci_ provides similar abstractions to elegantly implement applications with {cpp}:
 
 - A library providing actors and asynchronous message passing communication.
 - A timer manager to schedule time triggered tasks.

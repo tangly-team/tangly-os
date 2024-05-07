@@ -1,10 +1,11 @@
 ---
 title: "Vaadin UI"
 linkTitle: "UI"
-weight: 50
+weight: 45
 ---
 
 The readme, user manual, documentation of the component and architecture consideration of the components.
 
-The API documentation can be found under [Javadoc](/docs/ui/api-ui/index.html).
+All architectural design records for the project are available [here](../domains/architecture/09-architecture-decisions/).
 
+The API documentation can be found under [Javadoc](/docs/ui/api-ui/index.html).
