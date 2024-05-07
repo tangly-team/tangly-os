@@ -43,7 +43,7 @@ import java.util.regex.Pattern;
  * <p>A specific link is checked once.</p>
  */
 public class LinkChecker {
-    public static int LINK_CHECK_TIMEOUT = 1000;
+    public static final int LINK_CHECK_TIMEOUT = 1000;
     private static final Logger logger = LogManager.getLogger();
 
     record Error(String source, String link, String error, int errorCode) {
@@ -91,7 +91,7 @@ public class LinkChecker {
 
         for (Element link : links) {
             String linkUrl = link.attr("abs:href");
-            boolean validated = shouldLinkBeValidated(linkUrl) ? validateLink(url, linkUrl) : false;
+            boolean validated = shouldLinkBeValidated(linkUrl) && validateLink(url, linkUrl);
             // if the link is validated and belongs to the website, the associated webpage should be parsed.
             if (validated && shouldBeParsed(linkUrl)) {
                 parse(linkUrl);

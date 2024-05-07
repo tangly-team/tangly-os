@@ -37,7 +37,7 @@ public interface Cmd {
      * @param <T>      type of the item
      */
     static <T> void ofItemCmd(GridContextMenu.GridContextMenuItemClickEvent<T> event, Consumer<T> consumer) {
-        event.getItem().ifPresent(consumer::accept);
+        event.getItem().ifPresent(consumer);
     }
 
     /**

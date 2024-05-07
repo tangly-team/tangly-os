@@ -32,7 +32,7 @@ import java.util.Date;
 import java.util.Map;
 
 public class InvoiceZugFerd implements IExportableTransaction, InvoiceGenerator {
-    static record TradeParty(@NotNull InvoiceLegalEntity entity) implements IZUGFeRDExportableTradeParty {
+    record TradeParty(@NotNull InvoiceLegalEntity entity) implements IZUGFeRDExportableTradeParty {
         @Override
         public IZUGFeRDExportableContact getContact() {
             return new Contact(entity, entity.address());
@@ -72,7 +72,7 @@ public class InvoiceZugFerd implements IExportableTransaction, InvoiceGenerator 
     /**
      * Implements a ZugFerd exportable contact and maps a legal entity to ZugFerd abstraction.
      */
-    static record Contact(@NotNull InvoiceLegalEntity entity, @NotNull Address address) implements IZUGFeRDExportableContact {
+    record Contact(@NotNull InvoiceLegalEntity entity, @NotNull Address address) implements IZUGFeRDExportableContact {
         @Override
         public String getName() {
             return entity.name();
@@ -107,7 +107,7 @@ public class InvoiceZugFerd implements IExportableTransaction, InvoiceGenerator 
     /**
      * Implements a ZugFerd exportable item and maps the invoice item to ZugFerd abstraction.
      */
-    static record Item(@NotNull InvoiceItem item) implements IZUGFeRDExportableItem {
+    record Item(@NotNull InvoiceItem item) implements IZUGFeRDExportableItem {
         @Override
         public IZUGFeRDExportableProduct getProduct() {
             return new Product(item.article(), item.vatRate());
@@ -137,7 +137,7 @@ public class InvoiceZugFerd implements IExportableTransaction, InvoiceGenerator 
     /**
      * Implements a ZugFerd exportable product and maps the product to the ZugFerd abstraction.
      */
-    static record Product(@NotNull Article article, BigDecimal vatRate) implements IZUGFeRDExportableProduct {
+    record Product(@NotNull Article article, BigDecimal vatRate) implements IZUGFeRDExportableProduct {
         @Override
         public String getUnit() {
             return article.unit();
@@ -159,7 +159,7 @@ public class InvoiceZugFerd implements IExportableTransaction, InvoiceGenerator 
         }
     }
 
-    static record Payment(@NotNull Invoice invoice) implements IZUGFeRDTradeSettlementPayment {
+    record Payment(@NotNull Invoice invoice) implements IZUGFeRDTradeSettlementPayment {
         @Override
         public String getOwnBIC() {
             return invoice.invoicingConnection().bic();

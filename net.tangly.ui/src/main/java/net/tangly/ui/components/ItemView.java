@@ -86,6 +86,28 @@ import java.util.function.Consumer;
  * @param <T> Type of the displayed entities
  */
 public abstract class ItemView<T> extends VerticalLayout {
+    public static final String OID = "oid";
+    public static final String OID_LABEL = "OID";
+
+    public static final String ID = "id";
+    public static final String ID_LABEL = "ID";
+
+    public static final String NAME = "name";
+    public static final String NAME_LABEL = "Name";
+
+    public static final String TEXT = "text";
+    public static final String TEXT_LABEL = "Text";
+
+    public static final String FROM = "from";
+    public static final String FROM_LABEL = "From";
+
+    public static final String TO = "to";
+    public static final String TO_LABEL = "To";
+
+    public static final String DATE = "date";
+    public static final String DATE_LABEL = "Date";
+
+    public static final String ISO_DATE_FORMAT = "yyyy-MM-dd";
 
     /**
      * Filter to select a subset of entities based on one or more property values of the desired items.
@@ -171,11 +193,11 @@ public abstract class ItemView<T> extends VerticalLayout {
         return (domain != null) ? domain().registry() : null;
     }
 
-    public Mode mode() {
+    public final Mode mode() {
         return mode;
     }
 
-    public void mode(Mode mode) {
+    public final void mode(Mode mode) {
         this.mode = mode;
         if (Objects.nonNull(form)) {
             form.mode(mode);

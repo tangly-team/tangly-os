@@ -95,7 +95,7 @@ public class Activity implements HasDate, HasText {
     @Override
     public String toString() {
         return """
-            Activity[date=%s, code=%s, durationInMinutes=%s, author=%s, text=%s, details=%s]
+            Activity[date=%s, code=%s, durationInMinutes=%s, author=%s, text=%s]
             """.formatted(date(), code(), duration(), author(), text());
     }
 }

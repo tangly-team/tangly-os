@@ -21,7 +21,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 
 /**
- * An expense defines a monetary cost associated with a contract and implictly a product.
+ * An expense defines a monetary cost associated with a contract and implicitly a product.
  */
 public record Expense(@NotNull LocalDate date, @NotNull String contractId, String text, @NotNull BigDecimal amount) implements HasDate, HasText {
     public Expense {

@@ -36,7 +36,9 @@ import java.io.UncheckedIOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Stream;
@@ -117,6 +119,11 @@ public class ProductsAdapter implements ProductsPort {
             long assignmentOid = data.longNumber("assignmentOid");
             Assignment assignment = Provider.findByOid(realm().assignments(), assignmentOid).orElse(null);
 
+            if (Objects.isNull(assignment)) {
+                EventData.log(EventData.IMPORT, ProductsBoundedDomain.DOMAIN, EventData.Status.ERROR, "assignment could not be found.",
+                    Map.of("filename", source, "assignmentOid", Long.toString(assignmentOid)));
+                return;
+            }
             YamlSequence efforts = data.yamlSequence("efforts");
             efforts.children().forEach((YamlNode effort) -> {
                 LocalDate date = effort.asMapping().date("date");
@@ -144,7 +151,7 @@ public class ProductsAdapter implements ProductsPort {
     }
 
     @Override
-    public void exportEffortsDocument(@NotNull Assignment assignment, LocalDate from, LocalDate to) {
+    public void exportEffortsDocument(@NotNull Assignment assignment, LocalDate from, LocalDate to, String filename, @NotNull ChronoUnit unit) {
         String collaborator = assignment.name().replace(",", "_").replace(" ", "");
         var assignmentDocumentPath = reportFolder.resolve(STR."\{assignment.id()}-\{collaborator}-\{from.toString()}_\{to.toString()}\{AsciiDoctorHelper.ASCIIDOC_EXT}");
         var helper = new EffortReportEngine(logic);

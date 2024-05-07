@@ -19,7 +19,7 @@ Transition actions, state entry actions, and state exit actions are supported.
 * Builder pattern for easy creation of a complete state machine declaration using a fluent approach,
 * Recipes for usual use cases,
 * State machine event listeners,
-* Diagrams generators for dot and plantUml applications; diagrams are living documentation.
+* Diagrams generators for {ref-graphviz}, {ref-plantuml} and {ref-mermaid} diagrams are living documentation.
 
 State machines are powerful because their behavior is always guaranteed to be consistent, making it relatively easy to debug.
 This is because operational rules are written in stone when the machine is started.
@@ -77,7 +77,7 @@ A transition taking the history composite state as its target will return the ch
 ** Normal transition moving from a source state to a destination state
 ** Internal transition means after the transition completes, no state is excited or entered.
 Therefore, no entry or exit actions are executed
-* **Guards** are implemented as an extension of a standard Java *BiPrediction* functional interface.
+* **Guards** are implemented as an extension of a standard Java *BiPredicate* functional interface.
 The parameters are the event triggering the guard and the context.
 ** boolean expression lambda expression deciding if the transition shall be fired or not.
 * **Actions** are implemented as an extension of a standard Java *BiFunction* functional interface.
@@ -97,7 +97,47 @@ Modern development environments allow fast round trip changes, therefore, static
 
 Below the UML diagram of the public interface of the finite state machine component.
 
-![Finite State Machine UML](./pics/fsm-uml.svg "Finite State Machine UML Diagram")
+[plantuml,fsm-userGuideFsm-Interface,svg]
+----
+@startuml
+
+class Event<E extends Enum<E>> {
+    E type();
+    List<Object> parameters();
+}
+
+interface State<C, S extends Enum<S>, E extends Enum<E>> {
+    S getId();
+    void addEntryAction(BiConsumer<C, Event<E>> action);
+    void addExitAction(BiConsumer<C, Event<E>> action);
+    void addTransition(Event<E> event, State<C, S, E> target, BiPredicate<C, Event<E>> guard, BiConsumer<C, Event<E>> action);
+    void addLocalTransition(Event<E> event, BiConsumer<C, Event<E>> action);
+    void addHistory(State<C, S, E> state);
+    void addInitial(State<C, S, E> state);
+    void addFinal();
+}
+State *-- "*" State : substates
+State *-- "*" Transition : transitions
+
+interface Transition<C, S extends Enum<S>, E extends Enum<E>> {
+    State<C, S, E> getSource();
+    State<C, S, E> getTarget();
+    Event<E> getEvent();
+    BiPredicate<C, Event<E>> getGuard();
+    BiConsumer<C, Event<E>> getAction();
+}
+
+Transition *-- "*" State : source
+Transition *-- "*" State : target
+
+interface StateMachine<C, S extends Enum<S>, E extends Enum<E>> {
+    void fire(Event<E> event);
+    S getCurrentState();
+    void addListener(StateMachineListener<C, S, E> listener);
+    void removeListener(StateMachineListener<C, S, E> listener);
+}
+StateMachine *-- "*" State : states
+----
 
 === Fluent Examples
 
@@ -181,14 +221,14 @@ The enumeration of __Events__ defines the events recognized and processed throug
 [source,java]
 ----
 enum States {
-    Root, Off, Maintenance, On, FM, DAB, Play, AutoTune,                                        // <1>
+    Root, Off, Maintenance, On, FM, DAB, Play, AutoTune,                                      // <1>
 }
 
 enum Events {
-    TogglePower, ToggleMode, StationLost, StationFound, StoreStation                            // <2>
+    TogglePower, ToggleMode, StationLost, StationFound, StoreStation                          // <2>
 }
 
-DefinitionBuilder<Owner, States, Events> builder = new DefinitionBuilder<>(States.Root);        // <3>
+DefinitionBuilder<Owner, States, Events> builder = new DefinitionBuilder<>(States.Root);      // <3>
 
 builder.addToRoot(States.Off).isInitial().onEntry(Fsm::logOffEntry).onExit(Fsm::logOffExit);
 builder.addToRoot(States.Maintenance).onEntry(Fsm::logMaintenanceEntry).onExit(Fsm::logMaintenanceExit);
@@ -211,7 +251,7 @@ builder.in(States.FM).on(Events.ToggleMode).to(States.DAB).execute(Fsm::logTrans
 builder.in(States.Play).on(Events.StationLost).to(States.AutoTune).execute(Fsm::logTransitionFromPlayToAutoTune);
 builder.in(States.AutoTune).on(Events.StationFound).to(States.Play).execute(Fsm::logTransitionFromAutoTuneToPlay);
 
-builder.machine("name of the machine", owner);                                                  // <4>
+builder.machine("name of the machine", owner);                                                // <4>
 ----
 
 <1> Defines the set of states for the finite state machine
@@ -301,11 +341,11 @@ To be written
 
 You can document your state machine declaration by
 
-* Generate a diagram in the dot language and visualize your state machine as a hierarchical graph.
-* Generate a plantUML state machine diagram following UML notation.
+* Generate a diagram in the {ref-mermaid}, {ref-plantuml} or {ref-graphviz} language and visualize your state machine as a hierarchical graph.
+* Generate a textual description of the state machine declaration based on a tabular structure.
 * Add description to states, actions and guards directly in the builder.
 These descriptions are used to enrich the hierarchical graph.
 
 We provide the finite state machine diagrams of the builder FSM and the Washer FSM as complete examples.
 Please consult the unit tests for the complete source code.
-Use JUnit to run the state machine programs.
+Use {ref-junit5} to run the state machine programs.

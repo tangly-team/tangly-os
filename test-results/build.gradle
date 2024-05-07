@@ -43,11 +43,13 @@ repositories {
 }
 
 dependencies {
+    testReportAggregation project(':net.tangly.apps')
     testReportAggregation project(':net.tangly.bdd')
     testReportAggregation project(':net.tangly.cmd')
     testReportAggregation project(':net.tangly.commons')
     testReportAggregation project(':net.tangly.core')
     testReportAggregation project(':net.tangly.dev')
+
     testReportAggregation project(':net.tangly.erp.agile')
     testReportAggregation project(':net.tangly.erp.collaborators')
     testReportAggregation project(':net.tangly.erp.crm')
@@ -62,11 +64,13 @@ dependencies {
     testReportAggregation project(':net.tangly.ui')
     testReportAggregation project(':net.tangly.web')
 
+    jacocoAggregation project(':net.tangly.apps')
     jacocoAggregation project(':net.tangly.bdd')
     jacocoAggregation project(':net.tangly.cmd')
     jacocoAggregation project(':net.tangly.commons')
     jacocoAggregation project(':net.tangly.core')
     jacocoAggregation project(':net.tangly.dev')
+
     jacocoAggregation project(':net.tangly.erp.agile')
     jacocoAggregation project(':net.tangly.erp.collaborators')
     jacocoAggregation project(':net.tangly.erp.crm')

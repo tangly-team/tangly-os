@@ -15,6 +15,11 @@ package net.tangly.erp;
 
 import com.google.common.jimfs.Configuration;
 import com.google.common.jimfs.Jimfs;
+import net.tangly.core.crm.LegalEntity;
+import net.tangly.core.crm.NaturalEntity;
+import net.tangly.core.providers.Provider;
+import net.tangly.erp.crm.domain.Contract;
+import net.tangly.erp.crm.domain.Interaction;
 import net.tangly.erp.crm.ports.CrmAdapter;
 import net.tangly.erp.crm.ports.CrmEntities;
 import net.tangly.erp.crm.services.CrmBoundedDomain;
@@ -57,6 +62,10 @@ class CrmPersistenceTest {
     @Test
     void exportCrmRealmToTsvTest() throws Exception {
         try (FileSystem fs = Jimfs.newFileSystem(Configuration.unix())) {
+            final String NATURAL_ENTITY_ID = "756.5149.8825.64";
+            final String LEGAL_ENTITY_ID = "CHE-357.875.339";
+            final String CONTRACT_ID = "STG-2019";
+            final long INTERACTION_OID = 600;
             var store = new ErpStore(fs);
             store.createRepository();
 
@@ -67,16 +76,17 @@ class CrmPersistenceTest {
             long nrLegalEntities = handler.realm().legalEntities().items().size();
             long nrEmployees = handler.realm().employees().items().size();
             long nrContracts = handler.realm().contracts().items().size();
-            long nrContractExtensions = handler.realm().contracts().items().stream().flatMap(o -> o.contractExtensions().stream()).count();
+            long nrContractExtensions = handler.realm().contracts().items().stream().mapToLong(o -> o.contractExtensions().size()).sum();
             long nrInteractions = handler.realm().interactions().items().size();
+
+            NaturalEntity naturalEntity = Provider.findById(handler.realm().naturalEntities(), NATURAL_ENTITY_ID).orElseThrow();
+            LegalEntity legalEntity = Provider.findById(handler.realm().legalEntities(), LEGAL_ENTITY_ID).orElseThrow();
+            Contract contract = Provider.findById(handler.realm().contracts(), CONTRACT_ID).orElseThrow();
+            Interaction interaction = Provider.findByOid(handler.realm().interactions(), INTERACTION_OID).orElseThrow();
 
             // when
             handler.exportEntities();
-            handler.realm().naturalEntities().deleteAll();
-            handler.realm().legalEntities().deleteAll();
-            handler.realm().employees().deleteAll();
-            handler.realm().contracts().deleteAll();
-            handler.realm().interactions().deleteAll();
+            handler.clearEntities();
             handler.realm().close();
             handler = new CrmAdapter(new CrmEntities(store.dbRoot().resolve(CrmBoundedDomain.DOMAIN)), store.dataRoot().resolve(CrmBoundedDomain.DOMAIN));
             handler.importEntities();
@@ -86,8 +96,13 @@ class CrmPersistenceTest {
             assertThat(handler.realm().legalEntities().items().size()).isEqualTo(nrLegalEntities);
             assertThat(handler.realm().employees().items().size()).isEqualTo(nrEmployees);
             assertThat(handler.realm().contracts().items().size()).isEqualTo(nrContracts);
-            assertThat(handler.realm().contracts().items().stream().flatMap(o -> o.contractExtensions().stream()).count()).isEqualTo(nrContractExtensions);
+            assertThat(handler.realm().contracts().items().stream().mapToLong(o -> o.contractExtensions().size()).sum()).isEqualTo(nrContractExtensions);
             assertThat(handler.realm().interactions().items().size()).isEqualTo(nrInteractions);
+
+            assertThat(naturalEntity).isEqualTo(Provider.findById(handler.realm().naturalEntities(), NATURAL_ENTITY_ID).orElseThrow());
+            assertThat(legalEntity).isEqualTo(Provider.findById(handler.realm().legalEntities(), LEGAL_ENTITY_ID).orElseThrow());
+            assertThat(contract).isEqualTo(Provider.findById(handler.realm().contracts(), CONTRACT_ID).orElseThrow());
+            assertThat(interaction).isEqualTo(Provider.findByOid(handler.realm().interactions(), INTERACTION_OID).orElseThrow());
             handler.realm().close();
         }
     }

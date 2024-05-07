@@ -1,10 +1,10 @@
 /*
- * Copyright 2024 Marcel Baumann
+ * Copyright 2024-2024 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- *          http://www.apache.org/licenses/LICENSE-2.0
+ *          https://apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -29,7 +29,7 @@ public enum VatCode implements Code, HasDateRange {
     F3(new BigDecimal("7.7"), DateRange.of(LocalDate.of(2018, Month.JANUARY, 1), LocalDate.of(2023, Month.DECEMBER, 31))),
     F4(new BigDecimal("8.1"), DateRange.of(LocalDate.of(2024, Month.JANUARY, 1), LocalDate.of(2030, Month.DECEMBER, 31)));
 
-    private VatCode(@NotNull BigDecimal rate, @NotNull DateRange range) {
+    VatCode(@NotNull BigDecimal rate, @NotNull DateRange range) {
         this.rate = rate;
         this.range = range;
     }

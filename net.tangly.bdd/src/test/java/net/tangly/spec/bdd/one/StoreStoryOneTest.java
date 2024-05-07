@@ -39,21 +39,21 @@ class StoreStoryOneTest {
     // @start region="bdd-scenario-sell-black-sweaters"
     @Scenario("Sell some black sweaters in stock to a customer")
     void sellBlackSweaters(@NotNull Scene scene) {
-        final int NrBlueSweaters = 4;
-        final int NrBlackSweaters = 5;
-        final int NrSoldBlackSweaters = 3;
-        scene.given("The store is stocked with sweaters", s -> create(s, NrBlackSweaters, NrBlueSweaters)).
+        final int nrBlueSweaters = 4;
+        final int nrBlackSweaters = 5;
+        final int nrSoldBlackSweaters = 3;
+        scene.given("The store is stocked with sweaters", s -> create(s, nrBlackSweaters, nrBlueSweaters)).
             and("has 5 black sweaters in stock", s -> assertThat(store(s).blacks())
-                .as("Store should carry 5 black sweaters").isEqualTo(NrBlackSweaters)).
+                .as("Store should carry 5 black sweaters").isEqualTo(nrBlackSweaters)).
             and("4 blue sweaters in stock", s -> assertThat(store(s).blues())
-                .as("Store should carry 4 blue sweaters").isEqualTo(NrBlueSweaters)).
+                .as("Store should carry 4 blue sweaters").isEqualTo(nrBlueSweaters)).
 
-            when("The customer buys 3 black sweaters", s -> store(s).sellBlack(NrSoldBlackSweaters)).
+            when("The customer buys 3 black sweaters", s -> store(s).sellBlack(nrSoldBlackSweaters)).
 
             then("The store should have 2 black sweaters in stock", s -> assertThat(store(s).blacks())
-                .as("Store should carry 1 black sweaters").isEqualTo(NrBlackSweaters - NrSoldBlackSweaters)).
+                .as("Store should carry 1 black sweaters").isEqualTo(nrBlackSweaters - nrSoldBlackSweaters)).
             and("4 blue sweaters in stock", s -> assertThat(store(s).blues())
-                .as("Store should carry 4 blue sweaters").isEqualTo(NrBlueSweaters)).
+                .as("Store should carry 4 blue sweaters").isEqualTo(nrBlueSweaters)).
             run();
     }
     // @end

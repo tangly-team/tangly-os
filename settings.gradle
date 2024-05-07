@@ -13,6 +13,7 @@
 
 rootProject.name = 'tangly'
 
+include 'net.tangly.apps'
 include 'net.tangly.bdd'
 include 'net.tangly.cmd'
 include 'net.tangly.bib'
@@ -23,9 +24,6 @@ include 'net.tangly.fsm'
 include 'net.tangly.gleam'
 include 'net.tangly.ui'
 include 'net.tangly.web'
-
-include 'net.tangly.app.api'
-include 'net.tangly.app.ui'
 
 include 'net.tangly.erp.agile'
 include 'net.tangly.erp.collaborators'

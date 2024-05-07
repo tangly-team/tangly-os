@@ -23,12 +23,22 @@ import java.util.Objects;
 /**
  * Provide a simple approach to create an audit trail for all relevant operations performed in the system. Contextual information such as user, IP address are
  * part of the MDR context and implicitly available to the event data logging process.
+ * <p>Good practice is to log all incoming and outgoing data. The granularity should be an aggregate as defined in the domain-driven design approach.
+ * The goal is provide an audit trail for all relevant input and output operations performed in the system.</p>
+ * <p></p>Statuses are:</p>
+ * <dl>
+ *     <dt>Success</dt> <dd>A complex operation was completed successfully. For example all entities of a TSV file could be imported.</dd>
+ *     <dt>Info</dt> <dd>Status information of a completed system activity. For example one entity of a TSV file could be imported.</dd>
+ *     <dt>Warning</dt> <dd>The operation encountered a problem but the data could be processed.</dd>
+ *     <dt>Error</dt> <dd>The data could not be processed due to syntactic or semantic errors.</dd>
+ *     <dt>Failure</dt> <dd>The operation failed due to an internal or resource problem. For example the file could be found or read.</dd>
+ * </dl>
  *
  * @param event     event triggering the creation of an audit log
- * @param timestamp timestanmp when the audit log was created
+ * @param timestamp timestamp when the audit log was created
  * @param component component source of the audit log. By convention, we use the module name or if necessary the package name
  * @param status    status associated with the audit log
- * @param text      text of the audit log
+ * @param text      text of the audit log. It should be English and provide a concise description of the event
  * @param data      data specific to the audit log
  * @param exception optional exception to be added to the audit log
  */
@@ -39,7 +49,7 @@ public record EventData(@NotNull String event, @NotNull LocalDateTime timestamp,
     public static final String FILENAME = "filename";
     public static final String ENTITY = "entity";
 
-    public enum Status {SUCCESS, INFO, WARNING, FAILURE}
+    public enum Status {SUCCESS, INFO, WARNING, ERROR, FAILURE}
 
     private static final String AUDIT_LOGGER = "AuditLogger";
     private static final Marker MARKER = MarkerManager.getMarker("AUDIT_EVENT");

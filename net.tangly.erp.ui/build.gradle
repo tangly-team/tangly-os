@@ -12,9 +12,9 @@
  */
 
 plugins {
-    id 'java-app-conventions'
+    id 'java-common-conventions'
+    id 'application'
     alias(libs.plugins.vaadin)
-    id 'jacoco-report-aggregation'
     id 'com.github.johnrengelman.shadow' version '8.1.1'
 }
 
@@ -68,8 +68,10 @@ distributions {
 }
 
 dependencies {
+    implementation project(':net.tangly.apps')
     implementation project(':net.tangly.commons')
     implementation project(':net.tangly.core')
+    implementation project(":net.tangly.erp.collaborators")
     implementation project(':net.tangly.erp.crm')
     implementation project(':net.tangly.erp.invoices')
     implementation project(':net.tangly.erp.ledger')

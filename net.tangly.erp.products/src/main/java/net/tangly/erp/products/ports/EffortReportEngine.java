@@ -51,7 +51,7 @@ public class EffortReportEngine {
 
     public void createAsciiDocReport(@NotNull Assignment assignment, LocalDate from, LocalDate to, @NotNull Path reportPath) {
         try (var writer = Files.newBufferedWriter(reportPath, StandardCharsets.UTF_8)) {
-            logger.atInfo().log("Create assignement report {}", reportPath);
+            logger.atInfo().log("Create assignment report {}", reportPath);
             createAsciiDocReport(assignment, from, to, writer);
         } catch (IOException e) {
             logger.atError().withThrowable(e).log("Error during reporting generation of {}", reportPath);

@@ -104,7 +104,7 @@ public class Reference<T> {
     /**
      * If a value is present, performs the given action with the value, otherwise does nothing.
      *
-     * @paranm action the action to be performed, if a value is present
+     * @param action the action to be performed, if a value is present
      */
     public void ifPresent(@NotNull Consumer<? super T> action) {
         if (reference != null) {

@@ -20,6 +20,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.io.Reader;
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 
 /**
  * Defines the import and export port for the products-bounded domain. It is the primary port in the DDD terminology.
@@ -29,16 +30,16 @@ public interface ProductsPort extends Port<ProductsRealm> {
 
     /**
      * Imports all efforts defined in the YAML file located at the given path.
-     * An effort is identified by the combination of the assignment identifier and the date of the effort. The assigement identifies uniquely the collaborator working on the effort.
+     * An effort is identified by the combination of the assignment identifier and the date of the effort. The assignment identifies uniquely the collaborator working on the effort.
      *
      * @param reader  reader containing the efforts to import
      * @param source  source of the efforts used to audit the import operation
-     * @param replace if true, the existing efforts are replaced by the imported ones, otherwise the imported efforts are only imported if not preesent
+     * @param replace if true, the imported ones replace the existing efforts, otherwise the imported efforts are only imported if not present
      */
     void importEfforts(@NotNull Reader reader, @NotNull String source, boolean replace) throws IORuntimeException;
 
     /**
-     * Exports all efforts of the assignment in the given period of time. The export shall be a asciidoc document.
+     * Exports all efforts of the assignment in the given period of time. The export shall be an asciidoc document.
      * The document name should contain the contract identifier, the collaborator identifier, and the period of time.
      * The prefix should be the year and month of the period end. The prefix is used to sort the documents.
      *
@@ -46,5 +47,5 @@ public interface ProductsPort extends Port<ProductsRealm> {
      * @param from       start of the considered time interval
      * @param to         end of the considered time interval
      */
-    void exportEffortsDocument(@NotNull Assignment assignment, LocalDate from, LocalDate to);
+    void exportEffortsDocument(@NotNull Assignment assignment, LocalDate from, LocalDate to, String filename, @NotNull ChronoUnit unit);
 }

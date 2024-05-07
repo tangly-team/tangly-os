@@ -69,10 +69,10 @@ public class InvoicesAdapter implements InvoicesPort {
     public void importEntities() {
         var handler = new InvoicesTsvJsonHdl(realm());
         Port.importEntities(dataFolder, ARTICLES_TSV, handler::importArticles);
-        var invoiceJson = new InvoiceJson(realm);
         try (Stream<Path> stream = Files.walk(dataFolder)) {
-            AtomicInteger nrOfInvoices = new AtomicInteger();
-            AtomicInteger nrOfImportedInvoices = new AtomicInteger();
+            var nrOfInvoices = new AtomicInteger();
+            var nrOfImportedInvoices = new AtomicInteger();
+            var invoiceJson = new InvoiceJson(realm);
             stream.filter(file -> !Files.isDirectory(file) && file.getFileName().toString().endsWith(JSON_EXT)).forEach(o -> {
                 nrOfInvoices.getAndIncrement();
                 try (Reader reader = Files.newBufferedReader(dataFolder.resolve(o))) {
@@ -85,7 +85,7 @@ public class InvoicesAdapter implements InvoicesPort {
                 }
             });
             EventData.log(EventData.IMPORT, InvoicesBoundedDomain.DOMAIN, EventData.Status.INFO, "Invoices were imported out of",
-                Map.of("nrOfImportedInvoices", Integer.toString(nrOfImportedInvoices.get()), "nrOfInvoices", Integer.toString(nrOfInvoices.get())));
+                Map.of("nrOfImportedInvoices", Integer.toString(nrOfImportedInvoices.get()), "rootFolder", dataFolder.toString()));
         } catch (IOException e) {
             throw new UncheckedIOException(e);
         }

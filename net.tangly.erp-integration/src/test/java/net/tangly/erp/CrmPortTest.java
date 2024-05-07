@@ -42,7 +42,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 class CrmPortTest {
     @Test
     void testCrmPort() throws IOException {
-        try (FileSystem fs = Jimfs.newFileSystem(com.google.common.jimfs.Configuration.unix())) {
+        try (FileSystem fs = Jimfs.newFileSystem(Configuration.unix())) {
             var store = new ErpStore(fs);
             store.createRepository();
             var port = new CrmAdapter(new CrmEntities(), null);

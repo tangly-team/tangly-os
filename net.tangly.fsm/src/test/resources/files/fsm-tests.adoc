@@ -6,7 +6,7 @@ weight: 10
 
 == Finite State Machines
 
-Below different formats to document automatically a finite state machine description.
+xBelow different formats to document automatically a finite state machine description.
 
 The nicest diagrams are often produced through PlantUML.
 Sometimes you must tinker with the declaration order of the state to improve the layout result.

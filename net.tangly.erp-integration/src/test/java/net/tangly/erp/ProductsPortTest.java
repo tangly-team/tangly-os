@@ -33,7 +33,7 @@ import java.time.Month;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class ProductsPortTest {
-    long ASSIGNMENT_OID = 400;
+    private static final long ASSIGNMENT_OID = 400;
 
     @Test
     void testImportEfforts() throws IOException {

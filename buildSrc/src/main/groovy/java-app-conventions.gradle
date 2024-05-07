@@ -1,5 +1,0 @@
-plugins {
-    id 'java-common-conventions'
-    id 'application'
-//    id 'com.google.cloud.tools.jib'
-}

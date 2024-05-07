@@ -17,15 +17,14 @@ Configuration and dependencies specific to Java applications
 
 The set of Gradle command line special commands we seldom use:
 
-* To publish all modules in local maven repository         `gradle publishMavenJavaPublicationToMavenLocal`
-* To publish all modules in maven central repository       `gradle publishMavenJavaPublicationToMavenRepository -Pmode=prod`
-* To generate static and aggregate code coverage metrics   `gradle build jacocoReport jacocoTestReport -Pmode=prod` \
-  Generate test coverage reports.
-* To detect vulnerabilities                                `gradle ossIndexAudit --info -Pmode=int`
-* To detect newer versions of libraries                    `gradle dependencyUpdates -Drevision=release`
-* To update sonar cloud                                    `gradle sonarqube -Dsonar.login=<login token>`
-* To create a production release                           `gradle net.tangly.erp.ui:installDist -Pvaadin.productionMode`
-* To check licenses of dependencies                        `gradle checkLicense`
+* To publish all modules in local maven repository         `./gradlew publishMavenJavaPublicationToMavenLocal`
+* To publish all modules in maven central repository       `./gradlew publishMavenJavaPublicationToMavenRepository -Pmode=prod`
+* To generate static and aggregate code coverage metrics   `./gradlew test testCodeCoverageReport testAggregateTestReport`
+* To detect vulnerabilities                                `./gradlew ossIndexAudit --info -Pmode=int`
+* To detect newer versions of libraries                    `./gradlew dependencyUpdates -Drevision=release`
+* To update sonar cloud                                    `./gradlew sonarqube -Dsonar.login=<login token>`
+* To create a production release                           `./gradlew net.tangly.erp.ui:installDist -Pvaadin.productionMode`
+* To check licenses of dependencies                        `./gradlew checkLicense`
 
 # Tips
 

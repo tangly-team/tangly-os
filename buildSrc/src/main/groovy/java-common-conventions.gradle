@@ -81,7 +81,7 @@ tasks.withType(Test).configureEach {
     options {
         setExcludeTags(['integration'] as Set)
     }
-    maxParallelForks = 8
+    maxParallelForks = 12
     failFast = false
 }
 
@@ -195,11 +195,6 @@ if (project.hasProperty('mode') && project.property('mode').equals('prod')) {
     }
 }
 
-configurations.all {
-    resolutionStrategy {
-    }
-}
-
 jacoco {
     toolVersion = "0.8.12"
 }
@@ -226,7 +221,7 @@ sonarqube {
 
 pmd {
     ruleSetFiles = files(rootProject.file('src/main/resources/pmd-tangly.xml'))
-    toolVersion = "7.0.0"
+    toolVersion = "7.1.0"
     ignoreFailures = true
     incrementalAnalysis = true
     rulesMinimumPriority = 3

@@ -49,7 +49,7 @@ class LListTest {
     void testLength() {
         LList<Integer> list = cons(1, cons(2, cons(3, cons(4, cons(5, nil())))));
         assertThat(list.length()).isEqualTo(5);
-        assertThat(LList.nil().length()).isZero();
+        assertThat(nil().length()).isZero();
     }
 
     @Test
@@ -97,13 +97,13 @@ class LListTest {
 
     @Test
     void testEmpytList() {
-        assertThatThrownBy(() -> LList.nil().first()).isInstanceOf(NoSuchElementException.class);
-        assertThatThrownBy(() -> LList.nil().rest()).isInstanceOf(UnsupportedOperationException.class);
+        assertThatThrownBy(() -> nil().first()).isInstanceOf(NoSuchElementException.class);
+        assertThatThrownBy(() -> nil().rest()).isInstanceOf(UnsupportedOperationException.class);
     }
 
     @Test
     void testToString() {
-        assertThat(LList.nil().toString()).isEqualTo("");
+        assertThat(nil().toString()).isEqualTo("");
         LList<Integer> list = cons(1, cons(2, cons(3, cons(4, cons(5, nil())))));
         assertThat(list.toString()).isEqualTo("1, 2, 3, 4, 5");
     }

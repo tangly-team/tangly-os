@@ -104,8 +104,8 @@ public class ExternalEntityImp implements ExternalEntity {
     }
 
     public void tags(@NotNull Collection<Tag> tags) {
-        tags.clear();
-        tags.addAll(tags);
+        this.tags.clear();
+        this.tags.addAll(tags);
     }
 
     @Override

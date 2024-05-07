@@ -65,9 +65,7 @@ class ProductsPersistenceTest {
 
             // when
             handler.exportEntities();
-            handler.realm().products().deleteAll();
-            handler.realm().assignments().deleteAll();
-            handler.realm().efforts().deleteAll();
+            handler.clearEntities();
             handler.realm().close();
             realm = new ProductsEntities(store.dbRoot().resolve(ProductsBoundedDomain.DOMAIN));
             handler = new ProductsAdapter(realm, new ProductsBusinessLogic(realm), store.dataRoot().resolve(ProductsBoundedDomain.DOMAIN), store.reportsRoot().resolve(ProductsBoundedDomain.DOMAIN));

@@ -15,6 +15,7 @@ package net.tangly.erp.products.domain;
 
 import net.tangly.core.HasDate;
 import net.tangly.core.HasText;
+import org.jetbrains.annotations.NotNull;
 
 import java.time.LocalDate;
 import java.util.Objects;
@@ -34,7 +35,7 @@ public class Effort implements HasDate, HasText {
     public Effort() {
     }
 
-    public Effort(Assignment assignment, String contractId, LocalDate date, int durationInMinutes, String text) {
+    public Effort(@NotNull Assignment assignment, @NotNull String contractId, LocalDate date, int durationInMinutes, String text) {
         this.assignment = assignment;
         this.contractId = contractId;
         this.date = date;

@@ -13,7 +13,6 @@
 
 package net.tangly.erp.ledger.ports;
 
-import lombok.NonNull;
 import net.tangly.commons.logger.EventData;
 import net.tangly.commons.utilities.AsciiDoctorHelper;
 import net.tangly.core.domain.Port;
@@ -58,7 +57,7 @@ public class LedgerAdapter implements LedgerPort {
     private final Path dataFolder;
     private final Path reportsFolder;
 
-    public LedgerAdapter(@NotNull LedgerRealm realm, @NonNull Path dataFolder, @NotNull Path reportsFolder) {
+    public LedgerAdapter(@NotNull LedgerRealm realm, Path dataFolder, Path reportsFolder) {
         this.realm = realm;
         this.dataFolder = dataFolder;
         this.reportsFolder = reportsFolder;

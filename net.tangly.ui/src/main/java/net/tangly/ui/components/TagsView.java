@@ -83,10 +83,10 @@ public class TagsView extends ItemView<Tag> {
 
         public TagForm(@NotNull TagsView parent) {
             super(parent);
-            initForm();
+            init();
         }
 
-        protected void initForm() {
+        private void init() {
             FormLayout layout = new FormLayout();
             namespace = new ComboBox<>(NAMESPACE);
             namespace.setItems(parent().registry().namespaces());

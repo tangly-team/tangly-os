@@ -21,6 +21,7 @@ import net.tangly.core.EntityExtendedImp;
 import net.tangly.core.crm.CrmEntity;
 import net.tangly.core.crm.LegalEntity;
 import net.tangly.core.crm.VcardType;
+import org.jetbrains.annotations.NotNull;
 
 import java.math.BigDecimal;
 import java.util.*;
@@ -123,6 +124,11 @@ public class Contract extends EntityExtendedImp implements EntityExtended, CrmEn
 
     public List<ContractExtension> contractExtensions() {
         return Collections.unmodifiableList(contractExtensions);
+    }
+
+    public void contractExtensions(@NotNull Iterable<ContractExtension> extensions) {
+        contractExtensions.clear();
+        extensions.forEach(contractExtensions::add);
     }
 
     @Override

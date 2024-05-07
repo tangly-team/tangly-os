@@ -28,30 +28,6 @@ import org.jetbrains.annotations.NotNull;
  * @param <T> entity to display
  */
 public class EntityView<T extends Entity> extends ItemView<T> {
-    public static final String OID = "oid";
-    public static final String OID_LABEL = "OID";
-
-    public static final String ID = "id";
-    public static final String ID_LABEL = "ID";
-
-    public static final String NAME = "name";
-    public static final String NAME_LABEL = "Name";
-
-    public static final String TEXT = "text";
-    public static final String TEXT_LABEL = "Text";
-
-    public static final String FROM = "from";
-    public static final String FROM_LABEL = "From";
-
-    public static final String TO = "to";
-    public static final String TO_LABEL = "To";
-
-    public static final String DATE = "date";
-    public static final String DATE_LABEL = "Date";
-
-
-    public static final String ISO_DATE_FORMAT = "yyyy-MM-dd";
-
     public static <T extends Entity> EntityView<T> of(@NotNull Class<T> entityClass, BoundedDomain<?, ?, ?> domain, @NotNull Provider<T> provider, @NotNull Mode mode) {
         EntityView<T> view = new EntityView<>(entityClass, domain, provider, mode);
         view.initEntityView();

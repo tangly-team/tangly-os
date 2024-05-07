@@ -20,7 +20,7 @@ import java.util.regex.Pattern;
 public class References {
     private final Map<String, Integer> books;
     private final Map<String, Integer> articles;
-    private String websiteUri;
+    private final String websiteUri;
     private final Pattern isBookReference;
     private final Pattern isInternalBlogReference;
 
