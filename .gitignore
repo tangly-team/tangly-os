@@ -19,6 +19,8 @@ hs_err_pid*
 **/build/
 **/target/
 **/node_modules/
+**/bundles/*
+**/dev-bundle/*
 **/.asciidoctor/
 
 # Covers vaadin specifics

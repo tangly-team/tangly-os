@@ -7,7 +7,7 @@ junit-version = '5.10.2'
 log4j2-version = '2.23.0'
 javalin-version = '5.6.4'
 openapi-version = "5.6.4"
-eclipsestore-version = '1.3.1'
+eclipsestore-version = '1.3.2'
 mustang-version = '2.10.0'
 vaadin-version = '24.3.11'
 
@@ -18,7 +18,7 @@ sonarqube = "org.sonarqube:4.4.1.3373"
 sonatype = "org.sonatype.gradle.plugins.scan:2.2.2"
 pitest = "info.solidsoft.pitest:1.7.0"
 errorprone = "net.ltgt.errorprone:3.0.1"
-jib = "com.google.cloud.tools.jib:3.2.0"
+jib = "com.google.cloud.tools.jib:3.4.2"
 mannes = "com.github.ben-manes.versions:0.41.0"
 
 [libraries]
@@ -40,11 +40,11 @@ slf4j-simple = "org.slf4j:slf4j-simple:2.0.9"
 apache-pdfbox = "org.apache.pdfbox:pdfbox:3.0.2"
 arch-unit = "com.tngtech.archunit:archunit-junit5-api:1.3.0"
 
-asciidoctorj = "org.asciidoctor:asciidoctorj:2.5.10"
+asciidoctorj = "org.asciidoctor:asciidoctorj:2.5.12"
 asciidoctorj-pdf = "org.asciidoctor:asciidoctorj-pdf:2.3.15"
 
 assertj = { module = "org.assertj:assertj-core", version.ref = "assertj-version" }
-eo-yaml = "com.amihaiemil.web:eo-yaml:8.0.2"
+eo-yaml = "com.amihaiemil.web:eo-yaml:8.0.4"
 
 flyway = { module = "org.flywaydb:flyway-core", version.ref = "flyway-version" }
 flywy-hsqldb = { module = "org.flywaydb:flyway-database-hsqldb", version.ref = "flyway-version" }
@@ -105,7 +105,7 @@ javalin-swagger = { module = "io.javalin.community.openapi:javalin-swagger-plugi
 vaadin-core = { module = "com.vaadin:vaadin-core", version.ref = "vaadin-version" }
 vaadin-pdfviewer = "org.vaadin.addons.componentfactory:vcf-pdf-viewer:2.8.1"
 vaadin-embedded-jetty = "com.github.mvysny.vaadin-boot:vaadin-boot:12.2"
-vaadin-socharts = "com.storedobject.chart:so-charts:3.2.5"
+vaadin-socharts = "com.storedobject.chart:so-charts:3.2.6"
 vaadin-test = "com.github.mvysny.kaributesting:karibu-testing-v24:2.1.5"
 
 [bundles]
