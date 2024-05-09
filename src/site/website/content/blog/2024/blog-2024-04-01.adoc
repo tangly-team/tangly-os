@@ -60,7 +60,7 @@ When exiting the try-with-resources block, the structured concurrency framework 
 ====
 Modern Java programmers never create threads directly.
 
-Complex or slow algoritms shall be parallelized using structured concurrency to exploit modern multicore processors.
+Complex or slow algorithms shall be parallelized using structured concurrency to exploit modern multicore processors.
 ====
 
 == Concurrent Stream Processing
@@ -90,7 +90,7 @@ int sum = listOfNumbers.parallelStream().reduce(5, Integer::sum);
 Java streams library provides a rich set of functionalities that can work with any stream.
 The approach is similar to the sequence library in functional programming languages such as Clojure.
 
-Modern Java cpde processeses any collection through sreams.
+Modern Java code processes any collection through streams.
 Huge collections are very efficiently processed in parallel streams on modern multicore processors.
 
 This approach transforms imperative code into a declarative style, which is easier to read and maintain.
@@ -159,7 +159,7 @@ Between virtual threads and structured concurrency, Java developers have a compe
 An application developer almost never uses concurrency primitives or thread pools directly.
 Beware of these design approaches and select wisely based on the requirements of the application.
 
-Library developers can use the new concurrency primitives to build high-performance libraries that are easy to use.
+Library developers can use the new concurrency primitives to build high-performance libraries that are straightforward to use.
 
 Use parallel streams when processing huge collections.
 

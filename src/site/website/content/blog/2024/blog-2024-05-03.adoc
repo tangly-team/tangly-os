@@ -25,9 +25,15 @@ My passion is tinkering with source code to have a maintainable and efficient so
 I love to work with other developers and to coach them to become better software engineers.
 Some of the products I developed last millennium are still in use today.
 
-I love technology and to work improving live quality for humanity.
+I love technology and to work improving live quality for humanity
+footnote:[I can buy all my public transportation tickets with my mobile phone.
+I have the option to just swipe my phone and ride the bus or train.
+The application will track my movements and select the cheapest ticket for the commute.
+These features improve my quality of life.].
 
-I love to develop software applications and see how it helps customers.
+I love to develop software applications and see how it helps customers
+footnote:[My preferred technology stack is the Java ecosystem.
+The numerous open source libraries tremendously simplify the creation of complex products.].
 
 I am so grateful for GPS navigation and precise maps on my mobile telephone.
 I never had to print any route to a new customer or to my holiday hostel in the last two decades.
@@ -61,7 +67,12 @@ I regularly complain that quite a few software developers are not well-trained.
 Often they are not aware of the latest software engineering practices and idioms of their preferred programming language.
 I have therefore to actively initiate a change.
 
-I love to teach students at technical universities and coach software engineers.
+I love to teach students at technical universities and coach software engineers
+footnote:[Teaching is a beautiful and rewarding activity.
+But it is sometimes frustrating.
+I am living in Switzerland and the education system is not the finest for technical education.
+It is a country with neither a STEM strategy at federal nor state education level.
+We are extremely missing young people with training in science, technology, engineering, and mathematics.].
 
 I found it incredibly rewarding to observe talented developers grasping advanced software engineering concepts
 cite:[modern-software-engineering].
@@ -82,7 +93,6 @@ He has a sense of responsibility and ethics.
 Legal constraints are not a hindrance but a challenge to overcome.
 - Financial considerations to ensure that _you create a sellable product_.
 Software developers often underestimate or ignore The financial aspects.
-
 
 I thrive in the entrepreneurial aspects of financial and legal constraints necessary for a successful product
 cite:[awakening-the-entrepreneur-within].

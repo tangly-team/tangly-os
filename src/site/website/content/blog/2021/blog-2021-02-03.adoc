@@ -34,7 +34,7 @@ If you are responsible for the meeting preparation, please:
 
 * Send me a calendar invitation in the https://en.wikipedia.org/wiki/ICalendar[icalendar] format.
 The file extension should be _ics_ or _ical_. +
-Never email me asking for an appointment, please provide directly the invitation. +
+Never email me asking for an appointment, please directly provide the invitation. +
 Do not send invitations in the Outlook proprietary format.
 I use macOS and Linux, not Microsoft and Office.
 * Send me a meaningful invitation.

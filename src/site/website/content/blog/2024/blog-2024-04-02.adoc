@@ -106,7 +106,7 @@ I find the practice advocated by Brian Goetz ideal.
 Provide a package for the current Java version and a package for the latest LTS version.
 Do not backport any new features to the LTS version.
 Remember, a new LTS version is released every two years.
-Just fix painful bugs.
+Fix painful bugs.
 . You have no excuse not to define an automatic name for your library.
 
 [TIP]

@@ -35,7 +35,7 @@ The source code is currently obfuscated.
 Debugging is difficult and cumbersome because variable names are synthetic and all comments are missing.
 The source code documentation is shallow and insufficient to understand the behavior of the library.
 Saving a collection::
-If you have access to the collection, just call store on the collection.
+If you have access to the collection, call store on the collection.
 If the collection is hidden inside an object, you are forced to use an _eager_ store.
 If you use standard object-oriented practices, you will have to use the less efficient approach of eager write operations.
 
