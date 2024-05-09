@@ -33,8 +33,8 @@ class InvoicesHdlTest {
             var store = new ErpStore(fs);
             store.createRepository();
 
-            var invoiceData = store.dataRoot().resolve(InvoicesBoundedDomain.DOMAIN);
-            var handler = new InvoicesAdapter(new InvoicesEntities(), invoiceData);
+            var handler = new InvoicesAdapter(new InvoicesEntities(),
+                store.dataRoot().resolve(InvoicesBoundedDomain.DOMAIN), store.reportsRoot().resolve(InvoicesBoundedDomain.DOMAIN));
             handler.importEntities();
 
             verifyArticles(handler.realm());
@@ -42,7 +42,8 @@ class InvoicesHdlTest {
 
             handler.exportEntities();
 
-            handler = new InvoicesAdapter(new InvoicesEntities(), invoiceData);
+            handler = new InvoicesAdapter(new InvoicesEntities(),
+                store.dataRoot().resolve(InvoicesBoundedDomain.DOMAIN), store.reportsRoot().resolve(InvoicesBoundedDomain.DOMAIN));
             handler.importEntities();
             verifyArticles(handler.realm());
         }

@@ -38,13 +38,23 @@ public final class PortUtilities {
     public static Path resolvePath(@NotNull Path directory, @NotNull String filename) {
         var matcher = PATTERN.matcher(filename);
         var filePath = matcher.matches() ? directory.resolve(filename.substring(0, 4)) : directory;
-        if (Files.notExists(filePath)) {
+        createDirectories(filePath);
+        return filePath;
+    }
+
+    public static Path resolvePath(@NotNull Path directory, int year, @NotNull String filename) {
+        var filePath = directory.resolve(Integer.toString(year));
+        createDirectories(filePath);
+        return filePath;
+    }
+
+    public static void createDirectories(@NotNull Path directory) {
+        if (Files.notExists(directory)) {
             try {
-                Files.createDirectories(filePath);
+                Files.createDirectories(directory);
             } catch (IOException e) {
                 throw new UncheckedIOException(e);
             }
         }
-        return filePath;
     }
 }

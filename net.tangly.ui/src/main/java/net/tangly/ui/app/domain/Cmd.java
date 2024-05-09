@@ -16,9 +16,8 @@ package net.tangly.ui.app.domain;
 import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.contextmenu.GridContextMenu;
+import org.jetbrains.annotations.NotNull;
 
-import java.util.Collections;
-import java.util.Set;
 import java.util.function.Consumer;
 
 /**
@@ -36,7 +35,7 @@ public interface Cmd {
      * @param consumer consumer to execute the command
      * @param <T>      type of the item
      */
-    static <T> void ofItemCmd(GridContextMenu.GridContextMenuItemClickEvent<T> event, Consumer<T> consumer) {
+    static <T> void ofItemCmd(@NotNull GridContextMenu.GridContextMenuItemClickEvent<T> event, @NotNull Consumer<T> consumer) {
         event.getItem().ifPresent(consumer);
     }
 
@@ -46,10 +45,20 @@ public interface Cmd {
      * @param event    grid context menu item click event
      * @param consumer consumer to execute the command
      */
-    static void ofGlobalCmd(GridContextMenu.GridContextMenuItemClickEvent<?> event, Runnable consumer) {
+    static void ofGlobalCmd(@NotNull GridContextMenu.GridContextMenuItemClickEvent<?> event, @NotNull Runnable consumer) {
         if (event.getItem().isEmpty()) {
             consumer.run();
         }
+    }
+
+    /**
+     * Factory method to create a command from a grid context menu item click event. The command is executed if one or no items are selected in the grid.
+     *
+     * @param event    grid context menu item click event
+     * @param consumer consumer to execute the command
+     */
+    static <T> void ofDualCmd(@NotNull GridContextMenu.GridContextMenuItemClickEvent<T> event, @NotNull Consumer<T> consumer) {
+        consumer.accept(event.getItem().orElse(null));
     }
 
     /**
@@ -66,21 +75,13 @@ public interface Cmd {
     }
 
     /**
-     * Indicate if the command is enabled or not. A command availability is dependent on the application and roles the user has.
+     * Return true if the command is enabled. The criteria are if an item is selected in the grid and the access rights associated with the user profile.
      *
-     * @return true if enabled otherwise false
+     * @param itemSelected true if an item is selected in the grid
+     * @return true if the command is enabled, otherwise false
      */
-    default boolean isAllowed() {
+    default boolean isEnabled(boolean itemSelected) {
         return true;
-    }
-
-    /**
-     * Return the roles requested to execute the command.
-     *
-     * @return roles allowed to execute the command
-     */
-    default Set<String> roles() {
-        return Collections.emptySet();
     }
 
     /**

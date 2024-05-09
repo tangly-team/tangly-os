@@ -23,6 +23,7 @@ import com.vaadin.flow.data.binder.ValidationException;
 import com.vaadin.flow.router.PageTitle;
 import net.tangly.erp.invoices.domain.Invoice;
 import net.tangly.erp.invoices.services.InvoicesBoundedDomain;
+import net.tangly.ui.app.domain.Cmd;
 import net.tangly.ui.asciidoc.AsciiDocField;
 import net.tangly.ui.components.*;
 import org.jetbrains.annotations.NotNull;
@@ -87,7 +88,7 @@ class InvoicesView extends ItemView<Invoice> {
     protected void addActions(@NotNull GridContextMenu<Invoice> menu) {
         super.addActions(menu);
         menu().add(new Hr());
-        menu().addItem("Print", event -> event.getItem().ifPresent(e -> new CmdCreateInvoiceDocument(e, domain()).execute()));
+        menu().addItem("Export", e -> Cmd.ofDualCmd(e, (Invoice o) -> new CmdCreateInvoiceDocument(o, domain()).execute()));
     }
 
     private void init() {

@@ -20,7 +20,7 @@ import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.tabs.Tab;
 import com.vaadin.flow.component.tabs.TabSheet;
 import com.vaadin.flow.component.tabs.TabSheetVariant;
-import com.vaadin.flow.component.textfield.TextArea;
+import com.vaadin.flow.component.textfield.TextField;
 import net.tangly.core.Strings;
 import net.tangly.ui.components.VaadinUtils;
 import org.asciidoctor.Asciidoctor;
@@ -35,7 +35,8 @@ import java.util.Objects;
 public class AsciiDocField extends CustomField<String> {
     private static final String EDIT_TAB = "Edit";
     private static final String PREVIEW_TAB = "Preview";
-    private final TextArea editField;
+    //    private final TextArea editField;
+    private final TextField editField;
     private final Div previewField;
     private final TabSheet tabSheet;
     private final Tab editTab;
@@ -47,8 +48,8 @@ public class AsciiDocField extends CustomField<String> {
             setLabel(label);
         }
         previewField = new Div();
-        editField = new TextArea();
-        editField.setEnabled(true);
+//        editField = new TextArea();
+        editField = new TextField();
         editField.setMinHeight("3em");
         editField.setWidth("100%");
         editField.addValueChangeListener(e -> updatePreview(Strings.emptyToNull(e.getValue())));
@@ -76,6 +77,7 @@ public class AsciiDocField extends CustomField<String> {
     public void setReadOnly(boolean readOnly) {
         super.setReadOnly(readOnly);
         editTab.setEnabled(!readOnly);
+        editField.setReadOnly(readOnly);
         if (readOnly) {
             tabSheet.setSelectedTab(previewTab);
         }
@@ -103,5 +105,4 @@ public class AsciiDocField extends CustomField<String> {
         previewField.removeAll();
         previewField.add(item);
     }
-
 }

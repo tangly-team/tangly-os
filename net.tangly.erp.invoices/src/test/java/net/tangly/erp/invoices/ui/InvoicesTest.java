@@ -28,13 +28,13 @@ import org.junit.jupiter.api.Tag;
 class InvoicesTest {
     static InvoicesBoundedDomain ofDomain() {
         var realm = new InvoicesEntities();
-        return new InvoicesBoundedDomain(realm, new InvoicesBusinessLogic(realm), new InvoicesAdapter(realm, null), new TypeRegistry());
+        return new InvoicesBoundedDomain(realm, new InvoicesBusinessLogic(realm), new InvoicesAdapter(realm, null, null), new TypeRegistry());
     }
 
     @BeforeAll
     public static void createModel() {
         var realm = new InvoicesEntities();
-        var domain = new InvoicesBoundedDomain(realm, new InvoicesBusinessLogic(realm), new InvoicesAdapter(realm, null), new TypeRegistry());
+        var domain = new InvoicesBoundedDomain(realm, new InvoicesBusinessLogic(realm), new InvoicesAdapter(realm, null, null), new TypeRegistry());
         Application.instance().registerBoundedDomain(domain);
     }
 

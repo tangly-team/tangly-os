@@ -31,13 +31,15 @@ class InvoicesPersistenceTest {
             var store = new ErpStore(fs);
             store.createRepository();
 
-            var handler = new InvoicesAdapter(new InvoicesEntities(store.dbRoot().resolve(InvoicesBoundedDomain.DOMAIN)), store.dataRoot().resolve(InvoicesBoundedDomain.DOMAIN));
+            var handler = new InvoicesAdapter(new InvoicesEntities(store.dbRoot().resolve(InvoicesBoundedDomain.DOMAIN)),
+                store.dataRoot().resolve(InvoicesBoundedDomain.DOMAIN), store.reportsRoot().resolve(InvoicesBoundedDomain.DOMAIN));
             handler.importEntities();
             assertThat(handler.realm().articles().items()).isNotEmpty();
             assertThat(handler.realm().invoices().items()).isNotEmpty();
             handler.realm().close();
 
-            handler = new InvoicesAdapter(new InvoicesEntities(store.dbRoot().resolve(InvoicesBoundedDomain.DOMAIN)), store.dataRoot().resolve(InvoicesBoundedDomain.DOMAIN));
+            handler = new InvoicesAdapter(new InvoicesEntities(store.dbRoot().resolve(InvoicesBoundedDomain.DOMAIN)),
+                store.dataRoot().resolve(InvoicesBoundedDomain.DOMAIN), store.reportsRoot().resolve(InvoicesBoundedDomain.DOMAIN));
             assertThat(handler.realm().articles().items()).isNotEmpty();
             assertThat(handler.realm().invoices().items()).isNotEmpty();
             handler.realm().close();
@@ -50,7 +52,8 @@ class InvoicesPersistenceTest {
             var store = new ErpStore(fs);
             store.createRepository();
 
-            var handler = new InvoicesAdapter(new InvoicesEntities(store.dbRoot().resolve(InvoicesBoundedDomain.DOMAIN)), store.dataRoot().resolve(InvoicesBoundedDomain.DOMAIN));
+            var handler = new InvoicesAdapter(new InvoicesEntities(store.dbRoot().resolve(InvoicesBoundedDomain.DOMAIN)),
+                store.dataRoot().resolve(InvoicesBoundedDomain.DOMAIN), store.reportsRoot().resolve(InvoicesBoundedDomain.DOMAIN));
             handler.importEntities();
             long nrArticles = handler.realm().articles().items().size();
             long nrInvoices = handler.realm().invoices().items().size();
@@ -58,7 +61,9 @@ class InvoicesPersistenceTest {
             handler.clearEntities();
             handler.realm().close();
 
-            handler = new InvoicesAdapter(new InvoicesEntities(store.dbRoot().resolve(InvoicesBoundedDomain.DOMAIN)), store.dataRoot().resolve(InvoicesBoundedDomain.DOMAIN));
+            handler = new InvoicesAdapter(new InvoicesEntities(store.dbRoot().resolve(InvoicesBoundedDomain.DOMAIN)),
+                store.dataRoot().resolve(InvoicesBoundedDomain.DOMAIN), store.reportsRoot().resolve(InvoicesBoundedDomain.DOMAIN));
+            ;
             handler.importEntities();
             assertThat(handler.realm().articles().items().size()).isEqualTo(nrArticles);
             assertThat(handler.realm().invoices().items().size()).isEqualTo(nrInvoices);

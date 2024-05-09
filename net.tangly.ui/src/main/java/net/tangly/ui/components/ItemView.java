@@ -315,7 +315,7 @@ public abstract class ItemView<T> extends VerticalLayout {
             if (!mode().readonly()) {
                 menu().add(new Hr());
                 menu().addItem(Mode.EDIT_TEXT, event -> event.getItem().ifPresent(form::edit));
-                menu().addItem(Mode.CREATE_TEXT, event -> form.create());
+                menu().addItem(Mode.CREATE_TEXT, _ -> form.create());
                 menu().addItem(Mode.DUPLICATE_TEXT, event -> event.getItem().ifPresent(form::duplicate));
                 menu().addItem(Mode.DELETE_TEXT, event -> event.getItem().ifPresent(form::delete));
             }

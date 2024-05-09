@@ -25,6 +25,10 @@ import net.tangly.ui.app.domain.BoundedDomainUi;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.UncheckedIOException;
+import java.util.Collections;
+import java.util.Map;
+import java.util.Optional;
+import java.util.TreeMap;
 import java.util.stream.IntStream;
 
 /**
@@ -32,32 +36,45 @@ import java.util.stream.IntStream;
  */
 public class ApplicationView extends AppLayout {
     private final String imageName;
+    private final Map<String, BoundedDomainUi<?>> boundedDomainUis;
     private Tabs tabs;
     private final MenuBar menuBar;
 
     public ApplicationView(String imageName) {
         this.imageName = imageName;
+        boundedDomainUis = new TreeMap<>();
         setPrimarySection(Section.NAVBAR);
         menuBar = new MenuBar();
         menuBar.setOpenOnHover(true);
         try {
             byte[] buffer = Thread.currentThread().getContextClassLoader().getResourceAsStream(imageName).readAllBytes();
-            Image image = new Image(new StreamResource(imageName, () -> new ByteArrayInputStream(buffer)), imageName);
-            image.setHeight("44px");
-            addToNavbar(new DrawerToggle(), image, menuBar, menuBar());
+            Image logo = new Image(new StreamResource(imageName, () -> new ByteArrayInputStream(buffer)), imageName);
+            logo.setHeight("44px");
+            addToNavbar(new DrawerToggle(), logo, menuBar, menuBar());
         } catch (IOException e) {
             throw new UncheckedIOException(e);
         }
-        drawerMenu();
+    }
+
+    public void registerBoundedDomainUi(BoundedDomainUi<?> domain) {
+        boundedDomainUis.put(domain.name(), domain);
+    }
+
+    public Optional<BoundedDomainUi<?>> getBoundedDomainUi(String name) {
+        return Optional.ofNullable(boundedDomainUis.get(name));
+    }
+
+    public Map<String, BoundedDomainUi<?>> boundedDomainUis() {
+        return Collections.unmodifiableMap(boundedDomainUis);
     }
 
     protected final void selectBoundedDomainUi(String domainName) {
-        Application.instance().getBoundedDomainUi(domainName).ifPresent(this::selectBoundedDomainUi);
+        getBoundedDomainUi(domainName).ifPresent(this::selectBoundedDomainUi);
         IntStream.range(0, tabs.getComponentCount()).mapToObj(i -> tabs.getTabAt(i)).filter(o -> o.getLabel().equals(domainName)).findFirst().ifPresent(tabs::setSelectedTab);
     }
 
     protected final void selectBoundedDomainUi(Tabs.SelectedChangeEvent event) {
-        Application.instance().getBoundedDomainUi(event.getSelectedTab().getLabel()).ifPresent(this::selectBoundedDomainUi);
+        getBoundedDomainUi(event.getSelectedTab().getLabel()).ifPresent(this::selectBoundedDomainUi);
     }
 
     protected void selectBoundedDomainUi(BoundedDomainUi<?> ui) {
@@ -71,8 +88,8 @@ public class ApplicationView extends AppLayout {
         return menuBar;
     }
 
-    private void drawerMenu() {
-        tabs = new Tabs(Application.instance().boundedDomainUis().keySet().stream().map(o -> new Tab(o)).toList().toArray(new Tab[0]));
+    protected void drawerMenu() {
+        tabs = new Tabs(boundedDomainUis().keySet().stream().map(o -> new Tab(o)).toList().toArray(new Tab[0]));
         tabs.setOrientation(Tabs.Orientation.VERTICAL);
         addToDrawer(tabs);
         tabs.addSelectedChangeListener(this::selectBoundedDomainUi);

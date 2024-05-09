@@ -38,14 +38,15 @@ class InvoicesPortTest {
             var store = new ErpStore(fs);
             store.createRepository();
 
-            var invoicesData = store.dataRoot().resolve(InvoicesBoundedDomain.DOMAIN);
-            var invoicesReport = store.reportsRoot().resolve(InvoicesBoundedDomain.DOMAIN);
-            var port = new InvoicesAdapter(new InvoicesEntities(), invoicesReport);
-            var handler = new InvoicesAdapter(new InvoicesEntities(), invoicesData);
+            var port = new InvoicesAdapter(new InvoicesEntities(),
+                store.dataRoot().resolve(InvoicesBoundedDomain.DOMAIN), store.reportsRoot().resolve(InvoicesBoundedDomain.DOMAIN));
+            var handler = new InvoicesAdapter(new InvoicesEntities(),
+                store.dataRoot().resolve(InvoicesBoundedDomain.DOMAIN), store.reportsRoot().resolve(InvoicesBoundedDomain.DOMAIN));
             handler.importEntities();
             port.exportInvoiceDocuments(true, true, true, null, null);
 
-            handler.realm().invoices().items().forEach(o -> assertThat(Files.exists(PortUtilities.resolvePath(invoicesData, o.name()))).isTrue());
+            handler.realm().invoices().items()
+                .forEach(o -> assertThat(Files.exists(PortUtilities.resolvePath(store.dataRoot().resolve(InvoicesBoundedDomain.DOMAIN), o.name()))).isTrue());
         }
     }
 

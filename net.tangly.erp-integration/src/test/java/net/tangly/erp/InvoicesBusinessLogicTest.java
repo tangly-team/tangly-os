@@ -36,15 +36,16 @@ class InvoicesBusinessLogicTest {
             var store = new ErpStore(fs);
             store.createRepository();
 
-            var invoicesData = store.dataRoot().resolve(InvoicesBoundedDomain.DOMAIN);
-            var handler = new InvoicesAdapter(new InvoicesEntities(), invoicesData);
+            var handler = new InvoicesAdapter(new InvoicesEntities(),
+                store.dataRoot().resolve(InvoicesBoundedDomain.DOMAIN), store.reportsRoot().resolve(InvoicesBoundedDomain.DOMAIN));
             handler.importEntities();
 
             verifyBusinessLogic(handler.realm());
 
             handler.exportEntities();
 
-            handler = new InvoicesAdapter(new InvoicesEntities(), invoicesData);
+            handler = new InvoicesAdapter(new InvoicesEntities(),
+                store.dataRoot().resolve(InvoicesBoundedDomain.DOMAIN), store.reportsRoot().resolve(InvoicesBoundedDomain.DOMAIN));
             handler.importEntities();
         }
     }

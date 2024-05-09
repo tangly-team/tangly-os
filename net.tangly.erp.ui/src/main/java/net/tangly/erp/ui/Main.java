@@ -14,10 +14,35 @@
 package net.tangly.erp.ui;
 
 import com.github.mvysny.vaadinboot.VaadinBoot;
+import net.tangly.app.Application;
+import net.tangly.commons.lang.ReflectionUtilities;
+import net.tangly.core.Entity;
+import net.tangly.core.HasOid;
+import net.tangly.erp.crm.domain.Subject;
+import net.tangly.erp.crm.ports.CrmAdapter;
+import net.tangly.erp.crm.ports.CrmEntities;
+import net.tangly.erp.crm.services.CrmBoundedDomain;
+import net.tangly.erp.crm.services.CrmBusinessLogic;
+import net.tangly.erp.invoices.ports.InvoicesAdapter;
+import net.tangly.erp.invoices.ports.InvoicesEntities;
+import net.tangly.erp.invoices.services.InvoicesBoundedDomain;
+import net.tangly.erp.invoices.services.InvoicesBusinessLogic;
+import net.tangly.erp.ledger.ports.LedgerAdapter;
+import net.tangly.erp.ledger.ports.LedgerEntities;
+import net.tangly.erp.ledger.services.LedgerBoundedDomain;
+import net.tangly.erp.ledger.services.LedgerBusinessLogic;
+import net.tangly.erp.products.ports.ProductsAdapter;
+import net.tangly.erp.products.ports.ProductsEntities;
+import net.tangly.erp.products.services.ProductsBoundedDomain;
+import net.tangly.erp.products.services.ProductsBusinessLogic;
 import org.apache.commons.cli.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
+
+import java.nio.file.Path;
+import java.time.LocalDate;
+import java.time.Month;
 
 /**
  * Entry point to the start of the regular Java SE application with an embedded Jetty server. The application parameters are:
@@ -37,6 +62,7 @@ public class Main {
     public static void main(@NotNull String[] args) throws Exception {
         final String contextRoot = "/erp";
         parse(args);
+        ofDomains();
         new VaadinBoot().setPort(port).withContextRoot(contextRoot).run();
     }
 
@@ -64,5 +90,46 @@ public class Main {
         } catch (NumberFormatException | ParseException e) {
             logger.atError().log("Parsing failed.  Reason: {}", e.getMessage());
         }
+    }
+
+    public static void ofDomains() {
+        Application application = Application.instance();
+        if (application.isEnabled(CrmBoundedDomain.DOMAIN)) {
+            var realm = application.inMemory() ? new CrmEntities() : new CrmEntities(Path.of(application.databases(), CrmBoundedDomain.DOMAIN));
+            if (realm.subjects().items().isEmpty()) {
+                realm.subjects().update(createAdminSubject());
+            }
+            var domain = new CrmBoundedDomain(realm, new CrmBusinessLogic(realm), new CrmAdapter(realm, Path.of(Application.instance().imports(CrmBoundedDomain.DOMAIN))),
+                application.registry());
+            application.registerBoundedDomain(domain);
+        }
+        if (application.isEnabled(InvoicesBoundedDomain.DOMAIN)) {
+            var realm = application.inMemory() ? new InvoicesEntities() : new InvoicesEntities(Path.of(application.databases(), InvoicesBoundedDomain.DOMAIN));
+            var domain = new InvoicesBoundedDomain(realm, new InvoicesBusinessLogic(realm), new InvoicesAdapter(realm, Path.of(application.imports(InvoicesBoundedDomain.DOMAIN)),
+                Path.of(application.reports(InvoicesBoundedDomain.DOMAIN))), application.registry());
+            application.registerBoundedDomain(domain);
+        }
+        if (application.isEnabled(LedgerBoundedDomain.DOMAIN)) {
+            var realm = application.inMemory() ? new LedgerEntities() : new LedgerEntities(Path.of(application.databases(), LedgerBoundedDomain.DOMAIN));
+            var domain = new LedgerBoundedDomain(realm, new LedgerBusinessLogic(realm), new LedgerAdapter(realm, Path.of(Application.instance().imports(LedgerBoundedDomain.DOMAIN)),
+                Path.of(application.reports(LedgerBoundedDomain.DOMAIN))), application.registry());
+            application.registerBoundedDomain(domain);
+        }
+        if (application.isEnabled(ProductsBoundedDomain.DOMAIN)) {
+            var realm = application.inMemory() ? new ProductsEntities() : new ProductsEntities(Path.of(application.databases(), ProductsBoundedDomain.DOMAIN));
+            var logic = new ProductsBusinessLogic(realm);
+            var domain = new ProductsBoundedDomain(realm, logic, new ProductsAdapter(realm, logic, Path.of(Application.instance().imports(ProductsBoundedDomain.DOMAIN)),
+                Path.of(application.reports(ProductsBoundedDomain.DOMAIN))), application.registry());
+            application.registerBoundedDomain(domain);
+        }
+    }
+
+    private static Subject createAdminSubject() {
+        var subject = new Subject(Entity.UNDEFINED_OID);
+        ReflectionUtilities.set(subject, HasOid.OID, 900);
+        subject.id("aeon");
+        subject.newPassword("aeon");
+        subject.from(LocalDate.of(2000, Month.JANUARY, 1));
+        return subject;
     }
 }

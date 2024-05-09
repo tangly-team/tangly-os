@@ -43,7 +43,6 @@ import java.util.stream.Stream;
  * Define the workflow defined for bounded domain activities in particular the import and export of files.
  */
 public class InvoicesAdapter implements InvoicesPort {
-    public static final String REPORTS = "reports";
     public static final String INVOICE = "invoice";
     public static final String INVOICE_PATH = "invoicePath";
     public static final String ARTICLES_TSV = "articles.tsv";
@@ -54,10 +53,12 @@ public class InvoicesAdapter implements InvoicesPort {
      * Path to the root folder of all invoices and product description. Invoices should be grouped by year.
      */
     private final Path dataFolder;
+    private final Path reportsFolder;
 
-    public InvoicesAdapter(@NotNull InvoicesRealm realm, @NotNull Path dataFolder) {
+    public InvoicesAdapter(@NotNull InvoicesRealm realm, @NotNull Path dataFolder, Path reportsFolder) {
         this.realm = realm;
         this.dataFolder = dataFolder;
+        this.reportsFolder = reportsFolder;
     }
 
     @Override
@@ -126,7 +127,7 @@ public class InvoicesAdapter implements InvoicesPort {
     @Override
     public void exportInvoiceDocument(@NotNull Invoice invoice, boolean withQrCode, boolean withEN16931, boolean overwrite) {
         var asciiDocGenerator = new InvoiceAsciiDoc(invoice.locale());
-        Path invoiceFolder = PortUtilities.resolvePath(dataFolder, invoice.name());
+        Path invoiceFolder = PortUtilities.resolvePath(reportsFolder, invoice.date().getYear(), invoice.name());
         Path invoiceAsciiDocPath = invoiceFolder.resolve(invoice.name() + AsciiDoctorHelper.ASCIIDOC_EXT);
         asciiDocGenerator.exports(invoice, invoiceAsciiDocPath, Collections.emptyMap());
         Path invoicePdfPath = invoiceFolder.resolve(invoice.name() + AsciiDoctorHelper.PDF_EXT);

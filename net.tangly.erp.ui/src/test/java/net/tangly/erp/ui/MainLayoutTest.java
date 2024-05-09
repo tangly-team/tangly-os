@@ -25,7 +25,7 @@ class MainLayoutTest {
 
     @BeforeAll
     static void createRoutes() {
-        MainView.create();
+        Main.ofDomains();
         routes = new Routes().autoDiscoverViews("net.tangly.erp.ui");
     }
 

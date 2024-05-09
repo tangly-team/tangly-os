@@ -33,7 +33,7 @@ public record ErpStore(@NotNull FileSystem fs) {
     static final String REPORTS = "reports/";
 
     static final String CRM = "customers/";
-    static final String LEDGER = "ledger/";
+    static final String LEDGER = "transactions/";
     static final String PRODUCTS = "products/";
     static final String INVOICES = "invoices/";
 

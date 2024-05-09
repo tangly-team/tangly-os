@@ -36,6 +36,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import java.util.*;
 
 /**
@@ -216,7 +217,7 @@ public class LedgerTsvHdl {
                     try {
                         transaction = new Transaction(LocalDate.parse(date), Strings.emptyToNull(debitValues[0]), Strings.emptyToNull(creditValues[0]),
                             new BigDecimal(amount), splits, description, reference);
-                    } catch (NumberFormatException e) {
+                    } catch (NumberFormatException | DateTimeParseException e) {
                         logger.atError().withThrowable(e).log("{}: not a legal amount {}", date, amount);
                     }
                 } else {
@@ -236,10 +237,15 @@ public class LedgerTsvHdl {
                     if (transaction.creditSplits().size() == 1) {
                         defineSegments(transaction.creditSplits().getFirst(), creditAccount);
                     }
-                    ledger.addVat(transaction);
-                    ++counter;
-                    EventData.log(EventData.IMPORT, LedgerBoundedDomain.DOMAIN, EventData.Status.SUCCESS, STR."\{Transaction.class.getSimpleName()} imported to journal",
-                        Map.of(SOURCE, source, "entity", transaction));
+                    try {
+                        ledger.addVat(transaction);
+                        ++counter;
+                        EventData.log(EventData.IMPORT, LedgerBoundedDomain.DOMAIN, EventData.Status.SUCCESS, STR."\{Transaction.class.getSimpleName()} imported to journal",
+                            Map.of(SOURCE, source, "entity", transaction));
+                    } catch (IllegalArgumentException e) {
+                        EventData.log(EventData.IMPORT, LedgerBoundedDomain.DOMAIN, EventData.Status.FAILURE, "Transaction not imported from",
+                            Map.of(SOURCE, source, "object", transaction), e);
+                    }
                 }
             }
             EventData.log(EventData.IMPORT, LedgerBoundedDomain.DOMAIN, EventData.Status.INFO, "imported to journal", Map.of(SOURCE, source, "counter", counter));

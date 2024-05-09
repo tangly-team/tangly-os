@@ -4,7 +4,7 @@
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- *          http://www.apache.org/licenses/LICENSE-2.0
+ *          https://apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -27,6 +27,8 @@ import java.util.Optional;
 
 /**
  * A bounded domain as defined in the DDD approach has a domain-specific model and a set of adapters.
+ * A bounded domain is a cohesive and decoupled unit of functionality that is relevant to the business.
+ * It has a unique name.
  * <p>The lifecycle of a bounded domain is:</p>
  * <ol>
  *     <li>Bounded domain creation</li>
@@ -48,10 +50,11 @@ public class BoundedDomain<R extends Realm, B, P extends Port<R>> {
 
     /**
      * Constructor of the bounded domain.
-     * @param name human-readable name of the domain
-     * @param realm realm handles all entities and values objects of the domain model
-     * @param logic logic provides complex domain business logic functions
-     * @param port port empowers the business domain to communicate with external systems
+     *
+     * @param name     human-readable name of the domain
+     * @param realm    realm handles all entities and values objects of the domain model
+     * @param logic    logic provides complex domain business logic functions
+     * @param port     port empowers the business domain to communicate with external systems
      * @param registry registry where the tagged values and code types defined for the domain model are registered
      */
     public BoundedDomain(@NotNull String name, @NotNull R realm, @NotNull B logic, @NotNull P port, TypeRegistry registry) {

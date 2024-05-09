@@ -3,15 +3,15 @@
 The _tangly_ open source components are a set of open source libraries released under Apache 2.0 licence and are available through maven central.
 The components are
 
-* link:net.tangly.bdd/readme.adoc [_BDD_] behavior driven development library
+* link:net.tangly.apps/readme.adoc[_APPS_] Vaadin user interface and REST services application library
+* link:net.tangly.bdd/readme.adoc[_BDD_] behavior driven development library
 * link:net.tangly.commons/readme.adoc[_COMMONS_] commons library
-* link:net.tangly.core/readme.adoc[_CORE_] core library Core business abstractions such address, bank connection,and legal entity are provided.
+* link:net.tangly.core/readme.adoc[_CORE_] core library Core business abstractions such as address, bank connection, and legal entity are provided.
 * link:net.tangly.dev/readme.adoc[_DEV_] development tools library
 * link:net.tangly.fsm/readme.adoc[_FSM_] hierarchical finite state machine library.
 The library also provides an actor abstraction and Java-based event bus.
 * link:net.tangly.gleam/readme.adoc[_GLEAM_] declarative model transformation frameworks library.
 Approaches for TSV and JSON representations are available.
-* link:net.tangly.ports/readme.adoc[_PORTS_] ports library providing examples to connect a business domain model to external systems
 * link:net.tangly.ui/readme.adoc[_UI_] Vaadin user interface library
 * link:net.tangly.ui/readme.adoc[_WEB_] Web utilities library
 * ERP Components
@@ -20,6 +20,7 @@ Approaches for TSV and JSON representations are available.
 ** link:net.tangly.erp.ledger/readme.adoc[_ERP LEDGER_] ledger business components library
 ** link:net.tangly.erp.products/readme.adoc[_ERP PRODUCTS_] products business components library
 ** link:net.tangly.erp.shared/readme.adoc[_ERP SHARED_] shared business components library
+** link:net.tangly.erp.ui/readme.adoc[_ERP UI] ERP application with a set of bounded domains with Vaadin user interface
 
 The documentation is located under https://blog.tangly.net/[tangly-team].
 
@@ -28,7 +29,7 @@ The *primary repository* is hosted under GitHub https://github.com/marcelbaumann
 A mirror is also hosted under GitLab https://gitlab.com/marcelbaumann/tangly-os[tangly OS GitLab].
 A legacy mirror is also hosted under BitBucket https://bitbucket.org/tangly-team/tangly-os.git[tangly OS BitBucket].
 
-The issue tracker for errors, improvements, and corrections is https://bitbucket.org/tangly-team/tangly-os/issues[tangly OS issues].
+The issue tracker for errors, improvements, and corrections is https://github.com/tangly-team/tangly-os/issues[tangly OS issues].
 
 For any further questions, you can use the forum https://github.com/orgs/tangly-team/discussions[tangly-Discussions].
 
@@ -37,11 +38,11 @@ The components are stored in a single git repository and are build using a multi
 
 == Contribution
 
-You are welcome to contribute to the product with pull requests on Bitbucket.
-You can download the source files from the https://bitbucket.org/tangly-team/tangly-os.git[bitbucket git repository].
+You are welcome to contribute to the product with pull requests on {ref-github}.
+You can download the source files from the https://github.com/tangly-team/tangly-os.git[GitHub git repository].
 Build the library with the provided gradle configuration file.
 
-If you find a bug or want to request a feature, please use the https://bitbucket.org/tangly-team/tangly-os/issues[issue tracker].
+If you find a bug or want to request a feature, please use the https://github.com/tangly-team/tangly-os/issues[issue tracker].
 
 == License
 
@@ -52,7 +53,7 @@ The documentation and examples are licensed under https://creativecommons.org/li
 == Compile the product
 
 You shall have access to a https://git-scm.com/[Git] installation to clone the repository and download the files.
-You must install https://openjdk.org/install/index.html[JDK] version 15 to compile the source code.
+You must install https://openjdk.org/install/index.html[JDK] version 22 to compile the source code.
 The https://gradle.org/[Gradle] build file can be triggered without any supplemental installation with
 
 [source,shell]
@@ -74,7 +75,7 @@ The project is hosted on:
 
 [source,console]
 ----
-git add remote origin-github      git@github.com:tangly-team/tangly-os.git               <1>
+git add remote origin             git@github.com:tangly-team/tangly-os.git               <1>
 git add remote origin-gitlab      git@gitlab.com:marcelbaumann/tangly-os.git             <2>
 git add remote origin-bitbucket   git@bitbucket.org:tangly-team/tangly-os.git            <3>
 ----

@@ -17,7 +17,6 @@ import io.javalin.Javalin;
 import net.tangly.app.api.BoundedDomainRest;
 import net.tangly.core.TypeRegistry;
 import net.tangly.core.domain.BoundedDomain;
-import net.tangly.ui.app.domain.BoundedDomainUi;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.eclipse.jetty.io.RuntimeIOException;
@@ -40,7 +39,6 @@ public final class Application {
     private final Properties properties;
     private final TypeRegistry registry;
     private final Map<String, BoundedDomain<?, ?, ?>> boundedDomains;
-    private final Map<String, BoundedDomainUi<?>> boundedDomainUis;
     private final Map<String, BoundedDomainRest> boundedDomainRests;
 
     public static Application instance() {
@@ -51,7 +49,6 @@ public final class Application {
         this.properties = new Properties();
         this.registry = new TypeRegistry();
         boundedDomains = new HashMap<>();
-        boundedDomainUis = new HashMap<>();
         boundedDomainRests = new HashMap<>();
         try (var in = Thread.currentThread().getContextClassLoader().getResourceAsStream("META-INF/application.properties")) {
             if (in != null) {
@@ -79,10 +76,6 @@ public final class Application {
         return Collections.unmodifiableMap(boundedDomains);
     }
 
-    public Map<String, BoundedDomainUi<?>> boundedDomainUis() {
-        return Collections.unmodifiableMap(boundedDomainUis);
-    }
-
     public Map<String, BoundedDomainRest> boundedDomainRests() {
         return Collections.unmodifiableMap(boundedDomainRests);
     }
@@ -93,14 +86,6 @@ public final class Application {
 
     public Optional<BoundedDomain<?, ?, ?>> getBoundedDomain(String name) {
         return Optional.ofNullable(boundedDomains.get(name));
-    }
-
-    public void registerBoundedDomainUi(BoundedDomainUi<?> domain) {
-        boundedDomainUis.put(domain.name(), domain);
-    }
-
-    public Optional<BoundedDomainUi<?>> getBoundedDomainUi(String name) {
-        return Optional.ofNullable(boundedDomainUis.get(name));
     }
 
     public void registerBoundedDomainRest(BoundedDomainRest domain) {

@@ -27,7 +27,7 @@ import java.util.List;
 import java.util.Map;
 
 public class LedgerBoundedDomain extends BoundedDomain<LedgerRealm, LedgerBusinessLogic, LedgerPort> {
-    public static final String DOMAIN = "ledger";
+    public static final String DOMAIN = "transactions";
 
     public LedgerBoundedDomain(LedgerRealm realm, LedgerBusinessLogic logic, LedgerPort port, TypeRegistry registry) {
         super(DOMAIN, realm, logic, port, registry);
