@@ -31,6 +31,7 @@ import java.util.*;
  * The ports are the user interface and the REST services. Ports are optional.
  */
 public final class Application {
+    public static final String IN_MEMORY_PROPERTY = "application.in-memory";
     public static final String DATABASES_DIRECTORY_PROPERTY = "application.root.db.directory";
     public static final String IMPORTS_DIRECTORY_PROPERTY = "application.root.imports.directory";
     public static final String REPORTS_DIRECTORY_PROPERTY = "application.root.reports.directory";

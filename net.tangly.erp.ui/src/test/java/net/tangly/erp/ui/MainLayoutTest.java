@@ -16,6 +16,7 @@ package net.tangly.erp.ui;
 import com.github.mvysny.kaributesting.v10.MockVaadin;
 import com.github.mvysny.kaributesting.v10.Routes;
 import com.vaadin.flow.component.UI;
+import net.tangly.app.Application;
 import org.junit.jupiter.api.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -25,6 +26,7 @@ class MainLayoutTest {
 
     @BeforeAll
     static void createRoutes() {
+        Application.instance().properties().remove(Application.IN_MEMORY_PROPERTY);
         Main.ofDomains();
         routes = new Routes().autoDiscoverViews("net.tangly.erp.ui");
     }
