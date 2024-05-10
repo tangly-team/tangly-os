@@ -53,12 +53,14 @@ public interface Cmd {
 
     /**
      * Factory method to create a command from a grid context menu item click event. The command is executed if one or no items are selected in the grid.
+     * The consumer receives the selected item in the grid or null if no item is selected.
      *
      * @param event    grid context menu item click event
      * @param consumer consumer to execute the command
      */
     static <T> void ofDualCmd(@NotNull GridContextMenu.GridContextMenuItemClickEvent<T> event, @NotNull Consumer<T> consumer) {
-        consumer.accept(event.getItem().orElse(null));
+        var selectectItems = event.getGrid().getSelectedItems();
+        consumer.accept(selectectItems.isEmpty() ? null : selectectItems.stream().findAny().orElse(null));
     }
 
     /**
