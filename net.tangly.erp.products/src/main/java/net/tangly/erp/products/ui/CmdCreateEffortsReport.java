@@ -121,7 +121,8 @@ public class CmdCreateEffortsReport implements Cmd {
     private String filename(@NotNull String assignment, @NotNull String collaborator, LocalDate from, LocalDate to) {
         String fromString = Objects.isNull(from) ? "" : from.toString();
         String toString = Objects.isNull(to) ? "" : to.toString();
-        return STR."\{assignment}-\{collaborator}-\{fromString}_\{toString}\{AsciiDoctorHelper.ASCIIDOC_EXT}";
-
+        var seperator = (Objects.nonNull(from) || Objects.nonNull(to)) ? "-" : "";
+        var dateSeperator = (Objects.nonNull(from) && Objects.nonNull(to)) ? "-" : "";
+        return STR."\{assignment}-\{collaborator}\{seperator}\{fromString}\{dateSeperator}\{toString}\{AsciiDoctorHelper.ASCIIDOC_EXT}";
     }
 }

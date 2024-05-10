@@ -56,7 +56,9 @@ public class CmdCreateInvoiceDocument implements Cmd {
         this.invoice = null;
         name = new TextField("Name");
         from = new DatePicker("From");
+        from.setClearButtonVisible(true);
         to = new DatePicker("To");
+        to.setClearButtonVisible(true);
         name.setReadOnly(true);
         withQrCode = new Checkbox("with QR Code");
         withEN16931 = new Checkbox("with EN 16931");

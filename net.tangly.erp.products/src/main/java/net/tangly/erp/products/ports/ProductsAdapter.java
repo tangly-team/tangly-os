@@ -48,6 +48,7 @@ public class ProductsAdapter implements ProductsPort {
     public static final String ASSIGNMENTS_TSV = "assignments.tsv";
     public static final String EFFORTS_TSV = "efforts.tsv";
     public static final String YAML_EXT = ".yaml";
+    public static final String ASSIGNMENTS = "assignments";
 
     private final ProductsRealm realm;
 
@@ -152,8 +153,16 @@ public class ProductsAdapter implements ProductsPort {
 
     @Override
     public void exportEffortsDocument(@NotNull Assignment assignment, LocalDate from, LocalDate to, String filename, @NotNull ChronoUnit unit) {
-        String collaborator = assignment.name().replace(",", "_").replace(" ", "");
-        var assignmentDocumentPath = reportFolder.resolve(STR."\{assignment.id()}-\{collaborator}-\{from.toString()}_\{to.toString()}\{AsciiDoctorHelper.ASCIIDOC_EXT}");
+        var assignmentDocumentPath = reportFolder.resolve(ProductsBoundedDomain.DOMAIN, ASSIGNMENTS);
+        if (Objects.nonNull(to)) {
+            reportFolder.resolve(Integer.toString(from.getYear()));
+        }
+        try {
+            Files.createDirectories(assignmentDocumentPath);
+        } catch (IOException e) {
+            throw new UncheckedIOException(e);
+        }
+        assignmentDocumentPath = assignmentDocumentPath.resolve(STR."\{filename}\{AsciiDoctorHelper.ASCIIDOC_EXT}");
         var helper = new EffortReportEngine(logic);
         helper.createAsciiDocReport(assignment, from, to, assignmentDocumentPath);
     }
