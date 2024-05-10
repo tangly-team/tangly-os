@@ -97,8 +97,9 @@ public interface HasDateRange {
         }
 
         public boolean test(@NotNull T entity) {
-            return (Objects.isNull(range.to()) || Objects.isNull(entity.from()) || !entity.from().isBefore(range.to())) &&
-                (Objects.isNull(range.from()) || Objects.isNull(entity.to()) || !entity.to().isBefore(range.from()));
+            return
+                (Objects.isNull(range.to()) || Objects.isNull(entity.from()) || !entity.from().isAfter(range.to())) &&
+                    (Objects.isNull(range.from()) || Objects.isNull(entity.to()) || !entity.to().isBefore(range.from()));
         }
     }
 

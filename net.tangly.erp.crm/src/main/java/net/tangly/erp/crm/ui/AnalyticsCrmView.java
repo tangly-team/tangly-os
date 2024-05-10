@@ -15,6 +15,7 @@ package net.tangly.erp.crm.ui;
 
 import com.storedobject.chart.*;
 import com.vaadin.flow.component.grid.Grid;
+import com.vaadin.flow.component.grid.GridVariant;
 import com.vaadin.flow.component.grid.dataview.GridListDataView;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.data.provider.DataProvider;
@@ -46,7 +47,6 @@ public class AnalyticsCrmView extends AnalyticsView {
 
     private GridListDataView<Contract> dataView;
 
-
     public AnalyticsCrmView(@NotNull CrmBoundedDomain crmDomain, @NotNull InvoicesBoundedDomain invoicesDomain) {
         this.crmDomain = crmDomain;
         this.invoicesLogic = invoicesDomain.logic();
@@ -59,7 +59,9 @@ public class AnalyticsCrmView extends AnalyticsView {
         contractsSoChart = createAndRegisterChart(ContractsTurnover);
         funnelSoChart = createAndRegisterChart(Funnel);
         contractsGrid = contractsTable();
-        tabSheet.add(SpentOnContracts, new VerticalLayout(contractsGrid));
+        var layout = new VerticalLayout(contractsGrid);
+        layout.setWidthFull();
+        tabSheet.add(SpentOnContracts, layout);
     }
 
     @Override
@@ -73,7 +75,10 @@ public class AnalyticsCrmView extends AnalyticsView {
     private Grid<Contract> contractsTable() {
         Grid<Contract> grid = new Grid<>();
         grid.setPageSize(8);
-        grid.setHeightFull();
+        grid.setSelectionMode(Grid.SelectionMode.NONE);
+        grid.addThemeVariants(GridVariant.LUMO_COMPACT);
+        grid.setHeight("24em");
+        grid.setWidthFull();
         dataView = grid.setItems(DataProvider.ofCollection(crmDomain.realm().contracts().items()));
         grid.addColumn(Contract::id).setKey("id").setHeader("Id").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Contract::name).setKey("name").setHeader("Name").setAutoWidth(true).setResizable(true).setSortable(true);
@@ -117,10 +122,12 @@ public class AnalyticsCrmView extends AnalyticsView {
     private void funnelChart(@NotNull SOChart chart) {
         CategoryData labels = new CategoryData("Prospects", "Leads", "Ordered", "Lost", "Completed");
         CrmBusinessLogic logic = crmDomain.logic();
-        Data data =
-            new Data(logic.funnel(InteractionCode.prospect, from(), to()), logic.funnel(InteractionCode.lead, from(), to()), logic.funnel(InteractionCode.ordered, from(), to()),
-                logic.funnel(InteractionCode.lost, from(), to()), logic.funnel(InteractionCode.completed, from(), to()));
-        BarChart barchart = new BarChart(labels, data);
+        BigDecimal prospects = logic.funnel(InteractionCode.prospect, from(), to());
+        BigDecimal leads = logic.funnel(InteractionCode.lead, from(), to());
+        BigDecimal ordered = logic.funnel(InteractionCode.ordered, from(), to());
+        BigDecimal lost = logic.funnel(InteractionCode.lost, from(), to());
+        BigDecimal completed = logic.funnel(InteractionCode.completed, from(), to());
+        BarChart barchart = new BarChart(labels, new Data(prospects, leads, ordered, lost, completed));
         RectangularCoordinate rc = new RectangularCoordinate(new XAxis(DataType.CATEGORY), new YAxis(DataType.NUMBER));
         Position chartPosition = new Position();
         chartPosition.setTop(Size.percentage(20));
