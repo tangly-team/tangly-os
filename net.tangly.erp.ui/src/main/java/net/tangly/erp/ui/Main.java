@@ -18,6 +18,10 @@ import net.tangly.app.Application;
 import net.tangly.commons.lang.ReflectionUtilities;
 import net.tangly.core.Entity;
 import net.tangly.core.HasOid;
+import net.tangly.erp.collabortors.ports.CollaboratorsAdapter;
+import net.tangly.erp.collabortors.ports.CollaboratorsEntities;
+import net.tangly.erp.collabortors.services.CollaboratorsBoundedDomain;
+import net.tangly.erp.collabortors.services.CollaboratorsBusinessLogic;
 import net.tangly.erp.crm.domain.Subject;
 import net.tangly.erp.crm.ports.CrmAdapter;
 import net.tangly.erp.crm.ports.CrmEntities;
@@ -120,6 +124,12 @@ public class Main {
             var logic = new ProductsBusinessLogic(realm);
             var domain = new ProductsBoundedDomain(realm, logic, new ProductsAdapter(realm, logic, Path.of(Application.instance().imports(ProductsBoundedDomain.DOMAIN)),
                 Path.of(application.reports(ProductsBoundedDomain.DOMAIN))), application.registry());
+            application.registerBoundedDomain(domain);
+        }
+        if (application.isEnabled(CollaboratorsBoundedDomain.DOMAIN)) {
+            var realm = application.inMemory() ? new CollaboratorsEntities() : new CollaboratorsEntities(Path.of(application.databases(), CollaboratorsBoundedDomain.DOMAIN));
+            var domain = new CollaboratorsBoundedDomain(realm, new CollaboratorsBusinessLogic(realm), new CollaboratorsAdapter(realm,
+                Path.of(Application.instance().imports(CollaboratorsBoundedDomain.DOMAIN))), application.registry());
             application.registerBoundedDomain(domain);
         }
     }

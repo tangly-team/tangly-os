@@ -18,6 +18,8 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import net.tangly.app.Application;
 import net.tangly.app.ApplicationView;
+import net.tangly.erp.collabortors.services.CollaboratorsBoundedDomain;
+import net.tangly.erp.collabortors.ui.CollaboratorsBoundedDomainUi;
 import net.tangly.erp.crm.services.CrmBoundedDomain;
 import net.tangly.erp.crm.ui.CmdLogin;
 import net.tangly.erp.crm.ui.CrmBoundedDomainUi;
@@ -48,7 +50,7 @@ public class MainView extends ApplicationView {
         return (CrmBoundedDomain) Application.instance().getBoundedDomain(CrmBoundedDomain.DOMAIN).orElseThrow();
     }
 
-    public void ofDomainUis() {
+    public final void ofDomainUis() {
         Application application = Application.instance();
         var crmBoundedDomain = application.getBoundedDomain(CrmBoundedDomain.DOMAIN);
         var invoicesBoundedDomain = application.getBoundedDomain(InvoicesBoundedDomain.DOMAIN);
@@ -58,7 +60,7 @@ public class MainView extends ApplicationView {
         application.getBoundedDomain(ProductsBoundedDomain.DOMAIN).ifPresent(o -> registerBoundedDomainUi(new ProductsBoundedDomainUi((ProductsBoundedDomain) o)));
         application.getBoundedDomain(InvoicesBoundedDomain.DOMAIN).ifPresent(o -> registerBoundedDomainUi(new InvoicesBoundedDomainUi((InvoicesBoundedDomain) o)));
         application.getBoundedDomain(LedgerBoundedDomain.DOMAIN).ifPresent(o -> registerBoundedDomainUi(new LedgerBoundedDomainUi((LedgerBoundedDomain) o)));
-
+        application.getBoundedDomain(CollaboratorsBoundedDomain.DOMAIN).ifPresent(o -> registerBoundedDomainUi(new CollaboratorsBoundedDomainUi((CollaboratorsBoundedDomain) o)));
     }
 
 

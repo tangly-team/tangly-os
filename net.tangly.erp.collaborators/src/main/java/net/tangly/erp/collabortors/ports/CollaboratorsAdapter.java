@@ -13,18 +13,39 @@
 
 package net.tangly.erp.collabortors.ports;
 
+import net.tangly.core.domain.Port;
 import net.tangly.erp.collabortors.services.CollaboratorsPort;
 import net.tangly.erp.collabortors.services.CollaboratorsRealm;
+import org.jetbrains.annotations.NotNull;
 
-public class CollaboratorsAdaptor implements CollaboratorsPort {
+import java.nio.file.Path;
+
+public class CollaboratorsAdapter implements CollaboratorsPort {
+    public static final String COLLABORATORS_TSV = "collaborators.tsv";
     private final CollaboratorsRealm realm;
+    private final Path dataFolder;
 
-    public CollaboratorsAdaptor(CollaboratorsRealm realm) {
+
+    public CollaboratorsAdapter(CollaboratorsRealm realm, @NotNull Path dataFolder) {
         this.realm = realm;
+        this.dataFolder = dataFolder;
     }
 
     @Override
     public CollaboratorsRealm realm() {
         return realm;
     }
+
+    @Override
+    public void importEntities() {
+        var handler = new CollaboratorsTsvHdl(realm());
+        Port.importEntities(dataFolder, COLLABORATORS_TSV, handler::importCollaboratators);
+    }
+
+    @Override
+    public void exportEntities() {
+        var handler = new CollaboratorsTsvHdl(realm());
+        handler.exportCollaborators(dataFolder.resolve(COLLABORATORS_TSV));
+    }
 }
+

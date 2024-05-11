@@ -152,7 +152,7 @@ public class ProductsAdapter implements ProductsPort {
     }
 
     @Override
-    public void exportEffortsDocument(@NotNull Assignment assignment, LocalDate from, LocalDate to, String filename, @NotNull ChronoUnit unit) {
+    public void exportEffortsDocument(@NotNull Assignment assignment, LocalDate from, LocalDate to, @NotNull String filename, @NotNull ChronoUnit unit) {
         var assignmentDocumentPath = reportFolder.resolve(ProductsBoundedDomain.DOMAIN, ASSIGNMENTS);
         if (Objects.nonNull(to)) {
             reportFolder.resolve(Integer.toString(from.getYear()));
@@ -164,6 +164,6 @@ public class ProductsAdapter implements ProductsPort {
         }
         assignmentDocumentPath = assignmentDocumentPath.resolve(STR."\{filename}\{AsciiDoctorHelper.ASCIIDOC_EXT}");
         var helper = new EffortReportEngine(logic);
-        helper.createAsciiDocReport(assignment, from, to, assignmentDocumentPath);
+        helper.createAsciiDocReport(assignment, from, to, assignmentDocumentPath, unit);
     }
 }

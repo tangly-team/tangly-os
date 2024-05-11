@@ -15,22 +15,35 @@ package net.tangly.erp.collabortors.ports;
 
 import net.tangly.core.providers.Provider;
 import net.tangly.erp.collabortors.domain.*;
+import net.tangly.erp.collabortors.services.CollaboratorsBoundedDomain;
 import net.tangly.erp.collabortors.services.CollaboratorsRealm;
+import net.tangly.erp.ports.TsvHdl;
 import net.tangly.gleam.model.TsvEntity;
 import net.tangly.gleam.model.TsvProperty;
 import org.apache.commons.csv.CSVRecord;
+import org.jetbrains.annotations.NotNull;
 
+import java.io.Reader;
+import java.nio.file.Path;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
 
 public class CollaboratorsTsvHdl {
-
     private final CollaboratorsRealm realm;
 
     public CollaboratorsTsvHdl(CollaboratorsRealm realm) {
         this.realm = realm;
     }
+
+    public void importCollaboratators(@NotNull Reader reader, String source) {
+        TsvHdl.importEntities(CollaboratorsBoundedDomain.DOMAIN, reader, source, createTsvCollaborator(), realm.collaborators());
+    }
+
+    public void exportCollaborators(@NotNull Path path) {
+        TsvHdl.exportEntities(CollaboratorsBoundedDomain.DOMAIN, path, createTsvCollaborator(), realm.collaborators());
+    }
+
 
     static TsvEntity<Collaborator> createTsvCollaborator() {
         Function<CSVRecord, Collaborator> of = (csv) -> new Collaborator(TsvEntity.get(csv, "id"), TsvEntity.get(csv, "oldSocialSecurityNumber"),

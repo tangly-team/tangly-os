@@ -47,5 +47,5 @@ public interface ProductsPort extends Port<ProductsRealm> {
      * @param from       start of the considered time interval
      * @param to         end of the considered time interval
      */
-    void exportEffortsDocument(@NotNull Assignment assignment, LocalDate from, LocalDate to, String filename, @NotNull ChronoUnit unit);
+    void exportEffortsDocument(@NotNull Assignment assignment, LocalDate from, LocalDate to, @NotNull String filename, @NotNull ChronoUnit unit);
 }

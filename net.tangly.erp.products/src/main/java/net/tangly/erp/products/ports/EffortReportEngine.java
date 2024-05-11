@@ -28,6 +28,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.Map;
 
@@ -49,16 +50,16 @@ public class EffortReportEngine {
         // TODO write pdf generation
     }
 
-    public void createAsciiDocReport(@NotNull Assignment assignment, LocalDate from, LocalDate to, @NotNull Path reportPath) {
+    public void createAsciiDocReport(@NotNull Assignment assignment, LocalDate from, LocalDate to, @NotNull Path reportPath, @NotNull ChronoUnit unit) {
         try (var writer = Files.newBufferedWriter(reportPath, StandardCharsets.UTF_8)) {
             logger.atInfo().log("Create assignment report {}", reportPath);
-            createAsciiDocReport(assignment, from, to, writer);
+            createAsciiDocReport(assignment, from, to, writer, unit);
         } catch (IOException e) {
             logger.atError().withThrowable(e).log("Error during reporting generation of {}", reportPath);
         }
     }
 
-    private void createAsciiDocReport(@NotNull Assignment assignment, LocalDate from, LocalDate to, @NotNull Writer writer) {
+    private void createAsciiDocReport(@NotNull Assignment assignment, LocalDate from, LocalDate to, @NotNull Writer writer, @NotNull ChronoUnit unit) {
         final AsciiDocHelper helper = new AsciiDocHelper(writer);
         helper.header("Work Report", 1);
         helper.tableHeader("work-report", "cols=\"1,5a,>1\", options=\"header\"");
@@ -68,7 +69,7 @@ public class EffortReportEngine {
         Map<String, List<Effort>> groups = logic.collect(assignment, from, to).stream().collect(groupingBy(Effort::contractId));
         if (groups.keySet().size() > 1) {
             groups.keySet().forEach(o -> generateEffortsForContract(groups.get(o), helper));
-            groups.keySet().forEach(o -> generateEffortsTotalForContract(groups.get(o), o, helper));
+            groups.keySet().forEach(o -> generateEffortsTotalForContract(groups.get(o), o, helper, unit));
         } else {
             logic.collect(assignment, from, to).forEach(o -> helper.tableRow(o.date().toString(), o.text(), Integer.toString(o.duration())));
         }
@@ -83,10 +84,18 @@ public class EffortReportEngine {
         helper.tableRow("", "", "");
     }
 
-    private void generateEffortsTotalForContract(@NotNull List<Effort> efforts, @NotNull String contractId, @NotNull AsciiDocHelper helper) {
-        int totalDuration = efforts.stream().map(Effort::duration).reduce(0, Integer::sum);
-        BigDecimal totalHours = new BigDecimal(totalDuration).divide(new BigDecimal(60));
-        helper.tableRow(STR."Total Time for Contract \{contractId}", STR."(time in minutes \{totalDuration})", totalHours.toString());
+    private void generateEffortsTotalForContract(@NotNull List<Effort> efforts, @NotNull String contractId, @NotNull AsciiDocHelper helper, @NotNull ChronoUnit unit) {
+        BigDecimal totalDuration = convert(efforts.stream().map(Effort::duration).reduce(0, Integer::sum), unit).setScale(2, BigDecimal.ROUND_HALF_UP);
+        helper.tableRow(STR."Total Time for Contract \{contractId}", STR."(Time in \{unit.name()} totalHours");
         helper.tableRow("", "", "");
+    }
+
+    private static BigDecimal convert(int durationInMinutes, ChronoUnit unit) {
+        return switch (unit) {
+            case MINUTES -> new BigDecimal(durationInMinutes);
+            case HOURS -> new BigDecimal(durationInMinutes).divide(new BigDecimal(60)).setScale(2, BigDecimal.ROUND_HALF_UP);
+            case DAYS -> new BigDecimal(durationInMinutes).divide(new BigDecimal(60 * 24)).setScale(2, BigDecimal.ROUND_HALF_UP);
+            default -> throw new IllegalArgumentException("Unexpected value: " + unit);
+        };
     }
 }

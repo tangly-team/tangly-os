@@ -29,6 +29,7 @@ import java.nio.file.FileSystem;
 import java.nio.file.Files;
 import java.time.LocalDate;
 import java.time.Month;
+import java.time.temporal.ChronoUnit;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -63,7 +64,7 @@ class ProductsPortTest {
             handler.importEntities();
             EffortReportEngine reporter = new EffortReportEngine(handler.logic());
             reporter.createAsciiDocReport(Provider.findByOid(handler.realm().assignments(), ASSIGNMENT_OID).orElseThrow(), LocalDate.of(2020, Month.JANUARY, 1),
-                LocalDate.of(2020, Month.JANUARY, 31), store.reportsRoot().resolve(ProductsBoundedDomain.DOMAIN, "efforts.adoc"));
+                LocalDate.of(2020, Month.JANUARY, 31), store.reportsRoot().resolve(ProductsBoundedDomain.DOMAIN, "efforts.adoc"), ChronoUnit.HOURS);
             assertThat(reporter).isNotNull();
         }
     }
