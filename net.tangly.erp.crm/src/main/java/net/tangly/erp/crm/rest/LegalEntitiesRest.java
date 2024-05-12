@@ -18,7 +18,6 @@ import io.javalin.Javalin;
 import io.javalin.http.Context;
 import io.javalin.openapi.*;
 import net.tangly.core.crm.LegalEntity;
-import net.tangly.core.crm.NaturalEntity;
 import net.tangly.core.providers.Provider;
 import net.tangly.erp.crm.services.CrmBoundedDomain;
 import org.jetbrains.annotations.NotNull;
@@ -47,7 +46,7 @@ public class LegalEntitiesRest {
         methods = HttpMethod.GET,
         tags = {"LegalEntities"},
         responses = {
-            @OpenApiResponse(status = "200", content = {@OpenApiContent(from = NaturalEntity[].class)})
+            @OpenApiResponse(status = "200", content = {@OpenApiContent(from = LegalEntity[].class)})
         }
     )
     private void getAll(Context ctx) {
@@ -64,7 +63,7 @@ public class LegalEntitiesRest {
             @OpenApiParam(name = "id", required = true, type = String.class, description = "The entity identifier")
         },
         responses = {
-            @OpenApiResponse(status = "200", content = {@OpenApiContent(from = NaturalEntity.class)})
+            @OpenApiResponse(status = "200", content = {@OpenApiContent(from = LegalEntity.class)})
         }
     )
     private void getById(Context ctx) {
@@ -78,7 +77,7 @@ public class LegalEntitiesRest {
         path = "/legalentities",
         methods = HttpMethod.POST,
         tags = {"LegalEntities"},
-        requestBody = @OpenApiRequestBody(content = {@OpenApiContent(from = NaturalEntity.class)}),
+        requestBody = @OpenApiRequestBody(content = {@OpenApiContent(from = LegalEntity.class)}),
         responses = {
             @OpenApiResponse(status = "204"),
             @OpenApiResponse(status = "400", content = {@OpenApiContent(from = ErrorResponse.class)}),
@@ -99,7 +98,7 @@ public class LegalEntitiesRest {
             @OpenApiParam(name = "id", required = true, type = String.class, description = "The entity identifier")
         },
         tags = {"LegalEntities"},
-        requestBody = @OpenApiRequestBody(content = {@OpenApiContent(from = NaturalEntity.class)}),
+        requestBody = @OpenApiRequestBody(content = {@OpenApiContent(from = LegalEntity.class)}),
         responses = {
             @OpenApiResponse(status = "204"),
             @OpenApiResponse(status = "400", content = {@OpenApiContent(from = ErrorResponse.class)}),

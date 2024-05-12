@@ -17,7 +17,6 @@ import com.vaadin.base.devserver.themeeditor.messages.ErrorResponse;
 import io.javalin.Javalin;
 import io.javalin.http.Context;
 import io.javalin.openapi.*;
-import net.tangly.core.crm.NaturalEntity;
 import net.tangly.core.providers.Provider;
 import net.tangly.erp.crm.domain.Lead;
 import net.tangly.erp.crm.services.CrmBoundedDomain;
@@ -47,7 +46,7 @@ public class LeadsRest {
         methods = HttpMethod.GET,
         tags = {"Leads"},
         responses = {
-            @OpenApiResponse(status = "200", content = {@OpenApiContent(from = NaturalEntity[].class)})
+            @OpenApiResponse(status = "200", content = {@OpenApiContent(from = Lead[].class)})
         }
     )
     private void getAll(Context ctx) {
@@ -56,15 +55,15 @@ public class LeadsRest {
 
     @OpenApi(
         summary = "Get an entity by id",
-        operationId = "getLegalEntityById",
-        path = "/legalentities/:id",
+        operationId = "getLeadById",
+        path = "/leads/:id",
         methods = HttpMethod.GET,
-        tags = {"LegalEntities"},
+        tags = {"Leads"},
         pathParams = {
             @OpenApiParam(name = "id", required = true, type = String.class, description = "The entity identifier")
         },
         responses = {
-            @OpenApiResponse(status = "200", content = {@OpenApiContent(from = NaturalEntity.class)})
+            @OpenApiResponse(status = "200", content = {@OpenApiContent(from = Lead.class)})
         }
     )
     private void getById(Context ctx) {
@@ -73,12 +72,12 @@ public class LeadsRest {
     }
 
     @OpenApi(
-        summary = "Create legal entity",
-        operationId = "createLegalEntity",
-        path = "/legalentities",
+        summary = "Create ab lead",
+        operationId = "createLead",
+        path = "/leads",
         methods = HttpMethod.POST,
-        tags = {"LegalEntities"},
-        requestBody = @OpenApiRequestBody(content = {@OpenApiContent(from = NaturalEntity.class)}),
+        tags = {"Leads"},
+        requestBody = @OpenApiRequestBody(content = {@OpenApiContent(from = Lead.class)}),
         responses = {
             @OpenApiResponse(status = "204"),
             @OpenApiResponse(status = "400", content = {@OpenApiContent(from = ErrorResponse.class)}),
@@ -98,8 +97,8 @@ public class LeadsRest {
         pathParams = {
             @OpenApiParam(name = "id", required = true, type = String.class, description = "The entity identifier")
         },
-        tags = {"LegalEntities"},
-        requestBody = @OpenApiRequestBody(content = {@OpenApiContent(from = NaturalEntity.class)}),
+        tags = {"Leads"},
+        requestBody = @OpenApiRequestBody(content = {@OpenApiContent(from = Lead.class)}),
         responses = {
             @OpenApiResponse(status = "204"),
             @OpenApiResponse(status = "400", content = {@OpenApiContent(from = ErrorResponse.class)}),
@@ -120,7 +119,7 @@ public class LeadsRest {
         pathParams = {
             @OpenApiParam(name = "id", required = true, type = String.class, description = "The entity identifier")
         },
-        tags = {"LegalEntities"},
+        tags = {"Leads"},
         responses = {
             @OpenApiResponse(status = "204"),
             @OpenApiResponse(status = "400", content = {@OpenApiContent(from = ErrorResponse.class)}),
