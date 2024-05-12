@@ -54,7 +54,7 @@ public class LeadsRest {
     }
 
     @OpenApi(
-        summary = "Get an entity by id",
+        summary = "Get a lead by linkedIn identifier",
         operationId = "getLeadById",
         path = "/leads/:id",
         methods = HttpMethod.GET,
@@ -72,7 +72,7 @@ public class LeadsRest {
     }
 
     @OpenApi(
-        summary = "Create ab lead",
+        summary = "Create a lead",
         operationId = "createLead",
         path = "/leads",
         methods = HttpMethod.POST,
@@ -90,7 +90,7 @@ public class LeadsRest {
     }
 
     @OpenApi(
-        summary = "Update a lead identified by ID",
+        summary = "Update a lead identified by linkedIn identifier",
         operationId = "updateLeadById",
         path = "/leads/:id",
         methods = HttpMethod.PATCH,

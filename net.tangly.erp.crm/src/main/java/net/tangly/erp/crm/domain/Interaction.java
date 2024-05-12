@@ -14,7 +14,6 @@
 package net.tangly.erp.crm.domain;
 
 import net.tangly.core.EntityExtendedImp;
-import net.tangly.core.crm.LegalEntity;
 import org.jetbrains.annotations.NotNull;
 
 import java.math.BigDecimal;

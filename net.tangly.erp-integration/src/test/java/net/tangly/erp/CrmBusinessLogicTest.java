@@ -16,7 +16,7 @@ package net.tangly.erp;
 import com.google.common.jimfs.Configuration;
 import com.google.common.jimfs.Jimfs;
 import net.tangly.core.TypeRegistry;
-import net.tangly.core.crm.CrmTags;
+import net.tangly.erp.crm.domain.CrmTags;
 import net.tangly.erp.crm.domain.InteractionCode;
 import net.tangly.erp.crm.ports.CrmAdapter;
 import net.tangly.erp.crm.ports.CrmEntities;

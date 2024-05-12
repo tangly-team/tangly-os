@@ -15,8 +15,6 @@ package net.tangly.erp.ports;
 
 import net.tangly.commons.logger.EventData;
 import net.tangly.core.*;
-import net.tangly.core.crm.CrmEntity;
-import net.tangly.core.crm.VcardType;
 import net.tangly.core.providers.Provider;
 import net.tangly.core.tsv.TsvHdlCore;
 import net.tangly.gleam.model.TsvEntity;
@@ -117,18 +115,6 @@ public final class TsvHdl {
                 e.update(tagName, p);
             }
         });
-    }
-
-    public static <T extends CrmEntity> TsvProperty<T, String> phoneNrProperty(String tagName, VcardType type) {
-        return TsvProperty.ofString(tagName, e -> e.phoneNr(type).map(PhoneNr::number).orElse(null), (e, p) -> e.phoneNr(type, p));
-    }
-
-    public static <T extends CrmEntity> TsvProperty<T, String> emailProperty(String tagName, VcardType type) {
-        return TsvProperty.ofString(tagName, e -> e.email(type).map(EmailAddress::text).orElse(null), (e, p) -> e.email(type, p));
-    }
-
-    public static <T extends CrmEntity> TsvProperty<T, Address> createAddressMapping(@NotNull VcardType type) {
-        return TsvProperty.of(TsvHdlCore.createTsvAddress(), (T e) -> e.address(type).orElse(null), (e, p) -> e.address(type, p));
     }
 
     public static <T extends HasOid> Function<T, Object> convertFoidTo() {

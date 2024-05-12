@@ -18,9 +18,6 @@ import net.tangly.core.Address;
 import net.tangly.core.BankConnection;
 import net.tangly.core.EntityExtended;
 import net.tangly.core.EntityExtendedImp;
-import net.tangly.core.crm.CrmEntity;
-import net.tangly.core.crm.LegalEntity;
-import net.tangly.core.crm.VcardType;
 import org.jetbrains.annotations.NotNull;
 
 import java.math.BigDecimal;

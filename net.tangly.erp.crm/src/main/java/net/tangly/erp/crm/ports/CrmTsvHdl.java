@@ -15,10 +15,6 @@ package net.tangly.erp.crm.ports;
 
 import net.tangly.commons.lang.ReflectionUtilities;
 import net.tangly.core.*;
-import net.tangly.core.crm.GenderCode;
-import net.tangly.core.crm.LegalEntity;
-import net.tangly.core.crm.NaturalEntity;
-import net.tangly.core.crm.VcardType;
 import net.tangly.core.providers.Provider;
 import net.tangly.core.providers.ProviderInMemory;
 import net.tangly.core.tsv.TsvHdlCore;
@@ -40,8 +36,8 @@ import java.time.LocalDateTime;
 import java.util.*;
 import java.util.function.Function;
 
-import static net.tangly.core.crm.CrmTags.*;
 import static net.tangly.core.tsv.TsvHdlCore.*;
+import static net.tangly.erp.crm.domain.CrmTags.*;
 import static net.tangly.gleam.model.TsvEntity.get;
 
 /**
@@ -199,12 +195,12 @@ public class CrmTsvHdl {
         List<TsvProperty<NaturalEntity, ?>> fields = TsvHdl.createTsvEntityFields();
         fields.add(TsvProperty.ofString(FIRSTNAME, NaturalEntity::firstname, NaturalEntity::firstname));
         fields.add(TsvProperty.ofEnum(GenderCode.class, GENDER, NaturalEntity::gender, NaturalEntity::gender));
-        fields.add(TsvHdl.emailProperty(CRM_EMAIL_HOME, VcardType.home));
-        fields.add(TsvHdl.phoneNrProperty(CRM_PHONE_MOBILE, VcardType.mobile));
-        fields.add(TsvHdl.phoneNrProperty(CRM_PHONE_HOME, VcardType.home));
+        fields.add(emailProperty(CRM_EMAIL_HOME, VcardType.home));
+        fields.add(phoneNrProperty(CRM_PHONE_MOBILE, VcardType.mobile));
+        fields.add(phoneNrProperty(CRM_PHONE_HOME, VcardType.home));
         fields.add(TsvHdl.tagProperty(CRM_IM_LINKEDIN));
         fields.add(TsvHdl.tagProperty(CRM_SITE_HOME));
-        fields.add(TsvHdl.createAddressMapping(VcardType.home));
+        fields.add(createAddressMapping(VcardType.home));
         return TsvHdl.of(NaturalEntity.class, fields, NaturalEntity::new);
     }
 
@@ -212,10 +208,10 @@ public class CrmTsvHdl {
         List<TsvProperty<LegalEntity, ?>> fields = TsvHdl.createTsvEntityFields();
         fields.add(TsvProperty.ofString(CRM_VAT_NUMBER, LegalEntity::vatNr, LegalEntity::vatNr));
         fields.add(TsvHdl.tagProperty(CRM_IM_LINKEDIN));
-        fields.add(TsvHdl.emailProperty(CRM_EMAIL_WORK, VcardType.work));
+        fields.add(emailProperty(CRM_EMAIL_WORK, VcardType.work));
         fields.add(TsvHdl.tagProperty(CRM_SITE_WORK));
-        fields.add(TsvHdl.phoneNrProperty(CRM_PHONE_WORK, VcardType.work));
-        fields.add(TsvHdl.createAddressMapping(VcardType.work));
+        fields.add(phoneNrProperty(CRM_PHONE_WORK, VcardType.work));
+        fields.add(createAddressMapping(VcardType.work));
         fields.add(TsvProperty.ofString(CRM_SCHOOL, e -> (e.containsTag(CRM_SCHOOL) ? "Y" : "N"), (e, p) -> {
             if ("Y".equals(p)) {
                 e.update(CRM_SCHOOL, null);
@@ -238,7 +234,7 @@ public class CrmTsvHdl {
     }
 
     private TsvEntity<Employee> createTsvEmployee() {
-        List<TsvProperty<Employee, ?>> fields = List.of(TsvProperty.of(TsvHdl.OID, Employee::oid, (entity, value) -> ReflectionUtilities.set(entity, TsvHdl.OID, value), Long::parseLong), TsvProperty.of(TsvHdlCore.createTsvDateRange(), Entity::range, Entity::range), TsvProperty.ofString(TEXT, Employee::text, Employee::text), TsvProperty.of("personOid", Employee::person, Employee::person, e -> findNaturalEntityByOid(e).orElse(null), TsvHdl.convertFoidTo()), TsvProperty.of("organizationOid", Employee::organization, Employee::organization, e -> findLegalEntityByOid(e).orElse(null), TsvHdl.convertFoidTo()), TsvHdl.tagProperty(CRM_EMPLOYEE_TITLE), TsvHdl.tagProperty(CRM_EMAIL_WORK), TsvProperty.ofString(CRM_PHONE_WORK, e -> e.phoneNr(VcardType.work).map(PhoneNr::number).orElse(""), (e, p) -> e.phoneNr(VcardType.work, p)), TsvHdl.phoneNrProperty(CRM_PHONE_MOBILE, VcardType.mobile));
+        List<TsvProperty<Employee, ?>> fields = List.of(TsvProperty.of(TsvHdl.OID, Employee::oid, (entity, value) -> ReflectionUtilities.set(entity, TsvHdl.OID, value), Long::parseLong), TsvProperty.of(TsvHdlCore.createTsvDateRange(), Entity::range, Entity::range), TsvProperty.ofString(TEXT, Employee::text, Employee::text), TsvProperty.of("personOid", Employee::person, Employee::person, e -> findNaturalEntityByOid(e).orElse(null), TsvHdl.convertFoidTo()), TsvProperty.of("organizationOid", Employee::organization, Employee::organization, e -> findLegalEntityByOid(e).orElse(null), TsvHdl.convertFoidTo()), TsvHdl.tagProperty(CRM_EMPLOYEE_TITLE), TsvHdl.tagProperty(CRM_EMAIL_WORK), TsvProperty.ofString(CRM_PHONE_WORK, e -> e.phoneNr(VcardType.work).map(PhoneNr::number).orElse(""), (e, p) -> e.phoneNr(VcardType.work, p)), phoneNrProperty(CRM_PHONE_MOBILE, VcardType.mobile));
         return TsvHdl.of(Employee.class, fields, Employee::new);
     }
 
@@ -250,7 +246,7 @@ public class CrmTsvHdl {
         fields.add(TsvProperty.ofBigDecimal("amountWithoutVat", Contract::amountWithoutVat, Contract::amountWithoutVat));
         fields.add(TsvProperty.of("sellerOid", Contract::seller, Contract::seller, e -> findLegalEntityByOid(e).orElse(null), TsvHdl.convertFoidTo()));
         fields.add(TsvProperty.of("selleeOid", Contract::sellee, Contract::sellee, e -> findLegalEntityByOid(e).orElse(null), TsvHdl.convertFoidTo()));
-        fields.add(TsvHdl.createAddressMapping(VcardType.work));
+        fields.add(createAddressMapping(VcardType.work));
         return TsvHdl.of(Contract.class, fields, Contract::new);
     }
 
@@ -291,4 +287,17 @@ public class CrmTsvHdl {
     private Optional<LegalEntity> findLegalEntityByOid(String identifier) {
         return (identifier != null) ? Provider.findByOid(realm.legalEntities(), Long.parseLong(identifier)) : Optional.empty();
     }
+
+    public static <T extends CrmEntity> TsvProperty<T, String> phoneNrProperty(String tagName, VcardType type) {
+        return TsvProperty.ofString(tagName, e -> e.phoneNr(type).map(PhoneNr::number).orElse(null), (e, p) -> e.phoneNr(type, p));
+    }
+
+    public static <T extends CrmEntity> TsvProperty<T, String> emailProperty(String tagName, VcardType type) {
+        return TsvProperty.ofString(tagName, e -> e.email(type).map(EmailAddress::text).orElse(null), (e, p) -> e.email(type, p));
+    }
+
+    public static <T extends CrmEntity> TsvProperty<T, Address> createAddressMapping(@NotNull VcardType type) {
+        return TsvProperty.of(TsvHdlCore.createTsvAddress(), (T e) -> e.address(type).orElse(null), (e, p) -> e.address(type, p));
+    }
+
 }

@@ -4,7 +4,7 @@
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- *          http://www.apache.org/licenses/LICENSE-2.0
+ *          https://apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -16,19 +16,9 @@ package net.tangly.erp.crm.services;
 import net.tangly.core.TagType;
 import net.tangly.core.TypeRegistry;
 import net.tangly.core.codes.CodeType;
-import net.tangly.core.crm.CrmTags;
-import net.tangly.core.crm.GenderCode;
-import net.tangly.core.crm.LegalEntity;
-import net.tangly.core.crm.NaturalEntity;
 import net.tangly.core.domain.BoundedDomain;
 import net.tangly.core.domain.DomainEntity;
-import net.tangly.erp.crm.domain.ActivityCode;
-import net.tangly.erp.crm.domain.Contract;
-import net.tangly.erp.crm.domain.Employee;
-import net.tangly.erp.crm.domain.Interaction;
-import net.tangly.erp.crm.domain.InteractionCode;
-import net.tangly.erp.crm.domain.LeadCode;
-import net.tangly.erp.crm.domain.Subject;
+import net.tangly.erp.crm.domain.*;
 import net.tangly.erp.crm.ports.CrmAdapter;
 import org.jetbrains.annotations.NotNull;
 

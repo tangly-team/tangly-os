@@ -29,7 +29,6 @@ import net.tangly.core.EmailAddress;
 import net.tangly.core.HasTags;
 import net.tangly.core.Strings;
 import net.tangly.core.Tag;
-import net.tangly.core.crm.LegalEntity;
 import org.jetbrains.annotations.NotNull;
 
 import java.math.BigDecimal;
@@ -194,18 +193,6 @@ public final class VaadinUtils {
         dialog.setModal(false);
         dialog.setResizable(true);
         return dialog;
-    }
-
-    public static <T extends LegalEntity> ComponentRenderer<Anchor, T> zefixComponentRenderer() {
-        return new ComponentRenderer<>(item -> {
-            Anchor anchor = new Anchor();
-            anchor.setText(item.id());
-            if ((item.id() != null) && item.id().startsWith("CHE-")) {
-                anchor.setHref(LegalEntity.organizationZefixUrl(item));
-                anchor.setTarget("_blank");
-            }
-            return anchor;
-        });
     }
 
     public static List<LocalDate> quarterLegends(LocalDate from, LocalDate to) {

@@ -15,11 +15,11 @@ package net.tangly.erp;
 
 import com.google.common.jimfs.Configuration;
 import com.google.common.jimfs.Jimfs;
-import net.tangly.core.crm.LegalEntity;
-import net.tangly.core.crm.NaturalEntity;
 import net.tangly.core.providers.Provider;
 import net.tangly.erp.crm.domain.Contract;
 import net.tangly.erp.crm.domain.Interaction;
+import net.tangly.erp.crm.domain.LegalEntity;
+import net.tangly.erp.crm.domain.NaturalEntity;
 import net.tangly.erp.crm.ports.CrmAdapter;
 import net.tangly.erp.crm.ports.CrmEntities;
 import net.tangly.erp.crm.services.CrmBoundedDomain;

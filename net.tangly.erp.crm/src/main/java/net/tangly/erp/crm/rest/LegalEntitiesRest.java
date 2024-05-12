@@ -17,8 +17,8 @@ import com.vaadin.base.devserver.themeeditor.messages.ErrorResponse;
 import io.javalin.Javalin;
 import io.javalin.http.Context;
 import io.javalin.openapi.*;
-import net.tangly.core.crm.LegalEntity;
 import net.tangly.core.providers.Provider;
+import net.tangly.erp.crm.domain.LegalEntity;
 import net.tangly.erp.crm.services.CrmBoundedDomain;
 import org.jetbrains.annotations.NotNull;
 

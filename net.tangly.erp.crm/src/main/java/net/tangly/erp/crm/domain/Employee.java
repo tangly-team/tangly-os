@@ -15,9 +15,6 @@ package net.tangly.erp.crm.domain;
 
 import net.tangly.core.EntityExtended;
 import net.tangly.core.EntityExtendedImp;
-import net.tangly.core.crm.CrmEntity;
-import net.tangly.core.crm.LegalEntity;
-import net.tangly.core.crm.NaturalEntity;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;

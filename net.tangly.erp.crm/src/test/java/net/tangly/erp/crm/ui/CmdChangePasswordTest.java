@@ -17,7 +17,7 @@ import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.textfield.PasswordField;
 import net.tangly.core.Entity;
-import net.tangly.core.crm.NaturalEntity;
+import net.tangly.erp.crm.domain.NaturalEntity;
 import net.tangly.erp.crm.domain.Subject;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;

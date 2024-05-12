@@ -14,7 +14,6 @@
 package net.tangly.erp.crm.domain;
 
 import net.tangly.core.EntityExtendedImp;
-import net.tangly.core.crm.NaturalEntity;
 import net.tangly.erp.crm.gravatar.Gravatar;
 import net.tangly.erp.crm.gravatar.GravatarImage;
 import net.tangly.erp.crm.gravatar.GravatarRating;
