@@ -50,7 +50,15 @@ public class MainView extends ApplicationView {
         return (CrmBoundedDomain) Application.instance().getBoundedDomain(CrmBoundedDomain.DOMAIN).orElseThrow();
     }
 
-    public final void ofDomainUis() {
+    @Override
+    protected void onAttach(@NotNull AttachEvent attachEvent) {
+        super.onAttach(attachEvent);
+        if (Objects.isNull(VaadinUtils.getAttribute(this, "subject")) && Objects.nonNull(crmBoundedDomain())) {
+            new CmdLogin(crmBoundedDomain()).execute();
+        }
+    }
+
+    private final void ofDomainUis() {
         Application application = Application.instance();
         var crmBoundedDomain = application.getBoundedDomain(CrmBoundedDomain.DOMAIN);
         var invoicesBoundedDomain = application.getBoundedDomain(InvoicesBoundedDomain.DOMAIN);
@@ -63,12 +71,4 @@ public class MainView extends ApplicationView {
         application.getBoundedDomain(CollaboratorsBoundedDomain.DOMAIN).ifPresent(o -> registerBoundedDomainUi(new CollaboratorsBoundedDomainUi((CollaboratorsBoundedDomain) o)));
     }
 
-
-    @Override
-    protected void onAttach(@NotNull AttachEvent attachEvent) {
-        super.onAttach(attachEvent);
-        if (Objects.isNull(VaadinUtils.getAttribute(this, "subject")) && Objects.nonNull(crmBoundedDomain())) {
-            new CmdLogin(crmBoundedDomain()).execute();
-        }
-    }
 }
