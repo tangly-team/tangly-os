@@ -27,7 +27,7 @@ Some of the products I developed last millennium are still in use today.
 
 I love technology and to work improving live quality for humanity
 footnote:[I can buy all my public transportation tickets with my mobile phone.
-I have the option to just swipe my phone and ride the bus or train.
+I can just swipe my phone and ride the bus or train.
 The application will track my movements and select the cheapest ticket for the commute.
 These features improve my quality of life.].
 

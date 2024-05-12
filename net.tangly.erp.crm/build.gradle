@@ -23,6 +23,7 @@ project.ext.inceptionYear = '2019'
 project.description = "Customer Relationships Management bounded domain using Java 17 or higher (tangly llc)"
 
 dependencies {
+    implementation project(':net.tangly.apps')
     implementation project(':net.tangly.erp.invoices')
     implementation project(':net.tangly.commons')
     implementation project(':net.tangly.core')
@@ -32,6 +33,12 @@ dependencies {
 
     implementation(libs.vaadin.core)
     implementation(libs.vaadin.embedded.jetty)
+    implementation(libs.javalin) {
+        exclude group: "org.eclipse.jetty"
+        exclude group: "org.eclipse.jetty.websocket"
+        exclude group: "com.fasterxml.jackson.core"
+    }
+    implementation(libs.javalin.openapi)
     implementation(libs.vaadin.socharts)
     implementation(libs.apache.commons.codec)
     implementation(libs.apache.commons.io)
@@ -39,6 +46,7 @@ dependencies {
     implementation(libs.eclispsestore.storage)
     implementation(libs.ical4j.core)
     implementation(libs.ical4j.vcard)
+    annotationProcessor(libs.javalin.openapi.processor)
 
     testImplementation project(':net.tangly.apps')
     testImplementation(libs.vaadin.test)

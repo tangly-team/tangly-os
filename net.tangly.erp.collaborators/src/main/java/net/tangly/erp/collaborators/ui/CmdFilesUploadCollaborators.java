@@ -11,10 +11,10 @@
  *
  */
 
-package net.tangly.erp.collabortors.ui;
+package net.tangly.erp.collaborators.ui;
 
-import net.tangly.erp.collabortors.ports.CollaboratorsAdapter;
-import net.tangly.erp.collabortors.ports.CollaboratorsTsvHdl;
+import net.tangly.erp.collaborators.ports.CollaboratorsAdapter;
+import net.tangly.erp.collaborators.ports.CollaboratorsTsvHdl;
 import net.tangly.erp.collabortors.services.CollaboratorsBoundedDomain;
 import net.tangly.erp.collabortors.services.CollaboratorsBusinessLogic;
 import net.tangly.erp.collabortors.services.CollaboratorsPort;

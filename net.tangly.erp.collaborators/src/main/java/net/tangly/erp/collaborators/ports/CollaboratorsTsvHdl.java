@@ -11,10 +11,10 @@
  *
  */
 
-package net.tangly.erp.collabortors.ports;
+package net.tangly.erp.collaborators.ports;
 
 import net.tangly.core.providers.Provider;
-import net.tangly.erp.collabortors.domain.*;
+import net.tangly.erp.collaborators.domain.*;
 import net.tangly.erp.collabortors.services.CollaboratorsBoundedDomain;
 import net.tangly.erp.collabortors.services.CollaboratorsRealm;
 import net.tangly.erp.ports.TsvHdl;

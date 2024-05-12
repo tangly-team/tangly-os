@@ -18,13 +18,14 @@ import net.tangly.app.Application;
 import net.tangly.commons.lang.ReflectionUtilities;
 import net.tangly.core.Entity;
 import net.tangly.core.HasOid;
-import net.tangly.erp.collabortors.ports.CollaboratorsAdapter;
-import net.tangly.erp.collabortors.ports.CollaboratorsEntities;
+import net.tangly.erp.collaborators.ports.CollaboratorsAdapter;
+import net.tangly.erp.collaborators.ports.CollaboratorsEntities;
 import net.tangly.erp.collabortors.services.CollaboratorsBoundedDomain;
 import net.tangly.erp.collabortors.services.CollaboratorsBusinessLogic;
 import net.tangly.erp.crm.domain.Subject;
 import net.tangly.erp.crm.ports.CrmAdapter;
 import net.tangly.erp.crm.ports.CrmEntities;
+import net.tangly.erp.crm.rest.CrmBoundedDomainRest;
 import net.tangly.erp.crm.services.CrmBoundedDomain;
 import net.tangly.erp.crm.services.CrmBusinessLogic;
 import net.tangly.erp.invoices.ports.InvoicesAdapter;
@@ -58,25 +59,25 @@ import java.time.Month;
  *     The application is either using an in-memory data or has a persistent storage where import data can be provided and updated stored in the database.</dd>
  * </dl>
  */
-public class Main {
+public final class Main {
     private static final Logger logger = LogManager.getLogger();
     private static int port = 8080;
-    private static boolean isInMemory = true;
 
     public static void main(@NotNull String[] args) throws Exception {
         final String contextRoot = "/erp";
         parse(args);
         ofDomains();
+        ofDomainRests();
         new VaadinBoot().setPort(port).withContextRoot(contextRoot).run();
     }
 
     private static Options options() {
         var options = new Options();
         options.addOption(Option.builder("h").longOpt("help").hasArg(false).desc("print this help message").build());
-        options.addOption(Option.builder("p").longOpt("port").type(Integer.TYPE).argName("port").hasArg().desc("listening port of the embedded server").build());
-        options.addOption(
-            Option.builder("c").longOpt("configuration").type(String.class).argName("configuration-file").hasArg().desc("path to the applicaiton configuration file").build());
-        options.addOption(Option.builder("m").longOpt("mode").argName("mode").hasArg().desc("mode of the application").build());
+        options.addOption(Option.builder("p").longOpt("port").type(Integer.TYPE).argName("port").hasArg()
+            .desc("listening port of the embedded server").build());
+        options.addOption(Option.builder("c").longOpt("configuration").type(String.class).argName("configuration-file").hasArg()
+            .desc("path to the application configuration file").build());
         return options;
     }
 
@@ -90,7 +91,6 @@ public class Main {
                 formatter.printHelp("tangly ERP", options);
             }
             port = (line.hasOption("p")) ? Integer.parseInt(line.getOptionValue("p")) : 8080;
-            isInMemory = line.hasOption("m") || Boolean.parseBoolean(line.getOptionValue("m"));
         } catch (NumberFormatException | ParseException e) {
             logger.atError().log("Parsing failed.  Reason: {}", e.getMessage());
         }
@@ -131,6 +131,14 @@ public class Main {
             var domain = new CollaboratorsBoundedDomain(realm, new CollaboratorsBusinessLogic(realm), new CollaboratorsAdapter(realm,
                 Path.of(Application.instance().imports(CollaboratorsBoundedDomain.DOMAIN))), application.registry());
             application.registerBoundedDomain(domain);
+        }
+    }
+
+    public static void ofDomainRests() {
+        Application application = Application.instance();
+        if (application.isEnabled(CrmBoundedDomain.DOMAIN)) {
+            var rest = new CrmBoundedDomainRest((CrmBoundedDomain) application.getBoundedDomain(CrmBoundedDomain.DOMAIN).orElseThrow());
+            application.registerBoundedDomainRest(rest);
         }
     }
 

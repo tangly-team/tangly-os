@@ -33,6 +33,17 @@ import java.io.IOException;
 
 @WebServlet(name = "AppJavalinServlet", urlPatterns = {"/rest/*"})
 public class AppJavalinServlet extends HttpServlet {
+    public record RestConfiguration(String openApiName,
+                                    String openApiUrl,
+                                    String openApiEmail,
+                                    String openApiLicense,
+                                    String openApiLicenseIdentifier,
+                                    String openApiServerUrl,
+                                    String openApiServerDescription,
+                                    String openApiTermsOfService,
+                                    String openApiServerVersion) {
+    }
+
     private final Javalin javalin;
 
     public AppJavalinServlet() {
@@ -46,10 +57,10 @@ public class AppJavalinServlet extends HttpServlet {
     }
 
     private static void create(JavalinConfig config) {
-        String deprecatedDocsPath = "/rest/api/openapi.json"; // by default it's /openapi
+        String docsPath = "/rest/api/openapi.json";
 
         OpenApiPluginConfiguration openApiConfiguration = new OpenApiPluginConfiguration()
-            .withDocumentationPath(deprecatedDocsPath)
+            .withDocumentationPath(docsPath)
             .withDefinitionConfiguration((version, definition) -> definition
                 .withOpenApiInfo(openApiInfo -> {
                     OpenApiContact openApiContact = new OpenApiContact();
@@ -61,7 +72,7 @@ public class AppJavalinServlet extends HttpServlet {
                     openApiLicense.setName("Apache 2.0");
                     openApiLicense.setIdentifier("Apache-2.0");
 
-                    openApiInfo.setDescription("App description goes right here");
+                    openApiInfo.setDescription("Application REST API");
                     openApiInfo.setTermsOfService("https://example.com/tos");
                     openApiInfo.setContact(openApiContact);
                     openApiInfo.setLicense(openApiLicense);
@@ -99,7 +110,7 @@ public class AppJavalinServlet extends HttpServlet {
 
         SwaggerConfiguration swaggerConfiguration = new SwaggerConfiguration();
         swaggerConfiguration.setUiPath("/rest/swagger");
-        swaggerConfiguration.setDocumentationPath(deprecatedDocsPath);
+        swaggerConfiguration.setDocumentationPath(docsPath);
         config.plugins.register(new SwaggerPlugin(swaggerConfiguration));
     }
 }

@@ -16,8 +16,21 @@ package net.tangly.app.api;
 import io.javalin.Javalin;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * Defines the port interface for a bounded domain offering access other REST services.
+ */
 public interface BoundedDomainRest {
+    /**
+     * Returns the name of the bounded domain.
+     *
+     * @return name of the bounded domain
+     */
     String name();
 
+    /**
+     * Registers the REST end points of the bounded domain with the Javalin server. This callback is called by a customized Javalin servlet {@link AppJavalinServlet}.
+     *
+     * @param javalin Javalin server
+     */
     void registerEndPoints(@NotNull Javalin javalin);
 }

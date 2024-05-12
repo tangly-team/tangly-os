@@ -11,7 +11,7 @@
  *
  */
 
-package net.tangly.erp.collabortors.ports;
+package net.tangly.erp.collaborators.ports;
 
 import net.tangly.core.domain.Port;
 import net.tangly.erp.collabortors.services.CollaboratorsPort;
@@ -24,7 +24,6 @@ public class CollaboratorsAdapter implements CollaboratorsPort {
     public static final String COLLABORATORS_TSV = "collaborators.tsv";
     private final CollaboratorsRealm realm;
     private final Path dataFolder;
-
 
     public CollaboratorsAdapter(CollaboratorsRealm realm, @NotNull Path dataFolder) {
         this.realm = realm;
@@ -46,6 +45,11 @@ public class CollaboratorsAdapter implements CollaboratorsPort {
     public void exportEntities() {
         var handler = new CollaboratorsTsvHdl(realm());
         handler.exportCollaborators(dataFolder.resolve(COLLABORATORS_TSV));
+    }
+
+    @Override
+    public void clearEntities() {
+        realm().collaborators().deleteAll();
     }
 }
 

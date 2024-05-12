@@ -35,22 +35,19 @@ public interface Port<R extends Realm> {
      *
      * @see #exportEntities()
      */
-    default void importEntities() {
-    }
+    void importEntities();
 
     /**
      * Export all entities of the bounded domain to the file system as TSV, JSON, TOML, and YAML files. A bounded domain should not depend on other domains to perform the operation.
      *
      * @see #importEntities()
      */
-    default void exportEntities() {
-    }
+    void exportEntities();
 
     /**
      * Clear all entities of the bounded domain.
      */
-    default void clearEntities() {
-    }
+    void clearEntities();
 
     /**
      * Return the realm containing all the entities of the bounded domain.

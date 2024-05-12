@@ -1,5 +1,5 @@
 /*
- * Copyright 2022-2023 Marcel Baumann
+ * Copyright 2022-2024 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -8,17 +8,13 @@
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ *
  */
 
 package net.tangly.erp.collaborators.services;
 
 import net.tangly.core.DateRange;
-import net.tangly.erp.collabortors.domain.Collaborator;
-import net.tangly.erp.collabortors.domain.Contract;
-import net.tangly.erp.collabortors.domain.Organization;
-import net.tangly.erp.collabortors.domain.SwissAccidentInsurance;
-import net.tangly.erp.collabortors.domain.SwissPensionFund;
-import net.tangly.erp.collabortors.domain.SwissSocialInsurance;
+import net.tangly.erp.collaborators.domain.*;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;

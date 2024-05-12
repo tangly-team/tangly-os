@@ -11,7 +11,7 @@
  *
  */
 
-package net.tangly.erp.collabortors.ui;
+package net.tangly.erp.collaborators.ui;
 
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.contextmenu.MenuItem;

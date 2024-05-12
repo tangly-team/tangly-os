@@ -20,10 +20,35 @@
  * <p>The key abstractions are:</p>
  * <dl>
  *     <dt>Bounded Domain</dt><dd>Defines the bounded domain model and the domain services.</dd>
- *     <dt>Realm</dt><dd>Defines the repositories interfance to retrieve all domein entities.</dd>
- *     <dt>Port</dt><dd>Port interface for all inbound and outpound communication.</dd>
+ *     <dt>Realm</dt><dd>Defines the repositories interfaces to retrieve all domain entities.</dd>
+ *     <dt>Port</dt><dd>Port interface for all inbound and outbound communication.</dd>
  * </dl>
  * <p>The user interface is an optional port. We support Vaadin based user interfaces.</p>
  * <p>The REST interface is an optional port. We use Javalin and OpenAPI to build a REST interface to the domain.</p>
+ * <h2>Creating a New Bounded Domain</h2>
+ * <dl>
+ * <dt>Define Domain Entities</dt><dd>The domain entities are defined as regular Java classes and records.
+ * Per convention all classes are defined in the package DOMANIN_NAME.domain.</dd>
+ * <dt>Define the interfaces to the Bounded Domain</dt><dd>
+ *     <p>Per convention all classes are defined in the package DOMAIN.services</p>
+ *     <ul>
+ *         <li>The bounded domain class DOMAINBoundedDomain defines all the instances defining the bounded domain.
+ *         It implements the {@link net.tangly.core.domain.BoundedDomain} interface.</li>
+ *         <li>The realm DOMAINRealm defines the repository interface. It implements the {@link net.tangly.core.domain.Realm} interface.</li>
+ *         <li>The port DOMAINPort defies the default port interface. It implements the {@link net.tangly.core.domain.Port} interface.
+ *         This interface defines the import, export and clear functions for the bounded domain.</li>
+ *        <li>The optional DOMAINBusinesLogic class defines business logic functions. It does not implement any specific interface.</li>
+ *     </ul>
+ * </dd>
+ * <dt>Define the implementation of all service interfaces</dt><dd>
+ *     <p>Per convention all classes are defined in the package DOMAIN.ports.</p>
+ *     <ul>
+ *         <li>Implement the realm interface. Per convention the class is called DOMAINEntities.
+ *         Use the {@link net.tangly.core.providers.Provider} abstractions to provide persistence with EclipseStore.</li>
+ *         <li>Implement the port interface. Per convention the class is called DOMAINAdapter.</li>
+ *         <li>Define the TSV Handler to enalbe the adapter to import entities from a TSV file and export them to a TSV file.</li>
+ *     </ul>
+ * </dd>
+ * </dl>
  */
 package net.tangly.core.domain;

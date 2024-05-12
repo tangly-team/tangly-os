@@ -94,5 +94,7 @@ dependencies {
     }
     implementation(libs.javalin.openapi)
     implementation(libs.javalin.swagger)
+    annotationProcessor(libs.javalin.openapi.processor)
+
     testImplementation(libs.vaadin.test)
 }

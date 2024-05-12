@@ -11,13 +11,13 @@
  *
  */
 
-package net.tangly.erp.collabortors.ui;
+package net.tangly.erp.collaborators.ui;
 
 import com.vaadin.flow.component.datepicker.DatePicker;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.ValidationException;
-import net.tangly.erp.collabortors.domain.Collaborator;
+import net.tangly.erp.collaborators.domain.Collaborator;
 import net.tangly.erp.collabortors.services.CollaboratorsBoundedDomain;
 import net.tangly.ui.components.*;
 import org.jetbrains.annotations.NotNull;

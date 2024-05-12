@@ -11,7 +11,7 @@
  *
  */
 
-package net.tangly.erp.collabortors.domain;
+package net.tangly.erp.collaborators.domain;
 
 import lombok.Builder;
 import net.tangly.core.Address;
