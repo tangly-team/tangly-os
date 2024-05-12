@@ -22,11 +22,13 @@ public class CrmBoundedDomainRest implements BoundedDomainRest {
     private final CrmBoundedDomain domain;
     private final LegalEntitiesRest legalEntitiesRest;
     private final NaturalEntitiesRest naturalEntitiesRest;
+    private final LeadsRest leadsRest;
 
     public CrmBoundedDomainRest(CrmBoundedDomain domain) {
         this.domain = domain;
-        this.naturalEntitiesRest = new NaturalEntitiesRest(domain);
-        this.legalEntitiesRest = new LegalEntitiesRest(domain);
+        naturalEntitiesRest = new NaturalEntitiesRest(domain);
+        legalEntitiesRest = new LegalEntitiesRest(domain);
+        leadsRest = new LeadsRest(domain);
     }
 
     @Override
@@ -38,5 +40,6 @@ public class CrmBoundedDomainRest implements BoundedDomainRest {
     public void registerEndPoints(@NotNull Javalin javalin) {
         naturalEntitiesRest.registerEndPoints(javalin);
         legalEntitiesRest.registerEndPoints(javalin);
+        leadsRest.registerEndPoints(javalin);
     }
 }

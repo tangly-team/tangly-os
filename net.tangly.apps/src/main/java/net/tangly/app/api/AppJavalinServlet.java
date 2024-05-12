@@ -57,7 +57,7 @@ public class AppJavalinServlet extends HttpServlet {
     }
 
     private static void create(JavalinConfig config) {
-        String docsPath = "/rest/api/openapi.json";
+        String docsPath = "/rest/openapi.json";
 
         OpenApiPluginConfiguration openApiConfiguration = new OpenApiPluginConfiguration()
             .withDocumentationPath(docsPath)
