@@ -21,11 +21,16 @@ import java.util.Optional;
 
 /**
  * A natural entity is a person. A natural entity has an identity defined as the legal number of a person (e.g., the social security number, a name defined as the last name and the
- * first name separated by a comma, a life duration and a text describing it.
+ * first name separated by a comma, a life duration and a text describing him or her.
  * <p>A potential approach for a natural person identification is ISO 24366.</p>
+ * <p>The attributes of a natural entity shall specify private or home capabilities. Work related information shall be stored in an employee entity to acknowledge the situation
+ * when a person has multiple employment relations. </p>
+ * <p><em>A natural entity has an internal object identifier because universal identifier for natural persons are currently not available in our world.
+ * Switzerland allows since 2023 to use the Swiss security social number. This identifier is not compatible with the EU standards.
+ * Europe has a person identifier. Sadly both identifiers are not easily accessible
+ * .</em></p>
  */
 public class NaturalEntity extends EntityExtendedImp implements EntityExtended, CrmEntity {
-    private String socialNr;
     private String firstname;
     private GenderCode gender;
     private Photo photo;
@@ -34,22 +39,20 @@ public class NaturalEntity extends EntityExtendedImp implements EntityExtended, 
         super(oid);
     }
 
-    @Override
-    public String id() {
-        return socialNr;
-    }
-
-    @Override
-    public void id(String id) {
-        this.socialNr = id;
-    }
-
     public String firstname() {
         return firstname;
     }
 
     public void firstname(String firstname) {
         this.firstname = firstname;
+    }
+
+    public String lastname() {
+        return name();
+    }
+
+    public void lastname(String lastname) {
+        name(lastname);
     }
 
     public String fullname() {
@@ -77,11 +80,11 @@ public class NaturalEntity extends EntityExtendedImp implements EntityExtended, 
     }
 
     public String socialNr() {
-        return socialNr;
+        return id();
     }
 
     public void socialNr(String socialNr) {
-        this.socialNr = socialNr;
+        id(socialNr);
     }
 
     public Optional<PhoneNr> phoneHome() {
@@ -90,6 +93,10 @@ public class NaturalEntity extends EntityExtendedImp implements EntityExtended, 
 
     public Optional<PhoneNr> phoneMobile() {
         return findBy(CrmTags.CRM_PHONE_MOBILE).map(Tag::value).map(PhoneNr::of);
+    }
+
+    public Optional<EmailAddress> privateEmail() {
+        return findBy(CrmTags.CRM_EMAIL_HOME).map(Tag::value).map(EmailAddress::of);
     }
 
     @Override

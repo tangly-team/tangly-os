@@ -17,12 +17,25 @@ import com.vaadin.base.devserver.themeeditor.messages.ErrorResponse;
 import io.javalin.Javalin;
 import io.javalin.http.Context;
 import io.javalin.openapi.*;
+import net.tangly.core.HasOid;
 import net.tangly.core.providers.Provider;
 import net.tangly.erp.crm.domain.LegalEntity;
 import net.tangly.erp.crm.services.CrmBoundedDomain;
 import org.jetbrains.annotations.NotNull;
 
 public class LegalEntitiesRest {
+    record LegalEntityView(String id, String name, String text) {
+        public static LegalEntityView of(@NotNull LegalEntity entity) {
+            return new LegalEntityView(entity.id(), entity.name(), entity.text());
+        }
+
+        public LegalEntity update(@NotNull LegalEntity entity) {
+            entity.name(name());
+            entity.text(text());
+            return entity;
+        }
+    }
+
     public static final String PREFIX = STR."/rest/\{CrmBoundedDomain.DOMAIN.toLowerCase()}/legalentities";
 
     private final CrmBoundedDomain domain;
@@ -46,11 +59,11 @@ public class LegalEntitiesRest {
         methods = HttpMethod.GET,
         tags = {"LegalEntities"},
         responses = {
-            @OpenApiResponse(status = "200", content = {@OpenApiContent(from = LegalEntity[].class)})
+            @OpenApiResponse(status = "200", content = {@OpenApiContent(from = LegalEntityView[].class)})
         }
     )
     private void getAll(Context ctx) {
-        ctx.json(legalEntities().items());
+        ctx.json(legalEntities().items().stream().map(o -> LegalEntityView.of(o)).toList());
     }
 
     @OpenApi(
@@ -63,12 +76,12 @@ public class LegalEntitiesRest {
             @OpenApiParam(name = "id", required = true, type = String.class, description = "The entity identifier")
         },
         responses = {
-            @OpenApiResponse(status = "200", content = {@OpenApiContent(from = LegalEntity.class)})
+            @OpenApiResponse(status = "200", content = {@OpenApiContent(from = LegalEntityView.class)})
         }
     )
     private void getById(Context ctx) {
         String id = ctx.pathParam("id");
-        Provider.findById(legalEntities(), id).ifPresentOrElse(entity -> ctx.json(entity), () -> ctx.status(404));
+        Provider.findById(legalEntities(), id).ifPresentOrElse(o -> ctx.json(LegalEntityView.of(o)), () -> ctx.status(404));
     }
 
     @OpenApi(
@@ -77,7 +90,7 @@ public class LegalEntitiesRest {
         path = "/legalentities",
         methods = HttpMethod.POST,
         tags = {"LegalEntities"},
-        requestBody = @OpenApiRequestBody(content = {@OpenApiContent(from = LegalEntity.class)}),
+        requestBody = @OpenApiRequestBody(content = {@OpenApiContent(from = LegalEntityView.class)}),
         responses = {
             @OpenApiResponse(status = "204"),
             @OpenApiResponse(status = "400", content = {@OpenApiContent(from = ErrorResponse.class)}),
@@ -85,8 +98,8 @@ public class LegalEntitiesRest {
         }
     )
     private void create(Context ctx) {
-        LegalEntity updated = ctx.bodyAsClass(LegalEntity.class);
-        legalEntities().update(updated);
+        LegalEntityView updated = ctx.bodyAsClass(LegalEntityView.class);
+        legalEntities().update(updated.update(new LegalEntity(HasOid.UNDEFINED_OID)));
     }
 
     @OpenApi(
@@ -98,7 +111,7 @@ public class LegalEntitiesRest {
             @OpenApiParam(name = "id", required = true, type = String.class, description = "The entity identifier")
         },
         tags = {"LegalEntities"},
-        requestBody = @OpenApiRequestBody(content = {@OpenApiContent(from = LegalEntity.class)}),
+        requestBody = @OpenApiRequestBody(content = {@OpenApiContent(from = LegalEntityView.class)}),
         responses = {
             @OpenApiResponse(status = "204"),
             @OpenApiResponse(status = "400", content = {@OpenApiContent(from = ErrorResponse.class)}),
@@ -107,8 +120,8 @@ public class LegalEntitiesRest {
     )
     private void update(Context ctx) {
         String id = ctx.pathParam("id");
-        LegalEntity updated = ctx.bodyAsClass(LegalEntity.class);
-        Provider.findById(legalEntities(), id).ifPresentOrElse(entity -> legalEntities().update(updated), () -> ctx.status(404));
+        LegalEntityView updated = ctx.bodyAsClass(LegalEntityView.class);
+        Provider.findById(legalEntities(), id).ifPresentOrElse(o -> legalEntities().update(updated.update(o)), () -> ctx.status(404));
     }
 
     @OpenApi(

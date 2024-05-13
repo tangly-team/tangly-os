@@ -17,12 +17,38 @@ import com.vaadin.base.devserver.themeeditor.messages.ErrorResponse;
 import io.javalin.Javalin;
 import io.javalin.http.Context;
 import io.javalin.openapi.*;
+import net.tangly.core.Address;
+import net.tangly.core.EmailAddress;
+import net.tangly.core.HasOid;
+import net.tangly.core.PhoneNr;
 import net.tangly.core.providers.Provider;
+import net.tangly.erp.crm.domain.GenderCode;
 import net.tangly.erp.crm.domain.NaturalEntity;
+import net.tangly.erp.crm.domain.VcardType;
 import net.tangly.erp.crm.services.CrmBoundedDomain;
 import org.jetbrains.annotations.NotNull;
 
 public class NaturalEntitiesRest {
+    record NaturalEntityView(String id, String name, String firstname, GenderCode gender, String text, String homeEmail, String phoneHome, String phoneMobile, Address address) {
+        public static NaturalEntityView of(@NotNull NaturalEntity entity) {
+            return new NaturalEntityView(entity.id(), entity.name(), entity.firstname(), entity.gender(), entity.text(),
+                entity.email(VcardType.home).map(EmailAddress::text).orElse(null),
+                entity.phoneHome().map(PhoneNr::number).orElse(null), entity.phoneMobile().map(PhoneNr::number).orElse(null), entity.address().orElse(null));
+        }
+
+        public NaturalEntity update(@NotNull NaturalEntity entity) {
+            entity.name(name());
+            entity.firstname(firstname());
+            entity.gender(gender());
+            entity.text(text());
+            entity.email(VcardType.home, homeEmail());
+            entity.phoneNr(VcardType.home, phoneHome());
+            entity.phoneNr(VcardType.mobile, phoneMobile());
+            entity.address(VcardType.home, address());
+            return entity;
+        }
+    }
+
     public static final String PREFIX = STR."/rest/\{CrmBoundedDomain.DOMAIN.toLowerCase()}/naturalentities";
     private final CrmBoundedDomain domain;
 
@@ -45,11 +71,11 @@ public class NaturalEntitiesRest {
         methods = HttpMethod.GET,
         tags = {"NaturalEntities"},
         responses = {
-            @OpenApiResponse(status = "200", content = {@OpenApiContent(from = NaturalEntity[].class)})
+            @OpenApiResponse(status = "200", content = {@OpenApiContent(from = NaturalEntityView[].class)})
         }
     )
     private void getAll(Context ctx) {
-        ctx.json(naturalEntities().items());
+        ctx.json(naturalEntities().items().stream().map(o -> NaturalEntityView.of(o)).toList());
     }
 
     @OpenApi(
@@ -67,7 +93,7 @@ public class NaturalEntitiesRest {
     )
     private void getById(Context ctx) {
         String id = ctx.pathParam("id");
-        Provider.findById(naturalEntities(), id).ifPresentOrElse(entity -> ctx.json(entity), () -> ctx.status(404));
+        Provider.findById(naturalEntities(), id).ifPresentOrElse(o -> ctx.json(NaturalEntityView.of(o)), () -> ctx.status(404));
     }
 
     @OpenApi(
@@ -76,7 +102,7 @@ public class NaturalEntitiesRest {
         path = "/naturalentities",
         methods = HttpMethod.POST,
         tags = {"NaturalEntities"},
-        requestBody = @OpenApiRequestBody(content = {@OpenApiContent(from = NaturalEntity.class)}),
+        requestBody = @OpenApiRequestBody(content = {@OpenApiContent(from = NaturalEntityView.class)}),
         responses = {
             @OpenApiResponse(status = "204"),
             @OpenApiResponse(status = "400", content = {@OpenApiContent(from = ErrorResponse.class)}),
@@ -84,8 +110,8 @@ public class NaturalEntitiesRest {
         }
     )
     private void create(Context ctx) {
-        NaturalEntity updated = ctx.bodyAsClass(NaturalEntity.class);
-        naturalEntities().update(updated);
+        NaturalEntityView updated = ctx.bodyAsClass(NaturalEntityView.class);
+        naturalEntities().update(updated.update(new NaturalEntity(HasOid.UNDEFINED_OID)));
     }
 
     @OpenApi(
@@ -106,8 +132,8 @@ public class NaturalEntitiesRest {
     )
     private void update(Context ctx) {
         String id = ctx.pathParam("id");
-        NaturalEntity updated = ctx.bodyAsClass(NaturalEntity.class);
-        Provider.findById(naturalEntities(), id).ifPresentOrElse(entity -> naturalEntities().update(updated), () -> ctx.status(404));
+        NaturalEntityView updated = ctx.bodyAsClass(NaturalEntityView.class);
+        Provider.findById(naturalEntities(), id).ifPresentOrElse(o -> naturalEntities().update(updated.update(o)), () -> ctx.status(404));
     }
 
     @OpenApi(
