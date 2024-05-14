@@ -83,7 +83,7 @@ class ArticlesView extends ItemView<Article> {
 
     public ArticlesView(@NotNull InvoicesBoundedDomain domain, @NotNull Mode mode) {
         super(Article.class, domain, domain.realm().articles(), new ArticleFilter(), mode);
-        form(new ArticleForm(this));
+        form(() -> new ArticleForm(this));
         init();
     }
 

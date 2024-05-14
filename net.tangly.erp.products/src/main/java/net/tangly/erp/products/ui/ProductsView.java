@@ -50,7 +50,7 @@ class ProductsView extends EntityView<Product> {
     public ProductsView(@NotNull ProductsBoundedDomain domain, @NotNull Mode mode) {
         // TODO do we need the mode parameter?
         super(Product.class, domain, domain.realm().products(), mode);
-        form(new ProductForm(this, domain.registry()));
+        form(() -> new ProductForm(this, domain.registry()));
         initEntityView();
     }
 }

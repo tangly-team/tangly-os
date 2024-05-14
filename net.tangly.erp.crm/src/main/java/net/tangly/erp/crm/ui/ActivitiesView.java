@@ -121,7 +121,7 @@ class ActivitiesView extends ItemView<Activity> {
 
     public ActivitiesView(@NotNull CrmBoundedDomain domain, @NotNull Mode mode) {
         super(Activity.class, domain, domain.realm().activities(), new ActivityFilter(), mode);
-        form(new ActivityForm(this));
+        form(() -> new ActivityForm(this));
         init();
     }
 

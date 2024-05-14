@@ -111,7 +111,7 @@ class EffortsView extends ItemView<Effort> {
 
     public EffortsView(@NotNull ProductsBoundedDomain domain, @NotNull Mode mode) {
         super(Effort.class, domain, domain.realm().efforts(), new EffortFilter(), mode);
-        form(new EffortForm(this));
+        form(() -> new EffortForm(this));
         init();
     }
 

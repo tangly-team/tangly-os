@@ -56,7 +56,7 @@ class EmployeesView extends EntityView<Employee> {
 
     public EmployeesView(@NotNull CrmBoundedDomain domain, @NotNull Mode mode) {
         super(Employee.class, domain, domain.realm().employees(), mode);
-        form(new EmployeeForm(this, domain.registry()));
+        form(() -> new EmployeeForm(this, domain.registry()));
         init();
     }
 

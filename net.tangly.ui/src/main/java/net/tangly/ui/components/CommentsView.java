@@ -132,7 +132,7 @@ public class CommentsView extends ItemView<Comment> {
 
     public CommentsView(@NotNull BoundedDomain<?, ?, ?> domain, @NotNull Mode mode) {
         super(Comment.class, domain, ProviderInMemory.of(), new CommentFilter(), mode);
-        form(new CommentForm(this));
+        form(() -> new CommentForm(this));
         init();
     }
 

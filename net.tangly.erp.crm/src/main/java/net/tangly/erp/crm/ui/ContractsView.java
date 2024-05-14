@@ -76,7 +76,7 @@ class ContractsView extends EntityView<Contract> {
 
     public ContractsView(@NotNull CrmBoundedDomain domain, @NotNull Mode mode) {
         super(Contract.class, domain, domain.realm().contracts(), mode);
-        form(new ContractForm(this));
+        form(() -> new ContractForm(this));
         init();
     }
 

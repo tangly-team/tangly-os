@@ -27,6 +27,7 @@ import com.vaadin.flow.component.textfield.TextFieldVariant;
 import com.vaadin.flow.data.provider.DataProvider;
 import com.vaadin.flow.data.selection.SingleSelect;
 import com.vaadin.flow.data.value.ValueChangeMode;
+import net.tangly.commons.lang.functional.LazyReference;
 import net.tangly.core.DateRange;
 import net.tangly.core.TypeRegistry;
 import net.tangly.core.domain.BoundedDomain;
@@ -36,6 +37,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Objects;
 import java.util.Set;
 import java.util.function.Consumer;
+import java.util.function.Supplier;
 
 /**
  * The entity view displays a list of entities in a grid.
@@ -155,7 +157,7 @@ public abstract class ItemView<T> extends VerticalLayout {
     private final Grid<T> grid;
 
     private transient T entity;
-    private ItemForm<T, ?> form;
+    private LazyReference<ItemForm<T, ?>> form;
     private boolean isFormEmbedded;
 
     /**
@@ -200,7 +202,7 @@ public abstract class ItemView<T> extends VerticalLayout {
     public final void mode(Mode mode) {
         this.mode = mode;
         if (Objects.nonNull(form)) {
-            form.mode(mode);
+            form.ifPresent(o -> o.mode(mode));
         }
         buildMenu();
     }
@@ -221,12 +223,12 @@ public abstract class ItemView<T> extends VerticalLayout {
         this.isFormEmbedded = isFormEmbedded;
     }
 
-    protected final ItemForm<T, ?> form() {
+    protected final LazyReference<ItemForm<T, ?>> form() {
         return form;
     }
 
-    protected final void form(ItemForm<T, ?> form) {
-        this.form = form;
+    protected final void form(Supplier<ItemForm<T, ?>> supplier) {
+        this.form = new LazyReference<>(supplier);
     }
 
     T selectedItem() {
@@ -311,16 +313,16 @@ public abstract class ItemView<T> extends VerticalLayout {
     protected void buildMenu() {
         if (mode.hasForm()) {
             menu().removeAll();
-            menu().addItem(Mode.VIEW_TEXT, event -> event.getItem().ifPresent(form::display));
+            menu().addItem(Mode.VIEW_TEXT, event -> event.getItem().ifPresent(o -> form().get().display(o)));
             if (!mode().readonly()) {
                 menu().add(new Hr());
-                menu().addItem(Mode.EDIT_TEXT, event -> event.getItem().ifPresent(form::edit));
-                menu().addItem(Mode.CREATE_TEXT, _ -> form.create());
-                menu().addItem(Mode.DUPLICATE_TEXT, event -> event.getItem().ifPresent(form::duplicate));
-                menu().addItem(Mode.DELETE_TEXT, event -> event.getItem().ifPresent(form::delete));
+                menu().addItem(Mode.EDIT_TEXT, event -> event.getItem().ifPresent(o -> form().get().edit(o)));
+                menu().addItem(Mode.CREATE_TEXT, _ -> form.get().create());
+                menu().addItem(Mode.DUPLICATE_TEXT, event -> event.getItem().ifPresent(o -> form().get().duplicate(o)));
+                menu().addItem(Mode.DELETE_TEXT, event -> event.getItem().ifPresent(o -> form().get().delete(o)));
             }
             SingleSelect<Grid<T>, T> selection = grid.asSingleSelect();
-            selection.addValueChangeListener(e -> form.value(e.getValue()));
+            selection.addValueChangeListener(e -> form.get().value(e.getValue()));
         }
         addActions(menu());
     }

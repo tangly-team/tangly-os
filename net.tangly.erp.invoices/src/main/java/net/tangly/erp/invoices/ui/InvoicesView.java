@@ -74,7 +74,7 @@ class InvoicesView extends ItemView<Invoice> {
 
     public InvoicesView(@NotNull InvoicesBoundedDomain domain, @NotNull Mode mode) {
         super(Invoice.class, domain, domain.realm().invoices(), new InvoiceFilter(), mode);
-        form(new InvoiceForm(this));
+        form(() -> new InvoiceForm(this));
 
         init();
     }

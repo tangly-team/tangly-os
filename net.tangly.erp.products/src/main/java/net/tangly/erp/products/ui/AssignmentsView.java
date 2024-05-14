@@ -55,7 +55,7 @@ class AssignmentsView extends EntityView<Assignment> {
 
     public AssignmentsView(@NotNull ProductsBoundedDomain domain, @NotNull Mode mode) {
         super(Assignment.class, domain, domain.realm().assignments(), mode);
-        form(new AssignmentForm(this, domain.registry()));
+        form(() -> new AssignmentForm(this, domain.registry()));
         initEntityView();
     }
 

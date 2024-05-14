@@ -64,7 +64,7 @@ class LegalEntitiesView extends EntityView<LegalEntity> {
 
     public LegalEntitiesView(@NotNull CrmBoundedDomain domain, @NotNull Mode mode) {
         super(LegalEntity.class, domain, domain.realm().legalEntities(), mode);
-        form(new LegalEntityForm(this, domain.registry()));
+        form(() -> new LegalEntityForm(this, domain.registry()));
         init();
     }
 

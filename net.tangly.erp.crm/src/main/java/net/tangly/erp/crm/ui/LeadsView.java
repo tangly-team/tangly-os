@@ -120,7 +120,7 @@ public class LeadsView extends ItemView<Lead> {
 
     public LeadsView(@NotNull CrmBoundedDomain domain, @NotNull Mode mode) {
         super(Lead.class, domain, domain.realm().leads(), new LeadFilter(), mode);
-        form(new LeadForm(this));
+        form(() -> new LeadForm(this));
         init();
     }
 

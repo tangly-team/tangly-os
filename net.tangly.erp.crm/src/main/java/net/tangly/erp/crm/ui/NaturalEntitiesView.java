@@ -95,7 +95,7 @@ class NaturalEntitiesView extends EntityView<NaturalEntity> {
 
     public NaturalEntitiesView(@NotNull CrmBoundedDomain domain, @NotNull Mode mode) {
         super(NaturalEntity.class, domain, domain.realm().naturalEntities(), mode);
-        form(new NaturalEntityForm(this));
+        form(() -> new NaturalEntityForm(this));
         initEntityView();
     }
 
