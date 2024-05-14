@@ -15,6 +15,8 @@ package net.tangly.erp.crm.ui;
 
 import com.vaadin.flow.component.customfield.CustomField;
 import com.vaadin.flow.component.formlayout.FormLayout;
+import com.vaadin.flow.component.html.Anchor;
+import com.vaadin.flow.data.renderer.ComponentRenderer;
 import com.vaadin.flow.router.PageTitle;
 import net.tangly.core.TypeRegistry;
 import net.tangly.core.providers.ProviderView;
@@ -77,5 +79,18 @@ class LegalEntitiesView extends EntityView<LegalEntity> {
         grid.addColumn(VaadinUtils.linkedInComponentRenderer(CrmTags::linkedInTag, true)).setKey("linkedIn").setHeader("LinkedIn").setAutoWidth(true);
         grid.addColumn(VaadinUtils.urlComponentRenderer(CrmTags.CRM_SITE_WORK)).setKey("webSite").setHeader("Web Site").setAutoWidth(true);
         grid.addColumn(o -> o.value(CrmTags.CRM_RESPONSIBLE).orElse(null)).setKey("responsible").setHeader("Responsible").setAutoWidth(true).setSortable(true);
+        grid.addColumn(zefixComponentRenderer()).setKey("zefix").setHeader("Zefix").setAutoWidth(true);
+    }
+
+    public static <T extends LegalEntity> ComponentRenderer<Anchor, T> zefixComponentRenderer() {
+        return new ComponentRenderer<>(item -> {
+            Anchor anchor = new Anchor();
+            anchor.setText(item.id());
+            if ((item.id() != null) && item.id().startsWith("CHE-")) {
+                anchor.setHref(LegalEntity.organizationZefixUrl(item));
+                anchor.setTarget("_blank");
+            }
+            return anchor;
+        });
     }
 }

@@ -80,7 +80,10 @@ public class CrmVcardHdl {
             if (homeEmail.isPresent()) {
                 person = realm.naturalEntities().findBy(o -> o.email(VcardType.home).orElse(null), homeEmail.get());
             }
-            person.ifPresent(o -> o.photo(this.photo(o, card, picturesFolder).orElse(null)));
+            person.ifPresent(o -> {
+                o.photo(photo(o, card, picturesFolder).orElse(null));
+                realm.naturalEntities().update(o);
+            });
 
         } catch (IOException e) {
             throw new UncheckedIOException(e);

@@ -102,6 +102,16 @@ public class LeadsView extends ItemView<Lead> {
         }
 
         @Override
+        protected FormLayout text() {
+            AsciiDocField text = new AsciiDocField("Text");
+            var form = new FormLayout();
+            VaadinUtils.set3ResponsiveSteps(form);
+            form.add(text, 3);
+            binder().bindReadOnly(text, Lead::text);
+            return form;
+        }
+
+        @Override
         protected Lead createOrUpdateInstance(Lead entity) throws ValidationException {
             return new Lead(date.getValue(), leadCode.getValue(), firstname.getValue(), lastname.getValue(), gender.getValue(), company.getValue(), PhoneNr.of(phoneNr.getValue()),
                 EmailAddress.of(email.getValue()), linkedIn.getValue(), activityCode.getValue(), text.getValue());

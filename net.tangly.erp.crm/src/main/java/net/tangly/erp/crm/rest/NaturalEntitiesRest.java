@@ -49,7 +49,7 @@ public class NaturalEntitiesRest {
         }
     }
 
-    public static final String PREFIX = STR."/rest/\{CrmBoundedDomain.DOMAIN.toLowerCase()}/naturalentities";
+    public static final String PREFIX = STR."/rest/\{CrmBoundedDomain.DOMAIN.toLowerCase()}/natural-entities";
     private final CrmBoundedDomain domain;
 
     NaturalEntitiesRest(CrmBoundedDomain domain) {
@@ -67,7 +67,7 @@ public class NaturalEntitiesRest {
     @OpenApi(
         summary = "Get all natural entities",
         operationId = "getAllNaturalEntities",
-        path = "/naturelentities",
+        path = "/natural-entities",
         methods = HttpMethod.GET,
         tags = {"NaturalEntities"},
         responses = {
@@ -79,27 +79,27 @@ public class NaturalEntitiesRest {
     }
 
     @OpenApi(
-        summary = "Get a natural entity by id",
-        operationId = "getNaturalEntityById",
-        path = "/naturalentities/:id",
+        summary = "Get a natural entity by his or her private email",
+        operationId = "getNaturalEntityByEmail",
+        path = "/natural-entities/:email",
         methods = HttpMethod.GET,
         tags = {"NaturalEntities"},
         pathParams = {
-            @OpenApiParam(name = "id", required = true, type = String.class, description = "The entity identifier")
+            @OpenApiParam(name = "email", required = true, type = String.class, description = "The private email address")
         },
         responses = {
-            @OpenApiResponse(status = "200", content = {@OpenApiContent(from = NaturalEntity.class)})
+            @OpenApiResponse(status = "200", content = {@OpenApiContent(from = NaturalEntityView.class)})
         }
     )
     private void getById(Context ctx) {
-        String id = ctx.pathParam("id");
-        Provider.findById(naturalEntities(), id).ifPresentOrElse(o -> ctx.json(NaturalEntityView.of(o)), () -> ctx.status(404));
+        String email = ctx.pathParam("email");
+        naturalEntities().findBy(NaturalEntity::privateEmail, email).ifPresentOrElse(o -> ctx.json(NaturalEntityView.of(o)), () -> ctx.status(404));
     }
 
     @OpenApi(
         summary = "Create a natural entity",
         operationId = "createNaturalEntity",
-        path = "/naturalentities",
+        path = "/natural-entities",
         methods = HttpMethod.POST,
         tags = {"NaturalEntities"},
         requestBody = @OpenApiRequestBody(content = {@OpenApiContent(from = NaturalEntityView.class)}),
@@ -117,13 +117,13 @@ public class NaturalEntitiesRest {
     @OpenApi(
         summary = "Update a natural entity identified by ID",
         operationId = "updateNaturalEntityById",
-        path = "/naturalentities/:id",
+        path = "/natural-entities/:id",
         methods = HttpMethod.PATCH,
         pathParams = {
             @OpenApiParam(name = "id", required = true, type = String.class, description = "The entity identifier")
         },
         tags = {"NaturalEntities"},
-        requestBody = @OpenApiRequestBody(content = {@OpenApiContent(from = NaturalEntity.class)}),
+        requestBody = @OpenApiRequestBody(content = {@OpenApiContent(from = NaturalEntityView.class)}),
         responses = {
             @OpenApiResponse(status = "204"),
             @OpenApiResponse(status = "400", content = {@OpenApiContent(from = ErrorResponse.class)}),
@@ -137,12 +137,12 @@ public class NaturalEntitiesRest {
     }
 
     @OpenApi(
-        summary = "delete a natural entity by ID",
-        operationId = "deletaNaturalEntityById",
-        path = "/naturalentities/:id",
+        summary = "delete a natural entity by email",
+        operationId = "deletaNaturalEntityByEmail",
+        path = "/natural-entities/:email",
         methods = HttpMethod.DELETE,
         pathParams = {
-            @OpenApiParam(name = "id", required = true, type = String.class, description = "The entity identifier")
+            @OpenApiParam(name = "email", required = true, type = String.class, description = "The entity private email address")
         },
         tags = {"NaturalEntities"},
         responses = {
@@ -152,8 +152,8 @@ public class NaturalEntitiesRest {
         }
     )
     private void delete(Context ctx) {
-        String id = ctx.pathParam("id");
-        Provider.findById(naturalEntities(), id).ifPresentOrElse(entity -> naturalEntities().delete(entity), () -> ctx.status(404));
+        String email = ctx.pathParam("email");
+        naturalEntities().findBy(NaturalEntity::privateEmail, email).ifPresentOrElse(o -> naturalEntities().delete(o), () -> ctx.status(404));
     }
 
     private Provider<NaturalEntity> naturalEntities() {

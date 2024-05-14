@@ -21,6 +21,7 @@ import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
+import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.EmailField;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.renderer.ComponentRenderer;
@@ -79,7 +80,7 @@ class NaturalEntitiesView extends EntityView<NaturalEntity> {
             form.add(mobilePhone, homeEmail, homeSite);
 
             form.add(new HtmlComponent("br"));
-            form.add(image);
+            form.add(new VerticalLayout(image));
 
             binder().bind(firstname, NaturalEntity::firstname, NaturalEntity::firstname);
             binder().bind(lastname, NaturalEntity::name, NaturalEntity::name);

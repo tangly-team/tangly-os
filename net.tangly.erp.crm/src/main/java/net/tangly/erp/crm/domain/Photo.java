@@ -15,10 +15,15 @@ package net.tangly.erp.crm.domain;
 
 /**
  * Defines the photography of a natural entity. Pictures are powerful helpers for personal interactions.
+ *
  * @param data binary data of the photography
  */
 public record Photo(byte[] data) {
     public static Photo of(byte[] data) {
         return new Photo(data);
+    }
+
+    public Photo {
+        data = data.clone();
     }
 }

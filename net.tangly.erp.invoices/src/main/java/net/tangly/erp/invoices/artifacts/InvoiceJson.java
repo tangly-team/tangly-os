@@ -83,7 +83,7 @@ public class InvoiceJson implements InvoiceGenerator {
                 var jsonInvoice = new JSONObject(new JSONTokener(new StringReader(jsonString)));
                 invoice = entity.imports(jsonInvoice);
                 if (!invoice.check()) {
-                    logger.atInfo().log("Invoice {} is invalid", invoice.name());
+                    logger.atInfo().log("Invoice {} has an invalid check", invoice.name());
                 }
                 EventData.log(EventData.IMPORT, InvoicesBoundedDomain.DOMAIN, EventData.Status.SUCCESS, "Invoice imported",
                     Map.ofEntries(Map.entry(EventData.FILENAME, source), Map.entry(EventData.ENTITY, invoice)));

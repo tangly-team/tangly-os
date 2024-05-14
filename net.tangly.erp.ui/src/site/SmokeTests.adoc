@@ -1,0 +1,26 @@
+---
+title: "Smoke Tests"
+date: 2019-05-01
+weight: 80
+---
+
+== Smoke Tests
+
+The goal is to test the ERP functionalities in a quick and efficient way.
+The smoke tests are a subset of the test cases that are run on the ERP system to ensure that the most crucial functions of a program work.
+The smoke tests are run to determine if the ERP system is stable and can be used for further testing.
+
+The tests are:
+
+. Login to the ERP system with the default user
+. Load the TSV data for each bounded domain.
+The files contain all data for the tangly llc company since its inception.
+No errors should be displayed in the log trace.
+. Generate all invoices since 2015-01-01 for the company.
+The invoices are generated with QR code and the EN 16931 embedded information.
+. Generate efforts reports for marcel baumann on two projects per month for a whole year.
+. Visualize the analytics graphs defined in the customer domain.
+
+The execution of all tests is a manual activity and should take around 10 minutes.
+
+Validate invoice JSON files with https://www.jsonschemavalidator.net/[JSON Validator].
