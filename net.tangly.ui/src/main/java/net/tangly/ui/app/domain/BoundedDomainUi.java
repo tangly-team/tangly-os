@@ -18,6 +18,7 @@ import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.contextmenu.MenuItem;
 import com.vaadin.flow.component.contextmenu.SubMenu;
 import com.vaadin.flow.component.menubar.MenuBar;
+import net.tangly.commons.lang.functional.LazyReference;
 import net.tangly.core.domain.BoundedDomain;
 import org.jetbrains.annotations.NotNull;
 
@@ -39,7 +40,7 @@ public abstract class BoundedDomainUi<T extends BoundedDomain<?, ?, ?>> {
     public static final String LOAD = "Load";
 
     private final T domain;
-    private Component currentView;
+    private LazyReference<?> currentView;
 
     public BoundedDomainUi(@NotNull T domain) {
         this.domain = domain;
@@ -67,21 +68,23 @@ public abstract class BoundedDomainUi<T extends BoundedDomain<?, ?, ?>> {
     public abstract void select(@NotNull AppLayout layout, @NotNull MenuBar menuBar);
 
     /**
+     * Refresh the views of the bounded domain user interface because the domain entities have changed
+     */
+    public abstract void refreshViews();
+
+    /**
      * Select the new current view of the bounded domain interface.
      *
      * @param layout layout to display within
      * @param view   new current view if not null otherwise the current view is refreshed
      */
-    public void select(@NotNull AppLayout layout, Component view) {
+    public void select(@NotNull AppLayout layout, LazyReference<?> view) {
         currentView = Objects.isNull(view) ? currentView : view;
-        layout.setContent(currentView);
+        layout.setContent((Component) currentView.get());
     }
 
     public void select(@NotNull AppLayout layout) {
-        select(layout, currentView);
-    }
-
-    public void refreshViews() {
+        layout.setContent((Component) currentView.get());
     }
 
     /**
@@ -94,7 +97,7 @@ public abstract class BoundedDomainUi<T extends BoundedDomain<?, ?, ?>> {
      *     <li>Up load domain entities through the browser interface. Files are available on client site. The command is optional.</li>
      * </ul>
      */
-    protected void addAdministration(@NotNull AppLayout layout, @NotNull MenuBar menuBar, @NotNull DomainView domainView, Cmd loadDialog) {
+    protected void addAdministration(@NotNull AppLayout layout, @NotNull MenuBar menuBar, @NotNull LazyReference<?> domainView, Cmd loadDialog) {
         MenuItem menuItem = menuBar.addItem(ADMINISTRATION);
         SubMenu subMenu = menuItem.getSubMenu();
         subMenu.addItem(STATISTICS, _ -> select(layout, domainView));
@@ -106,7 +109,7 @@ public abstract class BoundedDomainUi<T extends BoundedDomain<?, ?, ?>> {
         }
     }
 
-    protected void addAnalytics(@NotNull AppLayout layout, @NotNull MenuBar menuBar, @NotNull AnalyticsView analyticsView) {
+    protected void addAnalytics(@NotNull AppLayout layout, @NotNull MenuBar menuBar, @NotNull LazyReference<?> analyticsView) {
         MenuItem menuItem = menuBar.addItem(ANALYTICS);
         SubMenu subMenu = menuItem.getSubMenu();
         subMenu.addItem(ANALYTICS, _ -> select(layout, analyticsView));
@@ -117,11 +120,11 @@ public abstract class BoundedDomainUi<T extends BoundedDomain<?, ?, ?>> {
         refreshViews();
     }
 
-    protected void currentView(Component currentView) {
+    protected <T extends Component> void currentView(LazyReference<T> currentView) {
         this.currentView = currentView;
     }
 
-    protected Component currentView() {
-        return currentView;
+    protected <T extends Component> LazyReference<T> currentView() {
+        return (LazyReference<T>) currentView;
     }
 }

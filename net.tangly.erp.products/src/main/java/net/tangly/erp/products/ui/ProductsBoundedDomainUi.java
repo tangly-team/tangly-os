@@ -17,24 +17,26 @@ import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.contextmenu.MenuItem;
 import com.vaadin.flow.component.contextmenu.SubMenu;
 import com.vaadin.flow.component.menubar.MenuBar;
+import net.tangly.commons.lang.functional.LazyReference;
 import net.tangly.erp.products.services.ProductsBoundedDomain;
 import net.tangly.ui.app.domain.BoundedDomainUi;
 import net.tangly.ui.app.domain.DomainView;
+import net.tangly.ui.components.ItemView;
 import net.tangly.ui.components.Mode;
 import org.jetbrains.annotations.NotNull;
 
 public class ProductsBoundedDomainUi extends BoundedDomainUi<ProductsBoundedDomain> {
-    private final ProductsView productsView;
-    private final AssignmentsView assignmentsView;
-    private final EffortsView effortsView;
-    private final DomainView domainView;
+    private final LazyReference<ProductsView> productsView;
+    private final LazyReference<AssignmentsView> assignmentsView;
+    private final LazyReference<EffortsView> effortsView;
+    private final LazyReference<DomainView> domainView;
 
     public ProductsBoundedDomainUi(@NotNull ProductsBoundedDomain domain) {
         super(domain);
-        productsView = new ProductsView(domain, Mode.EDIT);
-        assignmentsView = new AssignmentsView(domain, Mode.EDIT);
-        effortsView = new EffortsView(domain, Mode.DELETE);
-        domainView = new DomainView(domain);
+        productsView = new LazyReference<>(() -> new ProductsView(domain, Mode.EDIT));
+        assignmentsView = new LazyReference<>(() -> new AssignmentsView(domain, Mode.EDIT));
+        effortsView = new LazyReference<>(() -> new EffortsView(domain, Mode.DELETE));
+        domainView = new LazyReference<>(() -> new DomainView(domain));
         currentView(productsView);
     }
 
@@ -51,8 +53,8 @@ public class ProductsBoundedDomainUi extends BoundedDomainUi<ProductsBoundedDoma
 
     @Override
     public void refreshViews() {
-        productsView.refresh();
-        assignmentsView.refresh();
-        effortsView.refresh();
+        productsView.ifPresent(ItemView::refresh);
+        assignmentsView.ifPresent(ItemView::refresh);
+        effortsView.ifPresent(ItemView::refresh);
     }
 }

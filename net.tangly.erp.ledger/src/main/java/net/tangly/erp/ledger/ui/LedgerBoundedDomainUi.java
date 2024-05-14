@@ -17,24 +17,26 @@ import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.contextmenu.MenuItem;
 import com.vaadin.flow.component.contextmenu.SubMenu;
 import com.vaadin.flow.component.menubar.MenuBar;
+import net.tangly.commons.lang.functional.LazyReference;
 import net.tangly.erp.ledger.services.LedgerBoundedDomain;
 import net.tangly.ui.app.domain.BoundedDomainUi;
 import net.tangly.ui.app.domain.DomainView;
+import net.tangly.ui.components.ItemView;
 import net.tangly.ui.components.Mode;
 import org.jetbrains.annotations.NotNull;
 
 public class LedgerBoundedDomainUi extends BoundedDomainUi<LedgerBoundedDomain> {
-    private final AccountsView accountsView;
-    private final TransactionsView transactionsView;
-    private final AnalyticsLedgerView analyticsView;
-    private final DomainView domainView;
+    private final LazyReference<AccountsView> accountsView;
+    private final LazyReference<TransactionsView> transactionsView;
+    private final LazyReference<AnalyticsLedgerView> analyticsView;
+    private final LazyReference<DomainView> domainView;
 
     public LedgerBoundedDomainUi(@NotNull LedgerBoundedDomain domain) {
         super(domain);
-        accountsView = new AccountsView(domain, Mode.EDIT);
-        transactionsView = new TransactionsView(domain, Mode.EDIT);
-        analyticsView = new AnalyticsLedgerView(domain);
-        domainView = new DomainView(domain);
+        accountsView = new LazyReference<>(() -> new AccountsView(domain, Mode.EDIT));
+        transactionsView = new LazyReference<>(() -> new TransactionsView(domain, Mode.EDIT));
+        analyticsView = new LazyReference<>(() -> new AnalyticsLedgerView(domain));
+        domainView = new LazyReference<>(() -> new DomainView(domain));
         currentView(transactionsView);
     }
 
@@ -52,7 +54,7 @@ public class LedgerBoundedDomainUi extends BoundedDomainUi<LedgerBoundedDomain> 
 
     @Override
     public void refreshViews() {
-        accountsView.refresh();
-        transactionsView.refresh();
+        accountsView.ifPresent(ItemView::refresh);
+        transactionsView.ifPresent(ItemView::refresh);
     }
 }

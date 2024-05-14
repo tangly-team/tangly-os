@@ -17,22 +17,24 @@ import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.contextmenu.MenuItem;
 import com.vaadin.flow.component.contextmenu.SubMenu;
 import com.vaadin.flow.component.menubar.MenuBar;
+import net.tangly.commons.lang.functional.LazyReference;
 import net.tangly.erp.invoices.services.InvoicesBoundedDomain;
 import net.tangly.ui.app.domain.BoundedDomainUi;
 import net.tangly.ui.app.domain.DomainView;
+import net.tangly.ui.components.ItemView;
 import net.tangly.ui.components.Mode;
 import org.jetbrains.annotations.NotNull;
 
 public class InvoicesBoundedDomainUi extends BoundedDomainUi<InvoicesBoundedDomain> {
-    private final ArticlesView articlesView;
-    private final InvoicesView invoicesView;
-    private final DomainView domainView;
+    private final LazyReference<ArticlesView> articlesView;
+    private final LazyReference<InvoicesView> invoicesView;
+    private final LazyReference<DomainView> domainView;
 
     public InvoicesBoundedDomainUi(@NotNull InvoicesBoundedDomain domain) {
         super(domain);
-        articlesView = new ArticlesView(domain, Mode.EDIT);
-        invoicesView = new InvoicesView(domain, Mode.EDIT);
-        domainView = new DomainView(domain);
+        articlesView = new LazyReference<>(() -> new ArticlesView(domain, Mode.EDIT));
+        invoicesView = new LazyReference<>(() -> new InvoicesView(domain, Mode.EDIT));
+        domainView = new LazyReference<>(() -> new DomainView(domain));
         currentView(invoicesView);
     }
 
@@ -49,7 +51,7 @@ public class InvoicesBoundedDomainUi extends BoundedDomainUi<InvoicesBoundedDoma
 
     @Override
     public void refreshViews() {
-        articlesView.refresh();
-        invoicesView.refresh();
+        articlesView.ifPresent(ItemView::refresh);
+        invoicesView.ifPresent(ItemView::refresh);
     }
 }

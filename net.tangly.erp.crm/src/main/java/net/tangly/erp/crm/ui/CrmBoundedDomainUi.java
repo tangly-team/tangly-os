@@ -17,37 +17,39 @@ import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.contextmenu.MenuItem;
 import com.vaadin.flow.component.contextmenu.SubMenu;
 import com.vaadin.flow.component.menubar.MenuBar;
+import net.tangly.commons.lang.functional.LazyReference;
 import net.tangly.erp.crm.services.CrmBoundedDomain;
 import net.tangly.erp.invoices.services.InvoicesBoundedDomain;
 import net.tangly.ui.app.domain.BoundedDomainUi;
 import net.tangly.ui.app.domain.DomainView;
+import net.tangly.ui.components.ItemView;
 import net.tangly.ui.components.Mode;
 import org.jetbrains.annotations.NotNull;
 
 public class CrmBoundedDomainUi extends BoundedDomainUi<CrmBoundedDomain> {
-    private final LeadsView leadsView;
-    private final NaturalEntitiesView naturalEntitiesView;
-    private final LegalEntitiesView legalEntitiesView;
-    private final EmployeesView employeesView;
-    private final ContractsView contractsView;
-    private final InteractionsView interactionsView;
-    private final ActivitiesView activitiesView;
-    private final SubjectsView subjectsView;
-    private final AnalyticsCrmView analyticsView;
-    private final DomainView domainView;
+    private final LazyReference<LeadsView> leadsView;
+    private final LazyReference<NaturalEntitiesView> naturalEntitiesView;
+    private final LazyReference<LegalEntitiesView> legalEntitiesView;
+    private final LazyReference<EmployeesView> employeesView;
+    private final LazyReference<ContractsView> contractsView;
+    private final LazyReference<InteractionsView> interactionsView;
+    private final LazyReference<ActivitiesView> activitiesView;
+    private final LazyReference<SubjectsView> subjectsView;
+    private final LazyReference<AnalyticsCrmView> analyticsView;
+    private final LazyReference<DomainView> domainView;
 
     public CrmBoundedDomainUi(@NotNull CrmBoundedDomain crmDomain, @NotNull InvoicesBoundedDomain invoicesDomain) {
         super(crmDomain);
-        leadsView = new LeadsView(domain(), Mode.EDIT);
-        naturalEntitiesView = new NaturalEntitiesView(domain(), Mode.EDIT);
-        legalEntitiesView = new LegalEntitiesView(domain(), Mode.EDIT);
-        employeesView = new EmployeesView(domain(), Mode.EDIT);
-        contractsView = new ContractsView(domain(), Mode.EDIT);
-        interactionsView = new InteractionsView(domain(), Mode.EDIT);
-        activitiesView = new ActivitiesView(domain(), Mode.VIEW);
-        subjectsView = new SubjectsView(domain(), Mode.EDIT);
-        analyticsView = new AnalyticsCrmView(domain(), invoicesDomain);
-        domainView = new DomainView(domain());
+        leadsView = new LazyReference<>(() -> new LeadsView(domain(), Mode.EDIT));
+        naturalEntitiesView = new LazyReference<>(() -> new NaturalEntitiesView(domain(), Mode.EDIT));
+        legalEntitiesView = new LazyReference<>(() -> new LegalEntitiesView(domain(), Mode.EDIT));
+        employeesView = new LazyReference<>(() -> new EmployeesView(domain(), Mode.EDIT));
+        contractsView = new LazyReference<>(() -> new ContractsView(domain(), Mode.EDIT));
+        interactionsView = new LazyReference<>(() -> new InteractionsView(domain(), Mode.EDIT));
+        activitiesView = new LazyReference<>(() -> new ActivitiesView(domain(), Mode.VIEW));
+        subjectsView = new LazyReference<>(() -> new SubjectsView(domain(), Mode.EDIT));
+        analyticsView = new LazyReference<>(() -> new AnalyticsCrmView(domain(), invoicesDomain));
+        domainView = new LazyReference<>(() -> new DomainView(domain()));
         currentView(naturalEntitiesView);
     }
 
@@ -71,13 +73,13 @@ public class CrmBoundedDomainUi extends BoundedDomainUi<CrmBoundedDomain> {
 
     @Override
     public void refreshViews() {
-        leadsView.refresh();
-        naturalEntitiesView.refresh();
-        legalEntitiesView.refresh();
-        employeesView.refresh();
-        contractsView.refresh();
-        interactionsView.refresh();
-        activitiesView.refresh();
-        subjectsView.refresh();
+        leadsView.ifPresent(ItemView::refresh);
+        naturalEntitiesView.ifPresent(ItemView::refresh);
+        legalEntitiesView.ifPresent(ItemView::refresh);
+        employeesView.ifPresent(ItemView::refresh);
+        contractsView.ifPresent(ItemView::refresh);
+        interactionsView.ifPresent(ItemView::refresh);
+        activitiesView.ifPresent(ItemView::refresh);
+        subjectsView.ifPresent(ItemView::refresh);
     }
 }

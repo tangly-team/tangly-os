@@ -17,20 +17,22 @@ import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.contextmenu.MenuItem;
 import com.vaadin.flow.component.contextmenu.SubMenu;
 import com.vaadin.flow.component.menubar.MenuBar;
+import net.tangly.commons.lang.functional.LazyReference;
 import net.tangly.erp.collabortors.services.CollaboratorsBoundedDomain;
 import net.tangly.ui.app.domain.BoundedDomainUi;
 import net.tangly.ui.app.domain.DomainView;
+import net.tangly.ui.components.ItemView;
 import org.jetbrains.annotations.NotNull;
 
 
 public class CollaboratorsBoundedDomainUi extends BoundedDomainUi<CollaboratorsBoundedDomain> {
-    private final CollaboratorsView collaboratorsView;
-    private final DomainView domainView;
+    private final LazyReference<CollaboratorsView> collaboratorsView;
+    private final LazyReference<DomainView> domainView;
 
     public CollaboratorsBoundedDomainUi(@NotNull CollaboratorsBoundedDomain domain) {
         super(domain);
-        collaboratorsView = new CollaboratorsView(domain);
-        domainView = new DomainView(domain);
+        collaboratorsView = new LazyReference<>(() -> new CollaboratorsView(domain));
+        domainView = new LazyReference<>(() -> new DomainView(domain));
         currentView(collaboratorsView);
 
     }
@@ -46,6 +48,6 @@ public class CollaboratorsBoundedDomainUi extends BoundedDomainUi<CollaboratorsB
 
     @Override
     public void refreshViews() {
-        collaboratorsView.refresh();
+        collaboratorsView.ifPresent(ItemView::refresh);
     }
 }
