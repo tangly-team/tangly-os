@@ -38,7 +38,7 @@ public class AnalyticsCrmView extends AnalyticsView {
     private static final String ContractsTurnover = "Contracts Turnover";
     private static final String Funnel = "Funnel";
     private static final String SpentOnContracts = "Spent On Contracts";
-    private final CrmBoundedDomain crmDomain;
+    private final CrmBoundedDomain domain;
     private final InvoicesBusinessLogic invoicesLogic;
     private SOChart contractsSoChart;
     private SOChart customersSoChart;
@@ -47,8 +47,8 @@ public class AnalyticsCrmView extends AnalyticsView {
 
     private GridListDataView<Contract> dataView;
 
-    public AnalyticsCrmView(@NotNull CrmBoundedDomain crmDomain, @NotNull InvoicesBoundedDomain invoicesDomain) {
-        this.crmDomain = crmDomain;
+    public AnalyticsCrmView(@NotNull CrmBoundedDomain domain, @NotNull InvoicesBoundedDomain invoicesDomain) {
+        this.domain = domain;
         this.invoicesLogic = invoicesDomain.logic();
         initialize();
         update();
@@ -79,7 +79,7 @@ public class AnalyticsCrmView extends AnalyticsView {
         grid.addThemeVariants(GridVariant.LUMO_COMPACT);
         grid.setHeight("24em");
         grid.setWidthFull();
-        dataView = grid.setItems(DataProvider.ofCollection(crmDomain.realm().contracts().items()));
+        dataView = grid.setItems(DataProvider.ofCollection(domain.realm().contracts().items()));
         grid.addColumn(Contract::id).setKey("id").setHeader("Id").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Contract::name).setKey("name").setHeader("Name").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Contract::from).setKey("from").setHeader("From").setAutoWidth(true).setResizable(true).setSortable(true);
@@ -96,7 +96,7 @@ public class AnalyticsCrmView extends AnalyticsView {
     private void contractsChart(@NotNull SOChart chart) {
         List<String> contracts = new ArrayList<>();
         List<BigDecimal> amounts = new ArrayList<>();
-        crmDomain.realm().contracts().items().forEach(contract -> {
+        domain.realm().contracts().items().forEach(contract -> {
             BigDecimal amount = invoicesLogic.invoicedAmountWithoutVatForContract(contract.id(), from(), to());
             if (!amount.equals(BigDecimal.ZERO)) {
                 contracts.add(contract.id());
@@ -109,7 +109,7 @@ public class AnalyticsCrmView extends AnalyticsView {
     private void customersChart(@NotNull SOChart chart) {
         List<String> customers = new ArrayList<>();
         List<BigDecimal> amounts = new ArrayList<>();
-        crmDomain.realm().legalEntities().items().forEach(customer -> {
+        domain.realm().legalEntities().items().forEach(customer -> {
             BigDecimal amount = invoicesLogic.paidAmountWithoutVatForCustomer(customer.id(), from(), to());
             if (!amount.equals(BigDecimal.ZERO)) {
                 customers.add(customer.name());
@@ -121,7 +121,7 @@ public class AnalyticsCrmView extends AnalyticsView {
 
     private void funnelChart(@NotNull SOChart chart) {
         CategoryData labels = new CategoryData("Prospects", "Leads", "Ordered", "Lost", "Completed");
-        CrmBusinessLogic logic = crmDomain.logic();
+        CrmBusinessLogic logic = domain.logic();
         BigDecimal prospects = logic.funnel(InteractionCode.prospect, from(), to());
         BigDecimal leads = logic.funnel(InteractionCode.lead, from(), to());
         BigDecimal ordered = logic.funnel(InteractionCode.ordered, from(), to());

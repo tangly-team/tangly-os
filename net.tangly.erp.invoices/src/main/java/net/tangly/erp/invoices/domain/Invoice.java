@@ -121,12 +121,12 @@ public class Invoice implements HasId, HasName, HasDate, HasText {
     // region VAT
 
     /**
-     * Return the amount of the invoice without the VAT tax.
+     * Return the amount of the invoice without the VAT tax. The amount is the sum of all invoice items. Subtotals are not considered in the amount.
      *
      * @return invoice amount without VAT tax
      */
     public BigDecimal amountWithoutVat() {
-        return items().stream().map(InvoiceLine::amount).reduce(BigDecimal.ZERO, BigDecimal::add);
+        return items().stream().filter(o -> o instanceof InvoiceItem).map(InvoiceLine::amount).reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 
     /**
