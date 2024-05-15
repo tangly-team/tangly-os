@@ -126,7 +126,7 @@ public class Invoice implements HasId, HasName, HasDate, HasText {
      * @return invoice amount without VAT tax
      */
     public BigDecimal amountWithoutVat() {
-        return items().stream().filter(o -> o instanceof InvoiceItem).map(InvoiceLine::amount).reduce(BigDecimal.ZERO, BigDecimal::add);
+        return items().stream().filter(InvoiceLine::isItem).map(InvoiceLine::amount).reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 
     /**

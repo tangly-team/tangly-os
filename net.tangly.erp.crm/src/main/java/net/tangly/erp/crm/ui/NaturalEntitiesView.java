@@ -96,7 +96,7 @@ class NaturalEntitiesView extends EntityView<NaturalEntity> {
     public NaturalEntitiesView(@NotNull CrmBoundedDomain domain, @NotNull Mode mode) {
         super(NaturalEntity.class, domain, domain.realm().naturalEntities(), mode);
         form(() -> new NaturalEntityForm(this));
-        initEntityView();
+        init();
     }
 
     public static void defineOne2ManyEmployees(@NotNull Grid<Employee> grid) {
@@ -109,7 +109,7 @@ class NaturalEntitiesView extends EntityView<NaturalEntity> {
     }
 
     private void init() {
-        super.initEntityView();
+        initEntityView();
         var grid = grid();
         grid.addColumn(NaturalEntity::name).setKey("lastname").setHeader("Last Name").setSortable(true).setAutoWidth(true).setResizable(true);
         grid.addColumn(NaturalEntity::firstname).setKey("firstname").setHeader("First Name").setSortable(true).setAutoWidth(true).setResizable(true);

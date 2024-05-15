@@ -4,7 +4,7 @@
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- *          http://www.apache.org/licenses/LICENSE-2.0
+ *          https://apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -13,15 +13,7 @@
 
 package net.tangly.ui.app.domain;
 
-import com.storedobject.chart.CategoryData;
-import com.storedobject.chart.Data;
-import com.storedobject.chart.DateData;
-import com.storedobject.chart.LineChart;
-import com.storedobject.chart.NightingaleRoseChart;
-import com.storedobject.chart.Position;
-import com.storedobject.chart.RectangularCoordinate;
-import com.storedobject.chart.SOChart;
-import com.storedobject.chart.Size;
+import com.storedobject.chart.*;
 import com.vaadin.flow.component.datepicker.DatePicker;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
@@ -32,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.Month;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.BiFunction;
@@ -44,8 +37,8 @@ public abstract class AnalyticsView extends VerticalLayout {
     protected final TabSheet tabSheet;
 
     public AnalyticsView() {
-        from = LocalDate.of(2015, 11, 1);
-        to = LocalDate.of(LocalDate.now().getYear(), 12, 31);
+        from = LocalDate.of(2015, Month.NOVEMBER, 1);
+        to = LocalDate.of(LocalDate.now().getYear(), Month.DECEMBER, 31);
         tabSheet = new TabSheet();
         DatePicker fromDate = new DatePicker("From Date");
         fromDate.setValue(from);

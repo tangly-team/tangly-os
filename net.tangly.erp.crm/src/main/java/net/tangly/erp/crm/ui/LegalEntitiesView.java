@@ -77,9 +77,9 @@ class LegalEntitiesView extends EntityView<LegalEntity> {
         initEntityView();
         var grid = grid();
         grid.addColumn(VaadinUtils.linkedInComponentRenderer(CrmTags::linkedInTag, true)).setKey("linkedIn").setHeader("LinkedIn").setAutoWidth(true);
-        grid.addColumn(VaadinUtils.urlComponentRenderer(CrmTags.CRM_SITE_WORK)).setKey("webSite").setHeader("Web Site").setAutoWidth(true);
         grid.addColumn(o -> o.value(CrmTags.CRM_RESPONSIBLE).orElse(null)).setKey("responsible").setHeader("Responsible").setAutoWidth(true).setSortable(true);
         grid.addColumn(zefixComponentRenderer()).setKey("zefix").setHeader("Zefix").setAutoWidth(true);
+        grid.addColumn(VaadinUtils.urlComponentRenderer(CrmTags.CRM_SITE_WORK)).setKey("webSite").setHeader("Web Site").setAutoWidth(true);
     }
 
     public static <T extends LegalEntity> ComponentRenderer<Anchor, T> zefixComponentRenderer() {

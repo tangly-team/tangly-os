@@ -33,8 +33,10 @@ public class TsvHdlCore {
     public static final String TO_DATE = "toDate";
     public static final String TEXT = "text";
     private static final String STREET = "street";
+    private static final String EXTENDED = "extended";
     private static final String POSTCODE = "postcode";
     private static final String LOCALITY = "locality";
+    private static final String POBOX = "pobox";
     private static final String REGION = "region";
     private static final String COUNTRY = "country";
     private static final String IBAN = "iban";
@@ -52,10 +54,9 @@ public class TsvHdlCore {
     }
 
     public static TsvEntity<Address> createTsvAddress() {
-        Function<CSVRecord, Address> imports = (CSVRecord csv) -> (Objects.isNull(TsvEntity.get(csv, LOCALITY)) || Objects.isNull(TsvEntity.get(csv, COUNTRY))) ? null :
-            Address.builder().street(TsvEntity.get(csv, STREET)).postcode(TsvEntity.get(csv, POSTCODE)).locality(TsvEntity.get(csv, LOCALITY)).region(TsvEntity.get(csv, REGION))
-                .country(TsvEntity.get(csv, COUNTRY)).build();
-        List<TsvProperty<Address, ?>> fields = List.of(TsvProperty.ofString(STREET, Address::street, null), TsvProperty.ofString("extended", Address::extended, null),
+        Function<CSVRecord, Address> imports = (CSVRecord csv) -> ofAddress(csv);
+        List<TsvProperty<Address, ?>> fields = List.of(TsvProperty.ofString(STREET, Address::street, null),
+            TsvProperty.ofString(EXTENDED, Address::extended, null), TsvProperty.ofString(POBOX, Address::poBox, null),
             TsvProperty.ofString(POSTCODE, Address::postcode, null), TsvProperty.ofString(LOCALITY, Address::locality, null),
             TsvProperty.ofString(REGION, Address::region, null), TsvProperty.ofString(COUNTRY, Address::country, null));
         return TsvEntity.of(Address.class, fields, imports);
@@ -67,7 +68,13 @@ public class TsvHdlCore {
         return TsvEntity.of(DateRange.class, fields, imports);
     }
 
-    private static LocalDate ofDate(CSVRecord csv, String field) {
+    public static Address ofAddress(CSVRecord csv) {
+        return (Objects.isNull(TsvEntity.get(csv, LOCALITY)) || Objects.isNull(TsvEntity.get(csv, COUNTRY))) ? null :
+            new Address(TsvEntity.get(csv, STREET), TsvEntity.get(csv, EXTENDED), TsvEntity.get(csv, POBOX), TsvEntity.get(csv, POSTCODE), TsvEntity.get(csv, LOCALITY),
+                TsvEntity.get(csv, REGION), TsvEntity.get(csv, COUNTRY));
+    }
+
+    public static LocalDate ofDate(CSVRecord csv, String field) {
         String value = TsvEntity.get(csv, field);
         return (value == null) ? null : LocalDate.parse(value);
     }

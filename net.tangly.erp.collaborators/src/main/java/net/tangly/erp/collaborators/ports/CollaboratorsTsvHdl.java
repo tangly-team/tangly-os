@@ -14,6 +14,7 @@
 package net.tangly.erp.collaborators.ports;
 
 import net.tangly.core.providers.Provider;
+import net.tangly.core.tsv.TsvHdlCore;
 import net.tangly.erp.collaborators.domain.*;
 import net.tangly.erp.collabortors.services.CollaboratorsBoundedDomain;
 import net.tangly.erp.collabortors.services.CollaboratorsRealm;
@@ -47,7 +48,7 @@ public class CollaboratorsTsvHdl {
 
     static TsvEntity<Collaborator> createTsvCollaborator() {
         Function<CSVRecord, Collaborator> of = (csv) -> new Collaborator(TsvEntity.get(csv, "id"), TsvEntity.get(csv, "oldSocialSecurityNumber"),
-            null, TsvEntity.get(csv, "fullname"), TsvEntity.get(csv, "internalId"), null);
+            TsvHdlCore.ofDate(csv, "birthday"), TsvEntity.get(csv, "fullname"), TsvEntity.get(csv, "internalId"), TsvHdlCore.ofAddress(csv));
         List<TsvProperty<Collaborator, ?>> fields =
             List.of(TsvProperty.ofString("id", Collaborator::id, null),
                 TsvProperty.ofString("oldSocialSecurityNumber", Collaborator::oldSocialSecurityNumber, null),

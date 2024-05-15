@@ -53,11 +53,10 @@ public class EntityView<T extends Entity> extends ItemView<T> {
         grid.addColumn(HasOid::oid).setKey(OID).setHeader(OID_LABEL).setResizable(true).setSortable(true).setFlexGrow(0).setWidth("4em");
         grid.addColumn(HasId::id).setKey(ID).setHeader(ID_LABEL).setResizable(true).setSortable(true).setFlexGrow(0).setWidth("4em");
         grid.addColumn(HasName::name).setKey(NAME).setHeader(NAME_LABEL).setResizable(true).setSortable(true).setFlexGrow(0).setWidth("16em");
-        grid.addColumn(new LocalDateRenderer<>(HasDateRange::from, ISO_DATE_FORMAT)).setKey(FROM).setHeader(FROM_LABEL).setResizable(true).setSortable(true).setFlexGrow(0)
+        grid.addColumn(new LocalDateRenderer<>(HasDateRange::from, ISO_DATE_FORMAT)).setKey(FROM).setHeader(FROM_LABEL).setResizable(true).setSortable(true).setWidth("4em")
             .setWidth("8em");
-        grid.addColumn(new LocalDateRenderer<>(HasDateRange::to, ISO_DATE_FORMAT)).setKey(TO).setHeader(TO_LABEL).setResizable(true).setSortable(true).setFlexGrow(0)
+        grid.addColumn(new LocalDateRenderer<>(HasDateRange::to, ISO_DATE_FORMAT)).setKey(TO).setHeader(TO_LABEL).setResizable(true).setSortable(true).setWidth("4em")
             .setWidth("8em");
-        grid.addColumn(HasText::text).setKey(TEXT).setHeader(TEXT_LABEL).setResizable(true).setSortable(true).setFlexGrow(0).setWidth("30em");
     }
 
     protected void addEntityFilterFields(@NotNull Grid<T> grid, @NotNull EntityFilter<T> filter) {
@@ -69,6 +68,5 @@ public class EntityView<T extends Entity> extends ItemView<T> {
         headerRow.getCell(grid.getColumnByKey(EntityView.NAME)).setComponent(createTextFilterField(filter::name));
         headerRow.getCell(grid.getColumnByKey(EntityView.FROM)).setComponent(createDateRangeField(filter::fromRange));
         headerRow.getCell(grid.getColumnByKey(EntityView.TO)).setComponent(createDateRangeField(filter::toRange));
-        headerRow.getCell(grid.getColumnByKey(EntityView.TEXT)).setComponent(createTextFilterField(filter::text));
     }
 }
