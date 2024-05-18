@@ -43,8 +43,12 @@ import net.tangly.erp.products.services.ProductsBusinessLogic;
 import org.apache.commons.cli.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.eclipse.jetty.ee10.servlet.DefaultServlet;
+import org.eclipse.jetty.ee10.servlet.ServletHolder;
+import org.eclipse.jetty.ee10.webapp.WebAppContext;
 import org.jetbrains.annotations.NotNull;
 
+import java.io.IOException;
 import java.nio.file.Path;
 import java.time.LocalDate;
 import java.time.Month;
@@ -68,7 +72,16 @@ public final class Main {
         parse(args);
         ofDomains();
         ofDomainRests();
-        new VaadinBoot().setPort(port).withContextRoot(contextRoot).run();
+        new VaadinBoot() {
+            @Override
+            protected @NotNull WebAppContext createWebAppContext() throws IOException {
+                final WebAppContext context = super.createWebAppContext();
+                ServletHolder staticFiles = new ServletHolder("staticFiles", new DefaultServlet());
+                staticFiles.setInitParameter("resourceBase", "/private/var/tangly-erp/reports");
+                context.addServlet(staticFiles, "/reports/*");
+                return context;
+            }
+        }.setPort(port).withContextRoot(contextRoot).run();
     }
 
     private static Options options() {

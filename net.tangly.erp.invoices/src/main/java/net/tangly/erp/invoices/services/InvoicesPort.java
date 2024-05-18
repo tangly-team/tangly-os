@@ -54,5 +54,4 @@ public interface InvoicesPort extends Port<InvoicesRealm> {
      * @param overwrite   flag if an existing document should be overwritten
      */
     void exportInvoiceDocuments(boolean withQrCode, boolean withEN16931, boolean overwrite, LocalDate from, LocalDate to);
-
 }

@@ -83,23 +83,7 @@ public class CommentsView extends ItemView<Comment> {
 
         public CommentForm(@NotNull CommentsView parent) {
             super(parent);
-            initForm();
-        }
-
-        protected void initForm() {
-            FormLayout layout = new FormLayout();
-            created = new DateTimePicker(CREATED);
-            created.setReadOnly(true);
-            author = new TextField(AUTHOR);
-            author.setRequired(true);
-            text = new AsciiDocField(TEXT);
-            layout.add(created, author, text);
-            layout.setColspan(text, 3);
-            layout.setResponsiveSteps(new FormLayout.ResponsiveStep("0", 1), new FormLayout.ResponsiveStep("320px", 2), new FormLayout.ResponsiveStep("500px", 3));
-            form().add(layout, createButtonBar());
-            binder().forField(created).bind(Comment::created, null);
-            binder().forField(author).bind(Comment::author, null);
-            binder().forField(text).bind(Comment::text, null);
+            init();
         }
 
         @Override
@@ -127,6 +111,22 @@ public class CommentsView extends ItemView<Comment> {
             Comment comment = new Comment(author.getValue(), text.getValue());
             parent().provider().replace(entity, comment);
             return comment;
+        }
+
+        private void init() {
+            FormLayout layout = new FormLayout();
+            created = new DateTimePicker(CREATED);
+            created.setReadOnly(true);
+            author = new TextField(AUTHOR);
+            author.setRequired(true);
+            text = new AsciiDocField(TEXT);
+            layout.add(created, author, text);
+            layout.setColspan(text, 3);
+            layout.setResponsiveSteps(new FormLayout.ResponsiveStep("0", 1), new FormLayout.ResponsiveStep("320px", 2), new FormLayout.ResponsiveStep("500px", 3));
+            form().add(layout, createButtonBar());
+            binder().forField(created).bind(Comment::created, null);
+            binder().forField(author).bind(Comment::author, null);
+            binder().forField(text).bind(Comment::text, null);
         }
     }
 

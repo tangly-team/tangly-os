@@ -86,35 +86,6 @@ public class TagsView extends ItemView<Tag> {
             init();
         }
 
-        private void init() {
-            FormLayout layout = new FormLayout();
-            namespace = new ComboBox<>(NAMESPACE);
-            namespace.setItems(parent().registry().namespaces());
-            namespace.setAllowCustomValue(false);
-            namespace.addValueChangeListener(event -> {
-                this.name.clear();
-                deactivateValue();
-                if (Objects.nonNull(event.getValue())) {
-                    name.setItems(parent().registry().tagNamesForNamespace(event.getValue()));
-                }
-            });
-            name = new ComboBox<>(NAME);
-            name.setRequired(true);
-            name.setAllowCustomValue(false);
-            name.addValueChangeListener(event -> {
-                if (Objects.nonNull(event.getValue())) {
-                    activateValue(parent().registry().find(namespace.getValue(), name.getValue()).orElseThrow());
-                }
-            });
-            value = new TextField(VALUE);
-            layout.add(namespace, name, value);
-            layout.setResponsiveSteps(new FormLayout.ResponsiveStep("0", 1));
-            form().add(layout, createButtonBar());
-            binder().forField(namespace).bind(Tag::namespace, null);
-            binder().forField(name).bind(Tag::name, null);
-            binder().forField(value).bind(Tag::value, null);
-        }
-
         @Override
         public void mode(@NotNull Mode mode) {
             super.mode(mode);
@@ -157,6 +128,35 @@ public class TagsView extends ItemView<Tag> {
             Tag tag = new Tag(namespace.getValue(), name.getValue(), value.getValue());
             parent().provider().replace(entity, tag);
             return tag;
+        }
+
+        private void init() {
+            FormLayout layout = new FormLayout();
+            namespace = new ComboBox<>(NAMESPACE);
+            namespace.setItems(parent().registry().namespaces());
+            namespace.setAllowCustomValue(false);
+            namespace.addValueChangeListener(event -> {
+                this.name.clear();
+                deactivateValue();
+                if (Objects.nonNull(event.getValue())) {
+                    name.setItems(parent().registry().tagNamesForNamespace(event.getValue()));
+                }
+            });
+            name = new ComboBox<>(NAME);
+            name.setRequired(true);
+            name.setAllowCustomValue(false);
+            name.addValueChangeListener(event -> {
+                if (Objects.nonNull(event.getValue())) {
+                    activateValue(parent().registry().find(namespace.getValue(), name.getValue()).orElseThrow());
+                }
+            });
+            value = new TextField(VALUE);
+            layout.add(namespace, name, value);
+            layout.setResponsiveSteps(new FormLayout.ResponsiveStep("0", 1));
+            form().add(layout, createButtonBar());
+            binder().forField(namespace).bind(Tag::namespace, null);
+            binder().forField(name).bind(Tag::name, null);
+            binder().forField(value).bind(Tag::value, null);
         }
 
         private void deactivateValue() {

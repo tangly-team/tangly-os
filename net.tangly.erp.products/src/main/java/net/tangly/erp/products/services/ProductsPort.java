@@ -20,6 +20,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.io.Reader;
 import java.time.LocalDate;
+import java.time.YearMonth;
 import java.time.temporal.ChronoUnit;
 
 /**
@@ -46,6 +47,19 @@ public interface ProductsPort extends Port<ProductsRealm> {
      * @param assignment assignment which efforts are of interest
      * @param from       start of the considered time interval
      * @param to         end of the considered time interval
+     * @param unit       unit of the time interval (minutes, hours, and days)
      */
     void exportEffortsDocument(@NotNull Assignment assignment, LocalDate from, LocalDate to, @NotNull String filename, @NotNull ChronoUnit unit);
+
+    /**
+     * Exports all efforts of the assignment in the given period of time. The export shall create an asciidoc document per month.
+     * The document name should contain the contract identifier, the collaborator identifier, and the period of time.
+     * The prefix should be the year and month of the period end. The prefix is used to sort the documents.
+     *
+     * @param assignment assignment which efforts are of interest
+     * @param from       first month to consider
+     * @param to         last  month to consider
+     * @param unit       unit of the time interval (minutes, hours, and days)
+     */
+    void exportEffortsDocumentsSplittedPerMonth(@NotNull Assignment assignment, YearMonth from, YearMonth to, @NotNull String filename, @NotNull ChronoUnit unit);
 }

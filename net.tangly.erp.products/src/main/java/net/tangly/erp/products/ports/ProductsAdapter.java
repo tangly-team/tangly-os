@@ -36,6 +36,7 @@ import java.io.UncheckedIOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.LocalDate;
+import java.time.YearMonth;
 import java.time.temporal.ChronoUnit;
 import java.util.Map;
 import java.util.Objects;
@@ -153,10 +154,8 @@ public class ProductsAdapter implements ProductsPort {
 
     @Override
     public void exportEffortsDocument(@NotNull Assignment assignment, LocalDate from, LocalDate to, @NotNull String filename, @NotNull ChronoUnit unit) {
-        var assignmentDocumentPath = reportFolder.resolve(ProductsBoundedDomain.DOMAIN, ASSIGNMENTS);
-        if (Objects.nonNull(to)) {
-            assignmentDocumentPath = assignmentDocumentPath.resolve(Integer.toString(to.getYear()));
-        }
+        var assignmentDocumentPath = reportFolder.resolve(ASSIGNMENTS);
+        assignmentDocumentPath = assignmentDocumentPath.resolve(Objects.nonNull(to) ? Integer.toString(to.getYear()) : Integer.toString(LocalDate.now().getYear()));
         try {
             Files.createDirectories(assignmentDocumentPath);
         } catch (IOException e) {
@@ -165,5 +164,15 @@ public class ProductsAdapter implements ProductsPort {
         assignmentDocumentPath = assignmentDocumentPath.resolve(STR."\{filename}\{AsciiDoctorHelper.ASCIIDOC_EXT}");
         var helper = new EffortReportEngine(logic);
         helper.createAsciiDocReport(assignment, from, to, assignmentDocumentPath, unit);
+    }
+
+    @Override
+    public void exportEffortsDocumentsSplittedPerMonth(@NotNull Assignment assignment, @NotNull YearMonth from, @NotNull YearMonth to, @NotNull String filename,
+                                                       @NotNull ChronoUnit unit) {
+        YearMonth current = from;
+        while (current.isBefore(to) || current.equals(to)) {
+            exportEffortsDocument(assignment, current.atDay(1), current.atEndOfMonth(), filename, unit);
+            current = current.plusMonths(1);
+        }
     }
 }

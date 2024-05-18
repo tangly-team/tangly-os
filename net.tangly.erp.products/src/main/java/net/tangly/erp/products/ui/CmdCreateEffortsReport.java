@@ -15,6 +15,7 @@ package net.tangly.erp.products.ui;
 
 import com.vaadin.flow.component.HtmlComponent;
 import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.checkbox.Checkbox;
 import com.vaadin.flow.component.datepicker.DatePicker;
 import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.formlayout.FormLayout;
@@ -42,8 +43,10 @@ public class CmdCreateEffortsReport implements Cmd {
     private final DatePicker fromDate;
     private final DatePicker toDate;
     private final Select<ChronoUnit> units;
+    private final Checkbox perMonth;
     private final TextField filename;
     private final Button propose;
+    private Button execute;
     private final transient Assignment assignment;
     private final transient ProductsBoundedDomain domain;
     private Dialog dialog;
@@ -62,9 +65,25 @@ public class CmdCreateEffortsReport implements Cmd {
         units.setValue(ChronoUnit.HOURS);
         filename = VaadinUtils.createTextField("Filename", "filename");
         filename.setRequired(true);
+        filename.addValueChangeListener(_ -> execute.setEnabled(isExecuteEnabled()));
         propose = new Button("Propose", VaadinIcon.COGS.create(), _ -> filename.setValue(filename(assignment.id(), assignment.name(), fromDate.getValue(), toDate.getValue())));
-        fromDate.addValueChangeListener(_ -> validateOnChangedDate());
-        toDate.addValueChangeListener(_ -> validateOnChangedDate());
+        fromDate.addValueChangeListener(_ -> {
+            validateOnChangedDate();
+            execute.setEnabled(isExecuteEnabled());
+            execute.setEnabled(isExecuteEnabled());
+        });
+        toDate.addValueChangeListener(_ -> {
+            validateOnChangedDate();
+        });
+        perMonth = new Checkbox("Reports Splitted Per month");
+        perMonth.addValueChangeListener(event -> {
+            fromDate.setRequired(perMonth.getValue());
+            toDate.setRequired(perMonth.getValue());
+            filename.setEnabled(!perMonth.getValue());
+            filename.setRequired(!perMonth.getValue());
+            propose.setEnabled(!perMonth.getValue());
+            execute.setEnabled(isExecuteEnabled());
+        });
     }
 
     @Override
@@ -74,14 +93,19 @@ public class CmdCreateEffortsReport implements Cmd {
         dialog.setWidth("40em");
         FormLayout form = new FormLayout();
         VaadinUtils.set3ResponsiveSteps(form);
-        Button execute = new Button("Execute", VaadinIcon.COGS.create(), _ -> {
-            domain.port().exportEffortsDocument(assignment, fromDate.getValue(), toDate.getValue(), filename.getValue(), units.getValue());
+        execute = new Button("Execute", VaadinIcon.COGS.create(), _ -> {
+            if (perMonth.getValue()) {
+                domain.port().exportEffortsDocumentsSplittedPerMonth(assignment, YearMonth.from(fromDate.getValue()), YearMonth.from(toDate.getValue()), filename.getValue(),
+                    units.getValue());
+            } else {
+                domain.port().exportEffortsDocument(assignment, fromDate.getValue(), toDate.getValue(), filename.getValue(), units.getValue());
+            }
             close();
         });
+        execute.setEnabled(false);
         Button cancel = new Button("Cancel", _ -> dialog.close());
         form.add(assignmentName, collaboratorName,
-            new HtmlComponent("br"), fromDate, toDate,
-            units,
+            new HtmlComponent("br"), fromDate, toDate, units, perMonth,
             new HtmlComponent("br"), filename, propose);
         dialog.add(form);
         dialog.getFooter().add(execute, cancel);
@@ -114,7 +138,11 @@ public class CmdCreateEffortsReport implements Cmd {
 
     private static boolean validateDateInterval(LocalDate from, LocalDate to) {
         return Objects.isNull(from) || Objects.isNull(to) || !to.isBefore(from);
+    }
 
+    private boolean isExecuteEnabled() {
+        return (!perMonth.getValue() && validateDateInterval(fromDate.getValue(), toDate.getValue()) && !filename.isEmpty())
+            || (perMonth.getValue() && Objects.nonNull(fromDate.getValue()) && Objects.nonNull(toDate.getValue()) && validateDateInterval(fromDate.getValue(), toDate.getValue()));
     }
 
     private String filename(@NotNull String assignment, @NotNull String collaborator, LocalDate from, LocalDate to) {
@@ -126,13 +154,8 @@ public class CmdCreateEffortsReport implements Cmd {
             dateText = YearMonth.from(to).getMonth().toString();
             dateText = STR."\{dateText.substring(0, 1).toUpperCase()}\{dateText.substring(1).toLowerCase()}";
         } else {
-            String fromString = Objects.isNull(from) ? "" : from.toString();
-            String toString = Objects.isNull(to) ? "" : to.toString();
-            var dateSeparator = (Objects.nonNull(from) && Objects.nonNull(to)) ? "-" : "";
-            dateText = STR."\{fromString}\{dateSeparator}\{toString}";
+            dateText = STR."\{Objects.isNull(from) ? "none" : from.toString()}-\{Objects.isNull(to) ? "none" : to.toString()}";
         }
-
-        var separator = (Objects.nonNull(from) || Objects.nonNull(to)) ? "-" : "";
-        return STR."\{generatedText}-\{assignment}-\{collaborator}\{separator}\{dateText}\{AsciiDoctorHelper.ASCIIDOC_EXT}";
+        return STR."\{generatedText}-\{assignment}-\{collaborator}-\{dateText}\{AsciiDoctorHelper.ASCIIDOC_EXT}";
     }
 }
