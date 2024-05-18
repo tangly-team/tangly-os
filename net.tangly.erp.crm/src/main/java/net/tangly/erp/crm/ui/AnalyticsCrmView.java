@@ -17,7 +17,7 @@ import com.storedobject.chart.*;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.grid.GridVariant;
 import com.vaadin.flow.component.grid.dataview.GridListDataView;
-import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.data.provider.DataProvider;
 import net.tangly.erp.crm.domain.Contract;
 import net.tangly.erp.crm.domain.InteractionCode;
@@ -59,8 +59,8 @@ public class AnalyticsCrmView extends AnalyticsView {
         contractsSoChart = createAndRegisterChart(ContractsTurnover);
         funnelSoChart = createAndRegisterChart(Funnel);
         contractsGrid = contractsTable();
-        var layout = new VerticalLayout(contractsGrid);
-        layout.setWidthFull();
+        var layout = new HorizontalLayout(contractsGrid);
+        layout.setSizeFull();
         tabSheet.add(SpentOnContracts, layout);
     }
 
@@ -78,7 +78,7 @@ public class AnalyticsCrmView extends AnalyticsView {
         grid.setSelectionMode(Grid.SelectionMode.NONE);
         grid.addThemeVariants(GridVariant.LUMO_COMPACT);
         grid.setHeight("24em");
-        grid.setWidthFull();
+        grid.setWidth("1200px");
         dataView = grid.setItems(DataProvider.ofCollection(domain.realm().contracts().items()));
         grid.addColumn(Contract::id).setKey("id").setHeader("Id").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Contract::name).setKey("name").setHeader("Name").setAutoWidth(true).setResizable(true).setSortable(true);

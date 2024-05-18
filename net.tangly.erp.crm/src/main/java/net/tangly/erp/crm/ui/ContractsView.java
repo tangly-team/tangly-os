@@ -68,7 +68,7 @@ class ContractsView extends EntityView<Contract> {
         }
 
         private One2ManyOwnedField<ContractExtension> extensions() {
-            One2ManyOwnedField<ContractExtension> extensions = new One2ManyOwnedField<>(new ContractExtensionsView(parent().domain(), parent().mode()));
+            One2ManyOwnedField<ContractExtension> extensions = new One2ManyOwnedField<>(new ContractExtensionsView(parent().domain()));
             binder().bind(extensions, Contract::contractExtensions, (o, v) -> o.contractExtensions(extensions.generateModelValue()));
             return extensions;
         }

@@ -1,0 +1,81 @@
+---
+title: "bdd Report"
+date: 2020-01-01
+weight: 60
+draft: false
+---
+
+== Feature: Sell items to customers
+
+The customer can buy various items from the store.
+Upon completion the stock of the store reflects the purchasing action.
+The store carries black and blue sweaters.
+The store should *refuse* to sell more sweaters than it has in stock.
+
+*tags:* 'Feature Example' 'Mandatory'
+
+=== Story: Buy Sweater
+
+As a store owner I want to update the stock when I am selling sweaters to customers.
+
+*tags:* 'Release 1.0'
+
+.Scenario: Sell some blue sweaters in stock to a customer
+[%hardbreaks]
+*given* The store is stocked with sweaters *and* has 5 black sweaters in stock *and* 4 blue sweaters in stock
+*when* The customer buys 3 blue sweaters
+*then* The store should have 5 black sweaters in stock *and* 1 blue sweaters in stock
+
+.Scenario: Refuse to sell more blue sweaters than the store in stock
+[%hardbreaks]
+*given* The store is stocked with sweaters *and* has 5 black sweaters in stock *and* 4 blue sweaters in stock
+*when* The customer try to buy 6 blue sweaters, and an exception is thrown
+*then* the store should have 5 black sweaters in stock *and* 4 blue sweaters in stock
+
+.Scenario: Sell some blacks and blue sweaters in stock
+[%hardbreaks]
+*given* The store is stocked with sweaters *and* has 5 black sweaters in stock *and* 4 blue sweaters in stock
+*when* The customer buys 3 black sweaters
+*then* The store should have 2 black sweaters in stock *and* 2 blue sweaters in stock
+
+.Scenario: Sell some black sweaters in stock to a customer
+[%hardbreaks]
+*given* The store is stocked with sweaters *and* has 5 black sweaters in stock *and* 4 blue sweaters in stock
+*when* The customer buys 3 black sweaters
+*then* The store should have 2 black sweaters in stock *and* 4 blue sweaters in stock
+
+.Scenario: Refuse to sell more black sweaters than the store in stock
+[%hardbreaks]
+*given* The store is stocked with sweaters *and* has 5 black sweaters in stock *and* 4 blue sweaters in stock
+*when* The customer try to buy 6 blue sweaters, and an exception is thrown
+*then* the store should have 5 black sweaters in stock *and* 4 blue sweaters in stock
+
+== Feature: Refund items to customers
+
+The customer can return items to the store and be refunded.
+Upon completion the stock of the store reflects the purchasing action.
+
+=== Story: Refunded items go back to the stockpile
+
+As a store owner, in order to keep track of stock, I want to add items back to stock when they are refunded.
+
+*tags:* 'Release 2.0'
+
+.Scenario: Refunded items from the customer should be returned to stock
+[%hardbreaks]
+*given* A customer bought a black sweater from the store having 4 black and 0 blue sweaters *and* the store has now 3 black sweaters in stock *and* 0 blue sweaters in stock
+*when* The customer returns one black sweater for a refund
+*then* the store should have 4 black sweaters in stock *and* 0 blue sweaters in stock
+
+=== Story: Replaced are switched form the stockpile
+
+As a store owner, in order to keep track of stock, I want to switch items back to stock when they're returned and replaced.
+
+*tags:* 'Release 2.0'
+
+.Scenario: Replaced items should be returned to stock, and the new ones deduced from the stock
+[%hardbreaks]
+*given* A customer previously bought a blue garment from the store having 3 black and 3 blue sweaters *and* the store now has 2 blue garments in stock *and* the store has 3 black garments in stock
+*when* The customer returns one blue garment for a replacement with one in black
+*then* The store should have 3 blue garments in stock *and* the store should have 2 black garments in stock
+

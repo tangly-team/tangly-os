@@ -155,7 +155,7 @@ public class ProductsAdapter implements ProductsPort {
     public void exportEffortsDocument(@NotNull Assignment assignment, LocalDate from, LocalDate to, @NotNull String filename, @NotNull ChronoUnit unit) {
         var assignmentDocumentPath = reportFolder.resolve(ProductsBoundedDomain.DOMAIN, ASSIGNMENTS);
         if (Objects.nonNull(to)) {
-            reportFolder.resolve(Integer.toString(from.getYear()));
+            assignmentDocumentPath = assignmentDocumentPath.resolve(Integer.toString(to.getYear()));
         }
         try {
             Files.createDirectories(assignmentDocumentPath);

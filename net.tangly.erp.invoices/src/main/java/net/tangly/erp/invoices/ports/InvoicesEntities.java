@@ -79,7 +79,6 @@ public class InvoicesEntities implements InvoicesRealm {
         return this.invoices;
     }
 
-    @Override
     public void close() {
         if (Objects.nonNull(storageManager)) {
             storageManager.close();

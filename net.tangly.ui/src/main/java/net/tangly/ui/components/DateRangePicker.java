@@ -26,9 +26,11 @@ import java.util.Objects;
 
 public final class DateRangePicker extends CustomField<DateRange> {
     private final Button rangeText;
+    private final String header;
     private DateRange range;
 
-    public DateRangePicker(String label, LocalDate lowerDate, LocalDate upperDate) {
+    public DateRangePicker(String label, String header, LocalDate lowerDate, LocalDate upperDate) {
+        this.header = header;
         if (Objects.nonNull(label)) {
             setLabel(label);
         }
@@ -54,7 +56,7 @@ public final class DateRangePicker extends CustomField<DateRange> {
 
     private Dialog create() {
         Dialog dialog = new Dialog();
-        dialog.setHeaderTitle("New Date Range");
+        dialog.setHeaderTitle(header);
 
         var range = getValue();
 

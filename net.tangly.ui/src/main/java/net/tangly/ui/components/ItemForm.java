@@ -28,14 +28,18 @@ import com.vaadin.flow.component.tabs.TabSheet;
 import com.vaadin.flow.component.tabs.TabSheetVariant;
 import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.data.binder.ValidationException;
+import net.tangly.core.Entity;
 import net.tangly.core.HasText;
 import net.tangly.core.codes.Code;
 import net.tangly.core.codes.CodeType;
+import net.tangly.core.providers.Provider;
+import net.tangly.core.providers.ProviderView;
 import net.tangly.ui.asciidoc.AsciiDocField;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Collection;
 import java.util.Objects;
 
 /**
@@ -104,6 +108,10 @@ public abstract class ItemForm<T, U extends ItemView<T>> {
             closeForm();
         });
         form().add(tabSheet, createButtonBar());
+    }
+
+    static <T extends Entity> ProviderView<T> ofUnselected(@NotNull Provider<T> provider, @NotNull Collection<T> selected) {
+        return new ProviderView<>(provider, o -> !selected.contains(o));
     }
 
     public static <T extends Code> ComboBox<T> createCodeField(@NotNull CodeType<T> codeType, @NotNull String label) {

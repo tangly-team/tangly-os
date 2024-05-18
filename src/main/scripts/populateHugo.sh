@@ -72,8 +72,6 @@ cp $prjDir/src/main/resources/references.bib $siteDir/data/
 # hugo strange behavior.
 
 copy_module bdd
-cp $prjDir/net.tangly.bdd/build/bdd-reports/bdd-report.adoc $siteDir/content/docs/bdd/
-
 copy_module apps
 copy_module commons
 copy_module core

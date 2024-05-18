@@ -92,8 +92,7 @@ public class ProductsEntities implements ProductsRealm {
         return efforts;
     }
 
-    @Override
-    public void close() throws Exception {
+    public void close() {
         if (Objects.nonNull(storageManager)) {
             storageManager.close();
         }

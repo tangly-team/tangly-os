@@ -21,7 +21,6 @@ import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.select.Select;
 import com.vaadin.flow.component.textfield.TextField;
-import com.vaadin.flow.data.binder.Binder;
 import net.tangly.commons.utilities.AsciiDoctorHelper;
 import net.tangly.erp.products.domain.Assignment;
 import net.tangly.erp.products.services.ProductsBoundedDomain;
@@ -30,8 +29,11 @@ import net.tangly.ui.components.VaadinUtils;
 import org.jetbrains.annotations.NotNull;
 
 import java.time.LocalDate;
+import java.time.YearMonth;
 import java.time.temporal.ChronoUnit;
 import java.util.Objects;
+
+import static java.util.FormatProcessor.FMT;
 
 public class CmdCreateEffortsReport implements Cmd {
     public final String TITLE = "Create Assignment Document";
@@ -45,7 +47,6 @@ public class CmdCreateEffortsReport implements Cmd {
     private final transient Assignment assignment;
     private final transient ProductsBoundedDomain domain;
     private Dialog dialog;
-    private Binder<Assignment> binder;
 
     public CmdCreateEffortsReport(@NotNull Assignment assignment, @NotNull ProductsBoundedDomain domain) {
         this.assignment = assignment;
@@ -61,11 +62,9 @@ public class CmdCreateEffortsReport implements Cmd {
         units.setValue(ChronoUnit.HOURS);
         filename = VaadinUtils.createTextField("Filename", "filename");
         filename.setRequired(true);
-        propose = new Button("Propose", VaadinIcon.COGS.create(), e -> {
-            filename.setValue(filename(assignment.id(), assignment.name(), fromDate.getValue(), toDate.getValue()));
-        });
-        fromDate.addValueChangeListener(e -> validateOnChangedDate());
-        toDate.addValueChangeListener(e -> validateOnChangedDate());
+        propose = new Button("Propose", VaadinIcon.COGS.create(), _ -> filename.setValue(filename(assignment.id(), assignment.name(), fromDate.getValue(), toDate.getValue())));
+        fromDate.addValueChangeListener(_ -> validateOnChangedDate());
+        toDate.addValueChangeListener(_ -> validateOnChangedDate());
     }
 
     @Override
@@ -75,11 +74,11 @@ public class CmdCreateEffortsReport implements Cmd {
         dialog.setWidth("40em");
         FormLayout form = new FormLayout();
         VaadinUtils.set3ResponsiveSteps(form);
-        Button execute = new Button("Execute", VaadinIcon.COGS.create(), e -> {
+        Button execute = new Button("Execute", VaadinIcon.COGS.create(), _ -> {
             domain.port().exportEffortsDocument(assignment, fromDate.getValue(), toDate.getValue(), filename.getValue(), units.getValue());
             close();
         });
-        Button cancel = new Button("Cancel", e -> dialog.close());
+        Button cancel = new Button("Cancel", _ -> dialog.close());
         form.add(assignmentName, collaboratorName,
             new HtmlComponent("br"), fromDate, toDate,
             units,
@@ -114,15 +113,26 @@ public class CmdCreateEffortsReport implements Cmd {
     }
 
     private static boolean validateDateInterval(LocalDate from, LocalDate to) {
-        return (Objects.nonNull(from) && Objects.nonNull(to)) ? (to.isEqual(from) || to.isAfter(from)) : true;
+        return Objects.isNull(from) || Objects.isNull(to) || !to.isBefore(from);
 
     }
 
     private String filename(@NotNull String assignment, @NotNull String collaborator, LocalDate from, LocalDate to) {
-        String fromString = Objects.isNull(from) ? "" : from.toString();
-        String toString = Objects.isNull(to) ? "" : to.toString();
-        var seperator = (Objects.nonNull(from) || Objects.nonNull(to)) ? "-" : "";
-        var dateSeperator = (Objects.nonNull(from) && Objects.nonNull(to)) ? "-" : "";
-        return STR."\{assignment}-\{collaborator}\{seperator}\{fromString}\{dateSeperator}\{toString}\{AsciiDoctorHelper.ASCIIDOC_EXT}";
+        YearMonth generated = (Objects.nonNull(to)) ? YearMonth.from(to) : YearMonth.now();
+        String generatedText = FMT."\{generated.getYear()}-%02d\{generated.getMonthValue()}";
+
+        String dateText;
+        if (Objects.nonNull(from) && Objects.nonNull(to) && (YearMonth.from(from).equals(YearMonth.from(to)))) {
+            dateText = YearMonth.from(to).getMonth().toString();
+            dateText = STR."\{dateText.substring(0, 1).toUpperCase()}\{dateText.substring(1).toLowerCase()}";
+        } else {
+            String fromString = Objects.isNull(from) ? "" : from.toString();
+            String toString = Objects.isNull(to) ? "" : to.toString();
+            var dateSeparator = (Objects.nonNull(from) && Objects.nonNull(to)) ? "-" : "";
+            dateText = STR."\{fromString}\{dateSeparator}\{toString}";
+        }
+
+        var separator = (Objects.nonNull(from) || Objects.nonNull(to)) ? "-" : "";
+        return STR."\{generatedText}-\{assignment}-\{collaborator}\{separator}\{dateText}\{AsciiDoctorHelper.ASCIIDOC_EXT}";
     }
 }

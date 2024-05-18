@@ -228,7 +228,7 @@ public abstract class ItemView<T> extends VerticalLayout {
     }
 
     protected final void form(Supplier<ItemForm<T, ?>> supplier) {
-        this.form = new LazyReference<>(supplier);
+        form = new LazyReference<>(supplier);
     }
 
     T selectedItem() {
@@ -268,7 +268,7 @@ public abstract class ItemView<T> extends VerticalLayout {
     }
 
     public static Component createDateRangeField(@NotNull Consumer<DateRange> consumer) {
-        var field = new DateRangePicker("interval", null, null);
+        var field = new DateRangePicker(null, "Select Date Range", null, null);
         field.addValueChangeListener(e -> consumer.accept(e.getValue()));
         return field;
     }

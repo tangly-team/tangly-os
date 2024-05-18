@@ -211,6 +211,7 @@ public class CrmTsvHdl {
         fields.add(emailProperty(CRM_EMAIL_WORK, VcardType.work));
         fields.add(TsvHdl.tagProperty(CRM_SITE_WORK));
         fields.add(phoneNrProperty(CRM_PHONE_WORK, VcardType.work));
+        fields.add(TsvHdl.tagProperty(CRM_RESPONSIBLE));
         fields.add(createAddressMapping(VcardType.work));
         fields.add(TsvProperty.ofString(CRM_SCHOOL, e -> (e.containsTag(CRM_SCHOOL) ? "Y" : "N"), (e, p) -> {
             if ("Y".equals(p)) {

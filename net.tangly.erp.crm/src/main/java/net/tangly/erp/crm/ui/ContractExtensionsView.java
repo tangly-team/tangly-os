@@ -27,8 +27,8 @@ import org.jetbrains.annotations.NotNull;
 
 public class ContractExtensionsView extends ItemView<ContractExtension> {
 
-    public ContractExtensionsView(@NotNull BoundedDomain<?, ?, ?> domain, @NotNull Mode mode) {
-        super(ContractExtension.class, domain, ProviderInMemory.of(), null, mode);
+    public ContractExtensionsView(@NotNull BoundedDomain<?, ?, ?> domain) {
+        super(ContractExtension.class, domain, ProviderInMemory.of(), null, Mode.VIEW);
         init();
     }
 

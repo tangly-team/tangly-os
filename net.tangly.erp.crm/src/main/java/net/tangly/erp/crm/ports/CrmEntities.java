@@ -29,6 +29,7 @@ import org.jetbrains.annotations.NotNull;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Defines the customer relationship management <i>CRM</i> subsystem. The major abstractions are
@@ -115,7 +116,9 @@ public class CrmEntities implements CrmRealm {
 
     @Override
     public void close() {
-        storageManager.shutdown();
+        if (Objects.nonNull(storageManager)) {
+            storageManager.close();
+        }
     }
 
     @Override

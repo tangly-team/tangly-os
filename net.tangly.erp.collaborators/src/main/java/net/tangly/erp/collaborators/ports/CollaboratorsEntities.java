@@ -70,7 +70,7 @@ public class CollaboratorsEntities implements CollaboratorsRealm {
     }
 
     @Override
-    public void close() throws Exception {
+    public void close() {
         if (Objects.nonNull(storageManager)) {
             storageManager.close();
         }
