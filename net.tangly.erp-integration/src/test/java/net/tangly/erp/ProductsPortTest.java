@@ -63,7 +63,7 @@ class ProductsPortTest {
             var handler = createAdapter(store);
             handler.importEntities();
             EffortReportEngine reporter = new EffortReportEngine(handler.logic());
-            reporter.createAsciiDocReport(Provider.findByOid(handler.realm().assignments(), ASSIGNMENT_OID).orElseThrow(), LocalDate.of(2020, Month.JANUARY, 1),
+            reporter.createReport(Provider.findByOid(handler.realm().assignments(), ASSIGNMENT_OID).orElseThrow(), LocalDate.of(2020, Month.JANUARY, 1),
                 LocalDate.of(2020, Month.JANUARY, 31), store.reportsRoot().resolve(ProductsBoundedDomain.DOMAIN, "efforts.adoc"), ChronoUnit.HOURS);
             assertThat(reporter).isNotNull();
         }

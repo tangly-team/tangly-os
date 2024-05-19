@@ -108,12 +108,7 @@ public class LedgerAdapter implements LedgerPort {
     public void exportLedgerDocument(String name, LocalDate from, LocalDate to, boolean withVat, boolean withTransactions) {
         var report = new ClosingReportAsciiDoc(realm);
         report.create(from, to, reportsFolder.resolve(name + AsciiDoctorHelper.ASCIIDOC_EXT), withVat, withTransactions);
-        AsciiDoctorHelper.createPdf(reportsFolder.resolve(name + AsciiDoctorHelper.ASCIIDOC_EXT), reportsFolder.resolve(name + AsciiDoctorHelper.PDF_EXT));
-        try {
-            Files.delete(reportsFolder.resolve(name + AsciiDoctorHelper.ASCIIDOC_EXT));
-        } catch (IOException e) {
-            throw new UncheckedIOException(e);
-        }
+        AsciiDoctorHelper.createPdf(reportsFolder.resolve(name + AsciiDoctorHelper.ASCIIDOC_EXT), reportsFolder.resolve(name + AsciiDoctorHelper.PDF_EXT), true);
     }
 
 

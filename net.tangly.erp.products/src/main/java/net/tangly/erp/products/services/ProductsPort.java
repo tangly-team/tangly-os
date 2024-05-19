@@ -47,6 +47,7 @@ public interface ProductsPort extends Port<ProductsRealm> {
      * @param assignment assignment which efforts are of interest
      * @param from       start of the considered time interval
      * @param to         end of the considered time interval
+     * @param filename   name of the file to create
      * @param unit       unit of the time interval (minutes, hours, and days)
      */
     void exportEffortsDocument(@NotNull Assignment assignment, LocalDate from, LocalDate to, @NotNull String filename, @NotNull ChronoUnit unit);
@@ -61,5 +62,5 @@ public interface ProductsPort extends Port<ProductsRealm> {
      * @param to         last  month to consider
      * @param unit       unit of the time interval (minutes, hours, and days)
      */
-    void exportEffortsDocumentsSplittedPerMonth(@NotNull Assignment assignment, YearMonth from, YearMonth to, @NotNull String filename, @NotNull ChronoUnit unit);
+    void exportEffortsDocumentsSplittedPerMonth(@NotNull Assignment assignment, @NotNull YearMonth from, @NotNull YearMonth to, @NotNull ChronoUnit unit);
 }

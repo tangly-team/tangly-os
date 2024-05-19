@@ -36,6 +36,19 @@ public final class AsciiDoctorHelper {
     private AsciiDoctorHelper() {
     }
 
+    /**
+     * Creates the folders for the given path.
+     *
+     * @param folder the folder to create
+     */
+    public static void createFolders(@NotNull Path folder) {
+        try {
+            Files.createDirectories(folder);
+        } catch (IOException e) {
+            throw new UncheckedIOException(e);
+        }
+    }
+
     public static void createPdf(@NotNull String asciidoc, @NotNull OutputStream out) {
         System.setProperty("jruby.compat.version", "RUBY1_9");
         System.setProperty("jruby.compile.mode", "OFF");
@@ -46,9 +59,12 @@ public final class AsciiDoctorHelper {
         }
     }
 
-    public static void createPdf(@NotNull Path asciidocFilePath, @NotNull Path pdfFilePath) {
+    public static void createPdf(@NotNull Path asciidocFilePath, @NotNull Path pdfFilePath, boolean deleteAsciidocFile) {
         try (OutputStream out = new BufferedOutputStream(Files.newOutputStream(pdfFilePath))) {
             createPdf(Files.readString(asciidocFilePath), out);
+            if (deleteAsciidocFile) {
+                Files.delete(asciidocFilePath);
+            }
         } catch (IOException e) {
             throw new UncheckedIOException(e);
         }

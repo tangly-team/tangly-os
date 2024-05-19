@@ -19,6 +19,7 @@ import com.amihaiemil.eoyaml.YamlNode;
 import com.amihaiemil.eoyaml.YamlSequence;
 import net.tangly.commons.logger.EventData;
 import net.tangly.commons.utilities.AsciiDoctorHelper;
+import net.tangly.core.Strings;
 import net.tangly.core.domain.Port;
 import net.tangly.core.providers.Provider;
 import net.tangly.erp.products.domain.Assignment;
@@ -43,6 +44,8 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Stream;
+
+import static java.util.FormatProcessor.FMT;
 
 public class ProductsAdapter implements ProductsPort {
     public static final String PRODUCTS_TSV = "products.tsv";
@@ -89,6 +92,8 @@ public class ProductsAdapter implements ProductsPort {
                     nrOfImportedEffortFiles.getAndIncrement();
                 } catch (IOException e) {
                     throw new UncheckedIOException(e);
+                } catch (Exception e) {
+                    EventData.log(EventData.IMPORT, ProductsBoundedDomain.DOMAIN, EventData.Status.ERROR, "Error importing efforts.", Map.of("filename", o.toString()));
                 }
             });
             EventData.log(EventData.IMPORT, ProductsBoundedDomain.DOMAIN, EventData.Status.INFO, "Efforts were imported out of", Map.of("nrOfImportedEffortFiles", Integer.toString(nrOfImportedEffortFiles.get())));
@@ -154,25 +159,39 @@ public class ProductsAdapter implements ProductsPort {
 
     @Override
     public void exportEffortsDocument(@NotNull Assignment assignment, LocalDate from, LocalDate to, @NotNull String filename, @NotNull ChronoUnit unit) {
-        var assignmentDocumentPath = reportFolder.resolve(ASSIGNMENTS);
-        assignmentDocumentPath = assignmentDocumentPath.resolve(Objects.nonNull(to) ? Integer.toString(to.getYear()) : Integer.toString(LocalDate.now().getYear()));
-        try {
-            Files.createDirectories(assignmentDocumentPath);
-        } catch (IOException e) {
-            throw new UncheckedIOException(e);
+        if (!logic.collect(assignment, from, to).isEmpty()) {
+            var effortsDocumentFolder = reportFolder.resolve(Objects.nonNull(to) ? Integer.toString(to.getYear()) : Integer.toString(LocalDate.now().getYear()));
+            AsciiDoctorHelper.createFolders(effortsDocumentFolder);
+            var assignmentAsciiDocPath = effortsDocumentFolder.resolve(STR."\{filename}\{AsciiDoctorHelper.ASCIIDOC_EXT}");
+            var assignmentPdfPath = effortsDocumentFolder.resolve(STR."\{filename}\{AsciiDoctorHelper.PDF_EXT}");
+            var helper = new EffortReportEngine(logic);
+            helper.createReport(assignment, from, to, assignmentAsciiDocPath, unit);
+            AsciiDoctorHelper.createPdf(assignmentAsciiDocPath, assignmentPdfPath, true);
         }
-        assignmentDocumentPath = assignmentDocumentPath.resolve(STR."\{filename}\{AsciiDoctorHelper.ASCIIDOC_EXT}");
-        var helper = new EffortReportEngine(logic);
-        helper.createAsciiDocReport(assignment, from, to, assignmentDocumentPath, unit);
     }
 
     @Override
-    public void exportEffortsDocumentsSplittedPerMonth(@NotNull Assignment assignment, @NotNull YearMonth from, @NotNull YearMonth to, @NotNull String filename,
-                                                       @NotNull ChronoUnit unit) {
+    public void exportEffortsDocumentsSplittedPerMonth(@NotNull Assignment assignment, @NotNull YearMonth from, @NotNull YearMonth to, @NotNull ChronoUnit unit) {
         YearMonth current = from;
-        while (current.isBefore(to) || current.equals(to)) {
-            exportEffortsDocument(assignment, current.atDay(1), current.atEndOfMonth(), filename, unit);
-            current = current.plusMonths(1);
+        var helper = new EffortReportEngine(logic);
+        while (!current.isAfter(to)) {
+            if (!logic.collect(assignment, current.atDay(1), current.atEndOfMonth()).isEmpty()) {
+                var effortsDocumentFolder = reportFolder.resolve(Integer.toString(current.getYear()));
+                AsciiDoctorHelper.createFolders(effortsDocumentFolder);
+                var filename = filename(assignment, current);
+                var assignmentAsciiDocPath = effortsDocumentFolder.resolve(STR."\{filename}\{AsciiDoctorHelper.ASCIIDOC_EXT}");
+                var assignmentPdfPath = effortsDocumentFolder.resolve(STR."\{filename}\{AsciiDoctorHelper.PDF_EXT}");
+                helper.createMonthlyReport(assignment, current, unit, assignmentAsciiDocPath);
+                AsciiDoctorHelper.createPdf(assignmentAsciiDocPath, assignmentPdfPath, true);
+                current = current.plusMonths(1);
+            }
         }
     }
+
+    private String filename(@NotNull Assignment assignment, @NotNull YearMonth month) {
+        String generatedText = FMT."\{month.getYear()}-%02d\{month.getMonthValue()}";
+        String dateText = Strings.firstOnlyUppercase(month.getMonth().toString());
+        return STR."\{generatedText}-\{assignment.id()}-\{assignment.name()}-\{dateText}";
+    }
+
 }

@@ -135,12 +135,7 @@ public class InvoicesAdapter implements InvoicesPort {
             EventData.log(EventData.EXPORT, "net.tangly.crm.ports", EventData.Status.SUCCESS, "Invoice PDF already exists {}",
                 Map.of(INVOICE, invoice, INVOICE_PATH, invoicePdfPath, "withQrCode", withQrCode, "withEN16931", withEN16931, "overwrite", overwrite));
         } else {
-            AsciiDoctorHelper.createPdf(invoiceAsciiDocPath, invoicePdfPath);
-            try {
-                Files.delete(invoiceAsciiDocPath);
-            } catch (IOException e) {
-                throw new UncheckedIOException(e);
-            }
+            AsciiDoctorHelper.createPdf(invoiceAsciiDocPath, invoicePdfPath, true);
             if (withQrCode) {
                 var qrGenerator = new InvoiceQrCode();
                 qrGenerator.exports(invoice, invoicePdfPath, Collections.emptyMap());

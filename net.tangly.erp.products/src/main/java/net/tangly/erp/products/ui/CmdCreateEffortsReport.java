@@ -22,7 +22,6 @@ import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.select.Select;
 import com.vaadin.flow.component.textfield.TextField;
-import net.tangly.commons.utilities.AsciiDoctorHelper;
 import net.tangly.erp.products.domain.Assignment;
 import net.tangly.erp.products.services.ProductsBoundedDomain;
 import net.tangly.ui.app.domain.Cmd;
@@ -70,10 +69,10 @@ public class CmdCreateEffortsReport implements Cmd {
         fromDate.addValueChangeListener(_ -> {
             validateOnChangedDate();
             execute.setEnabled(isExecuteEnabled());
-            execute.setEnabled(isExecuteEnabled());
         });
         toDate.addValueChangeListener(_ -> {
             validateOnChangedDate();
+            execute.setEnabled(isExecuteEnabled());
         });
         perMonth = new Checkbox("Reports Splitted Per month");
         perMonth.addValueChangeListener(event -> {
@@ -95,8 +94,7 @@ public class CmdCreateEffortsReport implements Cmd {
         VaadinUtils.set3ResponsiveSteps(form);
         execute = new Button("Execute", VaadinIcon.COGS.create(), _ -> {
             if (perMonth.getValue()) {
-                domain.port().exportEffortsDocumentsSplittedPerMonth(assignment, YearMonth.from(fromDate.getValue()), YearMonth.from(toDate.getValue()), filename.getValue(),
-                    units.getValue());
+                domain.port().exportEffortsDocumentsSplittedPerMonth(assignment, YearMonth.from(fromDate.getValue()), YearMonth.from(toDate.getValue()), units.getValue());
             } else {
                 domain.port().exportEffortsDocument(assignment, fromDate.getValue(), toDate.getValue(), filename.getValue(), units.getValue());
             }
@@ -148,7 +146,6 @@ public class CmdCreateEffortsReport implements Cmd {
     private String filename(@NotNull String assignment, @NotNull String collaborator, LocalDate from, LocalDate to) {
         YearMonth generated = (Objects.nonNull(to)) ? YearMonth.from(to) : YearMonth.now();
         String generatedText = FMT."\{generated.getYear()}-%02d\{generated.getMonthValue()}";
-
         String dateText;
         if (Objects.nonNull(from) && Objects.nonNull(to) && (YearMonth.from(from).equals(YearMonth.from(to)))) {
             dateText = YearMonth.from(to).getMonth().toString();
@@ -156,6 +153,6 @@ public class CmdCreateEffortsReport implements Cmd {
         } else {
             dateText = STR."\{Objects.isNull(from) ? "none" : from.toString()}-\{Objects.isNull(to) ? "none" : to.toString()}";
         }
-        return STR."\{generatedText}-\{assignment}-\{collaborator}-\{dateText}\{AsciiDoctorHelper.ASCIIDOC_EXT}";
+        return STR."\{generatedText}-\{assignment}-\{collaborator}-\{dateText}";
     }
 }
