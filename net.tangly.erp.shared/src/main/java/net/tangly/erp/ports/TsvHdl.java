@@ -29,6 +29,7 @@ import java.io.Reader;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -63,6 +64,16 @@ public final class TsvHdl {
         fields.add(TsvProperty.of(TsvHdlCore.createTsvDateRange(), Entity::range, Entity::range));
         fields.add(TsvProperty.ofString(TEXT, Entity::text, Entity::text));
         return fields;
+    }
+
+    public static LocalDate parseDate(@NotNull CSVRecord record, @NotNull String fieldName) {
+        var value = record.get(fieldName);
+        return Strings.isNullOrBlank(value) ? null : LocalDate.parse(value);
+    }
+
+    public static int parseInt(@NotNull CSVRecord record, @NotNull String fieldName) {
+        var value = record.get(fieldName);
+        return Strings.isNullOrBlank(value) ? 0 : Integer.parseInt(value);
     }
 
     public static <T> void importEntities(@NotNull String domain, @NotNull Reader in, String source, @NotNull TsvEntity<T> tsvEntity, @NotNull Provider<T> provider) {

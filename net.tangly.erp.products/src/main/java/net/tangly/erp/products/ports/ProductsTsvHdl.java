@@ -18,21 +18,25 @@ import net.tangly.erp.ports.TsvHdl;
 import net.tangly.erp.products.domain.Assignment;
 import net.tangly.erp.products.domain.Effort;
 import net.tangly.erp.products.domain.Product;
+import net.tangly.erp.products.domain.WorkContract;
 import net.tangly.erp.products.services.ProductsBoundedDomain;
 import net.tangly.erp.products.services.ProductsRealm;
 import net.tangly.gleam.model.TsvEntity;
 import net.tangly.gleam.model.TsvProperty;
+import org.apache.commons.csv.CSVRecord;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.Reader;
 import java.nio.file.Path;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 import java.util.Optional;
+import java.util.function.Function;
 
-import static net.tangly.core.tsv.TsvHdlCore.TEXT;
-import static net.tangly.erp.ports.TsvHdl.convertFoidTo;
-import static net.tangly.erp.ports.TsvHdl.createTsvEntityFields;
+import static net.tangly.core.tsv.TsvHdlCore.*;
+import static net.tangly.erp.ports.TsvHdl.*;
+import static net.tangly.gleam.model.TsvEntity.get;
 
 public class ProductsTsvHdl {
     public static final String PRODUCTS_TSV = "products.tsv";
@@ -51,6 +55,14 @@ public class ProductsTsvHdl {
 
     public void exportProducts(@NotNull Path path) {
         TsvHdl.exportEntities(ProductsBoundedDomain.DOMAIN, path, createTsvProduct(), realm.products());
+    }
+
+    public void importWorkContracts(@NotNull Reader reader, String source) {
+        TsvHdl.importEntities(ProductsBoundedDomain.DOMAIN, reader, source, createTsvWorkContract(), realm.contracts());
+    }
+
+    public void exportWorkContracts(@NotNull Path path) {
+        TsvHdl.exportEntities(ProductsBoundedDomain.DOMAIN, path, createTsvWorkContract(), realm.contracts());
     }
 
     public void importAssignments(@NotNull Reader reader, String source) {
@@ -90,12 +102,18 @@ public class ProductsTsvHdl {
         return TsvHdl.of(Assignment.class, fields, Assignment::new);
     }
 
+    private TsvEntity<WorkContract> createTsvWorkContract() {
+        Function<CSVRecord, WorkContract> imports = (CSVRecord obj) -> new WorkContract(get(obj, ID), get(obj, "mainContractId"),
+            parseDate(obj, FROM_DATE), parseDate(obj, TO_DATE), Locale.forLanguageTag(get(obj, LOCALE).toLowerCase()),
+            parseInt(obj, "budgetInHours"));
+        List<TsvProperty<WorkContract, ?>> fields = List.of(TsvProperty.ofString(ID, WorkContract::id, null), TsvProperty.ofString("mainContractId", WorkContract::mainContractId,
+            null), TsvProperty.ofDate(FROM_DATE, WorkContract::from, null), TsvProperty.ofDate(TO_DATE, WorkContract::to, null), TsvProperty.ofString(LOCALE,
+            o -> o.locale().getLanguage(), null), TsvProperty.ofInt("budgetInHours", WorkContract::budgetInHours, null));
+        return TsvEntity.of(WorkContract.class, fields, imports);
+    }
+
     private TsvEntity<Effort> createTsvEffort() {
-        List<TsvProperty<Effort, ?>> fields =
-            List.of(TsvProperty.of("date", Effort::date, Effort::date, TsvProperty.CONVERT_DATE_FROM), TsvProperty.ofInt("durationInMinutes", Effort::duration, Effort::duration),
-                TsvProperty.ofString(TEXT, Effort::text, Effort::text),
-                TsvProperty.of("assignmentOid", Effort::assignment, Effort::assignment, e -> findAssignmentByOid(e).orElse(null), convertFoidTo()),
-                TsvProperty.ofString("contractId", Effort::contractId, Effort::contractId));
+        List<TsvProperty<Effort, ?>> fields = List.of(TsvProperty.of("date", Effort::date, Effort::date, TsvProperty.CONVERT_DATE_FROM), TsvProperty.ofInt("durationInMinutes", Effort::duration, Effort::duration), TsvProperty.ofString(TEXT, Effort::text, Effort::text), TsvProperty.of("assignmentOid", Effort::assignment, Effort::assignment, e -> findAssignmentByOid(e).orElse(null), convertFoidTo()), TsvProperty.ofString("contractId", Effort::contractId, Effort::contractId));
         return TsvEntity.of(Effort.class, fields, Effort::new);
     }
 }

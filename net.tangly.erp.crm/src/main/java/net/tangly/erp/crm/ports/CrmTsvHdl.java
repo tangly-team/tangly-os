@@ -241,7 +241,7 @@ public class CrmTsvHdl {
 
     private TsvEntity<Contract> createTsvContract() {
         List<TsvProperty<Contract, ?>> fields = TsvHdl.createTsvEntityFields();
-        fields.add(TsvProperty.of("locale", Contract::locale, Contract::locale, TsvHdl::toLocale, Locale::getLanguage));
+        fields.add(TsvProperty.of(LOCALE, Contract::locale, Contract::locale, TsvHdl::toLocale, Locale::getLanguage));
         fields.add(TsvProperty.of("currency", Contract::currency, Contract::currency, Currency::getInstance, Currency::getCurrencyCode));
         fields.add(TsvProperty.of(TsvHdlCore.createTsvBankConnection(), Contract::bankConnection, Contract::bankConnection));
         fields.add(TsvProperty.ofBigDecimal("amountWithoutVat", Contract::amountWithoutVat, Contract::amountWithoutVat));

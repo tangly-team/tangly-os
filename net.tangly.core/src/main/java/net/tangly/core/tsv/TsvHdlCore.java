@@ -32,6 +32,7 @@ public class TsvHdlCore {
     public static final String FROM_DATE = "fromDate";
     public static final String TO_DATE = "toDate";
     public static final String TEXT = "text";
+    public static final String LOCALE = "locale";
     private static final String STREET = "street";
     private static final String EXTENDED = "extended";
     private static final String POSTCODE = "postcode";

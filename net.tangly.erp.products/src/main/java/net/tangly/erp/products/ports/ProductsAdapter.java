@@ -49,6 +49,7 @@ import static java.util.FormatProcessor.FMT;
 
 public class ProductsAdapter implements ProductsPort {
     public static final String PRODUCTS_TSV = "products.tsv";
+    public static final String WORK_CONTRACTS_TSV = "work-contracts.tsv";
     public static final String ASSIGNMENTS_TSV = "assignments.tsv";
     public static final String EFFORTS_TSV = "efforts.tsv";
     public static final String YAML_EXT = ".yaml";
@@ -82,6 +83,7 @@ public class ProductsAdapter implements ProductsPort {
     public void importEntities() {
         var handler = new ProductsTsvHdl(realm());
         Port.importEntities(dataFolder, PRODUCTS_TSV, handler::importProducts);
+        Port.importEntities(dataFolder, WORK_CONTRACTS_TSV, handler::importWorkContracts);
         Port.importEntities(dataFolder, ASSIGNMENTS_TSV, handler::importAssignments);
         Port.importEntities(dataFolder, EFFORTS_TSV, handler::importEfforts);
         try (Stream<Path> stream = Files.walk(dataFolder)) {
@@ -106,6 +108,7 @@ public class ProductsAdapter implements ProductsPort {
     public void exportEntities() {
         var handler = new ProductsTsvHdl(realm());
         handler.exportProducts(dataFolder.resolve(PRODUCTS_TSV));
+        handler.exportWorkContracts(dataFolder.resolve(WORK_CONTRACTS_TSV));
         handler.exportAssignments(dataFolder.resolve(ASSIGNMENTS_TSV));
         handler.exportEfforts(dataFolder.resolve(EFFORTS_TSV));
     }

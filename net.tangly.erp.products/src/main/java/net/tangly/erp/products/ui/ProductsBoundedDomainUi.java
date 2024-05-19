@@ -27,6 +27,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class ProductsBoundedDomainUi extends BoundedDomainUi<ProductsBoundedDomain> {
     private final LazyReference<ProductsView> productsView;
+    private final LazyReference<WorkContractsView> workContractsView;
     private final LazyReference<AssignmentsView> assignmentsView;
     private final LazyReference<EffortsView> effortsView;
     private final LazyReference<DomainView> domainView;
@@ -34,6 +35,7 @@ public class ProductsBoundedDomainUi extends BoundedDomainUi<ProductsBoundedDoma
     public ProductsBoundedDomainUi(@NotNull ProductsBoundedDomain domain) {
         super(domain);
         productsView = new LazyReference<>(() -> new ProductsView(domain, Mode.EDIT));
+        workContractsView = new LazyReference<>(() -> new WorkContractsView(domain, Mode.EDIT));
         assignmentsView = new LazyReference<>(() -> new AssignmentsView(domain, Mode.EDIT));
         effortsView = new LazyReference<>(() -> new EffortsView(domain, Mode.DELETE));
         domainView = new LazyReference<>(() -> new DomainView(domain));
@@ -45,6 +47,7 @@ public class ProductsBoundedDomainUi extends BoundedDomainUi<ProductsBoundedDoma
         MenuItem menuItem = menuBar.addItem(BoundedDomainUi.ENTITIES);
         SubMenu subMenu = menuItem.getSubMenu();
         subMenu.addItem("Products", e -> select(layout, productsView));
+        subMenu.addItem("Contracts", e -> select(layout, workContractsView));
         subMenu.addItem("Assignments", e -> select(layout, assignmentsView));
         subMenu.addItem("Efforts", e -> select(layout, effortsView));
         addAdministration(layout, menuBar, domainView, new CmdFilesUploadProducts(domain()));
@@ -54,6 +57,7 @@ public class ProductsBoundedDomainUi extends BoundedDomainUi<ProductsBoundedDoma
     @Override
     public void refreshViews() {
         productsView.ifPresent(ItemView::refresh);
+        workContractsView.ifPresent(ItemView::refresh);
         assignmentsView.ifPresent(ItemView::refresh);
         effortsView.ifPresent(ItemView::refresh);
     }
