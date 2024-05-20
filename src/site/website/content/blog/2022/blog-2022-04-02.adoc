@@ -11,7 +11,7 @@ include::../fragments/_config-mb-blog.adoc[]
 --
 image::2022-04-02-head.jpg[width=420,height=360,role=left]
 
-SoDa _Software Development Agile_ is a homebrew project development method created at the https://www.hslu.ch[technical university of Lucerne].
+SoDa _Software Development Agile_ is a homebrew project development method created at the https://www.hslu.ch/en/[technical university of Lucerne].
 It is a mixture of https://en.wikipedia.org/wiki/Waterfall_model[Waterfall], https://en.wikipedia.org/wiki/Rational_Unified_Process[RUP]
 and https://en.wikipedia.org/wiki/Scrum_(software_development)[Scrum] approaches.
 It uses a distorted Scrum for the concept and implementation phase<<detecting-agile-bullshit>>.

@@ -13,7 +13,7 @@ ADR;type=HOME;type=pref:;;27 Lorzenhof;Cham 6330;;6330;Switzerland
 ADR;type=WORK:;;27 Lorzenhof;Cham;;6330;Switzerland
 X-SOCIALPROFILE;type=GOOGLE:x-apple:+Marcel_Baumann
 X-SOCIALPROFILE;type=SKYPE:x-apple:marcel-baumann
-X-SOCIALPROFILE;type=linkedin:http://www.linkedin.com/in/marcelbaumann
+X-SOCIALPROFILE;type=linkedin:https://www.linkedin.com/in/marcelbaumann
 URL;type=WORK;type=pref:http://www.tangly.net
 item1.URL:https://tangly-blog.blogspot.ch/
 item1.X-ABLabel:_$!<HomePage>!$_

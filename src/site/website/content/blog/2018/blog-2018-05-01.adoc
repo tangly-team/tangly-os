@@ -19,7 +19,7 @@ Its purpose is to give a 360° vision about the quality of your code base.
 For this, it analyzes all the source lines of your product on a regular basis.
 
 It should be added that SonarQube also performs scans with well-known third party analyzers (https://spotbugs.github.io/[SpotBugs] - previously FindBugs -,
-http://checkstyle.sourceforge.net/[Checkstyle], https://pmd.github.io/[PMD]) whereas SonarLint does not include those.
+http://checkstyle.sourceforge.io/[Checkstyle], https://pmd.github.io/[PMD]) whereas SonarLint does not include those.
 
 I think the reason is a prioritization on performance and findBugs relying on java byte-code.
 --

@@ -72,7 +72,7 @@ https://plantuml.com/[PlantUML] is a text-based diagramming approach.
 Major diagram types are supported.
 ALl UML diagram types can be described with the tool.
 {ref-asciidoc} has native support for diagrams in general and PlantUML in particular.
-Asciidoc supports additional diagrams and diagramming tools such as https://mermaid-js.github.io/mermaid[Mermaid].
+Asciidoc supports additional diagrams and diagramming tools such as https://mermaid.js.org/[Mermaid].
 
 == Agile and Scrum
 
