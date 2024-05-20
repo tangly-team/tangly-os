@@ -7,12 +7,14 @@ tags: ["java", "tangly"]
 
 include::../fragments/_config-mb-blog.adoc[]
 
+:ref-vaadin: https://vaadin.com/[Vaadin]
+
 [.float-group]
 --
 image::2024-05-03-head.jpg[width=420,height=360,role=left]
 
-I am an engineer.
-I love to solve problems and provide cool solutions
+I am a computer science engineer.
+I love to solve problems and provide cool solutions to users
 cite:[facts-and-fallacies-software-engineering].
 
 I love my software development job.
@@ -27,7 +29,7 @@ Some of the products I developed last millennium are still in use today.
 
 I love technology and work to improve live quality for humanity
 footnote:[I can buy all my public transportation tickets with my mobile phone.
-I can just swipe my phone and ride the bus or train.
+Or I can just swipe my phone and ride the bus or train.
 The application will track my movements and select the cheapest ticket for the commute.
 These features improve my quality of life.].
 
@@ -35,6 +37,11 @@ I love to develop software applications and see how it helps customers
 footnote:[My preferred technology stack is the Java ecosystem.
 The numerous open source libraries tremendously simplify the creation of complex products.].
 --
+
+[quote,Definition of Nerdy]
+____
+Characterized by great enthusiasm for and knowledge about a particular subject, especially one of specialist or niche interest.
+____
 
 I am so grateful for GPS navigation and precise maps on my mobile telephone.
 I never had to print any route to a new customer or to my holiday hostel in the last two decades.
@@ -45,7 +52,7 @@ And it saves trees and ink because nobody prints maps anymore.
 == Software Engineer
 
 I found out the only drawback of my job in Switzerland is the age discrimination.
-It is challenging to get hired as a software developer when you are older than fifty.
+It is challenging to get hired as a software developer when you are older than fifty years.
 I am now sixty years old.
 The Swiss companies are bigot and prefer to hire young people.
 
@@ -60,19 +67,31 @@ I love designing and writing software using modern approaches
 cite:[domain-driven-design,building-evolutionary-architectures-2nd,working-effectively-with-legacy-code,refactoring-2nd].
 
 My preferred technology stacks are modern Java and modular monolith applications.
+I thrive with domain-driven design approaches and clean architecture.
+The available technical stacks and libraries are so powerful.
+I can develop complex applications in a fraction of the time it took me twenty years ago.
+My productivity is much higher than it was in the last millennium.
+
+I use the Java technical stack for almost all my development activities.
+I mostly develop internal and management applications.
+{ref-vaadin} is my preferred technology for writing user interface.
+I wrote all the user interface code in plain Java for modern browser based solutions.
 
 == Teacher and Coach
 
 I regularly complain that quite a few software developers are not well-trained.
 Often they are not aware of the latest software engineering practices and idioms of their preferred programming language.
-I have therefore to actively initiate a change.
 
+I have therefore to actively initiate a change.
 I love to teach students at technical universities and coach software engineers
-footnote:[Teaching is a beautiful and rewarding activity.
+
+Teaching is a beautiful and rewarding activity.
 But it is sometimes frustrating.
 I am living in Switzerland and the education system is not the finest for technical education.
 It is a country with neither a STEM strategy at federal nor state education level.
-We are extremely missing young people with training in science, technology, engineering, and mathematics.].
+We are exceedingly missing young people with training in science, technology, engineering, and mathematics.
+
+I also regularly hold workshops and training sessions for software developers.
 
 I found it incredibly rewarding to observe talented developers grasping advanced software engineering concepts
 cite:[modern-software-engineering].
