@@ -24,7 +24,6 @@ import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
 import java.io.Writer;
-import java.math.BigDecimal;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -36,6 +35,7 @@ import java.util.Map;
 
 import static java.util.FormatProcessor.FMT;
 import static java.util.stream.Collectors.groupingBy;
+import static net.tangly.erp.products.domain.Assignment.convert;
 
 /**
  * engine to create effort reports for collaborators.
@@ -112,15 +112,6 @@ public class EffortReportEngine {
         int totalDuration = efforts.stream().map(Effort::duration).reduce(0, Integer::sum);
         helper.tableRow(STR."Total Time for Contract \{contractId}", STR."(Time in \{text(unit)}", convert(totalDuration, unit).toString());
         helper.tableRow("", "", "");
-    }
-
-    private static BigDecimal convert(int durationInMinutes, ChronoUnit unit) {
-        return switch (unit) {
-            case MINUTES -> new BigDecimal(durationInMinutes);
-            case HOURS -> new BigDecimal(durationInMinutes).divide(new BigDecimal(60)).setScale(2, BigDecimal.ROUND_HALF_UP);
-            case DAYS -> new BigDecimal(durationInMinutes).divide(new BigDecimal(60 * 24)).setScale(2, BigDecimal.ROUND_HALF_UP);
-            default -> throw new IllegalArgumentException("Unexpected value: " + unit);
-        };
     }
 
     private static final String text(@NotNull ChronoUnit unit) {

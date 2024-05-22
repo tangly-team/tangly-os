@@ -15,6 +15,9 @@ package net.tangly.erp.products.domain;
 
 import net.tangly.core.EntityExtendedImp;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.time.temporal.ChronoUnit;
 import java.util.Objects;
 
 /**
@@ -31,6 +34,15 @@ public class Assignment extends EntityExtendedImp {
 
     public Assignment(long oid) {
         super(oid);
+    }
+
+    public static BigDecimal convert(int durationInMinutes, ChronoUnit unit) {
+        return switch (unit) {
+            case MINUTES -> new BigDecimal(durationInMinutes);
+            case HOURS -> new BigDecimal(durationInMinutes).divide(new BigDecimal(60), RoundingMode.HALF_UP).setScale(2, BigDecimal.ROUND_HALF_UP);
+            case DAYS -> new BigDecimal(durationInMinutes).divide(new BigDecimal(60 * 24), RoundingMode.HALF_UP).setScale(2, BigDecimal.ROUND_HALF_UP);
+            default -> throw new IllegalArgumentException("Unexpected value: " + unit);
+        };
     }
 
     public Product product() {

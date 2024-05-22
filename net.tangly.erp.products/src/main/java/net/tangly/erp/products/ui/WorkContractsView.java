@@ -21,6 +21,7 @@ import com.vaadin.flow.component.textfield.IntegerField;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.ValidationException;
 import com.vaadin.flow.router.PageTitle;
+import net.tangly.erp.products.domain.Assignment;
 import net.tangly.erp.products.domain.WorkContract;
 import net.tangly.erp.products.services.ProductsBoundedDomain;
 import net.tangly.ui.components.ItemForm;
@@ -29,7 +30,10 @@ import net.tangly.ui.components.Mode;
 import net.tangly.ui.components.VaadinUtils;
 import org.jetbrains.annotations.NotNull;
 
+import java.math.BigDecimal;
+import java.time.temporal.ChronoUnit;
 import java.util.Locale;
+import java.util.Objects;
 
 /**
  * Regular CRUD view on WorkContracts abstraction. The grid and edition dialog wre optimized for usability.
@@ -86,6 +90,11 @@ class WorkContractsView extends ItemView<WorkContract> {
         init();
     }
 
+    @Override
+    public ProductsBoundedDomain domain() {
+        return (ProductsBoundedDomain) super.domain();
+    }
+
     private void init() {
         Grid<WorkContract> grid = grid();
         grid.addColumn(WorkContract::id).setKey("id").setHeader("Id").setAutoWidth(true).setResizable(true).setSortable(true);
@@ -94,5 +103,24 @@ class WorkContractsView extends ItemView<WorkContract> {
         grid.addColumn(WorkContract::to).setKey("to").setHeader("To").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(WorkContract::locale).setKey("locale").setHeader("Locale").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(WorkContract::budgetInHours).setKey("budgetInHours").setHeader("Budget in Hours").setAutoWidth(true).setResizable(true).setSortable(true);
+        grid.addColumn(o -> effortPerContract(o)).setKey("effortInHours").setHeader("Effort in Hours").setAutoWidth(true).setResizable(true).setSortable(true);
+        grid.addColumn(o -> budgetForMainContract(o)).setKey("mainBudgetInHours").setHeader("Main Budget in Hours").setAutoWidth(true).setResizable(true).setSortable(true);
+        grid.addColumn(o -> effortForMainContract(o)).setKey("mainEffortInHours").setHeader("Main Effort in Hours").setAutoWidth(true).setResizable(true).setSortable(true);
+    }
+
+    private BigDecimal effortPerContract(@NotNull WorkContract contract) {
+        return Assignment.convert(domain().realm().efforts().items().stream().filter(o -> o.contractId().equals(contract.id())).mapToInt(o -> o.duration()).sum(), ChronoUnit.HOURS);
+    }
+
+    private BigDecimal budgetForMainContract(@NotNull WorkContract contract) {
+        return Objects.isNull(contract.mainContractId()) ?
+            new BigDecimal(domain().realm().contracts().items().stream().filter(o -> contract.id().equals(o.id()) || contract.id().equals(o.mainContractId()))
+                .mapToInt(o -> o.budgetInHours()).sum()) : BigDecimal.ZERO;
+    }
+
+    private BigDecimal effortForMainContract(@NotNull WorkContract contract) {
+        return Objects.isNull(contract.mainContractId()) ?
+            domain().realm().contracts().items().stream().filter(o -> contract.id().equals(o.id()) || contract.id().equals(o.mainContractId())).map(o -> effortPerContract(o))
+                .reduce(BigDecimal.ZERO, BigDecimal::add) : BigDecimal.ZERO;
     }
 }
