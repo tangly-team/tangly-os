@@ -21,10 +21,10 @@ Microservices have a steep price tag during operations.
 
 A modular monolith provides:
 
-- Independent and parallel development approach
+- Independent and parallel development approach.
 - Diminish coupling and improve cohesion.
 The interfaces are better documented and thinner.
-- Better observability
+- Better observability.
 
 
 == Benefits of Modular Monoliths
@@ -76,6 +76,18 @@ Whether that means making dependencies more manageable within the application, i
 For the application itself, embracing modularity can help to organize dependencies, making it easier and less time-consuming to change components within the system.
 
 Good practices shall be applied to refactor the application cite:[clean-code,clean-architecture,refactoring,refactoring-databases].
+
+Why should you consider a modular monolith instead of microservices?
+
+Microservices architecture certainly provides a good solution for multi-team development.
+
+Sadly, organizations are seldom aware of the associated high DevOps costs.
+Often a modular monolith would be more cost-effective and still support parallel development.
+Later, if necessary (Meaning that there are tens of thousands of concurrent users), you can migrate to a distributed service or microservice architecture.
+
+I often see companies jumping on the microservice train and complaining later about the costs of their solution.
+
+I strongly advise _Think big, Start small_.
 
 == When Not to Use a Modular Monolith
 

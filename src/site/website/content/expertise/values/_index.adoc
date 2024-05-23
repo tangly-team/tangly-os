@@ -26,15 +26,16 @@ Transparency and integrity
 Do not focus on the products you are building, focus on the problems our customers are encountering.
 
 [.text-center]
-Improve the world through our culture _Do The Right Thing_ and our technology excellence.
+Improving the world through our culture _Do The Right Thing_ and our technology excellence.
 
 [.text-center]
 Product achievement, accountability and success
-
 
 [.text-center]
 === Run A Sustainable Business
 
 [.text-center]
-Great companies are not in business to make money, +
+Great companies are not in business to make money,
+
+[.text-center]
 they make money to stay in business and accomplish an important purpose.
