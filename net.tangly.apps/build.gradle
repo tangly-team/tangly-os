@@ -14,7 +14,6 @@
 plugins {
     id 'java-common-conventions'
     id 'java-library'
-    alias(libs.plugins.vaadin)
 }
 
 project.ext.groupId = 'net.tangly'
@@ -23,9 +22,6 @@ project.version = "${projectVersion}"
 project.ext.moduleName = "${project.ext.groupId}.${project.ext.artifactId}"
 project.ext.inceptionYear = '1996'
 project.description = "Vaadin application (tangly llc)"
-
-// strange error when using vaadinPrepareFrontend task, the workaround is to declare an explicit dependency
-project.tasks['vaadinPrepareFrontend'].dependsOn('sourcesJar')
 
 dependencies {
     implementation project(':net.tangly.commons')

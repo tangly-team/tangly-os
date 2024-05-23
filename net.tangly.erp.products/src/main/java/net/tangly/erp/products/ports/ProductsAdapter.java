@@ -19,6 +19,7 @@ import com.amihaiemil.eoyaml.YamlNode;
 import com.amihaiemil.eoyaml.YamlSequence;
 import net.tangly.commons.logger.EventData;
 import net.tangly.commons.utilities.AsciiDoctorHelper;
+import net.tangly.commons.utilities.ValidatorUtilities;
 import net.tangly.core.Strings;
 import net.tangly.core.domain.Port;
 import net.tangly.core.providers.Provider;
@@ -33,6 +34,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
 import java.io.Reader;
+import java.io.StringReader;
 import java.io.UncheckedIOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -123,38 +125,41 @@ public class ProductsAdapter implements ProductsPort {
     @Override
     public void importEfforts(@NotNull Reader stream, @NotNull String source, boolean replace) throws IORuntimeException {
         try {
-            YamlMapping data = Yaml.createYamlInput(stream).readYamlMapping();
-            String contractId = data.string("contractId");
-            String collaborator = data.string("collaborator");
-            long assignmentOid = data.longNumber("assignmentOid");
-            Assignment assignment = Provider.findByOid(realm().assignments(), assignmentOid).orElse(null);
+            if (ValidatorUtilities.isYamlValid(new StringReader(source), "assignment-schema.json")) {
+                YamlMapping data = Yaml.createYamlInput(stream).readYamlMapping();
+                String contractId = data.string("contractId");
+                String collaborator = data.string("collaborator");
+                long assignmentOid = data.longNumber("assignmentOid");
+                Assignment assignment = Provider.findByOid(realm().assignments(), assignmentOid).orElse(null);
 
-            if (Objects.isNull(assignment)) {
-                EventData.log(EventData.IMPORT, ProductsBoundedDomain.DOMAIN, EventData.Status.ERROR, "assignment could not be found.",
-                    Map.of("filename", source, "assignmentOid", Long.toString(assignmentOid)));
-                return;
-            }
-            YamlSequence efforts = data.yamlSequence("efforts");
-            efforts.children().forEach((YamlNode effort) -> {
-                LocalDate date = effort.asMapping().date("date");
-                int duration = effort.asMapping().integer("duration");
-                String text = effort.asMapping().string("text");
-                Effort newEffort = new Effort(assignment, contractId, date, duration, text);
-                Optional<Effort> foundEffort = logic.findEffortFor(assignmentOid, collaborator, date);
-                if (foundEffort.isPresent()) {
-                    if (replace) {
-                        logic.realm().efforts().delete(foundEffort.get());
-                        logic.realm().efforts().update(newEffort);
-                        EventData.log(EventData.IMPORT, ProductsBoundedDomain.DOMAIN, EventData.Status.INFO, " effort replaced already exists.", Map.of("filename", source, "entity", newEffort));
-
-                    } else {
-                        EventData.log(EventData.IMPORT, ProductsBoundedDomain.DOMAIN, EventData.Status.WARNING, " effort could not be imported because it already exists.", Map.of("filename", source, "entity", newEffort));
-                    }
-                } else {
-                    logic.realm().efforts().update(newEffort);
-                    EventData.log(EventData.IMPORT, ProductsBoundedDomain.DOMAIN, EventData.Status.INFO, " effort added.", Map.of("filename", source, "entity", newEffort));
+                if (Objects.isNull(assignment)) {
+                    EventData.log(EventData.IMPORT, ProductsBoundedDomain.DOMAIN, EventData.Status.ERROR, "assignment could not be found.",
+                        Map.of("filename", source, "assignmentOid", Long.toString(assignmentOid)));
+                    return;
                 }
-            });
+                YamlSequence efforts = data.yamlSequence("efforts");
+                efforts.children().forEach((YamlNode effort) -> {
+                    LocalDate date = effort.asMapping().date("date");
+                    int duration = effort.asMapping().integer("duration");
+                    String text = effort.asMapping().string("text");
+                    Effort newEffort = new Effort(assignment, contractId, date, duration, text);
+                    Optional<Effort> foundEffort = logic.findEffortFor(assignmentOid, collaborator, date);
+                    if (foundEffort.isPresent()) {
+                        if (replace) {
+                            logic.realm().efforts().delete(foundEffort.get());
+                            logic.realm().efforts().update(newEffort);
+                            EventData.log(EventData.IMPORT, ProductsBoundedDomain.DOMAIN, EventData.Status.INFO, " effort replaced already exists.", Map.of("filename", source, "entity", newEffort));
+
+                        } else {
+                            EventData.log(EventData.IMPORT, ProductsBoundedDomain.DOMAIN, EventData.Status.WARNING, " effort could not be imported because it already exists.", Map.of("filename", source, "entity", newEffort));
+                        }
+                    } else {
+                        logic.realm().efforts().update(newEffort);
+                        EventData.log(EventData.IMPORT, ProductsBoundedDomain.DOMAIN, EventData.Status.INFO, " effort added.", Map.of("filename", source, "entity", newEffort));
+                    }
+                });
+            }
+
         } catch (IOException e) {
             throw new IORuntimeException(e);
         }

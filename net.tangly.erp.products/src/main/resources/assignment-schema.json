@@ -1,0 +1,41 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "product archive schema",
+    "description": "schema for assignment work reports",
+    "definitions": {
+        "assignment": {
+            "type": "object",
+            "properties": {
+                "date": {
+                    "type": "string",
+                    "format": "date"
+                },
+                "duration": {
+                    "type": "integer",
+                    "minimum": 1
+                },
+                "text": {
+                    "type": "string"
+                }
+            }
+        }
+    },
+    "properties": {
+        "assignmentOid": {
+            "type": "integer",
+            "minimum": 1
+        },
+        "contractId": {
+            "type": "string"
+        },
+        "collaborator": {
+            "type": "string"
+        },
+        "assignments": {
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/assignment"
+            }
+        }
+    }
+}

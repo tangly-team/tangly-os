@@ -14,7 +14,7 @@
 package net.tangly.erp.invoices.artifacts;
 
 import net.tangly.commons.logger.EventData;
-import net.tangly.commons.utilities.JsonUtilities;
+import net.tangly.commons.utilities.ValidatorUtilities;
 import net.tangly.core.Address;
 import net.tangly.core.BankConnection;
 import net.tangly.core.EmailAddress;
@@ -79,7 +79,7 @@ public class InvoiceJson implements InvoiceGenerator {
         try {
             String jsonString = IOUtils.toString(reader);
             reader.close();
-            if (JsonUtilities.isValid(new StringReader(jsonString), "invoice-schema.json")) {
+            if (ValidatorUtilities.isJsonValid(new StringReader(jsonString), "invoice-schema.json")) {
                 var jsonInvoice = new JSONObject(new JSONTokener(new StringReader(jsonString)));
                 invoice = entity.imports(jsonInvoice);
                 if (!invoice.check()) {

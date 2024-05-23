@@ -33,6 +33,7 @@ java {
 dependencies {
     implementation(libs.annotations)
     implementation(libs.json.validator)
+    implementation(libs.jackson.dataformat.yaml)
     implementation(libs.jakarta.mail)
     implementation(libs.eclipse.angus.mail)
     implementation(libs.asciidoctorj)

@@ -67,6 +67,11 @@ distributions {
     }
 }
 
+vaadin {
+    generateBundle = false
+    optimizeBundle = true
+}
+
 dependencies {
     implementation project(':net.tangly.apps')
     implementation project(':net.tangly.commons')
