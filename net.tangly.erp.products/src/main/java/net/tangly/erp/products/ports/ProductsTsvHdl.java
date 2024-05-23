@@ -99,6 +99,7 @@ public class ProductsTsvHdl {
         List<TsvProperty<Assignment, ?>> fields = createTsvEntityFields();
         fields.add(TsvProperty.ofString("collaboratorId", Assignment::collaboratorId, Assignment::collaboratorId));
         fields.add(TsvProperty.of("productOid", Assignment::product, Assignment::product, e -> findProductByOid(e).orElse(null), convertFoidTo()));
+        fields.add(TsvProperty.ofDate("closedPeriod", Assignment::closedPeriod, Assignment::closedPeriod));
         return TsvHdl.of(Assignment.class, fields, Assignment::new);
     }
 

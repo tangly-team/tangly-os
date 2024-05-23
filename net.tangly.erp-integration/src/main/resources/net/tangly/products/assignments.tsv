@@ -1,3 +1,3 @@
-"oid"	"id"	"name"	"fromDate"	"toDate"	"text"	"collaboratorId"	"productOid"
-"400"	"Coach-2019"	"Baumann, Marcel"	"2019-11-01"	"2019-12-31"	"Agile coaching and training of Saint Gobain Glass Compiègne"	"marcel-baumann"	"800"
-"401"	"Coach-2020"	"Baumann, Marcel"	"2020-01-01"	"2020-09-30"	"Agile coaching and training of Saint Gobain Glass Compiègne"	marcel-baumann	"800"
+"oid"	"id"	"name"	"fromDate"	"toDate"	"text"	"collaboratorId"	"productOid"	"closedPeriod"
+"400"	"Coach-2019"	"Baumann, Marcel"	"2019-11-01"	"2019-12-31"	"Agile coaching and training of Saint Gobain Glass Compiègne"	"marcel-baumann"	"800"	""
+"401"	"Coach-2020"	"Baumann, Marcel"	"2020-01-01"	"2020-09-30"	"Agile coaching and training of Saint Gobain Glass Compiègne"	"marcel-baumann"	"800"	""

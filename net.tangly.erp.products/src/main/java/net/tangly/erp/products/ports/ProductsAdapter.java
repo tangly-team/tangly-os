@@ -143,6 +143,16 @@ public class ProductsAdapter implements ProductsPort {
                     int duration = effort.asMapping().integer("duration");
                     String text = effort.asMapping().string("text");
                     Effort newEffort = new Effort(assignment, contractId, date, duration, text);
+                    if (!assignment.range().isActive(date)) {
+                        EventData.log(EventData.IMPORT, ProductsBoundedDomain.DOMAIN, EventData.Status.ERROR, "effort date is out of assignment range.",
+                            Map.of("filename", source, "assignement", assignment, "effort", newEffort));
+                        return;
+                    }
+                    if ((assignment.closedPeriod() != null) && (!newEffort.date().isAfter(assignment.closedPeriod()))) {
+                        EventData.log(EventData.IMPORT, ProductsBoundedDomain.DOMAIN, EventData.Status.ERROR, "effort date is before of assignment closed period.",
+                            Map.of("filename", source, "assignement", assignment, "effort", newEffort));
+                        return;
+                    }
                     Optional<Effort> foundEffort = logic.findEffortFor(assignmentOid, collaborator, date);
                     if (foundEffort.isPresent()) {
                         if (replace) {

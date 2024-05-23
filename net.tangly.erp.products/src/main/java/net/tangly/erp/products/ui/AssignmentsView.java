@@ -13,6 +13,7 @@
 
 package net.tangly.erp.products.ui;
 
+import com.vaadin.flow.component.datepicker.DatePicker;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.contextmenu.GridContextMenu;
 import com.vaadin.flow.component.html.Hr;
@@ -46,9 +47,11 @@ class AssignmentsView extends EntityView<Assignment> {
             var form = new FormLayout();
             var productField = new One2OneField<>("Product", Product.class, domain().realm().products());
             var collaboratorId = new TextField("Collaborator ID");
+            var closedPeriod = new DatePicker("Closed period");
             form.add(productField, collaboratorId);
             binder().bind(productField, Assignment::product, Assignment::product);
             binder().bind(collaboratorId, Assignment::collaboratorId, Assignment::collaboratorId);
+            binder().bind(closedPeriod, Assignment::closedPeriod, Assignment::closedPeriod);
             return form;
         }
     }
@@ -56,7 +59,7 @@ class AssignmentsView extends EntityView<Assignment> {
     public AssignmentsView(@NotNull ProductsBoundedDomain domain, @NotNull Mode mode) {
         super(Assignment.class, domain, domain.realm().assignments(), mode);
         form(() -> new AssignmentForm(this, domain.registry()));
-        initEntityView();
+        init();
     }
 
     @Override
@@ -71,5 +74,12 @@ class AssignmentsView extends EntityView<Assignment> {
     @Override
     public ProductsBoundedDomain domain() {
         return (ProductsBoundedDomain) super.domain();
+    }
+
+    private void init() {
+        initEntityView();
+        var grid = grid();
+        grid.addColumn(Assignment::collaboratorId).setKey("collaboratorId").setHeader("Collaborator Id").setSortable(true).setAutoWidth(true).setResizable(true);
+        grid.addColumn(Assignment::closedPeriod).setKey("closedPeriod").setHeader("Closed Period").setSortable(true).setAutoWidth(true).setResizable(true);
     }
 }

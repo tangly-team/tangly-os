@@ -17,6 +17,7 @@ import net.tangly.core.EntityExtendedImp;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.Objects;
 
@@ -31,6 +32,7 @@ import java.util.Objects;
 public class Assignment extends EntityExtendedImp {
     private Product product;
     private String collaboratorId;
+    private LocalDate closedPeriod;
 
     public Assignment(long oid) {
         super(oid);
@@ -59,6 +61,14 @@ public class Assignment extends EntityExtendedImp {
 
     public void collaboratorId(String collaboratorId) {
         this.collaboratorId = collaboratorId;
+    }
+
+    public LocalDate closedPeriod() {
+        return closedPeriod;
+    }
+
+    public void closedPeriod(LocalDate closedPeriod) {
+        this.closedPeriod = closedPeriod;
     }
 
     @Override
