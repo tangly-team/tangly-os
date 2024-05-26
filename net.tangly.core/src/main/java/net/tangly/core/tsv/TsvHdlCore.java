@@ -26,7 +26,6 @@ import java.util.Objects;
 import java.util.function.Function;
 
 public class TsvHdlCore {
-    public static final String ID = "id";
     public static final String NAME = "name";
     public static final String DATE = "date";
     public static final String FROM_DATE = "fromDate";
@@ -56,10 +55,9 @@ public class TsvHdlCore {
 
     public static TsvEntity<Address> createTsvAddress() {
         Function<CSVRecord, Address> imports = (CSVRecord csv) -> ofAddress(csv);
-        List<TsvProperty<Address, ?>> fields = List.of(TsvProperty.ofString(STREET, Address::street, null),
-            TsvProperty.ofString(EXTENDED, Address::extended, null), TsvProperty.ofString(POBOX, Address::poBox, null),
-            TsvProperty.ofString(POSTCODE, Address::postcode, null), TsvProperty.ofString(LOCALITY, Address::locality, null),
-            TsvProperty.ofString(REGION, Address::region, null), TsvProperty.ofString(COUNTRY, Address::country, null));
+        List<TsvProperty<Address, ?>> fields = List.of(TsvProperty.ofString(STREET, Address::street), TsvProperty.ofString(EXTENDED, Address::extended),
+            TsvProperty.ofString(POBOX, Address::poBox), TsvProperty.ofString(POSTCODE, Address::postcode), TsvProperty.ofString(LOCALITY, Address::locality),
+            TsvProperty.ofString(REGION, Address::region), TsvProperty.ofString(COUNTRY, Address::country));
         return TsvEntity.of(Address.class, fields, imports);
     }
 

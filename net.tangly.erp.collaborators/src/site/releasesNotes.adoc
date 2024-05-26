@@ -4,11 +4,11 @@ date: 2019-05-01
 weight: 20
 ---
 
-== Apps Library Change Logs
+== ERP Collaborators Library Change Logs
 
-This document provides a high-level view of the changes introduced in the apps library by release.
+This document provides a high-level view of the changes introduced in the ERP CRM library by release.
 For a detailed view of what has changed, refer to the https://bitbucket.org/tangly-team/tangly-os[repository] commits.
 
 === 0.2.7 (2024-05-31)
 
-* Initial release of the library
+* Initial release of the library as a DDD bounded domain

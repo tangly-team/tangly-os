@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2022 Marcel Baumann
+ * Copyright 2006-2024 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -8,6 +8,7 @@
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ *
  */
 
 package net.tangly.gleam.model;
@@ -44,7 +45,8 @@ import java.util.function.Function;
  * @param <T>     class owning the Java property
  * @param <U>     type of the property
  */
-public record TsvProperty<T, U>(List<String> columns, Function<T, U> getter, BiConsumer<T, U> setter, Function<CSVRecord, U> reader, BiConsumer<U, CSVPrinter> writer) {
+public record TsvProperty<T, U>(List<String> columns, Function<T, U> getter, BiConsumer<T, U> setter, Function<CSVRecord, U> reader,
+                                BiConsumer<U, CSVPrinter> writer) {
 
     public static final Function<String, BigDecimal> CONVERT_BIG_DECIMAL_FROM = e -> (e == null) ? BigDecimal.ZERO : new BigDecimal(e);
     public static final Function<String, LocalDate> CONVERT_DATE_FROM = e -> (e != null) ? LocalDate.parse(e) : null;
@@ -56,9 +58,14 @@ public record TsvProperty<T, U>(List<String> columns, Function<T, U> getter, BiC
     }
 
     public static <T> TsvProperty<T, Object> ofEmpty(@NotNull String column) {
-        return new TsvProperty<>(List.of(column), t -> null, (t, u) -> {}, v -> v, (u, p) -> {});
+        return new TsvProperty<>(List.of(column), t -> null, (t, u) -> {
+        }, v -> v, (u, p) -> {
+        });
     }
 
+    public static <T> TsvProperty<T, String> ofString(@NotNull String column, Function<T, String> getter) {
+        return of(column, getter, null, v -> v, u -> u);
+    }
     public static <T> TsvProperty<T, String> ofString(@NotNull String column, Function<T, String> getter, BiConsumer<T, String> setter) {
         return of(column, getter, setter, v -> v, u -> u);
     }
@@ -80,7 +87,7 @@ public record TsvProperty<T, U>(List<String> columns, Function<T, U> getter, BiC
     }
 
     public static <T, U extends Enum<U>> TsvProperty<T, U> ofEnum(@NotNull Class<U> clazz, @NotNull String column, Function<T, U> getter, BiConsumer<T, U> setter) {
-        return of(column, getter, setter, v -> valueOf(clazz, v.toLowerCase()), U::name);
+        return of(column, getter, setter, v -> valueOf(clazz, v), U::name);
     }
 
     /**
@@ -132,7 +139,7 @@ public record TsvProperty<T, U>(List<String> columns, Function<T, U> getter, BiC
      * @see Enum#valueOf(Class, String)
      */
     public static <T extends Enum<T>> T valueOf(@NotNull Class<T> enumClass, String name) {
-        return Strings.isNullOrBlank(name) ? null : Enum.valueOf(enumClass, name);
+        return Strings.isNullOrBlank(name) ? null : Enum.valueOf(enumClass, name.toLowerCase());
     }
 
     /**

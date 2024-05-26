@@ -13,10 +13,7 @@
 
 package net.tangly.erp.products.ports;
 
-import com.amihaiemil.eoyaml.Yaml;
-import com.amihaiemil.eoyaml.YamlMapping;
-import com.amihaiemil.eoyaml.YamlNode;
-import com.amihaiemil.eoyaml.YamlSequence;
+import com.amihaiemil.eoyaml.*;
 import net.tangly.commons.logger.EventData;
 import net.tangly.commons.utilities.AsciiDoctorHelper;
 import net.tangly.commons.utilities.ValidatorUtilities;
@@ -41,6 +38,7 @@ import java.nio.file.Path;
 import java.time.LocalDate;
 import java.time.YearMonth;
 import java.time.temporal.ChronoUnit;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -48,6 +46,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Stream;
 
 import static java.util.FormatProcessor.FMT;
+import static java.util.stream.Collectors.groupingBy;
 
 public class ProductsAdapter implements ProductsPort {
     public static final String PRODUCTS_TSV = "products.tsv";
@@ -55,7 +54,6 @@ public class ProductsAdapter implements ProductsPort {
     public static final String ASSIGNMENTS_TSV = "assignments.tsv";
     public static final String EFFORTS_TSV = "efforts.tsv";
     public static final String YAML_EXT = ".yaml";
-    public static final String ASSIGNMENTS = "assignments";
 
     private final ProductsRealm realm;
 
@@ -87,7 +85,6 @@ public class ProductsAdapter implements ProductsPort {
         Port.importEntities(dataFolder, PRODUCTS_TSV, handler::importProducts);
         Port.importEntities(dataFolder, WORK_CONTRACTS_TSV, handler::importWorkContracts);
         Port.importEntities(dataFolder, ASSIGNMENTS_TSV, handler::importAssignments);
-        Port.importEntities(dataFolder, EFFORTS_TSV, handler::importEfforts);
         try (Stream<Path> stream = Files.walk(dataFolder)) {
             AtomicInteger nrOfImportedEffortFiles = new AtomicInteger();
             stream.filter(file -> !Files.isDirectory(file) && file.getFileName().toString().endsWith(YAML_EXT)).forEach(o -> {
@@ -112,7 +109,7 @@ public class ProductsAdapter implements ProductsPort {
         handler.exportProducts(dataFolder.resolve(PRODUCTS_TSV));
         handler.exportWorkContracts(dataFolder.resolve(WORK_CONTRACTS_TSV));
         handler.exportAssignments(dataFolder.resolve(ASSIGNMENTS_TSV));
-        handler.exportEfforts(dataFolder.resolve(EFFORTS_TSV));
+        exportEfforts(dataFolder);
     }
 
     @Override
@@ -142,7 +139,11 @@ public class ProductsAdapter implements ProductsPort {
                     LocalDate date = effort.asMapping().date("date");
                     int duration = effort.asMapping().integer("duration");
                     String text = effort.asMapping().string("text");
+                    String minutes = effort.asMapping().string("minutes");
                     Effort newEffort = new Effort(assignment, contractId, date, duration, text);
+                    if (Objects.nonNull(minutes)) {
+                        newEffort.minutes(minutes);
+                    }
                     if (!assignment.range().isActive(date)) {
                         EventData.log(EventData.IMPORT, ProductsBoundedDomain.DOMAIN, EventData.Status.ERROR, "effort date is out of assignment range.",
                             Map.of("filename", source, "assignement", assignment, "effort", newEffort));
@@ -170,6 +171,48 @@ public class ProductsAdapter implements ProductsPort {
                 });
             }
 
+        } catch (IOException e) {
+            throw new IORuntimeException(e);
+        }
+    }
+
+    /**
+     * Export all efforts in a hierarchy of folders. The files are grouped in folders by years.
+     * The efforts are grouped by assignment, contract, collaborator, and year-month and written in a yaml file.
+     * The name of the file is the year and month of the efforts, the name of the collaborator, and the identifier of the contract.
+     *
+     * @param path the path of the root folder where the efforts are exported
+     */
+    public void exportEfforts(@NotNull Path path) {
+        var efforts = realm().efforts().items().stream().collect(
+            groupingBy(o -> o.assignment().id(), groupingBy(o -> o.contractId(), groupingBy(o -> o.assignment().collaboratorId(),
+                groupingBy(o -> YearMonth.from(o.date()))))));
+        efforts.values().stream().flatMap(o -> o.values().stream().flatMap(o1 -> o1.values().stream().flatMap(o2 -> o2.values().stream())))
+            .forEach(o -> exportEfforts(o, path));
+    }
+
+    public void exportEfforts(@NotNull List<Effort> efforts, @NotNull Path folder) {
+        try {
+            efforts.sort((o1, o2) -> o1.date().compareTo(o2.date()));
+            YamlMappingBuilder builder = Yaml.createYamlMappingBuilder()
+                .add("assignmentOid", efforts.getFirst().assignment().oid())
+                .add("contractId", efforts.getFirst().contractId())
+                .add(("collaborator"), efforts.getFirst().assignment().collaboratorId());
+            var effortsBuilder = Yaml.createYamlSequenceBuilder();
+            for (Effort effort : efforts) {
+                var effortBuilder = Yaml.createYamlMappingBuilder();
+                effortBuilder = effortBuilder.add("date", effort.date()).add("duration", effort.duration()).add("text", effort.text());
+                if (effort.minutes() != null) {
+                    effortBuilder = effortBuilder.add("minutes", effort.minutes());
+                }
+                effortsBuilder = effortsBuilder.add(effortBuilder.build());
+            }
+            builder = builder.add("efforts", effortsBuilder.build());
+            folder = folder.resolve(Integer.toString(efforts.getFirst().date().getYear()), FMT."%02d\{efforts.getFirst().date().getMonthValue()}");
+            AsciiDoctorHelper.createFolders(folder);
+            var file = folder.resolve(filename(efforts.getFirst()));
+            var printer = Yaml.createYamlPrinter(Files.newBufferedWriter(file));
+            printer.print(builder.build());
         } catch (IOException e) {
             throw new IORuntimeException(e);
         }
@@ -212,4 +255,8 @@ public class ProductsAdapter implements ProductsPort {
         return STR."\{generatedText}-\{assignment.id()}-\{assignment.name()}-\{dateText}";
     }
 
+    private String filename(@NotNull Effort effort) {
+        String generatedText = FMT."\{effort.date().getYear()}-%02d\{effort.date().getMonthValue()}";
+        return STR."\{generatedText}-\{effort.assignment().name()}-\{effort.contractId()}\{YAML_EXT}";
+    }
 }

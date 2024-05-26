@@ -34,7 +34,8 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.function.Function;
 
-import static net.tangly.core.tsv.TsvHdlCore.*;
+import static net.tangly.core.tsv.TsvHdlCore.NAME;
+import static net.tangly.core.tsv.TsvHdlCore.TEXT;
 import static net.tangly.gleam.model.TsvEntity.get;
 
 /**
@@ -49,11 +50,13 @@ public class InvoicesTsvJsonHdl {
 
     private static TsvEntity<Article> createTsvArticle() {
         Function<CSVRecord, Article> imports =
-            (CSVRecord obj) -> new Article(get(obj, ID), get(obj, NAME), get(obj, TEXT), Enum.valueOf(ArticleCode.class, get(obj, "code").toLowerCase()),
+            (CSVRecord obj) -> new Article(get(obj, TsvHdl.ID), get(obj, NAME), get(obj, TEXT), Enum.valueOf(ArticleCode.class, get(obj, "code").toLowerCase()),
                 TsvProperty.CONVERT_BIG_DECIMAL_FROM.apply(get(obj, "unitPrice")), get(obj, "unit"));
 
         List<TsvProperty<Article, ?>> fields =
-            List.of(TsvProperty.ofString(ID, Article::id, null), TsvProperty.ofString(NAME, Article::name, null), TsvProperty.ofString(TEXT, Article::text, null),
+            List.of(TsvProperty.ofString(TsvHdl.ID, Article::id, null), TsvProperty.ofString(NAME, Article::name, null), TsvProperty.ofString(TEXT,
+                    Article::text,
+                    null),
                 TsvProperty.ofEnum(ArticleCode.class, "code", Article::code, null), TsvProperty.ofBigDecimal("unitPrice", Article::unitPrice, null),
                 TsvProperty.ofString("unit", Article::unit, null));
         return TsvEntity.of(Article.class, fields, imports);

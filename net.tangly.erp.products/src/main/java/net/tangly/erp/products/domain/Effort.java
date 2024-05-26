@@ -31,7 +31,7 @@ public class Effort implements HasDate, HasText {
     private LocalDate date;
     private int durationInMinutes;
     private String text;
-
+    private String minutes;
     public Effort() {
     }
 
@@ -51,6 +51,14 @@ public class Effort implements HasDate, HasText {
     @Override
     public void text(String text) {
         this.text = text;
+    }
+
+    public String minutes() {
+        return minutes;
+    }
+
+    public void minutes(String minutes) {
+        this.minutes = minutes;
     }
 
     public int duration() {

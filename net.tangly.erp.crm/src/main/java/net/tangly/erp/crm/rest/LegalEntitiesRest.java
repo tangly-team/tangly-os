@@ -55,7 +55,7 @@ public class LegalEntitiesRest {
     @OpenApi(
         summary = "Get all legal entities",
         operationId = "getAllLegalEntities",
-        path = "/legal-entities",
+        path = "/customers/legal-entities",
         methods = HttpMethod.GET,
         tags = {"LegalEntities"},
         responses = {
@@ -69,7 +69,7 @@ public class LegalEntitiesRest {
     @OpenApi(
         summary = "Get an entity by id",
         operationId = "getLegalEntityById",
-        path = "/legal-entities/:id",
+        path = "/customers/legal-entities/:id",
         methods = HttpMethod.GET,
         tags = {"LegalEntities"},
         pathParams = {
@@ -87,7 +87,7 @@ public class LegalEntitiesRest {
     @OpenApi(
         summary = "Create legal entity",
         operationId = "createLegalEntity",
-        path = "/legal-entities",
+        path = "/customers/legal-entities",
         methods = HttpMethod.POST,
         tags = {"LegalEntities"},
         requestBody = @OpenApiRequestBody(content = {@OpenApiContent(from = LegalEntityView.class)}),
@@ -105,7 +105,7 @@ public class LegalEntitiesRest {
     @OpenApi(
         summary = "Update a legal entity identified by ID",
         operationId = "updateLegalEntityById",
-        path = "/legal-entities/:id",
+        path = "/customers/legal-entities/:id",
         methods = HttpMethod.PATCH,
         pathParams = {
             @OpenApiParam(name = "id", required = true, type = String.class, description = "The entity identifier")
@@ -127,7 +127,7 @@ public class LegalEntitiesRest {
     @OpenApi(
         summary = "delete a legal entity by ID",
         operationId = "deleteLegalEntityById",
-        path = "/legal-entities/:id",
+        path = "/customers/legal-entities/:id",
         methods = HttpMethod.DELETE,
         pathParams = {
             @OpenApiParam(name = "id", required = true, type = String.class, description = "The entity identifier")

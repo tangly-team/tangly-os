@@ -13,8 +13,10 @@
 
 package net.tangly.erp.crm.ui;
 
+import com.vaadin.flow.component.grid.ColumnTextAlign;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.data.renderer.LocalDateRenderer;
+import com.vaadin.flow.data.renderer.NumberRenderer;
 import net.tangly.core.HasDateRange;
 import net.tangly.core.HasName;
 import net.tangly.core.HasText;
@@ -23,6 +25,7 @@ import net.tangly.core.providers.ProviderInMemory;
 import net.tangly.erp.crm.domain.ContractExtension;
 import net.tangly.ui.components.ItemView;
 import net.tangly.ui.components.Mode;
+import net.tangly.ui.components.VaadinUtils;
 import org.jetbrains.annotations.NotNull;
 
 public class ContractExtensionsView extends ItemView<ContractExtension> {
@@ -42,6 +45,8 @@ public class ContractExtensionsView extends ItemView<ContractExtension> {
         grid.addColumn(new LocalDateRenderer<>(HasDateRange::to, ItemView.ISO_DATE_FORMAT)).setKey(ItemView.TO).setHeader(ItemView.TO_LABEL).setResizable(true).setSortable(true).setFlexGrow(0)
             .setWidth("8em");
         grid.addColumn(HasText::text).setKey(ItemView.TEXT).setHeader(ItemView.TEXT_LABEL).setResizable(true).setSortable(true).setFlexGrow(0).setWidth("30em");
+        grid.addColumn(new NumberRenderer<>(ContractExtension::amountWithoutVat, VaadinUtils.FORMAT)).setKey("amount").setHeader("Amount").setAutoWidth(true).setResizable(true).setSortable(true).setTextAlign(ColumnTextAlign.END);
+        grid.addColumn(new NumberRenderer<>(ContractExtension::budgetInHours, VaadinUtils.FORMAT)).setKey("budgetInHours").setHeader("Budget In Hours").setAutoWidth(true).setResizable(true).setSortable(true).setTextAlign(ColumnTextAlign.END);
         buildMenu();
     }
 }

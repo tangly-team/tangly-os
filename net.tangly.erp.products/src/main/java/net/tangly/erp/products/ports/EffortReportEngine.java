@@ -79,6 +79,7 @@ public class EffortReportEngine {
         helper.writer().println();
         createTableBody(assignment, month.atDay(1), month.atEndOfMonth(), unit, helper);
         helper.tableEnd();
+        createMinutes(assignment, month.atDay(1), month.atEndOfMonth(), helper);
     }
 
     private void createReport(@NotNull Assignment assignment, LocalDate from, LocalDate to, @NotNull ChronoUnit unit, @NotNull Writer writer) {
@@ -91,7 +92,7 @@ public class EffortReportEngine {
         helper.tableEnd();
     }
 
-    private void createTableBody(@NotNull Assignment assignment, LocalDate from, LocalDate to, @NotNull ChronoUnit unit, AsciiDocHelper helper) {
+    private void createTableBody(@NotNull Assignment assignment, LocalDate from, LocalDate to, @NotNull ChronoUnit unit, @NotNull AsciiDocHelper helper) {
         Map<String, List<Effort>> groups = logic.collect(assignment, from, to).stream().collect(groupingBy(Effort::contractId));
         if (groups.keySet().size() > 1) {
             groups.keySet().forEach(o -> generateEffortsForContract(groups.get(o), helper));
@@ -101,6 +102,18 @@ public class EffortReportEngine {
         }
         int totalDuration = logic.collect(assignment, from, to).stream().map(Effort::duration).reduce(0, Integer::sum);
         helper.tableRow("Total Time", STR."(time in \{text(unit)})", convert(totalDuration, unit).toString());
+    }
+
+    private void createMinutes(@NotNull Assignment assignment, @NotNull LocalDate from, @NotNull LocalDate to, @NotNull AsciiDocHelper helper) {
+        List<Effort> efforts = logic.collect(assignment, from, to);
+        boolean containsMinutes = efforts.stream().anyMatch(o -> !Strings.isNullOrBlank(o.minutes()));
+        if (containsMinutes) {
+            helper.header("Minutes", 2);
+        }
+        efforts.stream().filter(o -> !Strings.isNullOrBlank(o.minutes())).forEach(o -> {
+            helper.header(STR."Minutes for \{o.date().toString()}", 3);
+            helper.paragraph(o.minutes());
+        });
     }
 
     private void generateEffortsForContract(@NotNull List<Effort> efforts, @NotNull AsciiDocHelper helper) {

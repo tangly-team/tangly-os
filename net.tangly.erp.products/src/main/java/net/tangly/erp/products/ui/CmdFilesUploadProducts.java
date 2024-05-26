@@ -40,9 +40,6 @@ public class CmdFilesUploadProducts extends CmdFilesUpload<ProductsRealm, Produc
                 if (files.contains(ProductsAdapter.ASSIGNMENTS_TSV)) {
                     processInputStream(ProductsAdapter.ASSIGNMENTS_TSV, handler::importAssignments);
                 }
-                if (files.contains(ProductsAdapter.EFFORTS_TSV)) {
-                    processInputStream(ProductsAdapter.EFFORTS_TSV, handler::importEfforts);
-                }
                 close();
             }));
     }

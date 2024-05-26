@@ -21,8 +21,8 @@ import java.time.LocalDate;
 import java.util.*;
 
 /**
- * Defines an interaction between your company and a legal entity and a group of natural entities. The legal entity is the organization you want a contract with. The interaction
- * has a set of activities moving your negotiation through stages. The final result is a contract or a lost opportunity.
+ * Defines an interaction between your company and a legal entity and a group of natural entities. The legal entity is the organization you want a contract with.
+ * The interaction has a set of activities moving your negotiation through stages. The final result is a contract or a lost opportunity.
  * <p>An interaction can have quite a long duration. Activities are the events when you interact with your potential customer.</p>
  */
 public class Interaction extends EntityExtendedImp {

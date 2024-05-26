@@ -113,8 +113,8 @@ public class LeadsView extends ItemView<Lead> {
 
         @Override
         protected Lead createOrUpdateInstance(Lead entity) throws ValidationException {
-            return new Lead(date.getValue(), leadCode.getValue(), firstname.getValue(), lastname.getValue(), gender.getValue(), company.getValue(), PhoneNr.of(phoneNr.getValue()),
-                EmailAddress.of(email.getValue()), linkedIn.getValue(), activityCode.getValue(), text.getValue());
+            return new Lead(date.getValue(), leadCode.getValue(), firstname.getValue(), lastname.getValue(), gender.getValue(), company.getValue(),
+                PhoneNr.of(phoneNr.getValue()), EmailAddress.of(email.getValue()), linkedIn.getValue(), activityCode.getValue(), text.getValue());
         }
     }
 
@@ -130,12 +130,13 @@ public class LeadsView extends ItemView<Lead> {
         grid.addColumn(Lead::code).setKey("code").setHeader("Code").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Lead::firstname).setKey("firstname").setHeader("Firstname").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Lead::lastname).setKey("lastname").setHeader("Lastname").setAutoWidth(true).setResizable(true).setSortable(true);
-        grid.addColumn(new ComponentRenderer<>(lead -> (lead.gender() == GenderCode.male) ? new Icon(VaadinIcon.MALE) : new Icon(VaadinIcon.FEMALE))).setHeader("Gender")
-            .setAutoWidth(true).setResizable(true);
+        grid.addColumn(new ComponentRenderer<>(lead -> (lead.gender() == GenderCode.male) ? new Icon(VaadinIcon.MALE) : new Icon(VaadinIcon.FEMALE)))
+            .setHeader("Gender").setAutoWidth(true).setResizable(true);
         grid.addColumn(Lead::company).setKey("company").setHeader("Company").setAutoWidth(true).setResizable(true).setSortable(true);
-        grid.addColumn(o -> (Objects.nonNull(o.phoneNr()) ? o.phoneNr().number() : null)).setKey("phoneNr").setHeader("Phone").setAutoWidth(true).setResizable(true)
+        grid.addColumn(o -> (Objects.nonNull(o.phoneNr()) ? o.phoneNr().number() : null)).setKey("phoneNr").setHeader("Phone").setAutoWidth(true)
+            .setResizable(true).setSortable(true);
+        grid.addColumn(VaadinUtils.emailAddressComponentRenderer(Lead::email)).setKey("email").setHeader("Email").setAutoWidth(true).setResizable(true)
             .setSortable(true);
-        grid.addColumn(VaadinUtils.emailAddressComponentRenderer(Lead::email)).setKey("email").setHeader("Email").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(VaadinUtils.linkedInComponentRenderer(Lead::linkedIn, false)).setKey("linkedIn").setHeader("LinkedIn").setAutoWidth(true);
         grid.addColumn(Lead::activity).setKey("activity").setHeader("Activity").setAutoWidth(true).setResizable(true).setSortable(true);
     }

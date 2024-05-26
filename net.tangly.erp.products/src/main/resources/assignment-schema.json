@@ -16,7 +16,11 @@
                 },
                 "text": {
                     "type": "string"
-                }
+                },
+                "minutes": {
+                    "type": "string"
+                },
+                "required": ["date", "duration", "text"]
             }
         }
     },

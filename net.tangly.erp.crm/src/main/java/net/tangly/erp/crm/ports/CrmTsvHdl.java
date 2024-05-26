@@ -29,7 +29,6 @@ import org.apache.commons.csv.CSVRecord;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.Reader;
-import java.math.BigDecimal;
 import java.nio.file.Path;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -222,16 +221,30 @@ public class CrmTsvHdl {
     }
 
     private static TsvEntity<Activity> createTsvActivity() {
-        List<TsvProperty<Activity, ?>> fields = List.of(TsvProperty.ofEmpty(TsvEntity.OWNER_FOID), TsvProperty.of("code", Activity::code, Activity::code, e -> Enum.valueOf(ActivityCode.class, e.toLowerCase()), Enum::name), TsvProperty.ofDate("date", Activity::date, Activity::date), TsvProperty.ofInt("durationInMinutes", Activity::duration, Activity::duration), TsvProperty.ofString(AUTHOR, Activity::author, Activity::author), TsvProperty.ofString(TEXT, Activity::text, Activity::text));
+        List<TsvProperty<Activity, ?>> fields = List.of(TsvProperty.ofEmpty(TsvEntity.OWNER_FOID),
+            TsvProperty.of("code", Activity::code, Activity::code, e -> TsvProperty.valueOf(ActivityCode.class, e), Enum::name),
+            TsvProperty.ofDate("date", Activity::date, Activity::date),
+            TsvProperty.ofInt("durationInMinutes", Activity::duration, Activity::duration),
+            TsvProperty.ofString(AUTHOR, Activity::author, Activity::author),
+            TsvProperty.ofString(TEXT, Activity::text, Activity::text));
         return TsvEntity.of(Activity.class, fields, Activity::new);
     }
 
     private static TsvEntity<Lead> createTsvLead() {
-        Function<CSVRecord, Lead> imports = (CSVRecord csv) -> new Lead(LocalDate.parse(get(csv, DATE)), Enum.valueOf(LeadCode.class, get(csv, TsvHdl.CODE)), get(csv, FIRSTNAME), get(csv, LASTNAME), Enum.valueOf(GenderCode.class, get(csv, TsvHdl.GENDER)), get(csv, "company"), PhoneNr.of(get(csv, "phoneNr")), EmailAddress.of(get(csv, EMAIL)), get(csv, "linkedIn"), TsvProperty.valueOf(ActivityCode.class, get(csv, "activity")), get(csv, TEXT));
+        Function<CSVRecord, Lead> imports = (CSVRecord csv) -> new Lead(LocalDate.parse(get(csv, DATE)),
+            Enum.valueOf(LeadCode.class, get(csv, TsvHdl.CODE)), get(csv, FIRSTNAME), get(csv, LASTNAME),
+            Enum.valueOf(GenderCode.class, get(csv, TsvHdl.GENDER)), get(csv, "company"), PhoneNr.of(get(csv, "phoneNr")),
+            EmailAddress.of(get(csv, EMAIL)), get(csv, "linkedIn"), TsvProperty.valueOf(ActivityCode.class, get(csv, "activity")), get(csv, TEXT));
 
-        List<TsvProperty<Lead, ?>> fields = List.of(TsvProperty.ofDate(DATE, Lead::date, null), TsvProperty.ofEnum(LeadCode.class, "code", Lead::code, null), TsvProperty.ofString(FIRSTNAME, Lead::firstname, null), TsvProperty.ofString(LASTNAME, Lead::firstname, null), TsvProperty.ofEnum(GenderCode.class, GENDER, Lead::gender, null), TsvProperty.ofString("company", Lead::company, null), TsvProperty.ofString("phoneNr", o -> Objects.nonNull(o.phoneNr()) ? o.phoneNr().number() : null, null), TsvProperty.ofString(EMAIL, o -> Objects.nonNull(o.email()) ? o.email().text() : null, null), TsvProperty.ofString("linkedIn", Lead::linkedIn, null), TsvProperty.ofEnum(ActivityCode.class, "activity", Lead::activity, null), TsvProperty.ofString(TEXT, Lead::text, null));
+        List<TsvProperty<Lead, ?>> fields = List.of(TsvProperty.ofDate(DATE, Lead::date, null),
+            TsvProperty.ofEnum(LeadCode.class, "code", Lead::code, null), TsvProperty.ofString(FIRSTNAME, Lead::firstname, null),
+            TsvProperty.ofString(LASTNAME, Lead::firstname, null), TsvProperty.ofEnum(GenderCode.class, GENDER, Lead::gender, null),
+            TsvProperty.ofString("company", Lead::company, null),
+            TsvProperty.ofString("phoneNr", o -> Objects.nonNull(o.phoneNr()) ? o.phoneNr().number() : null, null),
+            TsvProperty.ofString(EMAIL, o -> Objects.nonNull(o.email()) ? o.email().text() : null, null),
+            TsvProperty.ofString("linkedIn", Lead::linkedIn, null), TsvProperty.ofEnum(ActivityCode.class, "activity", Lead::activity, null),
+            TsvProperty.ofString(TEXT, Lead::text, null));
         return TsvEntity.of(Lead.class, fields, imports);
-
     }
 
     private TsvEntity<Employee> createTsvEmployee() {
@@ -245,6 +258,7 @@ public class CrmTsvHdl {
         fields.add(TsvProperty.of("currency", Contract::currency, Contract::currency, Currency::getInstance, Currency::getCurrencyCode));
         fields.add(TsvProperty.of(TsvHdlCore.createTsvBankConnection(), Contract::bankConnection, Contract::bankConnection));
         fields.add(TsvProperty.ofBigDecimal("amountWithoutVat", Contract::amountWithoutVat, Contract::amountWithoutVat));
+        fields.add(TsvProperty.ofBigDecimal("budgetInHours", Contract::budgetInHours, Contract::budgetInHours));
         fields.add(TsvProperty.of("sellerOid", Contract::seller, Contract::seller, e -> findLegalEntityByOid(e).orElse(null), TsvHdl.convertFoidTo()));
         fields.add(TsvProperty.of("selleeOid", Contract::sellee, Contract::sellee, e -> findLegalEntityByOid(e).orElse(null), TsvHdl.convertFoidTo()));
         fields.add(createAddressMapping(VcardType.work));
@@ -252,10 +266,13 @@ public class CrmTsvHdl {
     }
 
     private TsvEntity<ContractExtension> createTsvContractExtension() {
-        Function<CSVRecord, ContractExtension> imports = (CSVRecord csv) -> new ContractExtension(get(csv, ID), get(csv, NAME), DateRange.of(LocalDate.parse(get(csv, FROM_DATE)),
-            LocalDate.parse(get(csv, TO_DATE))), get(csv, TEXT), get(csv, "contractId"), new BigDecimal(get(csv, "amountWithoutVat")));
+        Function<CSVRecord, ContractExtension> imports = (CSVRecord csv) -> new ContractExtension(get(csv, TsvHdl.ID), get(csv, NAME),
+            DateRange.of(LocalDate.parse(get(csv, FROM_DATE)),
+            LocalDate.parse(get(csv, TO_DATE))), get(csv, TEXT), get(csv, "contractId"), TsvHdl.parseBigDecimal(csv, "amountWithoutVat"),
+            TsvHdl.parseBigDecimal(csv, "budgetInHours"));
 
-        List<TsvProperty<ContractExtension, ?>> fields = List.of(TsvProperty.ofString(ID, ContractExtension::id, null), TsvProperty.ofString(NAME, ContractExtension::name,
+        List<TsvProperty<ContractExtension, ?>> fields = List.of(TsvProperty.ofString(TsvHdl.ID, ContractExtension::id, null), TsvProperty.ofString(NAME,
+                ContractExtension::name,
                 null), TsvProperty.of(TsvHdlCore.createTsvDateRange(), HasDateRange::range, null), TsvProperty.ofString(TEXT, ContractExtension::text, null),
             TsvProperty.ofString("contractId", ContractExtension::contractId, null), TsvProperty.ofBigDecimal("amountWithoutVat", ContractExtension::amountWithoutVat, null));
         return TsvEntity.of(ContractExtension.class, fields, imports);
@@ -274,7 +291,7 @@ public class CrmTsvHdl {
 
     private TsvEntity<Interaction> createTsvInteraction() {
         List<TsvProperty<Interaction, ?>> fields = TsvHdl.createTsvEntityFields();
-        fields.add(TsvProperty.of("state", Interaction::code, Interaction::code, e -> Enum.valueOf(InteractionCode.class, e.toLowerCase()), Enum::name));
+        fields.add(TsvProperty.of("state", Interaction::code, Interaction::code, e -> TsvProperty.valueOf(InteractionCode.class, e), Enum::name));
         fields.add(TsvProperty.ofBigDecimal("potential", Interaction::potential, Interaction::potential));
         fields.add(TsvProperty.ofBigDecimal("probability", Interaction::probability, Interaction::probability));
         fields.add(TsvProperty.of("legalEntity", Interaction::entity, Interaction::entity, e -> findLegalEntityByOid(e).orElse(null), TsvHdl.convertFoidTo()));

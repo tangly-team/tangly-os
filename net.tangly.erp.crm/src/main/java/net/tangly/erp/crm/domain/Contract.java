@@ -38,12 +38,12 @@ import java.util.*;
 public class Contract extends EntityExtendedImp implements EntityExtended, CrmEntity {
     private BankConnection bankConnection;
     private BigDecimal amountWithoutVat;
+    private BigDecimal budgetInHours;
     private LegalEntity seller;
     private LegalEntity sellee;
     private Locale locale;
     private Currency currency;
     private final List<ContractExtension> contractExtensions;
-
 
     public Contract(long oid) {
         super(oid);
@@ -73,6 +73,14 @@ public class Contract extends EntityExtendedImp implements EntityExtended, CrmEn
 
     public BigDecimal totalAmountWithoutVat() {
         return contractExtensions.stream().map(ContractExtension::amountWithoutVat).reduce(amountWithoutVat(), BigDecimal::add);
+    }
+
+    public BigDecimal budgetInHours() {
+        return budgetInHours;
+    }
+
+    public void budgetInHours(BigDecimal budgetInHours) {
+        this.budgetInHours = budgetInHours;
     }
 
     public void amountWithoutVat(BigDecimal amountWithoutVat) {

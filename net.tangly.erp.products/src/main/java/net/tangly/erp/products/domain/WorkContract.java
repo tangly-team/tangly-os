@@ -28,5 +28,5 @@ import java.util.Locale;
  * @param locale         locale of the contract
  * @param budgetInHours  work budget in hours. If the value is zero, the contract is time and material without a budget
  */
-public record WorkContract(@NotNull String id, String mainContractId, @NotNull LocalDate from, @NotNull LocalDate to, Locale locale, int budgetInHours) {
+public record WorkContract(@NotNull String id, String mainContractId, @NotNull LocalDate from, @NotNull LocalDate to, @NotNull Locale locale, int budgetInHours) {
 }

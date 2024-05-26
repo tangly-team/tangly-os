@@ -42,7 +42,7 @@ public class LeadsRest {
     @OpenApi(
         summary = "Get all leads",
         operationId = "getAllLeads",
-        path = "/leads",
+        path = "/customers/leads",
         methods = HttpMethod.GET,
         tags = {"Leads"},
         responses = {
@@ -56,7 +56,7 @@ public class LeadsRest {
     @OpenApi(
         summary = "Get a lead by linkedIn identifier",
         operationId = "getLeadById",
-        path = "/leads/:id",
+        path = "/customers/leads/:id",
         methods = HttpMethod.GET,
         tags = {"Leads"},
         pathParams = {
@@ -74,7 +74,7 @@ public class LeadsRest {
     @OpenApi(
         summary = "Create a lead",
         operationId = "createLead",
-        path = "/leads",
+        path = "/customers/leads",
         methods = HttpMethod.POST,
         tags = {"Leads"},
         requestBody = @OpenApiRequestBody(content = {@OpenApiContent(from = Lead.class)}),
@@ -92,7 +92,7 @@ public class LeadsRest {
     @OpenApi(
         summary = "Update a lead identified by linkedIn identifier",
         operationId = "updateLeadById",
-        path = "/leads/:id",
+        path = "/customers/leads/:id",
         methods = HttpMethod.PATCH,
         pathParams = {
             @OpenApiParam(name = "id", required = true, type = String.class, description = "The entity identifier")
@@ -114,7 +114,7 @@ public class LeadsRest {
     @OpenApi(
         summary = "delete a lead by ID",
         operationId = "deleteLeadById",
-        path = "/leads/:id",
+        path = "/customers/leads/:id",
         methods = HttpMethod.DELETE,
         pathParams = {
             @OpenApiParam(name = "id", required = true, type = String.class, description = "The entity identifier")

@@ -90,7 +90,7 @@ class ContractsView extends EntityView<Contract> {
         grid.addColumn(e -> e.sellee().name()).setKey("customer").setHeader("Customer").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Contract::currency).setKey("currency").setHeader("Currency").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(new NumberRenderer<>(Contract::amountWithoutVat, VaadinUtils.FORMAT)).setKey("amount").setHeader("Amount").setAutoWidth(true).setResizable(true).setSortable(true).setTextAlign(ColumnTextAlign.END);
-
+        grid.addColumn(new NumberRenderer<>(Contract::budgetInHours, VaadinUtils.FORMAT)).setKey("budgetInHours").setHeader("Budget In Hours").setAutoWidth(true).setResizable(true).setSortable(true).setTextAlign(ColumnTextAlign.END);
         grid.getHeaderRows().clear();
         HeaderRow headerRow = grid().appendHeaderRow();
     }

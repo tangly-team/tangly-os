@@ -87,3 +87,45 @@ image::iso-25010-topics.png["Categories of Quality Requirements"]
 
 The ERP is developed using an open source approach.
 Development capabilities are dependent on the goodwill and availability of active committers.
+
+=== Domain Concepts
+
+A service company provides services to customers to build products.
+
+===== Products Domain
+
+The company develops a *product* with the customer.
+A product has a _duration_.
+
+Multiple *work contracts* provide a time budget for the development of a specific product.
+A work contract has a _duration_.
+A work contract is a view of an existing commercial contract.
+The relation is defined through the identifier of the commercial contract.
+
+Employees are assigned to develop the product.
+The *assignment* is paid through a work contract time budget.
+An assignment has a _duration_, and a product.
+
+The work performed for an assignment is documented through *activities* of a collaborator.
+
+==== Customer Domain
+
+The company has commercial *contracts* with customers.
+A commercial contract is a legal agreement between the company and a customer.
+It should be immutable.
+
+A customer is a *legal entity*.
+A contract can be extended with *contract extensions*.
+
+==== Invoices Domain
+
+The company sends *invoices* to customers based on a contract.
+
+=== Business Rules
+
+The contract date range is in the range of the product time range.
+The assignment date range is in the range of the contract time range.
+
+The sum of all efforts for all assignments per contract should be comparable with the time budget of the contract.
+
+The sum of all invoices for a contract should be below the contract amount.

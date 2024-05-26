@@ -73,14 +73,6 @@ public class ProductsTsvHdl {
         TsvHdl.exportEntities(ProductsBoundedDomain.DOMAIN, path, createTsvAssignment(), realm.assignments());
     }
 
-    public void importEfforts(@NotNull Reader reader, String source) {
-        TsvHdl.importEntities(ProductsBoundedDomain.DOMAIN, reader, source, createTsvEffort(), realm.efforts());
-    }
-
-    public void exportEfforts(@NotNull Path path) {
-        TsvHdl.exportEntities(ProductsBoundedDomain.DOMAIN, path, createTsvEffort(), realm.efforts());
-    }
-
     public Optional<Product> findProductByOid(String identifier) {
         return (identifier != null) ? Provider.findByOid(realm.products(), Long.parseLong(identifier)) : Optional.empty();
     }

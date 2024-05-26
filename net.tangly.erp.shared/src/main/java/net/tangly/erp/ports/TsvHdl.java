@@ -26,6 +26,7 @@ import org.apache.commons.csv.CSVRecord;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.Reader;
+import java.math.BigDecimal;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -38,7 +39,8 @@ import java.util.function.BiConsumer;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 
-import static net.tangly.core.tsv.TsvHdlCore.*;
+import static net.tangly.core.tsv.TsvHdlCore.NAME;
+import static net.tangly.core.tsv.TsvHdlCore.TEXT;
 
 public final class TsvHdl {
     public static final CSVFormat FORMAT =
@@ -46,6 +48,7 @@ public final class TsvHdl {
             .setIgnoreHeaderCase(true).setIgnoreEmptyLines(true).build();
 
     public static final String OID = HasOid.OID;
+    public static final String ID = HasId.ID;
     public static final String CODE = "code";
     public static final String GENDER = "gender";
 
@@ -74,6 +77,11 @@ public final class TsvHdl {
     public static int parseInt(@NotNull CSVRecord record, @NotNull String fieldName) {
         var value = record.get(fieldName);
         return Strings.isNullOrBlank(value) ? 0 : Integer.parseInt(value);
+    }
+
+    public static BigDecimal parseBigDecimal(@NotNull CSVRecord record, @NotNull String fieldName) {
+        var value = record.get(fieldName);
+        return Strings.isNullOrBlank(value) ? BigDecimal.ZERO : new BigDecimal(value);
     }
 
     public static <T> void importEntities(@NotNull String domain, @NotNull Reader in, String source, @NotNull TsvEntity<T> tsvEntity, @NotNull Provider<T> provider) {
@@ -160,7 +168,6 @@ public final class TsvHdl {
             EventData.log(EventData.IMPORT, domain, EventData.Status.INFO, STR."\{tsvEntity.clazz().getSimpleName()} imported objects", Map.of("filename", source, "count", counter));
         } catch (Exception e) {
             EventData.log(EventData.IMPORT, domain, EventData.Status.FAILURE, "Entities not imported from TSV file", Map.of("filename", source, "csv-record", loggedRecord), e);
-            throw new RuntimeException(e);
         }
     }
 
@@ -181,7 +188,6 @@ public final class TsvHdl {
             EventData.log(EventData.EXPORT, domain, EventData.Status.INFO, "exported to TSV file", Map.of("filename", path, "counter", counter));
         } catch (Exception e) {
             EventData.log(EventData.EXPORT, domain, EventData.Status.FAILURE, "Entities exported to TSV file", Map.of("filename", path, "entity", loggedEntity), e);
-            throw new RuntimeException(e);
         }
     }
 }

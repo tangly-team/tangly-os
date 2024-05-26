@@ -206,7 +206,7 @@ public class LedgerTsvHdl {
                 String creditAccount = csv.get(ACCOUNT_CREDIT);
                 String[] debitValues = debitAccount.split("-");
                 String[] creditValues = creditAccount.split("-");
-                String amount = csv.get(AMOUNT);
+                BigDecimal amount = TsvHdl.parseBigDecimal(csv, AMOUNT);
                 String dateExpected = csv.get(DATE_EXPECTED);
                 Transaction transaction = null;
                 if (isPartOfSplitTransaction(csv)) {
@@ -215,15 +215,15 @@ public class LedgerTsvHdl {
                     List<AccountEntry> splits = new ArrayList<>();
                     csv = importSplits(records, splits);
                     try {
-                        transaction = new Transaction(LocalDate.parse(date), Strings.emptyToNull(debitValues[0]), Strings.emptyToNull(creditValues[0]),
-                            new BigDecimal(amount), splits, description, reference);
+                        transaction = new Transaction(LocalDate.parse(date), Strings.emptyToNull(debitValues[0]), Strings.emptyToNull(creditValues[0]), amount,
+                            splits, description, reference);
                     } catch (NumberFormatException | DateTimeParseException e) {
-                        logger.atError().withThrowable(e).log("{}: not a legal amount {}", date, amount);
+                        logger.atError().withThrowable(e).log("{}: not a legal amount {}", date, csv.get(AMOUNT));
                     }
                 } else {
                     try {
                         transaction = new Transaction(LocalDate.parse(date), Strings.emptyToNull(debitValues[0]), Strings.emptyToNull(creditValues[0]),
-                            Strings.isNullOrEmpty(amount) ? BigDecimal.ZERO : new BigDecimal(amount), csv.get(DESCRIPTION), csv.get(DOC));
+                            amount, csv.get(DESCRIPTION), csv.get(DOC));
                         defineVat(transaction.creditSplits().getFirst(), csv.get(VAT_CODE));
                     } catch (NumberFormatException e) {
                         logger.atError().withThrowable(e).log("{}: not a legal amount {}", date, amount);

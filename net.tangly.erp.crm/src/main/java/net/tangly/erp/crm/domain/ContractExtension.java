@@ -25,5 +25,5 @@ import java.math.BigDecimal;
  * @param range            date range of the contract extension
  */
 public record ContractExtension(@NotNull String id, @NotNull String name, @NotNull DateRange range, String text, @NotNull String contractId,
-                                @NotNull BigDecimal amountWithoutVat) implements HasId, HasName, HasDateRange, HasText {
+                                @NotNull BigDecimal amountWithoutVat, BigDecimal budgetInHours) implements HasId, HasName, HasDateRange, HasText {
 }
