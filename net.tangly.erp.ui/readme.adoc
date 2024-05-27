@@ -59,6 +59,13 @@ The gradle script compiles, packages, and runs the application with an embedded 
     gradle run
 ----
 
+The application is available at `http://localhost:8080/erp/`.
+
+The REST interfaces are available under `http://localhost:8080/erp/DOMAIN/ENTITY`.
+An example is `http://localhost:8080/erp/customers/natural-enitites`.
+
+The reports are available under `http://localhost:8080/erp/reports/`.
+
 === Run locally as compiled application
 
 You can build and run the generated Java Vaadin application locally. _Run from the project root_.

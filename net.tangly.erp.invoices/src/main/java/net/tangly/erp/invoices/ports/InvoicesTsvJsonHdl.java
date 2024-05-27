@@ -54,11 +54,9 @@ public class InvoicesTsvJsonHdl {
                 TsvProperty.CONVERT_BIG_DECIMAL_FROM.apply(get(obj, "unitPrice")), get(obj, "unit"));
 
         List<TsvProperty<Article, ?>> fields =
-            List.of(TsvProperty.ofString(TsvHdl.ID, Article::id, null), TsvProperty.ofString(NAME, Article::name, null), TsvProperty.ofString(TEXT,
-                    Article::text,
-                    null),
+            List.of(TsvProperty.ofString(TsvHdl.ID, Article::id), TsvProperty.ofString(NAME, Article::name), TsvProperty.ofString(TEXT, Article::text),
                 TsvProperty.ofEnum(ArticleCode.class, "code", Article::code, null), TsvProperty.ofBigDecimal("unitPrice", Article::unitPrice, null),
-                TsvProperty.ofString("unit", Article::unit, null));
+                TsvProperty.ofString("unit", Article::unit));
         return TsvEntity.of(Article.class, fields, imports);
     }
 

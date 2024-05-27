@@ -62,8 +62,10 @@ public final class CrmAdapter implements CrmPort {
         Port.importEntities(folder, ACTIVITIES_TSV, handler::importActivities);
         Port.importEntities(folder, SUBJECTS_TSV, handler::importSubjects);
         Port.importEntities(folder, COMMENTS_TSV, handler::importComments);
-        CrmVcardHdl crmVcardHdl = new CrmVcardHdl(realm());
-        crmVcardHdl.importVCards(folder.resolve(VCARDS_FOLDER));
+
+        var crmEnrichmentHdl = new CrmEnrichmentHdl(realm());
+        crmEnrichmentHdl.importVCards(folder.resolve(VCARDS_FOLDER));
+        crmEnrichmentHdl.importLinkedInPhotos(folder);
     }
 
     @Override

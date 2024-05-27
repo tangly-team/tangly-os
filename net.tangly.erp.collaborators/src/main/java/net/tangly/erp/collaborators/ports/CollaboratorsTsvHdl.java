@@ -51,11 +51,11 @@ public class CollaboratorsTsvHdl {
             new Collaborator(TsvEntity.get(csv, TsvHdl.ID), TsvEntity.get(csv, "oldSocialSecurityNumber"),
             TsvHdlCore.ofDate(csv, "birthday"), TsvEntity.get(csv, "fullname"), TsvEntity.get(csv, "internalId"), TsvHdlCore.ofAddress(csv));
         List<TsvProperty<Collaborator, ?>> fields =
-            List.of(TsvProperty.ofString(TsvHdl.ID, Collaborator::id, null),
-                TsvProperty.ofString("oldSocialSecurityNumber", Collaborator::oldSocialSecurityNumber, null),
+            List.of(TsvProperty.ofString(TsvHdl.ID, Collaborator::id),
+                TsvProperty.ofString("oldSocialSecurityNumber", Collaborator::oldSocialSecurityNumber),
                 TsvProperty.ofDate("birthday", Collaborator::birthday, null),
-                TsvProperty.ofString("fullname", Collaborator::fullname, null),
-                TsvProperty.ofString("internalId", Collaborator::internalId, null),
+                TsvProperty.ofString("fullname", Collaborator::fullname),
+                TsvProperty.ofString("internalId", Collaborator::internalId),
                 TsvProperty.of(TsvHdlCore.createTsvAddress(), Collaborator::address, null));
         return TsvEntity.of(Collaborator.class, fields, of);
     }

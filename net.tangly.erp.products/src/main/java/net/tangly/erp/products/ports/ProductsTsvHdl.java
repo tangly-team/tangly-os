@@ -99,14 +99,18 @@ public class ProductsTsvHdl {
         Function<CSVRecord, WorkContract> imports = (CSVRecord obj) -> new WorkContract(get(obj, ID), get(obj, "mainContractId"),
             parseDate(obj, FROM_DATE), parseDate(obj, TO_DATE), Locale.forLanguageTag(get(obj, LOCALE).toLowerCase()),
             parseInt(obj, "budgetInHours"));
-        List<TsvProperty<WorkContract, ?>> fields = List.of(TsvProperty.ofString(ID, WorkContract::id, null), TsvProperty.ofString("mainContractId", WorkContract::mainContractId,
-            null), TsvProperty.ofDate(FROM_DATE, WorkContract::from, null), TsvProperty.ofDate(TO_DATE, WorkContract::to, null), TsvProperty.ofString(LOCALE,
-            o -> o.locale().getLanguage(), null), TsvProperty.ofInt("budgetInHours", WorkContract::budgetInHours, null));
+        List<TsvProperty<WorkContract, ?>> fields = List.of(TsvProperty.ofString(ID, WorkContract::id), TsvProperty.ofString("mainContractId", WorkContract::mainContractId),
+            TsvProperty.ofDate(FROM_DATE, WorkContract::from, null), TsvProperty.ofDate(TO_DATE, WorkContract::to, null),
+            TsvProperty.ofString(LOCALE, o -> o.locale().getLanguage()), TsvProperty.ofInt("budgetInHours", WorkContract::budgetInHours, null));
         return TsvEntity.of(WorkContract.class, fields, imports);
     }
 
     private TsvEntity<Effort> createTsvEffort() {
-        List<TsvProperty<Effort, ?>> fields = List.of(TsvProperty.of("date", Effort::date, Effort::date, TsvProperty.CONVERT_DATE_FROM), TsvProperty.ofInt("durationInMinutes", Effort::duration, Effort::duration), TsvProperty.ofString(TEXT, Effort::text, Effort::text), TsvProperty.of("assignmentOid", Effort::assignment, Effort::assignment, e -> findAssignmentByOid(e).orElse(null), convertFoidTo()), TsvProperty.ofString("contractId", Effort::contractId, Effort::contractId));
+        List<TsvProperty<Effort, ?>> fields = List.of(TsvProperty.of("date", Effort::date, Effort::date, TsvProperty.CONVERT_DATE_FROM),
+            TsvProperty.ofInt("durationInMinutes", Effort::duration, Effort::duration),
+            TsvProperty.ofString(TEXT, Effort::text, Effort::text),
+            TsvProperty.of("assignmentOid", Effort::assignment, Effort::assignment, e -> findAssignmentByOid(e).orElse(null), convertFoidTo()),
+            TsvProperty.ofString("contractId", Effort::contractId, Effort::contractId));
         return TsvEntity.of(Effort.class, fields, Effort::new);
     }
 }

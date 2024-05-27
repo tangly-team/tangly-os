@@ -47,9 +47,11 @@ public class TsvHdlCore {
     }
 
     public static TsvEntity<BankConnection> createTsvBankConnection() {
-        Function<CSVRecord, BankConnection> imports = (CSVRecord csv) -> BankConnection.of(TsvEntity.get(csv, IBAN), TsvEntity.get(csv, BIC), TsvEntity.get(csv, INSTITUTE));
-        List<TsvProperty<BankConnection, ?>> fields = List.of(TsvProperty.ofString("iban", BankConnection::iban, null), TsvProperty.ofString("bic", BankConnection::bic, null),
-            TsvProperty.ofString(INSTITUTE, BankConnection::institute, null));
+        Function<CSVRecord, BankConnection> imports = (CSVRecord csv) -> BankConnection.of(TsvEntity.get(csv, IBAN),
+            TsvEntity.get(csv, BIC), TsvEntity.get(csv, INSTITUTE));
+        List<TsvProperty<BankConnection, ?>> fields = List.of(TsvProperty.ofString("iban", BankConnection::iban),
+            TsvProperty.ofString("bic", BankConnection::bic),
+            TsvProperty.ofString(INSTITUTE, BankConnection::institute));
         return TsvEntity.of(BankConnection.class, fields, imports);
     }
 

@@ -16,8 +16,8 @@ package net.tangly.erp;
 import com.google.common.jimfs.Configuration;
 import com.google.common.jimfs.Jimfs;
 import net.tangly.erp.crm.ports.CrmAdapter;
+import net.tangly.erp.crm.ports.CrmEnrichmentHdl;
 import net.tangly.erp.crm.ports.CrmEntities;
-import net.tangly.erp.crm.ports.CrmVcardHdl;
 import net.tangly.erp.crm.services.CrmBoundedDomain;
 import org.junit.jupiter.api.Test;
 
@@ -36,7 +36,7 @@ class CrmRealmVcardHdlTest {
             store.createRepository();
             var crmHdl = new CrmAdapter(realm, store.dataRoot().resolve(CrmBoundedDomain.DOMAIN));
             crmHdl.importEntities();
-            var handler = new CrmVcardHdl(crmHdl.realm());
+            var handler = new CrmEnrichmentHdl(crmHdl.realm());
             handler.importVCards(store.dataRoot().resolve(CrmBoundedDomain.DOMAIN, ErpStore.VCARDS));
         }
         assertThat(realm.naturalEntities().items().stream().filter(o -> o.oid() == 6).findAny().orElseThrow().hasPhoto()).isTrue();

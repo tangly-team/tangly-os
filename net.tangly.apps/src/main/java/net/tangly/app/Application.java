@@ -120,6 +120,4 @@ public final class Application {
     public String reports(String domain) {
         return STR."\{getProperty(REPORTS_DIRECTORY_PROPERTY)}/\{domain}";
     }
-
-
 }
