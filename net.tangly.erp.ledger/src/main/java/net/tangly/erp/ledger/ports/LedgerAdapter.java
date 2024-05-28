@@ -111,8 +111,7 @@ public class LedgerAdapter implements LedgerPort {
         AsciiDoctorHelper.createPdf(reportsFolder.resolve(name + AsciiDoctorHelper.ASCIIDOC_EXT), reportsFolder.resolve(name + AsciiDoctorHelper.PDF_EXT), true);
     }
 
-
     public static String journalForYear(int year) {
-        return year + JOURNAL;
+        return STR."\{year}\{JOURNAL}";
     }
 }

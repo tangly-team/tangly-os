@@ -59,10 +59,13 @@ The gradle script compiles, packages, and runs the application with an embedded 
     gradle run
 ----
 
-The application is available at `http://localhost:8080/erp/`.
+The following end points are available:
 
-The REST interfaces are available under `http://localhost:8080/erp/DOMAIN/ENTITY`.
-An example is `http://localhost:8080/erp/customers/natural-enitites`.
+- The application user interface is available at `http://localhost:8080/erp/`.
+- The REST interfaces are available under `http://localhost:8080/erp/DOMAIN/ENTITY`.
+An example is `http://localhost:8080/erp/rest/customers/natural-enitites`.
+- The openAPI description file is available under `http://localhost:8080/rest/openapi.json`.
+- The swagger server is serviced under `http://localhost:8080/rest/swagger`.
 
 The reports are available under `http://localhost:8080/erp/reports/`.
 

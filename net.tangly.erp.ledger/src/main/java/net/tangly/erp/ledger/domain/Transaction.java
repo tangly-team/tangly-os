@@ -15,91 +15,58 @@ package net.tangly.erp.ledger.domain;
 
 import net.tangly.core.HasDate;
 import net.tangly.core.HasText;
+import net.tangly.erp.ledger.services.VatCode;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 /**
- * A simple transaction is a money transfer between a debit and a credit accounts. A split transaction is a money transfer between a debit account and a set of
+ * A simple transaction is a money transfer between a debit and a credit account. A split transaction is a money transfer between a debit account and a set of
  * credit accounts or a credit account and a set of debit accounts. The total debit and the total credit of a transaction must be the same format. The majority
  * of transactions have one debit and one credit account. The class is immutable.
  * <p>A transaction is an event in the ledger domain. The whole sequence of transactions fully describes the state of the ledger and all accounts defined
  * inside.</p>
+ * <p> A transaction can have a VAT code. The code is either on the debit or the credit account. If the transaction is split the VAT code can optionally
+ * be defined on multiple split positions. In this case the debit or credit account should not have a VAT code.</p>
  */
 public class Transaction implements HasDate, HasText {
-    public static class Builder {
-        private LocalDate date;
-        private String reference;
-        private String text;
-        private final List<AccountEntry> splits;
-
-        Builder() {
-            splits = new ArrayList<>();
-        }
-
-        Builder date(LocalDate date) {
-            this.date = date;
-            return this;
-        }
-
-        Builder reference(String reference) {
-            this.reference = reference;
-            return this;
-        }
-
-        Builder text(String text) {
-            this.text = text;
-            return this;
-        }
-
-        Builder debit(String account, BigDecimal amount) {
-            splits.add(new AccountEntry(account, date, amount, reference, true));
-            return this;
-        }
-
-        Builder credit(String account, BigDecimal amount) {
-            splits.add(new AccountEntry(account, date, amount, reference, false));
-            return this;
-        }
-
-        Transaction build() {
-            List<AccountEntry> debits = splits.stream().filter(AccountEntry::isDebit).toList();
-            List<AccountEntry> credits = splits.stream().filter(AccountEntry::isCredit).toList();
-            BigDecimal amount = (debits.size() == 1) ? debits.getFirst().amount() : ((credits.size() == 1) ? credits.getFirst().amount() : BigDecimal.ZERO);
-            return new Transaction(date, text, reference, amount, (debits.size() == 1) ? debits.getFirst() : null, (credits.size() == 1) ? credits.getFirst() : null,
-                (debits.size() > 1) ? debits : ((credits.size() > 1) ? credits : null));
-        }
-    }
-
     private final LocalDate date;
     private final String reference;
     private final String text;
     private final BigDecimal amount;
     private final AccountEntry debit;
     private final AccountEntry credit;
+    private final LocalDate dateExpected;
+    private final boolean synthetic;
     private final List<AccountEntry> splits;
 
     public Transaction(LocalDate date, String debitAccount, String creditAccount, BigDecimal amount, String text, String reference) {
-        this(date, text, reference, amount, new AccountEntry(debitAccount, date, amount, reference, true),
-            new AccountEntry(creditAccount, date, amount, reference, false), null);
+        this(date, text, reference, amount, debitAccount, creditAccount, null, null, null);
     }
 
-    public Transaction(LocalDate date, String debitAccount, String creditAccount, BigDecimal amount, List<AccountEntry> splits, String text, String reference) {
-        this(date, text, reference, amount, (debitAccount != null) ? new AccountEntry(debitAccount, date, amount, reference, true) : null,
-            (creditAccount != null) ? new AccountEntry(creditAccount, date, amount, reference, false) : null, splits);
+    public Transaction(LocalDate date, String debitAccount, String creditAccount, BigDecimal amount, String text, String reference, List<AccountEntry> splits) {
+        this(date, text, reference, amount, debitAccount, creditAccount, null, null, splits);
     }
 
-    protected Transaction(LocalDate date, String text, String reference, BigDecimal amount, AccountEntry debit, AccountEntry credit,
-                          List<AccountEntry> splits) {
+    public Transaction(LocalDate date, String debitAccount, String creditAccount, BigDecimal amount, String text, String reference, VatCode vatCode, LocalDate dateExpected,
+                       List<AccountEntry> splits) {
+        this(date, text, reference, amount, (debitAccount != null) ? new AccountEntry(debitAccount, date, amount, null, null, true, vatCode) : null,
+            (creditAccount != null) ? new AccountEntry(creditAccount, date, amount, null, null, false, vatCode) : null, vatCode, dateExpected, false, splits);
+    }
+
+    protected Transaction(LocalDate date, String text, String reference, BigDecimal amount,
+                          AccountEntry debit, AccountEntry credit, VatCode vatCode, LocalDate dateExpected, boolean synthetic, List<AccountEntry> splits) {
         this.date = date;
         this.text = text;
         this.reference = reference;
         this.amount = amount;
         this.debit = debit;
         this.credit = credit;
+        this.dateExpected = dateExpected;
+        this.synthetic = synthetic;
         this.splits = (splits != null) ? List.copyOf(splits) : Collections.emptyList();
     }
 
@@ -111,8 +78,19 @@ public class Transaction implements HasDate, HasText {
         return new Transaction(LocalDate.parse(date), String.valueOf(debitAccount), String.valueOf(creditAccount), new BigDecimal(amount), text, reference);
     }
 
+    public static Transaction ofSynthetic(LocalDate date, String debitAccount, String creditAccount, BigDecimal amount, String text, String reference,
+                                          VatCode vatCode, LocalDate dateExpected, List<AccountEntry> splits) {
+        return new Transaction(date, text, reference, amount, (debitAccount != null) ? new AccountEntry(debitAccount, date, amount, null, null, true,
+            vatCode) : null, (creditAccount != null) ? new AccountEntry(creditAccount, date, amount, null, null, false, vatCode) : null,
+            vatCode, dateExpected, true, splits);
+    }
+
     public List<AccountEntry> debitSplits() {
         return (debit != null) ? List.of(debit) : splits;
+    }
+
+    public List<AccountEntry> creditSplits() {
+        return (credit != null) ? List.of(credit) : splits;
     }
 
     public AccountEntry debit() {
@@ -123,14 +101,30 @@ public class Transaction implements HasDate, HasText {
         return credit;
     }
 
-    public List<AccountEntry> creditSplits() {
-        return (credit != null) ? List.of(credit) : splits;
+    public LocalDate dateExpected() {
+        return dateExpected;
+    }
+
+    public boolean isSynthetic() {
+        return synthetic;
+    }
+
+    public List<AccountEntry> splits() {
+        return Collections.unmodifiableList(splits);
+    }
+
+    public Optional<VatCode> vatCode() {
+        return (debit != null) ? debit.vatCode() : credit.vatCode();
+    }
+
+    public String vatCodeAsString() {
+        return vatCode().map(VatCode::name).orElse(null);
     }
 
     /**
      * Return an optional reference identifier to an external accounting document describing the transaction.
      *
-     * @return the reference identifier, can be null
+     * @return the reference identifier. It can be null
      */
     public String reference() {
         return reference;
@@ -195,7 +189,7 @@ public class Transaction implements HasDate, HasText {
     @Override
     public String toString() {
         return """
-            Transaction[date=%s, debit=%s, credit=%s, splits=%s, reference=%s, text=%s]
-            """.formatted(date(), debitAccount(), creditAccount(), splits, reference(), text());
+            Transaction[date=%s, debit=%s, credit=%s, splits=%s, reference=%s, text=%s, dateExpected=%s
+            """.formatted(date(), debitAccount(), creditAccount(), splits, reference(), text(), dateExpected());
     }
 }

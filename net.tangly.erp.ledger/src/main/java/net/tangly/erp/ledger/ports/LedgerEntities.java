@@ -81,11 +81,6 @@ public class LedgerEntities implements LedgerRealm {
     }
 
     @Override
-    public void add(@NotNull Transaction transaction) {
-        transactions.update(transaction);
-    }
-
-    @Override
     public void add(@NotNull Account account) {
         accounts.update(account);
 

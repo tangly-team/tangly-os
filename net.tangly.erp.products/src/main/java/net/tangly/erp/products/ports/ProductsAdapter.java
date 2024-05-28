@@ -52,7 +52,6 @@ public class ProductsAdapter implements ProductsPort {
     public static final String PRODUCTS_TSV = "products.tsv";
     public static final String WORK_CONTRACTS_TSV = "work-contracts.tsv";
     public static final String ASSIGNMENTS_TSV = "assignments.tsv";
-    public static final String EFFORTS_TSV = "efforts.tsv";
     public static final String YAML_EXT = ".yaml";
 
     private final ProductsRealm realm;

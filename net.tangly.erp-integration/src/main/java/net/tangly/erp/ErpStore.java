@@ -103,7 +103,6 @@ public record ErpStore(@NotNull FileSystem fs) {
             copy(PRODUCTS_PACKAGE_NAME, productsRoot, ProductsAdapter.PRODUCTS_TSV);
             copy(PRODUCTS_PACKAGE_NAME, productsRoot, ProductsAdapter.WORK_CONTRACTS_TSV);
             copy(PRODUCTS_PACKAGE_NAME, productsRoot, ProductsAdapter.ASSIGNMENTS_TSV);
-            copy(PRODUCTS_PACKAGE_NAME, productsRoot, ProductsAdapter.EFFORTS_TSV);
             copy(STR."\{PRODUCTS_PACKAGE_NAME}2020/", productsRoot.resolve("2020"), "2020-efforts.yaml");
 
             var ledgerRoot = dataRoot().resolve(LEDGER);

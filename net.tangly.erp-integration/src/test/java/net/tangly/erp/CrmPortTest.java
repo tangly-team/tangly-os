@@ -204,6 +204,7 @@ class CrmPortTest {
         entity.seller(findById(realm.legalEntities(), "CHE-357.875.339").orElseThrow());
         entity.sellee(findById(realm.legalEntities(), "FR9201.998269211").orElseThrow());
         entity.amountWithoutVat(BigDecimal.ONE);
+        entity.budgetInHours(BigDecimal.TWO);
         entity.locale(Locale.ENGLISH);
         entity.currency(Currency.getInstance("EUR"));
         return entity;

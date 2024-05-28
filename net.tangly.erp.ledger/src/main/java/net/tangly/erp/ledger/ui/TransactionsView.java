@@ -156,10 +156,12 @@ class TransactionsView extends ItemView<Transaction> {
         Grid<Transaction> grid = grid();
         grid.addColumn(Transaction::date).setKey("date").setHeader("Date").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Transaction::text).setKey("text").setHeader("Text").setAutoWidth(true).setResizable(true).setSortable(true);
+        grid.addColumn(Transaction::isSplit).setKey("split").setHeader("Split").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Transaction::debitAccount).setKey("debit").setHeader("Debit").setAutoWidth(true).setResizable(true);
         grid.addColumn(Transaction::creditAccount).setKey("credit").setHeader("Credit").setAutoWidth(true).setResizable(true);
         grid.addColumn(new NumberRenderer<>(Transaction::amount, VaadinUtils.FORMAT)).setKey("amount").setHeader("Amount").setAutoWidth(true).setResizable(true)
             .setTextAlign(ColumnTextAlign.END);
+        grid.addColumn(Transaction::vatCodeAsString).setKey("vatCode").setHeader("VatCode").setAutoWidth(true).setResizable(true).setSortable(true);
 
         addEntityFilterFields(grid(), new TransactionFilter());
         buildMenu();
@@ -172,6 +174,7 @@ class TransactionsView extends ItemView<Transaction> {
         //addFilterText(headerRow, "date", "Date", filter::date);
         headerRow.getCell(grid.getColumnByKey(EntityView.TEXT)).setComponent(ItemView.createTextFilterField(filter::text));
         headerRow.getCell(grid.getColumnByKey("debit")).setComponent(ItemView.createTextFilterField(filter::debit));
+        headerRow.getCell(grid.getColumnByKey("credit")).setComponent(ItemView.createTextFilterField(filter::credit));
         headerRow.getCell(grid.getColumnByKey("credit")).setComponent(ItemView.createTextFilterField(filter::credit));
         // TODO amount
     }

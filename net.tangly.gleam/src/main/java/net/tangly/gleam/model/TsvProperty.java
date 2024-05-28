@@ -71,11 +71,11 @@ public record TsvProperty<T, U>(List<String> columns, Function<T, U> getter, BiC
     }
 
     public static <T> TsvProperty<T, LocalDate> ofDate(@NotNull String column, Function<T, LocalDate> getter, BiConsumer<T, LocalDate> setter) {
-        return of(column, getter, setter, v -> (v != null) ? LocalDate.parse(v) : null, u -> u);
+        return of(column, getter, setter, v -> (Strings.isNullOrBlank(v)) ? null : LocalDate.parse(v), u -> u);
     }
 
     public static <T> TsvProperty<T, Integer> ofInt(@NotNull String column, Function<T, Integer> getter, BiConsumer<T, Integer> setter) {
-        return of(column, getter, setter, v -> (v == null) ? 0 : Integer.parseInt(v), u -> u);
+        return of(column, getter, setter, v -> (Strings.isNullOrBlank(v)) ? 0 : Integer.parseInt(v), u -> u);
     }
 
     public static <T> TsvProperty<T, Long> ofLong(@NotNull String column, Function<T, Long> getter, BiConsumer<T, Long> setter) {
@@ -83,7 +83,7 @@ public record TsvProperty<T, U>(List<String> columns, Function<T, U> getter, BiC
     }
 
     public static <T> TsvProperty<T, BigDecimal> ofBigDecimal(@NotNull String column, Function<T, BigDecimal> getter, BiConsumer<T, BigDecimal> setter) {
-        return of(column, getter, setter, v -> (v == null) ? BigDecimal.ZERO : new BigDecimal(v), BigDecimal::toPlainString);
+        return of(column, getter, setter, v -> (Strings.isNullOrBlank(v)) ? BigDecimal.ZERO : new BigDecimal(v), BigDecimal::toPlainString);
     }
 
     public static <T, U extends Enum<U>> TsvProperty<T, U> ofEnum(@NotNull Class<U> clazz, @NotNull String column, Function<T, U> getter, BiConsumer<T, U> setter) {

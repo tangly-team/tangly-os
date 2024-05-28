@@ -15,12 +15,14 @@ package net.tangly.erp.ledger.ports;
 
 import net.tangly.commons.lang.Strings;
 import net.tangly.commons.logger.EventData;
+import net.tangly.commons.utilities.DateUtilities;
 import net.tangly.core.Tag;
 import net.tangly.erp.ledger.domain.Account;
 import net.tangly.erp.ledger.domain.AccountEntry;
 import net.tangly.erp.ledger.domain.Transaction;
 import net.tangly.erp.ledger.services.LedgerBoundedDomain;
 import net.tangly.erp.ledger.services.LedgerRealm;
+import net.tangly.erp.ledger.services.VatCode;
 import net.tangly.erp.ports.TsvHdl;
 import org.apache.commons.csv.CSVPrinter;
 import org.apache.commons.csv.CSVRecord;
@@ -165,8 +167,8 @@ public class LedgerTsvHdl {
                     out.println();
                 }
                 ++counter;
-                EventData.log(EventData.EXPORT, LedgerBoundedDomain.DOMAIN, EventData.Status.SUCCESS, STR."\{Account.class.getSimpleName()} exported to charter of accounts",
-                    Map.of(SOURCE, path, "entity", account));
+                EventData.log(EventData.EXPORT, LedgerBoundedDomain.DOMAIN, EventData.Status.SUCCESS,
+                    STR."\{Account.class.getSimpleName()} exported to charter of accounts", Map.of(SOURCE, path, "entity", account));
             }
             EventData.log(EventData.EXPORT, LedgerBoundedDomain.DOMAIN, EventData.Status.INFO, "exported to charter of accounts",
                 Map.of(SOURCE, path, "counter", counter));
@@ -202,54 +204,41 @@ public class LedgerTsvHdl {
             var csv = records.hasNext() ? records.next() : null;
             while (csv != null) {
                 String date = csv.get(DATE);
-                String debitAccount = csv.get(ACCOUNT_DEBIT);
-                String creditAccount = csv.get(ACCOUNT_CREDIT);
-                String[] debitValues = debitAccount.split("-");
-                String[] creditValues = creditAccount.split("-");
+                String[] debitValues = csv.get(ACCOUNT_DEBIT).split("-");
+                String[] creditValues = csv.get(ACCOUNT_CREDIT).split("-");
                 BigDecimal amount = TsvHdl.parseBigDecimal(csv, AMOUNT);
                 String dateExpected = csv.get(DATE_EXPECTED);
-                Transaction transaction = null;
+                String description = csv.get(DESCRIPTION);
+                String reference = csv.get(DOC);
+                String vatCode = csv.get(VAT_CODE);
+                List<AccountEntry> splits = new ArrayList<>();
                 if (isPartOfSplitTransaction(csv)) {
-                    String description = csv.get(DESCRIPTION);
-                    String reference = csv.get(DOC);
-                    List<AccountEntry> splits = new ArrayList<>();
                     csv = importSplits(records, splits);
-                    try {
-                        transaction = new Transaction(LocalDate.parse(date), Strings.emptyToNull(debitValues[0]), Strings.emptyToNull(creditValues[0]), amount,
-                            splits, description, reference);
-                    } catch (NumberFormatException | DateTimeParseException e) {
-                        logger.atError().withThrowable(e).log("{}: not a legal amount {}", date, csv.get(AMOUNT));
-                    }
                 } else {
-                    try {
-                        transaction = new Transaction(LocalDate.parse(date), Strings.emptyToNull(debitValues[0]), Strings.emptyToNull(creditValues[0]),
-                            amount, csv.get(DESCRIPTION), csv.get(DOC));
-                        defineVat(transaction.creditSplits().getFirst(), csv.get(VAT_CODE));
-                    } catch (NumberFormatException e) {
-                        logger.atError().withThrowable(e).log("{}: not a legal amount {}", date, amount);
-                    }
                     csv = records.hasNext() ? records.next() : null;
                 }
-                if (transaction != null) {
+                Transaction transaction = null;
+                try {
+                    transaction = new Transaction(DateUtilities.of(date), Strings.emptyToNull(debitValues[0]), Strings.emptyToNull(creditValues[0]), amount,
+                        description, reference, VatCode.of(vatCode), DateUtilities.of(dateExpected), splits);
                     if (transaction.debitSplits().size() == 1) {
-                        defineSegments(transaction.debitSplits().getFirst(), debitAccount);
+                        defineSegments(transaction.debitSplits().getFirst(), debitValues);
                     }
                     if (transaction.creditSplits().size() == 1) {
-                        defineSegments(transaction.creditSplits().getFirst(), creditAccount);
+                        defineSegments(transaction.creditSplits().getFirst(), creditValues);
                     }
-                    try {
-                        ledger.addVat(transaction);
-                        ++counter;
-                        EventData.log(EventData.IMPORT, LedgerBoundedDomain.DOMAIN, EventData.Status.SUCCESS, STR."\{Transaction.class.getSimpleName()} imported to journal",
-                            Map.of(SOURCE, source, "entity", transaction));
-                    } catch (IllegalArgumentException e) {
-                        EventData.log(EventData.IMPORT, LedgerBoundedDomain.DOMAIN, EventData.Status.FAILURE, "Transaction not imported from",
-                            Map.of(SOURCE, source, "object", transaction), e);
-                    }
+                    ledger.book(transaction);
+                    ++counter;
+                    EventData.log(EventData.IMPORT, LedgerBoundedDomain.DOMAIN, EventData.Status.SUCCESS,
+                        STR."\{Transaction.class.getSimpleName()} imported to journal", Map.of(SOURCE, source, "entity", transaction));
+                } catch (NumberFormatException | DateTimeParseException e) {
+                    logger.atError().withThrowable(e).log("{}: not a legal amount {}", date, amount);
                 }
             }
-            EventData.log(EventData.IMPORT, LedgerBoundedDomain.DOMAIN, EventData.Status.INFO, "imported to journal", Map.of(SOURCE, source, "counter", counter));
-        } catch (IOException e) {
+            EventData.log(EventData.IMPORT, LedgerBoundedDomain.DOMAIN, EventData.Status.INFO, "imported to journal",
+                Map.of(SOURCE, source, "counter", counter));
+        } catch (
+            IOException e) {
             EventData.log(EventData.IMPORT, LedgerBoundedDomain.DOMAIN, EventData.Status.FAILURE, "Transactions imported from", Map.of(SOURCE, source), e);
             throw new UncheckedIOException(e);
         }
@@ -259,35 +248,30 @@ public class LedgerTsvHdl {
      * Exports the transactions with a date in the given time interval.
      *
      * @param path path to the file containing the list of transactions
-     * @param from start of the time interval of relevant transactions
-     * @param to   end of the time interval of relevant transactions
+     * @param from start of the time interval for the relevant transactions
+     * @param to   end of the time interval for the relevant transactions
      */
     public void exportJournal(@NotNull Path path, LocalDate from, LocalDate to) {
         try (CSVPrinter out = new CSVPrinter(Files.newBufferedWriter(path, StandardCharsets.UTF_8), TsvHdl.FORMAT)) {
             out.printRecord(DATE, DOC, DESCRIPTION, ACCOUNT_DEBIT, ACCOUNT_CREDIT, AMOUNT, VAT_CODE, DATE_EXPECTED);
             int counter = 0;
             for (Transaction transaction : ledger.transactions(from, to)) {
-                Optional<Tag> vat = transaction.creditSplits().getFirst().findBy(AccountEntry.FINANCE, AccountEntry.VAT_FLAG);
-                out.printRecord(transaction.date(), transaction.reference(), transaction.text(), accountCompositeId(transaction.debit()),
-                    accountCompositeId(transaction.credit()), transaction.amount(), vat.map(Tag::value).orElse(null), null);
-                if (transaction.isSplit()) {
-                    if (transaction.debitAccount() == null) {
+                if (!transaction.isSynthetic()) {
+                    out.printRecord(transaction.date(), transaction.reference(), transaction.text(), accountCompositeId(transaction.debit()),
+                        accountCompositeId(transaction.credit()), transaction.amount(), transaction.vatCodeAsString(), transaction.dateExpected());
+                    if (transaction.isSplit()) {
                         for (AccountEntry entry : transaction.debitSplits()) {
-                            vat = entry.findBy(AccountEntry.FINANCE, AccountEntry.VAT_FLAG);
-                            out.printRecord(entry.date(), transaction.reference(), entry.text(), accountCompositeId(entry), null, entry.amount(),
-                                vat.map(Tag::value).orElse(null), null);
-                        }
-                    } else if (transaction.creditAccount() == null) {
-                        for (AccountEntry entry : transaction.creditSplits()) {
-                            vat = entry.findBy(AccountEntry.FINANCE, AccountEntry.VAT_FLAG);
-                            out.printRecord(entry.date(), transaction.reference(), entry.text(), null, accountCompositeId(entry), entry.amount(),
-                                vat.map(Tag::value).orElse(null), null);
+                            out.printRecord(entry.date(), entry.reference(), entry.text(),
+                                entry.isDebit() ? accountCompositeId(entry) : null,
+                                entry.isCredit() ? accountCompositeId(entry) : null,
+                                entry.amount(), entry.vatCodeAsString(), null);
                         }
                     }
+                    ++counter;
+                    EventData.log(EventData.EXPORT, LedgerBoundedDomain.DOMAIN, EventData.Status.INFO, "exported from journal",
+                        Map.of(SOURCE, path, "counter", counter));
                 }
-                ++counter;
             }
-            EventData.log(EventData.EXPORT, LedgerBoundedDomain.DOMAIN, EventData.Status.INFO, "exported from journal", Map.of(SOURCE, path, "counter", counter));
         } catch (IOException e) {
             throw new UncheckedIOException(e);
         }
@@ -296,21 +280,17 @@ public class LedgerTsvHdl {
     private static CSVRecord importSplits(@NotNull Iterator<CSVRecord> records, List<AccountEntry> splits) {
         var csv = records.hasNext() ? records.next() : null;
         while (isPartOfSplitTransaction(csv)) {
-            String debitAccount = csv.get(ACCOUNT_DEBIT);
-            String creditAccount = csv.get(ACCOUNT_CREDIT);
-            AccountEntry entry = null;
-            if (!Strings.isNullOrEmpty(debitAccount)) {
-                String[] debitValues = debitAccount.split("-");
-                entry = AccountEntry.debit(debitValues[0], csv.get(DATE), csv.get(AMOUNT), csv.get(DESCRIPTION));
-                defineSegments(entry, debitAccount);
-                defineVat(entry, csv.get(VAT_CODE));
-            } else if (!Strings.isNullOrEmpty(creditAccount)) {
-                String[] creditValues = creditAccount.split("-");
-                entry = AccountEntry.credit(creditValues[0], csv.get(DATE), csv.get(AMOUNT), csv.get(DESCRIPTION));
-                defineSegments(entry, creditAccount);
-                defineVat(entry, csv.get(VAT_CODE));
+            if (!Strings.isNullOrBlank(csv.get(ACCOUNT_DEBIT))) {
+                var values = csv.get(ACCOUNT_DEBIT).split("-");
+                var entry = AccountEntry.debit(values[0], csv.get(DATE), csv.get(AMOUNT), csv.get(DOC), csv.get(DESCRIPTION), VatCode.of(csv.get(VAT_CODE)));
+                defineSegments(entry, values);
+                splits.add(entry);
+            } else if (!Strings.isNullOrBlank(csv.get(ACCOUNT_CREDIT))) {
+                var values = csv.get(ACCOUNT_CREDIT).split("-");
+                var entry = AccountEntry.credit(values[0], csv.get(DATE), csv.get(AMOUNT), csv.get(DOC), csv.get(DESCRIPTION), VatCode.of(csv.get(VAT_CODE)));
+                defineSegments(entry, values);
+                splits.add(entry);
             }
-            splits.add(entry);
             csv = records.hasNext() ? records.next() : null;
         }
         return csv;
@@ -323,45 +303,16 @@ public class LedgerTsvHdl {
      * @return flag indicating if hte record is relevant for the ledger plan or not
      */
     private static boolean isRecordPlanRelevant(String description, String accountId, String groupId) {
-        return !Strings.isNullOrEmpty(description) &&
-            ((!Strings.isNullOrEmpty(accountId) && !accountId.startsWith(":")) || (!Strings.isNullOrEmpty(groupId) && !groupId.equalsIgnoreCase("0")));
+        return !Strings.isNullOrEmpty(description) && ((!Strings.isNullOrEmpty(accountId) && !accountId.startsWith(":")) || (!Strings.isNullOrEmpty(
+            groupId) && !groupId.equalsIgnoreCase("0")));
     }
 
-    // potential strategy pattern
-    private static final String F1 = "F1";
-    private static final String F3 = "F3";
-    private static final BigDecimal VAT_F1_VALUE = new BigDecimal("0.08");
-    private static final BigDecimal VAT_F3_VALUE = new BigDecimal("0.077");
-    private static final BigDecimal VAT_F1_DUE_VALUE = new BigDecimal("0.061");
-    private static final BigDecimal VAT_F3_DUE_VALUE = new BigDecimal("0.065");
-
-    private static void defineVat(@NotNull AccountEntry entry, String code) {
-        if (!Strings.isNullOrEmpty(code)) {
-            switch (code) {
-                case F1 -> {
-                    entry.add(Tag.of(AccountEntry.FINANCE, AccountEntry.VAT, VAT_F1_VALUE.toString()));
-                    entry.add(Tag.of(AccountEntry.FINANCE, AccountEntry.VAT_DUE, VAT_F1_DUE_VALUE.toString()));
-                    entry.add(Tag.of(AccountEntry.FINANCE, AccountEntry.VAT_FLAG, F1));
-                }
-                case F3 -> {
-                    entry.add(Tag.of(AccountEntry.FINANCE, AccountEntry.VAT, VAT_F3_VALUE.toString()));
-                    entry.add(Tag.of(AccountEntry.FINANCE, AccountEntry.VAT_DUE, VAT_F3_DUE_VALUE.toString()));
-                    entry.add(Tag.of(AccountEntry.FINANCE, AccountEntry.VAT_FLAG, F3));
-                }
-                default -> logger.info("Unknown VAT code in CSV file {}", code);
-            }
+    private static void defineSegments(@NotNull AccountEntry entry, String[] values) {
+        if (values.length > 1) {
+            entry.add(new Tag(AccountEntry.FINANCE, AccountEntry.PROJECT, values[1]));
         }
-    }
-
-    private static void defineSegments(@NotNull AccountEntry entry, String code) {
-        if (!Strings.isNullOrEmpty(code)) {
-            var values = code.split("-");
-            if (values.length > 1) {
-                entry.add(new Tag(AccountEntry.FINANCE, AccountEntry.PROJECT, values[1]));
-            }
-            if (values.length > 2) {
-                entry.add(new Tag(AccountEntry.FINANCE, AccountEntry.SEGMENT, values[2]));
-            }
+        if (values.length > 2) {
+            entry.add(new Tag(AccountEntry.FINANCE, AccountEntry.SEGMENT, values[2]));
         }
     }
 

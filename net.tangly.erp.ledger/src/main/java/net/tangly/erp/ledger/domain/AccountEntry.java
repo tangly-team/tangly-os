@@ -15,6 +15,7 @@ package net.tangly.erp.ledger.domain;
 
 import net.tangly.core.HasTags;
 import net.tangly.core.Tag;
+import net.tangly.erp.ledger.services.VatCode;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
@@ -27,9 +28,6 @@ import java.util.*;
  */
 public class AccountEntry implements HasTags {
     public static final String FINANCE = "fin";
-    public static final String VAT = "vat";
-    public static final String VAT_DUE = "vat-due";
-    public static final String VAT_FLAG = "flag";
     public static final String PROJECT = "project";
     public static final String SEGMENT = "segment";
     public static final String DATE_EXPECTED = "date-expected";
@@ -49,6 +47,8 @@ public class AccountEntry implements HasTags {
      */
     private final BigDecimal amount;
 
+    private final String reference;
+
     /**
      * Text describing the entry, often a reference to a document such as an invoice.
      */
@@ -59,32 +59,38 @@ public class AccountEntry implements HasTags {
      */
     private final boolean debit;
 
+    private final VatCode vatCode;
+
     private final Set<Tag> tags;
 
-    public AccountEntry(@NotNull String accountId, @NotNull LocalDate date, @NotNull BigDecimal amount, String text, boolean debit) {
+    public AccountEntry(@NotNull String accountId, @NotNull LocalDate date, @NotNull BigDecimal amount, String reference, String text, boolean debit,
+                        VatCode vatCode, Collection<Tag> tags) {
         this.accountId = accountId;
         this.date = date;
         this.amount = amount;
+        this.reference = reference;
         this.text = text;
         this.debit = debit;
+        this.vatCode = vatCode;
         this.tags = new HashSet<>();
-    }
-
-    public AccountEntry(String accountId, LocalDate date, BigDecimal amount, String text, boolean debit, Collection<Tag> tags) {
-        this(accountId, date, amount, text, debit);
         this.tags.addAll(tags);
     }
 
-    @NotNull
-    @Contract("_, _, _, _ -> new")
-    public static AccountEntry credit(String account, String date, String amount, String text) {
-        return new AccountEntry(account, LocalDate.parse(date), new BigDecimal(amount), text, false);
+    public AccountEntry(@NotNull String accountId, @NotNull LocalDate date, @NotNull BigDecimal amount, String reference, String text, boolean debit,
+                        VatCode vatCode) {
+        this(accountId, date, amount, reference, text, debit, vatCode, Collections.emptyList());
     }
 
     @NotNull
     @Contract("_, _, _, _ -> new")
-    public static AccountEntry debit(String account, String date, String amount, String text) {
-        return new AccountEntry(account, LocalDate.parse(date), new BigDecimal(amount), text, true);
+    public static AccountEntry credit(String account, String date, String amount, String reference, String text, VatCode vatCode) {
+        return new AccountEntry(account, LocalDate.parse(date), new BigDecimal(amount), reference, text, false, vatCode);
+    }
+
+    @NotNull
+    @Contract("_, _, _, _ -> new")
+    public static AccountEntry debit(String account, String date, String amount, String reference, String text, VatCode vatCode) {
+        return new AccountEntry(account, LocalDate.parse(date), new BigDecimal(amount), reference, text, true, vatCode);
     }
 
     public String accountId() {
@@ -99,6 +105,10 @@ public class AccountEntry implements HasTags {
         return amount;
     }
 
+    public String reference() {
+        return reference;
+    }
+
     public String text() {
         return text;
     }
@@ -109,6 +119,14 @@ public class AccountEntry implements HasTags {
 
     public boolean isCredit() {
         return !isDebit();
+    }
+
+    public Optional<VatCode> vatCode() {
+        return Optional.ofNullable(vatCode);
+    }
+
+    public String vatCodeAsString() {
+        return vatCode != null ? vatCode.name() : "";
     }
 
     // region HasTags Entity
@@ -149,10 +167,10 @@ public class AccountEntry implements HasTags {
     }
 
     public Optional<BigDecimal> getVat() {
-        return findBy(FINANCE, VAT).map(tag1 -> new BigDecimal(tag1.value()));
+        return vatCode().map(VatCode::vatRate);
     }
 
     public Optional<BigDecimal> getVatDue() {
-        return findBy(FINANCE, VAT_DUE).map(tag1 -> new BigDecimal(tag1.value()));
+        return vatCode().map(VatCode::vatDueRate);
     }
 }

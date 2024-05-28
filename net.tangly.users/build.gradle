@@ -11,22 +11,21 @@
  *
  */
 
-package net.tangly.commons.utilities;
+plugins {
+    id 'java-common-conventions'
+}
 
-import net.tangly.commons.lang.Strings;
-import org.jetbrains.annotations.NotNull;
+project.ext.groupId = 'net.tangly'
+project.ext.artifactId = 'users'
+project.version = "${projectVersion}"
+project.ext.moduleName = "${project.ext.groupId}.${project.ext.artifactId}"
+project.ext.inceptionYear = '1996'
+project.description = "Bounded Domain Application Users (tangly llc)"
 
-import java.time.LocalDate;
+java {
+    modularity.inferModulePath.set(true)
+}
 
-public final class DateUtilities {
-    private DateUtilities() {
-    }
-
-    public static boolean isWithinRange(@NotNull LocalDate date, LocalDate from, LocalDate to) {
-        return ((from == null) || !date.isBefore(from)) && ((to == null) || !date.isAfter(to));
-    }
-
-    public static LocalDate of(String date) {
-        return Strings.isNullOrBlank(date) ? null : LocalDate.parse(date);
-    }
+dependencies {
+    implementation project(':net.tangly.commons')
 }

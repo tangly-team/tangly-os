@@ -26,7 +26,9 @@ import org.jetbrains.annotations.NotNull;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.LocalDate;
+import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -34,6 +36,8 @@ import java.util.Optional;
  * VAT related accounts.
  */
 public interface LedgerRealm extends Realm {
+    String VAT_FLAT_RATE = "VAT flat rate";
+    String VAT_ACCOUNT = "2201";
     Logger logger = LogManager.getLogger();
 
     Provider<Account> accounts();
@@ -72,32 +76,42 @@ public interface LedgerRealm extends Realm {
 
     void add(@NotNull Account account);
 
-    void add(@NotNull Transaction transaction);
+    default void book(@NotNull Transaction transaction) {
+        bookTransaction(transaction);
+        Transaction vatSyntheticTransaction = computeVat(transaction);
+        if (vatSyntheticTransaction != null) {
+            bookTransaction(vatSyntheticTransaction);
+        }
+    }
 
     /**
-     * Adds a transaction to the ledger and the referenced accounts. A warning message is written to the log file if one of the involved accounts is not registered in the ledger.
-     * The involved accounts cannot be aggregate accounts.
+     * Create synthetic transactions to deduct the VAT due amount and transfer it to the VAT account.
      *
-     * @param transaction transaction to add to the ledger
+     * @param transaction transaction which VAT amount shall be computed and transferred to the VAT account.
+     * @return the transaction with the VAT entries
      */
-    default void addVat(@NotNull Transaction transaction) {
-        Transaction booked = transaction;
-        if (transaction.creditSplits().isEmpty() || transaction.debitSplits().isEmpty()) {
-            logger.atError().log("Transaction {} is not balanced", transaction);
-            throw new IllegalArgumentException("Transaction is not balanced");
+    default Transaction computeVat(@NotNull Transaction transaction) {
+        Transaction vatSyntheticTransaction = null;
+        var vatCode = transaction.vatCode().orElse(null);
+        if (!transaction.isSplit() && Objects.nonNull(vatCode)) {
+            // non-split transaction with VAT code defined is processed to compute the VAT amount to be transferred to the VAT account
+            BigDecimal vatDue = transaction.amount().multiply(vatCode.vatDueRate());
+            vatSyntheticTransaction = Transaction.ofSynthetic(transaction.date(), transaction.creditAccount(), VAT_ACCOUNT, vatDue, VAT_FLAT_RATE,
+                transaction.reference(), vatCode, null, Collections.emptyList());
+        } else if (transaction.isSplit() && transaction.splits().stream().anyMatch(o -> o.vatCode().isPresent())) {
+            // split transaction with VAT code defined in at least one split is processed to compute the VAT amount to be transferred to the VAT account
+            var splits = transaction.splits().stream().map(o ->
+                {
+                    BigDecimal vatDueRate = o.vatCode().isPresent() ? o.vatCode().get().vatDueRate() : BigDecimal.ZERO;
+                    return new AccountEntry(VAT_ACCOUNT, o.date(), o.amount().multiply(vatDueRate), o.reference(), VAT_FLAT_RATE, false, o.vatCode().orElse(null));
+                })
+                .toList();
+            BigDecimal totalVatDue = splits.stream().map(AccountEntry::amount).reduce(BigDecimal::add).orElse(BigDecimal.ZERO);
+            vatSyntheticTransaction = Transaction.ofSynthetic(transaction.date(), transaction.splits().getFirst().accountId(), null, totalVatDue, VAT_FLAT_RATE,
+                transaction.reference(), vatCode, null, splits);
+
         }
-        // handle VAT for credit entries in a non split-transaction, the payment is split between amount for the company, and due vat to government
-        Optional<BigDecimal> vatDuePercent = transaction.creditSplits().getFirst().getVatDue();
-        if (!transaction.isSplit() && vatDuePercent.isPresent()) {
-            AccountEntry credit = transaction.creditSplits().getFirst();
-            BigDecimal vatDue = credit.amount().multiply(vatDuePercent.get());
-            List<AccountEntry> splits = List.of(new AccountEntry(credit.accountId(), credit.date(), credit.amount().subtract(vatDue), credit.text(), false, credit.tags()),
-                new AccountEntry("2201", credit.date(), vatDue, null, false));
-            booked = new Transaction(transaction.date(), transaction.debitAccount(), null, transaction.amount(), splits, transaction.text(), transaction.reference());
-        }
-        booked.debitSplits().forEach(this::bookEntry);
-        booked.creditSplits().forEach(this::bookEntry);
-        add(booked);
+        return vatSyntheticTransaction;
     }
 
     /**
@@ -112,31 +126,44 @@ public interface LedgerRealm extends Realm {
 
     private void bookEntry(@NotNull AccountEntry entry) {
         Optional<Account> account = accountBy(entry.accountId());
-        account.ifPresent(o -> o.addEntry(entry));
+        account.ifPresent(o -> {
+            o.addEntry(entry);
+            accounts().update(o);
+        });
+
         if (account.isEmpty()) {
             logger.atError().log("account {} for entry with amount {} booked {} is undefined", entry.accountId(), entry.amount(), entry.date());
         }
     }
 
-    // region VAT-computations
+// region VAT-computations
 
     default BigDecimal computeVatSales(LocalDate from, LocalDate to) {
-        return transactions(from, to).stream().flatMap(o -> o.creditSplits().stream()).filter(o -> o.findBy(AccountEntry.FINANCE, AccountEntry.VAT).isPresent())
+        return transactions(from, to).stream().flatMap(o -> o.creditSplits().stream()).filter(o -> o.vatCode() != null)
             .map(AccountEntry::amount).reduce(BigDecimal::add).orElse(BigDecimal.ZERO);
     }
 
     default BigDecimal computeVat(LocalDate from, LocalDate to) {
         return transactions(from, to).stream().flatMap(o -> o.creditSplits().stream()).map(o -> {
             Optional<BigDecimal> vat = o.getVat();
-            return vat.map(bigDecimal -> o.amount().subtract(o.amount().divide(BigDecimal.ONE.add(bigDecimal), 2, RoundingMode.HALF_UP))).orElse(BigDecimal.ZERO);
+            return vat.map(bigDecimal -> o.amount().subtract(o.amount().divide(BigDecimal.ONE.add(bigDecimal), 2, RoundingMode.HALF_UP))).orElse(
+                BigDecimal.ZERO);
         }).reduce(BigDecimal::add).orElse(BigDecimal.ZERO);
     }
 
     default BigDecimal computeDueVat(LocalDate from, LocalDate to) {
         Optional<Account> account = accountBy("2201");
-        return account.map(value -> value.getEntriesFor(from, to).stream().filter(AccountEntry::isCredit).map(AccountEntry::amount).reduce(BigDecimal::add).orElse(BigDecimal.ZERO))
+        return account.map(
+                value -> value.getEntriesFor(from, to).stream().filter(AccountEntry::isCredit).map(AccountEntry::amount).reduce(BigDecimal::add).orElse(
+                    BigDecimal.ZERO))
             .orElse(BigDecimal.ZERO);
     }
 
-    // endregion
+    private void bookTransaction(Transaction transaction) {
+        transactions().update(transaction);
+        transaction.creditSplits().forEach(this::bookEntry);
+        transaction.debitSplits().forEach(this::bookEntry);
+    }
+
+// endregion
 }
