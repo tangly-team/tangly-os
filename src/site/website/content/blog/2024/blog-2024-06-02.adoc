@@ -259,7 +259,7 @@ private:
 };
 ----
 
-==== Implementating Actors
+==== Implementing Actors
 
 The processing logic for an actor has the following form.
 The actions and guards should only have one parameter to pass the message being processed.

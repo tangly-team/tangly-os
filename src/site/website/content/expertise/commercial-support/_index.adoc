@@ -11,7 +11,30 @@ Onsite coaching is limited to the German part of Switzerland.
 
 mailto:info@tangly.net[Contact us, Commercial support] for inquiries on commercial support for tangly OS components, Modern Java, DevOps and Vaadin.
 
-*Contact Information*
+== Team
+
+[cols="2,5,1",options="header"]
+|===
+^| Who
+^| Capabilities
+^| LinkedIn
+|Marcel Baumann
+|Java Developer and Architect, Agile Catalyst and Scrum Master, DevOps Engineer
+|
++++
+<a class="libutton" href="https://www.linkedin.com/comm/mynetwork/discovery-see-all?usecase=PEOPLE_FOLLOWS&followMember=marcelbaumann" target="_blank">Follow on LinkedIn</a>
++++
+|Alexandra Junghans
+|Java Developer and Architect, Agile Coach, Scrum Master and Facilitator
+|
++++
+</style>
+<a class="libutton" href="https://www.linkedin.com/comm/mynetwork/discovery-see-all?usecase=PEOPLE_FOLLOWS&followMember=junghana" target="_blank">Follow on LinkedIn</a>
++++
+
+|===
+
+== Contact Information
 
 [%noheader,frame=none,grid=none,width=75%,cols="1,4"]
 |===

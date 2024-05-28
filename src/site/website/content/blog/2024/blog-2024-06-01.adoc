@@ -7,9 +7,25 @@ tags: ["agile"]
 
 include::../fragments/_config-mb-blog.adoc[]
 
+[.float-group]
+--
 image::2024-06-01-head.jpg[width=420,height=360,role=left]
 
-== Daily Scrum
+The daily Scrum meeting is a key event for the development team.
+
+It is a time-boxed event of maximum 15 minutes.
+
+The developers find out if the Sprint Goal is still achievable and what are the identified impediments to be tackled.
+
+Often the collaborators use the meeting to synchronize their work and to plan the day.
+
+It is a great opportunity to ask questions and to learn from each other.
+
+And by no means it is a status meeting for the Scrum Master or the Product Owner.
+This meeting belongs to the developers.
+--
+
+== Official Definition
 
 The official definition of the Daily Scrum as stated in the {ref-scrumguide} is:
 
@@ -47,6 +63,12 @@ A great Scrum master shall make her teams aware of the true goal of a daily Scru
 cite:[things-every-scrum-practitioner-should-know,scrum-pocket-guide-3rd,great-scrum-master,zombie-scrum-survival-guide,mastering-professional-scrum].
 
 Avoid doing Scrum, ask yourself how to be agile and continuously improve.
+
+I have teams holding the daily Scrum in front of the Sprint board.
+I have teams holding the daily Scrum asynchronously through a Slack channel.
+Both approaches work well for the respective teams.
+
+Most teams are astonished to hear that you can change the Sprint Backlog during the Sprint if it increases the odds to achieve the Sprint Goal.
 
 Motivate your collaborators to read the {ref-scrumguide}.
 Support continuous formation.
