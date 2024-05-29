@@ -33,6 +33,7 @@ public class Organization implements HasId {
         socialInsurances = new ArrayList<>();
         insurances = new ArrayList<>();
     }
+
     private final List<Contract> contracts;
 
     @Override
@@ -72,9 +73,12 @@ public class Organization implements HasId {
         return null;
     }
 
-    record PensionFundDeductions(Year year, BigDecimal employeeDeductions, BigDecimal employerDeductions) {}
+    record PensionFundDeductions(Year year, BigDecimal employeeDeductions, BigDecimal employerDeductions) {
+    }
 
-    record AccidentInsuranceDeductions(Year year, BigDecimal professionalAccidentDeductions, BigDecimal nonProfessionalAccidentDeductions) {}
+    record AccidentInsuranceDeductions(Year year, BigDecimal professionalAccidentDeductions, BigDecimal nonProfessionalAccidentDeductions) {
+    }
 
-    record SocialInsuranceDeductions(Year year, BigDecimal employeeDeductions, BigDecimal employerDeductions) {}
+    record SocialInsuranceDeductions(Year year, BigDecimal employeeDeductions, BigDecimal employerDeductions) {
+    }
 }

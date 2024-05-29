@@ -45,7 +45,7 @@ public final class TsvHdl {
             .setIgnoreHeaderCase(true).setIgnoreEmptyLines(true).build();
 
     public static final String OID = HasOid.OID;
-    public static final String ID = HasId.ID;
+    public static final String ID = HasMutableId.ID;
     public static final String CODE = "code";
     public static final String GENDER = "gender";
 
@@ -125,11 +125,11 @@ public final class TsvHdl {
         exports(domain, path, tsvEntity, relations, lambda);
     }
 
-    public static <T extends HasComments & HasOid> void addComments(Provider<T> provider, List<TsvRelation<Comment>> comments) {
+    public static <T extends HasMutableComments & HasOid> void addComments(Provider<T> provider, List<TsvRelation<Comment>> comments) {
         provider.items().forEach(e -> TsvHdl.addComments(provider, e, comments));
     }
 
-    public static <T extends HasComments & HasOid> void addComments(Provider<T> provider, T entity, List<TsvRelation<Comment>> comments) {
+    public static <T extends HasMutableComments & HasOid> void addComments(Provider<T> provider, T entity, List<TsvRelation<Comment>> comments) {
         var items = comments.stream().filter(o -> o.ownerId() == entity.oid()).map(TsvRelation::ownedEntity).toList();
         if (!items.isEmpty()) {
             entity.addComments(items);
@@ -137,7 +137,7 @@ public final class TsvHdl {
         }
     }
 
-    public static <T extends HasTags> TsvProperty<T, String> tagProperty(String tagName) {
+    public static <T extends HasMutableTags> TsvProperty<T, String> tagProperty(String tagName) {
         return TsvProperty.ofString(tagName, e -> e.value(tagName).orElse(null), (e, p) -> {
             if (p != null) {
                 e.update(tagName, p);

@@ -21,17 +21,18 @@ import java.util.function.Predicate;
 /**
  * Mixin indicating the class has the capability to have a date.
  */
-public interface HasDate {
-    record IntervalFilter<T extends HasDate>(LocalDate from, LocalDate to) implements Predicate<T> {
+public interface HasMutableDate extends HasDate{
+    record IntervalFilter<T extends HasMutableDate>(LocalDate from, LocalDate to) implements Predicate<T> {
         public boolean test(@NotNull T entity) {
             return (from == null || !from.isAfter(entity.date())) && (to == null || !to.isBefore(entity.date()));
         }
     }
 
     /**
-     * Return the date of entity.
+     * Set the new date of the entity.
      *
-     * @return the date of the entity
+     * @param date new date of the entity
+     * @see #date()
      */
-    LocalDate date();
+    void date(LocalDate date);
 }

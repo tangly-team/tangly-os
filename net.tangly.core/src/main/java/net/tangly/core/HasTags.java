@@ -21,79 +21,15 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 /**
- * The interface defines a mixin and abstracts an entity with tags.
+ * The interface defines a mixin and abstracts an entity with readable tags.
  */
 public interface HasTags {
     /**
      * Return the collection of tags for the entity.
      *
      * @return collection of tags
-     * @see #tags(Collection)
      */
     Collection<Tag> tags();
-
-    /**
-     * Set the new collection of tags for the entity.
-     *
-     * @param tags new collection of tags
-     * @see #tags()
-     */
-    void tags(@NotNull Collection<Tag> tags);
-
-    /**
-     * Remove the tag from the collection of tags.
-     *
-     * @param tag tag to remove
-     * @return {@code true} if this collection contained the specified element
-     * @see #add(Tag)
-     */
-    boolean remove(@NotNull Tag tag);
-
-    /**
-     * Add the tag to the collection of tags.
-     *
-     * @param tag tag to be added
-     * @return {@code true} if this collection did not already contain the specified element
-     * @see #remove(Tag)
-     */
-    boolean add(@NotNull Tag tag);
-
-    void clear();
-
-    default void addTags(@NotNull Iterable<Tag> tags) {
-        tags.forEach(this::add);
-    }
-
-    /**
-     * Replace or insert the given tag. Tag equivalence is detected with optional namespace and tag name.
-     *
-     * @param tag tag to replace or insert
-     */
-    default boolean update(@NotNull Tag tag) {
-        Objects.requireNonNull(tag);
-        findBy(tag.namespace(), tag.name()).ifPresent(this::remove);
-        return add(tag);
-    }
-
-    /**
-     * Replace or inserts the given tag. Tag equivalence is detected with optional namespace and tag name.
-     *
-     * @param tag   tag to replace or insert
-     * @param value optional value of the tag
-     */
-    default void update(@NotNull String tag, String value) {
-        Objects.requireNonNull(tag);
-        update(Tag.of(tag, value));
-    }
-
-    /**
-     * Remove the tag with the given tag identification containing optional namespace and tag name.
-     *
-     * @param tag tag identification of the tag to be removed
-     */
-    default void removeTagNamed(@NotNull String tag) {
-        findBy(tag).ifPresent(this::remove);
-    }
 
     /**
      * Find the tag with the given tag identification containing optional namespace and tag name.
@@ -151,23 +87,8 @@ public interface HasTags {
      * Return the collection of tags as a canonical string representation.
      *
      * @return text representation of the tag collection
-     * @see HasTags#rawTags(String)
      */
     default String rawTags() {
         return Tag.text(tags());
-    }
-
-    /**
-     * Set the tags using the canonical string representation.
-     *
-     * @param rawTags canonical representation of the tag collection
-     * @see HasTags#rawTags()
-     */
-    default void rawTags(String rawTags) {
-        Tag.toTags(rawTags).forEach(this::update);
-    }
-
-    static <T extends HasTags> Collection<T> collect(@NotNull Collection<T> items, @NotNull String tag) {
-        return items.stream().filter(o -> o.containsTag(tag)).toList();
     }
 }

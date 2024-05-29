@@ -13,25 +13,32 @@
 
 package net.tangly.core;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.time.LocalDate;
-import java.util.function.Predicate;
 
 /**
- * Mixin indicating the class has the capability to have a date.
+ * Define a mixin with an absolute time range. The time range can be open on one or both sides.
  */
-public interface HasDate {
-    record IntervalFilter<T extends HasDate>(LocalDate from, LocalDate to) implements Predicate<T> {
-        public boolean test(@NotNull T entity) {
-            return (from == null || !from.isAfter(entity.date())) && (to == null || !to.isBefore(entity.date()));
-        }
+public interface HasMutableDateRange extends HasDateRange {
+    void range(DateRange range);
+
+
+    /**
+     * Set a new start to the date range.
+     *
+     * @param from new start date.
+     * @see #from()
+     */
+    default void from(LocalDate from) {
+        range(range().from(from));
     }
 
     /**
-     * Return the date of entity.
+     * Set a new end to the date range.
      *
-     * @return the date of the entity
+     * @param to new start date.
+     * @see #to()
      */
-    LocalDate date();
+    default void to(LocalDate to) {
+        range(range().to(to));
+    }
 }

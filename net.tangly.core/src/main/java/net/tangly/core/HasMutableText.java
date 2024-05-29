@@ -13,16 +13,12 @@
 
 package net.tangly.core;
 
-public interface HasText {
+public interface HasMutableText extends HasText {
     /**
-     * String representation of the property associated with the mixin.
-     */
-    String TEXT = "text";
-
-    /**
-     * Return the human-readable text description of the instance.
+     * Set the text description of the entity.
      *
-     * @return human-readable text description of the instance
+     * @param text human readable text description
+     * @see #text()
      */
-    String text();
+    void text(String text);
 }

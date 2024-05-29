@@ -39,12 +39,12 @@ public abstract class EntityForm<T extends Entity, V extends EntityView<T>> exte
         super(parent);
         this.supplier = supplier;
         entity = new EntityField<>();
-        if (HasComments.class.isAssignableFrom(entityClass())) {
+        if (HasMutableComments.class.isAssignableFrom(entityClass())) {
             comments = new One2ManyOwnedField<>(new CommentsView(parent.domain(), parent.mode()));
         } else {
             comments = null;
         }
-        if (HasTags.class.isAssignableFrom(entityClass())) {
+        if (HasMutableTags.class.isAssignableFrom(entityClass())) {
             tags = new One2ManyOwnedField<>(new TagsView(parent.domain(), parent.mode()));
         } else {
             tags = null;

@@ -13,8 +13,8 @@
 
 package net.tangly.erp.crm.domain;
 
-import net.tangly.core.HasDate;
-import net.tangly.core.HasText;
+import net.tangly.core.HasMutableDate;
+import net.tangly.core.HasMutableText;
 import net.tangly.core.Strings;
 import org.jetbrains.annotations.NotNull;
 
@@ -30,7 +30,7 @@ import java.util.Objects;
  * description of the activity to allow structured search over activities. For example you could write @{contact name} in your text to later search all
  * activities where a specific person was participating.</p>
  */
-public class Activity implements HasDate, HasText {
+public class Activity implements HasMutableDate, HasMutableText {
     private LocalDate date;
     private ActivityCode code;
     private int durationInMinutes;

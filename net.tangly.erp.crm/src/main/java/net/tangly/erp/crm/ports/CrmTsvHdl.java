@@ -164,7 +164,7 @@ public class CrmTsvHdl {
         TsvHdl.exportRelations(CrmBoundedDomain.DOMAIN, path, createTsvActivity(), activities);
     }
 
-    private static <T extends HasComments & HasOid> List<TsvRelation<Comment>> updateAndCollectComments(T entity) {
+    private static <T extends HasMutableComments & HasOid> List<TsvRelation<Comment>> updateAndCollectComments(T entity) {
         List<TsvRelation<Comment>> comments = new ArrayList<>();
         entity.comments().forEach(comment -> comments.add(new TsvRelation<>(entity.oid(), comment)));
         return comments;
@@ -190,7 +190,7 @@ public class CrmTsvHdl {
             TsvProperty.of(CREATED, Comment::created, null, o -> (o != null) ? LocalDateTime.parse(o) : null),
             TsvProperty.ofString(AUTHOR, Comment::author),
             TsvProperty.ofString(TEXT, Comment::text),
-            TsvProperty.ofString(TAGS, HasTags::rawTags, HasTags::rawTags));
+            TsvProperty.ofString(TAGS, HasMutableTags::rawTags, HasMutableTags::rawTags));
         return TsvEntity.of(Comment.class, fields, imports);
     }
 
@@ -204,7 +204,7 @@ public class CrmTsvHdl {
         fields.add(TsvHdl.tagProperty(CRM_IM_LINKEDIN));
         fields.add(TsvHdl.tagProperty(CRM_SITE_HOME));
         fields.add(createAddressMapping(VcardType.home));
-        fields.add(TsvProperty.ofString(TAGS, HasTags::rawTags, HasTags::rawTags));
+        fields.add(TsvProperty.ofString(TAGS, HasMutableTags::rawTags, HasMutableTags::rawTags));
         return TsvHdl.of(NaturalEntity.class, fields, NaturalEntity::new);
     }
 
@@ -225,7 +225,7 @@ public class CrmTsvHdl {
         fields.add(TsvHdl.tagProperty(GEO_PLUSCODE));
         fields.add(TsvHdl.tagProperty(GEO_LATITUDE));
         fields.add(TsvHdl.tagProperty(GEO_LONGITUDE));
-        fields.add(TsvProperty.ofString(TAGS, HasTags::rawTags, HasTags::rawTags));
+        fields.add(TsvProperty.ofString(TAGS, HasMutableTags::rawTags, HasMutableTags::rawTags));
         return TsvHdl.of(LegalEntity.class, fields, LegalEntity::new);
     }
 
@@ -258,14 +258,16 @@ public class CrmTsvHdl {
 
     private TsvEntity<Employee> createTsvEmployee() {
         List<TsvProperty<Employee, ?>> fields = List.of(TsvProperty.of(
-            TsvHdl.OID, Employee::oid, (entity, value) -> ReflectionUtilities.set(entity, TsvHdl.OID, value), Long::parseLong),
+                TsvHdl.OID, Employee::oid, (entity, value) -> ReflectionUtilities.set(entity, TsvHdl.OID, value), Long::parseLong),
             TsvProperty.of(TsvHdlCore.createTsvDateRange(), Entity::range, Entity::range),
             TsvProperty.ofString(TEXT, Employee::text, Employee::text),
             TsvProperty.of("personOid", Employee::person, Employee::person, e -> findNaturalEntityByOid(e).orElse(null), TsvHdl.convertFoidTo()),
-            TsvProperty.of("organizationOid", Employee::organization, Employee::organization, e -> findLegalEntityByOid(e).orElse(null), TsvHdl.convertFoidTo()),
+            TsvProperty.of("organizationOid", Employee::organization, Employee::organization, e -> findLegalEntityByOid(e).orElse(null),
+                TsvHdl.convertFoidTo()),
             TsvHdl.tagProperty(CRM_EMPLOYEE_TITLE),
             TsvHdl.tagProperty(CRM_EMAIL_WORK),
-            TsvProperty.ofString(CRM_PHONE_WORK, e -> e.phoneNr(VcardType.work).map(PhoneNr::number).orElse(""), (e, p) -> e.phoneNr(VcardType.work, p)), phoneNrProperty(CRM_PHONE_MOBILE, VcardType.mobile));
+            TsvProperty.ofString(CRM_PHONE_WORK, e -> e.phoneNr(VcardType.work).map(PhoneNr::number).orElse(""), (e, p) -> e.phoneNr(VcardType.work, p)),
+            phoneNrProperty(CRM_PHONE_MOBILE, VcardType.mobile));
         return TsvHdl.of(Employee.class, fields, Employee::new);
     }
 

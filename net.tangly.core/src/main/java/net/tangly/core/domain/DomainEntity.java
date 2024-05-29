@@ -13,10 +13,10 @@
 
 package net.tangly.core.domain;
 
-import net.tangly.core.HasComments;
-import net.tangly.core.HasId;
+import net.tangly.core.HasMutableComments;
+import net.tangly.core.HasMutableId;
+import net.tangly.core.HasMutableTags;
 import net.tangly.core.HasOid;
-import net.tangly.core.HasTags;
 import net.tangly.core.providers.Provider;
 import org.jetbrains.annotations.NotNull;
 
@@ -32,15 +32,15 @@ public record DomainEntity<T>(@NotNull String domain, @NotNull Class<T> clazz, P
     }
 
     public boolean hasId() {
-        return HasId.class.isAssignableFrom(clazz);
+        return HasMutableId.class.isAssignableFrom(clazz);
     }
 
     public boolean hasComments() {
-        return HasComments.class.isAssignableFrom(clazz);
+        return HasMutableComments.class.isAssignableFrom(clazz);
     }
 
     public boolean hasTags() {
-        return HasTags.class.isAssignableFrom(clazz);
+        return HasMutableTags.class.isAssignableFrom(clazz);
     }
 
     public String name() {
@@ -52,10 +52,10 @@ public record DomainEntity<T>(@NotNull String domain, @NotNull Class<T> clazz, P
     }
 
     public long tagsCount() {
-        return provider().items().stream().map(o -> ((HasTags) o).tags().size()).reduce(0, Integer::sum);
+        return provider().items().stream().map(o -> ((HasMutableTags) o).tags().size()).reduce(0, Integer::sum);
     }
 
     public long commentsCount() {
-        return provider().items().stream().map(o -> ((HasComments) o).comments().size()).reduce(0, Integer::sum);
+        return provider().items().stream().map(o -> ((HasMutableComments) o).comments().size()).reduce(0, Integer::sum);
     }
 }

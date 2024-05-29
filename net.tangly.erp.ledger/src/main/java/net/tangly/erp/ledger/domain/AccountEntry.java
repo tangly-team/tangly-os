@@ -13,7 +13,7 @@
 
 package net.tangly.erp.ledger.domain;
 
-import net.tangly.core.HasTags;
+import net.tangly.core.HasMutableTags;
 import net.tangly.core.Tag;
 import net.tangly.erp.ledger.services.VatCode;
 import org.jetbrains.annotations.Contract;
@@ -26,7 +26,7 @@ import java.util.*;
 /**
  * The account entry class models one booking in an account of a double entry accounting system. The class is immutable.
  */
-public class AccountEntry implements HasTags {
+public class AccountEntry implements HasMutableTags {
     public static final String FINANCE = "fin";
     public static final String PROJECT = "project";
     public static final String SEGMENT = "segment";

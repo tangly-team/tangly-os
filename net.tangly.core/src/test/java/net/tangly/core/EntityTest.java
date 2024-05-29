@@ -103,7 +103,7 @@ class EntityTest {
         testModifyTags(ExternalEntity.of("id"));
     }
 
-    private void testModifyTags(HasTags hasTags) {
+    private void testModifyTags(HasMutableTags hasTags) {
         // Given
         var tag = new Tag("namespace", "tag", "format");
         // When
@@ -134,7 +134,7 @@ class EntityTest {
         testUpdateTags(ExternalEntity.of("id"));
     }
 
-    void testUpdateTags(HasTags hasTags) {
+    void testUpdateTags(HasMutableTags hasTags) {
         // Given
         var tag = new Tag("namespace", "tag", "format");
 
@@ -153,7 +153,7 @@ class EntityTest {
         testSerializeTags(ExternalEntity.of("id"));
     }
 
-    private void testSerializeTags(HasTags hasTags) {
+    private void testSerializeTags(HasMutableTags hasTags) {
         hasTags.add(Tag.of("namespace", "tag", "format"));
         hasTags.add(Tag.of("gis", "longitude", "0.0"));
         hasTags.add(Tag.of("gis", "latitude", "0.0"));
@@ -173,7 +173,7 @@ class EntityTest {
         testModifyComments(ExternalEntity.of("id"));
     }
 
-    private void testModifyComments(HasComments hasComments) {
+    private void testModifyComments(HasMutableComments hasComments) {
         // Given
         var comment = new Comment("John Doe", "This is a comment");
         // When
@@ -192,7 +192,7 @@ class EntityTest {
         testFilterComments(ExternalEntity.of("id"));
     }
 
-    private void testFilterComments(HasComments hasComments) {
+    private void testFilterComments(HasMutableComments hasComments) {
         // Given
         var comment = Comment.of(LocalDateTime.of(1800, Month.JANUARY, 1, 0, 0), "John Doe", "This is comment 1");
         comment.add(new Tag("gis", "longitude", "0.0"));

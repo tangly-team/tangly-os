@@ -23,6 +23,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 @Builder
-public record Contract(@NotNull String id, @NotNull Organization organization, @NotNull Collaborator collaborator, @NotNull DateRange range, @NotNull BigDecimal yearlySalary,
+public record Contract(@NotNull String id, @NotNull Organization organization, @NotNull Collaborator collaborator, @NotNull DateRange range,
+                       @NotNull BigDecimal yearlySalary,
                        @NotNull BigDecimal workPercentage, int nrOfPayments, @NotNull List<SwissPensionFund> pensionFunds) implements HasId, HasDateRange {
 }

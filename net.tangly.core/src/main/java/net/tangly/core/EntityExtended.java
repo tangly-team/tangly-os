@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2023 Marcel Baumann
+ * Copyright 2006-2024 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -27,5 +27,5 @@ package net.tangly.core;
  * Orthogonal information can therefore be attached to instances.</dd>
  * </dl>
  */
-public interface EntityExtended extends Entity, HasTags, HasComments {
+public interface EntityExtended extends Entity, HasMutableTags, HasMutableComments {
 }

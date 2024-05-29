@@ -20,9 +20,9 @@ import com.vaadin.flow.component.textfield.IntegerField;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
 import net.tangly.core.Entity;
-import net.tangly.core.HasDateRange;
-import net.tangly.core.HasId;
-import net.tangly.core.HasName;
+import net.tangly.core.HasMutableDateRange;
+import net.tangly.core.HasMutableId;
+import net.tangly.core.HasMutableName;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -85,11 +85,11 @@ public class EntityField<T extends Entity> extends CustomField<T> {
 
     public void bind(@NotNull Binder<T> binder) {
         binder.bindReadOnly(oid, o -> (int) o.oid());
-        binder.bind(id, HasId::id, HasId::id);
-        binder.bind(name, HasName::name, HasName::name);
+        binder.bind(id, HasMutableId::id, HasMutableId::id);
+        binder.bind(name, HasMutableName::name, HasMutableName::name);
         binder.forField(from).withValidator(o -> (o == null) || (to.getValue() == null) || (o.isBefore(to.getValue())), "From date must be before to date")
-            .bind(HasDateRange::from, HasDateRange::from);
+            .bind(HasMutableDateRange::from, HasMutableDateRange::from);
         binder.forField(to).withValidator(o -> (o == null) || (from.getValue() == null) || (o.isAfter(from.getValue())), "To date must be after from date")
-            .bind(HasDateRange::to, HasDateRange::to);
+            .bind(HasMutableDateRange::to, HasMutableDateRange::to);
     }
 }

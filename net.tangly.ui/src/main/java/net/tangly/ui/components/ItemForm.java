@@ -29,7 +29,7 @@ import com.vaadin.flow.component.tabs.TabSheetVariant;
 import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.data.binder.ValidationException;
 import net.tangly.core.Entity;
-import net.tangly.core.HasText;
+import net.tangly.core.HasMutableText;
 import net.tangly.core.codes.Code;
 import net.tangly.core.codes.CodeType;
 import net.tangly.core.providers.Provider;
@@ -128,7 +128,7 @@ public abstract class ItemForm<T, U extends ItemView<T>> {
         var form = new FormLayout();
         VaadinUtils.set3ResponsiveSteps(form);
         form.add(text, 3);
-        ((Binder<HasText>) binder()).bind(text, HasText::text, HasText::text);
+        ((Binder<HasMutableText>) binder()).bind(text, HasMutableText::text, HasMutableText::text);
         return form;
     }
 

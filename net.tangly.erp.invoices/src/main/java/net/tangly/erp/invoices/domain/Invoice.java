@@ -29,7 +29,7 @@ import java.util.*;
  * businesses, in particular in the service industry.</p>
  * <p>Often an invoice references only one VAT rate, convenience methods are provided to streamline this scenario.</p>
  */
-public class Invoice implements HasId, HasName, HasDate, HasText {
+public class Invoice implements HasMutableId, HasMutableName, HasMutableDate, HasMutableText {
     /**
      * The identifier is the unique external identifier of the invoice used in the accounting, banking and tracking systems.
      */

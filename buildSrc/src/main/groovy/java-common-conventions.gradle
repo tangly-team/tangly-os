@@ -109,11 +109,11 @@ jar {
                 'Automatic-Module-Name': project.ext.moduleName,
                 'Specification-Title': "tangly open source library $project.ext.artifactId",
                 'Specification-Version': project.version,
-                'Specification-Vendor': "tangyly llc, Switzerland (https://www.tangly.net)",
+                'Specification-Vendor': "tangyly llc, Switzerland (https://blog.tangly.net)",
                 'License': 'Apache License v2.0',
                 'Implementation-Title': project.name,
                 'Implementation-Version': project.version,
-                'Implementation-Vendor': "tangyly llc, Switzerland (https://www.tangly.net)",
+                'Implementation-Vendor': "tangyly llc, Switzerland (https://blog.tangly.net)",
                 'Build-Jdk': "${System.properties['java.version']}",
                 "Class-Path": configurations.runtimeClasspath.files.collect { it.getName() }.join(' ')
             )
@@ -157,13 +157,20 @@ publishing {
                         name = 'Marcel Baumann'
                         email = 'marcel.baumann@tangly.net'
                         organization = 'tangly llc'
-                        organizationUrl = 'https://www.tangly.net'
+                        organizationUrl = 'https://blog.tangly.net'
+                    }
+                    developer {
+                        id = 'alexandra-junghans'
+                        name = 'Alexandra Junghans'
+                        email = 'alexandra.junghans@tangly.net'
+                        organization = 'tangly llc'
+                        organizationUrl = 'https://blog.tangly.net'
                     }
                 }
                 scm {
-                    connection = 'scm:git:https://bitbucket.org/tangly-team/tangly-os.git'
-                    developerConnection = 'scm:git:https://bitbucket.org/tangly-team/tangly-os.git'
-                    url = 'https://bitbucket.org/tangly-team/tangly-os.git'
+                    connection = 'scm:git:https://github.com/tangly-team/tangly-os.git'
+                    developerConnection = 'scm:git:https://github.com/tangly-team/tangly-os.git'
+                    url = 'https://github.com/tangly-team/tangly-os.git'
                 }
             }
         }
@@ -171,14 +178,12 @@ publishing {
     repositories {
         maven {
             url "https://oss.sonatype.org/service/local/staging/deploy/maven2"
-            if (project.hasProperty('mode') && project.property('mode').equals('prod')) {
+            credentials {
+                // credentials are stored under ~/.gradle/gradle.properties and are first copied in local variables to avoid error if not defined fpr
+                // example in CI pipeline (private keys should not be uploaded to a cloud CI)
                 credentials {
-                    // credentials are stored under ~/.gradle/gradle.properties and are first copied in local variables to avoid error if not defined fpr
-                    // example in CI pipeline (private keys should not be uploaded to a cloud CI)
-                    credentials {
-                        username mavenCentralUsername
-                        password mavenCentralPassword
-                    }
+                    username mavenCentralUsername
+                    password mavenCentralPassword
                 }
             }
         }

@@ -13,25 +13,14 @@
 
 package net.tangly.core;
 
-import org.jetbrains.annotations.NotNull;
-
-import java.time.LocalDate;
-import java.util.function.Predicate;
-
 /**
- * Mixin indicating the class has the capability to have a date.
+ * Mixin indicating the class has the capability to be uniquely identified through an external object identifier.
  */
-public interface HasDate {
-    record IntervalFilter<T extends HasDate>(LocalDate from, LocalDate to) implements Predicate<T> {
-        public boolean test(@NotNull T entity) {
-            return (from == null || !from.isAfter(entity.date())) && (to == null || !to.isBefore(entity.date()));
-        }
-    }
-
+public interface HasMutableId extends HasId {
     /**
-     * Return the date of entity.
+     * Set the identifier of the instance.
      *
-     * @return the date of the entity
+     * @param id new ID of the instance.
      */
-    LocalDate date();
+    void id(String id);
 }

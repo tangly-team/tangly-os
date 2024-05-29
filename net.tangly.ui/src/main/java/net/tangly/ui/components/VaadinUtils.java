@@ -26,7 +26,7 @@ import com.vaadin.flow.component.select.Select;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.renderer.ComponentRenderer;
 import net.tangly.core.EmailAddress;
-import net.tangly.core.HasTags;
+import net.tangly.core.HasMutableTags;
 import net.tangly.core.Strings;
 import net.tangly.core.Tag;
 import org.jetbrains.annotations.NotNull;
@@ -174,7 +174,7 @@ public final class VaadinUtils {
         });
     }
 
-    public static <T extends HasTags> ComponentRenderer<Anchor, T> urlComponentRenderer(String tagName) {
+    public static <T extends HasMutableTags> ComponentRenderer<Anchor, T> urlComponentRenderer(String tagName) {
         return new ComponentRenderer<>(item -> {
             Anchor anchor = new Anchor();
             Tag tag = item.findBy(tagName).orElse(null);

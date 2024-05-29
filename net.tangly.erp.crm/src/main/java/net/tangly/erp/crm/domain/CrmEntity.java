@@ -24,7 +24,7 @@ import java.util.Optional;
  * <p>The tag approach provides flexibility required by the evolution of values to represent similar information. For example an address, a geographical
  * location or an universal Plus code model similar information. Examples of CRM entities are natural and legal entities.</p>
  */
-public interface CrmEntity extends HasTags, HasLocation {
+public interface CrmEntity extends HasMutableTags, HasLocation {
     @Override
     default Optional<PlusCode> plusCode() {
         return findBy(CrmTags.GEO_PLUSCODE).map(Tag::value).map(PlusCode::of);

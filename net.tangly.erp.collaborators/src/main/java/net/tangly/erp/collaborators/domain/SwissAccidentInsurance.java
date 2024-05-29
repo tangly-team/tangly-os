@@ -25,12 +25,13 @@ import java.math.BigDecimal;
  * experience injury or death due to an accident. The costs are a percentage of the salary for professional accidents and another percentage of the salary for non-professional
  * injuries. Often, at least a minimum amount shall be paid for each component of the insurance.
  *
- * @param range      date range when the accident insurance contract is active
+ * @param range         date range when the accident insurance contract is active
  * @param nbuPercentage percentage of the salary for the non-professional accidents insurance
  * @param buPercentage  percentage of the salary for the professional accidents insurance
  * @param mininumAmount threshold amount you have to pay as a minimum amount per kind of coverage
  */
 @Builder
-public record SwissAccidentInsurance(@NotNull DateRange range, @NotNull BigDecimal nbuPercentage, @NotNull BigDecimal buPercentage, @NotNull BigDecimal mininumAmount,
+public record SwissAccidentInsurance(@NotNull DateRange range, @NotNull BigDecimal nbuPercentage, @NotNull BigDecimal buPercentage,
+                                     @NotNull BigDecimal mininumAmount,
                                      boolean nbuPaidByEmployer) implements HasDateRange {
 }

@@ -22,7 +22,7 @@ import java.util.*;
  * Defines a human-readable annotation to an entity. A comment is an immutable object. Comments can be tagged to provide classification. A comment belongs to
  * the entity owning it an is only accessible through this entity.
  */
-public class Comment implements HasTags {
+public class Comment implements HasMutableTags {
     /**
      * The creation date and time of the comment.
      */

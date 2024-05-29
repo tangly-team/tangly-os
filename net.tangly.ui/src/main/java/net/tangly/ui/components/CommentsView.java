@@ -21,7 +21,7 @@ import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.server.VaadinSession;
 import net.tangly.core.Comment;
 import net.tangly.core.DateRange;
-import net.tangly.core.HasComments;
+import net.tangly.core.HasMutableComments;
 import net.tangly.core.domain.BoundedDomain;
 import net.tangly.core.providers.ProviderInMemory;
 import net.tangly.ui.asciidoc.AsciiDocField;
@@ -33,7 +33,7 @@ import java.util.Objects;
 /**
  * A view for a list of objects. The local copy of the list supports adding and removing items. To add items, a provider is passed with the eligible list of items
  * <p>
- * The comments view is a Crud view with all the comments defined for an object implementing the {@link HasComments}. Edition functions are provided to add, delete, and view
+ * The comments view is a Crud view with all the comments defined for an object implementing the {@link HasMutableComments}. Edition functions are provided to add, delete, and view
  * individual comments. Update function is not supported because comments are immutable objects. Immutable objects must explicitly be deleted before a new version is added. This
  * approach supports auditing approaches.
  * <p>the filter conditions are defined as follow. You can filter by author, by a string contained in the text, or a time interval during which the comment was created.

@@ -137,7 +137,7 @@ public final class CrmTags {
         return STR."\{CRM}:im-\{Objects.requireNonNull(im)}";
     }
 
-    public static String linkedInTag(@NotNull HasTags entity) {
+    public static String linkedInTag(@NotNull HasMutableTags entity) {
         return entity.findBy(CrmTags.CRM_IM_LINKEDIN).map(Tag::value).orElse(null);
     }
 }

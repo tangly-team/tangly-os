@@ -37,53 +37,27 @@ public interface HasDateRange {
      * Return the range of the mixin.
      *
      * @return date range of the mixin
-     * @see #range(DateRange)
      */
     DateRange range();
-
-    default void range(DateRange range) {
-        throw new IllegalCallerException("Trait is in immutable form");
-    }
 
     /**
      * Return the date from when the entity is existing and active.
      *
      * @return the start of the existing period for the entity
-     * @see #from(LocalDate)
      */
     default LocalDate from() {
         return range().from();
     }
 
     /**
-     * Set a new start to the date range.
-     *
-     * @param from new start date.
-     * @see #from()
-     */
-    default void from(LocalDate from) {
-        range(range().from(from));
-    }
-
-    /**
      * Return the date until when the entity is existing and active.
      *
      * @return the end of the existing period for the entity
-     * @see #to(LocalDate)
      */
     default LocalDate to() {
         return range().to();
     }
 
-    /**
-     * Set a new end to the date range.
-     *
-     * @param to new start date.
-     * @see #to()
-     */
-    default void to(LocalDate to) {
-        range(range().to(to));
-    }
 
     /**
      * Test if the date range is partially inside the date range specified in the filter.
