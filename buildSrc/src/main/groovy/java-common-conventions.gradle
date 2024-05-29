@@ -190,14 +190,11 @@ publishing {
     }
 }
 
-if (project.hasProperty('mode') && project.property('mode').equals('prod')) {
-    // currently credentials are not available in the CI pipeline therefore the configuration parameter to avoid spurious execution errors.
-    signing {
-        // credentials for signing are stored under ~/.gradle/gradle.properties
-        // gpg --export-secret-keys > secring.gpg
-        // gpg --no-default-keyring --keyring ./secring.gpg --list-keys --keyid-format short
-        sign publishing.publications.mavenJava
-    }
+signing {
+    // credentials for signing are stored under ~/.gradle/gradle.properties
+    // gpg --export-secret-keys -o ~/.gnupg/secring.kbx
+    // gpg --no-default-keyring --keyring ./secring.gpg --list-keys --keyid-format short
+    sign publishing.publications.mavenJava
 }
 
 jacoco {
