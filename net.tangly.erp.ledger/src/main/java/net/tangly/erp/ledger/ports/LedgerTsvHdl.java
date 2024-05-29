@@ -91,7 +91,7 @@ public class LedgerTsvHdl {
      * </dl>
      *
      * @param reader reader to the file containing the chart of accounts
-     * @param source name of the source of the chart of accounts
+     * @param source name of the source for the chart of accounts
      * @see #exportChartOfAccounts(Path)
      */
     public void importChartOfAccounts(@NotNull Reader reader, String source) {
@@ -193,7 +193,7 @@ public class LedgerTsvHdl {
      * </dl>
      *
      * @param reader reader to the file containing the chart of accounts
-     * @param source name of the source of the chart of accounts
+     * @param source name of the source for the chart of accounts
      * @see #exportJournal(Path, LocalDate, LocalDate)
      */
     public void importJournal(@NotNull Reader reader, String source) {
@@ -216,10 +216,9 @@ public class LedgerTsvHdl {
                 } else {
                     csv = TsvHdl.nextNonEmptyRecord(records);
                 }
-                Transaction transaction = null;
                 try {
-                    transaction = new Transaction(DateUtilities.of(date), Strings.emptyToNull(debitValues[0]), Strings.emptyToNull(creditValues[0]), amount,
-                        description, reference, VatCode.of(vatCode), DateUtilities.of(dateExpected), splits);
+                    Transaction transaction = new Transaction(DateUtilities.of(date), Strings.emptyToNull(debitValues[0]), Strings.emptyToNull(creditValues[0]),
+                        amount, description, reference, VatCode.of(vatCode), DateUtilities.of(dateExpected), splits);
                     if (transaction.debitSplits().size() == 1) {
                         defineSegments(transaction.debitSplits().getFirst(), debitValues);
                     }

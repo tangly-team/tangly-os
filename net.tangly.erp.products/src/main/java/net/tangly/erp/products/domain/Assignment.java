@@ -43,7 +43,7 @@ public class Assignment extends EntityExtendedImp {
             case MINUTES -> new BigDecimal(durationInMinutes);
             case HOURS -> new BigDecimal(durationInMinutes).divide(new BigDecimal(60), RoundingMode.HALF_UP).setScale(2, RoundingMode.UP);
             case DAYS -> new BigDecimal(durationInMinutes).divide(new BigDecimal(60 * 24), RoundingMode.HALF_UP).setScale(2, RoundingMode.UP);
-            default -> throw new IllegalArgumentException("Unexpected value: " + unit);
+            default -> throw new IllegalArgumentException(STR."Unexpected value: \{unit}");
         };
     }
 

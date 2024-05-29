@@ -21,8 +21,8 @@ public enum VatCode {
     F3(new BigDecimal("0.077"), new BigDecimal("0.065")),
     F4(new BigDecimal("0.081"), new BigDecimal("0.069"));
 
-    private BigDecimal vatRate;
-    private BigDecimal vatDueRate;
+    private final BigDecimal vatRate;
+    private final BigDecimal vatDueRate;
 
     VatCode(BigDecimal vatRate, BigDecimal vatDueRate) {
         this.vatRate = vatRate;

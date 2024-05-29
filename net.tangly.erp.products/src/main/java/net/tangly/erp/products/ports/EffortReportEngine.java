@@ -127,7 +127,7 @@ public class EffortReportEngine {
         helper.tableRow("", "", "");
     }
 
-    private static final String text(@NotNull ChronoUnit unit) {
+    private static String text(@NotNull ChronoUnit unit) {
         return unit.name().toLowerCase();
     }
 }

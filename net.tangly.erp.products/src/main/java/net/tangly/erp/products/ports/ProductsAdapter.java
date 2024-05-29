@@ -38,10 +38,7 @@ import java.nio.file.Path;
 import java.time.LocalDate;
 import java.time.YearMonth;
 import java.time.temporal.ChronoUnit;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Optional;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Stream;
 
@@ -145,12 +142,12 @@ public class ProductsAdapter implements ProductsPort {
                     }
                     if (!assignment.range().isActive(date)) {
                         EventData.log(EventData.IMPORT, ProductsBoundedDomain.DOMAIN, EventData.Status.ERROR, "effort date is out of assignment range.",
-                            Map.of("filename", source, "assignement", assignment, "effort", newEffort));
+                            Map.of("filename", source, "assignment", assignment, "effort", newEffort));
                         return;
                     }
                     if ((assignment.closedPeriod() != null) && (!newEffort.date().isAfter(assignment.closedPeriod()))) {
                         EventData.log(EventData.IMPORT, ProductsBoundedDomain.DOMAIN, EventData.Status.ERROR, "effort date is before of assignment closed period.",
-                            Map.of("filename", source, "assignement", assignment, "effort", newEffort));
+                            Map.of("filename", source, "assignment", assignment, "effort", newEffort));
                         return;
                     }
                     Optional<Effort> foundEffort = logic.findEffortFor(assignmentOid, collaborator, date);
@@ -184,7 +181,7 @@ public class ProductsAdapter implements ProductsPort {
      */
     public void exportEfforts(@NotNull Path path) {
         var efforts = realm().efforts().items().stream().collect(
-            groupingBy(o -> o.assignment().id(), groupingBy(o -> o.contractId(), groupingBy(o -> o.assignment().collaboratorId(),
+            groupingBy(o -> o.assignment().id(), groupingBy(Effort::contractId, groupingBy(o -> o.assignment().collaboratorId(),
                 groupingBy(o -> YearMonth.from(o.date()))))));
         efforts.values().stream().flatMap(o -> o.values().stream().flatMap(o1 -> o1.values().stream().flatMap(o2 -> o2.values().stream())))
             .forEach(o -> exportEfforts(o, path));
@@ -192,7 +189,7 @@ public class ProductsAdapter implements ProductsPort {
 
     public void exportEfforts(@NotNull List<Effort> efforts, @NotNull Path folder) {
         try {
-            efforts.sort((o1, o2) -> o1.date().compareTo(o2.date()));
+            efforts.sort(Comparator.comparing(Effort::date));
             YamlMappingBuilder builder = Yaml.createYamlMappingBuilder()
                 .add("assignmentOid", efforts.getFirst().assignment().oid())
                 .add("contractId", efforts.getFirst().contractId())
@@ -231,7 +228,7 @@ public class ProductsAdapter implements ProductsPort {
     }
 
     @Override
-    public void exportEffortsDocumentsSplittedPerMonth(@NotNull Assignment assignment, @NotNull YearMonth from, @NotNull YearMonth to, @NotNull ChronoUnit unit) {
+    public void exportEffortsDocumentsSplitPerMonth(@NotNull Assignment assignment, @NotNull YearMonth from, @NotNull YearMonth to, @NotNull ChronoUnit unit) {
         YearMonth current = from;
         var helper = new EffortReportEngine(logic);
         while (!current.isAfter(to)) {

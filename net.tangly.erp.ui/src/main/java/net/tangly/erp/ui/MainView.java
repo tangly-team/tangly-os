@@ -58,7 +58,7 @@ public class MainView extends ApplicationView {
         }
     }
 
-    private final void ofDomainUis() {
+    private void ofDomainUis() {
         Application application = Application.instance();
         var crmBoundedDomain = application.getBoundedDomain(CrmBoundedDomain.DOMAIN);
         var invoicesBoundedDomain = application.getBoundedDomain(InvoicesBoundedDomain.DOMAIN);

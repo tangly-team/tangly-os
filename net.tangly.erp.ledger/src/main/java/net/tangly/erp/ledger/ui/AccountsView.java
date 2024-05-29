@@ -17,7 +17,6 @@ import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.select.Select;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
-import com.vaadin.flow.data.binder.ValidationException;
 import com.vaadin.flow.router.PageTitle;
 import net.tangly.erp.ledger.domain.Account;
 import net.tangly.erp.ledger.services.LedgerBoundedDomain;
@@ -102,12 +101,13 @@ class AccountsView extends ItemView<Account> {
         }
 
         @Override
-        protected Account createOrUpdateInstance(Account entity) throws ValidationException {
+        protected Account createOrUpdateInstance(Account entity)  {
             return null;
         }
     }
 
     private final transient LedgerBoundedDomain domain;
+
     private Binder<Account> binder;
 
     /**

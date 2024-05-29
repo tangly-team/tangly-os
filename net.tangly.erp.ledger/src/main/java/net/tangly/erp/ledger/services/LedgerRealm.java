@@ -139,7 +139,7 @@ public interface LedgerRealm extends Realm {
 // region VAT-computations
 
     default BigDecimal computeVatSales(LocalDate from, LocalDate to) {
-        return transactions(from, to).stream().flatMap(o -> o.creditSplits().stream()).filter(o -> o.vatCode() != null)
+        return transactions(from, to).stream().flatMap(o -> o.creditSplits().stream()).filter(o -> o.vatCode().isPresent())
             .map(AccountEntry::amount).reduce(BigDecimal::add).orElse(BigDecimal.ZERO);
     }
 

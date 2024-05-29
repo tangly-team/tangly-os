@@ -59,8 +59,8 @@ public interface ProductsPort extends Port<ProductsRealm> {
      *
      * @param assignment assignment which efforts are of interest
      * @param from       first month to consider
-     * @param to         last  month to consider
+     * @param to         last month to consider
      * @param unit       unit of the time interval (minutes, hours, and days)
      */
-    void exportEffortsDocumentsSplittedPerMonth(@NotNull Assignment assignment, @NotNull YearMonth from, @NotNull YearMonth to, @NotNull ChronoUnit unit);
+    void exportEffortsDocumentsSplitPerMonth(@NotNull Assignment assignment, @NotNull YearMonth from, @NotNull YearMonth to, @NotNull ChronoUnit unit);
 }

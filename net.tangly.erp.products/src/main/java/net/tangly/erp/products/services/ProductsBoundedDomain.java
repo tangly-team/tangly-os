@@ -47,6 +47,6 @@ public class ProductsBoundedDomain extends BoundedDomain<ProductsRealm, Products
 
     @Override
     public ProductsRealm realm() {
-        return (ProductsRealm) super.realm();
+        return super.realm();
     }
 }

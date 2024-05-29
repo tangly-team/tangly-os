@@ -36,7 +36,6 @@ public class Transaction implements HasDate, HasText {
     private final LocalDate date;
     private final String reference;
     private final String text;
-    private final BigDecimal amount;
     private final AccountEntry debit;
     private final AccountEntry credit;
     private final LocalDate dateExpected;
@@ -53,16 +52,15 @@ public class Transaction implements HasDate, HasText {
 
     public Transaction(LocalDate date, String debitAccount, String creditAccount, BigDecimal amount, String text, String reference, VatCode vatCode, LocalDate dateExpected,
                        List<AccountEntry> splits) {
-        this(date, text, reference, amount, (debitAccount != null) ? new AccountEntry(debitAccount, date, amount, null, null, true, vatCode) : null,
+        this(date, text, reference, (debitAccount != null) ? new AccountEntry(debitAccount, date, amount, null, null, true, vatCode) : null,
             (creditAccount != null) ? new AccountEntry(creditAccount, date, amount, null, null, false, vatCode) : null, vatCode, dateExpected, false, splits);
     }
 
-    protected Transaction(LocalDate date, String text, String reference, BigDecimal amount,
+    protected Transaction(LocalDate date, String text, String reference,
                           AccountEntry debit, AccountEntry credit, VatCode vatCode, LocalDate dateExpected, boolean synthetic, List<AccountEntry> splits) {
         this.date = date;
         this.text = text;
         this.reference = reference;
-        this.amount = amount;
         this.debit = debit;
         this.credit = credit;
         this.dateExpected = dateExpected;
@@ -80,7 +78,7 @@ public class Transaction implements HasDate, HasText {
 
     public static Transaction ofSynthetic(LocalDate date, String debitAccount, String creditAccount, BigDecimal amount, String text, String reference,
                                           VatCode vatCode, LocalDate dateExpected, List<AccountEntry> splits) {
-        return new Transaction(date, text, reference, amount, (debitAccount != null) ? new AccountEntry(debitAccount, date, amount, null, null, true,
+        return new Transaction(date, text, reference, (debitAccount != null) ? new AccountEntry(debitAccount, date, amount, null, null, true,
             vatCode) : null, (creditAccount != null) ? new AccountEntry(creditAccount, date, amount, null, null, false, vatCode) : null,
             vatCode, dateExpected, true, splits);
     }
@@ -110,7 +108,7 @@ public class Transaction implements HasDate, HasText {
     }
 
     public List<AccountEntry> splits() {
-        return Collections.unmodifiableList(splits);
+        return splits;
     }
 
     public Optional<VatCode> vatCode() {
@@ -168,7 +166,7 @@ public class Transaction implements HasDate, HasText {
     }
 
     /**
-     * Return the date of the execution of the transaction.
+     * Return the date of the execution for the transaction.
      *
      * @return date of the transaction
      */

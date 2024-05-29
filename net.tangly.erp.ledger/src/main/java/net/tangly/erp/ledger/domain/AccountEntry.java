@@ -82,13 +82,13 @@ public class AccountEntry implements HasTags {
     }
 
     @NotNull
-    @Contract("_, _, _, _ -> new")
+    @Contract("_, _, _, _, _, _ -> new")
     public static AccountEntry credit(String account, String date, String amount, String reference, String text, VatCode vatCode) {
         return new AccountEntry(account, LocalDate.parse(date), new BigDecimal(amount), reference, text, false, vatCode);
     }
 
     @NotNull
-    @Contract("_, _, _, _ -> new")
+    @Contract("_, _, _, _, _, _ -> new")
     public static AccountEntry debit(String account, String date, String amount, String reference, String text, VatCode vatCode) {
         return new AccountEntry(account, LocalDate.parse(date), new BigDecimal(amount), reference, text, true, vatCode);
     }

@@ -31,7 +31,7 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 /**
- * Regular CRUD view on efforts abstraction. The grid and edition dialog wre optimized for usability.
+ * Regular CRUD view on the effort abstraction. The grid and edition dialog are optimized for usability.
  */
 @PageTitle("products-efforts")
 class EffortsView extends ItemView<Effort> {

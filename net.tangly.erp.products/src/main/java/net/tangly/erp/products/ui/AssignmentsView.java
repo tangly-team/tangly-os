@@ -31,9 +31,9 @@ import net.tangly.ui.components.One2OneField;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * Regular CRUD view on assignments abstraction. The grid and the edition dialog are optimized for usability.
+ * Regular CRUD view on the assignment abstraction. The grid and the edition dialog are optimized for usability.
  */
-@PageTitle("products-assignements")
+@PageTitle("products-assignments")
 class AssignmentsView extends EntityView<Assignment> {
     class AssignmentForm extends EntityForm<Assignment, AssignmentsView> {
         public AssignmentForm(@NotNull AssignmentsView parent, @NotNull TypeRegistry registry) {

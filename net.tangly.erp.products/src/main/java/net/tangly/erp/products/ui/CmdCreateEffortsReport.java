@@ -74,7 +74,7 @@ public class CmdCreateEffortsReport implements Cmd {
             validateOnChangedDate();
             execute.setEnabled(isExecuteEnabled());
         });
-        perMonth = new Checkbox("Reports Splitted Per month");
+        perMonth = new Checkbox("Reports Split Per month");
         perMonth.addValueChangeListener(event -> {
             fromDate.setRequired(perMonth.getValue());
             toDate.setRequired(perMonth.getValue());
@@ -94,7 +94,7 @@ public class CmdCreateEffortsReport implements Cmd {
         VaadinUtils.set3ResponsiveSteps(form);
         execute = new Button("Execute", VaadinIcon.COGS.create(), _ -> {
             if (perMonth.getValue()) {
-                domain.port().exportEffortsDocumentsSplittedPerMonth(assignment, YearMonth.from(fromDate.getValue()), YearMonth.from(toDate.getValue()), units.getValue());
+                domain.port().exportEffortsDocumentsSplitPerMonth(assignment, YearMonth.from(fromDate.getValue()), YearMonth.from(toDate.getValue()), units.getValue());
             } else {
                 domain.port().exportEffortsDocument(assignment, fromDate.getValue(), toDate.getValue(), filename.getValue(), units.getValue());
             }

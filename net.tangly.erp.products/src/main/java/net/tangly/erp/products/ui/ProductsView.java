@@ -25,7 +25,6 @@ import net.tangly.ui.components.Mode;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 
 @PageTitle("products-products")
@@ -41,7 +40,7 @@ class ProductsView extends EntityView<Product> {
             FormLayout form = new FormLayout();
             TextField ids = new TextField("Contract IDs");
             form.add(ids);
-            binder().bind(ids, o -> o.contractIds().stream().collect(Collectors.joining(",")),
+            binder().bind(ids, o -> String.join(",", o.contractIds()),
                 (o, v) -> o.contractIds(List.of(v.split(","))));
             return form;
         }
