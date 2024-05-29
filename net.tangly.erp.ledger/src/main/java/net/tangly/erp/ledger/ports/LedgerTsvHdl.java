@@ -207,7 +207,7 @@ public class LedgerTsvHdl {
                 String[] creditValues = csv.get(ACCOUNT_CREDIT).split("-");
                 BigDecimal amount = TsvHdl.parseBigDecimal(csv, AMOUNT);
                 String dateExpected = csv.get(DATE_EXPECTED);
-                String description = csv.get(DESCRIPTION);
+                String text = csv.get(DESCRIPTION);
                 String reference = csv.get(DOC);
                 String vatCode = csv.get(VAT_CODE);
                 List<AccountEntry> splits = new ArrayList<>();
@@ -217,14 +217,14 @@ public class LedgerTsvHdl {
                     csv = TsvHdl.nextNonEmptyRecord(records);
                 }
                 try {
-                    Transaction transaction = new Transaction(DateUtilities.of(date), Strings.emptyToNull(debitValues[0]), Strings.emptyToNull(creditValues[0]),
-                        amount, description, reference, VatCode.of(vatCode), DateUtilities.of(dateExpected), splits);
-                    if (transaction.debitSplits().size() == 1) {
-                        defineSegments(transaction.debitSplits().getFirst(), debitValues);
-                    }
-                    if (transaction.creditSplits().size() == 1) {
-                        defineSegments(transaction.creditSplits().getFirst(), creditValues);
-                    }
+                    var debitAccount = Strings.emptyToNull(debitValues[0]);
+                    var creditAccount = Strings.emptyToNull(creditValues[0]);
+                    var debit = (debitAccount != null) ? new AccountEntry(debitAccount, DateUtilities.of(date), amount, null, null, true,
+                        VatCode.of(vatCode), defineSegments(debitValues)) : null;
+                    var credit = (creditAccount != null) ? new AccountEntry(creditAccount, DateUtilities.of(date), amount, null, null, false,
+                        VatCode.of(vatCode), defineSegments(creditValues)) : null;
+                    Transaction transaction = Transaction.of(DateUtilities.of(date), reference, text, debit, credit, VatCode.of(vatCode),
+                        DateUtilities.of(dateExpected), splits);
                     ledger.book(transaction);
                     ++counter;
                     EventData.log(EventData.IMPORT, LedgerBoundedDomain.DOMAIN, EventData.Status.SUCCESS,
@@ -280,13 +280,13 @@ public class LedgerTsvHdl {
         while ((isDebitSplit && isCreditSplit(csv)) || isDebitSplit(csv)) {
             if (!Strings.isNullOrBlank(csv.get(ACCOUNT_DEBIT))) {
                 var values = csv.get(ACCOUNT_DEBIT).split("-");
-                var entry = AccountEntry.debit(values[0], csv.get(DATE), csv.get(AMOUNT), csv.get(DOC), csv.get(DESCRIPTION), VatCode.of(csv.get(VAT_CODE)));
-                defineSegments(entry, values);
+                var entry = AccountEntry.debit(values[0], TsvHdl.parseDate(csv, DATE), TsvHdl.parseBigDecimal(csv, AMOUNT), csv.get(DOC),
+                    csv.get(DESCRIPTION), VatCode.of(csv.get(VAT_CODE)), defineSegments(values));
                 splits.add(entry);
             } else if (!Strings.isNullOrBlank(csv.get(ACCOUNT_CREDIT))) {
                 var values = csv.get(ACCOUNT_CREDIT).split("-");
-                var entry = AccountEntry.credit(values[0], csv.get(DATE), csv.get(AMOUNT), csv.get(DOC), csv.get(DESCRIPTION), VatCode.of(csv.get(VAT_CODE)));
-                defineSegments(entry, values);
+                var entry = AccountEntry.credit(values[0], TsvHdl.parseDate(csv, DATE), TsvHdl.parseBigDecimal(csv, AMOUNT), csv.get(DOC),
+                    csv.get(DESCRIPTION), VatCode.of(csv.get(VAT_CODE)), defineSegments(values));
                 splits.add(entry);
             }
             csv = TsvHdl.nextNonEmptyRecord(records);
@@ -305,13 +305,15 @@ public class LedgerTsvHdl {
             groupId) && !groupId.equalsIgnoreCase("0")));
     }
 
-    private static void defineSegments(@NotNull AccountEntry entry, String[] values) {
+    private static Set<Tag> defineSegments(String[] values) {
+        Set<Tag> tags = new HashSet<>();
         if (values.length > 1) {
-            entry.add(new Tag(AccountEntry.FINANCE, AccountEntry.PROJECT, values[1]));
+            tags.add(new Tag(AccountEntry.FINANCE, AccountEntry.PROJECT, values[1]));
         }
         if (values.length > 2) {
-            entry.add(new Tag(AccountEntry.FINANCE, AccountEntry.SEGMENT, values[2]));
+            tags.add(new Tag(AccountEntry.FINANCE, AccountEntry.SEGMENT, values[2]));
         }
+        return tags;
     }
 
     private static String accountCompositeId(AccountEntry entry) {

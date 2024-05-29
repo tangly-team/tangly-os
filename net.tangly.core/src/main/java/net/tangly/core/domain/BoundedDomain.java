@@ -13,10 +13,7 @@
 
 package net.tangly.core.domain;
 
-import net.tangly.core.HasMutableTags;
-import net.tangly.core.HasOid;
-import net.tangly.core.TagType;
-import net.tangly.core.TypeRegistry;
+import net.tangly.core.*;
 import net.tangly.core.providers.Provider;
 import org.jetbrains.annotations.NotNull;
 
@@ -69,7 +66,7 @@ public class BoundedDomain<R extends Realm, B, P extends Port<R>> {
         addTagCounts(registry, provider.items(), counts);
     }
 
-    protected static <I extends HasMutableTags> void addTagCounts(@NotNull TypeRegistry registry, @NotNull List<I> entities, Map<TagType<?>, Integer> counts) {
+    protected static <I extends HasTags> void addTagCounts(@NotNull TypeRegistry registry, @NotNull List<I> entities, Map<TagType<?>, Integer> counts) {
         entities.stream().flatMap(e -> e.tags().stream()).map(registry::find).flatMap(Optional::stream).forEach(e -> counts.merge(e, 1, (oldValue, _) -> oldValue++));
     }
 

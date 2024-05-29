@@ -13,164 +13,87 @@
 
 package net.tangly.erp.ledger.domain;
 
-import net.tangly.core.HasMutableTags;
+import net.tangly.core.HasTags;
 import net.tangly.core.Tag;
 import net.tangly.erp.ledger.services.VatCode;
-import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.*;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Optional;
 
 /**
  * The account entry class models one booking in an account of a double entry accounting system. The class is immutable.
+ *
+ * @param accountId the account on which the entry is booked
+ * @param date      the date of the booking entry
+ * @param amount    the amount of the entry
+ * @param reference the reference of the entry
+ * @param text      the text of the entry
+ * @param isDebit   is the entry on the debit side or not (meaning credit side)
+ * @param vatCode   the VAT code of the entry
+ * @param tags      the tags of the entry
  */
-public class AccountEntry implements HasMutableTags {
+public record AccountEntry(@NotNull String accountId, @NotNull LocalDate date, @NotNull BigDecimal amount, String reference, String text, boolean isDebit,
+                           VatCode vatCode, Collection<Tag> tags) implements HasTags {
     public static final String FINANCE = "fin";
     public static final String PROJECT = "project";
     public static final String SEGMENT = "segment";
     public static final String DATE_EXPECTED = "date-expected";
 
-    /**
-     * Account on which the entry is booked.
-     */
-    private final String accountId;
 
-    /**
-     * Date of the booking entry.
-     */
-    private final LocalDate date;
-
-    /**
-     * Amount of the entry.
-     */
-    private final BigDecimal amount;
-
-    private final String reference;
-
-    /**
-     * Text describing the entry, often a reference to a document such as an invoice.
-     */
-    private final String text;
-
-    /**
-     * Is the entry on the debit side or not (meaning credit side).
-     */
-    private final boolean debit;
-
-    private final VatCode vatCode;
-
-    private final Set<Tag> tags;
-
-    public AccountEntry(@NotNull String accountId, @NotNull LocalDate date, @NotNull BigDecimal amount, String reference, String text, boolean debit,
-                        VatCode vatCode, Collection<Tag> tags) {
-        this.accountId = accountId;
-        this.date = date;
-        this.amount = amount;
-        this.reference = reference;
-        this.text = text;
-        this.debit = debit;
-        this.vatCode = vatCode;
-        this.tags = new HashSet<>();
-        this.tags.addAll(tags);
+    public AccountEntry of(@NotNull String accountId, @NotNull LocalDate date, @NotNull BigDecimal amount, String reference, String text, boolean debit,
+                           VatCode vatCode) {
+        return new AccountEntry(accountId, date, amount, reference, text, debit, vatCode, Collections.emptyList());
     }
 
-    public AccountEntry(@NotNull String accountId, @NotNull LocalDate date, @NotNull BigDecimal amount, String reference, String text, boolean debit,
-                        VatCode vatCode) {
-        this(accountId, date, amount, reference, text, debit, vatCode, Collections.emptyList());
+    public static AccountEntry credit(String account, LocalDate date, BigDecimal amount, String reference, String text, VatCode vatCode, Collection<Tag> tags) {
+        return new AccountEntry(account, date, amount, reference, text, false, vatCode, tags);
     }
 
-    @NotNull
-    @Contract("_, _, _, _, _, _ -> new")
-    public static AccountEntry credit(String account, String date, String amount, String reference, String text, VatCode vatCode) {
-        return new AccountEntry(account, LocalDate.parse(date), new BigDecimal(amount), reference, text, false, vatCode);
+    public static AccountEntry credit(String account, LocalDate date, BigDecimal amount, String reference, String text, VatCode vatCode) {
+        return new AccountEntry(account, date, amount, reference, text, false, vatCode, Collections.emptyList());
     }
 
-    @NotNull
-    @Contract("_, _, _, _, _, _ -> new")
-    public static AccountEntry debit(String account, String date, String amount, String reference, String text, VatCode vatCode) {
-        return new AccountEntry(account, LocalDate.parse(date), new BigDecimal(amount), reference, text, true, vatCode);
+    public static AccountEntry debit(String account, LocalDate date, BigDecimal amount, String reference, String text, VatCode vatCode, Collection<Tag> tags) {
+        return new AccountEntry(account, date, amount, reference, text, true, vatCode, tags);
     }
 
-    public String accountId() {
-        return accountId;
-    }
-
-    public LocalDate date() {
-        return date;
-    }
-
-    public BigDecimal amount() {
-        return amount;
-    }
-
-    public String reference() {
-        return reference;
-    }
-
-    public String text() {
-        return text;
-    }
-
-    public boolean isDebit() {
-        return debit;
+    public static AccountEntry debit(String account, LocalDate date, BigDecimal amount, String reference, String text, VatCode vatCode) {
+        return new AccountEntry(account, date, amount, reference, text, true, vatCode, Collections.emptyList());
     }
 
     public boolean isCredit() {
         return !isDebit();
     }
 
-    public Optional<VatCode> vatCode() {
-        return Optional.ofNullable(vatCode);
+    public boolean hasVatCode() {
+        return vatCode != null;
     }
 
     public String vatCodeAsString() {
         return vatCode != null ? vatCode.name() : "";
     }
 
-    // region HasTags Entity
-
     @Override
     public Collection<Tag> tags() {
-        return Collections.unmodifiableSet(tags);
+        return tags;
     }
-
-    @Override
-    public void tags(@NotNull Collection<Tag> tags) {
-        this.tags.clear();
-        this.tags.addAll(tags);
-    }
-
-    @Override
-    public void clear() {
-        tags.clear();
-    }
-
-    @Override
-    public boolean add(Tag tag) {
-        return tags.add(tag);
-    }
-
-    @Override
-    public boolean remove(Tag tag) {
-        return tags.remove(tag);
-    }
-
-    // endregion
 
     @Override
     public String toString() {
         return """
-            AccountEntry[accountId=%s, date=%s, amount=%s, isDebit=%s", text="%s, tags=%s]
-            """.formatted(accountId(), date(), amount(), isDebit(), text(), tags());
+            AccountEntry[accountId=%s, date=%s, amount=%s, reference=%s, text=%s, isDebit=%s, vatCode=%s tags=%s]
+            """.formatted(accountId(), date(), amount(), reference(), text(), isDebit(), vatCode(), tags());
     }
 
     public Optional<BigDecimal> getVat() {
-        return vatCode().map(VatCode::vatRate);
+        return Optional.ofNullable(vatCode()).map(VatCode::vatRate);
     }
 
     public Optional<BigDecimal> getVatDue() {
-        return vatCode().map(VatCode::vatDueRate);
+        return Optional.ofNullable(vatCode()).map(VatCode::vatDueRate);
     }
 }

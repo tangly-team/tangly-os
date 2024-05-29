@@ -52,12 +52,17 @@ public class Transaction implements HasDate, HasText {
 
     public Transaction(LocalDate date, String debitAccount, String creditAccount, BigDecimal amount, String text, String reference, VatCode vatCode, LocalDate dateExpected,
                        List<AccountEntry> splits) {
-        this(date, text, reference, (debitAccount != null) ? new AccountEntry(debitAccount, date, amount, null, null, true, vatCode) : null,
-            (creditAccount != null) ? new AccountEntry(creditAccount, date, amount, null, null, false, vatCode) : null, vatCode, dateExpected, false, splits);
+        this(date, text, reference, (debitAccount != null) ? AccountEntry.debit(debitAccount, date, amount, null, null, vatCode) : null,
+            (creditAccount != null) ? AccountEntry.credit(creditAccount, date, amount, null, null, vatCode) : null, vatCode, dateExpected, false, splits);
     }
 
-    protected Transaction(LocalDate date, String text, String reference,
-                          AccountEntry debit, AccountEntry credit, VatCode vatCode, LocalDate dateExpected, boolean synthetic, List<AccountEntry> splits) {
+    public static Transaction of(LocalDate date, String reference, String text, AccountEntry debitAccount, AccountEntry creditAccount, VatCode vatCode,
+                                 LocalDate dateExpected, List<AccountEntry> splits) {
+        return new Transaction(date, text, reference, debitAccount, creditAccount, vatCode, dateExpected, false, splits);
+    }
+
+    public Transaction(LocalDate date, String text, String reference,
+                       AccountEntry debit, AccountEntry credit, VatCode vatCode, LocalDate dateExpected, boolean synthetic, List<AccountEntry> splits) {
         this.date = date;
         this.text = text;
         this.reference = reference;
@@ -78,8 +83,9 @@ public class Transaction implements HasDate, HasText {
 
     public static Transaction ofSynthetic(LocalDate date, String debitAccount, String creditAccount, BigDecimal amount, String text, String reference,
                                           VatCode vatCode, LocalDate dateExpected, List<AccountEntry> splits) {
-        return new Transaction(date, text, reference, (debitAccount != null) ? new AccountEntry(debitAccount, date, amount, null, null, true,
-            vatCode) : null, (creditAccount != null) ? new AccountEntry(creditAccount, date, amount, null, null, false, vatCode) : null,
+        return new Transaction(date, text, reference,
+            (debitAccount != null) ? AccountEntry.debit(debitAccount, date, amount, null, null, vatCode) : null,
+            (creditAccount != null) ? AccountEntry.credit(creditAccount, date, amount, null, null, vatCode) : null,
             vatCode, dateExpected, true, splits);
     }
 
@@ -112,7 +118,7 @@ public class Transaction implements HasDate, HasText {
     }
 
     public Optional<VatCode> vatCode() {
-        return (debit != null) ? debit.vatCode() : credit.vatCode();
+        return Optional.ofNullable((debit != null) ? debit.vatCode() : credit.vatCode());
     }
 
     public String vatCodeAsString() {

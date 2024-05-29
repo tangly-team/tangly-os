@@ -98,12 +98,12 @@ public interface LedgerRealm extends Realm {
             BigDecimal vatDue = transaction.amount().multiply(vatCode.vatDueRate());
             vatSyntheticTransaction = Transaction.ofSynthetic(transaction.date(), transaction.creditAccount(), VAT_ACCOUNT, vatDue, VAT_FLAT_RATE,
                 transaction.reference(), vatCode, null, Collections.emptyList());
-        } else if (transaction.isSplit() && transaction.splits().stream().anyMatch(o -> o.vatCode().isPresent())) {
+        } else if (transaction.isSplit() && transaction.splits().stream().anyMatch(o -> Objects.nonNull(o.vatCode()))) {
             // split transaction with VAT code defined in at least one split is processed to compute the VAT amount to be transferred to the VAT account
             var splits = transaction.splits().stream().map(o ->
                 {
-                    BigDecimal vatDueRate = o.vatCode().isPresent() ? o.vatCode().get().vatDueRate() : BigDecimal.ZERO;
-                    return new AccountEntry(VAT_ACCOUNT, o.date(), o.amount().multiply(vatDueRate), o.reference(), VAT_FLAT_RATE, false, o.vatCode().orElse(null));
+                    BigDecimal vatDueRate = Objects.nonNull(o.vatCode()) ? o.vatCode().vatDueRate() : BigDecimal.ZERO;
+                    return AccountEntry.credit(VAT_ACCOUNT, o.date(), o.amount().multiply(vatDueRate), o.reference(), VAT_FLAT_RATE, o.vatCode());
                 })
                 .toList();
             BigDecimal totalVatDue = splits.stream().map(AccountEntry::amount).reduce(BigDecimal::add).orElse(BigDecimal.ZERO);
@@ -139,7 +139,7 @@ public interface LedgerRealm extends Realm {
 // region VAT-computations
 
     default BigDecimal computeVatSales(LocalDate from, LocalDate to) {
-        return transactions(from, to).stream().flatMap(o -> o.creditSplits().stream()).filter(o -> o.vatCode().isPresent())
+        return transactions(from, to).stream().flatMap(o -> o.creditSplits().stream()).filter(o -> Objects.nonNull(o.vatCode()))
             .map(AccountEntry::amount).reduce(BigDecimal::add).orElse(BigDecimal.ZERO);
     }
 
