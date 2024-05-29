@@ -179,7 +179,6 @@ public class LedgerTsvHdl {
         }
     }
 
-
     /**
      * Imports the transaction list exported from a CSV file with header.
      * <p>The file structure provided by the external program is:</p>
@@ -201,7 +200,7 @@ public class LedgerTsvHdl {
         try {
             Iterator<CSVRecord> records = TsvHdl.FORMAT.parse(reader).iterator();
             int counter = 0;
-            var csv = records.hasNext() ? records.next() : null;
+            var csv = TsvHdl.nextNonEmptyRecord(records);
             while (csv != null) {
                 String date = csv.get(DATE);
                 String[] debitValues = csv.get(ACCOUNT_DEBIT).split("-");
@@ -212,10 +211,10 @@ public class LedgerTsvHdl {
                 String reference = csv.get(DOC);
                 String vatCode = csv.get(VAT_CODE);
                 List<AccountEntry> splits = new ArrayList<>();
-                if (isPartOfSplitTransaction(csv)) {
-                    csv = importSplits(records, splits);
+                if (isSplit(csv)) {
+                    csv = importSplits(records, splits, isDebitSplit(csv));
                 } else {
-                    csv = records.hasNext() ? records.next() : null;
+                    csv = TsvHdl.nextNonEmptyRecord(records);
                 }
                 Transaction transaction = null;
                 try {
@@ -277,9 +276,9 @@ public class LedgerTsvHdl {
         }
     }
 
-    private static CSVRecord importSplits(@NotNull Iterator<CSVRecord> records, List<AccountEntry> splits) {
+    private static CSVRecord importSplits(@NotNull Iterator<CSVRecord> records, List<AccountEntry> splits, boolean isDebitSplit) {
         var csv = records.hasNext() ? records.next() : null;
-        while (isPartOfSplitTransaction(csv)) {
+        while ((isDebitSplit && isCreditSplit(csv)) || isDebitSplit(csv)) {
             if (!Strings.isNullOrBlank(csv.get(ACCOUNT_DEBIT))) {
                 var values = csv.get(ACCOUNT_DEBIT).split("-");
                 var entry = AccountEntry.debit(values[0], csv.get(DATE), csv.get(AMOUNT), csv.get(DOC), csv.get(DESCRIPTION), VatCode.of(csv.get(VAT_CODE)));
@@ -291,7 +290,7 @@ public class LedgerTsvHdl {
                 defineSegments(entry, values);
                 splits.add(entry);
             }
-            csv = records.hasNext() ? records.next() : null;
+            csv = TsvHdl.nextNonEmptyRecord(records);
         }
         return csv;
     }
@@ -398,7 +397,15 @@ public class LedgerTsvHdl {
         }
     }
 
-    private static boolean isPartOfSplitTransaction(CSVRecord csv) {
-        return (csv != null) && (Strings.isNullOrEmpty(csv.get(ACCOUNT_DEBIT)) || Strings.isNullOrEmpty(csv.get(ACCOUNT_CREDIT)));
+    private static boolean isSplit(CSVRecord csv) {
+        return isDebitSplit(csv) || isCreditSplit(csv);
+    }
+
+    private static boolean isDebitSplit(CSVRecord csv) {
+        return (csv != null) && !Strings.isNullOrEmpty(csv.get(ACCOUNT_DEBIT)) && Strings.isNullOrEmpty(csv.get(ACCOUNT_CREDIT));
+    }
+
+    private static boolean isCreditSplit(CSVRecord csv) {
+        return (csv != null) && Strings.isNullOrEmpty(csv.get(ACCOUNT_DEBIT)) && !Strings.isNullOrEmpty(csv.get(ACCOUNT_DEBIT));
     }
 }

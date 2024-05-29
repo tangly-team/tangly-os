@@ -31,10 +31,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
+import java.util.*;
 import java.util.function.BiConsumer;
 import java.util.function.BiFunction;
 import java.util.function.Function;
@@ -53,6 +50,18 @@ public final class TsvHdl {
     public static final String GENDER = "gender";
 
     private TsvHdl() {
+    }
+
+    public static boolean isEmpty(@NotNull CSVRecord record) {
+        return Objects.isNull(record) || record.stream().anyMatch(o -> !Strings.isNullOrBlank(o));
+    }
+
+    public static CSVRecord nextNonEmptyRecord(Iterator<CSVRecord> records) {
+        CSVRecord csv = records.hasNext() ? records.next() : null;
+        while (Objects.nonNull(csv) && !TsvHdl.isEmpty(csv)) {
+            csv = records.hasNext() ? records.next() : null;
+        }
+        return csv;
     }
 
     public static <T> TsvEntity<T> of(@NotNull Class<T> clazz, @NotNull List<TsvProperty<T, ?>> properties, @NotNull Function<Long, T> supplier) {
