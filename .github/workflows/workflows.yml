@@ -7,16 +7,23 @@ on:
 jobs:
     build:
         runs-on: ubuntu-latest
-
         steps:
-            -   uses: actions/checkout@v4
+            - uses: actions/checkout@v4
+            - name: Restore gradle.properties
+              env:
+                GRADLE_PROPERTIES: ${{ secrets.GRADLE_PROPERTIES }}
+              shell: bash
+              run: |
+                mkdir -p ~/.gradle/
+                echo "GRADLE_USER_HOME=${HOME}/.gradle" >> $GITHUB_ENV
+                echo "${GRADLE_PROPERTIES}" > ~/.gradle/gradle.properties
             -   uses: actions/setup-java@v4
                 with:
                     distribution: 'temurin'
                     java-version: '22'
                     cache: 'gradle'
             -   uses: arduino/setup-protoc@v3
-            -   run: |
+            - run: |
                     ./gradlew build test
             #       ./gradlew build -Pvaadin.productionMode=true (not working with a circular dependency error)
             -   uses: actions/upload-artifact@v4
