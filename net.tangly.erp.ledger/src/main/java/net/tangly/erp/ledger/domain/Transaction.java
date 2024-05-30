@@ -27,6 +27,9 @@ import java.util.Optional;
  * A simple transaction is a money transfer between a debit and a credit account. A split transaction is a money transfer between a debit account and a set of
  * credit accounts or a credit account and a set of debit accounts. The total debit and the total credit of a transaction must be the same format. The majority
  * of transactions have one debit and one credit account. The class is immutable.
+ * <p> Two kinds of transactions are supported. The simple transaction is a transfer from one debit account to a credit account. All information are stored
+ * at the transaction level. The split transaction is a transfer from one debit account to multiple credit accounts or from one credit account to multiple
+ * debit accounts. General information is stored on the transaction level and specific data is stored in the associated split accounts.</p>
  * <p>A transaction is an event in the ledger domain. The whole sequence of transactions fully describes the state of the ledger and all accounts defined
  * inside.</p>
  * <p> A transaction can have a VAT code. The code is either on the debit or the credit account. If the transaction is split the VAT code can optionally

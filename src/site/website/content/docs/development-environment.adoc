@@ -105,7 +105,8 @@ gem install rouge
 
 == Tricks
 
-==== Backup of Local Development Artifacts
+=== Backup of Local Development Artifacts
+
 Local Git repositories cannot be stored on a local cloud drive.
 You will get repository corruptions due to the way the could drive performs synchronization.
 
@@ -129,7 +130,7 @@ git push backup master                                                          
 <2> Add a remote for the backup repository to the tangly-os project
 <3> Pushes the changes to the backup repository. The cloud folder will be replicated to the cloud for backup.
 
-==== npm Troubles
+=== npm Troubles
 
 * Do not use _sudo_ when installing _node_ or _npm_.
 * Delete _~/.npm_ to enable updates if you once used _sudo_ to install extensions for node.

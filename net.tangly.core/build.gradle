@@ -13,6 +13,7 @@
 
 plugins {
     id 'java-common-conventions'
+    id 'java-library'
 }
 
 project.ext.groupId = 'net.tangly'
@@ -20,7 +21,7 @@ project.ext.artifactId = 'core'
 project.version = "${projectVersion}"
 project.ext.moduleName = "${project.ext.groupId}.${project.ext.artifactId}"
 project.ext.inceptionYear = '2016'
-project.description = "Core Abstractions - Core - using Java 21 or higher (tangly llc)"
+project.description = "Core Abstractions (tangly llc)"
 
 dependencies {
     implementation project(':net.tangly.commons')

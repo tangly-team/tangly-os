@@ -92,7 +92,7 @@ Development capabilities are dependent on the goodwill and availability of activ
 
 A service company provides services to customers to build products.
 
-===== Products Domain
+==== Products Domain
 
 The company develops a *product* with the customer.
 A product has a _duration_.

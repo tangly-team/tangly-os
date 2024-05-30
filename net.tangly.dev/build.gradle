@@ -13,6 +13,7 @@
 
 plugins {
     id 'java-common-conventions'
+    id 'java-library'
 }
 
 project.ext.groupId = 'net.tangly'
@@ -20,7 +21,7 @@ project.ext.artifactId = 'dev'
 project.version = "${projectVersion}"
 project.ext.moduleName = "${project.ext.groupId}.${project.ext.artifactId}"
 project.ext.inceptionYear = '1996'
-project.description = "Development Utilities(tangly llc)"
+project.description = "Development Utilities (tangly llc)"
 
 dependencies {
     implementation project(':net.tangly.commons')

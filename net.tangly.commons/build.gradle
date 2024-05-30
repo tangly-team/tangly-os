@@ -13,6 +13,7 @@
 
 plugins {
     id 'java-common-conventions'
+    id 'java-library'
 }
 
 java {
@@ -24,7 +25,7 @@ project.ext.artifactId = 'commons'
 project.version = "${projectVersion}"
 project.ext.moduleName = "${project.ext.groupId}.${project.ext.artifactId}"
 project.ext.inceptionYear = '1996'
-project.description = "Commons data structures - using Java 21 or higher (tangly llc)"
+project.description = "Commons data structures (tangly llc)"
 
 java {
     modularity.inferModulePath.set(true)
