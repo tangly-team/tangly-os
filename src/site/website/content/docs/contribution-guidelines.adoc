@@ -6,18 +6,15 @@ date: 2020-09-10
 description: Contributing guidelines for the open source components of tangly OS product
 ---
 
-== Contribution Guidelines
 :author: Marcel Baumann
 :email: <marcel.baumann@tangly.net>
 :homepage: https://www.tangly.net/
 :company: https://www.tangly.net/[tangly llc]
 
-=== How to contribute to {ref-tangly} Open Source Components
-
 This is an open source product.
 We love getting patches and contributions to make our components, and their documentation even better.
 
-=== Contributing to tangly Open Source Components
+== Contributing to tangly Open Source Components
 
 The components live in {ref-site}.
 The git repository and the issue tracker are public and accessible to all interested parties.
@@ -44,7 +41,7 @@ git remote rm <remote>                                                          
 <6> Push the local master branch to the selected remote
 <7> Remove the given remote from this git project
 
-=== Contributor License Agreement
+== Contributor License Agreement
 
 Source Code contributions to this product must be published under Apache 2.0 license.
 
@@ -52,21 +49,21 @@ All documentations and texts to this product must be published under CC-BY-SA 4.
 
 This simply gives us permission to use and redistribute your contributions as part of the product.
 
-=== Code reviews
+== Code reviews
 
 All submissions, including submissions by product members, require review.
 We use bitbucket pull requests for this purpose.
 Consult bitbucket https://www.atlassian.com/git/tutorials/making-a-pull-request[Tutorial and Help] for more information on using pull requests.
 
-=== Previewing your changes
+== Previewing your changes
 
 Source Code Changes::
- Build locally the code changes with the provided Gradle scripts.
+ Locally build the code changes with the provided Gradle scripts.
 Documentation Changes::
  The scripts to generate and populate the site from the product clone repository are located under
  https://bitbucket.org/tangly-team/tangly-os/src/master/src/main/scripts/[scripts].
 
-=== Creating issues
+== Creating issues
 
 Alternatively, if there’s something you’d like to see (or if you’ve found something that is not working the way you would expect).
 You are not sure how to fix it yourself, please create an issue in https://bitbucket.org/tangly-team/tangly-os/issues[Issue Tracker].

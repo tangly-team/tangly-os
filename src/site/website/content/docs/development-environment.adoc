@@ -6,14 +6,12 @@ date: 2020-09-10
 description: Development Environment for tangly OS
 ---
 
-== Development Environment
-
 The development environment is MacOS
 footnote:[It is nonsense to use Microsoft Windows to develop applications in Java.
 Use macOS or Linux operating systems.
 You do not need to install a virus scanner or a special personal firewall.].
 
-=== Java JDKs
+== Java JDKs
 
 Install Java development kits. You should at least install the last released version and the last LTS version.
 We use the distributions of Oracle.
@@ -25,9 +23,11 @@ alias java19 = "export JAVA_HOME=`/usr/libexec/java_home -v 19`; java -version"
 alias java20 = "export JAVA_HOME=`/usr/libexec/java_home -v 20`; java -version"
 ----
 
-=== Tools
+== Tools
 
-We use https://brew.sh/[brew] to install. The following tools shall be installed:
+We use https://brew.sh/[brew] to install. The following tools shall be installed
+footnote:[I wrote a blog how I setup my MacBook Pro for development under
+{ref-tangly-blog-url}/blog/2023/my-new-macbookpro/[My new MacBookPro].].
 
 - asciidoctor
 - hugo
@@ -44,7 +44,7 @@ We use https://brew.sh/[brew] to install. The following tools shall be installed
 - rsync
 - wget
 
-=== IntelliJ IDEA
+== IntelliJ IDEA
 
 All development activities are performed with IntelliJ IDEA IDE.
 
@@ -56,7 +56,7 @@ The following plugins shall be installed
 - SonarLint
 - Statistics
 
-=== Git and ssh keys
+== Git and ssh keys
 
 You can generate an SSH key with the following commands
 
@@ -92,7 +92,7 @@ git config --global user.name "marcelbaumann"
 git config --global user.email "marcel.baumann@tangly.net"
 ----
 
-=== Static website
+== Static website
 
 Install the following additional packages for asciidoctor to work without errors.
 
@@ -103,7 +103,7 @@ gem install asciidoctor-bibtex
 gem install rouge
 ----
 
-=== Tricks
+== Tricks
 
 ==== Backup of Local Development Artifacts
 Local Git repositories cannot be stored on a local cloud drive.
