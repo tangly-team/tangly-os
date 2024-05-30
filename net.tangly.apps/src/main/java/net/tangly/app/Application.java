@@ -15,6 +15,10 @@ package net.tangly.app;
 
 import io.javalin.Javalin;
 import net.tangly.app.api.BoundedDomainRest;
+import net.tangly.app.ports.AppsAdapter;
+import net.tangly.app.ports.AppsEntities;
+import net.tangly.app.services.AppsBoundedDomain;
+import net.tangly.app.services.AppsBusinessLogic;
 import net.tangly.core.TypeRegistry;
 import net.tangly.core.domain.BoundedDomain;
 import org.apache.logging.log4j.LogManager;
@@ -23,6 +27,7 @@ import org.eclipse.jetty.io.RuntimeIOException;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
+import java.nio.file.Path;
 import java.util.*;
 
 /**
@@ -59,6 +64,7 @@ public final class Application {
             logger.atError().log("Application configuration properties load error {}", e);
             throw new RuntimeIOException(e);
         }
+        ofAppDomain();
     }
 
     public Properties properties() {
@@ -87,6 +93,10 @@ public final class Application {
 
     public Optional<BoundedDomain<?, ?, ?>> getBoundedDomain(String name) {
         return Optional.ofNullable(boundedDomains.get(name));
+    }
+
+    public AppsBoundedDomain apps() {
+        return (AppsBoundedDomain) boundedDomains.get(AppsBoundedDomain.DOMAIN);
     }
 
     public void registerBoundedDomainRest(BoundedDomainRest domain) {
@@ -119,5 +129,12 @@ public final class Application {
 
     public String reports(String domain) {
         return STR."\{getProperty(REPORTS_DIRECTORY_PROPERTY)}/\{domain}";
+    }
+
+    private void ofAppDomain() {
+        var realm = inMemory() ? new AppsEntities() : new AppsEntities(
+            Path.of(databases(), AppsBoundedDomain.DOMAIN));
+        var domain = new AppsBoundedDomain(realm, new AppsBusinessLogic(realm), new AppsAdapter(realm, Path.of(imports(AppsBoundedDomain.DOMAIN))), registry());
+        registerBoundedDomain(domain);
     }
 }

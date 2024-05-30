@@ -14,13 +14,15 @@
 package net.tangly.erp.crm.services;
 
 import net.tangly.core.HasMutableDateRange;
-import net.tangly.erp.crm.domain.*;
+import net.tangly.erp.crm.domain.Activity;
+import net.tangly.erp.crm.domain.Contract;
+import net.tangly.erp.crm.domain.Interaction;
+import net.tangly.erp.crm.domain.InteractionCode;
 import org.jetbrains.annotations.NotNull;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Comparator;
-import java.util.Optional;
 
 /**
  * The business logic and rules of the bounded domain of CRM entities.
@@ -36,15 +38,6 @@ public class CrmBusinessLogic {
         return realm;
     }
 
-    public Optional<Subject> login(String username, String password) {
-        return realm().subjects().items().stream().filter(o -> o.id().equals(username) && o.authenticate(password)).findAny();
-    }
-
-    public boolean changePassword(String username, String password, String newPassword) {
-        var subject = realm().subjects().items().stream().filter(o -> o.id().equals(username) && o.authenticate(password)).findAny();
-        subject.ifPresent(o -> o.newPassword(newPassword));
-        return subject.isPresent();
-    }
 
     /**
      * Set the end date property of interaction to the end date of the last contract associated with the interaction in the case of customer and completed state. Set the end date

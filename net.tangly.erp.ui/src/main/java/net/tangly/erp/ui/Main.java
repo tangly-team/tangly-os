@@ -15,14 +15,14 @@ package net.tangly.erp.ui;
 
 import com.github.mvysny.vaadinboot.VaadinBoot;
 import net.tangly.app.Application;
-import net.tangly.commons.lang.ReflectionUtilities;
-import net.tangly.core.HasOid;
-import net.tangly.core.MutableEntity;
+import net.tangly.app.domain.User;
+import net.tangly.app.domain.UserAccessRights;
+import net.tangly.app.domain.UserAccessRightsCode;
+import net.tangly.app.services.AppsBoundedDomain;
 import net.tangly.erp.collaborators.ports.CollaboratorsAdapter;
 import net.tangly.erp.collaborators.ports.CollaboratorsEntities;
 import net.tangly.erp.collabortors.services.CollaboratorsBoundedDomain;
 import net.tangly.erp.collabortors.services.CollaboratorsBusinessLogic;
-import net.tangly.erp.crm.domain.Subject;
 import net.tangly.erp.crm.ports.CrmAdapter;
 import net.tangly.erp.crm.ports.CrmEntities;
 import net.tangly.erp.crm.rest.CrmBoundedDomainRest;
@@ -50,8 +50,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
 import java.nio.file.Path;
-import java.time.LocalDate;
-import java.time.Month;
+import java.util.List;
 
 /**
  * Entry point to the start of the regular Java SE application with an embedded Jetty server. The application parameters are:
@@ -111,11 +110,11 @@ public final class Main {
 
     public static void ofDomains() {
         Application application = Application.instance();
+        if (application.apps().realm().users().items().isEmpty()) {
+            application.apps().realm().users().update(createDefaultUser());
+        }
         if (application.isEnabled(CrmBoundedDomain.DOMAIN)) {
             var realm = application.inMemory() ? new CrmEntities() : new CrmEntities(Path.of(application.databases(), CrmBoundedDomain.DOMAIN));
-            if (realm.subjects().items().isEmpty()) {
-                realm.subjects().update(createAdminSubject());
-            }
             var domain = new CrmBoundedDomain(realm, new CrmBusinessLogic(realm), new CrmAdapter(realm, Path.of(Application.instance().imports(CrmBoundedDomain.DOMAIN))),
                 application.registry());
             application.registerBoundedDomain(domain);
@@ -155,12 +154,16 @@ public final class Main {
         }
     }
 
-    private static Subject createAdminSubject() {
-        var subject = new Subject(MutableEntity.UNDEFINED_OID);
-        ReflectionUtilities.set(subject, HasOid.OID, 900);
-        subject.id("aeon");
-        subject.newPassword("aeon");
-        subject.from(LocalDate.of(2000, Month.JANUARY, 1));
-        return subject;
+    private static User createDefaultUser() {
+        String passwordSalt = User.newSalt();
+        String passwordHash = User.encryptPassword("aeon", passwordSalt);
+        var rights = List.of(
+            new UserAccessRights("aeon", CrmBoundedDomain.DOMAIN, UserAccessRightsCode.user),
+            new UserAccessRights("aeon", InvoicesBoundedDomain.DOMAIN, UserAccessRightsCode.user),
+            new UserAccessRights("aeon", LedgerBoundedDomain.DOMAIN, UserAccessRightsCode.user),
+            new UserAccessRights("aeon", ProductsBoundedDomain.DOMAIN, UserAccessRightsCode.user),
+            new UserAccessRights("aeon", CollaboratorsBoundedDomain.DOMAIN, UserAccessRightsCode.user),
+            new UserAccessRights("aeon", AppsBoundedDomain.DOMAIN, UserAccessRightsCode.appAdmin));
+        return new User("aeon", passwordHash, passwordSalt, true, null, rights, "aeon@gmail.com");
     }
 }

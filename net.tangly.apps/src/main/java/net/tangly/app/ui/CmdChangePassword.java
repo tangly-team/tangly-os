@@ -11,7 +11,7 @@
  *
  */
 
-package net.tangly.erp.crm.ui;
+package net.tangly.app.ui;
 
 import com.vaadin.flow.component.HtmlComponent;
 import com.vaadin.flow.component.button.Button;
@@ -23,8 +23,8 @@ import com.vaadin.flow.component.textfield.PasswordField;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.data.binder.ValidationException;
-import net.tangly.erp.crm.domain.Subject;
-import net.tangly.erp.crm.services.CrmBoundedDomain;
+import net.tangly.app.domain.User;
+import net.tangly.app.services.AppsBoundedDomain;
 import net.tangly.ui.app.domain.Cmd;
 import net.tangly.ui.components.VaadinUtils;
 import org.jetbrains.annotations.NotNull;
@@ -40,17 +40,17 @@ public class CmdChangePassword implements Cmd {
     public static final String CANCEL = "Cancel";
 
     static class ChangePassword {
-        private final Subject subject;
+        private final User user;
         private String oldPassword;
         private String newPassword;
         private String confirmPassword;
 
-        ChangePassword(Subject subject) {
-            this.subject = subject;
+        ChangePassword(User subject) {
+            this.user = subject;
         }
 
-        public Subject subject() {
-            return subject;
+        public User user() {
+            return user;
         }
 
         String oldPassword() {
@@ -78,16 +78,16 @@ public class CmdChangePassword implements Cmd {
         }
     }
 
-    private final CrmBoundedDomain domain;
     private final ChangePassword changePassword;
     private final TextField username;
     private final PasswordField oldPassword;
     private final PasswordField newPassword;
     private final PasswordField confirmPassword;
+    private final AppsBoundedDomain domain;
 
     private Dialog dialog;
 
-    public CmdChangePassword(@NotNull CrmBoundedDomain domain, @NotNull Subject subject) {
+    public CmdChangePassword(@NotNull AppsBoundedDomain domain, @NotNull User subject) {
         this.domain = domain;
         changePassword = new ChangePassword(subject);
         username = new TextField(USERNAME, "username");
@@ -107,7 +107,7 @@ public class CmdChangePassword implements Cmd {
         FormLayout form = new FormLayout();
         VaadinUtils.set1ResponsiveSteps(form);
         Binder<ChangePassword> binder = new Binder<>();
-        binder.bind(username, o -> o.subject().id(), null);
+        binder.bind(username, o -> o.user().username(), null);
         binder.bind(oldPassword, ChangePassword::oldPassword, ChangePassword::oldPassword);
         binder.bind(newPassword, ChangePassword::newPassword, ChangePassword::newPassword);
         binder.forField(confirmPassword).withValidator(v -> Objects.equals(newPassword.getValue(), v), "new password and confirm password should the same text")
@@ -116,7 +116,7 @@ public class CmdChangePassword implements Cmd {
         Button execute = new Button(EXECUTE, VaadinIcon.COGS.create(), e -> {
             try {
                 binder.writeBean(changePassword);
-                domain.logic().changePassword(changePassword.subject().id(), changePassword.oldPassword(), changePassword.newPassword());
+                domain.logic().changePassword(changePassword.user().username(), changePassword.oldPassword(), changePassword.newPassword());
                 dialog.close();
                 this.dialog = null;
 

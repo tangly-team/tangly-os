@@ -31,7 +31,6 @@ import java.util.function.Predicate;
  *     <li>Contract defines a legal contractual obligation between two legal entities</li>
  *     <li>Interaction defines an interaction between your company and a set of legal and natural entities</li>
  *     <li>Activity defines a specific event part of an interaction</li>
- *     <li>Subject defines a registered user of the application</li>
  *     <li>CRM tags defining an ontology in the business domain of customer relationships management</li>
  * </ul>
  */
@@ -49,8 +48,6 @@ public interface CrmRealm extends Realm {
     Provider<Interaction> interactions();
 
     Provider<Activity> activities();
-
-    Provider<Subject> subjects();
 
 
     /**

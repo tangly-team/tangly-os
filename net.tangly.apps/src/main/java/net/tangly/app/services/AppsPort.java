@@ -11,17 +11,12 @@
  *
  */
 
-package net.tangly.erp.crm.ui;
+package net.tangly.app.services;
 
-import com.vaadin.flow.component.UI;
-import com.vaadin.flow.server.VaadinSession;
-import net.tangly.ui.app.domain.Cmd;
+import net.tangly.core.domain.Port;
 
-public record CmdLogout() implements Cmd {
-    @Override
-    public void execute() {
-        VaadinSession.getCurrent().getSession().invalidate();
-        UI.getCurrent().getPage().setLocation("");
-        UI.getCurrent().getPage().reload();
-    }
+/**
+ * Defines the import and export port for the products-bounded domain. It is the primary port in the DDD terminology.
+ */
+public interface AppsPort extends Port<AppsRealm> {
 }

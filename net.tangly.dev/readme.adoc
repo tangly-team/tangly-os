@@ -26,7 +26,7 @@ The library can be included in Maven as
     <dependency>
       <groupId>net.tangly</groupId>
       <artifactId>dev</artifactId>
-      <version>0.2.7</version>
+      <version>0.2.8</version>
     </dependency>
 
 ----
@@ -35,7 +35,7 @@ The library can be included in Gradle as
 
 [source,groovy]
 ----
-    implementation "net.tangly:dev:0.2.7"
+    implementation "net.tangly:dev:0.2.8"
 ----
 
 The documentation can be found under {ref-tangly-blog-url}/docs/dev/[Commons documentation]

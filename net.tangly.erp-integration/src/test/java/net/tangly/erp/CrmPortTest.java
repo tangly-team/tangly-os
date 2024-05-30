@@ -65,7 +65,6 @@ class CrmPortTest {
             verifyContracts(handler.realm(), 0, null);
             verifyInteractions(handler.realm());
             verifyActivities(handler.realm());
-            verifySubjects(handler.realm());
             verifyComments(handler.realm());
 
             NaturalEntity naturalEntity = createNaturalEntity();
@@ -90,7 +89,6 @@ class CrmPortTest {
             verifyContracts(handler.realm(), nrOfContracts, contract);
             verifyInteractions(handler.realm());
             verifyActivities(handler.realm());
-            verifySubjects(handler.realm());
             verifyComments(handler.realm());
         }
     }
@@ -147,11 +145,6 @@ class CrmPortTest {
     private void verifyActivities(@NotNull CrmRealm realm) {
         assertThat(realm.collectActivities(o -> true)).isNotEmpty();
         realm.collectActivities(o -> true).forEach(activity -> assertThat(activity.check()).isTrue());
-    }
-
-    private void verifySubjects(@NotNull CrmRealm realm) {
-        assertThat(realm.subjects().items()).isEmpty();
-        Realm.checkEntities(realm.subjects());
     }
 
     private void verifyComments(@NotNull CrmRealm realm) {

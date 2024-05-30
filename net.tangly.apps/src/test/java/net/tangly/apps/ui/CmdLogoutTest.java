@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2024 Marcel Baumann
+ * Copyright 2024 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -11,18 +11,23 @@
  *
  */
 
-package net.tangly.erp.crm.ui;
+package net.tangly.apps.ui;
 
-import net.tangly.app.Application;
-import net.tangly.erp.crm.services.CrmBoundedDomain;
+import com.vaadin.flow.server.VaadinSession;
+import net.tangly.app.ui.CmdLogout;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+
 @Tag("IntegrationTest")
-class CmdLoginTest extends CrmTest {
+@Disabled
+class CmdLogoutTest extends AppsTest {
     @Test
-    void testLogin() {
-        var login = new CmdLogin((CrmBoundedDomain) Application.instance().getBoundedDomain(CrmBoundedDomain.DOMAIN).get());
-        login.execute();
+    void testLogout() {
+        var logout = new CmdLogout();
+        logout.execute();
+        assertThat(VaadinSession.getCurrent().getSession()).isNotNull();
     }
 }

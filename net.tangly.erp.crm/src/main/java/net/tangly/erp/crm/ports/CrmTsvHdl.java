@@ -66,7 +66,6 @@ public class CrmTsvHdl {
         TsvHdl.addComments(realm.legalEntities(), comments);
         TsvHdl.addComments(realm.employees(), comments);
         TsvHdl.addComments(realm.contracts(), comments);
-        TsvHdl.addComments(realm.subjects(), comments);
         TsvHdl.addComments(realm.interactions(), comments);
     }
 
@@ -76,7 +75,6 @@ public class CrmTsvHdl {
         realm.legalEntities().items().forEach(o -> comments.addAll(updateAndCollectComments(o)));
         realm.employees().items().forEach(o -> comments.addAll(updateAndCollectComments(o)));
         realm.contracts().items().forEach(o -> comments.addAll(updateAndCollectComments(o)));
-        realm.subjects().items().forEach(o -> comments.addAll(updateAndCollectComments(o)));
         realm.interactions().items().forEach(o -> comments.addAll(updateAndCollectComments(o)));
         TsvHdl.exportRelations(CrmBoundedDomain.DOMAIN, path, createTsvComment(), comments);
     }
@@ -135,14 +133,6 @@ public class CrmTsvHdl {
         Provider<ContractExtension> extensions = new ProviderInMemory<>();
         realm.contracts().items().forEach(e -> extensions.updateAll(e.contractExtensions()));
         TsvHdl.exportEntities(CrmBoundedDomain.DOMAIN, path, createTsvContractExtension(), extensions);
-    }
-
-    public void importSubjects(@NotNull Reader reader, String source) {
-        TsvHdl.importEntities(CrmBoundedDomain.DOMAIN, reader, source, createTsvSubject(), realm.subjects());
-    }
-
-    public void exportSubjects(@NotNull Path path) {
-        TsvHdl.exportEntities(CrmBoundedDomain.DOMAIN, path, createTsvSubject(), realm.subjects());
     }
 
     public void importInteractions(@NotNull Reader reader, String source) {
@@ -298,17 +288,6 @@ public class CrmTsvHdl {
             TsvProperty.ofBigDecimal("amountWithoutVat", ContractExtension::amountWithoutVat, null),
             TsvProperty.ofBigDecimal("budgetInHours", ContractExtension::amountWithoutVat, null));
         return TsvEntity.of(ContractExtension.class, fields, imports);
-    }
-
-    private TsvEntity<Subject> createTsvSubject() {
-        List<TsvProperty<Subject, ?>> fields = TsvHdl.createTsvEntityFields();
-        fields.add(TsvProperty.of("userOid", Subject::user, Subject::user, e -> findNaturalEntityByOid(e).orElse(null), TsvHdl.convertFoidTo()));
-        fields.add(TsvProperty.ofString("gravatarEmail", Subject::gravatarEmail, Subject::gravatarEmail));
-        fields.add(TsvProperty.ofString("passwordSalt", Subject::passwordSalt, Subject::passwordSalt));
-        fields.add(TsvProperty.ofString("passwordHash", Subject::passwordHash, Subject::passwordHash));
-        fields.add(TsvProperty.ofString("gmailUsername", Subject::gmailUsername, Subject::gmailUsername));
-        fields.add(TsvProperty.ofString("gmailPassword", Subject::gmailPassword, Subject::gmailPassword));
-        return TsvHdl.of(Subject.class, fields, Subject::new);
     }
 
     private TsvEntity<Interaction> createTsvInteraction() {

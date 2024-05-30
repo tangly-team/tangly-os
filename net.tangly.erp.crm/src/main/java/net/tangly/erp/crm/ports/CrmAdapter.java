@@ -33,7 +33,6 @@ public final class CrmAdapter implements CrmPort {
     public static final String CONTRACT_EXTENSIONS_TSV = "contract-extensions.tsv";
     public static final String INTERACTIONS_TSV = "interactions.tsv";
     public static final String ACTIVITIES_TSV = "activities.tsv";
-    public static final String SUBJECTS_TSV = "subjects.tsv";
     public static final String VCARDS_FOLDER = "vcards";
 
     private final CrmRealm realm;
@@ -60,7 +59,6 @@ public final class CrmAdapter implements CrmPort {
         Port.importEntities(folder, CONTRACT_EXTENSIONS_TSV, handler::importContractExtensions);
         Port.importEntities(folder, INTERACTIONS_TSV, handler::importInteractions);
         Port.importEntities(folder, ACTIVITIES_TSV, handler::importActivities);
-        Port.importEntities(folder, SUBJECTS_TSV, handler::importSubjects);
         Port.importEntities(folder, COMMENTS_TSV, handler::importComments);
 
         var crmEnrichmentHdl = new CrmEnrichmentHdl(realm());
@@ -79,13 +77,11 @@ public final class CrmAdapter implements CrmPort {
         handler.exportContractExtensions(folder.resolve(CONTRACT_EXTENSIONS_TSV));
         handler.exportInteractions(folder.resolve(INTERACTIONS_TSV));
         handler.exportActivities(folder.resolve(ACTIVITIES_TSV));
-        handler.exportSubjects(folder.resolve(SUBJECTS_TSV));
         handler.exportComments(folder.resolve(COMMENTS_TSV));
     }
 
     @Override
     public void clearEntities() {
-        realm().subjects().deleteAll();
         realm().activities().deleteAll();
         realm().interactions().deleteAll();
         realm().contracts().deleteAll();

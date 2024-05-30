@@ -52,7 +52,6 @@ public class ProductsAdapter implements ProductsPort {
     public static final String YAML_EXT = ".yaml";
 
     private final ProductsRealm realm;
-
     private final ProductsBusinessLogic logic;
 
     private final Path dataFolder;

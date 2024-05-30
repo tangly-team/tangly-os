@@ -11,20 +11,20 @@
  *
  */
 
-package net.tangly.erp.crm.ui;
+package net.tangly.app.ui;
 
 import com.vaadin.flow.component.login.LoginI18n;
 import com.vaadin.flow.component.login.LoginOverlay;
 import com.vaadin.flow.component.notification.Notification;
-import net.tangly.erp.crm.domain.Subject;
-import net.tangly.erp.crm.services.CrmBoundedDomain;
+import net.tangly.app.domain.User;
+import net.tangly.app.services.AppsBoundedDomain;
 import net.tangly.ui.app.domain.Cmd;
 import net.tangly.ui.components.VaadinUtils;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Optional;
 
-public record CmdLogin(@NotNull CrmBoundedDomain domain) implements Cmd {
+public record CmdLogin(@NotNull AppsBoundedDomain domain) implements Cmd {
     @Override
     public void execute() {
         LoginOverlay component = new LoginOverlay();
@@ -35,10 +35,10 @@ public record CmdLogin(@NotNull CrmBoundedDomain domain) implements Cmd {
         component.setI18n(i18n);
         component.setOpened(true);
         component.addLoginListener(e -> {
-            Optional<Subject> subject = domain.logic().login(e.getUsername(), e.getPassword());
+            Optional<User> subject = domain.logic().login(e.getUsername(), e.getPassword());
             if (subject.isPresent()) {
                 VaadinUtils.setAttribute(component, "subject", subject.get());
-                VaadinUtils.setAttribute(component, "username", subject.get().id());
+                VaadinUtils.setAttribute(component, "username", subject.get().username());
                 component.close();
             } else {
                 component.setError(true);

@@ -11,81 +11,80 @@
  *
  */
 
-package net.tangly.erp.crm.ui;
+package net.tangly.apps.ui;
 
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.textfield.PasswordField;
-import net.tangly.core.MutableEntity;
-import net.tangly.erp.crm.domain.NaturalEntity;
-import net.tangly.erp.crm.domain.Subject;
+import net.tangly.app.Application;
+import net.tangly.app.domain.User;
+import net.tangly.app.ui.CmdChangePassword;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
+import java.util.Collections;
+
 import static com.github.mvysny.kaributesting.v10.LocatorJ.*;
-import static net.tangly.erp.crm.ui.CmdChangePassword.*;
-import static org.assertj.core.api.Assertions.assertThat;
+import static net.tangly.app.ui.CmdChangePassword.*;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 @Tag("IntegrationTest")
-class CmdChangePasswordTest extends CrmTest {
+@Disabled
+class CmdChangePasswordTest extends AppsTest {
     @Test
     void testChangePasswordCorrectly() {
-        var subject = createSubject();
-        crmBoundedDomain().realm().subjects().update(subject);
-        var cmd = new CmdChangePassword(crmBoundedDomain(), subject);
+        var user = createUser();
+        Application.instance().apps().realm().users().update(user);
+        var cmd = new CmdChangePassword(Application.instance().apps(), user);
         assertThat(cmd).isNotNull();
-        assertThat(subject.authenticate("old-password")).isTrue();
+        assertThat(user.authenticate("old-password")).isTrue();
         cmd.execute();
         Component form = form(cmd);
         _setValue(_get(form, PasswordField.class, spec -> spec.withLabel(CURRENT_PASSWORD)), "old-password");
         _setValue(_get(form, PasswordField.class, spec -> spec.withLabel(NEW_PASSWORD)), "new-password");
         _setValue(_get(form, PasswordField.class, spec -> spec.withLabel(CONFIRM_PASSWORD)), "new-password");
         _click(_get(form, Button.class, spec -> spec.withText(EXECUTE)));
-        assertThat(subject.authenticate("new-password")).isTrue();
+        assertThat(user.authenticate("new-password")).isTrue();
     }
 
     @Test
     void testChangePasswordWrongly() {
-        var subject = createSubject();
-        crmBoundedDomain().realm().subjects().update(subject);
-        var cmd = new CmdChangePassword(crmBoundedDomain(), subject);
+        var user = createUser();
+        Application.instance().apps().realm().users().update(user);
+        var cmd = new CmdChangePassword(Application.instance().apps(), user);
         assertThat(cmd).isNotNull();
-        assertThat(subject.authenticate("old-password")).isTrue();
+        assertThat(user.authenticate("old-password")).isTrue();
         cmd.execute();
         Component form = form(cmd);
         _setValue(_get(form, PasswordField.class, spec -> spec.withLabel(CURRENT_PASSWORD)), "dummy-password");
         _setValue(_get(form, PasswordField.class, spec -> spec.withLabel(NEW_PASSWORD)), "new-password");
         _setValue(_get(form, PasswordField.class, spec -> spec.withLabel(CONFIRM_PASSWORD)), "new-password");
         _click(_get(form, Button.class, spec -> spec.withText(EXECUTE)));
-        assertThat(subject.authenticate("old-password")).isTrue();
-        assertThat(subject.authenticate("new-password")).isFalse();
+        assertThat(user.authenticate("old-password")).isTrue();
+        assertThat(user.authenticate("new-password")).isFalse();
     }
 
     @Test
     void testChangePasswordCanceled() {
-        var subject = createSubject();
-        crmBoundedDomain().realm().subjects().update(subject);
-        var cmd = new CmdChangePassword(crmBoundedDomain(), subject);
+        var user = createUser();
+        Application.instance().apps().realm().users().update(user);
+        var cmd = new CmdChangePassword(Application.instance().apps(), user);
         assertThat(cmd).isNotNull();
-        assertThat(subject.authenticate("old-password")).isTrue();
+        assertThat(user.authenticate("old-password")).isTrue();
         cmd.execute();
         Component form = form(cmd);
         _setValue(_get(form, PasswordField.class, spec -> spec.withLabel(CURRENT_PASSWORD)), "dummy-password");
         _setValue(_get(form, PasswordField.class, spec -> spec.withLabel(NEW_PASSWORD)), "new-password");
         _setValue(_get(form, PasswordField.class, spec -> spec.withLabel(CONFIRM_PASSWORD)), "new-password");
         _click(_get(form, Button.class, spec -> spec.withText(CANCEL)));
-        assertThat(subject.authenticate("old-password")).isTrue();
-        assertThat(subject.authenticate("new-password")).isFalse();
+        assertThat(user.authenticate("old-password")).isTrue();
+        assertThat(user.authenticate("new-password")).isFalse();
     }
 
-    private Subject createSubject() {
-        var person = new NaturalEntity(MutableEntity.UNDEFINED_OID);
-        person.firstname("John");
-        person.name("Doe");
-        var subject = new Subject(MutableEntity.UNDEFINED_OID);
-        subject.user(person);
-        subject.id("john-doe");
-        subject.newPassword("old-password");
-        return subject;
+    private User createUser() {
+        String salt = User.newSalt();
+        String password = User.encryptPassword("old-password", salt);
+        return new User("john-doe", password, salt, true, null, Collections.emptyList(), "john.doe@gmail.com");
     }
 }

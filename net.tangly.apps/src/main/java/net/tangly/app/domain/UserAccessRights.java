@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2024 Marcel Baumann
+ * Copyright 2024 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -11,22 +11,7 @@
  *
  */
 
-plugins {
-    id 'java-common-conventions'
-    id 'java-library'
-}
+package net.tangly.app.domain;
 
-project.ext.groupId = 'net.tangly'
-project.ext.artifactId = 'users'
-project.version = "${projectVersion}"
-project.ext.moduleName = "${project.ext.groupId}.${project.ext.artifactId}"
-project.ext.inceptionYear = '1996'
-project.description = "Bounded Domain Application Users (tangly llc)"
-
-java {
-    modularity.inferModulePath.set(true)
-}
-
-dependencies {
-    implementation project(':net.tangly.commons')
+public record UserAccessRights(String username, String domain, UserAccessRightsCode accessRights) {
 }

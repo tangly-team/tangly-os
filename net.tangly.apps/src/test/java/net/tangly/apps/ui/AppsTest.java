@@ -11,23 +11,16 @@
  *
  */
 
-package net.tangly.erp.crm.ui;
+package net.tangly.apps.ui;
 
 import com.github.mvysny.kaributesting.v10.MockVaadin;
 import com.github.mvysny.kaributesting.v10.Routes;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.formlayout.FormLayout;
-import net.tangly.app.Application;
-import net.tangly.erp.crm.ports.CrmAdapter;
-import net.tangly.erp.crm.ports.CrmEntities;
-import net.tangly.erp.crm.services.CrmBoundedDomain;
-import net.tangly.erp.crm.services.CrmBusinessLogic;
 import net.tangly.ui.app.domain.Cmd;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
-
-import java.nio.file.Path;
 
 import static com.github.mvysny.kaributesting.v10.LocatorJ._get;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -35,20 +28,16 @@ import static org.assertj.core.api.Assertions.assertThat;
 /**
  * Defines basic infrastructure for integration tests of the bounded domain with karibu testing framewwork and in-memory database without persistence.
  */
-class CrmTest {
+class AppsTest {
     private static Routes routes;
 
     @BeforeAll
     public static void createModelAndRoutes() {
-        routes = new Routes().autoDiscoverViews("net.tangly.erp.crm.ui");
+        routes = new Routes().autoDiscoverViews("net.tangly.apps.main");
     }
 
     @BeforeEach
     public void setupVaadin() {
-        var realm = new CrmEntities();
-        var domain = new CrmBoundedDomain(realm, new CrmBusinessLogic(realm), new CrmAdapter(realm, Path.of(Application.instance().imports(CrmBoundedDomain.DOMAIN))),
-            Application.instance().registry());
-        Application.instance().registerBoundedDomain(domain);
         MockVaadin.setup(routes);
     }
 
@@ -65,9 +54,4 @@ class CrmTest {
         assertThat(form).isNotNull();
         return form;
     }
-
-    protected CrmBoundedDomain crmBoundedDomain() {
-        return (CrmBoundedDomain) Application.instance().getBoundedDomain(CrmBoundedDomain.DOMAIN).orElseThrow();
-    }
-
 }

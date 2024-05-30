@@ -13,7 +13,6 @@
 
 package net.tangly.erp.ui;
 
-import com.vaadin.flow.component.AttachEvent;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import net.tangly.app.Application;
@@ -21,7 +20,6 @@ import net.tangly.app.ApplicationView;
 import net.tangly.erp.collaborators.ui.CollaboratorsBoundedDomainUi;
 import net.tangly.erp.collabortors.services.CollaboratorsBoundedDomain;
 import net.tangly.erp.crm.services.CrmBoundedDomain;
-import net.tangly.erp.crm.ui.CmdLogin;
 import net.tangly.erp.crm.ui.CrmBoundedDomainUi;
 import net.tangly.erp.invoices.services.InvoicesBoundedDomain;
 import net.tangly.erp.invoices.ui.InvoicesBoundedDomainUi;
@@ -29,10 +27,6 @@ import net.tangly.erp.ledger.services.LedgerBoundedDomain;
 import net.tangly.erp.ledger.ui.LedgerBoundedDomainUi;
 import net.tangly.erp.products.services.ProductsBoundedDomain;
 import net.tangly.erp.products.ui.ProductsBoundedDomainUi;
-import net.tangly.ui.components.VaadinUtils;
-import org.jetbrains.annotations.NotNull;
-
-import java.util.Objects;
 
 @PageTitle("tangly ERP")
 @Route("")
@@ -44,18 +38,6 @@ public class MainView extends ApplicationView {
         ofDomainUis();
         drawerMenu();
         selectBoundedDomainUi(CrmBoundedDomain.DOMAIN);
-    }
-
-    public static CrmBoundedDomain crmBoundedDomain() {
-        return (CrmBoundedDomain) Application.instance().getBoundedDomain(CrmBoundedDomain.DOMAIN).orElseThrow();
-    }
-
-    @Override
-    protected void onAttach(@NotNull AttachEvent attachEvent) {
-        super.onAttach(attachEvent);
-        if (Objects.isNull(VaadinUtils.getAttribute(this, "subject")) && Objects.nonNull(crmBoundedDomain())) {
-            new CmdLogin(crmBoundedDomain()).execute();
-        }
     }
 
     private void ofDomainUis() {

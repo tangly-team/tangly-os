@@ -34,7 +34,6 @@ public class CrmBoundedDomainUi extends BoundedDomainUi<CrmBoundedDomain> {
     private final LazyReference<ContractsView> contractsView;
     private final LazyReference<InteractionsView> interactionsView;
     private final LazyReference<ActivitiesView> activitiesView;
-    private final LazyReference<SubjectsView> subjectsView;
     private final LazyReference<AnalyticsCrmView> analyticsView;
     private final LazyReference<DomainView> domainView;
 
@@ -47,7 +46,6 @@ public class CrmBoundedDomainUi extends BoundedDomainUi<CrmBoundedDomain> {
         contractsView = new LazyReference<>(() -> new ContractsView(domain(), Mode.EDIT));
         interactionsView = new LazyReference<>(() -> new InteractionsView(domain(), Mode.EDIT));
         activitiesView = new LazyReference<>(() -> new ActivitiesView(domain(), Mode.VIEW));
-        subjectsView = new LazyReference<>(() -> new SubjectsView(domain(), Mode.EDIT));
         analyticsView = new LazyReference<>(() -> new AnalyticsCrmView(domain(), invoicesDomain));
         domainView = new LazyReference<>(() -> new DomainView(domain()));
         currentView(naturalEntitiesView);
@@ -64,7 +62,6 @@ public class CrmBoundedDomainUi extends BoundedDomainUi<CrmBoundedDomain> {
         subMenu.addItem("Employees", e -> select(layout, employeesView));
         subMenu.addItem("Interactions", e -> select(layout, interactionsView));
         subMenu.addItem("Activities", e -> select(layout, activitiesView));
-        subMenu.addItem("Subjects", e -> select(layout, subjectsView));
 
         addAnalytics(layout, menuBar, analyticsView);
         addAdministration(layout, menuBar, domainView, new CmdFilesUploadCrm(domain()));
@@ -80,6 +77,5 @@ public class CrmBoundedDomainUi extends BoundedDomainUi<CrmBoundedDomain> {
         contractsView.ifPresent(ItemView::refresh);
         interactionsView.ifPresent(ItemView::refresh);
         activitiesView.ifPresent(ItemView::refresh);
-        subjectsView.ifPresent(ItemView::refresh);
     }
 }

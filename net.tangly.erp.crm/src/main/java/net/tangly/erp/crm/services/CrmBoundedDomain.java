@@ -43,7 +43,6 @@ public class CrmBoundedDomain extends BoundedDomain<CrmRealm, CrmBusinessLogic, 
         addTagCounts(registry(), realm().legalEntities(), counts);
         addTagCounts(registry(), realm().employees(), counts);
         addTagCounts(registry(), realm().interactions(), counts);
-        addTagCounts(registry(), realm().subjects(), counts);
         return counts;
     }
 
@@ -53,7 +52,6 @@ public class CrmBoundedDomain extends BoundedDomain<CrmRealm, CrmBusinessLogic, 
             new DomainEntity<>(DOMAIN, LegalEntity.class, realm().legalEntities()),
             new DomainEntity<>(DOMAIN, Employee.class, realm().employees()),
             new DomainEntity<>(DOMAIN, Interaction.class, realm().interactions()),
-            new DomainEntity<>(DOMAIN, Contract.class, realm().contracts()),
-            new DomainEntity<>(DOMAIN, Subject.class, realm().subjects()));
+            new DomainEntity<>(DOMAIN, Contract.class, realm().contracts()));
     }
 }

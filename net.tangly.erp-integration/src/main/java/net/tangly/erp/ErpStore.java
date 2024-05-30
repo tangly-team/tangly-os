@@ -94,7 +94,6 @@ public record ErpStore(@NotNull FileSystem fs) {
             copy(CRM_PACKAGE_NAME, crmRoot, CrmAdapter.CONTRACT_EXTENSIONS_TSV);
             copy(CRM_PACKAGE_NAME, crmRoot, CrmAdapter.INTERACTIONS_TSV);
             copy(CRM_PACKAGE_NAME, crmRoot, CrmAdapter.ACTIVITIES_TSV);
-            copy(CRM_PACKAGE_NAME, crmRoot, CrmAdapter.SUBJECTS_TSV);
             copy(CRM_PACKAGE_NAME, crmRoot, CrmAdapter.COMMENTS_TSV);
             copy(VCARDS_PACKAGE_NAME, crmRoot.resolve(VCARDS), "1-MarcelBaumann.vcf");
             copy(PICTURES_PACKAGE_NAME, crmRoot.resolve(PICTURES), "marcelbaumann.jpeg");

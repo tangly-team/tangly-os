@@ -44,7 +44,7 @@ The library can be included in Maven as
     <dependency>
       <groupId>net.tangly</groupId>
       <artifactId>web</artifactId>
-      <version>0.2.7</version>
+      <version>0.2.8</version>
     </dependency>
 ----
 
@@ -52,7 +52,7 @@ The library can be included in Gradle as
 
 [source,groovy]
 ----
-    implementation "net.tangly:web:0.2.7"
+    implementation "net.tangly:web:0.2.8"
 ----
 
 The documentation can be found under {ref-tangly-blog-url}/docs/web/[Web documentation].

@@ -32,7 +32,7 @@ Include the library in your Maven configuration as:
 <dependency>
     <groupId>net.tangly.erp</groupId>
     <artifactId>ui</artifactId>
-    <version>0.2.7</version>
+    <version>0.2.8</version>
 </dependency>
 
 ----
@@ -41,7 +41,7 @@ Include the library in your Gradle configuration as:
 
 [source,groovy]
 ----
-    implementation "net.tangly.erp:ui:0.2.7"
+    implementation "net.tangly.erp:ui:0.2.8"
 ----
 
 The documentation can be found under {ref-tangly-blog-url}/docs/domains/ui/[Business documentation].

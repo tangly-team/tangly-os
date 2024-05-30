@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2024 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -8,23 +8,21 @@
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ *
  */
 
-package net.tangly.core.gravatar.gravatar;
+package net.tangly.apps.ui;
 
-/**
- * Defines the official ratings of the gravatar site.
- */
-public enum GravatarRating {
-    GENERAL_AUDIENCES("g"), PARENTAL_GUIDANCE_SUGGESTED("pg"), RESTRICTED("r"), EXPLICIT("x");
+import net.tangly.app.Application;
+import net.tangly.app.ui.CmdLogin;
+import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Test;
 
-    private final String code;
-
-    GravatarRating(String code) {
-        this.code = code;
-    }
-
-    public String code() {
-        return code;
+@Tag("IntegrationTest")
+class CmdLoginTest extends AppsTest {
+    @Test
+    void testLogin() {
+        var login = new CmdLogin(Application.instance().apps());
+        login.execute();
     }
 }

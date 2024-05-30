@@ -13,27 +13,31 @@
 
 package net.tangly.app;
 
+import com.vaadin.flow.component.AttachEvent;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.applayout.DrawerToggle;
 import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.menubar.MenuBar;
 import com.vaadin.flow.component.tabs.Tab;
 import com.vaadin.flow.component.tabs.Tabs;
+import com.vaadin.flow.router.Route;
 import com.vaadin.flow.server.StreamResource;
+import net.tangly.app.ui.CmdLogin;
+import net.tangly.app.ui.CmdLogout;
 import net.tangly.ui.app.domain.BoundedDomainUi;
+import net.tangly.ui.components.VaadinUtils;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.UncheckedIOException;
-import java.util.Collections;
-import java.util.Map;
-import java.util.Optional;
-import java.util.TreeMap;
+import java.util.*;
 import java.util.stream.IntStream;
 
 /**
  * The main view of the application is the entry point to the application. Each bounded domain with a user interface is accessible through a tab.
  */
+@Route("")
 public class ApplicationView extends AppLayout {
     private final String imageName;
     private final Map<String, BoundedDomainUi<?>> boundedDomainUis;
@@ -53,6 +57,14 @@ public class ApplicationView extends AppLayout {
             addToNavbar(new DrawerToggle(), logo, menuBar, menuBar());
         } catch (IOException e) {
             throw new UncheckedIOException(e);
+        }
+    }
+
+    @Override
+    protected void onAttach(@NotNull AttachEvent attachEvent) {
+        super.onAttach(attachEvent);
+        if (Objects.isNull(VaadinUtils.getAttribute(this, "subject"))) {
+            new CmdLogin(Application.instance().apps()).execute();
         }
     }
 
@@ -80,6 +92,7 @@ public class ApplicationView extends AppLayout {
     protected void selectBoundedDomainUi(BoundedDomainUi<?> ui) {
         menuBar.removeAll();
         ui.select(this, menuBar);
+        menuBar.addItem("Logout", e -> new CmdLogout().execute());
     }
 
     private MenuBar menuBar() {

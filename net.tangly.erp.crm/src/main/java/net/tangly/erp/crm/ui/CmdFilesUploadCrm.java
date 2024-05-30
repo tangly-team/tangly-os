@@ -53,9 +53,6 @@ public class CmdFilesUploadCrm extends CmdFilesUpload<CrmRealm, CrmBusinessLogic
             if (files.contains(CrmAdapter.ACTIVITIES_TSV)) {
                 processInputStream(CrmAdapter.ACTIVITIES_TSV, handler::importActivities);
             }
-            if (files.contains(CrmAdapter.SUBJECTS_TSV)) {
-                processInputStream(CrmAdapter.SUBJECTS_TSV, handler::importSubjects);
-            }
             if (files.contains(CrmAdapter.COMMENTS_TSV)) {
                 processInputStream(CrmAdapter.COMMENTS_TSV, handler::importComments);
             }

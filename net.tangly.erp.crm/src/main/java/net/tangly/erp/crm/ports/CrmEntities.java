@@ -54,7 +54,6 @@ public class CrmEntities implements CrmRealm {
         private final List<Contract> contracts;
         private final List<Interaction> interactions;
         private final List<Activity> activities;
-        private final List<Subject> subjects;
 
         Data() {
             leads = new ArrayList<>();
@@ -64,7 +63,6 @@ public class CrmEntities implements CrmRealm {
             contracts = new ArrayList<>();
             interactions = new ArrayList<>();
             activities = new ArrayList<>();
-            subjects = new ArrayList<>();
         }
     }
 
@@ -77,7 +75,6 @@ public class CrmEntities implements CrmRealm {
     private final Provider<Contract> contracts;
     private final Provider<Interaction> interactions;
     private final Provider<Activity> activities;
-    private final Provider<Subject> subjects;
     private final IdGenerator generator;
     private final EmbeddedStorageManager storageManager;
 
@@ -93,7 +90,6 @@ public class CrmEntities implements CrmRealm {
         contracts = ProviderHasOid.of(generator, storageManager, data.contracts);
         interactions = ProviderHasOid.of(generator, storageManager, data.interactions);
         activities = ProviderPersistence.of(storageManager, data.activities);
-        subjects = ProviderHasOid.of(generator, storageManager, data.subjects);
     }
 
     public CrmEntities() {
@@ -107,7 +103,6 @@ public class CrmEntities implements CrmRealm {
         contracts = ProviderHasOid.of(generator, data.contracts);
         interactions = ProviderHasOid.of(generator, data.interactions);
         activities = ProviderInMemory.of(data.activities);
-        subjects = ProviderHasOid.of(generator, data.subjects);
     }
 
     public void storeRoot() {
@@ -156,19 +151,12 @@ public class CrmEntities implements CrmRealm {
         return this.activities;
     }
 
-    @Override
-    public Provider<Subject> subjects() {
-        return this.subjects;
-    }
-
-
     private IdGenerator generator() {
         long oidCounter = Realm.maxOid(data.naturalEntities);
         oidCounter = Math.max(oidCounter, Realm.maxOid(data.legalEntities));
         oidCounter = Math.max(oidCounter, Realm.maxOid(data.employees));
         oidCounter = Math.max(oidCounter, Realm.maxOid(data.contracts));
         oidCounter = Math.max(oidCounter, Realm.maxOid(data.interactions));
-        oidCounter = Math.max(oidCounter, Realm.maxOid(data.subjects));
         return new LongIdGenerator(Math.max(oidCounter, OID_SEQUENCE_START));
     }
 }
