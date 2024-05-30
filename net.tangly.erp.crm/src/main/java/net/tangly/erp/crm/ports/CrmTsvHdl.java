@@ -259,7 +259,7 @@ public class CrmTsvHdl {
     private TsvEntity<Employee> createTsvEmployee() {
         List<TsvProperty<Employee, ?>> fields = List.of(TsvProperty.of(
                 TsvHdl.OID, Employee::oid, (entity, value) -> ReflectionUtilities.set(entity, TsvHdl.OID, value), Long::parseLong),
-            TsvProperty.of(TsvHdlCore.createTsvDateRange(), Entity::range, Entity::range),
+            TsvProperty.of(TsvHdlCore.createTsvDateRange(), MutableEntity::range, MutableEntity::range),
             TsvProperty.ofString(TEXT, Employee::text, Employee::text),
             TsvProperty.of("personOid", Employee::person, Employee::person, e -> findNaturalEntityByOid(e).orElse(null), TsvHdl.convertFoidTo()),
             TsvProperty.of("organizationOid", Employee::organization, Employee::organization, e -> findLegalEntityByOid(e).orElse(null),

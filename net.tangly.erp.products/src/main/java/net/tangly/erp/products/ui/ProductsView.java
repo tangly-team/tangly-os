@@ -19,9 +19,9 @@ import com.vaadin.flow.router.PageTitle;
 import net.tangly.core.TypeRegistry;
 import net.tangly.erp.products.domain.Product;
 import net.tangly.erp.products.services.ProductsBoundedDomain;
-import net.tangly.ui.components.EntityForm;
 import net.tangly.ui.components.EntityView;
 import net.tangly.ui.components.Mode;
+import net.tangly.ui.components.MutableEntityForm;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
@@ -29,7 +29,7 @@ import java.util.List;
 
 @PageTitle("products-products")
 class ProductsView extends EntityView<Product> {
-    static class ProductForm extends EntityForm<Product, ProductsView> {
+    static class ProductForm extends MutableEntityForm<Product, ProductsView> {
         public ProductForm(@NotNull ProductsView parent, @NotNull TypeRegistry registry) {
             super(parent, Product::new);
             initEntityForm();

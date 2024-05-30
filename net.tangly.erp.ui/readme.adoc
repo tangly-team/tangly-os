@@ -18,7 +18,7 @@ image:https://img.shields.io/github/discussions/tangly-team/tangly-os[discussion
 == Purpose
 
 The *tangly erp ui* bounded domain component provides regular business model abstractions for business applications written in Java.
-The component is using records and requires *Java 17 or higher*.
+The component is using records and requires *{ref-java-current-version} or higher*.
 
 *Try it out*.
 
@@ -150,3 +150,14 @@ The deployment on the Heroku cloud was removed due to changes in the usage condi
 
 Therefore, we do not deploy anymore our applications on Heroku.
 ====
+
+== Awesome Sponsors and Developers
+
+Corporate sponsors are
+
+* https://www.tangly.net[tangly llc]
+
+Individual developers are
+
+* https://www.linkedin.com/in/marcelbaumann/[Marcel Baumann]
+* https://www.linkedin.com/in/junghana/[Alexandra Junghans]

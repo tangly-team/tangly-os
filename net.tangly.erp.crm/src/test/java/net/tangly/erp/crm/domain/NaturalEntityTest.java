@@ -14,8 +14,8 @@
 package net.tangly.erp.crm.domain;
 
 import net.tangly.core.Address;
-import net.tangly.core.Entity;
 import net.tangly.core.HasLocation;
+import net.tangly.core.MutableEntity;
 import net.tangly.core.Tag;
 import org.junit.jupiter.api.Test;
 
@@ -28,7 +28,7 @@ class NaturalEntityTest {
         final var longitude = 47.18459018924399;
         final var latitude = 8.458151140334703;
         final var address = Address.builder().country("CH").locality("Zug").postcode("6300").street("Bahnhofstrasse 1").build();
-        var entity = new NaturalEntity(Entity.UNDEFINED_OID);
+        var entity = new NaturalEntity(MutableEntity.UNDEFINED_OID);
         entity.address(VcardType.home, address);
         entity.add(Tag.of(CrmTags.GEO_PLUSCODE, pluscode));
         entity.add(Tag.of(CrmTags.GEO_LONGITUDE, Double.toString(longitude)));

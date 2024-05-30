@@ -16,8 +16,8 @@ package net.tangly.erp.crm.domain;
 
 import net.tangly.core.Address;
 import net.tangly.core.BankConnection;
-import net.tangly.core.EntityExtended;
-import net.tangly.core.EntityExtendedImp;
+import net.tangly.core.MutableEntityExtended;
+import net.tangly.core.MutableEntityExtendedImp;
 import org.jetbrains.annotations.NotNull;
 
 import java.math.BigDecimal;
@@ -35,7 +35,7 @@ import java.util.*;
  *   <li>The currency of the contract amount and the one used in the invoices</li>
  * </ul>
  */
-public class Contract extends EntityExtendedImp implements EntityExtended, CrmEntity {
+public class Contract extends MutableEntityExtendedImp implements MutableEntityExtended, CrmEntity {
     private BankConnection bankConnection;
     private BigDecimal amountWithoutVat;
     private BigDecimal budgetInHours;

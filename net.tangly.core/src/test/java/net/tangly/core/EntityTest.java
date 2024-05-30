@@ -23,7 +23,7 @@ import java.util.Collection;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class EntityTest {
-    static class NamedEntity extends EntityExtendedImp {
+    static class NamedEntity extends MutableEntityExtendedImp {
         private Address address;
         private EmailAddress email;
         private PhoneNr phoneNr;
@@ -53,7 +53,7 @@ class EntityTest {
         }
     }
 
-    static class ExternalEntity extends ExternalEntityImp {
+    static class ExternalEntity extends MutalbeExternalEntityImp {
         static ExternalEntity of(String id) {
             return new ExternalEntity(id);
         }
@@ -65,7 +65,7 @@ class EntityTest {
 
     @Test
     void testHasInterval() {
-        var entity = NamedEntity.of(Entity.UNDEFINED_OID);
+        var entity = NamedEntity.of(MutableEntity.UNDEFINED_OID);
         entity.range(DateRange.of(LocalDate.of(2000, Month.JANUARY, 1), LocalDate.of(2000, Month.DECEMBER, 31)));
         assertThat(entity.isActive(LocalDate.of(1999, Month.DECEMBER, 31))).isFalse();
         assertThat(entity.isActive(LocalDate.of(2000, Month.JANUARY, 1))).isTrue();
@@ -81,7 +81,7 @@ class EntityTest {
         final String LOCALITY = "Zug";
         final String POBOX = "Postfach 101";
         final String STREET = "Rigistrasse 1";
-        var entity = NamedEntity.of(Entity.UNDEFINED_OID);
+        var entity = NamedEntity.of(MutableEntity.UNDEFINED_OID);
         entity.address(Address.builder().country(COUNTRY).region("ZG").locality(LOCALITY).postcode("6300").street(STREET).poBox(POBOX).build());
         assertThat(entity.address().country()).isEqualTo(COUNTRY);
         assertThat(entity.address().poBox()).isEqualTo(POBOX);
@@ -92,14 +92,14 @@ class EntityTest {
 
     @Test
     void testPhoneNr() {
-        var entity = NamedEntity.of(Entity.UNDEFINED_OID);
+        var entity = NamedEntity.of(MutableEntity.UNDEFINED_OID);
         entity.phoneNr(PhoneNr.of("+41 79 123 45 78"));
         assertThat(PhoneNr.of(entity.phoneNr().toString())).isEqualTo(entity.phoneNr());
     }
 
     @Test
     void testModifyTags() {
-        testModifyTags(NamedEntity.of(Entity.UNDEFINED_OID));
+        testModifyTags(NamedEntity.of(MutableEntity.UNDEFINED_OID));
         testModifyTags(ExternalEntity.of("id"));
     }
 
@@ -130,7 +130,7 @@ class EntityTest {
 
     @Test
     void testUpdateTags() {
-        testUpdateTags(NamedEntity.of(Entity.UNDEFINED_OID));
+        testUpdateTags(NamedEntity.of(MutableEntity.UNDEFINED_OID));
         testUpdateTags(ExternalEntity.of("id"));
     }
 
@@ -149,7 +149,7 @@ class EntityTest {
 
     @Test
     void testSerializeTags() {
-        testSerializeTags(NamedEntity.of(Entity.UNDEFINED_OID));
+        testSerializeTags(NamedEntity.of(MutableEntity.UNDEFINED_OID));
         testSerializeTags(ExternalEntity.of("id"));
     }
 
@@ -169,7 +169,7 @@ class EntityTest {
 
     @Test
     void testModifyComments() {
-        testModifyComments(NamedEntity.of(Entity.UNDEFINED_OID));
+        testModifyComments(NamedEntity.of(MutableEntity.UNDEFINED_OID));
         testModifyComments(ExternalEntity.of("id"));
     }
 
@@ -188,7 +188,7 @@ class EntityTest {
 
     @Test
     void testFilterComments() {
-        testFilterComments(NamedEntity.of(Entity.UNDEFINED_OID));
+        testFilterComments(NamedEntity.of(MutableEntity.UNDEFINED_OID));
         testFilterComments(ExternalEntity.of("id"));
     }
 

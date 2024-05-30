@@ -18,9 +18,11 @@ import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
 import java.io.Reader;
+import java.io.UncheckedIOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.regex.Pattern;
 
 /**
  * Define the inbound and outbound communication port to the bounded domain. It is a secondary port in the DDD terminology.
@@ -29,6 +31,8 @@ import java.nio.file.Path;
  * @param <R> Realm of the bounded domain
  */
 public interface Port<R extends Realm> {
+    Pattern PATTERN = Pattern.compile("\\d{4}-.*");
+
     /**
      * Import all entities of the bounded domain from the file system. All TSV, JSON, TOML, and YAML files are imported.
      * The domain is responsible for the order of the import and the handling of the entities. A bounded domain should not depend on other domains to perform the operation.
@@ -71,4 +75,36 @@ public interface Port<R extends Realm> {
             throw new RuntimeException(e);
         }
     }
+
+    /**
+     * Resolve the path to where a document should be located in the file system. The convention is <em>base directory/year</em>. If folders do not
+     * exist, they are created. The year must contain four digits.
+     *
+     * @param directory base directory containing all reports and documents
+     * @param filename  filename of the document to write
+     * @return path to the folder where the document should be written. If the file does not contain a year, the base directory is returned
+     */
+    public static Path resolvePath(@NotNull Path directory, @NotNull String filename) {
+        var matcher = PATTERN.matcher(filename);
+        var filePath = matcher.matches() ? directory.resolve(filename.substring(0, 4)) : directory;
+        createDirectories(filePath);
+        return filePath;
+    }
+
+    public static Path resolvePath(@NotNull Path directory, int year, @NotNull String filename) {
+        var filePath = directory.resolve(Integer.toString(year));
+        createDirectories(filePath);
+        return filePath;
+    }
+
+    public static void createDirectories(@NotNull Path directory) {
+        if (Files.notExists(directory)) {
+            try {
+                Files.createDirectories(directory);
+            } catch (IOException e) {
+                throw new UncheckedIOException(e);
+            }
+        }
+    }
+
 }

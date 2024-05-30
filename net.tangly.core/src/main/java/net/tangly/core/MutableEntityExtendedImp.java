@@ -13,13 +13,15 @@
 
 package net.tangly.core;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.time.LocalDate;
 import java.util.*;
 
 /**
  * Default implementation of the {@link MutableEntityExtended} interface. The unique object identifier shall be set at construction.
  */
-public abstract class EntityExtendedImp implements EntityExtended {
+public abstract class MutableEntityExtendedImp implements MutableEntityExtended {
     private final long oid;
     private String id;
     private String name;
@@ -36,7 +38,7 @@ public abstract class EntityExtendedImp implements EntityExtended {
         return entity;
     }
 
-    protected EntityExtendedImp(long oid) {
+    protected MutableEntityExtendedImp(long oid) {
         this.oid = oid;
         dateRange = DateRange.INFINITE;
         comments = new ArrayList<>();
@@ -54,8 +56,18 @@ public abstract class EntityExtendedImp implements EntityExtended {
     }
 
     @Override
+    public void id(String id) {
+        this.id = id;
+    }
+
+    @Override
     public String name() {
         return name;
+    }
+
+    @Override
+    public void name(String name) {
+        this.name = name;
     }
 
     @Override
@@ -64,8 +76,18 @@ public abstract class EntityExtendedImp implements EntityExtended {
     }
 
     @Override
+    public void range(@NotNull DateRange range) {
+        this.dateRange = Objects.nonNull(range) ? range : DateRange.INFINITE;
+    }
+
+    @Override
     public String text() {
         return text;
+    }
+
+    @Override
+    public void text(String text) {
+        this.text = text;
     }
 
     @Override
@@ -74,8 +96,45 @@ public abstract class EntityExtendedImp implements EntityExtended {
     }
 
     @Override
+    public void comments(Collection<Comment> comments) {
+        this.comments.clear();
+        this.comments.addAll(comments);
+    }
+
+    @Override
+    public void add(@NotNull Comment comment) {
+        comments.add(comment);
+    }
+
+    @Override
+    public void remove(@NotNull Comment comment) {
+        comments.remove(comment);
+    }
+
+    @Override
     public Collection<Tag> tags() {
         return Collections.unmodifiableSet(tags);
+    }
+
+    @Override
+    public void tags(@NotNull Collection<Tag> tags) {
+        this.tags.clear();
+        this.tags.addAll(tags);
+    }
+
+    @Override
+    public boolean add(@NotNull Tag tag) {
+        return tags.add(tag);
+    }
+
+    @Override
+    public boolean remove(@NotNull Tag tag) {
+        return tags.remove(tag);
+    }
+
+    @Override
+    public void clear() {
+        tags.clear();
     }
 
     @Override
@@ -85,7 +144,7 @@ public abstract class EntityExtendedImp implements EntityExtended {
 
     @Override
     public boolean equals(Object obj) {
-        return (obj instanceof EntityExtendedImp o) && Objects.equals(oid(), o.oid()) && Objects.equals(range(), o.range()) && Objects.equals(text(),
-            o.text()) && Objects.equals(comments(), o.comments()) && Objects.equals(tags(), o.tags());
+        return (obj instanceof MutableEntityExtendedImp o) && Objects.equals(oid(), o.oid()) && Objects.equals(range(), o.range()) && Objects.equals(text(), o.text()) &&
+            Objects.equals(comments(), o.comments()) && Objects.equals(tags(), o.tags());
     }
 }

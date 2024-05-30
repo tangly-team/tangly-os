@@ -48,4 +48,13 @@ The documentation can be found under {ref-tangly-blog-url}/docs/apps/[apps docum
 
 For any further questions, you can use the forum https://github.com/orgs/tangly-team/discussions[tangly-Discussions].
 
+== Awesome Sponsors and Developers
 
+Corporate sponsors are
+
+* https://www.tangly.net[tangly llc]
+
+Individual developers are
+
+* https://www.linkedin.com/in/marcelbaumann/[Marcel Baumann]
+* https://www.linkedin.com/in/junghana/[Alexandra Junghans]

@@ -22,9 +22,9 @@ import net.tangly.erp.crm.domain.Employee;
 import net.tangly.erp.crm.domain.LegalEntity;
 import net.tangly.erp.crm.domain.NaturalEntity;
 import net.tangly.erp.crm.services.CrmBoundedDomain;
-import net.tangly.ui.components.EntityForm;
 import net.tangly.ui.components.EntityView;
 import net.tangly.ui.components.Mode;
+import net.tangly.ui.components.MutableEntityForm;
 import net.tangly.ui.components.One2OneField;
 import org.jetbrains.annotations.NotNull;
 
@@ -33,7 +33,7 @@ import org.jetbrains.annotations.NotNull;
  */
 @PageTitle("crm-employees")
 class EmployeesView extends EntityView<Employee> {
-    static class EmployeeForm extends EntityForm<Employee, EmployeesView> {
+    static class EmployeeForm extends MutableEntityForm<Employee, EmployeesView> {
         public EmployeeForm(@NotNull EmployeesView parent, @NotNull TypeRegistry registry) {
             super(parent, Employee::new);
             initEntityForm();

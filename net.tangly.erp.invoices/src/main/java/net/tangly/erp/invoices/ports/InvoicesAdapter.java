@@ -17,7 +17,6 @@ import net.tangly.commons.logger.EventData;
 import net.tangly.commons.utilities.AsciiDoctorHelper;
 import net.tangly.core.DateRange;
 import net.tangly.core.domain.Port;
-import net.tangly.core.domain.PortUtilities;
 import net.tangly.erp.invoices.artifacts.InvoiceAsciiDoc;
 import net.tangly.erp.invoices.artifacts.InvoiceJson;
 import net.tangly.erp.invoices.artifacts.InvoiceQrCode;
@@ -98,7 +97,7 @@ public class InvoicesAdapter implements InvoicesPort {
         handler.exportArticles(dataFolder.resolve(ARTICLES_TSV));
         var invoiceJson = new InvoiceJson(realm);
         realm.invoices().items().forEach(o -> {
-            var invoiceFolder = PortUtilities.resolvePath(dataFolder, o.name());
+            var invoiceFolder = Port.resolvePath(dataFolder, o.name());
             var invoicePath = invoiceFolder.resolve(o.name() + JSON_EXT);
             invoiceJson.exports(o, invoicePath, Collections.emptyMap());
             EventData.log(EventData.EXPORT, InvoicesBoundedDomain.DOMAIN, EventData.Status.SUCCESS, "Invoice exported to JSON {}", Map.of(INVOICE, o, INVOICE_PATH, invoicePath));
@@ -113,7 +112,7 @@ public class InvoicesAdapter implements InvoicesPort {
 
     @Override
     public boolean doesInvoiceDocumentExist(@NotNull Invoice invoice) {
-        Path invoiceFolder = PortUtilities.resolvePath(dataFolder, invoice.name());
+        Path invoiceFolder = Port.resolvePath(dataFolder, invoice.name());
         Path invoicePdfPath = invoiceFolder.resolve(invoice.name() + AsciiDoctorHelper.PDF_EXT);
         return Files.exists(invoicePdfPath);
     }
@@ -127,7 +126,7 @@ public class InvoicesAdapter implements InvoicesPort {
     @Override
     public void exportInvoiceDocument(@NotNull Invoice invoice, boolean withQrCode, boolean withEN16931, boolean overwrite) {
         var asciiDocGenerator = new InvoiceAsciiDoc(invoice.locale());
-        Path invoiceFolder = PortUtilities.resolvePath(reportsFolder, invoice.date().getYear(), invoice.name());
+        Path invoiceFolder = Port.resolvePath(reportsFolder, invoice.date().getYear(), invoice.name());
         Path invoiceAsciiDocPath = invoiceFolder.resolve(invoice.name() + AsciiDoctorHelper.ASCIIDOC_EXT);
         asciiDocGenerator.exports(invoice, invoiceAsciiDocPath, Collections.emptyMap());
         Path invoicePdfPath = invoiceFolder.resolve(invoice.name() + AsciiDoctorHelper.PDF_EXT);

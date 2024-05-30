@@ -28,5 +28,5 @@ The set of Gradle command line special commands we seldom use:
 
 # Tips
 
-To execute the bash profile commands you shall run `source ~/.bash_profile`.
+To execute the zsh profile commands you shall run `source ~/.zshrc`.
 

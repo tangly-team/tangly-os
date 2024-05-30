@@ -68,13 +68,13 @@ public final class TsvHdl {
         return new TsvEntity<>(clazz, properties, o -> supplier.apply(Long.parseLong(o.get(OID))), null);
     }
 
-    public static <T extends Entity> List<TsvProperty<T, ?>> createTsvEntityFields() {
+    public static <T extends MutableEntity> List<TsvProperty<T, ?>> createTsvEntityFields() {
         List<TsvProperty<T, ?>> fields = new ArrayList<>();
-        fields.add(TsvProperty.ofLong(OID, Entity::oid, null));
-        fields.add(TsvProperty.ofString(ID, Entity::id, Entity::id));
-        fields.add(TsvProperty.ofString(NAME, Entity::name, Entity::name));
-        fields.add(TsvProperty.of(TsvHdlCore.createTsvDateRange(), Entity::range, Entity::range));
-        fields.add(TsvProperty.ofString(TEXT, Entity::text, Entity::text));
+        fields.add(TsvProperty.ofLong(OID, MutableEntity::oid, null));
+        fields.add(TsvProperty.ofString(ID, MutableEntity::id, MutableEntity::id));
+        fields.add(TsvProperty.ofString(NAME, MutableEntity::name, MutableEntity::name));
+        fields.add(TsvProperty.of(TsvHdlCore.createTsvDateRange(), MutableEntity::range, MutableEntity::range));
+        fields.add(TsvProperty.ofString(TEXT, MutableEntity::text, MutableEntity::text));
         return fields;
     }
 
@@ -96,7 +96,7 @@ public final class TsvHdl {
     public static <T> void importEntities(@NotNull String domain, @NotNull Reader in, String source, @NotNull TsvEntity<T> tsvEntity, @NotNull Provider<T> provider) {
         BiFunction<TsvEntity<T>, CSVRecord, T> lambda = (tsv, record) -> {
             T entity = tsvEntity.imports(record);
-            if (!(entity instanceof EntityExtended instance) || (instance.validate())) {
+            if (!(entity instanceof MutableEntityExtended instance) || (instance.validate())) {
                 provider.update(entity);
             }
             return entity;
@@ -165,7 +165,7 @@ public final class TsvHdl {
             for (CSVRecord csv : FORMAT.parse(in)) {
                 loggedRecord = csv;
                 Object imported = function.apply(tsvEntity, csv);
-                if (!(imported instanceof EntityExtended entity) || (entity.validate())) {
+                if (!(imported instanceof MutableEntityExtended entity) || (entity.validate())) {
                     ++counter;
                     EventData.log(EventData.IMPORT, domain, EventData.Status.SUCCESS, STR."\{tsvEntity.clazz().getSimpleName()} imported",
                         Map.of("filename", source, "object", imported));

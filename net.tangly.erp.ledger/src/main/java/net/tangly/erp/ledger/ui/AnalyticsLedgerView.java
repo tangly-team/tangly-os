@@ -66,12 +66,12 @@ public class AnalyticsLedgerView extends AnalyticsView {
 
         LineChart turnoversChart = createLineChart("Turnover", xValues,
             (LocalDate start, LocalDate end) -> ((start != null) && (end != null)) ? ledgerLogic.turnover(start, end) : BigDecimal.ZERO, rc);
-        LineChart ebitsCharts = createLineChart("EBIT", xValues,
+        LineChart ebitCharts = createLineChart("EBIT", xValues,
             (LocalDate start, LocalDate end) -> ((start != null) && (end != null)) ? ledgerLogic.ebit(start, end) : BigDecimal.ZERO, rc);
         LineChart earningsChart = createLineChart("Earnings", xValues,
             (LocalDate start, LocalDate end) -> ((start != null) && (end != null)) ? ledgerLogic.earnings(start, end) : BigDecimal.ZERO, rc);
 
-        chart.add(turnoversChart, ebitsCharts, earningsChart);
+        chart.add(turnoversChart, ebitCharts, earningsChart);
     }
 
     private void financialsChart(@NotNull SOChart chart) {

@@ -24,9 +24,9 @@ import net.tangly.erp.products.domain.Assignment;
 import net.tangly.erp.products.domain.Product;
 import net.tangly.erp.products.services.ProductsBoundedDomain;
 import net.tangly.ui.app.domain.Cmd;
-import net.tangly.ui.components.EntityForm;
 import net.tangly.ui.components.EntityView;
 import net.tangly.ui.components.Mode;
+import net.tangly.ui.components.MutableEntityForm;
 import net.tangly.ui.components.One2OneField;
 import org.jetbrains.annotations.NotNull;
 
@@ -35,7 +35,7 @@ import org.jetbrains.annotations.NotNull;
  */
 @PageTitle("products-assignments")
 class AssignmentsView extends EntityView<Assignment> {
-    class AssignmentForm extends EntityForm<Assignment, AssignmentsView> {
+    class AssignmentForm extends MutableEntityForm<Assignment, AssignmentsView> {
         public AssignmentForm(@NotNull AssignmentsView parent, @NotNull TypeRegistry registry) {
             super(parent, Assignment::new);
             initEntityForm();

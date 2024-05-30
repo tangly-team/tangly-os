@@ -18,7 +18,7 @@ image:https://img.shields.io/github/discussions/tangly-team/tangly-os[discussion
 == Purpose
 
 The *tangly web* component provides a Vaadin based user interfaces for enterprise applications written in Java.
-The component is using records and requires *Java 17 or higher*.
+The component is using records and requires *{ref-java-current-version} or higher*.
 
 Currently, we are moving at the bleeding edge of our components.
 Therefore to build and execute the ERP application please

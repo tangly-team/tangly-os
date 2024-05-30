@@ -80,7 +80,8 @@ class EffortsView extends ItemView<Effort> {
         EffortForm(@NotNull EffortsView parent) {
             super(parent);
             addTabAt("details", details(), 0);
-            addTabAt("text", text(), 1);
+
+            addTabAt("text", textForm(), 1);
         }
 
         protected FormLayout details() {

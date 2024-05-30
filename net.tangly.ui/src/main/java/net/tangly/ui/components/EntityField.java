@@ -19,10 +19,7 @@ import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.textfield.IntegerField;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
-import net.tangly.core.Entity;
-import net.tangly.core.HasMutableDateRange;
-import net.tangly.core.HasMutableId;
-import net.tangly.core.HasMutableName;
+import net.tangly.core.*;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -83,7 +80,7 @@ public class EntityField<T extends Entity> extends CustomField<T> {
         oid.clear();
     }
 
-    public void bind(@NotNull Binder<T> binder) {
+    public <T extends MutableEntity> void bindMutable(@NotNull Binder<T> binder) {
         binder.bindReadOnly(oid, o -> (int) o.oid());
         binder.bind(id, HasMutableId::id, HasMutableId::id);
         binder.bind(name, HasMutableName::name, HasMutableName::name);
@@ -92,4 +89,34 @@ public class EntityField<T extends Entity> extends CustomField<T> {
         binder.forField(to).withValidator(o -> (o == null) || (from.getValue() == null) || (o.isAfter(from.getValue())), "To date must be after from date")
             .bind(HasMutableDateRange::to, HasMutableDateRange::to);
     }
+
+    public void bind(@NotNull Binder<T> binder) {
+        binder.bindReadOnly(oid, o -> (int) o.oid());
+        binder.bindReadOnly(id, HasId::id);
+        binder.bindReadOnly(name, HasName::name);
+        binder.forField(from).withValidator(o -> (o == null) || (to.getValue() == null) || (o.isBefore(to.getValue())), "From date must be before to date")
+            .bind(HasDateRange::from, null);
+        binder.forField(to).withValidator(o -> (o == null) || (from.getValue() == null) || (o.isAfter(from.getValue())), "To date must be after from date")
+            .bind(HasDateRange::to, null);
+    }
+
+// region Entity user interface field accessors (read-only instances)
+
+ public long oid() {
+        return oid.getValue();
+    }
+
+    public String id() {
+        return id.getValue();
+    }
+
+    public String name() {
+        return name.getValue();
+    }
+
+    public DateRange dateRange() {
+        return DateRange.of(from.getValue(), to.getValue());
+    }
+
+    // endregion
 }

@@ -20,7 +20,7 @@ project.ext.artifactId = 'core'
 project.version = "${projectVersion}"
 project.ext.moduleName = "${project.ext.groupId}.${project.ext.artifactId}"
 project.ext.inceptionYear = '2016'
-project.description = "Core Abstractions - Core - using Java 17 or higher (tangly llc)"
+project.description = "Core Abstractions - Core - using Java 21 or higher (tangly llc)"
 
 dependencies {
     implementation project(':net.tangly.commons')

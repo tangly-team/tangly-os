@@ -33,7 +33,7 @@ import java.math.BigDecimal;
  */
 @PageTitle("crm-interactions")
 class InteractionsView extends EntityView<Interaction> {
-    static class InteractionForm extends EntityForm<Interaction, InteractionsView> {
+    static class InteractionForm extends MutableEntityForm<Interaction, InteractionsView> {
         protected InteractionForm(@NotNull InteractionsView parent) {
             super(parent, Interaction::new);
             initEntityForm();

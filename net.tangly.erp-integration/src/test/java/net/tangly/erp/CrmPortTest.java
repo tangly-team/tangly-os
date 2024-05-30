@@ -161,7 +161,7 @@ class CrmPortTest {
     }
 
     private NaturalEntity createNaturalEntity() {
-        NaturalEntity entity = new NaturalEntity(Entity.UNDEFINED_OID);
+        NaturalEntity entity = new NaturalEntity(MutableEntity.UNDEFINED_OID);
         entity.from(LocalDate.of(1900, Month.JANUARY, 1));
         entity.to(LocalDate.of(2000, Month.DECEMBER, 31));
         entity.text("*This is a markdown text*");
@@ -177,7 +177,7 @@ class CrmPortTest {
     }
 
     private LegalEntity createLegalEntity() {
-        LegalEntity entity = new LegalEntity(Entity.UNDEFINED_OID);
+        LegalEntity entity = new LegalEntity(MutableEntity.UNDEFINED_OID);
         entity.id("CHE-487.951.218");
         entity.name("bbv Group AG");
         entity.from(LocalDate.of(1995, Month.NOVEMBER, 1));
@@ -192,7 +192,7 @@ class CrmPortTest {
     }
 
     private Contract createContract(@NotNull CrmRealm realm) {
-        Contract entity = new Contract(Entity.UNDEFINED_OID);
+        Contract entity = new Contract(MutableEntity.UNDEFINED_OID);
         entity.id("Contract-009");
         entity.name("Contract 009");
         entity.from(LocalDate.of(2010, Month.MARCH, 1));

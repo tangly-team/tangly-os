@@ -30,7 +30,7 @@ import java.util.Optional;
  * Europe has a person identifier. Sadly both identifiers are not easily accessible
  * .</em></p>
  */
-public class NaturalEntity extends EntityExtendedImp implements EntityExtended, CrmEntity {
+public class NaturalEntity extends MutableEntityExtendedImp implements MutableEntityExtended, CrmEntity {
     private String firstname;
     private GenderCode gender;
     private Photo photo;

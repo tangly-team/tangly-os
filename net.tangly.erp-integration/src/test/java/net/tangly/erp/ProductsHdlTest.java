@@ -15,7 +15,7 @@ package net.tangly.erp;
 
 import com.google.common.jimfs.Configuration;
 import com.google.common.jimfs.Jimfs;
-import net.tangly.core.Entity;
+import net.tangly.core.MutableEntity;
 import net.tangly.core.domain.Realm;
 import net.tangly.erp.products.domain.Assignment;
 import net.tangly.erp.products.domain.Effort;
@@ -102,7 +102,7 @@ class ProductsHdlTest {
     }
 
     private Assignment createAssignment(@NotNull ProductsRealm realm) {
-        Assignment entity = new Assignment(Entity.UNDEFINED_OID);
+        Assignment entity = new Assignment(MutableEntity.UNDEFINED_OID);
         entity.id(ASSIGNMENT_ID);
         entity.name("Assignment_Test");
         entity.from(LocalDate.of(2020, Month.JANUARY, 1));

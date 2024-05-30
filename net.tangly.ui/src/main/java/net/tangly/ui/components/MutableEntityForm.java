@@ -14,38 +14,41 @@
 package net.tangly.ui.components;
 
 import com.vaadin.flow.component.formlayout.FormLayout;
+import com.vaadin.flow.data.binder.Binder;
+import com.vaadin.flow.data.binder.ValidationException;
 import net.tangly.core.*;
 import net.tangly.ui.asciidoc.AsciiDocField;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Collection;
-import java.util.Collections;
+import java.util.Objects;
+import java.util.function.Function;
 
 /**
- * Create the form for a simple entity or a full entity. A simple entity has an internal object identifier, an external identifier, a human-readable name, a
- * time interval when the entity is active, and a textual description. A full entity has additionally a set of tags and a set of comments.
- * <p> Entities are immutable instances. Therefore we need to retrieve new values directuly from the form to create an update of an instance.</p>
+ * Creates the form for a simple entity or a full entity. A simple entity has an internal object identifier, an external identifier, a human-readable name, a time interval when the
+ * entity is active, and a textual description. A full entity has additionally a set of tags and a set of comments.
  *
  * @param <T> type of the entity displayed in the form
  * @param <V> the view owning the form
  */
-public abstract class EntityForm<T extends Entity, V extends EntityView<T>> extends ItemForm<T, V> {
+public abstract class MutableEntityForm<T extends MutableEntity, V extends EntityView<T>> extends ItemForm<T, V> {
+    private final Function<Long, T> supplier;
     private final AsciiDocField text;
     private final EntityField<T> entity;
     private final One2ManyOwnedField<Comment> comments;
     private final One2ManyOwnedField<Tag> tags;
 
-    protected EntityForm(@NotNull V parent) {
+    protected MutableEntityForm(@NotNull V parent, Function<Long, T> supplier) {
         super(parent);
+        this.supplier = supplier;
         text = new AsciiDocField("Text");
-        binder().bindReadOnly(text, HasText::text);
+        binder().bind(text, HasMutableText::text, HasMutableText::text);
         entity = new EntityField<>();
-        if (HasComments.class.isAssignableFrom(entityClass())) {
+        if (HasMutableComments.class.isAssignableFrom(entityClass())) {
             comments = new One2ManyOwnedField<>(new CommentsView(parent.domain(), parent.mode()));
         } else {
             comments = null;
         }
-        if (HasTags.class.isAssignableFrom(entityClass())) {
+        if (HasMutableTags.class.isAssignableFrom(entityClass())) {
             tags = new One2ManyOwnedField<>(new TagsView(parent.domain(), parent.mode()));
         } else {
             tags = null;
@@ -53,18 +56,18 @@ public abstract class EntityForm<T extends Entity, V extends EntityView<T>> exte
     }
 
     protected final void initEntityForm() {
-        entity.bind(binder());
+        entity.bindMutable(binder());
 
         FormLayout form = new FormLayout();
         form.add(entity);
         addTabAt("entity", form, 0);
         addTabAt("text", textForm(text), 1);
         if (tags != null) {
-            binder().bindReadOnly(tags, o -> ((EntityExtended) o).tags());
+            binderCast().bind(tags, o -> ((MutableEntityExtended) o).tags(), (o, v) -> ((MutableEntityExtended) o).tags(tags.generateModelValue()));
             addTabAt("tags", tags, 2);
         }
         if (comments != null) {
-            binder().bindReadOnly(comments, o -> ((EntityExtended) o).comments());
+            binderCast().bind(comments, o -> ((MutableEntityExtended) o).comments(), (o, v) -> ((MutableEntityExtended) o).comments(comments.generateModelValue()));
             addTabAt("comments", comments, 3);
         }
     }
@@ -80,35 +83,19 @@ public abstract class EntityForm<T extends Entity, V extends EntityView<T>> exte
         this.entity.clearOid();
     }
 
-    // region Entity user interface field accessors
-
-    protected long oid() {
-        return entity.oid();
+    @Override
+    protected T createOrUpdateInstance(T entity) throws ValidationException {
+        T updatedEntity = Objects.nonNull(entity) ? entity : supplier().apply(HasOid.UNDEFINED_OID);
+        binder().writeBean(updatedEntity);
+        return updatedEntity;
     }
 
-    protected String id() {
-        return entity.id();
+    protected Function<Long, T> supplier() {
+        return supplier;
     }
 
-    protected String name() {
-        return entity.name();
+    @SuppressWarnings("unchecked")
+    protected <U> Binder<U> binderCast() {
+        return (Binder<U>) binder();
     }
-
-    protected DateRange dateRange() {
-        return entity.dateRange();
-    }
-
-    protected String text() {
-        return text.getValue();
-    }
-
-    protected Collection<Tag> tags() {
-        return tags != null ? tags.getValue() : Collections.emptyList();
-    }
-
-    protected Collection<Comment> comments() {
-        return comments != null ? comments.getValue() : Collections.emptyList();
-    }
-
-    // endregion
 }

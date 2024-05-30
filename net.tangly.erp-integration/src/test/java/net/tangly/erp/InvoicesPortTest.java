@@ -14,7 +14,7 @@
 package net.tangly.erp;
 
 import com.google.common.jimfs.Jimfs;
-import net.tangly.core.domain.PortUtilities;
+import net.tangly.core.domain.Port;
 import net.tangly.erp.invoices.ports.InvoicesAdapter;
 import net.tangly.erp.invoices.ports.InvoicesEntities;
 import net.tangly.erp.invoices.services.InvoicesBoundedDomain;
@@ -46,7 +46,7 @@ class InvoicesPortTest {
             port.exportInvoiceDocuments(true, true, true, null, null);
 
             handler.realm().invoices().items()
-                .forEach(o -> assertThat(Files.exists(PortUtilities.resolvePath(store.dataRoot().resolve(InvoicesBoundedDomain.DOMAIN), o.name()))).isTrue());
+                .forEach(o -> assertThat(Files.exists(Port.resolvePath(store.dataRoot().resolve(InvoicesBoundedDomain.DOMAIN), o.name()))).isTrue());
         }
     }
 

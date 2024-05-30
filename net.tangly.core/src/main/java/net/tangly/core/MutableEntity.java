@@ -26,7 +26,7 @@ package net.tangly.core;
  * <li>text</dt><dd>a human readable documentation of the instance. We recommend using markdown syntax for the text.</dd>
  * </dl>
  */
-public interface Entity extends HasOid, HasId, HasName, HasText, HasDateRange {
+public interface MutableEntity extends Entity, HasMutableId, HasMutableName, HasMutableText, HasMutableDateRange {
     /**
      * Check if the entity is consistent based on the field values and business rules.
      *

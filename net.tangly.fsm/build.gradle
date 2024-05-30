@@ -20,4 +20,4 @@ project.ext.artifactId = 'fsm'
 project.version = "${projectVersion}"
 project.ext.moduleName = "${project.ext.groupId}.${project.ext.artifactId}"
 project.ext.inceptionYear = '1996'
-project.description = "Hierarchical finite state machine library - FSM - using Java 17 or higher (tangly llc)"
+project.description = "Hierarchical finite state machine library - FSM - using Java 21 or higher (tangly llc)"

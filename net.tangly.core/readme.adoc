@@ -18,7 +18,7 @@ image:https://img.shields.io/github/discussions/tangly-team/tangly-os[discussion
 == Purpose
 
 The **tangly core** component provides a key abstraction for domain-driven development approach and entities with tags and comments.
-It requires **Java 17 or higher**.
+It requires **{ref-java-current-version} or higher**.
 
 
 == Download and Documentation
@@ -42,3 +42,14 @@ The library can be included in Gradle as
 ----
 
 The documentation can be found under {ref-tangly-blog-url}/docs/core/[Core].
+
+== Awesome Sponsors and Developers
+
+Corporate sponsors are
+
+* https://www.tangly.net[tangly llc]
+
+Individual developers are
+
+* https://www.linkedin.com/in/marcelbaumann/[Marcel Baumann]
+* https://www.linkedin.com/in/junghana/[Alexandra Junghans]

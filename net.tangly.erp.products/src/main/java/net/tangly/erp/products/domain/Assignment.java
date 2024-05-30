@@ -13,7 +13,7 @@
 
 package net.tangly.erp.products.domain;
 
-import net.tangly.core.EntityExtendedImp;
+import net.tangly.core.MutableEntityExtendedImp;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -29,7 +29,7 @@ import java.util.Objects;
  * a social security number of each collaborator working on a product under our supervision. The collaborator identifier of the assignment is therefore the social security number
  * of a collaborator.</p>
  */
-public class Assignment extends EntityExtendedImp {
+public class Assignment extends MutableEntityExtendedImp {
     private Product product;
     private String collaboratorId;
     private LocalDate closedPeriod;

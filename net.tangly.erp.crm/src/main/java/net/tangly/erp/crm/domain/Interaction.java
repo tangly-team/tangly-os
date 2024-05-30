@@ -13,7 +13,7 @@
 
 package net.tangly.erp.crm.domain;
 
-import net.tangly.core.EntityExtendedImp;
+import net.tangly.core.MutableEntityExtendedImp;
 import org.jetbrains.annotations.NotNull;
 
 import java.math.BigDecimal;
@@ -25,7 +25,7 @@ import java.util.*;
  * The interaction has a set of activities moving your negotiation through stages. The final result is a contract or a lost opportunity.
  * <p>An interaction can have quite a long duration. Activities are the events when you interact with your potential customer.</p>
  */
-public class Interaction extends EntityExtendedImp {
+public class Interaction extends MutableEntityExtendedImp {
     private final List<Activity> activities;
     private LegalEntity entity;
     private InteractionCode code;

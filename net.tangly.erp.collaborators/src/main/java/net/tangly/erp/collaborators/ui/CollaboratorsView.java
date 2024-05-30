@@ -41,7 +41,6 @@ public class CollaboratorsView extends ItemView<Collaborator> {
             TextField internalId = new TextField("Internal Id", "internalId");
             AddressField address = new AddressField();
             addTabAt("details", details(), 0);
-            addTabAt("text", text(), 1);
         }
 
         protected FormLayout details() {

@@ -51,22 +51,22 @@ public class EntityView<T extends Entity> extends ItemView<T> {
 
     protected void addEntityColumns(Grid<T> grid) {
         grid.addColumn(HasOid::oid).setKey(OID).setHeader(OID_LABEL).setResizable(true).setSortable(true).setFlexGrow(0).setWidth("4em");
-        grid.addColumn(HasMutableId::id).setKey(ID).setHeader(ID_LABEL).setResizable(true).setSortable(true).setFlexGrow(0).setWidth("4em");
-        grid.addColumn(HasMutableName::name).setKey(NAME).setHeader(NAME_LABEL).setResizable(true).setSortable(true).setFlexGrow(0).setWidth("16em");
-        grid.addColumn(new LocalDateRenderer<>(HasMutableDateRange::from, ISO_DATE_FORMAT)).setKey(FROM).setHeader(FROM_LABEL).setResizable(true).setSortable(true).setWidth("4em")
-            .setWidth("8em");
-        grid.addColumn(new LocalDateRenderer<>(HasMutableDateRange::to, ISO_DATE_FORMAT)).setKey(TO).setHeader(TO_LABEL).setResizable(true).setSortable(true).setWidth("4em")
-            .setWidth("8em");
+        grid.addColumn(HasId::id).setKey(ID).setHeader(ID_LABEL).setResizable(true).setSortable(true).setFlexGrow(0).setWidth("4em");
+        grid.addColumn(HasName::name).setKey(NAME).setHeader(NAME_LABEL).setResizable(true).setSortable(true).setFlexGrow(0).setWidth("16em");
+        grid.addColumn(new LocalDateRenderer<>(HasDateRange::from, ISO_DATE_FORMAT)).setKey(FROM).setHeader(FROM_LABEL).setResizable(true).setSortable(
+            true).setWidth("4em").setWidth("8em");
+        grid.addColumn(new LocalDateRenderer<>(HasDateRange::to, ISO_DATE_FORMAT)).setKey(TO).setHeader(TO_LABEL).setResizable(true).setSortable(true).setWidth(
+            "4em").setWidth("8em");
     }
 
     protected void addEntityFilterFields(@NotNull Grid<T> grid, @NotNull EntityFilter<T> filter) {
         grid.getHeaderRows().clear();
         HeaderRow headerRow = grid.appendHeaderRow();
         grid.getHeaderRows().clear();
-        headerRow.getCell(grid.getColumnByKey(EntityView.OID)).setComponent(createIntegerFilterField(o -> filter.oid(o.longValue())));
-        headerRow.getCell(grid.getColumnByKey(EntityView.ID)).setComponent(createTextFilterField(filter::id));
-        headerRow.getCell(grid.getColumnByKey(EntityView.NAME)).setComponent(createTextFilterField(filter::name));
-        headerRow.getCell(grid.getColumnByKey(EntityView.FROM)).setComponent(createDateRangeField(filter::fromRange));
-        headerRow.getCell(grid.getColumnByKey(EntityView.TO)).setComponent(createDateRangeField(filter::toRange));
+        headerRow.getCell(grid.getColumnByKey(ItemView.OID)).setComponent(createIntegerFilterField(o -> filter.oid(o.longValue())));
+        headerRow.getCell(grid.getColumnByKey(ItemView.ID)).setComponent(createTextFilterField(filter::id));
+        headerRow.getCell(grid.getColumnByKey(ItemView.NAME)).setComponent(createTextFilterField(filter::name));
+        headerRow.getCell(grid.getColumnByKey(ItemView.FROM)).setComponent(createDateRangeField(filter::fromRange));
+        headerRow.getCell(grid.getColumnByKey(ItemView.TO)).setComponent(createDateRangeField(filter::toRange));
     }
 }

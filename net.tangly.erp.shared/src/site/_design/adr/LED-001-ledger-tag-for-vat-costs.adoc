@@ -10,7 +10,7 @@ Date: 2017-12-01
 
 === Status
 
-Implemented
+*Discarded: Redesign provides a better solution.*
 
 === Context
 

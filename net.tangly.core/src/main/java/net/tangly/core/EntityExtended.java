@@ -27,5 +27,5 @@ package net.tangly.core;
  * Orthogonal information can therefore be attached to instances.</dd>
  * </dl>
  */
-public interface EntityExtended extends Entity, HasMutableTags, HasMutableComments {
+public interface EntityExtended extends Entity, HasTags, HasComments {
 }

@@ -23,7 +23,7 @@ import net.tangly.ui.components.*;
 import org.jetbrains.annotations.NotNull;
 
 class SubjectsView extends EntityView<Subject> {
-    static class SubjectForm extends EntityForm<Subject, SubjectsView> {
+    static class SubjectForm extends MutableEntityForm<Subject, SubjectsView> {
         public SubjectForm(@NotNull SubjectsView parent) {
             super(parent, Subject::new);
         }

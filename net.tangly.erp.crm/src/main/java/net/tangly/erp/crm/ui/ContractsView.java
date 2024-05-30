@@ -34,7 +34,7 @@ import java.util.Locale;
  */
 
 class ContractsView extends EntityView<Contract> {
-    static class ContractForm extends EntityForm<Contract, ContractsView> {
+    static class ContractForm extends MutableEntityForm<Contract, ContractsView> {
         public ContractForm(@NotNull ContractsView parent) {
             super(parent, Contract::new);
             initEntityForm();

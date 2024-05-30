@@ -20,7 +20,7 @@ project.ext.artifactId = 'crm'
 project.version = "${projectVersion}"
 project.ext.moduleName = "${project.ext.groupId}.${project.ext.artifactId}"
 project.ext.inceptionYear = '2019'
-project.description = "Customer Relationships Management bounded domain using Java 17 or higher (tangly llc)"
+project.description = "Customer Relationships Management bounded domain using Java 21 or higher (tangly llc)"
 
 dependencies {
     implementation project(':net.tangly.apps')

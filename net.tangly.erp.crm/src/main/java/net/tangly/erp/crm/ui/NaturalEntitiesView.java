@@ -44,7 +44,7 @@ import java.util.Objects;
  */
 @PageTitle("crm-natural-entities")
 class NaturalEntitiesView extends EntityView<NaturalEntity> {
-    static class NaturalEntityForm extends EntityForm<NaturalEntity, NaturalEntitiesView> {
+    static class NaturalEntityForm extends MutableEntityForm<NaturalEntity, NaturalEntitiesView> {
         private final Image image;
 
         public NaturalEntityForm(@NotNull NaturalEntitiesView parent) {

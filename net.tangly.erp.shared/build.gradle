@@ -20,7 +20,7 @@ project.ext.artifactId = 'shared'
 project.version = "${projectVersion}"
 project.ext.moduleName = "${project.ext.groupId}.${project.ext.artifactId}"
 project.ext.inceptionYear = '1996'
-project.description = "Shared kernel ERP - using Java 17 or higher (tangly llc)"
+project.description = "Shared kernel ERP - using Java 21 or higher (tangly llc)"
 
 dependencies {
     implementation project(':net.tangly.commons')

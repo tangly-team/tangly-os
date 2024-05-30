@@ -18,7 +18,7 @@ import org.jetbrains.annotations.NotNull;
 import java.time.LocalDate;
 import java.util.*;
 
-public class ExternalEntityImp implements ExternalEntity {
+public class MutalbeExternalEntityImp implements MutableExternalEntity {
     private String id;
     private String name;
     private LocalDate date;
@@ -26,7 +26,7 @@ public class ExternalEntityImp implements ExternalEntity {
     private final List<Comment> comments;
     private final Set<Tag> tags;
 
-    protected ExternalEntityImp(@NotNull String id) {
+    protected MutalbeExternalEntityImp(@NotNull String id) {
         this.id = id;
         comments = new ArrayList<>();
         tags = new HashSet<>();
@@ -38,8 +38,18 @@ public class ExternalEntityImp implements ExternalEntity {
     }
 
     @Override
+    public void id(@NotNull String id) {
+        this.id = id;
+    }
+
+    @Override
     public String name() {
         return name;
+    }
+
+    @Override
+    public void name(String name) {
+        this.name = name;
     }
 
     @Override
@@ -48,16 +58,41 @@ public class ExternalEntityImp implements ExternalEntity {
     }
 
     @Override
+    public void text(String text) {
+        this.text = text;
+    }
+
+    @Override
     public LocalDate date() {
         return date;
     }
 
+    @Override
+    public void date(LocalDate date) {
+        this.date = date;
+    }
 
     // region Comments
 
     @Override
     public Collection<Comment> comments() {
         return Collections.unmodifiableList(comments);
+    }
+
+    @Override
+    public void comments(Collection<Comment> comments) {
+        this.comments.clear();
+        this.comments.addAll(comments);
+    }
+
+    @Override
+    public void add(@NotNull Comment comment) {
+        comments.add(comment);
+    }
+
+    @Override
+    public void remove(@NotNull Comment comment) {
+        comments.remove(comment);
     }
 
     // endregion
@@ -74,6 +109,21 @@ public class ExternalEntityImp implements ExternalEntity {
         this.tags.addAll(tags);
     }
 
+    @Override
+    public void clear() {
+        tags.clear();
+    }
+
+    @Override
+    public boolean add(Tag tag) {
+        return tags.add(tag);
+    }
+
+    @Override
+    public boolean remove(Tag tag) {
+        return tags.remove(tag);
+    }
+
     // endregion
 
     @Override
@@ -83,7 +133,7 @@ public class ExternalEntityImp implements ExternalEntity {
 
     @Override
     public boolean equals(Object obj) {
-        return (obj instanceof ExternalEntityImp o) && Objects.equals(id(), o.id()) && Objects.equals(date(), o.date()) && Objects.equals(text(), o.text()) &&
+        return (obj instanceof MutalbeExternalEntityImp o) && Objects.equals(id(), o.id()) && Objects.equals(date(), o.date()) && Objects.equals(text(), o.text()) &&
             Objects.equals(comments(), o.comments()) && Objects.equals(tags(), o.tags());
     }
 }

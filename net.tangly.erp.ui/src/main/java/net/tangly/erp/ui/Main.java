@@ -16,8 +16,8 @@ package net.tangly.erp.ui;
 import com.github.mvysny.vaadinboot.VaadinBoot;
 import net.tangly.app.Application;
 import net.tangly.commons.lang.ReflectionUtilities;
-import net.tangly.core.Entity;
 import net.tangly.core.HasOid;
+import net.tangly.core.MutableEntity;
 import net.tangly.erp.collaborators.ports.CollaboratorsAdapter;
 import net.tangly.erp.collaborators.ports.CollaboratorsEntities;
 import net.tangly.erp.collabortors.services.CollaboratorsBoundedDomain;
@@ -156,7 +156,7 @@ public final class Main {
     }
 
     private static Subject createAdminSubject() {
-        var subject = new Subject(Entity.UNDEFINED_OID);
+        var subject = new Subject(MutableEntity.UNDEFINED_OID);
         ReflectionUtilities.set(subject, HasOid.OID, 900);
         subject.id("aeon");
         subject.newPassword("aeon");

@@ -55,3 +55,14 @@ The documentation can be found under {ref-tangly-blog-url}/docs/bdd/[BDD documen
 For any further questions, you can use the forum https://github.com/orgs/tangly-team/discussions[tangly-Discussions].
 
 An overall article is available under https://blog.tangly.net/blog/2022/behavior-driven-design/[Behavior Driven Design].
+
+== Awesome Sponsors and Developers
+
+Corporate sponsors are
+
+* https://www.tangly.net[tangly llc]
+
+Individual developers are
+
+* https://www.linkedin.com/in/marcelbaumann/[Marcel Baumann]
+* https://www.linkedin.com/in/junghana/[Alexandra Junghans]

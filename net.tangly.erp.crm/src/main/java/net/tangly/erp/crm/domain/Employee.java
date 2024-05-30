@@ -13,8 +13,8 @@
 
 package net.tangly.erp.crm.domain;
 
-import net.tangly.core.EntityExtended;
-import net.tangly.core.EntityExtendedImp;
+import net.tangly.core.MutableEntityExtended;
+import net.tangly.core.MutableEntityExtendedImp;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
@@ -24,7 +24,7 @@ import java.util.Objects;
  * employee is the name property of the natural person of this employee. The from and to date defines the duration of the employment. If the _to date_ is empty the employee is still
  * legally working for the organization.
  */
-public class Employee extends EntityExtendedImp implements EntityExtended, CrmEntity {
+public class Employee extends MutableEntityExtendedImp implements MutableEntityExtended, CrmEntity {
     private NaturalEntity person;
     private LegalEntity organization;
 

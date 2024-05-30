@@ -19,7 +19,7 @@ image:https://img.shields.io/github/discussions/tangly-team/tangly-os[discussion
 
 The *tangly fsm* is a finite state machine library.
 You can use it in productive projects and academic assignments.
-The component is using records and requires *Java 17 or higher*.
+The component is using records and requires *{ref-java-current-version} or higher*.
 
 The library provides
 
@@ -73,3 +73,14 @@ The library can be built with Gradle
 ----
     gradle build
 ----
+
+== Awesome Sponsors and Developers
+
+Corporate sponsors are
+
+* https://www.tangly.net[tangly llc]
+
+Individual developers are
+
+* https://www.linkedin.com/in/marcelbaumann/[Marcel Baumann]
+* https://www.linkedin.com/in/junghana/[Alexandra Junghans]

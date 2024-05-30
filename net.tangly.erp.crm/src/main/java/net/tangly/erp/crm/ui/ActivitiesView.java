@@ -88,7 +88,7 @@ class ActivitiesView extends ItemView<Activity> {
         public ActivityForm(@NotNull ActivitiesView parent) {
             super(parent);
             addTabAt("details", details(), 0);
-            addTabAt("text", text(), 1);
+            addTabAt("text", textForm(), 1);
         }
 
         @Override

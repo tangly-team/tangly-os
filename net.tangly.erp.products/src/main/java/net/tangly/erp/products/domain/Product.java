@@ -12,7 +12,7 @@
  */
 package net.tangly.erp.products.domain;
 
-import net.tangly.core.EntityExtendedImp;
+import net.tangly.core.MutableEntityExtendedImp;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Collections;
@@ -22,7 +22,7 @@ import java.util.Objects;
 /**
  * An outcome such as a product or a research result which should be produced. An outcome is financed through one or more contracts.
  */
-public class Product extends EntityExtendedImp {
+public class Product extends MutableEntityExtendedImp {
     private List<String> contractIds;
 
     public Product(long oid) {

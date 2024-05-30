@@ -38,7 +38,7 @@ class LegalEntitiesView extends EntityView<LegalEntity> {
     /**
      * The form has all properties of an entity through inheritance. Additional properties are defined in the <i>details</i> tab.
      */
-    static class LegalEntityForm extends EntityForm<LegalEntity, LegalEntitiesView> {
+    static class LegalEntityForm extends MutableEntityForm<LegalEntity, LegalEntitiesView> {
 
         public LegalEntityForm(@NotNull LegalEntitiesView parent, @NotNull TypeRegistry registry) {
             super(parent, LegalEntity::new);

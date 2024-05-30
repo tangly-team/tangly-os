@@ -14,8 +14,8 @@
 package net.tangly.core.domain;
 
 import net.tangly.commons.lang.ReflectionUtilities;
-import net.tangly.core.EntityExtended;
 import net.tangly.core.HasOid;
+import net.tangly.core.MutableEntityExtended;
 import net.tangly.core.providers.Provider;
 import org.jetbrains.annotations.NotNull;
 
@@ -41,7 +41,7 @@ public interface Realm {
         return entity;
     }
 
-    static <T extends EntityExtended> void checkEntities(Provider<T> provider) {
+    static <T extends MutableEntityExtended> void checkEntities(Provider<T> provider) {
         provider.items().forEach(e -> {
             if (!e.validate()) {
                 throw new IllegalStateException("Entity Check Error for %s".formatted(e));

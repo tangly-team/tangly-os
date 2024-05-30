@@ -31,3 +31,11 @@ ifndef::imagesdir[:imagesdir: ./pics]
 
 . link:../adr/fsm-001-move-abstractions-to-jdk-classes/[Move Abstractions to JDK Classes]
 . link:../adr/fsm-002-publish-maven-central-artifact[Publish Maven Central Artifacts]
+
+=== PRJ Decisions
+
+. link:../adr/prj-001-project-tag-for-project-costs/Project Tag for Project Costs]
+
+=== Ledger Decisions
+
+. link:../adr/ledger-001-ledger-tag-for-vat-costs/[Ledger Tag for VAT Costs]

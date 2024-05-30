@@ -28,8 +28,8 @@ import com.vaadin.flow.component.tabs.TabSheet;
 import com.vaadin.flow.component.tabs.TabSheetVariant;
 import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.data.binder.ValidationException;
-import net.tangly.core.Entity;
 import net.tangly.core.HasMutableText;
+import net.tangly.core.MutableEntity;
 import net.tangly.core.codes.Code;
 import net.tangly.core.codes.CodeType;
 import net.tangly.core.providers.Provider;
@@ -110,7 +110,7 @@ public abstract class ItemForm<T, U extends ItemView<T>> {
         form().add(tabSheet, createButtonBar());
     }
 
-    static <T extends Entity> ProviderView<T> ofUnselected(@NotNull Provider<T> provider, @NotNull Collection<T> selected) {
+    static <T extends MutableEntity> ProviderView<T> ofUnselected(@NotNull Provider<T> provider, @NotNull Collection<T> selected) {
         return new ProviderView<>(provider, o -> !selected.contains(o));
     }
 
@@ -123,15 +123,18 @@ public abstract class ItemForm<T, U extends ItemView<T>> {
         return codeField;
     }
 
-    protected FormLayout text() {
-        AsciiDocField text = new AsciiDocField("Text");
+    public FormLayout textForm(AsciiDocField text) {
         var form = new FormLayout();
         VaadinUtils.set3ResponsiveSteps(form);
         form.add(text, 3);
-        ((Binder<HasMutableText>) binder()).bind(text, HasMutableText::text, HasMutableText::text);
         return form;
     }
 
+    public FormLayout textForm() {
+       var text = new AsciiDocField("Text");
+        ((Binder<HasMutableText>) binder()).bind(text, HasMutableText::text, HasMutableText::text);
+        return textForm(text);
+    }
 
     /**
      * Return the mode of the form. All contained items should have the same mode for consistency.

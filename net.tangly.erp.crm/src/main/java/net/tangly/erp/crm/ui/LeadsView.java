@@ -68,7 +68,7 @@ public class LeadsView extends ItemView<Lead> {
         public LeadForm(@NotNull LeadsView parent) {
             super(parent);
             addTabAt("details", details(), 0);
-            addTabAt("text", text(), 1);
+            addTabAt("text", textForm(text), 1);
         }
 
         private FormLayout details() {
@@ -83,6 +83,7 @@ public class LeadsView extends ItemView<Lead> {
             linkedIn = new TextField("Linked", "linkedIn");
             leadCode = ItemForm.createCodeField(CodeType.of(LeadCode.class), "Lead Code");
             activityCode = ItemForm.createCodeField(CodeType.of(ActivityCode.class), "Activity Code");
+            text = new AsciiDocField("Text");
 
             var form = new FormLayout();
             VaadinUtils.set3ResponsiveSteps(form);
@@ -98,15 +99,6 @@ public class LeadsView extends ItemView<Lead> {
             binder().bindReadOnly(linkedIn, Lead::linkedIn);
             binder().bindReadOnly(leadCode, Lead::code);
             binder().bindReadOnly(activityCode, Lead::activity);
-            return form;
-        }
-
-        @Override
-        protected FormLayout text() {
-            AsciiDocField text = new AsciiDocField("Text");
-            var form = new FormLayout();
-            VaadinUtils.set3ResponsiveSteps(form);
-            form.add(text, 3);
             binder().bindReadOnly(text, Lead::text);
             return form;
         }

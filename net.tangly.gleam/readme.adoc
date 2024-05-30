@@ -39,3 +39,14 @@ The library can be included in Gradle as
 ----
 
 The documentation can be found under {ref-tangly-blog-url}/docs/gleam/[Commons documentation].
+
+== Awesome Sponsors and Developers
+
+Corporate sponsors are
+
+* https://www.tangly.net[tangly llc]
+
+Individual developers are
+
+* https://www.linkedin.com/in/marcelbaumann/[Marcel Baumann]
+* https://www.linkedin.com/in/junghana/[Alexandra Junghans]

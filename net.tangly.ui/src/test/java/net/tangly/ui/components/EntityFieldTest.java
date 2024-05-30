@@ -15,9 +15,9 @@ package net.tangly.ui.components;
 
 import com.github.mvysny.kaributesting.v10.MockVaadin;
 import com.github.mvysny.kaributesting.v10.Routes;
-import net.tangly.core.Entity;
-import net.tangly.core.EntityExtended;
-import net.tangly.core.EntityExtendedImp;
+import net.tangly.core.MutableEntity;
+import net.tangly.core.MutableEntityExtended;
+import net.tangly.core.MutableEntityExtendedImp;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -28,7 +28,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  * The test needs karibu mocking because DateTimePicker retrieve locale instance through UI instance.
  */
 class EntityFieldTest {
-    static class MyEntity extends EntityExtendedImp {
+    static class MyEntity extends MutableEntityExtendedImp {
 
         protected MyEntity(long oid) {
             super(oid);
@@ -49,11 +49,11 @@ class EntityFieldTest {
 
     @Test
     void testEntityField() {
-        final EntityField<EntityExtended> entityField = new EntityField<>();
+        final EntityField<MutableEntityExtended> entityField = new EntityField<>();
         entityField.setValue(null);
         assertThat(entityField.getValue()).isNull();
 
-        var entity = new MyEntity(Entity.UNDEFINED_OID);
+        var entity = new MyEntity(MutableEntity.UNDEFINED_OID);
         entityField.setValue(entity);
         assertThat(entityField.getValue()).isNotNull();
     }

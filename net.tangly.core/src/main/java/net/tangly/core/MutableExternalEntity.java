@@ -24,5 +24,6 @@ package net.tangly.core;
  * </ul>
  * <p> The external identifier shall be set at construction time.</p>
  */
-public interface ExternalEntity extends HasId, HasName, HasText, HasDate, HasTags, HasComments {
+public interface MutableExternalEntity extends ExternalEntity, HasMutableId, HasMutableName, HasMutableText, HasMutableDate, HasMutableTags,
+    HasMutableComments {
 }

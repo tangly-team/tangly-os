@@ -17,7 +17,8 @@ image:https://img.shields.io/github/discussions/tangly-team/tangly-os[discussion
 
 == Purpose
 
-The *tangly erp invoices* bounded domain component provides regular business model abstractions for business applications written in Java. The component is using records and requires *Java 17 or higher*.
+The *tangly erp invoices* bounded domain component provides regular business model abstractions for business applications written in Java.
+The component is using records and requires *{ref-java-current-version} or higher*.
 
 *Try it out*.
 
@@ -44,3 +45,14 @@ The library can be included in Gradle as
 ----
 
 The documentation can be found under {ref-tangly-blog-url}/docs/domains/invoices/[Business documentation].
+
+== Awesome Sponsors and Developers
+
+Corporate sponsors are
+
+* https://www.tangly.net[tangly llc]
+
+Individual developers are
+
+* https://www.linkedin.com/in/marcelbaumann/[Marcel Baumann]
+* https://www.linkedin.com/in/junghana/[Alexandra Junghans]

@@ -17,7 +17,8 @@ image:https://img.shields.io/github/discussions/tangly-team/tangly-os[discussion
 
 == Purpose
 
-The *tangly erp collaborators* bounded domain component provides regular business model abstractions for business applications written in Java. The component is using records and requires *Java 17 or higher*.
+The *tangly erp collaborators* bounded domain component provides regular business model abstractions for business applications written in Java. The component
+is using records and requires *{ref-java-current-version} or higher*.
 
 *Try it out*.
 

@@ -1,10 +1,10 @@
 /*
- * Copyright 2023 Marcel Baumann
+ * Copyright 2023-2024 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- *          http://www.apache.org/licenses/LICENSE-2.0
+ *          https://apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -21,7 +21,7 @@ import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.theme.lumo.LumoUtility;
-import net.tangly.core.Entity;
+import net.tangly.core.MutableEntity;
 import net.tangly.core.providers.Provider;
 import net.tangly.core.providers.ProviderInMemory;
 import org.jetbrains.annotations.NotNull;
@@ -44,7 +44,7 @@ import java.util.Objects;
  * @param <T> type of the entities in the list.
  */
 @Tag("tangly-field-one2many-references")
-public class One2ManyReferencesField<T extends Entity> extends CustomField<Collection<T>> {
+public class One2ManyReferencesField<T extends MutableEntity> extends CustomField<Collection<T>> {
     private final Class<T> entityClass;
     private final transient Provider<T> selectables;
     private final EntityView<T> view;
