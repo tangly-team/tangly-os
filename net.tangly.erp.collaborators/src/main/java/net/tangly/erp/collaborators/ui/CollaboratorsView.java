@@ -31,15 +31,14 @@ public class CollaboratorsView extends ItemView<Collaborator> {
         TextField internalId;
         AddressField address;
 
-
         CollaboratorForm(@NotNull CollaboratorsView parent) {
             super(parent);
-            TextField id = VaadinUtils.createTextField("Assignment", "assignment");
-            TextField oldSsn = VaadinUtils.createTextField("Old SSN", "old SSN");
-            DatePicker birthday = VaadinUtils.createDatePicker("Birthday");
-            TextField fullname = new TextField("Fullname", "fullname");
-            TextField internalId = new TextField("Internal Id", "internalId");
-            AddressField address = new AddressField();
+            id = VaadinUtils.createTextField("Assignment", "assignment");
+            oldSsn = VaadinUtils.createTextField("Old SSN", "old SSN");
+            birthday = VaadinUtils.createDatePicker("Birthday");
+            fullname = new TextField("Fullname", "fullname");
+            internalId = new TextField("Internal Id", "internalId");
+            address = new AddressField();
             addTabAt("details", details(), 0);
         }
 
@@ -64,6 +63,7 @@ public class CollaboratorsView extends ItemView<Collaborator> {
 
     public CollaboratorsView(@NotNull CollaboratorsBoundedDomain domain) {
         super(Collaborator.class, domain, domain.realm().collaborators(), null, Mode.EDIT);
+        form(() -> new CollaboratorForm(this));
         init();
     }
 

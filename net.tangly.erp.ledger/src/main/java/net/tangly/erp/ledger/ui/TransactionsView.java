@@ -20,7 +20,6 @@ import com.vaadin.flow.component.grid.ColumnTextAlign;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.grid.HeaderRow;
 import com.vaadin.flow.component.textfield.TextField;
-import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.data.renderer.NumberRenderer;
 import com.vaadin.flow.router.PageTitle;
 import net.tangly.erp.ledger.domain.Transaction;
@@ -142,12 +141,9 @@ class TransactionsView extends ItemView<Transaction> {
         }
     }
 
-    private final transient LedgerBoundedDomain domain;
-    private Binder<Transaction> binder;
-
     public TransactionsView(@NotNull LedgerBoundedDomain domain, @NotNull Mode mode) {
         super(Transaction.class, domain, domain.realm().transactions(), null, mode);
-        this.domain = domain;
+        form(() -> new TransactionForm(this));
         init();
     }
 

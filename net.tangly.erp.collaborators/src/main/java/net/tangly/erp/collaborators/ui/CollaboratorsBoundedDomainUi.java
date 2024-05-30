@@ -40,7 +40,7 @@ public class CollaboratorsBoundedDomainUi extends BoundedDomainUi<CollaboratorsB
     public void select(@NotNull AppLayout layout, @NotNull MenuBar menuBar) {
         MenuItem menuItem = menuBar.addItem(BoundedDomainUi.ENTITIES);
         SubMenu subMenu = menuItem.getSubMenu();
-        subMenu.addItem("Collabborators", e -> select(layout, collaboratorsView));
+        subMenu.addItem("Collaborators", e -> select(layout, collaboratorsView));
 
         addAdministration(layout, menuBar, domainView, new CmdFilesUploadCollaborators(domain()));
         select(layout);

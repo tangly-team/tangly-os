@@ -106,8 +106,6 @@ class AccountsView extends ItemView<Account> {
         }
     }
 
-    private final transient LedgerBoundedDomain domain;
-
     private Binder<Account> binder;
 
     /**
@@ -118,7 +116,7 @@ class AccountsView extends ItemView<Account> {
      */
     public AccountsView(@NotNull LedgerBoundedDomain domain, @NotNull Mode mode) {
         super(Account.class, domain, domain.realm().accounts(), new AccountFilter(), mode);
-        this.domain = domain;
+        form(() -> new AccountForm(this));
         init();
     }
 
