@@ -11,12 +11,12 @@ vaadin-version = '24.3.12'
 
 [plugins]
 vaadin = { id = "com.vaadin", version.ref = "vaadin-version" }
-spotbugs = "com.github.spotbugs:6.0.8"
+spotbugs = "com.github.spotbugs:6.0.15"
 sonarqube = "org.sonarqube:4.4.1.3373"
 sonatype = "org.sonatype.gradle.plugins.scan:2.2.2"
 pitest = "info.solidsoft.pitest:1.7.0"
 errorprone = "net.ltgt.errorprone:3.0.1"
-jib = "com.google.cloud.tools.jib:3.4.2"
+jib = "com.google.cloud.tools.jib:3.4.3"
 mannes = "com.github.ben-manes.versions:0.41.0"
 
 [libraries]
@@ -48,7 +48,7 @@ flywy-hsqldb = { module = "org.flywaydb:flyway-database-hsqldb", version.ref = "
 hsqldb = "org.hsqldb:hsqldb:2.7.3"
 iban4j = "org.iban4j:iban4j:3.2.8-RELEASE"
 
-ical4j-core = "org.mnode.ical4j:ical4j:3.2.1"
+ical4j-core = "org.mnode.ical4j:ical4j:3.2.18"
 ical4j-vcard = "org.mnode.ical4j:ical4j-vcard:1.0.7"
 
 google-libphonenumber = "com.googlecode.libphonenumber:libphonenumber:8.13.38"
