@@ -29,9 +29,10 @@ This meeting belongs to the developers.
 
 The official definition of the Daily Scrum as stated in the {ref-scrumguide} is:
 
-_The purpose of the Daily Scrum is *to inspect progress toward the Sprint Goal* and adapt the Sprint Backlog as necessary, adjusting the upcoming planned work._
+_The purpose of the Daily Scrum is *to inspect progress toward the Sprint Goal* and *adapt* the Sprint Backlog as necessary, adjusting the upcoming planned
+work._
 
-_The Daily Scrum is a 15-minute event for the Developers of the Scrum Team._
+_The Daily Scrum is a 15-minute event for the *Developers* of the Scrum Team._
 _To reduce complexity, it is held at the same time and place every working day of the Sprint._
 _If the Product Owner or Scrum Master are actively working on items in the Sprint Backlog, they participate as Developers._
 
@@ -41,7 +42,8 @@ _This creates focus and improves self-management._
 _Daily Scrums improve communications, identify impediments, promote quick decision-making, and consequently eliminate the need for other meetings._
 
 _The Daily Scrum is *not* the only time Developers are allowed to adjust their plan._
-_*They often meet throughout the day for more detailed discussions about adapting or re-planning the rest of the Sprint’s work.*_
+
+_**They often meet throughout the day for more detailed discussions about adapting or re-planning the rest of the Sprint’s work.**_
 
 == Daily Scrum Questions
 

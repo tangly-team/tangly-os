@@ -149,7 +149,7 @@ ref-uri-prj-repo = "https://github.com/marcelbaumann/tangly-os[tangly OS reposit
 ref-utterances = "https://utteranc.es/[utteranc.es]"
 ref-xp = "http://www.extremeprogramming.org/[eXtreme Programming]"
 
-var-current-ver = "0.2.7"
+var-current-ver = "0.2.8"
 var-current-release-date = "2024-03-31"
 
 languageCode = "en-us"

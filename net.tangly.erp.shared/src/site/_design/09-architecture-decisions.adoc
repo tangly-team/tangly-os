@@ -38,4 +38,4 @@ ifndef::imagesdir[:imagesdir: ./pics]
 
 === Ledger Decisions
 
-. link:../adr/ledger-001-ledger-tag-for-vat-costs/[Ledger Tag for VAT Costs]
+. link:../adr/led-001-ledger-tag-for-vat-costs/[Ledger Tag for VAT Costs]
