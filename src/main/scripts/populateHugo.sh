@@ -90,8 +90,6 @@ copy_domain_module products
 copy_domain_module shared
 copy_domain_module ui
 
-cp -R $prjDir/net.tangly.erp.shared/src/site/_design $siteDir/content/docs/domains/architecture
-
 copy_workshop agile-scrum
 copy_workshop agile-technical-fluency
 copy_workshop arc42
