@@ -20,6 +20,7 @@ import com.vaadin.flow.component.contextmenu.SubMenu;
 import com.vaadin.flow.component.menubar.MenuBar;
 import net.tangly.commons.lang.functional.LazyReference;
 import net.tangly.core.domain.AccessRights;
+import net.tangly.core.domain.AccessRightsCode;
 import net.tangly.core.domain.BoundedDomain;
 import net.tangly.core.domain.User;
 import org.jetbrains.annotations.NotNull;
@@ -132,9 +133,12 @@ public abstract class BoundedDomainUi<T extends BoundedDomain<?, ?, ?>> {
         MenuItem menuItem = menuBar.addItem(ADMINISTRATION);
         SubMenu subMenu = menuItem.getSubMenu();
         subMenu.addItem(STATISTICS, _ -> select(layout, domainView));
-        subMenu.addItem(IMPORT, _ -> executeGlobalAction(domain.port()::importEntities));
-        subMenu.addItem(EXPORT, _ -> executeGlobalAction(domain.port()::exportEntities));
-        subMenu.addItem(CLEAR, _ -> executeGlobalAction(domain.port()::clearEntities));
+        var action = subMenu.addItem(IMPORT, _ -> executeGlobalAction(domain.port()::importEntities));
+        action.setEnabled(hasDomainAdminRights());
+        action = subMenu.addItem(EXPORT, _ -> executeGlobalAction(domain.port()::exportEntities));
+        action.setEnabled(hasDomainAdminRights());
+        action = subMenu.addItem(CLEAR, _ -> executeGlobalAction(domain.port()::clearEntities));
+        action.setEnabled(hasDomainAdminRights());
         if (loadDialog != null) {
             subMenu.addItem(LOAD, _ -> executeGlobalAction(loadDialog::execute));
         }
@@ -161,5 +165,9 @@ public abstract class BoundedDomainUi<T extends BoundedDomain<?, ?, ?>> {
 
     protected <V extends Component> LazyReference<V> currentView() {
         return (LazyReference<V>) currentView;
+    }
+
+    private boolean hasDomainAdminRights() {
+        return (rights != null) && rights.right() == AccessRightsCode.domainAdmin;
     }
 }

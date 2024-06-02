@@ -15,13 +15,13 @@ package net.tangly.erp.crm.ports;
 
 import net.tangly.commons.lang.ReflectionUtilities;
 import net.tangly.core.*;
+import net.tangly.core.domain.TsvHdl;
 import net.tangly.core.providers.Provider;
 import net.tangly.core.providers.ProviderInMemory;
 import net.tangly.core.tsv.TsvHdlCore;
 import net.tangly.erp.crm.domain.*;
 import net.tangly.erp.crm.services.CrmBoundedDomain;
 import net.tangly.erp.crm.services.CrmRealm;
-import net.tangly.erp.ports.TsvHdl;
 import net.tangly.gleam.model.TsvEntity;
 import net.tangly.gleam.model.TsvProperty;
 import net.tangly.gleam.model.TsvRelation;

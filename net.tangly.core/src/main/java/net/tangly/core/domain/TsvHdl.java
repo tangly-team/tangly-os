@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2024 Marcel Baumann
+ * Copyright 2024 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -11,7 +11,8 @@
  *
  */
 
-package net.tangly.erp.ports;
+package net.tangly.core.domain;
+
 
 import net.tangly.commons.logger.EventData;
 import net.tangly.core.*;
@@ -39,7 +40,7 @@ import java.util.function.Function;
 import static net.tangly.core.tsv.TsvHdlCore.NAME;
 import static net.tangly.core.tsv.TsvHdlCore.TEXT;
 
-public final class TsvHdl {
+public class TsvHdl {
     public static final CSVFormat FORMAT =
         CSVFormat.Builder.create().setDelimiter('\t').setQuote('"').setRecordSeparator('\n').setIgnoreSurroundingSpaces(true).setHeader().setSkipHeaderRecord(true)
             .setIgnoreHeaderCase(true).setIgnoreEmptyLines(true).build();
@@ -164,7 +165,7 @@ public final class TsvHdl {
             int counter = 0;
             for (CSVRecord csv : FORMAT.parse(in)) {
                 loggedRecord = csv;
-                Object imported = function.apply(tsvEntity, csv);
+                U imported = function.apply(tsvEntity, csv);
                 if (!(imported instanceof MutableEntityExtended entity) || (entity.validate())) {
                     ++counter;
                     EventData.log(EventData.IMPORT, domain, EventData.Status.SUCCESS, STR."\{tsvEntity.clazz().getSimpleName()} imported",

@@ -29,7 +29,6 @@ dependencies {
     implementation project(':net.tangly.erp.invoices')
     implementation project(':net.tangly.erp.ledger')
     implementation project(':net.tangly.erp.products')
-    implementation project(':net.tangly.erp.shared')
     implementation project(':net.tangly.gleam')
 
     implementation(libs.apache.commons.csv)

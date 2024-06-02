@@ -26,7 +26,6 @@ project.description = "Products bounded domain using Java 21 or higher (tangly l
 dependencies {
     implementation project(':net.tangly.commons')
     implementation project(':net.tangly.core')
-    implementation project(':net.tangly.erp.shared')
     implementation project(':net.tangly.gleam')
     implementation project(':net.tangly.ui')
 

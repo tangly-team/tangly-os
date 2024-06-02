@@ -220,7 +220,7 @@ public abstract class ItemView<T> extends VerticalLayout implements View {
 
     public void rights(AccessRights rights) {
         this.rights = rights;
-        buildMenu(mode());
+        buildMenu();
     }
 
     public final Mode mode() {
@@ -229,7 +229,7 @@ public abstract class ItemView<T> extends VerticalLayout implements View {
 
     public final void mode(Mode mode) {
         this.mode = mode;
-        buildMenu(mode);
+        buildMenu();
     }
 
     public T entity() {
@@ -335,24 +335,29 @@ public abstract class ItemView<T> extends VerticalLayout implements View {
         return dataView;
     }
 
-    private void buildMenu(Mode mode) {
+    private void buildMenu() {
+        Mode mode = mode();
         if (Mode.hasForm(mode)) {
             if (Objects.nonNull(form)) {
                 form.ifPresent(o -> o.mode(mode));
             }
             menu().removeAll();
-            menu().addItem(Mode.VIEW_TEXT, event -> event.getItem().ifPresent(o -> form().get().display(o)));
-            if (Objects.nonNull(mode) && !mode.readonly()) {
-                menu().add(new Hr());
-                menu().addItem(Mode.EDIT_TEXT, event -> event.getItem().ifPresent(o -> form().get().edit(o)));
-                menu().addItem(Mode.CREATE_TEXT, _ -> form.get().create());
-                menu().addItem(Mode.DUPLICATE_TEXT, event -> event.getItem().ifPresent(o -> form().get().duplicate(o)));
-                menu().addItem(Mode.DELETE_TEXT, event -> event.getItem().ifPresent(o -> form().get().delete(o)));
-            }
+            buildCrudMenu(mode);
             SingleSelect<Grid<T>, T> selection = grid.asSingleSelect();
             selection.addValueChangeListener(e -> form.get().value(e.getValue()));
         }
         addActions(menu());
+    }
+
+    protected void buildCrudMenu(Mode mode) {
+        menu().addItem(Mode.VIEW_TEXT, event -> event.getItem().ifPresent(o -> form().get().display(o)));
+        if (Objects.nonNull(mode) && !mode.readonly()) {
+            menu().add(new Hr());
+            menu().addItem(Mode.EDIT_TEXT, event -> event.getItem().ifPresent(o -> form().get().edit(o)));
+            menu().addItem(Mode.CREATE_TEXT, _ -> form.get().create());
+            menu().addItem(Mode.DUPLICATE_TEXT, event -> event.getItem().ifPresent(o -> form().get().duplicate(o)));
+            menu().addItem(Mode.DELETE_TEXT, event -> event.getItem().ifPresent(o -> form().get().delete(o)));
+        }
     }
 
     /**

@@ -19,7 +19,6 @@ Approaches for TSV and JSON representations are available.
 ** link:net.tangly.erp.invoices/readme.adoc[_ERP INVOICES_] invoices business components library
 ** link:net.tangly.erp.ledger/readme.adoc[_ERP LEDGER_] ledger business components library
 ** link:net.tangly.erp.products/readme.adoc[_ERP PRODUCTS_] products business components library
-** link:net.tangly.erp.shared/readme.adoc[_ERP SHARED_] shared business components library
 ** link:net.tangly.erp.ui/readme.adoc[_ERP UI_] ERP application with a set of bounded domains with Vaadin user interface
 
 The documentation is located under https://blog.tangly.net/[tangly-team].

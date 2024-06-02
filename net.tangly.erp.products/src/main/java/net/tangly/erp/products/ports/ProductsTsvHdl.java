@@ -13,8 +13,8 @@
 
 package net.tangly.erp.products.ports;
 
+import net.tangly.core.domain.TsvHdl;
 import net.tangly.core.providers.Provider;
-import net.tangly.erp.ports.TsvHdl;
 import net.tangly.erp.products.domain.Assignment;
 import net.tangly.erp.products.domain.Effort;
 import net.tangly.erp.products.domain.Product;
@@ -34,8 +34,8 @@ import java.util.Locale;
 import java.util.Optional;
 import java.util.function.Function;
 
+import static net.tangly.core.domain.TsvHdl.*;
 import static net.tangly.core.tsv.TsvHdlCore.*;
-import static net.tangly.erp.ports.TsvHdl.*;
 import static net.tangly.gleam.model.TsvEntity.get;
 
 public class ProductsTsvHdl {

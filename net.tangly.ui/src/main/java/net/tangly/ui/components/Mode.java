@@ -29,10 +29,8 @@ import java.util.Objects;
  * </dl>
  */
 public enum Mode {
-    NONE(Mode.NONE_TEXT), LIST(Mode.LIST_TEXT), VIEW(Mode.VIEW_TEXT), EDIT(Mode.EDIT_TEXT), CREATE(Mode.CREATE_TEXT), DUPLICATE(Mode.DUPLICATE_TEXT), DELETE(
-        Mode.DELETE_TEXT);
+    LIST(Mode.LIST_TEXT), VIEW(Mode.VIEW_TEXT), EDITABLE(Mode.EDIT_TEXT), DELETE(Mode.DELETE_TEXT);
 
-    public static final String NONE_TEXT = "None";
     public static final String LIST_TEXT = "List";
     public static final String VIEW_TEXT = "View";
     public static final String EDIT_TEXT = "Edit";
@@ -46,27 +44,12 @@ public enum Mode {
         this.text = text;
     }
 
-    /**
-     * Propagated mode for subcomponents of a view or a form.
-     *
-     * @param mode mode of the parent component
-     * @return mode of the owned components for consistency in the user experience
-     */
-    public static Mode propagated(@NotNull Mode mode) {
-        return switch (mode) {
-            case NONE -> NONE;
-            case LIST -> LIST;
-            case VIEW, DELETE -> DELETE;
-            case EDIT, CREATE, DUPLICATE -> EDIT;
-        };
-    }
-
     public static Mode mode(AccessRightsCode right) {
         return switch (right) {
-            case null -> Mode.NONE;
-            case none, appAdmin -> Mode.NONE;
-            case restrictedUser, readonlyUser -> Mode.VIEW;
-            case user, domainAdmin -> Mode.EDIT;
+            case null -> Mode.LIST;
+            case none, appAdmin -> Mode.LIST;
+            case readonlyUser -> Mode.VIEW;
+            case restrictedUser, user, domainAdmin -> Mode.EDITABLE;
         };
     }
 

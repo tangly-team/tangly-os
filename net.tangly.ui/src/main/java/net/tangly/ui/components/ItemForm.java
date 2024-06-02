@@ -102,7 +102,7 @@ public abstract class ItemForm<T, U extends ItemView<T>> {
         action.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
         action.addClickListener(event -> {
             switch (mode) {
-                case EDIT, CREATE, DUPLICATE -> updateEntity();
+                case EDITABLE -> updateEntity();
                 case DELETE -> deleteEntity();
             }
             closeForm();
@@ -203,7 +203,7 @@ public abstract class ItemForm<T, U extends ItemView<T>> {
      * @param entity entity to view
      */
     public void display(@NotNull T entity) {
-        display(entity, Mode.VIEW);
+        display(entity, Mode.VIEW_TEXT);
     }
 
     /**
@@ -212,14 +212,14 @@ public abstract class ItemForm<T, U extends ItemView<T>> {
      * @param entity entity to modify
      */
     public void edit(@NotNull T entity) {
-        display(entity, Mode.EDIT);
+        display(entity, Mode.EDIT_TEXT);
     }
 
     /**
      * Create a new entity form.
      */
     public void create() {
-        display(null, Mode.CREATE);
+        display(null, Mode.CREATE_TEXT);
     }
 
     /**
@@ -228,7 +228,7 @@ public abstract class ItemForm<T, U extends ItemView<T>> {
      * @param entity entity to duplicate
      */
     public void duplicate(@NotNull T entity) {
-        display(entity, Mode.DUPLICATE);
+        display(entity, Mode.DUPLICATE_TEXT);
         this.value = null;
     }
 
@@ -238,7 +238,7 @@ public abstract class ItemForm<T, U extends ItemView<T>> {
      * @param entity entity to delete.
      */
     public void delete(@NotNull T entity) {
-        display(entity, Mode.DELETE);
+        display(entity, Mode.DELETE_TEXT);
     }
 
     // endregion
@@ -251,8 +251,8 @@ public abstract class ItemForm<T, U extends ItemView<T>> {
      * @param value value to display
      * @param mode  display mode of the value
      */
-    private void display(T value, @NotNull Mode mode) {
-        nameActionButton(mode);
+    private void display(T value, @NotNull String mode) {
+        action.setText(mode);
         value(value);
         if (parent.isFormEmbedded()) {
             parent.add(formLayout);
@@ -350,14 +350,6 @@ public abstract class ItemForm<T, U extends ItemView<T>> {
 
     // endregion
 
-    protected void nameActionButton(@NotNull Mode mode) {
-        mode(mode);
-        switch (mode) {
-            case LIST, VIEW -> action.setText("Close");
-            case EDIT, CREATE, DUPLICATE -> action.setText("Save");
-            case DELETE -> action.setText("Delete");
-        }
-    }
 
     protected Tab addTabAt(@NotNull String tabText, @NotNull Component content, int position) {
         return tabSheet.add(new Tab(tabText), content, position);

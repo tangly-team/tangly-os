@@ -13,12 +13,12 @@
 
 package net.tangly.erp.collaborators.ports;
 
+import net.tangly.core.domain.TsvHdl;
 import net.tangly.core.providers.Provider;
 import net.tangly.core.tsv.TsvHdlCore;
 import net.tangly.erp.collaborators.domain.*;
 import net.tangly.erp.collabortors.services.CollaboratorsBoundedDomain;
 import net.tangly.erp.collabortors.services.CollaboratorsRealm;
-import net.tangly.erp.ports.TsvHdl;
 import net.tangly.gleam.model.TsvEntity;
 import net.tangly.gleam.model.TsvProperty;
 import org.apache.commons.csv.CSVRecord;
