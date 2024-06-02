@@ -44,13 +44,11 @@ import java.util.stream.IntStream;
  */
 @Route("")
 public class ApplicationView extends AppLayout {
-    private final String imageName;
     private final Map<String, BoundedDomainUi<?>> boundedDomainUis;
     private Tabs tabs;
     private final MenuBar menuBar;
 
     public ApplicationView(String imageName) {
-        this.imageName = imageName;
         boundedDomainUis = new TreeMap<>();
         setPrimarySection(Section.NAVBAR);
         menuBar = new MenuBar();
@@ -67,7 +65,11 @@ public class ApplicationView extends AppLayout {
     }
 
     public void userChanged(User user) {
-        boundedDomainUis.values().forEach(o -> o.userChanged(user));
+        boundedDomainUis.values().forEach(o -> {
+            boolean hasAccessToDomain = user.accessRightsFor(o.name()).isPresent();
+            domainTab(o.name()).ifPresent(tab -> tab.setEnabled(hasAccessToDomain));
+            o.userChanged(user);
+        });
     }
 
     public static String username() {
@@ -100,8 +102,7 @@ public class ApplicationView extends AppLayout {
 
     protected final void selectBoundedDomainUi(String domainName) {
         getBoundedDomainUi(domainName).ifPresent(this::selectBoundedDomainUi);
-        IntStream.range(0, tabs.getComponentCount()).mapToObj(i -> tabs.getTabAt(i)).filter(o -> o.getLabel().equals(domainName)).findFirst().ifPresent(
-            tabs::setSelectedTab);
+        domainTab(domainName).ifPresent(tabs::setSelectedTab);
     }
 
     protected final void selectBoundedDomainUi(Tabs.SelectedChangeEvent event) {
@@ -117,17 +118,21 @@ public class ApplicationView extends AppLayout {
         subMenu.addItem("Change Password", e -> new CmdChangePassword(Application.instance().apps(), user()).execute());
     }
 
-    private MenuBar menuBar() {
-        var menuBar = new MenuBar();
-        menuBar.setOpenOnHover(true);
-        return menuBar;
-    }
-
     protected void drawerMenu() {
         tabs = new Tabs(boundedDomainUis().keySet().stream().map(o -> new Tab(o)).toList().toArray(new Tab[0]));
         tabs.setOrientation(Tabs.Orientation.VERTICAL);
         addToDrawer(tabs);
         tabs.addSelectedChangeListener(this::selectBoundedDomainUi);
+    }
+
+    private Optional<Tab> domainTab(String domain) {
+        return IntStream.range(0, tabs.getComponentCount()).mapToObj(i -> tabs.getTabAt(i)).filter(o -> o.getLabel().equals(domain)).findAny();
+    }
+
+    private MenuBar menuBar() {
+        var menuBar = new MenuBar();
+        menuBar.setOpenOnHover(true);
+        return menuBar;
     }
 
     private void ofAppDomainUi() {
