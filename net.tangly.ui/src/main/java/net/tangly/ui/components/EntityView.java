@@ -30,9 +30,9 @@ import org.jetbrains.annotations.NotNull;
  * @param <T> entity to display
  */
 public class EntityView<T extends Entity> extends ItemView<T> {
-    public static <T extends Entity> EntityView<T> of(@NotNull Class<T> entityClass, BoundedDomainUi<?> domain, @NotNull Provider<T> provider, @NotNull Mode mode) {
+    public static <T extends Entity> EntityView<T> ofLIST(@NotNull Class<T> entityClass, BoundedDomainUi<?> domain, @NotNull Provider<T> provider) {
         EntityView<T> view = new EntityView<>(entityClass, domain, provider, null);
-        view.mode(mode);
+        view.mode(Mode.LIST);
         view.initEntityView();
         return view;
     }

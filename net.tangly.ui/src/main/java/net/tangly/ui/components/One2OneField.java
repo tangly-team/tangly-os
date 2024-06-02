@@ -94,7 +94,7 @@ public class One2OneField<T extends MutableEntity> extends CustomField<T> {
 
     private void displayRelationships() {
         Dialog dialog = VaadinUtils.createDialog();
-        EntityView<T> view = EntityView.of(entityClass, null, provider, Mode.LIST);
+        EntityView<T> view = EntityView.ofLIST(entityClass, null, provider);
         dialog.add(new VerticalLayout(view, new HtmlComponent("br"), createFormButtons(dialog, view)));
         view.selectedItem(getValue());
         dialog.open();

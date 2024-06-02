@@ -48,7 +48,8 @@ import java.util.function.Supplier;
  * <p>The view owns an optional form to display and edit details and an optional filter to filter desired entities in the
  * grid. Following operations are available through a pop-up menu:</p>
  * <dl>
- *     <dt>List</dt><dd>Display the grid with the entity properties. No form can be selected and no modification operations are available.</dd>
+ *     <dt>List</dt><dd>Display the grid with the entity properties. No form can be selected and no modification operations are available.
+ *     No context sensitive menu is displayed.</dd>
  *    <dt>View</dt><dd>Display a read-only form with the entity properties. If the form is displayed and another grid item is selected, the values of the selected entity are
  *    displayed in the form. </dd>
  *    <dt>Update</dt><dd>Display an editable form with the entity properties. If the save operation is selected the updated values are stored into the entity.

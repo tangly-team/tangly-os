@@ -96,7 +96,7 @@ public class ActorTimerMgr<T> extends ActorImp<T> implements Actor<T> {
     private void processTimeout() {
         long currentTime = System.nanoTime();
         while (!timers.isEmpty() && (timers.getFirst().alarmTimeInNanoSeconds() <= currentTime)) {
-            Timer timer = timers.getFirst();
+            var timer = timers.getFirst();
             Actor.send(timer.client(), builder.apply(timer));
             timers.remove(timer);
             if (timer.recurring()) {

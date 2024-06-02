@@ -52,7 +52,7 @@ public class One2ManyReferencesField<T extends MutableEntity> extends CustomFiel
     public One2ManyReferencesField(@NotNull Class<T> entityClass, @NotNull Provider<T> selectables) {
         this.entityClass = entityClass;
         this.selectables = selectables;
-        this.view = EntityView.of(entityClass, null, ProviderInMemory.of(), Mode.LIST);
+        this.view = EntityView.ofLIST(entityClass, null, ProviderInMemory.of());
         setHeightFull();
         setWidthFull();
         addClassNames(LumoUtility.Padding.NONE, LumoUtility.Margin.NONE, LumoUtility.Border.NONE);
@@ -101,7 +101,7 @@ public class One2ManyReferencesField<T extends MutableEntity> extends CustomFiel
 
     private void displayAddDialog() {
         Dialog dialog = VaadinUtils.createDialog();
-        EntityView<T> selectionView = EntityView.of(entityClass, null, selectables, Mode.LIST);
+        EntityView<T> selectionView = EntityView.ofLIST(entityClass, null, selectables);
         dialog.add(new VerticalLayout(selectionView, new HtmlComponent("br"), createFormButtons(dialog, view, selectionView)));
         dialog.open();
     }

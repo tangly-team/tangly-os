@@ -48,18 +48,26 @@ public class ApplicationView extends AppLayout {
     private Tabs tabs;
     private final MenuBar menuBar;
 
+    public ApplicationView() {
+        this(null);
+    }
+
     public ApplicationView(String imageName) {
         boundedDomainUis = new TreeMap<>();
         setPrimarySection(Section.NAVBAR);
         menuBar = new MenuBar();
         menuBar.setOpenOnHover(true);
-        try {
-            byte[] buffer = Thread.currentThread().getContextClassLoader().getResourceAsStream(imageName).readAllBytes();
-            Image logo = new Image(new StreamResource(imageName, () -> new ByteArrayInputStream(buffer)), imageName);
-            logo.setHeight("44px");
-            addToNavbar(new DrawerToggle(), logo, menuBar);
-        } catch (IOException e) {
-            throw new UncheckedIOException(e);
+        if (Objects.nonNull(imageName)) {
+            try {
+                byte[] buffer = Thread.currentThread().getContextClassLoader().getResourceAsStream(imageName).readAllBytes();
+                Image logo = new Image(new StreamResource(imageName, () -> new ByteArrayInputStream(buffer)), imageName);
+                logo.setHeight("44px");
+                addToNavbar(new DrawerToggle(), logo, menuBar);
+            } catch (IOException e) {
+                throw new UncheckedIOException(e);
+            }
+        } else {
+            addToNavbar(new DrawerToggle(), menuBar);
         }
         ofAppDomainUi();
     }

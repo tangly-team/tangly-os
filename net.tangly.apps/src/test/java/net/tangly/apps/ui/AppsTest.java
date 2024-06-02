@@ -33,7 +33,7 @@ class AppsTest {
 
     @BeforeAll
     public static void createModelAndRoutes() {
-        routes = new Routes().autoDiscoverViews("net.tangly.apps.main");
+        routes = new Routes().autoDiscoverViews("net.tangly.app");
     }
 
     @BeforeEach
