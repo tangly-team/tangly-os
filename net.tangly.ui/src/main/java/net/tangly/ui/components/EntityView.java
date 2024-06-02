@@ -17,25 +17,28 @@ import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.grid.HeaderRow;
 import com.vaadin.flow.data.renderer.LocalDateRenderer;
 import net.tangly.core.*;
-import net.tangly.core.domain.BoundedDomain;
+import net.tangly.core.domain.AccessRights;
 import net.tangly.core.providers.Provider;
+import net.tangly.ui.app.domain.BoundedDomainUi;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * The CRUD view for a domain entity. A domain entity has an internal object identifier, external identifier, a name, a temporal validity range and a text. An entity can have
- * optional tags and comments. These tags and comments are displayed in separate views.
+ * The CRUD view for a domain entity. A domain entity has an internal object identifier, external identifier, a name, a temporal validity range and a text.
+ * An entity can have optional tags and comments. These tags and comments are displayed in separate views. The views are tabs in the form displaying the
+ * details of a selected entity.
  *
  * @param <T> entity to display
  */
 public class EntityView<T extends Entity> extends ItemView<T> {
-    public static <T extends Entity> EntityView<T> of(@NotNull Class<T> entityClass, BoundedDomain<?, ?, ?> domain, @NotNull Provider<T> provider, @NotNull Mode mode) {
-        EntityView<T> view = new EntityView<>(entityClass, domain, provider, mode);
+    public static <T extends Entity> EntityView<T> of(@NotNull Class<T> entityClass, BoundedDomainUi<?> domain, @NotNull Provider<T> provider, @NotNull Mode mode) {
+        EntityView<T> view = new EntityView<>(entityClass, domain, provider, null);
+        view.mode(mode);
         view.initEntityView();
         return view;
     }
 
-    public EntityView(@NotNull Class<T> entityClass, BoundedDomain<?, ?, ?> domain, @NotNull Provider<T> provider, @NotNull Mode mode) {
-        super(entityClass, domain, provider, new EntityFilter<>(), mode);
+    public EntityView(@NotNull Class<T> entityClass, BoundedDomainUi<?> domain, @NotNull Provider<T> provider, @NotNull AccessRights rights) {
+        super(entityClass, domain, provider, new EntityFilter<>(), rights);
     }
 
     @Override
@@ -46,7 +49,6 @@ public class EntityView<T extends Entity> extends ItemView<T> {
     protected final void initEntityView() {
         addEntityColumns(grid());
         addEntityFilterFields(grid(), filter());
-        buildMenu();
     }
 
     protected void addEntityColumns(Grid<T> grid) {

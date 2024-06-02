@@ -21,37 +21,28 @@ import net.tangly.commons.lang.functional.LazyReference;
 import net.tangly.erp.invoices.services.InvoicesBoundedDomain;
 import net.tangly.ui.app.domain.BoundedDomainUi;
 import net.tangly.ui.app.domain.DomainView;
-import net.tangly.ui.components.ItemView;
-import net.tangly.ui.components.Mode;
 import org.jetbrains.annotations.NotNull;
 
 public class InvoicesBoundedDomainUi extends BoundedDomainUi<InvoicesBoundedDomain> {
-    private final LazyReference<ArticlesView> articlesView;
-    private final LazyReference<InvoicesView> invoicesView;
-    private final LazyReference<DomainView> domainView;
+    public static final String INVOICES = "Invoices";
+    public static final String ARTICLES = "Articles";
 
     public InvoicesBoundedDomainUi(@NotNull InvoicesBoundedDomain domain) {
         super(domain);
-        articlesView = new LazyReference<>(() -> new ArticlesView(domain, Mode.EDIT));
-        invoicesView = new LazyReference<>(() -> new InvoicesView(domain, Mode.EDIT));
-        domainView = new LazyReference<>(() -> new DomainView(domain));
-        currentView(invoicesView);
+        addView(ARTICLES, new LazyReference<>(() -> new ArticlesView(this, this.rights())));
+        addView(INVOICES, new LazyReference<>(() -> new InvoicesView(this, this.rights())));
+        addView(ENTITIES, new LazyReference<>(() -> new DomainView(this)));
+        currentView(INVOICES);
     }
 
     @Override
     public void select(@NotNull AppLayout layout, @NotNull MenuBar menuBar) {
         MenuItem menuItem = menuBar.addItem(BoundedDomainUi.ENTITIES);
         SubMenu subMenu = menuItem.getSubMenu();
-        subMenu.addItem("Articles", e -> select(layout, articlesView));
-        subMenu.addItem("Invoices", e -> select(layout, invoicesView));
+        subMenu.addItem(ARTICLES, e -> select(layout, view(ARTICLES).orElseThrow()));
+        subMenu.addItem(INVOICES, e -> select(layout, view(INVOICES).orElseThrow()));
 
-        addAdministration(layout, menuBar, domainView, new CmdFilesUploadInvoices(domain()));
+        addAdministration(layout, menuBar, view(ENTITIES).orElseThrow(), new CmdFilesUploadInvoices(domain()));
         select(layout);
-    }
-
-    @Override
-    public void refreshViews() {
-        articlesView.ifPresent(ItemView::refresh);
-        invoicesView.ifPresent(ItemView::refresh);
     }
 }

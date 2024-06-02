@@ -13,8 +13,8 @@
 
 package net.tangly.app.ports;
 
-import net.tangly.app.domain.User;
 import net.tangly.app.services.AppsRealm;
+import net.tangly.core.domain.User;
 import net.tangly.core.providers.Provider;
 import net.tangly.core.providers.ProviderInMemory;
 import net.tangly.core.providers.ProviderPersistence;

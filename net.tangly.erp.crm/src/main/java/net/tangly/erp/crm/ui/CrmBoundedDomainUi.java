@@ -22,60 +22,46 @@ import net.tangly.erp.crm.services.CrmBoundedDomain;
 import net.tangly.erp.invoices.services.InvoicesBoundedDomain;
 import net.tangly.ui.app.domain.BoundedDomainUi;
 import net.tangly.ui.app.domain.DomainView;
-import net.tangly.ui.components.ItemView;
-import net.tangly.ui.components.Mode;
 import org.jetbrains.annotations.NotNull;
 
 public class CrmBoundedDomainUi extends BoundedDomainUi<CrmBoundedDomain> {
-    private final LazyReference<LeadsView> leadsView;
-    private final LazyReference<NaturalEntitiesView> naturalEntitiesView;
-    private final LazyReference<LegalEntitiesView> legalEntitiesView;
-    private final LazyReference<EmployeesView> employeesView;
-    private final LazyReference<ContractsView> contractsView;
-    private final LazyReference<InteractionsView> interactionsView;
-    private final LazyReference<ActivitiesView> activitiesView;
-    private final LazyReference<AnalyticsCrmView> analyticsView;
-    private final LazyReference<DomainView> domainView;
+    public static final String LEADS = "Leads";
+    public static final String NATURAL_ENTITIES = "Natural Entities";
+    public static final String LEGAL_ENTITIES = "Legal Entities";
+    public static final String EMPLOYEES = "Employees";
+    public static final String CONTRACTS = "Contracts";
+    public static final String INTERACTIONS = "Interactions";
+    public static final String ACTIVITIES = "Activities";
+    public static final String ANALYTICS = "Analytics";
 
     public CrmBoundedDomainUi(@NotNull CrmBoundedDomain crmDomain, @NotNull InvoicesBoundedDomain invoicesDomain) {
         super(crmDomain);
-        leadsView = new LazyReference<>(() -> new LeadsView(domain(), Mode.EDIT));
-        naturalEntitiesView = new LazyReference<>(() -> new NaturalEntitiesView(domain(), Mode.EDIT));
-        legalEntitiesView = new LazyReference<>(() -> new LegalEntitiesView(domain(), Mode.EDIT));
-        employeesView = new LazyReference<>(() -> new EmployeesView(domain(), Mode.EDIT));
-        contractsView = new LazyReference<>(() -> new ContractsView(domain(), Mode.EDIT));
-        interactionsView = new LazyReference<>(() -> new InteractionsView(domain(), Mode.EDIT));
-        activitiesView = new LazyReference<>(() -> new ActivitiesView(domain(), Mode.VIEW));
-        analyticsView = new LazyReference<>(() -> new AnalyticsCrmView(domain(), invoicesDomain));
-        domainView = new LazyReference<>(() -> new DomainView(domain()));
-        currentView(naturalEntitiesView);
+        addView(LEADS, new LazyReference<>(() -> new LeadsView(this, this.rights())));
+        addView(NATURAL_ENTITIES, new LazyReference<>(() -> new NaturalEntitiesView(this, this.rights())));
+        addView(LEGAL_ENTITIES, new LazyReference<>(() -> new LegalEntitiesView(this, this.rights())));
+        addView(EMPLOYEES, new LazyReference<>(() -> new EmployeesView(this, this.rights())));
+        addView(CONTRACTS, new LazyReference<>(() -> new ContractsView(this, this.rights())));
+        addView(INTERACTIONS, new LazyReference<>(() -> new InteractionsView(this, this.rights())));
+        addView(ACTIVITIES, new LazyReference<>(() -> new ActivitiesView(this, this.rights())));
+        addView(ANALYTICS, new LazyReference<>(() -> new AnalyticsCrmView(this, invoicesDomain, this.rights())));
+        addView(ENTITIES, new LazyReference<>(() -> new DomainView(this)));
+        currentView(NATURAL_ENTITIES);
     }
 
     @Override
     public void select(@NotNull AppLayout layout, @NotNull MenuBar menuBar) {
         MenuItem menuItem = menuBar.addItem(BoundedDomainUi.ENTITIES);
         SubMenu subMenu = menuItem.getSubMenu();
-        subMenu.addItem("Leads", e -> select(layout, leadsView));
-        subMenu.addItem("Legal Entities", e -> select(layout, legalEntitiesView));
-        subMenu.addItem("Natural Entities", e -> select(layout, naturalEntitiesView));
-        subMenu.addItem("Contracts", e -> select(layout, contractsView));
-        subMenu.addItem("Employees", e -> select(layout, employeesView));
-        subMenu.addItem("Interactions", e -> select(layout, interactionsView));
-        subMenu.addItem("Activities", e -> select(layout, activitiesView));
+        subMenu.addItem(LEADS, _ -> select(layout, view(LEADS).orElseThrow()));
+        subMenu.addItem(LEGAL_ENTITIES, _ -> select(layout, view(LEGAL_ENTITIES).orElseThrow()));
+        subMenu.addItem(NATURAL_ENTITIES, _ -> select(layout, view(NATURAL_ENTITIES).orElseThrow()));
+        subMenu.addItem(CONTRACTS, _ -> select(layout, view(CONTRACTS).orElseThrow()));
+        subMenu.addItem(EMPLOYEES, _ -> select(layout, view(EMPLOYEES).orElseThrow()));
+        subMenu.addItem(INTERACTIONS, _ -> select(layout, view(INTERACTIONS).orElseThrow()));
+        subMenu.addItem(ACTIVITIES, _ -> select(layout, view(ACTIVITIES).orElseThrow()));
 
-        addAnalytics(layout, menuBar, analyticsView);
-        addAdministration(layout, menuBar, domainView, new CmdFilesUploadCrm(domain()));
+        addAnalytics(layout, menuBar, view(ANALYTICS).orElseThrow());
+        addAdministration(layout, menuBar, view(ENTITIES).orElseThrow(), new CmdFilesUploadCrm(domain()));
         select(layout);
-    }
-
-    @Override
-    public void refreshViews() {
-        leadsView.ifPresent(ItemView::refresh);
-        naturalEntitiesView.ifPresent(ItemView::refresh);
-        legalEntitiesView.ifPresent(ItemView::refresh);
-        employeesView.ifPresent(ItemView::refresh);
-        contractsView.ifPresent(ItemView::refresh);
-        interactionsView.ifPresent(ItemView::refresh);
-        activitiesView.ifPresent(ItemView::refresh);
     }
 }

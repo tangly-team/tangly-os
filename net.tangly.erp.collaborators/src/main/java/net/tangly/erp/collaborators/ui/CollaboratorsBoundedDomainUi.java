@@ -21,33 +21,27 @@ import net.tangly.commons.lang.functional.LazyReference;
 import net.tangly.erp.collabortors.services.CollaboratorsBoundedDomain;
 import net.tangly.ui.app.domain.BoundedDomainUi;
 import net.tangly.ui.app.domain.DomainView;
-import net.tangly.ui.components.ItemView;
 import org.jetbrains.annotations.NotNull;
 
 
 public class CollaboratorsBoundedDomainUi extends BoundedDomainUi<CollaboratorsBoundedDomain> {
-    private final LazyReference<CollaboratorsView> collaboratorsView;
-    private final LazyReference<DomainView> domainView;
+    private static final String COLLABORATORS = "Collaborators";
 
     public CollaboratorsBoundedDomainUi(@NotNull CollaboratorsBoundedDomain domain) {
         super(domain);
-        collaboratorsView = new LazyReference<>(() -> new CollaboratorsView(domain));
-        domainView = new LazyReference<>(() -> new DomainView(domain));
-        currentView(collaboratorsView);
+        addView(COLLABORATORS, new LazyReference<>(() -> new CollaboratorsView(this, this.rights())));
+        addView(ENTITIES, new LazyReference<>(() -> new DomainView(this)));
+        currentView(view(COLLABORATORS).orElseThrow());
 
-    }
-
-    public void select(@NotNull AppLayout layout, @NotNull MenuBar menuBar) {
-        MenuItem menuItem = menuBar.addItem(BoundedDomainUi.ENTITIES);
-        SubMenu subMenu = menuItem.getSubMenu();
-        subMenu.addItem("Collaborators", e -> select(layout, collaboratorsView));
-
-        addAdministration(layout, menuBar, domainView, new CmdFilesUploadCollaborators(domain()));
-        select(layout);
     }
 
     @Override
-    public void refreshViews() {
-        collaboratorsView.ifPresent(ItemView::refresh);
+    public void select(@NotNull AppLayout layout, @NotNull MenuBar menuBar) {
+        MenuItem menuItem = menuBar.addItem(BoundedDomainUi.ENTITIES);
+        SubMenu subMenu = menuItem.getSubMenu();
+        subMenu.addItem(COLLABORATORS, _ -> select(layout, view(COLLABORATORS).orElseThrow()));
+
+        addAdministration(layout, menuBar, view(ENTITIES).orElseThrow(), new CmdFilesUploadCollaborators(domain()));
+        select(layout);
     }
 }

@@ -21,6 +21,7 @@ import com.vaadin.flow.component.textfield.IntegerField;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.ValidationException;
 import net.tangly.core.codes.CodeType;
+import net.tangly.core.domain.AccessRights;
 import net.tangly.core.providers.ProviderInMemory;
 import net.tangly.erp.crm.domain.Activity;
 import net.tangly.erp.crm.domain.ActivityCode;
@@ -29,7 +30,6 @@ import net.tangly.ui.app.domain.Cmd;
 import net.tangly.ui.components.EntityView;
 import net.tangly.ui.components.ItemForm;
 import net.tangly.ui.components.ItemView;
-import net.tangly.ui.components.Mode;
 import org.jetbrains.annotations.NotNull;
 
 import java.time.LocalDate;
@@ -119,8 +119,8 @@ class ActivitiesView extends ItemView<Activity> {
         }
     }
 
-    public ActivitiesView(@NotNull CrmBoundedDomain domain, @NotNull Mode mode) {
-        super(Activity.class, domain, domain.realm().activities(), new ActivityFilter(), mode);
+    public ActivitiesView(@NotNull CrmBoundedDomainUi domain, @NotNull AccessRights rights) {
+        super(Activity.class, domain, domain.domain().realm().activities(), new ActivityFilter(), rights);
         form(() -> new ActivityForm(this));
         init();
     }

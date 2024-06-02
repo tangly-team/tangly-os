@@ -20,8 +20,8 @@ import com.vaadin.flow.component.grid.HeaderRow;
 import com.vaadin.flow.component.textfield.TextField;
 import net.tangly.core.Tag;
 import net.tangly.core.TagType;
-import net.tangly.core.domain.BoundedDomain;
 import net.tangly.core.providers.ProviderInMemory;
+import net.tangly.ui.app.domain.BoundedDomainUi;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
@@ -175,8 +175,9 @@ public class TagsView extends ItemView<Tag> {
         }
     }
 
-    public TagsView(@NotNull BoundedDomain<?, ?, ?> domain, @NotNull Mode mode) {
-        super(Tag.class, domain, ProviderInMemory.of(), new TagFilter(), mode);
+    public TagsView(@NotNull BoundedDomainUi<?> domain, @NotNull Mode mode) {
+        super(Tag.class, domain, ProviderInMemory.of(), new TagFilter(), null);
+        mode(mode);
         form(() -> new TagForm(this));
         init();
     }
@@ -194,6 +195,5 @@ public class TagsView extends ItemView<Tag> {
             headerRow.getCell(grid.getColumnByKey(NAME)).setComponent(createTextFilterField(filter::name));
             headerRow.getCell(grid.getColumnByKey(VALUE)).setComponent(createTextFilterField(filter::value));
         }
-        buildMenu();
     }
 }

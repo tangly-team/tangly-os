@@ -31,8 +31,8 @@ import com.vaadin.flow.server.StreamResource;
 import net.tangly.core.EmailAddress;
 import net.tangly.core.PhoneNr;
 import net.tangly.core.codes.CodeType;
+import net.tangly.core.domain.AccessRights;
 import net.tangly.erp.crm.domain.*;
-import net.tangly.erp.crm.services.CrmBoundedDomain;
 import net.tangly.ui.components.*;
 import org.jetbrains.annotations.NotNull;
 
@@ -93,8 +93,8 @@ class NaturalEntitiesView extends EntityView<NaturalEntity> {
     }
 
 
-    public NaturalEntitiesView(@NotNull CrmBoundedDomain domain, @NotNull Mode mode) {
-        super(NaturalEntity.class, domain, domain.realm().naturalEntities(), mode);
+    public NaturalEntitiesView(@NotNull CrmBoundedDomainUi domain, @NotNull AccessRights rights) {
+        super(NaturalEntity.class, domain, domain.domain().realm().naturalEntities(), rights);
         form(() -> new NaturalEntityForm(this));
         init();
     }

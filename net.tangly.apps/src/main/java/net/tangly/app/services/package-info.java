@@ -11,7 +11,4 @@
  *
  */
 
-package net.tangly.app.domain;
-
-public record UserAccessRights(String username, String domain, UserAccessRightsCode accessRights) {
-}
+package net.tangly.app.services;

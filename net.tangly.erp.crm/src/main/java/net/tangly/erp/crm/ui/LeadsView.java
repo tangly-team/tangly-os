@@ -25,15 +25,14 @@ import com.vaadin.flow.router.PageTitle;
 import net.tangly.core.EmailAddress;
 import net.tangly.core.PhoneNr;
 import net.tangly.core.codes.CodeType;
+import net.tangly.core.domain.AccessRights;
 import net.tangly.erp.crm.domain.ActivityCode;
 import net.tangly.erp.crm.domain.GenderCode;
 import net.tangly.erp.crm.domain.Lead;
 import net.tangly.erp.crm.domain.LeadCode;
-import net.tangly.erp.crm.services.CrmBoundedDomain;
 import net.tangly.ui.asciidoc.AsciiDocField;
 import net.tangly.ui.components.ItemForm;
 import net.tangly.ui.components.ItemView;
-import net.tangly.ui.components.Mode;
 import net.tangly.ui.components.VaadinUtils;
 import org.jetbrains.annotations.NotNull;
 
@@ -110,8 +109,8 @@ public class LeadsView extends ItemView<Lead> {
         }
     }
 
-    public LeadsView(@NotNull CrmBoundedDomain domain, @NotNull Mode mode) {
-        super(Lead.class, domain, domain.realm().leads(), new LeadFilter(), mode);
+    public LeadsView(@NotNull CrmBoundedDomainUi domain, @NotNull AccessRights rights) {
+        super(Lead.class, domain, domain.domain().realm().leads(), new LeadFilter(), rights);
         form(() -> new LeadForm(this));
         init();
     }

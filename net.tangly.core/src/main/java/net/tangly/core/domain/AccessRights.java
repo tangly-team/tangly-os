@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2024 Marcel Baumann
+ * Copyright 2024 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -11,13 +11,9 @@
  *
  */
 
-package net.tangly.app.services;
+package net.tangly.core.domain;
 
+import org.jetbrains.annotations.NotNull;
 
-import net.tangly.core.domain.Realm;
-import net.tangly.core.domain.User;
-import net.tangly.core.providers.Provider;
-
-public interface AppsRealm extends Realm {
-    Provider<User> users();
+public record AccessRights(@NotNull String username, @NotNull String domain, @NotNull AccessRightsCode right) {
 }

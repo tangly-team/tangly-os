@@ -16,7 +16,7 @@ package net.tangly.ui.app.domain;
 import com.vaadin.flow.component.grid.HeaderRow;
 import com.vaadin.flow.component.grid.contextmenu.GridContextMenu;
 import net.tangly.core.TagType;
-import net.tangly.core.domain.BoundedDomain;
+import net.tangly.core.domain.AccessRights;
 import net.tangly.core.providers.ProviderInMemory;
 import net.tangly.ui.components.ItemView;
 import net.tangly.ui.components.Mode;
@@ -35,8 +35,9 @@ public class TagTypesView extends ItemView<TagType> {
     public static final String NAME_LABEL = " Name";
     private final transient HashMap<TagType<?>, Integer> counts;
 
-    public TagTypesView(@NotNull BoundedDomain<?, ?, ?> domain) {
-        super(TagType.class, domain, ProviderInMemory.of(domain.registry().tagTypes()), new TagTypeFilter(), Mode.LIST);
+    public TagTypesView(@NotNull BoundedDomainUi<?> domain, @NotNull AccessRights rights) {
+        super(TagType.class, domain, ProviderInMemory.of(domain.domain().registry().tagTypes()), new TagTypeFilter(), rights);
+        mode(Mode.LIST);
         this.counts = new HashMap<>();
         init();
     }

@@ -18,12 +18,11 @@ import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.grid.HeaderRow;
 import com.vaadin.flow.component.textfield.TextField;
-import com.vaadin.flow.server.VaadinSession;
 import net.tangly.core.Comment;
 import net.tangly.core.DateRange;
 import net.tangly.core.HasMutableComments;
-import net.tangly.core.domain.BoundedDomain;
 import net.tangly.core.providers.ProviderInMemory;
+import net.tangly.ui.app.domain.BoundedDomainUi;
 import net.tangly.ui.asciidoc.AsciiDocField;
 import org.jetbrains.annotations.NotNull;
 
@@ -130,8 +129,9 @@ public class CommentsView extends ItemView<Comment> {
         }
     }
 
-    public CommentsView(@NotNull BoundedDomain<?, ?, ?> domain, @NotNull Mode mode) {
-        super(Comment.class, domain, ProviderInMemory.of(), new CommentFilter(), mode);
+    public CommentsView(@NotNull BoundedDomainUi<?> domain, @NotNull Mode mode) {
+        super(Comment.class, domain, ProviderInMemory.of(), new CommentFilter(), null);
+        mode(mode);
         form(() -> new CommentForm(this));
         init();
     }
@@ -149,10 +149,5 @@ public class CommentsView extends ItemView<Comment> {
             headerRow.getCell(grid.getColumnByKey(AUTHOR)).setComponent(createTextFilterField(filter::author));
             headerRow.getCell(grid.getColumnByKey(TEXT)).setComponent(createTextFilterField(filter::text));
         }
-        buildMenu();
-    }
-
-    private String username() {
-        return (VaadinSession.getCurrent() != null) ? (String) VaadinSession.getCurrent().getAttribute("username") : null;
     }
 }

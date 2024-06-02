@@ -21,40 +21,30 @@ import net.tangly.commons.lang.functional.LazyReference;
 import net.tangly.erp.ledger.services.LedgerBoundedDomain;
 import net.tangly.ui.app.domain.BoundedDomainUi;
 import net.tangly.ui.app.domain.DomainView;
-import net.tangly.ui.components.ItemView;
-import net.tangly.ui.components.Mode;
 import org.jetbrains.annotations.NotNull;
 
 public class LedgerBoundedDomainUi extends BoundedDomainUi<LedgerBoundedDomain> {
-    private final LazyReference<AccountsView> accountsView;
-    private final LazyReference<TransactionsView> transactionsView;
-    private final LazyReference<AnalyticsLedgerView> analyticsView;
-    private final LazyReference<DomainView> domainView;
+    public static final String ACCOUNTS = "Accounts";
+    public static final String TRANSACTIONS = "Transactions";
 
     public LedgerBoundedDomainUi(@NotNull LedgerBoundedDomain domain) {
         super(domain);
-        accountsView = new LazyReference<>(() -> new AccountsView(domain, Mode.EDIT));
-        transactionsView = new LazyReference<>(() -> new TransactionsView(domain, Mode.EDIT));
-        analyticsView = new LazyReference<>(() -> new AnalyticsLedgerView(domain));
-        domainView = new LazyReference<>(() -> new DomainView(domain));
-        currentView(transactionsView);
+        addView(ACCOUNTS, new LazyReference<>(() -> new AccountsView(this, this.rights())));
+        addView(TRANSACTIONS, new LazyReference<>(() -> new TransactionsView(this, this.rights())));
+        addView(ANALYTICS, new LazyReference<>(() -> new AnalyticsLedgerView(this, this.rights())));
+        addView(ENTITIES, new LazyReference<>(() -> new DomainView(this)));
+        currentView(view(TRANSACTIONS).orElseThrow());
     }
 
     @Override
     public void select(@NotNull AppLayout layout, @NotNull MenuBar menuBar) {
         MenuItem menuItem = menuBar.addItem(BoundedDomainUi.ENTITIES);
         SubMenu subMenu = menuItem.getSubMenu();
-        subMenu.addItem("Accounts", e -> select(layout, accountsView));
-        subMenu.addItem("Transactions", e -> select(layout, transactionsView));
+        subMenu.addItem(ACCOUNTS, _ -> select(layout, view(ACCOUNTS).orElseThrow()));
+        subMenu.addItem(TRANSACTIONS, _ -> select(layout, view(TRANSACTIONS).orElseThrow()));
 
-        addAnalytics(layout, menuBar, analyticsView);
-        addAdministration(layout, menuBar, domainView, new CmdFilesUploadLedger(domain()));
+        addAnalytics(layout, menuBar, view(ANALYTICS).orElseThrow());
+        addAdministration(layout, menuBar, view(ENTITIES).orElseThrow(), new CmdFilesUploadLedger(domain()));
         select(layout);
-    }
-
-    @Override
-    public void refreshViews() {
-        accountsView.ifPresent(ItemView::refresh);
-        transactionsView.ifPresent(ItemView::refresh);
     }
 }

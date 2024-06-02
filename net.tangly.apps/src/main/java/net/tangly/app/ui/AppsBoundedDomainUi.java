@@ -21,32 +21,26 @@ import net.tangly.app.services.AppsBoundedDomain;
 import net.tangly.commons.lang.functional.LazyReference;
 import net.tangly.ui.app.domain.BoundedDomainUi;
 import net.tangly.ui.app.domain.DomainView;
-import net.tangly.ui.components.ItemView;
 import net.tangly.ui.components.Mode;
 import org.jetbrains.annotations.NotNull;
 
 public class AppsBoundedDomainUi extends BoundedDomainUi<AppsBoundedDomain> {
-    private final LazyReference<UsersView> usersView;
-    private final LazyReference<DomainView> domainView;
+    private final String USERS = "Users";
+    private Mode mode;
 
     public AppsBoundedDomainUi(@NotNull AppsBoundedDomain domain) {
         super(domain);
-        usersView = new LazyReference<>(() -> new UsersView(domain, Mode.EDIT));
-        domainView = new LazyReference<>(() -> new DomainView(domain));
-        currentView(usersView);
+        addView(USERS, new LazyReference<>(() -> new UsersView(this, this.rights())));
+        addView(ENTITIES, new LazyReference<>(() -> new DomainView(this)));
+        currentView(USERS);
     }
 
     @Override
     public void select(@NotNull AppLayout layout, @NotNull MenuBar menuBar) {
         MenuItem menuItem = menuBar.addItem(BoundedDomainUi.ENTITIES);
         SubMenu subMenu = menuItem.getSubMenu();
-        subMenu.addItem("Users", e -> select(layout, usersView));
-        addAdministration(layout, menuBar, domainView, null);
+        subMenu.addItem("Users", e -> select(layout, view(USERS).orElseThrow()));
+        addAdministration(layout, menuBar, view(ENTITIES).orElseThrow(), null);
         select(layout);
-    }
-
-    @Override
-    public void refreshViews() {
-        usersView.ifPresent(ItemView::refresh);
     }
 }

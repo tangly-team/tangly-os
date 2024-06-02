@@ -13,7 +13,7 @@
 
 package net.tangly.app.services;
 
-import net.tangly.app.domain.User;
+import net.tangly.core.domain.User;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Optional;
@@ -34,8 +34,12 @@ public class AppsBusinessLogic {
     }
 
     public boolean changePassword(String username, String password, String newPassword) {
-        var subject = realm().users().items().stream().filter(o -> o.username().equals(username) && o.authenticate(password)).findAny();
-        return subject.isPresent();
+        var user = realm().users().items().stream().filter(o -> o.username().equals(username) && o.authenticate(password)).findAny();
+        user.ifPresent(o -> {
+            String passwordHash = User.encryptPassword(newPassword, o.passwordSalt());
+            var updatedUser = new User(o.username(), passwordHash, o.passwordSalt(), o.active(), o.naturalPersonId(), o.accessRights(), o.gravatarEmail());
+            realm().users().replace(o, updatedUser);
+        });
+        return user.isPresent();
     }
-
 }

@@ -17,6 +17,7 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import net.tangly.app.Application;
 import net.tangly.app.ApplicationView;
+import net.tangly.core.domain.User;
 import net.tangly.erp.collaborators.ui.CollaboratorsBoundedDomainUi;
 import net.tangly.erp.collabortors.services.CollaboratorsBoundedDomain;
 import net.tangly.erp.crm.services.CrmBoundedDomain;
@@ -37,6 +38,11 @@ public class MainView extends ApplicationView {
         super(IMAGE_NAME);
         ofDomainUis();
         drawerMenu();
+    }
+
+    @Override
+    public void userChanged(User user) {
+        super.userChanged(user);
         selectBoundedDomainUi(CrmBoundedDomain.DOMAIN);
     }
 
@@ -47,10 +53,13 @@ public class MainView extends ApplicationView {
         if (crmBoundedDomain.isPresent() && invoicesBoundedDomain.isPresent()) {
             registerBoundedDomainUi(new CrmBoundedDomainUi((CrmBoundedDomain) crmBoundedDomain.get(), (InvoicesBoundedDomain) invoicesBoundedDomain.get()));
         }
-        application.getBoundedDomain(ProductsBoundedDomain.DOMAIN).ifPresent(o -> registerBoundedDomainUi(new ProductsBoundedDomainUi((ProductsBoundedDomain) o)));
-        application.getBoundedDomain(InvoicesBoundedDomain.DOMAIN).ifPresent(o -> registerBoundedDomainUi(new InvoicesBoundedDomainUi((InvoicesBoundedDomain) o)));
+        application.getBoundedDomain(ProductsBoundedDomain.DOMAIN).ifPresent(
+            o -> registerBoundedDomainUi(new ProductsBoundedDomainUi((ProductsBoundedDomain) o)));
+        application.getBoundedDomain(InvoicesBoundedDomain.DOMAIN).ifPresent(
+            o -> registerBoundedDomainUi(new InvoicesBoundedDomainUi((InvoicesBoundedDomain) o)));
         application.getBoundedDomain(LedgerBoundedDomain.DOMAIN).ifPresent(o -> registerBoundedDomainUi(new LedgerBoundedDomainUi((LedgerBoundedDomain) o)));
-        application.getBoundedDomain(CollaboratorsBoundedDomain.DOMAIN).ifPresent(o -> registerBoundedDomainUi(new CollaboratorsBoundedDomainUi((CollaboratorsBoundedDomain) o)));
+        application.getBoundedDomain(CollaboratorsBoundedDomain.DOMAIN).ifPresent(
+            o -> registerBoundedDomainUi(new CollaboratorsBoundedDomainUi((CollaboratorsBoundedDomain) o)));
     }
 
 }

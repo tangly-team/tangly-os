@@ -23,12 +23,11 @@ import com.vaadin.flow.data.binder.ValidationException;
 import com.vaadin.flow.data.renderer.NumberRenderer;
 import com.vaadin.flow.router.PageTitle;
 import net.tangly.core.codes.CodeType;
+import net.tangly.core.domain.AccessRights;
 import net.tangly.erp.invoices.domain.Article;
 import net.tangly.erp.invoices.domain.ArticleCode;
-import net.tangly.erp.invoices.services.InvoicesBoundedDomain;
 import net.tangly.ui.components.ItemForm;
 import net.tangly.ui.components.ItemView;
-import net.tangly.ui.components.Mode;
 import net.tangly.ui.components.VaadinUtils;
 import org.jetbrains.annotations.NotNull;
 
@@ -81,8 +80,8 @@ class ArticlesView extends ItemView<Article> {
         }
     }
 
-    public ArticlesView(@NotNull InvoicesBoundedDomain domain, @NotNull Mode mode) {
-        super(Article.class, domain, domain.realm().articles(), new ArticleFilter(), mode);
+    public ArticlesView(@NotNull InvoicesBoundedDomainUi domain, @NotNull AccessRights rights) {
+        super(Article.class, domain, domain.domain().realm().articles(), new ArticleFilter(), rights);
         form(() -> new ArticleForm(this));
         init();
     }

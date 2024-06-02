@@ -19,8 +19,8 @@ import com.vaadin.flow.component.textfield.IntegerField;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.ValidationException;
 import com.vaadin.flow.router.PageTitle;
+import net.tangly.core.domain.AccessRights;
 import net.tangly.erp.products.domain.Effort;
-import net.tangly.erp.products.services.ProductsBoundedDomain;
 import net.tangly.ui.components.ItemForm;
 import net.tangly.ui.components.ItemView;
 import net.tangly.ui.components.Mode;
@@ -110,8 +110,9 @@ class EffortsView extends ItemView<Effort> {
         }
     }
 
-    public EffortsView(@NotNull ProductsBoundedDomain domain, @NotNull Mode mode) {
-        super(Effort.class, domain, domain.realm().efforts(), new EffortFilter(), mode);
+    public EffortsView(@NotNull ProductsBoundedDomainUi domain, @NotNull AccessRights rights) {
+        super(Effort.class, domain, domain.domain().realm().efforts(), new EffortFilter(), rights);
+        mode(Mode.DELETE);
         form(() -> new EffortForm(this));
         init();
     }

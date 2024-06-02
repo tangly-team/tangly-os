@@ -22,8 +22,8 @@ import com.vaadin.flow.component.grid.HeaderRow;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.renderer.NumberRenderer;
 import com.vaadin.flow.router.PageTitle;
+import net.tangly.core.domain.AccessRights;
 import net.tangly.erp.ledger.domain.Transaction;
-import net.tangly.erp.ledger.services.LedgerBoundedDomain;
 import net.tangly.erp.ledger.services.LedgerBusinessLogic;
 import net.tangly.ui.components.*;
 import org.jetbrains.annotations.NotNull;
@@ -141,8 +141,8 @@ class TransactionsView extends ItemView<Transaction> {
         }
     }
 
-    public TransactionsView(@NotNull LedgerBoundedDomain domain, @NotNull Mode mode) {
-        super(Transaction.class, domain, domain.realm().transactions(), null, mode);
+    public TransactionsView(@NotNull LedgerBoundedDomainUi domain, @NotNull AccessRights rights) {
+        super(Transaction.class, domain, domain.domain().realm().transactions(), null, rights);
         form(() -> new TransactionForm(this));
         init();
     }
@@ -159,7 +159,6 @@ class TransactionsView extends ItemView<Transaction> {
         grid.addColumn(Transaction::vatCodeAsString).setKey("vatCode").setHeader("VatCode").setAutoWidth(true).setResizable(true).setSortable(true);
 
         addEntityFilterFields(grid(), new TransactionFilter());
-        buildMenu();
     }
 
     protected void addEntityFilterFields(@NotNull Grid<Transaction> grid, @NotNull TransactionFilter filter) {

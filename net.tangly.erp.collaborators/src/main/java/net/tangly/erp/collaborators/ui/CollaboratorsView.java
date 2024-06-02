@@ -17,9 +17,12 @@ import com.vaadin.flow.component.datepicker.DatePicker;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.ValidationException;
+import net.tangly.core.domain.AccessRights;
 import net.tangly.erp.collaborators.domain.Collaborator;
-import net.tangly.erp.collabortors.services.CollaboratorsBoundedDomain;
-import net.tangly.ui.components.*;
+import net.tangly.ui.components.AddressField;
+import net.tangly.ui.components.ItemForm;
+import net.tangly.ui.components.ItemView;
+import net.tangly.ui.components.VaadinUtils;
 import org.jetbrains.annotations.NotNull;
 
 public class CollaboratorsView extends ItemView<Collaborator> {
@@ -61,8 +64,8 @@ public class CollaboratorsView extends ItemView<Collaborator> {
         }
     }
 
-    public CollaboratorsView(@NotNull CollaboratorsBoundedDomain domain) {
-        super(Collaborator.class, domain, domain.realm().collaborators(), null, Mode.EDIT);
+    public CollaboratorsView(@NotNull CollaboratorsBoundedDomainUi domain, @NotNull AccessRights rights) {
+        super(Collaborator.class, domain, domain.domain().realm().collaborators(), null, rights);
         form(() -> new CollaboratorForm(this));
         init();
     }

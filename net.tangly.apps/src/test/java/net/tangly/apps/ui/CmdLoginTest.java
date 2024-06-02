@@ -22,7 +22,7 @@ import org.junit.jupiter.api.Test;
 class CmdLoginTest extends AppsTest {
     @Test
     void testLogin() {
-        var login = new CmdLogin(Application.instance().apps());
+        var login = new CmdLogin(Application.instance().apps(), null);
         login.execute();
     }
 }

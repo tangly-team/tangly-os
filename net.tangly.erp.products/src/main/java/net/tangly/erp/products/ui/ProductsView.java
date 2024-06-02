@@ -16,11 +16,9 @@ package net.tangly.erp.products.ui;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.PageTitle;
-import net.tangly.core.TypeRegistry;
+import net.tangly.core.domain.AccessRights;
 import net.tangly.erp.products.domain.Product;
-import net.tangly.erp.products.services.ProductsBoundedDomain;
 import net.tangly.ui.components.EntityView;
-import net.tangly.ui.components.Mode;
 import net.tangly.ui.components.MutableEntityForm;
 import org.jetbrains.annotations.NotNull;
 
@@ -30,7 +28,7 @@ import java.util.List;
 @PageTitle("products-products")
 class ProductsView extends EntityView<Product> {
     static class ProductForm extends MutableEntityForm<Product, ProductsView> {
-        public ProductForm(@NotNull ProductsView parent, @NotNull TypeRegistry registry) {
+        public ProductForm(@NotNull ProductsView parent) {
             super(parent, Product::new);
             initEntityForm();
             addTabAt("details", details(), 1);
@@ -46,10 +44,10 @@ class ProductsView extends EntityView<Product> {
         }
     }
 
-    public ProductsView(@NotNull ProductsBoundedDomain domain, @NotNull Mode mode) {
+    public ProductsView(@NotNull ProductsBoundedDomainUi domain, @NotNull AccessRights rights) {
         // TODO do we need the mode parameter?
-        super(Product.class, domain, domain.realm().products(), mode);
-        form(() -> new ProductForm(this, domain.registry()));
+        super(Product.class, domain, domain.domain().realm().products(), rights);
+        form(() -> new ProductForm(this));
         initEntityView();
     }
 }

@@ -41,12 +41,14 @@ public abstract class EntityForm<T extends Entity, V extends EntityView<T>> exte
         binder().bindReadOnly(text, HasText::text);
         entity = new EntityField<>();
         if (HasComments.class.isAssignableFrom(entityClass())) {
-            comments = new One2ManyOwnedField<>(new CommentsView(parent.domain(), parent.mode()));
+            comments = new One2ManyOwnedField<>(new CommentsView(parent.domainUi(), parent.mode()));
+            binder().bindReadOnly(comments, o -> ((EntityExtended) o).comments());
         } else {
             comments = null;
         }
         if (HasTags.class.isAssignableFrom(entityClass())) {
-            tags = new One2ManyOwnedField<>(new TagsView(parent.domain(), parent.mode()));
+            tags = new One2ManyOwnedField<>(new TagsView(parent.domainUi(), parent.mode()));
+            binder().bindReadOnly(tags, o -> ((EntityExtended) o).tags());
         } else {
             tags = null;
         }
@@ -54,17 +56,14 @@ public abstract class EntityForm<T extends Entity, V extends EntityView<T>> exte
 
     protected final void initEntityForm() {
         entity.bind(binder());
-
         FormLayout form = new FormLayout();
         form.add(entity);
         addTabAt("entity", form, 0);
         addTabAt("text", textForm(text), 1);
         if (tags != null) {
-            binder().bindReadOnly(tags, o -> ((EntityExtended) o).tags());
             addTabAt("tags", tags, 2);
         }
         if (comments != null) {
-            binder().bindReadOnly(comments, o -> ((EntityExtended) o).comments());
             addTabAt("comments", comments, 3);
         }
     }

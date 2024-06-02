@@ -44,12 +44,12 @@ public abstract class MutableEntityForm<T extends MutableEntity, V extends Entit
         binder().bind(text, HasMutableText::text, HasMutableText::text);
         entity = new EntityField<>();
         if (HasMutableComments.class.isAssignableFrom(entityClass())) {
-            comments = new One2ManyOwnedField<>(new CommentsView(parent.domain(), parent.mode()));
+            comments = new One2ManyOwnedField<>(new CommentsView(parent.domainUi(), parent.mode()));
         } else {
             comments = null;
         }
         if (HasMutableTags.class.isAssignableFrom(entityClass())) {
-            tags = new One2ManyOwnedField<>(new TagsView(parent.domain(), parent.mode()));
+            tags = new One2ManyOwnedField<>(new TagsView(parent.domainUi(), parent.mode()));
         } else {
             tags = null;
         }

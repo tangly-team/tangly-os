@@ -20,6 +20,7 @@ import com.vaadin.flow.component.textfield.BigDecimalField;
 import com.vaadin.flow.data.renderer.NumberRenderer;
 import com.vaadin.flow.router.PageTitle;
 import net.tangly.core.codes.CodeType;
+import net.tangly.core.domain.AccessRights;
 import net.tangly.erp.crm.domain.Interaction;
 import net.tangly.erp.crm.domain.InteractionCode;
 import net.tangly.erp.crm.services.CrmBoundedDomain;
@@ -38,7 +39,7 @@ class InteractionsView extends EntityView<Interaction> {
             super(parent, Interaction::new);
             initEntityForm();
             addTabAt("details", details(), 1);
-            var activities = new One2ManyOwnedField<>(new ActivitiesView(parent.domain(), parent.mode()));
+            var activities = new One2ManyOwnedField<>(new ActivitiesView((CrmBoundedDomainUi) parent.domainUi(), null));
             addTabAt("activities", activities, 2);
         }
 
@@ -59,8 +60,8 @@ class InteractionsView extends EntityView<Interaction> {
 
     public static final BigDecimal HUNDRED = new BigDecimal("100");
 
-    public InteractionsView(@NotNull CrmBoundedDomain domain, @NotNull Mode mode) {
-        super(Interaction.class, domain, domain.realm().interactions(), mode);
+    public InteractionsView(@NotNull CrmBoundedDomainUi domain, @NotNull AccessRights rights) {
+        super(Interaction.class, domain, domain.domain().realm().interactions(), rights);
         form(() -> new InteractionForm(this));
         init();
     }

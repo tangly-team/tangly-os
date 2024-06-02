@@ -16,14 +16,19 @@ package net.tangly.app;
 import com.vaadin.flow.component.AttachEvent;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.applayout.DrawerToggle;
+import com.vaadin.flow.component.contextmenu.SubMenu;
 import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.menubar.MenuBar;
 import com.vaadin.flow.component.tabs.Tab;
 import com.vaadin.flow.component.tabs.Tabs;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.server.StreamResource;
+import com.vaadin.flow.server.VaadinSession;
+import net.tangly.app.ui.AppsBoundedDomainUi;
+import net.tangly.app.ui.CmdChangePassword;
 import net.tangly.app.ui.CmdLogin;
 import net.tangly.app.ui.CmdLogout;
+import net.tangly.core.domain.User;
 import net.tangly.ui.app.domain.BoundedDomainUi;
 import net.tangly.ui.components.VaadinUtils;
 import org.jetbrains.annotations.NotNull;
@@ -54,17 +59,30 @@ public class ApplicationView extends AppLayout {
             byte[] buffer = Thread.currentThread().getContextClassLoader().getResourceAsStream(imageName).readAllBytes();
             Image logo = new Image(new StreamResource(imageName, () -> new ByteArrayInputStream(buffer)), imageName);
             logo.setHeight("44px");
-            addToNavbar(new DrawerToggle(), logo, menuBar, menuBar());
+            addToNavbar(new DrawerToggle(), logo, menuBar);
         } catch (IOException e) {
             throw new UncheckedIOException(e);
         }
+        ofAppDomainUi();
+    }
+
+    public void userChanged(User user) {
+        boundedDomainUis.values().forEach(o -> o.userChanged(user));
+    }
+
+    public static String username() {
+        return (VaadinSession.getCurrent() != null) ? (String) VaadinSession.getCurrent().getAttribute("username") : null;
+    }
+
+    public static User user() {
+        return (VaadinSession.getCurrent() != null) ? (User) VaadinSession.getCurrent().getAttribute("user") : null;
     }
 
     @Override
     protected void onAttach(@NotNull AttachEvent attachEvent) {
         super.onAttach(attachEvent);
         if (Objects.isNull(VaadinUtils.getAttribute(this, "subject"))) {
-            new CmdLogin(Application.instance().apps()).execute();
+            new CmdLogin(Application.instance().apps(), this).execute();
         }
     }
 
@@ -82,7 +100,8 @@ public class ApplicationView extends AppLayout {
 
     protected final void selectBoundedDomainUi(String domainName) {
         getBoundedDomainUi(domainName).ifPresent(this::selectBoundedDomainUi);
-        IntStream.range(0, tabs.getComponentCount()).mapToObj(i -> tabs.getTabAt(i)).filter(o -> o.getLabel().equals(domainName)).findFirst().ifPresent(tabs::setSelectedTab);
+        IntStream.range(0, tabs.getComponentCount()).mapToObj(i -> tabs.getTabAt(i)).filter(o -> o.getLabel().equals(domainName)).findFirst().ifPresent(
+            tabs::setSelectedTab);
     }
 
     protected final void selectBoundedDomainUi(Tabs.SelectedChangeEvent event) {
@@ -92,7 +111,10 @@ public class ApplicationView extends AppLayout {
     protected void selectBoundedDomainUi(BoundedDomainUi<?> ui) {
         menuBar.removeAll();
         ui.select(this, menuBar);
-        menuBar.addItem("Logout", e -> new CmdLogout().execute());
+        var menuItem = menuBar.addItem("Account");
+        SubMenu subMenu = menuItem.getSubMenu();
+        subMenu.addItem("Logout", e -> new CmdLogout().execute());
+        subMenu.addItem("Change Password", e -> new CmdChangePassword(Application.instance().apps(), user()).execute());
     }
 
     private MenuBar menuBar() {
@@ -106,5 +128,9 @@ public class ApplicationView extends AppLayout {
         tabs.setOrientation(Tabs.Orientation.VERTICAL);
         addToDrawer(tabs);
         tabs.addSelectedChangeListener(this::selectBoundedDomainUi);
+    }
+
+    private void ofAppDomainUi() {
+        registerBoundedDomainUi(new AppsBoundedDomainUi(Application.instance().apps()));
     }
 }

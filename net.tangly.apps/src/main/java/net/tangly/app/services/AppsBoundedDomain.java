@@ -13,10 +13,10 @@
 
 package net.tangly.app.services;
 
-import net.tangly.app.domain.User;
 import net.tangly.core.TypeRegistry;
 import net.tangly.core.domain.BoundedDomain;
 import net.tangly.core.domain.DomainEntity;
+import net.tangly.core.domain.User;
 
 import java.util.List;
 

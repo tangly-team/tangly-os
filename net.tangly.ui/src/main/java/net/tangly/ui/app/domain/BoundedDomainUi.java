@@ -19,10 +19,15 @@ import com.vaadin.flow.component.contextmenu.MenuItem;
 import com.vaadin.flow.component.contextmenu.SubMenu;
 import com.vaadin.flow.component.menubar.MenuBar;
 import net.tangly.commons.lang.functional.LazyReference;
+import net.tangly.core.domain.AccessRights;
 import net.tangly.core.domain.BoundedDomain;
+import net.tangly.core.domain.User;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * Define the interface for the visualization of a bounded domain. The user interface is a set of views to display entities, commands, and dialogs to modify entities.
@@ -40,10 +45,13 @@ public abstract class BoundedDomainUi<T extends BoundedDomain<?, ?, ?>> {
     public static final String LOAD = "Load";
 
     private final T domain;
+    private AccessRights rights;
     private LazyReference<?> currentView;
+    private Map<String, LazyReference<? extends View>> views;
 
     public BoundedDomainUi(@NotNull T domain) {
         this.domain = domain;
+        views = new HashMap<>();
     }
 
     /**
@@ -59,18 +67,28 @@ public abstract class BoundedDomainUi<T extends BoundedDomain<?, ?, ?>> {
         return domain;
     }
 
+    public AccessRights rights() {
+        return rights;
+    }
+
+    public void rights(AccessRights rights) {
+        this.rights = rights;
+    }
+
     /**
      * Select the bounded domain and the associated default view to be displayed from the bounded domain user interface and update the menu to reflect the bounded domain.
      *
      * @param layout  layout in which the view will be displayed
-     * @param menuBar empty menu bar of the layout
+     * @param menuBar empty menu bar of the layout. The domain adds domain-specific menu items to the menu bar
      */
     public abstract void select(@NotNull AppLayout layout, @NotNull MenuBar menuBar);
 
     /**
-     * Refresh the views of the bounded domain user interface because the domain entities have changed
+     * Refresh the views of the bounded domain user interface because the domain entities have changed.
      */
-    public abstract void refreshViews();
+    public void refreshViews() {
+        views.values().forEach(view -> view.ifPresent(View::refresh));
+    }
 
     /**
      * Select the new current view of the bounded domain interface.
@@ -84,7 +102,20 @@ public abstract class BoundedDomainUi<T extends BoundedDomain<?, ?, ?>> {
     }
 
     public void select(@NotNull AppLayout layout) {
-        layout.setContent((Component) currentView.get());
+        layout.setContent(currentView().get());
+    }
+
+    public void userChanged(User user) {
+        rights = user.accessRightsFor(name()).orElse(null);
+        views.values().forEach(view -> view.ifPresent(v -> v.rights(rights)));
+    }
+
+    protected final void addView(@NotNull String name, @NotNull LazyReference<? extends View> view) {
+        views.put(name, view);
+    }
+
+    protected final Optional<LazyReference<? extends View>> view(@NotNull String name) {
+        return Optional.ofNullable(views.get(name));
     }
 
     /**
@@ -120,11 +151,15 @@ public abstract class BoundedDomainUi<T extends BoundedDomain<?, ?, ?>> {
         refreshViews();
     }
 
-    protected <T extends Component> void currentView(LazyReference<T> currentView) {
+    protected <V extends View> void currentView(String name) {
+        this.currentView = view(name).orElseThrow();
+    }
+
+    protected <V extends View> void currentView(LazyReference<V> currentView) {
         this.currentView = currentView;
     }
 
-    protected <T extends Component> LazyReference<T> currentView() {
-        return (LazyReference<T>) currentView;
+    protected <V extends Component> LazyReference<V> currentView() {
+        return (LazyReference<V>) currentView;
     }
 }

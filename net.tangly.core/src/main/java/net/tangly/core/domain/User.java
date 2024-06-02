@@ -11,7 +11,7 @@
  *
  */
 
-package net.tangly.app.domain;
+package net.tangly.core.domain;
 
 import net.tangly.core.gravatar.Gravatar;
 import net.tangly.core.gravatar.GravatarImage;
@@ -26,6 +26,7 @@ import java.security.spec.InvalidKeySpecException;
 import java.security.spec.KeySpec;
 import java.util.Base64;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * An application user can log in the application and access to domain data based on domain access rights.
@@ -37,7 +38,7 @@ import java.util.List;
  * @param accessRights
  */
 public record User(@NotNull String username, @NotNull String passwordHash, @NotNull String passwordSalt, boolean active, String naturalPersonId,
-                   @NotNull List<UserAccessRights> accessRights, String gravatarEmail) {
+                   @NotNull List<AccessRights> accessRights, String gravatarEmail) {
     private static final String ALGORITHM = "PBKDF2WithHmacSHA512";
 
     public static String encryptPassword(@NotNull String password, @NotNull String salt) {
@@ -69,6 +70,10 @@ public record User(@NotNull String username, @NotNull String passwordHash, @NotN
     public static byte[] avatar(@NotNull String gravatarEmail) {
         var gravatar = new Gravatar();
         return gravatar.avatar(gravatarEmail, 200, GravatarRating.GENERAL_AUDIENCES, GravatarImage.GRAVATAR_ICON);
+    }
+
+    public Optional<AccessRights> accessRightsFor(@NotNull String domain) {
+        return accessRights.stream().filter(rights -> rights.domain().equals(domain)).findAny();
     }
 
     public boolean authenticate(@NotNull String password) {

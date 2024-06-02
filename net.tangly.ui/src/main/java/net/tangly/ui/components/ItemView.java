@@ -30,8 +30,11 @@ import com.vaadin.flow.data.value.ValueChangeMode;
 import net.tangly.commons.lang.functional.LazyReference;
 import net.tangly.core.DateRange;
 import net.tangly.core.TypeRegistry;
+import net.tangly.core.domain.AccessRights;
 import net.tangly.core.domain.BoundedDomain;
 import net.tangly.core.providers.Provider;
+import net.tangly.ui.app.domain.BoundedDomainUi;
+import net.tangly.ui.app.domain.View;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
@@ -48,11 +51,14 @@ import java.util.function.Supplier;
  *     <dt>List</dt><dd>Display the grid with the entity properties. No form can be selected and no modification operations are available.</dd>
  *    <dt>View</dt><dd>Display a read-only form with the entity properties. If the form is displayed and another grid item is selected, the values of the selected entity are
  *    displayed in the form. </dd>
- *    <dt>Update</dt><dd>Display an editable form with the entity properties. If save operation is selected the updated values are stored into the entity. The grid is updated.</dd>
- *    <dt>Create</dt><dd>Display an editable empty form. If save operation is selected the entity is added to the underlying list and to the grid.</dd>
- *    <dt>Duplicate</dt><dd>Display an editable form with selected properties. If save operation is selected the entity is added to the underlying list and to the grid. The
+ *    <dt>Update</dt><dd>Display an editable form with the entity properties. If the save operation is selected the updated values are stored into the entity.
+ *    The grid is updated.</dd>
+ *    <dt>Create</dt><dd>Display an editable empty form. If the save operation is selected the entity is added to the underlying list and to the grid.</dd>
+ *    <dt>Duplicate</dt><dd>Display an editable form with selected properties. If the save operation is selected the entity is added to the underlying list and
+ *    to the grid. The
  *    selected property values are specific to the entity type.</dd>
- *    <dt>Delete</dt><dd>Display a read-only form with the entity properties. If delete operation is selected the entity is removed from the underlying list and from the grid.</dd>
+ *    <dt>Delete</dt><dd>Display a read-only form with the entity properties. If the delete operation is selected the entity is removed from the underlying list
+ *    and from the grid.</dd>
  * </dl>
  * <h2>Form Functions</h2>
  * <p>You must register a from object to have access to the form functions. The operations on the entity through the form are:</p>
@@ -74,7 +80,6 @@ import java.util.function.Supplier;
  * The create and duplicate mode open a form without a corresponding entity.</p>
  * <p>Beware that an entity could displays other items such as comments, tags, and relations to other entities.
  * These objects are often displayed as entity views in panels.</p>
- *
  * <h2>Menu Extensions</h2>
  * <p>Views can add menu options to perform an action on the selected item or on the whole list. A set of related actions are
  * added to the popup menu with a separation. Multiple blocks can be added.</p>
@@ -84,10 +89,16 @@ import java.util.function.Supplier;
  * var items = List.of(new AbstractMap.SimpleImmutableEntry(Mode.EDIT_TEXT,
  * (ComponentEventListener<GridContextMenu.GridContextMenuItemClickEvent<T>>)((e)->form.edit(e.getItem().orElse(null)))));
  *}
+ * <h2>Filtering</h2>
+ * <p>You can add filtering capablitities to the view. The user can input filter criteria used to select which entities are displayed in the grid.</p>
+ * <h2>Access Rights</h2>
+ * <p>Access rights determines which menu items are available. The derived class can use the rights to limit data availability.
+ * The mode can be used to overwrite which menu items are selectec through the access rights. If no mode is defined, access rights are used to create the
+ * context menu, otherwise the mode value is used.</p>
  *
  * @param <T> Type of the displayed entities
  */
-public abstract class ItemView<T> extends VerticalLayout {
+public abstract class ItemView<T> extends VerticalLayout implements View {
     public static final String OID = "oid";
     public static final String OID_LABEL = "OID";
 
@@ -147,7 +158,7 @@ public abstract class ItemView<T> extends VerticalLayout {
     }
 
     private final Class<T> entityClass;
-    private final BoundedDomain<?, ?, ?> domain;
+    private final BoundedDomainUi<?> domain;
     private Provider<T> provider;
 
     private GridListDataView<T> dataView;
@@ -155,56 +166,71 @@ public abstract class ItemView<T> extends VerticalLayout {
     private Mode mode;
     private GridContextMenu<T> menu;
     private final Grid<T> grid;
+    private AccessRights rights;
 
     private transient T entity;
     private LazyReference<ItemForm<T, ?>> form;
     private boolean isFormEmbedded;
 
     /**
-     * Constructor of the class.
+     * Constructor of the class. The access rights are used to filter the data the user can see and modify.
+     * The filtering is often realized by defining a filtering provider other the given data provider.
+     * <p>A view has always access rights. How the view interprets them is up the specific implementation.</p>
+     * <p>The menu is refreshed each time the access rights or the mode is changed. The mode attribute supersedes the access rights when determining the
+     * content of the menu.</p>
      *
-     * @param entityClass class of the generic type
-     * @param domain      optional domain to which the generic entity belongs to
+     * @param entityClass class of the generic type.
+     * @param domain      user interface domain to which the view belongs to
      * @param provider    provider for instances of the entity to display in the grid
      * @param filter      optional filter for the grid
-     * @param mode        mode of the view
+     * @param rights      access rights of the user associated with the session owning the view
      */
-    protected ItemView(@NotNull Class<T> entityClass, BoundedDomain<?, ?, ?> domain, @NotNull Provider<T> provider, ItemFilter<T> filter, @NotNull Mode mode) {
+    protected ItemView(@NotNull Class<T> entityClass, BoundedDomainUi<?> domain, @NotNull Provider<T> provider, ItemFilter<T> filter, @NotNull AccessRights rights) {
         this.entityClass = entityClass;
         this.domain = domain;
         this.filter = filter;
         isFormEmbedded(true);
         grid = new Grid<>();
-        provider(provider);
         grid.setSelectionMode(Grid.SelectionMode.SINGLE);
         grid.addThemeVariants(GridVariant.LUMO_COMPACT);
         grid.setHeight("24em");
         add(grid);
-        mode(mode);
+        provider(provider);
+        rights(rights);
     }
 
     public Class<T> entityClass() {
         return entityClass;
     }
 
-    public BoundedDomain<?, ?, ?> domain() {
+    public BoundedDomainUi<?> domainUi() {
         return domain;
     }
 
+    public BoundedDomain<?, ?, ?> domain() {
+        return domain.domain();
+    }
+
     public TypeRegistry registry() {
-        return (domain != null) ? domain().registry() : null;
+        return (domain() != null) ? domain().registry() : null;
+    }
+
+    public AccessRights rights() {
+        return rights;
+    }
+
+    public void rights(AccessRights rights) {
+        this.rights = rights;
+        buildMenu(mode());
     }
 
     public final Mode mode() {
-        return mode;
+        return (Objects.nonNull(mode)) ? mode : (Objects.nonNull(rights) ? Mode.mode(rights.right()) : null);
     }
 
     public final void mode(Mode mode) {
         this.mode = mode;
-        if (Objects.nonNull(form)) {
-            form.ifPresent(o -> o.mode(mode));
-        }
-        buildMenu();
+        buildMenu(mode);
     }
 
     public T entity() {
@@ -310,11 +336,14 @@ public abstract class ItemView<T> extends VerticalLayout {
         return dataView;
     }
 
-    protected void buildMenu() {
-        if (mode.hasForm()) {
+    private void buildMenu(Mode mode) {
+        if (Mode.hasForm(mode)) {
+            if (Objects.nonNull(form)) {
+                form.ifPresent(o -> o.mode(mode));
+            }
             menu().removeAll();
             menu().addItem(Mode.VIEW_TEXT, event -> event.getItem().ifPresent(o -> form().get().display(o)));
-            if (!mode().readonly()) {
+            if (Objects.nonNull(mode) && !mode.readonly()) {
                 menu().add(new Hr());
                 menu().addItem(Mode.EDIT_TEXT, event -> event.getItem().ifPresent(o -> form().get().edit(o)));
                 menu().addItem(Mode.CREATE_TEXT, _ -> form.get().create());
@@ -328,8 +357,9 @@ public abstract class ItemView<T> extends VerticalLayout {
     }
 
     /**
-     * Adds custom actions to the context menu. Overwrite the menu if you want to add actions to the context menu. The mode of the view is available through the  {@link #mode()}}
-     * method. The menu can also be retrieved through the {@link #menu()} method.
+     * Add custom actions to the context menu. Overwrite the menu if you want to add actions to the context menu.
+     * The mode of the view is available through the {@link #mode()}}. The access rights are available through the {@link #rights()}.method.
+     * The menu can also be retrieved through the {@link #menu()} method.
      *
      * @param menu context menu of the grid
      */

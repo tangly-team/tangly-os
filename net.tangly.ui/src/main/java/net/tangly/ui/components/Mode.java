@@ -1,10 +1,10 @@
 /*
- * Copyright 2022-2023 Marcel Baumann
+ * Copyright 2022-2024 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- *          http://www.apache.org/licenses/LICENSE-2.0
+ *          https://apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -13,7 +13,10 @@
 
 package net.tangly.ui.components;
 
+import net.tangly.core.domain.AccessRightsCode;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.Objects;
 
 /**
  * Define the modes of the item view.
@@ -26,8 +29,10 @@ import org.jetbrains.annotations.NotNull;
  * </dl>
  */
 public enum Mode {
-    LIST(Mode.LIST_TEXT), VIEW(Mode.VIEW_TEXT), EDIT(Mode.EDIT_TEXT), CREATE(Mode.CREATE_TEXT), DUPLICATE(Mode.DUPLICATE_TEXT), DELETE(Mode.DELETE_TEXT);
+    NONE(Mode.NONE_TEXT), LIST(Mode.LIST_TEXT), VIEW(Mode.VIEW_TEXT), EDIT(Mode.EDIT_TEXT), CREATE(Mode.CREATE_TEXT), DUPLICATE(Mode.DUPLICATE_TEXT), DELETE(
+        Mode.DELETE_TEXT);
 
+    public static final String NONE_TEXT = "None";
     public static final String LIST_TEXT = "List";
     public static final String VIEW_TEXT = "View";
     public static final String EDIT_TEXT = "Edit";
@@ -49,10 +54,24 @@ public enum Mode {
      */
     public static Mode propagated(@NotNull Mode mode) {
         return switch (mode) {
+            case NONE -> NONE;
             case LIST -> LIST;
             case VIEW, DELETE -> DELETE;
             case EDIT, CREATE, DUPLICATE -> EDIT;
         };
+    }
+
+    public static Mode mode(AccessRightsCode right) {
+        return switch (right) {
+            case null -> Mode.NONE;
+            case none, appAdmin -> Mode.NONE;
+            case restrictedUser, readonlyUser -> Mode.VIEW;
+            case user, domainAdmin -> Mode.EDIT;
+        };
+    }
+
+    public static boolean hasForm(Mode mode) {
+        return Objects.nonNull(mode) && (mode != LIST);
     }
 
     public String text() {
@@ -61,9 +80,5 @@ public enum Mode {
 
     public boolean readonly() {
         return (this == VIEW) || (this == DELETE);
-    }
-
-    public boolean hasForm() {
-        return (this != LIST);
     }
 }

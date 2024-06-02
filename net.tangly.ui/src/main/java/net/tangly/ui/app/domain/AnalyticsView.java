@@ -18,6 +18,7 @@ import com.vaadin.flow.component.datepicker.DatePicker;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.tabs.TabSheet;
+import net.tangly.core.domain.AccessRights;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
@@ -30,10 +31,11 @@ import java.util.List;
 import java.util.function.BiFunction;
 import java.util.function.Consumer;
 
-public abstract class AnalyticsView extends VerticalLayout {
+public abstract class AnalyticsView extends VerticalLayout implements View {
     private static final Logger logger = LogManager.getLogger();
     private LocalDate from;
     private LocalDate to;
+    private AccessRights rights;
     protected final TabSheet tabSheet;
 
     public AnalyticsView() {
@@ -44,16 +46,24 @@ public abstract class AnalyticsView extends VerticalLayout {
         fromDate.setValue(from);
         fromDate.addValueChangeListener(e -> {
             from = e.getValue();
-            update();
+            refresh();
         });
         DatePicker toDate = new DatePicker("To Date");
         toDate.setValue(to);
         toDate.addValueChangeListener(e -> {
             to = e.getValue();
-            update();
+            refresh();
         });
         setSizeFull();
         add(new HorizontalLayout(fromDate, toDate), tabSheet);
+    }
+
+   public AccessRights rights() {
+        return rights;
+    }
+
+    public void rights(@NotNull AccessRights rights) {
+        this.rights = rights;
     }
 
     public LocalDate from() {
@@ -63,8 +73,6 @@ public abstract class AnalyticsView extends VerticalLayout {
     public LocalDate to() {
         return to;
     }
-
-    protected abstract void update();
 
     protected NightingaleRoseChart createChart(@NotNull String name, @NotNull CategoryData categoryData, @NotNull Data data) {
         NightingaleRoseChart roseChart = new NightingaleRoseChart(categoryData, data);
@@ -102,7 +110,7 @@ public abstract class AnalyticsView extends VerticalLayout {
         return lineChart;
     }
 
-    protected void update(@NotNull SOChart chart, @NotNull Consumer<SOChart> populate) {
+    protected void refresh(@NotNull SOChart chart, @NotNull Consumer<SOChart> populate) {
         try {
             chart.removeAll();
             populate.accept(chart);

@@ -16,14 +16,13 @@ package net.tangly.erp.crm.ui;
 import com.vaadin.flow.component.HtmlComponent;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.router.PageTitle;
-import net.tangly.core.TypeRegistry;
+import net.tangly.core.domain.AccessRights;
 import net.tangly.erp.crm.domain.CrmTags;
 import net.tangly.erp.crm.domain.Employee;
 import net.tangly.erp.crm.domain.LegalEntity;
 import net.tangly.erp.crm.domain.NaturalEntity;
 import net.tangly.erp.crm.services.CrmBoundedDomain;
 import net.tangly.ui.components.EntityView;
-import net.tangly.ui.components.Mode;
 import net.tangly.ui.components.MutableEntityForm;
 import net.tangly.ui.components.One2OneField;
 import org.jetbrains.annotations.NotNull;
@@ -34,7 +33,7 @@ import org.jetbrains.annotations.NotNull;
 @PageTitle("crm-employees")
 class EmployeesView extends EntityView<Employee> {
     static class EmployeeForm extends MutableEntityForm<Employee, EmployeesView> {
-        public EmployeeForm(@NotNull EmployeesView parent, @NotNull TypeRegistry registry) {
+        public EmployeeForm(@NotNull EmployeesView parent) {
             super(parent, Employee::new);
             initEntityForm();
             addTabAt("details", details(), 1);
@@ -54,9 +53,9 @@ class EmployeesView extends EntityView<Employee> {
         }
     }
 
-    public EmployeesView(@NotNull CrmBoundedDomain domain, @NotNull Mode mode) {
-        super(Employee.class, domain, domain.realm().employees(), mode);
-        form(() -> new EmployeeForm(this, domain.registry()));
+    public EmployeesView(@NotNull CrmBoundedDomainUi domain, @NotNull AccessRights rights) {
+        super(Employee.class, domain, domain.domain().realm().employees(), rights);
+        form(() -> new EmployeeForm(this));
         init();
     }
 
@@ -70,6 +69,5 @@ class EmployeesView extends EntityView<Employee> {
         addEntityColumns(grid);
         grid.addColumn(o -> o.value(CrmTags.CRM_EMPLOYEE_TITLE).orElse(null)).setKey("title").setHeader("Title").setAutoWidth(true).setResizable(true).setSortable(true);
         addEntityFilterFields(grid(), filter());
-        buildMenu();
     }
 }

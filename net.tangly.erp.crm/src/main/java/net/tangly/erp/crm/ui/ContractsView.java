@@ -19,6 +19,7 @@ import com.vaadin.flow.component.grid.ColumnTextAlign;
 import com.vaadin.flow.component.grid.HeaderRow;
 import com.vaadin.flow.component.select.Select;
 import com.vaadin.flow.data.renderer.NumberRenderer;
+import net.tangly.core.domain.AccessRights;
 import net.tangly.erp.crm.domain.Contract;
 import net.tangly.erp.crm.domain.ContractExtension;
 import net.tangly.erp.crm.domain.LegalEntity;
@@ -68,14 +69,15 @@ class ContractsView extends EntityView<Contract> {
         }
 
         private One2ManyOwnedField<ContractExtension> extensions() {
-            One2ManyOwnedField<ContractExtension> extensions = new One2ManyOwnedField<>(new ContractExtensionsView(parent().domain()));
+            One2ManyOwnedField<ContractExtension> extensions = new One2ManyOwnedField<>(new ContractExtensionsView((CrmBoundedDomainUi) parent().domainUi(),
+                parent().domainUi().rights()));
             binder().bind(extensions, Contract::contractExtensions, (o, v) -> o.contractExtensions(extensions.generateModelValue()));
             return extensions;
         }
     }
 
-    public ContractsView(@NotNull CrmBoundedDomain domain, @NotNull Mode mode) {
-        super(Contract.class, domain, domain.realm().contracts(), mode);
+    public ContractsView(@NotNull CrmBoundedDomainUi domain, @NotNull AccessRights rights) {
+        super(Contract.class, domain, domain.domain().realm().contracts(), rights);
         form(() -> new ContractForm(this));
         init();
     }

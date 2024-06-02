@@ -18,14 +18,17 @@ import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.html.Anchor;
 import com.vaadin.flow.data.renderer.ComponentRenderer;
 import com.vaadin.flow.router.PageTitle;
-import net.tangly.core.TypeRegistry;
+import net.tangly.core.domain.AccessRights;
 import net.tangly.core.providers.ProviderView;
 import net.tangly.erp.crm.domain.CrmTags;
 import net.tangly.erp.crm.domain.Employee;
 import net.tangly.erp.crm.domain.LegalEntity;
 import net.tangly.erp.crm.domain.VcardType;
 import net.tangly.erp.crm.services.CrmBoundedDomain;
-import net.tangly.ui.components.*;
+import net.tangly.ui.components.EntityView;
+import net.tangly.ui.components.MutableEntityForm;
+import net.tangly.ui.components.One2ManyReferencesField;
+import net.tangly.ui.components.VaadinUtils;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Collection;
@@ -40,7 +43,7 @@ class LegalEntitiesView extends EntityView<LegalEntity> {
      */
     static class LegalEntityForm extends MutableEntityForm<LegalEntity, LegalEntitiesView> {
 
-        public LegalEntityForm(@NotNull LegalEntitiesView parent, @NotNull TypeRegistry registry) {
+        public LegalEntityForm(@NotNull LegalEntitiesView parent) {
             super(parent, LegalEntity::new);
             initEntityForm();
             addTabAt("details", details(), 1);
@@ -62,9 +65,9 @@ class LegalEntitiesView extends EntityView<LegalEntity> {
         }
     }
 
-    public LegalEntitiesView(@NotNull CrmBoundedDomain domain, @NotNull Mode mode) {
-        super(LegalEntity.class, domain, domain.realm().legalEntities(), mode);
-        form(() -> new LegalEntityForm(this, domain.registry()));
+    public LegalEntitiesView(@NotNull CrmBoundedDomainUi domain, @NotNull AccessRights rights) {
+        super(LegalEntity.class, domain, domain.domain().realm().legalEntities(), rights);
+        form(() -> new LegalEntityForm(this));
         init();
     }
 
