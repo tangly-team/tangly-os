@@ -157,7 +157,7 @@ public final class Main {
     }
 
     private static User createDefaultRwUser() {
-        final String username = "aeon-r2";
+        final String username = "aeon-rw";
         String passwordSalt = User.newSalt();
         String passwordHash = User.encryptPassword("aeon", passwordSalt);
         var rights = List.of(
@@ -185,7 +185,7 @@ public final class Main {
     }
 
     private static User createRestrictedUser() {
-        final String username = "aeon-re";
+        final String username = "marcel-baumann";
         String passwordSalt = User.newSalt();
         String passwordHash = User.encryptPassword("aeon", passwordSalt);
         var rights = List.of(

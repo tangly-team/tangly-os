@@ -300,7 +300,7 @@ public abstract class ItemView<T> extends VerticalLayout implements View {
         return field;
     }
 
-    protected Provider<T> provider() {
+    public Provider<T> provider() {
         return provider;
     }
 
@@ -316,7 +316,7 @@ public abstract class ItemView<T> extends VerticalLayout implements View {
      *
      * @param provider new provider of the items displayed in the view
      */
-    protected void provider(@NotNull Provider<T> provider) {
+    public void provider(@NotNull Provider<T> provider) {
         this.provider = provider;
         dataView = grid.setItems(DataProvider.ofCollection(provider.items()));
         if (filter() != null) {
