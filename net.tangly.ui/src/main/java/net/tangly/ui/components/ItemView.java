@@ -49,15 +49,13 @@ import java.util.function.Supplier;
  * grid. Following operations are available through a pop-up menu:</p>
  * <dl>
  *     <dt>List</dt><dd>Display the grid with the entity properties. No form can be selected and no modification operations are available.
- *     No context sensitive menu is displayed.</dd>
- *    <dt>View</dt><dd>Display a read-only form with the entity properties. If the form is displayed and another grid item is selected, the values of the selected entity are
- *    displayed in the form. </dd>
+ *     No context sensitive menu is displayed. The view is implicitly read-only.</dd>
+ *    <dt>View</dt><dd>Display a read-only form with the entity properties.</dd>
  *    <dt>Update</dt><dd>Display an editable form with the entity properties. If the save operation is selected the updated values are stored into the entity.
  *    The grid is updated.</dd>
  *    <dt>Create</dt><dd>Display an editable empty form. If the save operation is selected the entity is added to the underlying list and to the grid.</dd>
  *    <dt>Duplicate</dt><dd>Display an editable form with selected properties. If the save operation is selected the entity is added to the underlying list and
- *    to the grid. The
- *    selected property values are specific to the entity type.</dd>
+ *    to the grid. The selected property values are specific to the entity type.</dd>
  *    <dt>Delete</dt><dd>Display a read-only form with the entity properties. If the delete operation is selected the entity is removed from the underlying list
  *    and from the grid.</dd>
  * </dl>

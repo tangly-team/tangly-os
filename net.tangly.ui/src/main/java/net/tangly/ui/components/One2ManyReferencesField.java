@@ -60,26 +60,16 @@ public class One2ManyReferencesField<T extends MutableEntity> extends CustomFiel
         add(view);
     }
 
-    public Mode mode() {
-        return view.mode();
-    }
-
-    public void mode(@NotNull Mode mode) {
-        view.mode(mode);
-        view.menu().removeAll();
-        if (mode == Mode.EDIT) {
-            view.menu().addItem("Add", event -> displayAddDialog());
-            view.menu().addItem("Remove", event -> {
-                view.provider().delete(view.selectedItem());
-                view.dataView().refreshAll();
-            });
-        }
-    }
-
     @Override
     public void setReadOnly(boolean readOnly) {
         super.setReadOnly(readOnly);
-        mode(readOnly ? Mode.LIST : Mode.VIEW);
+        view.menu().removeAll();
+        if (!readOnly)
+            view.menu().addItem("Add", event -> displayAddDialog());
+        view.menu().addItem("Remove", event -> {
+            view.provider().delete(view.selectedItem());
+            view.dataView().refreshAll();
+        });
     }
 
     @Override
