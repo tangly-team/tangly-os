@@ -19,7 +19,6 @@ import com.vaadin.flow.component.textfield.IntegerField;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.ValidationException;
 import com.vaadin.flow.router.PageTitle;
-import net.tangly.core.domain.AccessRights;
 import net.tangly.erp.products.domain.Effort;
 import net.tangly.ui.components.ItemForm;
 import net.tangly.ui.components.ItemView;
@@ -70,8 +69,10 @@ class EffortsView extends ItemView<Effort> {
         }
 
         public boolean test(@NotNull Effort entity) {
-            return ItemFilter.matches(entity.contractId(), contractId) && ItemFilter.matches(Objects.nonNull(entity.assignment()) ? entity.assignment().id() : null, assignmentId) &&
-                ItemFilter.matches(Objects.nonNull(entity.assignment()) ? entity.assignment().collaboratorId() : null, collaboratorId) && ItemFilter.matches(entity.text(), text);
+            return ItemFilter.matches(entity.contractId(), contractId) && ItemFilter.matches(
+                Objects.nonNull(entity.assignment()) ? entity.assignment().id() : null, assignmentId) &&
+                ItemFilter.matches(Objects.nonNull(entity.assignment()) ? entity.assignment().collaboratorId() : null, collaboratorId) && ItemFilter.matches(
+                entity.text(), text);
         }
     }
 
@@ -110,18 +111,19 @@ class EffortsView extends ItemView<Effort> {
         }
     }
 
-    public EffortsView(@NotNull ProductsBoundedDomainUi domain, @NotNull AccessRights rights) {
-        super(Effort.class, domain, domain.efforts(), new EffortFilter(), rights);
-        mode(Mode.DELETE);
+    public EffortsView(@NotNull ProductsBoundedDomainUi domain, @NotNull Mode mode) {
+        super(Effort.class, domain, domain.efforts(), new EffortFilter(), mode);
         form(() -> new EffortForm(this));
         init();
     }
 
     private void init() {
         var grid = grid();
-        grid.addColumn(o -> Objects.nonNull(o.assignment()) ? o.assignment().id() : null).setKey("assignment").setHeader("Assignment").setAutoWidth(true).setResizable(true)
+        grid.addColumn(o -> Objects.nonNull(o.assignment()) ? o.assignment().id() : null).setKey("assignment").setHeader("Assignment").setAutoWidth(
+                true).setResizable(true)
             .setSortable(true);
-        grid.addColumn(o -> Objects.nonNull(o.assignment()) ? o.assignment().name() : null).setKey("collaborator").setHeader("Collaborator").setAutoWidth(true).setResizable(true)
+        grid.addColumn(o -> Objects.nonNull(o.assignment()) ? o.assignment().name() : null).setKey("collaborator").setHeader("Collaborator").setAutoWidth(
+                true).setResizable(true)
             .setSortable(true);
         grid.addColumn(Effort::date).setKey("date").setHeader("Date").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Effort::duration).setKey("duration").setHeader("Duration").setAutoWidth(true).setResizable(true).setSortable(true);

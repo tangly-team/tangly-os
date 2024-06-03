@@ -16,9 +16,9 @@ package net.tangly.erp.products.ui;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.PageTitle;
-import net.tangly.core.domain.AccessRights;
 import net.tangly.erp.products.domain.Product;
 import net.tangly.ui.components.EntityView;
+import net.tangly.ui.components.Mode;
 import net.tangly.ui.components.MutableEntityForm;
 import org.jetbrains.annotations.NotNull;
 
@@ -44,9 +44,8 @@ class ProductsView extends EntityView<Product> {
         }
     }
 
-    public ProductsView(@NotNull ProductsBoundedDomainUi domain, @NotNull AccessRights rights) {
-        // TODO do we need the mode parameter?
-        super(Product.class, domain, domain.domain().realm().products(), rights);
+    public ProductsView(@NotNull ProductsBoundedDomainUi domain, @NotNull Mode mode) {
+        super(Product.class, domain, domain.domain().realm().products(), mode);
         form(() -> new ProductForm(this));
         initEntityView();
     }

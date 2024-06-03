@@ -16,8 +16,6 @@ package net.tangly.ui.components;
 import net.tangly.core.domain.AccessRightsCode;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Objects;
-
 /**
  * Define the modes of the item view.
  * <dl>
@@ -29,14 +27,11 @@ import java.util.Objects;
  * </dl>
  */
 public enum Mode {
-    LIST(Mode.LIST_TEXT), VIEW(Mode.VIEW_TEXT), EDITABLE(Mode.EDIT_TEXT), DELETE(Mode.DELETE_TEXT);
+    LIST(Mode.LIST_TEXT), VIEW(Mode.VIEW_TEXT), EDITABLE(Mode.EDIT_TEXT);
 
     public static final String LIST_TEXT = "List";
     public static final String VIEW_TEXT = "View";
     public static final String EDIT_TEXT = "Edit";
-    public static final String CREATE_TEXT = "Create";
-    public static final String DUPLICATE_TEXT = "Duplicate";
-    public static final String DELETE_TEXT = "Delete";
 
     private final String text;
 
@@ -47,14 +42,10 @@ public enum Mode {
     public static Mode mode(AccessRightsCode right) {
         return switch (right) {
             case null -> Mode.LIST;
-            case none, appAdmin -> Mode.LIST;
+            case none -> Mode.LIST;
             case readonlyUser -> Mode.VIEW;
-            case restrictedUser, user, domainAdmin -> Mode.EDITABLE;
+            case appAdmin, restrictedUser, user, domainAdmin -> Mode.EDITABLE;
         };
-    }
-
-    public static boolean hasForm(Mode mode) {
-        return Objects.nonNull(mode) && (mode != LIST);
     }
 
     public String text() {
@@ -62,6 +53,6 @@ public enum Mode {
     }
 
     public boolean readonly() {
-        return (this == VIEW) || (this == DELETE);
+        return (this == LIST) || (this == VIEW);
     }
 }

@@ -18,7 +18,6 @@ import com.vaadin.flow.component.select.Select;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.router.PageTitle;
-import net.tangly.core.domain.AccessRights;
 import net.tangly.erp.ledger.domain.Account;
 import net.tangly.ui.components.ItemForm;
 import net.tangly.ui.components.ItemView;
@@ -93,10 +92,6 @@ class AccountsView extends ItemView<Account> {
         }
 
         @Override
-        public void mode(@NotNull Mode mode) {
-        }
-
-        @Override
         public void clear() {
         }
 
@@ -108,14 +103,8 @@ class AccountsView extends ItemView<Account> {
 
     private Binder<Account> binder;
 
-    /**
-     * Constructor of the CRUD view for accounts of the ledger.
-     *
-     * @param domain ledger business domain containing the accounts should be displayed
-     * @param rights access rights of the current user on the view
-     */
-    public AccountsView(@NotNull LedgerBoundedDomainUi domain, @NotNull AccessRights rights) {
-        super(Account.class, domain, domain.domain().realm().accounts(), new AccountFilter(), rights);
+    public AccountsView(@NotNull LedgerBoundedDomainUi domain, @NotNull Mode mode) {
+        super(Account.class, domain, domain.domain().realm().accounts(), new AccountFilter(), mode);
         form(() -> new AccountForm(this));
         init();
     }

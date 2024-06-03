@@ -53,7 +53,7 @@ public class One2ManyOwnedField<T> extends CustomField<Collection<T>> {
     @Override
     public void setReadOnly(boolean readOnly) {
         super.setReadOnly(readOnly);
-        view.mode(readOnly ? Mode.LIST : Mode.EDITABLE);
+        view.readonly(readOnly);
     }
 
     @Override

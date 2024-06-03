@@ -21,13 +21,13 @@ import com.vaadin.flow.component.textfield.IntegerField;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.ValidationException;
 import com.vaadin.flow.router.PageTitle;
-import net.tangly.core.domain.AccessRights;
 import net.tangly.erp.products.domain.Assignment;
 import net.tangly.erp.products.domain.Effort;
 import net.tangly.erp.products.domain.WorkContract;
 import net.tangly.erp.products.services.ProductsBoundedDomain;
 import net.tangly.ui.components.ItemForm;
 import net.tangly.ui.components.ItemView;
+import net.tangly.ui.components.Mode;
 import net.tangly.ui.components.VaadinUtils;
 import org.jetbrains.annotations.NotNull;
 
@@ -85,8 +85,8 @@ class WorkContractsView extends ItemView<WorkContract> {
         }
     }
 
-    public WorkContractsView(@NotNull ProductsBoundedDomainUi domain,@NotNull AccessRights rights) {
-        super(WorkContract.class, domain, domain.domain().realm().contracts(), new WorkContractFilter(), rights);
+    public WorkContractsView(@NotNull ProductsBoundedDomainUi domain,@NotNull Mode mode) {
+        super(WorkContract.class, domain, domain.domain().realm().contracts(), new WorkContractFilter(), mode);
         form(() -> new WorkContractForm(this));
         init();
     }

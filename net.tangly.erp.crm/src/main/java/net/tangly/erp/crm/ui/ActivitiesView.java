@@ -21,7 +21,6 @@ import com.vaadin.flow.component.textfield.IntegerField;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.ValidationException;
 import net.tangly.core.codes.CodeType;
-import net.tangly.core.domain.AccessRights;
 import net.tangly.core.providers.ProviderInMemory;
 import net.tangly.erp.crm.domain.Activity;
 import net.tangly.erp.crm.domain.ActivityCode;
@@ -30,6 +29,7 @@ import net.tangly.ui.app.domain.Cmd;
 import net.tangly.ui.components.EntityView;
 import net.tangly.ui.components.ItemForm;
 import net.tangly.ui.components.ItemView;
+import net.tangly.ui.components.Mode;
 import org.jetbrains.annotations.NotNull;
 
 import java.time.LocalDate;
@@ -108,7 +108,8 @@ class ActivitiesView extends ItemView<Activity> {
 
             form.add(date, code, durationInMinutes, author, text);
             form.setColspan(text, 3);
-            form.setResponsiveSteps(new FormLayout.ResponsiveStep("0", 1), new FormLayout.ResponsiveStep("320px", 2), new FormLayout.ResponsiveStep("500px", 3));
+            form.setResponsiveSteps(new FormLayout.ResponsiveStep("0", 1), new FormLayout.ResponsiveStep("320px", 2),
+                new FormLayout.ResponsiveStep("500px", 3));
 
             binder().forField(date).bind(Activity::date, Activity::date);
             binder().forField(code).bind(Activity::code, Activity::code);
@@ -119,8 +120,8 @@ class ActivitiesView extends ItemView<Activity> {
         }
     }
 
-    public ActivitiesView(@NotNull CrmBoundedDomainUi domain, @NotNull AccessRights rights) {
-        super(Activity.class, domain, domain.domain().realm().activities(), new ActivityFilter(), rights);
+    public ActivitiesView(@NotNull CrmBoundedDomainUi domain, @NotNull Mode mode) {
+        super(Activity.class, domain, domain.domain().realm().activities(), new ActivityFilter(), mode);
         form(() -> new ActivityForm(this));
         init();
     }
@@ -139,9 +140,11 @@ class ActivitiesView extends ItemView<Activity> {
 
     private void init() {
         var grid = grid();
-        grid.addColumn(Activity::date).setKey(EntityView.DATE).setHeader(EntityView.DATE_LABEL).setResizable(true).setSortable(true).setFlexGrow(0).setWidth("10em");
+        grid.addColumn(Activity::date).setKey(EntityView.DATE).setHeader(EntityView.DATE_LABEL).setResizable(true).setSortable(true).setFlexGrow(0).setWidth(
+            "10em");
         grid.addColumn(Activity::code).setKey(CODE).setHeader("Code").setResizable(true).setSortable(true).setFlexGrow(0).setWidth("10em");
-        grid.addColumn(Activity::duration).setKey(DURATION_IN_MINUTES).setHeader("Duration").setResizable(true).setSortable(true).setFlexGrow(0).setWidth("5em");
+        grid.addColumn(Activity::duration).setKey(DURATION_IN_MINUTES).setHeader("Duration").setResizable(true).setSortable(true).setFlexGrow(0).setWidth(
+            "5em");
         grid.addColumn(Activity::author).setKey(AUTHOR).setHeader("Author").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Activity::text).setKey(EntityView.TEXT).setHeader(EntityView.TEXT_LABEL).setAutoWidth(true).setResizable(true).setSortable(true);
     }

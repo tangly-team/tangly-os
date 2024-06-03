@@ -21,6 +21,7 @@ import net.tangly.commons.lang.functional.LazyReference;
 import net.tangly.erp.collabortors.services.CollaboratorsBoundedDomain;
 import net.tangly.ui.app.domain.BoundedDomainUi;
 import net.tangly.ui.app.domain.DomainView;
+import net.tangly.ui.components.Mode;
 import org.jetbrains.annotations.NotNull;
 
 
@@ -29,7 +30,7 @@ public class CollaboratorsBoundedDomainUi extends BoundedDomainUi<CollaboratorsB
 
     public CollaboratorsBoundedDomainUi(@NotNull CollaboratorsBoundedDomain domain) {
         super(domain);
-        addView(COLLABORATORS, new LazyReference<>(() -> new CollaboratorsView(this, this.rights())));
+        addView(COLLABORATORS, new LazyReference<>(() -> new CollaboratorsView(this, Mode.EDITABLE)));
         addView(ENTITIES, new LazyReference<>(() -> new DomainView(this)));
         currentView(view(COLLABORATORS).orElseThrow());
 

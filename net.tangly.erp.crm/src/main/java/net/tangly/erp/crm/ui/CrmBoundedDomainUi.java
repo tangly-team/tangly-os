@@ -22,6 +22,7 @@ import net.tangly.erp.crm.services.CrmBoundedDomain;
 import net.tangly.erp.invoices.services.InvoicesBoundedDomain;
 import net.tangly.ui.app.domain.BoundedDomainUi;
 import net.tangly.ui.app.domain.DomainView;
+import net.tangly.ui.components.Mode;
 import org.jetbrains.annotations.NotNull;
 
 public class CrmBoundedDomainUi extends BoundedDomainUi<CrmBoundedDomain> {
@@ -36,14 +37,14 @@ public class CrmBoundedDomainUi extends BoundedDomainUi<CrmBoundedDomain> {
 
     public CrmBoundedDomainUi(@NotNull CrmBoundedDomain crmDomain, @NotNull InvoicesBoundedDomain invoicesDomain) {
         super(crmDomain);
-        addView(LEADS, new LazyReference<>(() -> new LeadsView(this, this.rights())));
-        addView(NATURAL_ENTITIES, new LazyReference<>(() -> new NaturalEntitiesView(this, this.rights())));
-        addView(LEGAL_ENTITIES, new LazyReference<>(() -> new LegalEntitiesView(this, this.rights())));
-        addView(EMPLOYEES, new LazyReference<>(() -> new EmployeesView(this, this.rights())));
-        addView(CONTRACTS, new LazyReference<>(() -> new ContractsView(this, this.rights())));
-        addView(INTERACTIONS, new LazyReference<>(() -> new InteractionsView(this, this.rights())));
-        addView(ACTIVITIES, new LazyReference<>(() -> new ActivitiesView(this, this.rights())));
-        addView(ANALYTICS, new LazyReference<>(() -> new AnalyticsCrmView(this, invoicesDomain, this.rights())));
+        addView(LEADS, new LazyReference<>(() -> new LeadsView(this, Mode.EDITABLE)));
+        addView(NATURAL_ENTITIES, new LazyReference<>(() -> new NaturalEntitiesView(this, Mode.EDITABLE)));
+        addView(LEGAL_ENTITIES, new LazyReference<>(() -> new LegalEntitiesView(this, Mode.EDITABLE)));
+        addView(EMPLOYEES, new LazyReference<>(() -> new EmployeesView(this, Mode.EDITABLE)));
+        addView(CONTRACTS, new LazyReference<>(() -> new ContractsView(this, Mode.EDITABLE)));
+        addView(INTERACTIONS, new LazyReference<>(() -> new InteractionsView(this, Mode.EDITABLE)));
+        addView(ACTIVITIES, new LazyReference<>(() -> new ActivitiesView(this, Mode.EDITABLE)));
+        addView(ANALYTICS, new LazyReference<>(() -> new AnalyticsCrmView(this, invoicesDomain)));
         addView(ENTITIES, new LazyReference<>(() -> new DomainView(this)));
         currentView(NATURAL_ENTITIES);
     }

@@ -17,7 +17,6 @@ import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.grid.HeaderRow;
 import com.vaadin.flow.data.renderer.LocalDateRenderer;
 import net.tangly.core.*;
-import net.tangly.core.domain.AccessRights;
 import net.tangly.core.providers.Provider;
 import net.tangly.ui.app.domain.BoundedDomainUi;
 import org.jetbrains.annotations.NotNull;
@@ -31,14 +30,21 @@ import org.jetbrains.annotations.NotNull;
  */
 public class EntityView<T extends Entity> extends ItemView<T> {
     public static <T extends Entity> EntityView<T> ofLIST(@NotNull Class<T> entityClass, BoundedDomainUi<?> domain, @NotNull Provider<T> provider) {
-        EntityView<T> view = new EntityView<>(entityClass, domain, provider, null);
-        view.mode(Mode.LIST);
+        EntityView<T> view = new EntityView<>(entityClass, domain, provider, Mode.LIST);
         view.initEntityView();
         return view;
     }
 
-    public EntityView(@NotNull Class<T> entityClass, BoundedDomainUi<?> domain, @NotNull Provider<T> provider, @NotNull AccessRights rights) {
-        super(entityClass, domain, provider, new EntityFilter<>(), rights);
+    /**
+     * Constructor of the entity view.
+     *
+     * @param entityClass class of the entity to display
+     * @param domain      user interface domain owning the entities
+     * @param provider    provider of the entities
+     * @param mode        mode of the view
+     */
+    public EntityView(@NotNull Class<T> entityClass, BoundedDomainUi<?> domain, @NotNull Provider<T> provider, @NotNull Mode mode) {
+        super(entityClass, domain, provider, new EntityFilter<>(), mode);
     }
 
     @Override

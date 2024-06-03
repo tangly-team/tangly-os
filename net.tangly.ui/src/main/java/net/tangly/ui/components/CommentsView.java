@@ -121,7 +121,8 @@ public class CommentsView extends ItemView<Comment> {
             text = new AsciiDocField(TEXT);
             layout.add(created, author, text);
             layout.setColspan(text, 3);
-            layout.setResponsiveSteps(new FormLayout.ResponsiveStep("0", 1), new FormLayout.ResponsiveStep("320px", 2), new FormLayout.ResponsiveStep("500px", 3));
+            layout.setResponsiveSteps(new FormLayout.ResponsiveStep("0", 1), new FormLayout.ResponsiveStep("320px", 2),
+                new FormLayout.ResponsiveStep("500px", 3));
             form().add(layout, createButtonBar());
             binder().forField(created).bind(Comment::created, null);
             binder().forField(author).bind(Comment::author, null);
@@ -130,8 +131,7 @@ public class CommentsView extends ItemView<Comment> {
     }
 
     public CommentsView(@NotNull BoundedDomainUi<?> domain, @NotNull Mode mode) {
-        super(Comment.class, domain, ProviderInMemory.of(), new CommentFilter(), null);
-        mode(mode);
+        super(Comment.class, domain, ProviderInMemory.of(), new CommentFilter(), mode);
         form(() -> new CommentForm(this));
         init();
     }

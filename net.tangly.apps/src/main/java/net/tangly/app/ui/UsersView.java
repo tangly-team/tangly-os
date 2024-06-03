@@ -25,10 +25,7 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.server.StreamResource;
 import net.tangly.core.domain.AccessRights;
 import net.tangly.core.domain.User;
-import net.tangly.ui.components.ItemForm;
-import net.tangly.ui.components.ItemView;
-import net.tangly.ui.components.One2ManyOwnedField;
-import net.tangly.ui.components.VaadinUtils;
+import net.tangly.ui.components.*;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.ByteArrayInputStream;
@@ -57,7 +54,7 @@ class UsersView extends ItemView<User> {
             gravatarEmail = VaadinUtils.createTextField("Gravatar Email", "gravatar email", true, false);
             active = new Checkbox("Active");
             naturalPersonId = VaadinUtils.createTextField("Person Id", "natural person id", true, false);
-            rights = new One2ManyOwnedField<>(new AccessRightsView(parent.domainUi(), parent.domainUi().rights()));
+            rights = new One2ManyOwnedField<>(new AccessRightsView(parent.domainUi(), Mode.EDITABLE));
             binder().bindReadOnly(rights, User::accessRights);
 
             addTabAt("details", details(), 0);
@@ -91,8 +88,8 @@ class UsersView extends ItemView<User> {
         }
     }
 
-    public UsersView(@NotNull AppsBoundedDomainUi domain, @NotNull AccessRights rights) {
-        super(User.class, domain, domain.domain().realm().users(), null, rights);
+    public UsersView(@NotNull AppsBoundedDomainUi domain, @NotNull Mode mode) {
+        super(User.class, domain, domain.domain().realm().users(), null, mode);
         form(() -> new UserForm(this));
         init();
     }

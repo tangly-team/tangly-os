@@ -14,7 +14,6 @@
 package net.tangly.erp.ledger.ui;
 
 import com.storedobject.chart.*;
-import net.tangly.core.domain.AccessRights;
 import net.tangly.erp.ledger.ports.LedgerAdapter;
 import net.tangly.erp.ledger.services.LedgerBusinessLogic;
 import net.tangly.ui.app.domain.AnalyticsView;
@@ -33,7 +32,7 @@ public class AnalyticsLedgerView extends AnalyticsView {
     private SOChart profitAndLossSoChart;
     private SOChart financialSoChart;
 
-    public AnalyticsLedgerView(@NotNull LedgerBoundedDomainUi domain, @NotNull AccessRights rights) {
+    public AnalyticsLedgerView(@NotNull LedgerBoundedDomainUi domain) {
         this.ledgerLogic = domain.domain().logic();
         init();
         refresh();

@@ -22,7 +22,6 @@ import com.vaadin.flow.component.grid.HeaderRow;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.renderer.NumberRenderer;
 import com.vaadin.flow.router.PageTitle;
-import net.tangly.core.domain.AccessRights;
 import net.tangly.erp.ledger.domain.Transaction;
 import net.tangly.erp.ledger.services.LedgerBusinessLogic;
 import net.tangly.ui.components.*;
@@ -68,7 +67,8 @@ class TransactionsView extends ItemView<Transaction> {
         }
 
         public boolean test(@NotNull Transaction entity) {
-            return (Objects.isNull(date) || (date.isEqual(entity.date()))) && ItemFilter.matches(entity.text(), text) && ItemFilter.matches(entity.debit().accountId(), debit) &&
+            return (Objects.isNull(date) || (date.isEqual(entity.date()))) && ItemFilter.matches(entity.text(), text) && ItemFilter.matches(
+                entity.debit().accountId(), debit) &&
                 ItemFilter.matches(entity.credit().accountId(), credit);
         }
     }
@@ -112,15 +112,11 @@ class TransactionsView extends ItemView<Transaction> {
         }
 
         @Override
-        public void mode(@NotNull Mode mode) {
-        }
-
-        @Override
         public void clear() {
         }
 
         @Override
-        protected Transaction createOrUpdateInstance(Transaction entity)  {
+        protected Transaction createOrUpdateInstance(Transaction entity) {
             Transaction transaction;
             if (entity == null) {
                 LocalDate date = (LocalDate) binder().getBinding("date").orElseThrow().getField().getValue();
@@ -141,8 +137,8 @@ class TransactionsView extends ItemView<Transaction> {
         }
     }
 
-    public TransactionsView(@NotNull LedgerBoundedDomainUi domain, @NotNull AccessRights rights) {
-        super(Transaction.class, domain, domain.domain().realm().transactions(), null, rights);
+    public TransactionsView(@NotNull LedgerBoundedDomainUi domain, @NotNull Mode mode) {
+        super(Transaction.class, domain, domain.domain().realm().transactions(), null, mode);
         form(() -> new TransactionForm(this));
         init();
     }

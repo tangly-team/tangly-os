@@ -86,12 +86,10 @@ public class TagsView extends ItemView<Tag> {
             init();
         }
 
-        @Override
-        public void mode(@NotNull Mode mode) {
-            super.mode(mode);
-            namespace.setReadOnly(mode.readonly());
-            name.setReadOnly(mode.readonly());
-            value.setReadOnly(mode.readonly());
+        public void readonly(boolean readonly) {
+            namespace.setReadOnly(readonly);
+            name.setReadOnly(readonly);
+            value.setReadOnly(readonly);
         }
 
         /**
@@ -176,8 +174,7 @@ public class TagsView extends ItemView<Tag> {
     }
 
     public TagsView(@NotNull BoundedDomainUi<?> domain, @NotNull Mode mode) {
-        super(Tag.class, domain, ProviderInMemory.of(), new TagFilter(), null);
-        mode(mode);
+        super(Tag.class, domain, ProviderInMemory.of(), new TagFilter(),  mode);
         form(() -> new TagForm(this));
         init();
     }

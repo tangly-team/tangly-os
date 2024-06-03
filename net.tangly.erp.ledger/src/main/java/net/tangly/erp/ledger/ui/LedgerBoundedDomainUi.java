@@ -21,6 +21,7 @@ import net.tangly.commons.lang.functional.LazyReference;
 import net.tangly.erp.ledger.services.LedgerBoundedDomain;
 import net.tangly.ui.app.domain.BoundedDomainUi;
 import net.tangly.ui.app.domain.DomainView;
+import net.tangly.ui.components.Mode;
 import org.jetbrains.annotations.NotNull;
 
 public class LedgerBoundedDomainUi extends BoundedDomainUi<LedgerBoundedDomain> {
@@ -29,9 +30,9 @@ public class LedgerBoundedDomainUi extends BoundedDomainUi<LedgerBoundedDomain> 
 
     public LedgerBoundedDomainUi(@NotNull LedgerBoundedDomain domain) {
         super(domain);
-        addView(ACCOUNTS, new LazyReference<>(() -> new AccountsView(this, this.rights())));
-        addView(TRANSACTIONS, new LazyReference<>(() -> new TransactionsView(this, this.rights())));
-        addView(ANALYTICS, new LazyReference<>(() -> new AnalyticsLedgerView(this, this.rights())));
+        addView(ACCOUNTS, new LazyReference<>(() -> new AccountsView(this, Mode.EDITABLE)));
+        addView(TRANSACTIONS, new LazyReference<>(() -> new TransactionsView(this, Mode.EDITABLE)));
+        addView(ANALYTICS, new LazyReference<>(() -> new AnalyticsLedgerView(this)));
         addView(ENTITIES, new LazyReference<>(() -> new DomainView(this)));
         currentView(view(TRANSACTIONS).orElseThrow());
     }

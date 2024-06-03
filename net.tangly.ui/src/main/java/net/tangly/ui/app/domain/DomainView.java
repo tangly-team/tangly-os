@@ -16,7 +16,6 @@ package net.tangly.ui.app.domain;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.tabs.TabSheet;
 import com.vaadin.flow.component.tabs.TabSheetVariant;
-import net.tangly.core.domain.AccessRights;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -28,7 +27,7 @@ public class DomainView extends VerticalLayout implements View {
     private static final String TAGS = "Tags";
     private final TabSheet tabSheet;
     private final transient BoundedDomainUi<?> domain;
-    private AccessRights rights;
+    private boolean readonly;
 
     public DomainView(@NotNull BoundedDomainUi<?> domain) {
         this.domain = domain;
@@ -38,21 +37,23 @@ public class DomainView extends VerticalLayout implements View {
         initialize();
     }
 
+    @Override
+    public boolean readonly() {
+        return readonly;
+    }
+
+    @Override
+    public void readonly(boolean readonly) {
+        this.readonly = readonly;
+        tabSheet.getChildren().forEach(component -> ((View) component).readonly(readonly));
+    }
+
     private void initialize() {
-        tabSheet.add(ENTITIES, new DomainEntitiesView(domain, domain.rights()));
-        tabSheet.add(TAGS, new TagTypesView(domain, domain.rights()));
+        tabSheet.add(ENTITIES, new DomainEntitiesView(domain));
+        tabSheet.add(TAGS, new TagTypesView(domain));
         add(tabSheet);
     }
 
-    @Override
-    public void rights(AccessRights rights) {
-        this.rights = rights;
-    }
-
-    @Override
-    public AccessRights rights() {
-        return rights;
-    }
 
     @Override
     public void refresh() {

@@ -14,7 +14,6 @@
 package net.tangly.ui.app.domain;
 
 import com.vaadin.flow.component.grid.HeaderRow;
-import net.tangly.core.domain.AccessRights;
 import net.tangly.core.domain.DomainEntity;
 import net.tangly.core.providers.ProviderInMemory;
 import net.tangly.ui.components.EntityView;
@@ -44,9 +43,8 @@ public class DomainEntitiesView extends ItemView<DomainEntity> {
         }
     }
 
-    public DomainEntitiesView(@NotNull BoundedDomainUi<?> domain, @NotNull AccessRights rights) {
-        super(DomainEntity.class, domain, ProviderInMemory.of(domain.domain().entities()), new DomainEntitiesFilter(), rights);
-        mode(Mode.LIST);
+    public DomainEntitiesView(@NotNull BoundedDomainUi<?> domain) {
+        super(DomainEntity.class, domain, ProviderInMemory.of(domain.domain().entities()), new DomainEntitiesFilter(), Mode.LIST);
         init();
     }
 

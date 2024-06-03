@@ -21,6 +21,7 @@ import net.tangly.commons.lang.functional.LazyReference;
 import net.tangly.erp.invoices.services.InvoicesBoundedDomain;
 import net.tangly.ui.app.domain.BoundedDomainUi;
 import net.tangly.ui.app.domain.DomainView;
+import net.tangly.ui.components.Mode;
 import org.jetbrains.annotations.NotNull;
 
 public class InvoicesBoundedDomainUi extends BoundedDomainUi<InvoicesBoundedDomain> {
@@ -29,8 +30,8 @@ public class InvoicesBoundedDomainUi extends BoundedDomainUi<InvoicesBoundedDoma
 
     public InvoicesBoundedDomainUi(@NotNull InvoicesBoundedDomain domain) {
         super(domain);
-        addView(ARTICLES, new LazyReference<>(() -> new ArticlesView(this, this.rights())));
-        addView(INVOICES, new LazyReference<>(() -> new InvoicesView(this, this.rights())));
+        addView(ARTICLES, new LazyReference<>(() -> new ArticlesView(this, Mode.EDITABLE)));
+        addView(INVOICES, new LazyReference<>(() -> new InvoicesView(this, Mode.EDITABLE)));
         addView(ENTITIES, new LazyReference<>(() -> new DomainView(this)));
         currentView(INVOICES);
     }

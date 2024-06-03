@@ -17,7 +17,9 @@ package net.tangly.ui.components;
  * Define the CRUD operations which can be applied on entities.
  */
 public enum Operation {
-    VIEW(Operation.VIEW_TEXT), EDIT(Operation.EDIT_TEXT), CREATE(Operation.CREATE_TEXT), DUPLICATE(Operation.DUPLICATE_TEXT), DELETE(Operation.DELETE_TEXT);
+    NONE(Operation.NONE_TEXT), VIEW(Operation.VIEW_TEXT), EDIT(Operation.EDIT_TEXT), CREATE(Operation.CREATE_TEXT), DUPLICATE(Operation.DUPLICATE_TEXT), DELETE(
+        Operation.DELETE_TEXT);
+    public static final String NONE_TEXT = "None";
     public static final String VIEW_TEXT = "View";
     public static final String EDIT_TEXT = "Edit";
     public static final String CREATE_TEXT = "Create";
@@ -28,5 +30,18 @@ public enum Operation {
 
     Operation(String text) {
         this.text = text;
+    }
+
+    boolean readonly() {
+        return this == VIEW || this == NONE;
+    }
+
+    String confirmationText() {
+        return switch (this) {
+            case NONE, VIEW -> "OK";
+            case EDIT -> "Save";
+            case DUPLICATE, CREATE -> "Create";
+            case DELETE -> "Delete";
+        };
     }
 }

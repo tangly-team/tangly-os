@@ -108,7 +108,7 @@ public abstract class BoundedDomainUi<T extends BoundedDomain<?, ?, ?>> {
 
     public void userChanged(User user) {
         rights = user.accessRightsFor(name()).orElse(null);
-        views.values().forEach(view -> view.ifPresent(v -> v.rights(rights)));
+        views.values().forEach(view -> view.ifPresent(v -> v.readonly(Objects.nonNull(rights) ? AccessRightsCode.readonlyUser == rights.right() : true)));
     }
 
     protected final void addView(@NotNull String name, @NotNull LazyReference<? extends View> view) {
@@ -167,7 +167,10 @@ public abstract class BoundedDomainUi<T extends BoundedDomain<?, ?, ?>> {
         return (LazyReference<V>) currentView;
     }
 
-    private boolean hasDomainAdminRights() {
+    protected boolean hasReadOnlyRights() {
+        return (rights != null) && rights.right() == AccessRightsCode.readonlyUser;
+    }
+    protected boolean hasDomainAdminRights() {
         return (rights != null) && rights.right() == AccessRightsCode.domainAdmin;
     }
 }

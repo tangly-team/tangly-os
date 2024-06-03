@@ -18,7 +18,6 @@ import com.vaadin.flow.component.datepicker.DatePicker;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.tabs.TabSheet;
-import net.tangly.core.domain.AccessRights;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
@@ -35,7 +34,7 @@ public abstract class AnalyticsView extends VerticalLayout implements View {
     private static final Logger logger = LogManager.getLogger();
     private LocalDate from;
     private LocalDate to;
-    private AccessRights rights;
+    private boolean readonly;
     protected final TabSheet tabSheet;
 
     public AnalyticsView() {
@@ -58,12 +57,14 @@ public abstract class AnalyticsView extends VerticalLayout implements View {
         add(new HorizontalLayout(fromDate, toDate), tabSheet);
     }
 
-   public AccessRights rights() {
-        return rights;
+    @Override
+    public boolean readonly() {
+        return readonly;
     }
 
-    public void rights(@NotNull AccessRights rights) {
-        this.rights = rights;
+    @Override
+    public void readonly(boolean readonly) {
+        this.readonly = readonly;
     }
 
     public LocalDate from() {

@@ -31,7 +31,6 @@ import com.vaadin.flow.server.StreamResource;
 import net.tangly.core.EmailAddress;
 import net.tangly.core.PhoneNr;
 import net.tangly.core.codes.CodeType;
-import net.tangly.core.domain.AccessRights;
 import net.tangly.erp.crm.domain.*;
 import net.tangly.ui.components.*;
 import org.jetbrains.annotations.NotNull;
@@ -93,19 +92,23 @@ class NaturalEntitiesView extends EntityView<NaturalEntity> {
     }
 
 
-    public NaturalEntitiesView(@NotNull CrmBoundedDomainUi domain, @NotNull AccessRights rights) {
-        super(NaturalEntity.class, domain, domain.domain().realm().naturalEntities(), rights);
+    public NaturalEntitiesView(@NotNull CrmBoundedDomainUi domain, @NotNull Mode mode) {
+        super(NaturalEntity.class, domain, domain.domain().realm().naturalEntities(), mode);
         form(() -> new NaturalEntityForm(this));
         init();
     }
 
     public static void defineOne2ManyEmployees(@NotNull Grid<Employee> grid) {
         VaadinUtils.initialize(grid);
-        grid.addColumn(Employee::oid).setKey(ItemView.OID).setHeader(ItemView.OID_LABEL).setAutoWidth(true).setResizable(true).setSortable(true).setFrozen(true);
+        grid.addColumn(Employee::oid).setKey(ItemView.OID).setHeader(ItemView.OID_LABEL).setAutoWidth(true).setResizable(true).setSortable(true).setFrozen(
+            true);
         grid.addColumn(o -> o.organization().name()).setKey("organization").setHeader("Organization").setAutoWidth(true).setResizable(true).setSortable(true);
-        grid.addColumn(o -> o.value(CrmTags.CRM_EMPLOYEE_TITLE).orElse(null)).setKey("title").setHeader("Title").setAutoWidth(true).setResizable(true).setSortable(true);
-        grid.addColumn(new LocalDateRenderer<>(Employee::from, ItemView.ISO_DATE_FORMAT)).setKey(ItemView.FROM).setHeader(ItemView.FROM_LABEL).setAutoWidth(true).setResizable(true).setSortable(true);
-        grid.addColumn(new LocalDateRenderer<>(Employee::to, ItemView.ISO_DATE_FORMAT)).setKey(ItemView.TO).setHeader(ItemView.TO_LABEL).setAutoWidth(true).setResizable(true).setSortable(true);
+        grid.addColumn(o -> o.value(CrmTags.CRM_EMPLOYEE_TITLE).orElse(null)).setKey("title").setHeader("Title").setAutoWidth(true).setResizable(
+            true).setSortable(true);
+        grid.addColumn(new LocalDateRenderer<>(Employee::from, ItemView.ISO_DATE_FORMAT)).setKey(ItemView.FROM).setHeader(ItemView.FROM_LABEL).setAutoWidth(
+            true).setResizable(true).setSortable(true);
+        grid.addColumn(new LocalDateRenderer<>(Employee::to, ItemView.ISO_DATE_FORMAT)).setKey(ItemView.TO).setHeader(ItemView.TO_LABEL).setAutoWidth(
+            true).setResizable(true).setSortable(true);
     }
 
     private void init() {
@@ -113,7 +116,8 @@ class NaturalEntitiesView extends EntityView<NaturalEntity> {
         var grid = grid();
         grid.addColumn(NaturalEntity::name).setKey("lastname").setHeader("Last Name").setSortable(true).setAutoWidth(true).setResizable(true);
         grid.addColumn(NaturalEntity::firstname).setKey("firstname").setHeader("First Name").setSortable(true).setAutoWidth(true).setResizable(true);
-        grid.addColumn(new ComponentRenderer<>(o -> (o.gender() == GenderCode.male) ? new Icon(VaadinIcon.MALE) : new Icon(VaadinIcon.FEMALE))).setKey("gender").setHeader("Gender")
+        grid.addColumn(new ComponentRenderer<>(o -> (o.gender() == GenderCode.male) ? new Icon(VaadinIcon.MALE) : new Icon(VaadinIcon.FEMALE))).setKey(
+                "gender").setHeader("Gender")
             .setResizable(true).setResizable(true);
         grid.addColumn(VaadinUtils.linkedInComponentRenderer(CrmTags::linkedInTag, false)).setKey("linkedIn").setHeader("LinkedIn").setAutoWidth(true);
     }

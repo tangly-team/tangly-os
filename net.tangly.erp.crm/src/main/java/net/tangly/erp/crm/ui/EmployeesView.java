@@ -16,13 +16,13 @@ package net.tangly.erp.crm.ui;
 import com.vaadin.flow.component.HtmlComponent;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.router.PageTitle;
-import net.tangly.core.domain.AccessRights;
 import net.tangly.erp.crm.domain.CrmTags;
 import net.tangly.erp.crm.domain.Employee;
 import net.tangly.erp.crm.domain.LegalEntity;
 import net.tangly.erp.crm.domain.NaturalEntity;
 import net.tangly.erp.crm.services.CrmBoundedDomain;
 import net.tangly.ui.components.EntityView;
+import net.tangly.ui.components.Mode;
 import net.tangly.ui.components.MutableEntityForm;
 import net.tangly.ui.components.One2OneField;
 import org.jetbrains.annotations.NotNull;
@@ -53,8 +53,8 @@ class EmployeesView extends EntityView<Employee> {
         }
     }
 
-    public EmployeesView(@NotNull CrmBoundedDomainUi domain, @NotNull AccessRights rights) {
-        super(Employee.class, domain, domain.domain().realm().employees(), rights);
+    public EmployeesView(@NotNull CrmBoundedDomainUi domain, @NotNull Mode mode) {
+        super(Employee.class, domain, domain.domain().realm().employees(), mode);
         form(() -> new EmployeeForm(this));
         init();
     }

@@ -30,7 +30,7 @@ public class AppsBoundedDomainUi extends BoundedDomainUi<AppsBoundedDomain> {
 
     public AppsBoundedDomainUi(@NotNull AppsBoundedDomain domain) {
         super(domain);
-        addView(USERS, new LazyReference<>(() -> new UsersView(this, this.rights())));
+        addView(USERS, new LazyReference<>(() -> new UsersView(this, Mode.EDITABLE)));
         addView(ENTITIES, new LazyReference<>(() -> new DomainView(this)));
         currentView(USERS);
     }

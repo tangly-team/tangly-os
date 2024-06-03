@@ -21,15 +21,11 @@ import com.vaadin.flow.component.html.Hr;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.ValidationException;
 import com.vaadin.flow.router.PageTitle;
-import net.tangly.core.domain.AccessRights;
 import net.tangly.erp.invoices.domain.Invoice;
 import net.tangly.erp.invoices.services.InvoicesBoundedDomain;
 import net.tangly.ui.app.domain.Cmd;
 import net.tangly.ui.asciidoc.AsciiDocField;
-import net.tangly.ui.components.EntityView;
-import net.tangly.ui.components.ItemForm;
-import net.tangly.ui.components.ItemView;
-import net.tangly.ui.components.VaadinUtils;
+import net.tangly.ui.components.*;
 import org.jetbrains.annotations.NotNull;
 
 @PageTitle("invoices-invoices")
@@ -76,8 +72,8 @@ class InvoicesView extends ItemView<Invoice> {
         }
     }
 
-    public InvoicesView(@NotNull InvoicesBoundedDomainUi domain, @NotNull AccessRights rights) {
-        super(Invoice.class, domain, domain.domain().realm().invoices(), new InvoiceFilter(), rights);
+    public InvoicesView(@NotNull InvoicesBoundedDomainUi domain, @NotNull Mode mode) {
+        super(Invoice.class, domain, domain.domain().realm().invoices(), new InvoiceFilter(), mode);
         form(() -> new InvoiceForm(this));
         init();
     }

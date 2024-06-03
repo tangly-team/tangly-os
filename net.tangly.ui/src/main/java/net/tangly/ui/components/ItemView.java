@@ -30,7 +30,6 @@ import com.vaadin.flow.data.value.ValueChangeMode;
 import net.tangly.commons.lang.functional.LazyReference;
 import net.tangly.core.DateRange;
 import net.tangly.core.TypeRegistry;
-import net.tangly.core.domain.AccessRights;
 import net.tangly.core.domain.BoundedDomain;
 import net.tangly.core.providers.Provider;
 import net.tangly.ui.app.domain.BoundedDomainUi;
@@ -43,7 +42,11 @@ import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 /**
- * The entity view displays a list of entities in a grid.
+ * The entity view displays a list of entities in a grid. The view has three main scenarios. First, it is used as a read-only list of entities.
+ * Second, it is used as a read-only view with a menu item to display the details of an entity.
+ * Third, it is used as an editable view with a form to view, create, duplicate, edit and delete the entity.
+ * These operations are provided through a context menu. If the view is set to read-only, only the CRUD view operation is available.
+ * <p>Specific situations are supported through helper functions. You can define a custom menu for your scenario.</p>
  * <h2>CRUD Operations</h2>
  * <p>The view owns an optional form to display and edit details and an optional filter to filter desired entities in the
  * grid. Following operations are available through a pop-up menu:</p>
@@ -82,8 +85,9 @@ import java.util.function.Supplier;
  * <h2>Menu Extensions</h2>
  * <p>Views can add menu options to perform an action on the selected item or on the whole list. A set of related actions are
  * added to the popup menu with a separation. Multiple blocks can be added.</p>
- * <p>Separate menu actions specific to selected items from global menu actions. The first block should be the view CRUD operations. A second optional block should contain actions
- * for selected items. A third optional blocks should contains global actions not related to selected items.</p>
+ * <p>Separate menu actions specific to selected items from global menu actions. The first block should be the view related CRUD operations.
+ * A second optional block should contain actions for selected items.
+ * A third optional blocks should contains global actions not related to selected items.</p>
  * {@snippet :
  * var items = List.of(new AbstractMap.SimpleImmutableEntry(Mode.EDIT_TEXT,
  * (ComponentEventListener<GridContextMenu.GridContextMenuItemClickEvent<T>>)((e)->form.edit(e.getItem().orElse(null)))));
@@ -92,8 +96,8 @@ import java.util.function.Supplier;
  * <p>You can add filtering capablitities to the view. The user can input filter criteria used to select which entities are displayed in the grid.</p>
  * <h2>Access Rights</h2>
  * <p>Access rights determines which menu items are available. The derived class can use the rights to limit data availability.
- * The mode can be used to overwrite which menu items are selectec through the access rights. If no mode is defined, access rights are used to create the
- * context menu, otherwise the mode value is used.</p>
+ * Access rights are used to create the adequate provider. This operation can be outside the view or in the derived view.
+ * The class constructor has a provider parameter to support the first approach.</p>
  *
  * @param <T> Type of the displayed entities
  */
@@ -162,10 +166,10 @@ public abstract class ItemView<T> extends VerticalLayout implements View {
 
     private GridListDataView<T> dataView;
     private final ItemFilter<T> filter;
-    private Mode mode;
+    private final Mode mode;
+    private boolean readonly;
     private GridContextMenu<T> menu;
     private final Grid<T> grid;
-    private AccessRights rights;
 
     private transient T entity;
     private LazyReference<ItemForm<T, ?>> form;
@@ -182,12 +186,13 @@ public abstract class ItemView<T> extends VerticalLayout implements View {
      * @param domain      user interface domain to which the view belongs to
      * @param provider    provider for instances of the entity to display in the grid
      * @param filter      optional filter for the grid
-     * @param rights      access rights of the user associated with the session owning the view
+     * @param mode        mode of the view: LIST, VIEW, or EDITABLE
      */
-    protected ItemView(@NotNull Class<T> entityClass, BoundedDomainUi<?> domain, @NotNull Provider<T> provider, ItemFilter<T> filter, @NotNull AccessRights rights) {
+    protected ItemView(@NotNull Class<T> entityClass, BoundedDomainUi<?> domain, @NotNull Provider<T> provider, ItemFilter<T> filter, @NotNull Mode mode) {
         this.entityClass = entityClass;
         this.domain = domain;
         this.filter = filter;
+        this.mode = mode;
         isFormEmbedded(true);
         grid = new Grid<>();
         grid.setSelectionMode(Grid.SelectionMode.SINGLE);
@@ -195,7 +200,7 @@ public abstract class ItemView<T> extends VerticalLayout implements View {
         grid.setHeight("24em");
         add(grid);
         provider(provider);
-        rights(rights);
+        readonly(mode.readonly());
     }
 
     public Class<T> entityClass() {
@@ -214,21 +219,16 @@ public abstract class ItemView<T> extends VerticalLayout implements View {
         return (domain() != null) ? domain().registry() : null;
     }
 
-    public AccessRights rights() {
-        return rights;
-    }
-
-    public void rights(AccessRights rights) {
-        this.rights = rights;
-        buildMenu();
-    }
-
     public final Mode mode() {
-        return (Objects.nonNull(mode)) ? mode : (Objects.nonNull(rights) ? Mode.mode(rights.right()) : null);
+        return mode;
     }
 
-    public final void mode(Mode mode) {
-        this.mode = mode;
+    public final boolean readonly() {
+        return readonly;
+    }
+
+    public final void readonly(boolean readonly) {
+        this.readonly = readonly;
         buildMenu();
     }
 
@@ -240,10 +240,22 @@ public abstract class ItemView<T> extends VerticalLayout implements View {
         this.entity = entity;
     }
 
+    /**
+     * Returns true if the form is embedded in the view.
+     *
+     * @return true if the form is embedded in the view
+     * @see #isFormEmbedded(boolean)
+     */
     public boolean isFormEmbedded() {
         return isFormEmbedded;
     }
 
+    /**
+     * Set the form embedded attribute. If the form is embedded in the view, the form is displayed in the view. If the form is not embedded, the form is displayed
+     *
+     * @param isFormEmbedded new value of the property
+     * @see #isFormEmbedded()
+     */
     public final void isFormEmbedded(boolean isFormEmbedded) {
         this.isFormEmbedded = isFormEmbedded;
     }
@@ -254,6 +266,11 @@ public abstract class ItemView<T> extends VerticalLayout implements View {
 
     protected final void form(Supplier<ItemForm<T, ?>> supplier) {
         form = new LazyReference<>(supplier);
+        if (Objects.nonNull(form)) {
+            SingleSelect<Grid<T>, T> selection = grid.asSingleSelect();
+            selection.addValueChangeListener(e -> form.get().value(e.getValue()));
+        }
+
     }
 
     T selectedItem() {
@@ -327,42 +344,38 @@ public abstract class ItemView<T> extends VerticalLayout implements View {
         return filter;
     }
 
-    protected Grid<T> grid() {
+    protected final Grid<T> grid() {
         return grid;
     }
 
-    protected GridListDataView<T> dataView() {
+    protected final GridListDataView<T> dataView() {
         return dataView;
     }
 
     private void buildMenu() {
-        Mode mode = mode();
-        if (Mode.hasForm(mode)) {
-            if (Objects.nonNull(form)) {
-                form.ifPresent(o -> o.mode(mode));
-            }
+        if (mode() != Mode.LIST) {
             menu().removeAll();
             buildCrudMenu(mode);
-            SingleSelect<Grid<T>, T> selection = grid.asSingleSelect();
-            selection.addValueChangeListener(e -> form.get().value(e.getValue()));
         }
         addActions(menu());
     }
 
     protected void buildCrudMenu(Mode mode) {
-        menu().addItem(Mode.VIEW_TEXT, event -> event.getItem().ifPresent(o -> form().get().display(o)));
-        if (Objects.nonNull(mode) && !mode.readonly()) {
+        if (mode != Mode.LIST) {
+            menu().addItem(Mode.VIEW_TEXT, event -> event.getItem().ifPresent(o -> form().get().display(o)));
+        }
+        if (!mode.readonly()) {
             menu().add(new Hr());
-            menu().addItem(Mode.EDIT_TEXT, event -> event.getItem().ifPresent(o -> form().get().edit(o)));
-            menu().addItem(Mode.CREATE_TEXT, _ -> form.get().create());
-            menu().addItem(Mode.DUPLICATE_TEXT, event -> event.getItem().ifPresent(o -> form().get().duplicate(o)));
-            menu().addItem(Mode.DELETE_TEXT, event -> event.getItem().ifPresent(o -> form().get().delete(o)));
+            menu().addItem(Operation.EDIT_TEXT, event -> event.getItem().ifPresent(o -> form().get().edit(o)));
+            menu().addItem(Operation.CREATE_TEXT, _ -> form.get().create());
+            menu().addItem(Operation.DUPLICATE_TEXT, event -> event.getItem().ifPresent(o -> form().get().duplicate(o)));
+            menu().addItem(Operation.DELETE_TEXT, event -> event.getItem().ifPresent(o -> form().get().delete(o)));
         }
     }
 
     /**
      * Add custom actions to the context menu. Overwrite the menu if you want to add actions to the context menu.
-     * The mode of the view is available through the {@link #mode()}}. The access rights are available through the {@link #rights()}.method.
+     * The mode of the view is available through the {@link #mode()}}. The read-only attribute is available through the {@link #readonly()} method.
      * The menu can also be retrieved through the {@link #menu()} method.
      *
      * @param menu context menu of the grid

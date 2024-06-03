@@ -20,12 +20,12 @@ import com.vaadin.flow.component.html.Hr;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.PageTitle;
 import net.tangly.core.TypeRegistry;
-import net.tangly.core.domain.AccessRights;
 import net.tangly.erp.products.domain.Assignment;
 import net.tangly.erp.products.domain.Product;
 import net.tangly.erp.products.services.ProductsBoundedDomain;
 import net.tangly.ui.app.domain.Cmd;
 import net.tangly.ui.components.EntityView;
+import net.tangly.ui.components.Mode;
 import net.tangly.ui.components.MutableEntityForm;
 import net.tangly.ui.components.One2OneField;
 import org.jetbrains.annotations.NotNull;
@@ -56,8 +56,8 @@ class AssignmentsView extends EntityView<Assignment> {
         }
     }
 
-    public AssignmentsView(@NotNull ProductsBoundedDomainUi domain,@NotNull AccessRights rights) {
-        super(Assignment.class, domain, domain.assignments(), rights);
+    public AssignmentsView(@NotNull ProductsBoundedDomainUi domain,@NotNull Mode mode) {
+        super(Assignment.class, domain, domain.assignments(), mode);
         form(() -> new AssignmentForm(this, domain.domain().registry()));
         init();
     }

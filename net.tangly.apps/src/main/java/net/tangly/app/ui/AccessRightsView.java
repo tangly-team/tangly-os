@@ -25,6 +25,7 @@ import net.tangly.core.providers.ProviderInMemory;
 import net.tangly.ui.app.domain.BoundedDomainUi;
 import net.tangly.ui.components.ItemForm;
 import net.tangly.ui.components.ItemView;
+import net.tangly.ui.components.Mode;
 import net.tangly.ui.components.VaadinUtils;
 import org.jetbrains.annotations.NotNull;
 
@@ -83,8 +84,8 @@ public class AccessRightsView extends ItemView<AccessRights> {
         }
     }
 
-    public AccessRightsView(@NotNull BoundedDomainUi<?> domain, @NotNull AccessRights rights) {
-        super(AccessRights.class, domain, ProviderInMemory.of(), null, rights);
+    public AccessRightsView(@NotNull BoundedDomainUi<?> domain, @NotNull Mode mode) {
+        super(AccessRights.class, domain, ProviderInMemory.of(), null, mode);
         form(() -> new AccessRightsForm(this));
         init();
     }

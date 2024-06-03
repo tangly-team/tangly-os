@@ -19,7 +19,6 @@ import com.vaadin.flow.component.grid.GridVariant;
 import com.vaadin.flow.component.grid.dataview.GridListDataView;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.data.provider.DataProvider;
-import net.tangly.core.domain.AccessRights;
 import net.tangly.erp.crm.domain.Contract;
 import net.tangly.erp.crm.domain.InteractionCode;
 import net.tangly.erp.crm.services.CrmBusinessLogic;
@@ -47,7 +46,7 @@ public class AnalyticsCrmView extends AnalyticsView {
 
     private GridListDataView<Contract> dataView;
 
-    public AnalyticsCrmView(@NotNull CrmBoundedDomainUi domain, @NotNull InvoicesBoundedDomain invoicesDomain, @NotNull AccessRights rights) {
+    public AnalyticsCrmView(@NotNull CrmBoundedDomainUi domain, @NotNull InvoicesBoundedDomain invoicesDomain) {
         this.domain = domain;
         this.invoicesLogic = invoicesDomain.logic();
         initialize();

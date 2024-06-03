@@ -26,6 +26,7 @@ import net.tangly.erp.products.domain.Effort;
 import net.tangly.erp.products.services.ProductsBoundedDomain;
 import net.tangly.ui.app.domain.BoundedDomainUi;
 import net.tangly.ui.app.domain.DomainView;
+import net.tangly.ui.components.Mode;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
@@ -42,10 +43,10 @@ public class ProductsBoundedDomainUi extends BoundedDomainUi<ProductsBoundedDoma
         super(domain);
         efforts = domain.realm().efforts();
         assignments = domain.realm().assignments();
-        addView(PRODUCTS, new LazyReference<>(() -> new ProductsView(this, this.rights())));
-        addView(WORK_CONTRACTS, new LazyReference<>(() -> new WorkContractsView(this, this.rights())));
-        addView(ASSIGNMENTS, new LazyReference<>(() -> new AssignmentsView(this, this.rights())));
-        addView(EFFORTS, new LazyReference<>(() -> new EffortsView(this, this.rights())));
+        addView(PRODUCTS, new LazyReference<>(() -> new ProductsView(this, Mode.EDITABLE)));
+        addView(WORK_CONTRACTS, new LazyReference<>(() -> new WorkContractsView(this, Mode.EDITABLE)));
+        addView(ASSIGNMENTS, new LazyReference<>(() -> new AssignmentsView(this, Mode.EDITABLE)));
+        addView(EFFORTS, new LazyReference<>(() -> new EffortsView(this, Mode.EDITABLE)));
         addView(ENTITIES, new LazyReference<>(() -> new DomainView(this)));
         currentView(view(PRODUCTS).orElseThrow());
     }

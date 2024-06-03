@@ -13,12 +13,16 @@
 
 package net.tangly.ui.app.domain;
 
-import net.tangly.core.domain.AccessRights;
+import net.tangly.ui.components.Mode;
 
 public interface View {
-    void rights(AccessRights rights);
+    default Mode mode() {
+        return Mode.LIST;
+    }
 
-    AccessRights rights();
+    boolean readonly();
+
+    void readonly(boolean readonly);
 
     void refresh();
 }

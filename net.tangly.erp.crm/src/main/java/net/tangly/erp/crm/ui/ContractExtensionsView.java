@@ -20,17 +20,17 @@ import com.vaadin.flow.data.renderer.NumberRenderer;
 import net.tangly.core.HasDateRange;
 import net.tangly.core.HasName;
 import net.tangly.core.HasText;
-import net.tangly.core.domain.AccessRights;
 import net.tangly.core.providers.ProviderInMemory;
 import net.tangly.erp.crm.domain.ContractExtension;
 import net.tangly.ui.components.ItemView;
+import net.tangly.ui.components.Mode;
 import net.tangly.ui.components.VaadinUtils;
 import org.jetbrains.annotations.NotNull;
 
 public class ContractExtensionsView extends ItemView<ContractExtension> {
 
-    public ContractExtensionsView(@NotNull CrmBoundedDomainUi domain, @NotNull AccessRights rights) {
-        super(ContractExtension.class, domain, ProviderInMemory.of(), null, rights);
+    public ContractExtensionsView(@NotNull CrmBoundedDomainUi domain, @NotNull Mode mode) {
+        super(ContractExtension.class, domain, ProviderInMemory.of(), null, mode);
         init();
     }
 
