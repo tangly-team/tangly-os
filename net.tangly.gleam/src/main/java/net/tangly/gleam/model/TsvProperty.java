@@ -86,6 +86,18 @@ public record TsvProperty<T, U>(List<String> columns, Function<T, U> getter, BiC
         return of(column, getter, setter, v -> (Strings.isNullOrBlank(v)) ? BigDecimal.ZERO : new BigDecimal(v), BigDecimal::toPlainString);
     }
 
+    public static <T> TsvProperty<T, Boolean> ofBoolean(@NotNull String column, Function<T, Boolean> getter) {
+        return of(column, getter, null, v -> "Y".equals(v), u -> u.booleanValue() ? "Y" : "N");
+    }
+
+    public static <T> TsvProperty<T, Boolean> ofBoolean(@NotNull String column, Function<T, Boolean> getter, BiConsumer<T, Boolean> setter) {
+        return of(column, getter, setter, v -> "Y".equals(v), u -> u.booleanValue() ? "Y" : "N");
+    }
+
+    public static <T, U extends Enum<U>> TsvProperty<T, U> ofEnum(@NotNull Class<U> clazz, @NotNull String column, Function<T, U> getter) {
+        return of(column, getter, null, v -> valueOf(clazz, v), U::name);
+    }
+
     public static <T, U extends Enum<U>> TsvProperty<T, U> ofEnum(@NotNull Class<U> clazz, @NotNull String column, Function<T, U> getter, BiConsumer<T, U> setter) {
         return of(column, getter, setter, v -> valueOf(clazz, v), U::name);
     }

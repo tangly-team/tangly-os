@@ -53,7 +53,6 @@ public class CrmTsvHdl {
     private static final String EMAIL = "email";
     private static final String AUTHOR = "author";
     private static final String TAGS = "tags";
-
     private final CrmRealm realm;
 
     public CrmTsvHdl(@NotNull CrmRealm realm) {
@@ -232,7 +231,7 @@ public class CrmTsvHdl {
     private static TsvEntity<Lead> createTsvLead() {
         Function<CSVRecord, Lead> imports = (CSVRecord csv) -> new Lead(LocalDate.parse(get(csv, DATE)),
             Enum.valueOf(LeadCode.class, get(csv, TsvHdl.CODE)), get(csv, FIRSTNAME), get(csv, LASTNAME),
-            Enum.valueOf(GenderCode.class, get(csv, TsvHdl.GENDER)), get(csv, "company"), PhoneNr.of(get(csv, "phoneNr")),
+            Enum.valueOf(GenderCode.class, get(csv, GENDER)), get(csv, "company"), PhoneNr.of(get(csv, "phoneNr")),
             EmailAddress.of(get(csv, EMAIL)), get(csv, "linkedIn"), TsvProperty.valueOf(ActivityCode.class, get(csv, "activity")), get(csv, TEXT));
 
         List<TsvProperty<Lead, ?>> fields = List.of(TsvProperty.ofDate(DATE, Lead::date, null),

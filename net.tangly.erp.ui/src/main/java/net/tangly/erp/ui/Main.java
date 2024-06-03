@@ -114,34 +114,40 @@ public final class Main {
             application.apps().realm().users().update(createDefaultRwUser());
             application.apps().realm().users().update(createDefaultRoUser());
             application.apps().realm().users().update(createRestrictedUser());
+            application.apps().realm().users().update(createAdminUser());
         }
         if (application.isEnabled(CrmBoundedDomain.DOMAIN)) {
             var realm = application.inMemory() ? new CrmEntities() : new CrmEntities(Path.of(application.databases(), CrmBoundedDomain.DOMAIN));
-            var domain = new CrmBoundedDomain(realm, new CrmBusinessLogic(realm), new CrmAdapter(realm, Path.of(Application.instance().imports(CrmBoundedDomain.DOMAIN))),
+            var domain = new CrmBoundedDomain(realm, new CrmBusinessLogic(realm),
+                new CrmAdapter(realm, Path.of(Application.instance().imports(CrmBoundedDomain.DOMAIN))),
                 application.registry());
             application.registerBoundedDomain(domain);
         }
         if (application.isEnabled(InvoicesBoundedDomain.DOMAIN)) {
             var realm = application.inMemory() ? new InvoicesEntities() : new InvoicesEntities(Path.of(application.databases(), InvoicesBoundedDomain.DOMAIN));
-            var domain = new InvoicesBoundedDomain(realm, new InvoicesBusinessLogic(realm), new InvoicesAdapter(realm, Path.of(application.imports(InvoicesBoundedDomain.DOMAIN)),
-                Path.of(application.reports(InvoicesBoundedDomain.DOMAIN))), application.registry());
+            var domain = new InvoicesBoundedDomain(realm, new InvoicesBusinessLogic(realm),
+                new InvoicesAdapter(realm, Path.of(application.imports(InvoicesBoundedDomain.DOMAIN)),
+                    Path.of(application.reports(InvoicesBoundedDomain.DOMAIN))), application.registry());
             application.registerBoundedDomain(domain);
         }
         if (application.isEnabled(LedgerBoundedDomain.DOMAIN)) {
             var realm = application.inMemory() ? new LedgerEntities() : new LedgerEntities(Path.of(application.databases(), LedgerBoundedDomain.DOMAIN));
-            var domain = new LedgerBoundedDomain(realm, new LedgerBusinessLogic(realm), new LedgerAdapter(realm, Path.of(Application.instance().imports(LedgerBoundedDomain.DOMAIN)),
-                Path.of(application.reports(LedgerBoundedDomain.DOMAIN))), application.registry());
+            var domain = new LedgerBoundedDomain(realm, new LedgerBusinessLogic(realm),
+                new LedgerAdapter(realm, Path.of(Application.instance().imports(LedgerBoundedDomain.DOMAIN)),
+                    Path.of(application.reports(LedgerBoundedDomain.DOMAIN))), application.registry());
             application.registerBoundedDomain(domain);
         }
         if (application.isEnabled(ProductsBoundedDomain.DOMAIN)) {
             var realm = application.inMemory() ? new ProductsEntities() : new ProductsEntities(Path.of(application.databases(), ProductsBoundedDomain.DOMAIN));
             var logic = new ProductsBusinessLogic(realm);
-            var domain = new ProductsBoundedDomain(realm, logic, new ProductsAdapter(realm, logic, Path.of(Application.instance().imports(ProductsBoundedDomain.DOMAIN)),
-                Path.of(application.reports(ProductsBoundedDomain.DOMAIN))), application.registry());
+            var domain = new ProductsBoundedDomain(realm, logic,
+                new ProductsAdapter(realm, logic, Path.of(Application.instance().imports(ProductsBoundedDomain.DOMAIN)),
+                    Path.of(application.reports(ProductsBoundedDomain.DOMAIN))), application.registry());
             application.registerBoundedDomain(domain);
         }
         if (application.isEnabled(CollaboratorsBoundedDomain.DOMAIN)) {
-            var realm = application.inMemory() ? new CollaboratorsEntities() : new CollaboratorsEntities(Path.of(application.databases(), CollaboratorsBoundedDomain.DOMAIN));
+            var realm = application.inMemory() ? new CollaboratorsEntities() : new CollaboratorsEntities(
+                Path.of(application.databases(), CollaboratorsBoundedDomain.DOMAIN));
             var domain = new CollaboratorsBoundedDomain(realm, new CollaboratorsBusinessLogic(realm), new CollaboratorsAdapter(realm,
                 Path.of(Application.instance().imports(CollaboratorsBoundedDomain.DOMAIN))), application.registry());
             application.registerBoundedDomain(domain);
@@ -192,6 +198,21 @@ public final class Main {
             new AccessRights(username, CrmBoundedDomain.DOMAIN, AccessRightsCode.restrictedUser),
             new AccessRights(username, ProductsBoundedDomain.DOMAIN, AccessRightsCode.restrictedUser),
             new AccessRights(username, CollaboratorsBoundedDomain.DOMAIN, AccessRightsCode.restrictedUser));
+        return new User(username, passwordHash, passwordSalt, true, null, rights, "marcel.baumann@tangly.net");
+    }
+
+    private static User createAdminUser() {
+        final String username = "aeon-ad";
+        String passwordSalt = User.newSalt();
+        String passwordHash = User.encryptPassword("aeon", passwordSalt);
+        var rights = List.of(
+            new AccessRights(username, CrmBoundedDomain.DOMAIN, AccessRightsCode.domainAdmin),
+            new AccessRights(username, ProductsBoundedDomain.DOMAIN, AccessRightsCode.domainAdmin),
+            new AccessRights(username, InvoicesBoundedDomain.DOMAIN, AccessRightsCode.domainAdmin),
+            new AccessRights(username, LedgerBoundedDomain.DOMAIN, AccessRightsCode.domainAdmin),
+            new AccessRights(username, ProductsBoundedDomain.DOMAIN, AccessRightsCode.domainAdmin),
+            new AccessRights(username, CollaboratorsBoundedDomain.DOMAIN, AccessRightsCode.domainAdmin),
+            new AccessRights(username, AppsBoundedDomain.DOMAIN, AccessRightsCode.domainAdmin));
         return new User(username, passwordHash, passwordSalt, true, null, rights, "marcel.baumann@tangly.net");
     }
 }

@@ -17,9 +17,14 @@ import net.tangly.app.services.AppsPort;
 import net.tangly.app.services.AppsRealm;
 import org.jetbrains.annotations.NotNull;
 
+import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 
 public class AppsAdapter implements AppsPort {
+    public static final String USERS_TSV = "users.tsv";
+    public static final String ACCESS_RIGHTS_TSV = "access-rights.tsv";
+
     private final AppsRealm realm;
 
     private final Path dataFolder;
@@ -36,10 +41,19 @@ public class AppsAdapter implements AppsPort {
 
     @Override
     public void importEntities() {
+        var handler = new AppsTsvHdl(realm());
+        try (var usersReader = Files.newBufferedReader(dataFolder.resolve(USERS_TSV)); var accessRightsReader = Files.newBufferedReader(
+            dataFolder.resolve(ACCESS_RIGHTS_TSV))) {
+            handler.importUsers(usersReader, accessRightsReader, dataFolder.toString());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
     public void exportEntities() {
+        var handler = new AppsTsvHdl(realm());
+        handler.exportUsers(dataFolder.resolve(USERS_TSV), dataFolder.resolve(ACCESS_RIGHTS_TSV));
     }
 
     @Override

@@ -108,7 +108,7 @@ public class ProductsTsvHdl {
     private TsvEntity<Effort> createTsvEffort() {
         List<TsvProperty<Effort, ?>> fields = List.of(TsvProperty.of("date", Effort::date, Effort::date, TsvProperty.CONVERT_DATE_FROM),
             TsvProperty.ofInt("durationInMinutes", Effort::duration, Effort::duration),
-            TsvProperty.ofString(TEXT, Effort::text, Effort::text),
+            TsvProperty.ofString(TsvHdl.TEXT, Effort::text, Effort::text),
             TsvProperty.of("assignmentOid", Effort::assignment, Effort::assignment, e -> findAssignmentByOid(e).orElse(null), convertFoidTo()),
             TsvProperty.ofString("contractId", Effort::contractId, Effort::contractId));
         return TsvEntity.of(Effort.class, fields, Effort::new);

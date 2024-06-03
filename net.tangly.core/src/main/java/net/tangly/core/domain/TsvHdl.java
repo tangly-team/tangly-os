@@ -37,18 +37,18 @@ import java.util.function.BiConsumer;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 
-import static net.tangly.core.tsv.TsvHdlCore.NAME;
-import static net.tangly.core.tsv.TsvHdlCore.TEXT;
-
 public class TsvHdl {
     public static final CSVFormat FORMAT =
-        CSVFormat.Builder.create().setDelimiter('\t').setQuote('"').setRecordSeparator('\n').setIgnoreSurroundingSpaces(true).setHeader().setSkipHeaderRecord(true)
+        CSVFormat.Builder.create().setDelimiter('\t').setQuote('"').setRecordSeparator('\n').setIgnoreSurroundingSpaces(true).setHeader().setSkipHeaderRecord(
+                true)
             .setIgnoreHeaderCase(true).setIgnoreEmptyLines(true).build();
 
     public static final String OID = HasOid.OID;
     public static final String ID = HasMutableId.ID;
     public static final String CODE = "code";
-    public static final String GENDER = "gender";
+    public static final String NAME = "name";
+    public static final String TEXT = "text";
+    public static final String DOMAIN = "domain";
 
     private TsvHdl() {
     }
@@ -92,6 +92,11 @@ public class TsvHdl {
     public static BigDecimal parseBigDecimal(@NotNull CSVRecord record, @NotNull String fieldName) {
         var value = record.get(fieldName);
         return Strings.isNullOrBlank(value) ? BigDecimal.ZERO : new BigDecimal(value);
+    }
+
+    public static <T extends Enum<T>> T parseEnum(@NotNull CSVRecord record, @NotNull String fieldName, @NotNull Class<T> enumType) {
+        var value = record.get(fieldName);
+        return Strings.isNullOrBlank(value) ? null : Enum.valueOf(enumType, value);
     }
 
     public static <T> void importEntities(@NotNull String domain, @NotNull Reader in, String source, @NotNull TsvEntity<T> tsvEntity, @NotNull Provider<T> provider) {
@@ -175,9 +180,11 @@ public class TsvHdl {
                         Map.of("filename", source, "object", imported));
                 }
             }
-            EventData.log(EventData.IMPORT, domain, EventData.Status.INFO, STR."\{tsvEntity.clazz().getSimpleName()} imported objects", Map.of("filename", source, "count", counter));
+            EventData.log(EventData.IMPORT, domain, EventData.Status.INFO, STR."\{tsvEntity.clazz().getSimpleName()} imported objects",
+                Map.of("filename", source, "count", counter));
         } catch (Exception e) {
-            EventData.log(EventData.IMPORT, domain, EventData.Status.FAILURE, "Entities not imported from TSV file", Map.of("filename", source, "csv-record", loggedRecord), e);
+            EventData.log(EventData.IMPORT, domain, EventData.Status.FAILURE, "Entities not imported from TSV file",
+                Map.of("filename", source, "csv-record", loggedRecord), e);
         }
     }
 
@@ -197,7 +204,8 @@ public class TsvHdl {
             }
             EventData.log(EventData.EXPORT, domain, EventData.Status.INFO, "exported to TSV file", Map.of("filename", path, "counter", counter));
         } catch (Exception e) {
-            EventData.log(EventData.EXPORT, domain, EventData.Status.FAILURE, "Entities exported to TSV file", Map.of("filename", path, "entity", loggedEntity), e);
+            EventData.log(EventData.EXPORT, domain, EventData.Status.FAILURE, "Entities exported to TSV file", Map.of("filename", path, "entity",
+                Objects.nonNull(loggedEntity) ? loggedEntity : "null"), e);
         }
     }
 }
