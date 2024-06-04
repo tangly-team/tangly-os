@@ -1,13 +1,13 @@
 [versions]
 assertj-version = '3.26.0'
-flyway-version = '10.13.0'
+flyway-version = '10.14.0'
 junit-version = '5.10.2'
 log4j2-version = '2.23.0'
 javalin-version = '5.6.4'
 openapi-version = "5.6.4"
 eclipsestore-version = '1.3.2'
 mustang-version = '2.11.0'
-vaadin-version = '24.3.12'
+vaadin-version = '24.3.13'
 
 [plugins]
 vaadin = { id = "com.vaadin", version.ref = "vaadin-version" }
@@ -55,6 +55,7 @@ google-libphonenumber = "com.googlecode.libphonenumber:libphonenumber:8.13.38"
 google-protobuf = "com.google.protobuf:protobuf-java:3.25.3"
 
 jakarta-mail = "jakarta.mail:jakarta.mail-api:2.1.3"
+javamoney ="org.javamoney:moneta:1.4.4"
 eclipse-angus-mail = "org.eclipse.angus:angus-mail:2.0.3"
 
 jbibtext = "org.jbibtex:jbibtex:1.0.20"
