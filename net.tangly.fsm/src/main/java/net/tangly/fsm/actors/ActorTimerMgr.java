@@ -18,6 +18,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.ExecutorService;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Function;
 
@@ -26,7 +27,8 @@ public class ActorTimerMgr<T> extends ActorImp<T> implements Actor<T> {
         CREATE, CANCEL, ABORT
     }
 
-    public record Timer<T>(Actor<T> client, String name, long alarmTimeInNanoSeconds, boolean recurring, long delayInNanoSeconds) implements Comparable<Timer<T>> {
+    public record Timer<T>(Actor<T> client, String name, long alarmTimeInNanoSeconds, boolean recurring, long delayInNanoSeconds)
+        implements Comparable<Timer<T>> {
         static <T> Timer<T> ofOnceAbsolute(Actor<T> client, String name, long absolute, TimeUnit unit) {
             return new Timer<>(client, name, TimeUnit.NANOSECONDS.convert(absolute, unit), false, 0);
         }
@@ -52,8 +54,9 @@ public class ActorTimerMgr<T> extends ActorImp<T> implements Actor<T> {
     public record TimerCmd<T>(TimerCommands command, Timer<T> timer) {
     }
 
-    public ActorTimerMgr(@NotNull String name, @NotNull Function<T, TimerCmd<T>> extractor, @NotNull Function<Timer<T>, T> builder) {
-        super(name);
+    public ActorTimerMgr(@NotNull String name, @NotNull ExecutorService executor, @NotNull Function<T, TimerCmd<T>> extractor,
+                         @NotNull Function<Timer<T>, T> builder) {
+        super(name, executor);
         this.timers = new ArrayList<>();
         this.extractor = extractor;
         this.builder = builder;
@@ -106,7 +109,8 @@ public class ActorTimerMgr<T> extends ActorImp<T> implements Actor<T> {
     }
 
     private void scheduleNextOccurrence(@NotNull Timer<T> timer) {
-        long alarmTime = timer.alarmTimeInNanoSeconds() == 0 ? System.nanoTime() + timer.delayInNanoSeconds() : timer.alarmTimeInNanoSeconds() + timer.delayInNanoSeconds();
+        long alarmTime =
+            timer.alarmTimeInNanoSeconds() == 0 ? System.nanoTime() + timer.delayInNanoSeconds() : timer.alarmTimeInNanoSeconds() + timer.delayInNanoSeconds();
         timers.add(new Timer<>(timer.client(), timer.name(), alarmTime, timer.recurring(), timer.delayInNanoSeconds()));
         Collections.sort(timers);
     }

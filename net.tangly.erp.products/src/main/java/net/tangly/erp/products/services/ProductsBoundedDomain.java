@@ -13,10 +13,12 @@
 
 package net.tangly.erp.products.services;
 
+import net.tangly.app.Application;
 import net.tangly.core.TagType;
 import net.tangly.core.TypeRegistry;
 import net.tangly.core.domain.BoundedDomain;
 import net.tangly.core.domain.DomainEntity;
+import net.tangly.erp.crm.services.CrmBoundedDomain;
 import net.tangly.erp.products.domain.Assignment;
 import net.tangly.erp.products.domain.Effort;
 import net.tangly.erp.products.domain.Product;
@@ -48,5 +50,10 @@ public class ProductsBoundedDomain extends BoundedDomain<ProductsRealm, Products
     @Override
     public ProductsRealm realm() {
         return super.realm();
+    }
+
+    @Override
+    public void startup() {
+        Application.instance().getBoundedDomain(CrmBoundedDomain.DOMAIN).ifPresent(o -> o.subscribe(new CrmEventsProcessor(this)));
     }
 }

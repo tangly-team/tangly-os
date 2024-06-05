@@ -42,7 +42,7 @@ public abstract class MutableEntityForm<T extends MutableEntity, V extends Entit
         this.supplier = supplier;
         text = new AsciiDocField("Text");
         binder().bind(text, HasMutableText::text, HasMutableText::text);
-        entity = new EntityField<>();
+        entity = new EntityField<>("Entity");
         if (HasMutableComments.class.isAssignableFrom(entityClass())) {
             comments = new One2ManyOwnedField<>(new CommentsView(parent.domainUi(), parent.mode()));
         } else {

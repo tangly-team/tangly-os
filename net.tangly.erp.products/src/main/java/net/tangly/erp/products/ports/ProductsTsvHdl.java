@@ -13,6 +13,7 @@
 
 package net.tangly.erp.products.ports;
 
+import net.tangly.core.DateRange;
 import net.tangly.core.domain.TsvHdl;
 import net.tangly.core.providers.Provider;
 import net.tangly.erp.products.domain.Assignment;
@@ -97,11 +98,12 @@ public class ProductsTsvHdl {
 
     private TsvEntity<WorkContract> createTsvWorkContract() {
         Function<CSVRecord, WorkContract> imports = (CSVRecord obj) -> new WorkContract(get(obj, ID), get(obj, "mainContractId"),
-            parseDate(obj, FROM_DATE), parseDate(obj, TO_DATE), Locale.forLanguageTag(get(obj, LOCALE).toLowerCase()),
+            DateRange.of(parseDate(obj, FROM_DATE), parseDate(obj, TO_DATE)), Locale.forLanguageTag(get(obj, LOCALE).toLowerCase()),
             parseInt(obj, "budgetInHours"));
-        List<TsvProperty<WorkContract, ?>> fields = List.of(TsvProperty.ofString(ID, WorkContract::id), TsvProperty.ofString("mainContractId", WorkContract::mainContractId),
-            TsvProperty.ofDate(FROM_DATE, WorkContract::from, null), TsvProperty.ofDate(TO_DATE, WorkContract::to, null),
-            TsvProperty.ofString(LOCALE, o -> o.locale().getLanguage()), TsvProperty.ofInt("budgetInHours", WorkContract::budgetInHours, null));
+        List<TsvProperty<WorkContract, ?>> fields =
+            List.of(TsvProperty.ofString(ID, WorkContract::id), TsvProperty.ofString("mainContractId", WorkContract::mainContractId),
+                TsvProperty.ofDate(FROM_DATE, o -> o.range().from(), null), TsvProperty.ofDate(TO_DATE, o -> o.range().to(), null),
+                TsvProperty.ofString(LOCALE, o -> o.locale().getLanguage()), TsvProperty.ofInt("budgetInHours", WorkContract::budgetInHours, null));
         return TsvEntity.of(WorkContract.class, fields, imports);
     }
 

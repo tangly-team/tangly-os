@@ -18,8 +18,11 @@ import net.tangly.core.Address;
 import net.tangly.core.BankConnection;
 import net.tangly.core.MutableEntityExtended;
 import net.tangly.core.MutableEntityExtendedImp;
+import net.tangly.erp.crm.events.ContractSignedEvent;
+import org.javamoney.moneta.FastMoney;
 import org.jetbrains.annotations.NotNull;
 
+import javax.money.Monetary;
 import java.math.BigDecimal;
 import java.util.*;
 
@@ -48,6 +51,11 @@ public class Contract extends MutableEntityExtendedImp implements MutableEntityE
     public Contract(long oid) {
         super(oid);
         contractExtensions = new ArrayList<>();
+    }
+
+    public static ContractSignedEvent of(Contract contract) {
+        var amountWithoutVat = FastMoney.of(contract.amountWithoutVat(), Monetary.getCurrency(contract.currency().getCurrencyCode()));
+        return new ContractSignedEvent(contract.id(), null, contract.range(), contract.locale(), amountWithoutVat, contract.budgetInHours());
     }
 
     @Override

@@ -34,22 +34,25 @@ public interface Port<R extends Realm> {
     Pattern PATTERN = Pattern.compile("\\d{4}-.*");
 
     /**
-     * Import all entities of the bounded domain from the file system. All TSV, JSON, TOML, and YAML files are imported.
-     * The domain is responsible for the order of the import and the handling of the entities. A bounded domain should not depend on other domains to perform the operation.
+     * Import all entities of the bounded domain from the file system.
+     * All TSV, JSON, TOML, and YAML files are imported.
+     * The domain is responsible for the order of the import and the handling of the entities.
+     * A bounded domain should not depend on other domains to perform the operation.
      *
      * @see #exportEntities()
      */
     void importEntities();
 
     /**
-     * Export all entities of the bounded domain to the file system as TSV, JSON, TOML, and YAML files. A bounded domain should not depend on other domains to perform the operation.
+     * Export all entities of the bounded domain to the file system as TSV, JSON, TOML, and YAML files.
+     * A bounded domain should not depend on other domains to perform the operation.
      *
      * @see #importEntities()
      */
     void exportEntities();
 
     /**
-     * Clear all entities of the bounded domain.
+     * Clear all entities of the bounded domain. Upon execution, the domain is empty. Use with caution as the operation is not reversible.
      */
     void clearEntities();
 

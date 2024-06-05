@@ -39,7 +39,7 @@ public abstract class EntityForm<T extends Entity, V extends EntityView<T>> exte
         super(parent);
         text = new AsciiDocField("Text");
         binder().bindReadOnly(text, HasText::text);
-        entity = new EntityField<>();
+        entity = new EntityField<>("Entity");
         if (HasComments.class.isAssignableFrom(entityClass())) {
             comments = new One2ManyOwnedField<>(new CommentsView(parent.domainUi(), parent.mode()));
             binder().bindReadOnly(comments, o -> ((EntityExtended) o).comments());

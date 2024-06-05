@@ -21,6 +21,7 @@ import com.vaadin.flow.component.textfield.IntegerField;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.ValidationException;
 import com.vaadin.flow.router.PageTitle;
+import net.tangly.core.DateRange;
 import net.tangly.erp.products.domain.Assignment;
 import net.tangly.erp.products.domain.Effort;
 import net.tangly.erp.products.domain.WorkContract;
@@ -73,19 +74,20 @@ class WorkContractsView extends ItemView<WorkContract> {
             binder().bindReadOnly(id, WorkContract::id);
             binder().bindReadOnly(mainContractId, WorkContract::mainContractId);
             binder().bindReadOnly(locale, WorkContract::locale);
-            binder().bindReadOnly(from, WorkContract::from);
-            binder().bindReadOnly(to, WorkContract::to);
+            binder().bindReadOnly(from, o -> o.range().from());
+            binder().bindReadOnly(to, o -> o.range().to());
             binder().bindReadOnly(budgetInHours, WorkContract::budgetInHours);
             return form;
         }
 
         @Override
         protected WorkContract createOrUpdateInstance(WorkContract entity) throws ValidationException {
-            return new WorkContract(fromBinder("id"), fromBinder("mainContractId"), fromBinder("form"), fromBinder("to"), fromBinder("locale"), fromBinder("budgetInHours"));
+            return new WorkContract(fromBinder("id"), fromBinder("mainContractId"), DateRange.of(fromBinder("form"), fromBinder("to")), fromBinder("locale"),
+                fromBinder("budgetInHours"));
         }
     }
 
-    public WorkContractsView(@NotNull ProductsBoundedDomainUi domain,@NotNull Mode mode) {
+    public WorkContractsView(@NotNull ProductsBoundedDomainUi domain, @NotNull Mode mode) {
         super(WorkContract.class, domain, domain.domain().realm().contracts(), new WorkContractFilter(), mode);
         form(() -> new WorkContractForm(this));
         init();
@@ -100,17 +102,21 @@ class WorkContractsView extends ItemView<WorkContract> {
         Grid<WorkContract> grid = grid();
         grid.addColumn(WorkContract::id).setKey("id").setHeader("Id").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(WorkContract::mainContractId).setKey("context").setHeader("Context").setAutoWidth(true).setResizable(true).setSortable(true);
-        grid.addColumn(WorkContract::from).setKey("from").setHeader("From").setAutoWidth(true).setResizable(true).setSortable(true);
-        grid.addColumn(WorkContract::to).setKey("to").setHeader("To").setAutoWidth(true).setResizable(true).setSortable(true);
+        grid.addColumn(o -> o.range().from()).setKey("from").setHeader("From").setAutoWidth(true).setResizable(true).setSortable(true);
+        grid.addColumn(o -> o.range().to()).setKey("to").setHeader("To").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(WorkContract::locale).setKey("locale").setHeader("Locale").setAutoWidth(true).setResizable(true).setSortable(true);
-        grid.addColumn(WorkContract::budgetInHours).setKey("budgetInHours").setHeader("Budget in Hours").setAutoWidth(true).setResizable(true).setSortable(true);
+        grid.addColumn(WorkContract::budgetInHours).setKey("budgetInHours").setHeader("Budget in Hours").setAutoWidth(true).setResizable(true)
+            .setSortable(true);
         grid.addColumn(this::effortPerContract).setKey("effortInHours").setHeader("Effort in Hours").setAutoWidth(true).setResizable(true).setSortable(true);
-        grid.addColumn(this::budgetForMainContract).setKey("mainBudgetInHours").setHeader("Main Budget in Hours").setAutoWidth(true).setResizable(true).setSortable(true);
-        grid.addColumn(this::effortForMainContract).setKey("mainEffortInHours").setHeader("Main Effort in Hours").setAutoWidth(true).setResizable(true).setSortable(true);
+        grid.addColumn(this::budgetForMainContract).setKey("mainBudgetInHours").setHeader("Main Budget in Hours").setAutoWidth(true).setResizable(true)
+            .setSortable(true);
+        grid.addColumn(this::effortForMainContract).setKey("mainEffortInHours").setHeader("Main Effort in Hours").setAutoWidth(true).setResizable(true)
+            .setSortable(true);
     }
 
     private BigDecimal effortPerContract(@NotNull WorkContract contract) {
-        return Assignment.convert(domain().realm().efforts().items().stream().filter(o -> o.contractId().equals(contract.id())).mapToInt(Effort::duration).sum(), ChronoUnit.HOURS);
+        return Assignment.convert(
+            domain().realm().efforts().items().stream().filter(o -> o.contractId().equals(contract.id())).mapToInt(Effort::duration).sum(), ChronoUnit.HOURS);
     }
 
     private BigDecimal budgetForMainContract(@NotNull WorkContract contract) {

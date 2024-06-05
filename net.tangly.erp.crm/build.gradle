@@ -25,12 +25,14 @@ project.description = "Customer Relationships Management bounded domain using Ja
 
 dependencies {
     implementation project(':net.tangly.apps')
-    implementation project(':net.tangly.erp.invoices')
     implementation project(':net.tangly.commons')
     implementation project(':net.tangly.core')
     implementation project(':net.tangly.gleam')
     implementation project(':net.tangly.ui')
 
+    implementation project(':net.tangly.erp.invoices')
+
+    implementation(libs.javamoney)
     implementation(libs.vaadin.core)
     implementation(libs.vaadin.embedded.jetty)
     implementation(libs.javalin) {

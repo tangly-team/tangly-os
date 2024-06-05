@@ -21,6 +21,9 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Flow;
+import java.util.concurrent.SubmissionPublisher;
 
 /**
  * A bounded domain as defined in the DDD approach has a domain-specific model and a set of adapters.
@@ -44,6 +47,26 @@ public class BoundedDomain<R extends Realm, B, P extends Port<R>> {
     private final P port;
     private final B logic;
     private final transient TypeRegistry registry;
+    private final SubmissionPublisher<Object> channel;
+    private final SubmissionPublisher<Object> internalChannel;
+
+    @FunctionalInterface
+    public interface EventListener extends  Flow.Subscriber<Object>{
+        @Override
+        default void onComplete() {
+        }
+
+        @Override
+        default void onError(Throwable throwable) {
+        }
+
+        @Override
+        default void onSubscribe(Flow.Subscription subscription) {
+            subscription.request(Long.MAX_VALUE);
+        }
+
+        void onNext(Object event);
+    }
 
     /**
      * Constructor of the bounded domain.
@@ -60,6 +83,8 @@ public class BoundedDomain<R extends Realm, B, P extends Port<R>> {
         this.logic = logic;
         this.port = port;
         this.registry = registry;
+        channel = new SubmissionPublisher<>(Executors.newVirtualThreadPerTaskExecutor(), Flow.defaultBufferSize());
+        internalChannel = new SubmissionPublisher<>(Executors.newVirtualThreadPerTaskExecutor(), Flow.defaultBufferSize());
     }
 
     protected static <I extends HasOid & HasMutableTags> void addTagCounts(@NotNull TypeRegistry registry, @NotNull Provider<I> provider, Map<TagType<?>, Integer> counts) {
@@ -68,6 +93,22 @@ public class BoundedDomain<R extends Realm, B, P extends Port<R>> {
 
     protected static <I extends HasTags> void addTagCounts(@NotNull TypeRegistry registry, @NotNull List<I> entities, Map<TagType<?>, Integer> counts) {
         entities.stream().flatMap(e -> e.tags().stream()).map(registry::find).flatMap(Optional::stream).forEach(e -> counts.merge(e, 1, (oldValue, _) -> oldValue++));
+    }
+
+    public SubmissionPublisher<Object> channel() {
+        return channel;
+    }
+
+    public SubmissionPublisher<Object> internalChannel() {
+        return internalChannel;
+    }
+
+    public void subscribe(EventListener listener) {
+        channel.subscribe(listener);
+    }
+
+    public void subscribeInternally(EventListener listener) {
+        internalChannel.subscribe(listener);
     }
 
     public Map<TagType<?>, Integer> countTags(@NotNull Map<TagType<?>, Integer> counts) {
@@ -98,6 +139,7 @@ public class BoundedDomain<R extends Realm, B, P extends Port<R>> {
         return Collections.emptyList();
     }
 
+
     public void startup() {
     }
 
@@ -108,4 +150,5 @@ public class BoundedDomain<R extends Realm, B, P extends Port<R>> {
             throw new RuntimeException(e);
         }
     }
+
 }

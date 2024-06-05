@@ -32,6 +32,7 @@ import net.tangly.core.HasMutableText;
 import net.tangly.core.MutableEntity;
 import net.tangly.core.codes.Code;
 import net.tangly.core.codes.CodeType;
+import net.tangly.core.domain.Operation;
 import net.tangly.core.providers.Provider;
 import net.tangly.core.providers.ProviderView;
 import net.tangly.ui.asciidoc.AsciiDocField;

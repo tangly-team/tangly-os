@@ -49,7 +49,7 @@ class EntityFieldTest {
 
     @Test
     void testEntityField() {
-        final EntityField<MutableEntityExtended> entityField = new EntityField<>();
+        final EntityField<MutableEntityExtended> entityField = new EntityField<>("Entity");
         entityField.setValue(null);
         assertThat(entityField.getValue()).isNull();
 

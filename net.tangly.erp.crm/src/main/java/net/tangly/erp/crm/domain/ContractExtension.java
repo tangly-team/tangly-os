@@ -14,8 +14,11 @@
 package net.tangly.erp.crm.domain;
 
 import net.tangly.core.*;
+import net.tangly.erp.crm.events.ContractSignedEvent;
+import org.javamoney.moneta.FastMoney;
 import org.jetbrains.annotations.NotNull;
 
+import javax.money.Monetary;
 import java.math.BigDecimal;
 
 /**
@@ -26,4 +29,9 @@ import java.math.BigDecimal;
  */
 public record ContractExtension(@NotNull String id, @NotNull String name, @NotNull DateRange range, String text, @NotNull String contractId,
                                 @NotNull BigDecimal amountWithoutVat, BigDecimal budgetInHours) implements HasId, HasName, HasDateRange, HasText {
-}
+
+    public static ContractSignedEvent of(ContractExtension extension, Contract mainContract) {
+        var amountWithoutVat = FastMoney.of(extension.amountWithoutVat(), Monetary.getCurrency(mainContract.currency().getCurrencyCode()));
+        return new ContractSignedEvent(extension.id(), extension.contractId(), extension.range(), mainContract.locale(), amountWithoutVat,
+            extension.budgetInHours());
+    }}

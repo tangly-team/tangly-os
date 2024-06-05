@@ -12,11 +12,12 @@
  */
 
 /**
- * The package defines the core abstractions for a bounded domain implementation. Entities defined in the domain can have oid, id, name, tags and comments.
+ * The package defines the core abstractions for a bounded domain implementation.
+ * Entities defined in the domain can have oid, id, name, tags and comments.
  * The realm interface is the entry point for the repository and factory abstractions.
  * Repositories retrieve domain objects from persistence technologies.
  * Factories create new object trees. The regular persistence approach is based on EclipseStore.
- * The solution is well integrated in Java so that retrieval and creation operations are simple to implement.
+ * The solution is well integrated in Java so that retrieval and creation operations are straightforward to implement.
  * <p>The key abstractions are:</p>
  * <dl>
  *     <dt>Bounded Domain</dt><dd>Defines the bounded domain model and the domain services.</dd>
@@ -50,5 +51,28 @@
  *     </ul>
  * </dd>
  * </dl>
+ *
+ * <h2>Realm</h2>
+ * <p>The realm persists domain entities and aggregates.
+ * The preferred approach uses EclipseStore to persist graphs of Java objects.
+ * The provider interface and their various implementation is a powerful mechanism to store and retrieve domain entities.</p>
+ * <h2>Port</h2>
+ * <p><The port provides the interface to the domain model for the adapters.
+ * Any bounded domain provides an import, export, and clear operations.
+ * The import loads an archive of all entities of the domain.
+ * The export archives all entities to a set of files.
+ * The clear removes all entities from the doamin.
+ * THe preferred import and export format is TSV>/p>
+ * <h2>TSV Import and Export</h2>
+ * <p>Utilities are provided in the Gleam module. </p>
+ * You can use the TSV import and export utilities to import and export entities from and to TSV files.
+ * <h2>Business Logic</h2>
+ * <p></p>
+ * <h2>Vaadin User Interface</h2>
+ * <p></p>
+ * <h2>REST Interface</h2>
+ * <p></p>
+ * <h2>Domain Events</h2>
+ * <p></p>
  */
 package net.tangly.core.domain;

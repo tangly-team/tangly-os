@@ -17,6 +17,7 @@ import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.Test;
 
 import java.time.Duration;
+import java.util.concurrent.ExecutorService;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -35,8 +36,8 @@ class ActorTimerMgrTest {
     }
 
     static class ClientActor<Message> extends ActorImp<Message> {
-        ClientActor() {
-            super("Client");
+        ClientActor(ExecutorService executor) {
+            super("Client", executor);
             counter = new AtomicInteger();
         }
 
@@ -57,9 +58,11 @@ class ActorTimerMgrTest {
     @Test
     void createCmdTest() {
         Actors<Message> actors = new Actors<>();
-        ActorTimerMgr<Message> timerMgr = new ActorTimerMgr<>("test-timer-manager", o -> (o instanceof MessageTimerCmd cmd) ? cmd.cmd() : null, MessageTimer::new);
+        ActorTimerMgr<Message> timerMgr = new ActorTimerMgr<>("test-timer-manager", actors.executor(), o -> (o instanceof MessageTimerCmd cmd) ? cmd.cmd() :
+            null,
+            MessageTimer::new);
         actors.register(timerMgr);
-        ClientActor<Message> actor = new ClientActor<>();
+        ClientActor<Message> actor = new ClientActor<>(actors.executor());
         actors.register(actor);
         Timer<Message> timer = Timer.ofOnce(actor, "Once", 100, TimeUnit.MILLISECONDS);
 
@@ -80,7 +83,8 @@ class ActorTimerMgrTest {
     @Test
     void testRecurringTimer() {
         Actors<Message> actors = new Actors<>();
-        ActorTimerMgr<Message> timerMgr = new ActorTimerMgr<>("test-timer-manager", o -> (o instanceof MessageTimerCmd cmd) ? cmd.cmd() : null, MessageTimer::new);
+        ActorTimerMgr<Message> timerMgr =
+            new ActorTimerMgr<>("test-timer-manager", actors.executor(), o -> (o instanceof MessageTimerCmd cmd) ? cmd.cmd() : null, MessageTimer::new);
         actors.register(timerMgr);
     }
 }

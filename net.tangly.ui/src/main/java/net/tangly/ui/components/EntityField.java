@@ -34,7 +34,8 @@ public class EntityField<T extends Entity> extends CustomField<T> {
     private final DatePicker from;
     private final DatePicker to;
 
-    public EntityField() {
+    public EntityField(String label) {
+        setLabel(label);
         oid = new IntegerField(EntityView.OID, EntityView.OID_LABEL);
         oid.setReadOnly(true);
         id = new TextField(EntityView.ID, EntityView.ID_LABEL);

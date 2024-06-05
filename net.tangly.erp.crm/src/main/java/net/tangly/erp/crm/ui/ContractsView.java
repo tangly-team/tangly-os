@@ -17,12 +17,15 @@ import com.vaadin.flow.component.HtmlComponent;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.ColumnTextAlign;
 import com.vaadin.flow.component.grid.HeaderRow;
+import com.vaadin.flow.component.grid.contextmenu.GridContextMenu;
+import com.vaadin.flow.component.html.Hr;
 import com.vaadin.flow.component.select.Select;
 import com.vaadin.flow.data.renderer.NumberRenderer;
 import net.tangly.erp.crm.domain.Contract;
 import net.tangly.erp.crm.domain.ContractExtension;
 import net.tangly.erp.crm.domain.LegalEntity;
 import net.tangly.erp.crm.services.CrmBoundedDomain;
+import net.tangly.ui.app.domain.Cmd;
 import net.tangly.ui.components.*;
 import org.jetbrains.annotations.NotNull;
 
@@ -86,6 +89,13 @@ class ContractsView extends EntityView<Contract> {
         return (CrmBoundedDomain) super.domain();
     }
 
+    @Override
+    protected void addActions(@NotNull GridContextMenu<Contract> menu) {
+        super.addActions(menu);
+        menu().add(new Hr());
+        menu().addItem("Activate", e -> Cmd.ofItemCmd(e, this::contractActivated));
+    }
+
     private void init() {
         var grid = grid();
         grid.addColumn(e -> e.sellee().name()).setKey("customer").setHeader("Customer").setAutoWidth(true).setResizable(true).setSortable(true);
@@ -96,6 +106,17 @@ class ContractsView extends EntityView<Contract> {
             true).setResizable(true).setSortable(true).setTextAlign(ColumnTextAlign.END);
         grid.getHeaderRows().clear();
         HeaderRow headerRow = grid().appendHeaderRow();
+    }
+
+    /**
+     * Activate the contract in the ERP system. The {@link net.tangly.erp.crm.events.ContractSignedEvent} is published to the event bus.
+     * The activation states the intent to start working on the contract.
+     *
+     * @param contract contract to activate
+     */
+    private void contractActivated(Contract contract) {
+        var event = Contract.of(contract);
+        domain().channel().submit(event);
     }
 }
 

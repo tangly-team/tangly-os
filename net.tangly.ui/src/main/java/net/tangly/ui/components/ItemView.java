@@ -31,6 +31,7 @@ import net.tangly.commons.lang.functional.LazyReference;
 import net.tangly.core.DateRange;
 import net.tangly.core.TypeRegistry;
 import net.tangly.core.domain.BoundedDomain;
+import net.tangly.core.domain.Operation;
 import net.tangly.core.providers.Provider;
 import net.tangly.ui.app.domain.BoundedDomainUi;
 import net.tangly.ui.app.domain.View;

@@ -1,10 +1,10 @@
 /*
- * Copyright 2021-2023 Marcel Baumann
+ * Copyright 2021-2024 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- *          http://www.apache.org/licenses/LICENSE-2.0
+ *          https://apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -36,8 +36,8 @@ class ActorsTest {
         private PeerActor peer;
         private int counter;
 
-        PeerActor(String name) {
-            super(name);
+        PeerActor(String name, ExecutorService executor) {
+            super(name, executor);
         }
 
         void peer(PeerActor peer) {
@@ -62,9 +62,10 @@ class ActorsTest {
         private int counter;
 
         RegisteredActor(String name, Actors<Message> actors, String peerName) {
-            super(name);
+            super(name, actors.executor());
             this.actors = actors;
             this.peerName = peerName;
+            actors.register(this);
         }
 
         @Override
@@ -82,8 +83,8 @@ class ActorsTest {
     static class FlowActor extends ActorImp<Message> implements Actor<Message> {
         private int counter;
 
-        FlowActor(String name) {
-            super(name);
+        FlowActor(String name, Actors<Message> actors) {
+            super(name, actors.executor());
         }
 
         @Override
@@ -103,9 +104,10 @@ class ActorsTest {
         private int counter;
 
         SingleRegisterActor(String name, Actors<Message> actors, String channel) {
-            super(name);
+            super(name, actors.executor());
             this.actors = actors;
             this.channel = channel;
+            actors.register(this);
         }
 
         @Override
@@ -126,9 +128,9 @@ class ActorsTest {
 
     @Test
     void runWithStandaloneActors() {
-        ExecutorService service = Executors.newCachedThreadPool();
-        PeerActor one = new PeerActor("One");
-        PeerActor two = new PeerActor("Two");
+        ExecutorService service = Executors.newVirtualThreadPerTaskExecutor();
+        PeerActor one = new PeerActor("One", service);
+        PeerActor two = new PeerActor("Two", service);
         one.peer(two);
         two.peer(one);
         service.submit(one);
@@ -144,7 +146,7 @@ class ActorsTest {
     @Test
     void runSingleActorWithActorRegistry() {
         Actors<Message> actors = new Actors<>();
-        actors.register(new SingleRegisterActor(ONE, actors, null));
+        new SingleRegisterActor(ONE, actors, null);
 
         actors.sendTo(new Message("count", 20), actors.actorNamed(ONE).get().id());
         actors.awaitTermination(1, TimeUnit.SECONDS);
@@ -155,7 +157,7 @@ class ActorsTest {
     @Test
     void runSingleActorWithChannelRegistry() {
         Actors<Message> actors = new Actors<>();
-        actors.register(CHANNEL);
+        actors.createAndRegister(CHANNEL);
         var actor = new SingleRegisterActor(ONE, actors, CHANNEL);
         actors.register(actor);
         actors.subscribeTo(actor.id(), CHANNEL);
@@ -169,8 +171,8 @@ class ActorsTest {
     @Test
     void runWithActorRegistry() {
         Actors<Message> actors = new Actors<>();
-        actors.register(new RegisteredActor(ONE, actors, TWO));
-        actors.register(new RegisteredActor(TWO, actors, ONE));
+        new RegisteredActor(ONE, actors, TWO);
+        new RegisteredActor(TWO, actors, ONE);
 
         actors.actorNamed("one").ifPresent(o -> o.receive(new Message("do", 0)));
         actors.awaitTermination(1, TimeUnit.SECONDS);
@@ -182,11 +184,11 @@ class ActorsTest {
     @Test
     void runWithChannelRegistry() {
         Actors<Message> actors = new Actors<>();
-        actors.register(CHANNEL);
-        actors.register(new FlowActor(ONE), CHANNEL);
-        actors.register(new FlowActor(TWO), CHANNEL);
+        actors.createAndRegister(CHANNEL);
+        actors.register(new FlowActor(ONE, actors), CHANNEL);
+        actors.register(new FlowActor(TWO, actors), CHANNEL);
 
-        IntStream.range(0, 20).forEach(o -> actors.channelNamed(CHANNEL).ifPresent(channel -> channel.dispatch(new Message("do", o))));
+        IntStream.range(0, 20).forEach(o -> actors.channelNamed(CHANNEL).ifPresent(channel -> channel.publish(new Message("do", o))));
         actors.awaitTermination(1, TimeUnit.SECONDS);
 
         assertThat(((FlowActor) actors.actorNamed(ONE).get()).counter).isEqualTo(20);

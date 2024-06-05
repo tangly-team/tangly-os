@@ -20,8 +20,10 @@ import com.vaadin.flow.data.renderer.NumberRenderer;
 import net.tangly.core.HasDateRange;
 import net.tangly.core.HasName;
 import net.tangly.core.HasText;
+import net.tangly.core.providers.Provider;
 import net.tangly.core.providers.ProviderInMemory;
 import net.tangly.erp.crm.domain.ContractExtension;
+import net.tangly.erp.crm.services.CrmBoundedDomain;
 import net.tangly.ui.components.ItemView;
 import net.tangly.ui.components.Mode;
 import net.tangly.ui.components.VaadinUtils;
@@ -33,6 +35,12 @@ public class ContractExtensionsView extends ItemView<ContractExtension> {
         super(ContractExtension.class, domain, ProviderInMemory.of(), null, mode);
         init();
     }
+
+    @Override
+    public CrmBoundedDomain domain() {
+        return domain();
+    }
+
 
     private void init() {
         setHeight("15em");
@@ -51,5 +59,17 @@ public class ContractExtensionsView extends ItemView<ContractExtension> {
             true).setResizable(true).setSortable(true).setTextAlign(ColumnTextAlign.END);
         grid.addColumn(new NumberRenderer<>(ContractExtension::budgetInHours, VaadinUtils.FORMAT)).setKey("budgetInHours").setHeader(
             "Budget In Hours").setAutoWidth(true).setResizable(true).setSortable(true).setTextAlign(ColumnTextAlign.END);
+    }
+
+    /**
+     * Activate the contract extension in the ERP system. The {@link net.tangly.erp.crm.events.ContractSignedEvent} is published to the event bus.
+     * The activation states the intent to start working on the contract.
+     *
+     * @param extension contract extension to activate
+     */
+    private void contractActivated(ContractExtension extension) {
+        var contract = Provider.findById(domain().realm().contracts(), extension.contractId());
+        var event = ContractExtension.of(extension, contract.orElseThrow());
+        domain().channel().submit(event);
     }
 }

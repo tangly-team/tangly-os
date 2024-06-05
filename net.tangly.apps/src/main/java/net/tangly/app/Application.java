@@ -67,6 +67,10 @@ public final class Application {
         ofAppDomain();
     }
 
+    public void startup() {
+        boundedDomains.values().forEach(BoundedDomain::startup);
+    }
+
     public Properties properties() {
         return properties;
     }

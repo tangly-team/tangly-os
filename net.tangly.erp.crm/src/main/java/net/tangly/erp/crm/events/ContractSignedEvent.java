@@ -11,24 +11,25 @@
  *
  */
 
-package net.tangly.erp.products.domain;
+package net.tangly.erp.crm.events;
 
 import net.tangly.core.DateRange;
-import net.tangly.core.HasDateRange;
-import net.tangly.core.HasId;
 import org.jetbrains.annotations.NotNull;
 
+import javax.money.MonetaryAmount;
+import java.math.BigDecimal;
 import java.util.Locale;
 
 /**
- * Defines the work view of a contract. The work budget is used to validate the work done by the team.
+ * Defines the signing of a contract event. Upon signing of a contract from the customer, the event is created and sent.
  *
- * @param id             unique identifier of the contract
+ * @param id             unique identifier of the contract in the context of a tenant.
  * @param mainContractId unique identifier of the main contract if the contract is a subcontract. The value is optional
- * @param range          validity period of the contract
+ * @param range          date range of the contract validity
  * @param locale         locale of the contract
- * @param budgetInHours  work budget measured with hours. If the value is zero, the contract is time and material without a budget
+ * @param budget         monetary budget of the contract. The currency is part of the monetary amount
+ * @param budgetInHours  work budget measured with hours.
  */
-public record WorkContract(@NotNull String id, String mainContractId, @NotNull DateRange range, @NotNull Locale locale, int budgetInHours) implements HasId,
-    HasDateRange {
+public record ContractSignedEvent(@NotNull String id, String mainContractId, @NotNull DateRange range, @NotNull Locale locale,
+                                  MonetaryAmount budget, BigDecimal budgetInHours) {
 }

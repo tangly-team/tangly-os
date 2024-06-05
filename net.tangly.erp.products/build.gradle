@@ -24,10 +24,12 @@ project.ext.inceptionYear = '2019'
 project.description = "Products bounded domain using Java 21 or higher (tangly llc)"
 
 dependencies {
+    implementation project(':net.tangly.apps')
     implementation project(':net.tangly.commons')
     implementation project(':net.tangly.core')
     implementation project(':net.tangly.gleam')
     implementation project(':net.tangly.ui')
+    implementation project(':net.tangly.erp.crm')
 
     implementation(libs.vaadin.core)
     implementation(libs.eclispsestore.storage)

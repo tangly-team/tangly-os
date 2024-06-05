@@ -11,18 +11,19 @@
  *
  */
 
-package net.tangly.ui.components;
+package net.tangly.core.domain;
 
 /**
  * Define the CRUD operations which can be applied on entities.
  */
 public enum Operation {
-    NONE(Operation.NONE_TEXT), VIEW(Operation.VIEW_TEXT), EDIT(Operation.EDIT_TEXT), CREATE(Operation.CREATE_TEXT), DUPLICATE(Operation.DUPLICATE_TEXT), DELETE(
-        Operation.DELETE_TEXT);
+    NONE(Operation.NONE_TEXT), VIEW(Operation.VIEW_TEXT), EDIT(Operation.EDIT_TEXT), CREATE(Operation.CREATE_TEXT), DUPLICATE(Operation.DUPLICATE_TEXT),
+    REPLACE(Operation.REPLACE_TEXT), DELETE(Operation.DELETE_TEXT);
     public static final String NONE_TEXT = "None";
     public static final String VIEW_TEXT = "View";
     public static final String EDIT_TEXT = "Edit";
     public static final String CREATE_TEXT = "Create";
+    public static final String REPLACE_TEXT = "Replace";
     public static final String DUPLICATE_TEXT = "Duplicate";
     public static final String DELETE_TEXT = "Delete";
 
@@ -32,14 +33,14 @@ public enum Operation {
         this.text = text;
     }
 
-    boolean readonly() {
+    public boolean readonly() {
         return this == VIEW || this == NONE;
     }
 
-    String confirmationText() {
+    public String confirmationText() {
         return switch (this) {
             case NONE, VIEW -> "OK";
-            case EDIT -> "Save";
+            case EDIT, REPLACE -> "Save";
             case DUPLICATE, CREATE -> "Create";
             case DELETE -> "Delete";
         };

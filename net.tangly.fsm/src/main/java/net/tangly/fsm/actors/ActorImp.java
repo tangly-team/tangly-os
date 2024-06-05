@@ -19,6 +19,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.UUID;
 import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.ExecutorService;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.TimeUnit;
 
@@ -28,10 +29,11 @@ public abstract class ActorImp<T> implements Actor<T>, Runnable {
     private final String name;
     private final BlockingQueue<T> messages;
 
-    protected ActorImp(@NotNull String name) {
+    protected ActorImp(@NotNull String name, ExecutorService executor) {
         this.id = UUID.randomUUID();
         this.name = name;
         this.messages = new LinkedBlockingQueue<>();
+        executor.submit(this);
     }
 
     @Override

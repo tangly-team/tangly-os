@@ -71,6 +71,7 @@ public final class Main {
         parse(args);
         ofDomains();
         ofDomainRests();
+        Application.instance().startup();
         new VaadinBoot() {
             @Override
             protected @NotNull WebAppContext createWebAppContext() throws IOException {
