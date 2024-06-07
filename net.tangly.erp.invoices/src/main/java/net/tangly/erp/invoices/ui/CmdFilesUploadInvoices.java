@@ -13,6 +13,9 @@
 
 package net.tangly.erp.invoices.ui;
 
+import net.tangly.core.domain.Operation;
+import net.tangly.core.events.EntityChangedInternalEvent;
+import net.tangly.erp.invoices.domain.Invoice;
 import net.tangly.erp.invoices.ports.InvoicesAdapter;
 import net.tangly.erp.invoices.ports.InvoicesTsvJsonHdl;
 import net.tangly.erp.invoices.services.InvoicesBoundedDomain;
@@ -33,8 +36,8 @@ public class CmdFilesUploadInvoices extends CmdFilesUpload<InvoicesRealm, Invoic
         registerAllFinishedListener(event -> {
             var handler = new InvoicesTsvJsonHdl(domain.realm());
             Set<String> files = buffer().getFiles();
-            files.stream().filter(o -> o.endsWith(InvoicesAdapter.JSON_EXT))
-                .forEach(o -> processInputStream(domain, o, handler::importInvoice));
+            files.stream().filter(o -> o.endsWith(InvoicesAdapter.JSON_EXT)).forEach(o -> processInputStream(domain, o, handler::importInvoice));
+            domain().internalChannel().submit(new EntityChangedInternalEvent(domain().name(), Invoice.class.getSimpleName(), Operation.CREATE));
             close();
         });
     }

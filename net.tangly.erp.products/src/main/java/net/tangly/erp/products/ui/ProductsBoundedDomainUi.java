@@ -19,7 +19,9 @@ import com.vaadin.flow.component.contextmenu.SubMenu;
 import com.vaadin.flow.component.menubar.MenuBar;
 import net.tangly.commons.lang.functional.LazyReference;
 import net.tangly.core.domain.AccessRightsCode;
+import net.tangly.core.domain.BoundedDomain;
 import net.tangly.core.domain.User;
+import net.tangly.core.events.EntityChangedInternalEvent;
 import net.tangly.core.providers.Provider;
 import net.tangly.core.providers.ProviderView;
 import net.tangly.erp.products.domain.Assignment;
@@ -27,10 +29,11 @@ import net.tangly.erp.products.domain.Effort;
 import net.tangly.erp.products.services.ProductsBoundedDomain;
 import net.tangly.ui.app.domain.BoundedDomainUi;
 import net.tangly.ui.app.domain.DomainView;
+import net.tangly.ui.app.domain.View;
 import net.tangly.ui.components.Mode;
 import org.jetbrains.annotations.NotNull;
 
-public class ProductsBoundedDomainUi extends BoundedDomainUi<ProductsBoundedDomain> {
+public class ProductsBoundedDomainUi extends BoundedDomainUi<ProductsBoundedDomain> implements BoundedDomain.EventListener {
     public static final String PRODUCTS = "Products";
     public static final String WORK_CONTRACTS = "Contracts";
     public static final String ASSIGNMENTS = "Assignments";
@@ -55,10 +58,8 @@ public class ProductsBoundedDomainUi extends BoundedDomainUi<ProductsBoundedDoma
         var rights = user.accessRightsFor(ProductsBoundedDomain.DOMAIN).orElseThrow();
         boolean isRestricted = rights.right() == AccessRightsCode.restrictedUser;
         String username = user.username();
-        efforts = isRestricted ? ProviderView.of(domain().realm().efforts(),
-            u -> u.assignment().name().equals(username)) : domain().realm().efforts();
-        assignments = isRestricted ? ProviderView.of(domain().realm().assignments(),
-            u -> u.name().equals(username)) : domain().realm().assignments();
+        efforts = isRestricted ? ProviderView.of(domain().realm().efforts(), u -> u.assignment().name().equals(username)) : domain().realm().efforts();
+        assignments = isRestricted ? ProviderView.of(domain().realm().assignments(), u -> u.name().equals(username)) : domain().realm().assignments();
         view(EFFORTS).ifPresent(v -> v.ifPresent(o -> ((EffortsView) o).provider(efforts)));
         view(ASSIGNMENTS).ifPresent(v -> v.ifPresent(o -> ((AssignmentsView) o).provider(assignments)));
         super.userChanged(user);
@@ -82,5 +83,14 @@ public class ProductsBoundedDomainUi extends BoundedDomainUi<ProductsBoundedDoma
 
     Provider<Assignment> assignments() {
         return assignments;
+    }
+
+    @Override
+    public void onNext(Object event) {
+        if (event instanceof EntityChangedInternalEvent entityChanged) {
+            if (entityChanged.entityName().equals(Effort.class.getSimpleName())) {
+                view(EFFORTS).ifPresent(v -> v.ifPresent(View::refresh));
+            }
+        }
     }
 }

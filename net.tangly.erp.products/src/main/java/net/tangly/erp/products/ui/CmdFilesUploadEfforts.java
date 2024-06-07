@@ -13,6 +13,9 @@
 
 package net.tangly.erp.products.ui;
 
+import net.tangly.core.domain.Operation;
+import net.tangly.core.events.EntityChangedInternalEvent;
+import net.tangly.erp.products.domain.Effort;
 import net.tangly.erp.products.services.ProductsBoundedDomain;
 import net.tangly.erp.products.services.ProductsBusinessLogic;
 import net.tangly.erp.products.services.ProductsPort;
@@ -34,6 +37,7 @@ public class CmdFilesUploadEfforts extends CmdFilesUpload<ProductsRealm, Product
         registerAllFinishedListener(event -> {
             Set<String> files = buffer().getFiles();
             files.forEach(o -> domain.port().importEfforts(domain, new BufferedReader(new InputStreamReader(buffer().getInputStream(o))), o, true));
+            domain().internalChannel().submit(new EntityChangedInternalEvent(domain().name(), Effort.class.getSimpleName(), Operation.CREATE));
             close();
         });
     }

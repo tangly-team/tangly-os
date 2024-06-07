@@ -58,8 +58,11 @@ The reason is they use old versions of Groovy and Kotlin instead of regularly up
 _Yes, you can run Gradle with an older version of Java and compile the code with a newer version of Java._
 _It makes your GitHub actions more complex and brittle._
 The standard GitHub scripts do not support installing multiple JDK versions in the image building your application
-footnote:[If you have a code snippet to install multiple JDKs, run Gradle with an older version and let Gradle toolchain find the current JDK to build, let me know.
-I will add your solution with name in this blog.]._
+footnote:[If you have a code snippet for a {ref-github} build script, let me know.
+The script shall install multiple JDKs, run Gradle with an older version, and let the Gradle toolchain find the current JDK to build the code.
+I will add your solution with your name in this blog and star your snippet on {ref-github}.]
+footnote:[Gradle 8.8 was released 31^st^ May 2024. It is the first version to run on Java 22.
+Java 22 was released 19^th^ March 2024, almost two and a half months ago.].
 
 == JPMS Laggards
 

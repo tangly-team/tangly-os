@@ -14,7 +14,6 @@
 
 import com.github.jk1.license.filter.ExcludeTransitiveDependenciesFilter
 import com.github.jk1.license.filter.LicenseBundleNormalizer
-import com.github.jk1.license.importer.XmlReportImporter
 import com.github.jk1.license.render.InventoryHtmlReportRenderer
 
 /**
@@ -27,10 +26,10 @@ plugins {
 }
 
 licenseReport {
+    configurations = ALL
     allowedLicensesFile = new File("$projectDir/config/allowed-licenses.json")
+    projects = subprojects
     renderers = [new InventoryHtmlReportRenderer()]
     filters = [new ExcludeTransitiveDependenciesFilter(),
                new LicenseBundleNormalizer(bundlePath: "$projectDir/config/license-normalizer-bundle.json")]
-    importers = [new XmlReportImporter("Front End", new File(project.projectDir, "externalDependencies.xml"))]
-    configurations = ALL
 }

@@ -28,7 +28,7 @@ project.ext.artifactId = 'test-results'
 project.version = "${projectVersion}"
 project.ext.moduleName = "${project.ext.groupId}.${project.ext.artifactId}"
 project.ext.inceptionYear = '1996'
-project.description = "tangly OS components"
+project.description = "Aggregate test results and code coverage for all modules"
 
 repositories {
     mavenLocal()

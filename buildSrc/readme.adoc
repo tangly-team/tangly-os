@@ -20,10 +20,10 @@ The set of Gradle command line special commands we seldom use:
 * To publish all modules in local maven repository `./gradlew publishMavenJavaPublicationToMavenLocal`
 * To publish all modules in maven central repository `./gradlew publishMavenJavaPublicationToMavenRepository`
 * To generate static and aggregate code coverage metrics `./gradlew test testCodeCoverageReport testAggregateTestReport`
-* To detect vulnerabilities `./gradlew ossIndexAudit --info`
 * To detect newer versions of libraries `./gradlew dependencyUpdates -Drevision=release`
 * To update sonar cloud `./gradlew sonarqube -Dsonar.login=<login token>`
 * To create a production release `./gradlew net.tangly.erp.ui:installDist -Pvaadin.productionMode`
+* To detect vulnerabilities `./gradlew ossIndexAudit --info`
 * To check licenses of dependencies `./gradlew checkLicense`
 
 == Tips
