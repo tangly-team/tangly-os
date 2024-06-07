@@ -14,6 +14,7 @@
 package net.tangly.erp.collaborators.ports;
 
 import net.tangly.core.domain.DomainAudit;
+import net.tangly.core.domain.Port;
 import net.tangly.erp.collabortors.services.CollaboratorsPort;
 import net.tangly.erp.collabortors.services.CollaboratorsRealm;
 import org.jetbrains.annotations.NotNull;
@@ -50,6 +51,7 @@ public class CollaboratorsAdapter implements CollaboratorsPort {
     @Override
     public void clearEntities(@NotNull DomainAudit audit) {
         realm().collaborators().deleteAll();
+        Port.entitiesCleared(audit, "collaborators");
     }
 }
 

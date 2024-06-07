@@ -107,7 +107,9 @@ public class InvoicesAdapter implements InvoicesPort {
     @Override
     public void clearEntities(@NotNull DomainAudit audit) {
         realm().invoices().deleteAll();
+        Port.entitiesCleared(audit, "invoices");
         realm().articles().deleteAll();
+        Port.entitiesCleared(audit, "articles");
     }
 
     @Override

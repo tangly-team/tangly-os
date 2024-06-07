@@ -16,6 +16,7 @@ package net.tangly.erp.ledger.ports;
 import net.tangly.commons.logger.EventData;
 import net.tangly.commons.utilities.AsciiDoctorHelper;
 import net.tangly.core.domain.DomainAudit;
+import net.tangly.core.domain.Port;
 import net.tangly.erp.ledger.domain.Transaction;
 import net.tangly.erp.ledger.services.LedgerPort;
 import net.tangly.erp.ledger.services.LedgerRealm;
@@ -100,7 +101,9 @@ public class LedgerAdapter implements LedgerPort {
     @Override
     public void clearEntities(@NotNull DomainAudit audit) {
         realm().accounts().deleteAll();
+        Port.entitiesCleared(audit, "accounts");
         realm().transactions().deleteAll();
+        Port.entitiesCleared(audit, "transactions");
     }
 
     @Override

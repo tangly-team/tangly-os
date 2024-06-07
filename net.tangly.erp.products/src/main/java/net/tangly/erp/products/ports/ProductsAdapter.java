@@ -19,6 +19,7 @@ import net.tangly.commons.utilities.AsciiDoctorHelper;
 import net.tangly.commons.utilities.ValidatorUtilities;
 import net.tangly.core.Strings;
 import net.tangly.core.domain.DomainAudit;
+import net.tangly.core.domain.Port;
 import net.tangly.core.providers.Provider;
 import net.tangly.erp.products.domain.Assignment;
 import net.tangly.erp.products.domain.Effort;
@@ -110,8 +111,11 @@ public class ProductsAdapter implements ProductsPort {
     @Override
     public void clearEntities(@NotNull DomainAudit audit) {
         realm().efforts().deleteAll();
+        Port.entitiesCleared(audit, "efforts");
         realm().assignments().deleteAll();
+        Port.entitiesCleared(audit, "assignments");
         realm().products().deleteAll();
+        Port.entitiesCleared(audit, "products");
     }
 
     @Override
