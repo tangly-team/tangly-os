@@ -18,6 +18,7 @@ import com.vaadin.flow.component.contextmenu.MenuItem;
 import com.vaadin.flow.component.contextmenu.SubMenu;
 import com.vaadin.flow.component.menubar.MenuBar;
 import net.tangly.commons.lang.functional.LazyReference;
+import net.tangly.core.domain.AccessRightsCode;
 import net.tangly.core.domain.User;
 import net.tangly.core.providers.Provider;
 import net.tangly.core.providers.ProviderView;
@@ -28,8 +29,6 @@ import net.tangly.ui.app.domain.BoundedDomainUi;
 import net.tangly.ui.app.domain.DomainView;
 import net.tangly.ui.components.Mode;
 import org.jetbrains.annotations.NotNull;
-
-import java.util.Objects;
 
 public class ProductsBoundedDomainUi extends BoundedDomainUi<ProductsBoundedDomain> {
     public static final String PRODUCTS = "Products";
@@ -52,11 +51,13 @@ public class ProductsBoundedDomainUi extends BoundedDomainUi<ProductsBoundedDoma
     }
 
     @Override
-    public void userChanged(User user) {
-        final String username = Objects.nonNull(user) ? user.username() : null;
-        efforts = Objects.nonNull(username) ? ProviderView.of(domain().realm().efforts(),
+    public void userChanged(@NotNull User user) {
+        var rights = user.accessRightsFor(ProductsBoundedDomain.DOMAIN).orElseThrow();
+        boolean isRestricted = rights.right() == AccessRightsCode.restrictedUser;
+        String username = user.username();
+        efforts = isRestricted ? ProviderView.of(domain().realm().efforts(),
             u -> u.assignment().name().equals(username)) : domain().realm().efforts();
-        assignments = Objects.nonNull(username) ? ProviderView.of(domain().realm().assignments(),
+        assignments = isRestricted ? ProviderView.of(domain().realm().assignments(),
             u -> u.name().equals(username)) : domain().realm().assignments();
         view(EFFORTS).ifPresent(v -> v.ifPresent(o -> ((EffortsView) o).provider(efforts)));
         view(ASSIGNMENTS).ifPresent(v -> v.ifPresent(o -> ((AssignmentsView) o).provider(assignments)));

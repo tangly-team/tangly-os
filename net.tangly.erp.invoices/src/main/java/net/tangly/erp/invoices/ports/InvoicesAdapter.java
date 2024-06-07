@@ -84,7 +84,7 @@ public class InvoicesAdapter implements InvoicesPort {
                     throw new UncheckedIOException(e);
                 }
             });
-            audit.log(EventData.IMPORT, EventData.Status.INFO, "Invoices were imported out of",
+            audit.log(EventData.IMPORT_EVENT, EventData.Status.INFO, "Invoices were imported out of",
                 Map.of("nrOfImportedInvoices", Integer.toString(nrOfImportedInvoices.get()), "rootFolder", dataFolder.toString()));
         } catch (IOException e) {
             throw new UncheckedIOException(e);
@@ -100,12 +100,12 @@ public class InvoicesAdapter implements InvoicesPort {
             var invoiceFolder = Port.resolvePath(dataFolder, o.name());
             var invoicePath = invoiceFolder.resolve(o.name() + JSON_EXT);
             invoiceJson.exports(audit, o, invoicePath, Collections.emptyMap());
-            audit.log(EventData.EXPORT, EventData.Status.SUCCESS, "Invoice exported to JSON {}", Map.of(INVOICE, o, INVOICE_PATH, invoicePath));
+            audit.log(EventData.EXPORT_EVENT, EventData.Status.SUCCESS, "Invoice exported to JSON {}", Map.of(INVOICE, o, INVOICE_PATH, invoicePath));
         });
     }
 
     @Override
-    public void clearEntities() {
+    public void clearEntities(@NotNull DomainAudit audit) {
         realm().invoices().deleteAll();
         realm().articles().deleteAll();
     }
@@ -131,7 +131,7 @@ public class InvoicesAdapter implements InvoicesPort {
         asciiDocGenerator.exports(audit, invoice, invoiceAsciiDocPath, Collections.emptyMap());
         Path invoicePdfPath = invoiceFolder.resolve(invoice.name() + AsciiDoctorHelper.PDF_EXT);
         if (!overwrite && Files.exists(invoicePdfPath)) {
-            audit.log(EventData.EXPORT, EventData.Status.SUCCESS, "Invoice PDF already exists {}",
+            audit.log(EventData.EXPORT_EVENT, EventData.Status.SUCCESS, "Invoice PDF already exists {}",
                 Map.of(INVOICE, invoice, INVOICE_PATH, invoicePdfPath, "withQrCode", withQrCode, "withEN16931", withEN16931, "overwrite", overwrite));
         } else {
             AsciiDoctorHelper.createPdf(invoiceAsciiDocPath, invoicePdfPath, true);
@@ -143,7 +143,7 @@ public class InvoicesAdapter implements InvoicesPort {
                 var en164391Generator = new InvoiceZugFerd();
                 en164391Generator.exports(audit, invoice, invoicePdfPath, Collections.emptyMap());
             }
-            audit.log(EventData.EXPORT, EventData.Status.SUCCESS, "Invoice exported to PDF {}",
+            audit.log(EventData.EXPORT_EVENT, EventData.Status.SUCCESS, "Invoice exported to PDF {}",
                 Map.of(INVOICE, invoice, INVOICE_PATH, invoicePdfPath, "withQrCode", withQrCode, "withEN16931", withEN16931, "overwrite", overwrite));
         }
     }

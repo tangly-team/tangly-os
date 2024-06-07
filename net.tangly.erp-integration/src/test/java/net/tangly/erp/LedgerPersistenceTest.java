@@ -61,7 +61,7 @@ class LedgerPersistenceTest {
             long nrAccounts = handler.realm().accounts().items().size();
             long nrTransactions = handler.realm().transactions().items().size();
             handler.exportEntities(store);
-            handler.clearEntities();
+            handler.clearEntities(store);
             handler.realm().close();
 
             handler = new LedgerAdapter(new LedgerEntities(ledgerDb), ledgerData, ledgerReport);

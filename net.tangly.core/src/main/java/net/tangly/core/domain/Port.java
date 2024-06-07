@@ -13,15 +13,14 @@
 
 package net.tangly.core.domain;
 
-import org.apache.logging.log4j.util.BiConsumer;
+import net.tangly.commons.logger.EventData;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
-import java.io.Reader;
 import java.io.UncheckedIOException;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.Collections;
 import java.util.regex.Pattern;
 
 /**
@@ -55,8 +54,11 @@ public interface Port<R extends Realm> {
 
     /**
      * Clear all entities of the bounded domain. Upon execution, the domain is empty. Use with caution as the operation is not reversible.
+     * Typically, the operation is used before an import to ensure that the domain is empty.
+     *
+     * @param audit domain audit sink to log the operation events
      */
-    void clearEntities();
+    void clearEntities(@NotNull DomainAudit audit);
 
     /**
      * Return the realm containing all the entities of the bounded domain.
@@ -65,20 +67,8 @@ public interface Port<R extends Realm> {
      */
     R realm();
 
-    /**
-     * Import the entities from a resource specified through a path to a folder. The method takes care of releasing all used resources.
-     *
-     * @param folder   folder containing the file with the entities
-     * @param filename name of the file containing the entities stored as TSV values
-     * @param consumer consumer of the entities
-     */
-    static void importEntities(@NotNull Path folder, @NotNull String filename, @NotNull BiConsumer<Reader, String> consumer) {
-        Path path = folder.resolve(filename);
-        try (Reader reader = Files.newBufferedReader(path, StandardCharsets.UTF_8)) {
-            consumer.accept(reader, path.toString());
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+    static void entitiesCleared(@NotNull DomainAudit audit, @NotNull String entities) {
+        audit.log(EventData.CLEAR_EVENT, EventData.Status.SUCCESS, STR."entities \{entities} were cleared", Collections.emptyMap());
     }
 
     /**

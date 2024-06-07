@@ -58,7 +58,7 @@ class InvoicesPersistenceTest {
             long nrArticles = handler.realm().articles().items().size();
             long nrInvoices = handler.realm().invoices().items().size();
             handler.exportEntities(store);
-            handler.clearEntities();
+            handler.clearEntities(store);
             handler.realm().close();
 
             handler = new InvoicesAdapter(new InvoicesEntities(store.dbRoot().resolve(InvoicesBoundedDomain.DOMAIN)),

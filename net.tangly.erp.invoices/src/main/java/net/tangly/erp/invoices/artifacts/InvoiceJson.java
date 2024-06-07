@@ -58,10 +58,10 @@ public class InvoiceJson implements InvoiceGenerator {
         var invoiceJson = entity.exports(invoice);
         try (BufferedWriter writer = Files.newBufferedWriter(path, StandardCharsets.UTF_8)) {
             writer.write(invoiceJson.toString(4));
-            audit.log(EventData.EXPORT, EventData.Status.SUCCESS, "Invoice exported to JSON",
+            audit.log(EventData.EXPORT_EVENT, EventData.Status.SUCCESS, "Invoice exported to JSON",
                 Map.ofEntries(Map.entry(EventData.FILENAME, path), Map.entry(EventData.ENTITY, invoice)));
         } catch (IOException e) {
-            audit.log(EventData.EXPORT, EventData.Status.FAILURE, "Invoice exported to JSON", Map.ofEntries(Map.entry(EventData.FILENAME, path)), e);
+            audit.log(EventData.EXPORT_EVENT, EventData.Status.FAILURE, "Invoice exported to JSON", Map.ofEntries(Map.entry(EventData.FILENAME, path)), e);
             throw new UncheckedIOException(e);
         }
     }
@@ -85,13 +85,13 @@ public class InvoiceJson implements InvoiceGenerator {
                 if (!invoice.check()) {
                     logger.atInfo().log("Invoice {} has an invalid check", invoice.name());
                 }
-                audit.log(EventData.IMPORT, EventData.Status.SUCCESS, "Invoice imported",
+                audit.log(EventData.IMPORT_EVENT, EventData.Status.SUCCESS, "Invoice imported",
                     Map.ofEntries(Map.entry(EventData.FILENAME, source), Map.entry(EventData.ENTITY, invoice)));
             } else {
-                audit.log(EventData.IMPORT, EventData.Status.FAILURE, "Invalid JSON schema file", Map.ofEntries(Map.entry(EventData.FILENAME, source)));
+                audit.log(EventData.IMPORT_EVENT, EventData.Status.FAILURE, "Invalid JSON schema file", Map.ofEntries(Map.entry(EventData.FILENAME, source)));
             }
         } catch (Exception e) {
-            audit.log(EventData.IMPORT, EventData.Status.FAILURE, "Error during import of JSON", Map.ofEntries(Map.entry(EventData.FILENAME, source)), e);
+            audit.log(EventData.IMPORT_EVENT, EventData.Status.FAILURE, "Error during import of JSON", Map.ofEntries(Map.entry(EventData.FILENAME, source)), e);
         }
 
         return invoice;

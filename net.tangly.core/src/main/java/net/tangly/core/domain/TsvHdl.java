@@ -111,7 +111,7 @@ public class TsvHdl {
         try (Reader in = Files.newBufferedReader(path, StandardCharsets.UTF_8)) {
             imports(audit, in, path.toString(), tsvEntity, lambda);
         } catch (Exception e) {
-            audit.log(EventData.IMPORT, EventData.Status.FAILURE, "Entities not imported from TSV file",
+            audit.log(EventData.IMPORT_EVENT, EventData.Status.FAILURE, "Entities not imported from TSV file",
                 Map.of("filename", path), e);
         }
     }
@@ -126,7 +126,7 @@ public class TsvHdl {
         try (Reader in = Files.newBufferedReader(path, StandardCharsets.UTF_8)) {
             imports(audit, in, path.toString(), tsvEntity, lambda);
         } catch (Exception e) {
-            audit.log(EventData.IMPORT, EventData.Status.FAILURE, "Relations not imported from TSV file",
+            audit.log(EventData.IMPORT_EVENT, EventData.Status.FAILURE, "Relations not imported from TSV file",
                 Map.of("filename", path), e);
         }
         return relations;
@@ -186,17 +186,17 @@ public class TsvHdl {
                 U imported = function.apply(tsvEntity, csv);
                 if (!(imported instanceof MutableEntityExtended entity) || (entity.validate())) {
                     ++counter;
-                    audit.log(EventData.IMPORT, EventData.Status.SUCCESS, STR."\{tsvEntity.clazz().getSimpleName()} imported",
+                    audit.log(EventData.IMPORT_EVENT, EventData.Status.SUCCESS, STR."\{tsvEntity.clazz().getSimpleName()} imported",
                         Map.of("filename", source, "object", imported));
                 } else {
-                    audit.log(EventData.IMPORT, EventData.Status.WARNING, STR."\{tsvEntity.clazz().getSimpleName()} invalid entity",
+                    audit.log(EventData.IMPORT_EVENT, EventData.Status.WARNING, STR."\{tsvEntity.clazz().getSimpleName()} invalid entity",
                         Map.of("filename", source, "object", imported));
                 }
             }
-            audit.log(EventData.IMPORT, EventData.Status.INFO, STR."\{tsvEntity.clazz().getSimpleName()} imported objects",
+            audit.log(EventData.IMPORT_EVENT, EventData.Status.INFO, STR."\{tsvEntity.clazz().getSimpleName()} imported objects",
                 Map.of("filename", source, "count", counter));
         } catch (Exception e) {
-            audit.log(EventData.IMPORT, EventData.Status.FAILURE, "Entities not imported from TSV file",
+            audit.log(EventData.IMPORT_EVENT, EventData.Status.FAILURE, "Entities not imported from TSV file",
                 Map.of("filename", source, "csv-record", loggedRecord), e);
         }
     }
@@ -213,12 +213,12 @@ public class TsvHdl {
                 lambda.accept(entity, out);
                 out.println();
                 ++counter;
-                audit.log(EventData.EXPORT, EventData.Status.SUCCESS, STR."\{tsvEntity.clazz().getSimpleName()} exported to TSV file",
+                audit.log(EventData.EXPORT_EVENT, EventData.Status.SUCCESS, STR."\{tsvEntity.clazz().getSimpleName()} exported to TSV file",
                     Map.of("filename", path, "entity", entity));
             }
-            audit.log(EventData.EXPORT, EventData.Status.INFO, "exported to TSV file", Map.of("filename", path, "counter", counter));
+            audit.log(EventData.EXPORT_EVENT, EventData.Status.INFO, "exported to TSV file", Map.of("filename", path, "counter", counter));
         } catch (Exception e) {
-            audit.log(EventData.EXPORT, EventData.Status.FAILURE, "Entities exported to TSV file", Map.of("filename", path, "entity",
+            audit.log(EventData.EXPORT_EVENT, EventData.Status.FAILURE, "Entities exported to TSV file", Map.of("filename", path, "entity",
                 Objects.nonNull(loggedEntity) ? loggedEntity : "null"), e);
         }
     }

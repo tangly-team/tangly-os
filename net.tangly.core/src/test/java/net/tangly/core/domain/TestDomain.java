@@ -33,7 +33,7 @@ class TestDomain {
         }
 
         @Override
-        public void clearEntities() {
+        public void clearEntities(@NotNull DomainAudit audit) {
         }
 
         @Override

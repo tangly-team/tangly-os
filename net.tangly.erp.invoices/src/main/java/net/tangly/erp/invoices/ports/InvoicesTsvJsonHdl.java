@@ -77,10 +77,10 @@ public class InvoicesTsvJsonHdl {
                 invoice.locale(Locale.ENGLISH);
             }
             realm.invoices().update(invoice);
-            audit.log(EventData.IMPORT, EventData.Status.SUCCESS, "Imported Invoice", Map.ofEntries(Map.entry("invoice", invoice)));
+            audit.log(EventData.IMPORT_EVENT, EventData.Status.SUCCESS, "Imported Invoice", Map.ofEntries(Map.entry("invoice", invoice)));
             return invoice;
         } else {
-            audit.log(EventData.IMPORT, EventData.Status.WARNING, "Invalid Invoice", Map.ofEntries(Map.entry("invoice", source)));
+            audit.log(EventData.IMPORT_EVENT, EventData.Status.WARNING, "Invalid Invoice", Map.ofEntries(Map.entry("invoice", source)));
             return null;
         }
     }

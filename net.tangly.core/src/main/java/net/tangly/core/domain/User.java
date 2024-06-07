@@ -31,11 +31,12 @@ import java.util.Optional;
 /**
  * An application user can log in the application and access to domain data based on domain access rights.
  *
- * @param username
- * @param passwordHash
- * @param active
- * @param naturalPersonId
- * @param accessRights
+ * @param username        username is the identifier of the user in the context of a tenant
+ * @param passwordHash    password hash is the encrypted password of the user
+ * @param active          true if the user is active and can log in the application
+ * @param naturalPersonId optional identifier of the natural person associated with the user
+ * @param accessRights    list of access rights of the user on the different domains of the application
+ * @param gravatarEmail   email address used to retrieve the avatar of the user through the gravatar service
  */
 public record User(@NotNull String username, @NotNull String passwordHash, @NotNull String passwordSalt, boolean active, String naturalPersonId,
                    @NotNull List<AccessRights> accessRights, String gravatarEmail) {

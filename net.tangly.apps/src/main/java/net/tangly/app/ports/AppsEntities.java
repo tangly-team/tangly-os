@@ -35,7 +35,6 @@ public class AppsEntities implements AppsRealm {
         }
     }
 
-    private static final long OID_SEQUENCE_START = 1000;
     private final Data data;
     private final Provider<User> users;
     private final EmbeddedStorageManager storageManager;
@@ -50,10 +49,6 @@ public class AppsEntities implements AppsRealm {
         data = new Data();
         storageManager = null;
         users = ProviderInMemory.of(data.users);
-    }
-
-    public void storeRoot() {
-        storageManager.storeRoot();
     }
 
     @Override

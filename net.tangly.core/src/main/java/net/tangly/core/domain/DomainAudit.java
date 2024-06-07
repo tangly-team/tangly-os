@@ -41,8 +41,8 @@ public interface DomainAudit {
 
     void log(@NotNull EventData auditEvent);
 
-    default void log(@NotNull String event, @NotNull EventData.Status status, String reason, @NotNull Map<String, Object> data) {
-        log(EventData.of(event, name(), status, reason, data, null));
+    default void log(@NotNull String event, @NotNull EventData.Status status, String text, @NotNull Map<String, Object> data) {
+        log(EventData.of(event, name(), status, text, data, null));
     }
 
     default void log(@NotNull String event, @NotNull EventData.Status status, String reason, @NotNull Map<String, Object> data, Throwable exception) {

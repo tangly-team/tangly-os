@@ -48,7 +48,7 @@ public class CollaboratorsAdapter implements CollaboratorsPort {
     }
 
     @Override
-    public void clearEntities() {
+    public void clearEntities(@NotNull DomainAudit audit) {
         realm().collaborators().deleteAll();
     }
 }

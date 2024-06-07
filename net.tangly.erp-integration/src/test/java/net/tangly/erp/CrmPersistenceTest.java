@@ -86,7 +86,7 @@ class CrmPersistenceTest {
 
             // when
             handler.exportEntities(store);
-            handler.clearEntities();
+            handler.clearEntities(store);
             handler.realm().close();
             handler = new CrmAdapter(new CrmEntities(store.dbRoot().resolve(CrmBoundedDomain.DOMAIN)), store.dataRoot().resolve(CrmBoundedDomain.DOMAIN));
             handler.importEntities(store);

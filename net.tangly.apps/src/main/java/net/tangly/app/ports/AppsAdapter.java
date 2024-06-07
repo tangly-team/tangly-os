@@ -16,6 +16,8 @@ package net.tangly.app.ports;
 import net.tangly.app.services.AppsPort;
 import net.tangly.app.services.AppsRealm;
 import net.tangly.core.domain.DomainAudit;
+import net.tangly.core.domain.Port;
+import net.tangly.core.domain.User;
 import org.jetbrains.annotations.NotNull;
 
 import java.nio.file.Path;
@@ -51,7 +53,8 @@ public class AppsAdapter implements AppsPort {
     }
 
     @Override
-    public void clearEntities() {
+    public void clearEntities(@NotNull DomainAudit audit) {
         realm().users().deleteAll();
+        Port.entitiesCleared(audit, User.class.getSimpleName());
     }
 }

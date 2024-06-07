@@ -44,9 +44,10 @@ import java.util.Objects;
  */
 public record EventData(@NotNull String event, @NotNull LocalDateTime timestamp, @NotNull String domain, @NotNull Status status, String text,
                         @NotNull Map<String, Object> data, Throwable exception) {
-    public static final String IMPORT = "import";
-    public static final String EXPORT = "export";
-    public static final String REPORT = "report";
+    public static final String IMPORT_EVENT = "import";
+    public static final String EXPORT_EVENT = "export";
+    public static final String CLEAR_EVENT = "clear";
+    public static final String REPORT_EVENT = "report";
     public static final String FILENAME = "filename";
     public static final String ENTITY = "entity";
 

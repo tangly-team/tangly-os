@@ -120,15 +120,15 @@ public class LedgerTsvHdl {
                     }
                     ledger.add(account);
                     ++counter;
-                    audit.log(EventData.IMPORT, EventData.Status.INFO, STR."\{Account.class.getSimpleName()} imported",
+                    audit.log(EventData.IMPORT_EVENT, EventData.Status.INFO, STR."\{Account.class.getSimpleName()} imported",
                         Map.of(SOURCE, path, "object", account));
 
                 }
-                audit.log(EventData.IMPORT, EventData.Status.INFO, STR."\{Account.class.getSimpleName()} imported objects",
+                audit.log(EventData.IMPORT_EVENT, EventData.Status.INFO, STR."\{Account.class.getSimpleName()} imported objects",
                     Map.of(SOURCE, path, "count", counter));
             }
         } catch (IOException e) {
-            audit.log(EventData.IMPORT, EventData.Status.FAILURE, "Entities not imported from", Map.of(SOURCE, path), e);
+            audit.log(EventData.IMPORT_EVENT, EventData.Status.FAILURE, "Entities not imported from", Map.of(SOURCE, path), e);
             throw new UncheckedIOException(e);
         }
     }
@@ -166,13 +166,13 @@ public class LedgerTsvHdl {
                     out.println();
                 }
                 ++counter;
-                audit.log(EventData.EXPORT, EventData.Status.SUCCESS,
+                audit.log(EventData.EXPORT_EVENT, EventData.Status.SUCCESS,
                     STR."\{Account.class.getSimpleName()} exported to charter of accounts", Map.of(SOURCE, path, "entity", account));
             }
-            audit.log(EventData.EXPORT, EventData.Status.INFO, "exported to charter of accounts",
+            audit.log(EventData.EXPORT_EVENT, EventData.Status.INFO, "exported to charter of accounts",
                 Map.of(SOURCE, path, "counter", counter));
         } catch (IOException e) {
-            audit.log(EventData.EXPORT, EventData.Status.FAILURE, "Accounts exported to", Map.of(SOURCE, path), e);
+            audit.log(EventData.EXPORT_EVENT, EventData.Status.FAILURE, "Accounts exported to", Map.of(SOURCE, path), e);
 
             throw new UncheckedIOException(e);
         }
@@ -228,15 +228,15 @@ public class LedgerTsvHdl {
                         Transaction.of(DateUtilities.of(date), reference, text, debit, credit, VatCode.of(vatCode), DateUtilities.of(dateExpected), splits);
                     ledger.book(transaction);
                     ++counter;
-                    audit.log(EventData.IMPORT, EventData.Status.SUCCESS, STR."\{Transaction.class.getSimpleName()} imported to journal",
+                    audit.log(EventData.IMPORT_EVENT, EventData.Status.SUCCESS, STR."\{Transaction.class.getSimpleName()} imported to journal",
                         Map.of(SOURCE, source, "entity", transaction));
                 } catch (NumberFormatException | DateTimeParseException e) {
                     logger.atError().withThrowable(e).log("{}: not a legal amount {}", date, amount);
                 }
             }
-            audit.log(EventData.IMPORT, EventData.Status.INFO, "imported to journal", Map.of(SOURCE, source, "counter", counter));
+            audit.log(EventData.IMPORT_EVENT, EventData.Status.INFO, "imported to journal", Map.of(SOURCE, source, "counter", counter));
         } catch (IOException e) {
-            audit.log(EventData.IMPORT, EventData.Status.FAILURE, "Transactions imported from", Map.of(SOURCE, source), e);
+            audit.log(EventData.IMPORT_EVENT, EventData.Status.FAILURE, "Transactions imported from", Map.of(SOURCE, source), e);
             throw new UncheckedIOException(e);
         }
     }
@@ -263,7 +263,7 @@ public class LedgerTsvHdl {
                         }
                     }
                     ++counter;
-                    audit.log(EventData.EXPORT, EventData.Status.INFO, "exported from journal", Map.of(SOURCE, path, "counter", counter));
+                    audit.log(EventData.EXPORT_EVENT, EventData.Status.INFO, "exported from journal", Map.of(SOURCE, path, "counter", counter));
                 }
             }
         } catch (IOException e) {

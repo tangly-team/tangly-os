@@ -81,7 +81,7 @@ public final class CrmAdapter implements CrmPort {
     }
 
     @Override
-    public void clearEntities() {
+    public void clearEntities(@NotNull DomainAudit audit) {
         realm().activities().deleteAll();
         realm().interactions().deleteAll();
         realm().contracts().deleteAll();

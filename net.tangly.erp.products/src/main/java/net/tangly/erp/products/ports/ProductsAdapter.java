@@ -88,10 +88,10 @@ public class ProductsAdapter implements ProductsPort {
                 } catch (IOException e) {
                     throw new UncheckedIOException(e);
                 } catch (Exception e) {
-                    audit.log(EventData.IMPORT, EventData.Status.ERROR, "Error importing efforts.", Map.of("filename", o.toString()));
+                    audit.log(EventData.IMPORT_EVENT, EventData.Status.ERROR, "Error importing efforts.", Map.of("filename", o.toString()));
                 }
             });
-            audit.log(EventData.IMPORT, EventData.Status.INFO, "Efforts were imported out of",
+            audit.log(EventData.IMPORT_EVENT, EventData.Status.INFO, "Efforts were imported out of",
                 Map.of("nrOfImportedEffortFiles", Integer.toString(nrOfImportedEffortFiles.get())));
         } catch (IOException e) {
             throw new UncheckedIOException(e);
@@ -108,7 +108,7 @@ public class ProductsAdapter implements ProductsPort {
     }
 
     @Override
-    public void clearEntities() {
+    public void clearEntities(@NotNull DomainAudit audit) {
         realm().efforts().deleteAll();
         realm().assignments().deleteAll();
         realm().products().deleteAll();
@@ -117,7 +117,7 @@ public class ProductsAdapter implements ProductsPort {
     @Override
     public void importEfforts(@NotNull DomainAudit audit, @NotNull Reader stream, @NotNull String source, boolean replace) throws IORuntimeException {
         try {
-            if (ValidatorUtilities.isYamlValid(new StringReader(source), "assignment-schema.json")) {
+            if (ValidatorUtilities.isYamlValid(new StringReader(source), "assignment-efforts-schema.json")) {
                 YamlMapping data = Yaml.createYamlInput(stream).readYamlMapping();
                 String contractId = data.string("contractId");
                 String collaborator = data.string("collaborator");
@@ -125,7 +125,7 @@ public class ProductsAdapter implements ProductsPort {
                 Assignment assignment = Provider.findByOid(realm().assignments(), assignmentOid).orElse(null);
 
                 if (Objects.isNull(assignment)) {
-                    audit.log(EventData.IMPORT, EventData.Status.ERROR, "assignment could not be found.",
+                    audit.log(EventData.IMPORT_EVENT, EventData.Status.ERROR, "assignment could not be found.",
                         Map.of("filename", source, "assignmentOid", Long.toString(assignmentOid)));
                     return;
                 }
@@ -140,12 +140,12 @@ public class ProductsAdapter implements ProductsPort {
                         newEffort.minutes(minutes);
                     }
                     if (!assignment.range().isActive(date)) {
-                        audit.log(EventData.IMPORT, EventData.Status.ERROR, "effort date is out of assignment range.",
+                        audit.log(EventData.IMPORT_EVENT, EventData.Status.ERROR, "effort date is out of assignment range.",
                             Map.of("filename", source, "assignment", assignment, "effort", newEffort));
                         return;
                     }
                     if ((assignment.closedPeriod() != null) && (!newEffort.date().isAfter(assignment.closedPeriod()))) {
-                        audit.log(EventData.IMPORT, EventData.Status.ERROR, "effort date is before of assignment closed period.",
+                        audit.log(EventData.IMPORT_EVENT, EventData.Status.ERROR, "effort date is before of assignment closed period.",
                             Map.of("filename", source, "assignment", assignment, "effort", newEffort));
                         return;
                     }
@@ -154,16 +154,16 @@ public class ProductsAdapter implements ProductsPort {
                         if (replace) {
                             logic.realm().efforts().delete(foundEffort.get());
                             logic.realm().efforts().update(newEffort);
-                            audit.log(EventData.IMPORT, EventData.Status.INFO, " effort replaced already exists.",
+                            audit.log(EventData.IMPORT_EVENT, EventData.Status.INFO, " effort replaced already exists.",
                                 Map.of("filename", source, "entity", newEffort));
 
                         } else {
-                            audit.log(EventData.IMPORT, EventData.Status.WARNING, " effort could not be imported because it " + "already exists.",
+                            audit.log(EventData.IMPORT_EVENT, EventData.Status.WARNING, " effort could not be imported because it " + "already exists.",
                                 Map.of("filename", source, "entity", newEffort));
                         }
                     } else {
                         logic.realm().efforts().update(newEffort);
-                        audit.log(EventData.IMPORT, EventData.Status.INFO, " effort added.", Map.of("filename", source, "entity", newEffort));
+                        audit.log(EventData.IMPORT_EVENT, EventData.Status.INFO, " effort added.", Map.of("filename", source, "entity", newEffort));
                     }
                 });
             }

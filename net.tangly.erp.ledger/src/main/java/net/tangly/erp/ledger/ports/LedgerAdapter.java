@@ -76,9 +76,9 @@ public class LedgerAdapter implements LedgerPort {
             stream.filter(file -> !Files.isDirectory(file) && file.getFileName().toString().endsWith(JOURNAL)).forEach(o -> {
                 try (Reader reader = Files.newBufferedReader(o, StandardCharsets.UTF_8)) {
                     handler.importJournal(audit, reader, o.toString());
-                    audit.log(EventData.IMPORT, EventData.Status.SUCCESS, "Journal imported {}", Map.of("journalPath", o));
+                    audit.log(EventData.IMPORT_EVENT, EventData.Status.SUCCESS, "Journal imported {}", Map.of("journalPath", o));
                 } catch (IOException e) {
-                    audit.log(EventData.IMPORT, EventData.Status.FAILURE, "Journal import failed {}", Map.of("journalPath", o));
+                    audit.log(EventData.IMPORT_EVENT, EventData.Status.FAILURE, "Journal import failed {}", Map.of("journalPath", o));
                 }
             });
         } catch (IOException e) {
@@ -93,12 +93,12 @@ public class LedgerAdapter implements LedgerPort {
         realm().transactions().items().stream().map(Transaction::date).map(LocalDate::getYear).distinct().forEach(o -> {
             Path journal = dataFolder.resolve(journalForYear(o));
             handler.exportJournal(audit, journal, LocalDate.of(o, Month.JANUARY, 1), LocalDate.of(o, Month.DECEMBER, 31));
-            audit.log(EventData.EXPORT, EventData.Status.SUCCESS, "Journal exported {}", Map.of("journalPath", journal.toString(), "year", o));
+            audit.log(EventData.EXPORT_EVENT, EventData.Status.SUCCESS, "Journal exported {}", Map.of("journalPath", journal.toString(), "year", o));
         });
     }
 
     @Override
-    public void clearEntities() {
+    public void clearEntities(@NotNull DomainAudit audit) {
         realm().accounts().deleteAll();
         realm().transactions().deleteAll();
     }

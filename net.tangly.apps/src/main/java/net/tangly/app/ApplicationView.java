@@ -72,7 +72,13 @@ public class ApplicationView extends AppLayout {
         ofAppDomainUi();
     }
 
-    public void userChanged(User user) {
+    /**
+     * The method is called when a user successfully logs in. Update access to bounded domains based on the user's access rights.
+     * Propagate the user change to all bounded domains.
+     *
+     * @param user newly logged-in user
+     */
+    public void userChanged(@NotNull User user) {
         boundedDomainUis.values().forEach(o -> {
             boolean hasAccessToDomain = user.accessRightsFor(o.name()).isPresent();
             domainTab(o.name()).ifPresent(tab -> tab.setEnabled(hasAccessToDomain));

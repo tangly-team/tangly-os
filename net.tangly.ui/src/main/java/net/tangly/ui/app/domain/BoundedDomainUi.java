@@ -136,7 +136,7 @@ public abstract class BoundedDomainUi<T extends BoundedDomain<?, ?, ?>> {
         action.setEnabled(hasDomainAdminRights());
         action = subMenu.addItem(EXPORT, _ -> executeGlobalAction(() -> domain.port().exportEntities(domain())));
         action.setEnabled(hasDomainAdminRights());
-        action = subMenu.addItem(CLEAR, _ -> executeGlobalAction(domain.port()::clearEntities));
+        action = subMenu.addItem(CLEAR, _ -> executeGlobalAction(() -> domain.port().clearEntities(domain())));
         action.setEnabled(hasDomainAdminRights());
     }
 
