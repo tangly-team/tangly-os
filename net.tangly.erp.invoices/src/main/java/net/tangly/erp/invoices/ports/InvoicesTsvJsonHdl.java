@@ -14,6 +14,7 @@
 package net.tangly.erp.invoices.ports;
 
 import net.tangly.commons.logger.EventData;
+import net.tangly.core.HasId;
 import net.tangly.core.domain.DomainAudit;
 import net.tangly.core.domain.TsvHdl;
 import net.tangly.erp.invoices.artifacts.InvoiceJson;
@@ -50,11 +51,11 @@ public class InvoicesTsvJsonHdl {
 
     private static TsvEntity<Article> createTsvArticle() {
         Function<CSVRecord, Article> imports =
-            (CSVRecord obj) -> new Article(get(obj, TsvHdl.ID), get(obj, NAME), get(obj, TEXT), Enum.valueOf(ArticleCode.class, get(obj, "code").toLowerCase()),
+            (CSVRecord obj) -> new Article(get(obj, HasId.ID), get(obj, NAME), get(obj, TEXT), Enum.valueOf(ArticleCode.class, get(obj, "code").toLowerCase()),
                 TsvProperty.CONVERT_BIG_DECIMAL_FROM.apply(get(obj, "unitPrice")), get(obj, "unit"));
 
         List<TsvProperty<Article, ?>> fields =
-            List.of(TsvProperty.ofString(TsvHdl.ID, Article::id), TsvProperty.ofString(NAME, Article::name), TsvProperty.ofString(TEXT, Article::text),
+            List.of(TsvProperty.ofString(HasId.ID, Article::id), TsvProperty.ofString(NAME, Article::name), TsvProperty.ofString(TEXT, Article::text),
                 TsvProperty.ofEnum(ArticleCode.class, "code", Article::code, null), TsvProperty.ofBigDecimal("unitPrice", Article::unitPrice, null),
                 TsvProperty.ofString("unit", Article::unit));
         return TsvEntity.of(Article.class, fields, imports);

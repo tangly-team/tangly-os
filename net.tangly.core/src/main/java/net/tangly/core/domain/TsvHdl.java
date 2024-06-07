@@ -26,6 +26,7 @@ import org.apache.commons.csv.CSVPrinter;
 import org.apache.commons.csv.CSVRecord;
 import org.jetbrains.annotations.NotNull;
 
+import java.io.IOException;
 import java.io.Reader;
 import java.math.BigDecimal;
 import java.nio.charset.StandardCharsets;
@@ -37,14 +38,15 @@ import java.util.function.BiConsumer;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 
-public class TsvHdl {
-    public static final CSVFormat FORMAT =
-        CSVFormat.Builder.create().setDelimiter('\t').setQuote('"').setRecordSeparator('\n').setIgnoreSurroundingSpaces(true).setHeader().setSkipHeaderRecord(
-                true)
-            .setIgnoreHeaderCase(true).setIgnoreEmptyLines(true).build();
+/**
+ * Utility class to handle TSV files.
 
-    public static final String OID = HasOid.OID;
-    public static final String ID = HasMutableId.ID;
+ */
+public final class TsvHdl {
+    public static final CSVFormat FORMAT =
+        CSVFormat.Builder.create().setDelimiter('\t').setQuote('"').setRecordSeparator('\n').setIgnoreSurroundingSpaces(true).setHeader()
+            .setSkipHeaderRecord(true).setIgnoreHeaderCase(true).setIgnoreEmptyLines(true).build();
+
     public static final String CODE = "code";
     public static final String NAME = "name";
     public static final String TEXT = "text";
@@ -66,13 +68,13 @@ public class TsvHdl {
     }
 
     public static <T> TsvEntity<T> of(@NotNull Class<T> clazz, @NotNull List<TsvProperty<T, ?>> properties, @NotNull Function<Long, T> supplier) {
-        return new TsvEntity<>(clazz, properties, o -> supplier.apply(Long.parseLong(o.get(OID))), null);
+        return new TsvEntity<>(clazz, properties, o -> supplier.apply(Long.parseLong(o.get(HasOid.OID))), null);
     }
 
     public static <T extends MutableEntity> List<TsvProperty<T, ?>> createTsvEntityFields() {
         List<TsvProperty<T, ?>> fields = new ArrayList<>();
-        fields.add(TsvProperty.ofLong(OID, MutableEntity::oid, null));
-        fields.add(TsvProperty.ofString(ID, MutableEntity::id, MutableEntity::id));
+        fields.add(TsvProperty.ofLong(HasOid.OID, MutableEntity::oid, null));
+        fields.add(TsvProperty.ofString(HasId.ID, MutableEntity::id, MutableEntity::id));
         fields.add(TsvProperty.ofString(NAME, MutableEntity::name, MutableEntity::name));
         fields.add(TsvProperty.of(TsvHdlCore.createTsvDateRange(), MutableEntity::range, MutableEntity::range));
         fields.add(TsvProperty.ofString(TEXT, MutableEntity::text, MutableEntity::text));
@@ -99,8 +101,7 @@ public class TsvHdl {
         return Strings.isNullOrBlank(value) ? null : Enum.valueOf(enumType, value);
     }
 
-    public static <T> void importEntities(@NotNull DomainAudit audit, @NotNull Path path, @NotNull TsvEntity<T> tsvEntity,
-                                          @NotNull Provider<T> provider) {
+    public static <T> void importEntities(@NotNull DomainAudit audit, @NotNull Path path, @NotNull TsvEntity<T> tsvEntity, @NotNull Provider<T> provider) {
         BiFunction<TsvEntity<T>, CSVRecord, T> lambda = (tsv, record) -> {
             T entity = tsvEntity.imports(record);
             if (!(entity instanceof MutableEntityExtended instance) || (instance.validate())) {
@@ -110,9 +111,8 @@ public class TsvHdl {
         };
         try (Reader in = Files.newBufferedReader(path, StandardCharsets.UTF_8)) {
             imports(audit, in, path.toString(), tsvEntity, lambda);
-        } catch (Exception e) {
-            audit.log(EventData.IMPORT_EVENT, EventData.Status.FAILURE, "Entities not imported from TSV file",
-                Map.of("filename", path), e);
+        } catch (IOException e) {
+            audit.log(EventData.IMPORT_EVENT, EventData.Status.FAILURE, "Entities not imported from TSV file", Map.of("filename", path), e);
         }
     }
 
@@ -125,9 +125,8 @@ public class TsvHdl {
         };
         try (Reader in = Files.newBufferedReader(path, StandardCharsets.UTF_8)) {
             imports(audit, in, path.toString(), tsvEntity, lambda);
-        } catch (Exception e) {
-            audit.log(EventData.IMPORT_EVENT, EventData.Status.FAILURE, "Relations not imported from TSV file",
-                Map.of("filename", path), e);
+        } catch (IOException e) {
+            audit.log(EventData.IMPORT_EVENT, EventData.Status.FAILURE, "Relations not imported from TSV file", Map.of("filename", path), e);
         }
         return relations;
     }
@@ -186,16 +185,16 @@ public class TsvHdl {
                 U imported = function.apply(tsvEntity, csv);
                 if (!(imported instanceof MutableEntityExtended entity) || (entity.validate())) {
                     ++counter;
-                    audit.log(EventData.IMPORT_EVENT, EventData.Status.SUCCESS, STR."\{tsvEntity.clazz().getSimpleName()} imported",
+                    audit.log(EventData.IMPORT_EVENT, EventData.Status.INFO, STR."\{tsvEntity.clazz().getSimpleName()} imported",
                         Map.of("filename", source, "object", imported));
                 } else {
                     audit.log(EventData.IMPORT_EVENT, EventData.Status.WARNING, STR."\{tsvEntity.clazz().getSimpleName()} invalid entity",
                         Map.of("filename", source, "object", imported));
                 }
             }
-            audit.log(EventData.IMPORT_EVENT, EventData.Status.INFO, STR."\{tsvEntity.clazz().getSimpleName()} imported objects",
+            audit.log(EventData.IMPORT_EVENT, EventData.Status.SUCCESS, STR."\{tsvEntity.clazz().getSimpleName()} imported objects",
                 Map.of("filename", source, "count", counter));
-        } catch (Exception e) {
+        } catch (IOException e) {
             audit.log(EventData.IMPORT_EVENT, EventData.Status.FAILURE, "Entities not imported from TSV file",
                 Map.of("filename", source, "csv-record", loggedRecord), e);
         }
@@ -213,13 +212,13 @@ public class TsvHdl {
                 lambda.accept(entity, out);
                 out.println();
                 ++counter;
-                audit.log(EventData.EXPORT_EVENT, EventData.Status.SUCCESS, STR."\{tsvEntity.clazz().getSimpleName()} exported to TSV file",
+                audit.log(EventData.EXPORT_EVENT, EventData.Status.INFO, STR."\{tsvEntity.clazz().getSimpleName()} exported to TSV file",
                     Map.of("filename", path, "entity", entity));
             }
-            audit.log(EventData.EXPORT_EVENT, EventData.Status.INFO, "exported to TSV file", Map.of("filename", path, "counter", counter));
-        } catch (Exception e) {
-            audit.log(EventData.EXPORT_EVENT, EventData.Status.FAILURE, "Entities exported to TSV file", Map.of("filename", path, "entity",
-                Objects.nonNull(loggedEntity) ? loggedEntity : "null"), e);
+            audit.log(EventData.EXPORT_EVENT, EventData.Status.SUCCESS, "exported to TSV file", Map.of("filename", path, "counter", counter));
+        } catch (IOException e) {
+            audit.log(EventData.EXPORT_EVENT, EventData.Status.FAILURE, "Entities exported to TSV file",
+                Map.of("filename", path, "entity", Objects.nonNull(loggedEntity) ? loggedEntity : "null"), e);
         }
     }
 }

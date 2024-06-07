@@ -246,7 +246,7 @@ public class CrmTsvHdl {
 
     private TsvEntity<Employee> createTsvEmployee() {
         List<TsvProperty<Employee, ?>> fields = List.of(TsvProperty.of(
-                TsvHdl.OID, Employee::oid, (entity, value) -> ReflectionUtilities.set(entity, TsvHdl.OID, value), Long::parseLong),
+                HasOid.OID, Employee::oid, (entity, value) -> ReflectionUtilities.set(entity, HasOid.OID, value), Long::parseLong),
             TsvProperty.of(TsvHdlCore.createTsvDateRange(), MutableEntity::range, MutableEntity::range),
             TsvProperty.ofString(TEXT, Employee::text, Employee::text),
             TsvProperty.of("personOid", Employee::person, Employee::person, e -> findNaturalEntityByOid(e).orElse(null), TsvHdl.convertFoidTo()),
@@ -273,12 +273,12 @@ public class CrmTsvHdl {
     }
 
     private TsvEntity<ContractExtension> createTsvContractExtension() {
-        Function<CSVRecord, ContractExtension> imports = (CSVRecord csv) -> new ContractExtension(get(csv, TsvHdl.ID), get(csv, NAME),
+        Function<CSVRecord, ContractExtension> imports = (CSVRecord csv) -> new ContractExtension(get(csv, HasId.ID), get(csv, NAME),
             DateRange.of(LocalDate.parse(get(csv, FROM_DATE)), LocalDate.parse(get(csv, TO_DATE))), get(csv, TEXT), get(csv, "contractId"),
             TsvHdl.parseBigDecimal(csv, "amountWithoutVat"),
             TsvHdl.parseBigDecimal(csv, "budgetInHours"));
 
-        List<TsvProperty<ContractExtension, ?>> fields = List.of(TsvProperty.ofString(TsvHdl.ID, ContractExtension::id),
+        List<TsvProperty<ContractExtension, ?>> fields = List.of(TsvProperty.ofString(HasId.ID, ContractExtension::id),
             TsvProperty.ofString(NAME, ContractExtension::name),
             TsvProperty.of(TsvHdlCore.createTsvDateRange(), HasDateRange::range, null),
             TsvProperty.ofString(TEXT, ContractExtension::text),
