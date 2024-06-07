@@ -21,3 +21,4 @@ ifndef::imagesdir[:imagesdir: ./pics]
 |UML|Unified Modeling Language |
 |VAT|Value-Added Tax |
 |===
+

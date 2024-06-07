@@ -11,18 +11,109 @@ ifndef::imagesdir[:imagesdir: ./pics]
 [[section-building-block-view]]
 == Building Block View
 
-=== Bounded Domain as a Building Block
+A *bounded domain* is the key building block for a modular monolith architecture approach.
+The ERP application is consisting of multiple bounded domains.
 
-=== Bounded Domain User Interface
+The same approach should be used for a distributed microservice architecture.
 
-=== Bounded Domain Persistence
-
-=== Bounded Domain Export and Import
-
-=== Rest Services for a Bounded Domain
-
-A bounded domain is the building block for a modular monolith architecture approach.
 Each bounded domain is a self-contained module that encapsulates the business logic and data for a specific domain.
+Persistence shall be handled per bounded domain.
+Ideally, the domain model should be designed to be independent of the persistence technology.
+
+We assume the reader is familiar with the concepts of domain-driven design.
+
+=== Facets of a Bounded Domain
+
+A bounded domain must provide the following abstractions:
+
+* A bounded domain class as entry point to the domain.
+Each bounded domain has a unique name.
+* A realm of the domain model and provides the factory and persistence functionality as described in DDD.
+* A port describing the services provided by the domain.
+An adapter class and other helper classes are used to implement the port.
+* An optional business logic implementing the business rules of the domain.
+
+The following abstractions are optional:
+
+* A user interface to interact with the domain.
+* A REST service to expose the domain functionality to other modules or external clients.
+* Domain events published by the domain.
+* Domain commands to interact with the domain.
+* Domain queries to retrieve information from the domain.
+
+==== Domain Model
+
+The classes are declared in the package `net.erp.DOMAIN.domain`.
+
+===== Internal Representation
+
+The *entities* and *aggregates* of the domain are modeled as Java plain old objects (POJOs).
+*Value objects* are port of aggregates.
+They are immutable and are used to represent data in a graph of objects.
+Ideally, they should be implemented as Java records to reflect their immutability.
+
+An entity shall have an *identifier* that uniquely identifies the entity within the domain.
+Optionally, it can have an *internal object identifier* used to identify the entity within the domain model.
+
+An entity implements the `HasId` interface and optionally the `HasOid` interface.
+An entity can also have a human-readable name that is used to display the entity in the user interface.
+Such entities implement the `HasName` interface.
+
+===== External Representation
+
+Our domains provide an external representation of the domain model instances.
+This representation is used to transfer the domain model instances between the domain and the external world.
+The mechanism provides import, export and archiving functionality.
+
+The preferred export format is TSV.
+Most entities map logically to a row in a TSV file.
+
+For complex structures, we use JSON.
+An example is the export of a complete invoice.
+
+Instances edited outside the domain are often encoded in YAML.
+An example is the documentation of monthly activities of a consultant in a services company.
+
+[NOTE]
+====
+The `net.tangly.gleam` module provides the necessary classes to implement the import and export functionality.
+The module is a member of our open-source components and available on Maven Central.
+The {ref-tangly-blog-url}/docs/gleam/[Gleam Module] documentation provides more details.
+====
+
+==== Domain Services
+
+The classes are declared in the package `net.erp.DOMAIN.service`.
+
+The implementation of the service is located in the services and port packages.
+
+The `Port` interface requires the import, export and clear functionality.
+
+==== Domain Interfaces
+
+** REST Services are defined in the package `net.erp.DOMAIN.rest`.
+** Events are defined in the package `net.erp.DOMAIN.events`.
+** Commands are defined in the package `net.erp.DOMAIN.commands`.
+** Queries are defined in the package `net.erp.DOMAIN.queries`.
+
+The number of commands and queries is an indicator of the coupling between the bounded domains.
+Try to minimize the number of commands and queries.
+
+REST services are an alternative path to realize a user interface for a bounded domain instead of a more traditional {ref-vaadin} user interface.
+Events are the preferred way to communicate between bounded domains.
+They are part of the domain-driven design approach.
+
+==== User Interface
+
+The classes are declared in the package 'net.erp.DOMAIN.ui'.
+
+=== Bounded Domain Application Services
+
+* User Interface for Bounded Domain Micro Frontends
+* Authentication and Authorization
+* Audit Log
+* Event Publishing and Subscribing
+* Tenancy
 
 A bounded domain can provide a REST interface to expose its functionality to other modules or external clients.
 The definition and documentation of the REST services are part of the bounded domain and should be packaged with the domain artifacts.
@@ -37,3 +128,14 @@ The Swagger UI shall be used to publish the REST services for all bounded domain
 The application uses the {ref-javalin} framework to implement the REST services.
 OpenAPI and Swagger plugins are used to document and publish the documentation of the REST services.
 ====
+
+=== References
+
+* bibitem:[domain-driven-design]
+* bibitem:[domain-driven-design-distilled]
+* bibitem:[implementing-domain-driven-design]
+* bibitem:[working-effectively-with-legacy-code]
+* bibitem:[refactoring-to-patterns]
+* bibitem:[design-patterns]
+* bibitem:[building-microservices-2nd]
+* bibitem:[software-architecture]
