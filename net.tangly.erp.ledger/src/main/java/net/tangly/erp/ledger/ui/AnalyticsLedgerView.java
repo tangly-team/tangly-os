@@ -27,6 +27,7 @@ import java.time.LocalDate;
 
 public class AnalyticsLedgerView extends AnalyticsView {
     private static final String ProfitAndLoss = "Profit & Loss";
+    private static final String Assets = "Assets";
     private static final Logger logger = LogManager.getLogger();
     private final LedgerBusinessLogic ledgerLogic;
     private SOChart profitAndLossSoChart;
@@ -40,7 +41,7 @@ public class AnalyticsLedgerView extends AnalyticsView {
 
     private void init() {
         profitAndLossSoChart = createAndRegisterChart(ProfitAndLoss);
-        financialSoChart = createAndRegisterChart("Assets");
+        financialSoChart = createAndRegisterChart(Assets);
         setSizeFull();
     }
 

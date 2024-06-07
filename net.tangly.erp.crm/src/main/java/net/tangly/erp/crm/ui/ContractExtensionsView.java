@@ -45,20 +45,17 @@ public class ContractExtensionsView extends ItemView<ContractExtension> {
     private void init() {
         setHeight("15em");
         Grid<ContractExtension> grid = grid();
-        grid.addColumn(ContractExtension::id).setKey(ItemView.ID).setHeader(ItemView.ID_LABEL).setSortable(true).setResizable(true).setFlexGrow(0).setWidth(
-            "10em");
-        grid.addColumn(HasName::name).setKey(ItemView.NAME).setHeader(ItemView.NAME_LABEL).setResizable(true).setSortable(true).setFlexGrow(0).setWidth("16em");
-        grid.addColumn(new LocalDateRenderer<>(HasDateRange::from, ItemView.ISO_DATE_FORMAT)).setKey(ItemView.FROM).setHeader(ItemView.FROM_LABEL).setResizable(
-                true).setSortable(true).setFlexGrow(0)
-            .setWidth("8em");
-        grid.addColumn(new LocalDateRenderer<>(HasDateRange::to, ItemView.ISO_DATE_FORMAT)).setKey(ItemView.TO).setHeader(ItemView.TO_LABEL).setResizable(
-                true).setSortable(true).setFlexGrow(0)
-            .setWidth("8em");
-        grid.addColumn(HasText::text).setKey(ItemView.TEXT).setHeader(ItemView.TEXT_LABEL).setResizable(true).setSortable(true).setFlexGrow(0).setWidth("30em");
-        grid.addColumn(new NumberRenderer<>(ContractExtension::amountWithoutVat, VaadinUtils.FORMAT)).setKey("amount").setHeader("Amount").setAutoWidth(
-            true).setResizable(true).setSortable(true).setTextAlign(ColumnTextAlign.END);
-        grid.addColumn(new NumberRenderer<>(ContractExtension::budgetInHours, VaadinUtils.FORMAT)).setKey("budgetInHours").setHeader(
-            "Budget In Hours").setAutoWidth(true).setResizable(true).setSortable(true).setTextAlign(ColumnTextAlign.END);
+        grid.addColumn(ContractExtension::id).setKey(ID).setHeader(ID_LABEL).setSortable(true).setResizable(true).setFlexGrow(0).setWidth("10em");
+        grid.addColumn(HasName::name).setKey(NAME).setHeader(NAME_LABEL).setResizable(true).setSortable(true).setFlexGrow(0).setWidth("16em");
+        grid.addColumn(new LocalDateRenderer<>(HasDateRange::from, ItemView.ISO_DATE_FORMAT)).setKey(FROM).setHeader(FROM_LABEL).setResizable(true)
+            .setSortable(true).setFlexGrow(0).setWidth("8em");
+        grid.addColumn(new LocalDateRenderer<>(HasDateRange::to, ItemView.ISO_DATE_FORMAT)).setKey(TO).setHeader(TO_LABEL).setResizable(true).setSortable(true)
+            .setFlexGrow(0).setWidth("8em");
+        grid.addColumn(HasText::text).setKey(TEXT).setHeader(TEXT_LABEL).setResizable(true).setSortable(true).setFlexGrow(0).setWidth("30em");
+        grid.addColumn(new NumberRenderer<>(ContractExtension::amountWithoutVat, VaadinUtils.FORMAT)).setKey("amount").setHeader("Amount").setAutoWidth(true)
+            .setResizable(true).setSortable(true).setTextAlign(ColumnTextAlign.END);
+        grid.addColumn(new NumberRenderer<>(ContractExtension::budgetInHours, VaadinUtils.FORMAT)).setKey("budgetInHours").setHeader("Budget In Hours")
+            .setAutoWidth(true).setResizable(true).setSortable(true).setTextAlign(ColumnTextAlign.END);
     }
 
     /**

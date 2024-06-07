@@ -75,7 +75,7 @@ public abstract class AnalyticsView extends VerticalLayout implements View {
         return to;
     }
 
-    protected NightingaleRoseChart createChart(@NotNull String name, @NotNull CategoryData categoryData, @NotNull Data data) {
+    protected final NightingaleRoseChart createChart(@NotNull String name, @NotNull CategoryData categoryData, @NotNull Data data) {
         NightingaleRoseChart roseChart = new NightingaleRoseChart(categoryData, data);
         roseChart.setName(name);
         Position chartPosition = new Position();
@@ -84,7 +84,7 @@ public abstract class AnalyticsView extends VerticalLayout implements View {
         return roseChart;
     }
 
-    protected SOChart createAndRegisterChart(@NotNull String label) {
+    protected final SOChart createAndRegisterChart(@NotNull String label) {
         SOChart chart = new SOChart();
         chart.setSize("1200px", "600px");
         HorizontalLayout layout = new HorizontalLayout(chart);
@@ -93,7 +93,7 @@ public abstract class AnalyticsView extends VerticalLayout implements View {
         return chart;
     }
 
-    protected LineChart createLineChart(@NotNull String name, @NotNull DateData xValues, @NotNull BiFunction<LocalDate, LocalDate, BigDecimal> compute,
+    protected final LineChart createLineChart(@NotNull String name, @NotNull DateData xValues, @NotNull BiFunction<LocalDate, LocalDate, BigDecimal> compute,
                                         @NotNull RectangularCoordinate rc) {
         LocalDate start;
         LocalDate end = null;

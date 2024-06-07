@@ -32,6 +32,8 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
+import static net.tangly.ui.components.ItemView.*;
+
 public class AnalyticsCrmView extends AnalyticsView {
     private static final String CustomersTurnover = "Customers Turnover";
     private static final String ContractsTurnover = "Contracts Turnover";
@@ -79,15 +81,18 @@ public class AnalyticsCrmView extends AnalyticsView {
         grid.setHeight("24em");
         grid.setWidth("1200px");
         dataView = grid.setItems(DataProvider.ofCollection(domain.domain().realm().contracts().items()));
-        grid.addColumn(Contract::id).setKey("id").setHeader("Id").setAutoWidth(true).setResizable(true).setSortable(true);
-        grid.addColumn(Contract::name).setKey("name").setHeader("Name").setAutoWidth(true).setResizable(true).setSortable(true);
-        grid.addColumn(Contract::from).setKey("from").setHeader("From").setAutoWidth(true).setResizable(true).setSortable(true);
-        grid.addColumn(Contract::to).setKey("to").setHeader("To").setAutoWidth(true).setResizable(true).setSortable(true);
+        grid.addColumn(Contract::id).setKey(ID).setHeader(ID_LABEL).setAutoWidth(true).setResizable(true).setSortable(true);
+        grid.addColumn(Contract::name).setKey(NAME).setHeader(ID_LABEL).setAutoWidth(true).setResizable(true).setSortable(true);
+        grid.addColumn(Contract::from).setKey(FROM).setHeader(FROM_LABEL).setAutoWidth(true).setResizable(true).setSortable(true);
+        grid.addColumn(Contract::to).setKey(TO).setHeader(TO_LABEL).setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Contract::currency).setKey("currency").setHeader("Currency").setAutoWidth(true).setResizable(true).setSortable(true);
-        grid.addColumn(VaadinUtils.coloredRender(Contract::amountWithoutVat, VaadinUtils.FORMAT)).setHeader("Amount").setAutoWidth(true).setResizable(true).setSortable(true);
-        grid.addColumn(VaadinUtils.coloredRender(o -> invoicesLogic.invoicedAmountWithoutVatForContract(o.id(), from(), to()), VaadinUtils.FORMAT)).setHeader("Invoiced")
+        grid.addColumn(VaadinUtils.coloredRender(Contract::amountWithoutVat, VaadinUtils.FORMAT)).setHeader("Amount").setAutoWidth(true).setResizable(true)
+            .setSortable(true);
+        grid.addColumn(VaadinUtils.coloredRender(o -> invoicesLogic.invoicedAmountWithoutVatForContract(o.id(), from(), to()), VaadinUtils.FORMAT))
+            .setHeader("Invoiced")
             .setAutoWidth(true).setResizable(true).setSortable(true);
-        grid.addColumn(VaadinUtils.coloredRender(o -> invoicesLogic.expensesForContract(o.id(), from(), to()), VaadinUtils.FORMAT)).setHeader("Expenses").setAutoWidth(true)
+        grid.addColumn(VaadinUtils.coloredRender(o -> invoicesLogic.expensesForContract(o.id(), from(), to()), VaadinUtils.FORMAT)).setHeader("Expenses")
+            .setAutoWidth(true)
             .setResizable(true).setSortable(true);
         return grid;
     }

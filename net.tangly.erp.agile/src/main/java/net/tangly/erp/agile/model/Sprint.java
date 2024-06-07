@@ -14,42 +14,21 @@
 package net.tangly.erp.agile.model;
 
 import net.tangly.core.DateRange;
-import net.tangly.core.HasMutableDateRange;
+import net.tangly.core.HasDateRange;
 import net.tangly.core.MutableExternalEntity;
 import net.tangly.core.MutalbeExternalEntityImp;
 import org.jetbrains.annotations.NotNull;
 
-import java.time.LocalDate;
-import java.util.Objects;
-
-public class Sprint extends MutalbeExternalEntityImp implements MutableExternalEntity, HasMutableDateRange {
-    private DateRange interval;
+public class Sprint extends MutalbeExternalEntityImp implements MutableExternalEntity, HasDateRange {
+    private final DateRange interval;
 
     public Sprint(@NotNull String id) {
         super(id);
         interval = DateRange.INFINITE;
     }
 
-    // region HasInterval
-
     @Override
     public DateRange range() {
         return interval;
     }
-
-    @Override
-    public void range(@NotNull DateRange range) {
-        this.interval = Objects.nonNull(range) ? range : DateRange.INFINITE;
-    }
-
-    @Override
-    public void from(LocalDate from) {
-        interval = interval.from(from);
-    }
-
-    @Override
-    public void to(LocalDate to) {
-        interval = interval.to(to);
-    }
-    // endregion
 }

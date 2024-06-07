@@ -30,7 +30,18 @@ import java.util.List;
 import java.util.Objects;
 
 public class CollaboratorsEntities implements CollaboratorsRealm {
-    private static final long OID_SEQUENCE_START = 1000;
+    static class Data {
+        private final List<Collaborator> collaborators;
+        private final List<Organization> organizations;
+        private final List<Contract> contracts;
+
+        Data() {
+            collaborators = new ArrayList<>();
+            organizations = new ArrayList<>();
+            contracts = new ArrayList<>();
+        }
+    }
+
     private final Data data;
     private final Provider<Collaborator> collaborators;
     private final Provider<Organization> organizations;
@@ -73,18 +84,6 @@ public class CollaboratorsEntities implements CollaboratorsRealm {
     public void close() {
         if (Objects.nonNull(storageManager)) {
             storageManager.close();
-        }
-    }
-
-    static class Data {
-        private final List<Collaborator> collaborators;
-        private final List<Organization> organizations;
-        private final List<Contract> contracts;
-
-        Data() {
-            collaborators = new ArrayList<>();
-            organizations = new ArrayList<>();
-            contracts = new ArrayList<>();
         }
     }
 }

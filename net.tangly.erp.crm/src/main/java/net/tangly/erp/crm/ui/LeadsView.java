@@ -117,7 +117,7 @@ public class LeadsView extends ItemView<Lead> {
 
     private void init() {
         var grid = grid();
-        grid.addColumn(Lead::date).setKey("date").setHeader("Date").setAutoWidth(true).setResizable(true).setSortable(true);
+        grid.addColumn(Lead::date).setKey(DATE).setHeader(DATE_LABEL).setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Lead::code).setKey("code").setHeader("Code").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Lead::firstname).setKey("firstname").setHeader("Firstname").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Lead::lastname).setKey("lastname").setHeader("Lastname").setAutoWidth(true).setResizable(true).setSortable(true);

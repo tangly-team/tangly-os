@@ -45,7 +45,7 @@ class ActivitiesView extends ItemView<Activity> {
     private static final String AUTHOR = "author";
 
     private static final String AUTHOR_LABEL = "Author";
-    private static final String DETAILS = "details";
+    private static final String CODE_LABEL = "Code";
 
     record CmdRefreshActivities(ActivitiesView view) implements Cmd {
         @Override
@@ -134,17 +134,17 @@ class ActivitiesView extends ItemView<Activity> {
     @Override
     protected void addActions(@NotNull GridContextMenu<Activity> menu) {
         menu().add(new Hr());
-        menu().addItem("RefreshAll", event -> new CmdRefreshActivities(this).execute());
+        menu().addItem("RefreshAll", _ -> new CmdRefreshActivities(this).execute());
     }
 
     private void init() {
         var grid = grid();
-        grid.addColumn(Activity::date).setKey(EntityView.DATE).setHeader(EntityView.DATE_LABEL).setResizable(true).setSortable(true).setFlexGrow(0).setWidth(
+        grid.addColumn(Activity::date).setKey(DATE).setHeader(DATE_LABEL).setResizable(true).setSortable(true).setFlexGrow(0).setWidth(
             "10em");
-        grid.addColumn(Activity::code).setKey(CODE).setHeader("Code").setResizable(true).setSortable(true).setFlexGrow(0).setWidth("10em");
+        grid.addColumn(Activity::code).setKey(CODE).setHeader(CODE_LABEL).setResizable(true).setSortable(true).setFlexGrow(0).setWidth("10em");
         grid.addColumn(Activity::duration).setKey(DURATION_IN_MINUTES).setHeader("Duration").setResizable(true).setSortable(true).setFlexGrow(0).setWidth(
             "5em");
-        grid.addColumn(Activity::author).setKey(AUTHOR).setHeader("Author").setAutoWidth(true).setResizable(true).setSortable(true);
+        grid.addColumn(Activity::author).setKey(AUTHOR).setHeader(AUTHOR_LABEL).setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Activity::text).setKey(EntityView.TEXT).setHeader(EntityView.TEXT_LABEL).setAutoWidth(true).setResizable(true).setSortable(true);
     }
 }

@@ -13,20 +13,14 @@
 
 package net.tangly.erp.agile.model;
 
-import net.tangly.core.MutableExternalEntity;
-import net.tangly.core.MutalbeExternalEntityImp;
-import org.jetbrains.annotations.NotNull;
+import net.tangly.core.Comment;
+import net.tangly.core.ExternalEntity;
+import net.tangly.core.Tag;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.util.List;
 
-public class Story extends MutalbeExternalEntityImp implements MutableExternalEntity {
-    private int priority;
-    private int estimate;
-    private BigDecimal effort;
-    private String featureId;
-    private String sprintId;
-
-    public Story(@NotNull String id) {
-        super(id);
-    }
+public record Story(String id, String name, LocalDate date, StoryCode code, String text, List<Comment> comments, List<Tag> tags, int priority, int estimate,
+                    BigDecimal effort, String featureId, String sprintId) implements ExternalEntity {
 }

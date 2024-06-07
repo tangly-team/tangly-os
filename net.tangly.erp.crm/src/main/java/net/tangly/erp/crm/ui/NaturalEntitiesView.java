@@ -100,7 +100,7 @@ class NaturalEntitiesView extends EntityView<NaturalEntity> {
 
     public static void defineOne2ManyEmployees(@NotNull Grid<Employee> grid) {
         VaadinUtils.initialize(grid);
-        grid.addColumn(Employee::oid).setKey(ItemView.OID).setHeader(ItemView.OID_LABEL).setAutoWidth(true).setResizable(true).setSortable(true).setFrozen(
+        grid.addColumn(Employee::oid).setKey(OID).setHeader(OID_LABEL).setAutoWidth(true).setResizable(true).setSortable(true).setFrozen(
             true);
         grid.addColumn(o -> o.organization().name()).setKey("organization").setHeader("Organization").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(o -> o.value(CrmTags.CRM_EMPLOYEE_TITLE).orElse(null)).setKey("title").setHeader("Title").setAutoWidth(true).setResizable(
