@@ -43,13 +43,13 @@ class ProductsPortTest {
             var store = new ErpStore(fs);
             var handler = createAdapter(store);
 
-            handler.importEntities();
+            handler.importEntities(store);
             assertThat(handler.realm().efforts().items()).isNotEmpty();
             handler.realm().efforts().deleteAll();
             assertThat(handler.realm().efforts().items()).isEmpty();
 
             Reader stream = Files.newBufferedReader(store.dataRoot().resolve(ProductsBoundedDomain.DOMAIN, "2020", filename));
-            handler.importEfforts(stream, filename, true);
+            handler.importEfforts(store,stream, filename, true);
             assertThat(handler).isNotNull();
             assertThat(handler.realm().efforts().items()).isNotEmpty();
             assertThat(handler.realm().efforts().items().size()).isEqualTo(3);
@@ -61,7 +61,7 @@ class ProductsPortTest {
         try (FileSystem fs = Jimfs.newFileSystem(com.google.common.jimfs.Configuration.unix())) {
             var store = new ErpStore(fs);
             var handler = createAdapter(store);
-            handler.importEntities();
+            handler.importEntities(store);
             EffortReportEngine reporter = new EffortReportEngine(handler.logic());
             reporter.createReport(Provider.findByOid(handler.realm().assignments(), ASSIGNMENT_OID).orElseThrow(), LocalDate.of(2020, Month.JANUARY, 1),
                 LocalDate.of(2020, Month.JANUARY, 31), store.reportsRoot().resolve(ProductsBoundedDomain.DOMAIN, "efforts.adoc"), ChronoUnit.HOURS);

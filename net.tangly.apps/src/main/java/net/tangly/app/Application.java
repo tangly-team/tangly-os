@@ -136,8 +136,7 @@ public final class Application {
     }
 
     private void ofAppDomain() {
-        var realm = inMemory() ? new AppsEntities() : new AppsEntities(
-            Path.of(databases(), AppsBoundedDomain.DOMAIN));
+        var realm = inMemory() ? new AppsEntities() : new AppsEntities(Path.of(databases(), AppsBoundedDomain.DOMAIN));
         var domain = new AppsBoundedDomain(realm, new AppsBusinessLogic(realm), new AppsAdapter(realm, Path.of(imports(AppsBoundedDomain.DOMAIN))), registry());
         registerBoundedDomain(domain);
     }

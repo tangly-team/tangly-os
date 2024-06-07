@@ -13,18 +13,17 @@
 
 package net.tangly.erp.collaborators.ports;
 
+import net.tangly.core.domain.DomainAudit;
 import net.tangly.core.domain.TsvHdl;
 import net.tangly.core.providers.Provider;
 import net.tangly.core.tsv.TsvHdlCore;
 import net.tangly.erp.collaborators.domain.*;
-import net.tangly.erp.collabortors.services.CollaboratorsBoundedDomain;
 import net.tangly.erp.collabortors.services.CollaboratorsRealm;
 import net.tangly.gleam.model.TsvEntity;
 import net.tangly.gleam.model.TsvProperty;
 import org.apache.commons.csv.CSVRecord;
 import org.jetbrains.annotations.NotNull;
 
-import java.io.Reader;
 import java.nio.file.Path;
 import java.util.List;
 import java.util.Optional;
@@ -37,12 +36,12 @@ public class CollaboratorsTsvHdl {
         this.realm = realm;
     }
 
-    public void importCollaboratators(@NotNull Reader reader, String source) {
-        TsvHdl.importEntities(CollaboratorsBoundedDomain.DOMAIN, reader, source, createTsvCollaborator(), realm.collaborators());
+    public void importCollaboratators(@NotNull DomainAudit audit, @NotNull Path path) {
+        TsvHdl.importEntities(audit, path, createTsvCollaborator(), realm.collaborators());
     }
 
-    public void exportCollaborators(@NotNull Path path) {
-        TsvHdl.exportEntities(CollaboratorsBoundedDomain.DOMAIN, path, createTsvCollaborator(), realm.collaborators());
+    public void exportCollaborators(@NotNull DomainAudit audit,@NotNull Path path) {
+        TsvHdl.exportEntities(audit, path, createTsvCollaborator(), realm.collaborators());
     }
 
 

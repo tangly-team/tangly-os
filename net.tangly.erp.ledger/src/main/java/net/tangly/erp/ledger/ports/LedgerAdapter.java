@@ -15,9 +15,8 @@ package net.tangly.erp.ledger.ports;
 
 import net.tangly.commons.logger.EventData;
 import net.tangly.commons.utilities.AsciiDoctorHelper;
-import net.tangly.core.domain.Port;
+import net.tangly.core.domain.DomainAudit;
 import net.tangly.erp.ledger.domain.Transaction;
-import net.tangly.erp.ledger.services.LedgerBoundedDomain;
 import net.tangly.erp.ledger.services.LedgerPort;
 import net.tangly.erp.ledger.services.LedgerRealm;
 import org.jetbrains.annotations.NotNull;
@@ -69,17 +68,17 @@ public class LedgerAdapter implements LedgerPort {
     }
 
     @Override
-    public void importEntities() {
+    public void importEntities(@NotNull DomainAudit audit) {
+        var handler = new LedgerTsvHdl(realm);
+        handler.importChartOfAccounts(audit, dataFolder.resolve(LEDGER));
+        realm.build();
         try (Stream<Path> stream = Files.walk(dataFolder)) {
-            var handler = new LedgerTsvHdl(realm);
-            Port.importEntities(dataFolder, LEDGER, handler::importChartOfAccounts);
-            realm.build();
             stream.filter(file -> !Files.isDirectory(file) && file.getFileName().toString().endsWith(JOURNAL)).forEach(o -> {
                 try (Reader reader = Files.newBufferedReader(o, StandardCharsets.UTF_8)) {
-                    handler.importJournal(reader, o.toString());
-                    EventData.log(EventData.IMPORT, LedgerBoundedDomain.DOMAIN, EventData.Status.SUCCESS, "Journal imported {}", Map.of("journalPath", o));
+                    handler.importJournal(audit, reader, o.toString());
+                    audit.log(EventData.IMPORT, EventData.Status.SUCCESS, "Journal imported {}", Map.of("journalPath", o));
                 } catch (IOException e) {
-                    EventData.log(EventData.IMPORT, LedgerBoundedDomain.DOMAIN, EventData.Status.FAILURE, "Journal import failed {}", Map.of("journalPath", o));
+                    audit.log(EventData.IMPORT, EventData.Status.FAILURE, "Journal import failed {}", Map.of("journalPath", o));
                 }
             });
         } catch (IOException e) {
@@ -88,13 +87,13 @@ public class LedgerAdapter implements LedgerPort {
     }
 
     @Override
-    public void exportEntities() {
+    public void exportEntities(@NotNull DomainAudit audit) {
         var handler = new LedgerTsvHdl(realm);
-        handler.exportChartOfAccounts(dataFolder.resolve(LEDGER));
+        handler.exportChartOfAccounts(audit, dataFolder.resolve(LEDGER));
         realm().transactions().items().stream().map(Transaction::date).map(LocalDate::getYear).distinct().forEach(o -> {
             Path journal = dataFolder.resolve(journalForYear(o));
-            handler.exportJournal(journal, LocalDate.of(o, Month.JANUARY, 1), LocalDate.of(o, Month.DECEMBER, 31));
-            EventData.log(EventData.EXPORT, LedgerBoundedDomain.DOMAIN, EventData.Status.SUCCESS, "Journal exported {}", Map.of("journalPath", journal.toString(), "year", o));
+            handler.exportJournal(audit, journal, LocalDate.of(o, Month.JANUARY, 1), LocalDate.of(o, Month.DECEMBER, 31));
+            audit.log(EventData.EXPORT, EventData.Status.SUCCESS, "Journal exported {}", Map.of("journalPath", journal.toString(), "year", o));
         });
     }
 
@@ -108,7 +107,8 @@ public class LedgerAdapter implements LedgerPort {
     public void exportLedgerDocument(String name, LocalDate from, LocalDate to, boolean withVat, boolean withTransactions) {
         var report = new ClosingReportAsciiDoc(realm);
         report.create(from, to, reportsFolder.resolve(name + AsciiDoctorHelper.ASCIIDOC_EXT), withVat, withTransactions);
-        AsciiDoctorHelper.createPdf(reportsFolder.resolve(name + AsciiDoctorHelper.ASCIIDOC_EXT), reportsFolder.resolve(name + AsciiDoctorHelper.PDF_EXT), true);
+        AsciiDoctorHelper.createPdf(reportsFolder.resolve(name + AsciiDoctorHelper.ASCIIDOC_EXT), reportsFolder.resolve(name + AsciiDoctorHelper.PDF_EXT),
+            true);
     }
 
     public static String journalForYear(int year) {

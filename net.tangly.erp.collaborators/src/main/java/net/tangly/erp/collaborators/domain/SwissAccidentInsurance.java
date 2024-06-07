@@ -23,7 +23,7 @@ import java.math.BigDecimal;
 /**
  * Accident insurance contracts cover professional and non-professional accidents. Simply put, accident insurance is a form of insurance policy that offers a payout when people
  * experience injury or death due to an accident. The costs are a percentage of the salary for professional accidents and another percentage of the salary for non-professional
- * injuries. Often, at least a minimum amount shall be paid for each component of the insurance.
+ * injuries. Often, at least a minimum amount shall be paid for each domain of the insurance.
  *
  * @param range         date range when the accident insurance contract is active
  * @param nbuPercentage percentage of the salary for the non-professional accidents insurance

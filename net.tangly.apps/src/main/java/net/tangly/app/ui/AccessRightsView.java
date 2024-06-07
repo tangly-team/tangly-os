@@ -31,10 +31,8 @@ import org.jetbrains.annotations.NotNull;
 
 public class AccessRightsView extends ItemView<AccessRights> {
     private static final String USERNAME = "username";
-    private static final String DOMAIN = "domain";
     private static final String ACCESS_RIGHT_CODE = "accessRightCode";
     private static final String USERNAME_LABEL = "Username";
-    private static final String DOMAIN_LABEL = "Domain";
     private static final String ACCESS_RIGHT_CODE_LABEL = "Access Right";
 
     static class AccessRightsForm extends ItemForm<AccessRights, AccessRightsView> {

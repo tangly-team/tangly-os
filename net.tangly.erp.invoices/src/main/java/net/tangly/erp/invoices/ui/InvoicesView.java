@@ -85,18 +85,17 @@ class InvoicesView extends ItemView<Invoice> {
 
     @Override
     protected void addActions(@NotNull GridContextMenu<Invoice> menu) {
-        super.addActions(menu);
         menu().add(new Hr());
         menu().addItem("Export", e -> Cmd.ofDualCmd(e, (Invoice o) -> new CmdCreateInvoiceDocument(o, domain()).execute()));
     }
 
     private void init() {
         var grid = grid();
-        grid.addColumn(Invoice::id).setKey("id").setHeader("Id").setAutoWidth(true).setResizable(true).setSortable(true);
-        grid.addColumn(Invoice::name).setKey("name").setHeader("Name").setAutoWidth(true).setResizable(true).setSortable(true);
+        grid.addColumn(Invoice::id).setKey(ID).setHeader(ID_LABEL).setAutoWidth(true).setResizable(true).setSortable(true);
+        grid.addColumn(Invoice::name).setKey(NAME).setHeader(NAME_LABEL).setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Invoice::date).setKey("invoicedDate").setHeader("Invoiced Date").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Invoice::dueDate).setKey("dueDate").setHeader("Due Date").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(o -> VaadinUtils.format(o.amountWithoutVat())).setKey("amountWithoutVat").setAutoWidth(true).setResizable(true).setSortable(true);
-        grid.addColumn(Invoice::text).setKey("text").setHeader("Text").setAutoWidth(true).setResizable(true).setSortable(true);
+        grid.addColumn(Invoice::text).setKey(TEXT).setHeader(TEXT_LABEL).setAutoWidth(true).setResizable(true).setSortable(true);
     }
 }

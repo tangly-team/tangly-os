@@ -57,7 +57,7 @@
  * The preferred approach uses EclipseStore to persist graphs of Java objects.
  * The provider interface and their various implementation is a powerful mechanism to store and retrieve domain entities.</p>
  * <h2>Port</h2>
- * <p><The port provides the interface to the domain model for the adapters.
+ * <p>The port provides the interface to the domain model for the adapters.
  * Any bounded domain provides an import, export, and clear operations.
  * The import loads an archive of all entities of the domain.
  * The export archives all entities to a set of files.

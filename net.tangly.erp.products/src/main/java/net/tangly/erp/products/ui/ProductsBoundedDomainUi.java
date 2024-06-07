@@ -71,7 +71,7 @@ public class ProductsBoundedDomainUi extends BoundedDomainUi<ProductsBoundedDoma
         subMenu.addItem(WORK_CONTRACTS, _ -> select(layout, view(WORK_CONTRACTS).orElseThrow()));
         subMenu.addItem(ASSIGNMENTS, _ -> select(layout, view(ASSIGNMENTS).orElseThrow()));
         subMenu.addItem(EFFORTS, _ -> select(layout, view(EFFORTS).orElseThrow()));
-        addAdministration(layout, menuBar, view(ENTITIES).orElseThrow(), new CmdFilesUploadProducts(domain()));
+        addAdministration(layout, menuBar, view(ENTITIES).orElseThrow());
         select(layout);
     }
 

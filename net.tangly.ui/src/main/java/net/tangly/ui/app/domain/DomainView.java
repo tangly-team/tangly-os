@@ -25,6 +25,7 @@ import org.jetbrains.annotations.NotNull;
 public class DomainView extends VerticalLayout implements View {
     private static final String ENTITIES = "Entities";
     private static final String TAGS = "Tags";
+    private static final String AUDIT = "Audit";
     private final TabSheet tabSheet;
     private final transient BoundedDomainUi<?> domain;
     private boolean readonly;
@@ -51,9 +52,9 @@ public class DomainView extends VerticalLayout implements View {
     private void initialize() {
         tabSheet.add(ENTITIES, new DomainEntitiesView(domain));
         tabSheet.add(TAGS, new TagTypesView(domain));
+        tabSheet.add(AUDIT, new EventDataView(domain));
         add(tabSheet);
     }
-
 
     @Override
     public void refresh() {

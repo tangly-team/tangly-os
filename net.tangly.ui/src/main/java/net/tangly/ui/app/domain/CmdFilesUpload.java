@@ -27,12 +27,12 @@ import com.vaadin.flow.component.upload.Upload;
 import com.vaadin.flow.component.upload.receivers.MultiFileMemoryBuffer;
 import net.tangly.commons.lang.functional.TriConsumer;
 import net.tangly.core.domain.BoundedDomain;
+import net.tangly.core.domain.DomainAudit;
 import net.tangly.core.domain.Port;
 import net.tangly.core.domain.Realm;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.*;
-import java.util.function.BiConsumer;
 
 /**
  * The command to upload a set of files containing entities is delcared. The bounded domain shall import the provided entities.
@@ -122,9 +122,9 @@ public abstract class CmdFilesUpload<R extends Realm, B, P extends Port<R>> impl
      * @param filename name of the file uploaded in the buffer, which is processed
      * @param consumer consumer processing the input file
      */
-    protected void processInputStream(@NotNull String filename, @NotNull BiConsumer<Reader, String> consumer) {
+    protected void processInputStream(@NotNull DomainAudit audit, @NotNull String filename, @NotNull TriConsumer<DomainAudit, Reader, String> consumer) {
         try (Reader reader = new BufferedReader(new InputStreamReader(buffer.getInputStream(filename)))) {
-            consumer.accept(reader, filename);
+            consumer.accept(audit, reader, filename);
         } catch (IOException e) {
             throw new UncheckedIOException(e);
         }
@@ -136,9 +136,10 @@ public abstract class CmdFilesUpload<R extends Realm, B, P extends Port<R>> impl
      * @param filename name of the file uploaded in the buffer, which is processed
      * @param consumer consumer processing the input file
      */
-    protected void processInputStream(@NotNull String filename, @NotNull TriConsumer<Reader, String, Boolean> consumer) {
+    protected void processInputStream(@NotNull DomainAudit audit, @NotNull String filename, boolean overwrite,
+                                      @NotNull TriConsumer<DomainAudit, Reader, String> consumer) {
         try (Reader reader = new BufferedReader(new InputStreamReader(buffer.getInputStream(filename)))) {
-            consumer.accept(reader, filename, overwrite());
+            consumer.accept(audit, reader, filename);
         } catch (IOException e) {
             throw new UncheckedIOException(e);
         }

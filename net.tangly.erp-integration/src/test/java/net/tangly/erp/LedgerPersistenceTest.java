@@ -35,7 +35,7 @@ class LedgerPersistenceTest {
             var ledgerData = store.dataRoot().resolve(LedgerBoundedDomain.DOMAIN);
             var ledgerReport = store.reportsRoot().resolve(LedgerBoundedDomain.DOMAIN);
             var handler = new LedgerAdapter(new LedgerEntities(ledgerDb), ledgerData, ledgerReport);
-            handler.importEntities();
+            handler.importEntities(store);
             assertThat(handler.realm().accounts().items()).isNotEmpty();
             assertThat(handler.realm().transactions().items()).isNotEmpty();
             handler.realm().close();
@@ -57,15 +57,15 @@ class LedgerPersistenceTest {
             var ledgerData = store.dataRoot().resolve(LedgerBoundedDomain.DOMAIN);
             var ledgerReport = store.reportsRoot().resolve(LedgerBoundedDomain.DOMAIN);
             var handler = new LedgerAdapter(new LedgerEntities(ledgerDb), ledgerData, ledgerReport);
-            handler.importEntities();
+            handler.importEntities(store);
             long nrAccounts = handler.realm().accounts().items().size();
             long nrTransactions = handler.realm().transactions().items().size();
-            handler.exportEntities();
+            handler.exportEntities(store);
             handler.clearEntities();
             handler.realm().close();
 
             handler = new LedgerAdapter(new LedgerEntities(ledgerDb), ledgerData, ledgerReport);
-            handler.importEntities();
+            handler.importEntities(store);
             assertThat(handler.realm().accounts().items().size()).isEqualTo(nrAccounts);
             assertThat(handler.realm().transactions().items().size()).isEqualTo(nrTransactions);
             handler.realm().close();

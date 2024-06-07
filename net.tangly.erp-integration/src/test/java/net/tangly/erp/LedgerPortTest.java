@@ -59,9 +59,9 @@ class LedgerPortTest {
             var handler = new LedgerTsvHdl(new LedgerEntities());
             var ledgerDataPath = store.dataRoot().resolve(LedgerBoundedDomain.DOMAIN);
             var path = ledgerDataPath.resolve(LedgerAdapter.journalForYear(2015));
-            handler.importJournal(Files.newBufferedReader(path, StandardCharsets.UTF_8), path.toString());
+            handler.importJournal(store, Files.newBufferedReader(path, StandardCharsets.UTF_8), path.toString());
             path = ledgerDataPath.resolve(LedgerAdapter.journalForYear(2016));
-            handler.importJournal(Files.newBufferedReader(path, StandardCharsets.UTF_8), path.toString());
+            handler.importJournal(store, Files.newBufferedReader(path, StandardCharsets.UTF_8), path.toString());
 
             var report = new ClosingReportAsciiDoc(handler.ledger());
             var writer = new StringWriter();
@@ -73,7 +73,7 @@ class LedgerPortTest {
     private LedgerRealm createLedger(ErpStore store) {
         store.createRepository();
         var ledgerHdl = new LedgerAdapter(new LedgerEntities(), store.dataRoot().resolve(LedgerBoundedDomain.DOMAIN), store.reportsRoot().resolve(LedgerBoundedDomain.DOMAIN));
-        ledgerHdl.importEntities();
+        ledgerHdl.importEntities(store);
         return ledgerHdl.realm();
     }
 }

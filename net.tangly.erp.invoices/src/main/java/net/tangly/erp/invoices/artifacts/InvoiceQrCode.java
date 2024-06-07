@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2022 Marcel Baumann
+ * Copyright 2006-2024 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -8,20 +8,15 @@
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ *
  */
 
 package net.tangly.erp.invoices.artifacts;
 
 import net.codecrete.qrbill.canvas.PDFCanvas;
-import net.codecrete.qrbill.generator.Bill;
-import net.codecrete.qrbill.generator.BillFormat;
-import net.codecrete.qrbill.generator.GraphicsFormat;
-import net.codecrete.qrbill.generator.Language;
-import net.codecrete.qrbill.generator.OutputSize;
-import net.codecrete.qrbill.generator.Payments;
-import net.codecrete.qrbill.generator.QRBill;
-import net.codecrete.qrbill.generator.SwicoBillInformation;
+import net.codecrete.qrbill.generator.*;
 import net.tangly.core.Address;
+import net.tangly.core.domain.DomainAudit;
 import net.tangly.erp.invoices.domain.Invoice;
 import net.tangly.erp.invoices.domain.InvoiceLegalEntity;
 import org.apache.logging.log4j.LogManager;
@@ -40,7 +35,7 @@ public class InvoiceQrCode implements InvoiceGenerator {
     private static final BigDecimal HUNDRED = new BigDecimal("100");
     private static final Pattern ISO11649ReferenceFormat = Pattern.compile("[^A-Za-z0-9]");
 
-    public void exports(@NotNull Invoice invoice, @NotNull Path invoicePath, @NotNull Map<String, Object> properties) {
+    public void exports(@NotNull DomainAudit audit, @NotNull Invoice invoice, @NotNull Path invoicePath, @NotNull Map<String, Object> properties) {
         var bill = new Bill();
         bill.setFormat(createBillFormat());
         bill.setVersion(Bill.Version.V2_0);

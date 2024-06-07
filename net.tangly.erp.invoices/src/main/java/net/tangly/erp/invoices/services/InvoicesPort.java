@@ -13,6 +13,7 @@
 
 package net.tangly.erp.invoices.services;
 
+import net.tangly.core.domain.DomainAudit;
 import net.tangly.core.domain.Port;
 import net.tangly.erp.invoices.domain.Invoice;
 import org.jetbrains.annotations.NotNull;
@@ -39,9 +40,9 @@ public interface InvoicesPort extends Port<InvoicesRealm> {
      * @param withQrCode  flag if the Swiss QR cde should be added to the invoice document
      * @param withEN16931 flag if the EN16931 digital invoice should be added to the invoice document
      * @param overwrite   flag if an existing document should be overwritten
-     * @see #exportInvoiceDocument(Invoice, boolean, boolean, boolean)
+     * @see #exportInvoiceDocuments(DomainAudit, boolean, boolean, boolean, LocalDate, LocalDate)
      */
-    void exportInvoiceDocument(@NotNull Invoice invoice, boolean withQrCode, boolean withEN16931, boolean overwrite);
+    void exportInvoiceDocument(@NotNull DomainAudit audit, @NotNull Invoice invoice, boolean withQrCode, boolean withEN16931, boolean overwrite);
 
     /**
      * Exports all selected invoices as artifact to a file. The method is responsible to infer the path to the generated invoice document.
@@ -53,5 +54,5 @@ public interface InvoicesPort extends Port<InvoicesRealm> {
      * @param to          optional end of the relevant time interval for the invoiced date
      * @param overwrite   flag if an existing document should be overwritten
      */
-    void exportInvoiceDocuments(boolean withQrCode, boolean withEN16931, boolean overwrite, LocalDate from, LocalDate to);
+    void exportInvoiceDocuments(@NotNull DomainAudit audit, boolean withQrCode, boolean withEN16931, boolean overwrite, LocalDate from, LocalDate to);
 }

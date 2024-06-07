@@ -15,10 +15,9 @@ package net.tangly.app.ports;
 
 import net.tangly.app.services.AppsPort;
 import net.tangly.app.services.AppsRealm;
+import net.tangly.core.domain.DomainAudit;
 import org.jetbrains.annotations.NotNull;
 
-import java.io.IOException;
-import java.nio.file.Files;
 import java.nio.file.Path;
 
 public class AppsAdapter implements AppsPort {
@@ -29,7 +28,7 @@ public class AppsAdapter implements AppsPort {
 
     private final Path dataFolder;
 
-    public AppsAdapter(@NotNull AppsRealm realm, @NotNull Path dataFolder) {
+    public AppsAdapter(AppsRealm realm, @NotNull Path dataFolder) {
         this.realm = realm;
         this.dataFolder = dataFolder;
     }
@@ -40,20 +39,15 @@ public class AppsAdapter implements AppsPort {
     }
 
     @Override
-    public void importEntities() {
-        var handler = new AppsTsvHdl(realm());
-        try (var usersReader = Files.newBufferedReader(dataFolder.resolve(USERS_TSV)); var accessRightsReader = Files.newBufferedReader(
-            dataFolder.resolve(ACCESS_RIGHTS_TSV))) {
-            handler.importUsers(usersReader, accessRightsReader, dataFolder.toString());
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+    public void importEntities(@NotNull DomainAudit audit) {
+        var handler = new AppsTsvHdl(realm);
+        handler.importUsers(audit, dataFolder.resolve(USERS_TSV), dataFolder.resolve(ACCESS_RIGHTS_TSV));
     }
 
     @Override
-    public void exportEntities() {
-        var handler = new AppsTsvHdl(realm());
-        handler.exportUsers(dataFolder.resolve(USERS_TSV), dataFolder.resolve(ACCESS_RIGHTS_TSV));
+    public void exportEntities(@NotNull DomainAudit audit) {
+        var handler = new AppsTsvHdl(realm);
+        handler.exportUsers(audit, dataFolder.resolve(USERS_TSV), dataFolder.resolve(ACCESS_RIGHTS_TSV));
     }
 
     @Override

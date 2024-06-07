@@ -133,7 +133,6 @@ class ActivitiesView extends ItemView<Activity> {
 
     @Override
     protected void addActions(@NotNull GridContextMenu<Activity> menu) {
-        super.addActions(menu);
         menu().add(new Hr());
         menu().addItem("RefreshAll", event -> new CmdRefreshActivities(this).execute());
     }

@@ -42,8 +42,8 @@ class InvoicesPortTest {
                 store.dataRoot().resolve(InvoicesBoundedDomain.DOMAIN), store.reportsRoot().resolve(InvoicesBoundedDomain.DOMAIN));
             var handler = new InvoicesAdapter(new InvoicesEntities(),
                 store.dataRoot().resolve(InvoicesBoundedDomain.DOMAIN), store.reportsRoot().resolve(InvoicesBoundedDomain.DOMAIN));
-            handler.importEntities();
-            port.exportInvoiceDocuments(true, true, true, null, null);
+            handler.importEntities(store);
+            port.exportInvoiceDocuments(store,true, true, true, null, null);
 
             handler.realm().invoices().items()
                 .forEach(o -> assertThat(Files.exists(Port.resolvePath(store.dataRoot().resolve(InvoicesBoundedDomain.DOMAIN), o.name()))).isTrue());

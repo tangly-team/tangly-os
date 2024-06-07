@@ -17,11 +17,11 @@ import net.tangly.commons.lang.Strings;
 import net.tangly.commons.logger.EventData;
 import net.tangly.commons.utilities.DateUtilities;
 import net.tangly.core.Tag;
+import net.tangly.core.domain.DomainAudit;
 import net.tangly.core.domain.TsvHdl;
 import net.tangly.erp.ledger.domain.Account;
 import net.tangly.erp.ledger.domain.AccountEntry;
 import net.tangly.erp.ledger.domain.Transaction;
-import net.tangly.erp.ledger.services.LedgerBoundedDomain;
 import net.tangly.erp.ledger.services.LedgerRealm;
 import net.tangly.erp.ledger.services.VatCode;
 import org.apache.commons.csv.CSVPrinter;
@@ -90,15 +90,14 @@ public class LedgerTsvHdl {
      *     <dt>Currency</dt><dd>Defines the currency of the account.</dd>
      * </dl>
      *
-     * @param reader reader to the file containing the chart of accounts
-     * @param source name of the source for the chart of accounts
-     * @see #exportChartOfAccounts(Path)
+     * @param path path to the file containing the chart of accounts
+     * @see #exportChartOfAccounts(DomainAudit, Path)
      */
-    public void importChartOfAccounts(@NotNull Reader reader, String source) {
+    public void importChartOfAccounts(@NotNull DomainAudit audit, @NotNull Path path) {
         try {
             int counter = 0;
             Account.AccountGroup currentSection = null;
-            for (CSVRecord csv : TsvHdl.FORMAT.parse(reader)) {
+            for (CSVRecord csv : TsvHdl.FORMAT.parse(Files.newBufferedReader(path, StandardCharsets.UTF_8))) {
                 String section = csv.get(SECTION);
                 if (!Strings.isNullOrBlank(section)) {
                     currentSection = ofGroup(section);
@@ -121,15 +120,15 @@ public class LedgerTsvHdl {
                     }
                     ledger.add(account);
                     ++counter;
-                    EventData.log(EventData.IMPORT, LedgerBoundedDomain.DOMAIN, EventData.Status.INFO, STR."\{Account.class.getSimpleName()} imported",
-                        Map.of(SOURCE, source, "object", account));
+                    audit.log(EventData.IMPORT, EventData.Status.INFO, STR."\{Account.class.getSimpleName()} imported",
+                        Map.of(SOURCE, path, "object", account));
 
                 }
-                EventData.log(EventData.IMPORT, LedgerBoundedDomain.DOMAIN, EventData.Status.INFO, STR."\{Account.class.getSimpleName()} imported objects",
-                    Map.of(SOURCE, source, "count", counter));
+                audit.log(EventData.IMPORT, EventData.Status.INFO, STR."\{Account.class.getSimpleName()} imported objects",
+                    Map.of(SOURCE, path, "count", counter));
             }
         } catch (IOException e) {
-            EventData.log(EventData.IMPORT, LedgerBoundedDomain.DOMAIN, EventData.Status.FAILURE, "Entities not imported from", Map.of(SOURCE, source), e);
+            audit.log(EventData.IMPORT, EventData.Status.FAILURE, "Entities not imported from", Map.of(SOURCE, path), e);
             throw new UncheckedIOException(e);
         }
     }
@@ -138,9 +137,9 @@ public class LedgerTsvHdl {
      * Exports the chart of accounts to the provided file.
      *
      * @param path path to the file
-     * @see #importChartOfAccounts(Reader, String)
+     * @see #importChartOfAccounts(DomainAudit, Path)
      */
-    public void exportChartOfAccounts(Path path) {
+    public void exportChartOfAccounts(@NotNull DomainAudit audit, Path path) {
         try (CSVPrinter out = new CSVPrinter(Files.newBufferedWriter(path, StandardCharsets.UTF_8), TsvHdl.FORMAT)) {
             out.printRecord(SECTION, GROUP, ACCOUNT, DESCRIPTION, BCLASS, GR, CURRENCY);
             int counter = 0;
@@ -167,13 +166,13 @@ public class LedgerTsvHdl {
                     out.println();
                 }
                 ++counter;
-                EventData.log(EventData.EXPORT, LedgerBoundedDomain.DOMAIN, EventData.Status.SUCCESS,
+                audit.log(EventData.EXPORT, EventData.Status.SUCCESS,
                     STR."\{Account.class.getSimpleName()} exported to charter of accounts", Map.of(SOURCE, path, "entity", account));
             }
-            EventData.log(EventData.EXPORT, LedgerBoundedDomain.DOMAIN, EventData.Status.INFO, "exported to charter of accounts",
+            audit.log(EventData.EXPORT, EventData.Status.INFO, "exported to charter of accounts",
                 Map.of(SOURCE, path, "counter", counter));
         } catch (IOException e) {
-            EventData.log(EventData.EXPORT, LedgerBoundedDomain.DOMAIN, EventData.Status.FAILURE, "Accounts exported to", Map.of(SOURCE, path), e);
+            audit.log(EventData.EXPORT, EventData.Status.FAILURE, "Accounts exported to", Map.of(SOURCE, path), e);
 
             throw new UncheckedIOException(e);
         }
@@ -194,9 +193,9 @@ public class LedgerTsvHdl {
      *
      * @param reader reader to the file containing the chart of accounts
      * @param source name of the source for the chart of accounts
-     * @see #exportJournal(Path, LocalDate, LocalDate)
+     * @see #exportJournal(DomainAudit, Path, LocalDate, LocalDate)
      */
-    public void importJournal(@NotNull Reader reader, String source) {
+    public void importJournal(@NotNull DomainAudit audit, @NotNull Reader reader, String source) {
         try {
             Iterator<CSVRecord> records = TsvHdl.FORMAT.parse(reader).iterator();
             int counter = 0;
@@ -219,25 +218,25 @@ public class LedgerTsvHdl {
                 try {
                     var debitAccount = Strings.emptyToNull(debitValues[0]);
                     var creditAccount = Strings.emptyToNull(creditValues[0]);
-                    var debit = (debitAccount != null) ? new AccountEntry(debitAccount, DateUtilities.of(date), amount, null, null, true,
-                        VatCode.of(vatCode), defineSegments(debitValues)) : null;
-                    var credit = (creditAccount != null) ? new AccountEntry(creditAccount, DateUtilities.of(date), amount, null, null, false,
-                        VatCode.of(vatCode), defineSegments(creditValues)) : null;
-                    Transaction transaction = Transaction.of(DateUtilities.of(date), reference, text, debit, credit, VatCode.of(vatCode),
-                        DateUtilities.of(dateExpected), splits);
+                    var debit = (debitAccount != null) ?
+                        new AccountEntry(debitAccount, DateUtilities.of(date), amount, null, null, true, VatCode.of(vatCode), defineSegments(debitValues)) :
+                        null;
+                    var credit = (creditAccount != null) ?
+                        new AccountEntry(creditAccount, DateUtilities.of(date), amount, null, null, false, VatCode.of(vatCode), defineSegments(creditValues)) :
+                        null;
+                    Transaction transaction =
+                        Transaction.of(DateUtilities.of(date), reference, text, debit, credit, VatCode.of(vatCode), DateUtilities.of(dateExpected), splits);
                     ledger.book(transaction);
                     ++counter;
-                    EventData.log(EventData.IMPORT, LedgerBoundedDomain.DOMAIN, EventData.Status.SUCCESS,
-                        STR."\{Transaction.class.getSimpleName()} imported to journal", Map.of(SOURCE, source, "entity", transaction));
+                    audit.log(EventData.IMPORT, EventData.Status.SUCCESS, STR."\{Transaction.class.getSimpleName()} imported to journal",
+                        Map.of(SOURCE, source, "entity", transaction));
                 } catch (NumberFormatException | DateTimeParseException e) {
                     logger.atError().withThrowable(e).log("{}: not a legal amount {}", date, amount);
                 }
             }
-            EventData.log(EventData.IMPORT, LedgerBoundedDomain.DOMAIN, EventData.Status.INFO, "imported to journal",
-                Map.of(SOURCE, source, "counter", counter));
-        } catch (
-            IOException e) {
-            EventData.log(EventData.IMPORT, LedgerBoundedDomain.DOMAIN, EventData.Status.FAILURE, "Transactions imported from", Map.of(SOURCE, source), e);
+            audit.log(EventData.IMPORT, EventData.Status.INFO, "imported to journal", Map.of(SOURCE, source, "counter", counter));
+        } catch (IOException e) {
+            audit.log(EventData.IMPORT, EventData.Status.FAILURE, "Transactions imported from", Map.of(SOURCE, source), e);
             throw new UncheckedIOException(e);
         }
     }
@@ -249,7 +248,7 @@ public class LedgerTsvHdl {
      * @param from start of the time interval for the relevant transactions
      * @param to   end of the time interval for the relevant transactions
      */
-    public void exportJournal(@NotNull Path path, LocalDate from, LocalDate to) {
+    public void exportJournal(@NotNull DomainAudit audit, @NotNull Path path, LocalDate from, LocalDate to) {
         try (CSVPrinter out = new CSVPrinter(Files.newBufferedWriter(path, StandardCharsets.UTF_8), TsvHdl.FORMAT)) {
             out.printRecord(DATE, DOC, DESCRIPTION, ACCOUNT_DEBIT, ACCOUNT_CREDIT, AMOUNT, VAT_CODE, DATE_EXPECTED);
             int counter = 0;
@@ -259,15 +258,12 @@ public class LedgerTsvHdl {
                         accountCompositeId(transaction.credit()), transaction.amount(), transaction.vatCodeAsString(), transaction.dateExpected());
                     if (transaction.isSplit()) {
                         for (AccountEntry entry : transaction.debitSplits()) {
-                            out.printRecord(entry.date(), entry.reference(), entry.text(),
-                                entry.isDebit() ? accountCompositeId(entry) : null,
-                                entry.isCredit() ? accountCompositeId(entry) : null,
-                                entry.amount(), entry.vatCodeAsString(), null);
+                            out.printRecord(entry.date(), entry.reference(), entry.text(), entry.isDebit() ? accountCompositeId(entry) : null,
+                                entry.isCredit() ? accountCompositeId(entry) : null, entry.amount(), entry.vatCodeAsString(), null);
                         }
                     }
                     ++counter;
-                    EventData.log(EventData.EXPORT, LedgerBoundedDomain.DOMAIN, EventData.Status.INFO, "exported from journal",
-                        Map.of(SOURCE, path, "counter", counter));
+                    audit.log(EventData.EXPORT, EventData.Status.INFO, "exported from journal", Map.of(SOURCE, path, "counter", counter));
                 }
             }
         } catch (IOException e) {
@@ -280,13 +276,13 @@ public class LedgerTsvHdl {
         while ((isDebitSplit && isCreditSplit(csv)) || isDebitSplit(csv)) {
             if (!Strings.isNullOrBlank(csv.get(ACCOUNT_DEBIT))) {
                 var values = csv.get(ACCOUNT_DEBIT).split("-");
-                var entry = AccountEntry.debit(values[0], TsvHdl.parseDate(csv, DATE), TsvHdl.parseBigDecimal(csv, AMOUNT), csv.get(DOC),
-                    csv.get(DESCRIPTION), VatCode.of(csv.get(VAT_CODE)), defineSegments(values));
+                var entry = AccountEntry.debit(values[0], TsvHdl.parseDate(csv, DATE), TsvHdl.parseBigDecimal(csv, AMOUNT), csv.get(DOC), csv.get(DESCRIPTION),
+                    VatCode.of(csv.get(VAT_CODE)), defineSegments(values));
                 splits.add(entry);
             } else if (!Strings.isNullOrBlank(csv.get(ACCOUNT_CREDIT))) {
                 var values = csv.get(ACCOUNT_CREDIT).split("-");
-                var entry = AccountEntry.credit(values[0], TsvHdl.parseDate(csv, DATE), TsvHdl.parseBigDecimal(csv, AMOUNT), csv.get(DOC),
-                    csv.get(DESCRIPTION), VatCode.of(csv.get(VAT_CODE)), defineSegments(values));
+                var entry = AccountEntry.credit(values[0], TsvHdl.parseDate(csv, DATE), TsvHdl.parseBigDecimal(csv, AMOUNT), csv.get(DOC), csv.get(DESCRIPTION),
+                    VatCode.of(csv.get(VAT_CODE)), defineSegments(values));
                 splits.add(entry);
             }
             csv = TsvHdl.nextNonEmptyRecord(records);
@@ -301,8 +297,8 @@ public class LedgerTsvHdl {
      * @return flag indicating if hte record is relevant for the ledger plan or not
      */
     private static boolean isRecordPlanRelevant(String description, String accountId, String groupId) {
-        return !Strings.isNullOrEmpty(description) && ((!Strings.isNullOrEmpty(accountId) && !accountId.startsWith(":")) || (!Strings.isNullOrEmpty(
-            groupId) && !groupId.equalsIgnoreCase("0")));
+        return !Strings.isNullOrEmpty(description) &&
+            ((!Strings.isNullOrEmpty(accountId) && !accountId.startsWith(":")) || (!Strings.isNullOrEmpty(groupId) && !groupId.equalsIgnoreCase("0")));
     }
 
     private static Set<Tag> defineSegments(String[] values) {

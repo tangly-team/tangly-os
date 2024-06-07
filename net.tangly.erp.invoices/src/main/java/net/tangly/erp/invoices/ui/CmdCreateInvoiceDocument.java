@@ -74,9 +74,10 @@ public class CmdCreateInvoiceDocument implements Cmd {
         dialog = Cmd.createDialog("40em", create());
         Button execute = new Button("Execute", VaadinIcon.COGS.create(), e -> {
             if (invoice == null) {
-                domain.port().exportInvoiceDocuments(withQrCode.getValue(), withEN16931.getValue(), overwrite.getValue(), from.getValue(), to.getValue());
+                domain.port().exportInvoiceDocuments(domain, withQrCode.getValue(), withEN16931.getValue(), overwrite.getValue(), from.getValue(),
+                    to.getValue());
             } else {
-                domain.port().exportInvoiceDocument(invoice, withQrCode.getValue(), withEN16931.getValue(), overwrite.getValue());
+                domain.port().exportInvoiceDocument(domain, invoice, withQrCode.getValue(), withEN16931.getValue(), overwrite.getValue());
             }
             close();
         });

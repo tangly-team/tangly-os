@@ -94,9 +94,10 @@ public class CmdCreateEffortsReport implements Cmd {
         VaadinUtils.set3ResponsiveSteps(form);
         execute = new Button("Execute", VaadinIcon.COGS.create(), _ -> {
             if (perMonth.getValue()) {
-                domain.port().exportEffortsDocumentsSplitPerMonth(assignment, YearMonth.from(fromDate.getValue()), YearMonth.from(toDate.getValue()), units.getValue());
+                domain.port().exportEffortsDocumentsSplitPerMonth(domain, assignment, YearMonth.from(fromDate.getValue()), YearMonth.from(toDate.getValue()),
+                    units.getValue());
             } else {
-                domain.port().exportEffortsDocument(assignment, fromDate.getValue(), toDate.getValue(), filename.getValue(), units.getValue());
+                domain.port().exportEffortsDocument(domain, assignment, fromDate.getValue(), toDate.getValue(), filename.getValue(), units.getValue());
             }
             close();
         });

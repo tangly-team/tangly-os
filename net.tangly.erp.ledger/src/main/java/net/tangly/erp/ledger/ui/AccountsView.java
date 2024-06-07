@@ -92,10 +92,6 @@ class AccountsView extends ItemView<Account> {
         }
 
         @Override
-        public void clear() {
-        }
-
-        @Override
         protected Account createOrUpdateInstance(Account entity)  {
             return null;
         }

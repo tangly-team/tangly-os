@@ -14,6 +14,7 @@
 package net.tangly.erp.invoices.artifacts;
 
 import net.tangly.core.Address;
+import net.tangly.core.domain.DomainAudit;
 import net.tangly.erp.invoices.domain.Article;
 import net.tangly.erp.invoices.domain.Invoice;
 import net.tangly.erp.invoices.domain.InvoiceItem;
@@ -175,7 +176,7 @@ public class InvoiceZugFerd implements IExportableTransaction, InvoiceGenerator 
     private static final BigDecimal HUNDRED = new BigDecimal("100");
     private Invoice invoice;
 
-    public void exports(@NotNull Invoice invoice, @NotNull Path invoicePath, @NotNull Map<String, Object> properties) {
+    public void exports(@NotNull DomainAudit audit, @NotNull Invoice invoice, @NotNull Path invoicePath, @NotNull Map<String, Object> properties) {
         this.invoice = invoice;
         try (ZUGFeRDExporterFromA3 exporter = new ZUGFeRDExporterFromA3().setProducer("tangly ERP").setCreator(invoice.invoicingEntity().name())
             .setZUGFeRDVersion(2).setProfile("EN16931").load(Files.newInputStream(invoicePath))) {

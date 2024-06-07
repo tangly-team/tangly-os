@@ -121,6 +121,9 @@ public abstract class ItemView<T> extends VerticalLayout implements View {
     public static final String TO = "to";
     public static final String TO_LABEL = "To";
 
+    public static final String DOMAIN = "domain";
+    public static final String DOMAIN_LABEL = "DOMAIN";
+
     public static final String DATE = "date";
     public static final String DATE_LABEL = "Date";
 

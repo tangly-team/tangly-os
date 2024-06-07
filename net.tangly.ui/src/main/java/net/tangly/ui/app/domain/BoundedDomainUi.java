@@ -126,22 +126,18 @@ public abstract class BoundedDomainUi<T extends BoundedDomain<?, ?, ?>> {
      *     <li>Import domain entities from a set of TSV files stored in a directory. The command is responsible for a semantic meaningful ordering of the imports.</li>
      *     <li>Export domain entities to a set of TSV files stored in a directory. Existing files are overwritten. The exported entities could later be imported into the
      *     application with the import domain command.</li>
-     *     <li>Up load domain entities through the browser interface. Files are available on client site. The command is optional.</li>
      * </ul>
      */
-    protected void addAdministration(@NotNull AppLayout layout, @NotNull MenuBar menuBar, @NotNull LazyReference<?> domainView, Cmd loadDialog) {
+    protected void addAdministration(@NotNull AppLayout layout, @NotNull MenuBar menuBar, @NotNull LazyReference<?> domainView) {
         MenuItem menuItem = menuBar.addItem(ADMINISTRATION);
         SubMenu subMenu = menuItem.getSubMenu();
         subMenu.addItem(STATISTICS, _ -> select(layout, domainView));
-        var action = subMenu.addItem(IMPORT, _ -> executeGlobalAction(domain.port()::importEntities));
+        var action = subMenu.addItem(IMPORT, _ -> executeGlobalAction(() -> domain.port().importEntities(domain())));
         action.setEnabled(hasDomainAdminRights());
-        action = subMenu.addItem(EXPORT, _ -> executeGlobalAction(domain.port()::exportEntities));
+        action = subMenu.addItem(EXPORT, _ -> executeGlobalAction(() -> domain.port().exportEntities(domain())));
         action.setEnabled(hasDomainAdminRights());
         action = subMenu.addItem(CLEAR, _ -> executeGlobalAction(domain.port()::clearEntities));
         action.setEnabled(hasDomainAdminRights());
-        if (loadDialog != null) {
-            subMenu.addItem(LOAD, _ -> executeGlobalAction(loadDialog::execute));
-        }
     }
 
     protected void addAnalytics(@NotNull AppLayout layout, @NotNull MenuBar menuBar, @NotNull LazyReference<?> analyticsView) {

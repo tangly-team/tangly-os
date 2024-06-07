@@ -15,12 +15,12 @@ package net.tangly.erp.crm.ports;
 
 import net.tangly.commons.lang.ReflectionUtilities;
 import net.tangly.core.*;
+import net.tangly.core.domain.DomainAudit;
 import net.tangly.core.domain.TsvHdl;
 import net.tangly.core.providers.Provider;
 import net.tangly.core.providers.ProviderInMemory;
 import net.tangly.core.tsv.TsvHdlCore;
 import net.tangly.erp.crm.domain.*;
-import net.tangly.erp.crm.services.CrmBoundedDomain;
 import net.tangly.erp.crm.services.CrmRealm;
 import net.tangly.gleam.model.TsvEntity;
 import net.tangly.gleam.model.TsvProperty;
@@ -28,7 +28,6 @@ import net.tangly.gleam.model.TsvRelation;
 import org.apache.commons.csv.CSVRecord;
 import org.jetbrains.annotations.NotNull;
 
-import java.io.Reader;
 import java.nio.file.Path;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -59,8 +58,8 @@ public class CrmTsvHdl {
         this.realm = realm;
     }
 
-    public void importComments(@NotNull Reader reader, String source) {
-        var comments = TsvHdl.importRelations(CrmBoundedDomain.DOMAIN, reader, source, createTsvComment());
+    public void importComments(@NotNull DomainAudit audit, @NotNull Path path) {
+        var comments = TsvHdl.importRelations(audit, path, createTsvComment());
         TsvHdl.addComments(realm.naturalEntities(), comments);
         TsvHdl.addComments(realm.legalEntities(), comments);
         TsvHdl.addComments(realm.employees(), comments);
@@ -68,55 +67,55 @@ public class CrmTsvHdl {
         TsvHdl.addComments(realm.interactions(), comments);
     }
 
-    public void exportComments(@NotNull Path path) {
+    public void exportComments(@NotNull DomainAudit audit, @NotNull Path path) {
         List<TsvRelation<Comment>> comments = new ArrayList<>();
         realm.naturalEntities().items().forEach(o -> comments.addAll(updateAndCollectComments(o)));
         realm.legalEntities().items().forEach(o -> comments.addAll(updateAndCollectComments(o)));
         realm.employees().items().forEach(o -> comments.addAll(updateAndCollectComments(o)));
         realm.contracts().items().forEach(o -> comments.addAll(updateAndCollectComments(o)));
         realm.interactions().items().forEach(o -> comments.addAll(updateAndCollectComments(o)));
-        TsvHdl.exportRelations(CrmBoundedDomain.DOMAIN, path, createTsvComment(), comments);
+        TsvHdl.exportRelations(audit, path, createTsvComment(), comments);
     }
 
-    public void importLeads(@NotNull Reader reader, String source) {
-        TsvHdl.importEntities(CrmBoundedDomain.DOMAIN, reader, source, createTsvLead(), realm.leads());
+    public void importLeads(@NotNull DomainAudit audit, @NotNull Path path) {
+        TsvHdl.importEntities(audit, path, createTsvLead(), realm.leads());
     }
 
-    public void exportLeads(@NotNull Path path) {
-        TsvHdl.exportEntities(CrmBoundedDomain.DOMAIN, path, createTsvLead(), realm.leads());
+    public void exportLeads(@NotNull DomainAudit audit, @NotNull Path path) {
+        TsvHdl.exportEntities(audit, path, createTsvLead(), realm.leads());
     }
 
-    public void importNaturalEntities(@NotNull Reader reader, String source) {
-        TsvHdl.importEntities(CrmBoundedDomain.DOMAIN, reader, source, createTsvNaturalEntity(), realm.naturalEntities());
+    public void importNaturalEntities(@NotNull DomainAudit audit, @NotNull Path path) {
+        TsvHdl.importEntities(audit, path, createTsvNaturalEntity(), realm.naturalEntities());
     }
 
-    public void exportNaturalEntities(@NotNull Path path) {
-        TsvHdl.exportEntities(CrmBoundedDomain.DOMAIN, path, createTsvNaturalEntity(), realm.naturalEntities());
+    public void exportNaturalEntities(@NotNull DomainAudit audit, @NotNull Path path) {
+        TsvHdl.exportEntities(audit, path, createTsvNaturalEntity(), realm.naturalEntities());
     }
 
-    public void importLegalEntities(@NotNull Reader reader, String source) {
-        TsvHdl.importEntities(CrmBoundedDomain.DOMAIN, reader, source, createTsvLegalEntity(), realm.legalEntities());
+    public void importLegalEntities(@NotNull DomainAudit audit, @NotNull Path path) {
+        TsvHdl.importEntities(audit, path, createTsvLegalEntity(), realm.legalEntities());
     }
 
-    public void exportLegalEntities(@NotNull Path path) {
-        TsvHdl.exportEntities(CrmBoundedDomain.DOMAIN, path, createTsvLegalEntity(), realm.legalEntities());
+    public void exportLegalEntities(@NotNull DomainAudit audit, @NotNull Path path) {
+        TsvHdl.exportEntities(audit, path, createTsvLegalEntity(), realm.legalEntities());
     }
 
-    public void importEmployees(@NotNull Reader reader, String source) {
-        TsvHdl.importEntities(CrmBoundedDomain.DOMAIN, reader, source, createTsvEmployee(), realm.employees());
+    public void importEmployees(@NotNull DomainAudit audit, @NotNull Path path) {
+        TsvHdl.importEntities(audit, path, createTsvEmployee(), realm.employees());
     }
 
-    public void exportEmployees(@NotNull Path path) {
-        TsvHdl.exportEntities(CrmBoundedDomain.DOMAIN, path, createTsvEmployee(), realm.employees());
+    public void exportEmployees(@NotNull DomainAudit audit, @NotNull Path path) {
+        TsvHdl.exportEntities(audit, path, createTsvEmployee(), realm.employees());
     }
 
-    public void importContracts(@NotNull Reader reader, String source) {
-        TsvHdl.importEntities(CrmBoundedDomain.DOMAIN, reader, source, createTsvContract(), realm.contracts());
+    public void importContracts(@NotNull DomainAudit audit, @NotNull Path path) {
+        TsvHdl.importEntities(audit, path, createTsvContract(), realm.contracts());
     }
 
-    public void importContractExtensions(@NotNull Reader reader, String source) {
+    public void importContractExtensions(@NotNull DomainAudit audit, @NotNull Path path) {
         Provider<ContractExtension> extensions = new ProviderInMemory<>();
-        TsvHdl.importEntities(CrmBoundedDomain.DOMAIN, reader, source, createTsvContractExtension(), extensions);
+        TsvHdl.importEntities(audit, path, createTsvContractExtension(), extensions);
         extensions.items().forEach(e -> Provider.findById(realm.contracts(), e.contractId()).ifPresent(c ->
         {
             c.add(e);
@@ -124,33 +123,33 @@ public class CrmTsvHdl {
         }));
     }
 
-    public void exportContracts(@NotNull Path path) {
-        TsvHdl.exportEntities(CrmBoundedDomain.DOMAIN, path, createTsvContract(), realm.contracts());
+    public void exportContracts(@NotNull DomainAudit audit, @NotNull Path path) {
+        TsvHdl.exportEntities(audit, path, createTsvContract(), realm.contracts());
     }
 
-    public void exportContractExtensions(@NotNull Path path) {
+    public void exportContractExtensions(@NotNull DomainAudit audit, @NotNull Path path) {
         Provider<ContractExtension> extensions = new ProviderInMemory<>();
         realm.contracts().items().forEach(e -> extensions.updateAll(e.contractExtensions()));
-        TsvHdl.exportEntities(CrmBoundedDomain.DOMAIN, path, createTsvContractExtension(), extensions);
+        TsvHdl.exportEntities(audit, path, createTsvContractExtension(), extensions);
     }
 
-    public void importInteractions(@NotNull Reader reader, String source) {
-        TsvHdl.importEntities(CrmBoundedDomain.DOMAIN, reader, source, createTsvInteraction(), realm.interactions());
+    public void importInteractions(@NotNull DomainAudit audit, @NotNull Path path) {
+        TsvHdl.importEntities(audit, path, createTsvInteraction(), realm.interactions());
     }
 
-    public void exportInteractions(@NotNull Path path) {
-        TsvHdl.exportEntities(CrmBoundedDomain.DOMAIN, path, createTsvInteraction(), realm.interactions());
+    public void exportInteractions(@NotNull DomainAudit audit, @NotNull Path path) {
+        TsvHdl.exportEntities(audit, path, createTsvInteraction(), realm.interactions());
     }
 
-    public void importActivities(@NotNull Reader reader, String source) {
-        var activities = TsvHdl.importRelations(CrmBoundedDomain.DOMAIN, reader, source, createTsvActivity());
+    public void importActivities(@NotNull DomainAudit audit, @NotNull Path path) {
+        var activities = TsvHdl.importRelations(audit, path, createTsvActivity());
         realm.interactions().items().forEach(e -> addActivities(realm.interactions(), e, activities));
     }
 
-    public void exportActivities(@NotNull Path path) {
+    public void exportActivities(@NotNull DomainAudit audit, @NotNull Path path) {
         List<TsvRelation<Activity>> activities = new ArrayList<>();
         realm.interactions().items().forEach(o -> activities.addAll(updateAndCollectActivities(o)));
-        TsvHdl.exportRelations(CrmBoundedDomain.DOMAIN, path, createTsvActivity(), activities);
+        TsvHdl.exportRelations(audit, path, createTsvActivity(), activities);
     }
 
     private static <T extends HasMutableComments & HasOid> List<TsvRelation<Comment>> updateAndCollectComments(T entity) {

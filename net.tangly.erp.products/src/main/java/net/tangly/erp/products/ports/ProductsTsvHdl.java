@@ -14,20 +14,19 @@
 package net.tangly.erp.products.ports;
 
 import net.tangly.core.DateRange;
+import net.tangly.core.domain.DomainAudit;
 import net.tangly.core.domain.TsvHdl;
 import net.tangly.core.providers.Provider;
 import net.tangly.erp.products.domain.Assignment;
 import net.tangly.erp.products.domain.Effort;
 import net.tangly.erp.products.domain.Product;
 import net.tangly.erp.products.domain.WorkContract;
-import net.tangly.erp.products.services.ProductsBoundedDomain;
 import net.tangly.erp.products.services.ProductsRealm;
 import net.tangly.gleam.model.TsvEntity;
 import net.tangly.gleam.model.TsvProperty;
 import org.apache.commons.csv.CSVRecord;
 import org.jetbrains.annotations.NotNull;
 
-import java.io.Reader;
 import java.nio.file.Path;
 import java.util.Arrays;
 import java.util.List;
@@ -50,28 +49,28 @@ public class ProductsTsvHdl {
         this.realm = realm;
     }
 
-    public void importProducts(@NotNull Reader reader, String source) {
-        TsvHdl.importEntities(ProductsBoundedDomain.DOMAIN, reader, source, createTsvProduct(), realm.products());
+    public void importProducts(@NotNull DomainAudit audit, @NotNull Path path) {
+        TsvHdl.importEntities(audit, path, createTsvProduct(), realm.products());
     }
 
-    public void exportProducts(@NotNull Path path) {
-        TsvHdl.exportEntities(ProductsBoundedDomain.DOMAIN, path, createTsvProduct(), realm.products());
+    public void exportProducts(@NotNull DomainAudit audit,@NotNull Path path) {
+        TsvHdl.exportEntities(audit, path, createTsvProduct(), realm.products());
     }
 
-    public void importWorkContracts(@NotNull Reader reader, String source) {
-        TsvHdl.importEntities(ProductsBoundedDomain.DOMAIN, reader, source, createTsvWorkContract(), realm.contracts());
+    public void importWorkContracts(@NotNull DomainAudit audit,@NotNull Path path) {
+        TsvHdl.importEntities(audit, path, createTsvWorkContract(), realm.contracts());
     }
 
-    public void exportWorkContracts(@NotNull Path path) {
-        TsvHdl.exportEntities(ProductsBoundedDomain.DOMAIN, path, createTsvWorkContract(), realm.contracts());
+    public void exportWorkContracts(@NotNull DomainAudit audit,@NotNull Path path) {
+        TsvHdl.exportEntities(audit, path, createTsvWorkContract(), realm.contracts());
     }
 
-    public void importAssignments(@NotNull Reader reader, String source) {
-        TsvHdl.importEntities(ProductsBoundedDomain.DOMAIN, reader, source, createTsvAssignment(), realm.assignments());
+    public void importAssignments(@NotNull DomainAudit audit,@NotNull Path path) {
+        TsvHdl.importEntities(audit, path, createTsvAssignment(), realm.assignments());
     }
 
-    public void exportAssignments(@NotNull Path path) {
-        TsvHdl.exportEntities(ProductsBoundedDomain.DOMAIN, path, createTsvAssignment(), realm.assignments());
+    public void exportAssignments(@NotNull DomainAudit audit, @NotNull Path path) {
+        TsvHdl.exportEntities(audit, path, createTsvAssignment(), realm.assignments());
     }
 
     public Optional<Product> findProductByOid(String identifier) {

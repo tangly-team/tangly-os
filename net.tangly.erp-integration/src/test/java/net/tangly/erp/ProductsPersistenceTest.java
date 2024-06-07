@@ -34,7 +34,7 @@ class ProductsPersistenceTest {
 
             var realm = new ProductsEntities(store.dbRoot().resolve(ProductsBoundedDomain.DOMAIN));
             var handler = new ProductsAdapter(realm, new ProductsBusinessLogic(realm), store.dataRoot().resolve(ProductsBoundedDomain.DOMAIN), store.reportsRoot().resolve(ProductsBoundedDomain.DOMAIN));
-            handler.importEntities();
+            handler.importEntities(store);
             assertThat(handler.realm().products().items()).isNotEmpty();
             assertThat(handler.realm().assignments().items()).isNotEmpty();
             assertThat(handler.realm().efforts().items()).isNotEmpty();
@@ -58,18 +58,18 @@ class ProductsPersistenceTest {
             // given
             var realm = new ProductsEntities(store.dbRoot().resolve(ProductsBoundedDomain.DOMAIN));
             var handler = new ProductsAdapter(realm, new ProductsBusinessLogic(realm), store.dataRoot().resolve(ProductsBoundedDomain.DOMAIN), store.reportsRoot().resolve(ProductsBoundedDomain.DOMAIN));
-            handler.importEntities();
+            handler.importEntities(store);
             long nrProducts = handler.realm().products().items().size();
             long nrAssignments = handler.realm().assignments().items().size();
             long nrEffots = handler.realm().efforts().items().size();
 
             // when
-            handler.exportEntities();
+            handler.exportEntities(store);
             handler.clearEntities();
             handler.realm().close();
             realm = new ProductsEntities(store.dbRoot().resolve(ProductsBoundedDomain.DOMAIN));
             handler = new ProductsAdapter(realm, new ProductsBusinessLogic(realm), store.dataRoot().resolve(ProductsBoundedDomain.DOMAIN), store.reportsRoot().resolve(ProductsBoundedDomain.DOMAIN));
-            handler.importEntities();
+            handler.importEntities(store);
 
             // then
             assertThat(handler.realm().products().items().size()).isEqualTo(nrProducts);

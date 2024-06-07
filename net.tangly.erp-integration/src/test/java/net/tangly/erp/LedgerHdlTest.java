@@ -35,7 +35,7 @@ class LedgerHdlTest {
             store.createRepository();
 
             var handler = new LedgerAdapter(new LedgerEntities(), store.dataRoot().resolve(LedgerBoundedDomain.DOMAIN), store.reportsRoot().resolve(LedgerBoundedDomain.DOMAIN));
-            handler.importEntities();
+            handler.importEntities(store);
             assertThat(handler.realm().accounts().items().stream().filter(Account::isAggregate).filter(o -> o.aggregatedAccounts().isEmpty()).findAny()).isEmpty();
             assertThat(handler.realm().assets()).isNotEmpty();
             assertThat(handler.realm().liabilities()).isNotEmpty();
@@ -57,15 +57,15 @@ class LedgerHdlTest {
             var ledgerData = store.dataRoot().resolve(LedgerBoundedDomain.DOMAIN);
             var ledgerReport = store.reportsRoot().resolve(LedgerBoundedDomain.DOMAIN);
             var handler = new LedgerAdapter(new LedgerEntities(), ledgerData, ledgerReport);
-            handler.importEntities();
+            handler.importEntities(store);
             int nrOfAccounts = handler.realm().accounts().items().size();
             int nrOfBookableAccounts = handler.realm().bookableAccounts().size();
             int nrOfLiabilitiesAccounts = handler.realm().liabilities().size();
             int nrOfProfitAndLossAccounts = handler.realm().profitAndLoss().size();
 
-            handler.exportEntities();
+            handler.exportEntities(store);
             handler = new LedgerAdapter(new LedgerEntities(), ledgerData, ledgerReport);
-            handler.importEntities();
+            handler.importEntities(store);
             assertThat(handler.realm().accounts().items()).hasSize(nrOfAccounts);
             assertThat(handler.realm().bookableAccounts()).hasSize(nrOfBookableAccounts);
             assertThat(handler.realm().liabilities()).hasSize(nrOfLiabilitiesAccounts);
@@ -79,7 +79,7 @@ class LedgerHdlTest {
             var store = new ErpStore(fs);
             store.createRepository();
             var handler = new LedgerAdapter(new LedgerEntities(), store.dataRoot().resolve(LedgerBoundedDomain.DOMAIN), store.reportsRoot().resolve(LedgerBoundedDomain.DOMAIN));
-            handler.importEntities();
+            handler.importEntities(store);
             assertThat(handler.realm().transactions(LocalDate.of(2015, 1, 1), LocalDate.of(2016, 12, 31))).isNotEmpty();
         }
     }
@@ -92,13 +92,13 @@ class LedgerHdlTest {
             var ledgerData = store.dataRoot().resolve(LedgerBoundedDomain.DOMAIN);
             var ledgerReport = store.reportsRoot().resolve(LedgerBoundedDomain.DOMAIN);
             var handler = new LedgerAdapter(new LedgerEntities(), ledgerData, ledgerReport);
-            handler.importEntities();
+            handler.importEntities(store);
             int nrOfTransactions = handler.realm().transactions().items().size();
 
-            handler.exportEntities();
+            handler.exportEntities(store);
 
             handler = new LedgerAdapter(new LedgerEntities(), ledgerData, ledgerReport);
-            handler.importEntities();
+            handler.importEntities(store);
             assertThat(handler.realm().transactions().items()).hasSize(nrOfTransactions);
         }
     }

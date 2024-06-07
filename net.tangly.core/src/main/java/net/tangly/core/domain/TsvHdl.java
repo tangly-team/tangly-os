@@ -99,7 +99,8 @@ public class TsvHdl {
         return Strings.isNullOrBlank(value) ? null : Enum.valueOf(enumType, value);
     }
 
-    public static <T> void importEntities(@NotNull String domain, @NotNull Reader in, String source, @NotNull TsvEntity<T> tsvEntity, @NotNull Provider<T> provider) {
+    public static <T> void importEntities(@NotNull DomainAudit audit, @NotNull Path path, @NotNull TsvEntity<T> tsvEntity,
+                                          @NotNull Provider<T> provider) {
         BiFunction<TsvEntity<T>, CSVRecord, T> lambda = (tsv, record) -> {
             T entity = tsvEntity.imports(record);
             if (!(entity instanceof MutableEntityExtended instance) || (instance.validate())) {
@@ -107,28 +108,39 @@ public class TsvHdl {
             }
             return entity;
         };
-        imports(domain, in, source, tsvEntity, lambda);
+        try (Reader in = Files.newBufferedReader(path, StandardCharsets.UTF_8)) {
+            imports(audit, in, path.toString(), tsvEntity, lambda);
+        } catch (Exception e) {
+            audit.log(EventData.IMPORT, EventData.Status.FAILURE, "Entities not imported from TSV file",
+                Map.of("filename", path), e);
+        }
     }
 
-    public static <T> List<TsvRelation<T>> importRelations(@NotNull String domain, @NotNull Reader in, String source, @NotNull TsvEntity<T> tsvEntity) {
+    public static <T> List<TsvRelation<T>> importRelations(@NotNull DomainAudit audit, @NotNull Path path, @NotNull TsvEntity<T> tsvEntity) {
         List<TsvRelation<T>> relations = new ArrayList<>();
         BiFunction<TsvEntity<T>, CSVRecord, TsvRelation<T>> lambda = (tsv, record) -> {
             TsvRelation<T> relation = tsvEntity.importRelation(record);
             relations.add(relation);
             return relation;
         };
-        imports(domain, in, source, tsvEntity, lambda);
+        try (Reader in = Files.newBufferedReader(path, StandardCharsets.UTF_8)) {
+            imports(audit, in, path.toString(), tsvEntity, lambda);
+        } catch (Exception e) {
+            audit.log(EventData.IMPORT, EventData.Status.FAILURE, "Relations not imported from TSV file",
+                Map.of("filename", path), e);
+        }
         return relations;
     }
 
-    public static <T> void exportEntities(@NotNull String domain, @NotNull Path path, @NotNull TsvEntity<T> tsvEntity, @NotNull Provider<T> provider) {
+    public static <T> void exportEntities(@NotNull DomainAudit audit, @NotNull Path path, @NotNull TsvEntity<T> tsvEntity, @NotNull Provider<T> provider) {
         BiConsumer<T, CSVPrinter> lambda = tsvEntity::exports;
-        exports(domain, path, tsvEntity, provider.items(), lambda);
+        exports(audit, path, tsvEntity, provider.items(), lambda);
     }
 
-    public static <T> void exportRelations(@NotNull String domain, @NotNull Path path, @NotNull TsvEntity<T> tsvEntity, @NotNull List<TsvRelation<T>> relations) {
+    public static <T> void exportRelations(@NotNull DomainAudit audit, @NotNull Path path, @NotNull TsvEntity<T> tsvEntity,
+                                           @NotNull List<TsvRelation<T>> relations) {
         BiConsumer<TsvRelation<T>, CSVPrinter> lambda = tsvEntity::exportRelation;
-        exports(domain, path, tsvEntity, relations, lambda);
+        exports(audit, path, tsvEntity, relations, lambda);
     }
 
     public static <T extends HasMutableComments & HasOid> void addComments(Provider<T> provider, List<TsvRelation<Comment>> comments) {
@@ -164,7 +176,8 @@ public class TsvHdl {
         };
     }
 
-    private static <T, U> void imports(@NotNull String domain, @NotNull Reader in, String source, @NotNull TsvEntity<T> tsvEntity, BiFunction<TsvEntity<T>, CSVRecord, U> function) {
+    private static <T, U> void imports(@NotNull DomainAudit audit, @NotNull Reader in, String source, @NotNull TsvEntity<T> tsvEntity,
+                                       BiFunction<TsvEntity<T>, CSVRecord, U> function) {
         CSVRecord loggedRecord = null;
         try (in) {
             int counter = 0;
@@ -173,22 +186,23 @@ public class TsvHdl {
                 U imported = function.apply(tsvEntity, csv);
                 if (!(imported instanceof MutableEntityExtended entity) || (entity.validate())) {
                     ++counter;
-                    EventData.log(EventData.IMPORT, domain, EventData.Status.SUCCESS, STR."\{tsvEntity.clazz().getSimpleName()} imported",
+                    audit.log(EventData.IMPORT, EventData.Status.SUCCESS, STR."\{tsvEntity.clazz().getSimpleName()} imported",
                         Map.of("filename", source, "object", imported));
                 } else {
-                    EventData.log(EventData.IMPORT, domain, EventData.Status.WARNING, STR."\{tsvEntity.clazz().getSimpleName()} invalid entity",
+                    audit.log(EventData.IMPORT, EventData.Status.WARNING, STR."\{tsvEntity.clazz().getSimpleName()} invalid entity",
                         Map.of("filename", source, "object", imported));
                 }
             }
-            EventData.log(EventData.IMPORT, domain, EventData.Status.INFO, STR."\{tsvEntity.clazz().getSimpleName()} imported objects",
+            audit.log(EventData.IMPORT, EventData.Status.INFO, STR."\{tsvEntity.clazz().getSimpleName()} imported objects",
                 Map.of("filename", source, "count", counter));
         } catch (Exception e) {
-            EventData.log(EventData.IMPORT, domain, EventData.Status.FAILURE, "Entities not imported from TSV file",
+            audit.log(EventData.IMPORT, EventData.Status.FAILURE, "Entities not imported from TSV file",
                 Map.of("filename", source, "csv-record", loggedRecord), e);
         }
     }
 
-    public static <T, U> void exports(@NotNull String domain, @NotNull Path path, @NotNull TsvEntity<T> tsvEntity, @NotNull List<U> items, @NotNull BiConsumer<U, CSVPrinter> lambda) {
+    public static <T, U> void exports(@NotNull DomainAudit audit, @NotNull Path path, @NotNull TsvEntity<T> tsvEntity, @NotNull List<U> items,
+                                      @NotNull BiConsumer<U, CSVPrinter> lambda) {
         U loggedEntity = null;
         try (CSVPrinter out = new CSVPrinter(Files.newBufferedWriter(path, StandardCharsets.UTF_8), FORMAT)) {
             int counter = 0;
@@ -199,12 +213,12 @@ public class TsvHdl {
                 lambda.accept(entity, out);
                 out.println();
                 ++counter;
-                EventData.log(EventData.EXPORT, domain, EventData.Status.SUCCESS, STR."\{tsvEntity.clazz().getSimpleName()} exported to TSV file",
+                audit.log(EventData.EXPORT, EventData.Status.SUCCESS, STR."\{tsvEntity.clazz().getSimpleName()} exported to TSV file",
                     Map.of("filename", path, "entity", entity));
             }
-            EventData.log(EventData.EXPORT, domain, EventData.Status.INFO, "exported to TSV file", Map.of("filename", path, "counter", counter));
+            audit.log(EventData.EXPORT, EventData.Status.INFO, "exported to TSV file", Map.of("filename", path, "counter", counter));
         } catch (Exception e) {
-            EventData.log(EventData.EXPORT, domain, EventData.Status.FAILURE, "Entities exported to TSV file", Map.of("filename", path, "entity",
+            audit.log(EventData.EXPORT, EventData.Status.FAILURE, "Entities exported to TSV file", Map.of("filename", path, "entity",
                 Objects.nonNull(loggedEntity) ? loggedEntity : "null"), e);
         }
     }

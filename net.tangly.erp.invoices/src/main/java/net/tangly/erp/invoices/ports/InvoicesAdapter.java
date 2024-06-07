@@ -16,13 +16,13 @@ package net.tangly.erp.invoices.ports;
 import net.tangly.commons.logger.EventData;
 import net.tangly.commons.utilities.AsciiDoctorHelper;
 import net.tangly.core.DateRange;
+import net.tangly.core.domain.DomainAudit;
 import net.tangly.core.domain.Port;
 import net.tangly.erp.invoices.artifacts.InvoiceAsciiDoc;
 import net.tangly.erp.invoices.artifacts.InvoiceJson;
 import net.tangly.erp.invoices.artifacts.InvoiceQrCode;
 import net.tangly.erp.invoices.artifacts.InvoiceZugFerd;
 import net.tangly.erp.invoices.domain.Invoice;
-import net.tangly.erp.invoices.services.InvoicesBoundedDomain;
 import net.tangly.erp.invoices.services.InvoicesPort;
 import net.tangly.erp.invoices.services.InvoicesRealm;
 import org.jetbrains.annotations.NotNull;
@@ -66,9 +66,9 @@ public class InvoicesAdapter implements InvoicesPort {
     }
 
     @Override
-    public void importEntities() {
+    public void importEntities(@NotNull DomainAudit audit) {
         var handler = new InvoicesTsvJsonHdl(realm());
-        Port.importEntities(dataFolder, ARTICLES_TSV, handler::importArticles);
+        handler.importArticles(audit, dataFolder.resolve(ARTICLES_TSV));
         try (Stream<Path> stream = Files.walk(dataFolder)) {
             var nrOfInvoices = new AtomicInteger();
             var nrOfImportedInvoices = new AtomicInteger();
@@ -76,7 +76,7 @@ public class InvoicesAdapter implements InvoicesPort {
             stream.filter(file -> !Files.isDirectory(file) && file.getFileName().toString().endsWith(JSON_EXT)).forEach(o -> {
                 nrOfInvoices.getAndIncrement();
                 try (Reader reader = Files.newBufferedReader(dataFolder.resolve(o))) {
-                    var invoice = handler.importInvoice(reader, o.toString());
+                    var invoice = handler.importInvoice(audit, reader, o.toString());
                     if ((invoice != null)) {
                         nrOfImportedInvoices.getAndIncrement();
                     }
@@ -84,7 +84,7 @@ public class InvoicesAdapter implements InvoicesPort {
                     throw new UncheckedIOException(e);
                 }
             });
-            EventData.log(EventData.IMPORT, InvoicesBoundedDomain.DOMAIN, EventData.Status.INFO, "Invoices were imported out of",
+            audit.log(EventData.IMPORT, EventData.Status.INFO, "Invoices were imported out of",
                 Map.of("nrOfImportedInvoices", Integer.toString(nrOfImportedInvoices.get()), "rootFolder", dataFolder.toString()));
         } catch (IOException e) {
             throw new UncheckedIOException(e);
@@ -92,15 +92,15 @@ public class InvoicesAdapter implements InvoicesPort {
     }
 
     @Override
-    public void exportEntities() {
+    public void exportEntities(@NotNull DomainAudit audit) {
         var handler = new InvoicesTsvJsonHdl(realm());
-        handler.exportArticles(dataFolder.resolve(ARTICLES_TSV));
+        handler.exportArticles(audit, dataFolder.resolve(ARTICLES_TSV));
         var invoiceJson = new InvoiceJson(realm);
         realm.invoices().items().forEach(o -> {
             var invoiceFolder = Port.resolvePath(dataFolder, o.name());
             var invoicePath = invoiceFolder.resolve(o.name() + JSON_EXT);
-            invoiceJson.exports(o, invoicePath, Collections.emptyMap());
-            EventData.log(EventData.EXPORT, InvoicesBoundedDomain.DOMAIN, EventData.Status.SUCCESS, "Invoice exported to JSON {}", Map.of(INVOICE, o, INVOICE_PATH, invoicePath));
+            invoiceJson.exports(audit, o, invoicePath, Collections.emptyMap());
+            audit.log(EventData.EXPORT, EventData.Status.SUCCESS, "Invoice exported to JSON {}", Map.of(INVOICE, o, INVOICE_PATH, invoicePath));
         });
     }
 
@@ -118,32 +118,32 @@ public class InvoicesAdapter implements InvoicesPort {
     }
 
     @Override
-    public void exportInvoiceDocuments(boolean withQrCode, boolean withEN16931, boolean overwrite, LocalDate from, LocalDate to) {
+    public void exportInvoiceDocuments(@NotNull DomainAudit audit,boolean withQrCode, boolean withEN16931, boolean overwrite, LocalDate from, LocalDate to) {
         final var filter = new DateRange.DateFilter(from, to);
-        realm.invoices().items().stream().filter(o -> filter.test(o.date())).forEach(o -> exportInvoiceDocument(o, withQrCode, withEN16931, overwrite));
+        realm.invoices().items().stream().filter(o -> filter.test(o.date())).forEach(o -> exportInvoiceDocument(audit, o, withQrCode, withEN16931, overwrite));
     }
 
     @Override
-    public void exportInvoiceDocument(@NotNull Invoice invoice, boolean withQrCode, boolean withEN16931, boolean overwrite) {
+    public void exportInvoiceDocument(@NotNull DomainAudit audit, @NotNull Invoice invoice, boolean withQrCode, boolean withEN16931, boolean overwrite) {
         var asciiDocGenerator = new InvoiceAsciiDoc(invoice.locale());
         Path invoiceFolder = Port.resolvePath(reportsFolder, invoice.date().getYear(), invoice.name());
         Path invoiceAsciiDocPath = invoiceFolder.resolve(invoice.name() + AsciiDoctorHelper.ASCIIDOC_EXT);
-        asciiDocGenerator.exports(invoice, invoiceAsciiDocPath, Collections.emptyMap());
+        asciiDocGenerator.exports(audit, invoice, invoiceAsciiDocPath, Collections.emptyMap());
         Path invoicePdfPath = invoiceFolder.resolve(invoice.name() + AsciiDoctorHelper.PDF_EXT);
         if (!overwrite && Files.exists(invoicePdfPath)) {
-            EventData.log(EventData.EXPORT, "net.tangly.crm.ports", EventData.Status.SUCCESS, "Invoice PDF already exists {}",
+            audit.log(EventData.EXPORT, EventData.Status.SUCCESS, "Invoice PDF already exists {}",
                 Map.of(INVOICE, invoice, INVOICE_PATH, invoicePdfPath, "withQrCode", withQrCode, "withEN16931", withEN16931, "overwrite", overwrite));
         } else {
             AsciiDoctorHelper.createPdf(invoiceAsciiDocPath, invoicePdfPath, true);
             if (withQrCode) {
                 var qrGenerator = new InvoiceQrCode();
-                qrGenerator.exports(invoice, invoicePdfPath, Collections.emptyMap());
+                qrGenerator.exports(audit, invoice, invoicePdfPath, Collections.emptyMap());
             }
             if (withEN16931) {
                 var en164391Generator = new InvoiceZugFerd();
-                en164391Generator.exports(invoice, invoicePdfPath, Collections.emptyMap());
+                en164391Generator.exports(audit, invoice, invoicePdfPath, Collections.emptyMap());
             }
-            EventData.log(EventData.EXPORT, "net.tangly.crm.ports", EventData.Status.SUCCESS, "Invoice exported to PDF {}",
+            audit.log(EventData.EXPORT, EventData.Status.SUCCESS, "Invoice exported to PDF {}",
                 Map.of(INVOICE, invoice, INVOICE_PATH, invoicePdfPath, "withQrCode", withQrCode, "withEN16931", withEN16931, "overwrite", overwrite));
         }
     }

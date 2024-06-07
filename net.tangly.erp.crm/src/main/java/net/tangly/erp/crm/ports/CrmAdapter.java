@@ -13,7 +13,7 @@
 
 package net.tangly.erp.crm.ports;
 
-import net.tangly.core.domain.Port;
+import net.tangly.core.domain.DomainAudit;
 import net.tangly.erp.crm.services.CrmPort;
 import net.tangly.erp.crm.services.CrmRealm;
 import org.jetbrains.annotations.NotNull;
@@ -49,17 +49,17 @@ public final class CrmAdapter implements CrmPort {
     }
 
     @Override
-    public void importEntities() {
+    public void importEntities(@NotNull DomainAudit audit) {
         var handler = new CrmTsvHdl(realm());
-        Port.importEntities(folder, LEADS_TSV, handler::importLeads);
-        Port.importEntities(folder, LEGAL_ENTITIES_TSV, handler::importLegalEntities);
-        Port.importEntities(folder, NATURAL_ENTITIES_TSV, handler::importNaturalEntities);
-        Port.importEntities(folder, EMPLOYEES_TSV, handler::importEmployees);
-        Port.importEntities(folder, CONTRACTS_TSV, handler::importContracts);
-        Port.importEntities(folder, CONTRACT_EXTENSIONS_TSV, handler::importContractExtensions);
-        Port.importEntities(folder, INTERACTIONS_TSV, handler::importInteractions);
-        Port.importEntities(folder, ACTIVITIES_TSV, handler::importActivities);
-        Port.importEntities(folder, COMMENTS_TSV, handler::importComments);
+        handler.importLeads(audit, folder.resolve(LEADS_TSV));
+        handler.importLegalEntities(audit, folder.resolve(LEGAL_ENTITIES_TSV));
+        handler.importNaturalEntities(audit, folder.resolve(NATURAL_ENTITIES_TSV));
+        handler.importEmployees(audit, folder.resolve(EMPLOYEES_TSV));
+        handler.importContracts(audit, folder.resolve(CONTRACTS_TSV));
+        handler.importContractExtensions(audit, folder.resolve(CONTRACT_EXTENSIONS_TSV));
+        handler.importInteractions(audit, folder.resolve(INTERACTIONS_TSV));
+        handler.importActivities(audit, folder.resolve(ACTIVITIES_TSV));
+        handler.importComments(audit, folder.resolve(COMMENTS_TSV));
 
         var crmEnrichmentHdl = new CrmEnrichmentHdl(realm());
         crmEnrichmentHdl.importVCards(folder.resolve(VCARDS_FOLDER));
@@ -67,17 +67,17 @@ public final class CrmAdapter implements CrmPort {
     }
 
     @Override
-    public void exportEntities() {
+    public void exportEntities(@NotNull DomainAudit audit) {
         var handler = new CrmTsvHdl(realm);
-        handler.exportLeads(folder.resolve(LEADS_TSV));
-        handler.exportLegalEntities(folder.resolve(LEGAL_ENTITIES_TSV));
-        handler.exportNaturalEntities(folder.resolve(NATURAL_ENTITIES_TSV));
-        handler.exportEmployees(folder.resolve(EMPLOYEES_TSV));
-        handler.exportContracts(folder.resolve(CONTRACTS_TSV));
-        handler.exportContractExtensions(folder.resolve(CONTRACT_EXTENSIONS_TSV));
-        handler.exportInteractions(folder.resolve(INTERACTIONS_TSV));
-        handler.exportActivities(folder.resolve(ACTIVITIES_TSV));
-        handler.exportComments(folder.resolve(COMMENTS_TSV));
+        handler.exportLeads(audit, folder.resolve(LEADS_TSV));
+        handler.exportLegalEntities(audit, folder.resolve(LEGAL_ENTITIES_TSV));
+        handler.exportNaturalEntities(audit, folder.resolve(NATURAL_ENTITIES_TSV));
+        handler.exportEmployees(audit, folder.resolve(EMPLOYEES_TSV));
+        handler.exportContracts(audit, folder.resolve(CONTRACTS_TSV));
+        handler.exportContractExtensions(audit, folder.resolve(CONTRACT_EXTENSIONS_TSV));
+        handler.exportInteractions(audit, folder.resolve(INTERACTIONS_TSV));
+        handler.exportActivities(audit, folder.resolve(ACTIVITIES_TSV));
+        handler.exportComments(audit, folder.resolve(COMMENTS_TSV));
     }
 
     @Override

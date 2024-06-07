@@ -13,14 +13,12 @@
 
 package net.tangly.core.domain;
 
+import net.tangly.commons.logger.EventData;
 import net.tangly.core.*;
 import net.tangly.core.providers.Provider;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Flow;
 import java.util.concurrent.SubmissionPublisher;
@@ -41,7 +39,7 @@ import java.util.concurrent.SubmissionPublisher;
  * @param <P> port empowers the business domain to communicate with outer layers or external systems.
  *            The communication is generally asynchronous
  */
-public class BoundedDomain<R extends Realm, B, P extends Port<R>> {
+public class BoundedDomain<R extends Realm, B, P extends Port<R>> implements DomainAudit{
     private final String name;
     private final R realm;
     private final P port;
@@ -49,6 +47,7 @@ public class BoundedDomain<R extends Realm, B, P extends Port<R>> {
     private final transient TypeRegistry registry;
     private final SubmissionPublisher<Object> channel;
     private final SubmissionPublisher<Object> internalChannel;
+    private final List<EventData> auditEvents;
 
     @FunctionalInterface
     public interface EventListener extends  Flow.Subscriber<Object>{
@@ -85,6 +84,7 @@ public class BoundedDomain<R extends Realm, B, P extends Port<R>> {
         this.registry = registry;
         channel = new SubmissionPublisher<>(Executors.newVirtualThreadPerTaskExecutor(), Flow.defaultBufferSize());
         internalChannel = new SubmissionPublisher<>(Executors.newVirtualThreadPerTaskExecutor(), Flow.defaultBufferSize());
+        auditEvents = new ArrayList<>();
     }
 
     protected static <I extends HasOid & HasMutableTags> void addTagCounts(@NotNull TypeRegistry registry, @NotNull Provider<I> provider, Map<TagType<?>, Integer> counts) {
@@ -139,6 +139,14 @@ public class BoundedDomain<R extends Realm, B, P extends Port<R>> {
         return Collections.emptyList();
     }
 
+    public List<EventData> auditEvents() {
+        return auditEvents;
+    }
+
+    public void log(EventData auditEvent) {
+        EventData.log(auditEvent);
+        auditEvents.add(auditEvent);
+    }
 
     public void startup() {
     }

@@ -112,10 +112,6 @@ class TransactionsView extends ItemView<Transaction> {
         }
 
         @Override
-        public void clear() {
-        }
-
-        @Override
         protected Transaction createOrUpdateInstance(Transaction entity) {
             Transaction transaction;
             if (entity == null) {

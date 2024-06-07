@@ -13,6 +13,8 @@
 
 package net.tangly.erp;
 
+import net.tangly.commons.logger.EventData;
+import net.tangly.core.domain.DomainAudit;
 import net.tangly.erp.crm.ports.CrmAdapter;
 import net.tangly.erp.invoices.ports.InvoicesAdapter;
 import net.tangly.erp.products.ports.ProductsAdapter;
@@ -24,9 +26,9 @@ import java.nio.file.*;
 
 /**
  * Creates a CRM and ledger domain model store with all persistent values of all involved entities.
- * The entities are stored in TSV and JSON file as resources of the test component. The store copies all the resources in an in-memory file system for efficient tests.
+ * The entities are stored in TSV and JSON file as resources of the test domain. The store copies all the resources in an in-memory file system for efficient tests.
  */
-public record ErpStore(@NotNull FileSystem fs) {
+public record ErpStore(@NotNull FileSystem fs) implements DomainAudit {
     static final String ORGANIZATION = "/organization/";
     static final String DATABASE = "db/";
     static final String DATA = "data/";
@@ -141,5 +143,15 @@ public record ErpStore(@NotNull FileSystem fs) {
     private static void copy(@NotNull String packageName, @NotNull Path folder, @NotNull String filename) throws IOException {
         Path resourcePath = Paths.get(Thread.currentThread().getContextClassLoader().getResource(packageName + filename).getPath());
         Files.copy(resourcePath, folder.resolve(filename), StandardCopyOption.REPLACE_EXISTING);
+    }
+
+    @Override
+    public void log(@NotNull EventData auditEvent) {
+
+    }
+
+    @Override
+    public String name() {
+        return "ErpStore";
     }
 }

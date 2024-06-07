@@ -23,6 +23,7 @@ import com.vaadin.flow.component.grid.GridVariant;
 import com.vaadin.flow.component.html.Anchor;
 import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.select.Select;
+import com.vaadin.flow.component.textfield.TextArea;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.renderer.ComponentRenderer;
 import net.tangly.core.EmailAddress;
@@ -56,7 +57,14 @@ public final class VaadinUtils {
     }
 
     public static TextField createTextField(String label, String placeholder, boolean readonly, boolean enabled) {
-        TextField field = new TextField(label, placeholder);
+        var field = new TextField(label, placeholder);
+        field.setReadOnly(readonly);
+        field.setEnabled(enabled);
+        return field;
+    }
+
+    public static TextArea createTextArea(String label, String placeholder, boolean readonly, boolean enabled) {
+        var field = new TextArea(label, placeholder);
         field.setReadOnly(readonly);
         field.setEnabled(enabled);
         return field;

@@ -43,7 +43,7 @@ public class InvoicesBoundedDomainUi extends BoundedDomainUi<InvoicesBoundedDoma
         subMenu.addItem(ARTICLES, e -> select(layout, view(ARTICLES).orElseThrow()));
         subMenu.addItem(INVOICES, e -> select(layout, view(INVOICES).orElseThrow()));
 
-        addAdministration(layout, menuBar, view(ENTITIES).orElseThrow(), new CmdFilesUploadInvoices(domain()));
+        addAdministration(layout, menuBar, view(ENTITIES).orElseThrow());
         select(layout);
     }
 }

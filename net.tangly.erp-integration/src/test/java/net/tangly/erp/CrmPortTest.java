@@ -57,7 +57,7 @@ class CrmPortTest {
 
             var crmData = store.dataRoot().resolve(CrmBoundedDomain.DOMAIN);
             var handler = new CrmAdapter(new CrmEntities(), crmData);
-            handler.importEntities();
+            handler.importEntities(store);
 
             verifyNaturalEntities(handler.realm(), 0, null);
             verifyLegalEntities(handler.realm(), 0, null);
@@ -79,10 +79,10 @@ class CrmPortTest {
             handler.realm().contracts().update(contract);
             int nrOfContracts = handler.realm().contracts().items().size();
 
-            handler.exportEntities();
+            handler.exportEntities(store);
 
             handler = new CrmAdapter(new CrmEntities(), crmData);
-            handler.importEntities();
+            handler.importEntities(store);
             verifyNaturalEntities(handler.realm(), nrOfNaturalEntities, naturalEntity);
             verifyLegalEntities(handler.realm(), nrOfLegalEntities, legalEntity);
             verifyEmployees(handler.realm());

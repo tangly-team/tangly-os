@@ -41,10 +41,8 @@ import java.util.Objects;
 public class CommentsView extends ItemView<Comment> {
     private static final String CREATED = "created";
     private static final String AUTHOR = "author";
-    private static final String TEXT = "text";
     private static final String CREATED_LABEL = "Created";
     private static final String AUTHOR_LABEL = "Author";
-    private static final String TEXT_LABEL = "Text";
 
     static class CommentFilter extends ItemView.ItemFilter<Comment> {
         private DateRange.DateFilter range;

@@ -14,12 +14,12 @@
 package net.tangly.erp.invoices.ports;
 
 import net.tangly.commons.logger.EventData;
+import net.tangly.core.domain.DomainAudit;
 import net.tangly.core.domain.TsvHdl;
 import net.tangly.erp.invoices.artifacts.InvoiceJson;
 import net.tangly.erp.invoices.domain.Article;
 import net.tangly.erp.invoices.domain.ArticleCode;
 import net.tangly.erp.invoices.domain.Invoice;
-import net.tangly.erp.invoices.services.InvoicesBoundedDomain;
 import net.tangly.erp.invoices.services.InvoicesRealm;
 import net.tangly.gleam.model.TsvEntity;
 import net.tangly.gleam.model.TsvProperty;
@@ -60,27 +60,27 @@ public class InvoicesTsvJsonHdl {
         return TsvEntity.of(Article.class, fields, imports);
     }
 
-    public void exportArticles(@NotNull Path path) {
-        TsvHdl.exportEntities(InvoicesBoundedDomain.DOMAIN, path, createTsvArticle(), realm.articles());
+    public void exportArticles(@NotNull DomainAudit audit, @NotNull Path path) {
+        TsvHdl.exportEntities(audit, path, createTsvArticle(), realm.articles());
     }
 
-    public void importArticles(@NotNull Reader reader, String source) {
-        TsvHdl.importEntities(InvoicesBoundedDomain.DOMAIN, reader, source, createTsvArticle(), realm.articles());
+    public void importArticles(@NotNull DomainAudit audit, @NotNull Path path) {
+        TsvHdl.importEntities(audit, path, createTsvArticle(), realm.articles());
     }
 
-    public Invoice importInvoice(@NotNull Reader reader, String source) {
+    public Invoice importInvoice(@NotNull DomainAudit audit, @NotNull Reader reader, String source) {
         var invoiceJson = new InvoiceJson(realm);
-        var invoice = invoiceJson.imports(reader, source);
+        var invoice = invoiceJson.imports(audit, reader, source);
         if ((invoice != null) && invoice.check()) {
             // locale is not a mandatory field and default locale is English
             if (Objects.isNull(invoice.locale())) {
                 invoice.locale(Locale.ENGLISH);
             }
             realm.invoices().update(invoice);
-            EventData.log(EventData.IMPORT, InvoicesBoundedDomain.DOMAIN, EventData.Status.SUCCESS, "Imported Invoice", Map.ofEntries(Map.entry("invoice", invoice)));
+            audit.log(EventData.IMPORT, EventData.Status.SUCCESS, "Imported Invoice", Map.ofEntries(Map.entry("invoice", invoice)));
             return invoice;
         } else {
-            EventData.log(EventData.IMPORT, InvoicesBoundedDomain.DOMAIN, EventData.Status.WARNING, "Invalid Invoice", Map.ofEntries(Map.entry("invoice", source)));
+            audit.log(EventData.IMPORT, EventData.Status.WARNING, "Invalid Invoice", Map.ofEntries(Map.entry("invoice", source)));
             return null;
         }
     }

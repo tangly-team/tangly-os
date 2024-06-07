@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2023 Marcel Baumann
+ * Copyright 2006-2024 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -12,7 +12,7 @@
  */
 
 /**
- * The application can be used by mvn install (once) mvn (to run the application) The package provides a CRUD component for entities. Entities can have
+ * The application can be used by mvn install (once) mvn (to run the application) The package provides a CRUD domain for entities. Entities can have
  * <ul>
  *     <li>A list displaying a list of entities with selected fields.</li>
  *     <li>A tabbed details view showing simple fields view, comments view, tags view. The comments and tags view display again a list of

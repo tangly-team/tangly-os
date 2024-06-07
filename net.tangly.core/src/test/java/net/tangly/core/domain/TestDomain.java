@@ -13,6 +13,7 @@
 
 package net.tangly.core.domain;
 
+import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -24,11 +25,11 @@ class TestDomain {
     record TestPort(TestRealm realm) implements Port<TestRealm> {
 
         @Override
-        public void importEntities() {
+        public void importEntities(@NotNull DomainAudit audit) {
         }
 
         @Override
-        public void exportEntities() {
+        public void exportEntities(@NotNull DomainAudit audit) {
         }
 
         @Override

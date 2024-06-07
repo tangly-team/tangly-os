@@ -39,7 +39,7 @@ class CrmPersistenceTest {
             var crmData = store.dataRoot().resolve(CrmBoundedDomain.DOMAIN);
 
             var handler = new CrmAdapter(new CrmEntities(crmDb), crmData);
-            handler.importEntities();
+            handler.importEntities(store);
             assertThat(handler.realm().naturalEntities().items()).isNotEmpty();
             assertThat(handler.realm().legalEntities().items()).isNotEmpty();
             assertThat(handler.realm().employees().items()).isNotEmpty();
@@ -71,7 +71,7 @@ class CrmPersistenceTest {
 
             // given
             var handler = new CrmAdapter(new CrmEntities(store.dbRoot().resolve(CrmBoundedDomain.DOMAIN)), store.dataRoot().resolve(CrmBoundedDomain.DOMAIN));
-            handler.importEntities();
+            handler.importEntities(store);
             long nrNaturalEntities = handler.realm().naturalEntities().items().size();
             long nrLegalEntities = handler.realm().legalEntities().items().size();
             long nrEmployees = handler.realm().employees().items().size();
@@ -85,11 +85,11 @@ class CrmPersistenceTest {
             Interaction interaction = Provider.findByOid(handler.realm().interactions(), INTERACTION_OID).orElseThrow();
 
             // when
-            handler.exportEntities();
+            handler.exportEntities(store);
             handler.clearEntities();
             handler.realm().close();
             handler = new CrmAdapter(new CrmEntities(store.dbRoot().resolve(CrmBoundedDomain.DOMAIN)), store.dataRoot().resolve(CrmBoundedDomain.DOMAIN));
-            handler.importEntities();
+            handler.importEntities(store);
 
             // then
             assertThat(handler.realm().naturalEntities().items().size()).isEqualTo(nrNaturalEntities);

@@ -36,16 +36,17 @@ import java.util.Objects;
  *
  * @param event     event triggering the creation of an audit log
  * @param timestamp timestamp when the audit log was created
- * @param component component source of the audit log. By convention, we use the module name or if necessary the package name
+ * @param domain    domain source of the audit log.
  * @param status    status associated with the audit log
  * @param text      text of the audit log. It should be English and provide a concise description of the event
  * @param data      data specific to the audit log
  * @param exception optional exception to be added to the audit log
  */
-public record EventData(@NotNull String event, @NotNull LocalDateTime timestamp, @NotNull String component, @NotNull Status status, String text,
+public record EventData(@NotNull String event, @NotNull LocalDateTime timestamp, @NotNull String domain, @NotNull Status status, String text,
                         @NotNull Map<String, Object> data, Throwable exception) {
     public static final String IMPORT = "import";
     public static final String EXPORT = "export";
+    public static final String REPORT = "report";
     public static final String FILENAME = "filename";
     public static final String ENTITY = "entity";
 
@@ -54,13 +55,9 @@ public record EventData(@NotNull String event, @NotNull LocalDateTime timestamp,
     private static final String AUDIT_LOGGER = "AuditLogger";
     private static final Marker MARKER = MarkerManager.getMarker("AUDIT_EVENT");
 
-    public static void log(@NotNull String event, @NotNull String component, @NotNull Status status, String reason, @NotNull Map<String, Object> data) {
-        log(new EventData(event, LocalDateTime.now(), component, status, reason, data, null));
-    }
-
-    public static void log(@NotNull String event, @NotNull String component, @NotNull Status status, String reason, @NotNull Map<String, Object> data,
-                           Throwable exception) {
-        log(new EventData(event, LocalDateTime.now(), component, status, reason, data, exception));
+    public static EventData of(@NotNull String event, @NotNull String domain, @NotNull Status status, String reason, @NotNull Map<String, Object> data,
+                               Throwable exception) {
+        return new EventData(event, LocalDateTime.now(), domain, status, reason, data, exception);
     }
 
     /**
@@ -75,9 +72,9 @@ public record EventData(@NotNull String event, @NotNull LocalDateTime timestamp,
             builder.withThrowable(data.exception());
         }
         if (data.exception() != null) {
-            builder.log("{}-{}-{}-{}:{}:{} - {} ", data.event(), data.timestamp(), data.component(), data.status(), data.text(), data.data(), data.exception());
+            builder.log("{}-{}-{}-{}:{}:{} - {} ", data.event(), data.timestamp(), data.domain(), data.status(), data.text(), data.data(), data.exception());
         } else {
-            builder.log("{}-{}-{}-{}:{}:{}", data.event(), data.timestamp(), data.component(), data.status(), data.text(), data.data());
+            builder.log("{}-{}-{}-{}:{}:{}", data.event(), data.timestamp(), data.domain(), data.status(), data.text(), data.data());
         }
     }
 }

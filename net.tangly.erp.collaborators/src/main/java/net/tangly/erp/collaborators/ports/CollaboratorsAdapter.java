@@ -13,7 +13,7 @@
 
 package net.tangly.erp.collaborators.ports;
 
-import net.tangly.core.domain.Port;
+import net.tangly.core.domain.DomainAudit;
 import net.tangly.erp.collabortors.services.CollaboratorsPort;
 import net.tangly.erp.collabortors.services.CollaboratorsRealm;
 import org.jetbrains.annotations.NotNull;
@@ -36,15 +36,15 @@ public class CollaboratorsAdapter implements CollaboratorsPort {
     }
 
     @Override
-    public void importEntities() {
+    public void importEntities(@NotNull DomainAudit audit) {
         var handler = new CollaboratorsTsvHdl(realm());
-        Port.importEntities(dataFolder, COLLABORATORS_TSV, handler::importCollaboratators);
+        handler.importCollaboratators(audit, dataFolder.resolve(COLLABORATORS_TSV));
     }
 
     @Override
-    public void exportEntities() {
+    public void exportEntities(@NotNull DomainAudit audit) {
         var handler = new CollaboratorsTsvHdl(realm());
-        handler.exportCollaborators(dataFolder.resolve(COLLABORATORS_TSV));
+        handler.exportCollaborators(audit, dataFolder.resolve(COLLABORATORS_TSV));
     }
 
     @Override

@@ -45,7 +45,7 @@ public class LedgerBoundedDomainUi extends BoundedDomainUi<LedgerBoundedDomain> 
         subMenu.addItem(TRANSACTIONS, _ -> select(layout, view(TRANSACTIONS).orElseThrow()));
 
         addAnalytics(layout, menuBar, view(ANALYTICS).orElseThrow());
-        addAdministration(layout, menuBar, view(ENTITIES).orElseThrow(), new CmdFilesUploadLedger(domain()));
+        addAdministration(layout, menuBar, view(ENTITIES).orElseThrow());
         select(layout);
     }
 }

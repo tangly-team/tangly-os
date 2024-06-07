@@ -51,7 +51,7 @@ class ProductsHdlTest {
             var realm = new ProductsEntities();
             var productsData = store.dataRoot().resolve(ProductsBoundedDomain.DOMAIN);
             var handler = new ProductsAdapter(realm, new ProductsBusinessLogic(realm), productsData, null);
-            handler.importEntities();
+            handler.importEntities(store);
             verifyProducts(handler.realm());
             verifyAssignments(handler.realm(), 0, null);
             verifyEfforts(handler.realm(), 0, null);
@@ -63,11 +63,11 @@ class ProductsHdlTest {
             handler.realm().efforts().update(effort);
             int nrOfEfforts = handler.realm().efforts().items().size();
 
-            handler.exportEntities();
+            handler.exportEntities(store);
 
             realm = new ProductsEntities();
             handler = new ProductsAdapter(realm, new ProductsBusinessLogic(realm), productsData, null);
-            handler.importEntities();
+            handler.importEntities(store);
             verifyProducts(handler.realm());
             verifyAssignments(handler.realm(), nrOfAssignments, assignment);
             verifyEfforts(handler.realm(), nrOfEfforts, effort);

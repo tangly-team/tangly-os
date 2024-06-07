@@ -13,6 +13,7 @@
 
 package net.tangly.erp.products.services;
 
+import net.tangly.core.domain.DomainAudit;
 import net.tangly.core.domain.Port;
 import net.tangly.erp.products.domain.Assignment;
 import org.eclipse.serializer.exceptions.IORuntimeException;
@@ -37,7 +38,7 @@ public interface ProductsPort extends Port<ProductsRealm> {
      * @param source  source of the efforts used to audit the import operation
      * @param replace if true, the imported ones replace the existing efforts, otherwise the imported efforts are only imported if not present
      */
-    void importEfforts(@NotNull Reader reader, @NotNull String source, boolean replace) throws IORuntimeException;
+    void importEfforts(@NotNull DomainAudit audit,@NotNull Reader reader, @NotNull String source, boolean replace) throws IORuntimeException;
 
     /**
      * Exports all efforts of the assignment in the given period of time. The export shall be an asciidoc document.
@@ -50,7 +51,7 @@ public interface ProductsPort extends Port<ProductsRealm> {
      * @param filename   name of the file to create
      * @param unit       unit of the time interval (minutes, hours, and days)
      */
-    void exportEffortsDocument(@NotNull Assignment assignment, LocalDate from, LocalDate to, @NotNull String filename, @NotNull ChronoUnit unit);
+    void exportEffortsDocument(@NotNull DomainAudit audit, @NotNull Assignment assignment, LocalDate from, LocalDate to, @NotNull String filename, @NotNull ChronoUnit unit);
 
     /**
      * Exports all efforts of the assignment in the given period of time. The export shall create an asciidoc document per month.
@@ -62,5 +63,5 @@ public interface ProductsPort extends Port<ProductsRealm> {
      * @param to         last month to consider
      * @param unit       unit of the time interval (minutes, hours, and days)
      */
-    void exportEffortsDocumentsSplitPerMonth(@NotNull Assignment assignment, @NotNull YearMonth from, @NotNull YearMonth to, @NotNull ChronoUnit unit);
+    void exportEffortsDocumentsSplitPerMonth(@NotNull DomainAudit audit,@NotNull Assignment assignment, @NotNull YearMonth from, @NotNull YearMonth to, @NotNull ChronoUnit unit);
 }

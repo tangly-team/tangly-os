@@ -39,17 +39,19 @@ public interface Port<R extends Realm> {
      * The domain is responsible for the order of the import and the handling of the entities.
      * A bounded domain should not depend on other domains to perform the operation.
      *
-     * @see #exportEntities()
+     * @param audit domain audit sink to log the operation events
+     * @see #exportEntities(DomainAudit)
      */
-    void importEntities();
+    void importEntities(@NotNull DomainAudit audit);
 
     /**
      * Export all entities of the bounded domain to the file system as TSV, JSON, TOML, and YAML files.
      * A bounded domain should not depend on other domains to perform the operation.
      *
-     * @see #importEntities()
+     * @param audit domain audit sink to log the operation events
+     * @see #importEntities(DomainAudit)
      */
-    void exportEntities();
+    void exportEntities(@NotNull DomainAudit audit);
 
     /**
      * Clear all entities of the bounded domain. Upon execution, the domain is empty. Use with caution as the operation is not reversible.
@@ -87,20 +89,20 @@ public interface Port<R extends Realm> {
      * @param filename  filename of the document to write
      * @return path to the folder where the document should be written. If the file does not contain a year, the base directory is returned
      */
-    public static Path resolvePath(@NotNull Path directory, @NotNull String filename) {
+    static Path resolvePath(@NotNull Path directory, @NotNull String filename) {
         var matcher = PATTERN.matcher(filename);
         var filePath = matcher.matches() ? directory.resolve(filename.substring(0, 4)) : directory;
         createDirectories(filePath);
         return filePath;
     }
 
-    public static Path resolvePath(@NotNull Path directory, int year, @NotNull String filename) {
+    static Path resolvePath(@NotNull Path directory, int year, String filename) {
         var filePath = directory.resolve(Integer.toString(year));
         createDirectories(filePath);
-        return filePath;
+        return filePath.resolve(filename);
     }
 
-    public static void createDirectories(@NotNull Path directory) {
+    static void createDirectories(@NotNull Path directory) {
         if (Files.notExists(directory)) {
             try {
                 Files.createDirectories(directory);

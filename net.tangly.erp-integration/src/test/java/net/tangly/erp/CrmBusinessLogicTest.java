@@ -52,7 +52,7 @@ class CrmBusinessLogicTest {
             store.createRepository();
             var handler = new CrmAdapter(new CrmEntities(store.dbRoot().resolve(CrmBoundedDomain.DOMAIN)), store.dataRoot().resolve(CrmBoundedDomain.DOMAIN));
             var logic = new CrmBusinessLogic(handler.realm());
-            handler.importEntities();
+            handler.importEntities(store);
 
             assertThat(logic.funnel(InteractionCode.prospect, LocalDate.of(2015, Month.JANUARY, 1), LocalDate.of(2024, Month.DECEMBER, 31))).isGreaterThanOrEqualTo(BigDecimal.ZERO);
             assertThat(logic.funnel(InteractionCode.lead, LocalDate.of(2015, Month.JANUARY, 1), LocalDate.of(2024, Month.DECEMBER, 31))).isGreaterThanOrEqualTo(BigDecimal.ZERO);

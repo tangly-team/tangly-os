@@ -13,19 +13,14 @@
 
 package net.tangly.app.ports;
 
-import net.tangly.app.services.AppsBoundedDomain;
 import net.tangly.app.services.AppsRealm;
-import net.tangly.core.domain.AccessRights;
-import net.tangly.core.domain.AccessRightsCode;
-import net.tangly.core.domain.TsvHdl;
-import net.tangly.core.domain.User;
+import net.tangly.core.domain.*;
 import net.tangly.core.providers.ProviderInMemory;
 import net.tangly.gleam.model.TsvEntity;
 import net.tangly.gleam.model.TsvProperty;
 import org.apache.commons.csv.CSVRecord;
 import org.jetbrains.annotations.NotNull;
 
-import java.io.Reader;
 import java.nio.file.Path;
 import java.util.List;
 import java.util.function.Function;
@@ -47,16 +42,16 @@ public class AppsTsvHdl {
         this.realm = realm;
     }
 
-    public void importUsers(@NotNull Reader usersReader, @NotNull Reader accessRightsReader, @NotNull String source) {
+    public void importUsers(@NotNull DomainAudit audit, @NotNull Path userPath, @NotNull Path accessRighsPath) {
         ProviderInMemory<AccessRights> rights = new ProviderInMemory<>();
-        TsvHdl.importEntities(AppsBoundedDomain.DOMAIN, accessRightsReader, source, createTsvAccessRights(), rights);
-        TsvHdl.importEntities(AppsBoundedDomain.DOMAIN, usersReader, source, createTsvUser(rights.items()), realm.users());
+        TsvHdl.importEntities(audit, accessRighsPath, createTsvAccessRights(), rights);
+        TsvHdl.importEntities(audit, userPath, createTsvUser(rights.items()), realm.users());
     }
 
-    public void exportUsers(@NotNull Path usersPath, @NotNull Path accessRightsPath) {
+    public void exportUsers(@NotNull DomainAudit audit, @NotNull Path usersPath, @NotNull Path accessRightsPath) {
         var rights = ProviderInMemory.of(realm.users().items().stream().flatMap(o -> o.accessRights().stream()).toList());
-        TsvHdl.exportEntities(AppsBoundedDomain.DOMAIN, usersPath, createTsvUser(rights.items()), realm.users());
-        TsvHdl.exportEntities(AppsBoundedDomain.DOMAIN, accessRightsPath, createTsvAccessRights(), rights);
+        TsvHdl.exportEntities(audit, usersPath, createTsvUser(rights.items()), realm.users());
+        TsvHdl.exportEntities(audit, accessRightsPath, createTsvAccessRights(), rights);
     }
 
     private static TsvEntity<User> createTsvUser(@NotNull List<AccessRights> rights) {

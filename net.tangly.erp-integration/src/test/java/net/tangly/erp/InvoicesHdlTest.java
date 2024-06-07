@@ -35,16 +35,16 @@ class InvoicesHdlTest {
 
             var handler = new InvoicesAdapter(new InvoicesEntities(),
                 store.dataRoot().resolve(InvoicesBoundedDomain.DOMAIN), store.reportsRoot().resolve(InvoicesBoundedDomain.DOMAIN));
-            handler.importEntities();
+            handler.importEntities(store);
 
             verifyArticles(handler.realm());
             verifyInvoices(handler.realm());
 
-            handler.exportEntities();
+            handler.exportEntities(store);
 
             handler = new InvoicesAdapter(new InvoicesEntities(),
                 store.dataRoot().resolve(InvoicesBoundedDomain.DOMAIN), store.reportsRoot().resolve(InvoicesBoundedDomain.DOMAIN));
-            handler.importEntities();
+            handler.importEntities(store);
             verifyArticles(handler.realm());
         }
     }

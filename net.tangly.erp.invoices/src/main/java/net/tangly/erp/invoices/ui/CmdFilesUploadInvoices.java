@@ -33,10 +33,8 @@ public class CmdFilesUploadInvoices extends CmdFilesUpload<InvoicesRealm, Invoic
         registerAllFinishedListener(event -> {
             var handler = new InvoicesTsvJsonHdl(domain.realm());
             Set<String> files = buffer().getFiles();
-            if (files.contains(InvoicesAdapter.ARTICLES_TSV)) {
-                processInputStream(InvoicesAdapter.ARTICLES_TSV, handler::importArticles);
-            }
-            files.stream().filter(o -> o.endsWith(InvoicesAdapter.JSON_EXT)).forEach(o -> processInputStream(o, handler::importInvoice));
+            files.stream().filter(o -> o.endsWith(InvoicesAdapter.JSON_EXT))
+                .forEach(o -> processInputStream(domain, o, handler::importInvoice));
             close();
         });
     }

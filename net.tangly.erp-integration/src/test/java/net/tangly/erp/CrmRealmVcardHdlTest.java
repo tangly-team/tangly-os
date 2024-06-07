@@ -35,7 +35,7 @@ class CrmRealmVcardHdlTest {
             var store = new ErpStore(fs);
             store.createRepository();
             var crmHdl = new CrmAdapter(realm, store.dataRoot().resolve(CrmBoundedDomain.DOMAIN));
-            crmHdl.importEntities();
+            crmHdl.importEntities(store);
             var handler = new CrmEnrichmentHdl(crmHdl.realm());
             handler.importVCards(store.dataRoot().resolve(CrmBoundedDomain.DOMAIN, ErpStore.VCARDS));
         }

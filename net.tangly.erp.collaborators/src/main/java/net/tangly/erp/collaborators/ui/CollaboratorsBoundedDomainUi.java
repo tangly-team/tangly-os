@@ -42,7 +42,7 @@ public class CollaboratorsBoundedDomainUi extends BoundedDomainUi<CollaboratorsB
         SubMenu subMenu = menuItem.getSubMenu();
         subMenu.addItem(COLLABORATORS, _ -> select(layout, view(COLLABORATORS).orElseThrow()));
 
-        addAdministration(layout, menuBar, view(ENTITIES).orElseThrow(), new CmdFilesUploadCollaborators(domain()));
+        addAdministration(layout, menuBar, view(ENTITIES).orElseThrow());
         select(layout);
     }
 }

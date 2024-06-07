@@ -282,7 +282,7 @@ public abstract class ItemForm<T, U extends ItemView<T>> {
     /**
      * Create the CRUD button bar. The button bar has always a cancel operation and an additional CRUD operation.
      *
-     * @return component containing the CRUD form command button
+     * @return domain containing the CRUD form command button
      */
     protected Component createButtonBar() {
         return new HorizontalLayout(cancel, action);

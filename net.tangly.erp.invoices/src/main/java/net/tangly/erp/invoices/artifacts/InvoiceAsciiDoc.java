@@ -16,6 +16,7 @@ package net.tangly.erp.invoices.artifacts;
 import net.codecrete.qrbill.generator.Strings;
 import net.tangly.commons.utilities.AsciiDocHelper;
 import net.tangly.core.Address;
+import net.tangly.core.domain.DomainAudit;
 import net.tangly.erp.invoices.domain.Invoice;
 import net.tangly.erp.invoices.domain.InvoiceLegalEntity;
 import net.tangly.erp.invoices.domain.InvoiceLine;
@@ -52,7 +53,7 @@ public class InvoiceAsciiDoc implements InvoiceGenerator {
     }
 
     @Override
-    public void exports(@NotNull Invoice invoice, @NotNull Path invoicePath, @NotNull Map<String, Object> properties) {
+    public void exports(@NotNull DomainAudit audit, @NotNull Invoice invoice, @NotNull Path invoicePath, @NotNull Map<String, Object> properties) {
         try (PrintWriter writer = new PrintWriter(Files.newOutputStream(invoicePath), true, StandardCharsets.UTF_8)) {
             var helper = new AsciiDocHelper(writer);
             writer.println(":imagesdir: ../..");

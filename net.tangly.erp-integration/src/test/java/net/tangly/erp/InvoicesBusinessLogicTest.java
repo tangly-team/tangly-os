@@ -38,15 +38,15 @@ class InvoicesBusinessLogicTest {
 
             var handler = new InvoicesAdapter(new InvoicesEntities(),
                 store.dataRoot().resolve(InvoicesBoundedDomain.DOMAIN), store.reportsRoot().resolve(InvoicesBoundedDomain.DOMAIN));
-            handler.importEntities();
+            handler.importEntities(store);
 
             verifyBusinessLogic(handler.realm());
 
-            handler.exportEntities();
+            handler.exportEntities(store);
 
             handler = new InvoicesAdapter(new InvoicesEntities(),
                 store.dataRoot().resolve(InvoicesBoundedDomain.DOMAIN), store.reportsRoot().resolve(InvoicesBoundedDomain.DOMAIN));
-            handler.importEntities();
+            handler.importEntities(store);
         }
     }
 

@@ -20,7 +20,7 @@ import java.util.Objects;
 import java.util.function.Function;
 
 /**
- * Represents a function that accepts three arguments and produces a result. This is the two-arity specialization of Function.
+ * Represent a function that accepts three arguments and produces a result. This is the two-arity specialization of Function.
  *
  * @param <T> the type of the first argument to the function
  * @param <U> the type of the second argument to the function

@@ -18,11 +18,10 @@ import net.tangly.commons.logger.EventData;
 import net.tangly.commons.utilities.AsciiDoctorHelper;
 import net.tangly.commons.utilities.ValidatorUtilities;
 import net.tangly.core.Strings;
-import net.tangly.core.domain.Port;
+import net.tangly.core.domain.DomainAudit;
 import net.tangly.core.providers.Provider;
 import net.tangly.erp.products.domain.Assignment;
 import net.tangly.erp.products.domain.Effort;
-import net.tangly.erp.products.services.ProductsBoundedDomain;
 import net.tangly.erp.products.services.ProductsBusinessLogic;
 import net.tangly.erp.products.services.ProductsPort;
 import net.tangly.erp.products.services.ProductsRealm;
@@ -75,36 +74,37 @@ public class ProductsAdapter implements ProductsPort {
     }
 
     @Override
-    public void importEntities() {
+    public void importEntities(@NotNull DomainAudit audit) {
         var handler = new ProductsTsvHdl(realm());
-        Port.importEntities(dataFolder, PRODUCTS_TSV, handler::importProducts);
-        Port.importEntities(dataFolder, WORK_CONTRACTS_TSV, handler::importWorkContracts);
-        Port.importEntities(dataFolder, ASSIGNMENTS_TSV, handler::importAssignments);
+        handler.importProducts(audit, dataFolder.resolve(PRODUCTS_TSV));
+        handler.importWorkContracts(audit, dataFolder.resolve(WORK_CONTRACTS_TSV));
+        handler.importAssignments(audit, dataFolder.resolve(ASSIGNMENTS_TSV));
         try (Stream<Path> stream = Files.walk(dataFolder)) {
             AtomicInteger nrOfImportedEffortFiles = new AtomicInteger();
             stream.filter(file -> !Files.isDirectory(file) && file.getFileName().toString().endsWith(YAML_EXT)).forEach(o -> {
                 try (Reader reader = Files.newBufferedReader(dataFolder.resolve(o))) {
-                    importEfforts(reader, o.toString(), true);
+                    importEfforts(audit, reader, o.toString(), true);
                     nrOfImportedEffortFiles.getAndIncrement();
                 } catch (IOException e) {
                     throw new UncheckedIOException(e);
                 } catch (Exception e) {
-                    EventData.log(EventData.IMPORT, ProductsBoundedDomain.DOMAIN, EventData.Status.ERROR, "Error importing efforts.", Map.of("filename", o.toString()));
+                    audit.log(EventData.IMPORT, EventData.Status.ERROR, "Error importing efforts.", Map.of("filename", o.toString()));
                 }
             });
-            EventData.log(EventData.IMPORT, ProductsBoundedDomain.DOMAIN, EventData.Status.INFO, "Efforts were imported out of", Map.of("nrOfImportedEffortFiles", Integer.toString(nrOfImportedEffortFiles.get())));
+            audit.log(EventData.IMPORT, EventData.Status.INFO, "Efforts were imported out of",
+                Map.of("nrOfImportedEffortFiles", Integer.toString(nrOfImportedEffortFiles.get())));
         } catch (IOException e) {
             throw new UncheckedIOException(e);
         }
     }
 
     @Override
-    public void exportEntities() {
+    public void exportEntities(@NotNull DomainAudit audit) {
         var handler = new ProductsTsvHdl(realm());
-        handler.exportProducts(dataFolder.resolve(PRODUCTS_TSV));
-        handler.exportWorkContracts(dataFolder.resolve(WORK_CONTRACTS_TSV));
-        handler.exportAssignments(dataFolder.resolve(ASSIGNMENTS_TSV));
-        exportEfforts(dataFolder);
+        handler.exportProducts(audit, dataFolder.resolve(PRODUCTS_TSV));
+        handler.exportWorkContracts(audit, dataFolder.resolve(WORK_CONTRACTS_TSV));
+        handler.exportAssignments(audit, dataFolder.resolve(ASSIGNMENTS_TSV));
+        exportEfforts(audit, dataFolder);
     }
 
     @Override
@@ -115,7 +115,7 @@ public class ProductsAdapter implements ProductsPort {
     }
 
     @Override
-    public void importEfforts(@NotNull Reader stream, @NotNull String source, boolean replace) throws IORuntimeException {
+    public void importEfforts(@NotNull DomainAudit audit, @NotNull Reader stream, @NotNull String source, boolean replace) throws IORuntimeException {
         try {
             if (ValidatorUtilities.isYamlValid(new StringReader(source), "assignment-schema.json")) {
                 YamlMapping data = Yaml.createYamlInput(stream).readYamlMapping();
@@ -125,7 +125,7 @@ public class ProductsAdapter implements ProductsPort {
                 Assignment assignment = Provider.findByOid(realm().assignments(), assignmentOid).orElse(null);
 
                 if (Objects.isNull(assignment)) {
-                    EventData.log(EventData.IMPORT, ProductsBoundedDomain.DOMAIN, EventData.Status.ERROR, "assignment could not be found.",
+                    audit.log(EventData.IMPORT, EventData.Status.ERROR, "assignment could not be found.",
                         Map.of("filename", source, "assignmentOid", Long.toString(assignmentOid)));
                     return;
                 }
@@ -140,12 +140,12 @@ public class ProductsAdapter implements ProductsPort {
                         newEffort.minutes(minutes);
                     }
                     if (!assignment.range().isActive(date)) {
-                        EventData.log(EventData.IMPORT, ProductsBoundedDomain.DOMAIN, EventData.Status.ERROR, "effort date is out of assignment range.",
+                        audit.log(EventData.IMPORT, EventData.Status.ERROR, "effort date is out of assignment range.",
                             Map.of("filename", source, "assignment", assignment, "effort", newEffort));
                         return;
                     }
                     if ((assignment.closedPeriod() != null) && (!newEffort.date().isAfter(assignment.closedPeriod()))) {
-                        EventData.log(EventData.IMPORT, ProductsBoundedDomain.DOMAIN, EventData.Status.ERROR, "effort date is before of assignment closed period.",
+                        audit.log(EventData.IMPORT, EventData.Status.ERROR, "effort date is before of assignment closed period.",
                             Map.of("filename", source, "assignment", assignment, "effort", newEffort));
                         return;
                     }
@@ -154,14 +154,16 @@ public class ProductsAdapter implements ProductsPort {
                         if (replace) {
                             logic.realm().efforts().delete(foundEffort.get());
                             logic.realm().efforts().update(newEffort);
-                            EventData.log(EventData.IMPORT, ProductsBoundedDomain.DOMAIN, EventData.Status.INFO, " effort replaced already exists.", Map.of("filename", source, "entity", newEffort));
+                            audit.log(EventData.IMPORT, EventData.Status.INFO, " effort replaced already exists.",
+                                Map.of("filename", source, "entity", newEffort));
 
                         } else {
-                            EventData.log(EventData.IMPORT, ProductsBoundedDomain.DOMAIN, EventData.Status.WARNING, " effort could not be imported because it already exists.", Map.of("filename", source, "entity", newEffort));
+                            audit.log(EventData.IMPORT, EventData.Status.WARNING, " effort could not be imported because it " + "already exists.",
+                                Map.of("filename", source, "entity", newEffort));
                         }
                     } else {
                         logic.realm().efforts().update(newEffort);
-                        EventData.log(EventData.IMPORT, ProductsBoundedDomain.DOMAIN, EventData.Status.INFO, " effort added.", Map.of("filename", source, "entity", newEffort));
+                        audit.log(EventData.IMPORT, EventData.Status.INFO, " effort added.", Map.of("filename", source, "entity", newEffort));
                     }
                 });
             }
@@ -178,21 +180,19 @@ public class ProductsAdapter implements ProductsPort {
      *
      * @param path the path of the root folder where the efforts are exported
      */
-    public void exportEfforts(@NotNull Path path) {
-        var efforts = realm().efforts().items().stream().collect(
-            groupingBy(o -> o.assignment().id(), groupingBy(Effort::contractId, groupingBy(o -> o.assignment().collaboratorId(),
-                groupingBy(o -> YearMonth.from(o.date()))))));
+    public void exportEfforts(@NotNull DomainAudit audit, @NotNull Path path) {
+        var efforts = realm().efforts().items().stream().collect(groupingBy(o -> o.assignment().id(),
+            groupingBy(Effort::contractId, groupingBy(o -> o.assignment().collaboratorId(), groupingBy(o -> YearMonth.from(o.date()))))));
         efforts.values().stream().flatMap(o -> o.values().stream().flatMap(o1 -> o1.values().stream().flatMap(o2 -> o2.values().stream())))
-            .forEach(o -> exportEfforts(o, path));
+            .forEach(o -> exportEfforts(audit, o, path));
     }
 
-    public void exportEfforts(@NotNull List<Effort> efforts, @NotNull Path folder) {
+    public void exportEfforts(@NotNull DomainAudit audit, @NotNull List<Effort> efforts, @NotNull Path folder) {
         try {
             efforts.sort(Comparator.comparing(Effort::date));
-            YamlMappingBuilder builder = Yaml.createYamlMappingBuilder()
-                .add("assignmentOid", efforts.getFirst().assignment().oid())
-                .add("contractId", efforts.getFirst().contractId())
-                .add(("collaborator"), efforts.getFirst().assignment().collaboratorId());
+            YamlMappingBuilder builder =
+                Yaml.createYamlMappingBuilder().add("assignmentOid", efforts.getFirst().assignment().oid()).add("contractId", efforts.getFirst().contractId())
+                    .add(("collaborator"), efforts.getFirst().assignment().collaboratorId());
             var effortsBuilder = Yaml.createYamlSequenceBuilder();
             for (Effort effort : efforts) {
                 var effortBuilder = Yaml.createYamlMappingBuilder();
@@ -214,9 +214,11 @@ public class ProductsAdapter implements ProductsPort {
     }
 
     @Override
-    public void exportEffortsDocument(@NotNull Assignment assignment, LocalDate from, LocalDate to, @NotNull String filename, @NotNull ChronoUnit unit) {
+    public void exportEffortsDocument(@NotNull DomainAudit audit, @NotNull Assignment assignment, LocalDate from, LocalDate to, @NotNull String filename,
+                                      @NotNull ChronoUnit unit) {
         if (!logic.collect(assignment, from, to).isEmpty()) {
-            var effortsDocumentFolder = reportFolder.resolve(Objects.nonNull(to) ? Integer.toString(to.getYear()) : Integer.toString(LocalDate.now().getYear()));
+            var effortsDocumentFolder =
+                reportFolder.resolve(Objects.nonNull(to) ? Integer.toString(to.getYear()) : Integer.toString(LocalDate.now().getYear()));
             AsciiDoctorHelper.createFolders(effortsDocumentFolder);
             var assignmentAsciiDocPath = effortsDocumentFolder.resolve(STR."\{filename}\{AsciiDoctorHelper.ASCIIDOC_EXT}");
             var assignmentPdfPath = effortsDocumentFolder.resolve(STR."\{filename}\{AsciiDoctorHelper.PDF_EXT}");
@@ -227,7 +229,8 @@ public class ProductsAdapter implements ProductsPort {
     }
 
     @Override
-    public void exportEffortsDocumentsSplitPerMonth(@NotNull Assignment assignment, @NotNull YearMonth from, @NotNull YearMonth to, @NotNull ChronoUnit unit) {
+    public void exportEffortsDocumentsSplitPerMonth(@NotNull DomainAudit audit, @NotNull Assignment assignment, @NotNull YearMonth from, @NotNull YearMonth to,
+                                                    @NotNull ChronoUnit unit) {
         YearMonth current = from;
         var helper = new EffortReportEngine(logic);
         while (!current.isAfter(to)) {

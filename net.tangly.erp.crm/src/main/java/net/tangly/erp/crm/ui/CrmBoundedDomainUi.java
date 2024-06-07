@@ -62,7 +62,7 @@ public class CrmBoundedDomainUi extends BoundedDomainUi<CrmBoundedDomain> {
         subMenu.addItem(ACTIVITIES, _ -> select(layout, view(ACTIVITIES).orElseThrow()));
 
         addAnalytics(layout, menuBar, view(ANALYTICS).orElseThrow());
-        addAdministration(layout, menuBar, view(ENTITIES).orElseThrow(), new CmdFilesUploadCrm(domain()));
+        addAdministration(layout, menuBar, view(ENTITIES).orElseThrow());
         select(layout);
     }
 }
