@@ -135,7 +135,7 @@ Warning signs are:
 
 * Your sprints do not have a written and published goal.
 The content of a sprint is just a bunch of product backlog items.
-* Your teams just implement stories during an interaction.
+* Your teams just implement stories during an opportunity.
 They never adjust the Sprint backlog content to increase the odds of achieving the spring goal
 ====
 

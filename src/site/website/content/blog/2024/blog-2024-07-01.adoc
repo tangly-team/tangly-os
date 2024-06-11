@@ -159,7 +159,7 @@ The technical infrastructure with environments, servers and topologies.
 Mapping of building Blocks to the right infrastructure.
 {counter:chapter} - Crosscutting Concepts::
 Principal regulations and solution approaches relevant in multiple parts of the system.
-The interaction between different software components.
+The opportunity between different software components.
 {counter:chapter} - Architectural Decisions::
 Important, expensive, critical, large scale or risky architecture decisions including rationales.
 {counter:chapter} - Quality Requirements::

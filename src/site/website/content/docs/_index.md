@@ -30,5 +30,4 @@ The ERP related components are
 * _[Invoices](./domains/invoices)_ Invoices domain model
 * _[Ledger](./domains/ledger)_ Ledger domain model
 * _[Products](./domains/products)_ Products domain model
-* _[Shared](./domains/shared)_ Shared domain model
 * _[ERP](./domains/ui) User Interface Vaadin_ Vaadin ERP user interface

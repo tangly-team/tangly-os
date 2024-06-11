@@ -87,7 +87,6 @@ copy_domain_module crm
 copy_domain_module invoices
 copy_domain_module ledger
 copy_domain_module products
-copy_domain_module shared
 copy_domain_module ui
 
 copy_workshop agile-scrum

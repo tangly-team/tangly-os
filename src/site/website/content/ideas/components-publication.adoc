@@ -21,7 +21,7 @@ _The statistics for developer activities will be automatically updated._
 
 === Continuous Delivery Pipelines
 
-See https://github.com/tangly-team/tangly-os/blob/master/buildSrc/readme.md[Readme].
+See https://github.com/tangly-team/tangly-os/blob/master/buildSrc/readme.adoc[Readme].
 
 === Maven Central Publication
 
@@ -95,9 +95,6 @@ package net.tangly.erp.ledger [[/docs/domains/ledger]] {
 }
 
 package net.tangly.erp.products [[/docs/domains/products]] {
-}
-
-package net.tangly.erp.shared [[/docs/domains/shared]] {
 }
 
 package net.tangly.erp.ui [[/docs/domains/ui]] {

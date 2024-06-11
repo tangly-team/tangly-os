@@ -52,7 +52,7 @@ You have a release plan for the next 6 to 9 months.
 Story map::
 You have a story map grouping the stories and epics to reflect your release plan.
 Customer involvement::
-You have customer interaction in every sprint.
+You have customer opportunity in every sprint.
 Not only during the review event, but also during the planning meeting and architecture discussion.
 Review with customer involvement:: Realized stories are discussed during the review and demonstration meeting, and timely feedback is provided to allow backlog refinement before the next planning meeting.
 A mature organization has acceptance criteria for each story and automated verification of the criteria at any time.

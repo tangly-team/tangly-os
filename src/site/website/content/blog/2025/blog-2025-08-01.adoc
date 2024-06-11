@@ -19,7 +19,7 @@ The selection criteria are:
 * Java application can be deployed on the cloud.
 * DevOps concepts are supported.
 The deployment is performed with command line tools.
-No user interface interaction or manual login activities are required.
+No user interface opportunity or manual login activities are required.
 
 https://www.heroku.com/[Heroku] is one of the seldom providers supporting the current released version of Java.
 

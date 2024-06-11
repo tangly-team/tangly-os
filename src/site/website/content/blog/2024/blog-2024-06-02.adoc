@@ -414,9 +414,9 @@ The advantage is more static checks from the compiler and better libraries.
 [bibliography]
 == Links
 
-- [[[actors, 1]]] link:../../2024/actors/[Actors]
+- [[[actors, 1]]] link:../../2024/actor-model/[Actor Model]
 Marcel Baumann. 2024.
-- [[[finite-state-machines, 2]]] link:../../2024/nice-statechart-diagrams/[Finite State Machines]
+- [[[finite-state-machines, 2]]] link:../../2024/nice-statechart-diagrams/[Nice Statechart and FSM Diagrams]
 Marcel Baumann. 2024.
 
 == References

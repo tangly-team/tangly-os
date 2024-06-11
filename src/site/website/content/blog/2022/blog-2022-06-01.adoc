@@ -55,7 +55,7 @@ Domain-driven design _DDD_ has four layers in the architecture:
 
 [horizontal]
 Interface::
-This layer is in charge of the interaction with the user, whether software presents information to the user or receives information from the user. +
+This layer is in charge of the opportunity with the user, whether software presents information to the user or receives information from the user. +
 _I use vaadin to increase productivity.
 Vaadin allows us to use the single technology stack Java to develop all backend and frontend functionalities._
 Application::
