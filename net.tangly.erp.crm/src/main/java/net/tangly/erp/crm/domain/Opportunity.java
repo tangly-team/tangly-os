@@ -21,22 +21,23 @@ import java.time.LocalDate;
 import java.util.*;
 
 /**
- * Defines an interaction between your company and a legal entity and a group of natural entities. The legal entity is the organization you want a contract with.
- * The interaction has a set of activities moving your negotiation through stages. The final result is a contract or a lost opportunity.
- * <p>An interaction can have quite a long duration. Activities are the events when you interact with your potential customer.</p>
+ * Defines an opportunity between your company and a legal entity and a group of natural entities. The legal entity is the organization you want a contract with.
+ * The opportunity has a set of activities moving your negotiation through stages. The final result is a contract or a lost opportunity.
+ * <p>An opportunity can have quite a long duration. Activities are the events when you interact with your potential customer.</p>
  */
-public class Interaction extends MutableEntityExtendedImp {
+public class Opportunity extends MutableEntityExtendedImp {
     private final List<Activity> activities;
     private LegalEntity entity;
-    private InteractionCode code;
+    private OpportunityCode code;
     private BigDecimal potential;
     private BigDecimal probability;
+    private Employee contact;
 
-    public Interaction(long oid) {
+    public Opportunity(long oid) {
         super(oid);
         activities = new ArrayList<>();
         from(LocalDate.now());
-        this.code = InteractionCode.prospect;
+        this.code = OpportunityCode.prospect;
         this.potential = BigDecimal.ZERO;
         this.probability = BigDecimal.ZERO;
     }
@@ -49,11 +50,11 @@ public class Interaction extends MutableEntityExtendedImp {
         this.entity = legalEntity;
     }
 
-    public InteractionCode code() {
+    public OpportunityCode code() {
         return code;
     }
 
-    public void code(@NotNull InteractionCode code) {
+    public void code(@NotNull OpportunityCode code) {
         this.code = code;
     }
 
@@ -81,7 +82,7 @@ public class Interaction extends MutableEntityExtendedImp {
         return Collections.unmodifiableList(activities);
     }
 
-    public void addAll(Collection<Activity> activities) {
+    public void activities(Collection<Activity> activities) {
         this.activities.addAll(activities);
     }
 
@@ -93,6 +94,14 @@ public class Interaction extends MutableEntityExtendedImp {
         activities.remove(activity);
     }
 
+    public Employee contact() {
+        return contact;
+    }
+
+    public void contact(Employee contact) {
+        this.contact = contact;
+    }
+
     @Override
     public boolean validate() {
         return Objects.nonNull(entity()) && (Objects.requireNonNull(potential).compareTo(BigDecimal.ZERO) >= 0) &&
@@ -101,7 +110,8 @@ public class Interaction extends MutableEntityExtendedImp {
 
     @Override
     public boolean equals(Object obj) {
-        return (obj instanceof Interaction o) && super.equals(o) && Objects.equals(activities().size(), o.activities.size()) && Objects.equals(entity(), o.entity()) &&
+        return (obj instanceof Opportunity o) && super.equals(o) && Objects.equals(activities().size(), o.activities.size()) &&
+            Objects.equals(entity(), o.entity()) &&
             Objects.equals(code(), o.code()) && Objects.equals(potential(), o.potential()) && Objects.equals(probability(), o.probability());
     }
 

@@ -20,7 +20,7 @@ import com.vaadin.flow.component.grid.dataview.GridListDataView;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.data.provider.DataProvider;
 import net.tangly.erp.crm.domain.Contract;
-import net.tangly.erp.crm.domain.InteractionCode;
+import net.tangly.erp.crm.domain.OpportunityCode;
 import net.tangly.erp.crm.services.CrmBusinessLogic;
 import net.tangly.erp.invoices.services.InvoicesBoundedDomain;
 import net.tangly.erp.invoices.services.InvoicesBusinessLogic;
@@ -126,11 +126,11 @@ public class AnalyticsCrmView extends AnalyticsView {
     private void funnelChart(@NotNull SOChart chart) {
         CategoryData labels = new CategoryData("Prospects", "Leads", "Ordered", "Lost", "Completed");
         CrmBusinessLogic logic = domain.domain().logic();
-        BigDecimal prospects = logic.funnel(InteractionCode.prospect, from(), to());
-        BigDecimal leads = logic.funnel(InteractionCode.lead, from(), to());
-        BigDecimal ordered = logic.funnel(InteractionCode.ordered, from(), to());
-        BigDecimal lost = logic.funnel(InteractionCode.lost, from(), to());
-        BigDecimal completed = logic.funnel(InteractionCode.completed, from(), to());
+        BigDecimal prospects = logic.funnel(OpportunityCode.prospect, from(), to());
+        BigDecimal leads = logic.funnel(OpportunityCode.lead, from(), to());
+        BigDecimal ordered = logic.funnel(OpportunityCode.ordered, from(), to());
+        BigDecimal lost = logic.funnel(OpportunityCode.lost, from(), to());
+        BigDecimal completed = logic.funnel(OpportunityCode.completed, from(), to());
         BarChart barchart = new BarChart(labels, new Data(prospects, leads, ordered, lost, completed));
         RectangularCoordinate rc = new RectangularCoordinate(new XAxis(DataType.CATEGORY), new YAxis(DataType.NUMBER));
         Position chartPosition = new Position();

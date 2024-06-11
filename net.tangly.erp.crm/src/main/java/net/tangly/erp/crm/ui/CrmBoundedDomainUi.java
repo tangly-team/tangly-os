@@ -31,7 +31,7 @@ public class CrmBoundedDomainUi extends BoundedDomainUi<CrmBoundedDomain> {
     public static final String LEGAL_ENTITIES = "Legal Entities";
     public static final String EMPLOYEES = "Employees";
     public static final String CONTRACTS = "Contracts";
-    public static final String INTERACTIONS = "Interactions";
+    public static final String OPPORTUNITIES = "Opportunities";
     public static final String ACTIVITIES = "Activities";
     public static final String ANALYTICS = "Analytics";
 
@@ -42,7 +42,7 @@ public class CrmBoundedDomainUi extends BoundedDomainUi<CrmBoundedDomain> {
         addView(LEGAL_ENTITIES, new LazyReference<>(() -> new LegalEntitiesView(this, Mode.EDITABLE)));
         addView(EMPLOYEES, new LazyReference<>(() -> new EmployeesView(this, Mode.EDITABLE)));
         addView(CONTRACTS, new LazyReference<>(() -> new ContractsView(this, Mode.EDITABLE)));
-        addView(INTERACTIONS, new LazyReference<>(() -> new InteractionsView(this, Mode.EDITABLE)));
+        addView(OPPORTUNITIES, new LazyReference<>(() -> new OpportunitiesView(this, Mode.EDITABLE)));
         addView(ACTIVITIES, new LazyReference<>(() -> new ActivitiesView(this, Mode.EDITABLE)));
         addView(ANALYTICS, new LazyReference<>(() -> new AnalyticsCrmView(this, invoicesDomain)));
         addView(ENTITIES, new LazyReference<>(() -> new DomainView(this)));
@@ -58,7 +58,7 @@ public class CrmBoundedDomainUi extends BoundedDomainUi<CrmBoundedDomain> {
         subMenu.addItem(NATURAL_ENTITIES, _ -> select(layout, view(NATURAL_ENTITIES).orElseThrow()));
         subMenu.addItem(CONTRACTS, _ -> select(layout, view(CONTRACTS).orElseThrow()));
         subMenu.addItem(EMPLOYEES, _ -> select(layout, view(EMPLOYEES).orElseThrow()));
-        subMenu.addItem(INTERACTIONS, _ -> select(layout, view(INTERACTIONS).orElseThrow()));
+        subMenu.addItem(OPPORTUNITIES, _ -> select(layout, view(OPPORTUNITIES).orElseThrow()));
         subMenu.addItem(ACTIVITIES, _ -> select(layout, view(ACTIVITIES).orElseThrow()));
 
         addAnalytics(layout, menuBar, view(ANALYTICS).orElseThrow());

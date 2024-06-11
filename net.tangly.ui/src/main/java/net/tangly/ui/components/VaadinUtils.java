@@ -26,6 +26,8 @@ import com.vaadin.flow.component.select.Select;
 import com.vaadin.flow.component.textfield.TextArea;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.renderer.ComponentRenderer;
+import com.vaadin.flow.data.renderer.Renderer;
+import com.vaadin.flow.function.ValueProvider;
 import net.tangly.core.EmailAddress;
 import net.tangly.core.HasMutableTags;
 import net.tangly.core.Strings;
@@ -112,6 +114,15 @@ public final class VaadinUtils {
         grid.setHeightFull();
         grid.setWidthFull();
     }
+
+    public static <E> Grid.Column<E> addColumn(@NotNull Grid<E> grid, @NotNull ValueProvider<E, ?> getter, @NotNull String key, @NotNull String header) {
+        return grid.addColumn(getter).setKey(key).setHeader(header).setAutoWidth(true).setResizable(true).setSortable(true);
+    }
+
+    public static <E> Grid.Column<E> addColumn(@NotNull Grid<E> grid, @NotNull Renderer<E> renderer, @NotNull String key, @NotNull String header) {
+        return grid.addColumn(renderer).setKey(key).setHeader(header).setAutoWidth(true).setResizable(true).setSortable(true);
+    }
+
 
     public static void setAttribute(Component component, String attribute, Object value) {
         component.getUI().ifPresent(o -> o.getSession().setAttribute(attribute, value));

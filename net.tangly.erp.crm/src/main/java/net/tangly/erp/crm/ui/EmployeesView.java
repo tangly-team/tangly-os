@@ -21,10 +21,7 @@ import net.tangly.erp.crm.domain.Employee;
 import net.tangly.erp.crm.domain.LegalEntity;
 import net.tangly.erp.crm.domain.NaturalEntity;
 import net.tangly.erp.crm.services.CrmBoundedDomain;
-import net.tangly.ui.components.EntityView;
-import net.tangly.ui.components.Mode;
-import net.tangly.ui.components.MutableEntityForm;
-import net.tangly.ui.components.One2OneField;
+import net.tangly.ui.components.*;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -67,7 +64,7 @@ class EmployeesView extends EntityView<Employee> {
     private void init() {
         var grid = grid();
         addEntityColumns(grid);
-        grid.addColumn(o -> o.value(CrmTags.CRM_EMPLOYEE_TITLE).orElse(null)).setKey("title").setHeader("Title").setAutoWidth(true).setResizable(true).setSortable(true);
+        VaadinUtils.addColumn(grid, o -> o.value(CrmTags.CRM_EMPLOYEE_TITLE).orElse(null), "titke", "Title");
         addEntityFilterFields(grid(), filter());
     }
 }

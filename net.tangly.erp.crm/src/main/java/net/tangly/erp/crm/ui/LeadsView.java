@@ -117,18 +117,16 @@ public class LeadsView extends ItemView<Lead> {
 
     private void init() {
         var grid = grid();
-        grid.addColumn(Lead::date).setKey(DATE).setHeader(DATE_LABEL).setAutoWidth(true).setResizable(true).setSortable(true);
-        grid.addColumn(Lead::code).setKey("code").setHeader("Code").setAutoWidth(true).setResizable(true).setSortable(true);
-        grid.addColumn(Lead::firstname).setKey("firstname").setHeader("Firstname").setAutoWidth(true).setResizable(true).setSortable(true);
-        grid.addColumn(Lead::lastname).setKey("lastname").setHeader("Lastname").setAutoWidth(true).setResizable(true).setSortable(true);
-        grid.addColumn(new ComponentRenderer<>(lead -> (lead.gender() == GenderCode.male) ? new Icon(VaadinIcon.MALE) : new Icon(VaadinIcon.FEMALE)))
-            .setHeader("Gender").setAutoWidth(true).setResizable(true);
-        grid.addColumn(Lead::company).setKey("company").setHeader("Company").setAutoWidth(true).setResizable(true).setSortable(true);
-        grid.addColumn(o -> (Objects.nonNull(o.phoneNr()) ? o.phoneNr().number() : null)).setKey("phoneNr").setHeader("Phone").setAutoWidth(true)
-            .setResizable(true).setSortable(true);
-        grid.addColumn(VaadinUtils.emailAddressComponentRenderer(Lead::email)).setKey("email").setHeader("Email").setAutoWidth(true).setResizable(true)
-            .setSortable(true);
-        grid.addColumn(VaadinUtils.linkedInComponentRenderer(Lead::linkedIn, false)).setKey("linkedIn").setHeader("LinkedIn").setAutoWidth(true);
-        grid.addColumn(Lead::activity).setKey("activity").setHeader("Activity").setAutoWidth(true).setResizable(true).setSortable(true);
+        VaadinUtils.addColumn(grid, Lead::date, DATE, DATE_LABEL);
+        VaadinUtils.addColumn(grid, Lead::code, "code", "Code");
+        VaadinUtils.addColumn(grid, Lead::firstname, "firstname", "Firstname");
+        VaadinUtils.addColumn(grid, Lead::lastname, "lastname", "Lastname");
+        VaadinUtils.addColumn(grid,
+            new ComponentRenderer<>(lead -> (lead.gender() == GenderCode.male) ? new Icon(VaadinIcon.MALE) : new Icon(VaadinIcon.FEMALE)), "gender", "Gender");
+        VaadinUtils.addColumn(grid, Lead::company, "company", "Company");
+        VaadinUtils.addColumn(grid, o -> (Objects.nonNull(o.phoneNr()) ? o.phoneNr().number() : null), "phoneNr", "Phone");
+        VaadinUtils.addColumn(grid, VaadinUtils.emailAddressComponentRenderer(Lead::email), "email", "Email");
+        VaadinUtils.addColumn(grid, VaadinUtils.linkedInComponentRenderer(Lead::linkedIn, false), "linkedIn", "LinkedIn");
+        VaadinUtils.addColumn(grid, Lead::activity, "activity", "Activity");
     }
 }

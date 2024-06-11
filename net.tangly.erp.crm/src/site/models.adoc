@@ -32,17 +32,17 @@ I want to have access to data describing the person so that I can better interac
 We register the duration when a person is an employee of an organization.
 A person can work for multiple organizations simultaneously.
 
-|CRM-004 |As an employee I want to create and modify an interaction describing how I interact with a legal entity so that an history of all initiatives exists.
-The goal of an interaction is to conclude a contract.
+|CRM-004 |As an employee I want to create and modify an opportunity describing how I interact with a legal entity so that an history of all initiatives exists.
+The goal of an opportunity is to conclude a contract.
 
-|CRM-005 |As an employee I want to document all activities with entities necessary during an interaction so that an history of all communicaitons exists
+|CRM-005 |As an employee I want to document all activities with entities necessary during an opportunity so that an history of all communicaitons exists
 
 |CRM-006 |As a salesperson I want to register all legal contracts with an organization so taht I have a trace of these legal documens.
 
-|CRM-007 |As a salesperson I want to initiate an interaction with a legal entity and actively work to conclude a contract with them.
-I can have multiple activities to interact with the organization before concluding the interaction.
-An interaction can be completed successfully or not.
-During the timeline of the interaction the potential and probability of success can change.
+|CRM-007 |As a salesperson I want to initiate an opportunity with a legal entity and actively work to conclude a contract with them.
+I can have multiple activities to interact with the organization before concluding the opportunity.
+An opportunity can be completed successfully or not.
+During the timeline of the opportunity the potential and probability of success can change.
 As a salesperson I am only interested on the current potential and success odds and not on their timely evolution.
 
 |===
@@ -130,7 +130,7 @@ Activity o- "1" ActivityCode : code
 
 Note bottom of Activity
     Activities are created in
-    the context of an interaction.
+    the context of an opportunity.
 end note
 
 class Interaction <<(E,orchid) Entity>> {

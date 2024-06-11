@@ -15,14 +15,37 @@ package net.tangly.ui.app.domain;
 
 import net.tangly.ui.components.Mode;
 
+/**
+ * Define the contract for a view in the application. A view is a component that can be displayed in the application.
+ */
 public interface View {
+    /**
+     * Return the mode of the view. Currently we support LIST, VIEW, and EDITABLE modes.
+     *
+     * @return mode of the view
+     */
     default Mode mode() {
         return Mode.LIST;
     }
 
+    /**
+     * Return if the view is in readonly mode.
+     *
+     * @return true if the view is readonly otherwise false
+     * @see #readonly(boolean)
+     */
     boolean readonly();
 
+    /**
+     * Set the view in readonly mode.
+     *
+     * @param readonly true if the view is readonly otherwise false
+     * @see #readonly()
+     */
     void readonly(boolean readonly);
 
+    /**
+     * Refresh the view with the latest data.
+     */
     void refresh();
 }

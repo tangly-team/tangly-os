@@ -40,6 +40,7 @@
             "items": {
                 "$ref": "#/definitions/effort"
             }
-        }
+        },
+        "required": ["assignmentOid", "contractId", "collaborator", "efforts"]
     }
 }

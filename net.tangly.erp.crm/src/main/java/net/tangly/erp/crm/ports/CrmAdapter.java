@@ -31,7 +31,7 @@ public final class CrmAdapter implements CrmPort {
     public static final String EMPLOYEES_TSV = "employees.tsv";
     public static final String CONTRACTS_TSV = "contracts.tsv";
     public static final String CONTRACT_EXTENSIONS_TSV = "contract-extensions.tsv";
-    public static final String INTERACTIONS_TSV = "interactions.tsv";
+    public static final String OPPORTUNITIES_TSV = "opportunities.tsv";
     public static final String ACTIVITIES_TSV = "activities.tsv";
     public static final String VCARDS_FOLDER = "vcards";
 
@@ -57,7 +57,7 @@ public final class CrmAdapter implements CrmPort {
         handler.importEmployees(audit, folder.resolve(EMPLOYEES_TSV));
         handler.importContracts(audit, folder.resolve(CONTRACTS_TSV));
         handler.importContractExtensions(audit, folder.resolve(CONTRACT_EXTENSIONS_TSV));
-        handler.importInteractions(audit, folder.resolve(INTERACTIONS_TSV));
+        handler.importOpportunities(audit, folder.resolve(OPPORTUNITIES_TSV));
         handler.importActivities(audit, folder.resolve(ACTIVITIES_TSV));
         handler.importComments(audit, folder.resolve(COMMENTS_TSV));
 
@@ -75,7 +75,7 @@ public final class CrmAdapter implements CrmPort {
         handler.exportEmployees(audit, folder.resolve(EMPLOYEES_TSV));
         handler.exportContracts(audit, folder.resolve(CONTRACTS_TSV));
         handler.exportContractExtensions(audit, folder.resolve(CONTRACT_EXTENSIONS_TSV));
-        handler.exportInteractions(audit, folder.resolve(INTERACTIONS_TSV));
+        handler.exportOpportunities(audit, folder.resolve(OPPORTUNITIES_TSV));
         handler.exportActivities(audit, folder.resolve(ACTIVITIES_TSV));
         handler.exportComments(audit, folder.resolve(COMMENTS_TSV));
     }
@@ -83,7 +83,7 @@ public final class CrmAdapter implements CrmPort {
     @Override
     public void clearEntities(@NotNull DomainAudit audit) {
         realm().activities().deleteAll();
-        realm().interactions().deleteAll();
+        realm().opportunities().deleteAll();
         realm().contracts().deleteAll();
         realm().employees().deleteAll();
         realm().naturalEntities().deleteAll();

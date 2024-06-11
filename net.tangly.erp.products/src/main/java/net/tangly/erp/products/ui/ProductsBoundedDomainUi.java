@@ -13,6 +13,7 @@
 
 package net.tangly.erp.products.ui;
 
+import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.contextmenu.MenuItem;
 import com.vaadin.flow.component.contextmenu.SubMenu;
@@ -26,6 +27,7 @@ import net.tangly.core.providers.Provider;
 import net.tangly.core.providers.ProviderView;
 import net.tangly.erp.products.domain.Assignment;
 import net.tangly.erp.products.domain.Effort;
+import net.tangly.erp.products.domain.WorkContract;
 import net.tangly.erp.products.services.ProductsBoundedDomain;
 import net.tangly.ui.app.domain.BoundedDomainUi;
 import net.tangly.ui.app.domain.DomainView;
@@ -51,6 +53,7 @@ public class ProductsBoundedDomainUi extends BoundedDomainUi<ProductsBoundedDoma
         addView(EFFORTS, new LazyReference<>(() -> new EffortsView(this, Mode.EDITABLE)));
         addView(ENTITIES, new LazyReference<>(() -> new DomainView(this)));
         currentView(view(PRODUCTS).orElseThrow());
+        domain.subscribeInternally(this);
     }
 
     @Override
@@ -89,7 +92,9 @@ public class ProductsBoundedDomainUi extends BoundedDomainUi<ProductsBoundedDoma
     public void onNext(Object event) {
         if (event instanceof EntityChangedInternalEvent entityChanged) {
             if (entityChanged.entityName().equals(Effort.class.getSimpleName())) {
-                view(EFFORTS).ifPresent(v -> v.ifPresent(View::refresh));
+                view(EFFORTS).ifPresent(v -> UI.getCurrent().access(() -> v.ifPresent(View::refresh)));
+            } else if (entityChanged.entityName().equals(WorkContract.class.getSimpleName())) {
+                view(WORK_CONTRACTS).ifPresent(v -> UI.getCurrent().access(() -> v.ifPresent(View::refresh)));
             }
         }
     }

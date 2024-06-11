@@ -138,8 +138,8 @@ class CrmPortTest {
     }
 
     private void verifyInteractions(@NotNull CrmRealm realm) {
-        assertThat(realm.interactions().items()).isNotEmpty();
-        Realm.checkEntities(realm.interactions());
+        assertThat(realm.opportunities().items()).isNotEmpty();
+        Realm.checkEntities(realm.opportunities());
     }
 
     private void verifyActivities(@NotNull CrmRealm realm) {

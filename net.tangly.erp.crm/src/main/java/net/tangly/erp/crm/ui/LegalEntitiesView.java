@@ -76,10 +76,10 @@ class LegalEntitiesView extends EntityView<LegalEntity> {
     private void init() {
         initEntityView();
         var grid = grid();
-        grid.addColumn(VaadinUtils.linkedInComponentRenderer(CrmTags::linkedInTag, true)).setKey("linkedIn").setHeader("LinkedIn").setAutoWidth(true);
-        grid.addColumn(o -> o.value(CrmTags.CRM_RESPONSIBLE).orElse(null)).setKey("responsible").setHeader("Responsible").setAutoWidth(true).setSortable(true);
-        grid.addColumn(zefixComponentRenderer()).setKey("zefix").setHeader("Zefix").setAutoWidth(true);
-        grid.addColumn(VaadinUtils.urlComponentRenderer(CrmTags.CRM_SITE_WORK)).setKey("webSite").setHeader("Web Site").setAutoWidth(true);
+        VaadinUtils.addColumn(grid, VaadinUtils.linkedInComponentRenderer(CrmTags::linkedInTag, true), "linkedIn", "LinkedIn");
+        VaadinUtils.addColumn(grid, o -> o.value(CrmTags.CRM_RESPONSIBLE).orElse(null), "responsible", "Responsible");
+        VaadinUtils.addColumn(grid, zefixComponentRenderer(), "zefix", "Zefix");
+        VaadinUtils.addColumn(grid, VaadinUtils.urlComponentRenderer(CrmTags.CRM_SITE_WORK), "website", "Web Site");
     }
 
     public static <T extends LegalEntity> ComponentRenderer<Anchor, T> zefixComponentRenderer() {

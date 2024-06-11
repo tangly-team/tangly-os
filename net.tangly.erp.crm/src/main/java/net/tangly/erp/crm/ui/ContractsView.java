@@ -16,7 +16,6 @@ package net.tangly.erp.crm.ui;
 import com.vaadin.flow.component.HtmlComponent;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.ColumnTextAlign;
-import com.vaadin.flow.component.grid.HeaderRow;
 import com.vaadin.flow.component.grid.contextmenu.GridContextMenu;
 import com.vaadin.flow.component.html.Hr;
 import com.vaadin.flow.component.select.Select;
@@ -71,8 +70,8 @@ class ContractsView extends EntityView<Contract> {
         }
 
         private One2ManyOwnedField<ContractExtension> extensions() {
-            One2ManyOwnedField<ContractExtension> extensions = new One2ManyOwnedField<>(new ContractExtensionsView((CrmBoundedDomainUi) parent().domainUi(),
-                Mode.EDITABLE));
+            One2ManyOwnedField<ContractExtension> extensions =
+                new One2ManyOwnedField<>(new ContractExtensionsView((CrmBoundedDomainUi) parent().domainUi(), Mode.EDITABLE));
             binder().bind(extensions, Contract::contractExtensions, (o, v) -> o.contractExtensions(extensions.generateModelValue()));
             return extensions;
         }
@@ -91,21 +90,17 @@ class ContractsView extends EntityView<Contract> {
 
     @Override
     protected void addActions(@NotNull GridContextMenu<Contract> menu) {
-        super.addActions(menu);
         menu().add(new Hr());
         menu().addItem("Activate", e -> Cmd.ofItemCmd(e, this::contractActivated));
     }
 
     private void init() {
         var grid = grid();
-        grid.addColumn(e -> e.sellee().name()).setKey("customer").setHeader("Customer").setAutoWidth(true).setResizable(true).setSortable(true);
-        grid.addColumn(Contract::currency).setKey("currency").setHeader("Currency").setAutoWidth(true).setResizable(true).setSortable(true);
-        grid.addColumn(new NumberRenderer<>(Contract::amountWithoutVat, VaadinUtils.FORMAT)).setKey("amount").setHeader("Amount").setAutoWidth(
-            true).setResizable(true).setSortable(true).setTextAlign(ColumnTextAlign.END);
-        grid.addColumn(new NumberRenderer<>(Contract::budgetInHours, VaadinUtils.FORMAT)).setKey("budgetInHours").setHeader("Budget In Hours").setAutoWidth(
-            true).setResizable(true).setSortable(true).setTextAlign(ColumnTextAlign.END);
-        grid.getHeaderRows().clear();
-        HeaderRow headerRow = grid().appendHeaderRow();
+        VaadinUtils.addColumn(grid, e -> e.sellee().name(), "customer", "Customer");
+        VaadinUtils.addColumn(grid, Contract::currency, "currency", "Currency");
+        VaadinUtils.addColumn(grid, new NumberRenderer<>(Contract::amountWithoutVat, VaadinUtils.FORMAT), "amount", "Amount").setTextAlign(ColumnTextAlign.END);
+        VaadinUtils.addColumn(grid, new NumberRenderer<>(Contract::budgetInHours, VaadinUtils.FORMAT), "budgetInHours", "Budget In Hours")
+            .setTextAlign(ColumnTextAlign.END);
     }
 
     /**

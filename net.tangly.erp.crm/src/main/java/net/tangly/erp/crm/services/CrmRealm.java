@@ -29,8 +29,8 @@ import java.util.function.Predicate;
  *     <li>Legal Entities are legal recognized organizations</li>
  *     <li>Employee defines a relation between a natural entity and a legal entity when a person has a contractual agreement with an organization</li>
  *     <li>Contract defines a legal contractual obligation between two legal entities</li>
- *     <li>Interaction defines an interaction between your company and a set of legal and natural entities</li>
- *     <li>Activity defines a specific event part of an interaction</li>
+ *     <li>Opportunity defines an opportunity between your company and a set of legal and natural entities</li>
+ *     <li>Activity defines a specific event part of an opportunity</li>
  *     <li>CRM tags defining an ontology in the business domain of customer relationships management</li>
  * </ul>
  */
@@ -45,7 +45,7 @@ public interface CrmRealm extends Realm {
 
     Provider<Contract> contracts();
 
-    Provider<Interaction> interactions();
+    Provider<Opportunity> opportunities();
 
     Provider<Activity> activities();
 
@@ -75,6 +75,6 @@ public interface CrmRealm extends Realm {
     }
 
     default List<Activity> collectActivities(@NotNull Predicate<Activity> predicate) {
-        return interactions().items().stream().flatMap(o -> o.activities().stream()).filter(predicate).toList();
+        return opportunities().items().stream().flatMap(o -> o.activities().stream()).filter(predicate).toList();
     }
 }

@@ -94,7 +94,7 @@ public record ErpStore(@NotNull FileSystem fs) implements DomainAudit {
             copy(CRM_PACKAGE_NAME, crmRoot, CrmAdapter.EMPLOYEES_TSV);
             copy(CRM_PACKAGE_NAME, crmRoot, CrmAdapter.CONTRACTS_TSV);
             copy(CRM_PACKAGE_NAME, crmRoot, CrmAdapter.CONTRACT_EXTENSIONS_TSV);
-            copy(CRM_PACKAGE_NAME, crmRoot, CrmAdapter.INTERACTIONS_TSV);
+            copy(CRM_PACKAGE_NAME, crmRoot, CrmAdapter.OPPORTUNITIES_TSV);
             copy(CRM_PACKAGE_NAME, crmRoot, CrmAdapter.ACTIVITIES_TSV);
             copy(CRM_PACKAGE_NAME, crmRoot, CrmAdapter.COMMENTS_TSV);
             copy(VCARDS_PACKAGE_NAME, crmRoot.resolve(VCARDS), "1-MarcelBaumann.vcf");

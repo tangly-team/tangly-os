@@ -14,15 +14,13 @@
 package net.tangly.erp.crm.services;
 
 import net.tangly.core.HasMutableDateRange;
-import net.tangly.erp.crm.domain.Activity;
 import net.tangly.erp.crm.domain.Contract;
-import net.tangly.erp.crm.domain.Interaction;
-import net.tangly.erp.crm.domain.InteractionCode;
+import net.tangly.erp.crm.domain.Opportunity;
+import net.tangly.erp.crm.domain.OpportunityCode;
 import org.jetbrains.annotations.NotNull;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.Comparator;
 
 /**
  * The business logic and rules of the bounded domain of CRM entities.
@@ -39,18 +37,6 @@ public class CrmBusinessLogic {
     }
 
     /**
-     * Set the end date property of interaction to the end date of the last contract associated with the interaction in the case of customer and completed state. Set the end date
-     * property of interaction to the end date of the last activity associated with the interaction in the case of lost state.
-     */
-    public void updateInteractions() {
-        realm().interactions().items().forEach(interaction -> interaction.to(
-            realm().contracts().items().stream().filter(contract -> contract.sellee().oid() == interaction.entity().oid()).map(Contract::to)
-                .max(Comparator.comparing(LocalDate::toEpochDay)).orElseThrow()));
-        realm().interactions().items().stream().filter(o -> o.code() == InteractionCode.lost)
-            .forEach(interaction -> interaction.to(interaction.activities().stream().map(Activity::date).max(Comparator.comparing(LocalDate::toEpochDay)).orElseThrow()));
-    }
-
-    /**
      * Return the potential number of all interactions in the selected time slot and tate.
      *
      * @param code defines the state of the expected interactions
@@ -58,13 +44,13 @@ public class CrmBusinessLogic {
      * @param to   interactions should have been started after this date
      * @return the aggregated potential amount
      */
-    public BigDecimal funnel(@NotNull InteractionCode code, LocalDate from, LocalDate to) {
+    public BigDecimal funnel(@NotNull OpportunityCode code, LocalDate from, LocalDate to) {
         return switch (code) {
-            case lead, prospect, lost -> realm.interactions().items().stream().filter(o -> o.code() == code)
-                .filter(new HasMutableDateRange.RangeFilter<>(from, to)).map(Interaction::weightedPotential)
+            case lead, prospect, lost -> realm.opportunities().items().stream().filter(o -> o.code() == code)
+                .filter(new HasMutableDateRange.RangeFilter<>(from, to)).map(Opportunity::weightedPotential)
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
-            case ordered, completed -> realm.interactions().items().stream().filter(o -> o.code() == code)
-                .flatMap(interaction -> realm.contracts().items().stream().filter(contract -> contract.sellee().oid() == interaction.entity().oid()))
+            case ordered, completed -> realm.opportunities().items().stream().filter(o -> o.code() == code)
+                .flatMap(o -> realm.contracts().items().stream().filter(contract -> contract.sellee().oid() == o.entity().oid()))
                 .filter(new HasMutableDateRange.RangeFilter<>(from, to)).map(Contract::amountWithoutVat).reduce(BigDecimal.ZERO, BigDecimal::add);
         };
     }

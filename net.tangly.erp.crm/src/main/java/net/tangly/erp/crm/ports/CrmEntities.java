@@ -38,8 +38,8 @@ import java.util.Objects;
  *     <li>Legal Entities</li>
  *     <li>Employees - defines a relation between a natural entity and a legal entity</li>
  *     <li>Contract - defines a legal contractual obligation between two legal entities</li>
- *     <li>Interaction - defines an interaction between your company and a set of legal and natural entities</li>
- *     <li>Activity - defines a specific event part of an interaction</li>
+ *     <li>Opportunity - defines an opportunity between your company and a legal entity</li>
+ *     <li>Activity - defines a specific event part of an opportunity</li>
  *     <li>Subject - defines a registered user of the application</li>
  *     <li>CRM tags - defining an ontology in the business domain of customer relationships management</li>
  * </ul>
@@ -52,7 +52,7 @@ public class CrmEntities implements CrmRealm {
         private final List<LegalEntity> legalEntities;
         private final List<Employee> employees;
         private final List<Contract> contracts;
-        private final List<Interaction> interactions;
+        private final List<Opportunity> opportunities;
         private final List<Activity> activities;
 
         Data() {
@@ -61,7 +61,7 @@ public class CrmEntities implements CrmRealm {
             legalEntities = new ArrayList<>();
             employees = new ArrayList<>();
             contracts = new ArrayList<>();
-            interactions = new ArrayList<>();
+            opportunities = new ArrayList<>();
             activities = new ArrayList<>();
         }
     }
@@ -73,7 +73,7 @@ public class CrmEntities implements CrmRealm {
     private final Provider<LegalEntity> legalEntities;
     private final Provider<Employee> employees;
     private final Provider<Contract> contracts;
-    private final Provider<Interaction> interactions;
+    private final Provider<Opportunity> interactions;
     private final Provider<Activity> activities;
     private final IdGenerator generator;
     private final EmbeddedStorageManager storageManager;
@@ -88,7 +88,7 @@ public class CrmEntities implements CrmRealm {
         legalEntities = ProviderHasOid.of(generator, storageManager, data.legalEntities);
         employees = ProviderHasOid.of(generator, storageManager, data.employees);
         contracts = ProviderHasOid.of(generator, storageManager, data.contracts);
-        interactions = ProviderHasOid.of(generator, storageManager, data.interactions);
+        interactions = ProviderHasOid.of(generator, storageManager, data.opportunities);
         activities = ProviderPersistence.of(storageManager, data.activities);
     }
 
@@ -101,7 +101,7 @@ public class CrmEntities implements CrmRealm {
         legalEntities = ProviderHasOid.of(generator, data.legalEntities);
         employees = ProviderHasOid.of(generator, data.employees);
         contracts = ProviderHasOid.of(generator, data.contracts);
-        interactions = ProviderHasOid.of(generator, data.interactions);
+        interactions = ProviderHasOid.of(generator, data.opportunities);
         activities = ProviderInMemory.of(data.activities);
     }
 
@@ -142,7 +142,7 @@ public class CrmEntities implements CrmRealm {
     }
 
     @Override
-    public Provider<Interaction> interactions() {
+    public Provider<Opportunity> opportunities() {
         return this.interactions;
     }
 
@@ -156,7 +156,7 @@ public class CrmEntities implements CrmRealm {
         oidCounter = Math.max(oidCounter, Realm.maxOid(data.legalEntities));
         oidCounter = Math.max(oidCounter, Realm.maxOid(data.employees));
         oidCounter = Math.max(oidCounter, Realm.maxOid(data.contracts));
-        oidCounter = Math.max(oidCounter, Realm.maxOid(data.interactions));
+        oidCounter = Math.max(oidCounter, Realm.maxOid(data.opportunities));
         return new LongIdGenerator(Math.max(oidCounter, OID_SEQUENCE_START));
     }
 }

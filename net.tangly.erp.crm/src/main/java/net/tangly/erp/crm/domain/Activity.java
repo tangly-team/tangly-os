@@ -24,8 +24,8 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * An activity is an action between a seller and a potential sellee. Activities are performed in the context of an interaction. Activities are only available
- * through their context, meaning no access to all activities exists.
+ * An activity is an action between a seller and a potential sellee. Activities are performed in the context of an opportunity.
+ * Activities are only available through their context, meaning no access to all activities exists.
  * <p>The author of the activity identifies the collaborator interacting with the potential customer. Consider using documentation templates in the textual
  * description of the activity to allow structured search over activities. For example you could write @{contact name} in your text to later search all
  * activities where a specific person was participating.</p>

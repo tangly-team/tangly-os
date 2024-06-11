@@ -22,7 +22,7 @@ import java.time.LocalDate;
 
 /**
  * Defines a lead in the customer relation domain. A lead is also often called a prospect. Once a lead was contacted, it should either be qualified and
- * integrated into an interaction or disqualified. Leads are persisted to keep track of the disquaified ones over time.
+ * integrated into an opportunity or disqualified. Leads are persisted to keep track of the disquaified ones over time.
  */
 public record Lead(@NotNull LocalDate date, @NotNull LeadCode code, String firstname, @NotNull String lastname, GenderCode gender, String company,
                    PhoneNr phoneNr, EmailAddress email, String linkedIn, @NotNull ActivityCode activity, String text) implements HasDate {

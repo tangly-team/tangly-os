@@ -17,7 +17,7 @@ import com.google.common.jimfs.Configuration;
 import com.google.common.jimfs.Jimfs;
 import net.tangly.core.TypeRegistry;
 import net.tangly.erp.crm.domain.CrmTags;
-import net.tangly.erp.crm.domain.InteractionCode;
+import net.tangly.erp.crm.domain.OpportunityCode;
 import net.tangly.erp.crm.ports.CrmAdapter;
 import net.tangly.erp.crm.ports.CrmEntities;
 import net.tangly.erp.crm.services.CrmBoundedDomain;
@@ -54,11 +54,11 @@ class CrmBusinessLogicTest {
             var logic = new CrmBusinessLogic(handler.realm());
             handler.importEntities(store);
 
-            assertThat(logic.funnel(InteractionCode.prospect, LocalDate.of(2015, Month.JANUARY, 1), LocalDate.of(2024, Month.DECEMBER, 31))).isGreaterThanOrEqualTo(BigDecimal.ZERO);
-            assertThat(logic.funnel(InteractionCode.lead, LocalDate.of(2015, Month.JANUARY, 1), LocalDate.of(2024, Month.DECEMBER, 31))).isGreaterThanOrEqualTo(BigDecimal.ZERO);
-            assertThat(logic.funnel(InteractionCode.ordered, LocalDate.of(2015, Month.JANUARY, 1), LocalDate.of(2024, Month.DECEMBER, 31))).isGreaterThanOrEqualTo(BigDecimal.ZERO);
-            assertThat(logic.funnel(InteractionCode.completed, LocalDate.of(2015, Month.JANUARY, 1), LocalDate.of(2024, Month.DECEMBER, 31))).isGreaterThanOrEqualTo(BigDecimal.ZERO);
-            assertThat(logic.funnel(InteractionCode.lost, LocalDate.of(2015, Month.JANUARY, 1), LocalDate.of(2024, Month.DECEMBER, 31))).isGreaterThanOrEqualTo(BigDecimal.ZERO);
+            assertThat(logic.funnel(OpportunityCode.prospect, LocalDate.of(2015, Month.JANUARY, 1), LocalDate.of(2024, Month.DECEMBER, 31))).isGreaterThanOrEqualTo(BigDecimal.ZERO);
+            assertThat(logic.funnel(OpportunityCode.lead, LocalDate.of(2015, Month.JANUARY, 1), LocalDate.of(2024, Month.DECEMBER, 31))).isGreaterThanOrEqualTo(BigDecimal.ZERO);
+            assertThat(logic.funnel(OpportunityCode.ordered, LocalDate.of(2015, Month.JANUARY, 1), LocalDate.of(2024, Month.DECEMBER, 31))).isGreaterThanOrEqualTo(BigDecimal.ZERO);
+            assertThat(logic.funnel(OpportunityCode.completed, LocalDate.of(2015, Month.JANUARY, 1), LocalDate.of(2024, Month.DECEMBER, 31))).isGreaterThanOrEqualTo(BigDecimal.ZERO);
+            assertThat(logic.funnel(OpportunityCode.lost, LocalDate.of(2015, Month.JANUARY, 1), LocalDate.of(2024, Month.DECEMBER, 31))).isGreaterThanOrEqualTo(BigDecimal.ZERO);
 
         }
     }

@@ -73,8 +73,8 @@ public class One2OneField<T extends MutableEntity> extends CustomField<T> {
             clear();
         } else {
             oid.setValue(Long.toString(one2one.oid()));
-            id.setValue(one2one.id());
-            name.setValue(one2one.name());
+            VaadinUtils.setValue(id, one2one.id());
+            VaadinUtils.setValue(name, one2one.name());
         }
     }
 

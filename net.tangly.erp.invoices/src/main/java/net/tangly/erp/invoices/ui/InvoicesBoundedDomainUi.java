@@ -13,6 +13,7 @@
 
 package net.tangly.erp.invoices.ui;
 
+import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.contextmenu.MenuItem;
 import com.vaadin.flow.component.contextmenu.SubMenu;
@@ -38,6 +39,7 @@ public class InvoicesBoundedDomainUi extends BoundedDomainUi<InvoicesBoundedDoma
         addView(INVOICES, new LazyReference<>(() -> new InvoicesView(this, Mode.EDITABLE)));
         addView(ENTITIES, new LazyReference<>(() -> new DomainView(this)));
         currentView(INVOICES);
+        domain.subscribeInternally(this);
     }
 
     @Override
@@ -54,9 +56,8 @@ public class InvoicesBoundedDomainUi extends BoundedDomainUi<InvoicesBoundedDoma
     public void onNext(Object event) {
         if (event instanceof EntityChangedInternalEvent entityChanged) {
             if (entityChanged.entityName().equals(Invoice.class.getSimpleName())) {
-                view(INVOICES).ifPresent(v -> v.ifPresent(View::refresh));
+                view(INVOICES).ifPresent(v -> UI.getCurrent().access(() -> v.ifPresent(View::refresh)));
             }
         }
     }
-
 }

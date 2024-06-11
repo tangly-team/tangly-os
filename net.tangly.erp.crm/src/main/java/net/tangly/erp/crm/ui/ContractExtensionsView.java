@@ -15,15 +15,17 @@ package net.tangly.erp.crm.ui;
 
 import com.vaadin.flow.component.grid.ColumnTextAlign;
 import com.vaadin.flow.component.grid.Grid;
+import com.vaadin.flow.component.grid.contextmenu.GridContextMenu;
+import com.vaadin.flow.component.html.Hr;
 import com.vaadin.flow.data.renderer.LocalDateRenderer;
 import com.vaadin.flow.data.renderer.NumberRenderer;
 import net.tangly.core.HasDateRange;
-import net.tangly.core.HasName;
 import net.tangly.core.HasText;
 import net.tangly.core.providers.Provider;
 import net.tangly.core.providers.ProviderInMemory;
 import net.tangly.erp.crm.domain.ContractExtension;
 import net.tangly.erp.crm.services.CrmBoundedDomain;
+import net.tangly.ui.app.domain.Cmd;
 import net.tangly.ui.components.ItemView;
 import net.tangly.ui.components.Mode;
 import net.tangly.ui.components.VaadinUtils;
@@ -41,16 +43,20 @@ public class ContractExtensionsView extends ItemView<ContractExtension> {
         return domain();
     }
 
+    @Override
+    protected void addActions(@NotNull GridContextMenu<ContractExtension> menu) {
+        menu().add(new Hr());
+        menu().addItem("Activate", e -> Cmd.ofItemCmd(e, this::contractActivated));
+    }
 
     private void init() {
         setHeight("15em");
         Grid<ContractExtension> grid = grid();
-        grid.addColumn(ContractExtension::id).setKey(ID).setHeader(ID_LABEL).setSortable(true).setResizable(true).setFlexGrow(0).setWidth("10em");
-        grid.addColumn(HasName::name).setKey(NAME).setHeader(NAME_LABEL).setResizable(true).setSortable(true).setFlexGrow(0).setWidth("16em");
-        grid.addColumn(new LocalDateRenderer<>(HasDateRange::from, ItemView.ISO_DATE_FORMAT)).setKey(FROM).setHeader(FROM_LABEL).setResizable(true)
-            .setSortable(true).setFlexGrow(0).setWidth("8em");
-        grid.addColumn(new LocalDateRenderer<>(HasDateRange::to, ItemView.ISO_DATE_FORMAT)).setKey(TO).setHeader(TO_LABEL).setResizable(true).setSortable(true)
-            .setFlexGrow(0).setWidth("8em");
+        VaadinUtils.addColumn(grid, ContractExtension::id, ID, ID_LABEL);
+        VaadinUtils.addColumn(grid, ContractExtension::name, NAME, NAME_LABEL);
+        VaadinUtils.addColumn(grid, new LocalDateRenderer<>(HasDateRange::from, ItemView.ISO_DATE_FORMAT), FROM, FROM_LABEL);
+        VaadinUtils.addColumn(grid, new LocalDateRenderer<>(HasDateRange::to, ItemView.ISO_DATE_FORMAT), TO, TO_LABEL);
+
         grid.addColumn(HasText::text).setKey(TEXT).setHeader(TEXT_LABEL).setResizable(true).setSortable(true).setFlexGrow(0).setWidth("30em");
         grid.addColumn(new NumberRenderer<>(ContractExtension::amountWithoutVat, VaadinUtils.FORMAT)).setKey("amount").setHeader("Amount").setAutoWidth(true)
             .setResizable(true).setSortable(true).setTextAlign(ColumnTextAlign.END);

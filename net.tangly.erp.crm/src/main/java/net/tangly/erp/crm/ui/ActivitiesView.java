@@ -50,7 +50,7 @@ class ActivitiesView extends ItemView<Activity> {
     record CmdRefreshActivities(ActivitiesView view) implements Cmd {
         @Override
         public void execute() {
-            List interactions = view.domain().realm().interactions().items().stream().flatMap(e -> e.activities().stream()).toList();
+            List interactions = view.domain().realm().opportunities().items().stream().flatMap(e -> e.activities().stream()).toList();
             view.provider(ProviderInMemory.of(interactions));
         }
     }

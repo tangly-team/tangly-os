@@ -34,7 +34,7 @@ public class CrmBoundedDomain extends BoundedDomain<CrmRealm, CrmBusinessLogic, 
         registry().register(CodeType.of(ActivityCode.class));
         registry().register(CodeType.of(GenderCode.class));
         registry().register(CodeType.of(LeadCode.class));
-        registry().register(CodeType.of(InteractionCode.class));
+        registry().register(CodeType.of(OpportunityCode.class));
     }
 
     @Override
@@ -42,7 +42,7 @@ public class CrmBoundedDomain extends BoundedDomain<CrmRealm, CrmBusinessLogic, 
         addTagCounts(registry(), realm().naturalEntities(), counts);
         addTagCounts(registry(), realm().legalEntities(), counts);
         addTagCounts(registry(), realm().employees(), counts);
-        addTagCounts(registry(), realm().interactions(), counts);
+        addTagCounts(registry(), realm().opportunities(), counts);
         return counts;
     }
 
@@ -51,7 +51,7 @@ public class CrmBoundedDomain extends BoundedDomain<CrmRealm, CrmBusinessLogic, 
         return List.of(new DomainEntity<>(DOMAIN, NaturalEntity.class, realm().naturalEntities()),
             new DomainEntity<>(DOMAIN, LegalEntity.class, realm().legalEntities()),
             new DomainEntity<>(DOMAIN, Employee.class, realm().employees()),
-            new DomainEntity<>(DOMAIN, Interaction.class, realm().interactions()),
+            new DomainEntity<>(DOMAIN, Opportunity.class, realm().opportunities()),
             new DomainEntity<>(DOMAIN, Contract.class, realm().contracts()));
     }
 }

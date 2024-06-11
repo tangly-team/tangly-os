@@ -17,9 +17,9 @@ import com.google.common.jimfs.Configuration;
 import com.google.common.jimfs.Jimfs;
 import net.tangly.core.providers.Provider;
 import net.tangly.erp.crm.domain.Contract;
-import net.tangly.erp.crm.domain.Interaction;
 import net.tangly.erp.crm.domain.LegalEntity;
 import net.tangly.erp.crm.domain.NaturalEntity;
+import net.tangly.erp.crm.domain.Opportunity;
 import net.tangly.erp.crm.ports.CrmAdapter;
 import net.tangly.erp.crm.ports.CrmEntities;
 import net.tangly.erp.crm.services.CrmBoundedDomain;
@@ -45,7 +45,7 @@ class CrmPersistenceTest {
             assertThat(handler.realm().employees().items()).isNotEmpty();
             assertThat(handler.realm().contracts().items()).isNotEmpty();
             assertThat(handler.realm().contracts().items().stream().flatMap(o -> o.contractExtensions().stream()).toList()).isNotEmpty();
-            assertThat(handler.realm().interactions().items()).isNotEmpty();
+            assertThat(handler.realm().opportunities().items()).isNotEmpty();
             handler.realm().close();
 
             handler = new CrmAdapter(new CrmEntities(crmDb), crmData);
@@ -54,7 +54,7 @@ class CrmPersistenceTest {
             assertThat(handler.realm().employees().items()).isNotEmpty();
             assertThat(handler.realm().contracts().items()).isNotEmpty();
             assertThat(handler.realm().contracts().items().stream().flatMap(o -> o.contractExtensions().stream()).toList()).isNotEmpty();
-            assertThat(handler.realm().interactions().items()).isNotEmpty();
+            assertThat(handler.realm().opportunities().items()).isNotEmpty();
             handler.realm().close();
         }
     }
@@ -77,12 +77,12 @@ class CrmPersistenceTest {
             long nrEmployees = handler.realm().employees().items().size();
             long nrContracts = handler.realm().contracts().items().size();
             long nrContractExtensions = handler.realm().contracts().items().stream().mapToLong(o -> o.contractExtensions().size()).sum();
-            long nrInteractions = handler.realm().interactions().items().size();
+            long nrInteractions = handler.realm().opportunities().items().size();
 
             NaturalEntity naturalEntity = Provider.findById(handler.realm().naturalEntities(), NATURAL_ENTITY_ID).orElseThrow();
             LegalEntity legalEntity = Provider.findById(handler.realm().legalEntities(), LEGAL_ENTITY_ID).orElseThrow();
             Contract contract = Provider.findById(handler.realm().contracts(), CONTRACT_ID).orElseThrow();
-            Interaction interaction = Provider.findByOid(handler.realm().interactions(), INTERACTION_OID).orElseThrow();
+            Opportunity opportunity = Provider.findByOid(handler.realm().opportunities(), INTERACTION_OID).orElseThrow();
 
             // when
             handler.exportEntities(store);
@@ -97,12 +97,12 @@ class CrmPersistenceTest {
             assertThat(handler.realm().employees().items().size()).isEqualTo(nrEmployees);
             assertThat(handler.realm().contracts().items().size()).isEqualTo(nrContracts);
             assertThat(handler.realm().contracts().items().stream().mapToLong(o -> o.contractExtensions().size()).sum()).isEqualTo(nrContractExtensions);
-            assertThat(handler.realm().interactions().items().size()).isEqualTo(nrInteractions);
+            assertThat(handler.realm().opportunities().items().size()).isEqualTo(nrInteractions);
 
             assertThat(naturalEntity).isEqualTo(Provider.findById(handler.realm().naturalEntities(), NATURAL_ENTITY_ID).orElseThrow());
             assertThat(legalEntity).isEqualTo(Provider.findById(handler.realm().legalEntities(), LEGAL_ENTITY_ID).orElseThrow());
             assertThat(contract).isEqualTo(Provider.findById(handler.realm().contracts(), CONTRACT_ID).orElseThrow());
-            assertThat(interaction).isEqualTo(Provider.findByOid(handler.realm().interactions(), INTERACTION_OID).orElseThrow());
+            assertThat(opportunity).isEqualTo(Provider.findByOid(handler.realm().opportunities(), INTERACTION_OID).orElseThrow());
             handler.realm().close();
         }
     }
