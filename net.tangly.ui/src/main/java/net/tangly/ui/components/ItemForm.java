@@ -240,6 +240,7 @@ public abstract class ItemForm<T, U extends ItemView<T>> {
      * @param operation operation to perform
      */
     private void display(T value, @NotNull Operation operation) {
+        operation(operation);
         action.setText(operation.confirmationText());
         value(value);
         if (parent.isFormEmbedded()) {
@@ -337,7 +338,6 @@ public abstract class ItemForm<T, U extends ItemView<T>> {
     }
 
     // endregion
-
 
     protected Tab addTabAt(@NotNull String tabText, @NotNull Component content, int position) {
         return tabSheet.add(new Tab(tabText), content, position);

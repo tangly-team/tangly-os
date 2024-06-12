@@ -226,14 +226,14 @@ public class CrmTsvHdl {
         Function<CSVRecord, Lead> imports =
             (CSVRecord csv) -> new Lead(LocalDate.parse(get(csv, DATE)), Enum.valueOf(LeadCode.class, get(csv, TsvHdl.CODE)), get(csv, FIRSTNAME),
                 get(csv, LASTNAME), Enum.valueOf(GenderCode.class, get(csv, GENDER)), get(csv, "company"), PhoneNr.of(get(csv, "phoneNr")),
-                EmailAddress.of(get(csv, EMAIL)), get(csv, "linkedIn"), TsvProperty.valueOf(ActivityCode.class, get(csv, "activity")), get(csv, TEXT));
+                EmailAddress.of(get(csv, EMAIL)), get(csv, "linkedIn"), get(csv, TEXT));
 
         List<TsvProperty<Lead, ?>> fields = List.of(TsvProperty.ofDate(DATE, Lead::date, null), TsvProperty.ofEnum(LeadCode.class, "code", Lead::code, null),
             TsvProperty.ofString(FIRSTNAME, Lead::firstname), TsvProperty.ofString(LASTNAME, Lead::firstname),
             TsvProperty.ofEnum(GenderCode.class, GENDER, Lead::gender, null), TsvProperty.ofString("company", Lead::company),
             TsvProperty.ofString("phoneNr", o -> Objects.nonNull(o.phoneNr()) ? o.phoneNr().number() : null),
             TsvProperty.ofString(EMAIL, o -> Objects.nonNull(o.email()) ? o.email().text() : null), TsvProperty.ofString("linkedIn", Lead::linkedIn, null),
-            TsvProperty.ofEnum(ActivityCode.class, "activity", Lead::activity, null), TsvProperty.ofString(TEXT, Lead::text));
+            TsvProperty.ofString(TEXT, Lead::text));
         return TsvEntity.of(Lead.class, fields, imports);
     }
 

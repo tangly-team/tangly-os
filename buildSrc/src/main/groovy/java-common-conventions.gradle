@@ -181,6 +181,7 @@ publishing {
             credentials {
                 // credentials are stored under ~/.gradle/gradle.properties and are first copied in local variables to avoid error if not defined fpr
                 // example in CI pipeline (private keys should not be uploaded to a cloud CI)
+                // the credentials for net.tangly account are not token based.
                 credentials {
                     username mavenCentralUsername
                     password mavenCentralPassword

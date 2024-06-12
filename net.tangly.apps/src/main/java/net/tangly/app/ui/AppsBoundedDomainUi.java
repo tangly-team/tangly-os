@@ -17,6 +17,7 @@ import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.contextmenu.MenuItem;
 import com.vaadin.flow.component.contextmenu.SubMenu;
 import com.vaadin.flow.component.menubar.MenuBar;
+import net.tangly.app.Application;
 import net.tangly.app.services.AppsBoundedDomain;
 import net.tangly.commons.lang.functional.LazyReference;
 import net.tangly.ui.app.domain.BoundedDomainUi;
@@ -26,7 +27,6 @@ import org.jetbrains.annotations.NotNull;
 
 public class AppsBoundedDomainUi extends BoundedDomainUi<AppsBoundedDomain> {
     private final String USERS = "Users";
-    private Mode mode;
 
     public AppsBoundedDomainUi(@NotNull AppsBoundedDomain domain) {
         super(domain);
@@ -42,5 +42,15 @@ public class AppsBoundedDomainUi extends BoundedDomainUi<AppsBoundedDomain> {
         subMenu.addItem("Users", e -> select(layout, view(USERS).orElseThrow()));
         addAdministration(layout, menuBar, view(ENTITIES).orElseThrow());
         select(layout);
+    }
+
+    public void addHousekeepingMenu(@NotNull AppLayout layout, @NotNull MenuBar menuBar) {
+        if (hasDomainAdminRights()) {
+            MenuItem menuItem = menuBar.addItem("Housekeeping");
+            SubMenu subMenu = menuItem.getSubMenu();
+            subMenu.addItem("Import All", _ -> Application.instance().boundedDomains().values().forEach(o -> o.port().importEntities(o)));
+            subMenu.addItem("Export All", _ -> Application.instance().boundedDomains().values().forEach(o -> o.port().exportEntities(o)));
+            subMenu.addItem("Clear All", _ -> Application.instance().boundedDomains().values().forEach(o -> o.port().clearEntities(o)));
+        }
     }
 }

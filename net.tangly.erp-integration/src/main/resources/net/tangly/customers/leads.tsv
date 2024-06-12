@@ -1,4 +1,4 @@
-"date"	"code"	"firstname"	"lastname"	"gender"	"company"	"phoneNr"	"email"	"linkedIn"	"activity"	"text"	"tags"
-"2021-01-13"	"contacting"	"John"	"Doe"	"male"	"One Company"	""	""	""	"email"	"First Contact"	""
-"2021-01-25"	"contacting"	"Thomas"	"Saint"	"male"	"Two Company Ltd"	"+41 79 778 86 89"	"thomas.saint@twocompany.com"	""	"audiocall"	"First Contact"	""
-"2021-01-27"	"contacting"	"Jane"	"Doe"	"female"	"Two Company Ltd"	""	"jane.doe@twocompany.com"	""	"videocall"	"First Contact"	""
+"date"	"code"	"firstname"	"lastname"	"gender"	"company"	"phoneNr"	"email"	"linkedIn"	"text"	"tags"
+"2021-01-13"	"contacting"	"John"	"Doe"	"male"	"One Company"	""	""	""	"First Contact"	""
+"2021-01-25"	"contacting"	"Thomas"	"Saint"	"male"	"Two Company Ltd"	"+41 79 778 86 89"	"thomas.saint@twocompany.com"	""	"First Contact"	""
+"2021-01-27"	"contacting"	"Jane"	"Doe"	"female"	"Two Company Ltd"	""	"jane.doe@twocompany.com"	""	"First Contact"	""

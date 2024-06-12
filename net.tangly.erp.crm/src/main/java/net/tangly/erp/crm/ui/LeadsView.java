@@ -81,7 +81,6 @@ public class LeadsView extends ItemView<Lead> {
             email = new TextField("Email", "email");
             linkedIn = new TextField("Linked", "linkedIn");
             leadCode = ItemForm.createCodeField(CodeType.of(LeadCode.class), "Lead Code");
-            activityCode = ItemForm.createCodeField(CodeType.of(ActivityCode.class), "Activity Code");
             text = new AsciiDocField("Text");
 
             var form = new FormLayout();
@@ -97,7 +96,6 @@ public class LeadsView extends ItemView<Lead> {
             binder().bindReadOnly(email, o -> Objects.nonNull(o.email()) ? o.email().text() : null);
             binder().bindReadOnly(linkedIn, Lead::linkedIn);
             binder().bindReadOnly(leadCode, Lead::code);
-            binder().bindReadOnly(activityCode, Lead::activity);
             binder().bindReadOnly(text, Lead::text);
             return form;
         }
@@ -105,7 +103,7 @@ public class LeadsView extends ItemView<Lead> {
         @Override
         protected Lead createOrUpdateInstance(Lead entity) throws ValidationException {
             return new Lead(date.getValue(), leadCode.getValue(), firstname.getValue(), lastname.getValue(), gender.getValue(), company.getValue(),
-                PhoneNr.of(phoneNr.getValue()), EmailAddress.of(email.getValue()), linkedIn.getValue(), activityCode.getValue(), text.getValue());
+                PhoneNr.of(phoneNr.getValue()), EmailAddress.of(email.getValue()), linkedIn.getValue(), text.getValue());
         }
     }
 
@@ -127,6 +125,5 @@ public class LeadsView extends ItemView<Lead> {
         VaadinUtils.addColumn(grid, o -> (Objects.nonNull(o.phoneNr()) ? o.phoneNr().number() : null), "phoneNr", "Phone");
         VaadinUtils.addColumn(grid, VaadinUtils.emailAddressComponentRenderer(Lead::email), "email", "Email");
         VaadinUtils.addColumn(grid, VaadinUtils.linkedInComponentRenderer(Lead::linkedIn, false), "linkedIn", "LinkedIn");
-        VaadinUtils.addColumn(grid, Lead::activity, "activity", "Activity");
     }
 }
