@@ -1,5 +1,0 @@
-/* Overwrites the constraint of Material design rules */
-
-[part="overlay"] {
-    max-width: 2048px;
-}

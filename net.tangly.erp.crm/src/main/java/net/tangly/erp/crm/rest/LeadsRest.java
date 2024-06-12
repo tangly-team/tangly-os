@@ -13,7 +13,6 @@
 
 package net.tangly.erp.crm.rest;
 
-import com.vaadin.base.devserver.themeeditor.messages.ErrorResponse;
 import io.javalin.Javalin;
 import io.javalin.http.Context;
 import io.javalin.openapi.*;
@@ -80,8 +79,8 @@ public class LeadsRest {
         requestBody = @OpenApiRequestBody(content = {@OpenApiContent(from = Lead.class)}),
         responses = {
             @OpenApiResponse(status = "204"),
-            @OpenApiResponse(status = "400", content = {@OpenApiContent(from = ErrorResponse.class)}),
-            @OpenApiResponse(status = "404", content = {@OpenApiContent(from = ErrorResponse.class)})
+            @OpenApiResponse(status = "400"),
+            @OpenApiResponse(status = "404")
         }
     )
     private void create(Context ctx) {
@@ -101,8 +100,8 @@ public class LeadsRest {
         requestBody = @OpenApiRequestBody(content = {@OpenApiContent(from = Lead.class)}),
         responses = {
             @OpenApiResponse(status = "204"),
-            @OpenApiResponse(status = "400", content = {@OpenApiContent(from = ErrorResponse.class)}),
-            @OpenApiResponse(status = "404", content = {@OpenApiContent(from = ErrorResponse.class)})
+            @OpenApiResponse(status = "400"),
+            @OpenApiResponse(status = "404")
         }
     )
     private void update(Context ctx) {
@@ -122,8 +121,8 @@ public class LeadsRest {
         tags = {"Leads"},
         responses = {
             @OpenApiResponse(status = "204"),
-            @OpenApiResponse(status = "400", content = {@OpenApiContent(from = ErrorResponse.class)}),
-            @OpenApiResponse(status = "404", content = {@OpenApiContent(from = ErrorResponse.class)})
+            @OpenApiResponse(status = "400"),
+            @OpenApiResponse(status = "404")
         }
     )
     private void delete(Context ctx) {

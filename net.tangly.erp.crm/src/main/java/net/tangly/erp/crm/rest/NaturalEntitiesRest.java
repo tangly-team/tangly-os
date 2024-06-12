@@ -13,7 +13,6 @@
 
 package net.tangly.erp.crm.rest;
 
-import com.vaadin.base.devserver.themeeditor.messages.ErrorResponse;
 import io.javalin.Javalin;
 import io.javalin.http.Context;
 import io.javalin.openapi.*;
@@ -29,9 +28,12 @@ import net.tangly.erp.crm.services.CrmBoundedDomain;
 import org.jetbrains.annotations.NotNull;
 
 public class NaturalEntitiesRest {
-    record NaturalEntityView(String id, String name, String firstname, GenderCode gender, String text, String homeEmail, String phoneHome, String phoneMobile, Address address) {
+    record NaturalEntityView(String id, String name, String firstname, GenderCode gender, String text, String homeEmail, String phoneHome, String phoneMobile,
+                             Address address) {
         public static NaturalEntityView of(@NotNull NaturalEntity entity) {
-            return new NaturalEntityView(entity.id(), entity.name(), entity.firstname(), entity.gender(), entity.text(), entity.email(VcardType.home).map(EmailAddress::text).orElse(null), entity.phoneHome().map(PhoneNr::number).orElse(null), entity.phoneMobile().map(PhoneNr::number).orElse(null), entity.address().orElse(null));
+            return new NaturalEntityView(entity.id(), entity.name(), entity.firstname(), entity.gender(), entity.text(),
+                entity.email(VcardType.home).map(EmailAddress::text).orElse(null), entity.phoneHome().map(PhoneNr::number).orElse(null),
+                entity.phoneMobile().map(PhoneNr::number).orElse(null), entity.address().orElse(null));
         }
 
         public NaturalEntity update(@NotNull NaturalEntity entity) {
@@ -62,31 +64,47 @@ public class NaturalEntitiesRest {
         javalin.delete(STR."\{PREFIX}/{id}", this::delete);
     }
 
-    @OpenApi(summary = "Get all natural entities", operationId = "getAllNaturalEntities", path = "/customers/natural-entities", methods = HttpMethod.GET, tags = {"NaturalEntities"}, responses = {@OpenApiResponse(status = "200", content = {@OpenApiContent(from = NaturalEntityView[].class)})})
+    @OpenApi(summary = "Get all natural entities", operationId = "getAllNaturalEntities", path = "/customers/natural-entities", methods = HttpMethod.GET, tags = {
+        "NaturalEntities"}, responses = {@OpenApiResponse(status = "200", content = {@OpenApiContent(from = NaturalEntityView[].class)})})
     private void getAll(Context ctx) {
         ctx.json(naturalEntities().items().stream().map(o -> NaturalEntityView.of(o)).toList());
     }
 
-    @OpenApi(summary = "Get a natural entity by his or her private email", operationId = "getNaturalEntityByEmail", path = "/customers/natural-entities/:email", methods = HttpMethod.GET, tags = {"NaturalEntities"}, pathParams = {@OpenApiParam(name = "email", required = true, type = String.class, description = "The private email address")}, responses = {@OpenApiResponse(status = "200", content = {@OpenApiContent(from = NaturalEntityView.class)})})
+    @OpenApi(
+        summary = "Get a natural entity by his or her private email", operationId = "getNaturalEntityByEmail", path = "/customers/natural-entities/:email", methods = HttpMethod.GET, tags = {
+        "NaturalEntities"}, pathParams = {
+        @OpenApiParam(name = "email", required = true, type = String.class, description = "The private email address")}, responses = {
+        @OpenApiResponse(status = "200", content = {@OpenApiContent(from = NaturalEntityView.class)})})
     private void getById(Context ctx) {
         String email = ctx.pathParam("email");
         naturalEntities().findBy(NaturalEntity::privateEmail, email).ifPresentOrElse(o -> ctx.json(NaturalEntityView.of(o)), () -> ctx.status(404));
     }
 
-    @OpenApi(summary = "Create a natural entity", operationId = "createNaturalEntity", path = "/customers/natural-entities", methods = HttpMethod.POST, tags = {"NaturalEntities"}, requestBody = @OpenApiRequestBody(content = {@OpenApiContent(from = NaturalEntityView.class)}), responses = {@OpenApiResponse(status = "204"), @OpenApiResponse(status = "400", content = {@OpenApiContent(from = ErrorResponse.class)}), @OpenApiResponse(status = "404", content = {@OpenApiContent(from = ErrorResponse.class)})})
+    @OpenApi(summary = "Create a natural entity", operationId = "createNaturalEntity", path = "/customers/natural-entities", methods = HttpMethod.POST, tags = {
+        "NaturalEntities"}, requestBody = @OpenApiRequestBody(content = {@OpenApiContent(from = NaturalEntityView.class)}), responses = {
+        @OpenApiResponse(status = "204"), @OpenApiResponse(status = "400"), @OpenApiResponse(status = "404")})
+
     private void create(Context ctx) {
         NaturalEntityView updated = ctx.bodyAsClass(NaturalEntityView.class);
         naturalEntities().update(updated.update(new NaturalEntity(HasOid.UNDEFINED_OID)));
     }
 
-    @OpenApi(summary = "Update a natural entity identified by ID", operationId = "updateNaturalEntityById", path = "/customers/natural-entities/:id", methods = HttpMethod.PATCH, pathParams = {@OpenApiParam(name = "id", required = true, type = String.class, description = "The entity identifier")}, tags = {"NaturalEntities"}, requestBody = @OpenApiRequestBody(content = {@OpenApiContent(from = NaturalEntityView.class)}), responses = {@OpenApiResponse(status = "204"), @OpenApiResponse(status = "400", content = {@OpenApiContent(from = ErrorResponse.class)}), @OpenApiResponse(status = "404", content = {@OpenApiContent(from = ErrorResponse.class)})})
+    @OpenApi(summary = "Update a natural entity identified by ID", operationId = "updateNaturalEntityById", path = "/customers/natural-entities/:id", methods = HttpMethod.PATCH, pathParams = {
+        @OpenApiParam(name = "id", required = true, type = String.class, description = "The entity identifier")}, tags = {
+        "NaturalEntities"}, requestBody = @OpenApiRequestBody(content = {@OpenApiContent(from = NaturalEntityView.class)}), responses = {
+        @OpenApiResponse(status = "204"), @OpenApiResponse(status = "400"),
+        @OpenApiResponse(status = "404")})
     private void update(Context ctx) {
         String id = ctx.pathParam("id");
         NaturalEntityView updated = ctx.bodyAsClass(NaturalEntityView.class);
         Provider.findById(naturalEntities(), id).ifPresentOrElse(o -> naturalEntities().update(updated.update(o)), () -> ctx.status(404));
     }
 
-    @OpenApi(summary = "delete a natural entity by email", operationId = "deletaNaturalEntityByEmail", path = "/customers/natural-entities/:email", methods = HttpMethod.DELETE, pathParams = {@OpenApiParam(name = "email", required = true, type = String.class, description = "The entity private email address")}, tags = {"NaturalEntities"}, responses = {@OpenApiResponse(status = "204"), @OpenApiResponse(status = "400", content = {@OpenApiContent(from = ErrorResponse.class)}), @OpenApiResponse(status = "404", content = {@OpenApiContent(from = ErrorResponse.class)})})
+    @OpenApi(summary = "delete a natural entity by email", operationId = "deletaNaturalEntityByEmail", path = "/customers/natural-entities/:email", methods = HttpMethod.DELETE, pathParams = {
+        @OpenApiParam(name = "email", required = true, type = String.class, description = "The entity private email address")}, tags = {
+        "NaturalEntities"}, responses = {@OpenApiResponse(status = "204"),
+        @OpenApiResponse(status = "400"),
+        @OpenApiResponse(status = "404")})
     private void delete(Context ctx) {
         String email = ctx.pathParam("email");
         naturalEntities().findBy(NaturalEntity::privateEmail, email).ifPresentOrElse(o -> naturalEntities().delete(o), () -> ctx.status(404));
