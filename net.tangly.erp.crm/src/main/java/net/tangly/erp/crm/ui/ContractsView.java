@@ -109,7 +109,7 @@ class ContractsView extends EntityView<Contract> {
      *
      * @param contract contract to activate
      */
-    private void contractActivated(Contract contract) {
+    private void contractActivated(@NotNull Contract contract) {
         var event = Contract.of(contract);
         domain().channel().submit(event);
     }

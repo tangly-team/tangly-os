@@ -79,6 +79,7 @@ class OpportunitiesView extends EntityView<Opportunity> {
     }
 
     private void init() {
+        initEntityView();
         var grid = grid();
         VaadinUtils.addColumn(grid, Opportunity::code, "state", "State");
         VaadinUtils.addColumn(grid, e -> VaadinUtils.format(e.potential()), "potential", "Potential");

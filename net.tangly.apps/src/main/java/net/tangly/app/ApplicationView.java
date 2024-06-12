@@ -81,8 +81,10 @@ public class ApplicationView extends AppLayout {
     public void userChanged(@NotNull User user) {
         boundedDomainUis.values().forEach(o -> {
             boolean hasAccessToDomain = user.accessRightsFor(o.name()).isPresent();
-            domainTab(o.name()).ifPresent(tab -> tab.setEnabled(hasAccessToDomain));
-            o.userChanged(user);
+            domainTab(o.name()).ifPresent(tab -> {
+                tab.setEnabled(hasAccessToDomain);
+                o.userChanged(user);
+            });
         });
     }
 

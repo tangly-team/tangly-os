@@ -58,13 +58,14 @@ public class ProductsBoundedDomainUi extends BoundedDomainUi<ProductsBoundedDoma
 
     @Override
     public void userChanged(@NotNull User user) {
-        var rights = user.accessRightsFor(ProductsBoundedDomain.DOMAIN).orElseThrow();
-        boolean isRestricted = rights.right() == AccessRightsCode.restrictedUser;
-        String username = user.username();
-        efforts = isRestricted ? ProviderView.of(domain().realm().efforts(), u -> u.assignment().name().equals(username)) : domain().realm().efforts();
-        assignments = isRestricted ? ProviderView.of(domain().realm().assignments(), u -> u.name().equals(username)) : domain().realm().assignments();
-        view(EFFORTS).ifPresent(v -> v.ifPresent(o -> ((EffortsView) o).provider(efforts)));
-        view(ASSIGNMENTS).ifPresent(v -> v.ifPresent(o -> ((AssignmentsView) o).provider(assignments)));
+        user.accessRightsFor(ProductsBoundedDomain.DOMAIN).ifPresent(rights -> {
+            boolean isRestricted = rights.right() == AccessRightsCode.restrictedUser;
+            String username = user.username();
+            efforts = isRestricted ? ProviderView.of(domain().realm().efforts(), u -> u.assignment().name().equals(username)) : domain().realm().efforts();
+            assignments = isRestricted ? ProviderView.of(domain().realm().assignments(), u -> u.name().equals(username)) : domain().realm().assignments();
+            view(EFFORTS).ifPresent(v -> v.ifPresent(o -> ((EffortsView) o).provider(efforts)));
+            view(ASSIGNMENTS).ifPresent(v -> v.ifPresent(o -> ((AssignmentsView) o).provider(assignments)));
+        });
         super.userChanged(user);
     }
 

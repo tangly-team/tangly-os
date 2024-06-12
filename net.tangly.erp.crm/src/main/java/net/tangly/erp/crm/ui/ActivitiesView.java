@@ -26,10 +26,7 @@ import net.tangly.erp.crm.domain.Activity;
 import net.tangly.erp.crm.domain.ActivityCode;
 import net.tangly.erp.crm.services.CrmBoundedDomain;
 import net.tangly.ui.app.domain.Cmd;
-import net.tangly.ui.components.EntityView;
-import net.tangly.ui.components.ItemForm;
-import net.tangly.ui.components.ItemView;
-import net.tangly.ui.components.Mode;
+import net.tangly.ui.components.*;
 import org.jetbrains.annotations.NotNull;
 
 import java.time.LocalDate;
@@ -139,12 +136,10 @@ class ActivitiesView extends ItemView<Activity> {
 
     private void init() {
         var grid = grid();
-        grid.addColumn(Activity::date).setKey(DATE).setHeader(DATE_LABEL).setResizable(true).setSortable(true).setFlexGrow(0).setWidth(
-            "10em");
-        grid.addColumn(Activity::code).setKey(CODE).setHeader(CODE_LABEL).setResizable(true).setSortable(true).setFlexGrow(0).setWidth("10em");
-        grid.addColumn(Activity::duration).setKey(DURATION_IN_MINUTES).setHeader("Duration").setResizable(true).setSortable(true).setFlexGrow(0).setWidth(
-            "5em");
-        grid.addColumn(Activity::author).setKey(AUTHOR).setHeader(AUTHOR_LABEL).setAutoWidth(true).setResizable(true).setSortable(true);
-        grid.addColumn(Activity::text).setKey(EntityView.TEXT).setHeader(EntityView.TEXT_LABEL).setAutoWidth(true).setResizable(true).setSortable(true);
+        VaadinUtils.addColumn(grid, Activity::date, DATE, DATE_LABEL).setFlexGrow(0).setWidth("10em");
+        VaadinUtils.addColumn(grid, Activity::code, CODE, CODE_LABEL).setFlexGrow(0).setWidth("10em");
+        VaadinUtils.addColumn(grid, Activity::duration, DURATION_IN_MINUTES, "Duration").setFlexGrow(0).setWidth("5em");
+        VaadinUtils.addColumn(grid, Activity::author, AUTHOR, AUTHOR_LABEL);
+        VaadinUtils.addColumn(grid, Activity::text, TEXT, TEXT_LABEL);
     }
 }

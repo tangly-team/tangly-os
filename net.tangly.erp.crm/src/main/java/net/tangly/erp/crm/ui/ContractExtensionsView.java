@@ -57,11 +57,11 @@ public class ContractExtensionsView extends ItemView<ContractExtension> {
         VaadinUtils.addColumn(grid, new LocalDateRenderer<>(HasDateRange::from, ItemView.ISO_DATE_FORMAT), FROM, FROM_LABEL);
         VaadinUtils.addColumn(grid, new LocalDateRenderer<>(HasDateRange::to, ItemView.ISO_DATE_FORMAT), TO, TO_LABEL);
 
-        grid.addColumn(HasText::text).setKey(TEXT).setHeader(TEXT_LABEL).setResizable(true).setSortable(true).setFlexGrow(0).setWidth("30em");
-        grid.addColumn(new NumberRenderer<>(ContractExtension::amountWithoutVat, VaadinUtils.FORMAT)).setKey("amount").setHeader("Amount").setAutoWidth(true)
-            .setResizable(true).setSortable(true).setTextAlign(ColumnTextAlign.END);
-        grid.addColumn(new NumberRenderer<>(ContractExtension::budgetInHours, VaadinUtils.FORMAT)).setKey("budgetInHours").setHeader("Budget In Hours")
-            .setAutoWidth(true).setResizable(true).setSortable(true).setTextAlign(ColumnTextAlign.END);
+        VaadinUtils.addColumn(grid, HasText::text, TEXT, TEXT_LABEL).setFlexGrow(0).setWidth("30em");
+        VaadinUtils.addColumn(grid, new NumberRenderer<>(ContractExtension::amountWithoutVat, VaadinUtils.FORMAT), "amount", "Amount")
+            .setTextAlign(ColumnTextAlign.END);
+        VaadinUtils.addColumn(grid, new NumberRenderer<>(ContractExtension::budgetInHours, VaadinUtils.FORMAT), "budgetInHours", "Budget In Hours")
+            .setTextAlign(ColumnTextAlign.END);
     }
 
     /**

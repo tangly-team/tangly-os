@@ -87,8 +87,8 @@ public final class Main {
     private static Options options() {
         var options = new Options();
         options.addOption(Option.builder("h").longOpt("help").hasArg(false).desc("print this help message").build());
-        options.addOption(Option.builder("p").longOpt("port").type(Integer.TYPE).argName("port").hasArg()
-            .desc("listening port of the embedded server").build());
+        options.addOption(
+            Option.builder("p").longOpt("port").type(Integer.TYPE).argName("port").hasArg().desc("listening port of the embedded server").build());
         options.addOption(Option.builder("c").longOpt("configuration").type(String.class).argName("configuration-file").hasArg()
             .desc("path to the application configuration file").build());
         return options;
@@ -112,16 +112,12 @@ public final class Main {
     public static void ofDomains() {
         Application application = Application.instance();
         if (application.apps().realm().users().items().isEmpty()) {
-            application.apps().realm().users().update(createDefaultRwUser());
-            application.apps().realm().users().update(createDefaultRoUser());
-            application.apps().realm().users().update(createRestrictedUser());
-            application.apps().realm().users().update(createAdminUser());
+            application.apps().realm().users().update(createDefaultUser());
         }
         if (application.isEnabled(CrmBoundedDomain.DOMAIN)) {
             var realm = application.inMemory() ? new CrmEntities() : new CrmEntities(Path.of(application.databases(), CrmBoundedDomain.DOMAIN));
             var domain = new CrmBoundedDomain(realm, new CrmBusinessLogic(realm),
-                new CrmAdapter(realm, Path.of(Application.instance().imports(CrmBoundedDomain.DOMAIN))),
-                application.registry());
+                new CrmAdapter(realm, Path.of(Application.instance().imports(CrmBoundedDomain.DOMAIN))), application.registry());
             application.registerBoundedDomain(domain);
         }
         if (application.isEnabled(InvoicesBoundedDomain.DOMAIN)) {
@@ -147,10 +143,10 @@ public final class Main {
             application.registerBoundedDomain(domain);
         }
         if (application.isEnabled(CollaboratorsBoundedDomain.DOMAIN)) {
-            var realm = application.inMemory() ? new CollaboratorsEntities() : new CollaboratorsEntities(
-                Path.of(application.databases(), CollaboratorsBoundedDomain.DOMAIN));
-            var domain = new CollaboratorsBoundedDomain(realm, new CollaboratorsBusinessLogic(realm), new CollaboratorsAdapter(realm,
-                Path.of(Application.instance().imports(CollaboratorsBoundedDomain.DOMAIN))), application.registry());
+            var realm = application.inMemory() ? new CollaboratorsEntities() :
+                new CollaboratorsEntities(Path.of(application.databases(), CollaboratorsBoundedDomain.DOMAIN));
+            var domain = new CollaboratorsBoundedDomain(realm, new CollaboratorsBusinessLogic(realm),
+                new CollaboratorsAdapter(realm, Path.of(Application.instance().imports(CollaboratorsBoundedDomain.DOMAIN))), application.registry());
             application.registerBoundedDomain(domain);
         }
     }
@@ -163,57 +159,12 @@ public final class Main {
         }
     }
 
-    private static User createDefaultRwUser() {
-        final String username = "aeon-rw";
-        String passwordSalt = User.newSalt();
-        String passwordHash = User.encryptPassword("aeon", passwordSalt);
-        var rights = List.of(
-            new AccessRights(username, CrmBoundedDomain.DOMAIN, AccessRightsCode.user),
-            new AccessRights(username, InvoicesBoundedDomain.DOMAIN, AccessRightsCode.user),
-            new AccessRights(username, LedgerBoundedDomain.DOMAIN, AccessRightsCode.user),
-            new AccessRights(username, ProductsBoundedDomain.DOMAIN, AccessRightsCode.user),
-            new AccessRights(username, CollaboratorsBoundedDomain.DOMAIN, AccessRightsCode.user),
-            new AccessRights(username, AppsBoundedDomain.DOMAIN, AccessRightsCode.appAdmin));
-        return new User(username, passwordHash, passwordSalt, true, null, rights, "aeon@gmail.com");
-    }
 
-    private static User createDefaultRoUser() {
-        final String username = "aeon-ro";
+    private static User createDefaultUser() {
+        final String username = "aeon";
         String passwordSalt = User.newSalt();
         String passwordHash = User.encryptPassword("aeon", passwordSalt);
-        var rights = List.of(
-            new AccessRights(username, CrmBoundedDomain.DOMAIN, AccessRightsCode.readonlyUser),
-            new AccessRights(username, InvoicesBoundedDomain.DOMAIN, AccessRightsCode.readonlyUser),
-            new AccessRights(username, LedgerBoundedDomain.DOMAIN, AccessRightsCode.readonlyUser),
-            new AccessRights(username, ProductsBoundedDomain.DOMAIN, AccessRightsCode.readonlyUser),
-            new AccessRights(username, CollaboratorsBoundedDomain.DOMAIN, AccessRightsCode.readonlyUser),
-            new AccessRights(username, AppsBoundedDomain.DOMAIN, AccessRightsCode.readonlyUser));
-        return new User(username, passwordHash, passwordSalt, true, null, rights, "marcel.baumann@tangly.net");
-    }
-
-    private static User createRestrictedUser() {
-        final String username = "marcel-baumann";
-        String passwordSalt = User.newSalt();
-        String passwordHash = User.encryptPassword("aeon", passwordSalt);
-        var rights = List.of(
-            new AccessRights(username, CrmBoundedDomain.DOMAIN, AccessRightsCode.restrictedUser),
-            new AccessRights(username, ProductsBoundedDomain.DOMAIN, AccessRightsCode.restrictedUser),
-            new AccessRights(username, CollaboratorsBoundedDomain.DOMAIN, AccessRightsCode.restrictedUser));
-        return new User(username, passwordHash, passwordSalt, true, null, rights, "marcel.baumann@tangly.net");
-    }
-
-    private static User createAdminUser() {
-        final String username = "aeon-ad";
-        String passwordSalt = User.newSalt();
-        String passwordHash = User.encryptPassword("aeon", passwordSalt);
-        var rights = List.of(
-            new AccessRights(username, CrmBoundedDomain.DOMAIN, AccessRightsCode.domainAdmin),
-            new AccessRights(username, ProductsBoundedDomain.DOMAIN, AccessRightsCode.domainAdmin),
-            new AccessRights(username, InvoicesBoundedDomain.DOMAIN, AccessRightsCode.domainAdmin),
-            new AccessRights(username, LedgerBoundedDomain.DOMAIN, AccessRightsCode.domainAdmin),
-            new AccessRights(username, ProductsBoundedDomain.DOMAIN, AccessRightsCode.domainAdmin),
-            new AccessRights(username, CollaboratorsBoundedDomain.DOMAIN, AccessRightsCode.domainAdmin),
-            new AccessRights(username, AppsBoundedDomain.DOMAIN, AccessRightsCode.domainAdmin));
-        return new User(username, passwordHash, passwordSalt, true, null, rights, "marcel.baumann@tangly.net");
+        var rights = List.of(new AccessRights(username, AppsBoundedDomain.DOMAIN, AccessRightsCode.domainAdmin));
+        return new User(username, passwordHash, passwordSalt, true, null, rights, null);
     }
 }

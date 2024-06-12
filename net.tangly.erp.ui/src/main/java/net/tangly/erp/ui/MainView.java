@@ -17,6 +17,7 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import net.tangly.app.Application;
 import net.tangly.app.ApplicationView;
+import net.tangly.app.services.AppsBoundedDomain;
 import net.tangly.core.domain.User;
 import net.tangly.erp.collaborators.ui.CollaboratorsBoundedDomainUi;
 import net.tangly.erp.collabortors.services.CollaboratorsBoundedDomain;
@@ -43,7 +44,7 @@ public class MainView extends ApplicationView {
     @Override
     public void userChanged(User user) {
         super.userChanged(user);
-        selectBoundedDomainUi(CrmBoundedDomain.DOMAIN);
+        selectBoundedDomainUi(AppsBoundedDomain.DOMAIN);
     }
 
     private void ofDomainUis() {

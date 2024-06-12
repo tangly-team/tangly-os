@@ -41,6 +41,7 @@ public class AppsBoundedDomainUi extends BoundedDomainUi<AppsBoundedDomain> {
         SubMenu subMenu = menuItem.getSubMenu();
         subMenu.addItem("Users", e -> select(layout, view(USERS).orElseThrow()));
         addAdministration(layout, menuBar, view(ENTITIES).orElseThrow());
+        addHousekeepingMenu(layout, menuBar);
         select(layout);
     }
 

@@ -72,10 +72,6 @@ public abstract class BoundedDomainUi<T extends BoundedDomain<?, ?, ?>> {
         return rights;
     }
 
-    public void rights(AccessRights rights) {
-        this.rights = rights;
-    }
-
     /**
      * Select the bounded domain and the associated default view to be displayed from the bounded domain user interface and update the menu to reflect the bounded domain.
      *
@@ -166,6 +162,7 @@ public abstract class BoundedDomainUi<T extends BoundedDomain<?, ?, ?>> {
     protected boolean hasReadOnlyRights() {
         return (rights != null) && rights.right() == AccessRightsCode.readonlyUser;
     }
+
     protected boolean hasDomainAdminRights() {
         return (rights != null) && rights.right() == AccessRightsCode.domainAdmin;
     }
