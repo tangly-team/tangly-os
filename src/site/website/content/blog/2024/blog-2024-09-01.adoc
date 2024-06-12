@@ -1,6 +1,6 @@
 ---
-title: "Vaadin 24"
-linkTitle: "Vaadin 24"
+title: "Vaadin 24.4"
+linkTitle: "Vaadin 24.4"
 date: 2024-09-01
 tags: ["java", "vaadin"]
 ---

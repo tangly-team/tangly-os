@@ -19,27 +19,92 @@ The essential features are used to implement all acquisition, project management
 
 The smoke test is to run the {ref-tangly} processes on the ERP solution.
 
-=== Requirements Overview
+=== User Journey
+
+==== Leads
+
+After meeting a prospect at a conference, I create a lead.
+I follow up with the lead and add the information in the text of the lead.
+
+==== Opportunities
+
+Once a lead is qualified, I create a natural entity for the prospect,
+a legal entity for the company he is working for and an employee for the relation between him and the company.
+The acquisition process is documented in an opportunity with a set of activities describing our interactions.
+
+==== Contracts
+
+A successful opportunity generates a contract with the legal entity.
+
+Later on, the contract can be extended with contract extensions.
+Sometimes new areas of work are identified and new contracts are created.
+
+==== Work Contracts
+
+A manager can activate the contract and initiate a work contract in the product domain.
+A product is created and the work contract is assigned to the product.
+Assignments are created to assign collaborators to the product development.
+
+Collaborators track their work in activities.
+An activity is a time tracking record with a description, the associated collaborator and the contract.
+
+Dashboards display the progress of the product development.
+The worked hours are compared with the time budget of the assignments and the work contract.
+
+==== Invoices
+
+Regularly, work reports are generated to invoice the customer.
+The reports and the invoices are sent to the customer.
+Invoices are handled in the invoice domain.
+
+==== Ledger
+
+Once the invoice is paid, the transaction is booked in the accounting system.
+The ledger domain is used to manage financial transactions.
+
+=== Global Requirements
+
+* Entities shall have a human-readable identifier encoded as a string <<entities-identifiers-names>><<meaningful-identifiers>>.
+* Structured application-specific or market-specific information shall be stored as reference codes <<reference-codes>>.
+* Non-structured information is written down as text. Asciidoc is used as a markup language.
+* Changes can be documented as a list of comments.
+* Dynamic data shall be stored as tags. Tags define an application-specific or market-specific ontology <<tags-comments>>.
 
 [cols="1, 1, 6, 4",options="header"]
 |===
 |ID | Type| Description | Remarks
-
 |req-001
 |import
-|As a user, I want to import all company data as a set of TSV files so that I can migrate strategic data.
+|As a user, I want to import all data of a domain as a set of TSV files so that I can migrate strategic data.
 |No dependencies to a database shall exit
-
 |req-002
 |export
-|As a user, I want to export all company data as a set of TSV files so that I can back up strategic data in a human-readable form.
+|As a user, I want to export all data of a domain as a set of TSV files so that I can back up strategic data in a human-readable form.
 |Human-readable form is necessary for audit. The export format is also used as import format.
-
+|req-003
+|clear
+|As a user, I can clear all data of a domain so that I can start with a clean system.
+|Before importing data, the system should be cleared.
 |===
 
-=== Quality Goals
+=== Authentication and Authorization
 
-==== Source Code Quality Goals
+The user shall log in with a username and a password.
+The tenancy is defined by the domain preceeding the username `domain/username`.
+
+Authorization is based on roles and is defined per domain.
+
+The following roles are defined:
+
+None:: No access to a specific domain.
+Restricted User:: User has read and write access to the entities he owns.
+For example, a restricted users has access to his activities.
+Read User:: User has read access to the entities of a domain.
+Write User:: User has write access to the entities of a domain.
+Admin User:: User has write access to the entities of a domain and has access to power user operations.
+Import, export and clear operations are examples of power user operations.
+
+=== Quality Goals
 
 ==== Documentation Quality Goals
 
@@ -78,7 +143,7 @@ image::iso-25010-topics.png["Categories of Quality Requirements"]
 |===
 |Role|Relevance|Expectations
 |Open Source Developer|Important| wants to extend the application with functions required for a specific market or user segment.
-|Company Prospect|Important|looking for a portfolio to show competencies in areas, he is interested to work with us.
+|Company Prospect|Important|looking for a portfolio to show competencies in areas, he is interested in work with us.
 |Closed Source Developer|Relevant|wants to extend the application with functions she could sell to her customers.
 |Blog Reader|Relevant|interested to explore a concept discussed in a blog article and exemplary realized in the application.
 |Application user|Relevant|wants to understand decisions and their impact on the product value or costs.
@@ -106,7 +171,7 @@ Employees are assigned to develop the product.
 The *assignment* is paid through a work contract time budget.
 An assignment has a _duration_, and a product.
 
-The work performed for an assignment is documented through *activities* of a collaborator.
+The work performed for an assignment is documented through the *activities* of a collaborator.
 
 ==== Customer Domain
 
@@ -129,3 +194,12 @@ The assignment date range is in the range of the contract time range.
 The sum of all efforts for all assignments per contract should be comparable with the time budget of the contract.
 
 The sum of all invoices for a contract should be below the contract amount.
+
+[bibliography]
+== Links
+
+* [[[entities-identifiers-names, 1]]] {ref-tangly-blog-url}/blog/2020/entities-identifiers-external-identifiers-and-names/[Entities, Identifiers, External
+Identifiers, and Names
+* [[[meaningful-identifiers, 2]]] {ref-tangly-blog-url}/blog/2021/meaningful-identifiers/[Meaningful Identifiers]
+* [[[reference-codes, 3]]] {ref-tangly-blog-url}/blog/2020/reference-codes/[Reference Codes]
+* [[[tags-comments, 4]]] {ref-tangly-blog-url}/blog/2020/the-power-of-tags-and-comments/[The Power of Tags and Comments
