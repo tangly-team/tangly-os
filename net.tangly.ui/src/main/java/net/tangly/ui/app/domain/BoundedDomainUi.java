@@ -18,6 +18,7 @@ import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.contextmenu.MenuItem;
 import com.vaadin.flow.component.contextmenu.SubMenu;
 import com.vaadin.flow.component.menubar.MenuBar;
+import com.vaadin.flow.server.VaadinSession;
 import net.tangly.commons.lang.functional.LazyReference;
 import net.tangly.core.domain.AccessRights;
 import net.tangly.core.domain.AccessRightsCode;
@@ -54,6 +55,15 @@ public abstract class BoundedDomainUi<T extends BoundedDomain<?, ?, ?>> {
         this.domain = domain;
         views = new HashMap<>();
     }
+
+    public static String username() {
+        return (VaadinSession.getCurrent() != null) ? (String) VaadinSession.getCurrent().getAttribute("username") : null;
+    }
+
+    public static User user() {
+        return (VaadinSession.getCurrent() != null) ? (User) VaadinSession.getCurrent().getAttribute("user") : null;
+    }
+
 
     /**
      * Return the name of bounded domain user interface as displayed in the user interface.

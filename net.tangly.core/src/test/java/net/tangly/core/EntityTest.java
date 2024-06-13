@@ -19,6 +19,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Month;
 import java.util.Collection;
+import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -175,7 +176,7 @@ class EntityTest {
 
     private void testModifyComments(HasMutableComments hasComments) {
         // Given
-        var comment = new Comment("John Doe", "This is a comment");
+        var comment = Comment.of("John Doe", "This is a comment");
         // When
         hasComments.add(comment);
         // Then
@@ -194,14 +195,13 @@ class EntityTest {
 
     private void testFilterComments(HasMutableComments hasComments) {
         // Given
-        var comment = Comment.of(LocalDateTime.of(1800, Month.JANUARY, 1, 0, 0), "John Doe", "This is comment 1");
-        comment.add(new Tag("gis", "longitude", "0.0"));
-        comment.add(new Tag("gis", "latitude", "0.0"));
+        var comment = new Comment(LocalDateTime.of(1800, Month.JANUARY, 1, 0, 0), "John Doe", "This is comment 1",
+            Set.of(Tag.of("gis", "longitude", "0.0"), Tag.of("gis", "latitude", "0.0")));
         hasComments.add(comment);
-        comment = Comment.of(LocalDateTime.of(1900, Month.JANUARY, 1, 0, 0), "John Doe", "This is comment 2");
-        comment.add(new Tag("gis", "longitude", "0.0"));
+        comment = new Comment(LocalDateTime.of(1900, Month.JANUARY, 1, 0, 0), "John Doe", "This is comment 2", Set.of(Tag.of("gis", "longitude", "0.0")));
         hasComments.add(comment);
-        comment = Comment.of(LocalDateTime.of(2000, Month.JANUARY, 1, 0, 0), "John Doe", "This is comment 3", Tag.of("gis", "longitude", "0.0"), Tag.of("gis", "latitude", "0.0"));
+        comment = new Comment(LocalDateTime.of(2000, Month.JANUARY, 1, 0, 0), "John Doe", "This is comment 3",
+            Set.of(Tag.of("gis", "longitude", "0.0"), Tag.of("gis", "latitude", "0.0")));
         hasComments.add(comment);
         // When
         assertThat(hasComments.findByAuthor("John Doe")).hasSize(3);

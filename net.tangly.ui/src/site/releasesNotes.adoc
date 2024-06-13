@@ -11,6 +11,8 @@ For a detailed view of what has changed, refer to the https://bitbucket.org/tang
 
 === 0.2.8 (2024-09-30)
 
+* Update of library dependencies, update to JDK-22, and modern Gradle approach to build solutions.
+* Comments have an automatic timestamp and the author name is the logged-in user.
 
 === 0.2.7 (2024-05-31)
 

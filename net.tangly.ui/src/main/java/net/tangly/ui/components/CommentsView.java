@@ -30,7 +30,9 @@ import java.time.LocalDateTime;
 import java.util.Objects;
 
 /**
- * A view for a list of objects. The local copy of the list supports adding and removing items. To add items, a provider is passed with the eligible list of items
+ * A view for a list of objects. The local copy of the list supports adding and removing items.
+ * To add items, a provider is passed with the eligible list of items.
+ * The author is the currently logged-in user and the creation date is set to the current date and time.
  * <p>
  * The comments view is a Crud view with all the comments defined for an object implementing the {@link HasMutableComments}. Edition functions are provided to add, delete, and view
  * individual comments. Update function is not supported because comments are immutable objects. Immutable objects must explicitly be deleted before a new version is added. This
@@ -87,6 +89,7 @@ public class CommentsView extends ItemView<Comment> {
         public void create() {
             super.create();
             created.setValue(LocalDateTime.now());
+            author.setValue(BoundedDomainUi.username());
         }
 
         @Override
@@ -105,7 +108,7 @@ public class CommentsView extends ItemView<Comment> {
          */
         @Override
         protected Comment createOrUpdateInstance(Comment entity) {
-            Comment comment = new Comment(author.getValue(), text.getValue());
+            Comment comment = Comment.of(author.getValue(), text.getValue());
             parent().provider().replace(entity, comment);
             return comment;
         }
@@ -114,7 +117,9 @@ public class CommentsView extends ItemView<Comment> {
             FormLayout layout = new FormLayout();
             created = new DateTimePicker(CREATED);
             created.setReadOnly(true);
+            created.setRequiredIndicatorVisible(true);
             author = new TextField(AUTHOR);
+            author.setReadOnly(true);
             author.setRequired(true);
             text = new AsciiDocField(TEXT);
             layout.add(created, author, text);

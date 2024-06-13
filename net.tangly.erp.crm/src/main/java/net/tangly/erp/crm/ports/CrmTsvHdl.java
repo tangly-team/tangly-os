@@ -172,10 +172,12 @@ public class CrmTsvHdl {
     }
 
     private static TsvEntity<Comment> createTsvComment() {
-        Function<CSVRecord, Comment> imports = (CSVRecord item) -> Comment.of(LocalDateTime.parse(get(item, CREATED)), get(item, AUTHOR), get(item, TEXT));
+        Function<CSVRecord, Comment> imports = (CSVRecord item) -> new Comment(LocalDateTime.parse(get(item, CREATED)), get(item, AUTHOR), get(item, TEXT),
+            Tag.toTags(get(item, TAGS)));
         List<TsvProperty<Comment, ?>> fields = List.of(TsvProperty.ofEmpty(TsvEntity.OWNER_FOID),
-            TsvProperty.of(CREATED, Comment::created, null, o -> (o != null) ? LocalDateTime.parse(o) : null), TsvProperty.ofString(AUTHOR, Comment::author),
-            TsvProperty.ofString(TEXT, Comment::text), TsvProperty.ofString(TAGS, HasMutableTags::rawTags, HasMutableTags::rawTags));
+            TsvProperty.of(CREATED, Comment::created, null, o -> (o != null) ? LocalDateTime.parse(o) : null),
+            TsvProperty.ofString(AUTHOR, Comment::author),
+            TsvProperty.ofString(TEXT, Comment::text), TsvProperty.ofString(TAGS, HasTags::rawTags));
         return TsvEntity.of(Comment.class, fields, imports);
     }
 

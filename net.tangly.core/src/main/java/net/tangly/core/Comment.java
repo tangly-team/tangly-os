@@ -16,164 +16,27 @@ package net.tangly.core;
 import org.jetbrains.annotations.NotNull;
 
 import java.time.LocalDateTime;
-import java.util.*;
+import java.util.Collections;
+import java.util.Set;
 
 /**
  * Defines a human-readable annotation to an entity. A comment is an immutable object. Comments can be tagged to provide classification. A comment belongs to
  * the entity owning it an is only accessible through this entity.
  */
-public class Comment implements HasMutableTags {
-    /**
-     * The creation date and time of the comment.
-     */
-    private LocalDateTime created;
-
-    /**
-     * The author of the comment, the system should ensure that the author is a unique external identifier.
-     */
-    private final String author;
-
-    /**
-     * The comment as a Markdown text.
-     */
-    private final String text;
-
-    /**
-     * The tags of the comment.
-     */
-    private final Set<Tag> tags;
-
+public record Comment(LocalDateTime created, String author, String text, Set<Tag> tags) implements HasTags {
 
     /**
      * Default constructor to create an immutable instance.
      *
-     * @param author of the comment instance as human-readable field
-     * @param text   text of the comment, we recommend using asciidoc format
+     * @param created timestamp when the comment was created
+     * @param author  of the comment instance as human-readable field
+     * @param text    text of the comment, we recommend using asciidoc format
      */
-    public Comment(@NotNull String author, @NotNull String text) {
-        this.created = LocalDateTime.now();
-        this.author = Objects.requireNonNull(author);
-        this.text = Objects.requireNonNull(text);
-        tags = new HashSet<>();
+    public Comment(@NotNull LocalDateTime created, @NotNull String author, @NotNull String text) {
+        this(created, author, text, Collections.emptySet());
     }
 
-    /**
-     * Factory method to update a new comment. The current date and time are set a creation date.
-     *
-     * @param author author of the comment
-     * @param text   content of the comment
-     * @param tags   optional tags of the comment
-     * @return the newly created comment
-     */
-    @SafeVarargs
-    public static Comment of(@NotNull String author, @NotNull String text, Tag... tags) {
-        Comment comment = new Comment(author, text);
-        comment.addTags(Set.of(tags));
-        return comment;
-    }
-
-    /**
-     * Factory method to update a new comment. The current date and time are set a creation date.
-     *
-     * @param created creation date of the comment
-     * @param author  author of the comment
-     * @param text    content of the comment
-     * @return the newly created comment
-     */
-    public static Comment of(@NotNull LocalDateTime created, @NotNull String author, @NotNull String text) {
-        var comment = new Comment(author, text);
-        comment.created = created;
-        return comment;
-    }
-
-    /**
-     * Factory method to update a new comment. The current date and time are set a creation date.
-     *
-     * @param created creation date of the comment
-     * @param author  author of the comment
-     * @param text    content of the comment
-     * @param tags    optional tags of the comment
-     * @return the newly created comment
-     */
-    @SafeVarargs
-    public static Comment of(@NotNull LocalDateTime created, @NotNull String author, @NotNull String text, Tag... tags) {
-        var comment = new Comment(author, text);
-        comment.created = created;
-        comment.addTags(Set.of(tags));
-        return comment;
-    }
-
-    /**
-     * Return the timestamp when the comment was created.
-     *
-     * @return timestamp for the creation of the comment
-     */
-    public @NotNull LocalDateTime created() {
-        return created;
-    }
-
-    /**
-     * Return the author of the comment as human-readable information.
-     *
-     * @return author of the comment
-     */
-    public @NotNull String author() {
-        return author;
-    }
-
-    /**
-     * Return the text of the comment. Asciidoc is a preferred format
-     *
-     * @return text of the comment
-     */
-    public @NotNull String text() {
-        return text;
-    }
-
-    // endregion
-
-    // region HasTags
-
-    @Override
-    public Collection<Tag> tags() {
-        return Collections.unmodifiableSet(tags);
-    }
-
-    @Override
-    public void tags(@NotNull Collection<Tag> tags) {
-        this.tags.clear();
-        this.tags.addAll(tags);
-    }
-
-    @Override
-    public boolean add(@NotNull Tag tag) {
-        return tags.add(tag);
-    }
-
-    @Override
-    public boolean remove(@NotNull Tag tag) {
-        return tags.remove(tag);
-    }
-
-    @Override
-    public void clear() {
-        tags.clear();
-    }
-
-    // endregion
-    @Override
-    public int hashCode() {
-        return Objects.hash(created, author, text, tags);
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        return (obj instanceof Comment o) && Objects.equals(created(), o.created()) && Objects.equals(author(), o.author()) &&
-            Objects.equals(text(), o.text()) && Objects.equals(tags(), o.tags());
-    }
-
-    @Override
-    public String toString() {
-        return String.format("created=%s, author=%s, text=%s, tags=%s", created(), author(), text(), Tag.text(tags));
+    public static Comment of(@NotNull String author, @NotNull String text) {
+        return new Comment(LocalDateTime.now(), author, text);
     }
 }
