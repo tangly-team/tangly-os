@@ -17,14 +17,17 @@ import com.vaadin.flow.component.datepicker.DatePicker;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.contextmenu.GridContextMenu;
 import com.vaadin.flow.component.html.Hr;
+import com.vaadin.flow.component.select.Select;
 import com.vaadin.flow.component.textfield.IntegerField;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.ValidationException;
+import net.tangly.app.Application;
 import net.tangly.core.codes.CodeType;
 import net.tangly.core.providers.ProviderInMemory;
 import net.tangly.erp.crm.domain.Activity;
 import net.tangly.erp.crm.domain.ActivityCode;
 import net.tangly.erp.crm.services.CrmBoundedDomain;
+import net.tangly.ui.app.domain.BoundedDomainUi;
 import net.tangly.ui.app.domain.Cmd;
 import net.tangly.ui.components.*;
 import org.jetbrains.annotations.NotNull;
@@ -81,11 +84,29 @@ class ActivitiesView extends ItemView<Activity> {
     }
 
     static class ActivityForm extends ItemForm<Activity, ActivitiesView> {
+        private DatePicker date;
+        private Select<String> author;
 
         public ActivityForm(@NotNull ActivitiesView parent) {
             super(parent);
+            date = new DatePicker(EntityView.DATE_LABEL);
+            author = authors();
             addTabAt("details", details(), 0);
             addTabAt("text", textForm(), 1);
+        }
+
+        @Override
+        public void create() {
+            super.create();
+            date.setValue(LocalDate.now());
+            author.setValue(BoundedDomainUi.username());
+        }
+
+        @Override
+        public void duplicate(@NotNull Activity entity) {
+            super.duplicate(entity);
+            date.setValue(LocalDate.now());
+            author.setValue(BoundedDomainUi.username());
         }
 
         @Override
@@ -97,10 +118,8 @@ class ActivitiesView extends ItemView<Activity> {
 
         private FormLayout details() {
             var form = new FormLayout();
-            var date = new DatePicker(EntityView.DATE_LABEL);
             var code = ItemForm.createCodeField(CodeType.of(ActivityCode.class), "code");
             var durationInMinutes = new IntegerField(DURATION_IN_MINUTES);
-            var author = new TextField(AUTHOR);
             var text = new TextField(EntityView.TEXT);
 
             form.add(date, code, durationInMinutes, author, text);
@@ -115,12 +134,23 @@ class ActivitiesView extends ItemView<Activity> {
             binder().forField(text).bind(Activity::text, Activity::text);
             return form;
         }
+
+        private Select<String> authors() {
+            Select<String> authors = new Select<>();
+            authors.setLabel("Author");
+            authors.setItems(Application.instance().apps().logic().usersFor(CrmBoundedDomain.DOMAIN));
+            return authors;
+        }
+    }
+
+    public ActivitiesView(@NotNull CrmBoundedDomainUi domain, @NotNull Mode mode, boolean isViewEmbedded) {
+        super(Activity.class, domain, domain.domain().realm().activities(), new ActivityFilter(), mode, isViewEmbedded);
+        form(() -> new ActivityForm(this));
+        init();
     }
 
     public ActivitiesView(@NotNull CrmBoundedDomainUi domain, @NotNull Mode mode) {
-        super(Activity.class, domain, domain.domain().realm().activities(), new ActivityFilter(), mode);
-        form(() -> new ActivityForm(this));
-        init();
+        this(domain, mode, false);
     }
 
     @Override
@@ -129,9 +159,20 @@ class ActivitiesView extends ItemView<Activity> {
     }
 
     @Override
+    protected void buildCrudMenu(Mode mode) {
+        if (isViewEmbedded()) {
+            super.buildCrudMenu(mode);
+        } else {
+            menu().addItem(Mode.VIEW_TEXT, event -> event.getItem().ifPresent(o -> form().get().display(o)));
+        }
+    }
+
+    @Override
     protected void addActions(@NotNull GridContextMenu<Activity> menu) {
-        menu().add(new Hr());
-        menu().addItem("RefreshAll", _ -> new CmdRefreshActivities(this).execute());
+        if (!isViewEmbedded()) {
+            menu().add(new Hr());
+            menu().addItem("RefreshAll", _ -> new CmdRefreshActivities(this).execute());
+        }
     }
 
     private void init() {

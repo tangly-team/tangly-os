@@ -38,7 +38,7 @@ class OpportunitiesView extends EntityView<Opportunity> {
             super(parent, Opportunity::new);
             initEntityForm();
             addTabAt("details", details(), 1);
-            var activities = new One2ManyOwnedField<>(new ActivitiesView(parent.domainUi(), Mode.LIST));
+            var activities = new One2ManyOwnedField<>(new ActivitiesView(parent.domainUi(), Mode.EDITABLE, true));
             binder().bind(activities, Opportunity::activities, (o, v) -> o.activities(activities.generateModelValue()));
             addTabAt("activities", activities, 2);
         }

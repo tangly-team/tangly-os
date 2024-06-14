@@ -96,6 +96,7 @@ public class CommentsView extends ItemView<Comment> {
         public void duplicate(@NotNull Comment entity) {
             super.duplicate(entity);
             created.setValue(LocalDateTime.now());
+            author.setValue(BoundedDomainUi.username());
         }
 
 

@@ -177,6 +177,7 @@ public abstract class ItemView<T> extends VerticalLayout implements View {
 
     private transient T entity;
     private LazyReference<ItemForm<T, ?>> form;
+    private final boolean isViewEmbedded;
     private boolean isFormEmbedded;
 
     /**
@@ -192,11 +193,13 @@ public abstract class ItemView<T> extends VerticalLayout implements View {
      * @param filter      optional filter for the grid
      * @param mode        mode of the view: LIST, VIEW, or EDITABLE
      */
-    protected ItemView(@NotNull Class<T> entityClass, BoundedDomainUi<?> domain, @NotNull Provider<T> provider, ItemFilter<T> filter, @NotNull Mode mode) {
+    protected ItemView(@NotNull Class<T> entityClass, BoundedDomainUi<?> domain, @NotNull Provider<T> provider, ItemFilter<T> filter, @NotNull Mode mode,
+                       boolean isViewEmbedded) {
         this.entityClass = entityClass;
         this.domain = domain;
         this.filter = filter;
         this.mode = mode;
+        this.isViewEmbedded = isViewEmbedded;
         isFormEmbedded(true);
         grid = new Grid<>();
         grid.setSelectionMode(Grid.SelectionMode.SINGLE);
@@ -205,6 +208,10 @@ public abstract class ItemView<T> extends VerticalLayout implements View {
         add(grid);
         provider(provider);
         readonly(mode.readonly());
+    }
+
+    protected ItemView(@NotNull Class<T> entityClass, BoundedDomainUi<?> domain, @NotNull Provider<T> provider, ItemFilter<T> filter, @NotNull Mode mode) {
+        this(entityClass, domain, provider, filter, mode, false);
     }
 
     public Class<T> entityClass() {
@@ -255,13 +262,18 @@ public abstract class ItemView<T> extends VerticalLayout implements View {
     }
 
     /**
-     * Set the form embedded attribute. If the form is embedded in the view, the form is displayed in the view. If the form is not embedded, the form is displayed
+     * Sets the form embedded attribute. If the form is embedded in the view, the form is displayed in the view. If the form is not embedded, the form is
+     * displayed.
      *
      * @param isFormEmbedded new value of the property
      * @see #isFormEmbedded()
      */
     public final void isFormEmbedded(boolean isFormEmbedded) {
         this.isFormEmbedded = isFormEmbedded;
+    }
+
+    public final boolean isViewEmbedded() {
+        return isViewEmbedded;
     }
 
     protected final LazyReference<ItemForm<T, ?>> form() {
@@ -356,7 +368,7 @@ public abstract class ItemView<T> extends VerticalLayout implements View {
         return dataView;
     }
 
-    private void buildMenu() {
+    protected void buildMenu() {
         if (mode() != Mode.LIST) {
             menu().removeAll();
             buildCrudMenu(mode);

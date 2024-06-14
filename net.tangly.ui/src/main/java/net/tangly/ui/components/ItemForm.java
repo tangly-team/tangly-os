@@ -90,7 +90,7 @@ public abstract class ItemForm<T, U extends ItemView<T>> {
         action.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
         action.addClickListener(event -> {
             switch (operation) {
-                case EDIT -> updateEntity();
+                case EDIT, CREATE, DUPLICATE, REPLACE -> updateEntity();
                 case DELETE -> deleteEntity();
             }
             closeForm();
@@ -135,7 +135,7 @@ public abstract class ItemForm<T, U extends ItemView<T>> {
     }
 
     /**
-     * Set the operation of the form and propagates the readonly status to the form fields.
+     * Sets the operation of the form and propagates the readonly status to the form fields.
      * Overwrite the method to update form components accordingly.
      *
      * @param operation operation of the form
@@ -147,7 +147,7 @@ public abstract class ItemForm<T, U extends ItemView<T>> {
     }
 
     /**
-     * Return the value displayed in the form.
+     * Returns the value displayed in the form.
      *
      * @return value displayed in the form or null.
      */
@@ -156,7 +156,7 @@ public abstract class ItemForm<T, U extends ItemView<T>> {
     }
 
     /**
-     * Set the value displayed in the form. If the value is null, the form fields are reset to empty values.
+     * Sets the value displayed in the form. If the value is null, the form fields are reset to empty values.
      * <p>Overwrite the method to update components not supported by Vaadin binder for example an image. Handle null value accordingly. Do not forget to call the overwritten
      * method to trigger the binding mechanism.</p>
      *
