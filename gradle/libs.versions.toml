@@ -1,6 +1,6 @@
 [versions]
 assertj-version = '3.26.0'
-flyway-version = '10.14.0'
+flyway-version = '10.15.0'
 junit-version = '5.10.2'
 log4j2-version = '2.23.0'
 javalin-version = '5.6.4'
