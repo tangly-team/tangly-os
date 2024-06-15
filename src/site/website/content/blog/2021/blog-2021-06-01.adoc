@@ -50,7 +50,7 @@ instead, and accept that this will be less effective.
 * Coach and train team members in focusing proficiencies.
 * Train managers to create an environment that supports teamwork and how to manage the work system rather than individual contributions.
 
-The {ref-scrumguide} defines roles and events enabling a team to achieve the goals of the first zone.
+The {ref-scrum} defines roles and events enabling a team to achieve the goals of the first zone.
 
 [.text-center]
 _The organization focuses on agile values and fosters the nurturing of agile teams._

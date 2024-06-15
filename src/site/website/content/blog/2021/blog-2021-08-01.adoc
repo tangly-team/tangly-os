@@ -61,9 +61,9 @@ This will give them critical abilities to solve complex problems on their own.
 
 It builds self-organizing skills in your teams.
 {ref-scrum} framework provides hints what the minimal expected behaviors you should expect.
-There are several references to self-management in the {ref-scrumguide} as in the current version of 2020.
+There are several references to self-management in the {ref-scrum} as in the current version of 2020.
 
-[cite,{ref-scrumguide}]
+[cite,{ref-scrum}]
 ____
 Adaptation becomes more difficult when the people involved are not empowered or self-managing.
 

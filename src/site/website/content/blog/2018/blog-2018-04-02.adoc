@@ -57,6 +57,6 @@ And less truly and deeply advocate technical excellence for all collaborators.
 You need an agile mindset and technical excellence to develop awesome products.
 See link:../../2018/pragmatic-craftsmanship-professional-software-developer/[Software Craftsmanship] blog.
 
-A huge advantage of https://less.works[LeSS] is that it is {ref-scrumguide}.
+A huge advantage of https://less.works[LeSS] is that it is {ref-scrum}.
 You do not need to learn new methodologies, terminology or processes.
 Apply all your hard-earned learnings from your Scrum transformation.

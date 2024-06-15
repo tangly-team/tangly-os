@@ -80,7 +80,7 @@ You have a serious problem
 * If you have an impediment backlog with a growing number of active impediments.
 * If the Scrum master resolves all the impediments himself.
 * If you do not solve at least one impediment each sprint.
-It is a mandatory part in the {ref-scrumguide} 2018 version.
+It is a mandatory part in the {ref-scrum} 2018 version.
 
 As a Scrum coach, Scrum master or Scrum team member, you should reflect upon the above statements at least monthly.
 Otherwise, you are just pretending.

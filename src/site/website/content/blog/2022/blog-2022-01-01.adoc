@@ -6,7 +6,9 @@ tags: ["design", "java"]
 ---
 
 include::../fragments/_config-mb-blog.adoc[]
+
 :ref-technical-debt: https://en.wikipedia.org/wiki/Technical_debt[technical debt]
+:ref-sonarlint: https://www.sonarsource.com/products/sonarlint/[SonarLint]
 
 image::2022-01-03-head.png[width=420,height=360,role=left]
 
@@ -42,7 +44,7 @@ ____
 * Use static analysis tools to detect technical debt in your source code.
 * Use the features of your IDE
 footnote:[https://www.jetbrains.com/idea/[IntelliJ IDEA] IDE has a powerful set of functions to detect code smells and perform automatically standard refactoring activities.
-The https://www.sonarlint.org/[Sonar Lint] plugin for various IDEs to detect quality and security issues in your code.]
+The {ref-sonarlint} plugin for various IDEs to detect quality and security issues in your code.]
 to perform simple refactorings and improve the quality of your code.
 * Use your IDE to find all TODO comments
 * Use your IDE to find and remove commented-out lines of code.
@@ -63,7 +65,7 @@ Defects were removed.
 ====
 Each technological stack is gifted with open source and commercial static analysis tools.
 
-https://www.sonarsource.com/products/sonarlint/[SonarLint] supports all major languages and development environments.
+{ref-sonarlint} supports all major languages and development environments.
 You will find a https://en.wikipedia.org/wiki/List_of_tools_for_static_code_analysis[list of tools for static code analysis] for all major programming languages.
 
 A professional software developer shall use these tools to validate and improve her source code.

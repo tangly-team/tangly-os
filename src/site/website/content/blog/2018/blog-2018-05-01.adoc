@@ -7,13 +7,15 @@ tags: ["design", "java"]
 
 include::../fragments/_config-mb-blog.adoc[]
 
+:ref-sonarcube: https://www.sonarsource.com/products/sonarqube/[SonarQube]
+
 [.float-group]
 --
 image::2018-05-01-head.png[width=420,height=360,role=left]
 Remove issues before they reach customer sites.
 No quality problems shall reach your Git master branch.
 
-https://www.sonarqube.org/[SonarQube] is a central server that processes full analyses (triggered by the various SonarQube Scanners).
+{ref-sonarcube} is a central server that processes full analyses (triggered by the various SonarQube Scanners).
 
 Its purpose is to give a 360° vision about the quality of your code base.
 For this, it analyzes all the source lines of your product on a regular basis.

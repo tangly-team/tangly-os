@@ -128,7 +128,7 @@ You are probably doing _fake Scrum_.
 
 The software industry has created and promoted agile and Scrum approaches.
 A development department is responsible for delivering working software each sprint.
-Accordingly to the {ref-scrumguide}, a potentially shippable product is the increment result produced multiple times per week.
+Accordingly to the {ref-scrum}, a potentially shippable product is the increment result produced multiple times per week.
 
 You can easily detect fake Scrum and incompetent software development teams:
 

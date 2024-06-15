@@ -24,7 +24,7 @@ Agile and Scrum::
 - link:../../tags/agile/[Agile and Scrum Blogs]
 - link:../../ideas/learnings/workshops/agile-scrum/agile-scrum.html[Agile Scrum Workshop]
 - link:../../ideas/learnings/workshops/agile-technical-fluency/agile-technical-fluency.html[Agile Technical Fluency Workshop]
-- {ref-lean}, {ref-scrum}, {ref-less}, {ref-scrumguide}, {ref-scrum-alliance}, {ref-scrum-alliance}
+- {ref-lean}, {ref-scrum}, {ref-less}, {ref-scrum-alliance}, {ref-scrum-alliance}
 - {ref-manifesto} and {ref-manifesto-principles}, {ref-kaizen}, {ref-xp}
 - {ref-craftsmanship}, {ref-sociocracy}, {ref-bbrt}
 - {ref-trunk-based-development}

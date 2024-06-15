@@ -8,7 +8,7 @@ weight: 20
 {{% card header="**Agile Architecture**" %}}
 [Domain Driven Design](../../blog/2022/modular-monoliths-are-the-new-graal)
 
-[Refactoring](../../blog/2020/legacy-systems-refactoring)
+[Refactoring](../../blog/2020/legacy-systems-refactoring/)
 
 Mobile First Approaches
 

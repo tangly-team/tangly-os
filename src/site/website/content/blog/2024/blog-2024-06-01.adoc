@@ -27,7 +27,7 @@ This meeting belongs to the developers.
 
 == Official Definition
 
-The official definition of the Daily Scrum as stated in the {ref-scrumguide} is:
+The official definition of the Daily Scrum as stated in the {ref-scrum} is:
 
 _The purpose of the Daily Scrum is *to inspect progress toward the Sprint Goal* and *adapt* the Sprint Backlog as necessary, adjusting the upcoming planned
 work._
@@ -72,7 +72,7 @@ Both approaches work well for the respective teams.
 
 Most teams are astonished to hear that you can change the Sprint Backlog during the Sprint if it increases the odds to achieve the Sprint Goal.
 
-Motivate your collaborators to read the {ref-scrumguide}.
+Motivate your collaborators to read the {ref-scrum}.
 Support continuous formation.
 Certification does not proof deep knowledge.
 But at least you have learnt the definition and read historical and important texts.

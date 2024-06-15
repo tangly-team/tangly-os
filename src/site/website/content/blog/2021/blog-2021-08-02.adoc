@@ -42,7 +42,7 @@ You will *automate* every workflow in the long term to achieve speed and *reliab
 
 You will merge your Scrum software development teams, quality assurance groups, operations teams and testing groups into single product teams.
 
-_You will define cross-functional teams as documented in the {ref-scrumguide}._
+_You will define cross-functional teams as documented in the {ref-scrum}._
 ====
 
 == Benefits

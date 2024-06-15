@@ -119,13 +119,13 @@ I strongly recommend avoiding SAFe for the following reasons:
 * SAFe is complex and less agile.
 It contains waterfall elements.
 Their approach to software architecture is outdated and does not reflect the findings of OpenGroup, the steward of TOGAF.
-* https://www.scaledagileframework.com/agile-release-train/[Agile release trains] should align teams to a shared business and technology mission.
+* https://scaledagileframework.com/agile-release-train/[Agile release trains] should align teams to a shared business and technology mission.
 The ideal size of a train is between 50 and 125 people working on the same product family.
 Most product development initiatives are smaller.
 ALl members of a train shall work on the same products.
 Using the same technology stack is not a criteria to belong to the same train.
 * SAFe is not based or using Scrum.
-Their definition of Scrum master and product owner is different to the ones in {ref-scrumguide}.
+Their definition of Scrum master and product owner is different to the ones in {ref-scrum}.
 Their key roles of a release train engineer _RTE_ and product management do not exist in Scrum.
 They are more traditional project management roles.
 All synergy effects are lost.

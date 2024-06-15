@@ -11,7 +11,7 @@ image::2023-03-01-head.png[width=420,height=360,role=left]
 
 Scrum is the most popular agile approach used to develop digital products.
 
-The Scrum master role is well-documented in the {ref-scrumguide}.
+The Scrum master role is well-documented in the {ref-scrum}.
 There are probably more than one million of certified Scrum masters in the world.
 
 To differentiate themselves from the numerous Scrum masters, consultants call themselves agile coaches.
@@ -26,7 +26,7 @@ A Scrum master is a type of Agile coach.
 A Scrum master works to implement Agile on a team level, while the Agile coach works on the Agile transition of the whole company.
 ____
 
-I suggest that you study again the {ref-scrumguide} when reading the above quote.
+I suggest that you study again the {ref-scrum} when reading the above quote.
 Here the guide statement how a Scrum master should support her organization.
 
 _The Scrum Master serves the organization in several ways, including:_
@@ -39,7 +39,7 @@ _The Scrum Master serves the organization in several ways, including:_
 == Agile Coaches Profiles
 
 Here are some profiles of agile coaches.
-If you read the {ref-scrumguide} you understand these profiles are facets of the Scrum master role.
+If you read the {ref-scrum} you understand these profiles are facets of the Scrum master role.
 
 A Scrum master is always an agile coach cite:[art-agile-development-2nd,mastering-professional-scrum].
 

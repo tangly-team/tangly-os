@@ -1,12 +1,12 @@
-- link:../../2019/agile-architecture-principles[Agile Architecture Principles]
+- link:../../2019/agile-architecture-principles/[Agile Architecture Principles]
 Marcel Baumann. 2019.
-- link:../../2019/agile-code-is-clean-code[Agile Code is Clean Code!]
+- link:../../2019/agile-code-is-clean-code/[Agile Code is Clean Code!]
 Marcel Baumann. 2019.
 - link:../../2019/agile-architecture-within-scrum/[Agile Architecture within Scrum]
 Marcel Baumann. 2019.
-- link:../../2020/agile-component-design[Agile Component Design]
+- link:../../2020/agile-component-design/[Agile Component Design]
 Marcel Baumann. 2020.
-- link:../../2020/legacy-systems-refactoring[Legacy Systems Refactoring]
+- link:../../2020/legacy-systems-refactoring/[Legacy Systems Refactoring]
 Marcel Baumann. 2020.
-- link:../../2020/how-agile-collaborators-learn[How Agile Collaborators Learn]
+- link:../../2020/how-agile-collaborators-learn/[How Agile Collaborators Learn]
 Marcel Baumann. 2020.

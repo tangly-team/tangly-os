@@ -166,7 +166,7 @@ The {ref-less} framework uses good practices to improve architecture and design.
 Their approach is highly compatible with agile practices and speed of development.
 
 I do not use the bloated TOGAF architecture standard.
-I also avoid bloated agile methodologies such as https://www.scaledagileframework.com/[SAFe].
+I also avoid bloated agile methodologies such as {ref-safe}.
 
 I recommend using all these proven architecture techniques and tools.
 Apply them on your software product development using agile approaches like {ref-scrum} and {ref-less}.

@@ -7,6 +7,8 @@ tags: ["agile", "design", "java", "series-agile-design"]
 
 include::../fragments/_config-mb-blog.adoc[]
 
+:ref-sonarlint: https://www.sonarsource.com/products/sonarlint/[SonarLint]
+
 image::2020-04-01-head.jpg[width=420,height=360,role=left]
 
 You are an experienced programmer.
@@ -83,7 +85,7 @@ Agile code is clean code.
 [TIP]
 ====
 Modern integrated development environments _IDE_ provide static code analysis tools to detect smells in your source code.
-https://www.sonarlint.org/[SonarLint] is available for all major integrated development environments.
+{ref-sonarlint} is available for all major integrated development environments.
 
 Use these tools to steadily improve the quality of your code and remove well-known smells.
 ====

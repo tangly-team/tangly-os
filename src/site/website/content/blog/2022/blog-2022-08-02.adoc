@@ -214,7 +214,7 @@ Tools such as GitHub or GitLab increase efficiency if you are adopting DevOps pr
 - [[[transferring-a-repository, 1]]] https://docs.github.com/en/repositories/creating-and-managing-repositories/transferring-a-repository[Transferring a GitHub Repository]
 - [[[configuring-custom-domain, 2]]] https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site[Configuring Custom Domain]
 - [[[creative-commons, 3]]] https://creativecommons.org/[Creative Commons]
-- [[[sonarqube, 4]]] https://www.sonarqube.org/[SonarQube]
+- [[[sonarqube, 4]]] {ref-sonarcube}
 - [[[dependabot, 5]]] https://github.com/dependabot/dependabot-core[GitHub Dependabot]
 
 == References

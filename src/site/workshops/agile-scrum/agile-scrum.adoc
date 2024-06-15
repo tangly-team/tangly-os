@@ -13,7 +13,6 @@
 :ref-pdca: https://en.wikipedia.org/wiki/PDCA[Plan, Do, Check, Act]
 :ref-scrum-alliance: https://www.scrumalliance.org/[Scrum Alliance]
 :ref-scrum-org: https://www.scrum.org/[Scrum.org]
-:ref-scrumguide: http://www.scrumguides.org/[Scrum Guide]
 :ref-tangly-workshops: https://blog.tangly.net/ideas/learnings/workshops/[Workshops]
 :ref-yagni: https://en.wikipedia.org/wiki/You_aren%27t_gonna_need_it[[YAGNI]
 
@@ -151,7 +150,7 @@ Teams self-organize to determine *the best way to deliver the highest priority f
 
 [.notes]
 --
-The {ref-scrumguide} is the seminal text describing Scrum approach.
+The {ref-scrum} is the seminal text describing Scrum approach.
 
 The two major Scrum organizations are {ref-scrum-alliance} and {ref-scrum-org}.
 --
@@ -496,7 +495,7 @@ Requirements are continuously refined.
 
 === References
 
-- {ref-scrumguide}
+- {ref-scrum}
 - {ref-scrum-alliance}
 - {ref-scrum-org}
 - {ref-manifesto} and {ref-manifesto-principles}

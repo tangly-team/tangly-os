@@ -64,7 +64,7 @@ Therefore, all managers shall advocate technical excellence on a daily basis.
 If not, the seminal work of John Kotter clearly states the transformation will fail.
 You will have a bunch of Scrum teams in your development department, but have none of the expected synergies at the product or company level.
 
-Personally I prefer the {ref-less} approach, but I respect your choice - https://www.scaledagileframework.com/[SAFe],
+Personally I prefer the {ref-less} approach, but I respect your choice - {ref-safe},
 https://www.scrum.org/resources/nexus-guide[Nexus], or https://www.scrumatscale.com/scrum-at-scale-guide/[Scrum@Scale] - as long as technical excellence is a key aspect of your agile strategy.
 Embrace technical agility and do not let your train of teams produce mediocre software every two weeks.
 

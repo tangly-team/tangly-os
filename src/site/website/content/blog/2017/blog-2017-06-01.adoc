@@ -87,7 +87,7 @@ Few of these failure modes are unique to Agile approaches.
 They are reoccurring failure modes for all IT software development projects.
 Neither are they a comprehensive list of the ways in which Agile or traditional application development projects fail.
 
-We can state that (see the {ref-scrumguide})
+We can state that (see the {ref-scrum})
 
 * Team process improvement is a major focus for the Scrum Master or the Scrum Coach
 ** Coaching the Development Team in self-organization and cross-functionality.

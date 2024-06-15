@@ -21,7 +21,7 @@ Formal training is often the difference between being a professional instead of 
 
 == Product Owner Role
 
-Here the official definition of the product owner role taken from the {ref-scrumguide}.
+Here the official definition of the product owner role taken from the {ref-scrum}.
 
 The *Product Owner* is accountable for maximizing the value of the product resulting from the work of the Scrum Team.
 How this is done may vary widely across organizations, Scrum Teams, and individuals.

@@ -288,7 +288,7 @@ If you have a complex logic, consider implementing a flat finite state machine a
 [bibliography]
 == Links
 
-- [[[actors, 1]]] link:../../2024/actors/[Actors].
+- [[[actors, 1]]] link:../../2024/actor-model/[Actor Model].
 Marcel Baumann. 2024.
 - [[[actors-in-cpp, 2]]] link:../../2024/actors-in-cpp/[Actors in C++].
 Marcel Baumann. 2024.

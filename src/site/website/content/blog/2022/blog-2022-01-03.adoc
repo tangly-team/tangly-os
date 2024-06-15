@@ -6,6 +6,7 @@ tags: ["agile"]
 ---
 
 include::../fragments/_config-mb-blog.adoc[]
+:ref-sonarlint: https://www.sonarsource.com/products/sonarlint/[SonarLint]
 
 [.float-group]
 --
@@ -88,7 +89,7 @@ https://en.wikipedia.org/wiki/You_aren%27t_gonna_need_it[YAGNI], https://en.wiki
 * Explain exception handling approaches in backend and frontend applications.
 * Explain test driven development build on JUnit 5, Mockito and AssertJ and the variants TDD, BDD, ATDD.
 * Explain continuous integration, continuous delivery, and continuous deployment, infrastructure as code, DevOps.
-* Explain refactoring triggered by https://www.sonarlint.org/[SonarLint], https://pmd.github.io/[PMD], https://spotbugs.github.io/[SpotBugs].
+* Explain refactoring triggered by {ref-sonarlint}, https://pmd.github.io/[PMD], https://spotbugs.github.io/[SpotBugs].
 Architecture Capabilities::
 A professional software architect shall be able to define an application architecture.
 I am looking for:

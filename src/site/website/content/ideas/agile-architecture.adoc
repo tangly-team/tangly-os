@@ -12,11 +12,12 @@ description: An introduction to software architecture in agile product developme
 :company: https://www.tangly.net/[tangly llc]
 -:sectnums:
 :toc:
+:ref-sonarlint: https://www.sonarsource.com/products/sonarlint/[SonarLint]
 
 == Agile Architecture Principles
 
 You are applying the agile and lean approach to your software products development.
-Your teams use {ref-scrumguide} or https://en.wikipedia.org/wiki/Kanban_(development)[Kanban] to deliver running software at least every two weeks.
+Your teams use {ref-scrum} or https://en.wikipedia.org/wiki/Kanban_(development)[Kanban] to deliver running software at least every two weeks.
 The product launch is a tremendous success.
 You will likely sell the solution for the next ten years.
 
@@ -67,7 +68,7 @@ The scientific approach is key for professionalism.
 Use the findings to improve through small experiments.footnote:[Tool examples for the Java stack are provided to bootstrap your empirical approach.]
 
 * Static analysis tools: validate your source code against good practice rules,
-** _https://www.sonarlint.org[SonarLint], https://sonarcloud.io[SonarCloud], https://spotbugs.github.io/[Spotbugs], https://pmd.github.io/[PMD],
+** _{ref-sonarlint}, https://sonarcloud.io[SonarCloud], https://spotbugs.github.io/[Spotbugs], https://pmd.github.io/[PMD],
 https://checkstyle.sourceforge.io[Checkstyle]_
 * Test driven development: validate your design with TDD.
 ** _https://junit.org/junit5/[Junit5], https://joel-costigliola.github.io/assertj[AssertJ], https://site.mockito.org[Mockito]_

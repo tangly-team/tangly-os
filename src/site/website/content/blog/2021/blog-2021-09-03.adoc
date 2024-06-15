@@ -19,7 +19,7 @@ Formal training is often the difference between being a professional instead of 
 
 == Scrum Developer Role
 
-Here the official definition of the developer team member role taken from the {ref-scrumguide}.
+Here the official definition of the developer team member role taken from the {ref-scrum}.
 
 *Developers* are the people in the https://scrumguides.org/scrum-guide.html#scrum-team[Scrum Team] that are committed to creating any aspect of a usable
 https://scrumguides.org/scrum-guide.html#increment[Increment] each https://scrumguides.org/scrum-guide.html#the-sprint[Sprint].

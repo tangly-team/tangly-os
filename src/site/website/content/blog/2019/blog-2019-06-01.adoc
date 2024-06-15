@@ -11,7 +11,7 @@ include::../fragments/_config-mb-blog.adoc[]
 :ref-jacoco: https://www.eclemma.org/jacoco/[JaCoCo]
 :ref-junit5: https://junit.org/junit5/[JUnit 5]
 :ref-mockito: https://site.mockito.org/[Mockito]
-:ref-sonarlint: https://www.sonarlint.org/[SonarLint]
+:ref-sonarlint: https://www.sonarsource.com/products/sonarlint/[SonarLint]
 :ref-spotbugs: https://spotbugs.github.io/[Spotbugs]
 
 [.float-group]

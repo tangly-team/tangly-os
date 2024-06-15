@@ -75,7 +75,7 @@ https://less.works/less/adoption/getting-started.html[Keep product managers away
 For all https://www.pmi.org/[Project Management Institute] _PMI_ fans, the institute acquired _Disciplined Agile Delivery_ _DAD_ in 2019.
 The PMI-ACP is working on integrating agile approaches in the official PMI approach.
 
-An official definition of Scrum and the responsibilities of the team, product owner and Scrum master are documented in {ref-scrumguide}.
+An official definition of Scrum and the responsibilities of the team, product owner and Scrum master are documented in {ref-scrum}.
 
 The agile alliance provides a https://www.agilealliance.org/agile101/agile-glossary/[glossary of agile terms].
 
