@@ -78,18 +78,21 @@ class UsersView extends ItemView<User> {
         @Override
         protected void closeForm() {
             password.setRequired(false);
+            password.setEnabled(false);
             super.closeForm();
         }
 
         @Override
         public void create() {
             super.create();
+            password.setEnabled(true);
             password.setRequired(true);
         }
 
         @Override
         public void duplicate(@NotNull User entity) {
             super.duplicate(entity);
+            password.setEnabled(true);
             password.setRequired(true);
         }
 

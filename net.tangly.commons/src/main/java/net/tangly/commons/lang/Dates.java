@@ -11,15 +11,14 @@
  *
  */
 
-package net.tangly.commons.utilities;
+package net.tangly.commons.lang;
 
-import net.tangly.commons.lang.Strings;
 import org.jetbrains.annotations.NotNull;
 
 import java.time.LocalDate;
 
-public final class DateUtilities {
-    private DateUtilities() {
+public final class Dates {
+    private Dates() {
     }
 
     public static boolean isWithinRange(@NotNull LocalDate date, LocalDate from, LocalDate to) {

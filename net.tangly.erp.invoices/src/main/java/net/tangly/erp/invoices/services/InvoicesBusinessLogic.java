@@ -19,7 +19,7 @@ import org.jetbrains.annotations.NotNull;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-import static net.tangly.commons.utilities.DateUtilities.isWithinRange;
+import static net.tangly.commons.lang.Dates.isWithinRange;
 
 /**
  * The business logic and rules of the bounded domain for invoices entities.

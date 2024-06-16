@@ -13,9 +13,9 @@
 
 package net.tangly.erp.ledger.ports;
 
+import net.tangly.commons.lang.Dates;
 import net.tangly.commons.lang.Strings;
 import net.tangly.commons.logger.EventData;
-import net.tangly.commons.utilities.DateUtilities;
 import net.tangly.core.Tag;
 import net.tangly.core.domain.DomainAudit;
 import net.tangly.core.domain.TsvHdl;
@@ -219,13 +219,13 @@ public class LedgerTsvHdl {
                     var debitAccount = Strings.emptyToNull(debitValues[0]);
                     var creditAccount = Strings.emptyToNull(creditValues[0]);
                     var debit = (debitAccount != null) ?
-                        new AccountEntry(debitAccount, DateUtilities.of(date), amount, null, null, true, VatCode.of(vatCode), defineSegments(debitValues)) :
+                        new AccountEntry(debitAccount, Dates.of(date), amount, null, null, true, VatCode.of(vatCode), defineSegments(debitValues)) :
                         null;
                     var credit = (creditAccount != null) ?
-                        new AccountEntry(creditAccount, DateUtilities.of(date), amount, null, null, false, VatCode.of(vatCode), defineSegments(creditValues)) :
+                        new AccountEntry(creditAccount, Dates.of(date), amount, null, null, false, VatCode.of(vatCode), defineSegments(creditValues)) :
                         null;
                     Transaction transaction =
-                        Transaction.of(DateUtilities.of(date), reference, text, debit, credit, VatCode.of(vatCode), DateUtilities.of(dateExpected), splits);
+                        Transaction.of(Dates.of(date), reference, text, debit, credit, VatCode.of(vatCode), Dates.of(dateExpected), splits);
                     ledger.book(transaction);
                     ++counter;
                     audit.log(EventData.IMPORT_EVENT, EventData.Status.SUCCESS, STR."\{Transaction.class.getSimpleName()} imported to journal",
