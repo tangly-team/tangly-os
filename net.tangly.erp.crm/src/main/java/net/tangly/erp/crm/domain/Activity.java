@@ -13,9 +13,9 @@
 
 package net.tangly.erp.crm.domain;
 
+import net.tangly.commons.lang.Strings;
 import net.tangly.core.HasMutableDate;
 import net.tangly.core.HasMutableText;
-import net.tangly.core.Strings;
 import org.jetbrains.annotations.NotNull;
 
 import java.time.LocalDate;

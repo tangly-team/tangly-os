@@ -49,9 +49,12 @@ public class AppsBoundedDomainUi extends BoundedDomainUi<AppsBoundedDomain> {
         if (hasDomainAdminRights()) {
             MenuItem menuItem = menuBar.addItem("Housekeeping");
             SubMenu subMenu = menuItem.getSubMenu();
-            subMenu.addItem("Import All", _ -> Application.instance().boundedDomains().values().forEach(o -> o.port().importEntities(o)));
-            subMenu.addItem("Export All", _ -> Application.instance().boundedDomains().values().forEach(o -> o.port().exportEntities(o)));
-            subMenu.addItem("Clear All", _ -> Application.instance().boundedDomains().values().forEach(o -> o.port().clearEntities(o)));
+            subMenu.addItem("Import All",
+                _ -> executeGlobalAction(() -> Application.instance().boundedDomains().values().forEach(o -> o.port().importEntities(o))));
+            subMenu.addItem("Export All",
+                _ -> executeGlobalAction(() -> Application.instance().boundedDomains().values().forEach(o -> o.port().exportEntities(o))));
+            subMenu.addItem("Clear All",
+                _ -> executeGlobalAction(() -> Application.instance().boundedDomains().values().forEach(o -> o.port().clearEntities(o))));
         }
     }
 }

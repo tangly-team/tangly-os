@@ -14,10 +14,10 @@
 package net.tangly.erp.products.ports;
 
 import com.amihaiemil.eoyaml.*;
+import net.tangly.commons.lang.Strings;
 import net.tangly.commons.logger.EventData;
 import net.tangly.commons.utilities.AsciiDoctorHelper;
 import net.tangly.commons.utilities.ValidatorUtilities;
-import net.tangly.core.Strings;
 import net.tangly.core.domain.DomainAudit;
 import net.tangly.core.domain.Port;
 import net.tangly.core.providers.Provider;

@@ -14,7 +14,11 @@
 package net.tangly.erp.crm.domain;
 
 
-import net.tangly.core.*;
+import net.tangly.commons.lang.Strings;
+import net.tangly.core.Address;
+import net.tangly.core.MutableEntityExtended;
+import net.tangly.core.MutableEntityExtendedImp;
+import net.tangly.core.Tag;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;

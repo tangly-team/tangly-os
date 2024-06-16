@@ -64,11 +64,18 @@ public interface Cmd {
     }
 
     /**
-     * Execute the command.
+     * Executes the command.
      */
     void execute();
 
-    static Dialog createDialog(String width, FormLayout form) {
+    /**
+     * Factory method to create a dialog with a form layout. The dialog is resizable and has a fixed width.
+     *
+     * @param width width of the dialog
+     * @param form  form layout to display in the dialog
+     * @return dialog with the form layout
+     */
+    static Dialog createDialog(@NotNull String width, @NotNull FormLayout form) {
         Dialog dialog = new Dialog();
         dialog.setWidth(width);
         dialog.setResizable(true);
@@ -77,7 +84,7 @@ public interface Cmd {
     }
 
     /**
-     * Return true if the command is enabled. The criteria are if an item is selected in the grid and the access rights associated with the user profile.
+     * Returns true if the command is enabled. The criteria are if an item is selected in the grid and the access rights associated with the user profile.
      *
      * @param itemSelected true if an item is selected in the grid
      * @return true if the command is enabled, otherwise false
@@ -87,7 +94,7 @@ public interface Cmd {
     }
 
     /**
-     * Return the dialog associated with the command if existing.
+     * Returns the dialog associated with the command if existing.
      *
      * @return associated dialog if defined othwrwise null
      */

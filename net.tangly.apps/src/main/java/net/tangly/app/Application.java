@@ -56,7 +56,7 @@ public final class Application {
         this.registry = new TypeRegistry();
         boundedDomains = new HashMap<>();
         boundedDomainRests = new HashMap<>();
-        try (var in = Thread.currentThread().getContextClassLoader().getResourceAsStream("META-INF/application.properties")) {
+        try (var in = Thread.currentThread().getContextClassLoader().getResourceAsStream("META-INF/tenant-tangly.properties")) {
             if (in != null) {
                 properties.load(in);
             }

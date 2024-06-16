@@ -13,8 +13,8 @@
 
 package net.tangly.erp.products.ports;
 
+import net.tangly.commons.lang.Strings;
 import net.tangly.commons.utilities.AsciiDocHelper;
-import net.tangly.core.Strings;
 import net.tangly.erp.products.domain.Assignment;
 import net.tangly.erp.products.domain.Effort;
 import net.tangly.erp.products.services.ProductsBusinessLogic;
@@ -71,7 +71,8 @@ public class EffortReportEngine {
         final AsciiDocHelper helper = new AsciiDocHelper(writer);
         helper.header(FMT."Work Report \{Strings.firstOnlyUppercase(month.getMonth().toString())} \{month.getYear()}", 2);
         int workedDuration = logic.collect(assignment, null, month.atEndOfMonth()).stream().map(Effort::duration).reduce(0, Integer::sum);
-        helper.paragraph(FMT."The amount of performed activities is \{convert(workedDuration, unit)} \{text(unit)} until end of \{Strings.firstOnlyUppercase(month.getMonth().toString())} \{month.getYear()}.");
+        helper.paragraph(FMT."The amount of performed activities is \{convert(workedDuration, unit)} \{text(unit)} until end of \{Strings.firstOnlyUppercase(
+            month.getMonth().toString())} \{month.getYear()}.");
         helper.paragraph("The daily reports are:");
         helper.tableHeader(null, "cols=\"1,6a,>1\", options=\"header\"");
 
@@ -121,7 +122,8 @@ public class EffortReportEngine {
         helper.tableRow("", "", "");
     }
 
-    private void generateEffortsTotalForContract(@NotNull List<Effort> efforts, @NotNull String contractId, @NotNull AsciiDocHelper helper, @NotNull ChronoUnit unit) {
+    private void generateEffortsTotalForContract(@NotNull List<Effort> efforts, @NotNull String contractId, @NotNull AsciiDocHelper helper,
+                                                 @NotNull ChronoUnit unit) {
         int totalDuration = efforts.stream().map(Effort::duration).reduce(0, Integer::sum);
         helper.tableRow(STR."Total Time for Contract \{contractId}", STR."(Time in \{text(unit)}", convert(totalDuration, unit).toString());
         helper.tableRow("", "", "");

@@ -65,12 +65,12 @@ public class ContractExtensionsView extends ItemView<ContractExtension> {
     }
 
     /**
-     * Activate the contract extension in the ERP system. The {@link net.tangly.erp.crm.events.ContractSignedEvent} is published to the event bus.
+     * Activates the contract extension in the ERP system. The {@link net.tangly.erp.crm.events.ContractSignedEvent} is published to the event bus.
      * The activation states the intent to start working on the contract.
      *
      * @param extension contract extension to activate
      */
-    private void contractActivated(ContractExtension extension) {
+    private void contractActivated(@NotNull ContractExtension extension) {
         var contract = Provider.findById(domain().realm().contracts(), extension.contractId());
         var event = ContractExtension.of(extension, contract.orElseThrow());
         domain().channel().submit(event);

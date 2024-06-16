@@ -239,7 +239,7 @@ public abstract class ItemForm<T, U extends ItemView<T>> {
      * @param value     value to display
      * @param operation operation to perform
      */
-    private void display(T value, @NotNull Operation operation) {
+    protected void display(T value, @NotNull Operation operation) {
         operation(operation);
         action.setText(operation.confirmationText());
         value(value);
@@ -252,7 +252,7 @@ public abstract class ItemForm<T, U extends ItemView<T>> {
         }
     }
 
-    private void closeForm() {
+    protected void closeForm() {
         if (Objects.nonNull(dialog)) {
             dialog.close();
             dialog = null;

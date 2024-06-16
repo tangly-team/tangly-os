@@ -17,10 +17,10 @@ import net.fortuna.ical4j.vcard.Group;
 import net.fortuna.ical4j.vcard.Parameter;
 import net.fortuna.ical4j.vcard.Property;
 import net.fortuna.ical4j.vcard.VCard;
+import net.tangly.commons.lang.Strings;
 import net.tangly.core.Address;
 import net.tangly.core.EmailAddress;
 import net.tangly.core.PhoneNr;
-import net.tangly.core.Strings;
 import net.tangly.erp.crm.domain.GenderCode;
 import net.tangly.erp.crm.domain.Photo;
 import org.jetbrains.annotations.NotNull;
@@ -52,26 +52,26 @@ public class VCard2 {
 
     public Optional<EmailAddress> homeEmail() {
         return card.getProperties(Property.Id.EMAIL).stream()
-                .filter(o -> containsParameterType(o, Parameter.Id.TYPE, "INTERNET") && containsParameterType(o, Parameter.Id.TYPE, "HOME"))
-                .map(Property::getValue).map(EmailAddress::of).findAny();
+            .filter(o -> containsParameterType(o, Parameter.Id.TYPE, "INTERNET") && containsParameterType(o, Parameter.Id.TYPE, "HOME"))
+            .map(Property::getValue).map(EmailAddress::of).findAny();
     }
 
     public Optional<EmailAddress> workEmail() {
         return card.getProperties(Property.Id.EMAIL).stream()
-                .filter(o -> containsParameterType(o, Parameter.Id.TYPE, "INTERNET") && containsParameterType(o, Parameter.Id.TYPE, "WORK"))
-                .map(Property::getValue).map(EmailAddress::of).findAny();
+            .filter(o -> containsParameterType(o, Parameter.Id.TYPE, "INTERNET") && containsParameterType(o, Parameter.Id.TYPE, "WORK"))
+            .map(Property::getValue).map(EmailAddress::of).findAny();
     }
 
     public Optional<PhoneNr> homePhone() {
         return card.getProperties(Property.Id.TEL).stream()
-                .filter(o -> containsParameterType(o, Parameter.Id.TYPE, "VOICE") && containsParameterType(o, Parameter.Id.TYPE, "HOME"))
-                .map(Property::getValue).map(PhoneNr::of).findAny();
+            .filter(o -> containsParameterType(o, Parameter.Id.TYPE, "VOICE") && containsParameterType(o, Parameter.Id.TYPE, "HOME"))
+            .map(Property::getValue).map(PhoneNr::of).findAny();
     }
 
     public Optional<PhoneNr> workPhone() {
         return card.getProperties(Property.Id.TEL).stream()
-                .filter(o -> containsParameterType(o, Parameter.Id.TYPE, "VOICE") && containsParameterType(o, Parameter.Id.TYPE, "WORK"))
-                .map(Property::getValue).map(PhoneNr::of).findAny();
+            .filter(o -> containsParameterType(o, Parameter.Id.TYPE, "VOICE") && containsParameterType(o, Parameter.Id.TYPE, "WORK"))
+            .map(Property::getValue).map(PhoneNr::of).findAny();
     }
 
     public String title() {
@@ -131,7 +131,7 @@ public class VCard2 {
             var parts = Objects.requireNonNull(text).split(";", -1);
             Objects.checkFromIndexSize(0, parts.length, 7);
             return Address.builder().poBox(parts[0]).extended(parts[1]).street(parts[2]).locality(parts[3]).region(parts[4]).postcode(parts[5])
-                    .country(parts[6]).build();
+                .country(parts[6]).build();
         } else {
             return null;
         }

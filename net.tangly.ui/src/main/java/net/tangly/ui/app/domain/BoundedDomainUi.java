@@ -152,7 +152,7 @@ public abstract class BoundedDomainUi<T extends BoundedDomain<?, ?, ?>> {
         subMenu.addItem(ANALYTICS, _ -> select(layout, analyticsView));
     }
 
-    private void executeGlobalAction(@NotNull Runnable action) {
+    protected final void executeGlobalAction(@NotNull Runnable action) {
         action.run();
         refreshViews();
     }

@@ -19,16 +19,19 @@ import com.vaadin.flow.component.checkbox.Checkbox;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+import com.vaadin.flow.component.textfield.PasswordField;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.ValidationException;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.server.StreamResource;
+import net.tangly.commons.lang.Strings;
 import net.tangly.core.domain.AccessRights;
 import net.tangly.core.domain.User;
 import net.tangly.ui.components.*;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.ByteArrayInputStream;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -39,21 +42,23 @@ class UsersView extends ItemView<User> {
     static class UserForm extends ItemForm<User, UsersView> {
         private final Image image;
         private final TextField username;
+        private final PasswordField password;
         private final TextField gravatarEmail;
         private final Checkbox active;
         private final TextField naturalPersonId;
         private final One2ManyOwnedField<AccessRights> rights;
-
 
         UserForm(@NotNull UsersView parent) {
             super(parent);
             image = new Image();
             image.setWidth(200, Unit.PIXELS);
             image.setHeight(200, Unit.PIXELS);
-            username = VaadinUtils.createTextField("Username", "username", true, false);
-            gravatarEmail = VaadinUtils.createTextField("Gravatar Email", "gravatar email", true, false);
+            username = VaadinUtils.createTextField("Username", "username");
+            username.setRequired(true);
+            password = new PasswordField("Password");
+            gravatarEmail = VaadinUtils.createTextField("Gravatar Email", "gravatar email");
             active = new Checkbox("Active");
-            naturalPersonId = VaadinUtils.createTextField("Person Id", "natural person id", true, false);
+            naturalPersonId = VaadinUtils.createTextField("Person Id", "natural person id");
             rights = new One2ManyOwnedField<>(new AccessRightsView(parent.domainUi(), Mode.EDITABLE));
             binder().bindReadOnly(rights, User::accessRights);
 
@@ -70,9 +75,41 @@ class UsersView extends ItemView<User> {
             }
         }
 
+        @Override
+        protected void closeForm() {
+            password.setRequired(false);
+            super.closeForm();
+        }
+
+        @Override
+        public void create() {
+            super.create();
+            password.setRequired(true);
+        }
+
+        @Override
+        public void duplicate(@NotNull User entity) {
+            super.duplicate(entity);
+            password.setRequired(true);
+        }
+
+        @Override
+        protected User createOrUpdateInstance(User entity) throws ValidationException {
+            String newPassword = null;
+            String newSalt = User.newSalt();
+            if (!Strings.isNullOrBlank(password.getValue())) {
+                newPassword = User.encryptPassword(password.getValue(), newSalt);
+            } else if (entity != null) {
+                newPassword = entity.passwordHash();
+                newSalt = entity.passwordSalt();
+            }
+            return new User(username.getValue(), newPassword, newSalt, active.getValue(), naturalPersonId.getValue(),
+                List.copyOf(rights.getValue()), gravatarEmail.getValue());
+        }
+
         private FormLayout details() {
             FormLayout form = new FormLayout();
-            form.add(username, gravatarEmail, active, naturalPersonId);
+            form.add(username, password, gravatarEmail, active, naturalPersonId);
             form.add(new HtmlComponent("br"));
             form.add(new VerticalLayout(image));
             binder().bindReadOnly(username, o -> o.username());
@@ -82,10 +119,6 @@ class UsersView extends ItemView<User> {
             return form;
         }
 
-        @Override
-        protected User createOrUpdateInstance(User entity) throws ValidationException {
-            return Objects.isNull(entity) ? null : entity;
-        }
     }
 
     public UsersView(@NotNull AppsBoundedDomainUi domain, @NotNull Mode mode) {

@@ -54,11 +54,6 @@ public class AccessRightsView extends ItemView<AccessRights> {
             username.setValue(ApplicationView.username());
         }
 
-        @Override
-        public void duplicate(@NotNull AccessRights entity) {
-            super.duplicate(entity);
-        }
-
         /**
          * Handle the edition or addition of an immutable comment. If the parameter is not null, it is removed from the list before the changed version is added. The updated
          * property values are retrieved from the form. The logic of the item form we inherited from takes care of the provider update to synchronize the user interface grid.

@@ -28,9 +28,9 @@ import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.renderer.ComponentRenderer;
 import com.vaadin.flow.data.renderer.Renderer;
 import com.vaadin.flow.function.ValueProvider;
+import net.tangly.commons.lang.Strings;
 import net.tangly.core.EmailAddress;
 import net.tangly.core.HasMutableTags;
-import net.tangly.core.Strings;
 import net.tangly.core.Tag;
 import org.jetbrains.annotations.NotNull;
 
@@ -215,10 +215,14 @@ public final class VaadinUtils {
     }
 
     public static List<LocalDate> quarterLegends(LocalDate from, LocalDate to) {
-        return List.of(LocalDate.parse("2015-12-31"), LocalDate.parse("2016-03-31"), LocalDate.parse("2016-06-30"), LocalDate.parse("2016-09-30"), LocalDate.parse("2016-12-31"),
-            LocalDate.parse("2017-03-31"), LocalDate.parse("2017-06-30"), LocalDate.parse("2017-09-30"), LocalDate.parse("2017-12-31"), LocalDate.parse("2018-03-31"),
-            LocalDate.parse("2018-06-30"), LocalDate.parse("2018-09-30"), LocalDate.parse("2018-12-31"), LocalDate.parse("2019-03-31"), LocalDate.parse("2019-06-30"),
-            LocalDate.parse("2019-09-30"), LocalDate.parse("2019-12-31"), LocalDate.parse("2020-03-31"), LocalDate.parse("2020-06-30"), LocalDate.parse("2020-09-30"),
+        return List.of(LocalDate.parse("2015-12-31"), LocalDate.parse("2016-03-31"), LocalDate.parse("2016-06-30"), LocalDate.parse("2016-09-30"),
+            LocalDate.parse("2016-12-31"),
+            LocalDate.parse("2017-03-31"), LocalDate.parse("2017-06-30"), LocalDate.parse("2017-09-30"), LocalDate.parse("2017-12-31"),
+            LocalDate.parse("2018-03-31"),
+            LocalDate.parse("2018-06-30"), LocalDate.parse("2018-09-30"), LocalDate.parse("2018-12-31"), LocalDate.parse("2019-03-31"),
+            LocalDate.parse("2019-06-30"),
+            LocalDate.parse("2019-09-30"), LocalDate.parse("2019-12-31"), LocalDate.parse("2020-03-31"), LocalDate.parse("2020-06-30"),
+            LocalDate.parse("2020-09-30"),
             LocalDate.parse("2020-12-31"));
     }
 

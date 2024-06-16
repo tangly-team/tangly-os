@@ -13,7 +13,7 @@
 
 package net.tangly.ui.asciidoc;
 
-import net.tangly.core.Strings;
+import net.tangly.commons.lang.Strings;
 
 public final class StringUtil {
     public static String nullSafeString(String value) {

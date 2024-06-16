@@ -14,6 +14,7 @@
 package net.tangly.erp.crm.domain;
 
 
+import net.tangly.commons.lang.Strings;
 import net.tangly.core.*;
 
 import java.util.Objects;

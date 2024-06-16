@@ -21,7 +21,7 @@ import com.vaadin.flow.component.tabs.Tab;
 import com.vaadin.flow.component.tabs.TabSheet;
 import com.vaadin.flow.component.tabs.TabSheetVariant;
 import com.vaadin.flow.component.textfield.TextArea;
-import net.tangly.core.Strings;
+import net.tangly.commons.lang.Strings;
 import net.tangly.ui.components.VaadinUtils;
 import org.asciidoctor.Asciidoctor;
 

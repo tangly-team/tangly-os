@@ -77,7 +77,7 @@ public final class Main {
             protected @NotNull WebAppContext createWebAppContext() throws IOException {
                 final WebAppContext context = super.createWebAppContext();
                 ServletHolder staticFiles = new ServletHolder("staticFiles", new DefaultServlet());
-                staticFiles.setInitParameter("resourceBase", "/private/var/tangly-erp/reports");
+                staticFiles.setInitParameter("resourceBase", "/private/var/tangly-erp/tenant-tangly/reports");
                 context.addServlet(staticFiles, "/reports/*");
                 return context;
             }
