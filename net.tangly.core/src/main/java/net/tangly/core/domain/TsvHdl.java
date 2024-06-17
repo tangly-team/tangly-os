@@ -81,6 +81,10 @@ public final class TsvHdl {
         return fields;
     }
 
+    public static String parseString(@NotNull CSVRecord record, @NotNull String fieldName) {
+        return Strings.blankToNull(record.get(fieldName));
+    }
+
     public static LocalDate parseDate(@NotNull CSVRecord record, @NotNull String fieldName) {
         var value = record.get(fieldName);
         return Strings.isNullOrBlank(value) ? null : LocalDate.parse(value);

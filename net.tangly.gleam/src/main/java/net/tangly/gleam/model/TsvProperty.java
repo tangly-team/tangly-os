@@ -64,10 +64,20 @@ public record TsvProperty<T, U>(List<String> columns, Function<T, U> getter, BiC
     }
 
     public static <T> TsvProperty<T, String> ofString(@NotNull String column, Function<T, String> getter) {
-        return of(column, getter, null, v -> v, u -> u);
+        return of(column, getter, null, v -> v, u -> Strings.blankToNull(u));
     }
+
+    /**
+     * Defines a property mapped to one column with a transformation step from the string representation to the property type.
+     * TSV empty strings are converted to null values.
+     * @param column column in which the property will be stored in the TSV record
+     * @param getter getter method to read the property from the entity
+     * @param setter setter method to write the property into the entity
+     * @return new TSV property
+     * @param <T> entity type
+     */
     public static <T> TsvProperty<T, String> ofString(@NotNull String column, Function<T, String> getter, BiConsumer<T, String> setter) {
-        return of(column, getter, setter, v -> v, u -> u);
+        return of(column, getter, setter, v -> v, u -> Strings.blankToNull(u));
     }
 
     public static <T> TsvProperty<T, LocalDate> ofDate(@NotNull String column, Function<T, LocalDate> getter, BiConsumer<T, LocalDate> setter) {
@@ -103,7 +113,7 @@ public record TsvProperty<T, U>(List<String> columns, Function<T, U> getter, BiC
     }
 
     /**
-     * Define a property mapped to one column with a transformation step from the string representation to the property type.
+     * Defines a property mapped to one column with a transformation step from the string representation to the property type.
      *
      * @param column      column in which the property will be stored in the TSV record
      * @param getter      getter method to read the property from the entity
@@ -118,7 +128,7 @@ public record TsvProperty<T, U>(List<String> columns, Function<T, U> getter, BiC
     }
 
     /**
-     * Define a property mapped to one column with the transformations between string and property type.
+     * Defines a property mapped to one column with the transformations between string and property type.
      *
      * @param column      column in which the property will be stored in the TSV record
      * @param getter      getter method to read the property from the entity
@@ -142,7 +152,7 @@ public record TsvProperty<T, U>(List<String> columns, Function<T, U> getter, BiC
     }
 
     /**
-     * Return the enumeration value of the name if not null otherwise null.
+     * Returns the enumeration value of the name if not null otherwise null.
      *
      * @param enumClass the Class object of the enum class from which to return a constant.
      * @param name      the name of the constant to return

@@ -58,7 +58,8 @@ public class AppsTsvHdl {
         Function<CSVRecord, User> imports = (CSVRecord o) -> {
             var username = get(o, USERNAME);
             var accessRights = accessRights(rights, username);
-            return new User(username, get(o, PASSWORD_HASH), get(o, PASSWORD_SALT), true, get(o, NATURAL_ENTITY_ID), accessRights, get(o, GRAVATAR_EMAIL));
+            return new User(username, get(o, PASSWORD_HASH), get(o, PASSWORD_SALT), true, get(o, NATURAL_ENTITY_ID), accessRights,
+                TsvHdl.parseString(o, GRAVATAR_EMAIL));
         };
         List<TsvProperty<User, ?>> fields = List.of(TsvProperty.ofString(USERNAME, User::username), TsvProperty.ofString(PASSWORD_HASH, User::passwordHash),
             TsvProperty.ofString(PASSWORD_SALT, User::passwordSalt), TsvProperty.ofBoolean(ACTIVE, User::active),
@@ -67,10 +68,11 @@ public class AppsTsvHdl {
     }
 
     private static TsvEntity<AccessRights> createTsvAccessRights() {
-        Function<CSVRecord, AccessRights> imports = (CSVRecord o) -> new AccessRights(get(o, USERNAME), get(o, TsvHdl.DOMAIN),
-            TsvHdl.parseEnum(o, RIGHTS, AccessRightsCode.class));
-        List<TsvProperty<AccessRights, ?>> fields = List.of(TsvProperty.ofString(USERNAME, AccessRights::username),
-            TsvProperty.ofString(TsvHdl.DOMAIN, AccessRights::domain), TsvProperty.ofEnum(AccessRightsCode.class, RIGHTS, AccessRights::right));
+        Function<CSVRecord, AccessRights> imports =
+            (CSVRecord o) -> new AccessRights(get(o, USERNAME), get(o, TsvHdl.DOMAIN), TsvHdl.parseEnum(o, RIGHTS, AccessRightsCode.class));
+        List<TsvProperty<AccessRights, ?>> fields =
+            List.of(TsvProperty.ofString(USERNAME, AccessRights::username), TsvProperty.ofString(TsvHdl.DOMAIN, AccessRights::domain),
+                TsvProperty.ofEnum(AccessRightsCode.class, RIGHTS, AccessRights::right));
         return TsvEntity.of(AccessRights.class, fields, imports);
     }
 
