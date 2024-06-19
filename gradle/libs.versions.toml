@@ -7,7 +7,7 @@ javalin-version = '5.6.4'
 openapi-version = "5.6.4"
 eclipsestore-version = '1.3.2'
 mustang-version = '2.11.0'
-vaadin-version = '24.4.2'
+vaadin-version = '24.4.3'
 
 [plugins]
 vaadin = { id = "com.vaadin", version.ref = "vaadin-version" }
@@ -48,7 +48,7 @@ flywy-hsqldb = { module = "org.flywaydb:flyway-database-hsqldb", version.ref = "
 hsqldb = "org.hsqldb:hsqldb:2.7.3"
 iban4j = "org.iban4j:iban4j:3.2.8-RELEASE"
 
-ical4j-core = "org.mnode.ical4j:ical4j:3.2.18"
+ical4j-core = "org.mnode.ical4j:ical4j:4.0.0"
 ical4j-vcard = "org.mnode.ical4j:ical4j-vcard:1.0.7"
 
 google-libphonenumber = "com.googlecode.libphonenumber:libphonenumber:8.13.39"
