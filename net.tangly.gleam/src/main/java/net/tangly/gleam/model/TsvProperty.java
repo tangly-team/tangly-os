@@ -70,14 +70,19 @@ public record TsvProperty<T, U>(List<String> columns, Function<T, U> getter, BiC
     /**
      * Defines a property mapped to one column with a transformation step from the string representation to the property type.
      * TSV empty strings are converted to null values.
+     *
      * @param column column in which the property will be stored in the TSV record
      * @param getter getter method to read the property from the entity
      * @param setter setter method to write the property into the entity
+     * @param <T>    entity type
      * @return new TSV property
-     * @param <T> entity type
      */
     public static <T> TsvProperty<T, String> ofString(@NotNull String column, Function<T, String> getter, BiConsumer<T, String> setter) {
         return of(column, getter, setter, v -> v, u -> Strings.blankToNull(u));
+    }
+
+    public static <T> TsvProperty<T, LocalDate> ofDate(@NotNull String column, @NotNull Function<T, LocalDate> getter) {
+        return of(column, getter, null, v -> (Strings.isNullOrBlank(v)) ? null : LocalDate.parse(v), u -> u);
     }
 
     public static <T> TsvProperty<T, LocalDate> ofDate(@NotNull String column, Function<T, LocalDate> getter, BiConsumer<T, LocalDate> setter) {
@@ -90,6 +95,10 @@ public record TsvProperty<T, U>(List<String> columns, Function<T, U> getter, BiC
 
     public static <T> TsvProperty<T, Long> ofLong(@NotNull String column, Function<T, Long> getter, BiConsumer<T, Long> setter) {
         return of(column, getter, setter, v -> (v == null) ? 0 : Long.parseLong(v), u -> u);
+    }
+
+    public static <T> TsvProperty<T, BigDecimal> ofBigDecimal(@NotNull String column, Function<T, BigDecimal> getter) {
+        return of(column, getter, null, v -> (Strings.isNullOrBlank(v)) ? BigDecimal.ZERO : new BigDecimal(v), BigDecimal::toPlainString);
     }
 
     public static <T> TsvProperty<T, BigDecimal> ofBigDecimal(@NotNull String column, Function<T, BigDecimal> getter, BiConsumer<T, BigDecimal> setter) {
@@ -108,7 +117,8 @@ public record TsvProperty<T, U>(List<String> columns, Function<T, U> getter, BiC
         return of(column, getter, null, v -> valueOf(clazz, v), U::name);
     }
 
-    public static <T, U extends Enum<U>> TsvProperty<T, U> ofEnum(@NotNull Class<U> clazz, @NotNull String column, Function<T, U> getter, BiConsumer<T, U> setter) {
+    public static <T, U extends Enum<U>> TsvProperty<T, U> ofEnum(@NotNull Class<U> clazz, @NotNull String column, Function<T, U> getter,
+                                                                  BiConsumer<T, U> setter) {
         return of(column, getter, setter, v -> valueOf(clazz, v), U::name);
     }
 
@@ -143,11 +153,12 @@ public record TsvProperty<T, U>(List<String> columns, Function<T, U> getter, BiC
                                               @NotNull Function<U, Object> convertTo) {
         Objects.requireNonNull(convertFrom);
         Objects.requireNonNull(convertTo);
-        return of(List.of(column), getter, setter, o -> convertFrom.apply(Strings.emptyToNull(o.get(column))), (property, out) -> print(out, convertTo.apply(property)));
+        return of(List.of(column), getter, setter, o -> convertFrom.apply(Strings.emptyToNull(o.get(column))),
+            (property, out) -> print(out, convertTo.apply(property)));
     }
 
-    public static <T, U> TsvProperty<T, U> of(@NotNull List<String> columns, Function<T, U> getter, BiConsumer<T, U> setter, @NotNull Function<CSVRecord, U> extractor,
-                                              @NotNull BiConsumer<U, CSVPrinter> writer) {
+    public static <T, U> TsvProperty<T, U> of(@NotNull List<String> columns, Function<T, U> getter, BiConsumer<T, U> setter,
+                                              @NotNull Function<CSVRecord, U> extractor, @NotNull BiConsumer<U, CSVPrinter> writer) {
         return new TsvProperty<>(columns, getter, setter, extractor, writer);
     }
 

@@ -27,7 +27,7 @@ public class Organization implements HasId {
     private final List<SwissSocialInsurance> socialInsurances;
     private final List<SwissAccidentInsurance> insurances;
 
-    public Organization(String legalEntityId) {
+    public Organization(@NotNull String legalEntityId) {
         this.legalEntityId = legalEntityId;
         contracts = new ArrayList<>();
         socialInsurances = new ArrayList<>();

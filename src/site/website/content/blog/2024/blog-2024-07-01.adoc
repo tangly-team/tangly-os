@@ -186,11 +186,16 @@ Technical writers are very satisfied with {ref-asciidoc} and the provided templa
 == Lessons Learnt
 
 You must provide documentation to empower new team members cite:[documenting-software-architectures].
+Collaborators will read the documentation to understand the architecture and design decisions before they start changing the code.
+
+Be honest.
+No other person will read the documentation
+footnote:[The exception is if your digital product requires a certification such as functional safety or FDA approval.].
 
 Collaborators should have a working understanding of UML cite:[uml-distilled].
 
 The documentation shall be written in English.
-Not all team members are fluent with the local language.
+Not all current and future team members are fluent with the local language.
 
 As soon as your product is successful, you will work with international teams and nearshore development centers.
 The sole commonly spoken and written language will be English.
@@ -200,7 +205,7 @@ These records document the evolution of your digital solution over the years.
 
 Most organizations are documentation crazy.
 Old school managers cannot handle the agile manifesto rule.
-The simplest approach to tame them is to use an agile friendly approach such as arc42.
+The simplest approach to tame them is to use an agile friendly approach such as {ref-arc42}.
 
 Too many companies believe that wikis and sharepoint sites are a good approach.
 Forget about it.
