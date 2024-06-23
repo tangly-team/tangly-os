@@ -3,6 +3,8 @@ title: "Why I use a MacBookPro and OS X"
 linkTitle: "MacBook Pro Love"
 date: 2016-03-16
 tags: ["organization"]
+params:
+  featured: "blog/2016/pics/2016-01-01-head.jpg"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

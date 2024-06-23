@@ -3,6 +3,8 @@ title: "Meaningful Identifiers"
 linkTitle: "Meaningful Identifiers"
 date: 2021-01-12
 tags: ["design", "crm", "domain-driven-design", "series-identifiers"]
+params:
+  featured: "blog/2021/pics/2021-01-02-head.jpg"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

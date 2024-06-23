@@ -3,6 +3,8 @@ title: "Java 21"
 linkTitle: "Java 21"
 date: 2023-09-25
 tags: ["java"]
+params:
+  featured: "blog/2023/pics/2023-09-02-head.jpg"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

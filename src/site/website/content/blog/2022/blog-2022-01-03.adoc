@@ -3,6 +3,8 @@ title: "Evaluate Technical CVs"
 linkTitle: "Evaluate CVs"
 date: 2022-01-10
 tags: ["agile"]
+params:
+  featured: "blog/2022/pics/2022-01-03-head.jpg"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

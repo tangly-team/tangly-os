@@ -3,6 +3,8 @@ title: "Why Do You Need Metrics and KPI in Agile Product Development?"
 linkTitle: "Metrics & KPI"
 date: 2018-03-14
 tags: ["agile"]
+params:
+  featured: "blog/2018/pics/2018-03-03-head.jpg"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

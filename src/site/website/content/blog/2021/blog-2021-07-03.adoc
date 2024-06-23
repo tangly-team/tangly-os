@@ -3,6 +3,8 @@ title: "Technical Team Lead"
 linkTitle: "Technical Team Lead"
 date: 2021-07-10
 tags: ["agile", "java", "organization"]
+params:
+  featured: "blog/2021/pics/2021-07-03-head.png"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

@@ -1,0 +1,17 @@
+{{ $w := .w | default 480 }}
+{{ $h := .h | default 180 }}
+{{ $p := .p }}
+{{ $class := .class | default "ms-3" }}
+{{ $imagename := $p.Param "featured" }}
+{{ $image := resources.Get $imagename }}
+{{ with $image }}
+{{ if ne .MediaType.SubType "svg" }}
+{{ $image := .Fill (printf "%dx%d" $w $h ) }}
+{{ end }}
+<figure class="{{ $class }}" style="width: {{ $w }}px">
+<img src="{{ $image.RelPermalink }}" alt="Featured Image for {{ $p.Title }}" width="{{ $w }}" height="{{ $h }}">
+{{ with $image.Params.byline }}
+ <figcaption class="mt-2 mt-md-0"><small class="text-body-secondary">{{ . | html }}</small></figcaption>
+{{ end }}
+</figure>
+{{ end }}

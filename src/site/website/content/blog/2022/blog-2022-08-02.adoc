@@ -3,6 +3,8 @@ title: "Transfer a Software Project"
 linkTitle: "Transfer Software Project"
 date: 2022-08-15
 tags: ["agile", "devops"]
+params:
+  featured: "blog/2022/pics/2022-08-02-head.jpg"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

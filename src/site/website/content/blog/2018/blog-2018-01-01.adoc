@@ -3,6 +3,8 @@ title: "Why is it so Cool to Develop with Java?"
 linkTitle: "Java Development is Cool"
 date: 2018-01-02
 tags: ["java"]
+params:
+  featured: "blog/2018/pics/2018-01-01-head.jpg"
 ---
 
 

@@ -3,6 +3,8 @@ title: "Modern Embedded Software Development"
 linkTitle: "Embedded Development"
 date: 2025-07-01
 tags: ["organization", "embedded"]
+params:
+  featured: "blog/2025/pics/2025-07-01-head.jpg"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

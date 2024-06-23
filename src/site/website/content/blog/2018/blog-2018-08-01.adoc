@@ -3,6 +3,8 @@ title: "What does an Agile Coach?"
 linkTitle: "What does An Agile Coach"
 date: 2018-08-16
 tags: ["agile"]
+params:
+  featured: "blog/2018/pics/2018-08-01-head.jpg"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

@@ -3,6 +3,8 @@ title: "Do Agile Methods - Scrum - Motivate your Team?"
 linkTitle: "Do Agile Motivate"
 date: 2016-02-24
 tags: ["agile"]
+params:
+  featured: "blog/2016/pics/2016-02-01-head.jpg"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

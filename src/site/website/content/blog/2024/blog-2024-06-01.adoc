@@ -3,6 +3,8 @@ title: "Daily Scrum Questions"
 linkTitle: "Daily Scrum Questions"
 date: 2024-06-01
 tags: ["agile"]
+params:
+  featured: "blog/2024/pics/2024-06-01-head.jpg"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

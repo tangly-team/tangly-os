@@ -3,6 +3,8 @@ title: "Agile Requirements Engineering"
 linkTitle: "Agile Requirements"
 date: 2021-04-24
 tags: ["agile","series-students"]
+params:
+  featured: "blog/2021/pics/2021-04-03-head.png"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

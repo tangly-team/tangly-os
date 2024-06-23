@@ -3,6 +3,8 @@ title: "Agile and Nearshore Development"
 linkTitle: "Agile and Nearshore Development"
 date: 2022-02-05
 tags: ["agile"]
+params:
+  featured: "blog/2022/pics/2022-02-02-head.jpg"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

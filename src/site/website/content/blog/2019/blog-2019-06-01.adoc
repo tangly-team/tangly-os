@@ -3,6 +3,8 @@ title: "Agile Code is Clean Code!"
 linkTitle: "Clean Code"
 date: 2019-06-13
 tags: ["agile", "series-agile-design"]
+params:
+  featured: "blog/2019/pics/2019-06-01-head.png"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

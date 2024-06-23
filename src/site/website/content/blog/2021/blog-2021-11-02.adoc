@@ -3,6 +3,8 @@ title: "Gradle 7"
 linkTitle: "Gradle 7"
 date: 2021-11-03
 tags: ["java","gradle"]
+params:
+  featured: "blog/2021/pics/2021-11-02-head.png"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

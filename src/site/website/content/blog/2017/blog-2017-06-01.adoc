@@ -3,6 +3,8 @@ title: "So Called Agile and Scrum Failures"
 linkTitle: "Agile Failures"
 date: 2017-06-08
 tags: ["agile"]
+params:
+  featured: "blog/2017/pics/2017-06-01-head.jpg"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

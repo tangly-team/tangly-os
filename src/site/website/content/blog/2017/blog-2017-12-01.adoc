@@ -3,6 +3,8 @@ title: "Clean Your Desk and Define New Year Improvements"
 linkTitle: "Clean Your Desk"
 date: 2017-12-06
 tags: ["organization"]
+params:
+  featured: "blog/2017/pics/2017-12-01-head.png"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

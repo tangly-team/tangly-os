@@ -3,6 +3,8 @@ title: "Actors in Cpp"
 linkTitle: "Cpp Actors"
 date: 2024-06-10
 tags: ["C++", "architecture"]
+params:
+  featured: "blog/2024/pics/2024-06-02-head.svg"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

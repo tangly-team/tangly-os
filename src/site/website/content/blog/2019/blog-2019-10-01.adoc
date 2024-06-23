@@ -3,6 +3,8 @@ title: "Time to Migrate to a Modern JDK, Laggards!"
 linkTitle: "Time to Migrate"
 date: 2019-10-23
 tags: ["java"]
+params:
+  featured: "blog/2019/pics/2019-10-01-head.jpg"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

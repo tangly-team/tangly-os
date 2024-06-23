@@ -3,6 +3,8 @@ title: "Gradle 6.4 Finally Supports Java Modules"
 linkTitle: "Gradle Supports Modules"
 date: 2020-05-01
 tags: ["java","gradle"]
+params:
+  featured: "blog/2020/pics/2020-05-01-head.jpg"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

@@ -3,7 +3,10 @@ title: "Creating a technical Website with Hugo and Asciidoc"
 linkTitle: "Hugo Asciidoc Website"
 date: 2020-10-02
 tags: ["design", "hugo", "series-students"]
+params:
+  featured: "blog/2020/pics/2020-10-01-head.jpg"
 ---
+
 include::../fragments/_config-mb-blog.adoc[]
 
 [.float-group]

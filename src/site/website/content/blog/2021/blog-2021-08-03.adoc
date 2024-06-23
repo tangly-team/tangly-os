@@ -3,6 +3,8 @@ title: "Scrum Master Formation"
 linkTitle: "Scrum Master Formation"
 date: 2021-08-09
 tags: ["agile"]
+params:
+  featured: "blog/2021/pics/2021-08-03-head.png"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

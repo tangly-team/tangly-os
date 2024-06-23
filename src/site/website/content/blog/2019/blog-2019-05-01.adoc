@@ -3,6 +3,8 @@ title: "Agile Architecture Principles"
 linkTitle: "Agile Architecture Principles"
 date: 2019-05-06
 tags: ["agile", "design", "architecture", "series-agile-design"]
+params:
+  featured: "blog/2019/pics/2019-05-01-head.jpg"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

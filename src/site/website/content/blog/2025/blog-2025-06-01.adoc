@@ -3,6 +3,8 @@ title: "Improving the Quality of a Website"
 linkTitle: "Website Quality"
 date: 2025-06-01
 tags: ["organization"]
+params:
+  featured: "blog/2025/pics/2025-06-01-head.jpg"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

@@ -3,6 +3,8 @@ title: "Yet Another Hybrid Method"
 linkTitle: "Yet Another Hybrid Method"
 date: 2022-04-10
 tags: ["design", "java"]
+params:
+  featured: "blog/2022/pics/2022-04-02-head.jpg"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

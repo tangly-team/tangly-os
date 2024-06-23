@@ -3,6 +3,8 @@ title: "Pragmatic Craftsmanship - Professional Software Developer"
 linkTitle: "Pragmatic Craftsmanship"
 date: 2018-04-12
 tags: ["agile", "design"]
+params:
+  featured: "blog/2018/pics/2018-04-01-head.png"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

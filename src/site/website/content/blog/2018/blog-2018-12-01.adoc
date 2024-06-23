@@ -3,6 +3,8 @@ title: "How Healthy is Your Product? - Product Strategy Check"
 linkTitle: "Product Check"
 date: 2018-12-11
 tags: ["agile", "series-how-healthy"]
+params:
+  featured: "blog/2018/pics/2018-12-01-head.png"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

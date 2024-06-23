@@ -3,6 +3,8 @@ title: "Measurements and Units"
 linkTitle: "Measurements"
 date: 2022-05-01
 tags: ["java", "architecture", "series-students"]
+params:
+  featured: "blog/2022/pics/2022-05-01-head.png"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

@@ -3,6 +3,8 @@ title: "Found a Limited Liability Company in Switzerland"
 linkTitle: "Found An Agile Company"
 date: 2016-11-15
 tags: ["organization", "tangly"]
+params:
+  featured: "blog/2016/pics/2016-11-02-head.jpg"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

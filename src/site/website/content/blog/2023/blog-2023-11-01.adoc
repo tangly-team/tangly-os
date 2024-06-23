@@ -3,6 +3,8 @@ title: "Java Certification"
 linkTitle: "Java Certification"
 date: 2023-11-01
 tags: ["agile", "java", "series-students"]
+params:
+  featured: "blog/2023/pics/2023-11-01-head.png"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

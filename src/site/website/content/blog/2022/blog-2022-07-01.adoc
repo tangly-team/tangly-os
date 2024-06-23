@@ -3,6 +3,8 @@ title: "Would You Enjoy Being a Scrum Master?"
 linkTitle: "Scrum master Capabilities"
 date: 2022-07-04
 tags: ["agile"]
+params:
+  featured: "blog/2022/pics/2022-07-01-head.png"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

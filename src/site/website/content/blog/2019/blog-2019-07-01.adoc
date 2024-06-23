@@ -3,6 +3,8 @@ title: "The World is a Better Place and We Must Tackle Climate Change"
 linkTitle: "The World is a Better Place"
 date: 2019-07-14
 tags: ["organization"]
+params:
+  featured: "blog/2019/pics/2019-07-01-head.jpg"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

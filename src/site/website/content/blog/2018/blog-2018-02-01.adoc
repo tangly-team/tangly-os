@@ -3,6 +3,8 @@ title: "Scrum Guide 2017: What changed?"
 linkTitle: "Scrum Guide 2017"
 date: 2018-02-09
 tags: ["agile"]
+params:
+  featured: "blog/2018/pics/2018-02-01-head.jpg"
 ---
 
 

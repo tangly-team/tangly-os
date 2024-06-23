@@ -3,6 +3,8 @@ title: "List of Agile and Lean Books for Software Engineers or Students"
 linkTitle: "Agile and Lean Books"
 date: 2017-03-05
 tags: ["agile"]
+params:
+  featured: "blog/2017/pics/2017-03-01-head.jpg"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

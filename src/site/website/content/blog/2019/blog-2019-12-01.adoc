@@ -3,6 +3,8 @@ title: "A Journey to be a Digital Company - tangly llc"
 linkTitle: "A Journey to be a Digital Company"
 date: 2019-12-02
 tags: ["organization", "tangly"]
+params:
+  featured: "blog/2019/pics/2019-12-01-head.jpg"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

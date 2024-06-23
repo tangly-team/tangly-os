@@ -3,6 +3,8 @@ title: "Agile Trends Switzerland 2013"
 linkTitle: "Swiss Agile Trends 2013"
 date: 2016-10-12
 tags: ["agile", "series-swiss-agile-trends"]
+params:
+  featured: "blog/2016/pics/2016-10-01-head.jpg"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

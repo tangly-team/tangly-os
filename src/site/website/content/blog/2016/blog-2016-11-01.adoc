@@ -3,6 +3,8 @@ title: "What is an Agile Company?"
 linkTitle: "Agile Company"
 date: 2016-11-13
 tags: ["agile", "organization"]
+params:
+  featured: "blog/2016/pics/2016-11-01-head.jpg"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

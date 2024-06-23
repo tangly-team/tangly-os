@@ -3,6 +3,8 @@ title: "Agile Visual Tools"
 linkTitle: "Agile Visual Tools"
 date: 2023-10-01
 tags: ["agile", "devops", "series-students"]
+params:
+  featured: "blog/2023/pics/2023-10-01-head.png"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

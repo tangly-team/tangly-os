@@ -3,6 +3,8 @@ title: "Technical Debt"
 linkTitle: "Technical Debt"
 date: 2022-01-03
 tags: ["design", "java"]
+params:
+  featured: "blog/2022/pics/2022-01-01-head.png"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]
@@ -10,7 +12,7 @@ include::../fragments/_config-mb-blog.adoc[]
 :ref-technical-debt: https://en.wikipedia.org/wiki/Technical_debt[technical debt]
 :ref-sonarlint: https://www.sonarsource.com/products/sonarlint/[SonarLint]
 
-image::2022-01-03-head.png[width=420,height=360,role=left]
+image::2022-01-01-head.png[width=420,height=360,role=left]
 
 The {ref-technical-debt} or code debt is a concept in software development that reflects the implied cost of additional rework.
 The rework is caused by choosing an easy limited solution now instead of using a better approach that would take longer to realize.

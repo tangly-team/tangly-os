@@ -3,6 +3,8 @@ title: "Embedded Applications"
 linkTitle: "Embedded Apps"
 date: 2024-09-02
 tags: ["C++", "embedded"]
+params:
+  featured: "blog/2024/pics/2024-09-02-head.jpg"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

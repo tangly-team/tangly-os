@@ -3,6 +3,8 @@ title: "Modern Java with Spring"
 linkTitle: "Modern Java with Spring"
 date: 2022-03-15
 tags: ["agile", "java"]
+params:
+  featured: "blog/2022/pics/2022-03-02-head.png"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

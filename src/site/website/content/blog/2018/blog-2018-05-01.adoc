@@ -3,6 +3,8 @@ title: "Sonar Lint for the Impatient"
 linkTitle: "Sonar Lint"
 date: 2018-05-16
 tags: ["design", "java"]
+params:
+  featured: "blog/2018/pics/2018-05-01-head.png"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

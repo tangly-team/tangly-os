@@ -3,6 +3,8 @@ title: "JDk 16"
 linkTitle: "JDK 16"
 date: 2021-04-01
 tags: ["java"]
+params:
+  featured: "blog/2021/pics/2021-04-01-head.png"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

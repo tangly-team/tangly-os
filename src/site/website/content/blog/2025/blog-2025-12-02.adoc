@@ -3,6 +3,8 @@ title: "Why Should You Write a Technical Blog?"
 linkTitle: "Write a Blog"
 date: 2025-12-10
 tags: ["java", "architecture"]
+params:
+  featured: "blog/2025/pics/2025-12-02-head.jpg"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

@@ -3,6 +3,8 @@ title: "Teaching Clojure II"
 linkTitle: "Clojure II"
 date: 2023-06-09
 tags: ["jvm-languages", "series-students"]
+params:
+  featured: "blog/2023/pics/2023-06-02-head.jpg"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

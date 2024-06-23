@@ -3,6 +3,8 @@ title: "SAFE 4.6: Improvements Direly Needed"
 linkTitle: "SAFE 4.6"
 date: 2018-11-10
 tags: ["agile"]
+params:
+  featured: "blog/2018/pics/2018-11-02-head.png"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

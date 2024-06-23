@@ -3,6 +3,8 @@ title: "Why I still love to use a MacBookPro and MacOS in 2019"
 linkTitle: "MacBookPro Love"
 date: 2019-04-15
 tags: ["organization"]
+params:
+  featured: "blog/2019/pics/2019-04-02-head.jpg"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

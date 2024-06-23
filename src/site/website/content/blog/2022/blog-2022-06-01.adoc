@@ -3,6 +3,8 @@ title: "Software Structure with DDD"
 linkTitle: "Structure with DDD"
 date: 2022-06-01
 tags: ["architecture", "domain-driven-design", "java"]
+params:
+  featured: "blog/2022/pics/2022-06-01-head.jpg"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

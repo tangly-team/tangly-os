@@ -2,7 +2,7 @@ cd w== Docsy Theme for Hugo
 
 The _docsy_ theme was customized to support specific needs of the tangly OS documentation static website.
 
-=== Tips
+== Tips
 
 Each section has a configuration in the front matter in the index file.
 The type of the section is specified to allow Hugo to retrieve the corresponding templates.
@@ -16,7 +16,7 @@ How to kill the hugo process hanging in a port:
  kill -9 $(lsof -t -i:1313)
 ----
 
-Add exectution rights to the script files.
+Add execution rights to the script files.
 
 [source,console]
 ----
@@ -38,12 +38,12 @@ hugo server --destination public --disableFastRender -F              <3>
 <1> Initialize the Hugo environment in a local folder.
 <2> Populate with all content files from the _tangly-OS_ repository.
 <3> Run the Hugo server locally for testing.
-<4> After stoppping the server, populate the site with a clean copy of the content.
-<5> Generate the static website and publish it to github pages.
+<4> After stopping the server, populate the site with a clean copy of the content.
+<5> Generate the static website and publish it to GitHub pages.
 
-=== Customisation
+== Customisation
 
-==== Header and Footer
+=== Header and Footer
 
 The header template was adapted to support AsciiMath typesetting in the browser.
 
@@ -53,7 +53,7 @@ The open source copyright of our site is not well displayed in the standard foot
 * layouts/partials/header.html
 * layouts/partials/footer.html
 
-==== Attachments
+=== Attachments
 
 For the attachment feature, we added:
 
@@ -61,14 +61,14 @@ For the attachment feature, we added:
 * assets/scss/main.scss _added import of the shortcodes.scss styling.
 * layouts/shortcodes/attachments.html
 
-==== Comments
+=== Comments
 
 For the comment feature, we added:
 
 * layouts/blog/content.html _added utterances code for comments_
 * layouts/partials/comments-utterances.html _partial for comment template_
 
-==== Asciidoc Stylesheet
+=== Asciidoc Stylesheet
 
 Exploration was started to improve the styling of https://asciidoc.org[asciidoc] documents:
 
@@ -87,9 +87,9 @@ bundle config --local path .bundle/gems         <2>
 bundle
 ----
 
-<1> change into the _workshops_ folder
-<2> download and configure needed packages.
-The _Gemfile_ in the _workshops_ folder defines all needed dependencies
+<1> Change into the _workshops_ folder.
+<2> Download and configure needed packages.
+The _Gemfile_ in the _workshops_ folder defines all needed dependencies.
 
 The code to generate a presentation workshop slides deck is:
 

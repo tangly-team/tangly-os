@@ -3,6 +3,8 @@ title: "Agile Trends Switzerland 2018"
 linkTitle: "Swiss Agile 2018"
 date: 2018-05-20
 tags: ["agile", "series-swiss-agile-trends"]
+params:
+  featured: "blog/2018/pics/2018-05-02-head.jpg"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

@@ -3,6 +3,8 @@ title: "Git Rebase and Merge for the Impatient"
 linkTitle: "Git Rebase"
 date: 2023-09-26
 tags: ["agile", "git", "series-students"]
+params:
+  featured: "blog/2023/pics/2023-09-03-head.png"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

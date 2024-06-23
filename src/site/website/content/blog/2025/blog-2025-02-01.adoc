@@ -3,6 +3,8 @@ title: "DDD for Embedded Systems"
 linkTitle: "Embedded DDD"
 date: 2025-02-01
 tags: ["architecture", "domain-driven-design", "c++", "embedded"]
+params:
+  featured: "blog/2025/pics/2025-02-01-head.jpg"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

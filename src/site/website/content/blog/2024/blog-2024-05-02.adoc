@@ -3,6 +3,8 @@ title: "Actor Model"
 linkTitle: "Actor Model"
 date: 2024-05-10
 tags: ["java", "C++", "architecture"]
+params:
+  featured: "blog/2024/pics/2024-05-02-head.svg"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

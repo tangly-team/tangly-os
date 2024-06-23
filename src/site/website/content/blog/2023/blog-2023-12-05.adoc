@@ -3,6 +3,8 @@ title: "Bus Sensors and Actuators"
 linkTitle: "Bus Actuators"
 date: 2023-12-14
 tags: ["C++", "architecture", "embedded"]
+params:
+  featured: "blog/2023/pics/2023-12-05-head.jpg"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

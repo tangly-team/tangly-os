@@ -3,6 +3,8 @@ title: "Agile Trends Switzerland 2017: We Won"
 linkTitle: "Swiss Agile Trends 2017"
 date: 2017-04-15
 tags: ["agile"]
+params:
+  featured: "blog/2017/pics/2017-04-02-head.jpg"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

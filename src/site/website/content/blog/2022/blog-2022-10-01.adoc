@@ -3,6 +3,8 @@ title: "Vaadin"
 linkTitle: "Vaadin"
 date: 2022-10-01
 tags: ["java", "architecture", "vaadin"]
+params:
+  featured: "blog/2022/pics/2022-10-01-head.jpg"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

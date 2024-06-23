@@ -3,6 +3,8 @@ title: "Document Your Agile Architecture"
 linkTitle: "Document Agile"
 date: 2024-07-01
 tags: ["agile", "architecture"]
+params:
+  featured: "blog/2024/pics/2024-07-01-head.jpg"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

@@ -3,6 +3,8 @@ title: "Agile Component Design"
 linkTitle: "Agile Component Design"
 date: 2020-04-17
 tags: ["agile", "design", "java", "series-agile-design"]
+params:
+  featured: "blog/2020/pics/2020-04-01-head.jpg"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

@@ -3,6 +3,8 @@ title: "Seven Pitfalls with Agile or Scrum Methods"
 linkTitle: "Agile Pitfalls"
 date: 2017-01-07
 tags: ["agile"]
+params:
+  featured: "blog/2017/pics/2017-01-01-head.png"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

@@ -3,6 +3,8 @@ title: "Modern Java Development"
 linkTitle: "Modern Java Development"
 date: 2021-03-01
 tags: ["java"]
+params:
+  featured: "blog/2021/pics/2021-03-01-head.jpg"
 ---
 
 :ref-amber: https://openjdk.org/projects/amber/[Amber]

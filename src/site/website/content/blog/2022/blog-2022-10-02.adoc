@@ -3,6 +3,8 @@ title: "Modern Java Constructs"
 linkTitle: "Modern Java"
 date: 2022-10-12
 tags: ["java", "architecture"]
+params:
+  featured: "blog/2022/pics/2022-10-02-head.jpg"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

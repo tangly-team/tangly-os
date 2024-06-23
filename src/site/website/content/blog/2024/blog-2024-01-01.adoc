@@ -3,6 +3,8 @@ title: "Data Classes, Sealed Types and Pattern Matching"
 linkTitle: "Algebraic Data Types"
 date: 2024-01-01
 tags: ["java", "students-java"]
+params:
+  featured: "blog/2024/pics/2024-01-01-head.png"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

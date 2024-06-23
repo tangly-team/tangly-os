@@ -3,6 +3,8 @@ title: "C4 and UML with PlantUML"
 linkTitle: "PlantUML"
 date: 2023-11-10
 tags: ["agile", "architecture", "series-students"]
+params:
+  featured: "blog/2023/pics/2023-11-02-head.png"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

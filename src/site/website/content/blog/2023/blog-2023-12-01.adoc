@@ -3,6 +3,8 @@ title: "Gradle Good Practices"
 linkTitle: "Gradle Practices"
 date: 2023-12-01
 tags: ["agile", "java", "series-students"]
+params:
+  featured: "blog/2023/pics/2023-12-01-head.png"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

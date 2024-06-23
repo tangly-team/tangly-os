@@ -3,6 +3,8 @@ title: "Java, Groovy, Clojure"
 linkTitle: "Java, Groovy, Clojure"
 date: 2022-04-05
 tags: ["agile", "jvm-languages", "series-students"]
+params:
+  featured: "blog/2022/pics/2022-04-01-head.png"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

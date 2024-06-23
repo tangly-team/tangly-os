@@ -3,6 +3,8 @@ title: "Impediment List is of Tremendous Importance"
 linkTitle: "Impediment List"
 date: 2017-11-23
 tags: ["agile"]
+params:
+  featured: "blog/2017/pics/2017-11-01-head.jpg"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

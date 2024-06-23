@@ -3,6 +3,8 @@ title: "Legacy Systems Refactoring"
 linkTitle: "Legacy Systems Refactoring"
 date: 2020-06-01
 tags: ["design", "series-agile-design"]
+params:
+  featured: "blog/2020/pics/2020-06-01-head.jpg"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

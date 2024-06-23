@@ -3,6 +3,8 @@ title: "Choice is Good"
 linkTitle: "Choice is Good"
 date: 2021-11-02
 tags: ["agile", "architecture"]
+params:
+  featured: "blog/2021/pics/2021-11-01-head.jpg"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

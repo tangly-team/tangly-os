@@ -3,6 +3,8 @@ title: "Self-Service for Developer Game Changer"
 linkTitle: "Self-Service"
 date: 2021-04-20
 tags: ["java","series-students"]
+params:
+  featured: "blog/2021/pics/2021-04-02-head.jpg"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

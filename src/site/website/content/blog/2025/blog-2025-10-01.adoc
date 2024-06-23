@@ -3,6 +3,8 @@ title: "Java Concurrency Approaches"
 linkTitle: "Java Concurrency"
 date: 2025-10-01
 tags: ["java", "architecture"]
+params:
+  featured: "blog/2025/pics/2025-10-01-head.png"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

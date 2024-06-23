@@ -3,6 +3,8 @@ title: "Why Use Current Software Components?"
 linkTitle: "Current Components"
 date: 2017-12-22
 tags: ["design"]
+params:
+  featured: "blog/2017/pics/2017-12-02-head.jpg"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

@@ -3,6 +3,8 @@ title: "Actors with CMSIS OS in Cpp"
 linkTitle: "C++ cmsis Actors"
 date: 2024-06-15
 tags: ["C++", "architecture", "embedded"]
+params:
+  featured: "blog/2024/pics/2024-06-03-head.svg"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

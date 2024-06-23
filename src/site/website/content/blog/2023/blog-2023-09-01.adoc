@@ -3,6 +3,8 @@ title: "Are Certifications Useful?"
 linkTitle: "Are Certifications Useful?"
 date: 2023-09-01
 tags: ["agile", "series-students"]
+params:
+  featured: "blog/2023/pics/2023-09-01-head.jpg"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

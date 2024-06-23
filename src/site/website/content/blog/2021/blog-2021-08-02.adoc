@@ -3,6 +3,8 @@ title: "DevOps for Small Applications"
 linkTitle: "DevOps for SME"
 date: 2021-08-05
 tags: ["agile", "devops"]
+params:
+  featured: "blog/2021/pics/2021-08-02-head.png"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

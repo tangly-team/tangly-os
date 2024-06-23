@@ -3,6 +3,8 @@ title: "Git Branches for the Impatient"
 linkTitle: "Git Branches"
 date: 2016-07-21
 tags: ["agile", "git", "series-students"]
+params:
+  featured: "blog/2016/pics/2016-07-01-head.png"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

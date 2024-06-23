@@ -3,12 +3,14 @@ title: "What I Learnt Teaching Agile Software Architecture"
 linkTitle: "Agile Software Architecture"
 date: 2021-09-02
 tags: ["agile", "architecture", "series-students"]
+params:
+  featured: "blog/2021/pics/2021-09-02-head.jpg"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]
 :ref-togaf: https://publications.opengroup.org/standards/togaf[TOGAF]
 
-image::2021-09-01-head.png[width=420,height=360,role=left]
+image::2021-09-02-head.jpg[width=420,height=360,role=left]
 
 I am teaching agile software architecture and techniques _SWAT_ as advanced bachelor level lecture weighted with 3
 https://en.wikipedia.org/wiki/European_Credit_Transfer_and_Accumulation_System[ECTS].

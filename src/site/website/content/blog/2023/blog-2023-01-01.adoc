@@ -3,6 +3,8 @@ title: "Select An Agile Software Development Partner"
 linkTitle: "Select A Partner"
 date: 2023-01-01
 tags: ["agile", "organization"]
+params:
+  featured: "blog/2023/pics/2023-01-01-head.png"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

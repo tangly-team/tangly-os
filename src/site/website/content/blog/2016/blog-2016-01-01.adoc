@@ -3,6 +3,8 @@ title: "Minimizing Undone Work when Working with Regulatory Departments"
 linkTitle: "Minimize Undone Work"
 date: 2016-01-21
 tags: ["agile"]
+params:
+  featured: "blog/2016/pics/2016-01-01-head.jpg"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

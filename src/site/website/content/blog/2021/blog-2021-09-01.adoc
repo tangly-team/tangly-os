@@ -3,11 +3,13 @@ title: "Improving a Static Web Site Build With Hugo and Docsy"
 linkTitle: "Improving a Static Web Site"
 date: 2021-09-01
 tags: ["design", "hugo", "series-students"]
+params:
+  featured: "blog/2021/pics/2021-09-01-head.png"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]
 
-image::2021-09-02-head.jpg[width=420,height=360,role=left]
+image::2021-09-01-head.png[width=420,height=360,role=left]
 
 The static website build tool {ref-hugo} is awesome.
 With the extensive built-in feature set of Hugo and the feature-rich text formatting options that https://asciidoc.org/[Asciidoc] offers, it creates a blogging experience composed of easy content management and fun writing experience.

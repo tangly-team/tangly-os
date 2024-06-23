@@ -3,6 +3,8 @@ title: "MicroStream 4.x"
 linkTitle: "MicroStream 4.x"
 date: 2021-03-02
 tags: ["java", "design"]
+params:
+  featured: "blog/2021/pics/2021-03-02-head.jpg"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

@@ -3,6 +3,8 @@ title: "Agile @ Scale"
 linkTitle: "Agile@Scale"
 date: 2019-11-04
 tags: ["agile"]
+params:
+  featured: "blog/2019/pics/2019-11-01-head.jpg"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

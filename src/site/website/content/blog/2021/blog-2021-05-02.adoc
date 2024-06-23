@@ -3,6 +3,8 @@ title: "Certified Java Developer"
 linkTitle: "Certified Java Developer"
 date: 2021-05-15
 tags: ["agile", "java"]
+params:
+  featured: "blog/2021/pics/2021-05-02-head.png"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

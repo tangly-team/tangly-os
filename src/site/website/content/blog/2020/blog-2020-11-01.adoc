@@ -3,6 +3,8 @@ title: "Reference Codes"
 linkTitle: "Reference Codes"
 date: 2020-11-02
 tags: ["java", "design", "crm", "series-identifiers"]
+params:
+  featured: "blog/2020/pics/2020-11-01-head.jpg"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

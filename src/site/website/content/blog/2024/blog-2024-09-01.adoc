@@ -3,6 +3,8 @@ title: "Vaadin 24.4"
 linkTitle: "Vaadin 24.4"
 date: 2024-09-01
 tags: ["java", "vaadin"]
+params:
+  featured: "blog/2024/pics/2024-09-01-head.jpg"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

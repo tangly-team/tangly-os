@@ -3,6 +3,8 @@ title: "Multi-Module Test Reporting with Gradle 7.x"
 linkTitle: "Test Reporting"
 date: 2022-11-07
 tags: ["java", "gradle"]
+params:
+  featured: "blog/2022/pics/2022-11-02-head.jpg"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

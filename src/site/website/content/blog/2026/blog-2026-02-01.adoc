@@ -3,6 +3,8 @@ title: "req42 Agile Requirements"
 linkTitle: "req42"
 date: 2026-02-05
 tags: ["agile", ]
+params:
+  featured: "blog/2026/pics/2026-02-01-head.jpg"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

@@ -3,6 +3,8 @@ title: "Software Architecture Themes and Questions"
 linkTitle: "Architecture Themes"
 date: 2023-10-05
 tags: ["agile", "architecture"]
+params:
+  featured: "blog/2023/pics/2023-10-02-head.png"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

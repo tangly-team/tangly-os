@@ -3,6 +3,8 @@ title: "Agile Architecture Questions"
 linkTitle: "Architecture Questions"
 date: 2024-08-01
 tags: ["java"]
+params:
+  featured: "blog/2024/pics/2024-08-01-head.png"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

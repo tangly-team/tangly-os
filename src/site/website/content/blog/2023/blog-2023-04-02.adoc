@@ -3,6 +3,8 @@ title: "My New MacBookPro"
 linkTitle: "My New MacBook"
 date: 2023-04-09
 tags: ["organization"]
+params:
+  featured: "blog/2023/pics/2023-04-02-head.jpg"
 ---
 
 :ref-metal: https://developer.apple.com/metal/[Metal]

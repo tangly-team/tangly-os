@@ -3,6 +3,8 @@ title: "Software Developer Assumptions"
 linkTitle: "Dev Assumptions"
 date: 2023-04-01
 tags: ["java", "architecture", "series-students"]
+params:
+  featured: "blog/2023/pics/2023-04-01-head.jpg"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

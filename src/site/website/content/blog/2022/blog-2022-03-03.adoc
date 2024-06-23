@@ -3,6 +3,8 @@ title: "Modernize Your Java Landscape"
 linkTitle: "Modernize Your Java Landscape"
 date: 2022-03-20
 tags: ["agile"]
+params:
+  featured: "blog/2022/pics/2022-03-03-head.jpg"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

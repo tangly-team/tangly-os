@@ -3,6 +3,8 @@ title: "Sensors and Actuators"
 linkTitle: "Sensors and Actuators"
 date: 2023-12-12
 tags: ["C++", "architecture", "embedded"]
+params:
+  featured: "blog/2023/pics/2023-12-04-head.jpg"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

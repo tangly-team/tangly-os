@@ -3,6 +3,8 @@ title: "Distributed Systems"
 linkTitle: "Distributed Systems"
 date: 2025-01-01
 tags: ["architecture", "c++", "embedded"]
+params:
+  featured: "blog/2025/pics/2025-01-01-head.png"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

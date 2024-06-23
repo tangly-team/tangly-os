@@ -3,6 +3,8 @@ title: "ArchUnit"
 linkTitle: "ArchUnit"
 date: 2022-09-01
 tags: ["agile", "architecture"]
+params:
+  featured: "blog/2022/pics/2022-09-01-head.png"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

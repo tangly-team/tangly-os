@@ -3,6 +3,8 @@ title: "You Need an Engineering Culture"
 linkTitle: "Engineering Culture"
 date: 2019-03-19
 tags: ["agile", "design"]
+params:
+  featured: "blog/2019/pics/2019-03-01-head.jpg"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

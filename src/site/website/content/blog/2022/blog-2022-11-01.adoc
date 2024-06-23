@@ -3,6 +3,8 @@ title: "Behavior Driven Design"
 linkTitle: "BDD"
 date: 2022-11-01
 tags: ["java", "architecture"]
+params:
+  featured: "blog/2022/pics/2022-11-01-head.jpg"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

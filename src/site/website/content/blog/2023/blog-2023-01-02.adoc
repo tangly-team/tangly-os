@@ -3,6 +3,8 @@ title: "SME IT Responsible"
 linkTitle: "SME IT Responsible"
 date: 2023-01-08
 tags: ["agile", "devops", "organization"]
+params:
+  featured: "blog/2023/pics/2023-01-02-head.jpg"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

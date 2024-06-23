@@ -3,6 +3,8 @@ title: "Agile Leadership"
 linkTitle: "Agile Leadership"
 date: 2021-08-01
 tags: ["agile"]
+params:
+  featured: "blog/2021/pics/2021-08-01-head.jpg"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

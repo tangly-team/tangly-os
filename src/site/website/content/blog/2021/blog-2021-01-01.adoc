@@ -3,6 +3,8 @@ title: "Value Objects as Embedded Entities"
 linkTitle: "Embedded Value Objects"
 date: 2021-01-04
 tags: ["design", "domain-driven-design", "crm", "series-identifiers"]
+params:
+  featured: "blog/2021/pics/2021-01-01-head.png"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

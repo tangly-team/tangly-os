@@ -3,6 +3,8 @@ title: "Java 10 aka 18.3 Changes"
 linkTitle: "Java 10"
 date: 2018-03-09
 tags: ["java"]
+params:
+  featured: "blog/2018/pics/2018-03-01-head.png"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

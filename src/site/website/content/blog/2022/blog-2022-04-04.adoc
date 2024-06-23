@@ -3,6 +3,8 @@ title: "Introducing DevOps Ideas"
 linkTitle: "Introducing DevOps Ideas"
 date: 2022-04-21
 tags: ["agile", "devops"]
+params:
+  featured: "blog/2022/pics/2022-04-04-head.png"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

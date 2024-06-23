@@ -3,6 +3,8 @@ title: "Agile Trends Switzerland 2020"
 linkTitle: "Swiss Agile 2020"
 date: 2021-05-10
 tags: ["agile", "series-swiss-agile-trends"]
+params:
+  featured: "blog/2021/pics/2021-05-01-head.jpg"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

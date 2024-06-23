@@ -3,6 +3,8 @@ title: "Domain Entities UI"
 linkTitle: "Domain Entities UI"
 date: 2024-11-01
 tags: ["java", "architecture"]
+params:
+  featured: "blog/2024/pics/2024-11-01-head.jpg"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

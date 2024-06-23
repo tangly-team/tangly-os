@@ -3,6 +3,8 @@ title: "Digital Product Manager"
 linkTitle: "Digital Product Manager"
 date: 2022-04-15
 tags: ["agile"]
+params:
+  featured: "blog/2022/pics/2022-04-03-head.jpg"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

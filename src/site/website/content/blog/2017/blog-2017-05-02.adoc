@@ -3,6 +3,8 @@ title: "Git Local Repositories for the Impatient"
 linkTitle: "Git Local Repositories"
 date: 2017-05-17
 tags: ["agile", "git", "series-students"]
+params:
+  featured: "blog/2017/pics/2017-05-02-head.png"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

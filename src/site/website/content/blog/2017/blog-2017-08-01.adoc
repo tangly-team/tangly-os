@@ -3,6 +3,8 @@ title: "Scrum Masters are not Administrators"
 linkTitle: "Scrum Masters are not Administrators"
 date: 2017-08-06
 tags: ["agile"]
+params:
+  featured: "blog/2017/pics/2017-08-01-head.png"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

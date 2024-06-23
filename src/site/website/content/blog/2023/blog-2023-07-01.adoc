@@ -3,6 +3,8 @@ title: "Onboarding Software Developers in Your agile Team"
 linkTitle: "Onboarding"
 date: 2023-07-01
 tags: ["java", "agile", "series-students"]
+params:
+  featured: "blog/2023/pics/2023-07-01-head.png"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

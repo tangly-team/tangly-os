@@ -3,6 +3,8 @@ title: "Eliminate Your Printer"
 linkTitle: "No Printers"
 date: 2022-09-10
 tags: ["agile"]
+params:
+  featured: "blog/2022/pics/2022-09-02-head.jpg"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

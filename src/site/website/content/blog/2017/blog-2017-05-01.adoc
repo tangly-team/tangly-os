@@ -3,6 +3,8 @@ title: "What is Our Specialty as Agile Coaches at tangly?"
 linkTitle: "tangly Agile Coaches"
 date: 2017-05-01
 tags: ["organization", "tangly"]
+params:
+  featured: "blog/2017/pics/2017-05-01-head.jpg"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

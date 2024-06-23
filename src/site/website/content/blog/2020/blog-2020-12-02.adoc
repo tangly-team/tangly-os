@@ -3,6 +3,8 @@ title: "Support Comments for Static Hugo Website"
 linkTitle: "Support Comments for Static Website"
 date: 2020-12-11
 tags: ["design", "hugo", "series-students"]
+params:
+  featured: "blog/2020/pics/2020-12-02-head.png"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

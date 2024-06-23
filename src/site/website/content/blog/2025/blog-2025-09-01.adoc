@@ -3,6 +3,8 @@ title: "Agile Software Architecture"
 linkTitle: "Agile Software Architecture"
 date: 2025-09-01
 tags: ["agile", "architecture"]
+params:
+  featured: "blog/2025/pics/2025-09-01-head.jpg"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

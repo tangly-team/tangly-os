@@ -3,6 +3,8 @@ title: "Agile Architecture within Scrum"
 linkTitle: "Agile Architecture"
 date: 2019-08-12
 tags: ["agile", "architecture", "series-agile-design"]
+params:
+  featured: "blog/2019/pics/2019-08-01-head.jpg"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

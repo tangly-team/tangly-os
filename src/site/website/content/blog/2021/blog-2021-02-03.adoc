@@ -3,6 +3,8 @@ title: "Effective Working in Digital Age"
 linkTitle: "Effective Digital Working"
 date: 2021-02-20
 tags: ["agile"]
+params:
+  featured: "blog/2021/pics/2021-02-03-head.jpg"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

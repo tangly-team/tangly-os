@@ -3,6 +3,8 @@ title: "Advanced Streams"
 linkTitle: "Advanced Streams"
 date: 2024-02-10
 tags: ["java", "students-java"]
+params:
+  featured: "blog/2024/pics/2024-02-01-head.png"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

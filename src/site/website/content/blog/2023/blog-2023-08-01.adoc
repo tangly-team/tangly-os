@@ -3,6 +3,8 @@ title: "Corporate Governance for Software Products"
 linkTitle: "Governance"
 date: 2023-08-01
 tags: ["agile", "devops"]
+params:
+  featured: "blog/2023/pics/2023-08-01-head.jpg"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

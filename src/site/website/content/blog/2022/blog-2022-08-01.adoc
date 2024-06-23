@@ -3,6 +3,8 @@ title: "How to Detect Fake Scrum?"
 linkTitle: "Fake Scrum"
 date: 2022-08-01
 tags: ["agile"]
+params:
+  featured: "blog/2022/pics/2022-08-01-head.jpg"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

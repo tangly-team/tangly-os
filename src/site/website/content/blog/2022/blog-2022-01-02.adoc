@@ -3,6 +3,8 @@ title: "Immutability in Java"
 linkTitle: "Immutability in Java"
 date: 2022-01-05
 tags: ["design", "java"]
+params:
+  featured: "blog/2022/pics/2022-01-02-head.jpg"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

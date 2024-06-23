@@ -3,6 +3,8 @@ title: "Why Is Java Path Class Better?"
 linkTitle: "Why Java Path?"
 date: 2021-02-10
 tags: ["agile", "java"]
+params:
+  featured: "blog/2021/pics/2021-02-02-head.jpg"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

@@ -3,6 +3,8 @@ title: "Agile Design Modeling"
 linkTitle: "Agile Design Modeling"
 date: 2021-10-01
 tags: ["agile", "architecture", "series-students"]
+params:
+  featured: "blog/2021/pics/2021-10-01-head.jpg"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

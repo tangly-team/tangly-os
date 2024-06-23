@@ -3,6 +3,8 @@ title: "Git Tag for the Impatient"
 linkTitle: "Git Tag"
 date: 2023-09-27
 tags: ["agile", "git", "series-students"]
+params:
+  featured: "blog/2023/pics/2023-09-04-head.png"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

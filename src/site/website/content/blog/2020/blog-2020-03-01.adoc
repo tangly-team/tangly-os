@@ -3,6 +3,8 @@ title: "Java Records Are Here - Available in JDK 14"
 linkTitle: "Java Records Are Here"
 date: 2020-03-31
 tags: ["java"]
+params:
+  featured: "blog/2020/pics/2020-03-01-head.jpg"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

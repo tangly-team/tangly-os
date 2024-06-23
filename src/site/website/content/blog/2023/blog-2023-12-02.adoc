@@ -3,6 +3,8 @@ title: "Semantic Commits for the Impatient"
 linkTitle: "Semantic Commits"
 date: 2023-12-02
 tags: ["agile", "git", "series-students"]
+params:
+  featured: "blog/2023/pics/2023-12-02-head.png"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

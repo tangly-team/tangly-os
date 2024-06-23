@@ -3,6 +3,8 @@ title: "Software Development for Students"
 linkTitle: "Software Development for Students"
 date: 2021-01-25
 tags: ["java", "git", "series-students"]
+params:
+  featured: "blog/2021/pics/2021-01-04-head.jpg"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

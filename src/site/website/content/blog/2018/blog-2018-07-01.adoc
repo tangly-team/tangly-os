@@ -3,6 +3,8 @@ title: "Architectural Decision Records ADR"
 linkTitle: "Architectural Decision Records"
 date: 2018-07-05
 tags: ["design", "architecture"]
+params:
+  featured: "blog/2018/pics/2018-07-01-head.jpg"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

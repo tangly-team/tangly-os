@@ -3,6 +3,8 @@ title: "How to Reach the Software Quality Graal?"
 linkTitle: "Quality Graal"
 date: 2018-06-19
 tags: ["design"]
+params:
+  featured: "blog/2018/pics/2018-06-01-head.jpg"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

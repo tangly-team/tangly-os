@@ -3,6 +3,8 @@ title: "How Should You handle Definition of Done?"
 linkTitle: "Definition of Done"
 date: 2018-10-02
 tags: ["agile"]
+params:
+  featured: "blog/2018/pics/2018-10-02-head.jpg"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

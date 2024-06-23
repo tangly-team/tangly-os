@@ -3,6 +3,8 @@ title: "Electronic Invoices"
 linkTitle: "e-invoice"
 date: 2025-11-10
 tags: ["java"]
+params:
+  featured: "blog/2025/pics/2025-11-01-head.jpg"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

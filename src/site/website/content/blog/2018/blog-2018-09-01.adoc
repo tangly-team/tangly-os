@@ -3,6 +3,8 @@ title: "Introduce Agile in A Company"
 linkTitle: "Shu Ha Ri"
 date: 2018-09-25
 tags: ["agile"]
+params:
+  featured: "blog/2018/pics/2018-09-01-head.png"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

@@ -3,6 +3,8 @@ title: "Agile Introduction Success Criteria through the LeSS Lens"
 linkTitle: "LeSS Lens"
 date: 2018-04-18
 tags: ["agile"]
+params:
+  featured: "blog/2018/pics/2018-04-02-head.jpg"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

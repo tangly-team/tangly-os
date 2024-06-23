@@ -3,6 +3,8 @@ title: "I Love My Nerdy Job"
 linkTitle: "Being a Nerd"
 date: 2024-05-20
 tags: ["java", "tangly"]
+params:
+  featured: "blog/2024/pics/2024-05-03-head.jpg"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

@@ -3,6 +3,8 @@ title: "Temporal Aspects of Rolling ERP Planning"
 linkTitle: "Rolling ERP Planning"
 date: 2021-07-01
 tags: ["agile"]
+params:
+  featured: "blog/2021/pics/2021-07-01-head.jpg"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

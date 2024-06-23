@@ -3,6 +3,8 @@ title: "Code Scene as Crime Scene"
 linkTitle: "Crime Scene"
 date: 2019-04-13
 tags: ["design"]
+params:
+  featured: "blog/2019/pics/2019-04-01-head.jpg"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

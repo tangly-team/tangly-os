@@ -3,6 +3,8 @@ title: "How Healthy is Your Product? - Source Code Check"
 linkTitle: "Source Code Check"
 date: 2018-10-01
 tags: ["agile", "series-how-healthy"]
+params:
+  featured: "blog/2018/pics/2018-10-01-head.png"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

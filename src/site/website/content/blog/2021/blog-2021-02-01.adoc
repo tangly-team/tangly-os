@@ -3,6 +3,8 @@ title: "LeSS Lessons Learnt"
 linkTitle: "LeSS Lessons"
 date: 2021-02-01
 tags: ["agile"]
+params:
+  featured: "blog/2021/pics/2021-02-01-head.svg"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

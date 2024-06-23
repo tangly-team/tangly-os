@@ -3,6 +3,8 @@ title: "The Quest for an Agile Company: Eight Years tangly llc"
 linkTitle: "8 Years tangly"
 date: 2024-02-15
 tags: ["agile", "tangly", "organization"]
+params:
+  featured: "blog/2024/pics/2024-02-02-head.jpg"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

@@ -3,6 +3,8 @@ title: "20th Devoxx Belgium Conference 2023"
 linkTitle: "Devoxx"
 date: 2023-10-06
 tags: ["java", "organization"]
+params:
+  featured: "blog/2023/pics/2023-10-03-head.png"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

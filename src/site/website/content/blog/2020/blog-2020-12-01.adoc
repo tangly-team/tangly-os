@@ -3,6 +3,8 @@ title: "Advocate Zero Bug Policy in Your Projects!"
 linkTitle: "Zero Bug Policy"
 date: 2020-12-01
 tags: ["agile"]
+params:
+  featured: "blog/2020/pics/2020-12-01-head.jpg"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

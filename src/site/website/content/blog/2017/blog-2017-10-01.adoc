@@ -3,6 +3,8 @@ title: "Agile Approaches and Fix Price Contracts"
 linkTitle: "Agile Contracts"
 date: 2017-10-02
 tags: ["agile"]
+params:
+  featured: "blog/2017/pics/2017-10-01-head.gif"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

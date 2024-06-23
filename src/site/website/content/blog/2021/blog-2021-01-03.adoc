@@ -3,6 +3,8 @@ title: "Gitlab for Bachelor Students"
 linkTitle: "Gitlab for Students"
 date: 2021-01-18
 tags: ["java", "git", "devops", "series-students"]
+params:
+  featured: "blog/2021/pics/2021-01-03-head.jpg"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

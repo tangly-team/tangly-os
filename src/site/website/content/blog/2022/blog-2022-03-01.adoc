@@ -3,6 +3,8 @@ title: "Doing Agile"
 linkTitle: "Doing Agile"
 date: 2022-03-10
 tags: ["agile", "series-students"]
+params:
+  featured: "blog/2022/pics/2022-03-01-head.png"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

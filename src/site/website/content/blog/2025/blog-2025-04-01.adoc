@@ -3,6 +3,8 @@ title: "Modern Embedded Systems"
 linkTitle: "Modern Embedded"
 date: 2025-04-01
 tags: ["c++", "architecture", "embedded"]
+params:
+  featured: "blog/2025/pics/2025-04-01-head.jpg"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

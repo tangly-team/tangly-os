@@ -3,6 +3,8 @@ title: "Reflections on Agile Fluency Model"
 linkTitle: "Agile Fluency Model"
 date: 2021-06-01
 tags: ["agile"]
+params:
+  featured: "blog/2021/pics/2021-06-01-head.jpg"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

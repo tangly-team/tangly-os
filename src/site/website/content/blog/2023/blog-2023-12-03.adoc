@@ -3,6 +3,8 @@ title: "Command Interpreter"
 linkTitle: "Interpreter"
 date: 2023-12-10
 tags: ["java", "C++", "architecture"]
+params:
+  featured: "blog/2023/pics/2023-12-03-head.jpg"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

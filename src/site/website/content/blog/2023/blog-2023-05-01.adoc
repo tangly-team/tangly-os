@@ -3,6 +3,8 @@ title: "Java 20"
 linkTitle: "Java 20"
 date: 2023-05-01
 tags: ["java", "series-students"]
+params:
+  featured: "blog/2023/pics/2023-05-01-head.png"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

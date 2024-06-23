@@ -3,6 +3,8 @@ title: "What does a Scrum Master?"
 linkTitle: "What does a Scrum Master?"
 date: 2017-07-03
 tags: ["agile"]
+params:
+  featured: "blog/2017/pics/2017-07-01-head.png"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

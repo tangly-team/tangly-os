@@ -3,6 +3,8 @@ title: "Agile Software Architecture is Mainstream"
 linkTitle: "Agile Software Architecture"
 date: 2021-03-15
 tags: ["java", "architecture", "series-students"]
+params:
+  featured: "blog/2021/pics/2021-03-03-head.jpg"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

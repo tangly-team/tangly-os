@@ -3,6 +3,8 @@ title: "Why Enterprise Architecture?"
 linkTitle: "Why Enterprise Architecture?"
 date: 2021-07-05
 tags: ["agile", "architecture"]
+params:
+  featured: "blog/2021/pics/2021-07-02-head.jpg"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]
