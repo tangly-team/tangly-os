@@ -63,6 +63,8 @@ The father of {ref-c4} developed the semantic model <<structurizr-dsl>> of _Stru
 _Start small._
 _Use plantUML to document your initial architecture._
 _You can later if needed migrate to {ref-structurizr}._
+{ref-mermaid}::
+Mermaid provides a set of diagram types I find useful for documenting software architecture.
 API Documentation::
 Legible and maintainable source code should be well-documented. +
 {ref-javadoc} is the perfect tool for Java projects. +
@@ -84,7 +86,7 @@ The tooling is well-integrated with the {ref-asciidoc} toolchain.
 
 == Static Website
 
-A software architecture documentation <<software-architecture-description>> solution shall fulfill the following constraints:
+A software architecture and design documentation <<software-architecture-description>> solution shall fulfill the following constraints:
 
 - The documentation and the source code are synchronized and versioned.
 They are stored in a git repository and tagged accordingly.
@@ -96,6 +98,15 @@ A proven approach is text-based diagramming tools.
 - The documentation is searchable.
 - API and source code documentation are linked to the documentation.
 Artifacts created with {ref-openapi}, {ref-javadoc}, or {ref-doxygen} shall be part of the integrated documentation portfolio.
+
+[TIP]
+====
+Technical digital product documentation creation embraces the docs-as-code philosophy.
+Similar to our source code practices, product documentation has been version controlled, subjected to the same gatekeeping systems, and auto-delivered by using the same CI/CD pipeline.
+
+This has allowed us to maintain a high level of quality and consistency across our documentatio, while also enabling our engineers to contribute to the
+documentation in the same way they contribute to the codebase.
+====
 
 The actual good solution is to use a static website generator <<creating-technical-website>> <<improving-static-website>> <<support-comment-docsy>>.
 

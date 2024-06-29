@@ -113,6 +113,18 @@ _Review your internal documented solution_
 How do we import data into the system?::
 _Review your internal documented solution_
 
+[TIP]
+====
+Try to archive data in a format that is easy to read and understand.
+I strongly recommend a TSV and JSON format.
+Pleaes provid JSON schema for the JSON data.
+
+Group data on a per-tenant basis.
+
+The approach simplifies recovery and migration of data for a specific tenant.
+You can much better security and confidentially of the data almost for free.
+====
+
 == Release and Migration Themes
 
 How do we release a version of the product?::

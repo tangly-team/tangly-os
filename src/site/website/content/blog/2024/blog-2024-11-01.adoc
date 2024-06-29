@@ -48,9 +48,66 @@ An additional creation variant is the duplicate operation to minimize user input
 
 == Business Operations
 
+== Events
+
+Changes in the system are communicated via events.
+Domain-driven design promotes asynchronous event communication between the bounded contexts.
+
+The same mechanism is used to communicate changes in the domain entities to the multiple UI instances.
+
+[NOTE]
+====
+The event bus is a simple in-memory event bus using the Java `Flow` API and default implemenation.
+No additional libraries are necessary.
+
+The processing of received events is asynchronous and performed in backgounds threads.
+====
+
+=== Internal Events
+
+Internal events are used to notify the system about changes in the domain entities and update the UI accordingly.
+All internal events are sent over a domain-specific event bus.
+
+Care is taken to publish UI changes on the UI thread. {ref-vaadin} provides a mechanism to execute code on the UI thread.
+
+[source, java]
+----
+UI.getCurrent().access(() -> v.ifPresent(View::refresh)));              <1>
+----
+<1> First, the current UI in which the user component is exected is obtained.
+Second, The action is posted on the user interface thread with the `access` method.
+
+=== External Events
+
+A bounded domain can register and receive external events from other domains.
+Each domain publishes events to a domain-specific public event bus.
+All public events created by the domain are sent over its public event bus instance.
+
+Interested parties can subscribe to the public event bus and receive events.
+The receiving and processing of events is done asynchronously in the background threads.
+
+These external events often update the domain model and trigger internal events.
+These interval events then update the UI instances.
+
+[NOTE]
+====
+A user interface instance is created for each tab in the browser.
+Multiple users can work with the same domain entities in parallel.
+
+When a tab or a browser is closed, the user interface instance is destroyed.
+It triggers a cleanup of the user interface domain entities.
+One important housekeeping operation unregisters the UI instance from the internal event bus.
+This logic is implemented in the `BoundedDomainClass' abstraction.
+====
+
 == Extensions
 
 == Lessons Learnt
+
+The domain entities UI is a key part of the domain-driven design.
+Mechanisms to display, edit, and create domain entities are essential.
+The multi-user and multi-tab support runs in a multi-threaded environment and requires careful programming to scale.
+All the logic is provided by the domain entities UI framework to diminish complexity for the application developers.
 
 [bibliography]
 == Links

@@ -9,46 +9,106 @@ ifndef::imagesdir[:imagesdir: ./pics]
 [[section-runtime-view]]
 == Runtime View
 
-[role="arc42help"]
-****
-.Contents
-The runtime view describes concrete behavior and interactions of the system’s building blocks in form of scenarios from the following areas:
+=== Build-In Confidentiality
 
-* important use cases or features: how do building blocks execute them?
-* interactions at critical external interfaces: how do building blocks cooperate with users and neighboring systems?
-* operation and administration: launch, start-up, stop
-* error and exception scenarios
+==== Runtime Isolation
 
-Remark: The main criterion for the choice of possible scenarios (sequences, workflows) is their *architectural relevance*.
-It is *not* important to describe a large number of scenarios.
-You should rather document a representative selection.
+The application is a singleton to the running application.
+A tenant has no knowledge of other tenants or of the application itself.
+A bounded domain has no knowledge of other bounded domains or of its tenant.
 
-.Motivation
-You should understand how (instances of) building blocks of your system perform their job and communicate at runtime.
-You will mainly capture scenarios in your documentation to communicate your architecture to stakeholders that are less willing or able to read and understand the static models (building block view, deployment view).
+A domain is interested in all users of its tenant having rights in the domain.
+The `UsersProvider` interface provides the list of users for a bounded domain without exposing user or tenant information.
+A domain has a type registry to access tag types and code types.
 
-.Form
-There are many notations for describing scenarios, e.g.
+The type registry should be private to the bounded domain.
+You can share the type registry with other bounded domains of a tenant.
+It is a slight break of bounded domain isolation.
 
-* numbered list of steps (in natural language)
-* activity diagrams or flow charts
-* sequence diagrams
-* BPMN or EPCs (event process chains)
-* state machines
-* ...
+[IMPORTANT]
+====
+A bounded domain should per convention never access his tenant or application directly.
+Needed connections such as event buses should be injected during the creation and initialization of the bounded domain.
 
-.Further Information
-See https://docs.arc42.org/section-6/[Runtime View] in the arc42 documentation.
+This convention ensures a smooth migration of a bounded domain to a seperate standalone service.
 
-****
+A tenant or a bounded domain should not actively track or monitor other tenants or bounded domains.
 
-=== <Runtime Scenario 1>
+A tenant or a bounded domain should not actively track or monitor associated user interfaces.
+Use the internal bus to communicate domain changes to the user interface.
+====
 
-* _<insert runtime diagram or textual description of the scenario>_
-* _<insert description of the notable aspects of the interactions between the building block instances depicted in this diagram.>_
+[plantuml,target=application,format=svg,role="text-center"]
+----
+class Application
+Application "1" *-- "n" Tenant
 
-=== <Runtime Scenario 2>
+class Tenant
+Tenant *-- "n" User
+Tenant *-- "n" BoundedDomain
+Tenant *-- "1" TypeRegistry
 
-=== ...
+class TypeRegistry
 
-=== <Runtime Scenario n>
+class BoundedDomain
+
+BoundedDomain o-- "1" UsersProvider
+BoundedDomain o- "1" TypeRegistry
+
+
+interface UsersProvider {
+    List<String> authors()
+    List<String> activeAuthors()
+}
+
+note right of UsersProvider
+  Shall provides the list of users for a bounded domain
+end note
+
+class ApplicationView
+ApplicationView "1" *-- "n" BoundedDomainUi
+
+class BoundedDomainUi
+
+BoundedDomainUi "n" *-- "1" BoundedDomain
+
+class User
+class AccessRights {
+  String username;
+  String domain;
+  AccessRightsCode right;
+}
+
+User *- AccessRights
+
+----
+
+==== Physical Isolation
+
+The physical level is also isolated.
+
+The files and databases of each tenant are stored in a separate directory.
+
+[WARNING]
+====
+The isolation of files is not a security feature supported by the operating system.
+
+The whole application runs under the same user account.
+====
+
+Use a physical database instance for each tenant.
+Define a technical user for each tenant and database.
+
+If necessary, use a separate database for each bounded domain.
+In this case, you should probably define a technical user for each bounded domain of each tenant.
+
+Some database engines are cumbersome in the context of multiple databases.
+In this case, you can use a separate schema for each tenant or bounded domain.
+You are still able to use a technical user for each tenant or bounded domain.
+
+=== Login and Logout
+
+The user interface starts automatically with the login screen.
+Upon sucessful login, the default bounded domain with its default view is displayed.
+
+After a succesful logout, the login screen is displayed again.

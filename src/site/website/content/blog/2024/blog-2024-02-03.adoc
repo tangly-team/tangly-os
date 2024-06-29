@@ -4,7 +4,7 @@ linkTitle: "How To Improve"
 date: 2024-02-20
 tags: ["agile", "tangly", "organization"]
 params:
-  featured: "blog/2024/pics/2024-25-03-head.png"
+  featured: "blog/2024/pics/2024-02-03-head.png"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

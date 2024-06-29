@@ -5,10 +5,10 @@ weight: 70
 ---
 
 [.text-center]
-=== Come to work with us at tangly and start changing the world
+== Work with us at tangly and start changing the world
 
 [.text-left]
-We are working following agile values and principles since the beginning of this millennium.
+We have been working following agile values and principles since the beginning of this millennium.
 Join our team.
 
 [.text-left]

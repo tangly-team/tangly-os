@@ -4,7 +4,7 @@ linkTitle: "req42"
 date: 2026-02-05
 tags: ["agile", ]
 params:
-  featured: "blog/2026/pics/2026-02-01-head.jpg"
+  featured: "blog/2026/pics/2026-02-01-head.png"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]

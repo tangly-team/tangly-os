@@ -5,7 +5,7 @@ weight: 40
 ---
 
 [.text-center]
-=== Do The Right Thing
+== Do The Right Thing
 
 [.text-center]
 Respect and tolerance
@@ -20,7 +20,7 @@ Curiosity, creativity and passion
 Transparency and integrity
 
 [.text-center]
-=== Champion Product Excellence
+== Champion Product Excellence
 
 [.text-center]
 Do not focus on the products you are building, focus on the problems our customers are encountering.
@@ -32,10 +32,8 @@ Improving the world through our culture _Do The Right Thing_ and our technology 
 Product achievement, accountability and success
 
 [.text-center]
-=== Run A Sustainable Business
+== Run A Sustainable Business
 
 [.text-center]
-Great companies are not in business to make money,
-
-[.text-center]
+Great companies are not in business to make money, +
 they make money to stay in business and accomplish an important purpose.
