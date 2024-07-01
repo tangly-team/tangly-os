@@ -1,0 +1,311 @@
+---
+title: "Agile Product Management"
+date: 2024-07-01
+weight: 80
+author: "Marcel Baumann"
+description: Recipes for agile product management for small and medium-sized enterprises
+---
+
+== Agile Product portfolio management
+:toc:
+
+Small and medium-sized enterprises _SME_ often struggle with the implementation of digital product management.
+
+They have a heterogeneous portfolio of products targeting their customer segments.
+The development capacities are limited and shared between the products.
+Often a team is responsible for the development and support of multiple product lines.
+
+The digital products have different life cycles and customer segments.
+They are often implemented with different technologies and stacks
+footnote:[I recommend strongly limiting the number of technology stacks to one or two stacks.
+The size of the development department is, in general, so small that professional level can seldom be guaranteed for multiple development stacks.].
+Life cycles are strongly influenced by the customer segments, the technology stack, and the architecture
+footnote:[The modern world is a more dangerous world.
+Companies should neutralize known security flaws in a matter of days.
+This is an ethical and legal compliance requirement.].
+
+The organization has to optimize the development capacities to maximize the value for the company.
+The product portfolio manager is responsible for the overall strategy and the alignment of the products.
+She must allocate the limited development capacities to the most successful products.
+
+Indirectly, she is responsible for a reasonable distribution of the realization capacities between the development teams.
+Smaller companies cannot afford idle developers.
+
+The organization has to answer the following questions:
+
+* How shall the requirements elicitation, consolidation, prioritization, and implementation be performed?
+* How shall the product roadmaps and releases be organized?
+* How can the development capacities be optimized?
+Who should transform the product requirements into technical requirements?
+* How shall the architecture and technology be managed?
+* How shall the tracking and feedback be implemented?
+
+We present a pragmatic approach to solve these challenges.
+The approach scales up to eight development teams or around eighty developers.
+
+The number of digital products is not limited.
+Prefer grouping similar offerings in an overall product.
+Try to have less than twenty products in the portfolio.
+
+=== Portfolio Management Process
+
+A product portfolio is a group of products.
+These might be end-user-facing or internal ones like a software platform, for instance; they might directly generate revenue or support commercial offerings.
+
+A product family is commonly defined as a group of related products.
+You can therefore view it as a cohesive product portfoli, a portfolio whose members have related value propositions and business goals.
+
+A product line is a set of product variants.
+You should handle all product variants as a single product.
+
+An effective product portfolio strategy should contain five elements
+
+Vision:: an overarching vision that describes its purpose, the positive change it should bring about.
+Target Groups:: the markets and market segments the portfolio serves.
+Needs:: the overall value it creates for the users and customers.
+Product Portfolio:: the business benefits it helps achieve.
+Business Goals:: the type of products it contains with the capabilities that set them apart from competitors.
+
+Use a dedicated overall portfolio product manager.
+The individual should have a track record of successfully managing products similar to the ones contained in the portfolio.
+Additionally, they will benefit from having the right leadership skills, be able to guide a group of product people, collaborate with senior stakeholders, and engage with senior management.
+
+image::apm-product-portfolio-team.png[TDD cycle,500,700,role="text-center"]
+
+The following artifacts shall be created and maintained:
+
+* Overall Strategy for the organization.
+* Vision of the product portfolio.
+* Portfolio of all product lines.
+* Roadmap and release plan.
+All product lines and products should be aligned with the release plan to reduce the coordination effort.
+Experiment with quarterly releases.
+* Alignment of product lines and products.
+
+Review and update the documents monthly.
+If your target market is slowly moving, you might be able to extend the review cycle to a quarter.
+
+image::apm-strategy-stack.png[TDD cycle,500,700,role="text-center"]
+
+==== Requirements Gathering and Refinement
+
+Each product has a product manager responsible for the requirement gathering.
+A product manager can be charge of multiple products.
+
+The product manager is responsible for:
+
+* The vision of the product
+* The roadmap of the product
+* The release plan of the product
+* The product line backlog as a set of epics and features
+
+[plantuml,bus-core-uml,svg]
+....
+@startuml
+
+Rectangle "Product Line 1" {
+    actor "Product Manager 1" as PM1
+    usecase "Vision Product1" as V1
+    usecase "Roadmap Product 1" as RM1
+    usecase "Release Plan Product 1" as RP1
+    usecase "Features Product 1" as FP1
+    PM1 --> V1
+    PM1 --> RM1
+    PM1 --> RP1
+    PM1 --> FP1
+}
+
+Rectangle "Product Line 2" {
+    actor "Product Manager 2" as PM2
+    usecase "Vision Product2" as V2
+    usecase "Roadmap Product 2" as RM2
+    usecase "Release Plan Product 2" as RP2
+    usecase "Features Product 2" as FP2
+    PM2 --> V2
+    PM2 --> RM2
+    PM2 --> RP2
+    PM2 --> FP2
+}
+
+Rectangle "Portfolio" {
+    actor "Porfolio Manager" as PM #line.bold
+    usecase "Portfolio Roadmap" as RM
+    usecase "Portfolio Release Plan" as RP
+    usecase "Portfolio Backlog" as FP
+    PM --> RM
+    PM --> RP
+    PM --> FP
+}
+
+RM1 ..> RM
+RP1 ..> RP
+FP1 ..> FP
+
+RM2 ..> RM
+RP2 ..> RP
+FP2 ..> FP
+
+rectangle "Development Team" {
+    actor "Product Owner Proxy" as POP
+    usecase "Technical Requirements Stack 1" as TR1
+    usecase "Technical Requirements Stack 2" as TR2
+    usecase "Technical Requirements Stack 3" as TR3
+
+    POP --> TR1
+    POP --> TR2
+    POP --> TR3
+}
+
+FP ..> TR1
+FP ..> TR2
+FP ..> TR3
+
+@enduml
+....
+
+[TIP]
+====
+Try to create customer journeys for each product.
+Invest time in the user interface design.
+
+Stop solely collecting requirements.
+Invest effort in understanding the customer needs and the customer journey.
+====
+
+Each feature shall be associated with a tentative release date.
+
+All these features are added to the organization product backlog.
+Once a month, the organization product owner consolidates the individual product backlogs into the organization product backlog.
+The consolidation is a collaborative effort between the organization product owner and the product managers.
+
+The roadmap and release plan are synchronized with the organization portfolio roadmap and release plan.
+These documents should be reviewed quaterly.
+
+==== Consolidation in a product backlog
+
+The organization product owner is responsible for the consolidation of the individual product items.
+
+image::apm-strategy-stack-and-ownership.png[TDD cycle,500,700,role="text-center"]
+
+==== Prioritization
+
+* Roadmap
+* Release Plan
+* Customer Journey
+
+== Refinement and Implementation
+
+* Feature teams vs component teams, product owner as technical requirements engineer and coordinaator
+* Product Owner proxy and requirement engineer
+
+The architect shall be involved in the refinement of the technical requirements.
+
+Ideally, a user interface specialist should be involved in the refinement of the user stories.
+
+[NOTE]
+====
+The architect is responsible for the overall architecture and technology decisions.
+She should influence the technical requirements to ensure that the overall architecture is not compromised.
+
+An evolvable architecture is a key success factor for digital products and has life cycles of more than five years.
+
+The most frequent flaw of digital products is the lack of high-quality user interfaces.
+====
+
+=== Architecture and Technology
+
+* Technical Stacks and architecture
+* Technical debt management
+* Overall software architecture
+* DevOps and SecDevOps
+
+== Tracking and Feedback
+
+* Tracking of efforts for feedback
+* Traceability between backlog item, features and epics
+* Effort at backlog item level
+
+== Tools
+
+* Tooling
+* Requirements Engineering
+* Roadmap and release planning
+* Backlog Management
+
+Effort and progress tracking DevOps SecDevOps
+
+representative for each product Each product has a life cycle and customer segments.
+portfolio products owner responsible for all products in a release train The portofolio optimizes long tem value for the company.
+The product owner provides a vision, roadmap and release plan.
+The products should be prioritized.
+Each product has a different priority A portfolio technical architect should optimize the used technology stacks to maximize value for the company.
+In smaller development departments, the number of stacks should be minimized.
+Otherwise the level of the development teams would be average.
+development teams Cross-functional feature teams are ideal Technology or component teams are often the reality.
+A technical product owner can over the work of the IT requirements engineer.
+She translate a feature requirements into a set of components backlog items a specific team should implement.
+The team product owner is responsible to provide treacability between portofolio requirements and technical requirements.
+Technical work packages implementation efforts should be tracked to provide information about the implementation costs of a feature.
+
+No matter, which option you choose, it would be a bad idea if a single person made all portfolio decisions on their own.
+This would waste the knowledge and creativity of the people working on the individual products.
+What’s more, it might cause poor alignment and weak buy-in.
+I therefore recommend a collaborative approach that involves the following individuals:
+The product portfolio manager (who might be the head of product); The individuals managing the products contained in the portfolio; Development team reps which might include a UX designer (for end-user-facing products), an architect/programmer, and a tester/QA engineer.
+Key stakeholders, for example, a sales rep, marketer, and customer support team member.
+
+Epic -> Feature -> PBI (Story) -> Task Issue should be a PBI or a bug
+
+Feature:: A Feature represents solution functionality that delivers business value, fulfills a stakeholder need, and is sized to be delivered by an Agile Release Train within a PI.
+
+Big Software product companies often try Quaterly releases of products Yearly releases and quaterly updates
+
+Four Artefacts At the heart of the model in figure 1 are four artefacts: the product vision, the product strategy, the product roadmap, and the product backlog.
+
+The product vision describes the product’s purpose, the ultimate reason for creating it, and the positive change it should bring about.
+You can think of the vision as the product’s true north that guides and aligns everyone involved in achieving product success.
+This includes the stakeholders, the management sponsor, and development teams.
+A sample vision might be “help people eat healthily,” assuming that you want to offer a product that helps people improve their eating habits and take advantage of the related benefits.
+
+The product strategy communicates the approach chosen to realise the vision and to make the product successful.
+Coming up with a strategy requires you to make four important choices:
+Selecting the needs the product should address, for example, reducing the risk of developing type-2 diabetes to stay with the health-eating example introduced above.
+Determining the market or market segment—the users and customers who should benefit from the product, for instance, “middle-aged men with unhealthy eating habits who are at risk of developing type-2 diabetes.” Choosing standout features that set the product apart from competing offerings.
+These might include “measure and record sugar levels in food,” “analyse eating habits and make individualised recommendations,” and “seamlessly integrate with leading smart scales.” Setting realistic business goals that describe the benefits the product will create for the company developing and providing it.
+These may include financial goals like a revenue target as well as acquiring new knowledge and developing the brand.
+
+Making these choices requires you to say no to ideas and suggestions.
+For instance, not addressing teenagers with an eating disorder, at least for now.
+While this can be tough, it is a necessary part of strategic decision-making.
+A product that tries to please everyone risks not doing a good job for anybody.
+A new or significantly changed strategy must be validated to maximise the chances of achieving product success.
+This is best done by systematically addressing its biggest assumptions and risks in an iterative fashion, as figure 2 shows.
+
+While I have described the connections between the layers top-down, changes in a lower layer can trigger adaptations in a higher one.
+Say that the portfolio strategy turns out to be wrong, then this may require changing the business strategy.
+To put it differently, the relations between the layers are bidirectional
+
+Business Strategy Product Portfolio Strategy Product Strategy Technology Strategy
+
+Product Roadmap Technology Roadmap
+
+bibliography]
+== Links
+
+- [[[product-owner-formation, 1]]] link:{ref-tangly-blog-url}/blog/2021/product-owner-formation/
+- [[[digital-product-manager, 2]]] link:{ref-tangly-blog-url}2022/digital-product-manager/
+- [[[six-levers-product-development, 3]]] link:{ref-tangly-blog-url}blog/2018/six-levers-for-better-agile-product-development/
+
+== References
+
+bibitem:[how-to-lead-product-management]
+bibitem:[strategize]
+bibitem:[agile-product-management]
+bibitem:[start-with-why]
+bibitem:[user-story-mapping]
+bibitem:[professional-product-owner]
+bibitem:[project-to-product]
+
+bibitem:[building-evolutionary-architectures-2nd]
+bibitem:[devops-handbook]
+bibitem:[working-effectively-with-legacy-code]

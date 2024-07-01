@@ -47,6 +47,14 @@
             <property name="exclusions" value="serialVersionUID|serialPersistentFields|logger" />
         </properties>
     </rule>
+    <rule ref="category/java/codestyle.xml/FormalParameterNamingConventions">
+        <properties>
+            <property name="methodParameterPattern" value="[a-z][a-zA-Z0-9]*" />
+            <property name="finalMethodParameterPattern" value="[a-z][a-zA-Z0-9]*" />
+            <property name="lambdaParameterPattern" value="_|([a-z][a-zA-Z0-9]*)" />
+            <property name="explicitLambdaParameterPattern" value="[a-z][a-zA-Z0-9]*" />
+        </properties>
+    </rule>
     <rule ref="category/java/codestyle.xml/ShortClassName">
         <properties>
             <property name="minimum" value="3"/>
@@ -64,7 +72,7 @@
     </rule>
     <rule ref="category/java/codestyle.xml/LongVariable">
         <properties>
-            <property name="minimum" value="24"/>
+            <property name="minimum" value="36"/>
         </properties>
     </rule>
     <rule ref="category/java/codestyle.xml/TooManyStaticImports">
