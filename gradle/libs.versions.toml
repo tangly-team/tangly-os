@@ -36,7 +36,7 @@ awaitility = "org.awaitility:awaitility:4.2.1"
 apache-pdfbox = "org.apache.pdfbox:pdfbox:3.0.2"
 arch-unit = "com.tngtech.archunit:archunit-junit5-api:1.3.0"
 
-asciidoctorj = "org.asciidoctor:asciidoctorj:2.5.12"
+asciidoctorj = "org.asciidoctor:asciidoctorj:2.5.13"
 asciidoctorj-pdf = "org.asciidoctor:asciidoctorj-pdf:2.3.17"
 
 assertj = { module = "org.assertj:assertj-core", version.ref = "assertj-version" }
