@@ -1,4 +1,8 @@
 == tangly OS Components
+:ref-github: https://github.com/[GitHub]
+:ref-gitlab: https://gitlab.com/[GitLab]
+:ref-gradle: https://gradle.org/[Gradle Build Tool]
+:ref-asciidoc: https://asciidoc.org/[Asciidoc]
 
 The _tangly_ open source components are a set of open source libraries released under Apache 2.0 licence and are available through maven central.
 The components are
@@ -80,8 +84,9 @@ git add remote origin-bitbucket   git@bitbucket.org:tangly-team/tangly-os.git   
 ----
 <1> primary git repository due to the excellent support for static websites.
 <2> secondary git repository.
-<3> historical git repository missing support for {ref-asciidoc} and static websites.
-_The educational repository of the technical university of Lucerne was removed after their gitlab server was compromised._
+<3> historical git repository missing support for {ref-asciidoc} and static websites
+footnote:[The educational repository of the technical university of Lucerne was removed after their gitlab server was compromised in 2023.].
+
 
 If you create a new remote repository, you can populate it with the following commands.
 
