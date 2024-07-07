@@ -84,6 +84,7 @@ cite:[start-with-why].
 === Product Portfolio Manager
 
 Use a *dedicated* overall portfolio product manager cite:[agile-product-management, strategize].
+
 The portfolio product manager is responsible for all products in the portfolio.
 She decides the content of the portfolio backlog, the release plan, and the priority associated with the backlog items.
 
@@ -127,6 +128,11 @@ All product lines and products should be aligned with the portfolio release plan
 Experiment with quarterly releases.
 * Portfolio backlog.
 
+image::apm-strategy-stack.png[400,700,role="text-center"]
+
+Review and update the documents monthly.
+If your target market is slowly moving, you might be able to extend the review cycle to a quarter.
+
 [TIP]
 ====
 A pragmatic roadmap and release plan will be:
@@ -138,11 +144,6 @@ A pragmatic roadmap and release plan will be:
 * It takes a couple of days to agree on its content
 * It aims for direction and accountability
 ====
-
-Review and update the documents monthly.
-If your target market is slowly moving, you might be able to extend the review cycle to a quarter.
-
-image::apm-strategy-stack.png[400,700,role="text-center"]
 
 == Requirements Elicitation
 
