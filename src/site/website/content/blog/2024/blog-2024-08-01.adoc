@@ -170,6 +170,7 @@ Marcel Baumann. 2021.
 - [[[agile-architecture-principles, 5]]] link:../../2019/agile-architecture-principles/[Agile Architecture Principles]
 Marcel Baumann. 2019.
 - [[[actor-model, 6]]] https://en.wikipedia.org/wiki/Actor_model[Actor Model]
+Marcel Baumann, 2024.
 
 == References
 

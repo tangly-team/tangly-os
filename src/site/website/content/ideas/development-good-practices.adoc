@@ -1,7 +1,7 @@
 ---
 title: "Good Practices for Enterprise Java Solutions"
 date: 2021-01-01
-weight: 25
+weight: 45
 description: good practices
 ---
 

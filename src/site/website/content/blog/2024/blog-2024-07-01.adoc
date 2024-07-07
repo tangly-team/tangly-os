@@ -104,8 +104,7 @@ Artifacts created with {ref-openapi}, {ref-javadoc}, or {ref-doxygen} shall be p
 Technical digital product documentation creation embraces the docs-as-code philosophy.
 Similar to our source code practices, product documentation has been version controlled, subjected to the same gatekeeping systems, and auto-delivered by using the same CI/CD pipeline.
 
-This has allowed us to maintain a high level of quality and consistency across our documentatio, while also enabling our engineers to contribute to the
-documentation in the same way they contribute to the codebase.
+This has allowed us to maintain a high level of quality and consistency across our documentatio, while also enabling our engineers to contribute to the documentation in the same way they contribute to the codebase.
 ====
 
 The actual good solution is to use a static website generator <<creating-technical-website>> <<improving-static-website>> <<support-comment-docsy>>.
@@ -198,12 +197,14 @@ Technical writers are very satisfied with {ref-asciidoc} and the provided templa
 
 == Lessons Learnt
 
-You must provide documentation to empower new team members cite:[documenting-software-architectures].
-Collaborators will read the documentation to understand the architecture and design decisions before they start changing the code.
+You must provide documentation to empower new team members and technical users of your components cite:[documenting-software-architectures].
+Collaborators and developers will read the documentation to understand the architecture and design decisions before they start using or changing the code.
 
 Be honest.
 No other person will read the documentation
 footnote:[The exception is if your digital product requires a certification such as functional safety or FDA approval.].
+Cherish the documentation as a living artifact.
+Discuss the content with your team members and improve it continuously.
 
 Collaborators should have a working understanding of UML cite:[uml-distilled].
 
@@ -215,6 +216,18 @@ The sole commonly spoken and written language will be English.
 
 You shall document architectural design decisions https://adr.github.io/[ADR].
 These records document the evolution of your digital solution over the years.
+
+[TIP]
+====
+Study the documentation of successful open-source projects.
+They provide good examples of how to document your digital product.
+
+Most developers do not study the source code before using an open-source library or a component.
+They do not have direct access to the developers of the library or component.
+They rely on the documentation to understand the usage and the design decisions.
+
+Code examples are highly valued in the documentation.
+====
 
 Most organizations are documentation crazy.
 Old school managers cannot handle the agile manifesto rule.

@@ -1,0 +1,52 @@
+---
+title: "Cool Libraries"
+linkTitle: "Cool Libraries"
+date: 2025-04-01
+tags: ["java", "vaadin"]
+params:
+  featured: "blog/2024/pics/2024-09-01-head.jpg"
+---
+
+
+=== How to Handle Phone Numbers?
+
+Processing phone numbers seems complicated at first glance because of the many different formats.
+I use Google library `libphonenumber`.
+It makes handling phone numbers easy.
+
+According to https://github.com/google/libphonenumber/[Lib Phone Number is:
+
+Google's common Java, C++ and JavaScript library for parsing, formatting, and validating international phone numbers.
+The Java version is optimized for running on smartphones, and is used by the Android framework since 4.0 .
+
+The main class of libphonenumber is, no surprise, the class `Phonenumber`.
+You can create a phone number.
+
+[source, java]
+----
+Phonenumber.PhoneNumber swissPhoneNumber = new Phonenumber.PhoneNumber();
+swissPhoneNumber.setCountryCode(41);
+swissPhoneNumber.setNationalNumber(324556677L);
+----
+
+The PhoneNumberUtil can also parse phone numbers.
+
+[source, java]
+----
+Phonenumber.PhoneNumber parsedSwissPhoneNumber = phoneNumberUtil.parse("032 455 66 77", "CH");
+----
+
+Now that we can parse strings to phone numbers, how can we check if the phone number is valid?
+Also, here, PhoneNumberUtil, has you covered it as it has metadata of the phone numbers of many regions?
+
+[source, java]
+----
+Phonenumber.PhoneNumber invalidSwissPhoneNumber = phoneNumberUtil.parse("032 631 11 2", "CH");
+System.out.println(phoneNumberUtil.isValidNumber(invalidSwissPhoneNumber));
+----
+
+The code above will print false as the phone number is too short.
+
+=== How to Handle IBAN Numbers?
+
+=== How to validate JSON files?

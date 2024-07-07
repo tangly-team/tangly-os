@@ -9,6 +9,8 @@ params:
 
 include::../fragments/_config-mb-blog.adoc[]
 
+:ref-integrity: https://peacockmedia.software/mac/integrity/free.html[Integrity]
+
 [.float-group]
 --
 image::2025-12-02-head.jpg[width=420,height=360,role=left]
@@ -78,6 +80,9 @@ To further explain the concepts, you can add images to the body of the blog.
 It is always more appealing to add images.
 
 It is worth investing some time to polish up your website.
+I use the {ref-integrity} tool to check all the links on my website.
+The tool is free and easy to use.
+It guarantees that the website has no dead links, ensuring a good user experience.
 
 I added support for a dark theme to my website.
 People can now choose between a light and a dark theme by clicking on the sun or moon icon in the top right corner of the website.

@@ -34,6 +34,11 @@
   src="https://unpkg.com/lunr@2.3.9/lunr.min.js"
   integrity="sha384-203J0SNzyqHby3iU6hzvzltrWi/M41wOP5Gu+BiJMz5nwKykbkUx8Kp7iti0Lpli"
   crossorigin="anonymous"></script>
+{{ end -}}
+
+{{ if .Site.Params.prism_syntax_highlighting -}}
+<link rel="stylesheet" href="{{ "css/prism.css" | relURL }}"/>
+{{ end -}}
 <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
       messageStyle: "none",
@@ -49,11 +54,7 @@
       TeX: { equationNumbers: { autoNumber: "none" } }
     });
 </script>
-{{ end -}}
-
-{{ if .Site.Params.prism_syntax_highlighting -}}
-<link rel="stylesheet" href="{{ "css/prism.css" | relURL }}"/>
-{{ end -}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script>
 
 {{ template "algolia/head" . -}}
 

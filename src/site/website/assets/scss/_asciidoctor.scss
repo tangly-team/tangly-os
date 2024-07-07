@@ -4,7 +4,7 @@
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- *          http://www.apache.org/licenses/LICENSE-2.0
+ *          https://apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -32,6 +32,8 @@ $subheader-bottom-margin: 0.25em;
 $hr-border-color: #ccc;
 $hr-border-style: dotted;
 $hr-border-width: 1px;
+
+$list-side-margin: 18px;
 
 $sect-divider-size: 1px !default;
 $sect-divider-style: solid !default;
@@ -365,7 +367,7 @@ b.conum * {
 td.hdlist1,
 td.hdlist2 {
     vertical-align: top;
-    padding: 0.625em;
+    padding: 0.5em;
 }
 
 td.hdlist1 {
@@ -403,4 +405,33 @@ table.frame-ends {
 
 table.frame-sides {
     border-width: 0 $table-border-size;
+}
+
+ul.checklist,
+ul.none, ol.none,
+ul.no-bullet, ol.no-bullet, ol.unnumbered,
+ul.unstyled, ol.unstyled {
+    list-style-type: none;
+}
+
+ul.no-bullet, ol.no-bullet, ol.unnumbered {
+    margin-left: 0.625em;
+}
+
+ul.unstyled, ol.unstyled {
+    margin-left: 0;
+}
+
+ul.checklist > li > p:first-child {
+    margin-left: -1 em;
+    > .fa-square-o:first-child,
+    > .fa-check-square-o:first-child {
+        width: 1.25em;
+        font-size: 0.8em;
+        position: relative;
+        bottom: 0.125em;
+    }
+    > input[type="checkbox"]:first-child {
+        margin-right: 0.25em;
+    }
 }

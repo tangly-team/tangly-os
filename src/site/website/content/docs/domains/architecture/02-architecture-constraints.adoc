@@ -9,15 +9,49 @@ ifndef::imagesdir[:imagesdir: ./pics]
 [[section-architecture-constraints]]
 == Architecture Constraints
 
+=== Technology Stacks
+
 The programming language is Java.
 The version is the current released JDK.
 
 Embedded programming language is C++.
 The version is the current released ISO standard.
 
-Th user interface for all Java applications is build with Vaadin.
+Th user interface for all Java applications is build with {ref-vaadin}.
 The version is the current released version available on Maven Central.
 
 The documentation language is English US.
 
 Exchange of data is over TSV files.
+JSON is used for mapping complex data structures.
+
+=== Design Approaches
+
+The design approach is to use non-intrusive design patterns.
+The solutions do not require intrusive changes to the source code, such as a common base class or interface.
+We do not use annotations nor XML configuration files.
+
+The configuration is done with plain Java code.
+The advantage is very clean domain entities.
+The drawback is that the configuration has to be written in Java code.
+The configuration code is somewhat repetitive.
+
+We have multiple configuration code for:
+
+- Persist domain entities in a persistent store.
+The curent persistent approach uses {ref-eclipsestore}.
+Therefore, the configuration code is limited to migration hints when the domain entities change.
+- Export and import domain entities to and from TSV or JSON files.
+The configuration code is the mapping of domain entities to TSV or JSON files.
+The application uses our own component `net.tangly.gleam`.
+- Displays domain entities in a user interface.
+Standard Vaadin components are used.
+The configuration code is the mapping of domain entities to Vaadin components is supported through our own component `net.tangly.ui`.
+- Provide a REST API for domain entities and business logic.
+
+=== Development Environments
+
+The preferred development environment is IntelliJ IDEA.
+The preferred built tool is {ref-gradle}.
+
+The current JDK is used for all development activities.

@@ -78,6 +78,7 @@ extensions = ["asciidoctor-diagram", "asciidoctor-bibtex", "asciidoctor-kroki", 
 [markup.asciidocExt.attributes]
 experimental = true
 allow-uri-read = true
+noHeaderOrFooter = true
 preserveTOC = false
 icons = "font"
 imagesdir = "../pics"
@@ -100,6 +101,7 @@ ref-bitbucket = "https://bitbucket.org/[Bitbucket]"
 ref-c4 = "https://c4model.com/[C4 Model]"
 ref-clojure = "https://clojure.org/[Clojure]"
 ref-craftsmanship = "https://manifesto.softwarecraftsmanship.org/[Software Craftsmanship]"
+ref-dad = "https://www.pmi.org/disciplined-agile/[Disciplined Agile]"
 ref-devops = "https://en.wikipedia.org/wiki/DevOps[DevOps]"
 ref-docsy = "https://www.docsy.dev/[Docsy]"
 ref-doxygen = "https://www.doxygen.nl/[Doxygen]"
