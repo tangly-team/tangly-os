@@ -46,7 +46,7 @@ flyway = { module = "org.flywaydb:flyway-core", version.ref = "flyway-version" }
 flywy-hsqldb = { module = "org.flywaydb:flyway-database-hsqldb", version.ref = "flyway-version" }
 
 hsqldb = "org.hsqldb:hsqldb:2.7.3"
-iban4j = "org.iban4j:iban4j:3.2.8-RELEASE"
+iban4j = "org.iban4j:iban4j:3.2.9-RELEASE"
 
 ical4j-core = "org.mnode.ical4j:ical4j:4.0.1"
 ical4j-vcard = "org.mnode.ical4j:ical4j-vcard:1.0.7"
