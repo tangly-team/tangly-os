@@ -9,11 +9,17 @@ params:
 
 include::../fragments/_config-mb-blog.adoc[]
 
-image::2016-04-01-head.jpg[width=420,height=360,role=left]
-I am often told that it is difficult to use Agile/Scrum approaches for brown field projects or for big projects or for distributed projects or for in other situations.
+:ref-unified-process: https://en.wikipedia.org/wiki/Unified_process[Unified Process]
+:ref-waterfall-model: https://en.wikipedia.org/wiki/Waterfall_model[Waterfall Model]
+:ref-v-model: https://en.wikipedia.org/wiki/V-Model_(software_development)[V Model]
 
-Interestingly, these people also state that the same problems exist with traditional approaches such as https://en.wikipedia.org/wiki/OpenUP[RUP/OpenUP],
-https://en.wikipedia.org/wiki/Waterfall_model[Waterfall Model], https://en.wikipedia.org/wiki/V-Model_(software_development)[V Model] defined as a formal standard in Germany
+image::2016-04-01-head.jpg[width=420,height=360,role=left]
+
+I am often told that it is challenging to use Agile/Scrum approaches for brown field projects or for big projects or for distributed projects or for in other situations.
+
+Interestingly, these people also state that the same problems exist with traditional approaches such as {ref-unified-process}
+footnote:[The eclipse foundation had a project called OpenUP which was a lightweight version of the Unified Process.],
+{ref-waterfall-model}, {ref-v-model} defined as a formal standard in Germany
 https://de.wikipedia.org/wiki/V-Modell_(Entwicklungsstandard)[V-Modell Entwicklungsstandard], and the Swiss variant called {ref-hermes}.
 
 Agile approaches are currently the standard for new projects and are thought in technical universities.

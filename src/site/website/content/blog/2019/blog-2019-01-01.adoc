@@ -130,7 +130,7 @@ Read my related set of blogs How Healthy is Your Product?
 Additional blogs for an in-depth check of your agile framework, values, and current work processes are:
 
 . link:../../2019/code-scene-as-crime-scene/[Code Scene As a Crime Scene]
-. link:../../2018/how-healthy-is-your-product-delivery-pipeline-check[Delivery Pipeline Check]
+. link:../../2018/how-healthy-is-your-product-delivery-pipeline-check/[Delivery Pipeline Check]
 
 Now government procurement acknowledges that some companies are just cheating with their agile claims, improve yours before getting caught.
 Luckily, the check will find out you are really being agile instead of pretending.

@@ -244,7 +244,7 @@ This will never work.
 [bibliography]
 == Links
 
-- [[[how-to-document-software-architecture, 1]]] link:../../2024/how-to-document-software-architecture/[How to Document Software Architecture].
+- [[[how-to-document-software-architecture, 1]]] link:../../2024/how-to-document-your-software-architecture/[How to Document Software Architecture].
 Marcel Baumann. 2024.
 - [[[improving-static-website,2]]] link:../../2021/improving-a-static-web-site-build-with-hugo-and-docsy/[Improving a Static Website with Hugo and Docsy].
 Marcel Baumann. 2021.

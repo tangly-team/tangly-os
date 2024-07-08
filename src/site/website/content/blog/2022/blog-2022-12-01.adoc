@@ -9,6 +9,9 @@ params:
 
 include::../fragments/_config-mb-blog.adoc[]
 
+:ref-flyway: https://flywaydb.org/[FlyWay]
+:ref-liquibase: https://www.liquibase.com/community[Liquibase]
+
 image::2022-12-01-head.png[width=420,height=360,role=left]
 
 The https://en.wikipedia.org/wiki/DevOps[DevOps] movement started to gather momentum with the first DevOps conference held in Ghent, Belgium in 2009
@@ -216,7 +219,7 @@ and https://en.wikipedia.org/wiki/Infrastructure_as_code[infrastructure as code]
 Migrate your approach to automated configuration scripts to configure and initialize your products.
 
 Incremental migration of database schema and productive data is a well-understood software engineering problem cite:[refactoring-databases] for decades.
-Tools such as https://flywaydb.org/[FlyWay] or https://www.liquibase.org/[LiquidBase] provide enterprise grade productive solutions.
+Tools such as {ref-flyway} or {ref-liquibase} provide enterprise grade productive solutions.
 
 [INFO]
 ====
@@ -347,7 +350,7 @@ DevOps approaches are well-supported.
 Often, advanced concepts such as monitoring, DevSecOps or license management are supported.
 Extensive tutorials and good practices are available.
 
-Just use the provided tools and approaches to professionally develop and operate your digital platforms.
+Use the provided tools and approaches to professionally develop and operate your digital platforms.
 
 [bibliography]
 == Links

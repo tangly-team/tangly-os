@@ -8,7 +8,9 @@ params:
 ---
 
 include::../fragments/_config-mb-blog.adoc[]
+:ref-deno: https://deno.com/[Deno]
 :ref-sonarlint: https://www.sonarsource.com/products/sonarlint/[SonarLint]
+:ref-webassembly: https://webassembly.org/[WebAssembly]
 
 [.float-group]
 --
@@ -208,6 +210,6 @@ Which version of Typescript is she using?
 * Which training or certificates does she have in user interface design, usability, or accessibility?
 * Does he have experience and training in MongoDB, Mongoose, Meteor, express.js, socket.io?
 * Is she experienced with integrating relational database in NodeJS backend solutions?
-* Are advanced topics such as https://webassembly.org/[WebAssembly] or https://deno.land/[Deno] known?
+* Are advanced topics such as {ref-webassembly} or {ref-deno} known?
 
 Use hints in the project experience sections to cover the above topics.

@@ -12,10 +12,17 @@ include::../fragments/_config-mb-blog.adoc[]
 
 [.float-group]
 --
-image::2018-02-02-head.jpg[width=420,height=360,role=left]
-How can you create better products and services?
+image::2018-02-02-head.jpg[width=360,height=360,role=left]
+Every company is a software company.
+
+Software is a key to success.
+This is the new reality in the digital world.
+
+How can you create better digital products and services?
 
 How can you delight your customers, your collaborators, and your stakeholders?
+
+How can you increase the odds of success for your digital products?
 
 We identified six levers to multiply the effectivity of your agile development teams and empower them to create great services and products.
 
@@ -40,7 +47,7 @@ Minimum viable products _MVP_ are first developed as minimally functional produc
 Within 60 days, a physical prototype will be created that customers can test during this time.
 The software component shall be delivered after the first or second iteration, which means in less than one month.
 
-New technologies such as 3D printing, cheap hardware and IoT boards, continuous delivery, and simulation enable your teams to deliver on time.
+New technologies such as 3D printing, affordable hardware and IoT boards, continuous delivery, and simulation enable your teams to deliver on time.
 These are not pure mockups but executable applications.
 If it appeals to the customer, the MVP will evolve gradually to a minimum marketable product _MMP_.
 The focus is always on adding customer value.
@@ -87,12 +94,12 @@ for a description of modern agile development procedures.
 == Elastic Infrastructure
 
 We shall use the state of industry technology.
-This enables test-driven development - ATDD, TDD -, meaning predefined automated software tests that run in real-time.
+This enables test-driven development suc as ATDD or TDD, meaning predefined automated software tests that run in real-time.
 
 Cloud infrastructure provides unlimited processing capabilities for development, test, and deployment of software artifacts.
 
 Developers have fast notebooks, fast SSD, plenty of RAM, and 4K external screens.
-In addition, the technical infrastructure enables software to be scaled and adjustments made immediately - CI, CD, DevOps -.
+In addition, the technical infrastructure enables software to be scaled and adjustments made immediately using CI, CD, and DevOps.
 The goal is to deliver a software release in production every few hours if needed.
 
 ==  Learnt Lessons
@@ -102,6 +109,8 @@ The work atmosphere is focused, friendly and productive.
 Team members are continuously working on the solution without spurious task switches in their team room.
 . Establish stable and long living teams.
 . Realize the importance of training and coaching.
+Establish a continuous learning culture.
+Pursue technical excellence.
 . Embed your teams and processes in the organization.
 . Change processes for beyond budgeting approaches and lean enterprise.
 The organization has to stop requiring exact budgets and detailed yearly planning.

@@ -9,6 +9,7 @@ author: "Marcel Baumann"
 :ref-smart: https://en.wikipedia.org/wiki/SMART_criteria[SMART]
 :ref-invest: https://en.wikipedia.org/wiki/INVEST_(mnemonic)[INVEST]
 :ref-pmi: https://www.pmi.org/[Project Management Institute]
+:ref-yagni: https://en.wikipedia.org/wiki/You_aren%27t_gonna_need_it[You aren't gonna need it]
 :toc:
 
 Small and medium-sized enterprises often struggle with the implementation of digital product management.
@@ -53,6 +54,11 @@ The number of digital products is not limited.
 Prefer grouping similar offerings in a generalized product.
 Try to have less than five product families in the portfolio.
 
+_The approach is tailored for digital product companies._
+_Engineering services companies have different challenges and require a different approach._
+_Services companies have no digital products._
+_They only deliver services to their customers._
+
 == Portfolio Management Process
 
 === Portfolio
@@ -83,7 +89,7 @@ cite:[start-with-why].
 
 === Product Portfolio Manager
 
-Use a *dedicated* overall portfolio product manager cite:[agile-product-management, strategize].
+Use a *dedicated* overall portfolio product manager cite:[agile-product-management,strategize].
 
 The portfolio product manager is responsible for all products in the portfolio.
 She decides the content of the portfolio backlog, the release plan, and the priority associated with the backlog items.
@@ -102,12 +108,12 @@ No matter which option you choose, it would be a bad idea if a single person mad
 This would waste the knowledge and creativity of the people working on the individual products.
 
 What is more, it might cause poor alignment and weak buy-in.
-I therefore recommend a collaborative approach that involves the following individuals:
+I recommend a collaborative approach that involves the following individuals:
 
 * The product portfolio manager.
 He might be the head of the product development department.
 * The individuals managing the products contained in the portfolio.
-* Development team representatives which might include a UX designer (for end-user-facing products), an architect, and senior developers.
+* Development team representatives which might include a UX designer for end-user-facing products, an architect, and senior developers.
 * Key stakeholders, for example, a sales representative, or customer support team member.
 
 image::apm-product-portfolio-team.png[400,700,role="text-center"]
@@ -115,6 +121,7 @@ image::apm-product-portfolio-team.png[400,700,role="text-center"]
 The following artifacts shall be created and maintained:
 
 * Overall strategy for the organization.
+Ideally, the board of directors and senior management have defined and approved the company strategy.
 * Vision and strategy of the product portfolio.
 It is used for the active and continuous management of the portfolio.
 A strategy has a customer focus and a technological focus. +
@@ -131,7 +138,7 @@ Experiment with quarterly releases.
 image::apm-strategy-stack.png[400,700,role="text-center"]
 
 Review and update the documents monthly.
-If your target market is slowly moving, you might be able to extend the review cycle to a quarter.
+If your target market is slowly moving, you might be able to extend the review cycle to once every quarter.
 
 [TIP]
 ====
@@ -161,7 +168,7 @@ The product manager is responsible for:
 
 image::apm-requirements-elicitation.png[400,700,role="text-center"]
 
-A feature represents functionality that delivers business value, fulfills a stakeholder need.
+A feature represents functionality that delivers business value, it fulfills a stakeholder need.
 It is sized to be delivered by the development teams within a release interval.
 An epic is a set of related features that deliver a business value.
 
@@ -265,7 +272,7 @@ Beware that requirements engineering is a complex task cite:[agile-product-manag
 Formal training is recommended <<product-owner-formation>>.
 ====
 
-Each feature shall be associated with a tentative release date.
+Each feature shall be associated with a tentative release date or tentative release version.
 
 All these features are added to the organization product backlog.
 Once a month, the organization product owner consolidates the individual product backlogs into the organization product backlog.
@@ -275,7 +282,7 @@ The consolidation is a collaborative effort between the organization product own
 ====
 Beware either the release date is fixed and the functionality is variable or the functionality is fixed and the release date is variable.
 
-You cannot have both fixed without compromising the quality of the product.
+You cannot fix both without compromising the quality of the product.
 ====
 
 Ideally, the backlog items are grouped to minimize context switches between products when the development team implements backlog items during an iteration.
@@ -354,6 +361,7 @@ The product owner proxy takes over the responsibility of a technical team manage
 
 Ideally, the product managers shall grow their capabilities to formulate clear and concise user stories.
 A user story should be {ref-smart} and {ref-invest} compliant.
+Do not fall in the {ref-yagni} trap.
 
 [IMPORTANT]
 ====
@@ -390,6 +398,8 @@ Architecture and design are a continuous process to achieve technical excellence
 cite:[building-evolutionary-architectures-2nd,working-effectively-with-legacy-code].
 Specification by example is a key practice to ensure that the architecture is implemented as designed.
 Automated acceptance tests and continuous delivery are key practices to validate and verify the solution.
+
+Non-functional requirements can also be validated with fitness functions and automation cite:[building-evolutionary-architectures-2nd].
 
 image::apm-architecture-design.png[400,700,role="text-center"]
 
@@ -452,7 +462,7 @@ Any item can be associated with iterations and teams.
 
 [NOTE]
 ====
-{ref-azure-devops} Supports all major items of the product management process.
+{ref-azure-devops} Supports all major items of the product and portfolio management process.
 
 * Roadmaps and plans
 * Portfolio backlogs
@@ -465,6 +475,8 @@ Prefer to adapt your processes to the platform capabilities instead of customizi
 
 A big decision is to have one backlog for all products or one backlog per product.
 The definition of organizational tags is another area of experimentation.
+
+More configuration effort is needed to define the custom fields to support effort tracking and reporting.
 
 You will need to invest in training and coaching to ensure that the product managers and product owners are able to use the platform effectively.
 You will need to create custom reports to extract key performance indicators.
@@ -491,12 +503,16 @@ The feature has a tentative release date or milestone.
 
 '''
 
-* A development team has a product owner proxy.
+* A development team has a product owner proxy
+footnote:[A feature team should be able to provide the required requirement analysis capabilities.
+Only component teams require a product owner proxy.].
 * A development team has a list of refined and prioritized technical requirements.
 * The list of technical requirements is traceable to the product features.
-* The amount of work to implement the  list of defined technical requirements is around two iterations.
+* The amount of work to implement the list of defined technical requirements is around two iterations.
 * A product backlog item has an identifier, a name, a description, a priority, and an optional estimation.
-Functional items have acceptance criteria.  Acceptance criteria are formulated as automated acceptance tests.
+Functional items have acceptance criteria.
+Acceptance criteria are formulated as automated acceptance tests
+footnote:[DevOps approaches are only successful if the tests and continuous deployment are automated.].
 
 '''
 
@@ -562,7 +578,7 @@ Product Development]
 Marcel Baumann. 2018.
 - [[[devops-applications, 4]]] link:{ref-tangly-blog-url}/blog/2021/devops-for-small-applications/[DevOps for Small Applications]
 Marcel Baumann. 2021.
-- [[[first-steps-devops, 5]]] link:{ref-tangly-blog-url}/blog/blog/2022/first-steps-devops/[First Steps in DevOps]
+- [[[first-steps-devops, 5]]] link:{ref-tangly-blog-url}/blog/2022/first-steps-devops/[First Steps in DevOps]
 Marcel Baumann. 2022.
 
 == References
