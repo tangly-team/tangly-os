@@ -17,6 +17,7 @@ import net.tangly.core.TagType;
 import net.tangly.core.TypeRegistry;
 import net.tangly.core.domain.BoundedDomain;
 import net.tangly.core.domain.DomainEntity;
+import net.tangly.core.domain.UsersProvider;
 import net.tangly.erp.ledger.domain.Account;
 import net.tangly.erp.ledger.domain.AccountEntry;
 import net.tangly.erp.ledger.domain.LedgerTags;
@@ -29,8 +30,8 @@ import java.util.Map;
 public class LedgerBoundedDomain extends BoundedDomain<LedgerRealm, LedgerBusinessLogic, LedgerPort> {
     public static final String DOMAIN = "transactions";
 
-    public LedgerBoundedDomain(LedgerRealm realm, LedgerBusinessLogic logic, LedgerPort port, TypeRegistry registry) {
-        super(DOMAIN, realm, logic, port, registry);
+    public LedgerBoundedDomain(LedgerRealm realm, LedgerBusinessLogic logic, LedgerPort port, TypeRegistry registry, UsersProvider usersProvider) {
+        super(DOMAIN, realm, logic, port, registry, usersProvider);
         LedgerTags.registerTags(registry);
     }
 

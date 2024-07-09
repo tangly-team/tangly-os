@@ -7,6 +7,8 @@
 
 FROM eclipse-temurin:22
 
+RUN apt-get update && apt-get install findutils
+ 
 RUN mkdir -p /var/tangly-erp
 RUN mkdir -p /var/tangly-erp/import
 RUN mkdir -p /var/tangly-erp/db

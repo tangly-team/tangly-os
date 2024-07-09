@@ -17,6 +17,7 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import net.tangly.app.Application;
 import net.tangly.app.ApplicationView;
+import net.tangly.app.Tenant;
 import net.tangly.app.services.AppsBoundedDomain;
 import net.tangly.core.domain.User;
 import net.tangly.erp.collaborators.ui.CollaboratorsBoundedDomainUi;
@@ -33,10 +34,11 @@ import net.tangly.erp.products.ui.ProductsBoundedDomainUi;
 @PageTitle("tangly ERP")
 @Route("")
 public class MainView extends ApplicationView {
+    public static final String TENANT = "tangly";
     private static final String IMAGE_NAME = "tangly70x70.png";
 
     public MainView() {
-        super(IMAGE_NAME);
+        super(Application.instance().tenant(TENANT), IMAGE_NAME, true);
         ofDomainUis();
         drawerMenu();
     }
@@ -48,19 +50,18 @@ public class MainView extends ApplicationView {
     }
 
     private void ofDomainUis() {
-        Application application = Application.instance();
-        var crmBoundedDomain = application.getBoundedDomain(CrmBoundedDomain.DOMAIN);
-        var invoicesBoundedDomain = application.getBoundedDomain(InvoicesBoundedDomain.DOMAIN);
+        Tenant tenant = Application.instance().tenant(TENANT);
+        var crmBoundedDomain = tenant.getBoundedDomain(CrmBoundedDomain.DOMAIN);
+        var invoicesBoundedDomain = tenant.getBoundedDomain(InvoicesBoundedDomain.DOMAIN);
         if (crmBoundedDomain.isPresent() && invoicesBoundedDomain.isPresent()) {
             registerBoundedDomainUi(new CrmBoundedDomainUi((CrmBoundedDomain) crmBoundedDomain.get(), (InvoicesBoundedDomain) invoicesBoundedDomain.get()));
         }
-        application.getBoundedDomain(ProductsBoundedDomain.DOMAIN).ifPresent(
+        tenant.getBoundedDomain(ProductsBoundedDomain.DOMAIN).ifPresent(
             o -> registerBoundedDomainUi(new ProductsBoundedDomainUi((ProductsBoundedDomain) o)));
-        application.getBoundedDomain(InvoicesBoundedDomain.DOMAIN).ifPresent(
+        tenant.getBoundedDomain(InvoicesBoundedDomain.DOMAIN).ifPresent(
             o -> registerBoundedDomainUi(new InvoicesBoundedDomainUi((InvoicesBoundedDomain) o)));
-        application.getBoundedDomain(LedgerBoundedDomain.DOMAIN).ifPresent(o -> registerBoundedDomainUi(new LedgerBoundedDomainUi((LedgerBoundedDomain) o)));
-        application.getBoundedDomain(CollaboratorsBoundedDomain.DOMAIN).ifPresent(
+        tenant.getBoundedDomain(LedgerBoundedDomain.DOMAIN).ifPresent(o -> registerBoundedDomainUi(new LedgerBoundedDomainUi((LedgerBoundedDomain) o)));
+        tenant.getBoundedDomain(CollaboratorsBoundedDomain.DOMAIN).ifPresent(
             o -> registerBoundedDomainUi(new CollaboratorsBoundedDomainUi((CollaboratorsBoundedDomain) o)));
     }
-
 }

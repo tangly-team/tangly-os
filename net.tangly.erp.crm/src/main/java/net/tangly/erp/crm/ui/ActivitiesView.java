@@ -138,7 +138,7 @@ class ActivitiesView extends ItemView<Activity> {
         private Select<String> authors() {
             Select<String> authors = new Select<>();
             authors.setLabel("Author");
-            authors.setItems(Application.instance().apps().logic().usersFor(CrmBoundedDomain.DOMAIN));
+            authors.setItems(Application.instance().tenant("tangly").apps().logic().usersFor(CrmBoundedDomain.DOMAIN));
             return authors;
         }
     }

@@ -91,7 +91,7 @@ public class LedgerChannelText implements CmdChannel, CmdTransformer<String, Led
     public void transmit(String group, String commandName, Object payload) {
         switch (payload) {
             case AnswerGetAccountBalance balance -> System.out.println(balance);
-            default -> throw new IllegalArgumentException(STR."Unexpected type: \{payload}");
+            default -> throw new IllegalArgumentException("Unexpected type: %s".formatted(payload));
         }
     }
 
@@ -120,15 +120,16 @@ public class LedgerChannelText implements CmdChannel, CmdTransformer<String, Led
         try {
             CommandLine line = parser.parse(commands.get(data[0]), data);
             return switch (data[0]) {
-                case CMD_BOOK_TRANSACTION -> new CmdBookTransaction(line.getOptionValue("from"), line.getOptionValue("to"), LocalDate.parse(line.getOptionValue("date")),
-                    new BigDecimal(line.getOptionValue("amount")), line.getOptionValue("text"));
+                case CMD_BOOK_TRANSACTION ->
+                    new CmdBookTransaction(line.getOptionValue("from"), line.getOptionValue("to"), LocalDate.parse(line.getOptionValue("date")),
+                        new BigDecimal(line.getOptionValue("amount")), line.getOptionValue("text"));
                 case CMD_BOOK_SPLIT_TRANSACTION -> null;
                 case QUERY_GET_ACCOUNT_BALANCE -> new CmdGetAccountBalance(line.getOptionValue("account"), LocalDate.parse(line.getOptionValue("date")));
                 default -> null;
             };
         } catch (ParseException exp) {
             // oops, something went wrong
-            System.err.println(STR."Parsing failed.  Reason: \{exp.getMessage()}");
+            System.err.printf("Parsing failed.  Reason: %s%n", exp.getMessage());
         }
         return null;
     }

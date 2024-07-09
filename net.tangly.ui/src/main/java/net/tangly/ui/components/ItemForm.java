@@ -102,6 +102,14 @@ public abstract class ItemForm<T, U extends ItemView<T>> {
         return new ProviderView<>(provider, o -> !selected.contains(o));
     }
 
+    /**
+     * Creates a code combobox field with the specified code type and label.
+     * The combobox is configured to display the code of the code type.
+     * @param codeType type of the table code. It contains all code values
+     * @param label label of the combobox
+     * @return a combobox field with the specified code type and label
+     * @param <T> type of the code
+     */
     public static <T extends Code> ComboBox<T> createCodeField(@NotNull CodeType<T> codeType, @NotNull String label) {
         ComboBox<T> codeField = new ComboBox<>(label);
         codeField.setItemLabelGenerator(o -> (Objects.isNull(o) ? "" : o.code()));
@@ -111,7 +119,12 @@ public abstract class ItemForm<T, U extends ItemView<T>> {
         return codeField;
     }
 
-    public FormLayout textForm(AsciiDocField text) {
+    /**
+     * Creates a form with an AsciiDoc field to edit the text of the entity.
+     * @param text
+     * @return
+     */
+    public static FormLayout textForm(@NotNull AsciiDocField text) {
         var form = new FormLayout();
         VaadinUtils.set3ResponsiveSteps(form);
         form.add(text, 3);
@@ -125,7 +138,7 @@ public abstract class ItemForm<T, U extends ItemView<T>> {
     }
 
     /**
-     * Return the operation of the form.
+     * Returns the operation of the form.
      *
      * @return the operation of the form
      * @see #operation(Operation)

@@ -18,6 +18,11 @@ import com.github.mvysny.kaributesting.v10.Routes;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.formlayout.FormLayout;
+import com.vaadin.flow.router.Route;
+import net.tangly.app.Application;
+import net.tangly.app.ApplicationView;
+import net.tangly.app.Tenant;
+import net.tangly.app.services.AppsBoundedDomain;
 import net.tangly.ui.app.domain.Cmd;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -28,17 +33,31 @@ import static org.assertj.core.api.Assertions.assertThat;
 /**
  * Defines basic infrastructure for integration tests of the bounded domain with karibu testing framewwork and in-memory database without persistence.
  */
-class AppsTest {
+@Route("")
+class AppsTest extends ApplicationView {
+    public static final String TENANT = "test";
     private static Routes routes;
+
+    public AppsTest() {
+        Tenant tenant = new Tenant(TENANT, null);
+        Application.instance().putTenant(tenant);
+        super(tenant, null, false);
+        drawerMenu();
+        selectBoundedDomainUi(AppsBoundedDomain.DOMAIN);
+    }
 
     @BeforeAll
     public static void createModelAndRoutes() {
-        routes = new Routes().autoDiscoverViews("net.tangly.app");
+        routes = new Routes().autoDiscoverViews("net.tangly.apps.ui");
     }
 
     @BeforeEach
     public void setupVaadin() {
         MockVaadin.setup(routes);
+    }
+
+    protected AppsBoundedDomain apps() {
+        return Application.instance().tenant(TENANT).apps();
     }
 
     /**

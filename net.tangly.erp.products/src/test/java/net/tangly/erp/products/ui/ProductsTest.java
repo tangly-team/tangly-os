@@ -15,6 +15,7 @@ package net.tangly.erp.products.ui;
 
 import com.github.mvysny.kaributesting.v10.MockVaadin;
 import net.tangly.app.Application;
+import net.tangly.app.Tenant;
 import net.tangly.core.TypeRegistry;
 import net.tangly.erp.products.ports.ProductsAdapter;
 import net.tangly.erp.products.ports.ProductsEntities;
@@ -27,10 +28,13 @@ import org.junit.jupiter.api.Tag;
 class ProductsTest {
     @BeforeEach
     void setup() {
+        Tenant tenant = new Tenant("test", null);
+        Application.instance().putTenant(tenant);
+
         var realm = new ProductsEntities();
         var logic = new ProductsBusinessLogic(realm);
-        var domain = new ProductsBoundedDomain(realm, logic, new ProductsAdapter(realm, null, null, null), new TypeRegistry());
-        Application.instance().registerBoundedDomain(domain);
+        var domain = new ProductsBoundedDomain(realm, logic, new ProductsAdapter(realm, null, null, null), new TypeRegistry(), null);
+        tenant.registerBoundedDomain(domain);
         MockVaadin.setup();
     }
 

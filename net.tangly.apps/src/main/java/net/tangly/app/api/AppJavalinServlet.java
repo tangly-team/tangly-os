@@ -48,7 +48,7 @@ public class AppJavalinServlet extends HttpServlet {
 
     public AppJavalinServlet() {
         javalin = Javalin.createStandalone(AppJavalinServlet::create);
-        Application.instance().boundedDomainRests().values().forEach(o -> o.registerEndPoints(javalin));
+        Application.instance().tenants().stream().flatMap(o -> o.boundedDomainRests().values().stream()).forEach(o -> o.registerEndPoints(javalin));
     }
 
     @Override

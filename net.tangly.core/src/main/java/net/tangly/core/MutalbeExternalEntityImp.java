@@ -18,7 +18,7 @@ import org.jetbrains.annotations.NotNull;
 import java.time.LocalDate;
 import java.util.*;
 
-public class MutalbeExternalEntityImp implements MutableExternalEntity {
+public abstract class MutalbeExternalEntityImp implements MutableExternalEntity {
     private String id;
     private String name;
     private LocalDate date;

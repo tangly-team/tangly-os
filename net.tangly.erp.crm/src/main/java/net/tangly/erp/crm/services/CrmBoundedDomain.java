@@ -18,6 +18,7 @@ import net.tangly.core.TypeRegistry;
 import net.tangly.core.codes.CodeType;
 import net.tangly.core.domain.BoundedDomain;
 import net.tangly.core.domain.DomainEntity;
+import net.tangly.core.domain.UsersProvider;
 import net.tangly.erp.crm.domain.*;
 import net.tangly.erp.crm.ports.CrmAdapter;
 import org.jetbrains.annotations.NotNull;
@@ -28,8 +29,8 @@ import java.util.Map;
 public class CrmBoundedDomain extends BoundedDomain<CrmRealm, CrmBusinessLogic, CrmAdapter> {
     public static final String DOMAIN = "customers";
 
-    public CrmBoundedDomain(CrmRealm realm, CrmBusinessLogic logic, CrmAdapter port, TypeRegistry registry) {
-        super(DOMAIN, realm, logic, port, registry);
+    public CrmBoundedDomain(CrmRealm realm, CrmBusinessLogic logic, CrmAdapter port, TypeRegistry registry, UsersProvider usersProvider ) {
+        super(DOMAIN, realm, logic, port, registry, usersProvider);
         CrmTags.registerTags(registry());
         registry().register(CodeType.of(ActivityCode.class));
         registry().register(CodeType.of(GenderCode.class));

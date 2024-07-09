@@ -45,7 +45,6 @@ dependencies {
     testCompileOnly(libs.annotations)
     testImplementation(libs.bundles.test.deps)
     testImplementation(libs.apache.log4j2.core)
-    testImplementation(libs.awaitility)
     testRuntimeOnly(libs.apache.log4j2.slf4j)
     testRuntimeOnly(libs.junit.engine)
 }
@@ -72,10 +71,10 @@ tasks.withType(JavaCompile).configureEach {
 
 tasks.withType(Test).configureEach {
     useJUnitPlatform()
-    jvmArgs += ['--add-exports=java.base/jdk.internal.misc=ALL-UNNAMED',
+    jvmArgs += ['--enable-preview',
+                '--add-exports=java.base/jdk.internal.misc=ALL-UNNAMED',
                 '--add-opens=java.base/sun.nio.ch=ALL-UNNAMED',
                 '--add-opens=java.base/java.io=ALL-UNNAMED',
-                '--enable-preview',
                 '-XX:+ShowCodeDetailsInExceptionMessages']
     reports.junitXml.mergeReruns = true
     options {
@@ -98,7 +97,8 @@ tasks.withType(Javadoc).configureEach {
 }
 
 tasks.withType(JavaExec).configureEach {
-    jvmArgs += ['--add-exports=java.base/jdk.internal.misc=ALL-UNNAMED', '--enable-preview', '-XX:+ShowCodeDetailsInExceptionMessages']
+    jvmArgs += ['--add-exports=java.base/jdk.internal.misc=ALL-UNNAMED',
+                '--enable-preview', '-XX:+ShowCodeDetailsInExceptionMessages']
 }
 
 jar {

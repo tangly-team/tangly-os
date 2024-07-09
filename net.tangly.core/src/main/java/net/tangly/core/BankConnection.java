@@ -29,10 +29,10 @@ public record BankConnection(@NotNull String iban, String bic, String institute)
 
     public BankConnection {
         if (Strings.isNullOrBlank(iban) || !validateIban(iban)) {
-            throw new IllegalArgumentException(STR."Illegal IBAN number \{iban}");
+            throw new IllegalArgumentException("Illegal IBAN number %s".formatted(iban));
         }
         if (!Strings.isNullOrBlank(bic) && !validateBic(bic)) {
-            throw new IllegalArgumentException(STR."Illegal BIC number \{bic}");
+            throw new IllegalArgumentException("Illegal BIC number %s".formatted(bic));
         }
     }
 

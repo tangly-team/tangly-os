@@ -176,7 +176,7 @@ public final class VaadinUtils {
             EmailAddress address = property.apply(e);
             String email = Objects.nonNull(address) ? address.text() : "";
             anchor.setText(email);
-            anchor.setHref(Objects.nonNull(email) ? STR."mailto:\{email}" : "");
+            anchor.setHref(Objects.nonNull(email) ? "mailto:%s".formatted(email) : "");
             anchor.setTarget("_blank");
             return anchor;
         });
@@ -187,7 +187,7 @@ public final class VaadinUtils {
             Anchor anchor = new Anchor();
             String url = getter.apply(item);
             anchor.setText(url);
-            anchor.setHref(Objects.nonNull(url) ? STR."https://\{url}" : "");
+            anchor.setHref(Objects.nonNull(url) ? "https://%s".formatted(url) : "");
             anchor.setTarget("_blank");
             return anchor;
         });
@@ -199,7 +199,7 @@ public final class VaadinUtils {
             Tag tag = item.findBy(tagName).orElse(null);
             String url = (tag != null) ? tag.value() : null;
             anchor.setText(url);
-            anchor.setHref((url != null) ? STR."https://\{url}" : "");
+            anchor.setHref((url != null) ? "https://%s".formatted(url) : "");
             anchor.setTarget("_blank");
             return anchor;
         });

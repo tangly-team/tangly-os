@@ -30,13 +30,14 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.concurrent.Flow;
 
 /**
  * Define the interface for the visualization of a bounded domain. The user interface is a set of views to display entities, commands, and dialogs to modify entities.
  * <p>Commands can trigger domain changes which should be reflected in the user interface. Some commands update the current displayed view, others update multiple views of the
  * domain interface.</p>
  */
-public abstract class BoundedDomainUi<T extends BoundedDomain<?, ?, ?>> {
+public abstract class BoundedDomainUi<T extends BoundedDomain<?, ?, ?>> implements BoundedDomain.EventListener {
     public static final String ENTITIES = "Entities";
     public static final String ADMINISTRATION = "Administration";
     public static final String ANALYTICS = "Analytics";
@@ -50,6 +51,7 @@ public abstract class BoundedDomainUi<T extends BoundedDomain<?, ?, ?>> {
     private AccessRights rights;
     private LazyReference<?> currentView;
     private Map<String, LazyReference<? extends View>> views;
+    private Flow.Subscription subscription;
 
     public BoundedDomainUi(@NotNull T domain) {
         this.domain = domain;
@@ -117,9 +119,30 @@ public abstract class BoundedDomainUi<T extends BoundedDomain<?, ?, ?>> {
         views.values().forEach(view -> view.ifPresent(v -> v.readonly(Objects.nonNull(rights) ? AccessRightsCode.readonlyUser == rights.right() : true)));
     }
 
+    public void detach() {
+        if (subscription != null) {
+            subscription.cancel();
+        }
+    }
+
+    // region EventListener
+
+    @Override
+    public void onSubscribe(Flow.Subscription subscription) {
+        this.subscription = subscription;
+        subscription.request(Long.MAX_VALUE);
+    }
+
+    @Override
+    public void onNext(Object event) {
+    }
+
+    // endregion
+
     protected final void addView(@NotNull String name, @NotNull LazyReference<? extends View> view) {
         views.put(name, view);
     }
+
 
     protected final Optional<LazyReference<? extends View>> view(@NotNull String name) {
         return Optional.ofNullable(views.get(name));

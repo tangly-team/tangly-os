@@ -224,8 +224,8 @@ public class ProductsAdapter implements ProductsPort {
             var effortsDocumentFolder =
                 reportFolder.resolve(Objects.nonNull(to) ? Integer.toString(to.getYear()) : Integer.toString(LocalDate.now().getYear()));
             AsciiDoctorHelper.createFolders(effortsDocumentFolder);
-            var assignmentAsciiDocPath = effortsDocumentFolder.resolve(STR."\{filename}\{AsciiDoctorHelper.ASCIIDOC_EXT}");
-            var assignmentPdfPath = effortsDocumentFolder.resolve(STR."\{filename}\{AsciiDoctorHelper.PDF_EXT}");
+            var assignmentAsciiDocPath = effortsDocumentFolder.resolve("%s%s".formatted(filename, AsciiDoctorHelper.ASCIIDOC_EXT));
+            var assignmentPdfPath = effortsDocumentFolder.resolve("%s%s".formatted(filename, AsciiDoctorHelper.PDF_EXT));
             var helper = new EffortReportEngine(logic);
             helper.createReport(assignment, from, to, assignmentAsciiDocPath, unit);
             AsciiDoctorHelper.createPdf(assignmentAsciiDocPath, assignmentPdfPath, true);
@@ -242,7 +242,7 @@ public class ProductsAdapter implements ProductsPort {
                 var effortsDocumentFolder = reportFolder.resolve(Integer.toString(current.getYear()));
                 AsciiDoctorHelper.createFolders(effortsDocumentFolder);
                 var filename = filename(assignment, current);
-                var assignmentAsciiDocPath = effortsDocumentFolder.resolve(STR."\{filename}\{AsciiDoctorHelper.ASCIIDOC_EXT}");
+                var assignmentAsciiDocPath = effortsDocumentFolder.resolve(filename + AsciiDoctorHelper.ASCIIDOC_EXT);
                 var assignmentPdfPath = effortsDocumentFolder.resolve(STR."\{filename}\{AsciiDoctorHelper.PDF_EXT}");
                 helper.createMonthlyReport(assignment, current, unit, assignmentAsciiDocPath);
                 AsciiDoctorHelper.createPdf(assignmentAsciiDocPath, assignmentPdfPath, true);

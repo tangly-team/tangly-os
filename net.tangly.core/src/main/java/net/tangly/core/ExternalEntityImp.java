@@ -18,7 +18,7 @@ import org.jetbrains.annotations.NotNull;
 import java.time.LocalDate;
 import java.util.*;
 
-public class ExternalEntityImp implements ExternalEntity {
+public abstract class ExternalEntityImp implements ExternalEntity {
     private String id;
     private String name;
     private LocalDate date;

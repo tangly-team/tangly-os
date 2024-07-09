@@ -53,6 +53,7 @@ public class InvoicesBoundedDomainUi extends BoundedDomainUi<InvoicesBoundedDoma
         select(layout);
     }
 
+    @Override
     public void onNext(Object event) {
         if (event instanceof EntityChangedInternalEvent entityChanged) {
             if (entityChanged.entityName().equals(Invoice.class.getSimpleName())) {

@@ -34,9 +34,9 @@ public class Employee extends MutableEntityExtendedImp implements MutableEntityE
 
     @Override
     public String name() {
-        String personName = (person != null) ? STR."\{person.name()}, \{person.firstname()}" : "UNKNOWN";
+        String personName = (person != null) ? "%s,%s".formatted(person.name(), person.firstname()) :"UNKNOWN";
         String organizationName = (organization != null) ? organization.name() : "UNKNOWN";
-        return STR."\{personName} - \{organizationName} : \{from()}";
+        return "%s-%s:%s".formatted(personName, organizationName, from());
     }
 
     public NaturalEntity person() {

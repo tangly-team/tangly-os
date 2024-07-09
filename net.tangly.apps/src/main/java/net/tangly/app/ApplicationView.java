@@ -14,6 +14,7 @@
 package net.tangly.app;
 
 import com.vaadin.flow.component.AttachEvent;
+import com.vaadin.flow.component.DetachEvent;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.applayout.DrawerToggle;
 import com.vaadin.flow.component.contextmenu.SubMenu;
@@ -21,7 +22,6 @@ import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.menubar.MenuBar;
 import com.vaadin.flow.component.tabs.Tab;
 import com.vaadin.flow.component.tabs.Tabs;
-import com.vaadin.flow.router.Route;
 import com.vaadin.flow.server.StreamResource;
 import com.vaadin.flow.server.VaadinSession;
 import net.tangly.app.ui.AppsBoundedDomainUi;
@@ -42,17 +42,16 @@ import java.util.stream.IntStream;
 /**
  * The main view of the application is the entry point to the application. Each bounded domain with a user interface is accessible through a tab.
  */
-@Route("")
 public class ApplicationView extends AppLayout {
     private final Map<String, BoundedDomainUi<?>> boundedDomainUis;
     private Tabs tabs;
+    private final Tenant tenant;
     private final MenuBar menuBar;
+    private final boolean hasAuthentication;
 
-    public ApplicationView() {
-        this(null);
-    }
-
-    public ApplicationView(String imageName) {
+    public ApplicationView(Tenant tenant, String imageName, boolean hasAuthentication) {
+        this.tenant = tenant;
+        this.hasAuthentication = hasAuthentication;
         boundedDomainUis = new TreeMap<>();
         setPrimarySection(Section.NAVBAR);
         menuBar = new MenuBar();
@@ -99,9 +98,15 @@ public class ApplicationView extends AppLayout {
     @Override
     protected void onAttach(@NotNull AttachEvent attachEvent) {
         super.onAttach(attachEvent);
-        if (Objects.isNull(VaadinUtils.getAttribute(this, "subject"))) {
-            new CmdLogin(Application.instance().apps(), this).execute();
+        if (hasAuthentication && Objects.isNull(VaadinUtils.getAttribute(this, "subject"))) {
+            new CmdLogin(tenant.apps(), this).execute();
         }
+    }
+
+    @Override
+    protected void onDetach(@NotNull DetachEvent detachEvent) {
+        super.onDetach(detachEvent);
+        boundedDomainUis().values().forEach(BoundedDomainUi::detach);
     }
 
     public void registerBoundedDomainUi(BoundedDomainUi<?> domain) {
@@ -128,10 +133,12 @@ public class ApplicationView extends AppLayout {
     protected void selectBoundedDomainUi(BoundedDomainUi<?> ui) {
         menuBar.removeAll();
         ui.select(this, menuBar);
-        var menuItem = menuBar.addItem("Account");
-        SubMenu subMenu = menuItem.getSubMenu();
-        subMenu.addItem("Logout", e -> new CmdLogout().execute());
-        subMenu.addItem("Change Password", e -> new CmdChangePassword(Application.instance().apps(), user()).execute());
+        if (hasAuthentication) {
+            var menuItem = menuBar.addItem("Account");
+            SubMenu subMenu = menuItem.getSubMenu();
+            subMenu.addItem("Logout", e -> new CmdLogout().execute());
+            subMenu.addItem("Change Password", e -> new CmdChangePassword(tenant.apps(), user()).execute());
+        }
     }
 
     protected void drawerMenu() {
@@ -152,6 +159,6 @@ public class ApplicationView extends AppLayout {
     }
 
     private void ofAppDomainUi() {
-        registerBoundedDomainUi(new AppsBoundedDomainUi(Application.instance().apps()));
+        registerBoundedDomainUi(new AppsBoundedDomainUi(tenant.apps()));
     }
 }

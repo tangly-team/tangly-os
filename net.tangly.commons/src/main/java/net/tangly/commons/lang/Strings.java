@@ -25,7 +25,7 @@ public final class Strings {
     }
 
     public static String firstOnlyUppercase(@NotNull String string) {
-        return STR."\{string.substring(0, 1).toUpperCase()}\{string.substring(1).toLowerCase()}";
+        return "%s%s".formatted(string.substring(0, 1).toUpperCase(), string.substring(1).toLowerCase());
     }
 
     public static boolean isNullOrEmpty(String string) {

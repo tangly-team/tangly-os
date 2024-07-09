@@ -1,10 +1,10 @@
 /*
- * Copyright 2006-2023 Marcel Baumann
+ * Copyright 2006-2024 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- *          http://www.apache.org/licenses/LICENSE-2.0
+ *          https://apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -54,14 +54,14 @@ public class StoryAsciiDocPublisher {
     }
 
     private void publishFeature(@NotNull JSONObject feature) {
-        header(STR."Feature: \{feature.getString(BddConstants.NAME)}", 2);
+        header("Feature: %s".formatted(feature.getString(BddConstants.NAME)), 2);
         paragraph(feature.getString(BddConstants.DESCRIPTION));
         publishTags(feature);
         feature.getJSONArray(BddConstants.STORIES).forEach(item ->publishStory((JSONObject) item));
     }
 
     private void publishStory(@NotNull JSONObject story) {
-        header(STR."Story: \{story.getString(BddConstants.NAME)}", 3);
+        header("Story: %s".formatted(story.getString(BddConstants.NAME)), 3);
         paragraph(story.getString(BddConstants.DESCRIPTION));
         publishTags(story);
         story.getJSONArray(BddConstants.SCENARIOS).forEach(item -> publishScenario((JSONObject) item));

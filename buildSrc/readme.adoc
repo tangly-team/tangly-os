@@ -45,3 +45,15 @@ Search the component in
 
 * https://search.maven.org/[maven central repository] to check the release.
 * https://central.sonatype.com/[sonatype repository] to check the release.
+
+== Constraints
+
+You must create a gradle `~/.gradle/gradle.properties` file with the following content:
+
+[code, properties]
+----
+avenCentralUsername=*Value*
+mavenCentralPassword=*Value*
+----
+
+The build process of the gradle build file requires these variables.

@@ -17,7 +17,6 @@ import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.contextmenu.MenuItem;
 import com.vaadin.flow.component.contextmenu.SubMenu;
 import com.vaadin.flow.component.menubar.MenuBar;
-import net.tangly.app.Application;
 import net.tangly.app.services.AppsBoundedDomain;
 import net.tangly.commons.lang.functional.LazyReference;
 import net.tangly.ui.app.domain.BoundedDomainUi;
@@ -26,7 +25,10 @@ import net.tangly.ui.components.Mode;
 import org.jetbrains.annotations.NotNull;
 
 public class AppsBoundedDomainUi extends BoundedDomainUi<AppsBoundedDomain> {
-    private final String USERS = "Users";
+    private static final String USERS = "Users";
+    private static final String IMPORT_ALL = "Import All";
+    private static final String EXPORT_ALL = "Export All";
+    private static final String CLEAR_ALL = "Clear All";
 
     public AppsBoundedDomainUi(@NotNull AppsBoundedDomain domain) {
         super(domain);
@@ -39,22 +41,23 @@ public class AppsBoundedDomainUi extends BoundedDomainUi<AppsBoundedDomain> {
     public void select(@NotNull AppLayout layout, @NotNull MenuBar menuBar) {
         MenuItem menuItem = menuBar.addItem(BoundedDomainUi.ENTITIES);
         SubMenu subMenu = menuItem.getSubMenu();
-        subMenu.addItem("Users", e -> select(layout, view(USERS).orElseThrow()));
+        subMenu.addItem(USERS, e -> select(layout, view(USERS).orElseThrow()));
         addAdministration(layout, menuBar, view(ENTITIES).orElseThrow());
         addHousekeepingMenu(layout, menuBar);
         select(layout);
     }
 
+    // TODO should be moved because a bounded domain should not know his tenant
     public void addHousekeepingMenu(@NotNull AppLayout layout, @NotNull MenuBar menuBar) {
         if (hasDomainAdminRights()) {
             MenuItem menuItem = menuBar.addItem("Housekeeping");
             SubMenu subMenu = menuItem.getSubMenu();
-            subMenu.addItem("Import All",
-                _ -> executeGlobalAction(() -> Application.instance().boundedDomains().values().forEach(o -> o.port().importEntities(o))));
-            subMenu.addItem("Export All",
-                _ -> executeGlobalAction(() -> Application.instance().boundedDomains().values().forEach(o -> o.port().exportEntities(o))));
-            subMenu.addItem("Clear All",
-                _ -> executeGlobalAction(() -> Application.instance().boundedDomains().values().forEach(o -> o.port().clearEntities(o))));
+            subMenu.addItem(IMPORT_ALL,
+                _ -> executeGlobalAction(() -> domain().tenant().boundedDomains().values().forEach(o -> o.port().importEntities(o))));
+            subMenu.addItem(EXPORT_ALL,
+                _ -> executeGlobalAction(() -> domain().tenant().boundedDomains().values().forEach(o -> o.port().exportEntities(o))));
+            subMenu.addItem(CLEAR_ALL,
+                _ -> executeGlobalAction(() -> domain().tenant().boundedDomains().values().forEach(o -> o.port().clearEntities(o))));
         }
     }
 }

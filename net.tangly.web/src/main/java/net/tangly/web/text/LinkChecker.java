@@ -109,7 +109,7 @@ public class LinkChecker {
         if (validatedLinks.contains(url)) {
             return true;
         }
-        logger.atInfo().log(STR."validate [\{url}] from [\{source}]");
+        logger.atInfo().log("validate [%s from [%s]".formatted(url, source));
         Error error = null;
         int code = HttpURLConnection.HTTP_NOT_FOUND;
         try {

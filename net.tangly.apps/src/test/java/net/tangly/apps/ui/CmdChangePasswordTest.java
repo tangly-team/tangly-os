@@ -16,7 +16,6 @@ package net.tangly.apps.ui;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.textfield.PasswordField;
-import net.tangly.app.Application;
 import net.tangly.app.ui.CmdChangePassword;
 import net.tangly.core.domain.User;
 import org.junit.jupiter.api.Disabled;
@@ -35,8 +34,8 @@ class CmdChangePasswordTest extends AppsTest {
     @Test
     void testChangePasswordCorrectly() {
         var user = createUser();
-        Application.instance().apps().realm().users().update(user);
-        var cmd = new CmdChangePassword(Application.instance().apps(), user);
+        apps().realm().users().update(user);
+        var cmd = new CmdChangePassword(apps(), user);
         assertThat(cmd).isNotNull();
         assertThat(user.authenticate("old-password")).isTrue();
         cmd.execute();
@@ -51,8 +50,8 @@ class CmdChangePasswordTest extends AppsTest {
     @Test
     void testChangePasswordWrongly() {
         var user = createUser();
-        Application.instance().apps().realm().users().update(user);
-        var cmd = new CmdChangePassword(Application.instance().apps(), user);
+        apps().realm().users().update(user);
+        var cmd = new CmdChangePassword(apps(), user);
         assertThat(cmd).isNotNull();
         assertThat(user.authenticate("old-password")).isTrue();
         cmd.execute();
@@ -68,8 +67,8 @@ class CmdChangePasswordTest extends AppsTest {
     @Test
     void testChangePasswordCanceled() {
         var user = createUser();
-        Application.instance().apps().realm().users().update(user);
-        var cmd = new CmdChangePassword(Application.instance().apps(), user);
+        apps().realm().users().update(user);
+        var cmd = new CmdChangePassword(apps(), user);
         assertThat(cmd).isNotNull();
         assertThat(user.authenticate("old-password")).isTrue();
         cmd.execute();

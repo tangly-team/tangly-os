@@ -58,13 +58,13 @@ public record TsvProperty<T, U>(List<String> columns, Function<T, U> getter, BiC
     }
 
     public static <T> TsvProperty<T, Object> ofEmpty(@NotNull String column) {
-        return new TsvProperty<>(List.of(column), t -> null, (t, u) -> {
-        }, v -> v, (u, p) -> {
+        return new TsvProperty<>(List.of(column), _ -> null, (_, _) -> {
+        }, v -> v, (_, _) -> {
         });
     }
 
     public static <T> TsvProperty<T, String> ofString(@NotNull String column, Function<T, String> getter) {
-        return of(column, getter, null, v -> v, u -> Strings.blankToNull(u));
+        return of(column, getter, null, v -> v, Strings::blankToNull);
     }
 
     /**
@@ -78,7 +78,7 @@ public record TsvProperty<T, U>(List<String> columns, Function<T, U> getter, BiC
      * @return new TSV property
      */
     public static <T> TsvProperty<T, String> ofString(@NotNull String column, Function<T, String> getter, BiConsumer<T, String> setter) {
-        return of(column, getter, setter, v -> v, u -> Strings.blankToNull(u));
+        return of(column, getter, setter, v -> v, Strings::blankToNull);
     }
 
     public static <T> TsvProperty<T, LocalDate> ofDate(@NotNull String column, @NotNull Function<T, LocalDate> getter) {
@@ -89,8 +89,16 @@ public record TsvProperty<T, U>(List<String> columns, Function<T, U> getter, BiC
         return of(column, getter, setter, v -> (Strings.isNullOrBlank(v)) ? null : LocalDate.parse(v), u -> u);
     }
 
+    public static <T> TsvProperty<T, Integer> ofInt(@NotNull String column, Function<T, Integer> getter) {
+        return of(column, getter, null, v -> (Strings.isNullOrBlank(v)) ? 0 : Integer.parseInt(v), u -> u);
+    }
+
     public static <T> TsvProperty<T, Integer> ofInt(@NotNull String column, Function<T, Integer> getter, BiConsumer<T, Integer> setter) {
         return of(column, getter, setter, v -> (Strings.isNullOrBlank(v)) ? 0 : Integer.parseInt(v), u -> u);
+    }
+
+    public static <T> TsvProperty<T, Long> ofLong(@NotNull String column, Function<T, Long> getter) {
+        return of(column, getter, null, v -> (v == null) ? 0 : Long.parseLong(v), u -> u);
     }
 
     public static <T> TsvProperty<T, Long> ofLong(@NotNull String column, Function<T, Long> getter, BiConsumer<T, Long> setter) {
@@ -106,11 +114,11 @@ public record TsvProperty<T, U>(List<String> columns, Function<T, U> getter, BiC
     }
 
     public static <T> TsvProperty<T, Boolean> ofBoolean(@NotNull String column, Function<T, Boolean> getter) {
-        return of(column, getter, null, v -> "Y".equals(v), u -> u.booleanValue() ? "Y" : "N");
+        return of(column, getter, null, "Y"::equals, u -> u ? "Y" : "N");
     }
 
     public static <T> TsvProperty<T, Boolean> ofBoolean(@NotNull String column, Function<T, Boolean> getter, BiConsumer<T, Boolean> setter) {
-        return of(column, getter, setter, v -> "Y".equals(v), u -> u.booleanValue() ? "Y" : "N");
+        return of(column, getter, setter, "Y"::equals, u -> u ? "Y" : "N");
     }
 
     public static <T, U extends Enum<U>> TsvProperty<T, U> ofEnum(@NotNull Class<U> clazz, @NotNull String column, Function<T, U> getter) {
@@ -186,7 +194,7 @@ public record TsvProperty<T, U>(List<String> columns, Function<T, U> getter, BiC
     }
 
     /**
-     * Import the TSV value and set the associated property after an optional conversion.
+     * Imports the TSV value and set the associated property after an optional conversion.
      *
      * @param entity entity which property will be imported and set
      * @param data   record containing the TSV values
@@ -198,7 +206,7 @@ public record TsvProperty<T, U>(List<String> columns, Function<T, U> getter, BiC
     }
 
     /**
-     * Export the TSV value from the associated property after an optional conversion.
+     * Exports the TSV value from the associated property after an optional conversion.
      *
      * @param entity entity which property will be exported as TSV value
      * @param out    printer to write the TSV value(s)

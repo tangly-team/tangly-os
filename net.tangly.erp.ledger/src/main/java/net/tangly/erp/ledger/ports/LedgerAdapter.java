@@ -115,6 +115,6 @@ public class LedgerAdapter implements LedgerPort {
     }
 
     public static String journalForYear(int year) {
-        return STR."\{year}\{JOURNAL}";
+        return "%04d%s".formatted(year, JOURNAL);
     }
 }

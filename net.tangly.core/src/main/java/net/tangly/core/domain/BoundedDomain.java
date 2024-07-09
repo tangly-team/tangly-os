@@ -39,18 +39,18 @@ import java.util.concurrent.SubmissionPublisher;
  * @param <P> port empowers the business domain to communicate with outer layers or external systems.
  *            The communication is generally asynchronous
  */
-public class BoundedDomain<R extends Realm, B, P extends Port<R>> implements DomainAudit{
+public class BoundedDomain<R extends Realm, B, P extends Port<R>> implements DomainAudit {
     private final String name;
     private final R realm;
     private final P port;
     private final B logic;
     private final transient TypeRegistry registry;
+    private final UsersProvider usersProvider;
     private final SubmissionPublisher<Object> channel;
     private final SubmissionPublisher<Object> internalChannel;
     private final List<EventData> auditEvents;
 
-    @FunctionalInterface
-    public interface EventListener extends  Flow.Subscriber<Object>{
+    public interface EventListener extends Flow.Subscriber<Object> {
         @Override
         default void onComplete() {
         }
@@ -76,23 +76,26 @@ public class BoundedDomain<R extends Realm, B, P extends Port<R>> implements Dom
      * @param port     port empowers the business domain to communicate with external systems
      * @param registry registry where the tagged values and code types defined for the domain model are registered
      */
-    public BoundedDomain(@NotNull String name, @NotNull R realm, @NotNull B logic, @NotNull P port, TypeRegistry registry) {
+    public BoundedDomain(@NotNull String name, @NotNull R realm, @NotNull B logic, @NotNull P port, TypeRegistry registry, UsersProvider usersProvider) {
         this.name = name;
         this.realm = realm;
         this.logic = logic;
         this.port = port;
         this.registry = registry;
+        this.usersProvider = usersProvider;
         channel = new SubmissionPublisher<>(Executors.newVirtualThreadPerTaskExecutor(), Flow.defaultBufferSize());
         internalChannel = new SubmissionPublisher<>(Executors.newVirtualThreadPerTaskExecutor(), Flow.defaultBufferSize());
         auditEvents = new ArrayList<>();
     }
 
-    protected static <I extends HasOid & HasMutableTags> void addTagCounts(@NotNull TypeRegistry registry, @NotNull Provider<I> provider, Map<TagType<?>, Integer> counts) {
+    protected static <I extends HasOid & HasMutableTags> void addTagCounts(@NotNull TypeRegistry registry, @NotNull Provider<I> provider,
+                                                                           Map<TagType<?>, Integer> counts) {
         addTagCounts(registry, provider.items(), counts);
     }
 
     protected static <I extends HasTags> void addTagCounts(@NotNull TypeRegistry registry, @NotNull List<I> entities, Map<TagType<?>, Integer> counts) {
-        entities.stream().flatMap(e -> e.tags().stream()).map(registry::find).flatMap(Optional::stream).forEach(e -> counts.merge(e, 1, (oldValue, _) -> oldValue++));
+        entities.stream().flatMap(e -> e.tags().stream()).map(registry::find).flatMap(Optional::stream)
+            .forEach(e -> counts.merge(e, 1, (oldValue, _) -> oldValue++));
     }
 
     public SubmissionPublisher<Object> channel() {
@@ -133,6 +136,10 @@ public class BoundedDomain<R extends Realm, B, P extends Port<R>> implements Dom
 
     public TypeRegistry registry() {
         return registry;
+    }
+
+    public UsersProvider usersProvider() {
+        return usersProvider;
     }
 
     public List<DomainEntity<?>> entities() {

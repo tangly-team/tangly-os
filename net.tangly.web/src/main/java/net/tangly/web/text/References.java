@@ -28,7 +28,7 @@ public class References {
         books = new HashMap<>();
         articles = new HashMap<>();
         websiteUri = "blog.tangly.net";
-        isInternalBlogReference = Pattern.compile(STR."\{websiteUri}blog");
+        isInternalBlogReference = Pattern.compile("%sblog".formatted(websiteUri));
         isBookReference = Pattern.compile("www.amazon.com/dp/");
     }
 

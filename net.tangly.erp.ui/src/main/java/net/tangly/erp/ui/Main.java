@@ -15,6 +15,7 @@ package net.tangly.erp.ui;
 
 import com.github.mvysny.vaadinboot.VaadinBoot;
 import net.tangly.app.Application;
+import net.tangly.app.Tenant;
 import net.tangly.app.services.AppsBoundedDomain;
 import net.tangly.core.domain.AccessRights;
 import net.tangly.core.domain.AccessRightsCode;
@@ -49,6 +50,7 @@ import org.eclipse.jetty.ee10.webapp.WebAppContext;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
 
@@ -65,13 +67,14 @@ import java.util.List;
 public final class Main {
     private static final Logger logger = LogManager.getLogger();
     private static int port = 8080;
+    private static String propertyFile;
 
     public static void main(@NotNull String[] args) throws Exception {
         final String contextRoot = "/erp";
         parse(args);
-        ofDomains();
-        ofDomainRests();
-        Application.instance().startup();
+        propertyFile = "/var/tangly-erp/_tenants/tenant-tangly.properties";
+        Tenant tenant = createTanglyTenant("tangly", Path.of(propertyFile));
+        Application.instance().putTenant(tenant);
         new VaadinBoot() {
             @Override
             protected @NotNull WebAppContext createWebAppContext() throws IOException {
@@ -90,7 +93,7 @@ public final class Main {
         options.addOption(
             Option.builder("p").longOpt("port").type(Integer.TYPE).argName("port").hasArg().desc("listening port of the embedded server").build());
         options.addOption(Option.builder("c").longOpt("configuration").type(String.class).argName("configuration-file").hasArg()
-            .desc("path to the application configuration file").build());
+            .desc("path to the application properties configuration file").build());
         return options;
     }
 
@@ -104,61 +107,69 @@ public final class Main {
                 formatter.printHelp("tangly ERP", options);
             }
             port = (line.hasOption("p")) ? Integer.parseInt(line.getOptionValue("p")) : 8080;
+            propertyFile = (line.hasOption("c")) ? line.getOptionValue("c") : "tenant-tangly.properties\"";
+
         } catch (NumberFormatException | ParseException e) {
             logger.atError().log("Parsing failed.  Reason: {}", e.getMessage());
         }
     }
 
-    public static void ofDomains() {
-        Application application = Application.instance();
-        if (application.apps().realm().users().items().isEmpty()) {
-            application.apps().realm().users().update(createDefaultUser());
+    public static Tenant createTanglyTenant(@NotNull String id, @NotNull Path properties) throws IOException {
+        Tenant tenant = new Tenant(id, Files.newInputStream(properties));
+        ofDomains(tenant);
+        ofDomainRests(tenant);
+        return tenant;
+    }
+
+    public static void ofDomains(@NotNull Tenant tenant) {
+        if (tenant.apps().realm().users().items().isEmpty()) {
+            tenant.apps().realm().users().update(createDefaultUser());
         }
-        if (application.isEnabled(CrmBoundedDomain.DOMAIN)) {
-            var realm = application.inMemory() ? new CrmEntities() : new CrmEntities(Path.of(application.databases(), CrmBoundedDomain.DOMAIN));
-            var domain = new CrmBoundedDomain(realm, new CrmBusinessLogic(realm),
-                new CrmAdapter(realm, Path.of(Application.instance().imports(CrmBoundedDomain.DOMAIN))), application.registry());
-            application.registerBoundedDomain(domain);
+        if (tenant.isEnabled(CrmBoundedDomain.DOMAIN)) {
+            var realm = tenant.inMemory() ? new CrmEntities() : new CrmEntities(Path.of(tenant.databases(), CrmBoundedDomain.DOMAIN));
+            var domain = new CrmBoundedDomain(realm, new CrmBusinessLogic(realm), new CrmAdapter(realm, Path.of(tenant.imports(CrmBoundedDomain.DOMAIN))),
+                tenant.registry(), tenant.UsersProviderFor(CrmBoundedDomain.DOMAIN));
+            tenant.registerBoundedDomain(domain);
         }
-        if (application.isEnabled(InvoicesBoundedDomain.DOMAIN)) {
-            var realm = application.inMemory() ? new InvoicesEntities() : new InvoicesEntities(Path.of(application.databases(), InvoicesBoundedDomain.DOMAIN));
+        if (tenant.isEnabled(InvoicesBoundedDomain.DOMAIN)) {
+            var realm = tenant.inMemory() ? new InvoicesEntities() : new InvoicesEntities(Path.of(tenant.databases(), InvoicesBoundedDomain.DOMAIN));
             var domain = new InvoicesBoundedDomain(realm, new InvoicesBusinessLogic(realm),
-                new InvoicesAdapter(realm, Path.of(application.imports(InvoicesBoundedDomain.DOMAIN)),
-                    Path.of(application.reports(InvoicesBoundedDomain.DOMAIN))), application.registry());
-            application.registerBoundedDomain(domain);
+                new InvoicesAdapter(realm, Path.of(tenant.imports(InvoicesBoundedDomain.DOMAIN)), Path.of(tenant.reports(InvoicesBoundedDomain.DOMAIN))),
+                tenant.registry(), tenant.UsersProviderFor(InvoicesBoundedDomain.DOMAIN));
+            tenant.registerBoundedDomain(domain);
         }
-        if (application.isEnabled(LedgerBoundedDomain.DOMAIN)) {
-            var realm = application.inMemory() ? new LedgerEntities() : new LedgerEntities(Path.of(application.databases(), LedgerBoundedDomain.DOMAIN));
+        if (tenant.isEnabled(LedgerBoundedDomain.DOMAIN)) {
+            var realm = tenant.inMemory() ? new LedgerEntities() : new LedgerEntities(Path.of(tenant.databases(), LedgerBoundedDomain.DOMAIN));
             var domain = new LedgerBoundedDomain(realm, new LedgerBusinessLogic(realm),
-                new LedgerAdapter(realm, Path.of(Application.instance().imports(LedgerBoundedDomain.DOMAIN)),
-                    Path.of(application.reports(LedgerBoundedDomain.DOMAIN))), application.registry());
-            application.registerBoundedDomain(domain);
+                new LedgerAdapter(realm, Path.of(tenant.imports(LedgerBoundedDomain.DOMAIN)), Path.of(tenant.reports(LedgerBoundedDomain.DOMAIN))),
+                tenant.registry(), tenant.UsersProviderFor(LedgerBoundedDomain.DOMAIN));
+            tenant.registerBoundedDomain(domain);
         }
-        if (application.isEnabled(ProductsBoundedDomain.DOMAIN)) {
-            var realm = application.inMemory() ? new ProductsEntities() : new ProductsEntities(Path.of(application.databases(), ProductsBoundedDomain.DOMAIN));
+        if (tenant.isEnabled(ProductsBoundedDomain.DOMAIN)) {
+            var realm = tenant.inMemory() ? new ProductsEntities() : new ProductsEntities(Path.of(tenant.databases(), ProductsBoundedDomain.DOMAIN));
             var logic = new ProductsBusinessLogic(realm);
             var domain = new ProductsBoundedDomain(realm, logic,
-                new ProductsAdapter(realm, logic, Path.of(Application.instance().imports(ProductsBoundedDomain.DOMAIN)),
-                    Path.of(application.reports(ProductsBoundedDomain.DOMAIN))), application.registry());
-            application.registerBoundedDomain(domain);
+                new ProductsAdapter(realm, logic, Path.of(tenant.imports(ProductsBoundedDomain.DOMAIN)), Path.of(tenant.reports(ProductsBoundedDomain.DOMAIN))),
+                tenant.registry(), tenant.UsersProviderFor(ProductsBoundedDomain.DOMAIN));
+            tenant.registerBoundedDomain(domain);
         }
-        if (application.isEnabled(CollaboratorsBoundedDomain.DOMAIN)) {
-            var realm = application.inMemory() ? new CollaboratorsEntities() :
-                new CollaboratorsEntities(Path.of(application.databases(), CollaboratorsBoundedDomain.DOMAIN));
+        if (tenant.isEnabled(CollaboratorsBoundedDomain.DOMAIN)) {
+            var realm =
+                tenant.inMemory() ? new CollaboratorsEntities() : new CollaboratorsEntities(Path.of(tenant.databases(), CollaboratorsBoundedDomain.DOMAIN));
             var domain = new CollaboratorsBoundedDomain(realm, new CollaboratorsBusinessLogic(realm),
-                new CollaboratorsAdapter(realm, Path.of(Application.instance().imports(CollaboratorsBoundedDomain.DOMAIN))), application.registry());
-            application.registerBoundedDomain(domain);
+                new CollaboratorsAdapter(realm, Path.of(tenant.imports(CollaboratorsBoundedDomain.DOMAIN))), tenant.registry(),
+                tenant.UsersProviderFor(CollaboratorsBoundedDomain.DOMAIN));
+            tenant.registerBoundedDomain(domain);
         }
     }
 
-    public static void ofDomainRests() {
+    public static void ofDomainRests(@NotNull Tenant tenant) {
         Application application = Application.instance();
-        if (application.isEnabled(CrmBoundedDomain.DOMAIN)) {
-            var rest = new CrmBoundedDomainRest((CrmBoundedDomain) application.getBoundedDomain(CrmBoundedDomain.DOMAIN).orElseThrow());
-            application.registerBoundedDomainRest(rest);
+        if (tenant.isEnabled(CrmBoundedDomain.DOMAIN)) {
+            var rest = new CrmBoundedDomainRest((CrmBoundedDomain) tenant.getBoundedDomain(CrmBoundedDomain.DOMAIN).orElseThrow());
+            tenant.registerBoundedDomainRest(rest);
         }
     }
-
 
     private static User createDefaultUser() {
         final String username = "aeon";

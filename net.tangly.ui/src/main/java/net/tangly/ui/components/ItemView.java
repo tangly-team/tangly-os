@@ -222,10 +222,19 @@ public abstract class ItemView<T> extends VerticalLayout implements View {
         return domain;
     }
 
+    /**
+     * Delegate method returning the domain of the view.
+     *
+     * @return domain of the view
+     */
     public BoundedDomain<?, ?, ?> domain() {
         return domain.domain();
     }
 
+    /**
+     * Delegate method returning the type registry of the domain.
+     * @return type registry of the domain
+     */
     public TypeRegistry registry() {
         return (domain() != null) ? domain().registry() : null;
     }
@@ -280,7 +289,7 @@ public abstract class ItemView<T> extends VerticalLayout implements View {
         return form;
     }
 
-    protected final void form(Supplier<ItemForm<T, ?>> supplier) {
+    protected final void form(@NotNull Supplier<ItemForm<T, ?>> supplier) {
         form = new LazyReference<>(supplier);
         if (Objects.nonNull(form)) {
             SingleSelect<Grid<T>, T> selection = grid.asSingleSelect();

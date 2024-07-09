@@ -21,10 +21,14 @@ import net.tangly.app.services.AppsBoundedDomain;
 import net.tangly.app.services.AppsBusinessLogic;
 import net.tangly.core.TypeRegistry;
 import net.tangly.core.domain.BoundedDomain;
+import net.tangly.core.domain.UsersProvider;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.eclipse.jetty.io.RuntimeIOException;
 import org.jetbrains.annotations.NotNull;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.nio.file.Path;
 import java.util.*;
 
@@ -46,20 +50,27 @@ public class Tenant {
     private final Map<String, BoundedDomain<?, ?, ?>> boundedDomains;
     private final Map<String, BoundedDomainRest> boundedDomainRests;
 
-    public Tenant(@NotNull String id, @NotNull Properties properties) {
+    public Tenant(@NotNull String id, InputStream properties) {
         this.id = id;
-        this.properties = new Properties(properties);
+        this.properties = new Properties();
+        if (Objects.nonNull(properties)) {
+            try {
+                this.properties.load(properties);
+            } catch (IOException e) {
+                logger.atError().log("Tenant configuration properties load error {}", e);
+                throw new RuntimeIOException(e);
+            }
+        }
         this.registry = new TypeRegistry();
         boundedDomains = new HashMap<>();
         boundedDomainRests = new HashMap<>();
+        ofAppDomain();
     }
 
-    /**
-     * Return the identifier of the tenant. The name is also the domain context when the user logs in.
-     * The user login name is <em>tenant/username</em>.
-     *
-     * @return the identifier of the tenant
-     */
+    public UsersProvider UsersProviderFor(@NotNull String domain) {
+        return UsersProvider.of(() -> apps().logic().usersFor(domain), () -> apps().logic().activeUsersFor(domain));
+    }
+
     public String id() {
         return id;
     }
@@ -143,7 +154,8 @@ public class Tenant {
 
     private void ofAppDomain() {
         var realm = inMemory() ? new AppsEntities() : new AppsEntities(Path.of(databases(), AppsBoundedDomain.DOMAIN));
-        var domain = new AppsBoundedDomain(realm, new AppsBusinessLogic(realm), new AppsAdapter(realm, Path.of(imports(AppsBoundedDomain.DOMAIN))), registry());
+        var domain = new AppsBoundedDomain(this, realm, new AppsBusinessLogic(realm), new AppsAdapter(realm, Path.of(imports(AppsBoundedDomain.DOMAIN))),
+            registry());
         registerBoundedDomain(domain);
     }
 }
