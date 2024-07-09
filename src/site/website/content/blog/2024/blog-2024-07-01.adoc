@@ -146,7 +146,7 @@ It answers the following two questions in a pragmatic way, but can be tailored t
 - How should we document and communicate it?
 
 {ref-arc42} is a pretty minimalistic documentation template compared to other templates
-footnote:[It is probably main reason why {ref-arc42} is still used and the other templates are fading away.].
+footnote:[It is probably the main reason why {ref-arc42} is still used and the other templates are fading away.].
 
 image::2024-07-01-arc42.png[width=640,height=400,role=text-center]
 
