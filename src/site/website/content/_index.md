@@ -22,7 +22,7 @@ linkTitle: "Components"
 
 The documentation site for open source components is published under [tangly OS components](./docs/).
 
-The current released components are written in _Modern Java_ and released on _Maven Central_.
+The current released components are written in _Modern Java_ and released on {ref-maven-central}.
 
 * _[BDD](./docs/bdd/)_ Behavior Driven Design Test Library based on JUnit 5 (code first approach),
 * _[COMMONS](./docs/commons)_ Internal Common Components to write company internal applications,
@@ -31,7 +31,7 @@ The current released components are written in _Modern Java_ and released on _Ma
 * _[GLEAM](./docs/gleam/)_ declarative model definition library (map Java objects hierarchy to the TSV and JSON format),
 * _[UI](./docs/ui/)_ Vaadin based user interface.
 
-The current components for the services ERP are written in _Modern Java_ and released on _Maven Central_ .
+The current components for the services ERP are written in _Modern Java_ and released on {ref-maven-central}.
 
 * _[Domains](./docs/domains)_ Enterprise Resources Planning components for service companies
 

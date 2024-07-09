@@ -79,7 +79,7 @@ We use an impressive set of tools to collaborate with our customers and partners
 
 * Google email, calendar and meetup for communication.
 * https://www.bitbucket.org/[Bitbucket] and continuous integration, delivery and deployment pipelines for software development.
-* Maven Central to distribute public binary software artifacts.
+* {ref-maven-central} to distribute public binary software artifacts.
 * Slack is our preferred chat platform.
 * Google Groups for technical discussion.
 * Blogger to publish articles to our community.

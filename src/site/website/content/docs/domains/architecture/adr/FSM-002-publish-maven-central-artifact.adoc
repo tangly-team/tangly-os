@@ -30,7 +30,7 @@ A website shall be set up to provide adequate documentation for users.
 
 The {ref-tangly-blog-url}/docs/fsm/[FSM website] will use a static web approach to minimize costs and provide good legibility.
 
-The library will be published on Maven Central to maximize potential usage.
+The library will be published on {ref-maven-central} to maximize potential usage.
 
 The ADR FSM-001 supports this evolution.
 

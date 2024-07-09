@@ -26,7 +26,7 @@ Seminal books cite:[accelerate,devops-handbook,phoenix-project,site-reliability-
 
 The DevOps approach belongs to the regular instruments of professional software developers.
 Major development platforms, {ref-github}, {ref-gitlab}, {ref-bitbucket}
-and https://azure.microsoft.com/de-de/services/devops/[Microsoft Azure DevOps] do support continuous integration, delivery and deployments for years.
+and https://azure.microsoft.com/en-us/services/devops/[Microsoft Azure DevOps] do support continuous integration, delivery and deployments for years.
 
 The DORA metrics define a standard approach to measure the quality and efficiency of a DevOps or agile process implementation in an organization.
 They were published in 2016.
@@ -93,7 +93,7 @@ Classical questions and answers _FAQ_ are:
 How can a new delivery package be generated?::
 Your continuous integration pipeline should have a delivery step and produce an executable artifact.
 Your hosting platform provides a service to upload versioned artifacts to a repository.
-Java artifacts are often stored in Maven Central.
+Java artifacts are often stored in {ref-maven-central}.
 Docker images are often uploaded to Docker Hub.
 Where should we store the migration scripts?::
 Migration and configuration scripts are part of the delivery.

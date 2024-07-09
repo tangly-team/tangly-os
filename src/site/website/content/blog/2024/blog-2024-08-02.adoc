@@ -65,7 +65,7 @@ In other words, the truth always lays in the source code.
 == Bounded Domain as ROS-2 package
 
 A package is an organizational unit for your {ref-ros} ROS-2 code.
-A package is automatically a distribution unit which can be installed on specific hardware.
+A package is automatically a distribution unit that can be installed on specific hardware.
 
 A package is also used as a UML logical component.
 A logical component should be a bounded domain in your architecture partitioning.
@@ -149,7 +149,7 @@ A system-wide component view is also provided
 footnote:[{ref-c4} provides the structure and guidance how to create such views.
 The approach is similar to the old RUP approach with the {ref-4-and-1-view}.].
 
-Event based changes::
+Event-based changes::
 DDD requires that relevant state changes are communicated to interesting parties as events cite:[domain-driven-design-distilled,reactive-messaging-patterns-with-actor-model].
 You should never propagate system state changes through services.
 A domain cannot be aware of all parties interested in state changes.
@@ -164,7 +164,7 @@ Further information can be found in the ROS-2 documentation about calling groups
 Nodes never share state or computed values with another node.
 Each node has a local copy of all data needed to fulfill its responsibilities.
 State changes or updated data shall be sent as messages to interested parties.
-Asynchronous vs Synchronous Communication::
+Asynchronous vs. Synchronous Communication::
 DDD and ROS-2 heavily emphasize the importance of a distributed asynchronous system.
 Synchronous communication should be avoided as much as possible if you follow the principles of domain-driven design and of the robot framework.
 Layered Architecture::
@@ -218,7 +218,7 @@ Current examples are alarms.
 ====
 You could use the same approach if you need session or transaction identifiers.
 
-Asynchronous applications seldom need this kind of identifiers.
+Asynchronous applications seldom need this kind of identifier.
 The essence of event-based communication is _fire and forget_.
 ====
 
@@ -228,7 +228,7 @@ Embedded devices are often statically configured to avoid memory allocation prob
 Therefore, we do need to implement any repository to retrieve and construct objects.
 
 Factories are implemented in the code using factory patterns.
-Most often, a regular factory method is sufficient to create an aggregate.
+Most often, a regular factory method is enough to create an aggregate.
 
 Configuration parameters are currently the only identified configurable values.
 ROS-2 provides the parameter server as a standardized approach to configure, store and retrieve configuration values.

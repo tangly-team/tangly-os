@@ -48,7 +48,7 @@ If everything was fine, the content was published.
 
 [CAUTION]
 ====
-It takes up to one day until the component is visible in Maven Central website upon publication.
+It takes up to one day until the component is visible in {ref-maven-central} website upon publication.
 
 On the positive side, the last publications were performed in less than 30 minutes.
 ====
@@ -152,7 +152,7 @@ Store it in a safe place.
 I decided not to upload private keys to https://bitbucket.org/[bitbucket].
 See the documentation at the beginning of the Gradle build file for details.
 
-IMPORTANT: Set the property if you want to sign the component artifacts and publish to Maven Central.
+IMPORTANT: Set the property if you want to sign the component artifacts and publish to {ref-maven-central}.
 
 [#website-publication]
 === Static Website Publication

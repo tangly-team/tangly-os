@@ -18,7 +18,7 @@ Embedded programming language is C++.
 The version is the current released ISO standard.
 
 Th user interface for all Java applications is build with {ref-vaadin}.
-The version is the current released version available on Maven Central.
+The version is the current released version available on {ref-maven-central}l.
 
 The documentation language is English US.
 

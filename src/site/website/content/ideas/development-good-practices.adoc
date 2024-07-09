@@ -12,7 +12,9 @@ description: good practices
 :keywords: agile, architecture, design
 :company: https://www.tangly.net/[tangly llc]
 
-[plantuml,target=development-good-practices-mindmap,format=svg]
+Here are some good practices for developing enterprise Modern Java solutions.
+
+[plantuml,target=development-good-practices-mindmap,format=svg,role="text-center"]
 ----
 @startmindmap
 - DevOps
@@ -48,10 +50,116 @@ description: good practices
 
 === Bounded Domain Development
 
+==== Extendable Bounded Domain Models
 
+Identifiers::
+Names::
+Codes::
+Tags::
+Comments:: To be written
+
+The approach improved over time and is now based on the following principles:
+
+Immutable entities::
+Mutable entities::
+
+
+==== Audit Event Conventions
+
+The _event_ field is one of the following values
+
+import:: Any entity imported from an external source is audited.
+export:: Any entity exported to an external source is audited.
+create:: Each time a file is generated and exported shall be audited.
+For example, the creation of an invoice document is audited.
+login:: Login of a user.
+logout:: Logout of a user.
+
+The _component_ field has the structure _net.tangly_.*component_name*.
+The component field is the Java module name of the design component.
+
+All import and export operations should be audited.
+An import happens each time the system reads data from an external system.
+An export happens each time the system sends data to an external system.
+
+=== Java Conventions
+
+==== Modern Java Constructs
+
+Use modern Java constructs in our daily coding
+
+* Prefer a _record_ over a class abstraction to promote immutable objects.
+* Prefer stream approach over explicit control statements to promote functional programming.
+* Avoid returning a null value. Return either an optional or an empty collection.
+* Return immutable collections.
+* Parameters are per default non-null. Use the _@Nullable_ annotation to mark nullable parameters.
+* Promote modules for information hiding and reducing coupling between components.
+* Use var construct to have more legible code
+footnote:[Upon using the _var_ construct for a few years, we are convinced the resulting code is more legible and compact.].
+
+==== _String toString()_ Method
+
+The method implementation uses a _String.format()_ approach.
+We assume that Java will introduce intrinsic support for an efficient implementation of toString method based on _String.format()_.
+As soon as the intrinsics is available, we will migrate to the supported version as stated in JEP 348.
+
+The _toString_ method is used to create a detailed audit and logging messages and support production error searching.
+The format of the message is based on the build-in format defined in the JDK for Java records.
+
+[source,java]
+----
+    @Override
+    public String toString() {
+        return String.format("created=%s, author=%s, text=%s, tags=%s",
+            created(), author(), text(), Tag.text(tags));
+    }
+----
+
+==== _boolean equals(Object)_ Method
+
+The extended _instanceof_ operator allows a compact and legible definition of the equality method.
+The whole method body is written as one statement.
+
+[source,java]
+----
+    @Override
+    public boolean equals(Object obj) {
+        return (obj instanceof Comment o) && Objects.equals(created(), o.created())
+            && Objects.equals(author(), o.author()) && Objects.equals(text(), o.text())
+            && Objects.equals(tags(), o.tags());
+    }
+----
+
+=== Design Conventions
+
+Use {ref-plantuml} and {ref-mermaid} to document all major design decisions with diagrams.
+Diagrams shall be defined to explain specific aspects of a component.
+Do not try to model the whole source code.
 
 === Knowledge Database
 
 [qanda]
-Todo::
-Write FAQ in {ref-asciidoc}
+How should you document your design?::
+Document your design information with {ref-asciidoc}. Diagrams are created with {ref-plantuml} and {ref-mermaid}.
+The documentation is stored in the source code repository and published as a static project website.
+How should you document your code?::
+Please use the clean code principles and document your code with {ref-javadoc}.
+The JavaDoc shall be integrated into the static website project documentation.
+Intellij IDEA IDE has a nice integration with JavaDoc.
+How should you build your application?::
+Use {ref-gradle} as the build tool. The build tool has a nice integration with {ref-git}.
+Our preferred continuous integration tool is {ref-github}.
+How should you develop source code?::
+Use IntelliJ IDEA IDE for development. The IDE has a nice integration with {ref-gradle} and {ref-git}.
+
+[bibliography]
+=== Links
+
+- [[[tags, 1]]] link:../../blog/2020/the-power-of-tags-and-comments[The power of Tags and Comments].
+Marcel Baumann. 2020
+- [[[reference-code, 2]]] link:../../blog/2020/reference-codes/[Reference Codes].
+Marcel Baumann. 2020
+- [[[meaningful-identifiers, 3]]] link:../../blog/2021/meaningful-identifiers[Meaningful Identifiers].
+Marcel Baumann. 2021
+- [[[entities-identifiers, 4]]] link:../../blog/2020/entities-identifiers-external-identifiers-and-names[Identifiers and Names].
+Marcel Baumann. 2020

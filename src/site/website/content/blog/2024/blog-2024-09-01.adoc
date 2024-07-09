@@ -15,7 +15,7 @@ include::../fragments/_config-mb-blog.adoc[]
 :ref-hypervisor: https://en.wikipedia.org/wiki/Hypervisor[Hypervisor]
 :ref-paravirtualization: https://en.wikipedia.org/wiki/Paravirtualization[paravirtualization]
 
-image::2024-09-02-head.jpg[width=420,height=360,role=left]
+image::2024-09-01-head.jpg[width=420,height=360,role=left]
 
 An embedded application is software that is placed permanently inside some kind of device to perform a very specific set of functions.
 
@@ -51,6 +51,8 @@ That is why flexibility is vital while designing an embedded system.
 == {cpp} Application Development
 
 The {cpp} programming language has clear advantages when developing embedded and regular software products:
+
+image::2024-09-01-cpp.png[width=240,height=240,role=left]
 
 - {cpp} is a standardized, well-known, popular language.
 The community is more dynamic and regularly updates the language and libraries through the ISO certification process.
@@ -107,6 +109,8 @@ The ARM world has defined an abstraction layer for realtime operating systems an
 Most mainstream operating systems are built on the assumption that a system has a single privileged operating system running several unprivileged applications.
 Running multiple operating systems on the same platform requires a {ref-hypervisor}.
 Embedded systems often use a native hypervisor running on bare metal.
+
+image::2024-09-01-stm32.png[width=240,height=240,role=left]
 
 Application partitioning is not available to STM32 microcontrollers.
 Transparent partitioning requires a hypervisor to virtualize access to hardware components.

@@ -544,7 +544,7 @@ Therefore the same error will never happen again.
 
 === Good Practices
 
-Publish your components on a central repository such as Maven Central.
+Publish your components on a central repository such as {ref-maven-central}.
 Your users have easy and standardized access to your components and their latest version.
 Build tools such as Gradle and Maven or IDE such as IntelliJ IDEA fetch transparently the components.
 

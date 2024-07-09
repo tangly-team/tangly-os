@@ -36,7 +36,7 @@ A website shall be set up to provide adequate documentation for users.
 The https://blog.tangly.net[Technical Documentation] will use a static web approach to minimize costs and provide good legibility.
 All open source components will be hosted on the same site.
 
-The libraries will be published on Maven Central to maximize potential usage.
+The libraries will be published on {ref-maven-central} to maximize potential usage.
 
 === Consequences
 

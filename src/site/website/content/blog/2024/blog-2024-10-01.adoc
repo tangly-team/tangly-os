@@ -1,4 +1,4 @@
-    ---
+---
 title: "Domain Entities"
 linkTitle: "Domain Entities"
 date: 2024-10-01
@@ -9,33 +9,45 @@ params:
 
 include::../fragments/_config-mb-blog.adoc[]
 
+:ref-domain-driven-design: https://en.wikipedia.org/wiki/Domain-driven_design[Domain-driven design]
+:ref-openxava: https://www.openxava.org/en/[openXava]
+:ref-causeway: https://causeway.apache.org/[Causeway]
+
 image::2024-10-01-head.jpg[width=420,height=360,role=left]
 
-https://en.wikipedia.org/wiki/Domain-driven_design[Domain-driven design] is a tremendous good practice for modern agile software architecture
+{ref-domain-driven-design} is a tremendous good practice for modern agile software architecture
 cite:[domain-driven-design,domain-driven-design-distilled,implementing-domain-driven-design].
 
-The approach is used to design modular monoliths.
-The digital solution can evolve to a full-fledged microservices architecture if the market requires the associated scalability and resilience.
+The approach is to model the digital solution around the business domain.
+The digital solutions are modular systems that can evolve over time.
 
-The approach enables parallel development with multiple agile teams.
-DDD approach encourages the clear definition of minimal interfaces between bounded domains.
+The approach is used to design modular monoliths or complex microservices architectures.
+The digital modular monolith can evolve to a full-fledged microservices architecture if the market requires the associated scalability and resilience.
 
-Continuous integration, delivery and deployment validate delivered increments.
+The framework enables parallel development with multiple agile teams.
+{ref-domain-driven-design} approach encourages the clear definition of minimal interfaces between bounded domains.
+
+Continuous integration, delivery and deployment validate delivered increments cite:[continuous-delivery].
 The teams have the guaranty the integrated solution is working as expected.
 
 DevOps culture shortens work in progress _WIP_ <<introducing-devops-ideas>> <<devops-for-small-applications>> <<first-steps-devops>>.
+The teams can deliver new features and bug fixes in a timely manner.
+This approach is a key concept in Kanban and Scrum methodologies.
+
+But how do you model the domain entities in your digital solution?
 
 == Domain Entities
 
 image::2024-10-01-bounded-domain.png[width=420,height=360,role=left]
 
 A key concept in the approach is the concept of entities.
-An entity is a representation of an object in the domain.
+An entity is a representation of a key object in the domain.
 
 It is defined by its identity, continuity, and persistence over time rather than its attributes.
 
 It encapsulates the state of that object through its attributes, including the aggregation of other entities.
 It defines any operations that might be performed on the entity.
+Operations should include the validation and business logic of the entity.
 
 What is the identity of an instance in your system?
 
@@ -49,11 +61,17 @@ _An example is the company internal collaborator identifier._
 External Identity::
 An instance is identified through an external object identifier _ID_.
 The application or another external system is owner of the external identifier for a type of entities. +
-_An example is the social security number of a collaborator_.
+_An example is the social security number of a collaborator_. +
+External identifiers are natural ones and part of the domain and should always be preferred.
 Name::
 An instance can at least partially be identified through a human friendly name.
 The application or another external system is owner of the name for a type of entities. +
 _An example is the full name of a collaborator_.
+
+Our open-source library provides a mixin for each of these identification concepts.
+The below interfaces are for immutable access to the identity information.
+Identifiers should be set at construction time and should not be modified.
+A mutable version of the name mixin is provided for the cases where the name can be modified.
 
 [source,java]
 ----
@@ -65,12 +83,10 @@ interface HasOid {
 
 interface HasId {
     String id();
-    void id(String id);
 }
 
 interface HasName {
     String name();
-    void name(String name);
 }
 ----
 
@@ -89,7 +105,8 @@ The identifier is defined but is not accessible.
 Therefore, you are forced to create an internal identifier to uniquely identify natural persons in Switzerland.
 Similar difficulties exist in Europe to access the European natural person identifier
 footnote:[Naturally, the Swiss social number is not compatible with the European one to spice up your modeling problems.
-An example of well-defined external identifier is the plate number of a car.
+An example of a well-defined external identifier is the plate number of a car.
+Another well-defined external identifier is the bank account number _IBAN_.
 This identifier is worldwide valid.].
 ====
 
@@ -108,22 +125,27 @@ _An example is the start and end of a collaborator work contract An active work 
 _Another interesting temporal range is the validity range of currencies.
 The introduction of the Euro was the end of quite a few currencies_
 
+Our open-source library provides a mixin for each of these temporal concepts.
+The below interfaces are for read-only access to the identity information.
+Similar interfaces are provided for read-write access.
+
 [source,java]
 ----
 package net.tangly.core;
 
 interface HadDate {
     LocalDate date();
-    void date(LocalDate date);
 }
 
-interface HasTimeInterval {
+interface HasTimeInterval {                                // <1>
     LocalDate from();
-    void from(LocalDate from);
     LocalDate to();
-    void to(LocalDate to);
 }
 ----
+
+<1> The mixin defines the temporal scope of an entity.
+The start date is mandatory, the end date is optional.
+A null end date defines an open time interval.
 
 Users often want to access human-readable information to better understand an instance <<power-of-tags>>.
 They also want to classify groups of entities.
@@ -133,7 +155,7 @@ A textual description of the entity to provide context and user related informat
 Comments::
 Comments are user-specific notes describing various aspects of an entity.
 Comments are unstructured.
-he software does not generally process them.
+The software does not generally process them.
 Tags::
 Tags define a customer-specific ontology to classify entities in their system.
 Tags without value are equivalent to labels.
@@ -141,6 +163,10 @@ Tags with optional or mandatory values enrich the classification information wit
 
 We support {ref-asciidoc} syntax for all textual elements.
 The feature hugely improves the legibility and attractiveness of textual description for the users.
+
+Our open-source library provides a mixin for each of these textual concepts.
+The below interfaces are for mutable access to the textual information.
+Similar interfaces are provided for immutable access.
 
 [source,java]
 ----
@@ -176,7 +202,149 @@ package net.tangly.core;
 interface Entity extends HasOid, HasId, HasName, HasText, HasTimeInterval, HasTags, HasComments {
     boolean validate();
 }
+
+interface MutableEntity extends Entity, HasMutableName, HasMutableText, HasMutableTimeInterval,
+    HasMutableTags, HasMutableComments {
+}
 ----
+
+An excerpt of the provided mixins is displayed below.
+Documentation for the core library is available {ref-tangly-blog-url}/docs/core/[Core Library].
+
+[plantuml,core-classes,svg]
+....
+@startuml
+
+class DateRange <<record>> {
+    LocalDate from()
+    LocalDate to()
+}
+
+class Tag <<record>> {
+    String namespace()
+    String name()
+    String value()
+}
+
+class Comment <<record>> {
+    LocalDateTime created()
+    String author()
+    String text()
+    Set<Tag> tags()
+}
+Comment *-- Tag
+
+interface HasId {
+    String id()
+}
+
+interface HasOid {
+    long id()
+}
+
+interface HasName {
+    String name()
+}
+
+interface HasText{
+    String text()
+}
+
+interface HasDate {
+    LocalDate date()
+}
+
+interface HasDateRange {
+    DateRange range()
+}
+HasDateRange .> DateRange
+
+interface HasComments {}
+HasComments .> Comment
+
+interface HasTags {}
+HasTags .> Tag
+
+interface HasMutableId {}
+HasId <|-- HasMutableId
+
+interface HasMutableName {}
+HasName <|-- HasMutableName
+
+interface HasMutableDate {}
+HasDate <|-- HasMutableDate
+
+interface HasMutableDateRange {}
+HasDateRange <|-- HasMutableDateRange
+
+interface HasMutableComments {}
+HasComments <|-- HasMutableComments
+
+interface HasMutableTags {}
+HasTags <|-- HasMutableTags
+
+interface HasMutableText {}
+HasText <|-- HasMutableText
+
+interface HasLocation {}
+
+interface Entity {}
+HasOid <|-- Entity
+HasId <|-- Entity
+HasName <|-- Entity
+HasText <|-- Entity
+HasDateRange <|-- Entity
+
+interface MutableEntity {}
+Entity <|-- MutableEntity
+HasMutableId <|-- MutableEntity
+HasMutableName <|-- MutableEntity
+HasMutableText <|-- MutableEntity
+HasMutableDateRange  <|-- MutableEntity
+
+interface EntityExtended {}
+EntityExtended <|-- Entity
+EntityExtended <|-- HasTags
+EntityExtended <|-- HasComments
+
+interface ExternalEntity {}
+HasId <|-- ExternalEntity
+HasName <|-- ExternalEntity
+HasText <|-- ExternalEntity
+HasDate <|-- ExternalEntity
+HasTags <|-- ExternalEntity
+HasComments <|-- ExternalEntity
+
+interface MutableExternalEntity {}
+ExternalEntity <|-- MutableExternalEntity
+HasMutableId <|-- MutableExternalEntity
+HasMutableName <|-- MutableExternalEntity
+HasMutableText <|-- MutableExternalEntity
+HasMutableDate <|-- MutableExternalEntity
+HasMutableTags <|-- MutableExternalEntity
+HasMutableComments <|-- MutableExternalEntity
+
+interface MutableEntityExtended {}
+MutableEntityExtended <|-- EntityExtended
+MutableEntityExtended <|-- MutableEntity
+MutableEntityExtended <|-- HasMutableTags
+MutableEntityExtended <|-- HasMutableComments
+
+abstract class EntityExtendedImp {}
+EntityExtendedImp <|-- EntityExtended
+
+abstract class ExternalEntityImp {}
+ExternalEntityImp <-- ExternalEntity
+
+abstract class MutableEntityExtendedImp {}
+MutableEntityExtendedImp <|-- MutableEntityExtended
+
+abstract class MutableExternalEntityImp {}
+MutableExternalEntityImp <|-- MutableExternalEntity
+
+
+@enduml
+....
 
 == User Interface
 
@@ -207,7 +375,7 @@ All other modes have access to the grid and the form representation for the sele
 View:: The user can only display the entity data.
 Edit:: The user can modify existing data but cannot add or delete new instances.
 Create:: The user can add new entities but cannot edit existing ones.
-Creation is either the definition of all properties of a new object or the edition of the values of a duplicate one.
+Creation is either the definition of all properties for a new object or the edition for the values of a duplicate one.
 Delete:: The user can delete existing entities but cannot modify them or create new ones.
 
 The defined modes support these special requirements.
@@ -217,13 +385,31 @@ The three most used modes are _list_, _view_, and _edit_.
 
 The domain entity user interface <<domain-entities-ui>> discuss the implementation of the CRUD approach in more details.
 
+== Persistence
+
+Persistence is based on {ref-eclipsestore}.
+The library provides a non-intrusive and efficient way to store domain entities in a file system or a database.
+The code is very straightforward to understand.
+
+Export and import functions are provided through TSV and JSON format transformation.
+We use our Gleam library.
+You can find more information under {ref-tangly-blog-url}/docs/gleam/[Gleam].
+
 == Lessons Learnt
 
-The compactness of the code necessary to create a complete CRUD user interface is very high.
-We found out writing such code is more efficient than using model driven approaches.
-Therefore, we decided to ditch frameworks such as https://www.openxava.org/en/[openXava] or Apache https://causeway.apache.org/[Causeway].
-The gains for using these frameworks are too small to justify the learning curve and implicit limitations of such libraries.
+Modern Java has extensive support for shallow immutability with the `record` construct.
+We had to provide two hierarchies of mixin interfaces.
+One for immutable entities and one for mutable entities.
 
+The compactness of the code necessary to create a complete CRUD user interface is very high.
+We found out writing such code is more efficient than using available model driven approaches.
+Therefore, we decided to ditch frameworks such as {ref-openxava} or Apache {ref-causeway}.
+footnote:[We strongly prefer a plain coding approach over annotation-based solutions.
+This is certainly a major reason why we do not use these frameworks.].
+
+Simple things should be simple and complex things should be possible.
+
+The gains for using these frameworks are too small to justify the learning curve and implicit limitations of such libraries.
 The ideas behind these frameworks and also promoted through domain-driven design are still worth learning how to apply them in your products.
 
 [bibliography]
@@ -237,16 +423,14 @@ Marcel Baumann. 2020.
 Marcel Baumann. 2020.
 - [[[vaadin, 4]]] link:../../2022/vaadin/[Vaadin].
 Marcel Baumann. 2022.
-- [[[vaadin-24, 5]]] link:../../2024/vaadin-24/[Vaadin 24].
-Marcel Baumann. 2024.
-- [[[introducing-devops-ideas, 6]]] link:../../2022/introducing-devops-ideas/[Introducing DevOps Ideas].
+- [[[introducing-devops-ideas, 5]]] link:../../2022/introducing-devops-ideas/[Introducing DevOps Ideas].
 Marcel Baumann. 2022.
-- [[[devops-for-small-applications, 7]]] link:../../2021/devops-for-small-applications/[DevOps for Small Applications].
+- [[[devops-for-small-applications, 6]]] link:../../2021/devops-for-small-applications/[DevOps for Small Applications].
 Marcel Baumann. 2021.
-- [[[first-steps-devops, 8]]] link:../../2022/first-steps-devops/[First steps DevOps].
+- [[[first-steps-devops, 7]]] link:../../2022/first-steps-devops/[First steps DevOps].
 Marcel Baumann. 2022.
-- [[[domain-entities-ui, 9]]] link../../2024/domain-entities-ui/[Domain Entities UI].
-Marcel Baumann. 2024
+- [[[domain-entities-ui, 8]]] link:../../2024/domain-entities-ui/[Domain Entities UI].
+Marcel Baumann. 2024.
 
 == References
 

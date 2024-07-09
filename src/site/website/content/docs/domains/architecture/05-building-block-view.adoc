@@ -77,7 +77,7 @@ An example is the documentation of monthly activities of a consultant in a servi
 [NOTE]
 ====
 The `net.tangly.gleam` module provides the necessary classes to implement the import and export functionality.
-The module is a member of our open-source components and available on Maven Central.
+The module is a member of our open-source components and available on {ref-maven-central}.
 The {ref-tangly-blog-url}/docs/gleam/[Gleam Module] documentation provides more details.
 ====
 

@@ -162,7 +162,7 @@ Wiki based solutions are very easy to deploy.
 
 Wikis often have the following problems:
 
-- It is cumbersome or difficult to version the content of a wiki site.
+- It is cumbersome or challenging to version the content of a wiki site.
 You want to deploy the documentation associated with a specific release of your application.
 You often need multiple wiki versions at the same time to support the delivered version, the version under testing and the version under active development.
 - Support for diagramming in the wiki pages is often limited or only available through commercial plugins.

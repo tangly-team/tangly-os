@@ -61,7 +61,10 @@ Interested readers can explore further functional programming cite:[functional-p
 
 === Clojure
 
-_To be written_
+The emphasis is on the functional aspects of Lisp and {ref-clojure}.
+
+The students should be able to appreciate the more powerful constructs available in {ref-clojure} in comparison of Modern Java.
+At the same time, they should understand how to map most {ref-clojure} functional approaches to Java and the limits of these solutions.
 
 === References
 

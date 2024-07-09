@@ -9,46 +9,78 @@ params:
 
 include::../fragments/_config-mb-blog.adoc[]
 
+:ref-echarts: https://echarts.apache.org/en/index.html[ECharts]
+:ref-domain-driven-design: https://en.wikipedia.org/wiki/Domain-driven_design[Domain-driven design]
+:ref-naked-objects: https://en.wikipedia.org/wiki/Naked_objects[Naked Objects]
+:ref-crud: https://en.wikipedia.org/wiki/Create,_read,_update_and_delete[CRUD]
+:ref-socharts: https://github.com/syampillai/SOCharts[SO-Charts]
+
 image::2024-11-01-head.jpg[width=420,height=360,role=left]
 
 Commercial digital applications regularly display a list of entities and details for selected one.
 The selected entity can be displayed, edited, deleted.
 A new entity can be created.
-This pattern is called https://en.wikipedia.org/wiki/Create,_read,_update_and_delete[CRUD].
+This pattern is called {ref-crud}.
 
-[TIP]
-====
-DDD practitioners complain that it was hard to gain commitment from business stakeholders, or even to completely engage them.
-My own experience suggested that it was nearly impossible to engage business managers with UML diagrams.
+{ref-crud} solutions permeate the digital world.
+Most company internal applications are a variation of this pattern.
+
+Often you do not need sophisticated forms or display complex diagrams.
+But most of the solutions will have a few complex forms or diagrams.
+
+The {ref-naked-objects} approach is a radical simplification of the {ref-crud} pattern.
+We use it for all our management applications.
+
+== Domain-driven Design
+
+{ref-domain-driven-design} practitioners complain that it was hard to gain commitment from business stakeholders, or even to completely engage them.
+My own experience suggests that it was nearly impossible to engage business managers with UML diagrams.
 It was much easier to engage them in rapid prototyping where they could see and interact with the results.
+Another approach is holding event storming sessions, where the business managers can see the domain model emerge in real-time.
 
 Even if you could engage the sponsors to design a domain model, by the time you have finished developing the system on top, most of its benefits had disappeared.
-It is nice creating an agile domain object model, but if any change to that model also dictates the modification of the layers above and underneath, then that agility is worthless.
+It is nice creating an agile domain object model.
+But if any change to that model also dictates the modification of the layers above and underneath, then that agility is worthless.
 
-The other concern that gave rise to the birth of https://en.wikipedia.org/wiki/Naked_objects[Naked Objects] was how to make user interfaces of mainstream business systems expressive.
+The other concern that gave rise to the birth of {ref-naked-objects} was how to make user interfaces of mainstream business systems expressive.
 Most business systems are not at all expressive.
 They treat the user merely as a dumb process-follower, rather than as an empowered problem-solver.
 
 Domain-driven design realized that if the domain model represents the _ubiquitous language_ of the business, those domain objects should be behaviorally rich.
-Business logic is encapsulated as methods on the domain objects rather than in procedural scripts on top of them.
+Regular business logic is encapsulated as methods on the domain objects rather than in procedural scripts on top of them.
+Complex rules are expressed as business logic classes collaborating with domain entities.
 
-The next step the user interface is a reflection of the domain model.
-It would make it easier to do domain-driven design, because one could easily translate evolving domain modeling ideas into a working prototype.
+The next step is naturally to have the user interface be a reflection of the domain model.
+It would make it easier to apply domain-driven design, because one could easily translate evolving domain modeling ideas into a working prototype.
 And it would deliver an expressive, object-oriented user interface for free.
-====
+
+Simple things should be simple, complex things should be possible.
+We avoid annotation-based solutions because we believe plain code is more legible and maintainable.
+Our preferred technology stack is pure modern Java and {ref-vaadin} for the user interface.
 
 == Grid Display
 
-The key concepts are filtering and ordering of the selected items per column.
+Grid display of an entity list is the bread and butter of the domain entities representation.
 
-== Operations with a Selected Entity
+The additional concepts are filtering and ordering of the selected items per column
+footnote:[Strong filtering and ordering capabilities make paging obsolete.].
 
 The standard read, update, delete and create operations are supported.
+
 An additional creation variant is the duplicate operation to minimize user inputs.
+Good user interface design is avoiding the user to enter the same data multiple times.
 
 == Business Operations
 
-== Events
+=== Advanced Cell display
+
+=== Selected Item Actions
+
+=== Global Actions
+
+== Asynchronous Operations
+
+=== Events
 
 Changes in the system are communicated via events.
 Domain-driven design promotes asynchronous event communication between the bounded contexts.
@@ -57,10 +89,10 @@ The same mechanism is used to communicate changes in the domain entities to the 
 
 [NOTE]
 ====
-The event bus is a simple in-memory event bus using the Java `Flow` API and default implemenation.
+The event bus is a simple in-memory event bus using the Java `Flow` API and default implementation.
 No additional libraries are necessary.
 
-The processing of received events is asynchronous and performed in backgounds threads.
+The processing of received events is asynchronous and performed in background threads.
 ====
 
 === Internal Events
@@ -70,11 +102,12 @@ All internal events are sent over a domain-specific event bus.
 
 Care is taken to publish UI changes on the UI thread. {ref-vaadin} provides a mechanism to execute code on the UI thread.
 
-[source, java]
+[source,java]
 ----
 UI.getCurrent().access(() -> v.ifPresent(View::refresh)));              <1>
 ----
-<1> First, the current UI in which the user component is exected is obtained.
+
+<1> First, the current UI in which the user component is expected is obtained.
 Second, The action is posted on the user interface thread with the `access` method.
 
 === External Events
@@ -100,18 +133,32 @@ One important housekeeping operation unregisters the UI instance from the intern
 This logic is implemented in the `BoundedDomainClass' abstraction.
 ====
 
-== Extensions
+== Graphical Extensions
+
+Well-designed graphics can highlight the most important information for the user.
+
+We use the {ref-socharts} library to display complex diagrams.
+The library is a wrapper around the very cool Apache Foundation {ref-echarts} library.
+Exhaustive types of diagrams are provided.
+See https://echarts.apache.org/examples/en/index.html[Diagram Examples].
 
 == Lessons Learnt
 
 The domain entities UI is a key part of the domain-driven design.
 Mechanisms to display, edit, and create domain entities are essential.
-The multi-user and multi-tab support runs in a multi-threaded environment and requires careful programming to scale.
+
+The multi-user and multi-tab support runs in a multithreaded environment and requires careful programming to scale.
 All the logic is provided by the domain entities UI framework to diminish complexity for the application developers.
+
+The classes defined in the UI library tremendeously simplify the realization of regular CRUD grid components.
+Documentation is available under {ref-tangly-blog-url}/docs/ui/[Vaadin UI Naked Objects].
+
+We provide all our libraries as maven artifacts published on {ref-maven-central}.
 
 [bibliography]
 == Links
 
-== References
-
-bibliography::[]
+- [[[domain-entities,1]]] link:../../2024/domain-entities/[Domain Entities]
+Marcel Baumann. 2024.
+- [[[vaadin, 2]]] link:../../2022/vaadin/[Vaadin].
+Marcel Baumann. 2022.

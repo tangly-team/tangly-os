@@ -70,7 +70,7 @@ a|- Why refactor?
 |Lecture 6
 |Errors, Vulnerabilities, and Smells in Source Code
 a|- Definition of smells and how to remove smells.
-- Refactoring process with TDD.
+- Know the refactoring process with TDD.
 - Evolve architecture to newer versions of programming languages or more modular architecture.
 
 - Tools to detect non-quality
@@ -128,6 +128,34 @@ a| - Domain-Driven Development, ubiquitous language
 |Team and Technical Excellence for Architects
 a|- Daily work of architects in agile environment
 |====
+
+=== Evolution
+
+The teaching years 2023 and 2024 identified empirical facts:
+
+- Slowly, the students have a better grasp of how digital products are created using agile approaches.
+All students have training in design thinking and prototyping in the PTA lectures.
+They have the opportunity to certify in design thinking through an IBM program.
+- Basic knowledge of Scrum is provided through project management mandatory lecture.
+Most students have a shallow understanding of Scrum values, artifacts and events.
+The knowledge is insufficient for semester works or successful integration in a professional working environment.
+The university is very reluctant to define concrete measures to improve knowledge transfer.
+- Most students are fluent in programming.
+Advanced concepts in Modern Java, Modern Python, or Modern Typescript are direly missing.
+- Continuous delivery was trained in some lectures.
+Experience in setting up a continuous integration, delivery, and deployment pipelines is missing.
+The understanding of DevOps concepts is shallow.
+The university has increased DevOps offering to improve the situation.
+- The students welcome the emphasis of {ref-domain-driven-design} approaches.
+The event storming workshop is a highlight of the lecture.
+
+We tune the SWAT lecture to deepen understanding of:
+
+- Deepen the understanding of architecture styles and approaches in an agile context.
+- Provide concrete examples of domain-driven design tactical solutions based on the open source project tangly ERP.
+The consequence is more emphasis on Modern Java, {ref-gradle}, {ref-git}, and {ref-github}.
+We do not have the resources to provide source code examples in other technology stacks.
+- Sharpen the semester project to better apply agile design principles.
 
 === References
 

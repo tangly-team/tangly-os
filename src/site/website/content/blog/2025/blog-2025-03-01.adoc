@@ -9,10 +9,16 @@ params:
 
 include::../fragments/_config-mb-blog.adoc[]
 
+[.float-group]
+--
 image::2025-03-01-head.jpg[width=420,height=360,role=left]
 
 Embedded systems are hard to debug.
-You do not have the luxury of connecting up most of the time a monitor and keyboard, and stepping through code is not much use when the application needs to continually respond to real-world events for the bug to appear in the first place.
+
+You do not have the luxury of connecting up most of the time with a monitor and keyboard.
+
+Stepping through code is not much use when the application needs to continually respond to real-world events for the bug to appear in the first place.
+--
 
 And after a while, toggling your single GPIO LED just does not cut it, and you decide you need to be able to log messages and print values.
 
@@ -124,6 +130,9 @@ All targets can be individually enabled or disabled on a per-node basis.
 You shall define a logging concept for your product.
 Enforce the log record format in all packages.
 The language shall be English International.
+
+Allocate space in your embedded system for logging information.
+You need some persistent memory area that will store the log record using a round-robin scheme.
 
 Verify that your log files can programmatically be parsed and filtered.
 

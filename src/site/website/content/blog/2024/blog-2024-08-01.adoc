@@ -9,6 +9,7 @@ params:
 
 include::../fragments/_config-mb-blog.adoc[]
 :ref-actor-model: https://en.wikipedia.org/wiki/Actor_model[Actor Model]
+:ref-jetty: https://jetty.org/[Jetty]
 
 image::2024-08-01-head.png[width=420,height=360,role=left]
 
@@ -42,7 +43,7 @@ What user interface should we define?::
 Acknowledge that a software developer is missing the formal education to create good user interfaces.
 You need a user interface and usability trained professional to create and refine stunning user interfaces.
 Select technological solutions compatible with your technology stack
-footnote:[Beware that browser based JavaScript solutions require major rework of the solution every eighteen months.
+footnote:[Beware that browser-based JavaScript solutions require major rework of the solution every eighteen months.
 The pace of change in frameworks such as Angular, React, Vue, jQuery is stunning.
 Supported standards in browsers are evolving.].
 How do we implement accessibility laws and requirements?::
@@ -65,7 +66,7 @@ Avoid multi-threading synchronization headaches with locks, mutexes, or semaphor
 How can we scale the solution?::
 Select a framework providing horizontal scaling.
 The preferred abstraction model is the {ref-actor-model}.
-A web server library such as https:/eclipse.dev/jetty/[Jetty] supports unlimited parallel user sessions without writing one line of code.
+A web server library such as {ref-jetty} supports unlimited parallel user sessions without writing one line of code.
 A robotic framework such as https://www.ros.org/[ROS-2] delivers concurrency on node level for free.
 Should we prepare for sharding, geolocation, vertical scaling?::
 Try to design business logic and data persistence along with natural slicing rules.
@@ -91,7 +92,7 @@ footnote:[The approach is promoted in multiple technical stacks such as Java Spr
 How should we log activities and why?::
 Each bounded domain shall implement their own log record repository.
 The structure of the records should be standardized to ease the effort of understanding the behavior of the whole application.
-The various repsoitories must be aggregated and have a total ordering.
+The various repositories must be aggregated and have a total ordering.
 Either your system has a global time with the required resolution, often in the area of a few microseconds.
 Or you write all your log to an asynchronous aggregator.
 The order of arrival provides the implicit ordering of the log records.
@@ -115,9 +116,9 @@ _Review your internal documented solution_
 
 [TIP]
 ====
-Try to archive data in a format that is easy to read and understand.
+Try to archive data in a format that is straightforward to read and understand.
 I strongly recommend a TSV and JSON format.
-Pleaes provid JSON schema for the JSON data.
+Please provide the corresponding JSON schema for the JSON data.
 
 Group data on a per-tenant basis.
 
@@ -146,12 +147,12 @@ The {ref-less} movement has described how agile architecture could be performed 
 
 [quote, Freds Brooks, No Silver Bullet]
 ____
-There is no single development, in either technology or management technique, which by itself promises even one order of magnitude [tenfold] improvement within a decade in productivity, in reliability, in simplicity.
+There is no single development in either technology or management technique, which by itself promises even one order of magnitude [tenfold] improvement within a decade in productivity, in reliability, in simplicity.
 ____
 
 You shall create a similar checklist to the above one.
 Document your preferred approaches for each question.
-Do not forget to reference literature, good practices <<developer-assumptions>> and design patterns.
+Remember to reference literature, good practices <<developer-assumptions>> and design patterns.
 
 You will be able to solve almost all the design challenges you will be confronted with.
 A good approach is to start with a modular monolith <<modular-monoliths>>.
@@ -174,4 +175,4 @@ Marcel Baumann, 2024.
 
 == References
 
-bibliography::[]
+Bibliography::[]

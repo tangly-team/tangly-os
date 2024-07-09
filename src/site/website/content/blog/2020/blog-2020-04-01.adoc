@@ -143,7 +143,7 @@ The same error will never happen again.
 
 == Good Practices
 
-Publish your components on a central repository such as _Maven Central_.
+Publish your components on a central repository such as {ref-maven-central}.
 Your users have easy and standardized access to your components and their latest version.
 
 Build tools such as {ref-gradle} and {ref-maven} or IDE such as https://www.jetbrains.com/idea/[IntelliJ IDEA] allows potential users to fetch the component without having to install out-of-the-box mechanisms.
