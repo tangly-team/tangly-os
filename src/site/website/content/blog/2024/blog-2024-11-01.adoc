@@ -70,17 +70,135 @@ The standard read, update, delete and create operations are supported.
 An additional creation variant is the duplicate operation to minimize user inputs.
 Good user interface design is avoiding the user to enter the same data multiple times.
 
+The source code to create a grid with custom columns is:
+
+[source, java]
+----
+class EffortsView extends ItemView<Effort> {
+    // constant declarations
+
+    public EffortsView(@NotNull ProductsBoundedDomainUi domain, @NotNull Mode mode) {
+        super(Effort.class, domain, domain.efforts(), new EffortFilter(), mode);
+        form(() -> new EffortForm(this));
+        init();
+    }
+
+    private void init() {
+        var grid = grid();
+        grid.addColumn(o ->
+            Objects.nonNull(o.assignment()) ? o.assignment().id() : null)
+                .setKey(ASSIGNMENT).setHeader(ASSIGNMENT_LABEL).setAutoWidth(true)
+                .setResizable(true).setSortable(true);
+        grid.addColumn(o -> Objects.nonNull(o.assignment()) ? o.assignment().name() : null)
+                .setKey(COLLABORATOR).setHeader(COLLABORATOR_LABEL)
+            .setAutoWidth(true).setResizable(true).setSortable(true);
+        grid.addColumn(Effort::date).setKey(DATE).setHeader(DATE_LABEL).setAutoWidth(true)
+            .setResizable(true).setSortable(true);
+        grid.addColumn(Effort::duration).setKey(DURATION).setHeader(DURATION_LABEL)
+            .setAutoWidth(true).setResizable(true).setSortable(true);
+        grid.addColumn(Effort::contractId).setKey(CONTRACT_ID).setHeader(CONTRACT_ID_LABEL)
+            .setAutoWidth(true).setResizable(true).setSortable(true);
+    }
+}
+----
+
+The source code to create a custom form for the CRUD operations is:
+
+[source, java]
+----
+class EffortForm extends ItemForm<Effort, EffortsView> {
+
+    EffortForm(@NotNull EffortsView parent) {
+        super(parent);
+        addTabAt("details", details(), 0);
+        addTabAt("text", textForm(), 1);
+    }
+
+    protected FormLayout details() {
+        TextField assignment = VaadinUtils.createTextField(ASSIGNMENT_LABEL, ASSIGNMENT,
+            true, false);
+        TextField collaborator = VaadinUtils.createTextField(COLLABORATOR_LABEL, COLLABORATOR,
+            true, false);
+        TextField collaboratorId = VaadinUtils.createTextField("Collaborator ID",
+            "collaborator id", true, false);
+        TextField contractId = new TextField(CONTRACT_ID_LABEL, CONTRACT_ID);
+        DatePicker date = VaadinUtils.createDatePicker(DATE_LABEL);
+        IntegerField duration = new IntegerField(DURATION_LABEL, DURATION);
+
+        FormLayout form = new FormLayout();
+        form.add(assignment, collaborator, collaboratorId, contractId, date, duration);
+
+        binder().bindReadOnly(assignment, o -> o.assignment().id());
+        binder().bindReadOnly(collaborator, o -> o.assignment().name());
+        binder().bindReadOnly(collaboratorId, o -> o.assignment().collaboratorId());
+        binder().bind(contractId, Effort::contractId, Effort::contractId);
+        binder().bind(date, Effort::date, Effort::date);
+        binder().bind(duration, Effort::duration, Effort::duration);
+        return form;
+        }
+
+        @Override
+        protected Effort createOrUpdateInstance(Effort entity) throws ValidationException {
+            return Objects.isNull(entity) ? new Effort() : entity;
+        }
+    }
+----
+
+The code for implementing the same functionally for a subclass of `net.tangly.core.Entity' is more compact due to convention over configuration.
+
+Please consult the documentation of the component {ref-tangly-blog-url}/docs/ui/[net.tangly.ui] and the associated
+{ref-tangly-blog-url}/docs/ui/api-ui/index.html[JavaDoc].
+
 == Business Operations
 
 === Advanced Cell display
 
-=== Selected Item Actions
+Vaadin supports sophisticated grid cell extension.
+An example to format accounting numbers and to color them red if negative:
 
-=== Global Actions
+[source, java]
+----
+    public static <T> ComponentRenderer<Span, T> coloredRender(Function<T, BigDecimal> getter,
+                                    NumberFormat numberFormat) {
+        return new ComponentRenderer<>((T e) -> {
+            BigDecimal v = getter.apply(e);
+            return switch (BigDecimal.ZERO.compareTo(v)) {
+                case -1 -> new Span(numberFormat.format(v));
+                case 0 -> new Span();
+                case 1 -> {
+                    Span s = new Span(numberFormat.format(v));
+                    s.getElement().getStyle().set("color", "red");
+                    yield s;
+                }
+                default -> new Span("");
+            };
+        });
+    }
+----
+
+=== Grid Actions
+
+The `net.tangly.ui.component.ItemView` supports adding selected item and global commands to the grid popup menu.
+
+[source, java]
+----
+    protected void addActions(@NotNull GridContextMenu<Assignment> menu) {
+        menu().add(new Hr());
+        menu().addItem("Print", e ->
+            Cmd.ofItemCmd(e, (Assignment o) ->
+                new CmdCreateEffortsReport(o, domain()).execute()));        // <1>
+        menu().addItem("Import", e ->
+            Cmd.ofGlobalCmd(e,
+                () -> new CmdFilesUploadEfforts(domain()).execute()));      // <2>
+    }
+----
+
+<1> adds a selected item command which will process the selected item.
+Optional parameters can be inputed in a dialog before processing.
+<2> adds a global command which will process items displayed in the grid.
+Optional global parameters can be inputed in a dialog before processing.
 
 == Asynchronous Operations
-
-=== Events
 
 Changes in the system are communicated via events.
 Domain-driven design promotes asynchronous event communication between the bounded contexts.

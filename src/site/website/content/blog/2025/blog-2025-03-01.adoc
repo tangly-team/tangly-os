@@ -96,6 +96,14 @@ These logs allow us to examine variable values as well as complete error stacks.
 
 Apache Foundation log4j2 <<log4j2-logging>> defines a modern logging library based on the learnings of https://logging.apache.org/[log4j1.x] and https://www.slf4j.org/[slf4j].
 
+If part of your application is written in Java, you should use the log4j2 library without hesitation.
+
+It is quite reasonable to write soft real-time applications in Java.
+Use a raspeberry pi or a rasperberry pi zero to run your Java application.
+The limit would be open loop control systems with a cycle time bellow 1ms.
+
+Therefore, job floor systems or home automation solutions are good candidates for Java.
+
 === {cpp} Library gogl
 
 Google Log _glog_ <<google-logging>> defines a series of macros that simplify many common logging tasks.

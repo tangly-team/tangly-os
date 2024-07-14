@@ -60,7 +60,8 @@ Each blog post is a separate file in the folder and named `blog-YEAR-MONTH-NUMBE
 The title of the blog post is in the front matter of the file.
 
 Therefore, I cannot use the page bundle feature of Hugo.
-The consequence is that I have to include the image file name in the front matter of the blog post and copy the featured image in the `assets` folder.
+The consequence is that I have to include the image file name in the front matter of the blog post and copy the featured image in the regular {ref-hugo}
+`assets` folder.
 The {ref-docsy} theme needs two small changes in the partial `featured-image.html` to display the featured image.
 First, the name of the image is retrieved from the front matter parameter `featured`.
 Second, the partial was extended to handle SVG images.

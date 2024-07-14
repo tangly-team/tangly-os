@@ -20,7 +20,8 @@ You do not need to implement data provider and paging.
 [IMPORTANT]
 ====
 This approach limits the amount of data you can handle.
-A modern notebook has 32 GB of RAM. A modern server easily has 256 GB of RAM.
+A modern notebook has 32 GB of RAM.
+A modern server easily has 256 GB of RAM.
 
 These limits cover most management applications.
 {ref-eclipsestore} supports data sharding and lazy loading.
@@ -48,6 +49,17 @@ Very few deployed applications have more than 5'000 users.
 ====
 
 == Internationalization and Localization
+
+== Tips and Tricks
+
+Vaadin is a strong framework.
+It is sometimes flakey.
+Major refactoring with classes and packages relocationss seems to distress the framework.
+If yu get a Vaadin frontend compilation error, try to clean the project.
+Cleaning means execute `vaadin:clean` and delete all generated files in the project.
+
+We also sometimes have the strange effect that the gralde project is building perfectly with the option `-Pvaadin.productionMode` but not without.
+This seems to indicate that the gradle plugin does quite different things in both cases.
 
 [bibliography]
 == Links

@@ -63,7 +63,7 @@ The protection of the data will use blocking mechanisms of a RTOS and could pote
 The programmer is responsible to avoid these tricky constellations.
 ====
 
-While these best practices can be applied manually on top of a traditional RTOS, a better way is to use an actor library.
+While these best practices can be applied manually on top of a traditional RTOS, a better way is to use an actor library <<actor-model>>.
 The main difference is that when you use an RTOS, you write the main body of the application such as the thread routines for all your tasks.
 You call explicitly the RTOS synchronization services, e.g., a semaphore, a monitor, a lock or a time delay.
 
@@ -246,7 +246,7 @@ This is obviously not possible if your machine is processing a request or moving
 == Lessons Learnt
 
 Never try to transform a distributed asynchronous system into a synchronously centrally controlled application.
-It will never work as expected.
+It will never work as expected <<fallacies>>.
 
 Please just read the {ref-two-generals}
 footnote:[The problem description and the mathematical proof were published in 1975.
@@ -271,7 +271,7 @@ I agree that if you have reliable communication, it would be possible.
 The advocates of this solution just forget about the costs of reliability <<fallacies>> and the consequences as stated in the {ref-cap}.
 ====
 
-[biblography]
+[bibliography]
 == Links
 
 - [[[actor-model, 1]]] https://en.wikipedia.org/wiki/Actor_model[Actor Model]
