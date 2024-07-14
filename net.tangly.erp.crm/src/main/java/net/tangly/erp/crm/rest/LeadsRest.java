@@ -22,7 +22,7 @@ import net.tangly.erp.crm.services.CrmBoundedDomain;
 import org.jetbrains.annotations.NotNull;
 
 public class LeadsRest {
-    public static final String PREFIX = STR."/rest/\{CrmBoundedDomain.DOMAIN.toLowerCase()}/leads";
+    public static final String PREFIX = "/rest/%s/leads".formatted(CrmBoundedDomain.DOMAIN.toLowerCase());
 
     private final CrmBoundedDomain domain;
 
@@ -32,10 +32,10 @@ public class LeadsRest {
 
     public void registerEndPoints(@NotNull Javalin javalin) {
         javalin.get(PREFIX, this::getAll);
-        javalin.get(STR."\{PREFIX}/{id}", this::getById);
+        javalin.get(PREFIX + "/id", this::getById);
         javalin.put(PREFIX, this::create);
-        javalin.patch(STR."\{PREFIX}/{id}", this::update);
-        javalin.delete(STR."\{PREFIX}/{id}", this::delete);
+        javalin.patch(PREFIX + "/id", this::update);
+        javalin.delete(PREFIX + "/id", this::delete);
     }
 
     @OpenApi(

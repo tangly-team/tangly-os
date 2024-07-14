@@ -55,4 +55,40 @@ public final class Strings {
     public static String normalizeToNull(String string) {
         return isNullOrEmpty(string) ? null : string.strip();
     }
+
+    public static String nullSafeString(String value) {
+        return nullSafeString(value, "");
+    }
+
+    public static String nullSafeString(String value, String defaultValue) {
+        return value == null ? defaultValue : value;
+    }
+
+
+    public static String emptySafeString(String value, String defaultValue) {
+        return Strings.isNullOrBlank(value) ? defaultValue : value;
+    }
+
+    public static String emptySafeString(String value) {
+        return emptySafeString(value, "");
+    }
+
+    public static String toValid3ByteUTF8String(String s) {
+        final int length = s.length();
+        StringBuilder b = new StringBuilder(length);
+        for (int offset = 0; offset < length; ) {
+            final int codepoint = s.codePointAt(offset);
+            if (codepoint > "\uFFFF".codePointAt(0)) {
+                b.append('\uFFFD');
+            } else {
+                if (Character.isValidCodePoint(codepoint)) {
+                    b.appendCodePoint(codepoint);
+                } else {
+                    b.append('\uFFFD');
+                }
+            }
+            offset += Character.charCount(codepoint);
+        }
+        return b.toString();
+    }
 }

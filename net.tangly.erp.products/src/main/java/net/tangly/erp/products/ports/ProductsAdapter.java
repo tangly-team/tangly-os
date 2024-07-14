@@ -42,7 +42,6 @@ import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Stream;
 
-import static java.util.FormatProcessor.FMT;
 import static java.util.stream.Collectors.groupingBy;
 
 public class ProductsAdapter implements ProductsPort {
@@ -207,7 +206,7 @@ public class ProductsAdapter implements ProductsPort {
                 effortsBuilder = effortsBuilder.add(effortBuilder.build());
             }
             builder = builder.add("efforts", effortsBuilder.build());
-            folder = folder.resolve(Integer.toString(efforts.getFirst().date().getYear()), FMT."%02d\{efforts.getFirst().date().getMonthValue()}");
+            folder = folder.resolve(Integer.toString(efforts.getFirst().date().getYear()), "%%02d%d".formatted(efforts.getFirst().date().getMonthValue()));
             AsciiDoctorHelper.createFolders(folder);
             var file = folder.resolve(filename(efforts.getFirst()));
             var printer = Yaml.createYamlPrinter(Files.newBufferedWriter(file));
@@ -243,7 +242,7 @@ public class ProductsAdapter implements ProductsPort {
                 AsciiDoctorHelper.createFolders(effortsDocumentFolder);
                 var filename = filename(assignment, current);
                 var assignmentAsciiDocPath = effortsDocumentFolder.resolve(filename + AsciiDoctorHelper.ASCIIDOC_EXT);
-                var assignmentPdfPath = effortsDocumentFolder.resolve(STR."\{filename}\{AsciiDoctorHelper.PDF_EXT}");
+                var assignmentPdfPath = effortsDocumentFolder.resolve("%s%s".formatted(filename, AsciiDoctorHelper.PDF_EXT));
                 helper.createMonthlyReport(assignment, current, unit, assignmentAsciiDocPath);
                 AsciiDoctorHelper.createPdf(assignmentAsciiDocPath, assignmentPdfPath, true);
                 current = current.plusMonths(1);
@@ -252,13 +251,13 @@ public class ProductsAdapter implements ProductsPort {
     }
 
     private String filename(@NotNull Assignment assignment, @NotNull YearMonth month) {
-        String generatedText = FMT."\{month.getYear()}-%02d\{month.getMonthValue()}";
+        String generatedText = "%d-%%02d%d".formatted(month.getYear(), month.getMonthValue());
         String dateText = Strings.firstOnlyUppercase(month.getMonth().toString());
-        return STR."\{generatedText}-\{assignment.id()}-\{assignment.name()}-\{dateText}";
+        return "%s-%s-%s-%s".formatted(generatedText, assignment.id(), assignment.name(), dateText);
     }
 
     private String filename(@NotNull Effort effort) {
-        String generatedText = FMT."\{effort.date().getYear()}-%02d\{effort.date().getMonthValue()}";
-        return STR."\{generatedText}-\{effort.assignment().name()}-\{effort.contractId()}\{YAML_EXT}";
+        String generatedText = "%d-%%02d%d".formatted(effort.date().getYear(), effort.date().getMonthValue());
+        return "%s-%s-%s%s".formatted(generatedText, effort.assignment().name(), effort.contractId(), YAML_EXT);
     }
 }

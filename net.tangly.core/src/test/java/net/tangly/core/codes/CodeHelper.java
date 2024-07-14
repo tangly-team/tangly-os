@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2022 Marcel Baumann
+ * Copyright 2006-2024 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -8,6 +8,7 @@
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ *
  */
 
 package net.tangly.core.codes;
@@ -67,8 +68,8 @@ class CodeHelper {
      * @throws SQLException if a database access error occurred
      */
     public static <T extends Code> CodeType<T> build(Class<T> clazz, CodeFactory<T> factory, DataSource dataSource, String tableName) throws
-            SQLException {
-        final String SQL_QUERY = STR."SELECT id, code, enabled FROM \{tableName}";
+        SQLException {
+        final String SQL_QUERY = "SELECT id, code, enabled FROM %s".formatted(tableName);
         try (Connection connection = dataSource.getConnection(); Statement statement = connection.createStatement();
              ResultSet resultSet = statement.executeQuery(SQL_QUERY)) {
             List<T> codes = new ArrayList<>();

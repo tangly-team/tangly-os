@@ -120,11 +120,11 @@ public class LedgerTsvHdl {
                     }
                     ledger.add(account);
                     ++counter;
-                    audit.log(EventData.IMPORT_EVENT, EventData.Status.INFO, STR."\{Account.class.getSimpleName()} imported",
+                    audit.log(EventData.IMPORT_EVENT, EventData.Status.INFO, "%s imported".formatted(Account.class.getSimpleName()),
                         Map.of(SOURCE, path, "object", account));
 
                 }
-                audit.log(EventData.IMPORT_EVENT, EventData.Status.INFO, STR."\{Account.class.getSimpleName()} imported objects",
+                audit.log(EventData.IMPORT_EVENT, EventData.Status.INFO, "%s imported objects".formatted(Account.class.getSimpleName()),
                     Map.of(SOURCE, path, "count", counter));
             }
         } catch (IOException e) {
@@ -167,7 +167,7 @@ public class LedgerTsvHdl {
                 }
                 ++counter;
                 audit.log(EventData.EXPORT_EVENT, EventData.Status.SUCCESS,
-                    STR."\{Account.class.getSimpleName()} exported to charter of accounts", Map.of(SOURCE, path, "entity", account));
+                    "%s exported to charter of accounts".formatted(Account.class.getSimpleName()), Map.of(SOURCE, path, "entity", account));
             }
             audit.log(EventData.EXPORT_EVENT, EventData.Status.INFO, "exported to charter of accounts",
                 Map.of(SOURCE, path, "counter", counter));
@@ -228,7 +228,7 @@ public class LedgerTsvHdl {
                         Transaction.of(Dates.of(date), reference, text, debit, credit, VatCode.of(vatCode), Dates.of(dateExpected), splits);
                     ledger.book(transaction);
                     ++counter;
-                    audit.log(EventData.IMPORT_EVENT, EventData.Status.SUCCESS, STR."\{Transaction.class.getSimpleName()} imported to journal",
+                    audit.log(EventData.IMPORT_EVENT, EventData.Status.SUCCESS, "%s imported to journal".formatted(Transaction.class.getSimpleName()),
                         Map.of(SOURCE, source, "entity", transaction));
                 } catch (NumberFormatException | DateTimeParseException e) {
                     logger.atError().withThrowable(e).log("{}: not a legal amount {}", date, amount);
@@ -316,7 +316,8 @@ public class LedgerTsvHdl {
         if (entry != null) {
             Optional<Tag> project = entry.findBy(AccountEntry.FINANCE, AccountEntry.PROJECT);
             Optional<Tag> segment = entry.findBy(AccountEntry.FINANCE, AccountEntry.SEGMENT);
-            return entry.accountId() + (project.map(tag -> STR."-\{tag.value()}").orElse("")) + (segment.map(value -> STR."-\{value.value()}").orElse(""));
+            return "%s%s%s".formatted(entry.accountId(), project.map(tag -> "-%s".formatted(tag.value())).orElse(""),
+                segment.map(value -> "-" + value.value()).orElse(""));
         } else {
             return null;
         }

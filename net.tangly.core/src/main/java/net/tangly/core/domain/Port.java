@@ -68,7 +68,7 @@ public interface Port<R extends Realm> {
     R realm();
 
     static void entitiesCleared(@NotNull DomainAudit audit, @NotNull String entities) {
-        audit.log(EventData.CLEAR_EVENT, EventData.Status.SUCCESS, STR."entities \{entities} were cleared", Collections.emptyMap());
+        audit.log(EventData.CLEAR_EVENT, EventData.Status.SUCCESS, "entities %s were cleared".formatted(entities), Collections.emptyMap());
     }
 
     /**

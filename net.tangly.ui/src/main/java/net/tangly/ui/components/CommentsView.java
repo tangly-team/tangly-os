@@ -23,7 +23,6 @@ import net.tangly.core.DateRange;
 import net.tangly.core.HasMutableComments;
 import net.tangly.core.providers.ProviderInMemory;
 import net.tangly.ui.app.domain.BoundedDomainUi;
-import net.tangly.ui.asciidoc.AsciiDocField;
 import org.jetbrains.annotations.NotNull;
 
 import java.time.LocalDateTime;

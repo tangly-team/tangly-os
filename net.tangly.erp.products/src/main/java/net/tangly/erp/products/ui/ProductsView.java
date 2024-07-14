@@ -25,6 +25,9 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 
 
+/**
+ * Regular CRUD view on the product entity. The grid and edition dialog are optimized for usability.
+ */
 @PageTitle("products-products")
 class ProductsView extends EntityView<Product> {
     static class ProductForm extends MutableEntityForm<Product, ProductsView> {
@@ -38,8 +41,7 @@ class ProductsView extends EntityView<Product> {
             FormLayout form = new FormLayout();
             TextField ids = new TextField("Contract IDs");
             form.add(ids);
-            binder().bind(ids, o -> String.join(",", o.contractIds()),
-                (o, v) -> o.contractIds(List.of(v.split(","))));
+            binder().bind(ids, o -> String.join(",", o.contractIds()), (o, v) -> o.contractIds(List.of(v.split(","))));
             return form;
         }
     }

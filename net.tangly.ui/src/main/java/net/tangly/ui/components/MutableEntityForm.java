@@ -17,7 +17,6 @@ import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.data.binder.ValidationException;
 import net.tangly.core.*;
-import net.tangly.ui.asciidoc.AsciiDocField;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;

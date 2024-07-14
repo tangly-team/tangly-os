@@ -35,7 +35,7 @@ public class LegalEntitiesRest {
         }
     }
 
-    public static final String PREFIX = STR."/rest/\{CrmBoundedDomain.DOMAIN.toLowerCase()}/legal-entities";
+    public static final String PREFIX = "/rest/%s/legal-entities".formatted(CrmBoundedDomain.DOMAIN.toLowerCase());
 
     private final CrmBoundedDomain domain;
 
@@ -45,10 +45,10 @@ public class LegalEntitiesRest {
 
     public void registerEndPoints(@NotNull Javalin javalin) {
         javalin.get(PREFIX, this::getAll);
-        javalin.get(STR."\{PREFIX}/{id}", this::getById);
+        javalin.get("%s/id".formatted(PREFIX), this::getById);
         javalin.put(PREFIX, this::create);
-        javalin.patch(STR."\{PREFIX}/{id}", this::update);
-        javalin.delete(STR."\{PREFIX}/{id}", this::delete);
+        javalin.patch("%s/id".formatted(PREFIX), this::update);
+        javalin.delete("%s/id".formatted(PREFIX), this::delete);
     }
 
     @OpenApi(

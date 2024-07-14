@@ -23,7 +23,7 @@ import java.text.DecimalFormat;
 import java.util.Arrays;
 
 public class AsciiDocHelper {
-    public static final String NEWLINE = STR." +\{System.lineSeparator()}";
+    public static final String NEWLINE = " +%s".formatted(System.lineSeparator());
     private static final DecimalFormat DF = new DecimalFormat("#,##0.00");
 
     private final PrintWriter writer;
@@ -55,7 +55,7 @@ public class AsciiDocHelper {
         if (value.compareTo(BigDecimal.ZERO) > 0) {
             return DF.format(value);
         } else if (value.compareTo(BigDecimal.ZERO) < 0) {
-            return STR."[red]#\{DF.format(value)}#";
+            return "[red]#%s#".formatted(DF.format(value));
         } else {
             return "";
         }

@@ -106,9 +106,9 @@ public class ClosingReportAsciiDoc {
         BigDecimal vatH2 = ledger.computeVat(periodStart, periodEnd);
         BigDecimal vatDueH2 = ledger.computeDueVat(periodStart, periodEnd);
 
-        helper.tableRow(STR."First Half Year \{year}", format(earningH1), format(vatH1), format(vatDueH1));
-        helper.tableRow(STR."Second Half Year \{year}", format(earningH2), format(vatH2), format(vatDueH2));
-        helper.tableRow(STR."Totals Year \{year}", format(earningH1.add(earningH2)), format(vatH1.add(vatH2)), format(vatDueH1.add(vatDueH2)));
+        helper.tableRow("First Half Year %d".formatted(year), format(earningH1), format(vatH1), format(vatDueH1));
+        helper.tableRow("Second Half Year %d".formatted(year), format(earningH2), format(vatH2), format(vatDueH2));
+        helper.tableRow("Totals Year %d".formatted(year), format(earningH1.add(earningH2)), format(vatH1.add(vatH2)), format(vatDueH1.add(vatDueH2)));
     }
 
     private static void createTransactionRow(AsciiDocHelper helper, Transaction transaction) {
@@ -133,7 +133,7 @@ public class ClosingReportAsciiDoc {
     }
 
     private static String vat(AccountEntry entry) {
-        return entry.getVat().map(o -> STR."\{format(o.multiply(new BigDecimal(100)))}%").orElse("");
+        return entry.getVat().map(o -> "%s%%".formatted(format(o.multiply(new BigDecimal(100))))).orElse("");
     }
 
     private static void createBalanceRow(AsciiDocHelper helper, Account account, LocalDate from, LocalDate to) {

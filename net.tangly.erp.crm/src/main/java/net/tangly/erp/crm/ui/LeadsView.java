@@ -29,11 +29,7 @@ import net.tangly.erp.crm.domain.ActivityCode;
 import net.tangly.erp.crm.domain.GenderCode;
 import net.tangly.erp.crm.domain.Lead;
 import net.tangly.erp.crm.domain.LeadCode;
-import net.tangly.ui.asciidoc.AsciiDocField;
-import net.tangly.ui.components.ItemForm;
-import net.tangly.ui.components.ItemView;
-import net.tangly.ui.components.Mode;
-import net.tangly.ui.components.VaadinUtils;
+import net.tangly.ui.components.*;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;

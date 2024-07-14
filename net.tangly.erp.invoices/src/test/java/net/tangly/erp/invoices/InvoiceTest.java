@@ -138,7 +138,7 @@ class InvoiceTest {
     private static Invoice newInvoice(String id, String text) {
         Invoice invoice = new Invoice();
         invoice.id(id);
-        invoice.name(STR."\{invoice.id()}-Invoice");
+        invoice.name("%s-Invoice".formatted(invoice.id()));
         invoice.contractId("TEST-CONTRACT-0000");
         invoice.date(LocalDate.of(2018, Month.JANUARY, 1));
         invoice.deliveryDate(LocalDate.of(2018, Month.JANUARY, 1));

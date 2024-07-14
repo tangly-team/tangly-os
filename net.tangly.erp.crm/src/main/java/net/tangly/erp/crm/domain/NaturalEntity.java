@@ -57,7 +57,7 @@ public class NaturalEntity extends MutableEntityExtendedImp implements MutableEn
     }
 
     public String fullname() {
-        return name() + ((firstname() != null) ? STR.", \{firstname()}" : "");
+        return "%s%s".formatted(name(), (firstname() != null) ? ", " + firstname() : "");
     }
 
     public GenderCode gender() {

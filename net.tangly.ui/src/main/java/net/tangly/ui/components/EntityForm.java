@@ -15,7 +15,6 @@ package net.tangly.ui.components;
 
 import com.vaadin.flow.component.formlayout.FormLayout;
 import net.tangly.core.*;
-import net.tangly.ui.asciidoc.AsciiDocField;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Collection;

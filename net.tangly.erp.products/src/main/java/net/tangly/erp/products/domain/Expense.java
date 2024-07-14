@@ -26,7 +26,7 @@ import java.time.LocalDate;
 public record Expense(@NotNull LocalDate date, @NotNull String contractId, String text, @NotNull BigDecimal amount) implements HasDate, HasText {
     public Expense {
         if (amount.compareTo(BigDecimal.ZERO) < 0) {
-            throw new IllegalArgumentException(STR."amount cannot be negative \{amount}");
+            throw new IllegalArgumentException("amount cannot be negative %s".formatted(amount));
         }
     }
 }

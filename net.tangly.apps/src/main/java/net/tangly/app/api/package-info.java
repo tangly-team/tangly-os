@@ -12,7 +12,7 @@
  */
 
 /**
- * Provide the abstractions to create REST services for a set of bounded domains. The REST services documentation is published os OpenAPI 3.0.3 compliant JSON and a Swagger user
- * interface.
+ * Provides the abstractions to create REST services for a set of bounded domains. The REST services documentation is published os OpenAPI 3.0.3 compliant
+ * JSON and a Swagger user interface.
  */
 package net.tangly.app.api;

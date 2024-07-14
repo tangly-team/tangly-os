@@ -30,10 +30,20 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 /**
- * Regular CRUD view on the effort abstraction. The grid and edition dialog are optimized for usability.
+ * Regular CRUD view on the effort entity. The grid and edition dialog are optimized for usability.
  */
 @PageTitle("products-efforts")
 class EffortsView extends ItemView<Effort> {
+    public static final String ASSIGNMENT = "assignement";
+    public static final String ASSIGNMENT_LABEL = "Assignment";
+    public static final String COLLABORATOR = "collaborator";
+    public static final String COLLABORATOR_LABEL = "Collaborator";
+    private static final String CONTRACT_ID = "contractId";
+    private static final String CONTRACT_ID_LABEL = "Contract ID";
+    public static final String DURATION = "duration";
+    public static final String DURATION_LABEL = "Duration";
+
+
     static class EffortFilter extends ItemView.ItemFilter<Effort> {
         private LocalDate date;
         private String contractId;
@@ -61,6 +71,7 @@ class EffortsView extends ItemView<Effort> {
 
         public void collaboratorId(String collaboratorId) {
             this.collaboratorId = collaboratorId;
+            dataView().refreshAll();
         }
 
         public void text(String text) {
@@ -69,10 +80,10 @@ class EffortsView extends ItemView<Effort> {
         }
 
         public boolean test(@NotNull Effort entity) {
-            return ItemFilter.matches(entity.contractId(), contractId) && ItemFilter.matches(
-                Objects.nonNull(entity.assignment()) ? entity.assignment().id() : null, assignmentId) &&
-                ItemFilter.matches(Objects.nonNull(entity.assignment()) ? entity.assignment().collaboratorId() : null, collaboratorId) && ItemFilter.matches(
-                entity.text(), text);
+            return ItemFilter.matches(entity.contractId(), contractId) &&
+                ItemFilter.matches(Objects.nonNull(entity.assignment()) ? entity.assignment().id() : null, assignmentId) &&
+                ItemFilter.matches(Objects.nonNull(entity.assignment()) ? entity.assignment().collaboratorId() : null, collaboratorId) &&
+                ItemFilter.matches(entity.text(), text);
         }
     }
 
@@ -81,17 +92,16 @@ class EffortsView extends ItemView<Effort> {
         EffortForm(@NotNull EffortsView parent) {
             super(parent);
             addTabAt("details", details(), 0);
-
             addTabAt("text", textForm(), 1);
         }
 
         protected FormLayout details() {
-            TextField assignment = VaadinUtils.createTextField("Assignment", "assignment", true, false);
-            TextField collaborator = VaadinUtils.createTextField("Collaborator", "collaborator", true, false);
+            TextField assignment = VaadinUtils.createTextField(ASSIGNMENT_LABEL, ASSIGNMENT, true, false);
+            TextField collaborator = VaadinUtils.createTextField(COLLABORATOR_LABEL, COLLABORATOR, true, false);
             TextField collaboratorId = VaadinUtils.createTextField("Collaborator ID", "collaborator id", true, false);
-            TextField contractId = new TextField("Contract Id", "contractId");
-            DatePicker date = VaadinUtils.createDatePicker("Date");
-            IntegerField duration = new IntegerField("Duration", "duration");
+            TextField contractId = new TextField(CONTRACT_ID_LABEL, CONTRACT_ID);
+            DatePicker date = VaadinUtils.createDatePicker(DATE_LABEL);
+            IntegerField duration = new IntegerField(DURATION_LABEL, DURATION);
 
             FormLayout form = new FormLayout();
             form.add(assignment, collaborator, collaboratorId, contractId, date, duration);
@@ -119,14 +129,12 @@ class EffortsView extends ItemView<Effort> {
 
     private void init() {
         var grid = grid();
-        grid.addColumn(o -> Objects.nonNull(o.assignment()) ? o.assignment().id() : null).setKey("assignment").setHeader("Assignment").setAutoWidth(
-                true).setResizable(true)
-            .setSortable(true);
-        grid.addColumn(o -> Objects.nonNull(o.assignment()) ? o.assignment().name() : null).setKey("collaborator").setHeader("Collaborator").setAutoWidth(
-                true).setResizable(true)
-            .setSortable(true);
-        grid.addColumn(Effort::date).setKey("date").setHeader("Date").setAutoWidth(true).setResizable(true).setSortable(true);
-        grid.addColumn(Effort::duration).setKey("duration").setHeader("Duration").setAutoWidth(true).setResizable(true).setSortable(true);
-        grid.addColumn(Effort::contractId).setKey("contractId").setHeader("ContractId").setAutoWidth(true).setResizable(true).setSortable(true);
+        grid.addColumn(o -> Objects.nonNull(o.assignment()) ? o.assignment().id() : null).setKey(ASSIGNMENT).setHeader(ASSIGNMENT_LABEL).setAutoWidth(true)
+            .setResizable(true).setSortable(true);
+        grid.addColumn(o -> Objects.nonNull(o.assignment()) ? o.assignment().name() : null).setKey(COLLABORATOR).setHeader(COLLABORATOR_LABEL)
+            .setAutoWidth(true).setResizable(true).setSortable(true);
+        grid.addColumn(Effort::date).setKey(DATE).setHeader(DATE_LABEL).setAutoWidth(true).setResizable(true).setSortable(true);
+        grid.addColumn(Effort::duration).setKey(DURATION).setHeader(DURATION_LABEL).setAutoWidth(true).setResizable(true).setSortable(true);
+        grid.addColumn(Effort::contractId).setKey(CONTRACT_ID).setHeader(CONTRACT_ID_LABEL).setAutoWidth(true).setResizable(true).setSortable(true);
     }
 }

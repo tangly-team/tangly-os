@@ -21,15 +21,15 @@ import org.jetbrains.annotations.NotNull;
 import java.util.function.Consumer;
 
 /**
- * The interface defines the abstraction for the command pattern. A command is an action mostly executed through the user interface as a client. A command is an object whose role
- * is to store all the information required for executing an action, including the method to call, the method arguments, and the object (known as the receiver) that implements
- * the method.
+ * Defines the abstraction for the command pattern. A command is an action mostly executed through the user interface as a client. A command is an object
+ * whose role is to store all the information required for executing an action, including the method to call, the method arguments, and the object (known as
+ * the receiver) that implementsthe method.
  */
 @FunctionalInterface
 public interface Cmd {
     /**
      * Factory method to create a command from a grid context menu item click event. The command is executed on the item selected in the grid.
-     * An item must be selected to trigger the command.
+     * An item must be selected and available in the event to trigger the command.
      *
      * @param event    grid context menu item click event
      * @param consumer consumer to execute the command
@@ -52,7 +52,8 @@ public interface Cmd {
     }
 
     /**
-     * Factory method to create a command from a grid context menu item click event. The command is executed if one or no items are selected in the grid.
+     * Factory method to create a command from a grid context menu item click event. The command is executed if zereo, one or more items are selected in the
+     * grid.
      * The consumer receives the selected item in the grid or null if no item is selected.
      *
      * @param event    grid context menu item click event
@@ -96,7 +97,7 @@ public interface Cmd {
     /**
      * Returns the dialog associated with the command if existing.
      *
-     * @return associated dialog if defined othwrwise null
+     * @return associated dialog if defined otherwise null
      */
     default Dialog dialog() {
         return null;

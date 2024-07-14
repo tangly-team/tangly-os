@@ -99,6 +99,6 @@ public record Tag(String namespace, @NotNull String name, String value) {
     }
 
     public String text() {
-        return (!Strings.isNullOrBlank(namespace()) ? STR."\{namespace()}:" : "") + name() + (value() != null ? STR."=\{value()}" : "");
+        return (!Strings.isNullOrBlank(namespace()) ? "%s:".formatted(namespace()) : "") + name() + (value() != null ? "=%s".formatted(value()) : "");
     }
 }

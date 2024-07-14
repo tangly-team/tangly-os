@@ -41,6 +41,7 @@ import java.util.stream.IntStream;
 
 /**
  * The main view of the application is the entry point to the application. Each bounded domain with a user interface is accessible through a tab.
+ * Vaadin creates for each tab a new instance of the bounded domain user interface.
  */
 public class ApplicationView extends AppLayout {
     private final Map<String, BoundedDomainUi<?>> boundedDomainUis;

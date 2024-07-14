@@ -33,8 +33,6 @@ import java.time.YearMonth;
 import java.time.temporal.ChronoUnit;
 import java.util.Objects;
 
-import static java.util.FormatProcessor.FMT;
-
 public class CmdCreateEffortsReport implements Cmd {
     public final String TITLE = "Create Assignment Document";
     private final TextField assignmentName;
@@ -65,7 +63,8 @@ public class CmdCreateEffortsReport implements Cmd {
         filename = VaadinUtils.createTextField("Filename", "filename");
         filename.setRequired(true);
         filename.addValueChangeListener(_ -> execute.setEnabled(isExecuteEnabled()));
-        propose = new Button("Propose", VaadinIcon.COGS.create(), _ -> filename.setValue(filename(assignment.id(), assignment.name(), fromDate.getValue(), toDate.getValue())));
+        propose = new Button("Propose", VaadinIcon.COGS.create(),
+            _ -> filename.setValue(filename(assignment.id(), assignment.name(), fromDate.getValue(), toDate.getValue())));
         fromDate.addValueChangeListener(_ -> {
             validateOnChangedDate();
             execute.setEnabled(isExecuteEnabled());
@@ -141,19 +140,20 @@ public class CmdCreateEffortsReport implements Cmd {
 
     private boolean isExecuteEnabled() {
         return (!perMonth.getValue() && validateDateInterval(fromDate.getValue(), toDate.getValue()) && !filename.isEmpty())
-            || (perMonth.getValue() && Objects.nonNull(fromDate.getValue()) && Objects.nonNull(toDate.getValue()) && validateDateInterval(fromDate.getValue(), toDate.getValue()));
+            || (perMonth.getValue() && Objects.nonNull(fromDate.getValue()) && Objects.nonNull(toDate.getValue()) &&
+            validateDateInterval(fromDate.getValue(), toDate.getValue()));
     }
 
     private String filename(@NotNull String assignment, @NotNull String collaborator, LocalDate from, LocalDate to) {
         YearMonth generated = (Objects.nonNull(to)) ? YearMonth.from(to) : YearMonth.now();
-        String generatedText = FMT."\{generated.getYear()}-%02d\{generated.getMonthValue()}";
+        String generatedText = "%d-%%02d%d".formatted(generated.getYear(), generated.getMonthValue());
         String dateText;
         if (Objects.nonNull(from) && Objects.nonNull(to) && (YearMonth.from(from).equals(YearMonth.from(to)))) {
             dateText = YearMonth.from(to).getMonth().toString();
-            dateText = STR."\{dateText.substring(0, 1).toUpperCase()}\{dateText.substring(1).toLowerCase()}";
+            dateText = "%s%s".formatted(dateText.substring(0, 1).toUpperCase(), dateText.substring(1).toLowerCase());
         } else {
-            dateText = STR."\{Objects.isNull(from) ? "none" : from.toString()}-\{Objects.isNull(to) ? "none" : to.toString()}";
+            dateText = "%s-%s".formatted(Objects.isNull(from) ? "none" : from.toString(), Objects.isNull(to) ? "none" : to.toString());
         }
-        return STR."\{generatedText}-\{assignment}-\{collaborator}-\{dateText}";
+        return "%s-%s-%s-%s".formatted(generatedText, assignment, collaborator, dateText);
     }
 }

@@ -225,7 +225,7 @@ public class InvoiceZugFerd implements IExportableTransaction, InvoiceGenerator 
 
     @Override
     public String getOwnOrganisationFullPlaintextInfo() {
-        return STR."\{invoice.invoicedEntity().name()} \{invoice.invoicingEntity().address().text()}";
+        return "%s %s".formatted(invoice.invoicedEntity().name(), invoice.invoicingEntity().address().text());
     }
 
     @Override

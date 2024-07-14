@@ -33,7 +33,7 @@ import java.nio.file.Path;
 import java.util.*;
 
 /**
- * A tenant has a set of bounded domains. Each bounded domain can have a user interface or a REST interface.
+ * A tenant has a set of bounded domains specific to an organizational entity. Each bounded domain can have a user interface or a REST interface.
  * A tenant has a set of users and roles. The tenant is the root of the security model.
  * Persistent data is stored on a per-tenant basis.
  * <p>A tenant is configured through the properties file passed to the constructor.</p>
@@ -129,7 +129,7 @@ public class Tenant {
     }
 
     public boolean isEnabled(@NotNull String domain) {
-        return Boolean.parseBoolean(properties().getProperty(STR."\{domain}.enabled", "true"));
+        return Boolean.parseBoolean(properties().getProperty("%s.enabled".formatted(domain), "true"));
     }
 
     public boolean inMemory() {
@@ -141,7 +141,7 @@ public class Tenant {
     }
 
     public String imports(String domain) {
-        return STR."\{getProperty(IMPORTS_DIRECTORY_PROPERTY)}/\{domain}";
+        return "%s/%s".formatted(getProperty(IMPORTS_DIRECTORY_PROPERTY), domain);
     }
 
     public String databases() {
@@ -149,7 +149,7 @@ public class Tenant {
     }
 
     public String reports(String domain) {
-        return STR."\{getProperty(REPORTS_DIRECTORY_PROPERTY)}/\{domain}";
+        return "%s/%s".formatted(getProperty(REPORTS_DIRECTORY_PROPERTY), domain);
     }
 
     private void ofAppDomain() {

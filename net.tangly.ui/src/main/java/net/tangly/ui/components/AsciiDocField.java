@@ -11,7 +11,7 @@
  *
  */
 
-package net.tangly.ui.asciidoc;
+package net.tangly.ui.components;
 
 import com.vaadin.flow.component.Html;
 import com.vaadin.flow.component.Tag;
@@ -22,7 +22,6 @@ import com.vaadin.flow.component.tabs.TabSheet;
 import com.vaadin.flow.component.tabs.TabSheetVariant;
 import com.vaadin.flow.component.textfield.TextArea;
 import net.tangly.commons.lang.Strings;
-import net.tangly.ui.components.VaadinUtils;
 import org.asciidoctor.Asciidoctor;
 
 import java.util.HashMap;
@@ -30,6 +29,7 @@ import java.util.Objects;
 
 /**
  * Define a display and edit field for asciidoc text. The preview field shows rendered asciidoc text. The edition field is a simple text area edit field.
+ * Al regular asciidoc expressions are supported.
  * The tab containing the edit field is only active if the component is not read-only.
  */
 @Tag("asciidoc-area")

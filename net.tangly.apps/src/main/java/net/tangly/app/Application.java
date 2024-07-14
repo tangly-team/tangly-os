@@ -22,7 +22,7 @@ import java.util.Map;
 /**
  * The application defines the context of the whole digital product with a set of tenants.
  * Each tenant has a set of bounded domains and their ports. Each tenant has an own user management and type registry.
- * Business logic tailoring shall mainly be done through the type resgistry with their set of custom tags and codes.
+ * Business logic tailoring shall mainly be done through the type registry with their set of custom tags and codes.
  * The bounded domains with their ports are the entry points to the application. The application is a singleton.
  * The ports are the user interface and the REST services. Ports are optional.
  * <p> The application shall be created in the main method of the application. The main method is responsible to insure that

@@ -35,7 +35,6 @@ import net.tangly.core.codes.CodeType;
 import net.tangly.core.domain.Operation;
 import net.tangly.core.providers.Provider;
 import net.tangly.core.providers.ProviderView;
-import net.tangly.ui.asciidoc.AsciiDocField;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;

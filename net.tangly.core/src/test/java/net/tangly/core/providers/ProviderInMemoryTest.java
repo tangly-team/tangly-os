@@ -1,10 +1,10 @@
 /*
- * Copyright 2006-2023 Marcel Baumann
+ * Copyright 2006-2024 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- *          http://www.apache.org/licenses/LICENSE-2.0
+ *          https://apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -29,7 +29,7 @@ class ProviderInMemoryTest {
     }
 
     static List<Entity> entities() {
-        return LongStream.range(0, SIZE).mapToObj(o -> new Entity(o, STR."name\{o}")).toList();
+        return LongStream.range(0, SIZE).mapToObj(o -> new Entity(o, "name%d".formatted(o))).toList();
     }
 
     @Test
@@ -57,8 +57,8 @@ class ProviderInMemoryTest {
     @Test
     void testFindBy() {
         var provider = ProviderInMemory.of(entities());
-        assertThat(provider.findBy(Entity::name, STR."name\{SIZE - 1}")).isPresent();
-        assertThat(provider.findBy(Entity::name, STR."name\{SIZE}")).isNotPresent();
+        assertThat(provider.findBy(Entity::name, "name%d".formatted(SIZE - 1))).isPresent();
+        assertThat(provider.findBy(Entity::name, "name%d".formatted(SIZE))).isNotPresent();
     }
 
     @Test

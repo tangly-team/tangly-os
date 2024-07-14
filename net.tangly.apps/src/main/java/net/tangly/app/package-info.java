@@ -12,6 +12,8 @@
  */
 
 /**
- * Provide the abstractions to create a full-fledged Vaadin application with user interface and optional REST interface for a set of bounded domains.
+ * Providse the abstractions to create a full-fledged Vaadin application with user interface and optional REST interface for a set of bounded domains.
+ * The application is the entry point for the application and orchestrates the creation of tenants and the user interface.
+ *
  */
 package net.tangly.app;

@@ -49,7 +49,7 @@ public class NaturalEntitiesRest {
         }
     }
 
-    public static final String PREFIX = STR."/rest/\{CrmBoundedDomain.DOMAIN.toLowerCase()}/natural-entities";
+    public static final String PREFIX = "/rest/%s/natural-entities".formatted(CrmBoundedDomain.DOMAIN.toLowerCase());
     private final CrmBoundedDomain domain;
 
     NaturalEntitiesRest(CrmBoundedDomain domain) {
@@ -58,10 +58,10 @@ public class NaturalEntitiesRest {
 
     public void registerEndPoints(@NotNull Javalin javalin) {
         javalin.get(PREFIX, this::getAll);
-        javalin.get(STR."\{PREFIX}/{id}", this::getById);
+        javalin.get(PREFIX + "/id", this::getById);
         javalin.put(PREFIX, this::create);
-        javalin.patch(STR."\{PREFIX}/{id}", this::update);
-        javalin.delete(STR."\{PREFIX}/{id}", this::delete);
+        javalin.patch(PREFIX + "/id", this::update);
+        javalin.delete(PREFIX + "/id", this::delete);
     }
 
     @OpenApi(summary = "Get all natural entities", operationId = "getAllNaturalEntities", path = "/customers/natural-entities", methods = HttpMethod.GET, tags = {

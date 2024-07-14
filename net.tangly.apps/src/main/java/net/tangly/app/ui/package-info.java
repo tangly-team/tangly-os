@@ -11,4 +11,8 @@
  *
  */
 
+/**
+ * Provides the abstractions to manage users and access rights in the application.
+ * Most applications support multiple tenancy and the user management is handled per tenant.
+ */
 package net.tangly.app.ui;

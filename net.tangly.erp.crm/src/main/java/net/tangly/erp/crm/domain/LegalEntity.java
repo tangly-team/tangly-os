@@ -40,7 +40,7 @@ public class LegalEntity extends MutableEntityExtendedImp implements MutableEnti
      * @return link to Zefix information
      */
     public static String organizationZefixUrl(@NotNull LegalEntity entity) {
-        return STR."https://www.zefix.ch/en/search/entity/list?name=\{entity.id()}&searchType=exact";
+        return "https://www.zefix.ch/en/search/entity/list?name=%s&searchType=exact".formatted(entity.id());
     }
 
     @Override

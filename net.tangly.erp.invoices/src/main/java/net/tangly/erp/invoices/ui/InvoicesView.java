@@ -24,7 +24,6 @@ import com.vaadin.flow.router.PageTitle;
 import net.tangly.erp.invoices.domain.Invoice;
 import net.tangly.erp.invoices.services.InvoicesBoundedDomain;
 import net.tangly.ui.app.domain.Cmd;
-import net.tangly.ui.asciidoc.AsciiDocField;
 import net.tangly.ui.components.*;
 import org.jetbrains.annotations.NotNull;
 

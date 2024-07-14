@@ -189,14 +189,14 @@ public final class TsvHdl {
                 U imported = function.apply(tsvEntity, csv);
                 if (!(imported instanceof MutableEntityExtended entity) || (entity.validate())) {
                     ++counter;
-                    audit.log(EventData.IMPORT_EVENT, EventData.Status.INFO, STR."\{tsvEntity.clazz().getSimpleName()} imported",
+                    audit.log(EventData.IMPORT_EVENT, EventData.Status.INFO, "%s imported".formatted(tsvEntity.clazz().getSimpleName()),
                         Map.of("filename", source, "object", imported));
                 } else {
-                    audit.log(EventData.IMPORT_EVENT, EventData.Status.WARNING, STR."\{tsvEntity.clazz().getSimpleName()} invalid entity",
+                    audit.log(EventData.IMPORT_EVENT, EventData.Status.WARNING, "%s invalid entity".formatted(tsvEntity.clazz().getSimpleName()),
                         Map.of("filename", source, "object", imported));
                 }
             }
-            audit.log(EventData.IMPORT_EVENT, EventData.Status.SUCCESS, STR."\{tsvEntity.clazz().getSimpleName()} imported objects",
+            audit.log(EventData.IMPORT_EVENT, EventData.Status.SUCCESS, "%s imported objects".formatted(tsvEntity.clazz().getSimpleName()),
                 Map.of("filename", source, "count", counter));
         } catch (IOException e) {
             audit.log(EventData.IMPORT_EVENT, EventData.Status.FAILURE, "Entities not imported from TSV file",
@@ -216,7 +216,7 @@ public final class TsvHdl {
                 lambda.accept(entity, out);
                 out.println();
                 ++counter;
-                audit.log(EventData.EXPORT_EVENT, EventData.Status.INFO, STR."\{tsvEntity.clazz().getSimpleName()} exported to TSV file",
+                audit.log(EventData.EXPORT_EVENT, EventData.Status.INFO, "%s exported to TSV file".formatted(tsvEntity.clazz().getSimpleName()),
                     Map.of("filename", path, "entity", entity));
             }
             audit.log(EventData.EXPORT_EVENT, EventData.Status.SUCCESS, "exported to TSV file", Map.of("filename", path, "counter", counter));

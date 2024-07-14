@@ -45,7 +45,7 @@ public final class Gravatar {
     }
 
     private String getUrl(String email, int sizeInPixels, GravatarRating rating, GravatarImage image) {
-        return STR."\{GRAVATAR_URL}\{DigestUtils.md5Hex(email.toLowerCase(Locale.US).strip())}.jpg\{formatUrlParameters(sizeInPixels, rating, image)}";
+        return "%s%s.jpg%s".formatted(GRAVATAR_URL, DigestUtils.md5Hex(email.toLowerCase(Locale.US).strip()), formatUrlParameters(sizeInPixels, rating, image));
     }
 
     private static String formatUrlParameters(int sizeInPixels, GravatarRating rating, GravatarImage image) {

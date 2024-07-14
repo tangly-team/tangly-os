@@ -33,7 +33,6 @@ import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.Map;
 
-import static java.util.FormatProcessor.FMT;
 import static java.util.stream.Collectors.groupingBy;
 import static net.tangly.erp.products.domain.Assignment.convert;
 
@@ -69,14 +68,14 @@ public class EffortReportEngine {
 
     private void createMonthlyReport(@NotNull Assignment assignment, @NotNull YearMonth month, @NotNull ChronoUnit unit, @NotNull Writer writer) {
         final AsciiDocHelper helper = new AsciiDocHelper(writer);
-        helper.header(FMT."Work Report \{Strings.firstOnlyUppercase(month.getMonth().toString())} \{month.getYear()}", 2);
+        helper.header("Work Report %s %d".formatted(Strings.firstOnlyUppercase(month.getMonth().toString()), month.getYear()), 2);
         int workedDuration = logic.collect(assignment, null, month.atEndOfMonth()).stream().map(Effort::duration).reduce(0, Integer::sum);
-        helper.paragraph(FMT."The amount of performed activities is \{convert(workedDuration, unit)} \{text(unit)} until end of \{Strings.firstOnlyUppercase(
-            month.getMonth().toString())} \{month.getYear()}.");
+        helper.paragraph("The amount of performed activities is %s %s until end of %s %d.".formatted(convert(workedDuration, unit), text(unit),
+            Strings.firstOnlyUppercase(month.getMonth().toString()), month.getYear()));
         helper.paragraph("The daily reports are:");
         helper.tableHeader(null, "cols=\"1,6a,>1\", options=\"header\"");
 
-        helper.writer().println(STR."^|Date ^|Description ^|Duration (\{text(unit)})");
+        helper.writer().println("^|Date ^|Description ^|Duration (%s)".formatted(text(unit)));
         helper.writer().println();
         createTableBody(assignment, month.atDay(1), month.atEndOfMonth(), unit, helper);
         helper.tableEnd();
@@ -87,7 +86,7 @@ public class EffortReportEngine {
         final AsciiDocHelper helper = new AsciiDocHelper(writer);
         helper.header("Work Report", 2);
         helper.tableHeader(null, "cols=\"1,5a,>1\", options=\"header\"");
-        helper.writer().println(STR."^|Date ^|Description ^|Duration (\{text(unit)})");
+        helper.writer().println("^|Date ^|Description ^|Duration (%s)".formatted(text(unit)));
         helper.writer().println();
         createTableBody(assignment, from, to, unit, helper);
         helper.tableEnd();
@@ -102,7 +101,7 @@ public class EffortReportEngine {
             logic.collect(assignment, from, to).forEach(o -> helper.tableRow(o.date().toString(), o.text(), convert(o.duration(), unit).toString()));
         }
         int totalDuration = logic.collect(assignment, from, to).stream().map(Effort::duration).reduce(0, Integer::sum);
-        helper.tableRow("Total Time", STR."(time in \{text(unit)})", convert(totalDuration, unit).toString());
+        helper.tableRow("Total Time (time in %s)".formatted(text(unit)), convert(totalDuration, unit).toString());
     }
 
     private void createMinutes(@NotNull Assignment assignment, @NotNull LocalDate from, @NotNull LocalDate to, @NotNull AsciiDocHelper helper) {
@@ -112,7 +111,7 @@ public class EffortReportEngine {
             helper.header("Minutes", 2);
         }
         efforts.stream().filter(o -> !Strings.isNullOrBlank(o.minutes())).forEach(o -> {
-            helper.header(STR."Minutes for \{o.date().toString()}", 3);
+            helper.header("Minutes for %s".formatted(o.date().toString()), 3);
             helper.paragraph(o.minutes());
         });
     }
@@ -125,7 +124,7 @@ public class EffortReportEngine {
     private void generateEffortsTotalForContract(@NotNull List<Effort> efforts, @NotNull String contractId, @NotNull AsciiDocHelper helper,
                                                  @NotNull ChronoUnit unit) {
         int totalDuration = efforts.stream().map(Effort::duration).reduce(0, Integer::sum);
-        helper.tableRow(STR."Total Time for Contract \{contractId}", STR."(Time in \{text(unit)}", convert(totalDuration, unit).toString());
+        helper.tableRow("Total Time for Contract %s".formatted(contractId), "(Time in %s".formatted(text(unit)), convert(totalDuration, unit).toString());
         helper.tableRow("", "", "");
     }
 

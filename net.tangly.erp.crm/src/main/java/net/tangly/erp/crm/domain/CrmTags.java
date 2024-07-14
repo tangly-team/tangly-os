@@ -56,25 +56,25 @@ public final class CrmTags {
     public static final String CRM_ADDRESS_DELIVERY = CRM + ADDRESS + DELIVERY;
     public static final String CRM_CUSTOMER_SEGMENT = CRM + SEGMENT;
 
-    public static final String CRM_SITE_HOME = STR."\{CRM}:site-\{VcardType.home.name()}";
-    public static final String CRM_SITE_WORK = STR."\{CRM}:site-\{VcardType.work.name()}";
+    public static final String CRM_SITE_HOME = "%s:site-%s".formatted(CRM, VcardType.home.name());
+    public static final String CRM_SITE_WORK = "%s:site-%s".formatted(CRM, VcardType.work.name());
 
     public static final String LINKEDIN = "linkedIn";
     public static final String SKYPE = "skype";
     public static final String GOOGLE = "google";
 
-    public static final String CRM_IM_LINKEDIN = STR."\{CRM}:im-\{LINKEDIN}";
+    public static final String CRM_IM_LINKEDIN = "%s:im-%s".formatted(CRM, LINKEDIN);
 
-    public static final String CRM_VAT_NUMBER = STR."\{CRM}:vat-number";
-    public static final String CRM_BANK_CONNECTION = STR."\{CRM}:bank-connection";
-    public static final String CRM_RESPONSIBLE = STR."\{CRM}:responsible";
+    public static final String CRM_VAT_NUMBER = "%s:vat-number".formatted(CRM);
+    public static final String CRM_BANK_CONNECTION = "%s:bank-connection".formatted(CRM);
+    public static final String CRM_RESPONSIBLE = "%s:responsible".formatted(CRM);
 
-    public static final String CRM_EMPLOYEE_TITLE = STR."\{CRM}:title";
-    public static final String CRM_SCHOOL = STR."\{CRM}:school";
+    public static final String CRM_EMPLOYEE_TITLE = "%s:title".formatted(CRM);
+    public static final String CRM_SCHOOL = "%s:school".formatted(CRM);
 
-    public static final String GEO_LATITUDE = STR."\{GEO}:\{LATITUDE}";
-    public static final String GEO_LONGITUDE = STR."\{GEO}:\{LONGITUDE}";
-    public static final String GEO_PLUSCODE = STR."\{GEO}:\{PLUSCODE}";
+    public static final String GEO_LATITUDE = "%s:%s".formatted(GEO, LATITUDE);
+    public static final String GEO_LONGITUDE = "%s:%s".formatted(GEO, LONGITUDE);
+    public static final String GEO_PLUSCODE = "%s:%s".formatted(GEO, PLUSCODE);
 
     /**
      * Private constructor of a utility class.

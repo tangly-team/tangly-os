@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2022 Marcel Baumann
+ * Copyright 2006-2024 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -8,6 +8,7 @@
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ *
  */
 
 package net.tangly.commons.lang;
@@ -31,7 +32,7 @@ public final class ReflectionUtilities {
 
     public static <T> void set(@NotNull T entity, @NotNull String name, @NotNull Object value) {
         set(entity, findField(entity.getClass(), name).orElseThrow(
-            () -> new NoSuchElementException(STR."Missing Field From \{entity.getClass().getSimpleName()} field \{name}")), value);
+            () -> new NoSuchElementException("Missing Field From %s field %s".formatted(entity.getClass().getSimpleName(), name))), value);
     }
 
     public static <T> void set(@NotNull T entity, @NotNull Field field, @NotNull Object value) {

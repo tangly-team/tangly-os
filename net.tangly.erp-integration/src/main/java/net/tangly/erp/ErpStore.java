@@ -104,7 +104,7 @@ public record ErpStore(@NotNull FileSystem fs) implements DomainAudit {
             copy(PRODUCTS_PACKAGE_NAME, productsRoot, ProductsAdapter.PRODUCTS_TSV);
             copy(PRODUCTS_PACKAGE_NAME, productsRoot, ProductsAdapter.WORK_CONTRACTS_TSV);
             copy(PRODUCTS_PACKAGE_NAME, productsRoot, ProductsAdapter.ASSIGNMENTS_TSV);
-            copy(STR."\{PRODUCTS_PACKAGE_NAME}2020/", productsRoot.resolve("2020"), "2020-efforts.yaml");
+            copy("%s2020/".formatted(PRODUCTS_PACKAGE_NAME), productsRoot.resolve("2020"), "2020-efforts.yaml");
 
             var ledgerRoot = dataRoot().resolve(LEDGER);
             copy(LEDGER_PACKAGE_NAME, ledgerRoot, "ledger.tsv");
@@ -113,14 +113,14 @@ public record ErpStore(@NotNull FileSystem fs) implements DomainAudit {
 
             var invoicesRoot = dataRoot().resolve(INVOICES);
             copy(INVOICES_PACKAGE_NAME, invoicesRoot, InvoicesAdapter.ARTICLES_TSV);
-            copy(STR."\{INVOICES_PACKAGE_NAME}2015/", invoicesRoot.resolve("2015"), "2015-8001-Invoice-HSLU-December.json");
-            copy(STR."\{INVOICES_PACKAGE_NAME}2016/", invoicesRoot.resolve("2016"), "2016-8001-Invoice-HSLU-October.json");
-            copy(STR."\{INVOICES_PACKAGE_NAME}2017/", invoicesRoot.resolve("2017"), "2017-8001-Invoice-HSLU-February.json");
-            copy(STR."\{INVOICES_PACKAGE_NAME}2017/", invoicesRoot.resolve("2017"), "2017-8022-Invoice-HSLU-December.json");
-            copy(STR."\{INVOICES_PACKAGE_NAME}2018/", invoicesRoot.resolve("2018"), "2018-8001-Invoice-HSLU-January.json");
-            copy(STR."\{INVOICES_PACKAGE_NAME}2018/", invoicesRoot.resolve("2018"), "2018-8022-Invoice-HSLU-November.json");
-            copy(STR."\{INVOICES_PACKAGE_NAME}2019/", invoicesRoot.resolve("2019"), "2019-8020-Invoice-HSLU-December.json");
-            copy(STR."\{INVOICES_PACKAGE_NAME}2020/", invoicesRoot.resolve("2020"), "2020-8001-Invoice-HSLU-May.json");
+            copy("%s2015/".formatted(INVOICES_PACKAGE_NAME), invoicesRoot.resolve("2015"), "2015-8001-Invoice-HSLU-December.json");
+            copy("%s2016/".formatted(INVOICES_PACKAGE_NAME), invoicesRoot.resolve("2016"), "2016-8001-Invoice-HSLU-October.json");
+            copy("%s2017/".formatted(INVOICES_PACKAGE_NAME), invoicesRoot.resolve("2017"), "2017-8001-Invoice-HSLU-February.json");
+            copy("%s2017/".formatted(INVOICES_PACKAGE_NAME), invoicesRoot.resolve("2017"), "2017-8022-Invoice-HSLU-December.json");
+            copy("%s2018/".formatted(INVOICES_PACKAGE_NAME), invoicesRoot.resolve("2018"), "2018-8001-Invoice-HSLU-January.json");
+            copy("%s2018/".formatted(INVOICES_PACKAGE_NAME), invoicesRoot.resolve("2018"), "2018-8022-Invoice-HSLU-November.json");
+            copy("%s2019/".formatted(INVOICES_PACKAGE_NAME), invoicesRoot.resolve("2019"), "2019-8020-Invoice-HSLU-December.json");
+            copy("%s2020/".formatted(INVOICES_PACKAGE_NAME), invoicesRoot.resolve("2020"), "2020-8001-Invoice-HSLU-May.json");
 
             copy(REPORTS_PACKAGE_NAME, reportsRoot(), "trefoil.svg");
         } catch (IOException e) {
@@ -136,7 +136,7 @@ public record ErpStore(@NotNull FileSystem fs) implements DomainAudit {
 
     private void createYearFolders(Path folder) throws IOException {
         for (int year = 2015; year <= 2024; year++) {
-            Files.createDirectory(folder.resolve(STR."\{year}"));
+            Files.createDirectory(folder.resolve("%d".formatted(year)));
         }
     }
 

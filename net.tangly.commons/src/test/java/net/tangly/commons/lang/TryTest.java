@@ -15,16 +15,20 @@ package net.tangly.commons.lang;
 
 import net.tangly.commons.lang.functional.Try;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.function.Consumer;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatExceptionOfType;
 
+@ExtendWith(MockitoExtension.class)
 class TryTest {
     @Test
-    void testSuccessfulTry() throws Throwable {
+    void testSuccessfulTry(@Mock Consumer<String> successConsumer, @Mock Consumer<Throwable> failureConsumer) throws Throwable {
         final String success = "Success";
         RuntimeException failure = new RuntimeException();
 
@@ -33,11 +37,9 @@ class TryTest {
         assertThat(tries.isFailure()).isFalse();
         assertThat(tries.get()).isEqualTo(success);
 
-        Consumer<String> successConsumer = Mockito.mock(Consumer.class);
         tries.onSuccess(successConsumer);
         Mockito.verify(successConsumer).accept(success);
 
-        Consumer<Throwable> failureConsumer = Mockito.mock(Consumer.class);
         tries.onFailure(failureConsumer);
         Mockito.verify(failureConsumer, Mockito.never()).accept(failure);
 
@@ -48,18 +50,16 @@ class TryTest {
     }
 
     @Test
-    void tryFailedTry() throws Throwable {
+    void tryFailedTry(@Mock Consumer<String> successConsumer, @Mock Consumer<Throwable> failureConsumer) throws Throwable {
         final String success = "Success";
         RuntimeException failure = new RuntimeException();
 
         Try<String> tries = Try.failure(failure);
         assertThat(tries.isSuccess()).isFalse();
         assertThat(tries.isFailure()).isTrue();
-        Consumer<Throwable> failureConsumer = Mockito.mock(Consumer.class);
         tries.onFailure(failureConsumer);
         Mockito.verify(failureConsumer).accept(failure);
 
-        Consumer<String> successConsumer = Mockito.mock(Consumer.class);
         tries.onSuccess(successConsumer);
         Mockito.verify(successConsumer, Mockito.never()).accept(Mockito.anyString());
 
@@ -97,5 +97,4 @@ class TryTest {
         assertThat(tries.flatMap(o -> Try.failure(new IllegalStateException())).isFailure()).isTrue();
         assertThat(tries.flatMap(o -> Try.failure(new IllegalStateException())).getThrown()).isInstanceOf(RuntimeException.class);
     }
-
 }
