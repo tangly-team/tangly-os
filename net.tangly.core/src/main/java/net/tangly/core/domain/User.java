@@ -30,6 +30,7 @@ import java.util.Optional;
 
 /**
  * An application user can log in the application and access to domain data based on domain access rights.
+ * A user is defined in the context of a tenant.
  *
  * @param username        username is the identifier of the user in the context of a tenant
  * @param passwordHash    password hash is the encrypted password of the user
@@ -42,6 +43,12 @@ public record User(@NotNull String username, @NotNull String passwordHash, @NotN
                    @NotNull List<AccessRights> accessRights, String gravatarEmail) {
     private static final String ALGORITHM = "PBKDF2WithHmacSHA512";
 
+    /**
+     * Encrypts the password of a user using a salt.
+     * @param password password to encrypt
+     * @param salt salt used to encrypt the password
+     * @return encrypted password
+     */
     public static String encryptPassword(@NotNull String password, @NotNull String salt) {
         int derivedKeyLength = 160;
         int iterations = 20_000;
@@ -56,6 +63,10 @@ public record User(@NotNull String username, @NotNull String passwordHash, @NotN
         }
     }
 
+    /**
+     * Generates a new salt value with a JDK provided random generator.
+     * @return new salt value
+     */
     public static String newSalt() {
         SecureRandom random;
         try {
@@ -68,15 +79,30 @@ public record User(@NotNull String username, @NotNull String passwordHash, @NotN
         return Base64.getEncoder().encodeToString(salt);
     }
 
+    /**
+     * Returns the avatar of a user based on the email address of the user.
+     * @param gravatarEmail email address of the user registred in the gravatar service
+     * @return avatar picture of the user
+     */
     public static byte[] avatar(@NotNull String gravatarEmail) {
         var gravatar = new Gravatar();
         return gravatar.avatar(gravatarEmail, 200, GravatarRating.GENERAL_AUDIENCES, GravatarImage.GRAVATAR_ICON);
     }
 
+    /**
+     * Returns the access rights of a user for a specific domain.
+     * @param domain domain for which the access rights are requested
+     * @return access rights of the user for the domain
+     */
     public Optional<AccessRights> accessRightsFor(@NotNull String domain) {
         return accessRights.stream().filter(rights -> rights.domain().equals(domain)).findAny();
     }
 
+    /**
+     * Authenticates the user based on the password provided.
+     * @param password password to authenticate the user
+     * @return true if the password is correct
+     */
     public boolean authenticate(@NotNull String password) {
         return encryptPassword(password, passwordSalt()).equals(passwordHash());
     }

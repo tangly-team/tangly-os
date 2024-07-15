@@ -29,11 +29,11 @@
  * <h2>Creating a New Bounded Domain</h2>
  * <dl>
  * <dt>Define Domain Entities</dt><dd>The domain entities are defined as regular Java classes and records.
- * Per convention all classes are defined in the package DOMANIN_NAME.domain.</dd>
+ * Per convention all classes are defined in the package <em>Domain-</em>.domain.</dd>
  * <dt>Define the interfaces to the Bounded Domain</dt><dd>
  *     <p>Per convention all classes are defined in the package DOMAIN.services</p>
  *     <ul>
- *         <li>The bounded domain class DOMAINBoundedDomain defines all the instances defining the bounded domain.
+ *         <li>The bounded domain class <em>Domain-</em>BoundedDomain defines all the instances defining the bounded domain.
  *         It implements the {@link net.tangly.core.domain.BoundedDomain} interface.</li>
  *         <li>The realm DOMAINRealm defines the repository interface. It implements the {@link net.tangly.core.domain.Realm} interface.</li>
  *         <li>The port DOMAINPort defies the default port interface. It implements the {@link net.tangly.core.domain.Port} interface.

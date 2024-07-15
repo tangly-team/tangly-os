@@ -98,18 +98,34 @@ public class BoundedDomain<R extends Realm, B, P extends Port<R>> implements Dom
             .forEach(e -> counts.merge(e, 1, (oldValue, _) -> oldValue++));
     }
 
+    /**
+     * Returns the external event channel of the domain. The channel is used to publish events to the external world.
+     * @return external event channel
+     */
     public SubmissionPublisher<Object> channel() {
         return channel;
     }
 
+    /**
+     * Returns the internal event channel of the domain. The channel is used to publish internal events within the domain.
+     * @return internal event channel
+     */
     public SubmissionPublisher<Object> internalChannel() {
         return internalChannel;
     }
 
+    /**
+     * Subscribes to the public event channel of the domain.
+     * @param listener event listener
+     */
     public void subscribe(EventListener listener) {
         channel.subscribe(listener);
     }
 
+    /**
+     * Subscribes to the internal event channel of the domain.
+     * @param listener event listener
+     */
     public void subscribeInternally(EventListener listener) {
         internalChannel.subscribe(listener);
     }

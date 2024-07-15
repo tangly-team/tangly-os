@@ -21,9 +21,16 @@ import java.util.function.Supplier;
 /**
  * Defines a provider for the list of users and the list of active users for a domain.
  * This approach isolates a bounded domain from the implementation of the user management system.
+ * A pluggable user management system can be implemented by providing a different implementation of this interface for example to support LDAP.
  * The domain has no knowledge of users defined in other domains in the application.
  */
 public interface UsersProvider {
+    /**
+     * factory method to create a new instance of the user provider.
+     *
+     * @param users       supplier for the list of users in the tenant
+     * @param activeUsers supplier for the list of active users in the tenant
+     */
     static UsersProvider of(@NotNull Supplier<List<String>> users, @NotNull Supplier<List<String>> activeUsers) {
         record Provider(Supplier<List<String>> usersProvider, Supplier<List<String>> activeUsersProvider) implements UsersProvider {
             @Override
@@ -41,12 +48,14 @@ public interface UsersProvider {
 
     /**
      * Returns the list of users available in the domain.
+     *
      * @return list of users
      */
     List<String> users();
 
     /**
      * Returns the list of active users in the domain.
+     *
      * @return list of active users
      */
     List<String> activeUsers();

@@ -24,7 +24,7 @@ import java.util.Collections;
 import java.util.regex.Pattern;
 
 /**
- * Define the inbound and outbound communication port to the bounded domain. It is a secondary port in the DDD terminology.
+ * Defines the inbound and outbound communication port to the bounded domain. It is a secondary port in the DDD terminology.
  * <p>The realm is available to the port due to the default import and export functionality specific to this framework.</p>
  *
  * @param <R> Realm of the bounded domain

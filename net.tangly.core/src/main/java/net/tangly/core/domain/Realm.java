@@ -13,9 +13,8 @@
 
 package net.tangly.core.domain;
 
-import net.tangly.commons.lang.ReflectionUtilities;
+import net.tangly.core.Entity;
 import net.tangly.core.HasOid;
-import net.tangly.core.MutableEntityExtended;
 import net.tangly.core.providers.Provider;
 import org.jetbrains.annotations.NotNull;
 
@@ -36,12 +35,7 @@ public interface Realm {
         return items.stream().mapToLong(HasOid::oid).max().orElse(HasOid.UNDEFINED_OID);
     }
 
-    static <T extends HasOid> T setOid(@NotNull T entity, long oid) {
-        ReflectionUtilities.set(entity, "oid", oid);
-        return entity;
-    }
-
-    static <T extends MutableEntityExtended> void checkEntities(Provider<T> provider) {
+    static <T extends Entity> void checkEntities(@NotNull Provider<T> provider) {
         provider.items().forEach(e -> {
             if (!e.validate()) {
                 throw new IllegalStateException("Entity Check Error for %s".formatted(e));

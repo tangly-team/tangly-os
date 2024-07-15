@@ -33,7 +33,7 @@ import java.util.Map;
  */
 public interface DomainAudit {
     /**
-     * Return the name of the domain audit. It should be the name of the bounded domain.
+     * Returns the name of the domain audit. It should be the name of the bounded domain.
      *
      * @return name of the domain audit
      */
