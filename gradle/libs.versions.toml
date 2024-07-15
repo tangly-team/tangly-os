@@ -22,10 +22,10 @@ mannes = "com.github.ben-manes.versions:0.41.0"
 [libraries]
 annotations = "org.jetbrains:annotations:24.1.0"
 antlr-st4 = "org.antlr:ST4:4.3.4"
-apache-commons-cli = "commons-cli:commons-cli:1.5.0"
+apache-commons-cli = "commons-cli:commons-cli:1.8.0"
 apache-commons-csv = "org.apache.commons:commons-csv:1.11.0"
-apache-commons-codec = "commons-codec:commons-codec:1.16.1"
-apache-commons-io = "commons-io:commons-io:2.15.1"
+apache-commons-codec = "commons-codec:commons-codec:1.17.0"
+apache-commons-io = "commons-io:commons-io:2.16.1"
 
 apache-log4j2-api = { module = "org.apache.logging.log4j:log4j-api", version.ref = "log4j2-version" }
 apache-log4j2-core = { module = "org.apache.logging.log4j:log4j-core", version.ref = "log4j2-version" }
@@ -67,7 +67,7 @@ json-validator = "com.networknt:json-schema-validator:1.5.0"
 jackson-dataformat-yaml = "com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.17.2"
 json-assert = "org.skyscreamer:jsonassert:1.5.0"
 
-jsoup = "org.jsoup:jsoup:1.17.2"
+jsoup = "org.jsoup:jsoup:1.18.1"
 
 junit-api = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "junit-version" }
 junit-engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "junit-version" }
