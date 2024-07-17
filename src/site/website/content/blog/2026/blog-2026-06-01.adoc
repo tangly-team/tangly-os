@@ -1,0 +1,79 @@
+---
+title: "Dependency Injection"
+linkTitle: "Dependency Injection"
+date: 2025-06-01
+tags: ["java", "architecture"]
+params:
+  featured: "blog/2024/pics/2026-06-01-head.png"
+---
+
+image::2026-06-01-head.png[width=420,height=360,role=left]
+
+:ref-di: https://en.wikipedia.org/wiki/Dependency_injection[Dependency Injection]
+
+What is dependency injection?
+
+{ref-di} is a programming technique aka a pattern that makes a class independent of its dependencies.
+It is achieved by decoupling the use of an object from its creation.
+So instead of creating an instance of the object, I implement it by injecting it from the outside.
+
+The goal of DI is to improve code reusability.
+This technique aims to reduce the frequency with which a class needs to be modified.
+Dependency injection supports these goals by decoupling the creation from the use of an object.
+This allows dependencies to be replaced without changing the class that uses them.
+It also reduces the risk of having to change a class just because one of its dependencies has changed.
+
+== What is the best Way to inject Dependency?
+
+The ideal technique to introduce dependency depends on the particular circumstances.
+
+Constructor injection is typically regarded as the most effective method of injecting dependencies.
+
+This is so because it is straightforward, explicit, and simple to test.
+The dependencies are passed to the constructor of the object during constructor injection.
+The object will always be initialized with all of its dependents, and it will be clear which dependencies the object requires.
+
+Constructor injection is the best way to inject dependencies because:
+
+- It makes sure that an object is generated in a valid state. +
+_Construction is initialization idiom reduces programming errors._
+- By doing this, the probability of running into null reference exceptions later on in the application’s execution is decreased.
+- It makes dependencies explicit that means a class exposes all its class-level dependencies in its constructor. +
+_Increases legibility and testability of the code._
+- It enables the use of immutable objects. +
+_We love immutable objects._
+
+Overall advantages of dependency injection are:
+
+- Dependency-driven increased modularity and reusability of code.
+By separating components from their dependencies, injection encourages a clear separation of concerns.
+Developers can quickly alter or switch out parts of the application without compromising the overall functionality.
+- Enhanced testability.
+Using Dependency Injection makes it much simpler to test individual components since dependencies can be simply mocked or stubbed.
+It is possible to test the behavior of individual components without also testing the behavior of all of their dependencies.
+- Enhanced code maintainability is possible because Dependency Injection removes the requirement for components to handle the creation and management of dependencies, as this is done by an external system.
+
+As a result, there is less duplication of code, improving maintainability.
+Here are few examples where using DI can increase the quality of your code:
+
+- Injecting a database connection into your service layer through DI is possible.
+Your service layer will be simpler to test and manage as a result, regardless of the database implementation strategy.
+- You can use DI to add a logger to your controller layer.
+This will make it simpler for you to log errors and other events because you won’t have to worry about how to set up the logger.
+- An application configuration object can be introduced via DI.
+As a result, changing your application’s setup will be simple and have no impact on the remaining code.
+
+== Tangly OS Approach
+
+The open source components of {ref-tangly-blog-url} use constructor injection to inject dependencies.
+
+The applications we build are modular and based on the domain-driven design approach.
+The derived simplicity allows us to handcode the dependency injection.
+We currently have no need for a dependency injection framework.
+
+The instantiation of a specific bounded domain instance is done in a factory method.
+The code is simple and easy to understand.
+The number of statements is below twenty.
+
+The same approach is applied to create a bounded domain user interface.
+

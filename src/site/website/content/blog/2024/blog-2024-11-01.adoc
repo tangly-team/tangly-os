@@ -194,9 +194,9 @@ The `net.tangly.ui.component.ItemView` supports adding selected item and global 
 ----
 
 <1> adds a selected item command which will process the selected item.
-Optional parameters can be inputed in a dialog before processing.
+Optional parameters can be inputted in a dialog before processing.
 <2> adds a global command which will process items displayed in the grid.
-Optional global parameters can be inputed in a dialog before processing.
+Optional global parameters can be inputted in a dialog before processing.
 
 == Asynchronous Operations
 
@@ -268,7 +268,7 @@ Mechanisms to display, edit, and create domain entities are essential.
 The multi-user and multi-tab support runs in a multithreaded environment and requires careful programming to scale.
 All the logic is provided by the domain entities UI framework to diminish complexity for the application developers.
 
-The classes defined in the UI library tremendeously simplify the realization of regular CRUD grid components.
+The classes defined in the UI library tremendously simplify the realization of regular CRUD grid components.
 Documentation is available under {ref-tangly-blog-url}/docs/ui/[Vaadin UI Naked Objects].
 
 We provide all our libraries as maven artifacts published on {ref-maven-central}.

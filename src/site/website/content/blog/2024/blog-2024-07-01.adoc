@@ -67,7 +67,8 @@ _You can later if needed migrate to {ref-structurizr}._
 Mermaid provides a set of diagram types I find useful for documenting software architecture.
 API Documentation::
 Legible and maintainable source code should be well-documented. +
-{ref-javadoc} is the perfect tool for Java projects. +
+{ref-javadoc} is the perfect tool for Java projects.
+Starting with JDK 23, Javadoc supports {ref-markdown} as a markup language to simplify the documentation process. +
 {ref-doxygen} is a similar approach for a wide range of programming languages.
 It is the de-facto standard documentation tool for {cpp} and C applications. +
 +

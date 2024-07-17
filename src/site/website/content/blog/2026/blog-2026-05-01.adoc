@@ -1,14 +1,14 @@
 ---
 title: "Cool Libraries"
 linkTitle: "Cool Libraries"
-date: 2025-04-01
-tags: ["java", "vaadin"]
+date: 2025-05-01
+tags: ["java"]
 params:
-  featured: "blog/2024/pics/2024-09-01-head.jpg"
+  featured: "blog/2026/pics/2026-05-01-head.jpg"
 ---
 
 
-=== How to Handle Phone Numbers?
+== How to Handle Phone Numbers?
 
 Processing phone numbers seems complicated at first glance because of the many different formats.
 I use Google library `libphonenumber`.
@@ -47,6 +47,6 @@ System.out.println(phoneNumberUtil.isValidNumber(invalidSwissPhoneNumber));
 
 The code above will print false as the phone number is too short.
 
-=== How to Handle IBAN Numbers?
+== How to Handle IBAN Numbers?
 
-=== How to validate JSON files?
+== How to validate JSON files?
