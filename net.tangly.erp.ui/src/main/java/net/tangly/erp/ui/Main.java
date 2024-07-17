@@ -72,7 +72,11 @@ public final class Main {
     public static void main(@NotNull String[] args) throws Exception {
         final String contextRoot = "/erp";
         parse(args);
-        propertyFile = "/var/tangly-erp/_tenants/tenant-tangly.properties";
+        // takes first the command line configuration file and second the tenancy configuration files
+        //TODO handle multiple tenancy files - create a list of tenant and create a set of servlet with access rights.
+        if (propertyFile == null) {
+            propertyFile = "/var/tangly-erp/_tenants/tenant-tangly.properties";
+        }
         Tenant tenant = createTanglyTenant("tangly", Path.of(propertyFile));
         Application.instance().putTenant(tenant);
         new VaadinBoot() {
@@ -80,8 +84,10 @@ public final class Main {
             protected @NotNull WebAppContext createWebAppContext() throws IOException {
                 final WebAppContext context = super.createWebAppContext();
                 ServletHolder staticFiles = new ServletHolder("staticFiles", new DefaultServlet());
-                staticFiles.setInitParameter("resourceBase", "/private/var/tangly-erp/tenant-tangly/reports");
-                context.addServlet(staticFiles, "/reports/*");
+                String reportsFolder = tenant.properties().getProperty("tenant.root.reports.directory");
+                staticFiles.setInitParameter("resourceBase", reportsFolder);
+                String tenantName = tenant.properties().getProperty("tenant.name");
+                context.addServlet(staticFiles, "/" + tenantName + "/reports/*");
                 return context;
             }
         }.setPort(port).withContextRoot(contextRoot).run();
@@ -93,7 +99,7 @@ public final class Main {
         options.addOption(
             Option.builder("p").longOpt("port").type(Integer.TYPE).argName("port").hasArg().desc("listening port of the embedded server").build());
         options.addOption(Option.builder("c").longOpt("configuration").type(String.class).argName("configuration-file").hasArg()
-            .desc("path to the application properties configuration file").build());
+            .desc("path to the default tenant properties configuration file").build());
         return options;
     }
 
@@ -107,7 +113,7 @@ public final class Main {
                 formatter.printHelp("tangly ERP", options);
             }
             port = (line.hasOption("p")) ? Integer.parseInt(line.getOptionValue("p")) : 8080;
-            propertyFile = (line.hasOption("c")) ? line.getOptionValue("c") : "tenant-tangly.properties\"";
+            propertyFile = (line.hasOption("c")) ? line.getOptionValue("c").trim() : null;
 
         } catch (NumberFormatException | ParseException e) {
             logger.atError().log("Parsing failed.  Reason: {}", e.getMessage());

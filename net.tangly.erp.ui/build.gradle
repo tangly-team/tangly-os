@@ -65,7 +65,6 @@ distributions {
 }
 
 vaadin {
-    generateBundle = false
     optimizeBundle = true
 }
 

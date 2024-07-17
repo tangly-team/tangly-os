@@ -13,7 +13,6 @@
 
 package net.tangly.erp.collaborators.domain;
 
-import lombok.Builder;
 import net.tangly.core.Address;
 import net.tangly.core.HasId;
 import org.jetbrains.annotations.NotNull;
@@ -33,7 +32,6 @@ import java.time.LocalDate;
  * @param internalId              internal identifier of the collaborator used to identify in the company
  * @param address                 address of the collaborator
  */
-@Builder
 public record Collaborator(@NotNull String id,
                            String oldSocialSecurityNumber,
                            @NotNull LocalDate birthday,

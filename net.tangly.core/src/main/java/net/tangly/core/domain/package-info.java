@@ -29,24 +29,27 @@
  * <h2>Creating a New Bounded Domain</h2>
  * <dl>
  * <dt>Define Domain Entities</dt><dd>The domain entities are defined as regular Java classes and records.
- * Per convention all classes are defined in the package <em>Domain-</em>.domain.</dd>
+ * Interfaces defined in the package {@link net.tangly.core} simplify the definition of domain entities.
+ * Support classes are provided to define entities with oid, id, name, tags and comments.
+ * Reference codes should use the {@link net.tangly.core.codes.Code} interface.
+ * <p> Per convention all classes are defined in the package <em>Domain</em>.domain.</p></dd>
  * <dt>Define the interfaces to the Bounded Domain</dt><dd>
- *     <p>Per convention all classes are defined in the package DOMAIN.services</p>
  *     <ul>
  *         <li>The bounded domain class <em>Domain-</em>BoundedDomain defines all the instances defining the bounded domain.
  *         It implements the {@link net.tangly.core.domain.BoundedDomain} interface.</li>
- *         <li>The realm DOMAINRealm defines the repository interface. It implements the {@link net.tangly.core.domain.Realm} interface.</li>
- *         <li>The port DOMAINPort defies the default port interface. It implements the {@link net.tangly.core.domain.Port} interface.
+ *         <li>The realm <em>Domain</em>Realm defines the repository interface. It implements the {@link net.tangly.core.domain.Realm} interface.</li>
+ *         <li>The port <em>Domain</em>Port defies the default port interface. It implements the {@link net.tangly.core.domain.Port} interface.
  *         This interface defines the import, export and clear functions for the bounded domain.</li>
- *        <li>The optional DOMAINBusinesLogic class defines business logic functions. It does not implement any specific interface.</li>
+ *        <li>The optional <em>Domain</em>BusinesLogic class defines business logic functions. It does not implement any specific interface.</li>
  *     </ul>
+ *     <p>Per convention all classes are defined in the package <em>Domain</em>.services</p>
  * </dd>
  * <dt>Define the implementation of all service interfaces</dt><dd>
- *     <p>Per convention all classes are defined in the package DOMAIN.ports.</p>
+ *     <p>Per convention all classes are defined in the package <em>Domain</em>.ports.</p>
  *     <ul>
- *         <li>Implement the realm interface. Per convention the class is called DOMAINEntities.
+ *         <li>Implement the realm interface. Per convention the class is called <em>Domain</em>Entities.
  *         Use the {@link net.tangly.core.providers.Provider} abstractions to provide persistence with EclipseStore.</li>
- *         <li>Implement the port interface. Per convention the class is called DOMAINAdapter.</li>
+ *         <li>Implement the port interface. Per convention the class is called <em>Domain</em>Adapter.</li>
  *         <li>Define the TSV Handler to enalbe the adapter to import entities from a TSV file and export them to a TSV file.</li>
  *     </ul>
  * </dd>
@@ -57,12 +60,13 @@
  * The preferred approach uses EclipseStore to persist graphs of Java objects.
  * The provider interface and their various implementation is a powerful mechanism to store and retrieve domain entities.</p>
  * <h2>Port</h2>
- * <p>The port provides the interface to the domain model for the adapters.
+ * <p>The port provides the interfaces to the domain model for the adapters.
  * Any bounded domain provides an import, export, and clear operations.
  * The import loads an archive of all entities of the domain.
  * The export archives all entities to a set of files.
  * The clear removes all entities from the doamin.
  * THe preferred import and export format is TSV>/p>
+ * <p> Per convention all interfaces are defined in the package <em>Domain</em>.ports.</p></dd>
  * <h2>TSV Import and Export</h2>
  * <p>Utilities are provided in the Gleam module. </p>
  * You can use the TSV import and export utilities to import and export entities from and to TSV files.

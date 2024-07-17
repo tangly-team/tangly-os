@@ -50,6 +50,11 @@ public class BoundedDomain<R extends Realm, B, P extends Port<R>> implements Dom
     private final SubmissionPublisher<Object> internalChannel;
     private final List<EventData> auditEvents;
 
+    /**
+     * Refined event listener interface to handle events in the domain or from another domain.
+     * @see Flow.Subscriber
+     */
+    @FunctionalInterface
     public interface EventListener extends Flow.Subscriber<Object> {
         @Override
         default void onComplete() {
@@ -64,6 +69,7 @@ public class BoundedDomain<R extends Realm, B, P extends Port<R>> implements Dom
             subscription.request(Long.MAX_VALUE);
         }
 
+        @Override
         void onNext(Object event);
     }
 
@@ -181,5 +187,4 @@ public class BoundedDomain<R extends Realm, B, P extends Port<R>> implements Dom
             throw new RuntimeException(e);
         }
     }
-
 }

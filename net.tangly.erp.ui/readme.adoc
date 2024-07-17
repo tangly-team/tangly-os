@@ -97,7 +97,7 @@ Otherwise, the distribution frontend is not built, and the application cannot ru
 The default port is 8080, and the application starts with in-memory storage.
 The environment variables are set in the run script.
 * <3> Start the application with java command.
-You are responsible to provide the JVM options as define below.
+You are responsible to provide the JVM options as defined below.
 
 The JVM options to run the application are
 
@@ -130,7 +130,7 @@ Customers can retrieve the published Docker image and execute it in a container.
 We currently push to https://hub.docker.com/[Docker Hub] repository.
 The image is accessible unde https://hub.docker.com/r/tanglyllc/tangly-erp[tangly-erp Docker Image].
 
-To run the built image use the following commands.
+To run the built image, use the following commands.
 
 [source,shell]
 ----

@@ -13,6 +13,7 @@
 
 package net.tangly.erp.collaborators.services;
 
+import net.tangly.core.Address;
 import net.tangly.core.DateRange;
 import net.tangly.erp.collaborators.domain.*;
 import org.junit.jupiter.api.Test;
@@ -60,15 +61,18 @@ class CollaboratorTest {
     }
 
     static SwissPensionFund ofSwissPensionFunds2020() {
-        return new SwissPensionFund(DateRange.of(LocalDate.of(2016, Month.JANUARY, 1), LocalDate.of(2022, Month.DECEMBER, 31)), new BigDecimal("0.22020"), new BigDecimal("0.5"));
+        return new SwissPensionFund(DateRange.of(LocalDate.of(2016, Month.JANUARY, 1), LocalDate.of(2022, Month.DECEMBER, 31)), new BigDecimal("0.22020"),
+            new BigDecimal("0.5"));
     }
 
     static SwissPensionFund ofSwissPensionFunds2021() {
-        return new SwissPensionFund(DateRange.of(LocalDate.of(2016, Month.JANUARY, 1), LocalDate.of(2022, Month.DECEMBER, 31)), new BigDecimal("0.22164"), new BigDecimal("0.5"));
+        return new SwissPensionFund(DateRange.of(LocalDate.of(2016, Month.JANUARY, 1), LocalDate.of(2022, Month.DECEMBER, 31)), new BigDecimal("0.22164"),
+            new BigDecimal("0.5"));
     }
 
     static SwissPensionFund ofSwissPensionFunds2022() {
-        return new SwissPensionFund(DateRange.of(LocalDate.of(2016, Month.JANUARY, 1), LocalDate.of(2022, Month.DECEMBER, 31)), new BigDecimal("0.21724"), new BigDecimal("0.5"));
+        return new SwissPensionFund(DateRange.of(LocalDate.of(2016, Month.JANUARY, 1), LocalDate.of(2022, Month.DECEMBER, 31)), new BigDecimal("0.21724"),
+            new BigDecimal("0.5"));
     }
 
     @Test
@@ -85,9 +89,11 @@ class CollaboratorTest {
 
     private Organization createOrganizationAndContract() {
         Collaborator collaborator =
-            Collaborator.builder().birthday(LocalDate.of(1964, Month.DECEMBER, 12)).id("756.5149.8825.64").oldSocialSecurityNumber("144.64.474.111").build();
+            new Collaborator("756.5149.8825.64", "756.5149.8825.64", LocalDate.of(1964, Month.DECEMBER, 12), "Doe", "001",
+                new Address("Main Street", "1", "1234", "Springfield", "Zug", "ZC", "CH"));
         Contract contract =
-            Contract.builder().collaborator(collaborator).range(DateRange.of(LocalDate.of(2016, Month.JANUARY, 1), null)).yearlySalary(new BigDecimal("30000")).nrOfPayments(12)
+            Contract.builder().collaborator(collaborator).range(DateRange.of(LocalDate.of(2016, Month.JANUARY, 1), null)).yearlySalary(new BigDecimal("30000"))
+                .nrOfPayments(12)
                 .workPercentage(new BigDecimal("1")).pensionFunds(
                     List.of(ofSwissPensionFunds2017(), ofSwissPensionFunds2017(), ofSwissPensionFunds2018(), ofSwissPensionFunds2019(), ofSwissPensionFunds2020(),
                         ofSwissPensionFunds2021(), ofSwissPensionFunds2022())).build();
