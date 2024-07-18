@@ -78,6 +78,7 @@ class ActivitiesView extends ItemView<Activity> {
             dataView().refreshAll();
         }
 
+        @Override
         public boolean test(@NotNull Activity entity) {
             return ItemFilter.matches(entity.author(), author);
         }

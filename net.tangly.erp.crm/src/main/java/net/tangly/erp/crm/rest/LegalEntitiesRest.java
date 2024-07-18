@@ -52,7 +52,7 @@ public class LegalEntitiesRest {
     }
 
     @OpenApi(
-        summary = "Get all legal entities",
+        summary = "Gets all legal entities",
         operationId = "getAllLegalEntities",
         path = "/customers/legal-entities",
         methods = HttpMethod.GET,
@@ -61,12 +61,12 @@ public class LegalEntitiesRest {
             @OpenApiResponse(status = "200", content = {@OpenApiContent(from = LegalEntityView[].class)})
         }
     )
-    private void getAll(Context ctx) {
+    private void getAll(@NotNull Context ctx) {
         ctx.json(legalEntities().items().stream().map(o -> LegalEntityView.of(o)).toList());
     }
 
     @OpenApi(
-        summary = "Get an entity by id",
+        summary = "Gets an entity by id",
         operationId = "getLegalEntityById",
         path = "/customers/legal-entities/:id",
         methods = HttpMethod.GET,
@@ -78,13 +78,13 @@ public class LegalEntitiesRest {
             @OpenApiResponse(status = "200", content = {@OpenApiContent(from = LegalEntityView.class)})
         }
     )
-    private void getById(Context ctx) {
+    private void getById(@NotNull Context ctx) {
         String id = ctx.pathParam("id");
         Provider.findById(legalEntities(), id).ifPresentOrElse(o -> ctx.json(LegalEntityView.of(o)), () -> ctx.status(404));
     }
 
     @OpenApi(
-        summary = "Create legal entity",
+        summary = "Creates legal entity",
         operationId = "createLegalEntity",
         path = "/customers/legal-entities",
         methods = HttpMethod.POST,
@@ -96,13 +96,13 @@ public class LegalEntitiesRest {
             @OpenApiResponse(status = "404")
         }
     )
-    private void create(Context ctx) {
+    private void create(@NotNull Context ctx) {
         LegalEntityView updated = ctx.bodyAsClass(LegalEntityView.class);
         legalEntities().update(updated.update(new LegalEntity(HasOid.UNDEFINED_OID)));
     }
 
     @OpenApi(
-        summary = "Update a legal entity identified by ID",
+        summary = "Updates a legal entity identified by ID",
         operationId = "updateLegalEntityById",
         path = "/customers/legal-entities/:id",
         methods = HttpMethod.PATCH,
@@ -117,14 +117,14 @@ public class LegalEntitiesRest {
             @OpenApiResponse(status = "404")
         }
     )
-    private void update(Context ctx) {
+    private void update(@NotNull Context ctx) {
         String id = ctx.pathParam("id");
         LegalEntityView updated = ctx.bodyAsClass(LegalEntityView.class);
         Provider.findById(legalEntities(), id).ifPresentOrElse(o -> legalEntities().update(updated.update(o)), () -> ctx.status(404));
     }
 
     @OpenApi(
-        summary = "delete a legal entity by ID",
+        summary = "Deletes a legal entity by ID",
         operationId = "deleteLegalEntityById",
         path = "/customers/legal-entities/:id",
         methods = HttpMethod.DELETE,
@@ -138,7 +138,7 @@ public class LegalEntitiesRest {
             @OpenApiResponse(status = "404")
         }
     )
-    private void delete(Context ctx) {
+    private void delete(@NotNull Context ctx) {
         String id = ctx.pathParam("id");
         Provider.findById(legalEntities(), id).ifPresentOrElse(entity -> legalEntities().delete(entity), () -> ctx.status(404));
     }

@@ -23,8 +23,8 @@ import com.vaadin.flow.component.tabs.TabSheetVariant;
 import com.vaadin.flow.component.textfield.TextArea;
 import net.tangly.commons.lang.Strings;
 import org.asciidoctor.Asciidoctor;
+import org.asciidoctor.Options;
 
-import java.util.HashMap;
 import java.util.Objects;
 
 /**
@@ -94,7 +94,7 @@ public class AsciiDocField extends CustomField<String> {
     }
 
     private void updatePreview(String value) {
-        Html item = new Html(String.format("<div>%s</div>", asciidoctor.convert(Strings.nullToEmpty(value), new HashMap<>())));
+        Html item = new Html(String.format("<div>%s</div>", asciidoctor.convert(Strings.nullToEmpty(value), Options.builder().build())));
         previewField.removeAll();
         previewField.add(item);
     }

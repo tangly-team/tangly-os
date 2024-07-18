@@ -114,7 +114,6 @@ public final class Main {
             }
             port = (line.hasOption("p")) ? Integer.parseInt(line.getOptionValue("p")) : 8080;
             propertyFile = (line.hasOption("c")) ? line.getOptionValue("c").trim() : null;
-
         } catch (NumberFormatException | ParseException e) {
             logger.atError().log("Parsing failed.  Reason: {}", e.getMessage());
         }

@@ -65,7 +65,7 @@ tasks.withType(JavaCompile).configureEach {
     options.deprecation = true
     options.compilerArgs += ["-parameters",
                              "--enable-preview",
-                             "-Xlint:all,-serial,-varargs,-processing,-try",
+                             "-Xlint:-this-escape,-serial,-varargs,-processing,-try",
                              "-Xdoclint:none"]
 }
 

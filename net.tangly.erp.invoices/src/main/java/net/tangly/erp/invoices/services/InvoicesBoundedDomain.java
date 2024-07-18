@@ -20,13 +20,14 @@ import net.tangly.core.domain.DomainEntity;
 import net.tangly.core.domain.UsersProvider;
 import net.tangly.erp.invoices.domain.Article;
 import net.tangly.erp.invoices.domain.ArticleCode;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
 public class InvoicesBoundedDomain extends BoundedDomain<InvoicesRealm, InvoicesBusinessLogic, InvoicesPort> {
     public static final String DOMAIN = "invoices";
 
-    public InvoicesBoundedDomain(InvoicesRealm realm, InvoicesBusinessLogic logic, InvoicesPort port, TypeRegistry registry, UsersProvider usersProvider) {
+    public InvoicesBoundedDomain(@NotNull InvoicesRealm realm, InvoicesBusinessLogic logic, InvoicesPort port, TypeRegistry registry, UsersProvider usersProvider) {
         super(DOMAIN, realm, logic, port, registry, usersProvider);
         registry().register(CodeType.of(ArticleCode.class));
 

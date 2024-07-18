@@ -117,6 +117,11 @@ public class NaturalEntity extends MutableEntityExtendedImp implements MutableEn
     }
 
     @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), socialNr());
+    }
+
+    @Override
     public String toString() {
         return """
             NaturalEntity[oid=%s, fromDate=%s, toDate=%s, text=%s, socialNr=%s, firstname=%s, name=%s, gender=%s, tags=%s, comments=%s]

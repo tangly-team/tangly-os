@@ -116,6 +116,11 @@ public class Opportunity extends MutableEntityExtendedImp {
     }
 
     @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), entity());
+    }
+
+    @Override
     public String toString() {
         return """
             Interaction[oid=%s, id=%s, name=%s, fromDate=%s, toDate=%s, text=%s, state=%s, potential=%s, probability=%s, tags=%s]

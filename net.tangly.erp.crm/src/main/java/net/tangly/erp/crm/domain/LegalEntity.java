@@ -72,6 +72,11 @@ public class LegalEntity extends MutableEntityExtendedImp implements MutableEnti
     }
 
     @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), vatNr());
+    }
+
+    @Override
     public String toString() {
         return """
             LegalEntity[oid=%s, id=%s, name=%s, fromDate=%s, toDate=%s, text=%s, vatNr=%s, tags=%s, comments=%s]
