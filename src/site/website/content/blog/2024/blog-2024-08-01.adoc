@@ -9,6 +9,7 @@ params:
 
 include::../fragments/_config-mb-blog.adoc[]
 :ref-actor-model: https://en.wikipedia.org/wiki/Actor_model[Actor Model]
+:ref-ddd: https://en.wikipedia.org/wiki/Domain-driven_design[Domain-Driven Design]
 :ref-jetty: https://jetty.org/[Jetty]
 
 image::2024-08-01-head.png[width=420,height=360,role=left]
@@ -37,13 +38,13 @@ Identify weaknesses and improvement area.
 Now you have the first draft of your architecture.
 ====
 
-== Internationalization, localization and accessibility Themes
+== Internationalization, Localization and Accessibility Themes
 
 What user interface should we define?::
 Acknowledge that a software developer is missing the formal education to create good user interfaces.
 You need a user interface and usability trained professional to create and refine stunning user interfaces.
 Select technological solutions compatible with your technology stack
-footnote:[Beware that browser-based JavaScript solutions require major rework of the solution every eighteen months.
+footnote:[Beware that browser-based JavaScript solutions require major rework of the solution at least every eighteen months.
 The pace of change in frameworks such as Angular, React, Vue, jQuery is stunning.
 Supported standards in browsers are evolving.].
 How do we implement accessibility laws and requirements?::
@@ -143,19 +144,27 @@ _Review your internal documented solution_
 
 You are a talented software architect.
 You are in charge to define the blueprint of your digital solution.
+Use your training and talent to create a good solution that is straightforward to understand and maintain.
+
 The {ref-less} movement has described how agile architecture could be performed <<agile-design-modeling>> <<agile-architecture-principles>>.
+Create a workable blueprint.
+Invest in the evolution and improvement of the solution.
 
 [quote, Freds Brooks, No Silver Bullet]
 ____
 There is no single development in either technology or management technique, which by itself promises even one order of magnitude [tenfold] improvement within a decade in productivity, in reliability, in simplicity.
 ____
 
-You shall create a similar checklist to the above one.
+You shall create a similar architecture checklist to the above one.
 Document your preferred approaches for each question.
-Remember to reference literature, good practices <<developer-assumptions>> and design patterns.
+Remember to consult seminal literature, good practices <<developer-assumptions>> and design patterns.
 
 You will be able to solve almost all the design challenges you will be confronted with.
 A good approach is to start with a modular monolith <<modular-monoliths>>.
+{ref-ddd} is a proven good practice for designing the domain model and partioning your solution.
+
+Evolution to a distributed system is a natural and well-documented process
+cite:[building-evolutionary-architectures-2nd,software-architecture,refactoring-databases].
 
 [bibliography]
 == Links
@@ -175,4 +184,4 @@ Marcel Baumann, 2024.
 
 == References
 
-Bibliography::[]
+bibliography::[]

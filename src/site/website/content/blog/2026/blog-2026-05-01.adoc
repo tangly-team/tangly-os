@@ -49,4 +49,8 @@ The code above will print false as the phone number is too short.
 
 == How to Handle IBAN Numbers?
 
+== How to Handle Calendar Invitations?
+
+== How to Handle Digital Visiting Cards?
+
 == How to validate JSON files?

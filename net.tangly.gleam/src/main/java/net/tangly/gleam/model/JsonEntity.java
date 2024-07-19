@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2022 Marcel Baumann
+ * Copyright 2006-2024 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -8,6 +8,7 @@
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ *
  */
 
 package net.tangly.gleam.model;
@@ -22,8 +23,8 @@ import java.util.function.Function;
 import java.util.function.Supplier;
 
 /**
- * Defines a mapping between JSON entity and a Java entity. We have an isomorphic structure of two graphs, meaning Java entities can contains other entities and
- * JSON entities can contains the associated JSON entities mapping these Java entities.
+ * Defines a mapping between JSON entity and a Java entity. We have an isomorphic structure of two graphs, meaning Java entities can contain other entities and
+ * JSON entities can contain the associated JSON entities mapping these Java entities.
  * <ul>
  *   <li>A regular Java class is mapped. The property declarations are used to map between Java instance and JSON object.</li>
  *   <li>A Java class is inferred from some JSON fields and lookup in the data model. Therefore the import function is specific to the business
@@ -83,8 +84,8 @@ public record JsonEntity<T>(List<JsonField<T, ?>> properties, Supplier<T> factor
      */
     public static <T> JsonEntity<T> of(List<JsonField<T, ?>> properties, Supplier<T> factory, Function<JSONObject, T> imports,
                                        Function<T, JSONObject> exports) {
-        return of(properties, factory, (imports != null) ? (object, context) -> imports.apply(object) : null,
-                (exports != null) ? (entity, context) -> exports.apply(entity) : null);
+        return of(properties, factory, (imports != null) ? (object, _) -> imports.apply(object) : null,
+            (exports != null) ? (entity, _) -> exports.apply(entity) : null);
     }
 
     /**
@@ -94,8 +95,8 @@ public record JsonEntity<T>(List<JsonField<T, ?>> properties, Supplier<T> factor
      * @param factory    factory method to create a new Java class instance, often the default constructor
      * @param imports    import function transforming a JSON object into a Java instance, parameters are the JSON object, the object owning the transformed Java
      *                   entity and the Java object as return value.
-     * @param exports    export function transforming a Java instance into a JSON object, parameters are the Java entity to be transformed in a JSON
-     *                   representation, the object owning the the Java entity and the JSON object of the entity JSON representation as return value.
+     * @param exports    export function transforming a Java instance into a JSON object. The parameters are the Java entity to be transformed in a JSON
+     *                   representation, the object owning the Java entity and the JSON object of the entity JSON representation as return value.
      * @param <T>        type of the Java instances
      * @return JSON entity defining the transformation process
      */

@@ -5,6 +5,7 @@ weight: 130
 ---
 
 ifndef::imagesdir[:imagesdir: ./pics]
+:ref-ddd: https://en.wikipedia.org/wiki/Domain-driven_design[Domain-Driven Design]
 
 [[section-glossary]]
 == Glossary
@@ -13,12 +14,26 @@ ifndef::imagesdir[:imagesdir: ./pics]
 |===
 |Term |Definition|Remarks
 
-|ADR|Architecture Design Record |
-|DDD|Domain-Driven Design |
-|DoD|Definition of Done |
+|ADR|Architecture Design Record | {ref-adr}
+|DDD|Domain-Driven Design | {ref-ddd}
+|DoD|Definition of Done | {ref-scrum}
 |FSM|Finite State Machine |
 |SDL|Specification and Description Language |
-|UML|Unified Modeling Language |
+|UML|Unified Modeling Language | {ref-uml}
 |VAT|Value-Added Tax |
 |===
+
+== Abbreviations
+
+[cols="1,2,7" options="header"]
+|===
+|Term |Definition|Remarks
+
+|Hdl|Handler|A handler is responsible for handling a specific part of the system. It is a facade for the underlying subsystem.
+|Imp|Implementation|Default implementation of an interface. The class name is the interface name with the suffix `Imp`.
+|Mgr|Manager|A manager class is responsible for managing an overall part of the system. It is a facade for the underlying subsystem.
+|TSV|Tab Seperated Value|
+|View|View Class|A view class displays entities of a specific type. The class name is the plural form of the entity name with the suffix `View`.
+|===
+
 

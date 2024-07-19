@@ -8,10 +8,11 @@ We use the newer central configuration feature for all plugins and libraries use
 
 Java Common Conventions::
 Configuration and dependencies used in all Java modules
-Java Library Conventions::
-Configuration and dependencies specific to Java library modules
-Java Application Conventions::
-Configuration and dependencies specific to Java applications
+
+[NOTE]
+====
+The other plugins could be eliminated by using the Java Common Conventions plugin and streamlining the project setup.
+====
 
 == Commands
 
