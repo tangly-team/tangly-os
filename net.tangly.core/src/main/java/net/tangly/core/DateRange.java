@@ -1,10 +1,10 @@
 /*
- * Copyright 2006-2023 Marcel Baumann
+ * Copyright 2006-2024 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- *          http://www.apache.org/licenses/LICENSE-2.0
+ *          https://apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -21,13 +21,13 @@ import java.util.Objects;
 import java.util.function.Predicate;
 
 /**
- * Define an absolute local date range. The range can be open, meaning either the lower or upper date can be null.
+ * Defines an absolute local date range. The range can be open, meaning either the lower or upper date can be null.
  */
 public record DateRange(LocalDate from, LocalDate to) implements Serializable {
     public static final DateRange INFINITE = new DateRange();
 
     /**
-     * Test if the date is inside the date interval specified in the filter.
+     * Tests if the date is inside the date interval specified in the filter.
      *
      * @param interval date interval to test against
      */
@@ -60,7 +60,7 @@ public record DateRange(LocalDate from, LocalDate to) implements Serializable {
     }
 
     /**
-     * Create a new data range with the given lower bound.
+     * Creates a new data range with the given lower bound.
      *
      * @param from new lower bound
      * @return new date range with the given lower bound
@@ -71,7 +71,7 @@ public record DateRange(LocalDate from, LocalDate to) implements Serializable {
     }
 
     /**
-     * Create a new data range with the given upper bound.
+     * Creates a new data range with the given upper bound.
      *
      * @param to new upper bound
      * @return new date range with the given upper bound
@@ -83,7 +83,7 @@ public record DateRange(LocalDate from, LocalDate to) implements Serializable {
     }
 
     /**
-     * Return true if the date is in the time interval of the instance.
+     * Returns true if the date is in the time interval of the instance.
      *
      * @param date date against which the inclusion test is evaluated
      * @return true if inside the interval otherwise false
@@ -94,7 +94,7 @@ public record DateRange(LocalDate from, LocalDate to) implements Serializable {
 
 
     /**
-     * Return true if the date now is in the time interval of the instance.
+     * Returns true if the date now is in the time interval of the instance.
      *
      * @return true if inside the interval otherwise false
      */
@@ -103,7 +103,7 @@ public record DateRange(LocalDate from, LocalDate to) implements Serializable {
     }
 
     /**
-     * Return true if the date range is fully open.
+     * Returns true if the date range is fully open.
      *
      * @return true if the date range is open in both directions.
      */

@@ -46,14 +46,14 @@ public class CmdCreateInvoiceDocument implements Cmd {
     private Dialog dialog;
 
     /**
-     * Create a command to create a document for a specific invoice.
+     * Creates a command to create a document for a specific invoice or for all invoices within a date range.
      *
-     * @param invoice invoice for which the document is created
+     * @param invoice invoice for which the document is created. If null, the command creates documents for all invoices within the date range
      * @param domain  bounded domain of the invoices
      */
     public CmdCreateInvoiceDocument(Invoice invoice, @NotNull InvoicesBoundedDomain domain) {
         this.domain = domain;
-        this.invoice = null;
+        this.invoice = invoice;
         name = new TextField("Name");
         from = new DatePicker("From");
         from.setClearButtonVisible(true);
@@ -63,7 +63,6 @@ public class CmdCreateInvoiceDocument implements Cmd {
         withQrCode = new Checkbox("with QR Code");
         withEN16931 = new Checkbox("with EN 16931");
         overwrite = new Checkbox("Overwrite Existing Document(s)");
-        this.invoice = invoice;
         if (Objects.nonNull(invoice)) {
             name.setValue(invoice.name());
         }

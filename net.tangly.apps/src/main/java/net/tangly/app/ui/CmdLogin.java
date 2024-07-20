@@ -38,8 +38,8 @@ public record CmdLogin(@NotNull AppsBoundedDomain domain, @NotNull ApplicationVi
         component.addLoginListener(e -> {
             Optional<User> user = domain.logic().login(e.getUsername(), e.getPassword());
             if (user.isPresent()) {
-                VaadinUtils.setAttribute(component, "user", user.get());
-                VaadinUtils.setAttribute(component, "username", user.get().username());
+                VaadinUtils.setAttribute(component, ApplicationView.USER, user.get());
+                VaadinUtils.setAttribute(component, ApplicationView.USERNAME, user.get().username());
                 applicationView.userChanged(user.get());
                 component.close();
             } else {

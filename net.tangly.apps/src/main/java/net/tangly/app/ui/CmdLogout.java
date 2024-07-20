@@ -13,13 +13,19 @@
 
 package net.tangly.app.ui;
 
+import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.server.VaadinSession;
+import net.tangly.app.ApplicationView;
 import net.tangly.ui.app.domain.Cmd;
+import net.tangly.ui.components.VaadinUtils;
 
-public record CmdLogout() implements Cmd {
+public record CmdLogout(Component component) implements Cmd {
     @Override
     public void execute() {
+        VaadinUtils.setAttribute(component, ApplicationView.USER, null);
+        VaadinUtils.setAttribute(component, ApplicationView.USERNAME, null);
+
         VaadinSession.getCurrent().getSession().invalidate();
         UI.getCurrent().getPage().setLocation("");
         UI.getCurrent().getPage().reload();

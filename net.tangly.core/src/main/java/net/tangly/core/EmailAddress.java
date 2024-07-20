@@ -58,7 +58,8 @@ public record EmailAddress(@NotNull String recipient, @NotNull String domain) {
     }
 
     /**
-     * Return a text representation of an email address. The {@link Object#toString()} method is not used because the implementation is defined in the API implementation of record
+     * Returns a text representation of an email address. The {@link Object#toString()} method is not used because the implementation is defined in the API
+     * implementation of record
      * construct. The generated string can be feed to the {@link EmailAddress#of(String)} to create an email address object.
      *
      * @return text representation

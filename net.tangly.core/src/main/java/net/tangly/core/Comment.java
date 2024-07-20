@@ -22,6 +22,11 @@ import java.util.Set;
 /**
  * Defines a human-readable annotation to an entity. A comment is an immutable object. Comments can be tagged to provide classification. A comment belongs to
  * the entity owning it an is only accessible through this entity.
+ *
+ * @param created timestamp when the comment was created
+ * @param author  of the comment instance as human-readable field
+ * @param text    text of the comment, we recommend using asciidoc format
+ * @param tags    set of tags associated with the comment
  */
 public record Comment(LocalDateTime created, String author, String text, Set<Tag> tags) implements HasTags {
 

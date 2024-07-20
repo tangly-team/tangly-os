@@ -15,5 +15,11 @@ package net.tangly.core.domain;
 
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * Defines the access rights of a specific user to a specific domain.
+ * @param username of the user
+ * @param domain for which the access rights are defined
+ * @param right access rights of the user to the domain
+ */
 public record AccessRights(@NotNull String username, @NotNull String domain, @NotNull AccessRightsCode right) {
 }

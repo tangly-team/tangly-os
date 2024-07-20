@@ -16,15 +16,16 @@ package net.tangly.core.domain;
 import net.tangly.core.codes.Code;
 
 /**
- * A user has different access rights:
+ * A user has different access rights for a specific domain or the whole application:
  * <dl>
- *     <dt>restricted-user</dt><dd>has anly read and write access to owned entities in a domain. Ownership is identified through the username of the
+ *     <dt>none</dt><dd>has no access to the domain.</dd>
+ *     <dt>restricted-user</dt><dd>has only read and write access to owned entities in a domain. Ownership is identified through the username of the
  *     logged-in user.</dd>
  *     <dt>readonly user</dt><dd>has read access to all entities in a domain. No edition functions are available.</dd>
- *     <dt>user</dt> <dd>has write access to all entities in a domain. The user can create, modify, delete and duplify aggregates.</dd>
+ *     <dt>user</dt> <dd>has write access to all entities in a domain. The user can create, modify, delete and duplicate aggregates.</dd>
  *     <dt>domain-admin</dt><dd>has write access to all entities in a domain and access to specific domain actions. This right if necessary to import and
  *     export datasets of the domain.</dd>
- *     <dt>app-admin</dt><dd>has access to application specific data and function. She does not have access to damains.</dd>
+ *     <dt>app-admin</dt><dd>has access to application specific data and function. She does not have access to domains.</dd>
  * </dl>
  */
 public enum AccessRightsCode implements Code {

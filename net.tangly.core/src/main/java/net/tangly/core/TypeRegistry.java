@@ -1,10 +1,10 @@
 /*
- * Copyright 2006-2023 Marcel Baumann
+ * Copyright 2006-2024 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- *          http://www.apache.org/licenses/LICENSE-2.0
+ *          https://apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -17,13 +17,7 @@ import net.tangly.core.codes.Code;
 import net.tangly.core.codes.CodeType;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Registry of tag types defined for a domain model.
@@ -38,7 +32,7 @@ public class TypeRegistry {
     }
 
     /**
-     * Register a tag type.
+     * Registers a tag type.
      *
      * @param type tag type to bind
      */
@@ -51,7 +45,7 @@ public class TypeRegistry {
     }
 
     /**
-     * Return all the namespaces registered.
+     * Returns all the namespaces registered.
      *
      * @return List of namespaces
      */
@@ -64,7 +58,7 @@ public class TypeRegistry {
     }
 
     /**
-     * Return the tag type describing the requested namespace and name.
+     * Returns the tag type describing the requested namespace and name.
      *
      * @param namespace optional namespace of the tag type
      * @param name      mandatory name of the tag type
@@ -77,7 +71,7 @@ public class TypeRegistry {
     }
 
     /**
-     * Return the tag type describing the tag.
+     * Returns the tag type describing the tag.
      *
      * @param tag tag which type is requested
      * @param <T> type of the code
@@ -89,7 +83,7 @@ public class TypeRegistry {
     }
 
     /**
-     * Register a code type to the registry.
+     * Registers a code type to the registry.
      *
      * @param type code type to register
      * @param <T>  type of the code
@@ -99,7 +93,7 @@ public class TypeRegistry {
     }
 
     /**
-     * Return the code type for the provided code class. The implementation takes care to return the expected generic type.
+     * Returns the code type for the provided code class. The implementation takes care to return the expected generic type.
      *
      * @param clazz class of the code which code type we are looking for
      * @param <T>   type of code to look for

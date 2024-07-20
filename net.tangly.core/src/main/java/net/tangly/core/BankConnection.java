@@ -23,6 +23,10 @@ import java.util.Objects;
 
 /**
  * Describes a bank connection with IBAN account number, BIC identification and name of the institute. The class is immutable.
+ *
+ * @param iban      iban of the bank connection
+ * @param bic       bic of the bank connection
+ * @param institute institute of the bank connection
  */
 public record BankConnection(@NotNull String iban, String bic, String institute) {
     private static final Logger logger = LogManager.getLogger();
@@ -80,7 +84,7 @@ public record BankConnection(@NotNull String iban, String bic, String institute)
     }
 
     /**
-     * Validate a string representing a formatted iban number.
+     * Validates a string representing a formatted iban number.
      *
      * @param iban iban number to validate
      * @return true, if iban is valid otherwise false
@@ -96,7 +100,7 @@ public record BankConnection(@NotNull String iban, String bic, String institute)
     }
 
     /**
-     * Validate a string representing a formatted bic number.
+     * Validates a string representing a formatted bic number.
      *
      * @param bic bic number to validate
      * @return true, if the bic is valid otherwise false
@@ -112,9 +116,9 @@ public record BankConnection(@NotNull String iban, String bic, String institute)
     }
 
     /**
-     * Return a comma-separated representation of a bank connection. Null values are shown as empty strings. The {@link Object#toString()} method is not used because the
-     * implementation is defined in the API implementation of record construct. The generated string can be feed to the {@link BankConnection#of(String)} to create a bank
-     * connection object.
+     * Returns a comma-separated representation of a bank connection. Null values are shown as empty strings. The {@link Object#toString()} method is not
+     * used because the implementation is defined in the API implementation of record construct. The generated string can be feed to the
+     * {@link BankConnection#of(String)} to create a bank connection object.
      *
      * @return comma separated representation
      * @see BankConnection#of(String)

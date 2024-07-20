@@ -24,6 +24,7 @@ import com.vaadin.flow.component.tabs.Tab;
 import com.vaadin.flow.component.tabs.Tabs;
 import com.vaadin.flow.server.StreamResource;
 import com.vaadin.flow.server.VaadinSession;
+import net.tangly.app.services.AppsBoundedDomain;
 import net.tangly.app.ui.AppsBoundedDomainUi;
 import net.tangly.app.ui.CmdChangePassword;
 import net.tangly.app.ui.CmdLogin;
@@ -44,6 +45,8 @@ import java.util.stream.IntStream;
  * Vaadin creates for each tab a new instance of the bounded domain user interface.
  */
 public class ApplicationView extends AppLayout {
+    public static final String USERNAME = "username";
+    public static final String USER = "user";
     private final Map<String, BoundedDomainUi<?>> boundedDomainUis;
     private Tabs tabs;
     private final Tenant tenant;
@@ -89,17 +92,17 @@ public class ApplicationView extends AppLayout {
     }
 
     public static String username() {
-        return (VaadinSession.getCurrent() != null) ? (String) VaadinSession.getCurrent().getAttribute("username") : null;
+        return (VaadinSession.getCurrent() != null) ? (String) VaadinSession.getCurrent().getAttribute(USERNAME) : null;
     }
 
     public static User user() {
-        return (VaadinSession.getCurrent() != null) ? (User) VaadinSession.getCurrent().getAttribute("user") : null;
+        return (VaadinSession.getCurrent() != null) ? (User) VaadinSession.getCurrent().getAttribute(USER) : null;
     }
 
     @Override
     protected void onAttach(@NotNull AttachEvent attachEvent) {
         super.onAttach(attachEvent);
-        if (hasAuthentication && Objects.isNull(VaadinUtils.getAttribute(this, "subject"))) {
+        if (hasAuthentication && Objects.isNull(VaadinUtils.getAttribute(this, USER))) {
             new CmdLogin(tenant.apps(), this).execute();
         }
     }
@@ -122,7 +125,7 @@ public class ApplicationView extends AppLayout {
         return Collections.unmodifiableMap(boundedDomainUis);
     }
 
-    protected final void selectBoundedDomainUi(String domainName) {
+    protected final void selectBoundedDomainUi(@NotNull String domainName) {
         getBoundedDomainUi(domainName).ifPresent(this::selectBoundedDomainUi);
         domainTab(domainName).ifPresent(tabs::setSelectedTab);
     }
@@ -131,13 +134,13 @@ public class ApplicationView extends AppLayout {
         getBoundedDomainUi(event.getSelectedTab().getLabel()).ifPresent(this::selectBoundedDomainUi);
     }
 
-    protected void selectBoundedDomainUi(BoundedDomainUi<?> ui) {
+    protected void selectBoundedDomainUi(@NotNull BoundedDomainUi<?> ui) {
         menuBar.removeAll();
         ui.select(this, menuBar);
         if (hasAuthentication) {
             var menuItem = menuBar.addItem("Account");
             SubMenu subMenu = menuItem.getSubMenu();
-            subMenu.addItem("Logout", e -> new CmdLogout().execute());
+            subMenu.addItem("Logout", e -> new CmdLogout(this).execute());
             subMenu.addItem("Change Password", e -> new CmdChangePassword(tenant.apps(), user()).execute());
         }
     }
@@ -149,17 +152,17 @@ public class ApplicationView extends AppLayout {
         tabs.addSelectedChangeListener(this::selectBoundedDomainUi);
     }
 
+    protected MenuBar menuBar() {
+        return menuBar;
+    }
+
     private Optional<Tab> domainTab(String domain) {
         return IntStream.range(0, tabs.getComponentCount()).mapToObj(i -> tabs.getTabAt(i)).filter(o -> o.getLabel().equals(domain)).findAny();
     }
 
-    private MenuBar menuBar() {
-        var menuBar = new MenuBar();
-        menuBar.setOpenOnHover(true);
-        return menuBar;
-    }
 
     private void ofAppDomainUi() {
         registerBoundedDomainUi(new AppsBoundedDomainUi(tenant.apps()));
+        domainTab(AppsBoundedDomain.DOMAIN).ifPresent(tab -> tab.setEnabled(hasAuthentication));
     }
 }

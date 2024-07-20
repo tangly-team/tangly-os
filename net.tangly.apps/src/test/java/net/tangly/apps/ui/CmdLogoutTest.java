@@ -26,7 +26,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 class CmdLogoutTest extends AppsTest {
     @Test
     void testLogout() {
-        var logout = new CmdLogout();
+        var logout = new CmdLogout(this);
         logout.execute();
         assertThat(VaadinSession.getCurrent().getSession()).isNotNull();
     }
