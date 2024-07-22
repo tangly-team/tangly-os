@@ -25,8 +25,8 @@ import java.time.LocalDate;
  * The European Union has an european identifier for natural persons.
  * The address ownership is outside this bounded domain and is owned by the CRM bounded domain.
  *
- * @param id                      identifier is the social security number of the collaborator.
- * @param oldSocialSecurityNumber old social security number. It is an idiosyncrasy of Switzerland
+ * @param id                      identifier is the social security number of the collaborator
+ * @param oldSocialSecurityNumber old social security number. It is an idiosyncrasy of Switzerland and optional
  * @param birthday                birthday of the collaborator
  * @param fullname                fullname as displayed on an official document
  * @param internalId              internal identifier of the collaborator used to identify in the company

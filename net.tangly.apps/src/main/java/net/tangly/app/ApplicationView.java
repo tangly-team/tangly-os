@@ -157,7 +157,8 @@ public class ApplicationView extends AppLayout {
     }
 
     private Optional<Tab> domainTab(String domain) {
-        return IntStream.range(0, tabs.getComponentCount()).mapToObj(i -> tabs.getTabAt(i)).filter(o -> o.getLabel().equals(domain)).findAny();
+        return Objects.isNull(tabs) ? Optional.empty() :
+            IntStream.range(0, tabs.getComponentCount()).mapToObj(i -> tabs.getTabAt(i)).filter(o -> o.getLabel().equals(domain)).findAny();
     }
 
 

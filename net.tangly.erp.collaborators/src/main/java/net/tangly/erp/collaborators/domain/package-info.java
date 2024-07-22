@@ -16,7 +16,7 @@
  * <ul>
  * <li>Swiss social insurances are defined and computed at company level. Salary is the parameter.The insurance company defines the administrative costs.</li>
  * <li>Swiss accident insurances are defined and computed at company level. Salary and potentially gender are parameters.</li>
- * <li>Siwss pension funds are computed on an individual base. Salary and age are paremeters, only the insurance company knows the exact formula.</li>
+ * <li>Swiss pension funds are computed on an individual base. Salary and age are parameters, only the insurance company knows the exact formula.</li>
  * </ul>
  * The templates and fields of the yearly salary declaration are defined by the Swiss federal government. Templates are updated over time to reflect changes such as the format
  * of the social number.
