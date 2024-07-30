@@ -42,7 +42,7 @@ public enum AccessRightsCode implements Code {
     }
 
     @Override
-    public boolean isEnabled() {
+    public boolean enabled() {
         return true;
     }
 }

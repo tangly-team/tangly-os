@@ -144,6 +144,10 @@ public class Tenant {
         return "%s/%s".formatted(getProperty(IMPORTS_DIRECTORY_PROPERTY), domain);
     }
 
+    public String resources(String domain) {
+        return "%s/%s".formatted(imports(domain), "resources");
+    }
+
     public String databases() {
         return getProperty(DATABASES_DIRECTORY_PROPERTY);
     }

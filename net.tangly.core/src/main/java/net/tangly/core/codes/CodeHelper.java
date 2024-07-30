@@ -30,8 +30,9 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.function.Function;
 
-class CodeHelper {
+public final class CodeHelper {
     /**
      * Private constructor for a utility class.
      */
@@ -39,20 +40,11 @@ class CodeHelper {
     }
 
     /**
-     * Defines the signature of a code class constructor.
-     */
-    @FunctionalInterface
-    public interface CodeFactory<T extends Code> {
-        T create(int id, String code, boolean enabled);
-    }
-
-    /**
      * Utility method to read all code values from an enumeration type implementing the {}@link Code} interface.
      *
-     * @param clazz   class of the reference code
-     * @param factory placeholder to pass the class constructor as lambda expression
+     * @param clazz class of the reference code
      **/
-    public static <T extends Enum<T> & Code> CodeType<T> build(Class<T> clazz, CodeFactory<T> factory) {
+    public static <T extends Enum<T> & Code> CodeType<T> build(Class<T> clazz) {
         return CodeType.of(clazz);
     }
 
@@ -67,14 +59,14 @@ class CodeHelper {
      * @return code type and all its values
      * @throws SQLException if a database access error occurred
      */
-    public static <T extends Code> CodeType<T> build(Class<T> clazz, CodeFactory<T> factory, DataSource dataSource, String tableName) throws
-        SQLException {
+    public static <T extends Code> CodeType<T> build(Class<T> clazz, Function<ResultSet, T> factory, DataSource dataSource, String tableName)
+        throws SQLException {
         final String SQL_QUERY = "SELECT id, code, enabled FROM %s".formatted(tableName);
         try (Connection connection = dataSource.getConnection(); Statement statement = connection.createStatement();
              ResultSet resultSet = statement.executeQuery(SQL_QUERY)) {
             List<T> codes = new ArrayList<>();
             while (resultSet.next()) {
-                T code = factory.create(resultSet.getInt("id"), resultSet.getString("code"), resultSet.getBoolean("enabled"));
+                T code = factory.apply(resultSet);
                 codes.add(code);
             }
             return CodeType.of(clazz, codes);
@@ -91,13 +83,13 @@ class CodeHelper {
      * @return code type and all its values
      * @throws IOException if a file access error occurred
      */
-    public static <T extends Code> CodeType<T> build(Class<T> clazz, CodeFactory<T> factory, Path path) throws IOException {
+    public static <T extends Code> CodeType<T> build(Class<T> clazz, Function<JSONObject, T> factory, Path path) throws IOException {
         try (Reader reader = Files.newBufferedReader(path, StandardCharsets.UTF_8)) {
             Iterator<Object> iter = new JSONArray(new JSONTokener(reader)).iterator();
             List<T> codes = new ArrayList<>();
             while (iter.hasNext()) {
                 JSONObject value = (JSONObject) iter.next();
-                T code = factory.create(value.getInt("id"), value.getString("code"), value.getBoolean("enabled"));
+                T code = factory.apply(value);
                 codes.add(code);
             }
             return CodeType.of(clazz, codes);

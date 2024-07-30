@@ -30,7 +30,7 @@ public class AppsAdapter implements AppsPort {
 
     private final Path dataFolder;
 
-    public AppsAdapter(AppsRealm realm, @NotNull Path dataFolder) {
+    public AppsAdapter(@NotNull AppsRealm realm, @NotNull Path dataFolder) {
         this.realm = realm;
         this.dataFolder = dataFolder;
     }

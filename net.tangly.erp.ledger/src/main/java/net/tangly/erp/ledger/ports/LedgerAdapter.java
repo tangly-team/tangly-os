@@ -15,11 +15,16 @@ package net.tangly.erp.ledger.ports;
 
 import net.tangly.commons.logger.EventData;
 import net.tangly.commons.utilities.AsciiDoctorHelper;
+import net.tangly.core.TypeRegistry;
+import net.tangly.core.codes.CodeHelper;
 import net.tangly.core.domain.DomainAudit;
 import net.tangly.core.domain.Port;
+import net.tangly.erp.ledger.domain.LedgerTags;
 import net.tangly.erp.ledger.domain.Transaction;
 import net.tangly.erp.ledger.services.LedgerPort;
 import net.tangly.erp.ledger.services.LedgerRealm;
+import net.tangly.erp.ledger.services.VatCode;
+import org.eclipse.serializer.exceptions.IORuntimeException;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
@@ -54,11 +59,13 @@ public class LedgerAdapter implements LedgerPort {
     public static final String EQUITY_ACCOUNT = "28";
     public static final String CASH_ON_HAND_ACCOUNT = "100";
     private final LedgerRealm realm;
+    private final TypeRegistry registry;
     private final Path dataFolder;
     private final Path reportsFolder;
 
-    public LedgerAdapter(@NotNull LedgerRealm realm, Path dataFolder, Path reportsFolder) {
+    public LedgerAdapter(@NotNull LedgerRealm realm, @NotNull TypeRegistry registry, Path dataFolder, Path reportsFolder) {
         this.realm = realm;
+        this.registry = registry;
         this.dataFolder = dataFolder;
         this.reportsFolder = reportsFolder;
     }
@@ -70,7 +77,7 @@ public class LedgerAdapter implements LedgerPort {
 
     @Override
     public void importEntities(@NotNull DomainAudit audit) {
-        var handler = new LedgerTsvHdl(realm);
+        var handler = new LedgerTsvHdl(realm, registry);
         handler.importChartOfAccounts(audit, dataFolder.resolve(LEDGER));
         realm.build();
         try (Stream<Path> stream = Files.walk(dataFolder)) {
@@ -89,7 +96,7 @@ public class LedgerAdapter implements LedgerPort {
 
     @Override
     public void exportEntities(@NotNull DomainAudit audit) {
-        var handler = new LedgerTsvHdl(realm);
+        var handler = new LedgerTsvHdl(realm, registry);
         handler.exportChartOfAccounts(audit, dataFolder.resolve(LEDGER));
         realm().transactions().items().stream().map(Transaction::date).map(LocalDate::getYear).distinct().forEach(o -> {
             Path journal = dataFolder.resolve(journalForYear(o));
@@ -104,6 +111,19 @@ public class LedgerAdapter implements LedgerPort {
         Port.entitiesCleared(audit, "accounts");
         realm().transactions().deleteAll();
         Port.entitiesCleared(audit, "transactions");
+    }
+
+    @Override
+    public void importConfiguration(@NotNull TypeRegistry registry) {
+        LedgerTags.registerTags(registry);
+        try {
+            var type = CodeHelper.build(VatCode.class,
+                o -> new VatCode(o.getInt("id"), o.getString("code"), o.getBigDecimal("vatRate"), o.getBigDecimal("vatDueRate"), o.getBoolean("enabled")),
+                dataFolder.resolve("resources", "VatCodes.json"));
+            registry.register(type);
+        } catch (IOException e) {
+            throw new IORuntimeException(e);
+        }
     }
 
     @Override

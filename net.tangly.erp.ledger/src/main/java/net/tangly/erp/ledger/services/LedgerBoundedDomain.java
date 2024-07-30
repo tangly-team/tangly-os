@@ -20,7 +20,6 @@ import net.tangly.core.domain.DomainEntity;
 import net.tangly.core.domain.UsersProvider;
 import net.tangly.erp.ledger.domain.Account;
 import net.tangly.erp.ledger.domain.AccountEntry;
-import net.tangly.erp.ledger.domain.LedgerTags;
 import net.tangly.erp.ledger.domain.Transaction;
 import org.jetbrains.annotations.NotNull;
 
@@ -32,7 +31,7 @@ public class LedgerBoundedDomain extends BoundedDomain<LedgerRealm, LedgerBusine
 
     public LedgerBoundedDomain(LedgerRealm realm, LedgerBusinessLogic logic, LedgerPort port, TypeRegistry registry, UsersProvider usersProvider) {
         super(DOMAIN, realm, logic, port, registry, usersProvider);
-        LedgerTags.registerTags(registry);
+        port.importConfiguration(registry);
     }
 
     @Override

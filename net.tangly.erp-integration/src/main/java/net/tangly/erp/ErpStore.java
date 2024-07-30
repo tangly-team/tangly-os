@@ -33,6 +33,7 @@ public record ErpStore(@NotNull FileSystem fs) implements DomainAudit {
     static final String DATABASE = "db/";
     static final String DATA = "data/";
     static final String REPORTS = "reports/";
+    static final String RESOURCES = "resources/";
 
     static final String CRM = "customers/";
     static final String LEDGER = "transactions/";
@@ -110,6 +111,7 @@ public record ErpStore(@NotNull FileSystem fs) implements DomainAudit {
             copy(LEDGER_PACKAGE_NAME, ledgerRoot, "ledger.tsv");
             copy(LEDGER_PACKAGE_NAME, ledgerRoot, "2015-journal.tsv");
             copy(LEDGER_PACKAGE_NAME, ledgerRoot, "2016-journal.tsv");
+            copy(LEDGER_PACKAGE_NAME, ledgerRoot, RESOURCES + "VatCodes.json");
 
             var invoicesRoot = dataRoot().resolve(INVOICES);
             copy(INVOICES_PACKAGE_NAME, invoicesRoot, InvoicesAdapter.ARTICLES_TSV);
@@ -132,6 +134,7 @@ public record ErpStore(@NotNull FileSystem fs) implements DomainAudit {
         Files.createDirectories(fs.getPath(ORGANIZATION, DATA, domain));
         Files.createDirectories(fs.getPath(ORGANIZATION, DATABASE, domain));
         Files.createDirectories(fs.getPath(ORGANIZATION, REPORTS, domain));
+        Files.createDirectories(fs.getPath(ORGANIZATION, DATA, domain, RESOURCES));
     }
 
     private void createYearFolders(Path folder) throws IOException {

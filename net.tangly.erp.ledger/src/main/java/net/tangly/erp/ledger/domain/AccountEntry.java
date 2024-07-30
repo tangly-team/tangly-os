@@ -74,7 +74,7 @@ public record AccountEntry(@NotNull String accountId, @NotNull LocalDate date, @
     }
 
     public String vatCodeAsString() {
-        return vatCode != null ? vatCode.name() : "";
+        return vatCode != null ? vatCode.code() : "";
     }
 
     @Override

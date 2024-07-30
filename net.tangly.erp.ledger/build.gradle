@@ -32,6 +32,7 @@ dependencies {
     implementation(libs.vaadin.socharts)
     implementation(libs.eclispsestore.storage)
     implementation(libs.apache.commons.csv)
+    implementation(libs.json.core)
 
     testImplementation project(':net.tangly.apps')
     testImplementation(libs.vaadin.test)

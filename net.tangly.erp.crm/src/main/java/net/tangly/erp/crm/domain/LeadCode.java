@@ -40,7 +40,7 @@ public enum LeadCode implements Code {
     }
 
     @Override
-    public boolean isEnabled() {
+    public boolean enabled() {
         return true;
     }
 }

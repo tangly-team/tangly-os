@@ -45,7 +45,7 @@ public enum VatCode implements Code, HasDateRange {
     }
 
     @Override
-    public boolean isEnabled() {
+    public boolean enabled() {
         return true;
     }
 

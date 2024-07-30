@@ -125,7 +125,7 @@ public class Transaction implements HasDate, HasText {
     }
 
     public String vatCodeAsString() {
-        return vatCode().map(VatCode::name).orElse(null);
+        return vatCode().map(VatCode::code).orElse(null);
     }
 
     /**

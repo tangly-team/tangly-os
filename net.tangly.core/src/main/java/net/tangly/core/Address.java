@@ -41,7 +41,7 @@ public record Address(String street, String extended, String poBox, String postc
     }
 
     /**
-     * Return a builder instance for an address object. The builder can be used to create multiple address objects
+     * Returns a builder instance for an address object. The builder can be used to create multiple address objects
      *
      * @return builder instance
      */
@@ -50,8 +50,9 @@ public record Address(String street, String extended, String poBox, String postc
     }
 
     /**
-     * Return a comma-separated representation of an address. Null values are shown as empty strings. The {@link Object#toString()} method is not used because the implementation is
-     * defined in the API implementation of record construct. The generated string can be feed to the {@link Address#of(String)} to create an address object.
+     * Returns a comma-separated representation of an address. Null values are shown as empty strings. The {@link Object#toString()} method is not used
+     * because the implementation is defined in the API implementation of record construct. The generated string can be feed to the
+     * {@link Address#of(String)} to create an address object.
      *
      * @return comma separated representation
      * @see Address#of(String)
@@ -62,7 +63,7 @@ public record Address(String street, String extended, String poBox, String postc
     }
 
     /**
-     * Build an address object from a comma separated string representation.
+     * Builds an address object from a comma separated string representation.
      *
      * @param text comma separated representation of the address instance
      * @return new address object
@@ -75,7 +76,8 @@ public record Address(String street, String extended, String poBox, String postc
     }
 
     /**
-     * Define the builder for the address class with a fluent interface. The builder supports the creation of multiple address objects. A canonical transformation is used to
+     * Defines the builder for the address class with a fluent interface. The builder supports the creation of multiple address objects. A canonical
+     * transformation is used to
      * transform empty or blank {@link String#isBlank} string fields into null values.
      */
     public static class Builder {

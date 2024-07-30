@@ -13,38 +13,10 @@
 
 package net.tangly.erp.ledger.services;
 
+import net.tangly.core.codes.Code;
+import org.jetbrains.annotations.NotNull;
+
 import java.math.BigDecimal;
 
-public enum VatCode {
-    F1(new BigDecimal("0.080"), new BigDecimal("0.061")),
-    F2(new BigDecimal("0.080"), new BigDecimal("0.061")),
-    F3(new BigDecimal("0.077"), new BigDecimal("0.065")),
-    F4(new BigDecimal("0.081"), new BigDecimal("0.069"));
-
-    private final BigDecimal vatRate;
-    private final BigDecimal vatDueRate;
-
-    VatCode(BigDecimal vatRate, BigDecimal vatDueRate) {
-        this.vatRate = vatRate;
-        this.vatDueRate = vatDueRate;
-    }
-
-    public BigDecimal vatRate() {
-        return vatRate;
-    }
-
-    public BigDecimal vatDueRate() {
-        return vatDueRate;
-    }
-
-    public static VatCode of(String code) {
-        return switch (code) {
-            case null -> null;
-            case "F1" -> F1;
-            case "F2" -> F2;
-            case "F3" -> F3;
-            case "F4" -> F4;
-            default -> null;
-        };
-    }
+public record VatCode(int id, @NotNull String code, @NotNull BigDecimal vatRate, @NotNull BigDecimal vatDueRate, boolean enabled) implements Code {
 }

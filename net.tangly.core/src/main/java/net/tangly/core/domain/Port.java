@@ -14,6 +14,7 @@
 package net.tangly.core.domain;
 
 import net.tangly.commons.logger.EventData;
+import net.tangly.core.TypeRegistry;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
@@ -33,7 +34,7 @@ public interface Port<R extends Realm> {
     Pattern PATTERN = Pattern.compile("\\d{4}-.*");
 
     /**
-     * Import all entities of the bounded domain from the file system.
+     * Imports all entities of the bounded domain from the file system.
      * All TSV, JSON, TOML, and YAML files are imported.
      * The domain is responsible for the order of the import and the handling of the entities.
      * A bounded domain should not depend on other domains to perform the operation.
@@ -44,7 +45,7 @@ public interface Port<R extends Realm> {
     void importEntities(@NotNull DomainAudit audit);
 
     /**
-     * Export all entities of the bounded domain to the file system as TSV, JSON, TOML, and YAML files.
+     * Exports all entities of the bounded domain to the file system as TSV, JSON, TOML, and YAML files.
      * A bounded domain should not depend on other domains to perform the operation.
      *
      * @param audit domain audit sink to log the operation events
@@ -53,12 +54,19 @@ public interface Port<R extends Realm> {
     void exportEntities(@NotNull DomainAudit audit);
 
     /**
-     * Clear all entities of the bounded domain. Upon execution, the domain is empty. Use with caution as the operation is not reversible.
+     * Clears all entities of the bounded domain. Upon execution, the domain is empty. Use with caution as the operation is not reversible.
      * Typically, the operation is used before an import to ensure that the domain is empty.
      *
      * @param audit domain audit sink to log the operation events
      */
     void clearEntities(@NotNull DomainAudit audit);
+
+    /**
+     * Imports configuration specific to the bounded domain in the context of a tenant.
+     * The configuration is typically used to configure codes and tags.
+     * @param registry registry of code and tag types to register the configuration
+     */
+    default void importConfiguration(@NotNull TypeRegistry registry) {}
 
     /**
      * Return the realm containing all the entities of the bounded domain.

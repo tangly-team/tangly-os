@@ -44,14 +44,14 @@ public class BoundedDomain<R extends Realm, B, P extends Port<R>> implements Dom
     private final R realm;
     private final P port;
     private final B logic;
-    private final transient TypeRegistry registry;
+    private final TypeRegistry registry;
     private final UsersProvider usersProvider;
     private final SubmissionPublisher<Object> channel;
     private final SubmissionPublisher<Object> internalChannel;
     private final List<EventData> auditEvents;
 
     /**
-     * Refined event listener interface to handle events in the domain or from another domain.
+     * Defines a refined event listener interface to handle events in the domain or from another domain.
      * @see Flow.Subscriber
      */
     @FunctionalInterface
@@ -172,7 +172,7 @@ public class BoundedDomain<R extends Realm, B, P extends Port<R>> implements Dom
         return auditEvents;
     }
 
-    public void log(EventData auditEvent) {
+    public void log(@NotNull EventData auditEvent) {
         EventData.log(auditEvent);
         auditEvents.add(auditEvent);
     }

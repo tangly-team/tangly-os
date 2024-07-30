@@ -146,7 +146,8 @@ public final class Main {
         if (tenant.isEnabled(LedgerBoundedDomain.DOMAIN)) {
             var realm = tenant.inMemory() ? new LedgerEntities() : new LedgerEntities(Path.of(tenant.databases(), LedgerBoundedDomain.DOMAIN));
             var domain = new LedgerBoundedDomain(realm, new LedgerBusinessLogic(realm),
-                new LedgerAdapter(realm, Path.of(tenant.imports(LedgerBoundedDomain.DOMAIN)), Path.of(tenant.reports(LedgerBoundedDomain.DOMAIN))),
+                new LedgerAdapter(realm, tenant.registry(), Path.of(tenant.imports(LedgerBoundedDomain.DOMAIN)),
+                    Path.of(tenant.reports(LedgerBoundedDomain.DOMAIN))),
                 tenant.registry(), tenant.UsersProviderFor(LedgerBoundedDomain.DOMAIN));
             tenant.registerBoundedDomain(domain);
         }

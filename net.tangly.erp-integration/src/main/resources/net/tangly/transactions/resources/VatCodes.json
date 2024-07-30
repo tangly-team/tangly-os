@@ -1,0 +1,30 @@
+[
+    {
+        "id": 1,
+        "code": "F1",
+        "vatRate": "0.080",
+        "vatDueRate": "0.061",
+        "enabled": "false"
+    },
+    {
+        "id": 2,
+        "code": "F2",
+        "vatRate": "0.080",
+        "vatDueRate": "0.061",
+        "enabled": "false"
+    },
+    {
+        "id": 3,
+        "code": "F3",
+        "vatRate": "0.077",
+        "vatDueRate": "0.065",
+        "enabled": "false"
+    },
+    {
+        "id": 4,
+        "code": "F4",
+        "vatRate": "0.081",
+        "vatDueRate": "0.069",
+        "enabled": "true"
+    }
+]

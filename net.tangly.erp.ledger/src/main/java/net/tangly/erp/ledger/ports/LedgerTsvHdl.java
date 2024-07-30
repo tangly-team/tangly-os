@@ -17,6 +17,7 @@ import net.tangly.commons.lang.Dates;
 import net.tangly.commons.lang.Strings;
 import net.tangly.commons.logger.EventData;
 import net.tangly.core.Tag;
+import net.tangly.core.TypeRegistry;
 import net.tangly.core.domain.DomainAudit;
 import net.tangly.core.domain.TsvHdl;
 import net.tangly.erp.ledger.domain.Account;
@@ -68,9 +69,11 @@ public class LedgerTsvHdl {
 
     private static final Logger logger = LogManager.getLogger();
     private final LedgerRealm ledger;
+    private final TypeRegistry registry;
 
-    public LedgerTsvHdl(@NotNull LedgerRealm ledger) {
+    public LedgerTsvHdl(@NotNull LedgerRealm ledger, @NotNull TypeRegistry registry) {
         this.ledger = ledger;
+        this.registry = registry;
     }
 
     public LedgerRealm ledger() {
@@ -166,11 +169,10 @@ public class LedgerTsvHdl {
                     out.println();
                 }
                 ++counter;
-                audit.log(EventData.EXPORT_EVENT, EventData.Status.SUCCESS,
-                    "%s exported to charter of accounts".formatted(Account.class.getSimpleName()), Map.of(SOURCE, path, "entity", account));
+                audit.log(EventData.EXPORT_EVENT, EventData.Status.SUCCESS, "%s exported to charter of accounts".formatted(Account.class.getSimpleName()),
+                    Map.of(SOURCE, path, "entity", account));
             }
-            audit.log(EventData.EXPORT_EVENT, EventData.Status.INFO, "exported to charter of accounts",
-                Map.of(SOURCE, path, "counter", counter));
+            audit.log(EventData.EXPORT_EVENT, EventData.Status.INFO, "exported to charter of accounts", Map.of(SOURCE, path, "counter", counter));
         } catch (IOException e) {
             audit.log(EventData.EXPORT_EVENT, EventData.Status.FAILURE, "Accounts exported to", Map.of(SOURCE, path), e);
 
@@ -219,13 +221,10 @@ public class LedgerTsvHdl {
                     var debitAccount = Strings.emptyToNull(debitValues[0]);
                     var creditAccount = Strings.emptyToNull(creditValues[0]);
                     var debit = (debitAccount != null) ?
-                        new AccountEntry(debitAccount, Dates.of(date), amount, null, null, true, VatCode.of(vatCode), defineSegments(debitValues)) :
-                        null;
+                        new AccountEntry(debitAccount, Dates.of(date), amount, null, null, true, of(vatCode), defineSegments(debitValues)) : null;
                     var credit = (creditAccount != null) ?
-                        new AccountEntry(creditAccount, Dates.of(date), amount, null, null, false, VatCode.of(vatCode), defineSegments(creditValues)) :
-                        null;
-                    Transaction transaction =
-                        Transaction.of(Dates.of(date), reference, text, debit, credit, VatCode.of(vatCode), Dates.of(dateExpected), splits);
+                        new AccountEntry(creditAccount, Dates.of(date), amount, null, null, false, of(vatCode), defineSegments(creditValues)) : null;
+                    Transaction transaction = Transaction.of(Dates.of(date), reference, text, debit, credit, of(vatCode), Dates.of(dateExpected), splits);
                     ledger.book(transaction);
                     ++counter;
                     audit.log(EventData.IMPORT_EVENT, EventData.Status.SUCCESS, "%s imported to journal".formatted(Transaction.class.getSimpleName()),
@@ -271,18 +270,23 @@ public class LedgerTsvHdl {
         }
     }
 
-    private static CSVRecord importSplits(@NotNull Iterator<CSVRecord> records, List<AccountEntry> splits, boolean isDebitSplit) {
+    private VatCode of(String code) {
+        var vatCodes = registry.find(VatCode.class);
+        return vatCodes.isPresent() ? vatCodes.get().findCode(code).orElse(null) : null;
+    }
+
+    private CSVRecord importSplits(@NotNull Iterator<CSVRecord> records, List<AccountEntry> splits, boolean isDebitSplit) {
         var csv = records.hasNext() ? records.next() : null;
         while ((isDebitSplit && isCreditSplit(csv)) || isDebitSplit(csv)) {
             if (!Strings.isNullOrBlank(csv.get(ACCOUNT_DEBIT))) {
                 var values = csv.get(ACCOUNT_DEBIT).split("-");
                 var entry = AccountEntry.debit(values[0], TsvHdl.parseDate(csv, DATE), TsvHdl.parseBigDecimal(csv, AMOUNT), csv.get(DOC), csv.get(DESCRIPTION),
-                    VatCode.of(csv.get(VAT_CODE)), defineSegments(values));
+                    of(csv.get(VAT_CODE)), defineSegments(values));
                 splits.add(entry);
             } else if (!Strings.isNullOrBlank(csv.get(ACCOUNT_CREDIT))) {
                 var values = csv.get(ACCOUNT_CREDIT).split("-");
                 var entry = AccountEntry.credit(values[0], TsvHdl.parseDate(csv, DATE), TsvHdl.parseBigDecimal(csv, AMOUNT), csv.get(DOC), csv.get(DESCRIPTION),
-                    VatCode.of(csv.get(VAT_CODE)), defineSegments(values));
+                    of(csv.get(VAT_CODE)), defineSegments(values));
                 splits.add(entry);
             }
             csv = TsvHdl.nextNonEmptyRecord(records);

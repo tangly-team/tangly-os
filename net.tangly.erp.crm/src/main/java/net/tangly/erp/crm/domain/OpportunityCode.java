@@ -40,7 +40,7 @@ public enum OpportunityCode implements Code {
     }
 
     @Override
-    public boolean isEnabled() {
+    public boolean enabled() {
         return true;
     }
 }

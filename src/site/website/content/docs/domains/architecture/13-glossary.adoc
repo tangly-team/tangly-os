@@ -29,9 +29,11 @@ ifndef::imagesdir[:imagesdir: ./pics]
 |===
 |Term |Definition|Remarks
 
-|Hdl|Handler|A handler is responsible for handling a specific part of the system. It is a facade for the underlying subsystem.
+|Hdl|Handler|A handler is responsible for handling a specific part of the system. It is a facade for the underlying subsystem. The class name has the suffix
+`Hdl`.
 |Imp|Implementation|Default implementation of an interface. The class name is the interface name with the suffix `Imp`.
-|Mgr|Manager|A manager class is responsible for managing an overall part of the system. It is a facade for the underlying subsystem.
+|Mgr|Manager|A manager class is responsible for managing an overall part of the system. It is a facade for the underlying subsystem. The class name has the
+suffix `Mgr`.
 |TSV|Tab Seperated Value|
 |View|View Class|A view class displays entities of a specific type. The class name is the plural form of the entity name with the suffix `View`.
 |===
