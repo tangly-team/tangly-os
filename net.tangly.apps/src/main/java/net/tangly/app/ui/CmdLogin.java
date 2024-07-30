@@ -26,6 +26,12 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Optional;
 
+/**
+ * Command to display the login dialog and to authenticate the user.
+ * The username is composed of the tenant and the user separated by a slash.
+ *
+ * @param applicationView the application view owning the command and the login dialog
+ */
 public record CmdLogin(@NotNull ApplicationView applicationView) implements Cmd {
     @Override
     public void execute() {
@@ -39,12 +45,16 @@ public record CmdLogin(@NotNull ApplicationView applicationView) implements Cmd 
         component.addLoginListener(e -> {
             var credentials = e.getUsername().split("/");
             Tenant tenant = Application.instance().tenant(credentials[0]);
-            Optional<User> user = tenant.apps().logic().login(credentials[1], e.getPassword());
-            if (user.isPresent()) {
-                VaadinUtils.setAttribute(component, ApplicationView.USER, user.get());
-                VaadinUtils.setAttribute(component, ApplicationView.USERNAME, user.get().username());
-                applicationView.userChanged(tenant, user.get());
-                component.close();
+            if (tenant == null) {
+                Optional<User> user = tenant.apps().logic().login(credentials[1], e.getPassword());
+                if (user.isPresent()) {
+                    VaadinUtils.setAttribute(component, ApplicationView.USER, user.get());
+                    VaadinUtils.setAttribute(component, ApplicationView.USERNAME, user.get().username());
+                    applicationView.userChanged(tenant, user.get());
+                    component.close();
+                } else {
+                    component.setError(true);
+                }
             } else {
                 component.setError(true);
             }
