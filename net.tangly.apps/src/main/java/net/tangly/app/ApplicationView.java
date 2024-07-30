@@ -55,7 +55,6 @@ public class ApplicationView extends AppLayout {
     private final boolean hasAuthentication;
     private final MenuBar menuBar;
 
-
     public ApplicationView(Tenant tenant, boolean hasAuthentication) {
         this.tenant = tenant;
         this.hasAuthentication = hasAuthentication;
@@ -142,11 +141,18 @@ public class ApplicationView extends AppLayout {
         }
     }
 
-    protected void drawerMenu() {
+    protected void drawerMenu(User user) {
         tabs = new Tabs(boundedDomainUis().keySet().stream().map(o -> new Tab(o)).toList().toArray(new Tab[0]));
         tabs.setOrientation(Tabs.Orientation.VERTICAL);
         addToDrawer(tabs);
         tabs.addSelectedChangeListener(this::selectBoundedDomainUi);
+        boundedDomainUis().values().forEach(o -> {
+            boolean hasAccessToDomain = Objects.isNull(user) || user.accessRightsFor(o.name()).isPresent();
+            domainTab(o.name()).ifPresent(tab -> {
+                tab.setEnabled(hasAccessToDomain);
+                o.userChanged(user);
+            });
+        });
     }
 
     protected MenuBar menuBar() {

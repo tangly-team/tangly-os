@@ -42,7 +42,7 @@ class AppsTest extends ApplicationView {
         Tenant tenant = new Tenant(TENANT, null);
         Application.instance().putTenant(tenant);
         super(tenant, false);
-        drawerMenu();
+        drawerMenu(null);
         selectBoundedDomainUi(AppsBoundedDomain.DOMAIN);
     }
 

@@ -42,14 +42,7 @@ public class MainView extends ApplicationView {
     public void userChanged(@NotNull Tenant tenant, @NotNull User user) {
         super.userChanged(tenant, user);
         ofDomainUis(tenant);
-        drawerMenu();
-        boundedDomainUis().values().forEach(o -> {
-            boolean hasAccessToDomain = user.accessRightsFor(o.name()).isPresent();
-            domainTab(o.name()).ifPresent(tab -> {
-                tab.setEnabled(hasAccessToDomain);
-                o.userChanged(user);
-            });
-        });
+        drawerMenu(user);
         selectBoundedDomainUi(AppsBoundedDomain.DOMAIN);
     }
 
