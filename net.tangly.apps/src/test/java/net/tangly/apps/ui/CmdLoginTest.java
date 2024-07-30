@@ -13,7 +13,6 @@
 
 package net.tangly.apps.ui;
 
-import net.tangly.app.Application;
 import net.tangly.app.ui.CmdLogin;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -22,7 +21,7 @@ import org.junit.jupiter.api.Test;
 class CmdLoginTest extends AppsTest {
     @Test
     void testLogin() {
-        var login = new CmdLogin(Application.instance().tenant(TENANT).apps(), this);
+        var login = new CmdLogin(this);
         login.execute();
     }
 }

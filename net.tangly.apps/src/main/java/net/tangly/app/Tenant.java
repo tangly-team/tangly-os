@@ -40,6 +40,7 @@ import java.util.*;
  */
 public class Tenant {
     public static final String IN_MEMORY_PROPERTY = "tenant.in-memory";
+    public static final String TENANT_ROOT_DIRECTORY_PROPERTY = "tenant.root.directory";
     public static final String DATABASES_DIRECTORY_PROPERTY = "tenant.root.db.directory";
     public static final String IMPORTS_DIRECTORY_PROPERTY = "tenant.root.imports.directory";
     public static final String REPORTS_DIRECTORY_PROPERTY = "tenant.root.reports.directory";

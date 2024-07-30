@@ -16,8 +16,9 @@ package net.tangly.app.ui;
 import com.vaadin.flow.component.login.LoginI18n;
 import com.vaadin.flow.component.login.LoginOverlay;
 import com.vaadin.flow.component.notification.Notification;
+import net.tangly.app.Application;
 import net.tangly.app.ApplicationView;
-import net.tangly.app.services.AppsBoundedDomain;
+import net.tangly.app.Tenant;
 import net.tangly.core.domain.User;
 import net.tangly.ui.app.domain.Cmd;
 import net.tangly.ui.components.VaadinUtils;
@@ -25,7 +26,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Optional;
 
-public record CmdLogin(@NotNull AppsBoundedDomain domain, @NotNull ApplicationView applicationView) implements Cmd {
+public record CmdLogin(@NotNull ApplicationView applicationView) implements Cmd {
     @Override
     public void execute() {
         LoginOverlay component = new LoginOverlay();
@@ -36,11 +37,13 @@ public record CmdLogin(@NotNull AppsBoundedDomain domain, @NotNull ApplicationVi
         component.setI18n(i18n);
         component.setOpened(true);
         component.addLoginListener(e -> {
-            Optional<User> user = domain.logic().login(e.getUsername(), e.getPassword());
+            var credentials = e.getUsername().split("/");
+            Tenant tenant = Application.instance().tenant(credentials[0]);
+            Optional<User> user = tenant.apps().logic().login(credentials[1], e.getPassword());
             if (user.isPresent()) {
                 VaadinUtils.setAttribute(component, ApplicationView.USER, user.get());
                 VaadinUtils.setAttribute(component, ApplicationView.USERNAME, user.get().username());
-                applicationView.userChanged(user.get());
+                applicationView.userChanged(tenant, user.get());
                 component.close();
             } else {
                 component.setError(true);

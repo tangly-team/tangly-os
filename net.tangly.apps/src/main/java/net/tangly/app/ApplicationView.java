@@ -36,7 +36,8 @@ import org.jetbrains.annotations.NotNull;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
-import java.io.UncheckedIOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.*;
 import java.util.stream.IntStream;
 
@@ -47,32 +48,24 @@ import java.util.stream.IntStream;
 public class ApplicationView extends AppLayout {
     public static final String USERNAME = "username";
     public static final String USER = "user";
+    public static String IMAGE_NAME = "icon.png";
     private final Map<String, BoundedDomainUi<?>> boundedDomainUis;
     private Tabs tabs;
-    private final Tenant tenant;
-    private final MenuBar menuBar;
+    private Tenant tenant;
     private final boolean hasAuthentication;
+    private final MenuBar menuBar;
 
-    public ApplicationView(Tenant tenant, String imageName, boolean hasAuthentication) {
+
+    public ApplicationView(Tenant tenant, boolean hasAuthentication) {
         this.tenant = tenant;
         this.hasAuthentication = hasAuthentication;
         boundedDomainUis = new TreeMap<>();
         setPrimarySection(Section.NAVBAR);
         menuBar = new MenuBar();
         menuBar.setOpenOnHover(true);
-        if (Objects.nonNull(imageName)) {
-            try {
-                byte[] buffer = Thread.currentThread().getContextClassLoader().getResourceAsStream(imageName).readAllBytes();
-                Image logo = new Image(new StreamResource(imageName, () -> new ByteArrayInputStream(buffer)), imageName);
-                logo.setHeight("44px");
-                addToNavbar(new DrawerToggle(), logo, menuBar);
-            } catch (IOException e) {
-                throw new UncheckedIOException(e);
-            }
-        } else {
-            addToNavbar(new DrawerToggle(), menuBar);
+        if (Objects.nonNull(tenant)) {
+            ofAppDomainUi();
         }
-        ofAppDomainUi();
     }
 
     /**
@@ -81,14 +74,18 @@ public class ApplicationView extends AppLayout {
      *
      * @param user newly logged-in user
      */
-    public void userChanged(@NotNull User user) {
-        boundedDomainUis.values().forEach(o -> {
-            boolean hasAccessToDomain = user.accessRightsFor(o.name()).isPresent();
-            domainTab(o.name()).ifPresent(tab -> {
-                tab.setEnabled(hasAccessToDomain);
-                o.userChanged(user);
-            });
-        });
+    public void userChanged(@NotNull Tenant tenant, @NotNull User user) {
+        this.tenant = tenant;
+        boundedDomainUis.clear();
+        try (var stream = Files.newInputStream(Path.of(tenant.getProperty(Tenant.TENANT_ROOT_DIRECTORY_PROPERTY), IMAGE_NAME))) {
+            byte[] buffer = stream.readAllBytes();
+            Image logo = new Image(new StreamResource(IMAGE_NAME, () -> new ByteArrayInputStream(buffer)), IMAGE_NAME);
+            logo.setHeight("44px");
+            addToNavbar(new DrawerToggle(), logo, menuBar);
+        } catch (IOException e) {
+            addToNavbar(new DrawerToggle(), menuBar);
+        }
+        ofAppDomainUi();
     }
 
     public static String username() {
@@ -102,8 +99,8 @@ public class ApplicationView extends AppLayout {
     @Override
     protected void onAttach(@NotNull AttachEvent attachEvent) {
         super.onAttach(attachEvent);
-        if (hasAuthentication && Objects.isNull(VaadinUtils.getAttribute(this, USER))) {
-            new CmdLogin(tenant.apps(), this).execute();
+        if (Objects.isNull(VaadinUtils.getAttribute(this, USER))) {
+            new CmdLogin(this).execute();
         }
     }
 
@@ -156,11 +153,10 @@ public class ApplicationView extends AppLayout {
         return menuBar;
     }
 
-    private Optional<Tab> domainTab(String domain) {
+    protected Optional<Tab> domainTab(String domain) {
         return Objects.isNull(tabs) ? Optional.empty() :
             IntStream.range(0, tabs.getComponentCount()).mapToObj(i -> tabs.getTabAt(i)).filter(o -> o.getLabel().equals(domain)).findAny();
     }
-
 
     private void ofAppDomainUi() {
         registerBoundedDomainUi(new AppsBoundedDomainUi(tenant.apps()));
