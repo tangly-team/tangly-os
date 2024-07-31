@@ -23,11 +23,15 @@ import net.tangly.app.Application;
 import net.tangly.app.ApplicationView;
 import net.tangly.app.Tenant;
 import net.tangly.app.services.AppsBoundedDomain;
+import net.tangly.core.domain.AccessRights;
+import net.tangly.core.domain.AccessRightsCode;
+import net.tangly.core.domain.User;
 import net.tangly.ui.app.domain.Cmd;
 import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 
+import java.util.List;
 import java.util.Properties;
 
 import static com.github.mvysny.kaributesting.v10.LocatorJ._get;
@@ -44,7 +48,7 @@ class AppsTest extends ApplicationView {
     public AppsTest() {
         Tenant tenant = createAndRegisterTenant(TENANT);
         super(tenant, false);
-        drawerMenu(null);
+        drawerMenu(createUser());
         selectBoundedDomainUi(AppsBoundedDomain.DOMAIN);
     }
 
@@ -82,5 +86,13 @@ class AppsTest extends ApplicationView {
         Tenant tenant = new Tenant(properties);
         Application.instance().putTenant(tenant);
         return tenant;
+    }
+
+    private static User createUser() {
+        final String username = "aeon";
+        String passwordSalt = User.newSalt();
+        String passwordHash = User.encryptPassword("aeon", passwordSalt);
+        var rights = List.of(new AccessRights(username, AppsBoundedDomain.DOMAIN, AccessRightsCode.domainAdmin));
+        return new User(username, passwordHash, passwordSalt, true, null, rights, null);
     }
 }

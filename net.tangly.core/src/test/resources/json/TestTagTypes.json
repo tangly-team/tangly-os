@@ -1,0 +1,20 @@
+[
+    {
+        "namespace": "Test-Namespace",
+        "name": "Tag-Test-None",
+        "class": "String",
+        "valueKinds": "NONE"
+    },
+    {
+        "namespace": "Test-Namespace",
+        "name": "Tag-Test-Optional",
+        "class": "String",
+        "valueKinds": "OPTIONAL"
+    },
+    {
+        "namespace": "Test-Namespace",
+        "name": "Tag-Test-Mandatory",
+        "class": "String",
+        "valueKinds": "MANDATORY"
+    }
+]
