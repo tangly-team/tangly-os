@@ -16,6 +16,7 @@ package net.tangly.erp.invoices.domain;
 import net.tangly.core.*;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.LocalDate;
 import java.util.*;
 
@@ -144,7 +145,7 @@ public class Invoice implements HasMutableId, HasMutableName, HasMutableDate, Ha
      * @return invoice amount with VAT tax
      */
     public BigDecimal amountWithVat() {
-        return amountWithoutVat().add(vat());
+        return amountWithoutVat().add(vat()).setScale(2, RoundingMode.HALF_EVEN);
     }
 
     /**
@@ -155,7 +156,8 @@ public class Invoice implements HasMutableId, HasMutableName, HasMutableDate, Ha
      */
     public Map<BigDecimal, BigDecimal> vatAmounts() {
         Map<BigDecimal, BigDecimal> vatAmounts = new TreeMap<>();
-        items().stream().filter(InvoiceItem::isItem).forEach(o -> vatAmounts.put(o.vatRate(), vatAmounts.getOrDefault(o.vatRate(), BigDecimal.ZERO).add(o.vat())));
+        items().stream().filter(InvoiceItem::isItem)
+            .forEach(o -> vatAmounts.put(o.vatRate(), vatAmounts.getOrDefault(o.vatRate(), BigDecimal.ZERO).add(o.vat().setScale(2, RoundingMode.HALF_EVEN))));
         return vatAmounts;
     }
 
@@ -299,7 +301,8 @@ public class Invoice implements HasMutableId, HasMutableName, HasMutableDate, Ha
     }
 
     public boolean check() {
-        return Objects.nonNull(contractId()) && Objects.nonNull(invoicingEntity()) && Objects.nonNull(invoicedEntity()) && Objects.nonNull(invoicingConnection()) &&
+        return Objects.nonNull(contractId()) && Objects.nonNull(invoicingEntity()) && Objects.nonNull(invoicedEntity()) &&
+            Objects.nonNull(invoicingConnection()) &&
             Objects.nonNull(currency) && name().startsWith(id());
     }
 
@@ -307,7 +310,8 @@ public class Invoice implements HasMutableId, HasMutableName, HasMutableDate, Ha
     public String toString() {
         return """
             Invoice[id=%s, name=%s, text=%s, invoicingEntity=%s, invoicedEntity=%s, invoicingConnection=%s, contractId=%s, deliveryDate=%s, invoicedDate=%s, dueDate=%s, currency=%s, locale=%s, paymentConditions=%s, items=%s]
-            """.formatted(id(), name(), text(), invoicingEntity(), invoicedEntity(), invoicingConnection(), contractId(), deliveryDate(), date(), dueDate(), currency(), locale(),
+            """.formatted(id(), name(), text(), invoicingEntity(), invoicedEntity(), invoicingConnection(), contractId(), deliveryDate(), date(), dueDate(),
+            currency(), locale(),
             paymentConditions(), items());
     }
 }

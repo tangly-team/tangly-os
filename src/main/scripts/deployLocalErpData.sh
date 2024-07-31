@@ -16,4 +16,4 @@
 sudo rm -R /var/tangly-erp/
 sudo cp -R /Users/marcelbaumann/Library/CloudStorage/GoogleDrive-marcel.baumann@tangly.net/My\ Drive/tangly/10-Data/tangly-erp /var/
 sudo chown -R marcelbaumann /var/tangly-erp/
-sudo chmod -R 755 /var/tangly-erp/
+sudo chmod -R 777 /var/tangly-erp/
