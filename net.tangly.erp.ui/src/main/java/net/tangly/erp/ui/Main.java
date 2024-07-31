@@ -17,6 +17,7 @@ import com.github.mvysny.vaadinboot.VaadinBoot;
 import net.tangly.app.Application;
 import net.tangly.app.Tenant;
 import net.tangly.app.services.AppsBoundedDomain;
+import net.tangly.commons.logger.EventData;
 import net.tangly.core.domain.AccessRights;
 import net.tangly.core.domain.AccessRightsCode;
 import net.tangly.core.domain.User;
@@ -77,6 +78,7 @@ public final class Main {
 
     public static void main(@NotNull String[] args) throws Exception {
         final String contextRoot = "/erp";
+        EventData.of("application started with arguments", "Application", EventData.Status.INFO, args.toString(), null, null);
         parse(args);
         if (propertyFile == null) {
             try (DirectoryStream<Path> stream = Files.newDirectoryStream(Paths.get(TENANCY_CONFIGURATION_FOLDER))) {

@@ -25,4 +25,4 @@ RUN chown -R erp:erp /var/tangly-erp
 USER erp
 WORKDIR /app/bin
 EXPOSE $PORT
-ENTRYPOINT ["./net.tangly.erp.ui",  "-c /app/app-in-memory-no-imports.properties"]
+ENTRYPOINT ["./net.tangly.erp.ui"]

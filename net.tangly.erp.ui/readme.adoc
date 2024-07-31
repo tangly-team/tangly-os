@@ -134,8 +134,12 @@ To run the built image, use the following commands.
 
 [source,shell]
 ----
-  docker run --rm -ti -p 8080:8080 -e PORT=8080 -e m=true  -v /var/tangly-erp:/var/tangly-erp tanglyllc/tangly-erp:latest
+docker run --rm -it -p 8080:8080 -e PORT=8080 -v /var/tangly-erp:/var/tangly-erp tanglyllc/tangly-erp:latest -p 8080 -c app-in-memory-no-imports.properties <1>
+  docker run --rm -it -p 8080:8080 -e PORT=8080 -v /var/tangly-erp:/var/tangly-erp tanglyllc/tangly-erp:latest -p 8080                                      <2>
 ----
+
+<1> The application is started with the in-memory storage and the configuration file `app-in-memory-no-imports.properties`.
+<2> The application is started in production mode with loading of all defined tenants and data.
 
 The user under which the erp application shall not have root privileges.
 
