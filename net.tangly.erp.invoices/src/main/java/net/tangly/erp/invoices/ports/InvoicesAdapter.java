@@ -128,9 +128,10 @@ public class InvoicesAdapter implements InvoicesPort {
     @Override
     public void exportInvoiceDocument(@NotNull DomainAudit audit, @NotNull Invoice invoice, boolean withQrCode, boolean withEN16931, boolean overwrite) {
         var asciiDocGenerator = new InvoiceAsciiDoc(invoice.locale());
-        Path invoiceFolder = Port.resolvePath(reportsFolder, invoice.date().getYear(), invoice.name());
+        Path invoiceFolder = reportsFolder.resolve(Integer.toString(invoice.date().getYear()));
+        Port.createDirectories(invoiceFolder);
         Path invoiceAsciiDocPath = invoiceFolder.resolve(invoice.name() + AsciiDoctorHelper.ASCIIDOC_EXT);
-        asciiDocGenerator.exports(audit, invoice, invoiceAsciiDocPath, Collections.emptyMap());
+        asciiDocGenerator.exports(audit, invoice, invoiceAsciiDocPath, Map.of("pathToLogo", reportsFolder.getParent().toString()));
         Path invoicePdfPath = invoiceFolder.resolve(invoice.name() + AsciiDoctorHelper.PDF_EXT);
         if (!overwrite && Files.exists(invoicePdfPath)) {
             audit.log(EventData.EXPORT_EVENT, EventData.Status.SUCCESS, "Invoice PDF already exists {}",

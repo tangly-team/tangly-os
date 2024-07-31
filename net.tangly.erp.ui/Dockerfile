@@ -10,9 +10,6 @@ FROM eclipse-temurin:22
 RUN apt-get update && apt-get install findutils
 
 RUN mkdir -p /var/tangly-erp
-RUN mkdir -p /var/tangly-erp/import
-RUN mkdir -p /var/tangly-erp/db
-RUN mkdir -p /var/tangly-erp/reports
 RUN mkdir -p /app
 
 COPY build/install/net.tangly.erp.ui/ /app/

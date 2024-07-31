@@ -26,6 +26,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.io.PrintWriter;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -56,9 +57,9 @@ public class InvoiceAsciiDoc implements InvoiceGenerator {
     public void exports(@NotNull DomainAudit audit, @NotNull Invoice invoice, @NotNull Path invoicePath, @NotNull Map<String, Object> properties) {
         try (PrintWriter writer = new PrintWriter(Files.newOutputStream(invoicePath), true, StandardCharsets.UTF_8)) {
             var helper = new AsciiDocHelper(writer);
-            writer.println(":imagesdir: ../..");
-            writer.println();
-            writer.println("image::trefoil.svg[100,100,align=\"center\"]");
+            String folder = (String) properties.get("pathToLogo");
+            // needed to make the image converter of asciiDocPdf happy. Still looking to have relative paths working.
+            writer.println("image::" + folder + "/trefoil.svg[100,100,align=\"center\"]");
             writer.println();
             helper.header(bundle.getString("invoice"), 2);
 
@@ -108,12 +109,12 @@ public class InvoiceAsciiDoc implements InvoiceGenerator {
         helper.tableRow(bundle.getString("totalWithoutVat"), "", "", format(invoice.amountWithoutVat()));
         if (invoice.hasMultipleVatRates()) {
             String vats = invoice.vatAmounts().entrySet().stream().map(
-                o -> "%s%% : %s".formatted(o.getKey().multiply(HUNDRED).stripTrailingZeros().toPlainString(),
+                o -> "%s%% : %s".formatted(o.getKey().multiply(HUNDRED).stripTrailingZeros().setScale(2, RoundingMode.HALF_EVEN).toPlainString(),
                     o.getValue().stripTrailingZeros().toPlainString())).collect(Collectors.joining(", ", "(", ")"));
             helper.tableRow(italics("%s %s".formatted(bundle.getString("vatAmount"), vats)), "", "", italics(format(invoice.vat())));
         } else {
             helper.tableRow(italics(bundle.getString("vatAmount")), "",
-                "%s%".formatted(italics(invoice.uniqueVatRate().orElseThrow().multiply(HUNDRED).stripTrailingZeros().toPlainString())),
+                "%s%%".formatted(italics(invoice.uniqueVatRate().orElseThrow().multiply(HUNDRED).stripTrailingZeros().setScale(2, RoundingMode.HALF_EVEN).toPlainString())),
                 italics(format(invoice.vat())));
         }
         helper.tableRow(bold(bundle.getString("total")), "", "", bold(format(invoice.amountWithVat())));
