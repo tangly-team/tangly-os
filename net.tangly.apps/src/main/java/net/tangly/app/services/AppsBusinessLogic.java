@@ -61,7 +61,7 @@ public class AppsBusinessLogic {
      * @param password the password of the user
      * @return the user if the login is successful
      */
-    public Optional<User> login(String username, String password) {
+    public Optional<User> login(@NotNull String username, @NotNull String password) {
         return realm().users().items().stream().filter(o -> o.username().equals(username) && o.authenticate(password)).findAny();
     }
 

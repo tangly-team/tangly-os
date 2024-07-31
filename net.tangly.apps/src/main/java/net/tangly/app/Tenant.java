@@ -24,11 +24,8 @@ import net.tangly.core.domain.BoundedDomain;
 import net.tangly.core.domain.UsersProvider;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.eclipse.jetty.io.RuntimeIOException;
 import org.jetbrains.annotations.NotNull;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.nio.file.Path;
 import java.util.*;
 
@@ -40,6 +37,7 @@ import java.util.*;
  */
 public class Tenant {
     public static final String IN_MEMORY_PROPERTY = "tenant.in-memory";
+    public static final String TENANT_ID_PROPERTY = "tenant.id";
     public static final String TENANT_ROOT_DIRECTORY_PROPERTY = "tenant.root.directory";
     public static final String DATABASES_DIRECTORY_PROPERTY = "tenant.root.db.directory";
     public static final String IMPORTS_DIRECTORY_PROPERTY = "tenant.root.imports.directory";
@@ -51,17 +49,10 @@ public class Tenant {
     private final Map<String, BoundedDomain<?, ?, ?>> boundedDomains;
     private final Map<String, BoundedDomainRest> boundedDomainRests;
 
-    public Tenant(@NotNull String id, InputStream properties) {
-        this.id = id;
-        this.properties = new Properties();
-        if (Objects.nonNull(properties)) {
-            try {
-                this.properties.load(properties);
-            } catch (IOException e) {
-                logger.atError().log("Tenant configuration properties load error {}", e);
-                throw new RuntimeIOException(e);
-            }
-        }
+    public Tenant(@NotNull Properties properties) {
+        Objects.requireNonNull(properties.get(TENANT_ID_PROPERTY), "The tenant id is mandatory");
+        this.id = properties.getProperty(TENANT_ID_PROPERTY);
+        this.properties = properties;
         this.registry = new TypeRegistry();
         boundedDomains = new HashMap<>();
         boundedDomainRests = new HashMap<>();

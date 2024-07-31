@@ -21,21 +21,30 @@ import net.tangly.erp.products.ports.ProductsAdapter;
 import net.tangly.erp.products.ports.ProductsEntities;
 import net.tangly.erp.products.services.ProductsBoundedDomain;
 import net.tangly.erp.products.services.ProductsBusinessLogic;
+import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Tag;
+
+import java.util.Properties;
 
 @Tag("IntegrationTest")
 class ProductsTest {
     @BeforeEach
     void setup() {
-        Tenant tenant = new Tenant("test", null);
-        Application.instance().putTenant(tenant);
-
+        var tenant = createAndRegisterTenant("test");
         var realm = new ProductsEntities();
         var logic = new ProductsBusinessLogic(realm);
         var domain = new ProductsBoundedDomain(realm, logic, new ProductsAdapter(realm, null, null, null), new TypeRegistry(), null);
         tenant.registerBoundedDomain(domain);
         MockVaadin.setup();
+    }
+
+    private static Tenant createAndRegisterTenant(@NotNull String tenantId) {
+        Properties properties = new Properties();
+        properties.setProperty(Tenant.TENANT_ID_PROPERTY, tenantId);
+        Tenant tenant = new Tenant(properties);
+        Application.instance().putTenant(tenant);
+        return tenant;
     }
 
 }

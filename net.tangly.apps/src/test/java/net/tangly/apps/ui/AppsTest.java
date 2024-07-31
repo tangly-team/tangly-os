@@ -24,8 +24,11 @@ import net.tangly.app.ApplicationView;
 import net.tangly.app.Tenant;
 import net.tangly.app.services.AppsBoundedDomain;
 import net.tangly.ui.app.domain.Cmd;
+import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+
+import java.util.Properties;
 
 import static com.github.mvysny.kaributesting.v10.LocatorJ._get;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -39,8 +42,7 @@ class AppsTest extends ApplicationView {
     private static Routes routes;
 
     public AppsTest() {
-        Tenant tenant = new Tenant(TENANT, null);
-        Application.instance().putTenant(tenant);
+        Tenant tenant = createAndRegisterTenant(TENANT);
         super(tenant, false);
         drawerMenu(null);
         selectBoundedDomainUi(AppsBoundedDomain.DOMAIN);
@@ -72,5 +74,13 @@ class AppsTest extends ApplicationView {
         Component form = _get(dialog, FormLayout.class);
         assertThat(form).isNotNull();
         return form;
+    }
+
+    private static Tenant createAndRegisterTenant(@NotNull String tenantId) {
+        Properties properties = new Properties();
+        properties.setProperty(Tenant.TENANT_ID_PROPERTY, tenantId);
+        Tenant tenant = new Tenant(properties);
+        Application.instance().putTenant(tenant);
+        return tenant;
     }
 }

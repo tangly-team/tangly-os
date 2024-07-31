@@ -39,7 +39,6 @@ public final class Application {
 
     public Application() {
         tenants = new HashMap<>();
-
     }
 
     public void putTenant(@NotNull Tenant tenant) {

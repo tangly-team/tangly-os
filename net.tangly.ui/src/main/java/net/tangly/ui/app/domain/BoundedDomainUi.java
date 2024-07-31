@@ -114,7 +114,7 @@ public abstract class BoundedDomainUi<T extends BoundedDomain<?, ?, ?>> implemen
         layout.setContent(currentView().get());
     }
 
-    public void userChanged(User user) {
+    public void userChanged(@NotNull User user) {
         rights = user.accessRightsFor(name()).orElse(null);
         views.values().forEach(view -> view.ifPresent(v -> v.readonly(Objects.nonNull(rights) ? AccessRightsCode.readonlyUser == rights.right() : true)));
     }

@@ -18,12 +18,12 @@ import com.vaadin.flow.component.login.LoginOverlay;
 import com.vaadin.flow.component.notification.Notification;
 import net.tangly.app.Application;
 import net.tangly.app.ApplicationView;
-import net.tangly.app.Tenant;
 import net.tangly.core.domain.User;
 import net.tangly.ui.app.domain.Cmd;
 import net.tangly.ui.components.VaadinUtils;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -44,8 +44,8 @@ public record CmdLogin(@NotNull ApplicationView applicationView) implements Cmd 
         component.setOpened(true);
         component.addLoginListener(e -> {
             var credentials = e.getUsername().split("/");
-            Tenant tenant = Application.instance().tenant(credentials[0]);
-            if (tenant == null) {
+            var tenant = Application.instance().tenant(credentials[0]);
+            if (Objects.nonNull(tenant)) {
                 Optional<User> user = tenant.apps().logic().login(credentials[1], e.getPassword());
                 if (user.isPresent()) {
                     VaadinUtils.setAttribute(component, ApplicationView.USER, user.get());

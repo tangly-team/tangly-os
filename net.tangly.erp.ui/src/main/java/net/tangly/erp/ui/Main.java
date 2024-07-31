@@ -47,12 +47,17 @@ import org.apache.logging.log4j.Logger;
 import org.eclipse.jetty.ee10.servlet.DefaultServlet;
 import org.eclipse.jetty.ee10.servlet.ServletHolder;
 import org.eclipse.jetty.ee10.webapp.WebAppContext;
+import org.eclipse.jetty.io.RuntimeIOException;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
+import java.util.Properties;
 
 /**
  * Entry point to the start of the regular Java SE application with an embedded Jetty server. The application parameters are:
@@ -65,6 +70,7 @@ import java.util.List;
  * </dl>
  */
 public final class Main {
+    public static final String TENANCY_CONFIGURATION_FOLDER = "/var/tangly-erp/_tenants";
     private static final Logger logger = LogManager.getLogger();
     private static int port = 8080;
     private static String propertyFile;
@@ -72,16 +78,21 @@ public final class Main {
     public static void main(@NotNull String[] args) throws Exception {
         final String contextRoot = "/erp";
         parse(args);
-        // takes first the command line configuration file and second the tenancy configuration files
-        //TODO handle multiple tenancy files - create a list of tenant and create a set of servlet with access rights.
         if (propertyFile == null) {
-            propertyFile = "/var/tangly-erp/_tenants/tenant-tangly.properties";
+            try (DirectoryStream<Path> stream = Files.newDirectoryStream(Paths.get(TENANCY_CONFIGURATION_FOLDER))) {
+                for (Path path : stream) {
+                    if (!Files.isDirectory(path)) {
+                        Application.instance().putTenant(createTenant(path));
+                    }
+                }
+            }
+        } else {
+            Application.instance().putTenant(createTenant(Paths.get(propertyFile)));
         }
-        Tenant tenant = createTanglyTenant("tangly", Path.of(propertyFile));
-        Application.instance().putTenant(tenant);
         new VaadinBoot() {
             @Override
             protected @NotNull WebAppContext createWebAppContext() throws IOException {
+                var tenant = Application.instance().tenant("tangly");
                 final WebAppContext context = super.createWebAppContext();
                 ServletHolder staticFiles = new ServletHolder("staticFiles", new DefaultServlet());
                 String reportsFolder = tenant.properties().getProperty("tenant.root.reports.directory");
@@ -119,8 +130,15 @@ public final class Main {
         }
     }
 
-    public static Tenant createTanglyTenant(@NotNull String id, @NotNull Path properties) throws IOException {
-        Tenant tenant = new Tenant(id, Files.newInputStream(properties));
+    public static Tenant createTenant(@NotNull Path propertiesPath) throws IOException {
+        Properties properties = new Properties();
+        try (InputStream stream = Files.newInputStream(propertiesPath)) {
+            properties.load(stream);
+        } catch (IOException e) {
+            logger.atError().log("Tenant configuration properties load error {}", e);
+            throw new RuntimeIOException(e);
+        }
+        Tenant tenant = new Tenant(properties);
         ofDomains(tenant);
         ofDomainRests(tenant);
         return tenant;
@@ -147,8 +165,7 @@ public final class Main {
             var realm = tenant.inMemory() ? new LedgerEntities() : new LedgerEntities(Path.of(tenant.databases(), LedgerBoundedDomain.DOMAIN));
             var domain = new LedgerBoundedDomain(realm, new LedgerBusinessLogic(realm),
                 new LedgerAdapter(realm, tenant.registry(), Path.of(tenant.imports(LedgerBoundedDomain.DOMAIN)),
-                    Path.of(tenant.reports(LedgerBoundedDomain.DOMAIN))),
-                tenant.registry(), tenant.UsersProviderFor(LedgerBoundedDomain.DOMAIN));
+                    Path.of(tenant.reports(LedgerBoundedDomain.DOMAIN))), tenant.registry(), tenant.UsersProviderFor(LedgerBoundedDomain.DOMAIN));
             tenant.registerBoundedDomain(domain);
         }
         if (tenant.isEnabled(ProductsBoundedDomain.DOMAIN)) {
