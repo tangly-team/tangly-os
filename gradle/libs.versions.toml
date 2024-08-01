@@ -1,7 +1,7 @@
 [versions]
 assertj-version = '3.26.3'
 flyway-version = '10.17.0'
-junit-version = '5.10.2'
+junit-version = '5.10.3'
 log4j2-version = '2.23.0'
 javalin-version = '5.6.4'
 openapi-version = "5.6.4"
@@ -11,11 +11,8 @@ vaadin-version = '24.4.7'
 
 [plugins]
 vaadin = { id = "com.vaadin", version.ref = "vaadin-version" }
-spotbugs = "com.github.spotbugs:6.0.18"
-sonarqube = "org.sonarqube:5.0.0.4638"
-sonatype = "org.sonatype.gradle.plugins.scan:2.2.2"
+spotbugs = "com.github.spotbugs:6.0.19"
 pitest = "info.solidsoft.pitest:1.7.0"
-errorprone = "net.ltgt.errorprone:4.0.1"
 jib = "com.google.cloud.tools.jib:3.4.3"
 mannes = "com.github.ben-manes.versions:0.41.0"
 
