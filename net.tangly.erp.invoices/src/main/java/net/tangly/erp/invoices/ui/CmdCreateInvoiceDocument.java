@@ -41,8 +41,8 @@ public class CmdCreateInvoiceDocument implements Cmd {
     private final Checkbox withEN16931;
     private final Checkbox overwrite;
     private final TextField name;
-    private final transient InvoicesBoundedDomain domain;
-    private transient Invoice invoice;
+    private final InvoicesBoundedDomain domain;
+    private final Invoice invoice;
     private Dialog dialog;
 
     /**

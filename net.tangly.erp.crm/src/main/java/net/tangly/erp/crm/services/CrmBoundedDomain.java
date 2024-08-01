@@ -13,6 +13,7 @@
 
 package net.tangly.erp.crm.services;
 
+import net.tangly.core.GenderCode;
 import net.tangly.core.TagType;
 import net.tangly.core.TypeRegistry;
 import net.tangly.core.codes.CodeType;

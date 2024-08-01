@@ -14,6 +14,7 @@
 package net.tangly.erp.crm.domain;
 
 import net.tangly.core.EmailAddress;
+import net.tangly.core.GenderCode;
 import net.tangly.core.HasDate;
 import net.tangly.core.PhoneNr;
 import org.jetbrains.annotations.NotNull;

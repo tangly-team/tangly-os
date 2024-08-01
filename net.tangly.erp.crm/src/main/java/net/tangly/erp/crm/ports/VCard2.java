@@ -20,8 +20,8 @@ import net.fortuna.ical4j.vcard.VCard;
 import net.tangly.commons.lang.Strings;
 import net.tangly.core.Address;
 import net.tangly.core.EmailAddress;
+import net.tangly.core.GenderCode;
 import net.tangly.core.PhoneNr;
-import net.tangly.erp.crm.domain.GenderCode;
 import net.tangly.erp.crm.domain.Photo;
 import org.jetbrains.annotations.NotNull;
 

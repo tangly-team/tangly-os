@@ -29,9 +29,13 @@ import com.vaadin.flow.data.renderer.LocalDateRenderer;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.server.StreamResource;
 import net.tangly.core.EmailAddress;
+import net.tangly.core.GenderCode;
 import net.tangly.core.PhoneNr;
 import net.tangly.core.codes.CodeType;
-import net.tangly.erp.crm.domain.*;
+import net.tangly.erp.crm.domain.CrmTags;
+import net.tangly.erp.crm.domain.Employee;
+import net.tangly.erp.crm.domain.NaturalEntity;
+import net.tangly.erp.crm.domain.VcardType;
 import net.tangly.ui.components.*;
 import org.jetbrains.annotations.NotNull;
 

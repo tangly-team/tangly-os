@@ -11,7 +11,7 @@
  *
  */
 
-package net.tangly.erp.crm.domain;
+package net.tangly.core;
 
 import net.tangly.core.codes.Code;
 
