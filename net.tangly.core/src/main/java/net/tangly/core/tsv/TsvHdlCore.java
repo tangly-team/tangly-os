@@ -56,7 +56,7 @@ public class TsvHdlCore {
     }
 
     public static TsvEntity<Address> createTsvAddress() {
-        Function<CSVRecord, Address> imports = (CSVRecord csv) -> ofAddress(csv);
+        Function<CSVRecord, Address> imports = TsvHdlCore::ofAddress;
         List<TsvProperty<Address, ?>> fields = List.of(TsvProperty.ofString(STREET, Address::street), TsvProperty.ofString(EXTENDED, Address::extended),
             TsvProperty.ofString(POBOX, Address::poBox), TsvProperty.ofString(POSTCODE, Address::postcode), TsvProperty.ofString(LOCALITY, Address::locality),
             TsvProperty.ofString(REGION, Address::region), TsvProperty.ofString(COUNTRY, Address::country));

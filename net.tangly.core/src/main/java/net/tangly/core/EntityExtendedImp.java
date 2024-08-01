@@ -17,13 +17,13 @@ import java.time.LocalDate;
 import java.util.*;
 
 /**
- * Default implementation of the {@link MutableEntityExtended} interface. The unique object identifier shall be set at construction.
+ * Default implementation of the {@link EntityExtended} interface. The unique object identifier shall be set at construction.
  */
 public abstract class EntityExtendedImp implements EntityExtended {
     private final long oid;
     private String id;
     private String name;
-    private DateRange dateRange;
+    private final DateRange dateRange;
     private String text;
     private final List<Comment> comments;
     private final Set<Tag> tags;

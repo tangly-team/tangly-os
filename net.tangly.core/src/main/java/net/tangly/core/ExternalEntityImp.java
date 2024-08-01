@@ -19,15 +19,18 @@ import java.time.LocalDate;
 import java.util.*;
 
 public abstract class ExternalEntityImp implements ExternalEntity {
-    private String id;
-    private String name;
-    private LocalDate date;
-    private String text;
+    private final String id;
+    private final String name;
+    private final LocalDate date;
+    private final String text;
     private final List<Comment> comments;
     private final Set<Tag> tags;
 
-    protected ExternalEntityImp(@NotNull String id) {
+    protected ExternalEntityImp(@NotNull String id, String name, LocalDate date, String text) {
         this.id = id;
+        this.name = name;
+        this.date = date;
+        this.text = text;
         comments = new ArrayList<>();
         tags = new HashSet<>();
     }
