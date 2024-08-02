@@ -127,7 +127,7 @@ Alternative open source and commercial repository managers are available.
 We have experience with https://archiva.apache.org/[Apache Archiva] and https://www.sonatype.com/products/repository-oss-download[Sonatype Nexus Repository].
 These products are too powerful and complex for smaller organizations.
 
-The Java community uses https://maven.apache.org/[Maven] and https://gradle.org/[Gradle] to handle artifact dependencies.
+The Java community uses {ref-maven} and {ref-gradle} to handle artifact dependencies.
 
 The Python community has https://pip.pypa.io/en/stable/[pip3] tool.
 The C and {cpp} community often use https://conan.io/[Conan] and https://vcpkg.io/en/[vcpckg].

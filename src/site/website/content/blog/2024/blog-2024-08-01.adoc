@@ -2,19 +2,24 @@
 title: "Agile Architecture Questions"
 linkTitle: "Architecture Questions"
 date: 2024-08-01
-tags: ["java"]
+tags: ["java", "architecture"]
 params:
   featured: "blog/2024/pics/2024-08-01-head.png"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]
 :ref-actor-model: https://en.wikipedia.org/wiki/Actor_model[Actor Model]
+:ref-accessibility: https://en.wikipedia.org/wiki/Accessibility[accessibility]"
 :ref-ddd: https://en.wikipedia.org/wiki/Domain-driven_design[Domain-Driven Design]
+:ref-localization: https://en.wikipedia.org/wiki/Internationalization_and_localization[internationalization]
 :ref-jetty: https://jetty.org/[Jetty]
+:ref-ros2: https://www.ros.org/[ROS-2]
+:ref-spring-modulith: https://docs.spring.io/spring-modulith/docs/0.4.0/reference/html/[Modulith]
 
 image::2024-08-01-head.png[width=420,height=360,role=left]
 
 Agile architecture means how enterprise architects, system architects and software architects apply architectural practice in agile software development.
+
 An agile architect should handle a regular set of questions for each application he is working on.
 
 Each digital product encounters similar requirements and shall provide good solutions for the most acute restrictions.
@@ -23,6 +28,7 @@ The goal is to define an evolvable minimal architecture.
 New functional and non-functional requirements shall be realized with minimal changes in the design.
 
 Do not try to solve all the problems you can think about.
+
 Solve stated requested features with the simplest approach you can think about.
 Remember, simple solutions can be very elegant and extensible.
 
@@ -34,7 +40,7 @@ Study the available solutions to understand the tradeoffs of these systems.
 Open source permeates the software industry.
 You shall be able to read public source code and build the solution locally.
 
-Identify weaknesses and improvement area.
+Identify weaknesses and improvement areas.
 Now you have the first draft of your architecture.
 ====
 
@@ -50,7 +56,7 @@ Supported standards in browsers are evolving.].
 How do we implement accessibility laws and requirements?::
 Your usability expert should have the tools to implement the legal requirements.
 I strongly recommend that each architect attend minimal training in internationalization, localization and accessibility matters.
-https://en.wikipedia.org/wiki/Internationalization_and_localization[internationalization] _i18n_, localization _l16n_, https://en.wikipedia.org/wiki/Accessibility[accessibility] _a11y_ regulations and good practices.
+{ref-localization} _i18n_, localization _l16n_, {ref-accessibility} _a11y_ regulations and good practices.
 How should we translate user interface data?::
 Your organization shall implement a translation process for all involved artifacts.
 Translation activities are often outsourced to specialized companies.
@@ -68,7 +74,7 @@ How can we scale the solution?::
 Select a framework providing horizontal scaling.
 The preferred abstraction model is the {ref-actor-model}.
 A web server library such as {ref-jetty} supports unlimited parallel user sessions without writing one line of code.
-A robotic framework such as https://www.ros.org/[ROS-2] delivers concurrency on node level for free.
+A robotic framework such as {ref-ros2} delivers concurrency on node level for free.
 Should we prepare for sharding, geolocation, vertical scaling?::
 Try to design business logic and data persistence along with natural slicing rules.
 It should be easy to deploy an instance of your solution per country.
@@ -84,8 +90,7 @@ The method heavily emphasizes the partitioning along bounded domains to create i
 The communication between domains shall be asynchronous and event based cite:[reactive-messaging-patterns-with-actor-model,exploring-cqrs].
 
 The solution naturally scales horizontally.
-If necessary, the final application can be deployed as a set of distributed services
-footnote:[The approach is promoted in multiple technical stacks such as Java Spring framework https://docs.spring.io/spring-modulith/docs/0.4.0/reference/html/[Modulith].
+If necessary, the final application can be deployed as a set of distributed services footnote:[The approach is promoted in multiple technical stacks such as Java Spring framework {ref-spring-modulith}.
 ====
 
 == Security Themes
@@ -107,13 +112,17 @@ JWT and OAuth are regular approach for webservers.
 == Persistent Data Themes
 
 How should we persist data?::
-_Review your internal documented solution_
+_Review your internal documented solution._ +
+Start simple.
+{ref-eclipsestore} persists Java objects in a file or a database without any changes in your domain model.
+The persistence code is around twenty lines of code.
 How do we journal operations performed in the program?::
-_Review your internal documented solution_
+_Review your internal documented solution._ +
+Know your logging frameworks.
 How is reporting provided?::
-_Review your internal documented solution_
+_Review your internal documented solution._
 How do we import data into the system?::
-_Review your internal documented solution_
+_Review your internal documented solution._
 
 [TIP]
 ====
@@ -150,7 +159,7 @@ The {ref-less} movement has described how agile architecture could be performed 
 Create a workable blueprint.
 Invest in the evolution and improvement of the solution.
 
-[quote, Freds Brooks, No Silver Bullet]
+[quote,Freds Brooks,No Silver Bullet]
 ____
 There is no single development in either technology or management technique, which by itself promises even one order of magnitude [tenfold] improvement within a decade in productivity, in reliability, in simplicity.
 ____
@@ -161,7 +170,7 @@ Remember to consult seminal literature, good practices <<developer-assumptions>>
 
 You will be able to solve almost all the design challenges you will be confronted with.
 A good approach is to start with a modular monolith <<modular-monoliths>>.
-{ref-ddd} is a proven good practice for designing the domain model and partioning your solution.
+{ref-ddd} is a proven good practice for designing the domain model and partitioning your solution.
 
 Evolution to a distributed system is a natural and well-documented process
 cite:[building-evolutionary-architectures-2nd,software-architecture,refactoring-databases].

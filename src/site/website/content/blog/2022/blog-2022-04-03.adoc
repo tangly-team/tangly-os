@@ -188,7 +188,7 @@ is one of the first approaches to combine technology, business and organizationa
 * https://www.epfl.ch/education/master/programs/management-technology-and-entrepreneurship/[MAS Management, Technology and Entrepreneurship EPFL]
 * https://fh-hwz.ch/produkt/cas-digital-product-lead/[CAS Digital Product Lead FH HWZ]
 * https://mas-at.ethz.ch/cas-programs/cas1.html[CAS Applied Information Technology ETHZ]
-* https://www.hslu.ch/de-ch/informatik/weiterbildung/digital-business-and-innovation/cas-digital-architect/[CAS Digital Architect FH HSLU]
+* https://www.hslu.ch/de-ch/informatik/weiterbildung/technologies-and-methods/software-architectures/[CAS Digital Architect FH HSLU]
 * https://www.hslu.ch/de-ch/informatik/weiterbildung/digital-business-and-innovation/cas-modern-software-engineering-development/[CAS Modern Software Engineering & Development
 FH HSLU]
 * https://www.zhaw.ch/de/sml/weiterbildung/detail/kurs/cas-digital-product-management/[CAS Digital Product Management FH ZHAW]
