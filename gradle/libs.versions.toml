@@ -97,7 +97,7 @@ vaadin-core = { module = "com.vaadin:vaadin-core", version.ref = "vaadin-version
 vaadin-pdfviewer = "org.vaadin.addons.componentfactory:vcf-pdf-viewer:3.0.0"
 vaadin-embedded-jetty = "com.github.mvysny.vaadin-boot:vaadin-boot:12.3"
 vaadin-socharts = "com.storedobject.chart:so-charts:3.2.6"
-vaadin-test = "com.github.mvysny.kaributesting:karibu-testing-v24:2.1.6"
+vaadin-test = "com.github.mvysny.kaributesting:karibu-testing-v24:2.1.8"
 
 [bundles]
 test-deps = ["junit-api", "assertj", "mockito", "arch-unit", "awaitility"]
