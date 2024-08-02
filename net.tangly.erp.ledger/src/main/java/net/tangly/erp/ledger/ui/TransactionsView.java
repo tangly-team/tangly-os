@@ -19,11 +19,15 @@ import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.ColumnTextAlign;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.grid.HeaderRow;
+import com.vaadin.flow.component.grid.contextmenu.GridContextMenu;
+import com.vaadin.flow.component.html.Hr;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.renderer.NumberRenderer;
 import com.vaadin.flow.router.PageTitle;
 import net.tangly.erp.ledger.domain.Transaction;
+import net.tangly.erp.ledger.services.LedgerBoundedDomain;
 import net.tangly.erp.ledger.services.LedgerBusinessLogic;
+import net.tangly.ui.app.domain.Cmd;
 import net.tangly.ui.components.*;
 import org.jetbrains.annotations.NotNull;
 
@@ -67,9 +71,8 @@ class TransactionsView extends ItemView<Transaction> {
         }
 
         public boolean test(@NotNull Transaction entity) {
-            return (Objects.isNull(date) || (date.isEqual(entity.date()))) && ItemFilter.matches(entity.text(), text) && ItemFilter.matches(
-                entity.debit().accountId(), debit) &&
-                ItemFilter.matches(entity.credit().accountId(), credit);
+            return (Objects.isNull(date) || (date.isEqual(entity.date()))) && ItemFilter.matches(entity.text(), text) &&
+                ItemFilter.matches(entity.debit().accountId(), debit) && ItemFilter.matches(entity.credit().accountId(), credit);
         }
     }
 
@@ -137,6 +140,17 @@ class TransactionsView extends ItemView<Transaction> {
         super(Transaction.class, domain, domain.domain().realm().transactions(), null, mode);
         form(() -> new TransactionForm(this));
         init();
+    }
+
+    @Override
+    public LedgerBoundedDomain domain() {
+        return (LedgerBoundedDomain) super.domain();
+    }
+
+    @Override
+    protected void addActions(@NotNull GridContextMenu<Transaction> menu) {
+        menu().add(new Hr());
+        menu().addItem("Report", e -> Cmd.ofGlobalCmd(e, () -> new CmdCreateLedgerDocument(domain()).execute()));
     }
 
     private void init() {

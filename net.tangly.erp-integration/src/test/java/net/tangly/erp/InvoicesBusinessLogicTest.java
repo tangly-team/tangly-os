@@ -37,7 +37,7 @@ class InvoicesBusinessLogicTest {
             store.createRepository();
 
             var handler = new InvoicesAdapter(new InvoicesEntities(),
-                store.dataRoot().resolve(InvoicesBoundedDomain.DOMAIN), store.reportsRoot().resolve(InvoicesBoundedDomain.DOMAIN));
+                store.dataRoot().resolve(InvoicesBoundedDomain.DOMAIN), store.docsRoot().resolve(InvoicesBoundedDomain.DOMAIN));
             handler.importEntities(store);
 
             verifyBusinessLogic(handler.realm());
@@ -45,7 +45,7 @@ class InvoicesBusinessLogicTest {
             handler.exportEntities(store);
 
             handler = new InvoicesAdapter(new InvoicesEntities(),
-                store.dataRoot().resolve(InvoicesBoundedDomain.DOMAIN), store.reportsRoot().resolve(InvoicesBoundedDomain.DOMAIN));
+                store.dataRoot().resolve(InvoicesBoundedDomain.DOMAIN), store.docsRoot().resolve(InvoicesBoundedDomain.DOMAIN));
             handler.importEntities(store);
         }
     }

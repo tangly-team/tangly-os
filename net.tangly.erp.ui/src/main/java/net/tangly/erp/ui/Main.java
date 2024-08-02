@@ -97,8 +97,8 @@ public final class Main {
                 var tenant = Application.instance().tenant("tangly");
                 final WebAppContext context = super.createWebAppContext();
                 ServletHolder staticFiles = new ServletHolder("staticFiles", new DefaultServlet());
-                String reportsFolder = tenant.properties().getProperty("tenant.root.reports.directory");
-                staticFiles.setInitParameter("resourceBase", reportsFolder);
+                String docsFolder = tenant.properties().getProperty("tenant.root.reports.directory");
+                staticFiles.setInitParameter("resourceBase", docsFolder);
                 String tenantName = tenant.properties().getProperty("tenant.name");
                 context.addServlet(staticFiles, "/" + tenantName + "/reports/*");
                 return context;
@@ -159,7 +159,7 @@ public final class Main {
         if (tenant.isEnabled(InvoicesBoundedDomain.DOMAIN)) {
             var realm = tenant.inMemory() ? new InvoicesEntities() : new InvoicesEntities(Path.of(tenant.databases(), InvoicesBoundedDomain.DOMAIN));
             var domain = new InvoicesBoundedDomain(realm, new InvoicesBusinessLogic(realm),
-                new InvoicesAdapter(realm, Path.of(tenant.imports(InvoicesBoundedDomain.DOMAIN)), Path.of(tenant.reports(InvoicesBoundedDomain.DOMAIN))),
+                new InvoicesAdapter(realm, Path.of(tenant.imports(InvoicesBoundedDomain.DOMAIN)), Path.of(tenant.docs(InvoicesBoundedDomain.DOMAIN))),
                 tenant.registry(), tenant.UsersProviderFor(InvoicesBoundedDomain.DOMAIN));
             tenant.registerBoundedDomain(domain);
         }
@@ -167,14 +167,14 @@ public final class Main {
             var realm = tenant.inMemory() ? new LedgerEntities() : new LedgerEntities(Path.of(tenant.databases(), LedgerBoundedDomain.DOMAIN));
             var domain = new LedgerBoundedDomain(realm, new LedgerBusinessLogic(realm),
                 new LedgerAdapter(realm, tenant.registry(), Path.of(tenant.imports(LedgerBoundedDomain.DOMAIN)),
-                    Path.of(tenant.reports(LedgerBoundedDomain.DOMAIN))), tenant.registry(), tenant.UsersProviderFor(LedgerBoundedDomain.DOMAIN));
+                    Path.of(tenant.docs(LedgerBoundedDomain.DOMAIN))), tenant.registry(), tenant.UsersProviderFor(LedgerBoundedDomain.DOMAIN));
             tenant.registerBoundedDomain(domain);
         }
         if (tenant.isEnabled(ProductsBoundedDomain.DOMAIN)) {
             var realm = tenant.inMemory() ? new ProductsEntities() : new ProductsEntities(Path.of(tenant.databases(), ProductsBoundedDomain.DOMAIN));
             var logic = new ProductsBusinessLogic(realm);
             var domain = new ProductsBoundedDomain(realm, logic,
-                new ProductsAdapter(realm, logic, Path.of(tenant.imports(ProductsBoundedDomain.DOMAIN)), Path.of(tenant.reports(ProductsBoundedDomain.DOMAIN))),
+                new ProductsAdapter(realm, logic, Path.of(tenant.imports(ProductsBoundedDomain.DOMAIN)), Path.of(tenant.docs(ProductsBoundedDomain.DOMAIN))),
                 tenant.registry(), tenant.UsersProviderFor(ProductsBoundedDomain.DOMAIN));
             tenant.registerBoundedDomain(domain);
         }

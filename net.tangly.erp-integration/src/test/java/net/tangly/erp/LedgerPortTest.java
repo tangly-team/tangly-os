@@ -44,11 +44,11 @@ class LedgerPortTest {
         try (FileSystem fs = Jimfs.newFileSystem(Configuration.unix())) {
             var store = new ErpStore(fs);
             var adapter = new LedgerAdapter(createLedger(store), new TypeRegistry(), store.dataRoot().resolve(LedgerBoundedDomain.DOMAIN),
-                store.reportsRoot().resolve(LedgerBoundedDomain.DOMAIN));
-            var reportsPath = store.reportsRoot().resolve(LedgerBoundedDomain.DOMAIN);
+                store.docsRoot().resolve(LedgerBoundedDomain.DOMAIN));
+            var docsPath = store.docsRoot().resolve(LedgerBoundedDomain.DOMAIN);
             adapter.exportLedgerDocument(filenameWithoutExtension, LocalDate.of(2015, 10, 1), LocalDate.of(2016, 12, 31), true, true);
-            assertThat(Files.exists(reportsPath.resolve("%s.adoc".formatted(filenameWithoutExtension)))).isFalse();
-            assertThat(Files.exists(reportsPath.resolve("%s.pdf".formatted(filenameWithoutExtension)))).isTrue();
+            assertThat(Files.exists(docsPath.resolve("%s.adoc".formatted(filenameWithoutExtension)))).isFalse();
+            assertThat(Files.exists(docsPath.resolve("%s.pdf".formatted(filenameWithoutExtension)))).isTrue();
         }
     }
 
@@ -75,7 +75,7 @@ class LedgerPortTest {
     private LedgerRealm createLedger(ErpStore store) {
         store.createRepository();
         var ledgerHdl = new LedgerAdapter(new LedgerEntities(), new TypeRegistry(), store.dataRoot().resolve(LedgerBoundedDomain.DOMAIN),
-            store.reportsRoot().resolve(LedgerBoundedDomain.DOMAIN));
+            store.docsRoot().resolve(LedgerBoundedDomain.DOMAIN));
         ledgerHdl.importEntities(store);
         return ledgerHdl.realm();
     }

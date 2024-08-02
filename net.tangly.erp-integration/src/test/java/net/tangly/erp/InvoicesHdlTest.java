@@ -34,7 +34,7 @@ class InvoicesHdlTest {
             store.createRepository();
 
             var handler = new InvoicesAdapter(new InvoicesEntities(),
-                store.dataRoot().resolve(InvoicesBoundedDomain.DOMAIN), store.reportsRoot().resolve(InvoicesBoundedDomain.DOMAIN));
+                store.dataRoot().resolve(InvoicesBoundedDomain.DOMAIN), store.docsRoot().resolve(InvoicesBoundedDomain.DOMAIN));
             handler.importEntities(store);
 
             verifyArticles(handler.realm());
@@ -43,7 +43,7 @@ class InvoicesHdlTest {
             handler.exportEntities(store);
 
             handler = new InvoicesAdapter(new InvoicesEntities(),
-                store.dataRoot().resolve(InvoicesBoundedDomain.DOMAIN), store.reportsRoot().resolve(InvoicesBoundedDomain.DOMAIN));
+                store.dataRoot().resolve(InvoicesBoundedDomain.DOMAIN), store.docsRoot().resolve(InvoicesBoundedDomain.DOMAIN));
             handler.importEntities(store);
             verifyArticles(handler.realm());
         }

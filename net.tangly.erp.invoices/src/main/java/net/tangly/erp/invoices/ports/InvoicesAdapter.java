@@ -52,12 +52,12 @@ public class InvoicesAdapter implements InvoicesPort {
      * Path to the root folder of all invoices and product description. Invoices should be grouped by year.
      */
     private final Path dataFolder;
-    private final Path reportsFolder;
+    private final Path docsFolder;
 
-    public InvoicesAdapter(@NotNull InvoicesRealm realm, @NotNull Path dataFolder, Path reportsFolder) {
+    public InvoicesAdapter(@NotNull InvoicesRealm realm, @NotNull Path dataFolder, Path docsFolder) {
         this.realm = realm;
         this.dataFolder = dataFolder;
-        this.reportsFolder = reportsFolder;
+        this.docsFolder = docsFolder;
     }
 
     @Override
@@ -128,10 +128,10 @@ public class InvoicesAdapter implements InvoicesPort {
     @Override
     public void exportInvoiceDocument(@NotNull DomainAudit audit, @NotNull Invoice invoice, boolean withQrCode, boolean withEN16931, boolean overwrite) {
         var asciiDocGenerator = new InvoiceAsciiDoc(invoice.locale());
-        Path invoiceFolder = reportsFolder.resolve(Integer.toString(invoice.date().getYear()));
+        Path invoiceFolder = docsFolder.resolve(Integer.toString(invoice.date().getYear()));
         Port.createDirectories(invoiceFolder);
         Path invoiceAsciiDocPath = invoiceFolder.resolve(invoice.name() + AsciiDoctorHelper.ASCIIDOC_EXT);
-        asciiDocGenerator.exports(audit, invoice, invoiceAsciiDocPath, Map.of("pathToLogo", reportsFolder.getParent().toString()));
+        asciiDocGenerator.exports(audit, invoice, invoiceAsciiDocPath, Map.of("pathToLogo", docsFolder.getParent().toString()));
         Path invoicePdfPath = invoiceFolder.resolve(invoice.name() + AsciiDoctorHelper.PDF_EXT);
         if (!overwrite && Files.exists(invoicePdfPath)) {
             audit.log(EventData.EXPORT_EVENT, EventData.Status.SUCCESS, "Invoice PDF already exists {}",

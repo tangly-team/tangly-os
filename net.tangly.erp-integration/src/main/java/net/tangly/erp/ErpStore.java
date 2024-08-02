@@ -32,7 +32,7 @@ public record ErpStore(@NotNull FileSystem fs) implements DomainAudit {
     static final String ORGANIZATION = "/organization/";
     static final String DATABASE = "db/";
     static final String DATA = "data/";
-    static final String REPORTS = "reports/";
+    static final String DOCUMENTS = "docs/";
     static final String RESOURCES = "resources/";
 
     static final String CRM = "customers/";
@@ -51,19 +51,19 @@ public record ErpStore(@NotNull FileSystem fs) implements DomainAudit {
 
     static final String VCARDS_PACKAGE_NAME = CRM_PACKAGE_NAME + VCARDS;
     static final String PICTURES_PACKAGE_NAME = CRM_PACKAGE_NAME + PICTURES;
-    static final String REPORTS_PACKAGE_NAME = PACKAGE_NAME + REPORTS;
+    static final String REPORTS_PACKAGE_NAME = PACKAGE_NAME + DOCUMENTS;
 
 
     public Path dbRoot() {
-        return fs.getPath(ORGANIZATION, "db/");
+        return fs.getPath(ORGANIZATION, DATABASE);
     }
 
     public Path dataRoot() {
-        return fs.getPath(ORGANIZATION, "data");
+        return fs.getPath(ORGANIZATION, DATA);
     }
 
-    public Path reportsRoot() {
-        return fs.getPath(ORGANIZATION, "reports");
+    public Path docsRoot() {
+        return fs.getPath(ORGANIZATION, DOCUMENTS);
     }
 
 
@@ -82,11 +82,11 @@ public record ErpStore(@NotNull FileSystem fs) implements DomainAudit {
 
             createDomainPaths(PRODUCTS);
             createYearFolders(dataRoot().resolve(PRODUCTS));
-            createYearFolders(reportsRoot().resolve(PRODUCTS));
+            createYearFolders(docsRoot().resolve(PRODUCTS));
 
             createDomainPaths(INVOICES);
             createYearFolders(dataRoot().resolve(INVOICES));
-            createYearFolders(reportsRoot().resolve(INVOICES));
+            createYearFolders(docsRoot().resolve(INVOICES));
 
             var crmRoot = dataRoot().resolve(CRM);
             copy(CRM_PACKAGE_NAME, crmRoot, CrmAdapter.LEADS_TSV);
@@ -124,7 +124,7 @@ public record ErpStore(@NotNull FileSystem fs) implements DomainAudit {
             copy("%s2019/".formatted(INVOICES_PACKAGE_NAME), invoicesRoot.resolve("2019"), "2019-8020-Invoice-HSLU-December.json");
             copy("%s2020/".formatted(INVOICES_PACKAGE_NAME), invoicesRoot.resolve("2020"), "2020-8001-Invoice-HSLU-May.json");
 
-            copy(REPORTS_PACKAGE_NAME, reportsRoot(), "trefoil.svg");
+            copy(REPORTS_PACKAGE_NAME, docsRoot(), "trefoil.svg");
         } catch (IOException e) {
             throw new UncheckedIOException(e);
         }
@@ -133,7 +133,7 @@ public record ErpStore(@NotNull FileSystem fs) implements DomainAudit {
     private void createDomainPaths(String domain) throws IOException {
         Files.createDirectories(fs.getPath(ORGANIZATION, DATA, domain));
         Files.createDirectories(fs.getPath(ORGANIZATION, DATABASE, domain));
-        Files.createDirectories(fs.getPath(ORGANIZATION, REPORTS, domain));
+        Files.createDirectories(fs.getPath(ORGANIZATION, DOCUMENTS, domain));
         Files.createDirectories(fs.getPath(ORGANIZATION, DATA, domain, RESOURCES));
     }
 

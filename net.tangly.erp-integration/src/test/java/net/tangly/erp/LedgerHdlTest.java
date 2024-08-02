@@ -36,7 +36,7 @@ class LedgerHdlTest {
             store.createRepository();
 
             var handler = new LedgerAdapter(new LedgerEntities(), new TypeRegistry(), store.dataRoot().resolve(LedgerBoundedDomain.DOMAIN),
-                store.reportsRoot().resolve(LedgerBoundedDomain.DOMAIN));
+                store.docsRoot().resolve(LedgerBoundedDomain.DOMAIN));
             handler.importEntities(store);
             assertThat(handler.realm().accounts().items().stream().filter(Account::isAggregate).filter(o -> o.aggregatedAccounts().isEmpty()).findAny()).isEmpty();
             assertThat(handler.realm().assets()).isNotEmpty();
@@ -57,7 +57,7 @@ class LedgerHdlTest {
             store.createRepository();
 
             var ledgerData = store.dataRoot().resolve(LedgerBoundedDomain.DOMAIN);
-            var ledgerReport = store.reportsRoot().resolve(LedgerBoundedDomain.DOMAIN);
+            var ledgerReport = store.docsRoot().resolve(LedgerBoundedDomain.DOMAIN);
             var handler = new LedgerAdapter(new LedgerEntities(), new TypeRegistry(), ledgerData, ledgerReport);
             handler.importEntities(store);
             int nrOfAccounts = handler.realm().accounts().items().size();
@@ -80,7 +80,7 @@ class LedgerHdlTest {
         try (FileSystem fs = Jimfs.newFileSystem(Configuration.unix())) {
             var store = new ErpStore(fs);
             store.createRepository();
-            var handler = new LedgerAdapter(new LedgerEntities(), new TypeRegistry(), store.dataRoot().resolve(LedgerBoundedDomain.DOMAIN), store.reportsRoot().resolve(LedgerBoundedDomain.DOMAIN));
+            var handler = new LedgerAdapter(new LedgerEntities(), new TypeRegistry(), store.dataRoot().resolve(LedgerBoundedDomain.DOMAIN), store.docsRoot().resolve(LedgerBoundedDomain.DOMAIN));
             handler.importEntities(store);
             assertThat(handler.realm().transactions(LocalDate.of(2015, 1, 1), LocalDate.of(2016, 12, 31))).isNotEmpty();
         }
@@ -92,7 +92,7 @@ class LedgerHdlTest {
             var store = new ErpStore(fs);
             store.createRepository();
             var ledgerData = store.dataRoot().resolve(LedgerBoundedDomain.DOMAIN);
-            var ledgerReport = store.reportsRoot().resolve(LedgerBoundedDomain.DOMAIN);
+            var ledgerReport = store.docsRoot().resolve(LedgerBoundedDomain.DOMAIN);
             var handler = new LedgerAdapter(new LedgerEntities(), new TypeRegistry(), ledgerData, ledgerReport);
             handler.importEntities(store);
             int nrOfTransactions = handler.realm().transactions().items().size();

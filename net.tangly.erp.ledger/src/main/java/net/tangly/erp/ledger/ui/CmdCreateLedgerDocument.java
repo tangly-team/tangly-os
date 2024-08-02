@@ -24,6 +24,11 @@ import com.vaadin.flow.component.textfield.TextField;
 import net.tangly.erp.ledger.services.LedgerBoundedDomain;
 import net.tangly.ui.app.domain.Cmd;
 import net.tangly.ui.components.VaadinUtils;
+import org.jetbrains.annotations.NotNull;
+
+import java.time.LocalDate;
+import java.time.Month;
+import java.time.Year;
 
 public class CmdCreateLedgerDocument implements Cmd {
     private final TextField name;
@@ -31,23 +36,29 @@ public class CmdCreateLedgerDocument implements Cmd {
     private final DatePicker toDate;
     private final Checkbox withVat;
     private final Checkbox withTransactions;
-    private final transient LedgerBoundedDomain domain;
+    private final Checkbox yearlyReports;
+    private final LedgerBoundedDomain domain;
     private Dialog dialog;
 
-    public CmdCreateLedgerDocument(LedgerBoundedDomain domain) {
+    public CmdCreateLedgerDocument(@NotNull LedgerBoundedDomain domain) {
         this.domain = domain;
         name = new TextField("Name", "document name");
         fromDate = VaadinUtils.createDatePicker("From");
         toDate = VaadinUtils.createDatePicker("To");
         withVat = new Checkbox("Include VAT Report");
         withTransactions = new Checkbox("Include Transactions");
+        yearlyReports = new Checkbox("Yearly Reports");
     }
 
     @Override
     public void execute() {
         dialog = Cmd.createDialog("40em", create());
         Button execute = new Button("Execute", VaadinIcon.COGS.create(), e -> {
-            domain.port().exportLedgerDocument(name.getValue(), fromDate.getValue(), toDate.getValue(), withVat.getValue(), withTransactions.getValue());
+            if (yearlyReports.getValue()) {
+                batchReports(name.getValue(), fromDate.getValue().getYear());
+            } else {
+                domain.port().exportLedgerDocument(name.getValue(), fromDate.getValue(), toDate.getValue(), withVat.getValue(), withTransactions.getValue());
+            }
             close();
         });
         Button cancel = new Button("Cancel", e -> dialog.close());
@@ -70,5 +81,14 @@ public class CmdCreateLedgerDocument implements Cmd {
         VaadinUtils.set3ResponsiveSteps(form);
         form.add(name, new HtmlComponent("br"), fromDate, toDate, withVat, withTransactions);
         return form;
+    }
+
+    private void batchReports(String name, int fromYear) {
+        int currentYear = Year.now().getValue();
+        for (int year = fromYear; year <= currentYear; year++) {
+            domain.port().exportLedgerDocument(name + "-" + year, LocalDate.of(year, Month.JANUARY, 1), LocalDate.of(year, Month.DECEMBER, 31),
+                withVat.getValue(),
+                withTransactions.getValue());
+        }
     }
 }

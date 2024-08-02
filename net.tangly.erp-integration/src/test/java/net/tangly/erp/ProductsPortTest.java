@@ -64,7 +64,7 @@ class ProductsPortTest {
             handler.importEntities(store);
             EffortReportEngine reporter = new EffortReportEngine(handler.logic());
             reporter.createReport(Provider.findByOid(handler.realm().assignments(), ASSIGNMENT_OID).orElseThrow(), LocalDate.of(2020, Month.JANUARY, 1),
-                LocalDate.of(2020, Month.JANUARY, 31), store.reportsRoot().resolve(ProductsBoundedDomain.DOMAIN, "efforts.adoc"), ChronoUnit.HOURS);
+                LocalDate.of(2020, Month.JANUARY, 31), store.docsRoot().resolve(ProductsBoundedDomain.DOMAIN, "efforts.adoc"), ChronoUnit.HOURS);
             assertThat(reporter).isNotNull();
         }
     }
@@ -73,6 +73,6 @@ class ProductsPortTest {
         store.createRepository();
         var entities = new ProductsEntities();
         var logic = new ProductsBusinessLogic(entities);
-        return new ProductsAdapter(entities, logic, store.dataRoot().resolve(ProductsBoundedDomain.DOMAIN), store.reportsRoot().resolve(ProductsBoundedDomain.DOMAIN));
+        return new ProductsAdapter(entities, logic, store.dataRoot().resolve(ProductsBoundedDomain.DOMAIN), store.docsRoot().resolve(ProductsBoundedDomain.DOMAIN));
     }
 }

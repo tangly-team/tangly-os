@@ -41,7 +41,7 @@ public class Tenant {
     public static final String TENANT_ROOT_DIRECTORY_PROPERTY = "tenant.root.directory";
     public static final String DATABASES_DIRECTORY_PROPERTY = "tenant.root.db.directory";
     public static final String IMPORTS_DIRECTORY_PROPERTY = "tenant.root.imports.directory";
-    public static final String REPORTS_DIRECTORY_PROPERTY = "tenant.root.reports.directory";
+    public static final String DOCUMENTS_DIRECTORY_PROPERTY = "tenant.root.docs.directory";
     private static final Logger logger = LogManager.getLogger();
     private final String id;
     private final Properties properties;
@@ -144,8 +144,8 @@ public class Tenant {
         return getProperty(DATABASES_DIRECTORY_PROPERTY);
     }
 
-    public String reports(String domain) {
-        return "%s/%s".formatted(getProperty(REPORTS_DIRECTORY_PROPERTY), domain);
+    public String docs(String domain) {
+        return "%s/%s".formatted(getProperty(DOCUMENTS_DIRECTORY_PROPERTY), domain);
     }
 
     private void ofAppDomain() {

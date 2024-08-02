@@ -3,7 +3,6 @@ title: "Release Notes"
 date: 2019-05-01
 weight: 20
 ---
-:source-highlighter: pygments
 
 == Core Library Change Logs
 
@@ -14,6 +13,7 @@ For a detailed view of what has changed, refer to the https://bitbucket.org/tang
 
 * Update of library dependencies, update to JDK-22, and modern Gradle approach to build solutions.
 * Duplicate key interfaces to support immutable and mutable entities.
+* Support for configurable codes and tags per tenant.
 
 === 0.2.7 (2024-05-31)
 

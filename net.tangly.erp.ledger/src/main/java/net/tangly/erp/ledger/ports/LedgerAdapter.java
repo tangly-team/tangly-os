@@ -61,13 +61,13 @@ public class LedgerAdapter implements LedgerPort {
     private final LedgerRealm realm;
     private final TypeRegistry registry;
     private final Path dataFolder;
-    private final Path reportsFolder;
+    private final Path docsFolder;
 
-    public LedgerAdapter(@NotNull LedgerRealm realm, @NotNull TypeRegistry registry, Path dataFolder, Path reportsFolder) {
+    public LedgerAdapter(@NotNull LedgerRealm realm, @NotNull TypeRegistry registry, Path dataFolder, Path docsFolder) {
         this.realm = realm;
         this.registry = registry;
         this.dataFolder = dataFolder;
-        this.reportsFolder = reportsFolder;
+        this.docsFolder = docsFolder;
     }
 
     @Override
@@ -129,8 +129,8 @@ public class LedgerAdapter implements LedgerPort {
     @Override
     public void exportLedgerDocument(String name, LocalDate from, LocalDate to, boolean withVat, boolean withTransactions) {
         var report = new ClosingReportAsciiDoc(realm);
-        report.create(from, to, reportsFolder.resolve(name + AsciiDoctorHelper.ASCIIDOC_EXT), withVat, withTransactions);
-        AsciiDoctorHelper.createPdf(reportsFolder.resolve(name + AsciiDoctorHelper.ASCIIDOC_EXT), reportsFolder.resolve(name + AsciiDoctorHelper.PDF_EXT),
+        report.create(from, to, docsFolder.resolve(name + AsciiDoctorHelper.ASCIIDOC_EXT), withVat, withTransactions);
+        AsciiDoctorHelper.createPdf(docsFolder.resolve(name + AsciiDoctorHelper.ASCIIDOC_EXT), docsFolder.resolve(name + AsciiDoctorHelper.PDF_EXT),
             true);
     }
 
