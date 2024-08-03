@@ -18,7 +18,6 @@ plugins {
     id 'jacoco'
     id 'pmd' apply false
     id 'org.sonarqube'
-//    id 'com.github.spotbugs'
     id 'info.solidsoft.pitest'
 }
 
@@ -104,8 +103,7 @@ tasks.withType(JavaExec).configureEach {
 jar {
     doFirst {
         manifest {
-            attributes(
-                'Name': project.name,
+            attributes('Name': project.name,
                 'Automatic-Module-Name': project.ext.moduleName,
                 'Specification-Title': "tangly open source library $project.ext.artifactId",
                 'Specification-Version': project.version,
@@ -115,8 +113,7 @@ jar {
                 'Implementation-Version': project.version,
                 'Implementation-Vendor': "tangyly llc, Switzerland (https://blog.tangly.net)",
                 'Build-Jdk': "${System.properties['java.version']}",
-                "Class-Path": configurations.runtimeClasspath.files.collect { it.getName() }.join(' ')
-            )
+                "Class-Path": configurations.runtimeClasspath.files.collect { it.getName() }.join(' '))
         }
     }
 }
@@ -224,16 +221,8 @@ sonarqube {
 
 pmd {
     ruleSetFiles = files(rootProject.file('src/main/resources/pmd-tangly.xml'))
-    toolVersion = "7.1.0"
+    toolVersion = "7.4.0"
     ignoreFailures = true
     incrementalAnalysis = true
     rulesMinimumPriority = 3
 }
-
-//spotbugs {
-//    ignoreFailures = true
-//    effort = "default"
-//    reportLevel = "low"
-//    omitVisitors = []
-//    toolVersion = '4.8.3'
-//}

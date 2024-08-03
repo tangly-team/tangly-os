@@ -11,7 +11,6 @@ vaadin-version = '24.4.7'
 
 [plugins]
 vaadin = { id = "com.vaadin", version.ref = "vaadin-version" }
-spotbugs = "com.github.spotbugs:6.0.19"
 pitest = "info.solidsoft.pitest:1.7.0"
 jib = "com.google.cloud.tools.jib:3.4.3"
 mannes = "com.github.ben-manes.versions:0.41.0"
