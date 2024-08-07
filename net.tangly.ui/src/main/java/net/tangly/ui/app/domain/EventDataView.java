@@ -14,17 +14,13 @@
 package net.tangly.ui.app.domain;
 
 import com.vaadin.flow.component.formlayout.FormLayout;
-import com.vaadin.flow.component.grid.contextmenu.GridContextMenu;
 import com.vaadin.flow.component.html.Hr;
 import com.vaadin.flow.component.textfield.TextArea;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.ValidationException;
 import net.tangly.commons.logger.EventData;
 import net.tangly.core.providers.ProviderInMemory;
-import net.tangly.ui.components.ItemForm;
-import net.tangly.ui.components.ItemView;
-import net.tangly.ui.components.Mode;
-import net.tangly.ui.components.VaadinUtils;
+import net.tangly.ui.components.*;
 import org.jetbrains.annotations.NotNull;
 
 public class EventDataView extends ItemView<EventData> {
@@ -79,9 +75,9 @@ public class EventDataView extends ItemView<EventData> {
     }
 
     @Override
-    protected void addActions(@NotNull GridContextMenu<EventData> menu) {
+    protected void addActions(@NotNull GridMenu<EventData> menu) {
         menu().add(new Hr());
-        menu().addItem("Refresh", _ -> this.provider( ProviderInMemory.of(domain().auditEvents())));
+        menu().add("Refresh", _ -> this.provider( ProviderInMemory.of(domain().auditEvents())), GridMenu.MenuItemType.GLOBAL);
     }
 
 

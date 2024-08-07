@@ -12,6 +12,7 @@ include::../fragments/_config-mb-blog.adoc[]
 :ref-pubsub: https://en.wikipedia.org/wiki/Publish%E2%80%93subscribe_pattern[Publish and Subscribe Pattern]
 :ref-seperation-of-concerns: https://en.wikipedia.org/wiki/Separation_of_concerns[Seperation of Concerns]
 :ref-ros: https://www.ros.org/[Robot Operation System]
+:ref-jrosclient: https://github.com/lambdaprime/jrosclient[Client libraries]
 :ref-4-and-1-view: https://en.wikipedia.org/wiki/4%2B1_architectural_view_model[4 +1 Architectural View Model]
 
 image::2024-08-02-head.png[width=420,height=360,role=left]
@@ -260,7 +261,7 @@ Expertise of object-oriented models, domain-driven design, {ref-uml} and {ref-c4
 This person shall have a good grasp of the programming languages used to implement the application.
 Modern {cpp} and Python technology stacks are the ones used in ROS-2 framework
 cite:[tour-of-cpp,beautiful-cpp,effective-modern-cpp,cpp-core-guidelines]
-footnote:[Java is partially supported. https://github.com/lambdaprime/jrosclient[Client libraries] to access communication functions are available.].
+footnote:[Java is partially supported. {ref-jrosclient} to access communication functions are available.].
 Being in an architecture role, he needs an agile software architecture training and a reasonable understanding of domain-driven design method.
 Favor {cpp}::
 {cpp} provides tremendously better performance for heavy lifting algorithms.

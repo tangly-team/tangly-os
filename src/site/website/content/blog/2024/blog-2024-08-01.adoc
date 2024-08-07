@@ -139,15 +139,15 @@ You can much better security and confidentially of the data almost for free.
 == Release and Migration Themes
 
 How do we release a version of the product?::
-_Review your internal documented solution_
+_Review your internal documented solution._
 Do we support backward compatibility?::
-_Review your internal documented solution_
+_Review your internal documented solution._
 How do we implement backward compatibility?::
-_Review your internal documented solution_
+_Review your internal documented solution._
 How do we migrate data to a new release?::
-_Review your internal documented solution_
+_Review your internal documented solution._
 How do we archive data?::
-_Review your internal documented solution_
+_Review your internal documented solution._
 
 == Tips
 

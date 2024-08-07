@@ -112,7 +112,7 @@ public final class Main {
         options.addOption(
             Option.builder("p").longOpt("port").type(Integer.TYPE).argName("port").hasArg().desc("listening port of the embedded server").build());
         options.addOption(Option.builder("c").longOpt("configuration").type(String.class).argName("configuration-file").hasArg()
-            .desc("path to the default tenant properties configuration file").build());
+            .desc("uri to the default tenant properties configuration file").build());
         return options;
     }
 

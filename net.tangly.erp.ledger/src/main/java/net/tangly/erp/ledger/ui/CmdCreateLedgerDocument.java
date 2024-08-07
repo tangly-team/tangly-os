@@ -30,6 +30,11 @@ import java.time.LocalDate;
 import java.time.Month;
 import java.time.Year;
 
+/**
+ * Command to create a ledger document for a given period. The command is parameterized with the bounded domain to access the ledger and the UI components to
+ * capture the period and the options of the document.
+ * <p>The from and to date are mandatory.</p>
+ */
 public class CmdCreateLedgerDocument implements Cmd {
     private final TextField name;
     private final DatePicker fromDate;
@@ -44,7 +49,9 @@ public class CmdCreateLedgerDocument implements Cmd {
         this.domain = domain;
         name = new TextField("Name", "document name");
         fromDate = VaadinUtils.createDatePicker("From");
+        fromDate.setRequired(true);
         toDate = VaadinUtils.createDatePicker("To");
+        toDate.setRequired(true);
         withVat = new Checkbox("Include VAT Report");
         withTransactions = new Checkbox("Include Transactions");
         yearlyReports = new Checkbox("Yearly Reports");
@@ -55,7 +62,7 @@ public class CmdCreateLedgerDocument implements Cmd {
         dialog = Cmd.createDialog("40em", create());
         Button execute = new Button("Execute", VaadinIcon.COGS.create(), e -> {
             if (yearlyReports.getValue()) {
-                batchReports(name.getValue(), fromDate.getValue().getYear());
+                batchReports(name.getValue(), fromDate.getValue().getYear(), toDate.getValue().getYear());
             } else {
                 domain.port().exportLedgerDocument(name.getValue(), fromDate.getValue(), toDate.getValue(), withVat.getValue(), withTransactions.getValue());
             }
@@ -79,16 +86,22 @@ public class CmdCreateLedgerDocument implements Cmd {
     private FormLayout create() {
         FormLayout form = new FormLayout();
         VaadinUtils.set3ResponsiveSteps(form);
-        form.add(name, new HtmlComponent("br"), fromDate, toDate, withVat, withTransactions);
+        form.add(name, new HtmlComponent("br"), fromDate, toDate, withVat, withTransactions, new HtmlComponent("br"), yearlyReports);
         return form;
     }
 
-    private void batchReports(String name, int fromYear) {
+    /**
+     * Creates yearly rports for the given period.
+     *
+     * @param name     perfix of the report name. A dash and the year will be appended to the name.
+     * @param fromYear first year of the reports
+     * @param toYear   last year of the reports
+     */
+    private void batchReports(String name, int fromYear, int toYear) {
         int currentYear = Year.now().getValue();
-        for (int year = fromYear; year <= currentYear; year++) {
-            domain.port().exportLedgerDocument(name + "-" + year, LocalDate.of(year, Month.JANUARY, 1), LocalDate.of(year, Month.DECEMBER, 31),
-                withVat.getValue(),
-                withTransactions.getValue());
+        for (int year = fromYear; year <= toYear; year++) {
+            domain.port().exportLedgerDocument("%s-%d".formatted(name, year), LocalDate.of(year, Month.JANUARY, 1), LocalDate.of(year, Month.DECEMBER, 31),
+                withVat.getValue(), withTransactions.getValue());
         }
     }
 }

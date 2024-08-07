@@ -19,7 +19,6 @@ import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.ColumnTextAlign;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.grid.HeaderRow;
-import com.vaadin.flow.component.grid.contextmenu.GridContextMenu;
 import com.vaadin.flow.component.html.Hr;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.renderer.NumberRenderer;
@@ -148,9 +147,9 @@ class TransactionsView extends ItemView<Transaction> {
     }
 
     @Override
-    protected void addActions(@NotNull GridContextMenu<Transaction> menu) {
+    protected void addActions(@NotNull GridMenu<Transaction> menu) {
         menu().add(new Hr());
-        menu().addItem("Report", e -> Cmd.ofGlobalCmd(e, () -> new CmdCreateLedgerDocument(domain()).execute()));
+        menu().add("Report", e -> Cmd.ofGlobalCmd(e, () -> new CmdCreateLedgerDocument(domain()).execute()), GridMenu.MenuItemType.GLOBAL);
     }
 
     private void init() {

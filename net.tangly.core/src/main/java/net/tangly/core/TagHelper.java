@@ -37,7 +37,7 @@ public final class TagHelper {
     /**
      * Utility method to read all tag type values of type string from a JSON file using the org.json library.
      *
-     * @param path path to the JSON file containing the code values
+     * @param path uri to the JSON file containing the code values
      * @return tag type list
      * @throws IOException if a file access error occurred
      */

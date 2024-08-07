@@ -63,13 +63,13 @@ public class One2ManyReferencesField<T extends MutableEntity> extends CustomFiel
     @Override
     public void setReadOnly(boolean readOnly) {
         super.setReadOnly(readOnly);
-        view.menu().removeAll();
+        view.menu().clear();
         if (!readOnly)
-            view.menu().addItem("Add", event -> displayAddDialog());
-        view.menu().addItem("Remove", event -> {
+            view.menu().add("Add", event -> displayAddDialog(), GridMenu.MenuItemType.GLOBAL);
+        view.menu().add("Remove", event -> {
             view.provider().delete(view.selectedItem());
             view.dataView().refreshAll();
-        });
+        }, GridMenu.MenuItemType.ITEM);
     }
 
     @Override

@@ -80,12 +80,12 @@ public interface Port<R extends Realm> {
     }
 
     /**
-     * Resolve the path to where a document should be located in the file system. The convention is <em>base directory/year</em>. If folders do not
+     * Resolve the uri to where a document should be located in the file system. The convention is <em>base directory/year</em>. If folders do not
      * exist, they are created. The year must contain four digits.
      *
      * @param directory base directory containing all reports and documents
      * @param filename  filename of the document to write
-     * @return path to the folder where the document should be written. If the file does not contain a year, the base directory is returned
+     * @return uri to the folder where the document should be written. If the file does not contain a year, the base directory is returned
      */
     static Path resolvePath(@NotNull Path directory, @NotNull String filename) {
         var matcher = PATTERN.matcher(filename);

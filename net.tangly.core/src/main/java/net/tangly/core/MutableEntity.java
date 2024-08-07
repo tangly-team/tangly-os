@@ -32,6 +32,7 @@ public interface MutableEntity extends Entity, HasMutableId, HasMutableName, Has
      *
      * @return true if the entity is consistent otherwise false
      */
+    @Override
     default boolean validate() {
         return true;
     }

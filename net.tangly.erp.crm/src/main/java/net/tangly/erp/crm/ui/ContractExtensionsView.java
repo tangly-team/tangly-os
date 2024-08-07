@@ -15,7 +15,6 @@ package net.tangly.erp.crm.ui;
 
 import com.vaadin.flow.component.grid.ColumnTextAlign;
 import com.vaadin.flow.component.grid.Grid;
-import com.vaadin.flow.component.grid.contextmenu.GridContextMenu;
 import com.vaadin.flow.component.html.Hr;
 import com.vaadin.flow.data.renderer.LocalDateRenderer;
 import com.vaadin.flow.data.renderer.NumberRenderer;
@@ -26,6 +25,7 @@ import net.tangly.core.providers.ProviderInMemory;
 import net.tangly.erp.crm.domain.ContractExtension;
 import net.tangly.erp.crm.services.CrmBoundedDomain;
 import net.tangly.ui.app.domain.Cmd;
+import net.tangly.ui.components.GridMenu;
 import net.tangly.ui.components.ItemView;
 import net.tangly.ui.components.Mode;
 import net.tangly.ui.components.VaadinUtils;
@@ -44,9 +44,9 @@ public class ContractExtensionsView extends ItemView<ContractExtension> {
     }
 
     @Override
-    protected void addActions(@NotNull GridContextMenu<ContractExtension> menu) {
+    protected void addActions(@NotNull GridMenu<ContractExtension> menu) {
         menu().add(new Hr());
-        menu().addItem("Activate", e -> Cmd.ofItemCmd(e, this::contractActivated));
+        menu().add("Activate", e -> Cmd.ofItemCmd(e, this::contractActivated), GridMenu.MenuItemType.ITEM);
     }
 
     private void init() {

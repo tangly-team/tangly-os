@@ -28,7 +28,7 @@ public interface InvoiceGenerator {
      * Create a new invoice output document.
      *
      * @param invoice     invoice used to create a new invoice document
-     * @param invoicePath path to the document to create
+     * @param invoicePath uri to the document to create
      * @param properties  fields to configure the creation process
      */
     void exports(@NotNull DomainAudit audit, @NotNull Invoice invoice, @NotNull Path invoicePath, @NotNull Map<String, Object> properties);

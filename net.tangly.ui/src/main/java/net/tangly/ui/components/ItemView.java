@@ -17,9 +17,7 @@ import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.grid.GridVariant;
 import com.vaadin.flow.component.grid.HeaderRow;
-import com.vaadin.flow.component.grid.contextmenu.GridContextMenu;
 import com.vaadin.flow.component.grid.dataview.GridListDataView;
-import com.vaadin.flow.component.html.Hr;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.IntegerField;
 import com.vaadin.flow.component.textfield.TextField;
@@ -31,7 +29,6 @@ import net.tangly.commons.lang.functional.LazyReference;
 import net.tangly.core.DateRange;
 import net.tangly.core.TypeRegistry;
 import net.tangly.core.domain.BoundedDomain;
-import net.tangly.core.domain.Operation;
 import net.tangly.core.providers.Provider;
 import net.tangly.ui.app.domain.BoundedDomainUi;
 import net.tangly.ui.app.domain.View;
@@ -172,7 +169,7 @@ public abstract class ItemView<T> extends VerticalLayout implements View {
     private final ItemFilter<T> filter;
     private final Mode mode;
     private boolean readonly;
-    private GridContextMenu<T> menu;
+    private GridMenu<T> menu;
     private final Grid<T> grid;
 
     private transient T entity;
@@ -233,6 +230,7 @@ public abstract class ItemView<T> extends VerticalLayout implements View {
 
     /**
      * Delegate method returning the type registry of the domain.
+     *
      * @return type registry of the domain
      */
     public TypeRegistry registry() {
@@ -344,9 +342,9 @@ public abstract class ItemView<T> extends VerticalLayout implements View {
         return provider;
     }
 
-    protected GridContextMenu<T> menu() {
+    protected GridMenu<T> menu() {
         if (Objects.isNull(menu)) {
-            menu = grid().addContextMenu();
+            menu = new GridMenu<>(grid());
         }
         return menu;
     }
@@ -379,24 +377,12 @@ public abstract class ItemView<T> extends VerticalLayout implements View {
 
     protected void buildMenu() {
         if (mode() != Mode.LIST) {
-            menu().removeAll();
-            buildCrudMenu(mode);
+            menu().clear();
+            menu().buildCrudMenu(mode(), form());
         }
         addActions(menu());
     }
 
-    protected void buildCrudMenu(Mode mode) {
-        if (mode != Mode.LIST) {
-            menu().addItem(Mode.VIEW_TEXT, event -> event.getItem().ifPresent(o -> form().get().display(o)));
-        }
-        if (!mode.readonly()) {
-            menu().add(new Hr());
-            menu().addItem(Operation.EDIT_TEXT, event -> event.getItem().ifPresent(o -> form().get().edit(o)));
-            menu().addItem(Operation.CREATE_TEXT, _ -> form.get().create());
-            menu().addItem(Operation.DUPLICATE_TEXT, event -> event.getItem().ifPresent(o -> form().get().duplicate(o)));
-            menu().addItem(Operation.DELETE_TEXT, event -> event.getItem().ifPresent(o -> form().get().delete(o)));
-        }
-    }
 
     /**
      * Add custom actions to the context menu. Overwrite the menu if you want to add actions to the context menu.
@@ -405,7 +391,7 @@ public abstract class ItemView<T> extends VerticalLayout implements View {
      *
      * @param menu context menu of the grid
      */
-    protected void addActions(@NotNull GridContextMenu<T> menu) {
+    protected void addActions(@NotNull GridMenu<T> menu) {
     }
 
     protected HeaderRow createHeaderRow() {

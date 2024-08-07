@@ -78,7 +78,7 @@ public final class CodeHelper {
      *
      * @param clazz   class of the reference code
      * @param factory placeholder to pass the class constructor as lambda expression
-     * @param path    path to the JSON file containing the code values
+     * @param path    uri to the JSON file containing the code values
      * @param <T>     class of the reference code
      * @return code type and all its values
      * @throws IOException if a file access error occurred

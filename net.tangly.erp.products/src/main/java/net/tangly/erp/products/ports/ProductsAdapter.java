@@ -181,7 +181,7 @@ public class ProductsAdapter implements ProductsPort {
      * The efforts are grouped by assignment, contract, collaborator, and year-month and written in a yaml file.
      * The name of the file is the year and month of the efforts, the name of the collaborator, and the identifier of the contract.
      *
-     * @param path the path of the root folder where the efforts are exported
+     * @param path the uri of the root folder where the efforts are exported
      */
     public void exportEfforts(@NotNull DomainAudit audit, @NotNull Path path) {
         var efforts = realm().efforts().items().stream().collect(groupingBy(o -> o.assignment().id(),

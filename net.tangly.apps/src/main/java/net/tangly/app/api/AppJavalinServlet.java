@@ -81,7 +81,7 @@ public class AppJavalinServlet extends HttpServlet {
                     openApiServer.setUrl(("http://localhost:{port}/{basePath}/" + version + "/"));
                     openApiServer.setDescription("Server description goes here");
                     openApiServer.addVariable("port", "8080", new String[]{"8080"}, "Port of the server");
-                    openApiServer.addVariable("basePath", "rest", new String[]{"rest"}, "Base path of the server");
+                    openApiServer.addVariable("basePath", "rest", new String[]{"rest"}, "Base uri of the server");
                 })
                 // Based on official example: https://swagger.io/docs/specification/authentication/oauth2/
                 .withSecurity(new SecurityComponentConfiguration()

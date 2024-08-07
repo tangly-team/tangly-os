@@ -16,7 +16,6 @@ package net.tangly.erp.invoices.ui;
 import com.vaadin.flow.component.HtmlComponent;
 import com.vaadin.flow.component.datepicker.DatePicker;
 import com.vaadin.flow.component.formlayout.FormLayout;
-import com.vaadin.flow.component.grid.contextmenu.GridContextMenu;
 import com.vaadin.flow.component.html.Hr;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.ValidationException;
@@ -83,9 +82,9 @@ class InvoicesView extends ItemView<Invoice> {
     }
 
     @Override
-    protected void addActions(@NotNull GridContextMenu<Invoice> menu) {
+    protected void addActions(@NotNull GridMenu<Invoice> menu) {
         menu().add(new Hr());
-        menu().addItem("Export", e -> Cmd.ofDualCmd(e, (Invoice o) -> new CmdCreateInvoiceDocument(o, domain()).execute()));
+        menu().add("Export", e -> Cmd.ofDualCmd(e, (Invoice o) -> new CmdCreateInvoiceDocument(o, domain()).execute()), GridMenu.MenuItemType.DUAL);
     }
 
     private void init() {

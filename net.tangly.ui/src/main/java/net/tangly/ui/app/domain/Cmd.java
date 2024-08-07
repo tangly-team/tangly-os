@@ -23,7 +23,7 @@ import java.util.function.Consumer;
 /**
  * Defines the abstraction for the command pattern. A command is an action mostly executed through the user interface as a client. A command is an object
  * whose role is to store all the information required for executing an action, including the method to call, the method arguments, and the object (known as
- * the receiver) that implementsthe method.
+ * the receiver) that implements the method.
  */
 @FunctionalInterface
 public interface Cmd {
@@ -46,7 +46,7 @@ public interface Cmd {
      * @param consumer consumer to execute the command
      */
     static void ofGlobalCmd(@NotNull GridContextMenu.GridContextMenuItemClickEvent<?> event, @NotNull Runnable consumer) {
-        if (event.getItem().isEmpty()) {
+        if (event.getGrid().getSelectedItems().isEmpty()) {
             consumer.run();
         }
     }

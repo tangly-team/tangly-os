@@ -71,6 +71,7 @@ public final class TsvHdl {
         return new TsvEntity<>(clazz, properties, o -> supplier.apply(Long.parseLong(o.get(HasOid.OID))), null);
     }
 
+
     public static <T extends MutableEntity> List<TsvProperty<T, ?>> createTsvEntityFields() {
         List<TsvProperty<T, ?>> fields = new ArrayList<>();
         fields.add(TsvProperty.ofLong(HasOid.OID, MutableEntity::oid, null));
@@ -122,7 +123,7 @@ public final class TsvHdl {
 
     public static <T> List<TsvRelation<T>> importRelations(@NotNull DomainAudit audit, @NotNull Path path, @NotNull TsvEntity<T> tsvEntity) {
         List<TsvRelation<T>> relations = new ArrayList<>();
-        BiFunction<TsvEntity<T>, CSVRecord, TsvRelation<T>> lambda = (tsv, record) -> {
+        BiFunction<TsvEntity<T>, CSVRecord, TsvRelation<T>> lambda = (_, record) -> {
             TsvRelation<T> relation = tsvEntity.importRelation(record);
             relations.add(relation);
             return relation;

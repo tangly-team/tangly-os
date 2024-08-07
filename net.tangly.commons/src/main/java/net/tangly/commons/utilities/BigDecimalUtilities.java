@@ -18,7 +18,10 @@ import org.jetbrains.annotations.NotNull;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
-public class BigDecimalUtilities {
+public final class BigDecimalUtilities {
+    private BigDecimalUtilities() {
+    }
+
     public static BigDecimal round(@NotNull BigDecimal value) {
         return value.setScale(2, RoundingMode.HALF_UP);
     }

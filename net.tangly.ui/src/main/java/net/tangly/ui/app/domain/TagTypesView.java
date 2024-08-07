@@ -14,9 +14,9 @@
 package net.tangly.ui.app.domain;
 
 import com.vaadin.flow.component.grid.HeaderRow;
-import com.vaadin.flow.component.grid.contextmenu.GridContextMenu;
 import net.tangly.core.TagType;
 import net.tangly.core.providers.ProviderInMemory;
+import net.tangly.ui.components.GridMenu;
 import net.tangly.ui.components.ItemView;
 import net.tangly.ui.components.Mode;
 import org.jetbrains.annotations.NotNull;
@@ -57,9 +57,9 @@ public class TagTypesView extends ItemView<TagType> {
     }
 
     @Override
-    protected void addActions(@NotNull GridContextMenu<TagType> menu) {
+    protected void addActions(@NotNull GridMenu<TagType> menu) {
         super.addActions(menu);
-        menu().addItem("Count Tags", e -> update(this.domain().countTags(new HashMap<>())));
+        menu().add("Count Tags", e -> update(this.domain().countTags(new HashMap<>())), GridMenu.MenuItemType.GLOBAL);
     }
 
     static class TagTypeFilter extends ItemFilter<TagType> {

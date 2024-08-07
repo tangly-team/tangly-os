@@ -15,7 +15,6 @@ package net.tangly.erp.products.ui;
 
 import com.vaadin.flow.component.datepicker.DatePicker;
 import com.vaadin.flow.component.formlayout.FormLayout;
-import com.vaadin.flow.component.grid.contextmenu.GridContextMenu;
 import com.vaadin.flow.component.html.Hr;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.PageTitle;
@@ -24,10 +23,7 @@ import net.tangly.erp.products.domain.Assignment;
 import net.tangly.erp.products.domain.Product;
 import net.tangly.erp.products.services.ProductsBoundedDomain;
 import net.tangly.ui.app.domain.Cmd;
-import net.tangly.ui.components.EntityView;
-import net.tangly.ui.components.Mode;
-import net.tangly.ui.components.MutableEntityForm;
-import net.tangly.ui.components.One2OneField;
+import net.tangly.ui.components.*;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -63,10 +59,10 @@ class AssignmentsView extends EntityView<Assignment> {
     }
 
     @Override
-    protected void addActions(@NotNull GridContextMenu<Assignment> menu) {
+    protected void addActions(@NotNull GridMenu<Assignment> menu) {
         menu().add(new Hr());
-        menu().addItem("Print", e -> Cmd.ofItemCmd(e, (Assignment o) -> new CmdCreateEffortsReport(o, domain()).execute()));
-        menu().addItem("Import", e -> Cmd.ofGlobalCmd(e, () -> new CmdFilesUploadEfforts(domain()).execute()));
+        menu().add("Print", e -> Cmd.ofItemCmd(e, (Assignment o) -> new CmdCreateEffortsReport(o, domain()).execute()), GridMenu.MenuItemType.ITEM);
+        menu().add("Import", e -> Cmd.ofGlobalCmd(e, () -> new CmdFilesUploadEfforts(domain()).execute()), GridMenu.MenuItemType.GLOBAL);
     }
 
     @Override

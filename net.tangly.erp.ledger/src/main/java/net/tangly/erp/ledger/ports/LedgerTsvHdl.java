@@ -93,7 +93,7 @@ public class LedgerTsvHdl {
      *     <dt>Currency</dt><dd>Defines the currency of the account.</dd>
      * </dl>
      *
-     * @param path path to the file containing the chart of accounts
+     * @param path uri to the file containing the chart of accounts
      * @see #exportChartOfAccounts(DomainAudit, Path)
      */
     public void importChartOfAccounts(@NotNull DomainAudit audit, @NotNull Path path) {
@@ -139,7 +139,7 @@ public class LedgerTsvHdl {
     /**
      * Exports the chart of accounts to the provided file.
      *
-     * @param path path to the file
+     * @param path uri to the file
      * @see #importChartOfAccounts(DomainAudit, Path)
      */
     public void exportChartOfAccounts(@NotNull DomainAudit audit, Path path) {
@@ -243,7 +243,7 @@ public class LedgerTsvHdl {
     /**
      * Exports the transactions with a date in the given time interval.
      *
-     * @param path path to the file containing the list of transactions
+     * @param path uri to the file containing the list of transactions
      * @param from start of the time interval for the relevant transactions
      * @param to   end of the time interval for the relevant transactions
      */

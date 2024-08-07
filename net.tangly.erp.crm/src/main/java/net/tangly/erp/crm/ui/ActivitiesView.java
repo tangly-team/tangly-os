@@ -15,7 +15,6 @@ package net.tangly.erp.crm.ui;
 
 import com.vaadin.flow.component.datepicker.DatePicker;
 import com.vaadin.flow.component.formlayout.FormLayout;
-import com.vaadin.flow.component.grid.contextmenu.GridContextMenu;
 import com.vaadin.flow.component.html.Hr;
 import com.vaadin.flow.component.select.Select;
 import com.vaadin.flow.component.textfield.IntegerField;
@@ -160,19 +159,20 @@ class ActivitiesView extends ItemView<Activity> {
     }
 
     @Override
-    protected void buildCrudMenu(Mode mode) {
+    protected void buildMenu() {
         if (isViewEmbedded()) {
-            super.buildCrudMenu(mode);
+            menu().buildCrudMenu(mode(), form());
         } else {
-            menu().addItem(Mode.VIEW_TEXT, event -> event.getItem().ifPresent(o -> form().get().display(o)));
+            menu().add(Mode.VIEW_TEXT, event -> event.getItem().ifPresent(o -> form().get().display(o)), GridMenu.MenuItemType.ITEM);
         }
+        addActions(menu());
     }
 
     @Override
-    protected void addActions(@NotNull GridContextMenu<Activity> menu) {
+    protected void addActions(@NotNull GridMenu<Activity> menu) {
         if (!isViewEmbedded()) {
             menu().add(new Hr());
-            menu().addItem("RefreshAll", _ -> new CmdRefreshActivities(this).execute());
+            menu().add("RefreshAll", _ -> new CmdRefreshActivities(this).execute(), GridMenu.MenuItemType.GLOBAL);
         }
     }
 

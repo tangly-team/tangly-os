@@ -31,7 +31,7 @@ public interface ProductsPort extends Port<ProductsRealm> {
     ProductsBusinessLogic logic();
 
     /**
-     * Imports all efforts defined in the YAML file located at the given path.
+     * Imports all efforts defined in the YAML file located at the given uri.
      * An effort is identified by the combination of the assignment identifier and the date of the effort. The assignment identifies uniquely the collaborator working on the effort.
      *
      * @param reader  reader containing the efforts to import

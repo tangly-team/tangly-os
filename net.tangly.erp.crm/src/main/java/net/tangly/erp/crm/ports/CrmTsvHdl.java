@@ -312,5 +312,4 @@ public class CrmTsvHdl {
     public static <T extends CrmEntity> TsvProperty<T, Address> createAddressMapping(@NotNull VcardType type) {
         return TsvProperty.of(TsvHdlCore.createTsvAddress(), (T e) -> e.address(type).orElse(null), (e, p) -> e.address(type, p));
     }
-
 }

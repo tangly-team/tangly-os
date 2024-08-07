@@ -16,7 +16,6 @@ package net.tangly.erp.crm.ui;
 import com.vaadin.flow.component.HtmlComponent;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.ColumnTextAlign;
-import com.vaadin.flow.component.grid.contextmenu.GridContextMenu;
 import com.vaadin.flow.component.html.Hr;
 import com.vaadin.flow.component.select.Select;
 import com.vaadin.flow.data.renderer.NumberRenderer;
@@ -89,9 +88,9 @@ class ContractsView extends EntityView<Contract> {
     }
 
     @Override
-    protected void addActions(@NotNull GridContextMenu<Contract> menu) {
+    protected void addActions(@NotNull GridMenu<Contract> menu) {
         menu().add(new Hr());
-        menu().addItem("Activate", e -> Cmd.ofItemCmd(e, this::contractActivated));
+        menu().add("Activate", e -> Cmd.ofItemCmd(e, this::contractActivated), GridMenu.MenuItemType.ITEM);
     }
 
     private void init() {
