@@ -27,7 +27,7 @@ apache-log4j2-api = { module = "org.apache.logging.log4j:log4j-api", version.ref
 apache-log4j2-core = { module = "org.apache.logging.log4j:log4j-core", version.ref = "log4j2-version" }
 apache-log4j2-slf4j = { module = "org.apache.logging.log4j:log4j-slf4j2-impl", version.ref = "log4j2-version" }
 
-awaitility = "org.awaitility:awaitility:4.2.1"
+awaitility = "org.awaitility:awaitility:4.2.2"
 
 apache-pdfbox = "org.apache.pdfbox:pdfbox:3.0.2"
 arch-unit = "com.tngtech.archunit:archunit-junit5-api:1.3.0"
@@ -47,7 +47,7 @@ iban4j = "org.iban4j:iban4j:3.2.9-RELEASE"
 ical4j-core = "org.mnode.ical4j:ical4j:4.0.2"
 ical4j-vcard = "org.mnode.ical4j:ical4j-vcard:1.0.7"
 
-google-libphonenumber = "com.googlecode.libphonenumber:libphonenumber:8.13.42"
+google-libphonenumber = "com.googlecode.libphonenumber:libphonenumber:8.13.43"
 google-protobuf = "com.google.protobuf:protobuf-java:3.25.3"
 
 jakarta-mail = "jakarta.mail:jakarta.mail-api:2.1.3"
