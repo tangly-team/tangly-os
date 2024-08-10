@@ -22,6 +22,39 @@ Ideally, the domain model should be designed to be independent of the persistenc
 
 We assume the reader is familiar with the concepts of domain-driven design.
 
+The key abstractions are described in the following diagram. The `CRM` bounded domain is used as an example.
+See also the {ref-tangly-blog-url}/docs/core/api-core/net/tangly/core/domain/package-summary.html[JavaDoc Domain Model].
+
+[plantuml,target=domain-model,format=svg,role="text-center"]
+----
+interface DomainAudit {}
+interface Realm {}
+interface Port<R extends Realm> {}
+
+class BoundedDomain<R extends Realm, B, P extends Port<R>> implements DomainAudit {
+  String name()
+}
+BoundedDomain o-- "1" TypeRegistry : typeRegistry
+BoundedDomain o-- "1" UserProvider : userProvider
+BoundedDomain o-- "1" R : realm
+BoundedDomain o-- "1" P : port
+BoundedDomain o-- "1" B : business
+
+class CrmRealm
+Realm <|-- CrmRealm
+
+class CrmBusiness {}
+
+class CrmPort {}
+Port <|-- CrmPort
+
+class CrmBoundedDomain<CrmRealm, CrmBusiness, CrmPort>  {}
+BoundedDomain <|-- CrmBoundedDomain
+CrmBoundedDomain ..> CrmRealm
+CrmBoundedDomain ..> CrmPort
+CrmBoundedDomain ..> CrmBusiness
+----
+
 === Facets of a Bounded Domain
 
 A bounded domain must provide the following abstractions:
@@ -29,8 +62,9 @@ A bounded domain must provide the following abstractions:
 * A bounded domain class as entry point to the domain.
 Each bounded domain has a unique name.
 * A realm of the domain model and provides the factory and persistence functionality as described in DDD.
+All aggregates of the domain are created and persisted using the realm.
 * A port describing the services provided by the domain.
-An adapter class and other helper classes are used to implement the port.
+An adapter class and other helper classes are used to implement the port contract.
 * An optional business logic implementing the business rules of the domain.
 
 The following abstractions are optional:
@@ -56,7 +90,7 @@ An entity shall have an *identifier* that uniquely identifies the entity within 
 Optionally, it can have an *internal object identifier* used to identify the entity within the domain model.
 
 An entity implements the `HasId` interface and optionally the `HasOid` interface.
-An entity can also have a human-readable name that is used to display the entity in the user interface.
+An entity can also have a human-readable name used to display the entity in the user interface.
 Such entities implement the `HasName` interface.
 
 ===== External Representation
@@ -72,7 +106,7 @@ For complex structures, we use JSON.
 An example is the export of a complete invoice.
 
 Instances edited outside the domain are often encoded in YAML.
-An example is the documentation of monthly activities of a consultant in a services company.
+An example is the documentation for the monthly activities of a consultant in a services company.
 
 [NOTE]
 ====
@@ -118,7 +152,7 @@ The classes are declared in the package 'net.erp.DOMAIN.ui'.
 A bounded domain can provide a REST interface to expose its functionality to other modules or external clients.
 The definition and documentation of the REST services are part of the bounded domain and should be packaged with the domain artifacts.
 
-THe REST services are documented using the OpenAPI specification and the documentation is displayed using Swagger UI.
+THe REST services are documented using the OpenAPI specification, and the documentation is displayed using Swagger UI.
 
 [NOTE]
 ====

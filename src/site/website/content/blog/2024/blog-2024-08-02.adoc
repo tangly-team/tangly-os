@@ -269,7 +269,7 @@ Static typed code is often easier to maintain.
 Prefer modern {cpp} such as {cpp} 23.
 Errors are often caught at compile time. +
 +
-You are not constrained by performance or maintainability requirements, feel free to use Python.
+If you are not constrained by performance or maintainability requirements, feel free to use Python.
 Technical Excellence::
 Technical excellence as one of twelve {ref-manifesto-principles} of the {ref-manifesto}.
 Your development team shall pursue technical excellence in all used technology.
