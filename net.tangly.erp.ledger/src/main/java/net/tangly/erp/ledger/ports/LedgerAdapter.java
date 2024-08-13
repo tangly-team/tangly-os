@@ -127,9 +127,10 @@ public class LedgerAdapter implements LedgerPort {
     }
 
     @Override
-    public void exportLedgerDocument(String name, LocalDate from, LocalDate to, boolean withVat, boolean withTransactions) {
+    public void exportLedgerDocument(String name, LocalDate from, LocalDate to, boolean withBalanceSheet, boolean withProfitsAndLosses,
+                                     boolean withTransactions, boolean withVat) {
         var report = new ClosingReportAsciiDoc(realm);
-        report.create(from, to, docsFolder.resolve(name + AsciiDoctorHelper.ASCIIDOC_EXT), withVat, withTransactions);
+        report.create(from, to, docsFolder.resolve(name + AsciiDoctorHelper.ASCIIDOC_EXT), withBalanceSheet, withProfitsAndLosses, withTransactions, withVat);
         AsciiDoctorHelper.createPdf(docsFolder.resolve(name + AsciiDoctorHelper.ASCIIDOC_EXT), docsFolder.resolve(name + AsciiDoctorHelper.PDF_EXT),
             true);
     }

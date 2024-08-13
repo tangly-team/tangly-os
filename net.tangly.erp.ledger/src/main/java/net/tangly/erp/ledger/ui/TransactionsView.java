@@ -21,8 +21,11 @@ import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.grid.HeaderRow;
 import com.vaadin.flow.component.html.Hr;
 import com.vaadin.flow.component.textfield.TextField;
+import com.vaadin.flow.data.renderer.ComponentRenderer;
 import com.vaadin.flow.data.renderer.NumberRenderer;
 import com.vaadin.flow.router.PageTitle;
+import net.tangly.core.DateRange;
+import net.tangly.erp.ledger.domain.AccountEntry;
 import net.tangly.erp.ledger.domain.Transaction;
 import net.tangly.erp.ledger.services.LedgerBoundedDomain;
 import net.tangly.erp.ledger.services.LedgerBusinessLogic;
@@ -34,13 +37,14 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Objects;
 
+
 /**
  * Regular CRUD view on transaction abstraction. The grid and edition dialog were optimized for usability.
  */
 @PageTitle("ledger-transactions")
 class TransactionsView extends ItemView<Transaction> {
     static class TransactionFilter extends ItemFilter<Transaction> {
-        private LocalDate date;
+        private DateRange dateRange;
         private String text;
         private String debit;
         private String credit;
@@ -49,8 +53,8 @@ class TransactionsView extends ItemView<Transaction> {
         public TransactionFilter() {
         }
 
-        public void date(LocalDate date) {
-            this.date = date;
+        public void dateRange(DateRange dateRange) {
+            this.dateRange = dateRange;
             dataView().refreshAll();
         }
 
@@ -70,8 +74,9 @@ class TransactionsView extends ItemView<Transaction> {
         }
 
         public boolean test(@NotNull Transaction entity) {
-            return (Objects.isNull(date) || (date.isEqual(entity.date()))) && ItemFilter.matches(entity.text(), text) &&
-                ItemFilter.matches(entity.debit().accountId(), debit) && ItemFilter.matches(entity.credit().accountId(), credit);
+            return (Objects.isNull(dateRange) || Objects.isNull(entity.date()) || dateRange.isActive(entity.date())) &&
+                ItemFilter.matches(entity.text(), text) && ItemFilter.matches(entity.debit().accountId(), debit) &&
+                ItemFilter.matches(entity.credit().accountId(), credit);
         }
     }
 
@@ -154,16 +159,17 @@ class TransactionsView extends ItemView<Transaction> {
 
     private void init() {
         Grid<Transaction> grid = grid();
-        grid.addColumn(Transaction::date).setKey("date").setHeader("Date").setAutoWidth(true).setResizable(true).setSortable(true);
-        grid.addColumn(Transaction::text).setKey("text").setHeader("Text").setAutoWidth(true).setResizable(true).setSortable(true);
+        grid.addColumn(Transaction::date).setKey(DATE).setHeader(DATE_LABEL).setAutoWidth(true).setResizable(true).setSortable(true);
+        grid.addColumn(Transaction::reference).setKey("reference").setHeader("Reference").setAutoWidth(true).setResizable(true).setSortable(true);
+        grid.addColumn(Transaction::text).setKey(TEXT).setHeader(TEXT_LABEL).setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Transaction::isSplit).setKey("split").setHeader("Split").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Transaction::debitAccount).setKey("debit").setHeader("Debit").setAutoWidth(true).setResizable(true);
         grid.addColumn(Transaction::creditAccount).setKey("credit").setHeader("Credit").setAutoWidth(true).setResizable(true);
         grid.addColumn(new NumberRenderer<>(Transaction::amount, VaadinUtils.FORMAT)).setKey("amount").setHeader("Amount").setAutoWidth(true).setResizable(true)
             .setTextAlign(ColumnTextAlign.END);
         grid.addColumn(Transaction::vatCodeAsString).setKey("vatCode").setHeader("VatCode").setAutoWidth(true).setResizable(true).setSortable(true);
-
         addEntityFilterFields(grid(), new TransactionFilter());
+        grid.setItemDetailsRenderer(createTransactionDetailsRenderer());
     }
 
     protected void addEntityFilterFields(@NotNull Grid<Transaction> grid, @NotNull TransactionFilter filter) {
@@ -171,10 +177,34 @@ class TransactionsView extends ItemView<Transaction> {
         HeaderRow headerRow = grid.appendHeaderRow();
         grid.getHeaderRows().clear();
         //addFilterText(headerRow, "date", "Date", filter::date);
+        headerRow.getCell(grid.getColumnByKey(EntityView.DATE)).setComponent(ItemView.createDateRangeField(filter::dateRange));
         headerRow.getCell(grid.getColumnByKey(EntityView.TEXT)).setComponent(ItemView.createTextFilterField(filter::text));
         headerRow.getCell(grid.getColumnByKey("debit")).setComponent(ItemView.createTextFilterField(filter::debit));
         headerRow.getCell(grid.getColumnByKey("credit")).setComponent(ItemView.createTextFilterField(filter::credit));
         headerRow.getCell(grid.getColumnByKey("credit")).setComponent(ItemView.createTextFilterField(filter::credit));
-        // TODO amount
+    }
+
+    private static ComponentRenderer<TransactionDetails, Transaction> createTransactionDetailsRenderer() {
+        return new ComponentRenderer<>(TransactionDetails::new, TransactionDetails::value);
+    }
+
+    private static class TransactionDetails extends FormLayout {
+        private final Grid<AccountEntry> grid;
+
+        public TransactionDetails() {
+            grid = new Grid<>();
+            grid.addColumn(AccountEntry::date).setKey(DATE).setHeader(DATE_LABEL).setAutoWidth(true).setResizable(true).setSortable(true);
+            grid.addColumn(AccountEntry::reference).setKey("reference").setHeader("Reference").setAutoWidth(true).setResizable(true).setSortable(true);
+            grid.addColumn(AccountEntry::text).setKey(TEXT).setHeader(TEXT_LABEL).setAutoWidth(true).setResizable(true).setSortable(true);
+            grid.addColumn(new NumberRenderer<>(AccountEntry::amount, VaadinUtils.FORMAT)).setKey("amount").setHeader("Amount").setAutoWidth(true)
+                .setResizable(true).setTextAlign(ColumnTextAlign.END);
+            grid.addColumn(AccountEntry::vatCodeAsString).setKey("vatCode").setHeader("VatCode").setAutoWidth(true).setResizable(true).setSortable(true);
+            add(grid);
+            grid.setWidthFull();
+        }
+
+        public void value(@NotNull Transaction transaction) {
+            grid.setItems(transaction.splits());
+        }
     }
 }

@@ -39,8 +39,10 @@ public class CmdCreateLedgerDocument implements Cmd {
     private final TextField name;
     private final DatePicker fromDate;
     private final DatePicker toDate;
-    private final Checkbox withVat;
+    private final Checkbox withBalanceSheet;
+    private final Checkbox withProfitsAndLosses;
     private final Checkbox withTransactions;
+    private final Checkbox withVat;
     private final Checkbox yearlyReports;
     private final LedgerBoundedDomain domain;
     private Dialog dialog;
@@ -52,8 +54,12 @@ public class CmdCreateLedgerDocument implements Cmd {
         fromDate.setRequired(true);
         toDate = VaadinUtils.createDatePicker("To");
         toDate.setRequired(true);
-        withVat = new Checkbox("Include VAT Report");
+        withBalanceSheet = new Checkbox("Include Balance Sheet");
+        withBalanceSheet.setValue(true);
+        withProfitsAndLosses = new Checkbox("Include Profits and Losses");
+        withProfitsAndLosses.setValue(true);
         withTransactions = new Checkbox("Include Transactions");
+        withVat = new Checkbox("Include VAT Report");
         yearlyReports = new Checkbox("Yearly Reports");
     }
 
@@ -64,7 +70,9 @@ public class CmdCreateLedgerDocument implements Cmd {
             if (yearlyReports.getValue()) {
                 batchReports(name.getValue(), fromDate.getValue().getYear(), toDate.getValue().getYear());
             } else {
-                domain.port().exportLedgerDocument(name.getValue(), fromDate.getValue(), toDate.getValue(), withVat.getValue(), withTransactions.getValue());
+                domain.port()
+                    .exportLedgerDocument(name.getValue(), fromDate.getValue(), toDate.getValue(), withBalanceSheet.getValue(), withProfitsAndLosses.getValue(),
+                        withTransactions.getValue(), withVat.getValue());
             }
             close();
         });
@@ -86,7 +94,8 @@ public class CmdCreateLedgerDocument implements Cmd {
     private FormLayout create() {
         FormLayout form = new FormLayout();
         VaadinUtils.set3ResponsiveSteps(form);
-        form.add(name, new HtmlComponent("br"), fromDate, toDate, withVat, withTransactions, new HtmlComponent("br"), yearlyReports);
+        form.add(name, new HtmlComponent("br"), fromDate, toDate, withBalanceSheet, withProfitsAndLosses, withTransactions, withVat, new HtmlComponent("br"),
+            yearlyReports);
         return form;
     }
 
@@ -101,7 +110,7 @@ public class CmdCreateLedgerDocument implements Cmd {
         int currentYear = Year.now().getValue();
         for (int year = fromYear; year <= toYear; year++) {
             domain.port().exportLedgerDocument("%s-%d".formatted(name, year), LocalDate.of(year, Month.JANUARY, 1), LocalDate.of(year, Month.DECEMBER, 31),
-                withVat.getValue(), withTransactions.getValue());
+                withBalanceSheet.getValue(), withProfitsAndLosses.getValue(), withTransactions.getValue(), withVat.getValue());
         }
     }
 }

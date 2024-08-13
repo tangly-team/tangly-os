@@ -50,32 +50,51 @@ public class ClosingReportAsciiDoc {
         this.ledger = ledger;
     }
 
-    public void create(LocalDate from, LocalDate to, Path reportPath, boolean withVat, boolean withTransactions) {
+    public void create(LocalDate from, LocalDate to, Path reportPath, boolean withBalanceSheet, boolean withProfitsAndLosses, boolean withTransactions,
+                       boolean withVat) {
         try (Writer writer = Files.newBufferedWriter(reportPath, StandardCharsets.UTF_8)) {
-            create(from, to, writer, withVat, withTransactions);
+            create(from, to, writer, withBalanceSheet, withProfitsAndLosses, withTransactions, withVat);
         } catch (IOException e) {
             logger.error("Error during reporting", e);
         }
     }
 
-    public void create(LocalDate from, LocalDate to, Writer writer, boolean withVat, boolean withTransactions) {
+    /**
+     * Creates the accounting report for the specified period. The report can contain the balance sheet, the profit and loss statement, the VAT report and the
+     *
+     * @param from                 start date of the report
+     * @param to                   end date of the report
+     * @param writer               writer to write the report
+     * @param withBalanceSheet     flag to include the balance sheet in the report
+     * @param withProfitsAndLosses flag to include the profit and loss statement in the report
+     * @param withTransactions     flag to include the transactions in the report
+     * @param withVat              flag to include the VAT report in the report
+     */
+    public void create(LocalDate from, LocalDate to, Writer writer, boolean withBalanceSheet, boolean withProfitsAndLosses, boolean withTransactions,
+                       boolean withVat) {
         final AsciiDocHelper helper = new AsciiDocHelper(writer);
-        helper.header("Balance Sheet", 2);
-        generateResultTableFor(helper, ledger.assets(), from, to, "Assets");
-        generateResultTableFor(helper, ledger.liabilities(), from, to, "Liabilities");
-        generateResultTableFor(helper, ledger.profitAndLoss(), from, to, "Profits and Losses");
+        if (withBalanceSheet || withProfitsAndLosses) {
+            helper.header("Balance Sheet", 2);
+        }
+        if (withBalanceSheet) {
+            generateResultTableFor(helper, ledger.assets(), from, to, "Assets");
+            generateResultTableFor(helper, ledger.liabilities(), from, to, "Liabilities");
+        }
+        if (withProfitsAndLosses) {
+            generateResultTableFor(helper, ledger.profitAndLoss(), from, to, "Profits and Losses");
+        }
+        if (withTransactions) {
+            helper.header("Transactions", 3);
+            helper.tableHeader("Transactions", "cols=\"20, 20, 70 , 15, 15, >20, >10\"", "Date", "Voucher", "Description", "Debit", "Credit", "Amount", "VAT");
+            ledger.transactions(from, to).forEach(o -> createTransactionRow(helper, o));
+            helper.tableEnd();
+        }
         if (withVat) {
             helper.tableHeader("VAT", "cols=\"100, >25, >25 , >25\"", "Period", "Turnover", "VAT", "Due VAT");
             addVatRows(helper, from.getYear());
             if (from.getYear() != to.getYear()) {
                 addVatRows(helper, to.getYear());
             }
-            helper.tableEnd();
-        }
-        if (withTransactions) {
-            helper.header("Transactions", 3);
-            helper.tableHeader("Transactions", "cols=\"20, 20, 70 , 15, 15, >20, >10\"", "Date", "Voucher", "Description", "Debit", "Credit", "Amount", "VAT");
-            ledger.transactions(from, to).forEach(o -> createTransactionRow(helper, o));
             helper.tableEnd();
         }
     }
@@ -88,10 +107,10 @@ public class ClosingReportAsciiDoc {
     }
 
     /**
-     * Creates the VAT results table rows. For each half-year - the period used by the Swiss government as VAT payment period for small companies using the net
-     * tax rate VAT variant - and full year we provide the turnover, the invoiced VAT and the VAT tax to pay to the government.
+     * Creates the VAT results table rows. For each half-year - the period used by the Swiss government as a VAT payment period for small companies using the
+     * net tax rate VAT variant - and full year we provide the turnover, the invoiced VAT and the VAT tax to pay to the government.
      *
-     * @param helper asciidoc helper to write the report
+     * @param helper AsciiDoc helper to write the report
      * @param year   the year to raws shall be computed
      */
     private void addVatRows(AsciiDocHelper helper, int year) {
@@ -113,17 +132,17 @@ public class ClosingReportAsciiDoc {
 
     private static void createTransactionRow(AsciiDocHelper helper, Transaction transaction) {
         if (transaction.isSplit()) {
-            if (transaction.debitSplits().size() > 1) {
+            if (transaction.hasDebitSplits()) {
                 helper.tableRow(transaction.date().toString(), transaction.reference(), transaction.text(), "", transaction.creditAccount(),
                     format(transaction.amount()), "-");
                 for (AccountEntry entry : transaction.debitSplits()) {
-                    helper.tableRow("", "", "", entry.accountId(), "", format(transaction.amount()), "-");
+                    helper.tableRow("", "", entry.text(), entry.accountId(), "", format(transaction.amount()), "-");
                 }
-            } else {
+            } else if (transaction.hasCreditSplits()) {
                 helper.tableRow(transaction.date().toString(), transaction.reference(), transaction.text(), transaction.debitAccount(), "",
                     format(transaction.amount()), "-");
                 for (AccountEntry entry : transaction.debitSplits()) {
-                    helper.tableRow("", "", "", "", entry.accountId(), format(transaction.amount()), "-");
+                    helper.tableRow("", "", "", entry.text(), entry.accountId(), format(transaction.amount()), "-");
                 }
             }
         } else {

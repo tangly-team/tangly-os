@@ -21,6 +21,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -96,8 +97,16 @@ public class Transaction implements HasDate, HasText {
         return (debit != null) ? List.of(debit) : splits;
     }
 
+    public boolean hasDebitSplits() {
+        return Objects.isNull(debit);
+    }
+
     public List<AccountEntry> creditSplits() {
         return (credit != null) ? List.of(credit) : splits;
+    }
+
+    public boolean hasCreditSplits() {
+        return Objects.isNull(credit);
     }
 
     public AccountEntry debit() {

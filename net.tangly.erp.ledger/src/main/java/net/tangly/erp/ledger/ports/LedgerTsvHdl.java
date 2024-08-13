@@ -213,9 +213,7 @@ public class LedgerTsvHdl {
                 String vatCode = csv.get(VAT_CODE);
                 List<AccountEntry> splits = new ArrayList<>();
                 if (isSplit(csv)) {
-                    csv = importSplits(records, splits, isDebitSplit(csv));
-                } else {
-                    csv = TsvHdl.nextNonEmptyRecord(records);
+                    csv = importSplits(records, splits);
                 }
                 try {
                     var debitAccount = Strings.emptyToNull(debitValues[0]);
@@ -231,6 +229,9 @@ public class LedgerTsvHdl {
                         Map.of(SOURCE, source, "entity", transaction));
                 } catch (NumberFormatException | DateTimeParseException e) {
                     logger.atError().withThrowable(e).log("{}: not a legal amount {}", date, amount);
+                }
+                if (!isSplit(csv)) {
+                    csv = TsvHdl.nextNonEmptyRecord(records);
                 }
             }
             audit.log(EventData.IMPORT_EVENT, EventData.Status.INFO, "imported to journal", Map.of(SOURCE, source, "counter", counter));
@@ -275,20 +276,13 @@ public class LedgerTsvHdl {
         return vatCodes.isPresent() ? vatCodes.get().findCode(code).orElse(null) : null;
     }
 
-    private CSVRecord importSplits(@NotNull Iterator<CSVRecord> records, List<AccountEntry> splits, boolean isDebitSplit) {
+    private CSVRecord importSplits(@NotNull Iterator<CSVRecord> records, List<AccountEntry> splits) {
         var csv = records.hasNext() ? records.next() : null;
-        while ((isDebitSplit && isCreditSplit(csv)) || isDebitSplit(csv)) {
-            if (!Strings.isNullOrBlank(csv.get(ACCOUNT_DEBIT))) {
-                var values = csv.get(ACCOUNT_DEBIT).split("-");
-                var entry = AccountEntry.debit(values[0], TsvHdl.parseDate(csv, DATE), TsvHdl.parseBigDecimal(csv, AMOUNT), csv.get(DOC), csv.get(DESCRIPTION),
-                    of(csv.get(VAT_CODE)), defineSegments(values));
-                splits.add(entry);
-            } else if (!Strings.isNullOrBlank(csv.get(ACCOUNT_CREDIT))) {
-                var values = csv.get(ACCOUNT_CREDIT).split("-");
-                var entry = AccountEntry.credit(values[0], TsvHdl.parseDate(csv, DATE), TsvHdl.parseBigDecimal(csv, AMOUNT), csv.get(DOC), csv.get(DESCRIPTION),
-                    of(csv.get(VAT_CODE)), defineSegments(values));
-                splits.add(entry);
-            }
+        while (isCreditSplit(csv) || isDebitSplit(csv)) {
+            var values = isDebitSplit(csv) ? csv.get(ACCOUNT_DEBIT).split("-") : csv.get(ACCOUNT_CREDIT).split("-");
+            var entry = AccountEntry.debit(values[0], TsvHdl.parseDate(csv, DATE), TsvHdl.parseBigDecimal(csv, AMOUNT), csv.get(DOC), csv.get(DESCRIPTION),
+                of(csv.get(VAT_CODE)), defineSegments(values));
+            splits.add(entry);
             csv = TsvHdl.nextNonEmptyRecord(records);
         }
         return csv;
@@ -408,6 +402,6 @@ public class LedgerTsvHdl {
     }
 
     private static boolean isCreditSplit(CSVRecord csv) {
-        return (csv != null) && Strings.isNullOrEmpty(csv.get(ACCOUNT_DEBIT)) && !Strings.isNullOrEmpty(csv.get(ACCOUNT_DEBIT));
+        return (csv != null) && !Strings.isNullOrEmpty(csv.get(ACCOUNT_CREDIT)) && Strings.isNullOrEmpty(csv.get(ACCOUNT_DEBIT));
     }
 }
