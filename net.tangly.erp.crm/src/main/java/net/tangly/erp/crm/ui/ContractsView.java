@@ -103,7 +103,7 @@ class ContractsView extends EntityView<Contract> {
     }
 
     /**
-     * Activate the contract in the ERP system. The {@link net.tangly.erp.crm.events.ContractSignedEvent} is published to the event bus.
+     * Activates the contract in the ERP system. The {@link net.tangly.erp.crm.events.ContractSignedEvent} is published to the event bus.
      * The activation states the intent to start working on the contract.
      *
      * @param contract contract to activate

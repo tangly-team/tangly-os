@@ -67,7 +67,8 @@ An example is `http://localhost:8080/erp/rest/customers/natural-enitites`.
 - The openAPI description file is available under `http://localhost:8080/rest/openapi.json`.
 - The swagger server is serviced under `http://localhost:8080/rest/swagger`.
 
-The reports are available under `http://localhost:8080/erp/reports/`.
+The documents and reports are available under `http://localhost:8080/erp/docs/`.
+Each bounded domain has a dedicated document folder.
 
 === Run locally as compiled application
 

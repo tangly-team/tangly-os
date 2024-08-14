@@ -97,10 +97,10 @@ public final class Main {
                 var tenant = Application.instance().tenant("tangly");
                 final WebAppContext context = super.createWebAppContext();
                 ServletHolder staticFiles = new ServletHolder("staticFiles", new DefaultServlet());
-                String docsFolder = tenant.properties().getProperty("tenant.root.reports.directory");
+                String docsFolder = tenant.properties().getProperty("tenant.root.docs.directory");
                 staticFiles.setInitParameter("resourceBase", docsFolder);
                 String tenantName = tenant.properties().getProperty("tenant.name");
-                context.addServlet(staticFiles, "/" + tenantName + "/reports/*");
+                context.addServlet(staticFiles, "/" + tenantName + "/docs/*");
                 return context;
             }
         }.setPort(port).withContextRoot(contextRoot).run();

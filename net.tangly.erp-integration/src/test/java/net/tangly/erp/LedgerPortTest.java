@@ -46,7 +46,7 @@ class LedgerPortTest {
             var adapter = new LedgerAdapter(createLedger(store), new TypeRegistry(), store.dataRoot().resolve(LedgerBoundedDomain.DOMAIN),
                 store.docsRoot().resolve(LedgerBoundedDomain.DOMAIN));
             var docsPath = store.docsRoot().resolve(LedgerBoundedDomain.DOMAIN);
-            adapter.exportLedgerDocument(filenameWithoutExtension, LocalDate.of(2015, 10, 1), LocalDate.of(2016, 12, 31), true, true);
+            adapter.exportLedgerDocument(filenameWithoutExtension, LocalDate.of(2015, 10, 1), LocalDate.of(2016, 12, 31), true, true, true, true, true);
             assertThat(Files.exists(docsPath.resolve("%s.adoc".formatted(filenameWithoutExtension)))).isFalse();
             assertThat(Files.exists(docsPath.resolve("%s.pdf".formatted(filenameWithoutExtension)))).isTrue();
         }
@@ -58,7 +58,7 @@ class LedgerPortTest {
             var store = new ErpStore(fs);
             store.createRepository();
 
-            var handler = new LedgerTsvHdl(new LedgerEntities(), new TypeRegistry())    ;
+            var handler = new LedgerTsvHdl(new LedgerEntities(), new TypeRegistry());
             var ledgerDataPath = store.dataRoot().resolve(LedgerBoundedDomain.DOMAIN);
             var path = ledgerDataPath.resolve(LedgerAdapter.journalForYear(2015));
             handler.importJournal(store, Files.newBufferedReader(path, StandardCharsets.UTF_8), path.toString());
@@ -67,7 +67,7 @@ class LedgerPortTest {
 
             var report = new ClosingReportAsciiDoc(handler.ledger());
             var writer = new StringWriter();
-            report.create(LocalDate.of(2015, 1, 1), LocalDate.of(2016, 12, 31), new PrintWriter(writer), true, true);
+            report.create(LocalDate.of(2015, 1, 1), LocalDate.of(2016, 12, 31), new PrintWriter(writer), true, true, true, true, true);
             assertThat(writer.toString()).isNotEmpty();
         }
     }

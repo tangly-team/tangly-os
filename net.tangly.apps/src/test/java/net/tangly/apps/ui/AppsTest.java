@@ -67,7 +67,8 @@ class AppsTest extends ApplicationView {
     }
 
     /**
-     * Return the form layout of the dialog associated with the command. This method is provided because currently find all dialogs karibu functionality is not working as exepcted.
+     * Returns the form layout of the dialog associated with the command. This method is provided because currently find all dialogs karibu functionality is
+     * not working as exepcted.
      *
      * @param cmd command which form should be returned
      * @return requested form layout of the command dialog

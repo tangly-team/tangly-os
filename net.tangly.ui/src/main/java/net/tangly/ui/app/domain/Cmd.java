@@ -80,6 +80,7 @@ public interface Cmd {
         Dialog dialog = new Dialog();
         dialog.setWidth(width);
         dialog.setResizable(true);
+        dialog.setDraggable(true);
         dialog.add(form);
         return dialog;
     }
