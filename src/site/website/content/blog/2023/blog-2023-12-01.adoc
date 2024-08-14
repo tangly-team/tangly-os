@@ -10,7 +10,7 @@ params:
 include::../fragments/_config-mb-blog.adoc[]
 :ref-groovy: https://groovy-lang.org[Groovy]
 :ref-kotlin: https://kotlinlang.org[Kotlin]
-:ref-swift: https://swift.org[Swift]
+:ref-swift: https://www.swift.org[Swift]
 
 [.float-group]
 --

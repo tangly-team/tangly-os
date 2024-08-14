@@ -8,6 +8,7 @@ params:
 ---
 
 include::../fragments/_config-mb-blog.adoc[]
+:ref-ireb: https://www.ireb.org/en[International Requirements Engineering Board]
 
 [.float-group]
 --
@@ -94,7 +95,7 @@ The software product development method war is won.
 Agile approaches as described in {ref-manifesto} and {ref-scrum} are the winners
 footnote:[https://www.pmi.org/[PMI] has adopted disciplined agile.
 https://www.opengroup.org/[OpenGroup] has updated TOGAF to support agile approaches.
-Major certification authorities such as https://www.isaqb.org/[ISAQB], https://www.ireb.org/[IREB], https://www.istqb.org/[ISTQB] offer a track of agile certifications.
+Major certification authorities such as https://www.isaqb.org/[ISAQB], {ref-ireb}, https://www.istqb.org/[ISTQB] offer a track of agile certifications.
 You as a responsible organization shall train your collaborators in agile approaches. Stop clinging to obsolete approaches used in the last millennium.].
 Eighty percent of all new software development initiatives are based on an agile approach.
 The most used agile approach is {ref-scrum}.

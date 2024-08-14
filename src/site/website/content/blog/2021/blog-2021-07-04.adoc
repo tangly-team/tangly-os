@@ -8,6 +8,7 @@ params:
 ---
 
 include::../fragments/_config-mb-blog.adoc[]
+:ref-ireb: https://www.ireb.org/en[International Requirements Engineering Board]
 
 image::2021-07-04-head.jpg[width=420,height=360,role=left]
 
@@ -117,7 +118,7 @@ I published a list of seminal works for interested product owners under link:{re
 
 == Requirement Engineering Trainings
 
-The most relevant organization is Europe is the https://www.ireb.org/[International Requirements Engineering Board] _IREB_.
+The most relevant organization is Europe is the {ref-ireb} _IREB_.
 Professional requirements engineers should be IREB certified.
 
 The requirements engineering community is well on the path to deeper agility.
