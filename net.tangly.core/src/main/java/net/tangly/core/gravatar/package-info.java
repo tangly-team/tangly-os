@@ -12,7 +12,7 @@
  */
 
 /**
- * Support for retrieving <a href="https://https://docs.gravatar.com/api/avatars/images/</a> images is provided through this package. Gravatar images is an image associated with
- * a natural entity and can be used in multiple sites.
+ * Support for retrieving <a href="https://docs.gravatar.com/api/avatars/images/>Images</a> images is provided through this package.
+ * Gravatar images is an image associated with a natural entity and can be used in multiple sites.
  */
 package net.tangly.core.gravatar;

@@ -25,4 +25,8 @@ public final class BigDecimalUtilities {
     public static BigDecimal round(@NotNull BigDecimal value) {
         return value.setScale(2, RoundingMode.HALF_UP);
     }
+
+    public static String formatToPercentage(@NotNull BigDecimal value) {
+        return value.multiply(BigDecimal.valueOf(100)).setScale(2, RoundingMode.HALF_UP).toPlainString() + "%";
+    }
 }

@@ -14,7 +14,6 @@
 package net.tangly.core.domain;
 
 import net.tangly.commons.logger.EventData;
-import net.tangly.core.TypeRegistry;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
@@ -65,9 +64,9 @@ public interface Port<R extends Realm> {
     /**
      * Imports configuration specific to the bounded domain in the context of a tenant.
      * The configuration is typically used to configure codes and tags.
-     * @param registry registry of code and tag types to register the configuration
+     * @param audit domain audit sink to log the operation events
      */
-    default void importConfiguration(@NotNull TypeRegistry registry) {}
+    default void importConfiguration(@NotNull DomainAudit audit) {}
 
     /**
      * Return the realm containing all the entities of the bounded domain.

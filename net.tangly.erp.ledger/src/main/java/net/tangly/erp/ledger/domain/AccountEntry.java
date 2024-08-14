@@ -17,7 +17,6 @@ import net.tangly.core.HasDate;
 import net.tangly.core.HasTags;
 import net.tangly.core.HasText;
 import net.tangly.core.Tag;
-import net.tangly.erp.ledger.services.VatCode;
 import org.jetbrains.annotations.NotNull;
 
 import java.math.BigDecimal;

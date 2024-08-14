@@ -11,7 +11,7 @@
  *
  */
 
-package net.tangly.erp.ledger.services;
+package net.tangly.erp.ledger.domain;
 
 import net.tangly.core.codes.Code;
 import org.jetbrains.annotations.NotNull;

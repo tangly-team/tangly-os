@@ -15,7 +15,6 @@ package net.tangly.erp.ledger.domain;
 
 import net.tangly.core.HasDate;
 import net.tangly.core.HasText;
-import net.tangly.erp.ledger.services.VatCode;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;

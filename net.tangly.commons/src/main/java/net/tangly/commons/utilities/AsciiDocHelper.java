@@ -87,7 +87,7 @@ public class AsciiDocHelper {
         }
         writer.println("|===");
         if (headerCells.length != 0) {
-            Arrays.asList(headerCells).forEach(o -> writer.append("^|").append(o).append(" "));
+            Arrays.asList(headerCells).forEach(o -> writer.append("^|*").append(o).append("* "));
             writer.println();
         }
         return this;

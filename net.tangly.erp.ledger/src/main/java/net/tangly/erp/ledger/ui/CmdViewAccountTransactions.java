@@ -20,6 +20,7 @@ import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.textfield.BigDecimalField;
+import net.tangly.commons.lang.Strings;
 import net.tangly.core.HasDate;
 import net.tangly.erp.ledger.domain.Account;
 import net.tangly.erp.ledger.domain.AccountEntry;
@@ -81,7 +82,10 @@ public class CmdViewAccountTransactions implements Cmd {
     @Override
     public void execute() {
         dialog = Cmd.createDialog("40em", create());
-        Button close = new Button("Close", e -> dialog.close());
+        Button close = new Button("Close", e -> {
+            dialog.close();
+            dialog = null;
+        });
         dialog.getFooter().add(close);
         dialog.open();
     }
@@ -89,11 +93,6 @@ public class CmdViewAccountTransactions implements Cmd {
     @Override
     public Dialog dialog() {
         return dialog;
-    }
-
-    protected void close() {
-        dialog.close();
-        dialog = null;
     }
 
     private FormLayout create() {
@@ -110,8 +109,9 @@ public class CmdViewAccountTransactions implements Cmd {
     }
 
     private String textFor(AccountEntry entry) {
-        return domain.realm().transactions().items().stream().filter(o -> o.creditSplits().contains(entry) || o.debitSplits().contains(entry)).findAny()
-            .orElseThrow().text();
+        return Strings.isNullOrBlank(entry.text()) ?
+            domain.realm().transactions().items().stream().filter(o -> o.creditSplits().contains(entry) || o.debitSplits().contains(entry)).findAny()
+                .orElseThrow().text() : entry.text();
     }
 
     private String accountIdFor(AccountEntry entry) {

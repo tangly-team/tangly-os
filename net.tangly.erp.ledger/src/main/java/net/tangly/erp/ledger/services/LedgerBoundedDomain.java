@@ -31,7 +31,7 @@ public class LedgerBoundedDomain extends BoundedDomain<LedgerRealm, LedgerBusine
 
     public LedgerBoundedDomain(LedgerRealm realm, LedgerBusinessLogic logic, LedgerPort port, TypeRegistry registry, UsersProvider usersProvider) {
         super(DOMAIN, realm, logic, port, registry, usersProvider);
-        port.importConfiguration(registry);
+        port.importConfiguration(this);
     }
 
     @Override

@@ -15,9 +15,12 @@ package net.tangly.erp.ledger.ports;
 
 
 import net.tangly.commons.utilities.AsciiDocHelper;
+import net.tangly.commons.utilities.BigDecimalUtilities;
+import net.tangly.core.TypeRegistry;
 import net.tangly.erp.ledger.domain.Account;
 import net.tangly.erp.ledger.domain.AccountEntry;
 import net.tangly.erp.ledger.domain.Transaction;
+import net.tangly.erp.ledger.domain.VatCode;
 import net.tangly.erp.ledger.services.LedgerRealm;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -31,6 +34,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.LocalDate;
 import java.time.Month;
+import java.time.YearMonth;
 import java.util.List;
 
 import static net.tangly.commons.utilities.AsciiDocHelper.format;
@@ -40,15 +44,18 @@ import static net.tangly.commons.utilities.AsciiDocHelper.format;
  */
 public class ClosingReportAsciiDoc {
     private static final Logger logger = LogManager.getLogger();
-    private final LedgerRealm ledger;
+    private final LedgerRealm realm;
+    private final TypeRegistry registry;
 
     /**
      * Constructor of the closing report. Multiple ports with variable reporting period length can be generated with the same instance.
      *
-     * @param ledger ledger containing all the accounting information for the ports
+     * @param realm    ledger realm containing all the accounting information for the ports
+     * @param registry registry containing the VAT codes
      */
-    public ClosingReportAsciiDoc(LedgerRealm ledger) {
-        this.ledger = ledger;
+    public ClosingReportAsciiDoc(LedgerRealm realm, TypeRegistry registry) {
+        this.realm = realm;
+        this.registry = registry;
     }
 
     public void create(LocalDate from, LocalDate to, Path reportPath, boolean withBalanceSheet, boolean withProfitsAndLosses, boolean withEmptyAccounts,
@@ -78,25 +85,25 @@ public class ClosingReportAsciiDoc {
             helper.header("Balance Sheet", 2);
         }
         if (withBalanceSheet) {
-            generateResultBalanceTableFor(helper, ledger.assets(), from, to, "Assets", withEmptyAccounts);
-            generateResultBalanceTableFor(helper, ledger.liabilities(), from, to, "Liabilities", withEmptyAccounts);
+            generateResultBalanceTableFor(helper, realm.assets(), from, to, "Assets", withEmptyAccounts);
+            generateResultBalanceTableFor(helper, realm.liabilities(), from, to, "Liabilities", withEmptyAccounts);
         }
         if (withProfitsAndLosses) {
-            generateResultIncomeTableFor(helper, ledger.profitAndLoss(), from, to, "Profits and Losses", withEmptyAccounts);
+            generateResultIncomeTableFor(helper, realm.profitAndLoss(), from, to, "Profits and Losses", withEmptyAccounts);
         }
         if (withTransactions) {
             helper.header("Transactions", 3);
             helper.tableHeader("Transactions", "cols=\"20, 20, 70 , 15, 15, >20, >15\"", "Date", "Voucher", "Description", "Debit", "Credit", "Amount", "VAT");
-            ledger.transactions(from, to).forEach(o -> createTransactionRow(helper, o));
+            realm.transactions(from, to).forEach(o -> createTransactionRow(helper, o));
             helper.tableEnd();
         }
         if (withVat) {
-            helper.tableHeader("VAT", "cols=\"100, >25, >25 , >25\"", "Period", "Turnover", "VAT", "Due VAT");
-            addVatRows(helper, from.getYear());
-            if (from.getYear() != to.getYear()) {
-                addVatRows(helper, to.getYear());
+            helper.header("VAT", 3);
+            YearMonth currentYearMonth = YearMonth.from(from);
+            while (!YearMonth.from(to).isBefore(currentYearMonth)) {
+                addVatPeriod(helper, currentYearMonth);
+                currentYearMonth = currentYearMonth.plusMonths(6);
             }
-            helper.tableEnd();
         }
     }
 
@@ -117,27 +124,43 @@ public class ClosingReportAsciiDoc {
     }
 
     /**
-     * Creates the VAT results table rows. For each half-year - the period used by the Swiss government as a VAT payment period for small companies using the
-     * net tax rate VAT variant - and full year we provide the turnover, the invoiced VAT and the VAT tax to pay to the government.
+     * Creates the VAT results table row for a half-year. It is the period used by the Swiss government as a VAT payment period for small companies using the
+     * net tax rate VAT variant.
      *
-     * @param helper AsciiDoc helper to write the report
-     * @param year   the year to raws shall be computed
+     * @param helper    AsciiDoc helper to write the report
+     * @param yearMonth the year and month from which a half-year period is computed. The period is from January to June or from July to December
      */
-    private void addVatRows(AsciiDocHelper helper, int year) {
-        LocalDate periodStart = LocalDate.of(year, Month.JANUARY, 1);
-        LocalDate periodEnd = LocalDate.of(year, Month.JUNE, 30);
-        BigDecimal earningH1 = ledger.computeVatSales(periodStart, periodEnd);
-        BigDecimal vatH1 = ledger.computeVat(periodStart, periodEnd);
-        BigDecimal vatDueH1 = ledger.computeDueVat(periodStart, periodEnd);
-        periodStart = LocalDate.of(year, Month.JULY, 1);
-        periodEnd = LocalDate.of(year, Month.DECEMBER, 31);
-        BigDecimal earningH2 = ledger.computeVatSales(periodStart, periodEnd);
-        BigDecimal vatH2 = ledger.computeVat(periodStart, periodEnd);
-        BigDecimal vatDueH2 = ledger.computeDueVat(periodStart, periodEnd);
+    private void addVatPeriod(AsciiDocHelper helper, YearMonth yearMonth) {
+        LocalDate periodStart;
+        LocalDate periodEnd;
+        boolean isFirstHalf = yearMonth.getMonth().getValue() < Month.JULY.getValue();
+        if (isFirstHalf) {
+            periodStart = LocalDate.of(yearMonth.getYear(), Month.JANUARY, 1);
+            periodEnd = LocalDate.of(yearMonth.getYear(), Month.JUNE, 30);
+        } else {
+            periodStart = LocalDate.of(yearMonth.getYear(), Month.JULY, 1);
+            periodEnd = LocalDate.of(yearMonth.getYear(), Month.DECEMBER, 31);
+        }
 
-        helper.tableRow("First Half Year %d".formatted(year), format(earningH1), format(vatH1), format(vatDueH1));
-        helper.tableRow("Second Half Year %d".formatted(year), format(earningH2), format(vatH2), format(vatDueH2));
-        helper.tableRow("Totals Year %d".formatted(year), format(earningH1.add(earningH2)), format(vatH1.add(vatH2)), format(vatDueH1.add(vatDueH2)));
+        helper.header("VAT Period %d%s".formatted(yearMonth.getYear(), isFirstHalf ? "-H1" : "-H2"), 4);
+        helper.tableHeader("VAT Period %d%s".formatted(yearMonth.getYear(), isFirstHalf ? "-H1" : "-H2"), "cols=\"50a, >25a, >25a , >25a\"",
+            "VAT Code/Rate/DueRate", "Turnover", "VAT", "Due VAT");
+        var vatCodes = registry.find(VatCode.class).orElseThrow();
+        for (var vatCode : vatCodes.codes()) {
+            BigDecimal turnover = realm.computeVatSales(periodStart, periodEnd, vatCode);
+            if (BigDecimal.ZERO.equals(turnover)) {
+                continue;
+            }
+            BigDecimal vat = realm.computeVat(periodStart, periodEnd, vatCode);
+            BigDecimal vatDue = realm.computeDueVat(periodStart, periodEnd, vatCode);
+            helper.tableRow("%s / %s / %s".formatted(vatCode.code(), BigDecimalUtilities.formatToPercentage(vatCode.vatRate()),
+                BigDecimalUtilities.formatToPercentage(vatCode.vatDueRate())), format(turnover), format(vat), format(vatDue));
+        }
+        BigDecimal turnover = realm.computeVatSales(periodStart, periodEnd, null);
+        BigDecimal vat = realm.computeVat(periodStart, periodEnd, null);
+        BigDecimal vatDue = realm.computeDueVat(periodStart, periodEnd, null);
+        helper.tableRow("*Total*", format(turnover), format(vat), format(vatDue));
+        helper.tableEnd();
     }
 
     private static void createTransactionRow(AsciiDocHelper helper, Transaction transaction) {

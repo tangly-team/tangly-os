@@ -21,9 +21,9 @@ import net.tangly.core.domain.DomainAudit;
 import net.tangly.core.domain.Port;
 import net.tangly.erp.ledger.domain.LedgerTags;
 import net.tangly.erp.ledger.domain.Transaction;
+import net.tangly.erp.ledger.domain.VatCode;
 import net.tangly.erp.ledger.services.LedgerPort;
 import net.tangly.erp.ledger.services.LedgerRealm;
-import net.tangly.erp.ledger.services.VatCode;
 import org.eclipse.serializer.exceptions.IORuntimeException;
 import org.jetbrains.annotations.NotNull;
 
@@ -75,6 +75,10 @@ public class LedgerAdapter implements LedgerPort {
         return realm;
     }
 
+    public TypeRegistry registry() {
+        return registry;
+    }
+
     @Override
     public void importEntities(@NotNull DomainAudit audit) {
         var handler = new LedgerTsvHdl(realm, registry);
@@ -114,7 +118,7 @@ public class LedgerAdapter implements LedgerPort {
     }
 
     @Override
-    public void importConfiguration(@NotNull TypeRegistry registry) {
+    public void importConfiguration(@NotNull DomainAudit audit) {
         LedgerTags.registerTags(registry);
         try {
             var type = CodeHelper.build(VatCode.class,
@@ -129,7 +133,7 @@ public class LedgerAdapter implements LedgerPort {
     @Override
     public void exportLedgerDocument(String name, LocalDate from, LocalDate to, boolean withBalanceSheet, boolean withProfitsAndLosses,
                                      boolean withEmptyAccounts, boolean withTransactions, boolean withVat) {
-        var report = new ClosingReportAsciiDoc(realm);
+        var report = new ClosingReportAsciiDoc(realm, registry);
         report.create(from, to, docsFolder.resolve(name + AsciiDoctorHelper.ASCIIDOC_EXT), withBalanceSheet, withProfitsAndLosses, withEmptyAccounts,
             withTransactions, withVat);
         AsciiDoctorHelper.createPdf(docsFolder.resolve(name + AsciiDoctorHelper.ASCIIDOC_EXT), docsFolder.resolve(name + AsciiDoctorHelper.PDF_EXT), true);

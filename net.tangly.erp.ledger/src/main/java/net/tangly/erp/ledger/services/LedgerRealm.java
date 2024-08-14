@@ -19,6 +19,7 @@ import net.tangly.core.providers.Provider;
 import net.tangly.erp.ledger.domain.Account;
 import net.tangly.erp.ledger.domain.AccountEntry;
 import net.tangly.erp.ledger.domain.Transaction;
+import net.tangly.erp.ledger.domain.VatCode;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
@@ -96,16 +97,15 @@ public interface LedgerRealm extends Realm {
         if (!transaction.isSplit() && Objects.nonNull(vatCode)) {
             // non-split transaction with VAT code defined is processed to compute the VAT amount to be transferred to the VAT account
             BigDecimal vatDue = transaction.amount().multiply(vatCode.vatDueRate());
-            vatSyntheticTransaction = Transaction.ofSynthetic(transaction.date(), transaction.creditAccount(), VAT_ACCOUNT, vatDue, VAT_FLAT_RATE,
-                transaction.reference(), vatCode, null, Collections.emptyList());
+            vatSyntheticTransaction =
+                Transaction.ofSynthetic(transaction.date(), transaction.creditAccount(), VAT_ACCOUNT, vatDue, VAT_FLAT_RATE, transaction.reference(), vatCode,
+                    null, Collections.emptyList());
         } else if (transaction.isSplit() && transaction.splits().stream().anyMatch(o -> Objects.nonNull(o.vatCode()))) {
             // split transaction with VAT code defined in at least one split is processed to compute the VAT amount to be transferred to the VAT account
-            var splits = transaction.splits().stream().map(o ->
-                {
-                    BigDecimal vatDueRate = Objects.nonNull(o.vatCode()) ? o.vatCode().vatDueRate() : BigDecimal.ZERO;
-                    return AccountEntry.credit(VAT_ACCOUNT, o.date(), o.amount().multiply(vatDueRate), o.reference(), VAT_FLAT_RATE, o.vatCode());
-                })
-                .toList();
+            var splits = transaction.splits().stream().map(o -> {
+                BigDecimal vatDueRate = Objects.nonNull(o.vatCode()) ? o.vatCode().vatDueRate() : BigDecimal.ZERO;
+                return AccountEntry.credit(VAT_ACCOUNT, o.date(), o.amount().multiply(vatDueRate), o.reference(), VAT_FLAT_RATE, o.vatCode());
+            }).toList();
             BigDecimal totalVatDue = splits.stream().map(AccountEntry::amount).reduce(BigDecimal::add).orElse(BigDecimal.ZERO);
             vatSyntheticTransaction = Transaction.ofSynthetic(transaction.date(), transaction.splits().getFirst().accountId(), null, totalVatDue, VAT_FLAT_RATE,
                 transaction.reference(), vatCode, null, splits);
@@ -118,11 +118,10 @@ public interface LedgerRealm extends Realm {
      * Builds the account tree structure and perform basic validation. The updated accounts are stored in the realm.
      */
     default void build() {
-        accounts().items().stream().filter(Account::isAggregate)
-            .forEach(o -> {
-                o.updateAggregatedAccounts(accounts().items().stream().filter(sub -> o.id().equals(sub.ownedBy())).toList());
-                accounts().update(o);
-            });
+        accounts().items().stream().filter(Account::isAggregate).forEach(o -> {
+            o.updateAggregatedAccounts(accounts().items().stream().filter(sub -> o.id().equals(sub.ownedBy())).toList());
+            accounts().update(o);
+        });
         accounts().items().stream().filter(Account::isAggregate).filter(o -> o.aggregatedAccounts().isEmpty())
             .forEach(o -> logger.atError().log("Aggregate account wrongly defined {}", o.id()));
     }
@@ -140,25 +139,26 @@ public interface LedgerRealm extends Realm {
 
 // region VAT-computations
 
-    default BigDecimal computeVatSales(LocalDate from, LocalDate to) {
-        return transactions(from, to).stream().flatMap(o -> o.creditSplits().stream()).filter(o -> Objects.nonNull(o.vatCode()))
-            .map(AccountEntry::amount).reduce(BigDecimal::add).orElse(BigDecimal.ZERO);
+    default BigDecimal computeVatSales(LocalDate from, LocalDate to, VatCode vatCode) {
+        return transactions(from, to).stream().flatMap(o -> o.creditSplits().stream())
+            .filter(o -> Objects.isNull(vatCode) ? Objects.nonNull(o.vatCode()) : vatCode.equals(o.vatCode())).map(AccountEntry::amount)
+            .reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 
-    default BigDecimal computeVat(LocalDate from, LocalDate to) {
-        return transactions(from, to).stream().flatMap(o -> o.creditSplits().stream()).map(o -> {
-            Optional<BigDecimal> vat = o.getVat();
-            return vat.map(bigDecimal -> o.amount().subtract(o.amount().divide(BigDecimal.ONE.add(bigDecimal), 2, RoundingMode.HALF_UP))).orElse(
-                BigDecimal.ZERO);
-        }).reduce(BigDecimal::add).orElse(BigDecimal.ZERO);
+    default BigDecimal computeVat(LocalDate from, LocalDate to, VatCode vatCode) {
+        return transactions(from, to).stream().flatMap(o -> o.creditSplits().stream())
+            .filter(o -> Objects.isNull(vatCode) ? Objects.nonNull(o.vatCode()) : vatCode.equals(o.vatCode())).map(o -> {
+                Optional<BigDecimal> vat = o.getVat();
+                return vat.map(bigDecimal -> o.amount().subtract(o.amount().divide(BigDecimal.ONE.add(bigDecimal), 2, RoundingMode.HALF_UP)))
+                    .orElse(BigDecimal.ZERO);
+            }).reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 
-    default BigDecimal computeDueVat(LocalDate from, LocalDate to) {
+    default BigDecimal computeDueVat(LocalDate from, LocalDate to, VatCode vatCode) {
         Optional<Account> account = accountBy("2201");
-        return account.map(
-                value -> value.getEntriesFor(from, to).stream().filter(AccountEntry::isCredit).map(AccountEntry::amount).reduce(BigDecimal::add).orElse(
-                    BigDecimal.ZERO))
-            .orElse(BigDecimal.ZERO);
+        return account.map(value -> value.getEntriesFor(from, to).stream().filter(AccountEntry::isCredit)
+            .filter(o -> Objects.isNull(vatCode) ? Objects.nonNull(o.vatCode()) : vatCode.equals(o.vatCode())).map(AccountEntry::amount)
+            .reduce(BigDecimal.ZERO, BigDecimal::add)).orElse(BigDecimal.ZERO);
     }
 
     private void bookTransaction(Transaction transaction) {

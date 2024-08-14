@@ -21,7 +21,7 @@ import net.tangly.erp.ledger.ports.LedgerAdapter;
 import net.tangly.erp.ledger.ports.LedgerEntities;
 import net.tangly.erp.ledger.ports.LedgerTsvHdl;
 import net.tangly.erp.ledger.services.LedgerBoundedDomain;
-import net.tangly.erp.ledger.services.LedgerRealm;
+import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -43,8 +43,7 @@ class LedgerPortTest {
         final String filenameWithoutExtension = "2016-period";
         try (FileSystem fs = Jimfs.newFileSystem(Configuration.unix())) {
             var store = new ErpStore(fs);
-            var adapter = new LedgerAdapter(createLedger(store), new TypeRegistry(), store.dataRoot().resolve(LedgerBoundedDomain.DOMAIN),
-                store.docsRoot().resolve(LedgerBoundedDomain.DOMAIN));
+            var adapter = createLedgerAdapter(store);
             var docsPath = store.docsRoot().resolve(LedgerBoundedDomain.DOMAIN);
             adapter.exportLedgerDocument(filenameWithoutExtension, LocalDate.of(2015, 10, 1), LocalDate.of(2016, 12, 31), true, true, true, true, true);
             assertThat(Files.exists(docsPath.resolve("%s.adoc".formatted(filenameWithoutExtension)))).isFalse();
@@ -56,27 +55,27 @@ class LedgerPortTest {
     void testWriteClosingReport() throws IOException {
         try (FileSystem fs = Jimfs.newFileSystem(Configuration.unix())) {
             var store = new ErpStore(fs);
-            store.createRepository();
-
-            var handler = new LedgerTsvHdl(new LedgerEntities(), new TypeRegistry());
+            var adapter = createLedgerAdapter(store);
+            var handler = new LedgerTsvHdl(new LedgerEntities(), adapter.registry());
             var ledgerDataPath = store.dataRoot().resolve(LedgerBoundedDomain.DOMAIN);
             var path = ledgerDataPath.resolve(LedgerAdapter.journalForYear(2015));
             handler.importJournal(store, Files.newBufferedReader(path, StandardCharsets.UTF_8), path.toString());
             path = ledgerDataPath.resolve(LedgerAdapter.journalForYear(2016));
             handler.importJournal(store, Files.newBufferedReader(path, StandardCharsets.UTF_8), path.toString());
 
-            var report = new ClosingReportAsciiDoc(handler.ledger());
+            var report = new ClosingReportAsciiDoc(handler.ledger(), adapter.registry());
             var writer = new StringWriter();
             report.create(LocalDate.of(2015, 1, 1), LocalDate.of(2016, 12, 31), new PrintWriter(writer), true, true, true, true, true);
             assertThat(writer.toString()).isNotEmpty();
         }
     }
 
-    private LedgerRealm createLedger(ErpStore store) {
+    private LedgerAdapter createLedgerAdapter(@NotNull ErpStore store) {
         store.createRepository();
-        var ledgerHdl = new LedgerAdapter(new LedgerEntities(), new TypeRegistry(), store.dataRoot().resolve(LedgerBoundedDomain.DOMAIN),
+        var adapter = new LedgerAdapter(new LedgerEntities(), new TypeRegistry(), store.dataRoot().resolve(LedgerBoundedDomain.DOMAIN),
             store.docsRoot().resolve(LedgerBoundedDomain.DOMAIN));
-        ledgerHdl.importEntities(store);
-        return ledgerHdl.realm();
+        adapter.importEntities(store);
+        adapter.importConfiguration(store);
+        return adapter;
     }
 }
