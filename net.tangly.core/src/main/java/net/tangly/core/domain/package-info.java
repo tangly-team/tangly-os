@@ -71,9 +71,11 @@
  * <p>Utilities are provided in the Gleam module. </p>
  * You can use the TSV import and export utilities to import and export entities from and to TSV files.
  * <h2>Business Logic</h2>
- * <p></p>
+ * <p>Complex business logic should be implemented in this class</p>
  * <h2>Vaadin User Interface</h2>
- * <p></p>
+ * <p>The user interface of a bounded domain is optional.
+ * Use the <code>BoundedDomainUi</code> class as the entry point for the bounded domain specific user interface.
+ * </p>
  * <h2>REST Interface</h2>
  * <p></p>
  * <h2>Domain Events</h2>

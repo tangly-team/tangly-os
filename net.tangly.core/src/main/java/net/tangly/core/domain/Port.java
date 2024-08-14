@@ -54,7 +54,8 @@ public interface Port<R extends Realm> {
     void exportEntities(@NotNull DomainAudit audit);
 
     /**
-     * Clears all entities of the bounded domain. Upon execution, the domain is empty. Use with caution as the operation is not reversible.
+     * Clears all entities of the bounded domain. All <em>generated</em> documents and reports are cleared.
+     * Upon execution, the domain is empty. Use with caution as the operation is not reversible.
      * Typically, the operation is used before an import to ensure that the domain is empty.
      *
      * @param audit domain audit sink to log the operation events
@@ -109,5 +110,4 @@ public interface Port<R extends Realm> {
             }
         }
     }
-
 }

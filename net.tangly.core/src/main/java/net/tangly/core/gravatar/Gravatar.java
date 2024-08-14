@@ -27,7 +27,7 @@ import java.util.Locale;
 /**
  * A gravatar is a dynamic image resource requested from the gravatar.com server. The class calculates the gravatar url and fetches gravatar images.
  * See
- * <a href="https://en.gravatar.com/site/implement/images/">Gravatar</a>.
+ * <a href="https://https://docs.gravatar.com/api/avatars/images/">Gravatar</a>.
  */
 public final class Gravatar {
     private static final String GRAVATAR_URL = "https://www.gravatar.com/avatar/";

@@ -115,12 +115,12 @@ public abstract class MutalbeExternalEntityImp implements MutableExternalEntity 
     }
 
     @Override
-    public boolean add(Tag tag) {
+    public boolean add(@NotNull Tag tag) {
         return tags.add(tag);
     }
 
     @Override
-    public boolean remove(Tag tag) {
+    public boolean remove(@NotNull Tag tag) {
         return tags.remove(tag);
     }
 
