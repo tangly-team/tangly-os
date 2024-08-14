@@ -170,27 +170,37 @@ public class Account implements HasId, HasName {
     }
 
     /**
-     * Debits and Credits are from the bank’s point of view and so are the opposite of what you expect when it comes to the maths involved. Debits - meaning
+     * Debits and Credits are from the bank’s point of view, and so are the opposite of what you expect when it comes to the maths involved. Debits - meaning
      * assets and expenses - have a positive balance and Credits - meaning liabilities and income - have a negative balance.
-     * <p>
-     * If I Debit (add to) a Debit account it gets more positive and has a larger format (Debit -&gt; Soll)
-     * <p>
-     * If I Credit (subtract from) a Debit account, it gets less positive and has a smaller format (Credit -&gt; Haben)
-     * <p>
-     * If I Debit (add to) a Credit account, it gets less negative and has a smaller format
-     * <p>
-     * If I Credit (subtract from) a Credit account, it gets more negative and has a larger format
+     * <ul>
+     * <li>If I Debit (add to) a Debit account, it gets more positive and has a larger format (Debit -&gt; Soll)</li>
+     * <li> If I Credit (subtract from) a Debit account, it gets less positive and has a smaller format (Credit -&gt; Haben)</li>
+     * <li> If I Debit (add to) a Credit account, it gets less negative and has a smaller format</li>
+     * <li> If I Credit (subtract from) a Credit account, it gets more negative and has a larger format</li>
+     * </ul>
      *
      * @param date date at which the balance is computed
      * @return the balance of the account at the requested date
      */
-    public BigDecimal balance(LocalDate date) {
-        return isAggregate() ? aggregatedAccounts.stream().map(o -> o.balance(date)).reduce(BigDecimal::add).orElse(BigDecimal.ZERO) :
-            entries.stream().filter(o -> !date.isBefore(o.date())).map(Account::booking).reduce(BigDecimal::add).orElse(BigDecimal.ZERO);
+    public BigDecimal balance(@NotNull LocalDate date) {
+        return isAggregate() ? aggregatedAccounts.stream().map(o -> o.balance(date)).reduce(BigDecimal.ZERO, BigDecimal::add) :
+            entries.stream().filter(o -> !date.isBefore(o.date())).map(Account::booking).reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 
-    public List<AccountEntry> getEntriesFor(LocalDate from, LocalDate to) {
-        return entries.stream().filter(o -> (o.date().isAfter(from) || o.date().equals(from)) && (o.date().isBefore(to) || o.date().isEqual(to))).toList();
+    /**
+     * Returns the balance of the account between two dates. The balance is computed by summing the booking entries between the two dates.
+     * @param from start date
+     * @param to end date
+     * @return the balance of the account between the two dates
+     */
+    public BigDecimal balance(@NotNull LocalDate from, @NotNull LocalDate to) {
+        return isAggregate() ? aggregatedAccounts().stream().map(o -> o.balance(from, to)).reduce(BigDecimal.ZERO, BigDecimal::add) :
+            getEntriesFor(from, to).stream().map(Account::booking).reduce(BigDecimal.ZERO, BigDecimal::add);
+    }
+
+
+    public List<AccountEntry> getEntriesFor(@NotNull LocalDate from, @NotNull LocalDate to) {
+        return entries.stream().filter(o -> !from.isAfter(o.date()) && !to.isBefore(o.date())).toList();
     }
 
     public void addEntry(AccountEntry entry) {
@@ -209,15 +219,13 @@ public class Account implements HasId, HasName {
         this.aggregatedAccounts.addAll(aggregatedAccounts);
     }
 
-    private static BigDecimal booking(AccountEntry entry) {
-        if (entry.isCredit()) {
-            // debit account: asset, expense -> means increase; credit account: liability, income -> means decrease
-            return entry.amount().negate();
-        } else if (entry.isDebit()) {
+    private static BigDecimal booking(@NotNull AccountEntry entry) {
+        if (entry.isDebit()) {
             // debit account: asset, expense -> means decrease; credit account: liability, income -> means increase
             return entry.amount();
         } else {
-            return BigDecimal.ZERO;
+            // debit account: asset, expense -> means increase; credit account: liability, income -> means decrease
+            return entry.amount().negate();
         }
     }
 }

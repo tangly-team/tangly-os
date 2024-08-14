@@ -29,10 +29,11 @@ public interface LedgerPort extends Port<LedgerRealm> {
      * @param to                   end of the time interval relevant for the report
      * @param withBalanceSheet     flag indicating if the balance sheet information should be part of the report
      * @param withProfitsAndLosses flag indicating if the profits and losses information should be part of the report
+     * @param withEmptyAccounts    flag indicating if empty accounts should be part of the report
      * @param withTransactions     flag indicating if the transactions should be part of the report
      * @param withVat              flag indicating if VAT information should be part of the report
      */
     public void exportLedgerDocument(String name, LocalDate from, LocalDate to, boolean withBalanceSheet, boolean withProfitsAndLosses,
-                                     boolean withTransactions, boolean withVat);
+                                     boolean withEmptyAccounts, boolean withTransactions, boolean withVat);
 
 }

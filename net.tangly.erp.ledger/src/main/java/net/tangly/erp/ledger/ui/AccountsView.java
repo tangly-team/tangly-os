@@ -14,16 +14,18 @@
 package net.tangly.erp.ledger.ui;
 
 import com.vaadin.flow.component.formlayout.FormLayout;
+import com.vaadin.flow.component.grid.ColumnTextAlign;
+import com.vaadin.flow.component.html.Hr;
 import com.vaadin.flow.component.select.Select;
 import com.vaadin.flow.component.textfield.TextField;
-import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.router.PageTitle;
 import net.tangly.erp.ledger.domain.Account;
-import net.tangly.ui.components.ItemForm;
-import net.tangly.ui.components.ItemView;
-import net.tangly.ui.components.Mode;
-import net.tangly.ui.components.VaadinUtils;
+import net.tangly.erp.ledger.services.LedgerBoundedDomain;
+import net.tangly.ui.app.domain.Cmd;
+import net.tangly.ui.components.*;
 import org.jetbrains.annotations.NotNull;
+
+import java.time.LocalDate;
 
 /**
  * Charts of accounts are defined externally as TSV files. Currently the account view is a read-only view on accounts instances.
@@ -92,12 +94,10 @@ class AccountsView extends ItemView<Account> {
         }
 
         @Override
-        protected Account createOrUpdateInstance(Account entity)  {
+        protected Account createOrUpdateInstance(Account entity) {
             return null;
         }
     }
-
-    private Binder<Account> binder;
 
     public AccountsView(@NotNull LedgerBoundedDomainUi domain, @NotNull Mode mode) {
         super(Account.class, domain, domain.domain().realm().accounts(), new AccountFilter(), mode);
@@ -105,15 +105,25 @@ class AccountsView extends ItemView<Account> {
         init();
     }
 
+    @Override
+    public LedgerBoundedDomain domain() {
+        return (LedgerBoundedDomain) super.domain();
+    }
+
+    @Override
+    protected void addActions(@NotNull GridMenu<Account> menu) {
+        menu().add(new Hr());
+        menu.add("View Account Transactions", e -> Cmd.ofItemCmd(e, (account) -> new CmdViewAccountTransactions(domain(), account).execute()),
+            GridMenu.MenuItemType.ITEM);
+    }
+
     private void init() {
         var grid = grid();
-        grid.addColumn(Account::name).setKey("name").setHeader("Name").setAutoWidth(true).setResizable(true);
+        grid.addColumn(Account::name).setKey(ItemView.NAME).setHeader(ItemView.NAME_LABEL).setAutoWidth(true).setResizable(true);
         grid.addColumn(Account::group).setKey("group").setHeader("Group").setAutoWidth(true).setResizable(true);
-        grid.addColumn(Account::id).setKey("id").setHeader("Id").setAutoWidth(true).setResizable(true);
-        //        grid.addColumn(VaadinUtils.coloredRender(o -> o.balance(from), VaadinUtils.FORMAT)).setKey("opening").setHeader("Opening").setAutoWidth(true).setResizable(true)
-        //            .setTextAlign(ColumnTextAlign.END);
-        //        grid.addColumn(VaadinUtils.coloredRender(o -> o.balance(to), VaadinUtils.FORMAT)).setKey("balance").setHeader("Balance").setAutoWidth(true).setResizable(true)
-        //            .setTextAlign(ColumnTextAlign.END);
+        grid.addColumn(Account::id).setKey(ItemView.ID).setHeader(ItemView.ID_LABEL).setAutoWidth(true).setResizable(true);
+        grid.addColumn(VaadinUtils.coloredRender(o -> o.balance(LocalDate.now()), VaadinUtils.FORMAT)).setKey("balance").setHeader("Balance").setAutoWidth(true)
+            .setResizable(true).setTextAlign(ColumnTextAlign.END);
         grid.addColumn(Account::kind).setKey("kind").setHeader("Kind").setAutoWidth(true).setResizable(true);
         grid.addColumn(Account::currency).setKey("currency").setHeader("Currency").setAutoWidth(true).setResizable(true);
         grid.addColumn(Account::ownedBy).setKey("ownedBy").setHeader("Owned By").setAutoWidth(true).setResizable(true);

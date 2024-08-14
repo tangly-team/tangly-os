@@ -41,6 +41,7 @@ public class CmdCreateLedgerDocument implements Cmd {
     private final DatePicker toDate;
     private final Checkbox withBalanceSheet;
     private final Checkbox withProfitsAndLosses;
+    private final Checkbox withEmptyAccounts;
     private final Checkbox withTransactions;
     private final Checkbox withVat;
     private final Checkbox yearlyReports;
@@ -58,6 +59,7 @@ public class CmdCreateLedgerDocument implements Cmd {
         withBalanceSheet.setValue(true);
         withProfitsAndLosses = new Checkbox("Include Profits and Losses");
         withProfitsAndLosses.setValue(true);
+        withEmptyAccounts = new Checkbox("Include Empty Accounts");
         withTransactions = new Checkbox("Include Transactions");
         withVat = new Checkbox("Include VAT Report");
         yearlyReports = new Checkbox("Yearly Reports");
@@ -72,7 +74,7 @@ public class CmdCreateLedgerDocument implements Cmd {
             } else {
                 domain.port()
                     .exportLedgerDocument(name.getValue(), fromDate.getValue(), toDate.getValue(), withBalanceSheet.getValue(), withProfitsAndLosses.getValue(),
-                        withTransactions.getValue(), withVat.getValue());
+                        withEmptyAccounts.getValue(), withTransactions.getValue(), withVat.getValue());
             }
             close();
         });
@@ -94,8 +96,8 @@ public class CmdCreateLedgerDocument implements Cmd {
     private FormLayout create() {
         FormLayout form = new FormLayout();
         VaadinUtils.set3ResponsiveSteps(form);
-        form.add(name, new HtmlComponent("br"), fromDate, toDate, withBalanceSheet, withProfitsAndLosses, withTransactions, withVat, new HtmlComponent("br"),
-            yearlyReports);
+        form.add(name, new HtmlComponent("br"), fromDate, toDate, withBalanceSheet, withProfitsAndLosses, withEmptyAccounts, withTransactions, withVat,
+            new HtmlComponent("br"), yearlyReports);
         return form;
     }
 
@@ -110,7 +112,7 @@ public class CmdCreateLedgerDocument implements Cmd {
         int currentYear = Year.now().getValue();
         for (int year = fromYear; year <= toYear; year++) {
             domain.port().exportLedgerDocument("%s-%d".formatted(name, year), LocalDate.of(year, Month.JANUARY, 1), LocalDate.of(year, Month.DECEMBER, 31),
-                withBalanceSheet.getValue(), withProfitsAndLosses.getValue(), withTransactions.getValue(), withVat.getValue());
+                withBalanceSheet.getValue(), withProfitsAndLosses.getValue(), withEmptyAccounts.getValue(), withTransactions.getValue(), withVat.getValue());
         }
     }
 }

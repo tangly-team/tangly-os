@@ -45,7 +45,7 @@ public class LedgerEntities implements LedgerRealm {
     private final Provider<Transaction> transactions;
     private final EmbeddedStorageManager storageManager;
 
-    public LedgerEntities(Path path) {
+    public LedgerEntities(@NotNull Path path) {
         this.data = new Data();
         storageManager = EmbeddedStorage.start(data, path);
         accounts = ProviderPersistence.of(storageManager, data.accounts);
@@ -83,7 +83,6 @@ public class LedgerEntities implements LedgerRealm {
     @Override
     public void add(@NotNull Account account) {
         accounts.update(account);
-
     }
 
     public void close() {

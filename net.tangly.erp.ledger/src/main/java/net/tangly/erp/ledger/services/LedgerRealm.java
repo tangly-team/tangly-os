@@ -85,7 +85,7 @@ public interface LedgerRealm extends Realm {
     }
 
     /**
-     * Create synthetic transactions to deduct the VAT due amount and transfer it to the VAT account.
+     * Creates synthetic transactions to deduct the VAT due amount and transfer it to the VAT account.
      *
      * @param transaction transaction which VAT amount shall be computed and transferred to the VAT account.
      * @return the transaction with the VAT entries
@@ -115,11 +115,14 @@ public interface LedgerRealm extends Realm {
     }
 
     /**
-     * Build the account tree structure and perform basic validation.
+     * Builds the account tree structure and perform basic validation. The updated accounts are stored in the realm.
      */
     default void build() {
         accounts().items().stream().filter(Account::isAggregate)
-            .forEach(o -> o.updateAggregatedAccounts(accounts().items().stream().filter(sub -> o.id().equals(sub.ownedBy())).toList()));
+            .forEach(o -> {
+                o.updateAggregatedAccounts(accounts().items().stream().filter(sub -> o.id().equals(sub.ownedBy())).toList());
+                accounts().update(o);
+            });
         accounts().items().stream().filter(Account::isAggregate).filter(o -> o.aggregatedAccounts().isEmpty())
             .forEach(o -> logger.atError().log("Aggregate account wrongly defined {}", o.id()));
     }
@@ -130,7 +133,6 @@ public interface LedgerRealm extends Realm {
             o.addEntry(entry);
             accounts().update(o);
         });
-
         if (account.isEmpty()) {
             logger.atError().log("account {} for entry with amount {} booked {} is undefined", entry.accountId(), entry.amount(), entry.date());
         }

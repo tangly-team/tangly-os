@@ -21,6 +21,7 @@ import net.tangly.erp.ledger.domain.Transaction;
 import net.tangly.erp.ledger.services.LedgerRealm;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
 import java.io.Writer;
@@ -50,10 +51,10 @@ public class ClosingReportAsciiDoc {
         this.ledger = ledger;
     }
 
-    public void create(LocalDate from, LocalDate to, Path reportPath, boolean withBalanceSheet, boolean withProfitsAndLosses, boolean withTransactions,
-                       boolean withVat) {
+    public void create(LocalDate from, LocalDate to, Path reportPath, boolean withBalanceSheet, boolean withProfitsAndLosses, boolean withEmptyAccounts,
+                       boolean withTransactions, boolean withVat) {
         try (Writer writer = Files.newBufferedWriter(reportPath, StandardCharsets.UTF_8)) {
-            create(from, to, writer, withBalanceSheet, withProfitsAndLosses, withTransactions, withVat);
+            create(from, to, writer, withBalanceSheet, withProfitsAndLosses, withEmptyAccounts, withTransactions, withVat);
         } catch (IOException e) {
             logger.error("Error during reporting", e);
         }
@@ -70,22 +71,22 @@ public class ClosingReportAsciiDoc {
      * @param withTransactions     flag to include the transactions in the report
      * @param withVat              flag to include the VAT report in the report
      */
-    public void create(LocalDate from, LocalDate to, Writer writer, boolean withBalanceSheet, boolean withProfitsAndLosses, boolean withTransactions,
-                       boolean withVat) {
+    public void create(LocalDate from, LocalDate to, Writer writer, boolean withBalanceSheet, boolean withProfitsAndLosses, boolean withEmptyAccounts,
+                       boolean withTransactions, boolean withVat) {
         final AsciiDocHelper helper = new AsciiDocHelper(writer);
         if (withBalanceSheet || withProfitsAndLosses) {
             helper.header("Balance Sheet", 2);
         }
         if (withBalanceSheet) {
-            generateResultTableFor(helper, ledger.assets(), from, to, "Assets");
-            generateResultTableFor(helper, ledger.liabilities(), from, to, "Liabilities");
+            generateResultBalanceTableFor(helper, ledger.assets(), from, to, "Assets", withEmptyAccounts);
+            generateResultBalanceTableFor(helper, ledger.liabilities(), from, to, "Liabilities", withEmptyAccounts);
         }
         if (withProfitsAndLosses) {
-            generateResultTableFor(helper, ledger.profitAndLoss(), from, to, "Profits and Losses");
+            generateResultIncomeTableFor(helper, ledger.profitAndLoss(), from, to, "Profits and Losses", withEmptyAccounts);
         }
         if (withTransactions) {
             helper.header("Transactions", 3);
-            helper.tableHeader("Transactions", "cols=\"20, 20, 70 , 15, 15, >20, >10\"", "Date", "Voucher", "Description", "Debit", "Credit", "Amount", "VAT");
+            helper.tableHeader("Transactions", "cols=\"20, 20, 70 , 15, 15, >20, >15\"", "Date", "Voucher", "Description", "Debit", "Credit", "Amount", "VAT");
             ledger.transactions(from, to).forEach(o -> createTransactionRow(helper, o));
             helper.tableEnd();
         }
@@ -99,10 +100,19 @@ public class ClosingReportAsciiDoc {
         }
     }
 
-    private static void generateResultTableFor(AsciiDocHelper helper, List<Account> accounts, LocalDate from, LocalDate to, String category) {
+    private static void generateResultBalanceTableFor(AsciiDocHelper helper, List<Account> accounts, LocalDate from, LocalDate to, String category,
+                                                      boolean withEmptyAccounts) {
         helper.header(category, 3);
-        helper.tableHeader(category, "cols=\"20, 100, 25, >25, >25\"", "Account", "Description", "Kind", "Balance", "Initial Balance");
-        accounts.forEach(o -> createBalanceRow(helper, o, from, to));
+        helper.tableHeader(category, "cols=\"20a, <100a, 25, >25, >25\"", "Account", "Description", "Kind", "Opening", "Balance");
+        accounts.forEach(o -> createBalanceRow(helper, o, from, to, withEmptyAccounts));
+        helper.tableEnd();
+    }
+
+    private static void generateResultIncomeTableFor(AsciiDocHelper helper, List<Account> accounts, LocalDate from, LocalDate to, String category,
+                                                     boolean withEmptyAccounts) {
+        helper.header(category, 3);
+        helper.tableHeader(category, "cols=\"20a, <100a, 25, >25\"", "Account", "Description", "Kind", "Balance");
+        accounts.forEach(o -> createIncomeRow(helper, o, from, to, withEmptyAccounts));
         helper.tableEnd();
     }
 
@@ -155,15 +165,40 @@ public class ClosingReportAsciiDoc {
         return entry.getVat().map(o -> "%s%%".formatted(format(o.multiply(new BigDecimal(100))))).orElse("");
     }
 
-    private static void createBalanceRow(AsciiDocHelper helper, Account account, LocalDate from, LocalDate to) {
-        BigDecimal fromBalance = account.balance(from.minusDays(1));
-        BigDecimal toBalance = account.balance(to);
-
-        if (BigDecimal.ZERO.equals(fromBalance) && BigDecimal.ZERO.equals(toBalance)) {
+    private static void createBalanceRow(@NotNull AsciiDocHelper helper, @NotNull Account account, @NotNull LocalDate from, @NotNull LocalDate to,
+                                         boolean withEmptyAccounts) {
+        var fromBalance = account.balance(from.minusDays(1));
+        var toBalance = account.balance(to);
+        if (!withEmptyAccounts && (BigDecimal.ZERO.equals(fromBalance) && BigDecimal.ZERO.equals(toBalance))) {
             return;
         }
-        String accountId = account.id().startsWith("E") ? AsciiDocHelper.bold(account.id()) : account.id();
-        String description = account.id().startsWith("E") ? AsciiDocHelper.bold(account.name()) : account.name();
-        helper.tableRow(accountId, description, account.isAggregate() ? "" : account.kind().name(), format(toBalance), format(fromBalance));
+        var accountId = account.id();
+        var description = account.name();
+        if (account.id().startsWith("E")) {
+            accountId = AsciiDocHelper.bold(account.id());
+            description = AsciiDocHelper.bold(account.name());
+        } else if (account.isAggregate()) {
+            accountId = AsciiDocHelper.italics(account.id());
+            description = AsciiDocHelper.italics(account.name());
+        }
+        helper.tableRow(accountId, description, account.isAggregate() ? "" : account.kind().name().toLowerCase(), format(fromBalance), format(toBalance));
+    }
+
+    private static void createIncomeRow(@NotNull AsciiDocHelper helper, @NotNull Account account, @NotNull LocalDate from, @NotNull LocalDate to,
+                                        boolean withEmptyAccounts) {
+        var balance = account.balance(from, to);
+        if (!withEmptyAccounts && (BigDecimal.ZERO.equals(balance))) {
+            return;
+        }
+        var accountId = account.id();
+        var description = account.name();
+        if (account.id().startsWith("E")) {
+            accountId = AsciiDocHelper.bold(account.id());
+            description = AsciiDocHelper.bold(account.name());
+        } else if (account.isAggregate()) {
+            accountId = AsciiDocHelper.italics(account.id());
+            description = AsciiDocHelper.italics(account.name());
+        }
+        helper.tableRow(accountId, description, account.isAggregate() ? "" : account.kind().name().toLowerCase(), format(balance));
     }
 }

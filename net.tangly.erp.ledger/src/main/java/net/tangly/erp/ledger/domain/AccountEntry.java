@@ -13,7 +13,9 @@
 
 package net.tangly.erp.ledger.domain;
 
+import net.tangly.core.HasDate;
 import net.tangly.core.HasTags;
+import net.tangly.core.HasText;
 import net.tangly.core.Tag;
 import net.tangly.erp.ledger.services.VatCode;
 import org.jetbrains.annotations.NotNull;
@@ -37,7 +39,7 @@ import java.util.Optional;
  * @param tags      the tags of the entry
  */
 public record AccountEntry(@NotNull String accountId, @NotNull LocalDate date, @NotNull BigDecimal amount, String reference, String text, boolean isDebit,
-                           VatCode vatCode, Collection<Tag> tags) implements HasTags {
+                           VatCode vatCode, Collection<Tag> tags) implements HasDate, HasText, HasTags {
     public static final String FINANCE = "fin";
     public static final String PROJECT = "project";
     public static final String SEGMENT = "segment";

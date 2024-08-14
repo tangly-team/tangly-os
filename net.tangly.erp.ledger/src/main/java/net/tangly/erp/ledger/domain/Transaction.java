@@ -54,7 +54,8 @@ public class Transaction implements HasDate, HasText {
         this(date, text, reference, amount, debitAccount, creditAccount, null, null, splits);
     }
 
-    public Transaction(LocalDate date, String debitAccount, String creditAccount, BigDecimal amount, String text, String reference, VatCode vatCode, LocalDate dateExpected,
+    public Transaction(LocalDate date, String debitAccount, String creditAccount, BigDecimal amount, String text, String reference, VatCode vatCode,
+                       LocalDate dateExpected,
                        List<AccountEntry> splits) {
         this(date, text, reference, (debitAccount != null) ? AccountEntry.debit(debitAccount, date, amount, null, null, vatCode) : null,
             (creditAccount != null) ? AccountEntry.credit(creditAccount, date, amount, null, null, vatCode) : null, vatCode, dateExpected, false, splits);
@@ -74,7 +75,7 @@ public class Transaction implements HasDate, HasText {
         this.credit = credit;
         this.dateExpected = dateExpected;
         this.synthetic = synthetic;
-        this.splits = (splits != null) ? List.copyOf(splits) : Collections.emptyList();
+        this.splits = (Objects.nonNull(splits) && !splits.isEmpty()) ? List.copyOf(splits) : Collections.emptyList();
     }
 
     public static Transaction of(String date, int debitAccount, int creditAccount, String amount, String text) {

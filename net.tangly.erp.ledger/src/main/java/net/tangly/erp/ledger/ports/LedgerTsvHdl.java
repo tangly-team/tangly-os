@@ -212,7 +212,8 @@ public class LedgerTsvHdl {
                 String reference = csv.get(DOC);
                 String vatCode = csv.get(VAT_CODE);
                 List<AccountEntry> splits = new ArrayList<>();
-                if (isSplit(csv)) {
+                boolean isSplit = isSplit(csv);
+                if (isSplit) {
                     csv = importSplits(records, splits);
                 }
                 try {
@@ -230,7 +231,7 @@ public class LedgerTsvHdl {
                 } catch (NumberFormatException | DateTimeParseException e) {
                     logger.atError().withThrowable(e).log("{}: not a legal amount {}", date, amount);
                 }
-                if (!isSplit(csv)) {
+                if (!isSplit) {
                     csv = TsvHdl.nextNonEmptyRecord(records);
                 }
             }
@@ -279,9 +280,16 @@ public class LedgerTsvHdl {
     private CSVRecord importSplits(@NotNull Iterator<CSVRecord> records, List<AccountEntry> splits) {
         var csv = records.hasNext() ? records.next() : null;
         while (isCreditSplit(csv) || isDebitSplit(csv)) {
-            var values = isDebitSplit(csv) ? csv.get(ACCOUNT_DEBIT).split("-") : csv.get(ACCOUNT_CREDIT).split("-");
-            var entry = AccountEntry.debit(values[0], TsvHdl.parseDate(csv, DATE), TsvHdl.parseBigDecimal(csv, AMOUNT), csv.get(DOC), csv.get(DESCRIPTION),
-                of(csv.get(VAT_CODE)), defineSegments(values));
+            AccountEntry entry;
+            if (isDebitSplit(csv)) {
+                var values = csv.get(ACCOUNT_DEBIT).split("-");
+                entry = AccountEntry.debit(values[0], TsvHdl.parseDate(csv, DATE), TsvHdl.parseBigDecimal(csv, AMOUNT), csv.get(DOC), csv.get(DESCRIPTION),
+                    of(csv.get(VAT_CODE)), defineSegments(values));
+            } else {
+                var values = csv.get(ACCOUNT_CREDIT).split("-");
+                entry = AccountEntry.credit(values[0], TsvHdl.parseDate(csv, DATE), TsvHdl.parseBigDecimal(csv, AMOUNT), csv.get(DOC), csv.get(DESCRIPTION),
+                    of(csv.get(VAT_CODE)), defineSegments(values));
+            }
             splits.add(entry);
             csv = TsvHdl.nextNonEmptyRecord(records);
         }
@@ -289,10 +297,10 @@ public class LedgerTsvHdl {
     }
 
     /**
-     * Return true if the record is relevant for the ledger plan, meaning it has a description and either an account identifier not starting with an semicolon
+     * Returns true if the record is relevant for the ledger plan, meaning it has a description and either an account identifier not starting with an semicolon
      * or a group with an identifier different from 0.
      *
-     * @return flag indicating if hte record is relevant for the ledger plan or not
+     * @return flag indicating if the record is relevant for the ledger plan or not
      */
     private static boolean isRecordPlanRelevant(String description, String accountId, String groupId) {
         return !Strings.isNullOrEmpty(description) &&
