@@ -97,9 +97,9 @@ public final class Main {
                 var tenant = Application.instance().tenant("tangly");
                 final WebAppContext context = super.createWebAppContext();
                 ServletHolder staticFiles = new ServletHolder("staticFiles", new DefaultServlet());
-                String docsFolder = tenant.properties().getProperty("tenant.root.docs.directory");
+                String docsFolder = tenant.getProperty("tenant.root.docs.directory");
                 staticFiles.setInitParameter("resourceBase", docsFolder);
-                String tenantName = tenant.properties().getProperty("tenant.name");
+                String tenantName = tenant.getProperty("tenant.name");
                 context.addServlet(staticFiles, "/" + tenantName + "/docs/*");
                 return context;
             }
@@ -152,22 +152,21 @@ public final class Main {
         }
         if (tenant.isEnabled(CrmBoundedDomain.DOMAIN)) {
             var realm = tenant.inMemory() ? new CrmEntities() : new CrmEntities(Path.of(tenant.databases(), CrmBoundedDomain.DOMAIN));
-            var domain = new CrmBoundedDomain(realm, new CrmBusinessLogic(realm), new CrmAdapter(realm, Path.of(tenant.imports(CrmBoundedDomain.DOMAIN))),
-                tenant.registry(), tenant.UsersProviderFor(CrmBoundedDomain.DOMAIN));
+            var domain =
+                new CrmBoundedDomain(realm, new CrmBusinessLogic(realm), new CrmAdapter(realm, Path.of(tenant.imports(CrmBoundedDomain.DOMAIN))), tenant);
             tenant.registerBoundedDomain(domain);
         }
         if (tenant.isEnabled(InvoicesBoundedDomain.DOMAIN)) {
             var realm = tenant.inMemory() ? new InvoicesEntities() : new InvoicesEntities(Path.of(tenant.databases(), InvoicesBoundedDomain.DOMAIN));
             var domain = new InvoicesBoundedDomain(realm, new InvoicesBusinessLogic(realm),
-                new InvoicesAdapter(realm, Path.of(tenant.imports(InvoicesBoundedDomain.DOMAIN)), Path.of(tenant.docs(InvoicesBoundedDomain.DOMAIN))),
-                tenant.registry(), tenant.UsersProviderFor(InvoicesBoundedDomain.DOMAIN));
+                new InvoicesAdapter(realm, Path.of(tenant.imports(InvoicesBoundedDomain.DOMAIN)), Path.of(tenant.docs(InvoicesBoundedDomain.DOMAIN))), tenant);
             tenant.registerBoundedDomain(domain);
         }
         if (tenant.isEnabled(LedgerBoundedDomain.DOMAIN)) {
             var realm = tenant.inMemory() ? new LedgerEntities() : new LedgerEntities(Path.of(tenant.databases(), LedgerBoundedDomain.DOMAIN));
             var domain = new LedgerBoundedDomain(realm, new LedgerBusinessLogic(realm),
                 new LedgerAdapter(realm, tenant.registry(), Path.of(tenant.imports(LedgerBoundedDomain.DOMAIN)),
-                    Path.of(tenant.docs(LedgerBoundedDomain.DOMAIN))), tenant.registry(), tenant.UsersProviderFor(LedgerBoundedDomain.DOMAIN));
+                    Path.of(tenant.docs(LedgerBoundedDomain.DOMAIN))), tenant);
             tenant.registerBoundedDomain(domain);
         }
         if (tenant.isEnabled(ProductsBoundedDomain.DOMAIN)) {
@@ -175,15 +174,14 @@ public final class Main {
             var logic = new ProductsBusinessLogic(realm);
             var domain = new ProductsBoundedDomain(realm, logic,
                 new ProductsAdapter(realm, logic, Path.of(tenant.imports(ProductsBoundedDomain.DOMAIN)), Path.of(tenant.docs(ProductsBoundedDomain.DOMAIN))),
-                tenant.registry(), tenant.UsersProviderFor(ProductsBoundedDomain.DOMAIN));
+                tenant);
             tenant.registerBoundedDomain(domain);
         }
         if (tenant.isEnabled(CollaboratorsBoundedDomain.DOMAIN)) {
             var realm =
                 tenant.inMemory() ? new CollaboratorsEntities() : new CollaboratorsEntities(Path.of(tenant.databases(), CollaboratorsBoundedDomain.DOMAIN));
             var domain = new CollaboratorsBoundedDomain(realm, new CollaboratorsBusinessLogic(realm),
-                new CollaboratorsAdapter(realm, Path.of(tenant.imports(CollaboratorsBoundedDomain.DOMAIN))), tenant.registry(),
-                tenant.UsersProviderFor(CollaboratorsBoundedDomain.DOMAIN));
+                new CollaboratorsAdapter(realm, Path.of(tenant.imports(CollaboratorsBoundedDomain.DOMAIN))), tenant);
             tenant.registerBoundedDomain(domain);
         }
     }

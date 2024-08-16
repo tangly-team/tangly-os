@@ -16,7 +16,6 @@ package net.tangly.erp.products.ui;
 import com.github.mvysny.kaributesting.v10.MockVaadin;
 import net.tangly.app.Application;
 import net.tangly.app.Tenant;
-import net.tangly.core.TypeRegistry;
 import net.tangly.erp.products.ports.ProductsAdapter;
 import net.tangly.erp.products.ports.ProductsEntities;
 import net.tangly.erp.products.services.ProductsBoundedDomain;
@@ -34,7 +33,7 @@ class ProductsTest {
         var tenant = createAndRegisterTenant("test");
         var realm = new ProductsEntities();
         var logic = new ProductsBusinessLogic(realm);
-        var domain = new ProductsBoundedDomain(realm, logic, new ProductsAdapter(realm, null, null, null), new TypeRegistry(), null);
+        var domain = new ProductsBoundedDomain(realm, logic, new ProductsAdapter(realm, null, null, null), null);
         tenant.registerBoundedDomain(domain);
         MockVaadin.setup();
     }

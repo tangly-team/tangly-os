@@ -13,6 +13,7 @@
 
 package net.tangly.erp.ledger.services;
 
+import net.tangly.commons.utilities.BigDecimalUtilities;
 import net.tangly.core.DateRange;
 import net.tangly.core.domain.Realm;
 import net.tangly.core.providers.Provider;
@@ -86,7 +87,8 @@ public interface LedgerRealm extends Realm {
     }
 
     /**
-     * Creates synthetic transactions to deduct the VAT due amount and transfer it to the VAT account.
+     * Creates synthetic transactions to deduct the VAT due amount and transfer it to the VAT account <em>2201</em>.
+     * For each credit entry with a VAT code defined, a synthetic transaction is created to transfer the associated VAT due amount to the VAT account.
      *
      * @param transaction transaction which VAT amount shall be computed and transferred to the VAT account.
      * @return the transaction with the VAT entries
@@ -96,15 +98,15 @@ public interface LedgerRealm extends Realm {
         var vatCode = transaction.vatCode().orElse(null);
         if (!transaction.isSplit() && Objects.nonNull(vatCode)) {
             // non-split transaction with VAT code defined is processed to compute the VAT amount to be transferred to the VAT account
-            BigDecimal vatDue = transaction.amount().multiply(vatCode.vatDueRate());
-            vatSyntheticTransaction =
-                Transaction.ofSynthetic(transaction.date(), transaction.creditAccount(), VAT_ACCOUNT, vatDue, VAT_FLAT_RATE, transaction.reference(), vatCode,
-                    null, Collections.emptyList());
+            BigDecimal vatDue = BigDecimalUtilities.round(transaction.amount().multiply(vatCode.vatDueRate()));
+            vatSyntheticTransaction = Transaction.ofSynthetic(transaction.date(), transaction.creditAccount(), VAT_ACCOUNT, vatDue,
+                syntheticTransactionText(vatCode, transaction.amount()), transaction.reference(), vatCode, null, Collections.emptyList());
         } else if (transaction.isSplit() && transaction.splits().stream().anyMatch(o -> Objects.nonNull(o.vatCode()))) {
             // split transaction with VAT code defined in at least one split is processed to compute the VAT amount to be transferred to the VAT account
             var splits = transaction.splits().stream().map(o -> {
                 BigDecimal vatDueRate = Objects.nonNull(o.vatCode()) ? o.vatCode().vatDueRate() : BigDecimal.ZERO;
-                return AccountEntry.credit(VAT_ACCOUNT, o.date(), o.amount().multiply(vatDueRate), o.reference(), VAT_FLAT_RATE, o.vatCode());
+                return AccountEntry.credit(VAT_ACCOUNT, o.date(), o.amount().multiply(vatDueRate), o.reference(), syntheticTransactionText(vatCode, o.amount()),
+                    o.vatCode());
             }).toList();
             BigDecimal totalVatDue = splits.stream().map(AccountEntry::amount).reduce(BigDecimal::add).orElse(BigDecimal.ZERO);
             vatSyntheticTransaction = Transaction.ofSynthetic(transaction.date(), transaction.splits().getFirst().accountId(), null, totalVatDue, VAT_FLAT_RATE,
@@ -112,6 +114,10 @@ public interface LedgerRealm extends Realm {
 
         }
         return vatSyntheticTransaction;
+    }
+
+    private String syntheticTransactionText(@NotNull VatCode code, @NotNull BigDecimal amount) {
+        return "%s due rate %s of %s".formatted(VAT_FLAT_RATE, BigDecimalUtilities.formatToPercentage(code.vatDueRate()), amount);
     }
 
     /**
@@ -140,18 +146,16 @@ public interface LedgerRealm extends Realm {
 // region VAT-computations
 
     default BigDecimal computeVatSales(LocalDate from, LocalDate to, VatCode vatCode) {
-        return transactions(from, to).stream().flatMap(o -> o.creditSplits().stream())
+        return transactions(from, to).stream().filter(o -> !o.isSynthetic()).flatMap(o -> o.creditSplits().stream())
             .filter(o -> Objects.isNull(vatCode) ? Objects.nonNull(o.vatCode()) : vatCode.equals(o.vatCode())).map(AccountEntry::amount)
             .reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 
     default BigDecimal computeVat(LocalDate from, LocalDate to, VatCode vatCode) {
         return transactions(from, to).stream().flatMap(o -> o.creditSplits().stream())
-            .filter(o -> Objects.isNull(vatCode) ? Objects.nonNull(o.vatCode()) : vatCode.equals(o.vatCode())).map(o -> {
-                Optional<BigDecimal> vat = o.getVat();
-                return vat.map(bigDecimal -> o.amount().subtract(o.amount().divide(BigDecimal.ONE.add(bigDecimal), 2, RoundingMode.HALF_UP)))
-                    .orElse(BigDecimal.ZERO);
-            }).reduce(BigDecimal.ZERO, BigDecimal::add);
+            .filter(o -> Objects.isNull(vatCode) ? Objects.nonNull(o.vatCode()) : vatCode.equals(o.vatCode())).map(
+                o -> o.getVat().map(bigDecimal -> o.amount().subtract(o.amount().divide(BigDecimal.ONE.add(bigDecimal), 2, RoundingMode.HALF_UP)))
+                    .orElse(BigDecimal.ZERO)).reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 
     default BigDecimal computeDueVat(LocalDate from, LocalDate to, VatCode vatCode) {

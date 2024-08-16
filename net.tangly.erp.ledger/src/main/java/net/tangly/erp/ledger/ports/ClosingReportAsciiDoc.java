@@ -16,6 +16,7 @@ package net.tangly.erp.ledger.ports;
 
 import net.tangly.commons.utilities.AsciiDocHelper;
 import net.tangly.commons.utilities.BigDecimalUtilities;
+import net.tangly.core.Address;
 import net.tangly.core.TypeRegistry;
 import net.tangly.erp.ledger.domain.Account;
 import net.tangly.erp.ledger.domain.AccountEntry;
@@ -35,6 +36,7 @@ import java.nio.file.Path;
 import java.time.LocalDate;
 import java.time.Month;
 import java.time.YearMonth;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import static net.tangly.commons.utilities.AsciiDocHelper.format;
@@ -85,16 +87,16 @@ public class ClosingReportAsciiDoc {
             helper.header("Balance Sheet", 2);
         }
         if (withBalanceSheet) {
-            generateResultBalanceTableFor(helper, realm.assets(), from, to, "Assets", withEmptyAccounts);
-            generateResultBalanceTableFor(helper, realm.liabilities(), from, to, "Liabilities", withEmptyAccounts);
+            addResultBalanceTableFor(helper, realm.assets(), from, to, "Assets", withEmptyAccounts);
+            addResultBalanceTableFor(helper, realm.liabilities(), from, to, "Liabilities", withEmptyAccounts);
         }
         if (withProfitsAndLosses) {
-            generateResultIncomeTableFor(helper, realm.profitAndLoss(), from, to, "Profits and Losses", withEmptyAccounts);
+            addResultIncomeTableFor(helper, realm.profitAndLoss(), from, to, "Profits and Losses", withEmptyAccounts);
         }
         if (withTransactions) {
             helper.header("Transactions", 3);
-            helper.tableHeader("Transactions", "cols=\"20, 20, 70 , 15, 15, >20, >15\"", "Date", "Voucher", "Description", "Debit", "Credit", "Amount", "VAT");
-            realm.transactions(from, to).forEach(o -> createTransactionRow(helper, o));
+            helper.tableHeader(null, "cols=\"20, 20, 70 , 15, 15, >20, >15\"", "Date", "Voucher", "Description", "Debit", "Credit", "Amount", "VAT");
+            realm.transactions(from, to).forEach(o -> addTransactionRow(helper, o));
             helper.tableEnd();
         }
         if (withVat) {
@@ -107,19 +109,27 @@ public class ClosingReportAsciiDoc {
         }
     }
 
-    private static void generateResultBalanceTableFor(AsciiDocHelper helper, List<Account> accounts, LocalDate from, LocalDate to, String category,
-                                                      boolean withEmptyAccounts) {
+    public void addIntroduction(AsciiDocHelper helper, LocalDate from, LocalDate to, String companyName, String companyId, Address address) {
+        helper.header("Introduction", 1);
+        helper.paragraph(companyName);
+        helper.paragraph(companyId);
+        helper.paragraph(address.street() + ", " + address.postcode() + " " + address.locality());
+        helper.paragraph("Accounting period %s - %s".formatted(from.format(DateTimeFormatter.ISO_DATE), to.format(DateTimeFormatter.ISO_DATE)));
+    }
+
+    private static void addResultBalanceTableFor(AsciiDocHelper helper, List<Account> accounts, LocalDate from, LocalDate to, String category,
+                                                 boolean withEmptyAccounts) {
         helper.header(category, 3);
-        helper.tableHeader(category, "cols=\"20a, <100a, 25, >25, >25\"", "Account", "Description", "Kind", "Opening", "Balance");
-        accounts.forEach(o -> createBalanceRow(helper, o, from, to, withEmptyAccounts));
+        helper.tableHeader(null, "cols=\"20a, <100a, 25, >25, >25\"", "Account", "Description", "Kind", "Opening", "Balance");
+        accounts.forEach(o -> addBalanceRow(helper, o, from, to, withEmptyAccounts));
         helper.tableEnd();
     }
 
-    private static void generateResultIncomeTableFor(AsciiDocHelper helper, List<Account> accounts, LocalDate from, LocalDate to, String category,
-                                                     boolean withEmptyAccounts) {
+    private static void addResultIncomeTableFor(AsciiDocHelper helper, List<Account> accounts, LocalDate from, LocalDate to, String category,
+                                                boolean withEmptyAccounts) {
         helper.header(category, 3);
-        helper.tableHeader(category, "cols=\"20a, <100a, 25, >25\"", "Account", "Description", "Kind", "Balance");
-        accounts.forEach(o -> createIncomeRow(helper, o, from, to, withEmptyAccounts));
+        helper.tableHeader(null, "cols=\"20a, <100a, 25, >25\"", "Account", "Description", "Kind", "Balance");
+        accounts.forEach(o -> addIncomeRow(helper, o, from, to, withEmptyAccounts));
         helper.tableEnd();
     }
 
@@ -154,42 +164,42 @@ public class ClosingReportAsciiDoc {
             BigDecimal vat = realm.computeVat(periodStart, periodEnd, vatCode);
             BigDecimal vatDue = realm.computeDueVat(periodStart, periodEnd, vatCode);
             helper.tableRow("%s / %s / %s".formatted(vatCode.code(), BigDecimalUtilities.formatToPercentage(vatCode.vatRate()),
-                BigDecimalUtilities.formatToPercentage(vatCode.vatDueRate())), format(turnover), format(vat), format(vatDue));
+                BigDecimalUtilities.formatToPercentage(vatCode.vatDueRate())), format(turnover, false), format(vat, false), format(vatDue, false));
         }
         BigDecimal turnover = realm.computeVatSales(periodStart, periodEnd, null);
         BigDecimal vat = realm.computeVat(periodStart, periodEnd, null);
         BigDecimal vatDue = realm.computeDueVat(periodStart, periodEnd, null);
-        helper.tableRow("*Total*", format(turnover), format(vat), format(vatDue));
+        helper.tableRow("*Total*", format(turnover, true), format(vat, true), format(vatDue, true));
         helper.tableEnd();
     }
 
-    private static void createTransactionRow(AsciiDocHelper helper, Transaction transaction) {
+    private static void addTransactionRow(AsciiDocHelper helper, Transaction transaction) {
         if (transaction.isSplit()) {
             if (transaction.hasDebitSplits()) {
                 helper.tableRow(transaction.date().toString(), transaction.reference(), transaction.text(), "", transaction.creditAccount(),
-                    format(transaction.amount()), "-");
+                    format(transaction.amount(), false), "-");
                 for (AccountEntry entry : transaction.debitSplits()) {
-                    helper.tableRow("", "", entry.text(), entry.accountId(), "", format(transaction.amount()), "-");
+                    helper.tableRow("", "", entry.text(), entry.accountId(), "", format(transaction.amount(), false), "-");
                 }
             } else if (transaction.hasCreditSplits()) {
                 helper.tableRow(transaction.date().toString(), transaction.reference(), transaction.text(), transaction.debitAccount(), "",
-                    format(transaction.amount()), "-");
+                    format(transaction.amount(), false), "-");
                 for (AccountEntry entry : transaction.debitSplits()) {
-                    helper.tableRow("", "", "", entry.text(), entry.accountId(), format(transaction.amount()), "-");
+                    helper.tableRow("", "", "", entry.text(), entry.accountId(), format(transaction.amount(), false), "-");
                 }
             }
         } else {
             helper.tableRow(transaction.date().toString(), transaction.reference(), transaction.text(), transaction.debitAccount(), transaction.creditAccount(),
-                format(transaction.amount()), vat(transaction.creditSplits().getFirst()));
+                format(transaction.amount(), false), vat(transaction.creditSplits().getFirst()));
         }
     }
 
-    private static String vat(AccountEntry entry) {
-        return entry.getVat().map(o -> "%s%%".formatted(format(o.multiply(new BigDecimal(100))))).orElse("");
+    private static String vat(@NotNull AccountEntry entry) {
+        return entry.getVat().map(o -> "%s%%".formatted(format(o.multiply(new BigDecimal(100)), false))).orElse("");
     }
 
-    private static void createBalanceRow(@NotNull AsciiDocHelper helper, @NotNull Account account, @NotNull LocalDate from, @NotNull LocalDate to,
-                                         boolean withEmptyAccounts) {
+    private static void addBalanceRow(@NotNull AsciiDocHelper helper, @NotNull Account account, @NotNull LocalDate from, @NotNull LocalDate to,
+                                      boolean withEmptyAccounts) {
         var fromBalance = account.balance(from.minusDays(1));
         var toBalance = account.balance(to);
         if (!withEmptyAccounts && (BigDecimal.ZERO.equals(fromBalance) && BigDecimal.ZERO.equals(toBalance))) {
@@ -204,11 +214,12 @@ public class ClosingReportAsciiDoc {
             accountId = AsciiDocHelper.italics(account.id());
             description = AsciiDocHelper.italics(account.name());
         }
-        helper.tableRow(accountId, description, account.isAggregate() ? "" : account.kind().name().toLowerCase(), format(fromBalance), format(toBalance));
+        helper.tableRow(accountId, description, account.isAggregate() ? "" : account.kind().name().toLowerCase(), format(fromBalance, false),
+            format(toBalance, false));
     }
 
-    private static void createIncomeRow(@NotNull AsciiDocHelper helper, @NotNull Account account, @NotNull LocalDate from, @NotNull LocalDate to,
-                                        boolean withEmptyAccounts) {
+    private static void addIncomeRow(@NotNull AsciiDocHelper helper, @NotNull Account account, @NotNull LocalDate from, @NotNull LocalDate to,
+                                     boolean withEmptyAccounts) {
         var balance = account.balance(from, to);
         if (!withEmptyAccounts && (BigDecimal.ZERO.equals(balance))) {
             return;
@@ -222,6 +233,6 @@ public class ClosingReportAsciiDoc {
             accountId = AsciiDocHelper.italics(account.id());
             description = AsciiDocHelper.italics(account.name());
         }
-        helper.tableRow(accountId, description, account.isAggregate() ? "" : account.kind().name().toLowerCase(), format(balance));
+        helper.tableRow(accountId, description, account.isAggregate() ? "" : account.kind().name().toLowerCase(), format(balance, false));
     }
 }

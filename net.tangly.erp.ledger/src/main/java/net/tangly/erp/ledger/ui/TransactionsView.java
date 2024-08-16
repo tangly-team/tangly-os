@@ -25,6 +25,7 @@ import com.vaadin.flow.data.renderer.ComponentRenderer;
 import com.vaadin.flow.data.renderer.NumberRenderer;
 import com.vaadin.flow.router.PageTitle;
 import net.tangly.core.DateRange;
+import net.tangly.core.providers.ProviderView;
 import net.tangly.erp.ledger.domain.AccountEntry;
 import net.tangly.erp.ledger.domain.Transaction;
 import net.tangly.erp.ledger.services.LedgerBoundedDomain;
@@ -40,6 +41,7 @@ import java.util.Objects;
 
 /**
  * Regular CRUD view on transaction abstraction. The grid and edition dialog were optimized for usability.
+ * The transaction view displays only non-synthetic transactions. Synthetic transactions are used to compute flat rate VAT.
  */
 @PageTitle("ledger-transactions")
 class TransactionsView extends ItemView<Transaction> {
@@ -49,6 +51,7 @@ class TransactionsView extends ItemView<Transaction> {
         private String debit;
         private String credit;
         private BigDecimal amount;
+        private Boolean synthetic;
 
         public TransactionFilter() {
         }
@@ -73,10 +76,23 @@ class TransactionsView extends ItemView<Transaction> {
             dataView().refreshAll();
         }
 
+        public void synthetic(Boolean synthetic) {
+            this.synthetic = synthetic;
+            dataView().refreshAll();
+        }
+
         public boolean test(@NotNull Transaction entity) {
             return (Objects.isNull(dateRange) || Objects.isNull(entity.date()) || dateRange.isActive(entity.date())) &&
-                ItemFilter.matches(entity.text(), text) && ItemFilter.matches(entity.debit().accountId(), debit) &&
-                ItemFilter.matches(entity.credit().accountId(), credit);
+                ItemFilter.matches(entity.text(), text) && checkAccountId(entity.credit(), credit) && checkAccountId(entity.debit(), debit) &&
+                checkBoolean(entity.isSynthetic(), synthetic);
+        }
+
+        private boolean checkAccountId(AccountEntry entry, String accountId) {
+            return Objects.isNull(entry) || ItemFilter.matches(entry.accountId(), accountId);
+        }
+
+        private boolean checkBoolean(boolean value, Boolean filter) {
+            return Objects.isNull(filter) || filter.equals(value);
         }
     }
 
@@ -141,7 +157,7 @@ class TransactionsView extends ItemView<Transaction> {
     }
 
     public TransactionsView(@NotNull LedgerBoundedDomainUi domain, @NotNull Mode mode) {
-        super(Transaction.class, domain, domain.domain().realm().transactions(), null, mode);
+        super(Transaction.class, domain, ProviderView.of(domain.domain().realm().transactions(), o -> !o.isSynthetic()), new TransactionFilter(), mode);
         form(() -> new TransactionForm(this));
         init();
     }
@@ -157,6 +173,11 @@ class TransactionsView extends ItemView<Transaction> {
         menu().add("Report", e -> Cmd.ofGlobalCmd(e, () -> new CmdCreateLedgerDocument(domain()).execute()), GridMenu.MenuItemType.GLOBAL);
     }
 
+    @Override
+    protected TransactionFilter filter() {
+        return (TransactionFilter) super.filter();
+    }
+
     private void init() {
         Grid<Transaction> grid = grid();
         grid.addColumn(Transaction::date).setKey(DATE).setHeader(DATE_LABEL).setAutoWidth(true).setResizable(true).setSortable(true);
@@ -168,7 +189,7 @@ class TransactionsView extends ItemView<Transaction> {
         grid.addColumn(new NumberRenderer<>(Transaction::amount, VaadinUtils.FORMAT)).setKey("amount").setHeader("Amount").setAutoWidth(true).setResizable(true)
             .setTextAlign(ColumnTextAlign.END);
         grid.addColumn(Transaction::vatCodeAsString).setKey("vatCode").setHeader("VatCode").setAutoWidth(true).setResizable(true).setSortable(true);
-        addEntityFilterFields(grid(), new TransactionFilter());
+        addEntityFilterFields(grid(), filter());
         grid.setItemDetailsRenderer(createTransactionDetailsRenderer());
     }
 
@@ -176,11 +197,9 @@ class TransactionsView extends ItemView<Transaction> {
         grid.getHeaderRows().clear();
         HeaderRow headerRow = grid.appendHeaderRow();
         grid.getHeaderRows().clear();
-        //addFilterText(headerRow, "date", "Date", filter::date);
-        headerRow.getCell(grid.getColumnByKey(EntityView.DATE)).setComponent(ItemView.createDateRangeField(filter::dateRange));
+        headerRow.getCell(grid.getColumnByKey(EntityView.DATE)).setComponent(ItemView.createDateRangeFilterField(filter::dateRange));
         headerRow.getCell(grid.getColumnByKey(EntityView.TEXT)).setComponent(ItemView.createTextFilterField(filter::text));
         headerRow.getCell(grid.getColumnByKey("debit")).setComponent(ItemView.createTextFilterField(filter::debit));
-        headerRow.getCell(grid.getColumnByKey("credit")).setComponent(ItemView.createTextFilterField(filter::credit));
         headerRow.getCell(grid.getColumnByKey("credit")).setComponent(ItemView.createTextFilterField(filter::credit));
     }
 

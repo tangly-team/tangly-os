@@ -13,12 +13,10 @@
 
 package net.tangly.erp.products.services;
 
-import net.tangly.app.Application;
 import net.tangly.core.TagType;
-import net.tangly.core.TypeRegistry;
 import net.tangly.core.domain.BoundedDomain;
 import net.tangly.core.domain.DomainEntity;
-import net.tangly.core.domain.UsersProvider;
+import net.tangly.core.domain.TenantDirectory;
 import net.tangly.erp.crm.services.CrmBoundedDomain;
 import net.tangly.erp.products.domain.Assignment;
 import net.tangly.erp.products.domain.Effort;
@@ -31,8 +29,8 @@ import java.util.Map;
 public class ProductsBoundedDomain extends BoundedDomain<ProductsRealm, ProductsBusinessLogic, ProductsPort> {
     public static final String DOMAIN = "products";
 
-    public ProductsBoundedDomain(ProductsRealm realm, ProductsBusinessLogic logic, ProductsPort port, TypeRegistry registry, UsersProvider usersProvider) {
-        super(DOMAIN, realm, logic, port, registry, usersProvider);
+    public ProductsBoundedDomain(ProductsRealm realm, ProductsBusinessLogic logic, ProductsPort port, TenantDirectory directory) {
+        super(DOMAIN, realm, logic, port, directory);
     }
 
     @Override
@@ -55,6 +53,6 @@ public class ProductsBoundedDomain extends BoundedDomain<ProductsRealm, Products
 
     @Override
     public void startup() {
-        Application.instance().tenant("tangly").getBoundedDomain(CrmBoundedDomain.DOMAIN).ifPresent(o -> o.subscribe(new CrmEventsProcessor(this)));
+        directory().getBoundedDomain(CrmBoundedDomain.DOMAIN).ifPresent(o -> o.subscribe(new CrmEventsProcessor(this)));
     }
 }

@@ -13,16 +13,15 @@
 
 package net.tangly.erp.collabortors.services;
 
-import net.tangly.core.TypeRegistry;
 import net.tangly.core.domain.BoundedDomain;
-import net.tangly.core.domain.UsersProvider;
+import net.tangly.core.domain.TenantDirectory;
 import org.jetbrains.annotations.NotNull;
 
 public class CollaboratorsBoundedDomain extends BoundedDomain<CollaboratorsRealm, CollaboratorsBusinessLogic, CollaboratorsPort> {
     public static final String DOMAIN = "collaborators";
 
     public CollaboratorsBoundedDomain(@NotNull CollaboratorsRealm realm, @NotNull CollaboratorsBusinessLogic logic, @NotNull CollaboratorsPort port,
-                                      TypeRegistry registry, UsersProvider usersProvider) {
-        super(DOMAIN, realm, logic, port, registry, usersProvider);
+                                      TenantDirectory directory) {
+        super(DOMAIN, realm, logic, port, directory);
     }
 }

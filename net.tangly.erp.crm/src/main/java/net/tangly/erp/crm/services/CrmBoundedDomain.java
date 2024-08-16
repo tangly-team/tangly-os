@@ -15,11 +15,10 @@ package net.tangly.erp.crm.services;
 
 import net.tangly.core.GenderCode;
 import net.tangly.core.TagType;
-import net.tangly.core.TypeRegistry;
 import net.tangly.core.codes.CodeType;
 import net.tangly.core.domain.BoundedDomain;
 import net.tangly.core.domain.DomainEntity;
-import net.tangly.core.domain.UsersProvider;
+import net.tangly.core.domain.TenantDirectory;
 import net.tangly.erp.crm.domain.*;
 import net.tangly.erp.crm.ports.CrmAdapter;
 import org.jetbrains.annotations.NotNull;
@@ -30,8 +29,8 @@ import java.util.Map;
 public class CrmBoundedDomain extends BoundedDomain<CrmRealm, CrmBusinessLogic, CrmAdapter> {
     public static final String DOMAIN = "customers";
 
-    public CrmBoundedDomain(CrmRealm realm, CrmBusinessLogic logic, CrmAdapter port, TypeRegistry registry, UsersProvider usersProvider ) {
-        super(DOMAIN, realm, logic, port, registry, usersProvider);
+    public CrmBoundedDomain(CrmRealm realm, CrmBusinessLogic logic, CrmAdapter port, TenantDirectory directory) {
+        super(DOMAIN, realm, logic, port, directory);
         CrmTags.registerTags(registry());
         registry().register(CodeType.of(ActivityCode.class));
         registry().register(CodeType.of(GenderCode.class));
@@ -51,9 +50,7 @@ public class CrmBoundedDomain extends BoundedDomain<CrmRealm, CrmBusinessLogic, 
     @Override
     public List<DomainEntity<?>> entities() {
         return List.of(new DomainEntity<>(DOMAIN, NaturalEntity.class, realm().naturalEntities()),
-            new DomainEntity<>(DOMAIN, LegalEntity.class, realm().legalEntities()),
-            new DomainEntity<>(DOMAIN, Employee.class, realm().employees()),
-            new DomainEntity<>(DOMAIN, Opportunity.class, realm().opportunities()),
-            new DomainEntity<>(DOMAIN, Contract.class, realm().contracts()));
+            new DomainEntity<>(DOMAIN, LegalEntity.class, realm().legalEntities()), new DomainEntity<>(DOMAIN, Employee.class, realm().employees()),
+            new DomainEntity<>(DOMAIN, Opportunity.class, realm().opportunities()), new DomainEntity<>(DOMAIN, Contract.class, realm().contracts()));
     }
 }

@@ -67,6 +67,7 @@ public class CmdViewAccountTransactions implements Cmd {
         entries.addColumn(o -> o.isDebit() ? o.amount() : null).setKey("debit").setHeader("Debit").setAutoWidth(true).setResizable(true).setSortable(true);
         entries.addColumn(o -> o.isCredit() ? o.amount() : null).setKey("credit").setHeader("Credit").setAutoWidth(true).setResizable(true).setSortable(true);
         entries.addColumn(o -> account.balance(o.date())).setKey("balance").setHeader("Balance").setAutoWidth(true).setResizable(true).setSortable(true);
+        entries.addColumn(o -> isSynthetic(o)).setKey("synthetic").setHeader("Synthetic").setAutoWidth(true).setResizable(true).setSortable(true);
         entries.setWidthFull();
         entries.setItems(entries(fromDate.getValue(), toDate.getValue()));
         initialBalance.setValue(account.balance(fromDate.getValue()));
@@ -106,6 +107,11 @@ public class CmdViewAccountTransactions implements Cmd {
     private String referenceFor(AccountEntry entry) {
         return domain.realm().transactions().items().stream().filter(o -> o.creditSplits().contains(entry) || o.debitSplits().contains(entry)).findAny()
             .orElseThrow().reference();
+    }
+
+    private boolean isSynthetic(AccountEntry entry) {
+        return domain.realm().transactions().items().stream().filter(o -> o.creditSplits().contains(entry) || o.debitSplits().contains(entry)).findAny()
+            .orElseThrow().isSynthetic();
     }
 
     private String textFor(AccountEntry entry) {

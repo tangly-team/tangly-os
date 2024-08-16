@@ -79,8 +79,8 @@ public class InvoiceAsciiDoc implements InvoiceGenerator {
             helper.tableHeader(null, "options=\"header\", grid=\"none\", frame=\"none\", stripes=\"none\", cols=\"4,^1, >1,>1\"", bundle.getString("position"),
                 bundle.getString("quantity"), bundle.getString("price"), "%s (%s)".formatted(bundle.getString("amount"), invoice.currency().getCurrencyCode()));
             invoice.lines().stream().sorted(Comparator.comparingInt(InvoiceLine::position)).forEach(
-                o -> helper.tableRow((o.isAggregate() ? italics(o.text()) : o.text()), o.isItem() ? format(o.quantity()) : "", format(o.unitPrice()),
-                    o.isAggregate() ? italics(format(o.amount())) : format(o.amount())));
+                o -> helper.tableRow((o.isAggregate() ? italics(o.text()) : o.text()), o.isItem() ? format(o.quantity(), false) : "",
+                    format(o.unitPrice(), false), o.isAggregate() ? italics(format(o.amount(), false)) : format(o.amount(), false)));
             createVatDeclarations(helper, invoice);
             helper.tableEnd();
             writer.println();
@@ -106,18 +106,18 @@ public class InvoiceAsciiDoc implements InvoiceGenerator {
 
     private void createVatDeclarations(@NotNull AsciiDocHelper helper, @NotNull Invoice invoice) {
         helper.tableRow("", "", "", "");
-        helper.tableRow(bundle.getString("totalWithoutVat"), "", "", format(invoice.amountWithoutVat()));
+        helper.tableRow(bundle.getString("totalWithoutVat"), "", "", format(invoice.amountWithoutVat(), true));
         if (invoice.hasMultipleVatRates()) {
             String vats = invoice.vatAmounts().entrySet().stream().map(
                 o -> "%s%% : %s".formatted(o.getKey().multiply(HUNDRED).stripTrailingZeros().setScale(2, RoundingMode.HALF_EVEN).toPlainString(),
                     o.getValue().stripTrailingZeros().toPlainString())).collect(Collectors.joining(", ", "(", ")"));
-            helper.tableRow(italics("%s %s".formatted(bundle.getString("vatAmount"), vats)), "", "", italics(format(invoice.vat())));
+            helper.tableRow(italics("%s %s".formatted(bundle.getString("vatAmount"), vats)), "", "", italics(format(invoice.vat(), true)));
         } else {
-            helper.tableRow(italics(bundle.getString("vatAmount")), "",
-                "%s%%".formatted(italics(invoice.uniqueVatRate().orElseThrow().multiply(HUNDRED).stripTrailingZeros().setScale(2, RoundingMode.HALF_EVEN).toPlainString())),
-                italics(format(invoice.vat())));
+            helper.tableRow(italics(bundle.getString("vatAmount")), "", "%s%%".formatted(
+                    italics(invoice.uniqueVatRate().orElseThrow().multiply(HUNDRED).stripTrailingZeros().setScale(2, RoundingMode.HALF_EVEN).toPlainString())),
+                italics(format(invoice.vat(), true)));
         }
-        helper.tableRow(bold(bundle.getString("total")), "", "", bold(format(invoice.amountWithVat())));
+        helper.tableRow(bold(bundle.getString("total")), "", "", bold(format(invoice.amountWithVat(), true)));
     }
 
     private static String addressText(@NotNull InvoiceLegalEntity entity, @NotNull Address address) {
