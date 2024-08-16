@@ -11,17 +11,6 @@
 {{ $num_fmt_del := .Get "num-fmt-del" | default " "}}
 {{ $empty_list := .Get "empty_list" | default "No attachments found." }}
 {{ $show_folder := .Get "show_folder" | default false}}
-<!--
-  ~ Copyright 2021-2022 Marcel Baumann
-  ~
-  ~ Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
-  ~ the License at
-  ~
-  ~          https://apache.org/licenses/LICENSE-2.0
-  ~
-  ~ Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
-  ~ OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
-  -->
 
 <section class="card attachments{{ with $class }} {{.}}{{ end }}">
     <label class="card-header attachments-label">
@@ -31,7 +20,7 @@
     <div class="card-body attachments-files">
         <!-- {{ with $title }}{{- . -}}{{ end }} -->
         {{ with $folder }}
-        <!-- {{ $path := replace (printf "./content/%s/%s%s" $.Page.File.Lang $.Page.File.Dir .) "\\" "/" }} -->
+        <!-- {{ $path := replace (printf "./content/%s/%s%s" $.Page.Language.Lang $.Page.File.Dir .) "\\" "/" }} -->
         {{ $path := path.Join "content/" $.Page.File.Dir . }}
         {{ $file_list := newScratch }}
         {{ template "recursive-files" (dict "path" $path "folder" . "recursive" true "exclude" $exclude "filter" $filter "show_folder" $show_folder "file_list" $file_list)}}
@@ -102,13 +91,13 @@
 {{ $num_fmt_del := .num_fmt_del }}
 {{ $file_size_string := newScratch }}
 {{ if (ge $file_size (math.Pow 1024 3))}}
-{{ $file_size_string.Set "size" (printf "%s %s" ( lang.NumFmt $num_prec (div $file_size (math.Pow 1024.0 3)) $num_fmt $num_fmt_del) "GB")}}
+{{ $file_size_string.Set "size" (printf "%s %s" ( lang.FormatNumberCustom $num_prec (div $file_size (math.Pow 1024.0 3)) $num_fmt $num_fmt_del) "GB")}}
 {{ else if (ge $file_size (math.Pow 1024 2))}}
-{{ $file_size_string.Set "size" (printf "%s %s" ( lang.NumFmt $num_prec (div $file_size (math.Pow 1024.0 2)) $num_fmt $num_fmt_del) "MB")}}
+{{ $file_size_string.Set "size" (printf "%s %s" ( lang.FormatNumberCustom $num_prec (div $file_size (math.Pow 1024.0 2)) $num_fmt $num_fmt_del) "MB")}}
 {{ else if (ge $file_size 1024)}}
-{{ $file_size_string.Set "size" (printf "%s %s" ( lang.NumFmt $num_prec (div $file_size 1024.0) $num_fmt $num_fmt_del) "kB")}}
+{{ $file_size_string.Set "size" (printf "%s %s" ( lang.FormatNumberCustom $num_prec (div $file_size 1024.0) $num_fmt $num_fmt_del) "kB")}}
 {{ else }}
-{{ $file_size_string.Set "size" (printf "%s %s" ( lang.NumFmt $num_prec $file_size $num_fmt $num_fmt_del) "Byte")}}
+{{ $file_size_string.Set "size" (printf "%s %s" ( lang.FormatNumberCustom $num_prec $file_size $num_fmt $num_fmt_del) "Byte")}}
 {{ end }}
 ({{ $file_size_string.Get "size" }})
 {{ end }}
