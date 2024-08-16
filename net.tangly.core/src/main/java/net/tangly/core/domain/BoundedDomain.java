@@ -44,14 +44,15 @@ public class BoundedDomain<R extends Realm, B, P extends Port<R>> implements Dom
     private final R realm;
     private final P port;
     private final B logic;
+    private final TenantDirectory directory;
     private final TypeRegistry registry;
-    private final UsersProvider usersProvider;
     private final SubmissionPublisher<Object> channel;
     private final SubmissionPublisher<Object> internalChannel;
     private final List<EventData> auditEvents;
 
     /**
      * Defines a refined event listener interface to handle events in the domain or from another domain.
+     *
      * @see Flow.Subscriber
      */
     @FunctionalInterface
@@ -76,19 +77,19 @@ public class BoundedDomain<R extends Realm, B, P extends Port<R>> implements Dom
     /**
      * Constructor of the bounded domain.
      *
-     * @param name     human-readable name of the domain
-     * @param realm    realm handles all entities and values objects of the domain model
-     * @param logic    logic provides complex domain business logic functions
-     * @param port     port empowers the business domain to communicate with external systems
-     * @param registry registry where the tagged values and code types defined for the domain model are registered
+     * @param name      human-readable name of the domain
+     * @param realm     realm handles all entities and values objects of the domain model
+     * @param logic     logic provides complex domain business logic functions
+     * @param port      port empowers the business domain to communicate with external systems
+     * @param directory directory of the tenant
      */
-    public BoundedDomain(@NotNull String name, @NotNull R realm, @NotNull B logic, @NotNull P port, TypeRegistry registry, UsersProvider usersProvider) {
+    public BoundedDomain(@NotNull String name, @NotNull R realm, @NotNull B logic, @NotNull P port, TenantDirectory directory) {
         this.name = name;
         this.realm = realm;
         this.logic = logic;
         this.port = port;
-        this.registry = registry;
-        this.usersProvider = usersProvider;
+        this.registry = new TypeRegistry();
+        this.directory = directory;
         channel = new SubmissionPublisher<>(Executors.newVirtualThreadPerTaskExecutor(), Flow.defaultBufferSize());
         internalChannel = new SubmissionPublisher<>(Executors.newVirtualThreadPerTaskExecutor(), Flow.defaultBufferSize());
         auditEvents = new ArrayList<>();
@@ -106,6 +107,7 @@ public class BoundedDomain<R extends Realm, B, P extends Port<R>> implements Dom
 
     /**
      * Returns the external event channel of the domain. The channel is used to publish events to the external world.
+     *
      * @return external event channel
      */
     public SubmissionPublisher<Object> channel() {
@@ -114,6 +116,7 @@ public class BoundedDomain<R extends Realm, B, P extends Port<R>> implements Dom
 
     /**
      * Returns the internal event channel of the domain. The channel is used to publish internal events within the domain.
+     *
      * @return internal event channel
      */
     public SubmissionPublisher<Object> internalChannel() {
@@ -122,6 +125,7 @@ public class BoundedDomain<R extends Realm, B, P extends Port<R>> implements Dom
 
     /**
      * Subscribes to the public event channel of the domain.
+     *
      * @param listener event listener
      */
     public void subscribe(EventListener listener) {
@@ -130,6 +134,7 @@ public class BoundedDomain<R extends Realm, B, P extends Port<R>> implements Dom
 
     /**
      * Subscribes to the internal event channel of the domain.
+     *
      * @param listener event listener
      */
     public void subscribeInternally(EventListener listener) {
@@ -160,9 +165,6 @@ public class BoundedDomain<R extends Realm, B, P extends Port<R>> implements Dom
         return registry;
     }
 
-    public UsersProvider usersProvider() {
-        return usersProvider;
-    }
 
     public List<DomainEntity<?>> entities() {
         return Collections.emptyList();
@@ -186,5 +188,9 @@ public class BoundedDomain<R extends Realm, B, P extends Port<R>> implements Dom
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+    }
+
+    protected TenantDirectory directory() {
+        return directory;
     }
 }

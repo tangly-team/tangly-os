@@ -44,7 +44,7 @@ class TestDomain {
 
     static class TestBoundedDomain extends BoundedDomain<TestRealm, Void, TestPort> {
         TestBoundedDomain(TestRealm realm, TestPort port) {
-            super("TestBoundedDomain", realm, null, port, null, null);
+            super("TestBoundedDomain", realm, null, port, null);
         }
     }
 
