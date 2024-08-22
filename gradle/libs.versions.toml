@@ -7,7 +7,7 @@ javalin-version = '5.6.4'
 openapi-version = "5.6.4"
 eclipsestore-version = '1.4.0'
 mustang-version = '2.12.0'
-vaadin-version = '24.4.8'
+vaadin-version = '24.4.9'
 
 [plugins]
 vaadin = { id = "com.vaadin", version.ref = "vaadin-version" }
