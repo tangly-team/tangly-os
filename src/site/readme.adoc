@@ -27,12 +27,12 @@ The following commands will deploy the site locally.
 
 [source,console]
 ----
-./scripts/initiateHugo.sh                                            <1>
-./scripts/populateHugo.sh                                            <2>
-hugo server --destination public --disableFastRender -F              <3>
+./scripts/initiateHugo.sh                                                 <1>
+./scripts/populateHugo.sh                                                 <2>
+hugo server --destination public --disableFastRender -F                   <3>
 
-./scripts/popupateHugo.sh                                            <4>
-./scripts/publishHugo.sh                                             <5>
+./scripts/popupateHugo.sh                                                 <4>
+./scripts/publishHugo.sh                                                  <5>
 ----
 
 <1> Initialize the Hugo environment in a local folder.
@@ -68,7 +68,7 @@ For the comment feature, we added:
 * layouts/blog/content.html _added utterances code for comments_
 * layouts/partials/comments-utterances.html _partial for comment template_
 
-=== Asciidoc Stylesheet
+=== AsciiDoc Stylesheet
 
 Exploration was started to improve the styling of https://asciidoc.org[asciidoc] documents:
 
@@ -78,12 +78,14 @@ Exploration was started to improve the styling of https://asciidoc.org[asciidoc]
 
 == RevealJS Toolchain
 
+The toolchain is used to generate presentation slides from AsciiDoc files.
+
 To set up the ruby toolchain, you should execute:
 
 [source,console]
 ----
-cd workshops                                    <1>
-bundle config --local path .bundle/gems         <2>
+cd workshops                                                              <1>
+bundle config --local path .bundle/gems                                   <2>
 bundle
 ----
 
@@ -97,7 +99,29 @@ The code to generate a presentation workshop slides deck is:
 ----
  bundle exec asciidoctor-revealjs
     -r asciidoctor-diagram -r asciidoctor-bibtex -r asciidoctor-kroki
-    -a revealjsdir=https://cdn.jsdelivr.net/npm/reveal.js@5.5.0.4 <folder>/<presenation>.adoc   <1>
+    -a revealjsdir=https://cdn.jsdelivr.net/npm/reveal.js@5.5.0.4
+    <folder>/<presenation>.adoc                                           <1>
 ----
 
 <1> Run the command from the _workshops_ directory.
+
+== Publish PDF Documents
+
+The longer documents can be published as PDF files.
+These documents are mainly located in the _ideas_ folder.
+
+[source,console]
+----
+asciidoctor -r asciidoctor-diagram -r asciidoctor-bibtex
+            -r asciidoctor-pdf -b pdf <document.adoc>                     <1>
+----
+
+<1> Do not use diagram generation with kroki in the PDF generation.
+It seems to be not supported by the asciidoctor-pdf backend.
+
+The configuration for the PDF generation is defined as AsciiDoc attributes in the document header.
+Conditional processing ensures that these attributes are only available when the document is processed as a PDF.
+
+You still have one manual step to perform.
+The front matter of the document must be commented out.
+{ref-asciidoctor} does not recognize front matter in the document header.

@@ -1,7 +1,7 @@
 ---
 title: "Cool Libraries"
 linkTitle: "Cool Libraries"
-date: 2025-05-01
+date: 2026-05-01
 tags: ["java"]
 params:
   featured: "blog/2026/pics/2026-05-01-head.jpg"

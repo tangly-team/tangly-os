@@ -5,21 +5,36 @@ weight: 10
 author: "Marcel Baumann"
 ---
 
-:ref-azure-devops: https://azure.microsoft.com/en-us/products/devops/[Azure DevOps]
-:ref-smart: https://en.wikipedia.org/wiki/SMART_criteria[SMART]
-:ref-invest: https://en.wikipedia.org/wiki/INVEST_(mnemonic)[INVEST]
-:ref-pmi: https://www.pmi.org/[Project Management Institute]
-:ref-yagni: https://en.wikipedia.org/wiki/You_aren%27t_gonna_need_it[You aren't gonna need it]
+ifdef::backend-pdf[]
+= Agile Product Management
+Marcel Baumann, tangly llc
+Version 1.0
+include::fragments/_pdf-doc.adoc[]
+endif::[]
 :toc:
+:ref-adr: https://adr.github.io/[Architecture Design Records ADR]
+:ref-azure-devops: https://azure.microsoft.com/en-us/products/devops/[Azure DevOps]
+:ref-dad: https://www.pmi.org/disciplined-agile/[Disciplined Agile]
+:ref-github: https://github.com/[GitHub]
+:ref-gitlab: https://about.gitlab.com/[GitLab]
+:ref-invest: https://en.wikipedia.org/wiki/INVEST_(mnemonic)[INVEST]
+:ref-less: https://less.works/[LeSS]
+:ref-pmi: https://www.pmi.org/[Project Management Institute]
+:ref-safe: https://scaledagileframework.com/[SAFe]
+:ref-scrum: https://scrumguides.org/[Scrum]
+:ref-smart: https://en.wikipedia.org/wiki/SMART_criteria[SMART]
+:ref-yagni: https://en.wikipedia.org/wiki/You_aren%27t_gonna_need_it[You aren't gonna need it]
+
+== Introduction
 
 Small and medium-sized enterprises often struggle with the implementation of digital product management.
 
 They have a heterogeneous portfolio of products targeting their customer segments.
 The development capacities are limited and shared between the products.
-Often a team is responsible for the development and support of multiple product lines.
+Often a team is responsible for the development and support of multiple products.
 
 The digital products have different life cycles and customer segments.
-They are often implemented with different technologies and stacks
+They are often implemented with different technologies and development stacks
 footnote:[I recommend strongly limiting the number of technology stacks to one or two stacks.
 The size of the development department is, in general, so small that professional level can seldom be guaranteed for multiple development stacks.
 Limited internal quality and high technical debt are commonly a plague for internally developed digital products.].
@@ -55,6 +70,7 @@ Prefer grouping similar offerings in a generalized product.
 Try to have less than five product families in the portfolio.
 
 _The approach is tailored for digital product companies._
+
 _Engineering services companies have different challenges and require a different approach._
 _Services companies have no digital products._
 _They only deliver services to their customers._
@@ -70,10 +86,15 @@ They might directly generate revenue or support commercial offerings.
 A product family is commonly defined as a group of related products.
 You can therefore view it as a cohesive product portfolio, a portfolio whose members have related value propositions and business goals.
 
-A product line is a set of product variants.
+The product family contains a set of digital modules to define the variants.
+
+Beware that configurations are not product variants.
+Configurations are customer-specific settings requiring engineering activities and impeding the scaling of sales
+footnote:[Configuration activities are customer-specific projects and not product related activities].
+
 You should handle all product variants as a single product.
 
-An effective product portfolio strategy should contain five elements.
+An effective product portfolio strategy should contain the following five elements.
 
 Vision and Strategy:: An overarching vision that describes its purpose, the positive change it should bring about.
 The product vision describes the product’s purpose, the ultimate reason for creating it, and the positive change it should bring about. +
@@ -120,20 +141,25 @@ image::apm-product-portfolio-team.png[400,700,role="text-center"]
 
 The following artifacts shall be created and maintained:
 
-* Overall strategy for the organization.
+Overall strategy for the organization::
 Ideally, the board of directors and senior management have defined and approved the company strategy.
-* Vision and strategy of the product portfolio.
+Vision and strategy of the product portfolio::
 It is used for the active and continuous management of the portfolio.
-A strategy has a customer focus and a technological focus. +
-Align the product lines and products accordingly to the vision.
-* Portfolio of all product lines.
-The products should be prioritized. +
+A strategy has a customer focus and a technological focus.
+Align the product and modules accordingly to the vision.
+Portfolio of all products::
+The products should be prioritized.
 Each product has a different and published priority.
 Document the reasons for the priority.
-* Roadmap and release plan.
-All product lines and products should be aligned with the portfolio release plan to reduce the coordination effort. +
+Roadmap and release plan::
+All products and modules should be aligned with the portfolio release plan to reduce the coordination effort.
+A roadmap has a horizon of twelve to eighteen months.
+A release plan has a horizon of six to nine months. +
 Experiment with quarterly releases.
-* Portfolio backlog.
+Portfolio backlog:: A single backlog for all products is maintained.
+The features are implicitly prioritized.
+
+The strategy stack below displays the relationship between the organization strategy, the product portfolio strategy, and the product strategy.
 
 image::apm-strategy-stack.png[400,700,role="text-center"]
 
@@ -157,6 +183,10 @@ A pragmatic roadmap and release plan will be:
 === Requirements Gathering
 
 Each product has a product manager responsible for the requirement gathering for his products.
+She can delegate the gathering to team members or stakeholders.
+Technical support collaborators should often be involved in the requirement gathering.
+
+She still has the *responsibility* for the product requirements.
 A product manager can be in charge of multiple products.
 
 The product manager is responsible for:
@@ -164,7 +194,9 @@ The product manager is responsible for:
 * The vision of the product
 * The roadmap of the product
 * The release plan of the product
-* The product line backlog as a set of epics and related features
+* The product backlog as a set of epics and related features.
+Any stakeholder or development team member can suggest a feature and add it to the product backlog.
+The product manager is responsible for accepting and prioritizing the features.
 
 image::apm-requirements-elicitation.png[400,700,role="text-center"]
 
@@ -172,93 +204,22 @@ A feature represents functionality that delivers business value, it fulfills a s
 It is sized to be delivered by the development teams within a release interval.
 An epic is a set of related features that deliver a business value.
 
-The below diagram shows the relationship between the product lines and the portfolio.
-The product line artifacts are the inputs for the portfolio artifacts.
+The below diagram shows the relationship between the products and the portfolio requirements.
+The product artifacts are the inputs for the portfolio artifacts.
 
-The portfolio documents are the basis for the implementation of the product line features.
-The development resources are shared between the product lines.
+The portfolio documents are the basis for the implementation of the product features.
+The portfolio manager uses the artifacts to align the company and optimize the generated value.
 
-[plantuml,bus-core-uml,svg]
-....
-@startuml
+The product owner proxy translates the product features into technical requirements for the development teams.
+She is responsible for the traceability between the product features and the technical requirements.
+She coordinates with the portfolio manager to ensure that the development capacities are efficiently allocated.
+The coordination is more intensive and complex if the development teams are organized as component teams
+footnote:[Allocating work to component teams often means trade-offs with the priority of portfolio features.
+Try to nurture your developers into feature teams to remove this awkward tension.].
 
-Rectangle "Product Line 1" {
-    actor "Product Manager 1" as PM1
-    usecase "Vision Product1" as V1
-    usecase "Roadmap Product 1" as RM1
-    usecase "Release Plan Product 1" as RP1
-    usecase "Features Product 1" as FP1
-    PM1 --> V1
-    PM1 --> RM1
-    PM1 --> RP1
-    PM1 --> FP1
-}
+The development resources are shared between the products.
 
-Rectangle "Product Line 2" {
-    actor "Product Manager 2" as PM2
-    usecase "Vision Product2" as V2
-    usecase "Roadmap Product 2" as RM2
-    usecase "Release Plan Product 2" as RP2
-    usecase "Features Product 2" as FP2
-    PM2 --> V2
-    PM2 --> RM2
-    PM2 --> RP2
-    PM2 --> FP2
-}
-
-Rectangle "Portfolio" as PT {
-    actor "Portfolio Manager" as PM #line.bold
-    usecase "Portfolio Roadmap" as RM
-    usecase "Portfolio Release Plan" as RP
-    usecase "Portfolio Backlog" as FP
-    PM --> RM
-    PM --> RP
-    PM --> FP
-}
-
-note left of PT
-    The portfolio manager consolidates the product
-    roadmaps and release plans into the portfolio
-    roadmap and release plan.
-end note
-
-RM1 .down.> RM
-RP1 .down.> RP
-FP1 .down.> FP
-
-RM2 .down.> RM
-RP2 .down.> RP
-FP2 .down.> FP
-
-rectangle "Development Teams" as DT {
-    actor "Product Owner Proxy" as POP
-    usecase "Technical Requirements Stack 1" as TR1
-    usecase "Technical Requirements Stack 2" as TR2
-    usecase "Technical Requirements Stack 3" as TR3
-
-    POP --> TR1
-    POP --> TR2
-    POP --> TR3
-}
-
-note left of DT
-    The product owner proxy translates the features
-    into technical requirements for all component teams
-end note
-
-FP .down.> TR1
-FP .down.> TR2
-FP .down.> TR3
-
-legend
- |rectangle   |organization unit|
- |actor       |role            |
- |full arrow  |responsible for |
- |dashed arrow|input for       |
-endlegend
-
-@enduml
-....
+image::apm-roles.png[400,700,role="text-center"]
 
 [TIP]
 ====
@@ -266,10 +227,12 @@ Try to create customer journeys for each product.
 Invest time in the user interface design.
 
 Stop solely collecting requirements.
-Invest effort in understanding the customer needs and the customer journey cite[user-story-mapping].
+Invest effort in understanding the customer needs and the customer journey cite:[user-story-mapping].
 
 Beware that requirements engineering is a complex task cite:[agile-product-management,lean-customer-development].
 Formal training is recommended <<product-owner-formation>>.
+The books and articles of Roman Pichler are a good starting point
+cite:[how-to-lead-product-management,strategize,agile-product-management].
 ====
 
 Each feature shall be associated with a tentative release date or tentative release version.
@@ -339,8 +302,8 @@ To put it differently, the relations between the layers are bidirectional.
 The prioritization of the features is based on the following artifacts:
 
 * Roadmap describing up to 18 months of product development.
-* Release Plan describing up to 9 months of product development.
-* Customer Journey describing the customer interaction with the product.
+* Release plan describing up to 9 months of product development.
+* Customer journey describing the customer interaction with the product.
 
 Prioritization is a tactical decision without strong strategic implications.
 The goal is to maximize the value of the product for the customer and the income of the organization.
@@ -349,6 +312,8 @@ The goal is to maximize the value of the product for the customer and the income
 
 The product owner proxy translates the features into technical requirements for the component teams.
 She is responsible for the traceability between the product features and the technical requirements.
+
+_The product owner proxy is the product owner role in the {ref-safe} framework._
 
 Acceptance criteria shall be formulated for each feature.
 The acceptance criteria are used to validate the implementation of the feature.
@@ -425,9 +390,9 @@ The realization team shall provide:
 * Traceability between backlog items, features and epics
 * Effective effort at backlog item level
 * The effort for a feature or an epic is the aggregated value of the effort for the related backlog items.
-This approach works if a feature always belongs to a single product line.
+This approach works if a feature always belongs to a single product.
 
-The effort data is available for inferring costs of development for a product products, a release, an epic, or a feature.
+The effort data is available for inferring development costs for a product, a release, an epic, or a feature.
 
 [CAUTION]
 ====
@@ -447,7 +412,7 @@ Define and document your custom fields and tags to support the product managemen
 
 A regular hierarchy is:
 
-* Epics and features for the product lines and portfolio backlog.
+* Epics and features for the products and portfolio backlog.
 An epic has a set of features.
 * Product backlog items and stores as the refinement of features.
 A feature has a set of product backlog items.
@@ -476,22 +441,23 @@ Prefer to adapt your processes to the platform capabilities instead of customizi
 A big decision is to have one backlog for all products or one backlog per product.
 The definition of organizational tags is another area of experimentation.
 
-More configuration effort is needed to define the custom fields to support effort tracking and reporting.
+More configuration effort is necessary to define the custom fields to support effort tracking and reporting.
 
 You will need to invest in training and coaching to ensure that the product managers and product owners are able to use the platform effectively.
 You will need to create custom reports to extract key performance indicators.
 
-Beware that involved collaborators need an individual license for the platform.
+Beware that involved collaborators need an individual user license for the platform.
 ====
 
 == Checklist
 
 '''
 
-* A product line has a product manager.
-* A product line has a vision and a strategy.
-* A product line has a roadmap and a release plan.
-* A product line has a list of prioritized epics and features.
+* A product has one product manager.
+* A product has a vision and a strategy.
+* A product has a roadmap and a release plan.
+* A product has a list of prioritized epics and features.
+Use tags to categorize the features specific to a module.
 The feature has a tentative release date or milestone.
 
 '''
@@ -557,14 +523,18 @@ Be pragmatic.
 Think big and start small.
 Emphasize principles and good practices.
 
-Each product line should have a product manager.
-But a product manager can handle multiple product lines.
+Each product should have one product manager.
+But a product manager can handle multiple products.
 
 The portfolio manager should be responsible for the overall strategy and the alignment of the products.
 
 Add additional roles as needed.
 Often you will initially need a technical product owner proxy and a senior designer.
 ====
+
+== References
+
+bibliography::[]
 
 [bibliography]
 == Links
@@ -580,7 +550,3 @@ Marcel Baumann. 2018.
 Marcel Baumann. 2021.
 - [[[first-steps-devops, 5]]] link:{ref-tangly-blog-url}/blog/2022/first-steps-devops/[First Steps in DevOps]
 Marcel Baumann. 2022.
-
-== References
-
-bibliography::[]

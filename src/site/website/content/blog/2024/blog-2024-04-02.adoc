@@ -65,6 +65,10 @@ The script shall install multiple JDKs, run Gradle with an older version, and le
 I will add your solution with your name in this blog and star your snippet on {ref-github}.]
 footnote:[Gradle 8.8 was released 31^st^ May 2024. It is the first version to run on Java 22.
 Java 22 was released 19^th^ March 2024, almost two and a half months ago.].
+footnote:[Gradle 8.10 was released 14^th^ August 2024. It officially runs on Java 23.
+For the first time, the Gradle team has released a version of Gradle that runs on the current Java version before the official release of the Java version.
+I am impressed and very pleased with the Gradle team.
+Thank you for your hard work.]
 
 == JPMS Laggards
 

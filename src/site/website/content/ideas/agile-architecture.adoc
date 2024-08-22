@@ -2,16 +2,18 @@
 title: "Agile Architecture"
 date: 2019-05-01
 weight: 20
-description: An introduction to software architecture in agile product development
 ---
 
+ifdef::backend-pdf[]
 = Agile Architecture
-:author: Marcel Baumann
-:email: <marcel.baumann@tangly.net>
-:keywords: agile, architecture, Scrum, LeSS
-:company: https://www.tangly.net/[tangly llc]
--:sectnums:
+Marcel Baumann, tangly llc
+Version 1.0
+include::fragments/_pdf-doc.adoc[]
+endif::[]
 :toc:
+:ref-less: https://less.works/[LeSS]
+:ref-maven-central: https://central.sonatype.com/[Maven Central]
+:ref-scrum: https://scrumguides.org/[Scrum]
 :ref-sonarlint: https://www.sonarsource.com/products/sonarlint/[SonarLint]
 
 == Agile Architecture Principles

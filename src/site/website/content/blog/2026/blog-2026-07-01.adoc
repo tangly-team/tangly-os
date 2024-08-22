@@ -1,0 +1,36 @@
+---
+title: "Domain Driven Design Reflections"
+linkTitle: "DDD Reflections"
+date: 2026-07-01
+tags: ["java", "architecture"]
+params:
+  featured: "blog/2024/pics/2026-07-01-head.jpg"
+---
+
+image::2026-07-01-head.jpg[width=420,height=360,role=left]
+
+Domain model completeness is when your domain model contains all the application’s domain logic.
+
+Domain logic fragmentation is the opposite of that — it’s when the domain logic resides in layers other than the domain layer.
+
+Domain model purity is when your domain model doesn’t reach out to out-of-process dependencies.
+
+In most use cases, you can’t have all 3 of the following attributes:
+
+Domain model completeness
+
+Domain model purity
+
+Performance
+
+There are three common approaches, but each of them only gives you 2 out of the 3 attributes:
+
+Pushing all external reads and writes to the edges of a business operation — Preserves domain model completeness and purity but concedes performance.
+
+Injecting out-of-process dependencies into the domain model — Keeps performance and domain model completeness, but at the expense of domain model purity.
+
+Splitting the decision-making process between the domain layer and controllers — Helps with both performance and domain model purity but concedes completeness.
+
+If you can push all external reads and writes to the edges of a business operation without much damage to application performance, choose this option.
+
+Otherwise, choose domain model purity over completeness.

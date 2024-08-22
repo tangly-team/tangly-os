@@ -1,0 +1,20 @@
+:doctype: book
+:organization: tangly llc
+:copyright: CC BY 4.0
+:title-logo-image: image:../../../assets/icons/logo.svg[top=25%,align=center,pdfwidth=40mm]
+:pdf-themesdir: ../../../../main/resources/adoc-themes
+:pdf-theme: tangly-os
+:bibtex-file: ../../../../main/resources/references.bib
+:bibtex-style: ieee-with-url
+:bibtex-throw: false
+:icons: font
+:stem:
+:hyphens: en_us
+:sectnums:
+:sectlinks:
+:sectanchors:
+:!chapter-signifier:
+:toclevels: 3
+:imagesdir: ./pics
+:source-highlighter: rouge
+:ref-tangly-blog-url: https://blog.tangly.net

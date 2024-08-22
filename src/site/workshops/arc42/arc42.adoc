@@ -138,7 +138,7 @@ Section 10 will refine these goals.
 
 [cols="1,1",options="header"]
 |===
-^s|Prefer|Avoid
+^s|Prefer ^|Avoid
 |Provide context | Do not skip this
 |Cover the important bits | Avoid going into details
 |Use diagrams _C4, UML_ | Do not make this too long

@@ -152,6 +152,7 @@ npm install --global state-machine-cat                                <7>
 
 gem install asciidoctor-bibtex asciidoctor-diagram asciidoctor-chart  <8>
 gem install asciidoctor-rouge asciidoctor-kroki asciidoctor-revealjs
+gem instal asciidoctor-pdf text-hyphen
 gem install --prerelease asciidoctor-tabs
 gem update system & gem update
 

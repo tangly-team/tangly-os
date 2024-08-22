@@ -1,7 +1,7 @@
 ---
 title: "Dependency Injection"
 linkTitle: "Dependency Injection"
-date: 2025-06-01
+date: 2026-06-01
 tags: ["java", "architecture"]
 params:
   featured: "blog/2024/pics/2026-06-01-head.png"

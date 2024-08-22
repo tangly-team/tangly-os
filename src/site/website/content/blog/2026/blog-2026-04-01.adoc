@@ -1,7 +1,7 @@
 ---
-title: "Vaadin 24.4"
-linkTitle: "Vaadin 24.4"
-date: 2025-04-01
+title: "Vaadin 24.5"
+linkTitle: "Vaadin 24.5"
+date: 2026-04-01
 tags: ["java", "vaadin"]
 params:
   featured: "blog/2026/pics/2025-04-01-head.jpg"
