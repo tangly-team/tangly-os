@@ -19,9 +19,8 @@ import net.tangly.app.ports.AppsAdapter;
 import net.tangly.app.ports.AppsEntities;
 import net.tangly.app.services.AppsBoundedDomain;
 import net.tangly.app.services.AppsBusinessLogic;
-import net.tangly.core.TypeRegistry;
 import net.tangly.core.domain.BoundedDomain;
-import net.tangly.core.domain.UsersProvider;
+import net.tangly.core.domain.TenantDirectory;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
@@ -31,13 +30,14 @@ import java.util.*;
 
 /**
  * A tenant has a set of bounded domains specific to an organizational entity. Each bounded domain can have a user interface or a REST interface.
- * A tenant has a set of users and roles. The tenant is the root of the security model.
+ * A tenant has a set of users and roles. Authorization rights are declared per uer and per bounded domain. The tenant is the root of the security model.
  * Persistent data is stored on a per-tenant basis.
- * <p>A tenant is configured through the properties file passed to the constructor.</p>
+ * <p>A tenant is configured through the properties file passed to the constructor. The identifier of the tenant is used to select the organization during
+ * the authentication process.</p>
+ * <p>Tenants have no access to other tenants defined in the application.</p>
  */
-public class Tenant {
+public class Tenant implements TenantDirectory {
     public static final String IN_MEMORY_PROPERTY = "tenant.in-memory";
-    public static final String TENANT_ID_PROPERTY = "tenant.id";
     public static final String TENANT_ROOT_DIRECTORY_PROPERTY = "tenant.root.directory";
     public static final String DATABASES_DIRECTORY_PROPERTY = "tenant.root.db.directory";
     public static final String IMPORTS_DIRECTORY_PROPERTY = "tenant.root.imports.directory";
@@ -45,7 +45,6 @@ public class Tenant {
     private static final Logger logger = LogManager.getLogger();
     private final String id;
     private final Properties properties;
-    private final TypeRegistry registry;
     private final Map<String, BoundedDomain<?, ?, ?>> boundedDomains;
     private final Map<String, BoundedDomainRest> boundedDomainRests;
 
@@ -53,19 +52,38 @@ public class Tenant {
         Objects.requireNonNull(properties.get(TENANT_ID_PROPERTY), "The tenant id is mandatory");
         this.id = properties.getProperty(TENANT_ID_PROPERTY);
         this.properties = properties;
-        this.registry = new TypeRegistry();
         boundedDomains = new HashMap<>();
         boundedDomainRests = new HashMap<>();
         ofAppDomain();
     }
 
-    public UsersProvider UsersProviderFor(@NotNull String domain) {
-        return UsersProvider.of(() -> apps().logic().usersFor(domain), () -> apps().logic().activeUsersFor(domain));
-    }
-
+    @Override
     public String id() {
         return id;
     }
+
+    @Override
+    public String getProperty(String property) {
+        return properties.getProperty(property);
+    }
+
+    @Override
+    public Optional<BoundedDomain<?, ?, ?>> getBoundedDomain(String name) {
+        return Optional.ofNullable(boundedDomains.get(name));
+    }
+
+    public List<String> usersFor(@NotNull String domain) {
+        return apps().logic().usersFor(domain);
+    }
+
+    public List<String> activeUsersFor(@NotNull String domain) {
+        return apps().logic().activeUsersFor(domain);
+    }
+
+    public boolean isEnabled(@NotNull String domain) {
+        return Boolean.parseBoolean(properties.getProperty("%s.enabled".formatted(domain), "true"));
+    }
+
 
     /**
      * Initializes the tenant upon creation. Upon completion, the tenant is ready to be used in the application.
@@ -84,14 +102,6 @@ public class Tenant {
         boundedDomains.values().forEach(BoundedDomain::shutdown);
     }
 
-    public Properties properties() {
-        return properties;
-    }
-
-    public TypeRegistry registry() {
-        return registry;
-    }
-
     public Map<String, BoundedDomain<?, ?, ?>> boundedDomains() {
         return Collections.unmodifiableMap(boundedDomains);
     }
@@ -102,10 +112,6 @@ public class Tenant {
 
     public void registerBoundedDomain(BoundedDomain<?, ?, ?> domain) {
         boundedDomains.put(domain.name(), domain);
-    }
-
-    public Optional<BoundedDomain<?, ?, ?>> getBoundedDomain(String name) {
-        return Optional.ofNullable(boundedDomains.get(name));
     }
 
     public AppsBoundedDomain apps() {
@@ -120,16 +126,8 @@ public class Tenant {
         return Optional.ofNullable(boundedDomainRests.get(name));
     }
 
-    public boolean isEnabled(@NotNull String domain) {
-        return Boolean.parseBoolean(properties().getProperty("%s.enabled".formatted(domain), "true"));
-    }
-
     public boolean inMemory() {
-        return Boolean.parseBoolean(properties().getProperty(IN_MEMORY_PROPERTY, "true"));
-    }
-
-    public String getProperty(String property) {
-        return properties().getProperty(property);
+        return Boolean.parseBoolean(properties.getProperty(IN_MEMORY_PROPERTY, "true"));
     }
 
     public String imports(String domain) {
@@ -150,8 +148,7 @@ public class Tenant {
 
     private void ofAppDomain() {
         var realm = inMemory() ? new AppsEntities() : new AppsEntities(Path.of(databases(), AppsBoundedDomain.DOMAIN));
-        var domain = new AppsBoundedDomain(this, realm, new AppsBusinessLogic(realm), new AppsAdapter(realm, Path.of(imports(AppsBoundedDomain.DOMAIN))),
-            registry());
+        var domain = new AppsBoundedDomain(this, realm, new AppsBusinessLogic(realm), new AppsAdapter(realm, Path.of(imports(AppsBoundedDomain.DOMAIN))), this);
         registerBoundedDomain(domain);
     }
 }

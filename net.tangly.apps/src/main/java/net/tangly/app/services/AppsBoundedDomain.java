@@ -14,11 +14,10 @@
 package net.tangly.app.services;
 
 import net.tangly.app.Tenant;
-import net.tangly.core.TypeRegistry;
 import net.tangly.core.domain.BoundedDomain;
 import net.tangly.core.domain.DomainEntity;
+import net.tangly.core.domain.TenantDirectory;
 import net.tangly.core.domain.User;
-import net.tangly.core.domain.UsersProvider;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
@@ -27,8 +26,8 @@ public class AppsBoundedDomain extends BoundedDomain<AppsRealm, AppsBusinessLogi
     public static final String DOMAIN = "applications";
     private final Tenant tenant;
 
-    public AppsBoundedDomain(@NotNull Tenant tenant, AppsRealm realm, AppsBusinessLogic logic, AppsPort port, TypeRegistry registry) {
-        super(DOMAIN, realm, logic, port, registry, UsersProvider.of(() -> logic.usersFor(DOMAIN), () -> logic.activeUsersFor(DOMAIN)));
+    public AppsBoundedDomain(@NotNull Tenant tenant, AppsRealm realm, AppsBusinessLogic logic, AppsPort port, TenantDirectory directory) {
+        super(DOMAIN, realm, logic, port, directory);
         this.tenant = tenant;
     }
 

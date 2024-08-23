@@ -26,9 +26,6 @@ import org.jetbrains.annotations.NotNull;
 
 public class AppsBoundedDomainUi extends BoundedDomainUi<AppsBoundedDomain> {
     private static final String USERS = "Users";
-    private static final String IMPORT_ALL = "Import All";
-    private static final String EXPORT_ALL = "Export All";
-    private static final String CLEAR_ALL = "Clear All";
 
     public AppsBoundedDomainUi(@NotNull AppsBoundedDomain domain) {
         super(domain);
@@ -43,21 +40,6 @@ public class AppsBoundedDomainUi extends BoundedDomainUi<AppsBoundedDomain> {
         SubMenu subMenu = menuItem.getSubMenu();
         subMenu.addItem(USERS, e -> select(layout, view(USERS).orElseThrow()));
         addAdministration(layout, menuBar, view(ENTITIES).orElseThrow());
-        addHousekeepingMenu(layout, menuBar);
         select(layout);
-    }
-
-    // TODO should be moved because a bounded domain should not know his tenant
-    public void addHousekeepingMenu(@NotNull AppLayout layout, @NotNull MenuBar menuBar) {
-        if (hasDomainAdminRights()) {
-            MenuItem menuItem = menuBar.addItem("Housekeeping");
-            SubMenu subMenu = menuItem.getSubMenu();
-            subMenu.addItem(IMPORT_ALL,
-                _ -> executeGlobalAction(() -> domain().tenant().boundedDomains().values().forEach(o -> o.port().importEntities(o))));
-            subMenu.addItem(EXPORT_ALL,
-                _ -> executeGlobalAction(() -> domain().tenant().boundedDomains().values().forEach(o -> o.port().exportEntities(o))));
-            subMenu.addItem(CLEAR_ALL,
-                _ -> executeGlobalAction(() -> domain().tenant().boundedDomains().values().forEach(o -> o.port().clearEntities(o))));
-        }
     }
 }

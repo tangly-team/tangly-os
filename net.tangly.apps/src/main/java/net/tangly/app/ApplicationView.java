@@ -67,6 +67,10 @@ public class ApplicationView extends AppLayout {
         }
     }
 
+    public Tenant tenant() {
+        return tenant;
+    }
+
     /**
      * The method is called when a user successfully logs in. Update access to bounded domains based on the user's access rights.
      * Propagate the user change to all bounded domains.
@@ -134,7 +138,7 @@ public class ApplicationView extends AppLayout {
         menuBar.removeAll();
         ui.select(this, menuBar);
         if (hasAuthentication) {
-            var menuItem = menuBar.addItem("Account");
+            var menuItem = menuBar.addItem("User");
             SubMenu subMenu = menuItem.getSubMenu();
             subMenu.addItem("Logout", e -> new CmdLogout(this).execute());
             subMenu.addItem("Change Password", e -> new CmdChangePassword(tenant.apps(), user()).execute());
