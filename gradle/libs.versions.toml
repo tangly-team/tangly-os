@@ -1,13 +1,13 @@
 [versions]
 assertj-version = '3.26.3'
-flyway-version = '10.17.1'
+flyway-version = '10.17.2'
 junit-version = '5.11.0'
 log4j2-version = '2.23.0'
 javalin-version = '5.6.4'
 openapi-version = "5.6.4"
 eclipsestore-version = '1.4.0'
 mustang-version = '2.12.0'
-vaadin-version = '24.4.9'
+vaadin-version = '24.4.10'
 
 [plugins]
 vaadin = { id = "com.vaadin", version.ref = "vaadin-version" }
@@ -47,7 +47,7 @@ iban4j = "org.iban4j:iban4j:3.2.9-RELEASE"
 ical4j-core = "org.mnode.ical4j:ical4j:4.0.2"
 ical4j-vcard = "org.mnode.ical4j:ical4j-vcard:1.0.7"
 
-google-libphonenumber = "com.googlecode.libphonenumber:libphonenumber:8.13.43"
+google-libphonenumber = "com.googlecode.libphonenumber:libphonenumber:8.13.44"
 google-protobuf = "com.google.protobuf:protobuf-java:3.25.3"
 
 jakarta-mail = "jakarta.mail:jakarta.mail-api:2.1.3"
