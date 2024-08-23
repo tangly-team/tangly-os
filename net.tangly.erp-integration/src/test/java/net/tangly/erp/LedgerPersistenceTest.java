@@ -35,13 +35,13 @@ class LedgerPersistenceTest {
             var ledgerDb = store.dbRoot().resolve(LedgerBoundedDomain.DOMAIN);
             var ledgerData = store.dataRoot().resolve(LedgerBoundedDomain.DOMAIN);
             var ledgerReport = store.docsRoot().resolve(LedgerBoundedDomain.DOMAIN);
-            var handler = new LedgerAdapter(new LedgerEntities(ledgerDb), new TypeRegistry(), ledgerData, ledgerReport);
+            var handler = new LedgerAdapter(new LedgerEntities(ledgerDb), ledgerData, ledgerReport, new TypeRegistry());
             handler.importEntities(store);
             assertThat(handler.realm().accounts().items()).isNotEmpty();
             assertThat(handler.realm().transactions().items()).isNotEmpty();
             handler.realm().close();
 
-            handler = new LedgerAdapter(new LedgerEntities(ledgerDb), new TypeRegistry(), ledgerData, ledgerReport);
+            handler = new LedgerAdapter(new LedgerEntities(ledgerDb), ledgerData, ledgerReport, new TypeRegistry());
             assertThat(handler.realm().accounts().items()).isNotEmpty();
             assertThat(handler.realm().transactions().items()).isNotEmpty();
             handler.realm().close();
@@ -57,7 +57,7 @@ class LedgerPersistenceTest {
             var ledgerDb = store.dbRoot().resolve(LedgerBoundedDomain.DOMAIN);
             var ledgerData = store.dataRoot().resolve(LedgerBoundedDomain.DOMAIN);
             var ledgerReport = store.docsRoot().resolve(LedgerBoundedDomain.DOMAIN);
-            var handler = new LedgerAdapter(new LedgerEntities(ledgerDb), new TypeRegistry(), ledgerData, ledgerReport);
+            var handler = new LedgerAdapter(new LedgerEntities(ledgerDb), ledgerData, ledgerReport, new TypeRegistry());
             handler.importEntities(store);
             long nrAccounts = handler.realm().accounts().items().size();
             long nrTransactions = handler.realm().transactions().items().size();
@@ -65,7 +65,7 @@ class LedgerPersistenceTest {
             handler.clearEntities(store);
             handler.realm().close();
 
-            handler = new LedgerAdapter(new LedgerEntities(ledgerDb), new TypeRegistry(), ledgerData, ledgerReport);
+            handler = new LedgerAdapter(new LedgerEntities(ledgerDb), ledgerData, ledgerReport, new TypeRegistry());
             handler.importEntities(store);
             assertThat(handler.realm().accounts().items().size()).isEqualTo(nrAccounts);
             assertThat(handler.realm().transactions().items().size()).isEqualTo(nrTransactions);

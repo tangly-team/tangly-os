@@ -16,7 +16,7 @@ package net.tangly.erp;
 import com.google.common.jimfs.Configuration;
 import com.google.common.jimfs.Jimfs;
 import net.tangly.core.TypeRegistry;
-import net.tangly.erp.ledger.ports.ClosingReportAsciiDoc;
+import net.tangly.erp.ledger.artifacts.ClosingReportAsciiDoc;
 import net.tangly.erp.ledger.ports.LedgerAdapter;
 import net.tangly.erp.ledger.ports.LedgerEntities;
 import net.tangly.erp.ledger.ports.LedgerTsvHdl;
@@ -72,8 +72,9 @@ class LedgerPortTest {
 
     private LedgerAdapter createLedgerAdapter(@NotNull ErpStore store) {
         store.createRepository();
-        var adapter = new LedgerAdapter(new LedgerEntities(), new TypeRegistry(), store.dataRoot().resolve(LedgerBoundedDomain.DOMAIN),
-            store.docsRoot().resolve(LedgerBoundedDomain.DOMAIN));
+        var adapter =
+            new LedgerAdapter(new LedgerEntities(), store.dataRoot().resolve(LedgerBoundedDomain.DOMAIN), store.docsRoot().resolve(LedgerBoundedDomain.DOMAIN),
+                new TypeRegistry());
         adapter.importEntities(store);
         adapter.importConfiguration(store);
         return adapter;

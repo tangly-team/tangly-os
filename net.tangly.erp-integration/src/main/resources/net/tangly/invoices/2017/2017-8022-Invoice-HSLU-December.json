@@ -4,9 +4,9 @@
         "institute": "Postfinanz Schweiz",
         "bic": "POFICHBEXXX"
     },
-    "dueDate": "2017-01-07",
+    "dueDate": "2018-01-07",
     "paymentConditions": "30 days net",
-    "invoiceDate": "2016-12-07",
+    "invoiceDate": "2017-12-07",
     "invoicingEntity": {
         "vatNr": "CHE-357.875.339 MWST",
         "name": "tangly llc",

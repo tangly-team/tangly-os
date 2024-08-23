@@ -43,12 +43,12 @@
     "items": [
         {
             "article": {
-                "unitPrice": 200,
+                "unitPrice": "200",
                 "unit": "hour",
                 "description": "Agile training at recognized technical university",
                 "id": "5003"
             },
-            "quantity": 1,
+            "quantity": "1",
             "vatRate": "0.0",
             "position": 1,
             "text": "Pauschalentschädigung für Expertinnen und Experten (mündliche Modulendprüfung inkl. Spesen)"

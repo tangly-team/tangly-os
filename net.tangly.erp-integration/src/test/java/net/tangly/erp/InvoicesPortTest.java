@@ -29,6 +29,7 @@ import java.nio.file.FileSystem;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
+import static net.tangly.erp.invoices.ports.InvoicesAdapter.JSON_EXT;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class InvoicesPortTest {
@@ -43,10 +44,12 @@ class InvoicesPortTest {
             var handler = new InvoicesAdapter(new InvoicesEntities(),
                 store.dataRoot().resolve(InvoicesBoundedDomain.DOMAIN), store.docsRoot().resolve(InvoicesBoundedDomain.DOMAIN));
             handler.importEntities(store);
-            port.exportInvoiceDocuments(store,true, true, true, null, null);
+            port.exportInvoiceDocuments(store, true, true, true, null, null);
 
             handler.realm().invoices().items()
-                .forEach(o -> assertThat(Files.exists(Port.resolvePath(store.dataRoot().resolve(InvoicesBoundedDomain.DOMAIN), o.name()))).isTrue());
+                .forEach(o -> assertThat(
+                    Files.exists(Port.resolvePath(store.dataRoot().resolve(InvoicesBoundedDomain.DOMAIN), o.date().getYear(),
+                        o.name() + JSON_EXT))).isTrue());
         }
     }
 

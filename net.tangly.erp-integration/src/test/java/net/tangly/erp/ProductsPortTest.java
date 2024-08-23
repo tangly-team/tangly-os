@@ -15,7 +15,7 @@ package net.tangly.erp;
 
 import com.google.common.jimfs.Jimfs;
 import net.tangly.core.providers.Provider;
-import net.tangly.erp.products.ports.EffortReportEngine;
+import net.tangly.erp.products.artifacts.EffortReportEngine;
 import net.tangly.erp.products.ports.ProductsAdapter;
 import net.tangly.erp.products.ports.ProductsEntities;
 import net.tangly.erp.products.services.ProductsBoundedDomain;

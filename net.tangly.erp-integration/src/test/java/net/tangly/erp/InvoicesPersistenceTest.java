@@ -47,7 +47,7 @@ class InvoicesPersistenceTest {
     }
 
     @Test
-    void exportInvoicesRealmToTsvTest() throws Exception {
+    void exportInvoicesRealmToJsonTest() throws Exception {
         try (FileSystem fs = Jimfs.newFileSystem(Configuration.unix())) {
             var store = new ErpStore(fs);
             store.createRepository();
