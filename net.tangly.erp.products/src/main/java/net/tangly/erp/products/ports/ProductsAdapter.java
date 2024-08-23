@@ -13,7 +13,11 @@
 
 package net.tangly.erp.products.ports;
 
-import com.amihaiemil.eoyaml.*;
+import com.amihaiemil.eoyaml.Yaml;
+import com.amihaiemil.eoyaml.YamlMapping;
+import com.amihaiemil.eoyaml.YamlNode;
+import com.amihaiemil.eoyaml.YamlSequence;
+import com.amihaiemil.eoyaml.exceptions.YamlReadingException;
 import net.tangly.commons.lang.Strings;
 import net.tangly.commons.logger.EventData;
 import net.tangly.commons.utilities.AsciiDoctorHelper;
@@ -21,6 +25,7 @@ import net.tangly.commons.utilities.ValidatorUtilities;
 import net.tangly.core.domain.DomainAudit;
 import net.tangly.core.domain.Port;
 import net.tangly.core.providers.Provider;
+import net.tangly.erp.products.artifacts.EffortReportEngine;
 import net.tangly.erp.products.domain.Assignment;
 import net.tangly.erp.products.domain.Effort;
 import net.tangly.erp.products.services.ProductsBusinessLogic;
@@ -29,10 +34,8 @@ import net.tangly.erp.products.services.ProductsRealm;
 import org.eclipse.serializer.exceptions.IORuntimeException;
 import org.jetbrains.annotations.NotNull;
 
-import java.io.IOException;
-import java.io.Reader;
-import java.io.StringReader;
-import java.io.UncheckedIOException;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.LocalDate;
@@ -88,7 +91,7 @@ public class ProductsAdapter implements ProductsPort {
                 } catch (IOException e) {
                     throw new UncheckedIOException(e);
                 } catch (Exception e) {
-                    audit.log(EventData.IMPORT_EVENT, EventData.Status.ERROR, "Error importing efforts.", Map.of("filename", o.toString()));
+                    audit.log(EventData.IMPORT_EVENT, EventData.Status.ERROR, "Error importing efforts.", Map.of("filename", o.toString(), "exception", e));
                 }
             });
             audit.log(EventData.IMPORT_EVENT, EventData.Status.INFO, "Efforts were imported out of",
@@ -136,11 +139,11 @@ public class ProductsAdapter implements ProductsPort {
                 efforts.children().forEach((YamlNode effort) -> {
                     LocalDate date = effort.asMapping().date("date");
                     int duration = effort.asMapping().integer("duration");
-                    String text = effort.asMapping().string("text");
-                    String minutes = effort.asMapping().string("minutes");
-                    Effort newEffort = new Effort(assignment, contractId, date, duration, text);
-                    if (Objects.nonNull(minutes)) {
-                        newEffort.minutes(minutes);
+                    Collection<String> text = effort.asMapping().literalBlockScalar("text");
+                    Collection<String> minutes = effort.asMapping().literalBlockScalar("minutes");
+                    Effort newEffort = new Effort(assignment, contractId, date, duration, multilines(text));
+                    if (Objects.nonNull(minutes) && !minutes.isEmpty()) {
+                        newEffort.minutes(multilines(minutes));
                     }
                     if (!assignment.range().isActive(date)) {
                         audit.log(EventData.IMPORT_EVENT, EventData.Status.ERROR, "effort date is out of assignment range.",
@@ -173,11 +176,19 @@ public class ProductsAdapter implements ProductsPort {
 
         } catch (IOException e) {
             throw new IORuntimeException(e);
+        } catch (YamlReadingException e) {
+            e.printStackTrace();
         }
     }
 
+    private String multilines(Collection<String> texts) {
+        StringBuilder builder = new StringBuilder();
+        texts.forEach(o -> builder.append(o.trim().equals("_") ? "" : o.trim()).append(System.lineSeparator()));
+        return builder.toString();
+    }
+
     /**
-     * Export all efforts in a hierarchy of folders. The files are grouped in folders by years.
+     * Exports all efforts in a hierarchy of folders. The files are grouped in folders by years.
      * The efforts are grouped by assignment, contract, collaborator, and year-month and written in a yaml file.
      * The name of the file is the year and month of the efforts, the name of the collaborator, and the identifier of the contract.
      *
@@ -187,44 +198,48 @@ public class ProductsAdapter implements ProductsPort {
         var efforts = realm().efforts().items().stream().collect(groupingBy(o -> o.assignment().id(),
             groupingBy(Effort::contractId, groupingBy(o -> o.assignment().collaboratorId(), groupingBy(o -> YearMonth.from(o.date()))))));
         efforts.values().stream().flatMap(o -> o.values().stream().flatMap(o1 -> o1.values().stream().flatMap(o2 -> o2.values().stream())))
-            .forEach(o -> exportEfforts(audit, o, path));
+            .forEach(o -> exportEfforts(o, path));
     }
 
-    public void exportEfforts(@NotNull DomainAudit audit, @NotNull List<Effort> efforts, @NotNull Path folder) {
-        try {
-            efforts.sort(Comparator.comparing(Effort::date));
-            YamlMappingBuilder builder =
-                Yaml.createYamlMappingBuilder().add("assignmentOid", efforts.getFirst().assignment().oid()).add("contractId", efforts.getFirst().contractId())
-                    .add(("collaborator"), efforts.getFirst().assignment().collaboratorId());
-            var effortsBuilder = Yaml.createYamlSequenceBuilder();
+    public void exportEfforts(@NotNull List<Effort> efforts, @NotNull Path folder) {
+        var assignment = efforts.getFirst().assignment();
+        efforts.sort(Comparator.comparing(Effort::date));
+        var file = Port.resolvePath(folder, efforts.getFirst().date().getYear(), efforts.getFirst().date().getMonth(), filename(efforts.getFirst()));
+        try (var writer = new PrintWriter(Files.newOutputStream(file), true, StandardCharsets.UTF_8)) {
+            writer.print(yamlScalar("assignmentOid", Long.toString(assignment.oid()), 0));
+            writer.print(yamlScalar("contractId", efforts.getFirst().contractId(), 0));
+            writer.print(yamlScalar("collaborator", assignment.name(), 0));
+            writer.println("efforts:");
             for (Effort effort : efforts) {
-                var effortBuilder = Yaml.createYamlMappingBuilder();
-                effortBuilder = effortBuilder.add("date", effort.date()).add("duration", effort.duration()).add("text", effort.text());
+                writer.print("-".indent(2));
+                writer.print(yamlScalar("date", effort.date().toString(), 4));
+                writer.print(yamlScalar("duration", Integer.toString(effort.duration()), 4));
+                writer.print(("text: |".indent(4)));
+                yamlLiteralBlockScalar(effort.text(), 8).forEach(writer::write);
                 if (effort.minutes() != null) {
-                    effortBuilder = effortBuilder.add("minutes", effort.minutes());
+                    writer.print(("minutes: |".indent(4)));
+                    yamlLiteralBlockScalar(effort.minutes(), 8).forEach(writer::write);
                 }
-                effortsBuilder = effortsBuilder.add(effortBuilder.build());
             }
-            builder = builder.add("efforts", effortsBuilder.build());
-            folder = folder.resolve(Integer.toString(efforts.getFirst().date().getYear()), "%%02d%d".formatted(efforts.getFirst().date().getMonthValue()));
-            AsciiDoctorHelper.createFolders(folder);
-            var file = folder.resolve(filename(efforts.getFirst()));
-            var printer = Yaml.createYamlPrinter(Files.newBufferedWriter(file));
-            printer.print(builder.build());
         } catch (IOException e) {
             throw new IORuntimeException(e);
         }
+    }
+
+    public String yamlScalar(@NotNull String key, @NotNull String value, int indent) {
+        return "%s: %s".formatted(key, value).indent(indent);
+    }
+
+    public List<String> yamlLiteralBlockScalar(@NotNull String text, int indent) {
+        return text.lines().map(o -> o.trim().isEmpty() ? "_".indent(indent) : o.indent(indent)).toList();
     }
 
     @Override
     public void exportEffortsDocument(@NotNull DomainAudit audit, @NotNull Assignment assignment, LocalDate from, LocalDate to, @NotNull String filename,
                                       @NotNull ChronoUnit unit) {
         if (!logic.collect(assignment, from, to).isEmpty()) {
-            var effortsDocumentFolder =
-                reportFolder.resolve(Objects.nonNull(to) ? Integer.toString(to.getYear()) : Integer.toString(LocalDate.now().getYear()));
-            AsciiDoctorHelper.createFolders(effortsDocumentFolder);
-            var assignmentAsciiDocPath = effortsDocumentFolder.resolve("%s%s".formatted(filename, AsciiDoctorHelper.ASCIIDOC_EXT));
-            var assignmentPdfPath = effortsDocumentFolder.resolve("%s%s".formatted(filename, AsciiDoctorHelper.PDF_EXT));
+            var assignmentAsciiDocPath = Port.resolvePath(reportFolder, to.getYear(), to.getMonth(), "%s%s".formatted(filename, AsciiDoctorHelper.ASCIIDOC_EXT));
+            var assignmentPdfPath = Port.resolvePath(reportFolder, to.getYear(), to.getMonth(), "%s%s".formatted(filename, AsciiDoctorHelper.PDF_EXT));
             var helper = new EffortReportEngine(logic);
             helper.createReport(assignment, from, to, assignmentAsciiDocPath, unit);
             AsciiDoctorHelper.createPdf(assignmentAsciiDocPath, assignmentPdfPath, true);
@@ -238,11 +253,9 @@ public class ProductsAdapter implements ProductsPort {
         var helper = new EffortReportEngine(logic);
         while (!current.isAfter(to)) {
             if (!logic.collect(assignment, current.atDay(1), current.atEndOfMonth()).isEmpty()) {
-                var effortsDocumentFolder = reportFolder.resolve(Integer.toString(current.getYear()));
-                AsciiDoctorHelper.createFolders(effortsDocumentFolder);
                 var filename = filename(assignment, current);
-                var assignmentAsciiDocPath = effortsDocumentFolder.resolve(filename + AsciiDoctorHelper.ASCIIDOC_EXT);
-                var assignmentPdfPath = effortsDocumentFolder.resolve("%s%s".formatted(filename, AsciiDoctorHelper.PDF_EXT));
+                var assignmentAsciiDocPath = Port.resolvePath(reportFolder, to.getYear(), to.getMonth(), "%s%s".formatted(filename, AsciiDoctorHelper.ASCIIDOC_EXT));
+                var assignmentPdfPath = Port.resolvePath(reportFolder, to.getYear(), to.getMonth(), "%s%s".formatted(filename, AsciiDoctorHelper.PDF_EXT));
                 helper.createMonthlyReport(assignment, current, unit, assignmentAsciiDocPath);
                 AsciiDoctorHelper.createPdf(assignmentAsciiDocPath, assignmentPdfPath, true);
                 current = current.plusMonths(1);
@@ -257,7 +270,7 @@ public class ProductsAdapter implements ProductsPort {
     }
 
     private String filename(@NotNull Effort effort) {
-        String generatedText = "%d-%%02d%d".formatted(effort.date().getYear(), effort.date().getMonthValue());
+        String generatedText = "%04d-%02d".formatted(effort.date().getYear(), effort.date().getMonthValue());
         return "%s-%s-%s%s".formatted(generatedText, effort.assignment().name(), effort.contractId(), YAML_EXT);
     }
 }

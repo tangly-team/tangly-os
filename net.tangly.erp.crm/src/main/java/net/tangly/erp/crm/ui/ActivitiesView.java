@@ -161,7 +161,7 @@ class ActivitiesView extends ItemView<Activity> {
     @Override
     protected void buildMenu() {
         if (isViewEmbedded()) {
-            menu().buildCrudMenu(mode(), form());
+            menu().buildCrudMenu(mode(), this);
         } else {
             menu().add(Mode.VIEW_TEXT, event -> event.getItem().ifPresent(o -> form().get().display(o)), GridMenu.MenuItemType.ITEM);
         }

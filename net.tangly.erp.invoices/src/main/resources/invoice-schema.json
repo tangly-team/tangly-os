@@ -201,10 +201,6 @@
             "type": "string",
             "format": "date"
         },
-        "paidDate": {
-            "type": "string",
-            "format": "date"
-        },
         "currency": {
             "type": "string"
         },

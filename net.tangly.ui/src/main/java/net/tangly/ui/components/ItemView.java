@@ -19,6 +19,7 @@ import com.vaadin.flow.component.grid.GridVariant;
 import com.vaadin.flow.component.grid.HeaderRow;
 import com.vaadin.flow.component.grid.dataview.GridListDataView;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+import com.vaadin.flow.component.select.Select;
 import com.vaadin.flow.component.textfield.IntegerField;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.component.textfield.TextFieldVariant;
@@ -196,6 +197,7 @@ public abstract class ItemView<T> extends VerticalLayout implements View {
         this.domain = domain;
         this.filter = filter;
         this.mode = mode;
+        this.readonly = mode.readonly();
         this.isViewEmbedded = isViewEmbedded;
         isFormEmbedded(true);
         grid = new Grid<>();
@@ -204,7 +206,7 @@ public abstract class ItemView<T> extends VerticalLayout implements View {
         grid.setHeight("24em");
         add(grid);
         provider(provider);
-        readonly(mode.readonly());
+        buildMenu();
     }
 
     protected ItemView(@NotNull Class<T> entityClass, BoundedDomainUi<?> domain, @NotNull Provider<T> provider, ItemFilter<T> filter, @NotNull Mode mode) {
@@ -325,6 +327,22 @@ public abstract class ItemView<T> extends VerticalLayout implements View {
         return field;
     }
 
+    public static Component createBooleanFilterField(@NotNull Consumer<Boolean> consumer) {
+        var field = new Select<String>();
+        field.setItems("True", "False");
+        field.setEmptySelectionAllowed(true);
+        field.setValue(null);
+        field.addValueChangeListener(e -> {
+            consumer.accept(switch (e.getValue()) {
+                case null -> null;
+                case "True" -> Boolean.TRUE;
+                case "False" -> Boolean.FALSE;
+                default -> null;
+            });
+        });
+        return field;
+    }
+
     public static Component createIntegerFilterField(@NotNull Consumer<Integer> consumer) {
         var field = new IntegerField();
         field.setClearButtonVisible(true);
@@ -332,7 +350,7 @@ public abstract class ItemView<T> extends VerticalLayout implements View {
         return field;
     }
 
-    public static Component createDateRangeField(@NotNull Consumer<DateRange> consumer) {
+    public static Component createDateRangeFilterField(@NotNull Consumer<DateRange> consumer) {
         var field = new DateRangePicker(null, "Select Date Range", null, null);
         field.addValueChangeListener(e -> consumer.accept(e.getValue()));
         return field;
@@ -378,7 +396,7 @@ public abstract class ItemView<T> extends VerticalLayout implements View {
     protected void buildMenu() {
         if (mode() != Mode.LIST) {
             menu().clear();
-            menu().buildCrudMenu(mode(), form());
+            menu().buildCrudMenu(mode(), this);
         }
         addActions(menu());
     }

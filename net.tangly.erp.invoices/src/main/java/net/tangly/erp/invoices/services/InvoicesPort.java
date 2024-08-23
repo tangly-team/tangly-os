@@ -24,6 +24,11 @@ import java.time.LocalDate;
  * Defines the import port for the bounded domain invoices. It is the primary port in the DDD terminology.
  */
 public interface InvoicesPort extends Port<InvoicesRealm> {
+    String INVOICE = "invoice";
+    String INVOICE_PATH = "invoicePath";
+    String ARTICLES_TSV = "articles.tsv";
+    String JSON_EXT = ".json";
+
     /**
      * Returns true if the invoice document exists.
      *

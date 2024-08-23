@@ -74,7 +74,7 @@ public class EntityView<T extends Entity> extends ItemView<T> {
         headerRow.getCell(grid.getColumnByKey(ItemView.OID)).setComponent(createIntegerFilterField(o -> filter.oid(o.longValue())));
         headerRow.getCell(grid.getColumnByKey(ItemView.ID)).setComponent(createTextFilterField(filter::id));
         headerRow.getCell(grid.getColumnByKey(ItemView.NAME)).setComponent(createTextFilterField(filter::name));
-        headerRow.getCell(grid.getColumnByKey(ItemView.FROM)).setComponent(createDateRangeField(filter::fromRange));
-        headerRow.getCell(grid.getColumnByKey(ItemView.TO)).setComponent(createDateRangeField(filter::toRange));
+        headerRow.getCell(grid.getColumnByKey(ItemView.FROM)).setComponent(createDateRangeFilterField(filter::fromRange));
+        headerRow.getCell(grid.getColumnByKey(ItemView.TO)).setComponent(createDateRangeFilterField(filter::toRange));
     }
 }

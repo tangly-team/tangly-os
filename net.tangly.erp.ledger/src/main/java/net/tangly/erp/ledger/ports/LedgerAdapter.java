@@ -19,6 +19,7 @@ import net.tangly.core.TypeRegistry;
 import net.tangly.core.codes.CodeHelper;
 import net.tangly.core.domain.DomainAudit;
 import net.tangly.core.domain.Port;
+import net.tangly.erp.ledger.artifacts.ClosingReportAsciiDoc;
 import net.tangly.erp.ledger.domain.LedgerTags;
 import net.tangly.erp.ledger.domain.Transaction;
 import net.tangly.erp.ledger.domain.VatCode;
@@ -59,15 +60,15 @@ public class LedgerAdapter implements LedgerPort {
     public static final String EQUITY_ACCOUNT = "28";
     public static final String CASH_ON_HAND_ACCOUNT = "100";
     private final LedgerRealm realm;
-    private final TypeRegistry registry;
     private final Path dataFolder;
     private final Path docsFolder;
+    private TypeRegistry registry;
 
-    public LedgerAdapter(@NotNull LedgerRealm realm, @NotNull TypeRegistry registry, Path dataFolder, Path docsFolder) {
+    public LedgerAdapter(@NotNull LedgerRealm realm, @NotNull Path dataFolder, Path docsFolder, @NotNull TypeRegistry registry) {
         this.realm = realm;
-        this.registry = registry;
         this.dataFolder = dataFolder;
         this.docsFolder = docsFolder;
+        this.registry = registry;
     }
 
     @Override

@@ -21,6 +21,7 @@ import net.tangly.erp.crm.services.CrmBoundedDomain;
 import net.tangly.erp.products.domain.Assignment;
 import net.tangly.erp.products.domain.Effort;
 import net.tangly.erp.products.domain.Product;
+import net.tangly.erp.products.events.CrmEventsProcessor;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;

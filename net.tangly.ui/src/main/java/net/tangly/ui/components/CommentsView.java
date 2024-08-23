@@ -148,7 +148,7 @@ public class CommentsView extends ItemView<Comment> {
 
         if (filter() instanceof CommentFilter filter) {
             HeaderRow headerRow = createHeaderRow();
-            headerRow.getCell(grid.getColumnByKey(CREATED)).setComponent(createDateRangeField(filter::range));
+            headerRow.getCell(grid.getColumnByKey(CREATED)).setComponent(createDateRangeFilterField(filter::range));
             headerRow.getCell(grid.getColumnByKey(AUTHOR)).setComponent(createTextFilterField(filter::author));
             headerRow.getCell(grid.getColumnByKey(TEXT)).setComponent(createTextFilterField(filter::text));
         }

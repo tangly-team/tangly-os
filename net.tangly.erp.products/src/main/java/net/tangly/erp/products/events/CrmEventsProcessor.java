@@ -11,7 +11,7 @@
  *
  */
 
-package net.tangly.erp.products.services;
+package net.tangly.erp.products.events;
 
 import net.tangly.core.domain.BoundedDomain;
 import net.tangly.core.domain.Operation;
@@ -19,6 +19,7 @@ import net.tangly.core.events.EntityChangedInternalEvent;
 import net.tangly.core.providers.Provider;
 import net.tangly.erp.crm.events.ContractSignedEvent;
 import net.tangly.erp.products.domain.WorkContract;
+import net.tangly.erp.products.services.ProductsBoundedDomain;
 import org.jetbrains.annotations.NotNull;
 
 public class CrmEventsProcessor implements BoundedDomain.EventListener {

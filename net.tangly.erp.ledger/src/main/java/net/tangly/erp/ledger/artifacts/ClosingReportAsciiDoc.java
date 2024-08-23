@@ -11,12 +11,11 @@
  *
  */
 
-package net.tangly.erp.ledger.ports;
+package net.tangly.erp.ledger.artifacts;
 
 
 import net.tangly.commons.utilities.AsciiDocHelper;
 import net.tangly.commons.utilities.BigDecimalUtilities;
-import net.tangly.core.Address;
 import net.tangly.core.TypeRegistry;
 import net.tangly.erp.ledger.domain.Account;
 import net.tangly.erp.ledger.domain.AccountEntry;
@@ -28,7 +27,7 @@ import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
-import java.io.Writer;
+import java.io.PrintWriter;
 import java.math.BigDecimal;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -36,7 +35,6 @@ import java.nio.file.Path;
 import java.time.LocalDate;
 import java.time.Month;
 import java.time.YearMonth;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import static net.tangly.commons.utilities.AsciiDocHelper.format;
@@ -62,7 +60,7 @@ public class ClosingReportAsciiDoc {
 
     public void create(LocalDate from, LocalDate to, Path reportPath, boolean withBalanceSheet, boolean withProfitsAndLosses, boolean withEmptyAccounts,
                        boolean withTransactions, boolean withVat) {
-        try (Writer writer = Files.newBufferedWriter(reportPath, StandardCharsets.UTF_8)) {
+        try (PrintWriter writer = new PrintWriter(Files.newOutputStream(reportPath), true, StandardCharsets.UTF_8)) {
             create(from, to, writer, withBalanceSheet, withProfitsAndLosses, withEmptyAccounts, withTransactions, withVat);
         } catch (IOException e) {
             logger.error("Error during reporting", e);
@@ -80,9 +78,28 @@ public class ClosingReportAsciiDoc {
      * @param withTransactions     flag to include the transactions in the report
      * @param withVat              flag to include the VAT report in the report
      */
-    public void create(LocalDate from, LocalDate to, Writer writer, boolean withBalanceSheet, boolean withProfitsAndLosses, boolean withEmptyAccounts,
+    public void create(LocalDate from, LocalDate to, PrintWriter writer, boolean withBalanceSheet, boolean withProfitsAndLosses, boolean withEmptyAccounts,
                        boolean withTransactions, boolean withVat) {
-        final AsciiDocHelper helper = new AsciiDocHelper(writer);
+        var helper = new AsciiDocHelper(writer);
+        String folder = "/var/tangly-erp/tenant-tangly/docs";
+        writer.println("= Yearly Closing Report");
+        writer.println("tangly llc, Lorzenhof 27, 6330 Cham, Switzerland");
+        writer.println("Version 1.0");
+        writer.println(":doctype: book");
+        writer.println(":organization: " + "tangly llc");
+        writer.println(":copyright: " + "");
+        writer.println(":title-logo-image: " + "image:" + folder + "/tenant-logo.svg[top=25%,align=center,pdfwidth=40mm]");
+        writer.println(":pdf-themesdir: " + folder);
+        writer.println(":pdf-theme: " + "tenant");
+        writer.println(":icons: font");
+        writer.println(":sectnums:");
+        writer.println(":sectlinks:");
+        writer.println(":sectanchors:");
+        writer.println(":!chapter-signifier:");
+        writer.println(":toclevels: 3");
+        writer.println(":toc:");
+        writer.println();
+
         if (withBalanceSheet || withProfitsAndLosses) {
             helper.header("Balance Sheet", 2);
         }
@@ -94,27 +111,19 @@ public class ClosingReportAsciiDoc {
             addResultIncomeTableFor(helper, realm.profitAndLoss(), from, to, "Profits and Losses", withEmptyAccounts);
         }
         if (withTransactions) {
-            helper.header("Transactions", 3);
+            helper.header("Transactions", 2);
             helper.tableHeader(null, "cols=\"20, 20, 70 , 15, 15, >20, >15\"", "Date", "Voucher", "Description", "Debit", "Credit", "Amount", "VAT");
             realm.transactions(from, to).forEach(o -> addTransactionRow(helper, o));
             helper.tableEnd();
         }
         if (withVat) {
-            helper.header("VAT", 3);
+            helper.header("VAT", 2);
             YearMonth currentYearMonth = YearMonth.from(from);
             while (!YearMonth.from(to).isBefore(currentYearMonth)) {
                 addVatPeriod(helper, currentYearMonth);
                 currentYearMonth = currentYearMonth.plusMonths(6);
             }
         }
-    }
-
-    public void addIntroduction(AsciiDocHelper helper, LocalDate from, LocalDate to, String companyName, String companyId, Address address) {
-        helper.header("Introduction", 1);
-        helper.paragraph(companyName);
-        helper.paragraph(companyId);
-        helper.paragraph(address.street() + ", " + address.postcode() + " " + address.locality());
-        helper.paragraph("Accounting period %s - %s".formatted(from.format(DateTimeFormatter.ISO_DATE), to.format(DateTimeFormatter.ISO_DATE)));
     }
 
     private static void addResultBalanceTableFor(AsciiDocHelper helper, List<Account> accounts, LocalDate from, LocalDate to, String category,
@@ -152,7 +161,7 @@ public class ClosingReportAsciiDoc {
             periodEnd = LocalDate.of(yearMonth.getYear(), Month.DECEMBER, 31);
         }
 
-        helper.header("VAT Period %d%s".formatted(yearMonth.getYear(), isFirstHalf ? "-H1" : "-H2"), 4);
+        helper.header("VAT Period %d%s".formatted(yearMonth.getYear(), isFirstHalf ? "-H1" : "-H2"), 3);
         helper.tableHeader("VAT Period %d%s".formatted(yearMonth.getYear(), isFirstHalf ? "-H1" : "-H2"), "cols=\"50a, >25a, >25a , >25a\"",
             "VAT Code/Rate/DueRate", "Turnover", "VAT", "Due VAT");
         var vatCodes = registry.find(VatCode.class).orElseThrow();

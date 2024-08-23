@@ -19,7 +19,6 @@ import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.grid.contextmenu.GridContextMenu;
 import com.vaadin.flow.component.grid.contextmenu.GridMenuItem;
 import com.vaadin.flow.component.html.Hr;
-import net.tangly.commons.lang.functional.LazyReference;
 import net.tangly.core.domain.Operation;
 import net.tangly.ui.app.domain.Cmd;
 import org.jetbrains.annotations.NotNull;
@@ -34,8 +33,10 @@ import java.util.Map;
  * @param <T> type of the items in the grid
  */
 public class GridMenu<T> {
+    public static final String IMPORT_TEXT = "Import";
+    public static final String PRINT_TEXT = "Print";
     /**
-     * Defines the type of a menu item. The type of the menu item determines if the item is enabled or disabled based on the fact if items are selected
+     * Defines the type of menu items. The type of the menu item determines if the item is enabled or disabled based on the fact if items are selected
      * <dl>
      *     <dt>ITEM</dt><dd>the item is enabled if at least one item is selected</dd>
      *     <dt>GLOBAL</dt><dd>the item is enabled if no item is selected</dd>
@@ -54,16 +55,16 @@ public class GridMenu<T> {
         }
     }
 
-    private GridContextMenu<T> menu;
-    private Map<GridMenuItem<T>, MenuItemType> menuItems;
+    private final Map<GridMenuItem<T>, MenuItemType> menuItems;
+    private final GridContextMenu<T> menu;
 
     public GridMenu(@NotNull Grid<T> grid) {
-        this.menu = grid.addContextMenu();
+        menuItems = new HashMap<>();
+        menu = grid.addContextMenu();
         menu.setDynamicContentHandler(_ -> {
             update(!grid.getSelectedItems().isEmpty());
             return !menuItems.isEmpty();
         });
-        this.menuItems = new HashMap<>();
     }
 
     public GridContextMenu<T> menu() {
@@ -89,6 +90,10 @@ public class GridMenu<T> {
         menuItems.put(menuItem, type);
     }
 
+    /**
+     * Adds a component to the context menu. Mainly used to add a separator.
+     * @param component component to add to the context menu
+     */
     public void add(@NotNull Component component) {
         menu.add(component);
     }
@@ -97,18 +102,19 @@ public class GridMenu<T> {
      * Creates the standard CRUD menu for an item view. The menu is built based on the mode of the grid.
      *
      * @param mode mode of the grid
-     * @param form optional form to display the item. If the form has the <code>LIST</code> mode, no form is displayed.
+     * @param view view owning the grid and the associated grid context menu.
      */
-    public void buildCrudMenu(@NotNull Mode mode, LazyReference<ItemForm<T, ?>> form) {
+    public void buildCrudMenu(@NotNull Mode mode, @NotNull ItemView<T> view) {
         if (mode != Mode.LIST) {
-            add(Mode.VIEW_TEXT, e -> e.getItem().ifPresent(o -> form.get().display(o)), MenuItemType.ITEM);
+            add(Mode.VIEW_TEXT, e ->
+                e.getItem().ifPresent(o -> view.form().get().display(o)), MenuItemType.ITEM);
         }
         if (!mode.readonly()) {
             menu().add(new Hr());
-            add(Operation.CREATE_TEXT, _ -> form.get().create(), MenuItemType.GLOBAL);
-            add(Operation.EDIT_TEXT, event -> event.getItem().ifPresent(o -> form.get().edit(o)), MenuItemType.ITEM);
-            add(Operation.DUPLICATE_TEXT, event -> event.getItem().ifPresent(o -> form.get().duplicate(o)), MenuItemType.ITEM);
-            add(Operation.DELETE_TEXT, event -> event.getItem().ifPresent(o -> form.get().delete(o)), MenuItemType.ITEM);
+            add(Operation.CREATE_TEXT, _ -> view.form().get().create(), MenuItemType.GLOBAL);
+            add(Operation.EDIT_TEXT, event -> event.getItem().ifPresent(o -> view.form().get().edit(o)), MenuItemType.ITEM);
+            add(Operation.DUPLICATE_TEXT, event -> event.getItem().ifPresent(o -> view.form().get().duplicate(o)), MenuItemType.ITEM);
+            add(Operation.DELETE_TEXT, event -> event.getItem().ifPresent(o -> view.form().get().delete(o)), MenuItemType.ITEM);
         }
     }
 }

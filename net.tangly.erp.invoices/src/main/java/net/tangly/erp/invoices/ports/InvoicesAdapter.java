@@ -42,10 +42,6 @@ import java.util.stream.Stream;
  * Define the workflow defined for bounded domain activities in particular the import and export of files.
  */
 public class InvoicesAdapter implements InvoicesPort {
-    public static final String INVOICE = "invoice";
-    public static final String INVOICE_PATH = "invoicePath";
-    public static final String ARTICLES_TSV = "articles.tsv";
-    public static final String JSON_EXT = ".json";
     private final InvoicesRealm realm;
 
     /**
@@ -97,8 +93,7 @@ public class InvoicesAdapter implements InvoicesPort {
         handler.exportArticles(audit, dataFolder.resolve(ARTICLES_TSV));
         var invoiceJson = new InvoiceJson(realm);
         realm.invoices().items().forEach(o -> {
-            var invoiceFolder = Port.resolvePath(dataFolder, o.name());
-            var invoicePath = invoiceFolder.resolve(o.name() + JSON_EXT);
+            var invoicePath = Port.resolvePath(dataFolder, o.date().getYear(), o.name() + JSON_EXT);
             invoiceJson.exports(audit, o, invoicePath, Collections.emptyMap());
             audit.log(EventData.EXPORT_EVENT, EventData.Status.SUCCESS, "Invoice exported to JSON {}", Map.of(INVOICE, o, INVOICE_PATH, invoicePath));
         });
@@ -114,13 +109,12 @@ public class InvoicesAdapter implements InvoicesPort {
 
     @Override
     public boolean doesInvoiceDocumentExist(@NotNull Invoice invoice) {
-        Path invoiceFolder = Port.resolvePath(dataFolder, invoice.name());
-        Path invoicePdfPath = invoiceFolder.resolve(invoice.name() + AsciiDoctorHelper.PDF_EXT);
+        Path invoicePdfPath = Port.resolvePath(dataFolder, invoice.date().getYear(), invoice.name() + AsciiDoctorHelper.PDF_EXT);
         return Files.exists(invoicePdfPath);
     }
 
     @Override
-    public void exportInvoiceDocuments(@NotNull DomainAudit audit,boolean withQrCode, boolean withEN16931, boolean overwrite, LocalDate from, LocalDate to) {
+    public void exportInvoiceDocuments(@NotNull DomainAudit audit, boolean withQrCode, boolean withEN16931, boolean overwrite, LocalDate from, LocalDate to) {
         final var filter = new DateRange.DateFilter(from, to);
         realm.invoices().items().stream().filter(o -> filter.test(o.date())).forEach(o -> exportInvoiceDocument(audit, o, withQrCode, withEN16931, overwrite));
     }

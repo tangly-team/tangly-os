@@ -170,7 +170,7 @@ class TransactionsView extends ItemView<Transaction> {
     @Override
     protected void addActions(@NotNull GridMenu<Transaction> menu) {
         menu().add(new Hr());
-        menu().add("Report", e -> Cmd.ofGlobalCmd(e, () -> new CmdCreateLedgerDocument(domain()).execute()), GridMenu.MenuItemType.GLOBAL);
+        menu().add(GridMenu.PRINT_TEXT, e -> Cmd.ofGlobalCmd(e, () -> new CmdCreateLedgerDocument(domain()).execute()), GridMenu.MenuItemType.GLOBAL);
     }
 
     @Override

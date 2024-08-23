@@ -58,10 +58,17 @@ public class InvoiceAsciiDoc implements InvoiceGenerator {
         try (PrintWriter writer = new PrintWriter(Files.newOutputStream(invoicePath), true, StandardCharsets.UTF_8)) {
             var helper = new AsciiDocHelper(writer);
             String folder = (String) properties.get("pathToLogo");
-            // Needed to make the image converter of asciiDocPdf happy. Still looking to have relative paths working.
-            writer.println("image::" + folder + "/trefoil.svg[100,100,align=\"center\"]");
-            writer.println();
             helper.header(bundle.getString("invoice"), 2);
+            writer.println(":doctype: " + "article");
+            writer.println(":organization: " + "tangly llc");
+            writer.println(":copyright: " + "");
+            writer.println(":pdf-themesdir: " + folder);
+            writer.println(":pdf-theme: " + "tenant");
+            writer.println();
+
+            // Needed to make the image converter of asciiDocPdf happy. Still looking to have relative paths working.
+            writer.println("image::" + folder + "/tenant-logo.svg[100,100,align=\"center\"]");
+            writer.println();
 
             helper.tableHeader(null, "frame=\"none\", grid=\"none\", options=\"noheader\", stripes=\"none\", cols=\"3,4,3\"");
             helper.tableRow(addressText(invoice.invoicingEntity(), invoice.invoicingEntity().address()), "",

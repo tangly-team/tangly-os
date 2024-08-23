@@ -20,6 +20,7 @@ import java.io.IOException;
 import java.io.UncheckedIOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.time.Month;
 import java.util.Collections;
 import java.util.regex.Pattern;
 
@@ -64,9 +65,11 @@ public interface Port<R extends Realm> {
     /**
      * Imports configuration specific to the bounded domain in the context of a tenant.
      * The configuration is typically used to configure codes and tags.
+     *
      * @param audit domain audit sink to log the operation events
      */
-    default void importConfiguration(@NotNull DomainAudit audit) {}
+    default void importConfiguration(@NotNull DomainAudit audit) {
+    }
 
     /**
      * Return the realm containing all the entities of the bounded domain.
@@ -84,20 +87,30 @@ public interface Port<R extends Realm> {
      * exist, they are created. The year must contain four digits.
      *
      * @param directory base directory containing all reports and documents
+     * @param year      year of the document
      * @param filename  filename of the document to write
-     * @return uri to the folder where the document should be written. If the file does not contain a year, the base directory is returned
+     * @return uri to the file where the document should be written
      */
-    static Path resolvePath(@NotNull Path directory, @NotNull String filename) {
-        var matcher = PATTERN.matcher(filename);
-        var filePath = matcher.matches() ? directory.resolve(filename.substring(0, 4)) : directory;
-        createDirectories(filePath);
-        return filePath;
+    static Path resolvePath(@NotNull Path directory, int year, @NotNull String filename) {
+        var directoryPaht = directory.resolve(Integer.toString(year));
+        createDirectories(directoryPaht);
+        return directoryPaht.resolve(filename);
     }
 
-    static Path resolvePath(@NotNull Path directory, int year, String filename) {
-        var filePath = directory.resolve(Integer.toString(year));
-        createDirectories(filePath);
-        return filePath.resolve(filename);
+    /**
+     * Resolve the uri to where a document should be located in the file system. The convention is <em>base directory/year/month</em>. If folders do not
+     * exist, they are created. The year must contain four digits. The month is transformed to a two-digit string.
+     *
+     * @param directory base directory containing all reports and documents
+     * @param year      year of the document
+     * @param filename  filename of the document to write
+     * @return uri to the file where the document should be written
+     */
+    static Path resolvePath(@NotNull Path directory, int year, Month month, @NotNull String filename) {
+        var directoryPath =
+            directory.resolve(Integer.toString(year), (month.getValue()) < 10 ? "0%d".formatted(month.getValue()) : Integer.toString(month.getValue()));
+        createDirectories(directoryPath);
+        return directoryPath.resolve(filename);
     }
 
     static void createDirectories(@NotNull Path directory) {

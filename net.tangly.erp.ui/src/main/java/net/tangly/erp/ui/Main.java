@@ -18,6 +18,7 @@ import net.tangly.app.Application;
 import net.tangly.app.Tenant;
 import net.tangly.app.services.AppsBoundedDomain;
 import net.tangly.commons.logger.EventData;
+import net.tangly.core.TypeRegistry;
 import net.tangly.core.domain.AccessRights;
 import net.tangly.core.domain.AccessRightsCode;
 import net.tangly.core.domain.User;
@@ -163,10 +164,10 @@ public final class Main {
             tenant.registerBoundedDomain(domain);
         }
         if (tenant.isEnabled(LedgerBoundedDomain.DOMAIN)) {
+            var registry = new TypeRegistry();
             var realm = tenant.inMemory() ? new LedgerEntities() : new LedgerEntities(Path.of(tenant.databases(), LedgerBoundedDomain.DOMAIN));
-            var domain = new LedgerBoundedDomain(realm, new LedgerBusinessLogic(realm),
-                new LedgerAdapter(realm, tenant.registry(), Path.of(tenant.imports(LedgerBoundedDomain.DOMAIN)),
-                    Path.of(tenant.docs(LedgerBoundedDomain.DOMAIN))), tenant);
+            var adapter = new LedgerAdapter(realm, Path.of(tenant.imports(LedgerBoundedDomain.DOMAIN)), Path.of(tenant.docs(LedgerBoundedDomain.DOMAIN)), registry);
+            var domain = new LedgerBoundedDomain(realm, new LedgerBusinessLogic(realm), adapter, tenant, registry);
             tenant.registerBoundedDomain(domain);
         }
         if (tenant.isEnabled(ProductsBoundedDomain.DOMAIN)) {

@@ -67,7 +67,7 @@ public class InvoiceJson implements InvoiceGenerator {
     }
 
     /**
-     * Import a JSON invoice into the domain.
+     * Imports a JSON invoice into the domain.
      *
      * @param reader reader for the character stream of the JSON file. JSON files are always character-based. The reader is closed upon use.
      * @param source name of the JSON source

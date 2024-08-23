@@ -11,7 +11,7 @@
  *
  */
 
-package net.tangly.erp.products.ports;
+package net.tangly.erp.products.artifacts;
 
 import net.tangly.commons.lang.Strings;
 import net.tangly.commons.utilities.AsciiDocHelper;
@@ -23,13 +23,16 @@ import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
-import java.io.Writer;
+import java.io.PrintWriter;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.LocalDate;
 import java.time.YearMonth;
+import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 
@@ -49,7 +52,7 @@ public class EffortReportEngine {
     }
 
     public void createMonthlyReport(@NotNull Assignment assignment, YearMonth month, @NotNull ChronoUnit unit, @NotNull Path reportPath) {
-        try (var writer = Files.newBufferedWriter(reportPath, StandardCharsets.UTF_8)) {
+        try (var writer = new PrintWriter(Files.newOutputStream(reportPath), true, StandardCharsets.UTF_8)) {
             logger.atInfo().log("Create assignment report {}", reportPath);
             createMonthlyReport(assignment, month, unit, writer);
         } catch (IOException e) {
@@ -58,7 +61,7 @@ public class EffortReportEngine {
     }
 
     public void createReport(@NotNull Assignment assignment, LocalDate from, LocalDate to, @NotNull Path reportPath, @NotNull ChronoUnit unit) {
-        try (var writer = Files.newBufferedWriter(reportPath, StandardCharsets.UTF_8)) {
+        try (var writer = new PrintWriter(Files.newOutputStream(reportPath), true, StandardCharsets.UTF_8)) {
             logger.atInfo().log("Create assignment report {}", reportPath);
             createReport(assignment, from, to, unit, writer);
         } catch (IOException e) {
@@ -66,9 +69,16 @@ public class EffortReportEngine {
         }
     }
 
-    private void createMonthlyReport(@NotNull Assignment assignment, @NotNull YearMonth month, @NotNull ChronoUnit unit, @NotNull Writer writer) {
+    private void createMonthlyReport(@NotNull Assignment assignment, @NotNull YearMonth month, @NotNull ChronoUnit unit, @NotNull PrintWriter writer) {
         final AsciiDocHelper helper = new AsciiDocHelper(writer);
         helper.header("Work Report %s %d".formatted(Strings.firstOnlyUppercase(month.getMonth().toString()), month.getYear()), 2);
+        String folder = "/var/tangly-erp/tenant-tangly/docs";
+        writer.println(":organization: " + "tangly llc");
+        writer.println(":copyright: " + "");
+        writer.println(":pdf-themesdir: " + folder);
+        writer.println(":pdf-theme: " + "tenant");
+        writer.println();
+
         int workedDuration = logic.collect(assignment, null, month.atEndOfMonth()).stream().map(Effort::duration).reduce(0, Integer::sum);
         helper.paragraph("The amount of performed activities is %s %s until end of %s %d.".formatted(convert(workedDuration, unit), text(unit),
             Strings.firstOnlyUppercase(month.getMonth().toString()), month.getYear()));
@@ -82,9 +92,21 @@ public class EffortReportEngine {
         createMinutes(assignment, month.atDay(1), month.atEndOfMonth(), helper);
     }
 
-    private void createReport(@NotNull Assignment assignment, LocalDate from, LocalDate to, @NotNull ChronoUnit unit, @NotNull Writer writer) {
+    private void createReport(@NotNull Assignment assignment, LocalDate from, LocalDate to, @NotNull ChronoUnit unit, @NotNull PrintWriter writer) {
         final AsciiDocHelper helper = new AsciiDocHelper(writer);
+        String folder = "/var/tangly-erp/tenant-tangly/docs";
+        writer.println(":organization: " + "tangly llc");
+        writer.println(":copyright: " + "");
+        writer.println(":pdf-themesdir: " + folder);
+        writer.println(":pdf-theme: " + "tenant");
+        writer.println();
+
         helper.header("Work Report", 2);
+
+        helper.paragraph("The following activities were performed between %s and %s.".formatted(from.format(DateTimeFormatter.ISO_LOCAL_DATE),
+            to.format(DateTimeFormatter.ISO_LOCAL_DATE)));
+        helper.paragraph("The daily reports are:");
+
         helper.tableHeader(null, "cols=\"1,5a,>1\", options=\"header\"");
         helper.writer().println("^|Date ^|Description ^|Duration (%s)".formatted(text(unit)));
         helper.writer().println();
@@ -93,15 +115,16 @@ public class EffortReportEngine {
     }
 
     private void createTableBody(@NotNull Assignment assignment, LocalDate from, LocalDate to, @NotNull ChronoUnit unit, @NotNull AsciiDocHelper helper) {
-        Map<String, List<Effort>> groups = logic.collect(assignment, from, to).stream().collect(groupingBy(Effort::contractId));
+        var activities = logic.collect(assignment, from, to);
+        Map<String, List<Effort>> groups = activities.stream().collect(groupingBy(Effort::contractId));
         if (groups.keySet().size() > 1) {
-            groups.keySet().forEach(o -> generateEffortsForContract(groups.get(o), helper));
+            groups.keySet().forEach(o -> generateEffortsForContract(groups.get(o), unit, helper));
             groups.keySet().forEach(o -> generateEffortsTotalForContract(groups.get(o), o, helper, unit));
         } else {
-            logic.collect(assignment, from, to).forEach(o -> helper.tableRow(o.date().toString(), o.text(), convert(o.duration(), unit).toString()));
+            generateEffortsForContract(logic.collect(assignment, from, to), unit, helper);
         }
-        int totalDuration = logic.collect(assignment, from, to).stream().map(Effort::duration).reduce(0, Integer::sum);
-        helper.tableRow("Total Time (time in %s)".formatted(text(unit)), convert(totalDuration, unit).toString());
+        int totalDuration = activities.stream().map(Effort::duration).reduce(0, Integer::sum);
+        helper.tableRow("", "Total Time (time in %s)".formatted(text(unit)), convert(totalDuration, unit).toString());
     }
 
     private void createMinutes(@NotNull Assignment assignment, @NotNull LocalDate from, @NotNull LocalDate to, @NotNull AsciiDocHelper helper) {
@@ -116,8 +139,10 @@ public class EffortReportEngine {
         });
     }
 
-    private void generateEffortsForContract(@NotNull List<Effort> efforts, @NotNull AsciiDocHelper helper) {
-        efforts.forEach(o -> helper.tableRow(o.date().toString(), o.text(), Integer.toString(o.duration())));
+    private void generateEffortsForContract(@NotNull List<Effort> efforts, @NotNull ChronoUnit unit, @NotNull AsciiDocHelper helper) {
+        var sortedEfforts = new ArrayList<>(efforts);
+        sortedEfforts.sort(Comparator.comparing(Effort::date));
+        sortedEfforts.forEach(o -> helper.tableRow(o.date().toString(), o.text(), convert(o.duration(), unit).toString()));
         helper.tableRow("", "", "");
     }
 

@@ -41,8 +41,8 @@ public class Assignment extends MutableEntityExtendedImp {
     public static BigDecimal convert(int durationInMinutes, ChronoUnit unit) {
         return switch (unit) {
             case MINUTES -> new BigDecimal(durationInMinutes);
-            case HOURS -> new BigDecimal(durationInMinutes).divide(new BigDecimal(60), RoundingMode.HALF_UP).setScale(2, RoundingMode.UP);
-            case DAYS -> new BigDecimal(durationInMinutes).divide(new BigDecimal(60 * 24), RoundingMode.HALF_UP).setScale(2, RoundingMode.UP);
+            case HOURS -> new BigDecimal(durationInMinutes).divide(new BigDecimal(60)).setScale(2, RoundingMode.UP);
+            case DAYS -> new BigDecimal(durationInMinutes).divide(new BigDecimal(60 * 24)).setScale(2, RoundingMode.UP);
             default -> throw new IllegalArgumentException("Unexpected value: %s".formatted(unit));
         };
     }

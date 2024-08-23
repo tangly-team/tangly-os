@@ -13,12 +13,14 @@
 
 package net.tangly.erp.ui;
 
+import com.vaadin.flow.component.contextmenu.SubMenu;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import net.tangly.app.ApplicationView;
 import net.tangly.app.Tenant;
 import net.tangly.app.services.AppsBoundedDomain;
 import net.tangly.core.domain.User;
+import net.tangly.core.providers.Provider;
 import net.tangly.erp.collaborators.ui.CollaboratorsBoundedDomainUi;
 import net.tangly.erp.collabortors.services.CollaboratorsBoundedDomain;
 import net.tangly.erp.crm.services.CrmBoundedDomain;
@@ -29,7 +31,12 @@ import net.tangly.erp.ledger.services.LedgerBoundedDomain;
 import net.tangly.erp.ledger.ui.LedgerBoundedDomainUi;
 import net.tangly.erp.products.services.ProductsBoundedDomain;
 import net.tangly.erp.products.ui.ProductsBoundedDomainUi;
+import net.tangly.ui.app.domain.BoundedDomainUi;
 import org.jetbrains.annotations.NotNull;
+
+import java.time.LocalDate;
+import java.time.Month;
+import java.time.temporal.ChronoUnit;
 
 @PageTitle("tangly ERP")
 @Route("")
@@ -57,5 +64,46 @@ public class MainView extends ApplicationView {
         tenant.getBoundedDomain(LedgerBoundedDomain.DOMAIN).ifPresent(o -> registerBoundedDomainUi(new LedgerBoundedDomainUi((LedgerBoundedDomain) o)));
         tenant.getBoundedDomain(CollaboratorsBoundedDomain.DOMAIN)
             .ifPresent(o -> registerBoundedDomainUi(new CollaboratorsBoundedDomainUi((CollaboratorsBoundedDomain) o)));
+    }
+
+
+    @Override
+    protected void selectBoundedDomainUi(@NotNull BoundedDomainUi<?> ui) {
+        super.selectBoundedDomainUi(ui);
+        var menuItem = menuBar().addItem("Housekeeping");
+        SubMenu subMenu = menuItem.getSubMenu();
+        subMenu.addItem("Import All", _ -> {
+            tenant().boundedDomains().values().forEach(o -> o.port().importEntities(o));
+            boundedDomainUis().values().forEach(BoundedDomainUi::refreshViews);
+        });
+        subMenu.addItem("Export All", _ -> {
+            tenant().boundedDomains().values().forEach(o -> o.port().exportEntities(o));
+            boundedDomainUis().values().forEach(BoundedDomainUi::refreshViews);
+        });
+        subMenu.addItem("Clear All", _ -> {
+            tenant().boundedDomains().values().forEach(o -> o.port().clearEntities(o));
+            boundedDomainUis().values().forEach(BoundedDomainUi::refreshViews);
+        });
+        subMenu.addItem("Setup All", _ -> {
+            var invoices = (InvoicesBoundedDomain) (tenant().getBoundedDomain(InvoicesBoundedDomain.DOMAIN).orElseThrow());
+            invoices.port().exportInvoiceDocuments(invoices, false, false, true, LocalDate.of(2015, Month.JANUARY, 1), LocalDate.of(2024, Month.DECEMBER, 31));
+            var ledger = (LedgerBoundedDomain) (tenant().getBoundedDomain(LedgerBoundedDomain.DOMAIN).orElseThrow());
+            ledger.port()
+                .exportLedgerDocument("tangly-2016", LocalDate.of(2015, Month.SEPTEMBER, 1), LocalDate.of(2016, Month.DECEMBER, 31), true, true, true, true,
+                    true);
+            for (int year = 2017; year <= 2024; year++) {
+                ledger.port().exportLedgerDocument("tangly-%s".formatted(Integer.toString(year)), LocalDate.of(year, Month.JANUARY, 1),
+                    LocalDate.of(year, Month.DECEMBER, 31), true, true, true, true, true);
+            }
+            var products = (ProductsBoundedDomain) (tenant().getBoundedDomain(ProductsBoundedDomain.DOMAIN).orElseThrow());
+            var assignment = Provider.findByOid(products.realm().assignments(), 40002).orElseThrow();
+            products.port().exportEffortsDocument(products, assignment, LocalDate.of(2024, Month.JANUARY, 1), LocalDate.of(2024, Month.MARCH, 31),
+                "2024-03-PT24-marcel-baumann-WorkReport-March", ChronoUnit.HOURS);
+            products.port().exportEffortsDocument(products, assignment, LocalDate.of(2024, Month.APRIL, 1), LocalDate.of(2024, Month.APRIL, 30),
+                "2024-04-PT24-marcel-baumann-WorkReport-April", ChronoUnit.HOURS);
+            assignment = Provider.findByOid(products.realm().assignments(), 40004).orElseThrow();
+            products.port().exportEffortsDocument(products, assignment, LocalDate.of(2024, Month.JUNE, 1), LocalDate.of(2024, Month.AUGUST, 31),
+                "2024-08-DTV24-marcel-baumann-WorkReport-August", ChronoUnit.HOURS);
+        });
     }
 }

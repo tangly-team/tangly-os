@@ -39,7 +39,7 @@ import java.util.concurrent.SubmissionPublisher;
  * @param <P> port empowers the business domain to communicate with outer layers or external systems.
  *            The communication is generally asynchronous
  */
-public class BoundedDomain<R extends Realm, B, P extends Port<R>> implements DomainAudit {
+public class BoundedDomain<R extends Realm, B, P extends Port<R>> implements HasName, DomainAudit {
     private final String name;
     private final R realm;
     private final P port;
@@ -81,9 +81,10 @@ public class BoundedDomain<R extends Realm, B, P extends Port<R>> implements Dom
      * @param realm     realm handles all entities and values objects of the domain model
      * @param logic     logic provides complex domain business logic functions
      * @param port      port empowers the business domain to communicate with external systems
-     * @param directory directory of the tenant
+     * @param directory directory of the tenant to support inter-domain communication
+     * @param registry  type registry of the domain
      */
-    public BoundedDomain(@NotNull String name, @NotNull R realm, @NotNull B logic, @NotNull P port, TenantDirectory directory) {
+    public BoundedDomain(@NotNull String name, @NotNull R realm, @NotNull B logic, @NotNull P port, TenantDirectory directory, TypeRegistry registry) {
         this.name = name;
         this.realm = realm;
         this.logic = logic;
@@ -93,6 +94,19 @@ public class BoundedDomain<R extends Realm, B, P extends Port<R>> implements Dom
         channel = new SubmissionPublisher<>(Executors.newVirtualThreadPerTaskExecutor(), Flow.defaultBufferSize());
         internalChannel = new SubmissionPublisher<>(Executors.newVirtualThreadPerTaskExecutor(), Flow.defaultBufferSize());
         auditEvents = new ArrayList<>();
+    }
+
+    /**
+     * Constructor of the bounded domain.
+     *
+     * @param name      human-readable name of the domain
+     * @param realm     realm handles all entities and values objects of the domain model
+     * @param logic     logic provides complex domain business logic functions
+     * @param port      port empowers the business domain to communicate with external systems
+     * @param directory directory of the tenant to support inter-domain communication
+     */
+    public BoundedDomain(@NotNull String name, @NotNull R realm, @NotNull B logic, @NotNull P port, TenantDirectory directory) {
+        this(name, realm, logic, port, directory, new TypeRegistry());
     }
 
     protected static <I extends HasOid & HasMutableTags> void addTagCounts(@NotNull TypeRegistry registry, @NotNull Provider<I> provider,
@@ -128,7 +142,7 @@ public class BoundedDomain<R extends Realm, B, P extends Port<R>> implements Dom
      *
      * @param listener event listener
      */
-    public void subscribe(EventListener listener) {
+    public void subscribe(@NotNull EventListener listener) {
         channel.subscribe(listener);
     }
 
@@ -137,7 +151,7 @@ public class BoundedDomain<R extends Realm, B, P extends Port<R>> implements Dom
      *
      * @param listener event listener
      */
-    public void subscribeInternally(EventListener listener) {
+    public void subscribeInternally(@NotNull EventListener listener) {
         internalChannel.subscribe(listener);
     }
 

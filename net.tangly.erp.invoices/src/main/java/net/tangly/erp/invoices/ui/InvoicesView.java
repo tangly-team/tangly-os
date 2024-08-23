@@ -84,7 +84,7 @@ class InvoicesView extends ItemView<Invoice> {
     @Override
     protected void addActions(@NotNull GridMenu<Invoice> menu) {
         menu().add(new Hr());
-        menu().add("Export", e -> Cmd.ofDualCmd(e, (Invoice o) -> new CmdCreateInvoiceDocument(o, domain()).execute()), GridMenu.MenuItemType.DUAL);
+        menu().add(GridMenu.PRINT_TEXT, e -> Cmd.ofDualCmd(e, (Invoice o) -> new CmdCreateInvoiceDocument(o, domain()).execute()), GridMenu.MenuItemType.DUAL);
     }
 
     private void init() {
