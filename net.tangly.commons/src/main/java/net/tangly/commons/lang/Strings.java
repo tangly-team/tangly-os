@@ -64,7 +64,6 @@ public final class Strings {
         return value == null ? defaultValue : value;
     }
 
-
     public static String emptySafeString(String value, String defaultValue) {
         return Strings.isNullOrBlank(value) ? defaultValue : value;
     }

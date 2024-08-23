@@ -46,13 +46,14 @@ public class AsciiDocHelper {
 
     /**
      * Formats a decimal value into an accounting representation with two digits after the separator, colored in read if negative, and discarded if the value is
-     * zero.
+     * zero and the flag is false.
      *
-     * @param value decimal value to format
+     * @param value    decimal value to format
+     * @param showZero flag to show zero values
      * @return the formatted string
      */
-    public static String format(@NotNull BigDecimal value) {
-        if (value.compareTo(BigDecimal.ZERO) > 0) {
+    public static String format(@NotNull BigDecimal value, boolean showZero) {
+        if ((showZero && (value.compareTo(BigDecimal.ZERO) == 0)) || (value.compareTo(BigDecimal.ZERO) > 0)) {
             return DF.format(value);
         } else if (value.compareTo(BigDecimal.ZERO) < 0) {
             return "[red]#%s#".formatted(DF.format(value));
@@ -87,7 +88,7 @@ public class AsciiDocHelper {
         }
         writer.println("|===");
         if (headerCells.length != 0) {
-            Arrays.asList(headerCells).forEach(o -> writer.append("^|*").append(o).append("* "));
+            Arrays.asList(headerCells).forEach(o -> writer.append("^| *").append(o).append("* "));
             writer.println();
         }
         return this;
