@@ -14,32 +14,38 @@ include::../fragments/_config-mb-blog.adoc[]
 :ref-freertos: https://www.freertos.org/index.html[freeRTOS]
 :ref-hypervisor: https://en.wikipedia.org/wiki/Hypervisor[Hypervisor]
 :ref-paravirtualization: https://en.wikipedia.org/wiki/Paravirtualization[paravirtualization]
+:ref-plc: https://en.wikipedia.org/wiki/Programmable_logic_controller[Programmable Logic Controller]
+:ref-embedded-company: https://www.embedded-office.com/[Embedded Office]
 
 image::2024-09-01-head.jpg[width=420,height=360,role=left]
 
-An embedded application is software placed permanently inside some kind of device to perform a very specific set of functions.
+An embedded application is a software product placed permanently inside some kind of device to perform a very specific set of functions.
 
 The software is typically specialized for particular hardware with specific purpose that must meet time, size, energy, and memory constraints.
 
 As an example, some embedded applications are designed to run for months or years in a row without being turned off or receiving a reset command.
-It is also used in areas from agriculture to space probes and more.
+It is used in areas from agriculture to space probes and more.
 
 == Introduction
 
 There are some fundamental concepts related to embedded application development.
 
 Real-Time::
-Embedded applications receive continuous inputs, process the data, and generate outputs, where such processing must often be performed in a short period of time.
+Embedded applications receive continuous inputs, process the data, and generate outputs.
+The processing must often be performed in a short period of time. +
++
 As an example, some applications demand object detection in live stream videos, where processing involves inference and bounding boxes displayed on each frame.
 Fault-Tolerance::
 Is the capability of an embedded system to survive in the presence of faults.
 Faults can be caused by power cuts, hardware damaged parts, overheating, and more.
-The embedded software must be capable of detecting faults and making decisions according to how critical a fault is.
+The embedded software must be capable of detecting faults and making decisions according to how critical a fault is. +
++
 As an example, an embedded system working inside an airplane must be capable of identifying any possible fault and make decisions to keep the aircrew safe.
 Decisions can be as simple as sending an alert or as complex as performing changes in the command control.
 Portability::
 Is the measure of how easy it is to use the same embedded software in multiple environments.
-It requires generalized abstractions between the application program logic and the low-level system interfaces.
+It requires generalized abstractions between the application program logic and the low-level system interfaces. +
++
 As an example, embedded devices used in domotic applications must be adjustable no matter the place where they have to be installed.
 Reliability::
 Is the survival probability of the system when the function is critical during the run time.
@@ -90,9 +96,16 @@ Use standard tools:
 - {ref-doxygen} to document the source code
 - Package manager
 
+[CAUTION]
+====
+You are free to use other languages such as Rust, Ada, or Python for developing embedded applications.
+
+Beware that the community support and the availability of libraries and tools are not as extensive as for {cpp}.
+====
+
 == Realtime Operating System
 
-{ref-actor-model} is a powerful and efficient design approach for reactive and embedded applications.
+The {ref-actor-model} is a powerful and efficient design approach for reactive and embedded applications.
 Actors require the creation of tasks, message queues for inter-task communication, and timer services.
 Support for interrupt routines shall also be available.
 
@@ -119,7 +132,7 @@ Application partitioning is not available to STM32 microcontrollers.
 Transparent partitioning requires a hypervisor to virtualize access to hardware components.
 The ARM Cortex M cores used in the STM32 products do not provide the necessary hardware support to implement a hypervisor
 footnote:[AArch64 64-bit architecture introduced in 2011 provides the necessary support.
-The https://www.embedded-office.com/[Embedded Office] company provides an example of such a solution for safety-critical applications.].
+The {ref-embedded-company} company provides an example of such a solution for safety-critical applications.].
 
 The privileged and unprivileged modes are not sufficient to define a hypervisor.
 RTOS cannot be run in the unprivileged mode because they need access to the processor registers and interrupts.
@@ -133,6 +146,22 @@ It would be necessary to implement and maintain a proprietary scheduling engine 
 This approach is called {ref-paravirtualization} and requires a partial rewrite of the realtime kernel.
 For example, you could implement the services and data structures specified in the CMSIS_OS version 2 module
 footnote:[The effort to implement such a layer is huge. Validation and verification activities would be necessary for regulated markets.].
+
+== Tips and Tricks
+
+Here are some tips and tricks to help you develop embedded applications:
+
+* Use {cpp} as the programming language for your embedded applications.
+* use a 64-bit processor and plenty of memory for your embedded applications.
+Optimizing your hardware platform is only worth the effort if you are producing ten thousand units per year or more.
+* Use an open source RTOS like {ref-freertos} to manage your tasks.
+Avoid {ref-plc} programming model for embedded applications if possible.
+They do not scale well and are not as efficient as a multitasking model.
+* Simulate your embedded application to run as much as possible on your development machine.
+Development tools on your development machine are more powerful and easier to use than on the target platform.
+* Use Git and a platform like {ref-github} or {ref-gitlab} to manage your source code.
+* Beware of the various standards and regulations that apply to your embedded application.
+
 
 [bibliography]
 == Links
