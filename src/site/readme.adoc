@@ -112,16 +112,13 @@ These documents are mainly located in the _ideas_ folder.
 
 [source,console]
 ----
-asciidoctor -r asciidoctor-diagram -r asciidoctor-bibtex
-            -r asciidoctor-pdf -b pdf <document.adoc>                     <1>
+asciidoctor -r asciidoctor-diagram -r asciidoctor-bibtex -r asciidoctor-pdf
+            -b pdf -a skip-front-matter <document.adoc>                         <1>
 ----
 
 <1> Do not use diagram generation with kroki in the PDF generation.
 It seems to be not supported by the asciidoctor-pdf backend.
+The _skip-front-matter must be passed through CLI and the front matter will be ignored.
 
 The configuration for the PDF generation is defined as AsciiDoc attributes in the document header.
 Conditional processing ensures that these attributes are only available when the document is processed as a PDF.
-
-You still have one manual step to perform.
-The front matter of the document must be commented out.
-{ref-asciidoctor} does not recognize front matter in the document header.
