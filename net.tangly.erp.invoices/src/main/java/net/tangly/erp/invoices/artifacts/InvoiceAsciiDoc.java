@@ -13,9 +13,11 @@
 
 package net.tangly.erp.invoices.artifacts;
 
+import lombok.NonNull;
 import net.codecrete.qrbill.generator.Strings;
 import net.tangly.commons.utilities.AsciiDocHelper;
 import net.tangly.core.Address;
+import net.tangly.core.domain.DocumentGenerator;
 import net.tangly.core.domain.DomainAudit;
 import net.tangly.erp.invoices.domain.Invoice;
 import net.tangly.erp.invoices.domain.InvoiceLegalEntity;
@@ -32,7 +34,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Comparator;
 import java.util.Locale;
-import java.util.Map;
+import java.util.Properties;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
@@ -43,27 +45,29 @@ import static net.tangly.commons.utilities.AsciiDocHelper.*;
  * Provides support to generate an AsciiDoc representation of an invoice for the Swiss market. It provides a human-readable invoice document following the VAT invoice constraint,
  * the Swiss invoice QR barcode, and the European Zugferd invoice machine-readable invoice standard.
  */
-public class InvoiceAsciiDoc implements InvoiceGenerator {
+public class InvoiceAsciiDoc implements DocumentGenerator<Invoice> {
     private static final Logger logger = LogManager.getLogger();
     private static final BigDecimal HUNDRED = new BigDecimal("100");
 
     private final ResourceBundle bundle;
+    private final Properties properties;
 
-    public InvoiceAsciiDoc(Locale locale) {
+    public InvoiceAsciiDoc(Locale locale, Properties properties) {
         bundle = ResourceBundle.getBundle("net.tangly.erp.invoices.InvoiceAsciiDoc", locale);
+        this.properties = properties;
     }
 
     @Override
-    public void exports(@NotNull DomainAudit audit, @NotNull Invoice invoice, @NotNull Path invoicePath, @NotNull Map<String, Object> properties) {
-        try (PrintWriter writer = new PrintWriter(Files.newOutputStream(invoicePath), true, StandardCharsets.UTF_8)) {
+    public void export(@NotNull Invoice invoice, boolean overwrite, @NonNull Path document, @NotNull DomainAudit audit) {
+        try (PrintWriter writer = new PrintWriter(Files.newOutputStream(document), true, StandardCharsets.UTF_8)) {
             var helper = new AsciiDocHelper(writer);
-            String folder = (String) properties.get("pathToLogo");
+            String folder = properties.getProperty(LOGO);
             helper.header(bundle.getString("invoice"), 2);
             writer.println(":doctype: " + "article");
-            writer.println(":organization: " + "tangly llc");
+            writer.println(":organization: " + properties.getProperty(ORGANIZATION_KEY));
             writer.println(":copyright: " + "");
-            writer.println(":pdf-themesdir: " + folder);
-            writer.println(":pdf-theme: " + "tenant");
+            writer.println(":pdf-themesdir: " + properties.getProperty(THEME_PATH_KEY));
+            writer.println(":pdf-theme: " + properties.getProperty(THEME));
             writer.println();
 
             // Needed to make the image converter of asciiDocPdf happy. Still looking to have relative paths working.
@@ -107,7 +111,7 @@ public class InvoiceAsciiDoc implements InvoiceGenerator {
                 writer.append(bundle.getString("paymentConditions")).append(" ").append(invoice.paymentConditions()).println();
             }
         } catch (Exception e) {
-            logger.atError().withThrowable(e).log("Error during invoice asciiDoc generation {}", invoicePath);
+            logger.atError().withThrowable(e).log("Error during invoice asciiDoc generation {}", document);
         }
     }
 

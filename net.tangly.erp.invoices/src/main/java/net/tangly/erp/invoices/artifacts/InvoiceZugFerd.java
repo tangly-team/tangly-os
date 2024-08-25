@@ -14,6 +14,7 @@
 package net.tangly.erp.invoices.artifacts;
 
 import net.tangly.core.Address;
+import net.tangly.core.domain.DocumentGenerator;
 import net.tangly.core.domain.DomainAudit;
 import net.tangly.erp.invoices.domain.Article;
 import net.tangly.erp.invoices.domain.Invoice;
@@ -30,9 +31,8 @@ import java.math.BigDecimal;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Date;
-import java.util.Map;
 
-public class InvoiceZugFerd implements IExportableTransaction, InvoiceGenerator {
+public class InvoiceZugFerd implements IExportableTransaction, DocumentGenerator<Invoice> {
     record TradeParty(@NotNull InvoiceLegalEntity entity) implements IZUGFeRDExportableTradeParty {
         @Override
         public IZUGFeRDExportableContact getContact() {
@@ -176,7 +176,7 @@ public class InvoiceZugFerd implements IExportableTransaction, InvoiceGenerator 
     private static final BigDecimal HUNDRED = new BigDecimal("100");
     private Invoice invoice;
 
-    public void exports(@NotNull DomainAudit audit, @NotNull Invoice invoice, @NotNull Path invoicePath, @NotNull Map<String, Object> properties) {
+    public void export(@NotNull Invoice invoice, boolean overwrite, @NotNull Path invoicePath, @NotNull DomainAudit audit) {
         this.invoice = invoice;
         try (ZUGFeRDExporterFromA3 exporter = new ZUGFeRDExporterFromA3().setProducer("tangly ERP").setCreator(invoice.invoicingEntity().name())
             .setZUGFeRDVersion(2).setProfile("EN16931").load(Files.newInputStream(invoicePath))) {

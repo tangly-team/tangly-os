@@ -67,6 +67,10 @@ public class Tenant implements TenantDirectory {
         return properties.getProperty(property);
     }
 
+    public Properties properties() {
+        return properties;
+    }
+
     @Override
     public Optional<BoundedDomain<?, ?, ?>> getBoundedDomain(String name) {
         return Optional.ofNullable(boundedDomains.get(name));

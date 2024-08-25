@@ -21,6 +21,7 @@ import net.tangly.erp.invoices.services.InvoicesBoundedDomain;
 import org.junit.jupiter.api.Test;
 
 import java.nio.file.FileSystem;
+import java.util.Properties;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -32,14 +33,14 @@ class InvoicesPersistenceTest {
             store.createRepository();
 
             var handler = new InvoicesAdapter(new InvoicesEntities(store.dbRoot().resolve(InvoicesBoundedDomain.DOMAIN)),
-                store.dataRoot().resolve(InvoicesBoundedDomain.DOMAIN), store.docsRoot().resolve(InvoicesBoundedDomain.DOMAIN));
+                store.dataRoot().resolve(InvoicesBoundedDomain.DOMAIN), store.docsRoot().resolve(InvoicesBoundedDomain.DOMAIN), new Properties());
             handler.importEntities(store);
             assertThat(handler.realm().articles().items()).isNotEmpty();
             assertThat(handler.realm().invoices().items()).isNotEmpty();
             handler.realm().close();
 
             handler = new InvoicesAdapter(new InvoicesEntities(store.dbRoot().resolve(InvoicesBoundedDomain.DOMAIN)),
-                store.dataRoot().resolve(InvoicesBoundedDomain.DOMAIN), store.docsRoot().resolve(InvoicesBoundedDomain.DOMAIN));
+                store.dataRoot().resolve(InvoicesBoundedDomain.DOMAIN), store.docsRoot().resolve(InvoicesBoundedDomain.DOMAIN), new Properties());
             assertThat(handler.realm().articles().items()).isNotEmpty();
             assertThat(handler.realm().invoices().items()).isNotEmpty();
             handler.realm().close();
@@ -53,7 +54,7 @@ class InvoicesPersistenceTest {
             store.createRepository();
 
             var handler = new InvoicesAdapter(new InvoicesEntities(store.dbRoot().resolve(InvoicesBoundedDomain.DOMAIN)),
-                store.dataRoot().resolve(InvoicesBoundedDomain.DOMAIN), store.docsRoot().resolve(InvoicesBoundedDomain.DOMAIN));
+                store.dataRoot().resolve(InvoicesBoundedDomain.DOMAIN), store.docsRoot().resolve(InvoicesBoundedDomain.DOMAIN), new Properties());
             handler.importEntities(store);
             long nrArticles = handler.realm().articles().items().size();
             long nrInvoices = handler.realm().invoices().items().size();
@@ -62,7 +63,7 @@ class InvoicesPersistenceTest {
             handler.realm().close();
 
             handler = new InvoicesAdapter(new InvoicesEntities(store.dbRoot().resolve(InvoicesBoundedDomain.DOMAIN)),
-                store.dataRoot().resolve(InvoicesBoundedDomain.DOMAIN), store.docsRoot().resolve(InvoicesBoundedDomain.DOMAIN));
+                store.dataRoot().resolve(InvoicesBoundedDomain.DOMAIN), store.docsRoot().resolve(InvoicesBoundedDomain.DOMAIN), new Properties());
             ;
             handler.importEntities(store);
             assertThat(handler.realm().articles().items().size()).isEqualTo(nrArticles);

@@ -33,8 +33,8 @@ import java.io.UncheckedIOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.LocalDate;
-import java.util.Collections;
 import java.util.Map;
+import java.util.Properties;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Stream;
 
@@ -49,11 +49,13 @@ public class InvoicesAdapter implements InvoicesPort {
      */
     private final Path dataFolder;
     private final Path docsFolder;
+    private final Properties properties;
 
-    public InvoicesAdapter(@NotNull InvoicesRealm realm, @NotNull Path dataFolder, Path docsFolder) {
+    public InvoicesAdapter(@NotNull InvoicesRealm realm, @NotNull Path dataFolder, @NotNull Path docsFolder, @NotNull Properties properties) {
         this.realm = realm;
         this.dataFolder = dataFolder;
         this.docsFolder = docsFolder;
+        this.properties = properties;
     }
 
     @Override
@@ -94,7 +96,7 @@ public class InvoicesAdapter implements InvoicesPort {
         var invoiceJson = new InvoiceJson(realm);
         realm.invoices().items().forEach(o -> {
             var invoicePath = Port.resolvePath(dataFolder, o.date().getYear(), o.name() + JSON_EXT);
-            invoiceJson.exports(audit, o, invoicePath, Collections.emptyMap());
+            invoiceJson.export(o, true, invoicePath, audit);
             audit.log(EventData.EXPORT_EVENT, EventData.Status.SUCCESS, "Invoice exported to JSON {}", Map.of(INVOICE, o, INVOICE_PATH, invoicePath));
         });
     }
@@ -121,12 +123,10 @@ public class InvoicesAdapter implements InvoicesPort {
 
     @Override
     public void exportInvoiceDocument(@NotNull DomainAudit audit, @NotNull Invoice invoice, boolean withQrCode, boolean withEN16931, boolean overwrite) {
-        var asciiDocGenerator = new InvoiceAsciiDoc(invoice.locale());
-        Path invoiceFolder = docsFolder.resolve(Integer.toString(invoice.date().getYear()));
-        Port.createDirectories(invoiceFolder);
-        Path invoiceAsciiDocPath = invoiceFolder.resolve(invoice.name() + AsciiDoctorHelper.ASCIIDOC_EXT);
-        asciiDocGenerator.exports(audit, invoice, invoiceAsciiDocPath, Map.of("pathToLogo", docsFolder.getParent().toString()));
-        Path invoicePdfPath = invoiceFolder.resolve(invoice.name() + AsciiDoctorHelper.PDF_EXT);
+        var invoiceAsciiDocPath = Port.resolvePath(docsFolder, invoice.date().getYear(), invoice.name() + AsciiDoctorHelper.ASCIIDOC_EXT);
+        Path invoicePdfPath = Port.resolvePath(docsFolder, invoice.date().getYear(), invoice.name() + AsciiDoctorHelper.PDF_EXT);
+        var asciiDocGenerator = new InvoiceAsciiDoc(invoice.locale(), properties);
+        asciiDocGenerator.export(invoice, overwrite, invoiceAsciiDocPath, audit);
         if (!overwrite && Files.exists(invoicePdfPath)) {
             audit.log(EventData.EXPORT_EVENT, EventData.Status.SUCCESS, "Invoice PDF already exists {}",
                 Map.of(INVOICE, invoice, INVOICE_PATH, invoicePdfPath, "withQrCode", withQrCode, "withEN16931", withEN16931, "overwrite", overwrite));
@@ -134,11 +134,11 @@ public class InvoicesAdapter implements InvoicesPort {
             AsciiDoctorHelper.createPdf(invoiceAsciiDocPath, invoicePdfPath, true);
             if (withQrCode) {
                 var qrGenerator = new InvoiceQrCode();
-                qrGenerator.exports(audit, invoice, invoicePdfPath, Collections.emptyMap());
+                qrGenerator.export(invoice, true, invoicePdfPath, audit);
             }
             if (withEN16931) {
                 var en164391Generator = new InvoiceZugFerd();
-                en164391Generator.exports(audit, invoice, invoicePdfPath, Collections.emptyMap());
+                en164391Generator.export(invoice, true, invoicePdfPath, audit);
             }
             audit.log(EventData.EXPORT_EVENT, EventData.Status.SUCCESS, "Invoice exported to PDF {}",
                 Map.of(INVOICE, invoice, INVOICE_PATH, invoicePdfPath, "withQrCode", withQrCode, "withEN16931", withEN16931, "overwrite", overwrite));

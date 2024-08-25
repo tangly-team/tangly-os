@@ -1,0 +1,21 @@
+extends: default
+page:
+    layout: portrait
+    size: A4
+footer:
+    recto_columns: '<25%, =50%, >25%'
+    recto:
+        left:
+            content: ''
+        center:
+            content: '{organization} - {copyright}'
+        right:
+            content: '{page-number}/{page-count}'
+    verso:
+        recto_columns: '<25%, =50%, >25%'
+        left:
+            content: '{page-number}/{page-count}'
+        center:
+            content: '{organization} - {copyright}'
+        right:
+            content: ''

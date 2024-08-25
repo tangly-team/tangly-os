@@ -24,6 +24,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.nio.file.FileSystem;
+import java.util.Properties;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -37,7 +38,7 @@ class InvoicesBusinessLogicTest {
             store.createRepository();
 
             var handler = new InvoicesAdapter(new InvoicesEntities(),
-                store.dataRoot().resolve(InvoicesBoundedDomain.DOMAIN), store.docsRoot().resolve(InvoicesBoundedDomain.DOMAIN));
+                store.dataRoot().resolve(InvoicesBoundedDomain.DOMAIN), store.docsRoot().resolve(InvoicesBoundedDomain.DOMAIN), new Properties());
             handler.importEntities(store);
 
             verifyBusinessLogic(handler.realm());
@@ -45,7 +46,7 @@ class InvoicesBusinessLogicTest {
             handler.exportEntities(store);
 
             handler = new InvoicesAdapter(new InvoicesEntities(),
-                store.dataRoot().resolve(InvoicesBoundedDomain.DOMAIN), store.docsRoot().resolve(InvoicesBoundedDomain.DOMAIN));
+                store.dataRoot().resolve(InvoicesBoundedDomain.DOMAIN), store.docsRoot().resolve(InvoicesBoundedDomain.DOMAIN), new Properties());
             handler.importEntities(store);
         }
     }

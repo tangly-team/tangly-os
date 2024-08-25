@@ -124,7 +124,8 @@ public record ErpStore(@NotNull FileSystem fs) implements DomainAudit {
             copy("%s2019/".formatted(INVOICES_PACKAGE_NAME), invoicesRoot.resolve("2019"), "2019-8020-Invoice-HSLU-December.json");
             copy("%s2020/".formatted(INVOICES_PACKAGE_NAME), invoicesRoot.resolve("2020"), "2020-8001-Invoice-HSLU-May.json");
 
-            copy(REPORTS_PACKAGE_NAME, docsRoot(), "trefoil.svg");
+            copy(REPORTS_PACKAGE_NAME, docsRoot(), "tenant-logo.svg");
+            copy(REPORTS_PACKAGE_NAME, docsRoot(), "tenant-theme.yml");
         } catch (IOException e) {
             throw new UncheckedIOException(e);
         }

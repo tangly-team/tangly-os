@@ -160,7 +160,8 @@ public final class Main {
         if (tenant.isEnabled(InvoicesBoundedDomain.DOMAIN)) {
             var realm = tenant.inMemory() ? new InvoicesEntities() : new InvoicesEntities(Path.of(tenant.databases(), InvoicesBoundedDomain.DOMAIN));
             var domain = new InvoicesBoundedDomain(realm, new InvoicesBusinessLogic(realm),
-                new InvoicesAdapter(realm, Path.of(tenant.imports(InvoicesBoundedDomain.DOMAIN)), Path.of(tenant.docs(InvoicesBoundedDomain.DOMAIN))), tenant);
+                new InvoicesAdapter(realm, Path.of(tenant.imports(InvoicesBoundedDomain.DOMAIN)), Path.of(tenant.docs(InvoicesBoundedDomain.DOMAIN)), tenant.properties()),
+                tenant);
             tenant.registerBoundedDomain(domain);
         }
         if (tenant.isEnabled(LedgerBoundedDomain.DOMAIN)) {

@@ -240,8 +240,8 @@ public class ProductsAdapter implements ProductsPort {
         if (!logic.collect(assignment, from, to).isEmpty()) {
             var assignmentAsciiDocPath = Port.resolvePath(reportFolder, to.getYear(), to.getMonth(), "%s%s".formatted(filename, AsciiDoctorHelper.ASCIIDOC_EXT));
             var assignmentPdfPath = Port.resolvePath(reportFolder, to.getYear(), to.getMonth(), "%s%s".formatted(filename, AsciiDoctorHelper.PDF_EXT));
-            var helper = new EffortReportEngine(logic);
-            helper.createReport(assignment, from, to, assignmentAsciiDocPath, unit);
+            var helper = new EffortReportEngine(logic, unit);
+            helper.createReport(assignment, from, to, assignmentAsciiDocPath);
             AsciiDoctorHelper.createPdf(assignmentAsciiDocPath, assignmentPdfPath, true);
         }
     }
@@ -250,13 +250,13 @@ public class ProductsAdapter implements ProductsPort {
     public void exportEffortsDocumentsSplitPerMonth(@NotNull DomainAudit audit, @NotNull Assignment assignment, @NotNull YearMonth from, @NotNull YearMonth to,
                                                     @NotNull ChronoUnit unit) {
         YearMonth current = from;
-        var helper = new EffortReportEngine(logic);
+        var helper = new EffortReportEngine(logic, unit);
         while (!current.isAfter(to)) {
             if (!logic.collect(assignment, current.atDay(1), current.atEndOfMonth()).isEmpty()) {
                 var filename = filename(assignment, current);
                 var assignmentAsciiDocPath = Port.resolvePath(reportFolder, to.getYear(), to.getMonth(), "%s%s".formatted(filename, AsciiDoctorHelper.ASCIIDOC_EXT));
                 var assignmentPdfPath = Port.resolvePath(reportFolder, to.getYear(), to.getMonth(), "%s%s".formatted(filename, AsciiDoctorHelper.PDF_EXT));
-                helper.createMonthlyReport(assignment, current, unit, assignmentAsciiDocPath);
+                helper.createMonthlyReport(assignment, current, assignmentAsciiDocPath);
                 AsciiDoctorHelper.createPdf(assignmentAsciiDocPath, assignmentPdfPath, true);
                 current = current.plusMonths(1);
             }

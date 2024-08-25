@@ -16,6 +16,7 @@ package net.tangly.erp.invoices.artifacts;
 import net.codecrete.qrbill.canvas.PDFCanvas;
 import net.codecrete.qrbill.generator.*;
 import net.tangly.core.Address;
+import net.tangly.core.domain.DocumentGenerator;
 import net.tangly.core.domain.DomainAudit;
 import net.tangly.erp.invoices.domain.Invoice;
 import net.tangly.erp.invoices.domain.InvoiceLegalEntity;
@@ -27,15 +28,14 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.nio.file.Path;
 import java.util.List;
-import java.util.Map;
 import java.util.regex.Pattern;
 
-public class InvoiceQrCode implements InvoiceGenerator {
+public class InvoiceQrCode implements DocumentGenerator<Invoice> {
     private static final Logger logger = LogManager.getLogger();
     private static final BigDecimal HUNDRED = new BigDecimal("100");
     private static final Pattern ISO11649ReferenceFormat = Pattern.compile("[^A-Za-z0-9]");
 
-    public void exports(@NotNull DomainAudit audit, @NotNull Invoice invoice, @NotNull Path invoicePath, @NotNull Map<String, Object> properties) {
+    public void export(@NotNull Invoice invoice, boolean overwrite, @NotNull Path invoicePath, @NotNull DomainAudit audit) {
         var bill = new Bill();
         bill.setFormat(createBillFormat());
         bill.setVersion(Bill.Version.V2_0);

@@ -17,12 +17,14 @@ import com.google.common.jimfs.Jimfs;
 import net.tangly.erp.invoices.ports.InvoicesAdapter;
 import net.tangly.erp.invoices.ports.InvoicesEntities;
 import net.tangly.erp.invoices.services.InvoicesBoundedDomain;
+import net.tangly.erp.invoices.services.InvoicesPort;
 import net.tangly.erp.invoices.services.InvoicesRealm;
 import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.nio.file.FileSystem;
+import java.util.Properties;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -33,22 +35,21 @@ class InvoicesHdlTest {
             var store = new ErpStore(fs);
             store.createRepository();
 
-            var handler = new InvoicesAdapter(new InvoicesEntities(),
-                store.dataRoot().resolve(InvoicesBoundedDomain.DOMAIN), store.docsRoot().resolve(InvoicesBoundedDomain.DOMAIN));
-            handler.importEntities(store);
+            InvoicesPort port = new InvoicesAdapter(new InvoicesEntities(), store.dataRoot().resolve(InvoicesBoundedDomain.DOMAIN),
+                store.docsRoot().resolve(InvoicesBoundedDomain.DOMAIN), new Properties());
+            port.importEntities(store);
 
-            verifyArticles(handler.realm());
-            verifyInvoices(handler.realm());
+            verifyArticles(port.realm());
+            verifyInvoices(port.realm());
 
-            handler.exportEntities(store);
+            port.exportEntities(store);
 
-            handler = new InvoicesAdapter(new InvoicesEntities(),
-                store.dataRoot().resolve(InvoicesBoundedDomain.DOMAIN), store.docsRoot().resolve(InvoicesBoundedDomain.DOMAIN));
-            handler.importEntities(store);
-            verifyArticles(handler.realm());
+            port = new InvoicesAdapter(new InvoicesEntities(), store.dataRoot().resolve(InvoicesBoundedDomain.DOMAIN),
+                store.docsRoot().resolve(InvoicesBoundedDomain.DOMAIN), new Properties());
+            port.importEntities(store);
+            verifyArticles(port.realm());
         }
     }
-
 
     private void verifyInvoices(@NotNull InvoicesRealm realm) {
         assertThat(realm.invoices().items()).isNotEmpty();

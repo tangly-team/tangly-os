@@ -35,6 +35,7 @@ import java.nio.file.Path;
 import java.time.LocalDate;
 import java.time.Month;
 import java.time.YearMonth;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import static net.tangly.commons.utilities.AsciiDocHelper.format;
@@ -100,6 +101,8 @@ public class ClosingReportAsciiDoc {
         writer.println(":toc:");
         writer.println();
 
+        introduction(helper, from, to);
+
         if (withBalanceSheet || withProfitsAndLosses) {
             helper.header("Balance Sheet", 2);
         }
@@ -124,6 +127,17 @@ public class ClosingReportAsciiDoc {
                 currentYearMonth = currentYearMonth.plusMonths(6);
             }
         }
+    }
+
+    private static void introduction(AsciiDocHelper helper, LocalDate from, LocalDate to) {
+        helper.header("Introduction", 2);
+        helper.paragraph("""
+            The closing report is a comprehensive report summarizing the financial situation of the company at the end of the year.
+            The report contains the balance sheet, the profit and loss statement""");
+        helper.paragraph("The report is for _tangly llc, Lorzenhof 27, 6330 Cham, Switzerland_.");
+        helper.paragraph("The company identifier is CHE-357.875.339.");
+        helper.paragraph("The reported period is from _%s_ to _%s_.".formatted(DateTimeFormatter.ISO_LOCAL_DATE.format(from),
+            DateTimeFormatter.ISO_LOCAL_DATE.format(to)));
     }
 
     private static void addResultBalanceTableFor(AsciiDocHelper helper, List<Account> accounts, LocalDate from, LocalDate to, String category,

@@ -18,6 +18,7 @@ import net.tangly.commons.utilities.ValidatorUtilities;
 import net.tangly.core.Address;
 import net.tangly.core.BankConnection;
 import net.tangly.core.EmailAddress;
+import net.tangly.core.domain.DocumentGenerator;
 import net.tangly.core.domain.DomainAudit;
 import net.tangly.erp.invoices.domain.*;
 import net.tangly.erp.invoices.services.InvoicesRealm;
@@ -44,7 +45,7 @@ import java.util.function.BiConsumer;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 
-public class InvoiceJson implements InvoiceGenerator {
+public class InvoiceJson implements DocumentGenerator<Invoice> {
     private static final Logger logger = LogManager.getLogger();
     private final InvoicesRealm realm;
 
@@ -52,8 +53,7 @@ public class InvoiceJson implements InvoiceGenerator {
         this.realm = realm;
     }
 
-    @Override
-    public void exports(@NotNull DomainAudit audit, @NotNull Invoice invoice, @NotNull Path path, @NotNull Map<String, Object> properties) {
+    public void export(@NotNull Invoice invoice, boolean overwrite, @NotNull Path path, @NotNull DomainAudit audit) {
         JsonEntity<Invoice> entity = createJsonInvoice();
         var invoiceJson = entity.exports(invoice);
         try (BufferedWriter writer = Files.newBufferedWriter(path, StandardCharsets.UTF_8)) {

@@ -14,10 +14,12 @@
 package net.tangly.erp;
 
 import com.google.common.jimfs.Jimfs;
+import net.tangly.core.domain.DocumentGenerator;
 import net.tangly.core.domain.Port;
 import net.tangly.erp.invoices.ports.InvoicesAdapter;
 import net.tangly.erp.invoices.ports.InvoicesEntities;
 import net.tangly.erp.invoices.services.InvoicesBoundedDomain;
+import net.tangly.erp.invoices.services.InvoicesPort;
 import org.apache.pdfbox.io.RandomAccessReadBuffer;
 import org.apache.pdfbox.pdfparser.PDFParser;
 import org.apache.pdfbox.pdmodel.PDDocument;
@@ -28,6 +30,7 @@ import java.io.IOException;
 import java.nio.file.FileSystem;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.Properties;
 
 import static net.tangly.erp.invoices.ports.InvoicesAdapter.JSON_EXT;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -39,14 +42,12 @@ class InvoicesPortTest {
             var store = new ErpStore(fs);
             store.createRepository();
 
-            var port = new InvoicesAdapter(new InvoicesEntities(),
-                store.dataRoot().resolve(InvoicesBoundedDomain.DOMAIN), store.docsRoot().resolve(InvoicesBoundedDomain.DOMAIN));
-            var handler = new InvoicesAdapter(new InvoicesEntities(),
-                store.dataRoot().resolve(InvoicesBoundedDomain.DOMAIN), store.docsRoot().resolve(InvoicesBoundedDomain.DOMAIN));
-            handler.importEntities(store);
-            port.exportInvoiceDocuments(store, true, true, true, null, null);
+            InvoicesPort port = new InvoicesAdapter(new InvoicesEntities(),
+                store.dataRoot().resolve(InvoicesBoundedDomain.DOMAIN), store.docsRoot().resolve(InvoicesBoundedDomain.DOMAIN), new Properties());
+            port.importEntities(store);
+            port.exportInvoiceDocuments(store, false, false, true, null, null);
 
-            handler.realm().invoices().items()
+            port.realm().invoices().items()
                 .forEach(o -> assertThat(
                     Files.exists(Port.resolvePath(store.dataRoot().resolve(InvoicesBoundedDomain.DOMAIN), o.date().getYear(),
                         o.name() + JSON_EXT))).isTrue());
@@ -62,5 +63,13 @@ class InvoicesPortTest {
                 return pdfStripper.getText(document);
             }
         }
+    }
+
+    private Properties properties() {
+        Properties properties = new Properties();
+        properties.setProperty(DocumentGenerator.THEME_PATH_KEY, "/organization/docs");
+        properties.setProperty(DocumentGenerator.COPYRIGHT_KEY, "CC BY 4.0");
+        properties.setProperty(DocumentGenerator.ORGANIZATION_KEY, "organization");
+        return properties;
     }
 }
