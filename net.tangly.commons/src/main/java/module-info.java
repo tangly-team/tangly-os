@@ -25,10 +25,13 @@ module net.tangly.commons {
     exports net.tangly.commons.utilities;
 
     requires org.apache.logging.log4j;
+    requires com.fasterxml.jackson.core;
+    requires com.fasterxml.jackson.databind;
+    requires com.fasterxml.jackson.dataformat.yaml;
+    requires com.networknt.schema;
     requires jakarta.mail;
     requires org.eclipse.angus.mail;
-    // waiting for release 3.x
-    requires org.asciidoctor.asciidoctorj.api
+    requires org.asciidoctor.asciidoctorj.api;
     requires org.asciidoctor.asciidoctorj;
     requires static transitive org.jetbrains.annotations;
 }
