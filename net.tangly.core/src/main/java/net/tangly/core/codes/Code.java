@@ -19,21 +19,21 @@ package net.tangly.core.codes;
  */
 public interface Code {
     /**
-     * Returna the unique identifier of a code table entity.
+     * Returns the unique identifier of a code table entity.
      *
      * @return unique identifier of the code table instance
      */
     int id();
 
     /**
-     * Returna the human-readable representation of a code table entity.
+     * Returns the human-readable representation of a code table entity.
      *
      * @return human-readable code
      */
     String code();
 
     /**
-     * Returna true if the code table instance is enabled.
+     * Returns true if the code table instance is enabled.
      *
      * @return flag indicating if the code is enabled or archived
      */

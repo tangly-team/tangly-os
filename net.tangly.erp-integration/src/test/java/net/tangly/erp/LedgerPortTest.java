@@ -76,7 +76,7 @@ class LedgerPortTest {
             new LedgerAdapter(new LedgerEntities(), store.dataRoot().resolve(LedgerBoundedDomain.DOMAIN), store.docsRoot().resolve(LedgerBoundedDomain.DOMAIN),
                 new TypeRegistry());
         adapter.importEntities(store);
-        adapter.importConfiguration(store);
+        adapter.importConfiguration(store, new TypeRegistry());
         return adapter;
     }
 }

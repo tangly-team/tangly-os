@@ -29,10 +29,16 @@ import java.util.concurrent.SubmissionPublisher;
  * It has a unique name.
  * <p>The lifecycle of a bounded domain is:</p>
  * <ol>
- *     <li>Bounded domain creation</li>
+ *     <li>Bounded domain creation. The creation sets the realm, logic, ports, tenant directory are set.</li>
+ *     <li>Define codes and tags into the domain type registry. The port interface provides a method
+ *     {@link Port#importConfiguration(DomainAudit, TypeRegistry)}</li>
  *     <li>Startup of the domain after construction</li>
  *     <li>Shutdown of the domain after startup</li>
  * </ol>
+ *
+ * <p>The tenant directory provides access to tenant configuration information.</p>
+ * <p>The type registry is the source of codes and tags. These concepts support dynamic extension points into the domain.
+ * Each tenant can defines code values and tags.</p>
  *
  * @param <R> realm handles all entities and values objects of the domain model
  * @param <B> business logic provides complex domain business logic functions
@@ -82,9 +88,8 @@ public class BoundedDomain<R extends Realm, B, P extends Port<R>> implements Has
      * @param logic     logic provides complex domain business logic functions
      * @param port      port empowers the business domain to communicate with external systems
      * @param directory directory of the tenant to support inter-domain communication
-     * @param registry  type registry of the domain
      */
-    public BoundedDomain(@NotNull String name, @NotNull R realm, @NotNull B logic, @NotNull P port, TenantDirectory directory, TypeRegistry registry) {
+    public BoundedDomain(@NotNull String name, @NotNull R realm, @NotNull B logic, @NotNull P port, TenantDirectory directory) {
         this.name = name;
         this.realm = realm;
         this.logic = logic;
@@ -94,19 +99,6 @@ public class BoundedDomain<R extends Realm, B, P extends Port<R>> implements Has
         channel = new SubmissionPublisher<>(Executors.newVirtualThreadPerTaskExecutor(), Flow.defaultBufferSize());
         internalChannel = new SubmissionPublisher<>(Executors.newVirtualThreadPerTaskExecutor(), Flow.defaultBufferSize());
         auditEvents = new ArrayList<>();
-    }
-
-    /**
-     * Constructor of the bounded domain.
-     *
-     * @param name      human-readable name of the domain
-     * @param realm     realm handles all entities and values objects of the domain model
-     * @param logic     logic provides complex domain business logic functions
-     * @param port      port empowers the business domain to communicate with external systems
-     * @param directory directory of the tenant to support inter-domain communication
-     */
-    public BoundedDomain(@NotNull String name, @NotNull R realm, @NotNull B logic, @NotNull P port, TenantDirectory directory) {
-        this(name, realm, logic, port, directory, new TypeRegistry());
     }
 
     protected static <I extends HasOid & HasMutableTags> void addTagCounts(@NotNull TypeRegistry registry, @NotNull Provider<I> provider,

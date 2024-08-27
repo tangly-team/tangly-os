@@ -61,11 +61,11 @@ public class InvoiceAsciiDoc implements DocumentGenerator<Invoice> {
     public void export(@NotNull Invoice invoice, boolean overwrite, @NonNull Path document, @NotNull DomainAudit audit) {
         try (PrintWriter writer = new PrintWriter(Files.newOutputStream(document), true, StandardCharsets.UTF_8)) {
             var helper = new AsciiDocHelper(writer);
-            String folder = properties.getProperty(LOGO);
+            String folder = properties.getProperty(LOGO_PATH_KEY);
             helper.header(bundle.getString("invoice"), 2);
             writer.println(":doctype: " + "article");
-            writer.println(":organization: " + properties.getProperty(ORGANIZATION_KEY));
-            writer.println(":copyright: " + "");
+            writer.println(":organization: " + properties.getProperty(ORGANIZATION_NAME_KEY));
+            writer.println(":copyright: " + "Lorzenhof 27, 6330 Cham");
             writer.println(":pdf-themesdir: " + properties.getProperty(THEME_PATH_KEY));
             writer.println(":pdf-theme: " + properties.getProperty(THEME));
             writer.println();

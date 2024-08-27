@@ -27,10 +27,13 @@ import java.nio.file.Path;
  * @param <T> type of the entity used to create the document
  */
 public interface DocumentGenerator<T> {
-    String ORGANIZATION_KEY = "tenant.organization.language";
+    String ORGANIZATION_NAME_KEY = "tenant.organization.name";
+    String ORGANIZATION_ID_KEY = "tenant.organization.id";
+    String ORGANIZATION_LANGUAGE_KEY = "tenant.organization.language";
+    String ORGANIZATION_DATE_FORMAT_KEY = "tenant.organization.date.format";
     String COPYRIGHT_KEY = "tenant.organization.copyright";
     String THEME_PATH_KEY = "tenant.root.docs.directory";
-    String LOGO = "logo";
+    String LOGO_PATH_KEY = "tenant.root.docs.directory";
     String THEME = "theme";
 
     /**

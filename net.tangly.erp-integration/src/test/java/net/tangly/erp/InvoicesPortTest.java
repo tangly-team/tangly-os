@@ -69,7 +69,7 @@ class InvoicesPortTest {
         Properties properties = new Properties();
         properties.setProperty(DocumentGenerator.THEME_PATH_KEY, "/organization/docs");
         properties.setProperty(DocumentGenerator.COPYRIGHT_KEY, "CC BY 4.0");
-        properties.setProperty(DocumentGenerator.ORGANIZATION_KEY, "organization");
+        properties.setProperty(DocumentGenerator.ORGANIZATION_NAME_KEY, "organization");
         return properties;
     }
 }

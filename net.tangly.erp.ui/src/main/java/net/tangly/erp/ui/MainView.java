@@ -85,25 +85,29 @@ public class MainView extends ApplicationView {
             boundedDomainUis().values().forEach(BoundedDomainUi::refreshViews);
         });
         subMenu.addItem("Setup All", _ -> {
-            var invoices = (InvoicesBoundedDomain) (tenant().getBoundedDomain(InvoicesBoundedDomain.DOMAIN).orElseThrow());
-            invoices.port().exportInvoiceDocuments(invoices, false, false, true, LocalDate.of(2015, Month.JANUARY, 1), LocalDate.of(2024, Month.DECEMBER, 31));
-            var ledger = (LedgerBoundedDomain) (tenant().getBoundedDomain(LedgerBoundedDomain.DOMAIN).orElseThrow());
-            ledger.port()
-                .exportLedgerDocument("tangly-2016", LocalDate.of(2015, Month.SEPTEMBER, 1), LocalDate.of(2016, Month.DECEMBER, 31), true, true, true, true,
-                    true);
-            for (int year = 2017; year <= 2024; year++) {
-                ledger.port().exportLedgerDocument("tangly-%s".formatted(Integer.toString(year)), LocalDate.of(year, Month.JANUARY, 1),
-                    LocalDate.of(year, Month.DECEMBER, 31), true, true, true, true, true);
-            }
-            var products = (ProductsBoundedDomain) (tenant().getBoundedDomain(ProductsBoundedDomain.DOMAIN).orElseThrow());
-            var assignment = Provider.findByOid(products.realm().assignments(), 40002).orElseThrow();
-            products.port().exportEffortsDocument(products, assignment, LocalDate.of(2024, Month.JANUARY, 1), LocalDate.of(2024, Month.MARCH, 31),
-                "2024-03-PT24-marcel-baumann-WorkReport-March", ChronoUnit.HOURS);
-            products.port().exportEffortsDocument(products, assignment, LocalDate.of(2024, Month.APRIL, 1), LocalDate.of(2024, Month.APRIL, 30),
-                "2024-04-PT24-marcel-baumann-WorkReport-April", ChronoUnit.HOURS);
-            assignment = Provider.findByOid(products.realm().assignments(), 40004).orElseThrow();
-            products.port().exportEffortsDocument(products, assignment, LocalDate.of(2024, Month.JUNE, 1), LocalDate.of(2024, Month.AUGUST, 31),
-                "2024-08-DTV24-marcel-baumann-WorkReport-August", ChronoUnit.HOURS);
+            exportDocuments();
+            boundedDomainUis().values().forEach(BoundedDomainUi::refreshViews);
         });
+    }
+
+    private void exportDocuments() {
+        var invoices = (InvoicesBoundedDomain) (tenant().getBoundedDomain(InvoicesBoundedDomain.DOMAIN).orElseThrow());
+        invoices.port().exportInvoiceDocuments(invoices, false, false, true, LocalDate.of(2015, Month.JANUARY, 1), LocalDate.of(2024, Month.DECEMBER, 31));
+        var ledger = (LedgerBoundedDomain) (tenant().getBoundedDomain(LedgerBoundedDomain.DOMAIN).orElseThrow());
+        ledger.port()
+            .exportLedgerDocument("tangly-2016", LocalDate.of(2015, Month.SEPTEMBER, 1), LocalDate.of(2016, Month.DECEMBER, 31), true, true, true, true, true);
+        for (int year = 2017; year <= 2024; year++) {
+            ledger.port().exportLedgerDocument("tangly-%s".formatted(Integer.toString(year)), LocalDate.of(year, Month.JANUARY, 1),
+                LocalDate.of(year, Month.DECEMBER, 31), true, true, true, true, true);
+        }
+        var products = (ProductsBoundedDomain) (tenant().getBoundedDomain(ProductsBoundedDomain.DOMAIN).orElseThrow());
+        var assignment = Provider.findByOid(products.realm().assignments(), 40002).orElseThrow();
+        products.port().exportEffortsDocument(products, assignment, LocalDate.of(2024, Month.JANUARY, 1), LocalDate.of(2024, Month.MARCH, 31),
+            "2024-03-PT24-marcel-baumann-WorkReport-March", ChronoUnit.HOURS);
+        products.port().exportEffortsDocument(products, assignment, LocalDate.of(2024, Month.APRIL, 1), LocalDate.of(2024, Month.APRIL, 30),
+            "2024-04-PT24-marcel-baumann-WorkReport-April", ChronoUnit.HOURS);
+        assignment = Provider.findByOid(products.realm().assignments(), 40004).orElseThrow();
+        products.port().exportEffortsDocument(products, assignment, LocalDate.of(2024, Month.JUNE, 1), LocalDate.of(2024, Month.AUGUST, 31),
+            "2024-08-DTV24-marcel-baumann-WorkReport-August", ChronoUnit.HOURS);
     }
 }

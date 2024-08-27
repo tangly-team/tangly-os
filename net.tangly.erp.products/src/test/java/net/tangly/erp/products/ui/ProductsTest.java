@@ -33,7 +33,7 @@ class ProductsTest {
         var tenant = createAndRegisterTenant("test");
         var realm = new ProductsEntities();
         var logic = new ProductsBusinessLogic(realm);
-        var domain = new ProductsBoundedDomain(realm, logic, new ProductsAdapter(realm, null, null, null), null);
+        var domain = new ProductsBoundedDomain(realm, logic, new ProductsAdapter(realm, null, null, null, null), null);
         tenant.registerBoundedDomain(domain);
         MockVaadin.setup();
     }

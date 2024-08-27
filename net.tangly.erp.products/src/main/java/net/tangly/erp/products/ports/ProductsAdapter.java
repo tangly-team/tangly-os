@@ -55,13 +55,16 @@ public class ProductsAdapter implements ProductsPort {
 
     private final ProductsRealm realm;
     private final ProductsBusinessLogic logic;
+    private final Properties properties;
 
     private final Path dataFolder;
     private final Path reportFolder;
 
-    public ProductsAdapter(@NotNull ProductsRealm realm, @NotNull ProductsBusinessLogic logic, @NotNull Path dataFolder, Path reportFolder) {
+    public ProductsAdapter(@NotNull ProductsRealm realm, @NotNull ProductsBusinessLogic logic, @NotNull Properties properties, @NotNull Path dataFolder,
+                           Path reportFolder) {
         this.realm = realm;
         this.logic = logic;
+        this.properties = properties;
         this.dataFolder = dataFolder;
         this.reportFolder = reportFolder;
     }
@@ -238,9 +241,10 @@ public class ProductsAdapter implements ProductsPort {
     public void exportEffortsDocument(@NotNull DomainAudit audit, @NotNull Assignment assignment, LocalDate from, LocalDate to, @NotNull String filename,
                                       @NotNull ChronoUnit unit) {
         if (!logic.collect(assignment, from, to).isEmpty()) {
-            var assignmentAsciiDocPath = Port.resolvePath(reportFolder, to.getYear(), to.getMonth(), "%s%s".formatted(filename, AsciiDoctorHelper.ASCIIDOC_EXT));
+            var assignmentAsciiDocPath =
+                Port.resolvePath(reportFolder, to.getYear(), to.getMonth(), "%s%s".formatted(filename, AsciiDoctorHelper.ASCIIDOC_EXT));
             var assignmentPdfPath = Port.resolvePath(reportFolder, to.getYear(), to.getMonth(), "%s%s".formatted(filename, AsciiDoctorHelper.PDF_EXT));
-            var helper = new EffortReportEngine(logic, unit);
+            var helper = new EffortReportEngine(logic, properties, unit);
             helper.createReport(assignment, from, to, assignmentAsciiDocPath);
             AsciiDoctorHelper.createPdf(assignmentAsciiDocPath, assignmentPdfPath, true);
         }
@@ -250,11 +254,12 @@ public class ProductsAdapter implements ProductsPort {
     public void exportEffortsDocumentsSplitPerMonth(@NotNull DomainAudit audit, @NotNull Assignment assignment, @NotNull YearMonth from, @NotNull YearMonth to,
                                                     @NotNull ChronoUnit unit) {
         YearMonth current = from;
-        var helper = new EffortReportEngine(logic, unit);
+        var helper = new EffortReportEngine(logic, properties, unit);
         while (!current.isAfter(to)) {
             if (!logic.collect(assignment, current.atDay(1), current.atEndOfMonth()).isEmpty()) {
                 var filename = filename(assignment, current);
-                var assignmentAsciiDocPath = Port.resolvePath(reportFolder, to.getYear(), to.getMonth(), "%s%s".formatted(filename, AsciiDoctorHelper.ASCIIDOC_EXT));
+                var assignmentAsciiDocPath =
+                    Port.resolvePath(reportFolder, to.getYear(), to.getMonth(), "%s%s".formatted(filename, AsciiDoctorHelper.ASCIIDOC_EXT));
                 var assignmentPdfPath = Port.resolvePath(reportFolder, to.getYear(), to.getMonth(), "%s%s".formatted(filename, AsciiDoctorHelper.PDF_EXT));
                 helper.createMonthlyReport(assignment, current, assignmentAsciiDocPath);
                 AsciiDoctorHelper.createPdf(assignmentAsciiDocPath, assignmentPdfPath, true);

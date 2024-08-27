@@ -14,7 +14,6 @@
 package net.tangly.erp.ledger.services;
 
 import net.tangly.core.TagType;
-import net.tangly.core.TypeRegistry;
 import net.tangly.core.domain.BoundedDomain;
 import net.tangly.core.domain.DomainEntity;
 import net.tangly.core.domain.TenantDirectory;
@@ -29,9 +28,9 @@ import java.util.Map;
 public class LedgerBoundedDomain extends BoundedDomain<LedgerRealm, LedgerBusinessLogic, LedgerPort> {
     public static final String DOMAIN = "transactions";
 
-    public LedgerBoundedDomain(LedgerRealm realm, LedgerBusinessLogic logic, LedgerPort port, TenantDirectory directory, TypeRegistry registry) {
-        super(DOMAIN, realm, logic, port, directory, registry);
-        port.importConfiguration(this);
+    public LedgerBoundedDomain(LedgerRealm realm, LedgerBusinessLogic logic, LedgerPort port, TenantDirectory directory) {
+        super(DOMAIN, realm, logic, port, directory);
+        port.importConfiguration(this, registry());
     }
 
     @Override

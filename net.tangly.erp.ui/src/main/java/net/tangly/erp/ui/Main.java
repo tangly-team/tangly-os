@@ -168,14 +168,15 @@ public final class Main {
             var registry = new TypeRegistry();
             var realm = tenant.inMemory() ? new LedgerEntities() : new LedgerEntities(Path.of(tenant.databases(), LedgerBoundedDomain.DOMAIN));
             var adapter = new LedgerAdapter(realm, Path.of(tenant.imports(LedgerBoundedDomain.DOMAIN)), Path.of(tenant.docs(LedgerBoundedDomain.DOMAIN)), registry);
-            var domain = new LedgerBoundedDomain(realm, new LedgerBusinessLogic(realm), adapter, tenant, registry);
+            var domain = new LedgerBoundedDomain(realm, new LedgerBusinessLogic(realm), adapter, tenant);
             tenant.registerBoundedDomain(domain);
         }
         if (tenant.isEnabled(ProductsBoundedDomain.DOMAIN)) {
             var realm = tenant.inMemory() ? new ProductsEntities() : new ProductsEntities(Path.of(tenant.databases(), ProductsBoundedDomain.DOMAIN));
             var logic = new ProductsBusinessLogic(realm);
             var domain = new ProductsBoundedDomain(realm, logic,
-                new ProductsAdapter(realm, logic, Path.of(tenant.imports(ProductsBoundedDomain.DOMAIN)), Path.of(tenant.docs(ProductsBoundedDomain.DOMAIN))),
+                new ProductsAdapter(realm, logic, tenant.properties(), Path.of(tenant.imports(ProductsBoundedDomain.DOMAIN)),
+                    Path.of(tenant.docs(ProductsBoundedDomain.DOMAIN))),
                 tenant);
             tenant.registerBoundedDomain(domain);
         }

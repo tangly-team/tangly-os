@@ -29,6 +29,6 @@ module net.tangly.commons {
     requires org.eclipse.angus.mail;
     // waiting for release 3.x
     requires org.asciidoctor.asciidoctorj.api
-    requires org.asciidoctro.asciidoctorj;
+    requires org.asciidoctor.asciidoctorj;
     requires static transitive org.jetbrains.annotations;
 }

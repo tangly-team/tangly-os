@@ -78,7 +78,6 @@ class InvoiceTest {
         assertThat(importedInvoice.date()).isEqualTo(invoice.date());
         assertThat(importedInvoice.deliveryDate()).isEqualTo(invoice.deliveryDate());
         assertThat(importedInvoice.dueDate()).isEqualTo(invoice.dueDate());
-        assertThat(importedInvoice.paidDate()).isEqualTo(invoice.paidDate());
         assertThat(importedInvoice.invoicingEntity()).isEqualTo(invoice.invoicingEntity());
         assertThat(importedInvoice.invoicedEntity()).isEqualTo(invoice.invoicedEntity());
         assertThat(importedInvoice.invoicingConnection()).isEqualTo(invoice.invoicingConnection());
@@ -143,7 +142,6 @@ class InvoiceTest {
         invoice.date(LocalDate.of(2018, Month.JANUARY, 1));
         invoice.deliveryDate(LocalDate.of(2018, Month.JANUARY, 1));
         invoice.dueDate(LocalDate.of(2018, Month.JANUARY, 31));
-        invoice.paidDate((LocalDate.of(2018, Month.FEBRUARY, 10)));
         invoice.invoicingEntity(seller());
         invoice.invoicingConnection(sellerConnection());
         invoice.invoicedEntity(sellee());

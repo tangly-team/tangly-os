@@ -59,11 +59,6 @@ public class Invoice implements HasMutableId, HasMutableName, HasMutableDate, Ha
     private LocalDate dueDate;
 
     /**
-     * The date when the invoice was paid. This information can be used for debtor analysis.
-     */
-    private LocalDate paidDate;
-
-    /**
      * Currency of the invoice. We do not support multi-currency invoices. Please create one invoice for each currency. The decision is logical due to the complexities of handling
      * value added taxes and exchange rates.
      */
@@ -240,14 +235,6 @@ public class Invoice implements HasMutableId, HasMutableName, HasMutableDate, Ha
 
     public void dueDate(LocalDate dueDate) {
         this.dueDate = dueDate;
-    }
-
-    public LocalDate paidDate() {
-        return paidDate;
-    }
-
-    public void paidDate(LocalDate paidDate) {
-        this.paidDate = paidDate;
     }
 
     public Currency currency() {

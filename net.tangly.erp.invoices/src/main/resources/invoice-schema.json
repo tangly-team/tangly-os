@@ -238,5 +238,5 @@
         "dueDate",
         "currency"
     ],
-    "additionalProperties": false
+    "additionalProperties": true
 }

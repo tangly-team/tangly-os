@@ -30,6 +30,7 @@ import java.nio.file.Files;
 import java.time.LocalDate;
 import java.time.Month;
 import java.time.temporal.ChronoUnit;
+import java.util.Properties;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -49,7 +50,7 @@ class ProductsPortTest {
             assertThat(handler.realm().efforts().items()).isEmpty();
 
             Reader stream = Files.newBufferedReader(store.dataRoot().resolve(ProductsBoundedDomain.DOMAIN, "2020", filename));
-            handler.importEfforts(store,stream, filename, true);
+            handler.importEfforts(store, stream, filename, true);
             assertThat(handler).isNotNull();
             assertThat(handler.realm().efforts().items()).isNotEmpty();
             assertThat(handler.realm().efforts().items().size()).isEqualTo(3);
@@ -62,7 +63,7 @@ class ProductsPortTest {
             var store = new ErpStore(fs);
             var handler = createAdapter(store);
             handler.importEntities(store);
-            EffortReportEngine reporter = new EffortReportEngine(handler.logic(), ChronoUnit.HOURS);
+            EffortReportEngine reporter = new EffortReportEngine(handler.logic(), properties(), ChronoUnit.HOURS);
             reporter.createReport(Provider.findByOid(handler.realm().assignments(), ASSIGNMENT_OID).orElseThrow(), LocalDate.of(2020, Month.JANUARY, 1),
                 LocalDate.of(2020, Month.JANUARY, 31), store.docsRoot().resolve(ProductsBoundedDomain.DOMAIN, "efforts.adoc"));
             assertThat(reporter).isNotNull();
@@ -73,6 +74,11 @@ class ProductsPortTest {
         store.createRepository();
         var entities = new ProductsEntities();
         var logic = new ProductsBusinessLogic(entities);
-        return new ProductsAdapter(entities, logic, store.dataRoot().resolve(ProductsBoundedDomain.DOMAIN), store.docsRoot().resolve(ProductsBoundedDomain.DOMAIN));
+        return new ProductsAdapter(entities, logic, properties(), store.dataRoot().resolve(ProductsBoundedDomain.DOMAIN),
+            store.docsRoot().resolve(ProductsBoundedDomain.DOMAIN));
+    }
+
+    private Properties properties() {
+        return new Properties();
     }
 }

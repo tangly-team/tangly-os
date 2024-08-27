@@ -15,6 +15,7 @@ package net.tangly.erp.products.artifacts;
 
 import net.tangly.commons.lang.Strings;
 import net.tangly.commons.utilities.AsciiDocHelper;
+import net.tangly.core.domain.DocumentGenerator;
 import net.tangly.erp.products.domain.Assignment;
 import net.tangly.erp.products.domain.Effort;
 import net.tangly.erp.products.services.ProductsBusinessLogic;
@@ -31,10 +32,7 @@ import java.time.LocalDate;
 import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static java.util.stream.Collectors.groupingBy;
 import static net.tangly.erp.products.domain.Assignment.convert;
@@ -46,13 +44,14 @@ public class EffortReportEngine {
     private static final Logger logger = LogManager.getLogger();
 
     private final ProductsBusinessLogic logic;
+    private final Properties properties;
     private final ChronoUnit unit;
 
-    public EffortReportEngine(@NotNull ProductsBusinessLogic logic, @NotNull ChronoUnit unit) {
+    public EffortReportEngine(@NotNull ProductsBusinessLogic logic, @NotNull Properties properties, @NotNull ChronoUnit unit) {
         this.logic = logic;
+        this.properties = properties;
         this.unit = unit;
     }
-
 
     public void createMonthlyReport(@NotNull Assignment assignment, YearMonth month, @NotNull Path reportPath) {
         try (var writer = new PrintWriter(Files.newOutputStream(reportPath), true, StandardCharsets.UTF_8)) {
@@ -75,10 +74,10 @@ public class EffortReportEngine {
     private void createMonthlyReport(@NotNull Assignment assignment, @NotNull YearMonth month, @NotNull PrintWriter writer) {
         final AsciiDocHelper helper = new AsciiDocHelper(writer);
         helper.header("Work Report %s %d".formatted(Strings.firstOnlyUppercase(month.getMonth().toString()), month.getYear()), 2);
-        String folder = "/var/tangly-erp/tenant-tangly/docs";
+        writer.println(":hyphens: en_us");
         writer.println(":organization: " + "tangly llc");
-        writer.println(":copyright: " + "");
-        writer.println(":pdf-themesdir: " + folder);
+        writer.println(":copyright: " + "Lorzenhof 27, 6330 Cham");
+        writer.println(":pdf-themesdir: " + properties.getProperty(DocumentGenerator.THEME_PATH_KEY));
         writer.println(":pdf-theme: " + "tenant");
         writer.println();
 
@@ -86,7 +85,7 @@ public class EffortReportEngine {
         helper.paragraph("The amount of performed activities is %s %s until end of %s %d.".formatted(convert(workedDuration, unit), text(unit),
             Strings.firstOnlyUppercase(month.getMonth().toString()), month.getYear()));
         helper.paragraph("The daily reports are:");
-        helper.tableHeader(null, "cols=\"1,6a,>1\", options=\"header\"");
+        helper.tableHeader(null, "cols=\"1,8a,>1\", options=\"header\"");
 
         helper.writer().println("^|Date ^|Description ^|Duration (%s)".formatted(text(unit)));
         helper.writer().println();

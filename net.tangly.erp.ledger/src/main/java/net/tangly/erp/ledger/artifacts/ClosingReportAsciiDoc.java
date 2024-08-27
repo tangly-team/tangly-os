@@ -88,7 +88,7 @@ public class ClosingReportAsciiDoc {
         writer.println("Version 1.0");
         writer.println(":doctype: book");
         writer.println(":organization: " + "tangly llc");
-        writer.println(":copyright: " + "");
+        writer.println(":copyright: " + "Lorzenhof 27, 6330 Cham, Switzerland");
         writer.println(":title-logo-image: " + "image:" + folder + "/tenant-logo.svg[top=25%,align=center,pdfwidth=40mm]");
         writer.println(":pdf-themesdir: " + folder);
         writer.println(":pdf-theme: " + "tenant");
@@ -131,13 +131,12 @@ public class ClosingReportAsciiDoc {
 
     private static void introduction(AsciiDocHelper helper, LocalDate from, LocalDate to) {
         helper.header("Introduction", 2);
-        helper.paragraph("""
-            The closing report is a comprehensive report summarizing the financial situation of the company at the end of the year.
-            The report contains the balance sheet, the profit and loss statement""");
+        helper.paragraph("The closing report is a comprehensive report summarizing the financial situation of the company at the end of the year.");
+        helper.paragraph("The report contains the balance sheet, the profit and loss statement.");
         helper.paragraph("The report is for _tangly llc, Lorzenhof 27, 6330 Cham, Switzerland_.");
         helper.paragraph("The company identifier is CHE-357.875.339.");
-        helper.paragraph("The reported period is from _%s_ to _%s_.".formatted(DateTimeFormatter.ISO_LOCAL_DATE.format(from),
-            DateTimeFormatter.ISO_LOCAL_DATE.format(to)));
+        helper.paragraph(
+            "The reported period is from _%s_ to _%s_.".formatted(DateTimeFormatter.ISO_LOCAL_DATE.format(from), DateTimeFormatter.ISO_LOCAL_DATE.format(to)));
     }
 
     private static void addResultBalanceTableFor(AsciiDocHelper helper, List<Account> accounts, LocalDate from, LocalDate to, String category,

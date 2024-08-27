@@ -108,7 +108,6 @@ public class InvoiceJson implements DocumentGenerator<Invoice> {
                 JsonProperty.ofType("invoicedEntity", Invoice::invoicedEntity, Invoice::invoicedEntity, jsonLegalEntity),
                 JsonProperty.ofLocalDate("deliveryDate", Invoice::deliveryDate, Invoice::deliveryDate),
                 JsonProperty.ofLocalDate("invoiceDate", Invoice::date, Invoice::date), JsonProperty.ofLocalDate("dueDate", Invoice::dueDate, Invoice::dueDate),
-                JsonProperty.ofLocalDate("paidDate", Invoice::paidDate, Invoice::paidDate),
                 JsonProperty.ofCurrency("currency", Invoice::currency, Invoice::currency), JsonProperty.ofLocale("locale", Invoice::locale, Invoice::locale),
                 JsonProperty.ofString("paymentConditions", Invoice::paymentConditions, Invoice::paymentConditions), createPositions());
         return JsonEntity.of(fields, Invoice::new);

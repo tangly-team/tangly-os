@@ -119,7 +119,7 @@ public class LedgerAdapter implements LedgerPort {
     }
 
     @Override
-    public void importConfiguration(@NotNull DomainAudit audit) {
+    public void importConfiguration(@NotNull DomainAudit audit, @NotNull TypeRegistry registry) {
         LedgerTags.registerTags(registry);
         try {
             var type = CodeHelper.build(VatCode.class,

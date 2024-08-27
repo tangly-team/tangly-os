@@ -29,6 +29,8 @@ import org.jetbrains.annotations.NotNull;
 import java.time.LocalDate;
 import java.time.Month;
 import java.time.Year;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /**
  * Command to create a ledger document for a given period. The command is parameterized with the bounded domain to access the ledger and the UI components to
@@ -109,10 +111,16 @@ public class CmdCreateLedgerDocument implements Cmd {
      * @param toYear   last year of the reports
      */
     private void batchReports(String name, int fromYear, int toYear) {
-        int currentYear = Year.now().getValue();
-        for (int year = fromYear; year <= toYear; year++) {
-            domain.port().exportLedgerDocument("%s-%d".formatted(name, year), LocalDate.of(year, Month.JANUARY, 1), LocalDate.of(year, Month.DECEMBER, 31),
-                withBalanceSheet.getValue(), withProfitsAndLosses.getValue(), withEmptyAccounts.getValue(), withTransactions.getValue(), withVat.getValue());
+        try (ExecutorService executor = Executors.newVirtualThreadPerTaskExecutor()) {
+            int currentYear = Year.now().getValue();
+            for (int year = fromYear; year <= toYear; year++) {
+                final int reportYear = year;
+                executor.submit(() -> {
+                    domain.port().exportLedgerDocument("%s-%d".formatted(name, reportYear), LocalDate.of(reportYear, Month.JANUARY, 1),
+                        LocalDate.of(reportYear, Month.DECEMBER, 31), withBalanceSheet.getValue(), withProfitsAndLosses.getValue(),
+                        withEmptyAccounts.getValue(), withTransactions.getValue(), withVat.getValue());
+                });
+            }
         }
     }
 }
