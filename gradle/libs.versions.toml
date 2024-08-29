@@ -6,7 +6,7 @@ log4j2-version = '2.23.0'
 javalin-version = '5.6.4'
 openapi-version = "5.6.4"
 eclipsestore-version = '1.4.0'
-mustang-version = '2.12.0'
+mustang-version = '2.13.0'
 vaadin-version = '24.4.10'
 
 [plugins]
@@ -32,7 +32,7 @@ awaitility = "org.awaitility:awaitility:4.2.2"
 apache-pdfbox = "org.apache.pdfbox:pdfbox:3.0.3"
 arch-unit = "com.tngtech.archunit:archunit-junit5-api:1.3.0"
 
-asciidoctorj = "org.asciidoctor:asciidoctorj:2.5.13"
+asciidoctorj = "org.asciidoctor:asciidoctorj:3.0.0"
 asciidoctorj-pdf = "org.asciidoctor:asciidoctorj-pdf:2.3.18"
 
 assertj = { module = "org.assertj:assertj-core", version.ref = "assertj-version" }
@@ -44,7 +44,7 @@ flywy-hsqldb = { module = "org.flywaydb:flyway-database-hsqldb", version.ref = "
 hsqldb = "org.hsqldb:hsqldb:2.7.3"
 iban4j = "org.iban4j:iban4j:3.2.9-RELEASE"
 
-ical4j-core = "org.mnode.ical4j:ical4j:4.0.2"
+ical4j-core = "org.mnode.ical4j:ical4j:4.0.3"
 ical4j-vcard = "org.mnode.ical4j:ical4j-vcard:1.0.7"
 
 google-libphonenumber = "com.googlecode.libphonenumber:libphonenumber:8.13.44"
@@ -86,7 +86,7 @@ eclispsestore-storage = { module = "org.eclipse.store:storage-embedded", version
 eclispsestore-jdk8 = { module = "org.eclipse.serializer:persistence-binary-jdk8", version.ref = "eclipsestore-version" }
 eclispsestore-jdk17 = { module = "org.eclipse.serializer:persistence-binary-jdk17", version.ref = "eclipsestore-version" }
 
-mockito = "org.mockito:mockito-junit-jupiter:5.12.0"
+mockito = "org.mockito:mockito-junit-jupiter:5.13.0"
 
 javalin = { module = "io.javalin:javalin", version.ref = "javalin-version" }
 javalin-openapi = { module = "io.javalin.community.openapi:javalin-openapi-plugin", version.ref = "openapi-version" }
