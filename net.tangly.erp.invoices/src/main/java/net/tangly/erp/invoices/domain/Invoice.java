@@ -13,6 +13,7 @@
 
 package net.tangly.erp.invoices.domain;
 
+import net.tangly.commons.utilities.BigDecimalUtilities;
 import net.tangly.core.*;
 
 import java.math.BigDecimal;
@@ -117,16 +118,16 @@ public class Invoice implements HasMutableId, HasMutableName, HasMutableDate, Ha
     // region VAT
 
     /**
-     * Return the amount of the invoice without the VAT tax. The amount is the sum of all invoice items. Subtotals are not considered in the amount.
+     * Returns the amount of the invoice without the VAT tax. The amount is the sum of all invoice items. Subtotals are not considered in the amount.
      *
      * @return invoice amount without VAT tax
      */
     public BigDecimal amountWithoutVat() {
-        return items().stream().filter(InvoiceLine::isItem).map(InvoiceLine::amount).reduce(BigDecimal.ZERO, BigDecimal::add);
+        return items().stream().filter(InvoiceLine::isItem).map(InvoiceLine::amount).reduce(BigDecimal.ZERO, BigDecimal::add).setScale(2);
     }
 
     /**
-     * Return the VAT tax amount for the whole invoice.
+     * Returns the VAT tax amount for the whole invoice.
      *
      * @return invoice VAT tax
      */
@@ -135,16 +136,17 @@ public class Invoice implements HasMutableId, HasMutableName, HasMutableDate, Ha
     }
 
     /**
-     * Return the amount of the invoice including VAT tax.
+     * Returns the amount of the invoice including VAT tax.
      *
      * @return invoice amount with VAT tax
      */
     public BigDecimal amountWithVat() {
-        return amountWithoutVat().add(vat()).setScale(2, RoundingMode.HALF_EVEN);
+        return BigDecimalUtilities.roundToFiveCents(amountWithoutVat().add(vat()).setScale(2, RoundingMode.HALF_EVEN));
     }
 
     /**
-     * Return a map of VAT rates and associated VAT amounts for the whole invoice. An invoice line has a VAT rate and a computed VAT amount. A subtotal does not have a VAT rate but
+     * Returns a map of VAT rates and associated VAT amounts for the whole invoice. An invoice line has a VAT rate and a computed VAT amount. A subtotal does
+     * not have a VAT rate but
      * has an aggregated VAT amount
      *
      * @return map of entries VAT rate and associated VAT amounts
@@ -266,7 +268,7 @@ public class Invoice implements HasMutableId, HasMutableName, HasMutableDate, Ha
     }
 
     /**
-     * Return all positions defined in the invoice either invoice items or subtotals.
+     * Returns all positions defined in the invoice either invoice items or subtotals.
      *
      * @return list of invoice lines
      */
@@ -275,7 +277,7 @@ public class Invoice implements HasMutableId, HasMutableName, HasMutableDate, Ha
     }
 
     /**
-     * Return all invoice items defined in the invoice.
+     * Returns all invoice items defined in the invoice.
      *
      * @return list of invoice items
      */
@@ -289,8 +291,8 @@ public class Invoice implements HasMutableId, HasMutableName, HasMutableDate, Ha
 
     public boolean check() {
         return Objects.nonNull(contractId()) && Objects.nonNull(invoicingEntity()) && Objects.nonNull(invoicedEntity()) &&
-            Objects.nonNull(invoicingConnection()) &&
-            Objects.nonNull(currency) && name().startsWith(id());
+            Objects.nonNull(invoicingConnection()) && Objects.nonNull(currency) && name().startsWith(id()) &&
+            items().stream().noneMatch(o -> Objects.isNull(o.article()));
     }
 
     @Override
@@ -298,7 +300,6 @@ public class Invoice implements HasMutableId, HasMutableName, HasMutableDate, Ha
         return """
             Invoice[id=%s, name=%s, text=%s, invoicingEntity=%s, invoicedEntity=%s, invoicingConnection=%s, contractId=%s, deliveryDate=%s, invoicedDate=%s, dueDate=%s, currency=%s, locale=%s, paymentConditions=%s, items=%s]
             """.formatted(id(), name(), text(), invoicingEntity(), invoicedEntity(), invoicingConnection(), contractId(), deliveryDate(), date(), dueDate(),
-            currency(), locale(),
-            paymentConditions(), items());
+            currency(), locale(), paymentConditions(), items());
     }
 }

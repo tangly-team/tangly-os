@@ -18,6 +18,7 @@ import net.tangly.commons.utilities.AsciiDoctorHelper;
 import net.tangly.core.DateRange;
 import net.tangly.core.domain.DomainAudit;
 import net.tangly.core.domain.Port;
+import net.tangly.core.providers.Provider;
 import net.tangly.erp.invoices.artifacts.InvoiceAsciiDoc;
 import net.tangly.erp.invoices.artifacts.InvoiceJson;
 import net.tangly.erp.invoices.artifacts.InvoiceQrCode;
@@ -34,6 +35,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.LocalDate;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Properties;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Stream;
@@ -70,7 +72,6 @@ public class InvoicesAdapter implements InvoicesPort {
         try (Stream<Path> stream = Files.walk(dataFolder)) {
             var nrOfInvoices = new AtomicInteger();
             var nrOfImportedInvoices = new AtomicInteger();
-            var invoiceJson = new InvoiceJson(realm);
             stream.filter(file -> !Files.isDirectory(file) && file.getFileName().toString().endsWith(JSON_EXT)).forEach(o -> {
                 nrOfInvoices.getAndIncrement();
                 try (Reader reader = Files.newBufferedReader(dataFolder.resolve(o))) {
@@ -110,15 +111,15 @@ public class InvoicesAdapter implements InvoicesPort {
     }
 
     @Override
-    public boolean doesInvoiceDocumentExist(@NotNull Invoice invoice) {
-        Path invoicePdfPath = Port.resolvePath(dataFolder, invoice.date().getYear(), invoice.name() + AsciiDoctorHelper.PDF_EXT);
-        return Files.exists(invoicePdfPath);
-    }
-
-    @Override
     public void exportInvoiceDocuments(@NotNull DomainAudit audit, boolean withQrCode, boolean withEN16931, boolean overwrite, LocalDate from, LocalDate to) {
         final var filter = new DateRange.DateFilter(from, to);
         realm.invoices().items().stream().filter(o -> filter.test(o.date())).forEach(o -> exportInvoiceDocument(audit, o, withQrCode, withEN16931, overwrite));
+    }
+
+    @Override
+    public Optional<InvoiceView> invoiceViewFor(@NotNull String id) {
+        return Provider.findById(realm.invoices(), id).stream()
+            .flatMap(o -> Optional.of(new InvoiceView(o.id(), o.currency(), o.amountWithoutVat(), o.vat(), o.amountWithVat(), o.date(), o.dueDate())).stream()).findAny();
     }
 
     @Override

@@ -61,17 +61,15 @@ public class InvoiceAsciiDoc implements DocumentGenerator<Invoice> {
     public void export(@NotNull Invoice invoice, boolean overwrite, @NonNull Path document, @NotNull DomainAudit audit) {
         try (PrintWriter writer = new PrintWriter(Files.newOutputStream(document), true, StandardCharsets.UTF_8)) {
             var helper = new AsciiDocHelper(writer);
-            String folder = properties.getProperty(LOGO_PATH_KEY);
-            helper.header(bundle.getString("invoice"), 2);
-            writer.println(":doctype: " + "article");
             writer.println(":organization: " + properties.getProperty(ORGANIZATION_NAME_KEY));
             writer.println(":copyright: " + "Lorzenhof 27, 6330 Cham");
             writer.println(":pdf-themesdir: " + properties.getProperty(THEME_PATH_KEY));
-            writer.println(":pdf-theme: " + properties.getProperty(THEME));
+            writer.println(":pdf-theme: tenant");
             writer.println();
+            helper.header(bundle.getString("invoice"), 2);
 
             // Needed to make the image converter of asciiDocPdf happy. Still looking to have relative paths working.
-            writer.println("image::" + folder + "/tenant-logo.svg[100,100,align=\"center\"]");
+            writer.println("image::" + properties.getProperty(LOGO_PATH_KEY) + "/tenant-logo.svg[80,80,align=\"center\"]");
             writer.println();
 
             helper.tableHeader(null, "frame=\"none\", grid=\"none\", options=\"noheader\", stripes=\"none\", cols=\"3,4,3\"");
@@ -98,17 +96,17 @@ public class InvoiceAsciiDoc implements DocumentGenerator<Invoice> {
 
             helper.tableHeader(null, "frame=\"none\",grid=\"none\", options=\"noheader\", cols=\"2,4\"");
             helper.tableRow(bundle.getString("bankConnection"),
-                "%s: %s\n%s: %s (%s)".formatted(bundle.getString("iban"), invoice.invoicingConnection().iban(), bundle.getString("bic"),
+                "%s: %s +\n%s: %s (%s)".formatted(bundle.getString("iban"), invoice.invoicingConnection().iban(), bundle.getString("bic"),
                     invoice.invoicingConnection().bic(), invoice.invoicingConnection().institute()));
             helper.tableEnd();
 
             helper.tableHeader(null, "frame=\"none\",grid=\"none\", options=\"noheader\", cols=\"2,4\"");
-            helper.tableRow("%s:".formatted(bundle.getString("companyId")), invoice.invoicedEntity().id());
+            helper.tableRow("%s:".formatted(bundle.getString("companyId")), invoice.invoicingEntity().id());
             helper.tableRow("%s:".formatted(bundle.getString("companyVat")), invoice.invoicingEntity().vatNr());
             helper.tableEnd();
 
             if (!Strings.isNullOrEmpty(invoice.paymentConditions())) {
-                writer.append(bundle.getString("paymentConditions")).append(" ").append(invoice.paymentConditions()).println();
+                writer.println("%s: %s".formatted(bundle.getString("paymentConditions"), invoice.paymentConditions()));
             }
         } catch (Exception e) {
             logger.atError().withThrowable(e).log("Error during invoice asciiDoc generation {}", document);
@@ -132,7 +130,8 @@ public class InvoiceAsciiDoc implements DocumentGenerator<Invoice> {
     }
 
     private static String addressText(@NotNull InvoiceLegalEntity entity, @NotNull Address address) {
-        return "%s%s%s%s%s%s %s".formatted(entity.name(), NEWLINE, formatIfPresent(address.extended()), formatIfPresent(address.street()),
+        return "%s%s%s%s%s%s %s".formatted(entity.name(), NEWLINE,
+            formatIfPresent(Strings.isNullOrEmpty(address.extended()) ? null : AsciiDocHelper.italics(address.extended())), formatIfPresent(address.street()),
             formatIfPresent(address.poBox()), address.postcode(), address.locality());
     }
 

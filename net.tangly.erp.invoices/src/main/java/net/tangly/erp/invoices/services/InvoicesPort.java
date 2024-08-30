@@ -18,7 +18,10 @@ import net.tangly.core.domain.Port;
 import net.tangly.erp.invoices.domain.Invoice;
 import org.jetbrains.annotations.NotNull;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.Currency;
+import java.util.Optional;
 
 /**
  * Defines the import port for the bounded domain invoices. It is the primary port in the DDD terminology.
@@ -28,14 +31,6 @@ public interface InvoicesPort extends Port<InvoicesRealm> {
     String INVOICE_PATH = "invoicePath";
     String ARTICLES_TSV = "articles.tsv";
     String JSON_EXT = ".json";
-
-    /**
-     * Returns true if the invoice document exists.
-     *
-     * @param invoice invoice to be tested
-     * @return true if the invoice document exists
-     */
-    boolean doesInvoiceDocumentExist(@NotNull Invoice invoice);
 
     /**
      * Export an invoice to a file. The method is responsible to infer the uri to the generated invoice document.
@@ -60,4 +55,10 @@ public interface InvoicesPort extends Port<InvoicesRealm> {
      * @param overwrite   flag if an existing document should be overwritten
      */
     void exportInvoiceDocuments(@NotNull DomainAudit audit, boolean withQrCode, boolean withEN16931, boolean overwrite, LocalDate from, LocalDate to);
+
+    record InvoiceView(@NotNull String id, @NotNull Currency currency, @NotNull BigDecimal amountWithoutVat, @NotNull BigDecimal vat,
+                       @NotNull BigDecimal amountWithVat, @NotNull LocalDate invoicedDate, @NotNull LocalDate dueDate) {
+    }
+
+    Optional<InvoiceView> invoiceViewFor(@NotNull String id);
 }
