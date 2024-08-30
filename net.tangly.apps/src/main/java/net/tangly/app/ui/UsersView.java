@@ -136,6 +136,6 @@ class UsersView extends ItemView<User> {
             .setSortable(true);
         grid.addColumn(User::gravatarEmail).setKey("gravatarEmail").setHeader("Gravatar Email").setAutoWidth(true).setResizable(true)
             .setSortable(true);
-        grid.addColumn(User::active).setKey("active").setHeader("Active").setAutoWidth(true).setResizable(true).setSortable(true);
+        VaadinUtils.addColumnBoolean(grid, User::active, "active", "Active");
     }
 }
