@@ -15,7 +15,6 @@ package net.tangly.erp.products.artifacts;
 
 import net.tangly.commons.lang.Strings;
 import net.tangly.commons.utilities.AsciiDocHelper;
-import net.tangly.core.domain.DocumentGenerator;
 import net.tangly.erp.products.domain.Assignment;
 import net.tangly.erp.products.domain.Effort;
 import net.tangly.erp.products.services.ProductsBusinessLogic;
@@ -35,6 +34,8 @@ import java.time.temporal.ChronoUnit;
 import java.util.*;
 
 import static java.util.stream.Collectors.groupingBy;
+import static net.tangly.core.domain.DocumentGenerator.ORGANIZATION_NAME_KEY;
+import static net.tangly.core.domain.DocumentGenerator.THEME_PATH_KEY;
 import static net.tangly.erp.products.domain.Assignment.convert;
 
 /**
@@ -73,50 +74,45 @@ public class EffortReportEngine {
 
     private void createMonthlyReport(@NotNull Assignment assignment, @NotNull YearMonth month, @NotNull PrintWriter writer) {
         final AsciiDocHelper helper = new AsciiDocHelper(writer);
+        createAttributes(writer);
         helper.header("Work Report %s %d".formatted(Strings.firstOnlyUppercase(month.getMonth().toString()), month.getYear()), 2);
-        writer.println(":hyphens: en_us");
-        writer.println(":organization: " + "tangly llc");
-        writer.println(":copyright: " + "Lorzenhof 27, 6330 Cham");
-        writer.println(":pdf-themesdir: " + properties.getProperty(DocumentGenerator.THEME_PATH_KEY));
-        writer.println(":pdf-theme: " + "tenant");
-        writer.println();
 
         int workedDuration = logic.collect(assignment, null, month.atEndOfMonth()).stream().map(Effort::duration).reduce(0, Integer::sum);
         helper.paragraph("The amount of performed activities is %s %s until end of %s %d.".formatted(convert(workedDuration, unit), text(unit),
             Strings.firstOnlyUppercase(month.getMonth().toString()), month.getYear()));
         helper.paragraph("The daily reports are:");
-        helper.tableHeader(null, "cols=\"1,8a,>1\", options=\"header\"");
 
-        helper.writer().println("^|Date ^|Description ^|Duration (%s)".formatted(text(unit)));
-        helper.writer().println();
-        createTableBody(assignment, month.atDay(1), month.atEndOfMonth(), helper);
-        helper.tableEnd();
+        createActivitiesTable(assignment, month.atDay(1), month.atEndOfMonth(), helper);
         createMinutes(assignment, month.atDay(1), month.atEndOfMonth(), helper);
     }
 
     private void createReport(@NotNull Assignment assignment, LocalDate from, LocalDate to, @NotNull PrintWriter writer) {
         final AsciiDocHelper helper = new AsciiDocHelper(writer);
-        String folder = "/var/tangly-erp/tenant-tangly/docs";
-        writer.println(":organization: " + "tangly llc");
-        writer.println(":copyright: " + "");
-        writer.println(":pdf-themesdir: " + folder);
-        writer.println(":pdf-theme: " + "tenant");
-        writer.println();
-
+        createAttributes(writer);
         helper.header("Work Report", 2);
 
-        helper.paragraph("The described activities were performed between %s and %s."
-            .formatted(from.format(DateTimeFormatter.ISO_LOCAL_DATE), to.format(DateTimeFormatter.ISO_LOCAL_DATE)));
+        helper.paragraph("The described activities were performed between %s and %s.".formatted(from.format(DateTimeFormatter.ISO_LOCAL_DATE),
+            to.format(DateTimeFormatter.ISO_LOCAL_DATE)));
         helper.paragraph("The daily reports are:");
 
-        helper.tableHeader(null, "cols=\"1,5a,>1\", options=\"header\"");
-        helper.writer().println("^|Date ^|Description ^|Duration (%s)".formatted(text(unit)));
-        helper.writer().println();
-        createTableBody(assignment, from, to, helper);
-        helper.tableEnd();
+        createActivitiesTable(assignment, from, to, helper);
+        createMinutes(assignment, from, to, helper);
     }
 
-    private void createTableBody(@NotNull Assignment assignment, LocalDate from, LocalDate to, @NotNull AsciiDocHelper helper) {
+    private void createAttributes(@NotNull PrintWriter writer) {
+        writer.println(":organization: " + properties.getProperty(ORGANIZATION_NAME_KEY));
+        writer.println(":copyright: " + "Lorzenhof 27, 6330 Cham");
+        writer.println(":pdf-themesdir: " + properties.getProperty(THEME_PATH_KEY));
+        writer.println(":pdf-theme: tenant");
+        writer.println(":hyphens: en_us");
+        writer.println();
+    }
+
+    private void createActivitiesTable(@NotNull Assignment assignment, LocalDate from, LocalDate to, @NotNull AsciiDocHelper helper) {
+        helper.tableHeader(null, "cols=\"1,6a,>1\", options=\"header\"");
+        helper.writer().println("^|Date ^|Description ^|Duration (%s)".formatted(text(unit)));
+        helper.writer().println();
+
         var activities = logic.collect(assignment, from, to);
         Map<String, List<Effort>> groups = activities.stream().collect(groupingBy(Effort::contractId));
         if (groups.keySet().size() > 1) {
@@ -126,7 +122,9 @@ public class EffortReportEngine {
             generateEffortsForContract(logic.collect(assignment, from, to), helper);
         }
         int totalDuration = activities.stream().map(Effort::duration).reduce(0, Integer::sum);
-        helper.tableRow("", "Total Time (time in %s)".formatted(text(unit)), convert(totalDuration, unit).toString());
+        helper.tableRow("", helper.bold("Total Time (time in %s)".formatted(text(unit))), helper.bold(convert(totalDuration, unit).toString()));
+
+        helper.tableEnd();
     }
 
     private void createMinutes(@NotNull Assignment assignment, @NotNull LocalDate from, @NotNull LocalDate to, @NotNull AsciiDocHelper helper) {
@@ -136,7 +134,7 @@ public class EffortReportEngine {
             helper.header("Minutes", 2);
         }
         efforts.stream().filter(o -> !Strings.isNullOrBlank(o.minutes())).forEach(o -> {
-            helper.header("Minutes for %s".formatted(o.date().toString()), 3);
+            helper.header("Minutes %s".formatted(o.date().toString()), 3);
             helper.paragraph(o.minutes());
         });
     }
