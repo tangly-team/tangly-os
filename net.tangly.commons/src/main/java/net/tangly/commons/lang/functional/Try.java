@@ -22,7 +22,7 @@ import java.util.function.Supplier;
 
 /**
  * Functional programming strives to minimize side effects, so throwing exceptions is avoided. Instead, if an operation can fail, it should return a
- * representation of its outcome including an indication of success or failure, as well as its result (if successful), or some error data otherwise. In other
+ * representation of its outcome including a sign of success or failure, as well as its result (if successful), or some error data otherwise. In other
  * words, errors in functional programming are just payload.
  * <p>Try should be preferred in functional programming approaches in particular in the context of stream pipelines.</p>
  *

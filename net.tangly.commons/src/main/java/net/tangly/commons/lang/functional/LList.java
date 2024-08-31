@@ -191,7 +191,7 @@ public sealed interface LList<T> permits LList.Nil, LList.ImmutableList {
 
         @Override
         public String toString() {
-            return "%s%s".formatted(first(), rest().isEmpty() ? "" : ", " + rest());
+            return "%s%s".formatted(first(), rest().isEmpty() ? "" : ", %s".formatted(rest()));
         }
     }
 }

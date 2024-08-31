@@ -13,7 +13,7 @@
  */
 
 /**
- * Provides classes for a programmer first behavior driven framework build on the features of Junit 5.
+ * Provides classes for a programmer-first behavior driven framework build on the features of Junit 5.
  */
 module net.tangly.commons {
     exports net.tangly.commons.generator;
@@ -25,13 +25,11 @@ module net.tangly.commons {
     exports net.tangly.commons.utilities;
 
     requires org.apache.logging.log4j;
-    requires com.fasterxml.jackson.core;
     requires com.fasterxml.jackson.databind;
     requires com.fasterxml.jackson.dataformat.yaml;
     requires com.networknt.schema;
     requires jakarta.mail;
     requires org.eclipse.angus.mail;
     requires org.asciidoctor.asciidoctorj.api;
-    requires org.asciidoctor.asciidoctorj;
     requires static transitive org.jetbrains.annotations;
 }

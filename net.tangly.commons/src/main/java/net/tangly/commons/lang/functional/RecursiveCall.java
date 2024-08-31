@@ -33,11 +33,11 @@ public interface RecursiveCall<T> {
     }
 
     default T run() {
-        return Stream.iterate(this, RecursiveCall::apply).filter(RecursiveCall::isComplete).findFirst().get().result();
+        return Stream.iterate(this, RecursiveCall::apply).filter(RecursiveCall::isComplete).findFirst().orElseThrow().result();
     }
 
     static <T> RecursiveCall<T> done(T value) {
-        return new RecursiveCall<T>() {
+        return new RecursiveCall<>() {
             @Override
             public boolean isComplete() {
                 return true;

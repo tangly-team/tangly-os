@@ -19,6 +19,8 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 
 public final class BigDecimalUtilities {
+    public static final BigDecimal fiveCents = new BigDecimal("0.05");
+
     private BigDecimalUtilities() {
     }
 
@@ -27,6 +29,10 @@ public final class BigDecimalUtilities {
     }
 
     public static String formatToPercentage(@NotNull BigDecimal value) {
-        return value.multiply(BigDecimal.valueOf(100)).setScale(2, RoundingMode.HALF_UP).toPlainString() + "%";
+        return "%s%%".formatted(value.multiply(BigDecimal.valueOf(100)).setScale(2, RoundingMode.HALF_UP).toPlainString());
+    }
+
+    public static BigDecimal roundToFiveCents(BigDecimal value) {
+        return value.divide(fiveCents, 0, RoundingMode.HALF_UP).multiply(fiveCents);
     }
 }
