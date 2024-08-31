@@ -49,28 +49,29 @@ class ProductsHdlTest {
             store.createRepository();
 
             var realm = new ProductsEntities();
-            var productsData = store.dataRoot().resolve(ProductsBoundedDomain.DOMAIN);
-            var handler = new ProductsAdapter(realm, new ProductsBusinessLogic(realm), null, productsData, null);
-            handler.importEntities(store);
-            verifyProducts(handler.realm());
-            verifyAssignments(handler.realm(), 0, null);
-            verifyEfforts(handler.realm(), 0, null);
+            var port = new ProductsAdapter(realm, new ProductsBusinessLogic(realm), null, store.dataRoot().resolve(ProductsBoundedDomain.DOMAIN),
+                store.docsRoot().resolve(ProductsBoundedDomain.DOMAIN));
+            port.importEntities(store);
+            verifyProducts(port.realm());
+            verifyAssignments(port.realm(), 0, null);
+            verifyEfforts(port.realm(), 0, null);
 
-            Assignment assignment = createAssignment(handler.realm());
-            handler.realm().assignments().update(assignment);
-            int nrOfAssignments = handler.realm().assignments().items().size();
-            Effort effort = createEffort(handler.realm());
-            handler.realm().efforts().update(effort);
-            int nrOfEfforts = handler.realm().efforts().items().size();
+            Assignment assignment = createAssignment(port.realm());
+            port.realm().assignments().update(assignment);
+            int nrOfAssignments = port.realm().assignments().items().size();
+            Effort effort = createEffort(port.realm());
+            port.realm().efforts().update(effort);
+            int nrOfEfforts = port.realm().efforts().items().size();
 
-            handler.exportEntities(store);
+            port.exportEntities(store);
 
             realm = new ProductsEntities();
-            handler = new ProductsAdapter(realm, new ProductsBusinessLogic(realm), null, productsData, null);
-            handler.importEntities(store);
-            verifyProducts(handler.realm());
-            verifyAssignments(handler.realm(), nrOfAssignments, assignment);
-            verifyEfforts(handler.realm(), nrOfEfforts, effort);
+            port = new ProductsAdapter(realm, new ProductsBusinessLogic(realm), null, store.dataRoot().resolve(ProductsBoundedDomain.DOMAIN),
+                store.docsRoot().resolve(ProductsBoundedDomain.DOMAIN));
+            port.importEntities(store);
+            verifyProducts(port.realm());
+            verifyAssignments(port.realm(), nrOfAssignments, assignment);
+            verifyEfforts(port.realm(), nrOfEfforts, effort);
         }
     }
 

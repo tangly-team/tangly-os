@@ -64,7 +64,6 @@ class InvoicesPersistenceTest {
 
             handler = new InvoicesAdapter(new InvoicesEntities(store.dbRoot().resolve(InvoicesBoundedDomain.DOMAIN)),
                 store.dataRoot().resolve(InvoicesBoundedDomain.DOMAIN), store.docsRoot().resolve(InvoicesBoundedDomain.DOMAIN), new Properties());
-            ;
             handler.importEntities(store);
             assertThat(handler.realm().articles().items().size()).isEqualTo(nrArticles);
             assertThat(handler.realm().invoices().items().size()).isEqualTo(nrInvoices);

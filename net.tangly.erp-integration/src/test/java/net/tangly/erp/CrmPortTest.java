@@ -44,7 +44,7 @@ class CrmPortTest {
         try (FileSystem fs = Jimfs.newFileSystem(Configuration.unix())) {
             var store = new ErpStore(fs);
             store.createRepository();
-            var port = new CrmAdapter(new CrmEntities(), null);
+            var port = new CrmAdapter(new CrmEntities(), store.dataRoot().resolve(CrmBoundedDomain.DOMAIN));
             assertThat(port).isNotNull();
         }
     }
@@ -55,41 +55,40 @@ class CrmPortTest {
             var store = new ErpStore(fs);
             store.createRepository();
 
-            var crmData = store.dataRoot().resolve(CrmBoundedDomain.DOMAIN);
-            var handler = new CrmAdapter(new CrmEntities(), crmData);
-            handler.importEntities(store);
+            var port = new CrmAdapter(new CrmEntities(), store.dataRoot().resolve(CrmBoundedDomain.DOMAIN));
+            port.importEntities(store);
 
-            verifyNaturalEntities(handler.realm(), 0, null);
-            verifyLegalEntities(handler.realm(), 0, null);
-            verifyEmployees(handler.realm());
-            verifyContracts(handler.realm(), 0, null);
-            verifyInteractions(handler.realm());
-            verifyActivities(handler.realm());
-            verifyComments(handler.realm());
+            verifyNaturalEntities(port.realm(), 0, null);
+            verifyLegalEntities(port.realm(), 0, null);
+            verifyEmployees(port.realm());
+            verifyContracts(port.realm(), 0, null);
+            verifyInteractions(port.realm());
+            verifyActivities(port.realm());
+            verifyComments(port.realm());
 
             NaturalEntity naturalEntity = createNaturalEntity();
-            handler.realm().naturalEntities().update(naturalEntity);
-            int nrOfNaturalEntities = handler.realm().naturalEntities().items().size();
+            port.realm().naturalEntities().update(naturalEntity);
+            int nrOfNaturalEntities = port.realm().naturalEntities().items().size();
 
             LegalEntity legalEntity = createLegalEntity();
-            handler.realm().legalEntities().update(legalEntity);
-            int nrOfLegalEntities = handler.realm().legalEntities().items().size();
+            port.realm().legalEntities().update(legalEntity);
+            int nrOfLegalEntities = port.realm().legalEntities().items().size();
 
-            Contract contract = createContract(handler.realm());
-            handler.realm().contracts().update(contract);
-            int nrOfContracts = handler.realm().contracts().items().size();
+            Contract contract = createContract(port.realm());
+            port.realm().contracts().update(contract);
+            int nrOfContracts = port.realm().contracts().items().size();
 
-            handler.exportEntities(store);
+            port.exportEntities(store);
 
-            handler = new CrmAdapter(new CrmEntities(), crmData);
-            handler.importEntities(store);
-            verifyNaturalEntities(handler.realm(), nrOfNaturalEntities, naturalEntity);
-            verifyLegalEntities(handler.realm(), nrOfLegalEntities, legalEntity);
-            verifyEmployees(handler.realm());
-            verifyContracts(handler.realm(), nrOfContracts, contract);
-            verifyInteractions(handler.realm());
-            verifyActivities(handler.realm());
-            verifyComments(handler.realm());
+            port = new CrmAdapter(new CrmEntities(), store.dataRoot().resolve(CrmBoundedDomain.DOMAIN));
+            port.importEntities(store);
+            verifyNaturalEntities(port.realm(), nrOfNaturalEntities, naturalEntity);
+            verifyLegalEntities(port.realm(), nrOfLegalEntities, legalEntity);
+            verifyEmployees(port.realm());
+            verifyContracts(port.realm(), nrOfContracts, contract);
+            verifyInteractions(port.realm());
+            verifyActivities(port.realm());
+            verifyComments(port.realm());
         }
     }
 

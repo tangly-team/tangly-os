@@ -111,7 +111,7 @@ public record ErpStore(@NotNull FileSystem fs) implements DomainAudit {
             copy(LEDGER_PACKAGE_NAME, ledgerRoot, "ledger.tsv");
             copy(LEDGER_PACKAGE_NAME, ledgerRoot, "2015-journal.tsv");
             copy(LEDGER_PACKAGE_NAME, ledgerRoot, "2016-journal.tsv");
-            copy(LEDGER_PACKAGE_NAME, ledgerRoot, RESOURCES + "VatCodes.json");
+            copy(LEDGER_PACKAGE_NAME, ledgerRoot, "%sVatCodes.json".formatted(RESOURCES));
 
             var invoicesRoot = dataRoot().resolve(INVOICES);
             copy(INVOICES_PACKAGE_NAME, invoicesRoot, InvoicesAdapter.ARTICLES_TSV);

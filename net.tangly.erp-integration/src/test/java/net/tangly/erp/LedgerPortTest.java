@@ -72,11 +72,11 @@ class LedgerPortTest {
 
     private LedgerAdapter createLedgerAdapter(@NotNull ErpStore store) {
         store.createRepository();
+        var registry = new TypeRegistry();
         var adapter =
-            new LedgerAdapter(new LedgerEntities(), store.dataRoot().resolve(LedgerBoundedDomain.DOMAIN), store.docsRoot().resolve(LedgerBoundedDomain.DOMAIN),
-                new TypeRegistry());
+            new LedgerAdapter(new LedgerEntities(), store.dataRoot().resolve(LedgerBoundedDomain.DOMAIN), store.docsRoot().resolve(LedgerBoundedDomain.DOMAIN));
+        adapter.importConfiguration(store, registry);
         adapter.importEntities(store);
-        adapter.importConfiguration(store, new TypeRegistry());
         return adapter;
     }
 }
