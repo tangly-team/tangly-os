@@ -21,7 +21,7 @@ import java.util.*;
 /**
  * Default implementation of the {@link MutableEntityExtended} interface. The unique object identifier shall be set at construction.
  */
-public abstract class MutableEntityExtendedImp implements MutableEntityExtended {
+public abstract class MutableEntityExtendedImp implements HasDateRange, MutableEntityExtended {
     private final long oid;
     private String id;
     private String name;

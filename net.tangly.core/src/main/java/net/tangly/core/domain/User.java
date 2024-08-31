@@ -36,7 +36,7 @@ import java.util.Optional;
  * @param passwordHash    password hash is the encrypted password of the user
  * @param active          true if the user is active and can log in the application
  * @param naturalPersonId optional identifier of the natural person associated with the user
- * @param accessRights    list of access rights of the user on the different domains of the application
+ * @param accessRights    list of access rights for the user on the different domains of the application
  * @param gravatarEmail   email address used to retrieve the avatar of the user through the gravatar service
  */
 public record User(@NotNull String username, @NotNull String passwordHash, @NotNull String passwordSalt, boolean active, String naturalPersonId,
@@ -72,7 +72,7 @@ public record User(@NotNull String username, @NotNull String passwordHash, @NotN
         try {
             random = SecureRandom.getInstance("SHA1PRNG");
         } catch (NoSuchAlgorithmException e) {
-            throw new IllegalStateException("mssing random algorithm SHA1PRNG", e);
+            throw new IllegalStateException("missing random algorithm SHA1PRNG", e);
         }
         byte[] salt = new byte[8];
         random.nextBytes(salt);
@@ -81,7 +81,7 @@ public record User(@NotNull String username, @NotNull String passwordHash, @NotN
 
     /**
      * Returns the avatar of a user based on the email address of the user.
-     * @param gravatarEmail email address of the user registred in the gravatar service
+     * @param gravatarEmail email address of the user registered in the gravatar service
      * @return avatar picture of the user
      */
     public static byte[] avatar(@NotNull String gravatarEmail) {

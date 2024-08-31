@@ -17,8 +17,7 @@ package net.tangly.core.domain;
  * Defines the CRUD operations which can be applied on entities.
  */
 public enum Operation {
-    NONE(Operation.NONE_TEXT), VIEW(Operation.VIEW_TEXT), EDIT(Operation.EDIT_TEXT), CREATE(Operation.CREATE_TEXT), DUPLICATE(Operation.DUPLICATE_TEXT),
-    REPLACE(Operation.REPLACE_TEXT), DELETE(Operation.DELETE_TEXT);
+    NONE, VIEW, EDIT, CREATE, DUPLICATE, REPLACE, DELETE;
     public static final String NONE_TEXT = "None";
     public static final String VIEW_TEXT = "View";
     public static final String EDIT_TEXT = "Edit";
@@ -29,12 +28,6 @@ public enum Operation {
 
     public static final String DUPLICATE_TEXT = "Duplicate";
     public static final String DELETE_TEXT = "Delete";
-
-    private final String text;
-
-    Operation(String text) {
-        this.text = text;
-    }
 
     public boolean readonly() {
         return this == VIEW || this == NONE;

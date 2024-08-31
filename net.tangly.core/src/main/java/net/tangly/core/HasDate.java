@@ -29,7 +29,7 @@ public interface HasDate {
     }
 
     /**
-     * Return the date of entity.
+     * Returns the date of entity.
      *
      * @return the date of the entity
      */

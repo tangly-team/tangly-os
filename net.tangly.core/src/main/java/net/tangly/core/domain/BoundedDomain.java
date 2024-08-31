@@ -171,6 +171,9 @@ public class BoundedDomain<R extends Realm, B, P extends Port<R>> implements Has
         return registry;
     }
 
+    public TenantDirectory directory() {
+        return directory;
+    }
 
     public List<DomainEntity<?>> entities() {
         return Collections.emptyList();
@@ -194,9 +197,5 @@ public class BoundedDomain<R extends Realm, B, P extends Port<R>> implements Has
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-    }
-
-    protected TenantDirectory directory() {
-        return directory;
     }
 }

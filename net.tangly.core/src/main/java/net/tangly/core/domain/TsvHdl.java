@@ -201,7 +201,7 @@ public final class TsvHdl {
                 Map.of("filename", source, "count", counter));
         } catch (IOException e) {
             audit.log(EventData.IMPORT_EVENT, EventData.Status.FAILURE, "Entities not imported from TSV file",
-                Map.of("filename", source, "csv-record", loggedRecord), e);
+                Map.of("filename", source, "csv-record", Objects.nonNull(loggedRecord) ? loggedRecord : "no-record-read"), e);
         }
     }
 

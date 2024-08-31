@@ -18,7 +18,7 @@ import org.jetbrains.annotations.NotNull;
 import java.time.LocalDate;
 import java.util.*;
 
-public abstract class MutalbeExternalEntityImp implements MutableExternalEntity {
+public abstract class MutableExternalEntityImp implements MutableExternalEntity {
     private String id;
     private String name;
     private LocalDate date;
@@ -26,7 +26,7 @@ public abstract class MutalbeExternalEntityImp implements MutableExternalEntity 
     private final List<Comment> comments;
     private final Set<Tag> tags;
 
-    protected MutalbeExternalEntityImp(@NotNull String id) {
+    protected MutableExternalEntityImp(@NotNull String id) {
         this.id = id;
         comments = new ArrayList<>();
         tags = new HashSet<>();
@@ -133,7 +133,7 @@ public abstract class MutalbeExternalEntityImp implements MutableExternalEntity 
 
     @Override
     public boolean equals(Object obj) {
-        return (obj instanceof MutalbeExternalEntityImp o) && Objects.equals(id(), o.id()) && Objects.equals(date(), o.date()) && Objects.equals(text(), o.text()) &&
+        return (obj instanceof MutableExternalEntityImp o) && Objects.equals(id(), o.id()) && Objects.equals(date(), o.date()) && Objects.equals(text(), o.text()) &&
             Objects.equals(comments(), o.comments()) && Objects.equals(tags(), o.tags());
     }
 }

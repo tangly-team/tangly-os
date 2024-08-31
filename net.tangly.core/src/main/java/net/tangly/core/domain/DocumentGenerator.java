@@ -34,7 +34,6 @@ public interface DocumentGenerator<T> {
     String COPYRIGHT_KEY = "tenant.organization.copyright";
     String THEME_PATH_KEY = "tenant.root.docs.directory";
     String LOGO_PATH_KEY = "tenant.root.docs.directory";
-    String THEME = "theme";
 
     /**
      * Creates a new output document.

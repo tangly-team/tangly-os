@@ -65,7 +65,7 @@ public record BankConnection(@NotNull String iban, String bic, String institute)
     }
 
     /**
-     * Build a bank connection object from a comma separated string representation.
+     * Builds a bank connection object from a comma separated string representation.
      *
      * @param text comma separated representation of the address instance
      * @return new address object
