@@ -57,37 +57,42 @@ public class Tenant implements TenantDirectory {
         ofAppDomain();
     }
 
+    // region Tenant Directory
+
     @Override
     public String id() {
         return id;
     }
 
     @Override
-    public String getProperty(String property) {
+    public String getProperty(@NotNull String property) {
         return properties.getProperty(property);
     }
 
-    public Properties properties() {
-        return properties;
-    }
-
     @Override
-    public Optional<BoundedDomain<?, ?, ?>> getBoundedDomain(String name) {
+    public Optional<BoundedDomain<?, ?, ?>> getBoundedDomain(@NotNull String name) {
         return Optional.ofNullable(boundedDomains.get(name));
     }
 
+    @Override
     public List<String> usersFor(@NotNull String domain) {
         return apps().logic().usersFor(domain);
     }
 
+    @Override
     public List<String> activeUsersFor(@NotNull String domain) {
         return apps().logic().activeUsersFor(domain);
     }
+
+    // endregion
 
     public boolean isEnabled(@NotNull String domain) {
         return Boolean.parseBoolean(properties.getProperty("%s.enabled".formatted(domain), "true"));
     }
 
+    public Properties properties() {
+        return properties;
+    }
 
     /**
      * Initializes the tenant upon creation. Upon completion, the tenant is ready to be used in the application.

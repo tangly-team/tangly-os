@@ -101,7 +101,7 @@ public class AppJavalinServlet extends HttpServlet {
                         .withScope("write_pets")
                         .withScope("read_pets"))
                 )
-                .withDefinitionProcessor(content -> { // you can add whatever you want to this document using your favourite json api
+                .withDefinitionProcessor(content -> { // you can add whatever you want to this document using your favourite JSON api
                     content.set("test", new TextNode("Value"));
                     return content.toPrettyString();
                 })

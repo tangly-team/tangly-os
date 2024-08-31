@@ -29,7 +29,7 @@ import java.util.Map;
  * the constructor is called exactly once to insure the singleton pattern. The main application is single threaded per convention.</p>
  */
 public final class Application {
-    private static Application self = new Application();
+    private static final Application self = new Application();
 
     private final Map<String, Tenant> tenants;
 

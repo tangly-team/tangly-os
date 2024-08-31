@@ -39,9 +39,4 @@ public class AppsBoundedDomain extends BoundedDomain<AppsRealm, AppsBusinessLogi
     public List<DomainEntity<?>> entities() {
         return List.of(new DomainEntity<>(DOMAIN, User.class, realm().users()));
     }
-
-    @Override
-    public AppsRealm realm() {
-        return super.realm();
-    }
 }

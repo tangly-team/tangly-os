@@ -48,7 +48,7 @@ import java.util.stream.IntStream;
 public class ApplicationView extends AppLayout {
     public static final String USERNAME = "username";
     public static final String USER = "user";
-    public static String IMAGE_NAME = "icon.png";
+    public static final String IMAGE_NAME = "icon.png";
     private final Map<String, BoundedDomainUi<?>> boundedDomainUis;
     private Tabs tabs;
     private Tenant tenant;

@@ -55,7 +55,8 @@ public class AccessRightsView extends ItemView<AccessRights> {
         }
 
         /**
-         * Handle the edition or addition of an immutable comment. If the parameter is not null, it is removed from the list before the changed version is added. The updated
+         * Handles the edition or addition of an immutable comment. If the parameter is not null, it is removed from the list before the changed version is
+         * added. The updated
          * property values are retrieved from the form. The logic of the item form we inherited from takes care of the provider update to synchronize the user interface grid.
          *
          * @param entity the entity to update or null if it is a created or duplicated instance
@@ -78,6 +79,7 @@ public class AccessRightsView extends ItemView<AccessRights> {
     }
 
     public AccessRightsView(@NotNull BoundedDomainUi<?> domain, @NotNull Mode mode) {
+        // TODO handle access rights
         super(AccessRights.class, domain, ProviderInMemory.of(), null, mode);
         form(() -> new AccessRightsForm(this));
         init();
