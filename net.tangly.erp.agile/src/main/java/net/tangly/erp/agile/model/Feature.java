@@ -14,12 +14,12 @@
 package net.tangly.erp.agile.model;
 
 import net.tangly.core.MutableExternalEntity;
-import net.tangly.core.MutalbeExternalEntityImp;
+import net.tangly.core.MutableExternalEntityImp;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
 
-public class Feature extends MutalbeExternalEntityImp implements MutableExternalEntity {
+public class Feature extends MutableExternalEntityImp implements MutableExternalEntity {
     private final List<Story> stories;
 
     public Feature(@NotNull String id) {

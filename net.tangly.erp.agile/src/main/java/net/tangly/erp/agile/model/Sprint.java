@@ -16,10 +16,10 @@ package net.tangly.erp.agile.model;
 import net.tangly.core.DateRange;
 import net.tangly.core.HasDateRange;
 import net.tangly.core.MutableExternalEntity;
-import net.tangly.core.MutalbeExternalEntityImp;
+import net.tangly.core.MutableExternalEntityImp;
 import org.jetbrains.annotations.NotNull;
 
-public class Sprint extends MutalbeExternalEntityImp implements MutableExternalEntity, HasDateRange {
+public class Sprint extends MutableExternalEntityImp implements MutableExternalEntity, HasDateRange {
     private final DateRange interval;
 
     public Sprint(@NotNull String id) {

@@ -106,7 +106,7 @@ public record JsonEntity<T>(List<JsonField<T, ?>> properties, Supplier<T> factor
     }
 
     /**
-     * Export an entity as a JSON entity.
+     * Exports an entity as a JSON entity.
      *
      * @param entity entity to be exported as JSON object
      * @return JSON representation of the entity
@@ -116,7 +116,7 @@ public record JsonEntity<T>(List<JsonField<T, ?>> properties, Supplier<T> factor
     }
 
     /**
-     * Export an entity as a JSON entity.
+     * Exports an entity as a JSON entity.
      *
      * @param entity  entity to be exported as JSON object
      * @param context context of the transformed entity, meaning the owning Java instance

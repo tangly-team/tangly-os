@@ -122,8 +122,9 @@ class AccountsView extends ItemView<Account> {
         grid.addColumn(Account::name).setKey(ItemView.NAME).setHeader(ItemView.NAME_LABEL).setAutoWidth(true).setResizable(true);
         grid.addColumn(Account::group).setKey("group").setHeader("Group").setAutoWidth(true).setResizable(true);
         grid.addColumn(Account::id).setKey(ItemView.ID).setHeader(ItemView.ID_LABEL).setAutoWidth(true).setResizable(true);
-        grid.addColumn(VaadinUtils.coloredRender(o -> o.balance(LocalDate.now()), VaadinUtils.FORMAT)).setKey("balance").setHeader("Balance").setAutoWidth(true)
-            .setResizable(true).setTextAlign(ColumnTextAlign.END);
+        grid.addColumn(VaadinUtils.coloredRender(o -> o.balance(LocalDate.now()), VaadinUtils.FORMAT)).setKey("balance").setHeader("Balance")
+            .setComparator(o -> o.balance(LocalDate.now())).setAutoWidth(true)
+            .setResizable(true).setSortable(true).setTextAlign(ColumnTextAlign.END);
         grid.addColumn(Account::kind).setKey("kind").setHeader("Kind").setAutoWidth(true).setResizable(true);
         grid.addColumn(Account::currency).setKey("currency").setHeader("Currency").setAutoWidth(true).setResizable(true);
         grid.addColumn(Account::ownedBy).setKey("ownedBy").setHeader("Owned By").setAutoWidth(true).setResizable(true);

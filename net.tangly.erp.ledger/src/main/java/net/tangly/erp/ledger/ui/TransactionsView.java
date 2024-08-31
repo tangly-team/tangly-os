@@ -183,11 +183,11 @@ class TransactionsView extends ItemView<Transaction> {
         grid.addColumn(Transaction::date).setKey(DATE).setHeader(DATE_LABEL).setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Transaction::reference).setKey("reference").setHeader("Reference").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Transaction::text).setKey(TEXT).setHeader(TEXT_LABEL).setAutoWidth(true).setResizable(true).setSortable(true);
-        grid.addColumn(Transaction::isSplit).setKey("split").setHeader("Split").setAutoWidth(true).setResizable(true).setSortable(true);
+        VaadinUtils.addColumnBoolean(grid, Transaction::isSplit, "split", "Split");
         grid.addColumn(Transaction::debitAccount).setKey("debit").setHeader("Debit").setAutoWidth(true).setResizable(true);
         grid.addColumn(Transaction::creditAccount).setKey("credit").setHeader("Credit").setAutoWidth(true).setResizable(true);
-        grid.addColumn(new NumberRenderer<>(Transaction::amount, VaadinUtils.FORMAT)).setKey("amount").setHeader("Amount").setAutoWidth(true).setResizable(true)
-            .setTextAlign(ColumnTextAlign.END);
+        grid.addColumn(new NumberRenderer<>(Transaction::amount, VaadinUtils.FORMAT)).setKey("amount").setHeader("Amount").setComparator(Transaction::amount)
+            .setAutoWidth(true).setResizable(true).setSortable(true).setTextAlign(ColumnTextAlign.END);
         grid.addColumn(Transaction::vatCodeAsString).setKey("vatCode").setHeader("VatCode").setAutoWidth(true).setResizable(true).setSortable(true);
         addEntityFilterFields(grid(), filter());
         grid.setItemDetailsRenderer(createTransactionDetailsRenderer());
@@ -215,8 +215,8 @@ class TransactionsView extends ItemView<Transaction> {
             grid.addColumn(AccountEntry::date).setKey(DATE).setHeader(DATE_LABEL).setAutoWidth(true).setResizable(true).setSortable(true);
             grid.addColumn(AccountEntry::reference).setKey("reference").setHeader("Reference").setAutoWidth(true).setResizable(true).setSortable(true);
             grid.addColumn(AccountEntry::text).setKey(TEXT).setHeader(TEXT_LABEL).setAutoWidth(true).setResizable(true).setSortable(true);
-            grid.addColumn(new NumberRenderer<>(AccountEntry::amount, VaadinUtils.FORMAT)).setKey("amount").setHeader("Amount").setAutoWidth(true)
-                .setResizable(true).setTextAlign(ColumnTextAlign.END);
+            grid.addColumn(new NumberRenderer<>(AccountEntry::amount, VaadinUtils.FORMAT)).setKey("amount").setHeader("Amount")
+                .setComparator(AccountEntry::amount).setAutoWidth(true).setResizable(true).setSortable(true).setTextAlign(ColumnTextAlign.END);
             grid.addColumn(AccountEntry::vatCodeAsString).setKey("vatCode").setHeader("VatCode").setAutoWidth(true).setResizable(true).setSortable(true);
             add(grid);
             grid.setWidthFull();

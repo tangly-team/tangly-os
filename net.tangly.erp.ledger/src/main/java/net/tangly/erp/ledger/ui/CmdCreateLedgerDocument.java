@@ -28,7 +28,6 @@ import org.jetbrains.annotations.NotNull;
 
 import java.time.LocalDate;
 import java.time.Month;
-import java.time.Year;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -90,7 +89,7 @@ public class CmdCreateLedgerDocument implements Cmd {
         return dialog;
     }
 
-    protected void close() {
+    private void close() {
         dialog.close();
         dialog = null;
     }
@@ -112,7 +111,6 @@ public class CmdCreateLedgerDocument implements Cmd {
      */
     private void batchReports(String name, int fromYear, int toYear) {
         try (ExecutorService executor = Executors.newVirtualThreadPerTaskExecutor()) {
-            int currentYear = Year.now().getValue();
             for (int year = fromYear; year <= toYear; year++) {
                 final int reportYear = year;
                 executor.submit(() -> {

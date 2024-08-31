@@ -15,6 +15,7 @@ package net.tangly.ui.components;
 
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.HasValue;
+import com.vaadin.flow.component.checkbox.Checkbox;
 import com.vaadin.flow.component.datepicker.DatePicker;
 import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.formlayout.FormLayout;
@@ -123,6 +124,18 @@ public final class VaadinUtils {
         return grid.addColumn(renderer).setKey(key).setHeader(header).setAutoWidth(true).setResizable(true).setSortable(true);
     }
 
+    public static <E> Grid.Column<E> addColumnBigDecimal(@NotNull Grid<E> grid, @NotNull ValueProvider<E, BigDecimal> getter, @NotNull String key,
+                                                         @NotNull String header) {
+        DecimalFormat df = new DecimalFormat("#,###.00");
+        return grid.addColumn(o -> df.format(getter.apply(o))).setKey(key).setComparator(o -> getter.apply(o)).setHeader(header).setAutoWidth(true)
+            .setResizable(true);
+    }
+
+    public static <E> Grid.Column<E> addColumnBoolean(@NotNull Grid<E> grid, @NotNull ValueProvider<E, Boolean> getter, @NotNull String key,
+                                                      @NotNull String header) {
+        return grid.addColumn(VaadinUtils.checkBoxComponentRenderer(getter)).setKey(key).setComparator(getter).setHeader(header).setSortable(true)
+            .setResizable(true);
+    }
 
     public static void setAttribute(Component component, String attribute, Object value) {
         component.getUI().ifPresent(o -> o.getSession().setAttribute(attribute, value));
@@ -193,6 +206,15 @@ public final class VaadinUtils {
         });
     }
 
+    public static <T> ComponentRenderer<Checkbox, T> checkBoxComponentRenderer(Function<T, Boolean> getter) {
+        return new ComponentRenderer<>(item -> {
+            Checkbox checkBox = new Checkbox();
+            checkBox.setValue(getter.apply(item));
+            checkBox.setReadOnly(true);
+            return checkBox;
+        });
+    }
+
     public static <T extends HasMutableTags> ComponentRenderer<Anchor, T> urlComponentRenderer(String tagName) {
         return new ComponentRenderer<>(item -> {
             Anchor anchor = new Anchor();
@@ -216,13 +238,10 @@ public final class VaadinUtils {
 
     public static List<LocalDate> quarterLegends(LocalDate from, LocalDate to) {
         return List.of(LocalDate.parse("2015-12-31"), LocalDate.parse("2016-03-31"), LocalDate.parse("2016-06-30"), LocalDate.parse("2016-09-30"),
-            LocalDate.parse("2016-12-31"),
-            LocalDate.parse("2017-03-31"), LocalDate.parse("2017-06-30"), LocalDate.parse("2017-09-30"), LocalDate.parse("2017-12-31"),
-            LocalDate.parse("2018-03-31"),
-            LocalDate.parse("2018-06-30"), LocalDate.parse("2018-09-30"), LocalDate.parse("2018-12-31"), LocalDate.parse("2019-03-31"),
-            LocalDate.parse("2019-06-30"),
-            LocalDate.parse("2019-09-30"), LocalDate.parse("2019-12-31"), LocalDate.parse("2020-03-31"), LocalDate.parse("2020-06-30"),
-            LocalDate.parse("2020-09-30"),
+            LocalDate.parse("2016-12-31"), LocalDate.parse("2017-03-31"), LocalDate.parse("2017-06-30"), LocalDate.parse("2017-09-30"),
+            LocalDate.parse("2017-12-31"), LocalDate.parse("2018-03-31"), LocalDate.parse("2018-06-30"), LocalDate.parse("2018-09-30"),
+            LocalDate.parse("2018-12-31"), LocalDate.parse("2019-03-31"), LocalDate.parse("2019-06-30"), LocalDate.parse("2019-09-30"),
+            LocalDate.parse("2019-12-31"), LocalDate.parse("2020-03-31"), LocalDate.parse("2020-06-30"), LocalDate.parse("2020-09-30"),
             LocalDate.parse("2020-12-31"));
     }
 

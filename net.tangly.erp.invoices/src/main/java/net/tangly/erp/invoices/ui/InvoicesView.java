@@ -16,11 +16,13 @@ package net.tangly.erp.invoices.ui;
 import com.vaadin.flow.component.HtmlComponent;
 import com.vaadin.flow.component.datepicker.DatePicker;
 import com.vaadin.flow.component.formlayout.FormLayout;
+import com.vaadin.flow.component.grid.ColumnTextAlign;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.html.Hr;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.ValidationException;
 import com.vaadin.flow.data.provider.DataProvider;
+import com.vaadin.flow.data.renderer.NumberRenderer;
 import com.vaadin.flow.router.PageTitle;
 import net.tangly.erp.invoices.domain.Invoice;
 import net.tangly.erp.invoices.domain.InvoiceItem;
@@ -127,7 +129,8 @@ class InvoicesView extends ItemView<Invoice> {
         grid.addColumn(Invoice::name).setKey(NAME).setHeader(NAME_LABEL).setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Invoice::date).setKey("invoicedDate").setHeader("Invoiced Date").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Invoice::dueDate).setKey("dueDate").setHeader("Due Date").setAutoWidth(true).setResizable(true).setSortable(true);
-        grid.addColumn(o -> VaadinUtils.format(o.amountWithoutVat())).setKey("amountWithoutVat").setAutoWidth(true).setResizable(true).setSortable(true);
+        grid.addColumn(new NumberRenderer<>(Invoice::amountWithoutVat, VaadinUtils.FORMAT)).setKey("amountWithoutVat").setHeader("Amount Without VAT")
+            .setComparator(Invoice::amountWithoutVat).setAutoWidth(true).setResizable(true).setSortable(true).setTextAlign(ColumnTextAlign.END);
         grid.addColumn(Invoice::text).setKey(TEXT).setHeader(TEXT_LABEL).setAutoWidth(true).setResizable(true).setSortable(true);
     }
 }

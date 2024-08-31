@@ -34,8 +34,7 @@ import java.time.temporal.ChronoUnit;
 import java.util.*;
 
 import static java.util.stream.Collectors.groupingBy;
-import static net.tangly.core.domain.DocumentGenerator.ORGANIZATION_NAME_KEY;
-import static net.tangly.core.domain.DocumentGenerator.THEME_PATH_KEY;
+import static net.tangly.core.domain.DocumentGenerator.*;
 import static net.tangly.erp.products.domain.Assignment.convert;
 
 /**
@@ -75,6 +74,8 @@ public class EffortReportEngine {
     private void createMonthlyReport(@NotNull Assignment assignment, @NotNull YearMonth month, @NotNull PrintWriter writer) {
         final AsciiDocHelper helper = new AsciiDocHelper(writer);
         createAttributes(writer);
+        writer.println("image::" + properties.getProperty(LOGO_PATH_KEY) + "/tenant-logo.svg[80,80,align=\"center\"]");
+        writer.println();
         helper.header("Work Report %s %d".formatted(Strings.firstOnlyUppercase(month.getMonth().toString()), month.getYear()), 2);
 
         int workedDuration = logic.collect(assignment, null, month.atEndOfMonth()).stream().map(Effort::duration).reduce(0, Integer::sum);
@@ -89,6 +90,7 @@ public class EffortReportEngine {
     private void createReport(@NotNull Assignment assignment, LocalDate from, LocalDate to, @NotNull PrintWriter writer) {
         final AsciiDocHelper helper = new AsciiDocHelper(writer);
         createAttributes(writer);
+        writer.println("image::" + properties.getProperty(LOGO_PATH_KEY) + "/tenant-logo.svg[80,80,align=\"center\"]");
         helper.header("Work Report", 2);
 
         helper.paragraph("The described activities were performed between %s and %s.".formatted(from.format(DateTimeFormatter.ISO_LOCAL_DATE),

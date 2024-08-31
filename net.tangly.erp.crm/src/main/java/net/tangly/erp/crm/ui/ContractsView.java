@@ -97,9 +97,10 @@ class ContractsView extends EntityView<Contract> {
         var grid = grid();
         VaadinUtils.addColumn(grid, e -> e.sellee().name(), "customer", "Customer");
         VaadinUtils.addColumn(grid, Contract::currency, "currency", "Currency");
-        VaadinUtils.addColumn(grid, new NumberRenderer<>(Contract::amountWithoutVat, VaadinUtils.FORMAT), "amount", "Amount").setTextAlign(ColumnTextAlign.END);
-        VaadinUtils.addColumn(grid, new NumberRenderer<>(Contract::budgetInHours, VaadinUtils.FORMAT), "budgetInHours", "Budget In Hours")
-            .setTextAlign(ColumnTextAlign.END);
+        grid.addColumn(new NumberRenderer<>(Contract::amountWithoutVat, VaadinUtils.FORMAT)).setKey("amount").setHeader("Amount")
+            .setComparator(o -> o.amountWithoutVat()).setAutoWidth(true).setResizable(true).setSortable(true).setTextAlign(ColumnTextAlign.END);
+        grid.addColumn(new NumberRenderer<>(Contract::budgetInHours, VaadinUtils.FORMAT)).setKey("budgetInHours").setHeader("Budget In Hours")
+            .setComparator(o -> o.amountWithoutVat()).setAutoWidth(true).setResizable(true).setSortable(true).setTextAlign(ColumnTextAlign.END);
     }
 
     /**
@@ -113,4 +114,3 @@ class ContractsView extends EntityView<Contract> {
         domain().channel().submit(event);
     }
 }
-

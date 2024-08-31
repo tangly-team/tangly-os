@@ -16,14 +16,14 @@ package net.tangly.erp.crm.ui;
 import com.storedobject.chart.*;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.grid.GridVariant;
-import com.vaadin.flow.component.grid.dataview.GridListDataView;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.data.provider.DataProvider;
+import net.tangly.core.HasDateRange;
+import net.tangly.core.providers.ProviderView;
 import net.tangly.erp.crm.domain.Contract;
 import net.tangly.erp.crm.domain.OpportunityCode;
 import net.tangly.erp.crm.services.CrmBusinessLogic;
 import net.tangly.erp.invoices.services.InvoicesBoundedDomain;
-import net.tangly.erp.invoices.services.InvoicesBusinessLogic;
 import net.tangly.ui.app.domain.AnalyticsView;
 import net.tangly.ui.components.VaadinUtils;
 import org.jetbrains.annotations.NotNull;
@@ -31,6 +31,7 @@ import org.jetbrains.annotations.NotNull;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import static net.tangly.ui.components.ItemView.*;
 
@@ -40,29 +41,26 @@ public class AnalyticsCrmView extends AnalyticsView {
     private static final String Funnel = "Funnel";
     private static final String SpentOnContracts = "Spent On Contracts";
     private final CrmBoundedDomainUi domain;
-    private final InvoicesBusinessLogic invoicesLogic;
+    private final InvoicesBoundedDomain invoicesBoundedDomain;
     private SOChart contractsSoChart;
     private SOChart customersSoChart;
     private SOChart funnelSoChart;
     private Grid<Contract> contractsGrid;
 
-    private GridListDataView<Contract> dataView;
-
     public AnalyticsCrmView(@NotNull CrmBoundedDomainUi domain, @NotNull InvoicesBoundedDomain invoicesDomain) {
         this.domain = domain;
-        this.invoicesLogic = invoicesDomain.logic();
-        initialize();
-        refresh();
+        this.invoicesBoundedDomain = invoicesDomain;
+        init();
     }
 
-    private void initialize() {
+    private void init() {
         customersSoChart = createAndRegisterChart(CustomersTurnover);
         contractsSoChart = createAndRegisterChart(ContractsTurnover);
         funnelSoChart = createAndRegisterChart(Funnel);
         contractsGrid = contractsTable();
         var layout = new HorizontalLayout(contractsGrid);
         layout.setSizeFull();
-        tabSheet.add(SpentOnContracts, layout);
+        tabSheet().add(SpentOnContracts, layout);
     }
 
     @Override
@@ -70,17 +68,27 @@ public class AnalyticsCrmView extends AnalyticsView {
         refresh(customersSoChart, this::customersChart);
         refresh(contractsSoChart, this::contractsChart);
         refresh(funnelSoChart, this::funnelChart);
-        contractsGrid.getDataProvider().refreshAll();
+        refreshContractTable();
+    }
+
+    private void refreshContractTable() {
+        if (Objects.nonNull(contractsGrid)) {
+            contractsGrid.setDataProvider(
+                DataProvider.ofCollection(ProviderView.of(domain.domain().realm().contracts(), new HasDateRange.RangeFilter<>(from(), to())).items()));
+            contractsGrid.getDataProvider().refreshAll();
+        }
     }
 
     private Grid<Contract> contractsTable() {
+        var invoicesLogic = invoicesBoundedDomain.logic();
         Grid<Contract> grid = new Grid<>();
         grid.setPageSize(8);
         grid.setSelectionMode(Grid.SelectionMode.NONE);
         grid.addThemeVariants(GridVariant.LUMO_COMPACT);
         grid.setHeight("24em");
         grid.setWidth("1200px");
-        dataView = grid.setItems(DataProvider.ofCollection(domain.domain().realm().contracts().items()));
+        grid.setItems(
+            DataProvider.ofCollection(ProviderView.of(domain.domain().realm().contracts(), new HasDateRange.RangeFilter<>(from(), to())).items()));
         grid.addColumn(Contract::id).setKey(ID).setHeader(ID_LABEL).setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Contract::name).setKey(NAME).setHeader(ID_LABEL).setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Contract::from).setKey(FROM).setHeader(FROM_LABEL).setAutoWidth(true).setResizable(true).setSortable(true);
@@ -89,15 +97,14 @@ public class AnalyticsCrmView extends AnalyticsView {
         grid.addColumn(VaadinUtils.coloredRender(Contract::amountWithoutVat, VaadinUtils.FORMAT)).setHeader("Amount").setAutoWidth(true).setResizable(true)
             .setSortable(true);
         grid.addColumn(VaadinUtils.coloredRender(o -> invoicesLogic.invoicedAmountWithoutVatForContract(o.id(), from(), to()), VaadinUtils.FORMAT))
-            .setHeader("Invoiced")
-            .setAutoWidth(true).setResizable(true).setSortable(true);
+            .setHeader("Invoiced").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(VaadinUtils.coloredRender(o -> invoicesLogic.expensesForContract(o.id(), from(), to()), VaadinUtils.FORMAT)).setHeader("Expenses")
-            .setAutoWidth(true)
-            .setResizable(true).setSortable(true);
+            .setAutoWidth(true).setResizable(true).setSortable(true);
         return grid;
     }
 
     private void contractsChart(@NotNull SOChart chart) {
+        var invoicesLogic = invoicesBoundedDomain.logic();
         List<String> contracts = new ArrayList<>();
         List<BigDecimal> amounts = new ArrayList<>();
         domain.domain().realm().contracts().items().forEach(contract -> {
@@ -111,6 +118,7 @@ public class AnalyticsCrmView extends AnalyticsView {
     }
 
     private void customersChart(@NotNull SOChart chart) {
+        var invoicesLogic = invoicesBoundedDomain.logic();
         List<String> customers = new ArrayList<>();
         List<BigDecimal> amounts = new ArrayList<>();
         domain.domain().realm().legalEntities().items().forEach(customer -> {

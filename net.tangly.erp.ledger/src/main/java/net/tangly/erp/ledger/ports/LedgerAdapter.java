@@ -64,11 +64,10 @@ public class LedgerAdapter implements LedgerPort {
     private final Path docsFolder;
     private TypeRegistry registry;
 
-    public LedgerAdapter(@NotNull LedgerRealm realm, @NotNull Path dataFolder, Path docsFolder, @NotNull TypeRegistry registry) {
+    public LedgerAdapter(@NotNull LedgerRealm realm, @NotNull Path dataFolder, Path docsFolder) {
         this.realm = realm;
         this.dataFolder = dataFolder;
         this.docsFolder = docsFolder;
-        this.registry = registry;
     }
 
     @Override
@@ -120,6 +119,7 @@ public class LedgerAdapter implements LedgerPort {
 
     @Override
     public void importConfiguration(@NotNull DomainAudit audit, @NotNull TypeRegistry registry) {
+        this.registry = registry;
         LedgerTags.registerTags(registry);
         try {
             var type = CodeHelper.build(VatCode.class,

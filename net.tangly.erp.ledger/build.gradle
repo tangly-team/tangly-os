@@ -28,7 +28,9 @@ dependencies {
     implementation project(':net.tangly.core')
     implementation project(':net.tangly.gleam')
     implementation project(':net.tangly.ui')
+    implementation project(':net.tangly.erp.invoices')
 
+    implementation(libs.vaadin.core)
     implementation(libs.vaadin.socharts)
     implementation(libs.eclispsestore.storage)
     implementation(libs.apache.commons.csv)

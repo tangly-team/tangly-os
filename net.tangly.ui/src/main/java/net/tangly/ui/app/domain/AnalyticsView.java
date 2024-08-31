@@ -14,6 +14,7 @@
 package net.tangly.ui.app.domain;
 
 import com.storedobject.chart.*;
+import com.vaadin.flow.component.AttachEvent;
 import com.vaadin.flow.component.datepicker.DatePicker;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
@@ -27,6 +28,7 @@ import java.time.LocalDate;
 import java.time.Month;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.function.BiFunction;
 import java.util.function.Consumer;
 
@@ -35,7 +37,7 @@ public abstract class AnalyticsView extends VerticalLayout implements View {
     private LocalDate from;
     private LocalDate to;
     private boolean readonly;
-    protected final TabSheet tabSheet;
+    private final TabSheet tabSheet;
 
     public AnalyticsView() {
         from = LocalDate.of(2015, Month.NOVEMBER, 1);
@@ -53,8 +55,15 @@ public abstract class AnalyticsView extends VerticalLayout implements View {
             to = e.getValue();
             refresh();
         });
+        tabSheet.addSelectedChangeListener(e -> refresh());
         setSizeFull();
         add(new HorizontalLayout(fromDate, toDate), tabSheet);
+    }
+
+    @Override
+    protected void onAttach(AttachEvent attachEvent) {
+        super.onAttach(attachEvent);
+        refresh();
     }
 
     @Override
@@ -73,6 +82,10 @@ public abstract class AnalyticsView extends VerticalLayout implements View {
 
     public LocalDate to() {
         return to;
+    }
+
+    protected TabSheet tabSheet() {
+        return tabSheet;
     }
 
     protected final NightingaleRoseChart createChart(@NotNull String name, @NotNull CategoryData categoryData, @NotNull Data data) {
@@ -94,7 +107,7 @@ public abstract class AnalyticsView extends VerticalLayout implements View {
     }
 
     protected final LineChart createLineChart(@NotNull String name, @NotNull DateData xValues, @NotNull BiFunction<LocalDate, LocalDate, BigDecimal> compute,
-                                        @NotNull RectangularCoordinate rc) {
+                                              @NotNull RectangularCoordinate rc) {
         LocalDate start;
         LocalDate end = null;
         List<BigDecimal> dataValues = new ArrayList<>();
@@ -111,11 +124,13 @@ public abstract class AnalyticsView extends VerticalLayout implements View {
         return lineChart;
     }
 
-    protected void refresh(@NotNull SOChart chart, @NotNull Consumer<SOChart> populate) {
+    protected void refresh(SOChart chart, @NotNull Consumer<SOChart> populate) {
         try {
-            chart.removeAll();
-            populate.accept(chart);
-            chart.update();
+            if (Objects.nonNull(chart)) {
+                chart.update(false);
+                populate.accept(chart);
+                chart.update(false);
+            }
         } catch (Exception e) {
             logger.atError().withThrowable(e).log("Error when updating SO charts");
         }

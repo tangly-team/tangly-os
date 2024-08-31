@@ -66,11 +66,11 @@ public class InvoiceAsciiDoc implements DocumentGenerator<Invoice> {
             writer.println(":pdf-themesdir: " + properties.getProperty(THEME_PATH_KEY));
             writer.println(":pdf-theme: tenant");
             writer.println();
+            writer.println("image::" + properties.getProperty(LOGO_PATH_KEY) + "/tenant-logo.svg[80,80,align=\"center\"]");
+            writer.println();
             helper.header(bundle.getString("invoice"), 2);
 
             // Needed to make the image converter of asciiDocPdf happy. Still looking to have relative paths working.
-            writer.println("image::" + properties.getProperty(LOGO_PATH_KEY) + "/tenant-logo.svg[80,80,align=\"center\"]");
-            writer.println();
 
             helper.tableHeader(null, "frame=\"none\", grid=\"none\", options=\"noheader\", stripes=\"none\", cols=\"3,4,3\"");
             helper.tableRow(addressText(invoice.invoicingEntity(), invoice.invoicingEntity().address()), "",

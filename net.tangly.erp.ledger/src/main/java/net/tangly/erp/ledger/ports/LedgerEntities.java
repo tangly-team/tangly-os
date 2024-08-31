@@ -13,6 +13,7 @@
 
 package net.tangly.erp.ledger.ports;
 
+import net.tangly.core.domain.RealmEclipseStore;
 import net.tangly.core.providers.Provider;
 import net.tangly.core.providers.ProviderInMemory;
 import net.tangly.core.providers.ProviderPersistence;
@@ -29,7 +30,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class LedgerEntities implements LedgerRealm {
+public class LedgerEntities implements LedgerRealm, RealmEclipseStore {
     private static class Data {
         private final List<Account> accounts;
         private final List<Transaction> transactions;
@@ -63,6 +64,11 @@ public class LedgerEntities implements LedgerRealm {
         if (storageManager != null) {
             storageManager.storeRoot();
         }
+    }
+
+    @Override
+    public boolean isShutdown() {
+        return Objects.nonNull(storageManager) && storageManager.isShutdown();
     }
 
     @Override

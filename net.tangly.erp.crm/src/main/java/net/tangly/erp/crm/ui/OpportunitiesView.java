@@ -82,10 +82,12 @@ class OpportunitiesView extends EntityView<Opportunity> {
         initEntityView();
         var grid = grid();
         VaadinUtils.addColumn(grid, Opportunity::code, "state", "State");
-        VaadinUtils.addColumn(grid, e -> VaadinUtils.format(e.potential()), "potential", "Potential");
+        grid.addColumn(new NumberRenderer<>(Opportunity::potential, VaadinUtils.FORMAT)).setKey("potential").setHeader("Potential")
+            .setComparator(o -> o.potential()).setAutoWidth(true).setResizable(true).setSortable(true).setTextAlign(ColumnTextAlign.END);
         VaadinUtils.addColumn(grid, new NumberRenderer<>(e -> HUNDRED.multiply(e.probability()), VaadinUtils.FORMAT), "probability", "Probability (%)")
-            .setTextAlign(ColumnTextAlign.END);
-        VaadinUtils.addColumn(grid, new NumberRenderer<>(e -> e.potential().multiply(e.probability()), VaadinUtils.FORMAT), "forecast", "Forecast")
+            .setComparator(o -> o.probability()).setTextAlign(ColumnTextAlign.END);
+        grid.addColumn(new NumberRenderer<>(e -> e.potential().multiply(e.probability()), VaadinUtils.FORMAT)).setKey("fotrcast").setHeader(
+                "Forecast").setComparator(e -> e.potential().multiply(e.probability())).setAutoWidth(true).setResizable(true).setSortable(true)
             .setTextAlign(ColumnTextAlign.END);
     }
 }

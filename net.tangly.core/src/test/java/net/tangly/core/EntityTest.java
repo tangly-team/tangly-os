@@ -54,7 +54,7 @@ class EntityTest {
         }
     }
 
-    static class ExternalEntity extends MutalbeExternalEntityImp {
+    static class ExternalEntity extends MutableExternalEntityImp {
         static ExternalEntity of(String id) {
             return new ExternalEntity(id);
         }

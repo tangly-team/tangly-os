@@ -54,19 +54,18 @@ public class Transaction implements HasDate, HasText {
     }
 
     public Transaction(LocalDate date, String debitAccount, String creditAccount, BigDecimal amount, String text, String reference, VatCode vatCode,
-                       LocalDate dateExpected,
-                       List<AccountEntry> splits) {
+                       LocalDate dateExpected, List<AccountEntry> splits) {
         this(date, text, reference, (debitAccount != null) ? AccountEntry.debit(debitAccount, date, amount, null, null, vatCode) : null,
-            (creditAccount != null) ? AccountEntry.credit(creditAccount, date, amount, null, null, vatCode) : null, vatCode, dateExpected, false, splits);
+            (creditAccount != null) ? AccountEntry.credit(creditAccount, date, amount, null, null, vatCode) : null, dateExpected, false, splits);
     }
 
-    public static Transaction of(LocalDate date, String reference, String text, AccountEntry debitAccount, AccountEntry creditAccount, VatCode vatCode,
+    public static Transaction of(LocalDate date, String reference, String text, AccountEntry debitAccount, AccountEntry creditAccount,
                                  LocalDate dateExpected, List<AccountEntry> splits) {
-        return new Transaction(date, text, reference, debitAccount, creditAccount, vatCode, dateExpected, false, splits);
+        return new Transaction(date, text, reference, debitAccount, creditAccount, dateExpected, false, splits);
     }
 
-    public Transaction(LocalDate date, String text, String reference,
-                       AccountEntry debit, AccountEntry credit, VatCode vatCode, LocalDate dateExpected, boolean synthetic, List<AccountEntry> splits) {
+    public Transaction(LocalDate date, String text, String reference, AccountEntry debit, AccountEntry credit, LocalDate dateExpected,
+                       boolean synthetic, List<AccountEntry> splits) {
         this.date = date;
         this.text = text;
         this.reference = reference;
@@ -87,10 +86,8 @@ public class Transaction implements HasDate, HasText {
 
     public static Transaction ofSynthetic(LocalDate date, String debitAccount, String creditAccount, BigDecimal amount, String text, String reference,
                                           VatCode vatCode, LocalDate dateExpected, List<AccountEntry> splits) {
-        return new Transaction(date, text, reference,
-            (debitAccount != null) ? AccountEntry.debit(debitAccount, date, amount, null, null, vatCode) : null,
-            (creditAccount != null) ? AccountEntry.credit(creditAccount, date, amount, null, null, vatCode) : null,
-            vatCode, dateExpected, true, splits);
+        return new Transaction(date, text, reference, (debitAccount != null) ? AccountEntry.debit(debitAccount, date, amount, null, null, vatCode) : null,
+            (creditAccount != null) ? AccountEntry.credit(creditAccount, date, amount, null, null, vatCode) : null, dateExpected, true, splits);
     }
 
     public List<AccountEntry> debitSplits() {

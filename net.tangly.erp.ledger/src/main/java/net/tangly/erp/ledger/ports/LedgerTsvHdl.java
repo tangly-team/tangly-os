@@ -223,7 +223,7 @@ public class LedgerTsvHdl {
                         new AccountEntry(debitAccount, Dates.of(date), amount, null, null, true, of(vatCode), defineSegments(debitValues)) : null;
                     var credit = (creditAccount != null) ?
                         new AccountEntry(creditAccount, Dates.of(date), amount, null, null, false, of(vatCode), defineSegments(creditValues)) : null;
-                    Transaction transaction = Transaction.of(Dates.of(date), reference, text, debit, credit, of(vatCode), Dates.of(dateExpected), splits);
+                    Transaction transaction = Transaction.of(Dates.of(date), reference, text, debit, credit, Dates.of(dateExpected), splits);
                     ledger.book(transaction);
                     ++counter;
                     audit.log(EventData.IMPORT_EVENT, EventData.Status.SUCCESS, "%s imported to journal".formatted(Transaction.class.getSimpleName()),
@@ -264,9 +264,9 @@ public class LedgerTsvHdl {
                         }
                     }
                     ++counter;
-                    audit.log(EventData.EXPORT_EVENT, EventData.Status.INFO, "exported from journal", Map.of(SOURCE, path, "counter", counter));
                 }
             }
+            audit.log(EventData.EXPORT_EVENT, EventData.Status.INFO, "exported from journal", Map.of(SOURCE, path, "counter", counter));
         } catch (IOException e) {
             throw new UncheckedIOException(e);
         }
