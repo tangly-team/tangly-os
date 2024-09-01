@@ -33,7 +33,7 @@ dependencies {
     implementation(libs.apache.commons.csv)
     implementation(libs.vaadin.core)
     implementation(libs.vaadin.embedded.jetty)
-    implementation("io.javalin:javalin:5.6.4") {
+    implementation("io.javalin:javalin:6.3.0") {
         exclude group: 'org.eclipse.jetty'
         exclude group: 'org.eclipse.jetty.websocket'
         exclude group: 'com.fasterxml.jackson.core'
