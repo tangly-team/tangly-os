@@ -156,6 +156,10 @@ Comments::
 Comments are user-specific notes describing various aspects of an entity.
 Comments are unstructured.
 The software does not generally process them.
+Codes::
+Codes define a customer-specific enumeration type. The values are configurable and expandable.
+The signification of the code is hard-coded in the software.
+The value set is customer-specific.
 Tags::
 Tags define a customer-specific ontology to classify entities in their system.
 Tags without value are equivalent to labels.
@@ -191,6 +195,13 @@ interface HasTags {
     boolean remove(@NotNull Tag tag);
     void removeAllTags();
 }
+
+public interface Code {
+    int id();
+    String code();
+    boolean enabled();
+}
+
 ----
 
 The entity abstraction wraps the above mixins and introduces the concept of validating an instance.

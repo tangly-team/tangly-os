@@ -7,6 +7,7 @@ params:
   featured: "blog/2023/pics/2023-11-01-head.png"
 ---
 
+:ref-java-certification: https://www.oracle.com/education/training/java/
 include::../fragments/_config-mb-blog.adoc[]
 
 image::2023-11-01-head.png[width=420,height=360,role=left]
@@ -22,7 +23,7 @@ Certifications can be a great bargaining chip when it comes to negotiating a rai
 
 == Preparing for the certification
 
-The current https://education.oracle.com/java-se-17-developer/pexam_1Z0-829[Java SE 17 Developer] examination process and examination goals are well-documented.
+The current {ref-java-certification}[Java SE 17 Developer] examination process and examination goals are well-documented.
 Beware that only one examination exists.
 The same certification applies for developers pursuing a first certification, and for the developers upgrading to the current LTS version.
 

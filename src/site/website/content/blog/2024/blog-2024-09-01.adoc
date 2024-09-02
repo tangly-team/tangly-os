@@ -26,6 +26,9 @@ The software is typically specialized for particular hardware with specific purp
 As an example, some embedded applications are designed to run for months or years in a row without being turned off or receiving a reset command.
 It is used in areas from agriculture to space probes and more.
 
+Elevators are a good example of embedded applications you can find in everyday life.
+They are designed to run for decades.
+
 == Introduction
 
 There are some fundamental concepts related to embedded application development.
@@ -46,7 +49,7 @@ Portability::
 Is the measure of how easy it is to use the same embedded software in multiple environments.
 It requires generalized abstractions between the application program logic and the low-level system interfaces. +
 +
-As an example, embedded devices used in domotic applications must be adjustable no matter the place where they have to be installed.
+As an example, embedded devices used in domotics applications must be adjustable no matter the place where they have to be installed.
 Reliability::
 Is the survival probability of the system when the function is critical during the run time.
 As an example, embedded systems used in self-driven cars must be able to make decisions in runtime, where many tasks are critical to keep passengers and pedestrians safe.
@@ -151,8 +154,8 @@ footnote:[The effort to implement such a layer is huge. Validation and verificat
 
 Here are some tips and tricks to help you develop embedded applications:
 
-* Use {cpp} as the programming language for your embedded applications.
-* use a 64-bit processor and plenty of memory for your embedded applications.
+* Use {cpp} as programming language for your embedded applications.
+* Use a 64-bit processor and plenty of memory for your embedded applications.
 Optimizing your hardware platform is only worth the effort if you are producing ten thousand units per year or more.
 * Use an open source RTOS like {ref-freertos} to manage your tasks.
 Avoid {ref-plc} programming model for embedded applications if possible.
@@ -161,7 +164,6 @@ They do not scale well and are not as efficient as a multitasking model.
 Development tools on your development machine are more powerful and easier to use than on the target platform.
 * Use Git and a platform like {ref-github} or {ref-gitlab} to manage your source code.
 * Beware of the various standards and regulations that apply to your embedded application.
-
 
 [bibliography]
 == Links
