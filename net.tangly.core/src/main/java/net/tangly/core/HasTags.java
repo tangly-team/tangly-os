@@ -25,14 +25,18 @@ import java.util.stream.Collectors;
  */
 public interface HasTags {
     /**
-     * Return the collection of tags for the entity.
+     * String representation of the property associated with the mixin.
+     */
+    String TAGS = "tags";
+    /**
+     * Returns the collection of tags for the entity.
      *
      * @return collection of tags
      */
     Collection<Tag> tags();
 
     /**
-     * Find the tag with the given tag identification containing optional namespace and tag name.
+     * Finds the tag with the given tag identification containing optional namespace and tag name.
      *
      * @param tag tag identification of the tag to be removed
      * @return requested tag as optional
@@ -42,7 +46,7 @@ public interface HasTags {
     }
 
     /**
-     * Search for a tag with the given namespace and name.
+     * Searches for a tag with the given namespace and name.
      *
      * @param namespace optional namespace of the tag to be found
      * @param name      name of the tag to be found

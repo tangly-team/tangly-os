@@ -16,6 +16,7 @@ package net.tangly.core.domain;
 import net.tangly.core.HasId;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -39,6 +40,12 @@ public interface TenantDirectory extends HasId {
     String TENANT_ORGANIZATION_LANGUAGE_PROPERTY = "tenant.organization.language";
     String TENANT_ORGANIZATION_DATE_FORMAT_PROPERTY = "tenant.organization.date.format";
     String TENANT_ORGANIZATION_ADDRESS_PROPERTY = "tenant.organization.address";
+
+    /**
+     * Returns the bounded domains available in the tenant.
+     * @return bounded domains available in the tenant
+     */
+    Collection<BoundedDomain<?, ?, ?>> boundedDomains();
 
     /**
      * Returns the bounded domain associated with the domain name in this tenant.

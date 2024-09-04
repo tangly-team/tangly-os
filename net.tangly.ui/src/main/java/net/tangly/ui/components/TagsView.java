@@ -115,8 +115,9 @@ public class TagsView extends ItemView<Tag> {
         }
 
         /**
-         * Handle the edition or addition of an immutable tag. If the parameter is not null, it is removed from the list before the changed version is added. The updated property
-         * values are retrieved from the form. The logic of the item form we inherited from takes care of the provider update to synchronize the user interface grid.
+         * Handles the edition or addition of an immutable tag. If the parameter is not null, it is removed from the list before the changed version is added.
+         * The updated property values are retrieved from the form. The logic of the item form we inherited from takes care of the provider update to
+         * synchronize the user interface grid.
          *
          * @param entity the entity to update or null if it is a created or duplicated instance
          * @return new tag of the entity

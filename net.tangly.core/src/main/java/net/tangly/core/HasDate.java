@@ -22,6 +22,11 @@ import java.util.function.Predicate;
  * Mixin indicating the class has the capability to have a date.
  */
 public interface HasDate {
+    /**
+     * String representation of the property associated with the mixin.
+     */
+    String DATE = "date";
+
     record IntervalFilter<T extends HasDate>(LocalDate from, LocalDate to) implements Predicate<T> {
         public boolean test(@NotNull T entity) {
             return (from == null || !from.isAfter(entity.date())) && (to == null || !to.isBefore(entity.date()));

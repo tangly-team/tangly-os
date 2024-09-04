@@ -45,9 +45,6 @@ import net.tangly.erp.products.services.ProductsBusinessLogic;
 import org.apache.commons.cli.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.eclipse.jetty.ee10.servlet.DefaultServlet;
-import org.eclipse.jetty.ee10.servlet.ServletHolder;
-import org.eclipse.jetty.ee10.webapp.WebAppContext;
 import org.eclipse.jetty.io.RuntimeIOException;
 import org.jetbrains.annotations.NotNull;
 
@@ -91,19 +88,7 @@ public final class Main {
         } else {
             Application.instance().putTenant(createTenant(Paths.get(propertyFile)));
         }
-        new VaadinBoot() {
-            @Override
-            protected @NotNull WebAppContext createWebAppContext() throws IOException {
-                var tenant = Application.instance().tenant("tangly");
-                final WebAppContext context = super.createWebAppContext();
-                ServletHolder staticFiles = new ServletHolder("staticFiles", new DefaultServlet());
-                String docsFolder = tenant.getProperty("tenant.root.docs.directory");
-                staticFiles.setInitParameter("resourceBase", docsFolder);
-                String tenantName = tenant.getProperty("tenant.name");
-                context.addServlet(staticFiles, "/" + tenantName + "/docs/*");
-                return context;
-            }
-        }.setPort(port).withContextRoot(contextRoot).run();
+        new VaadinBoot().setPort(port).withContextRoot(contextRoot).run();
     }
 
     private static Options options() {
@@ -159,7 +144,8 @@ public final class Main {
         if (tenant.isEnabled(InvoicesBoundedDomain.DOMAIN)) {
             var realm = tenant.inMemory() ? new InvoicesEntities() : new InvoicesEntities(Path.of(tenant.databases(), InvoicesBoundedDomain.DOMAIN));
             var domain = new InvoicesBoundedDomain(realm, new InvoicesBusinessLogic(realm),
-                new InvoicesAdapter(realm, Path.of(tenant.imports(InvoicesBoundedDomain.DOMAIN)), Path.of(tenant.docs(InvoicesBoundedDomain.DOMAIN)), tenant.properties()),
+                new InvoicesAdapter(realm, Path.of(tenant.imports(InvoicesBoundedDomain.DOMAIN)), Path.of(tenant.docs(InvoicesBoundedDomain.DOMAIN)),
+                    tenant.properties()),
                 tenant);
             tenant.registerBoundedDomain(domain);
         }
@@ -198,7 +184,7 @@ public final class Main {
         final String username = "aeon";
         String passwordSalt = User.newSalt();
         String passwordHash = User.encryptPassword("aeon", passwordSalt);
-        var rights = List.of(new AccessRights(username, AppsBoundedDomain.DOMAIN, AccessRightsCode.domainAdmin));
+        var rights = List.of(new AccessRights(username, AppsBoundedDomain.DOMAIN, AccessRightsCode.appAdmin));
         return new User(username, passwordHash, passwordSalt, true, null, rights, null);
     }
 }

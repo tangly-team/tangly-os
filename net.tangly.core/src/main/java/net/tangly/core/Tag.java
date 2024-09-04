@@ -46,7 +46,7 @@ public record Tag(String namespace, @NotNull String name, String value) {
     }
 
     /**
-     * Transforms raw tags textual representation into a set of tags
+     * Transforms raw tags textual representation into a set of tags.
      *
      * @param rawTags textual representation of tags
      * @return set of the tag instances

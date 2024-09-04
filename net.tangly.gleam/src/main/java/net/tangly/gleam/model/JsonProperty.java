@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2022 Marcel Baumann
+ * Copyright 2006-2024 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -8,6 +8,7 @@
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ *
  */
 
 package net.tangly.gleam.model;
@@ -19,6 +20,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Currency;
 import java.util.Locale;
+import java.util.Objects;
 import java.util.function.BiConsumer;
 import java.util.function.BiFunction;
 import java.util.function.Function;
@@ -45,6 +47,10 @@ public record JsonProperty<T, U>(@NotNull String key, @NotNull Function<T, U> ge
 
     public static <T> JsonProperty<T, String> ofString(@NotNull String key, Function<T, String> getter, BiConsumer<T, String> setter) {
         return of(key, getter, setter, o -> o.has(key) ? o.getString(key) : null, (u, o) -> o.put(key, u));
+    }
+
+    public static <T> JsonProperty<T, String> ofConstant(@NotNull String key, String value) {
+        return of(key, _ -> value, null, o -> o.has(key) ? o.getString(key) : null, (u, o) -> o.put(key, value));
     }
 
     public static <T> JsonProperty<T, Integer> ofInt(@NotNull String key, Function<T, Integer> getter, BiConsumer<T, Integer> setter) {
@@ -121,8 +127,10 @@ public record JsonProperty<T, U>(@NotNull String key, @NotNull Function<T, U> ge
 
     @Override
     public void imports(@NotNull T entity, @NotNull JSONObject object) {
-        U property = extracts.apply(object);
-        setter().accept(entity, property);
+        if (Objects.nonNull(setter())) {
+            U property = extracts.apply(object);
+            setter().accept(entity, property);
+        }
     }
 
     @Override

@@ -37,6 +37,7 @@ import java.util.Objects;
 
 /**
  * Regular CRUD view on activity abstraction.
+ * THe activities view is an in-memory aggregate of all activities defined on the opportunities of the CRM domain.
  */
 class ActivitiesView extends ItemView<Activity> {
     private static final String CODE = "code";
@@ -144,7 +145,9 @@ class ActivitiesView extends ItemView<Activity> {
     }
 
     public ActivitiesView(@NotNull CrmBoundedDomainUi domain, @NotNull Mode mode, boolean isViewEmbedded) {
-        super(Activity.class, domain, domain.domain().realm().activities(), new ActivityFilter(), mode, isViewEmbedded);
+        super(Activity.class, domain,
+            ProviderInMemory.of(domain.domain().realm().opportunities().items().stream().flatMap(o -> o.activities().stream()).toList()), new ActivityFilter(),
+            mode, isViewEmbedded);
         form(() -> new ActivityForm(this));
         init();
     }
@@ -161,9 +164,9 @@ class ActivitiesView extends ItemView<Activity> {
     @Override
     protected void buildMenu() {
         if (isViewEmbedded()) {
-            menu().buildCrudMenu(mode(), this);
-        } else {
             menu().add(Mode.VIEW_TEXT, event -> event.getItem().ifPresent(o -> form().get().display(o)), GridMenu.MenuItemType.ITEM);
+        } else {
+            menu().buildCrudMenu(mode(), this);
         }
         addActions(menu());
     }

@@ -70,6 +70,11 @@ public class Tenant implements TenantDirectory {
     }
 
     @Override
+    public Collection<BoundedDomain<?, ?, ?>> boundedDomains() {
+        return boundedDomains.values();
+    }
+
+    @Override
     public Optional<BoundedDomain<?, ?, ?>> getBoundedDomain(@NotNull String name) {
         return Optional.ofNullable(boundedDomains.get(name));
     }
@@ -109,10 +114,6 @@ public class Tenant implements TenantDirectory {
      */
     public void shutdown() {
         boundedDomains.values().forEach(BoundedDomain::shutdown);
-    }
-
-    public Map<String, BoundedDomain<?, ?, ?>> boundedDomains() {
-        return Collections.unmodifiableMap(boundedDomains);
     }
 
     public Map<String, BoundedDomainRest> boundedDomainRests() {

@@ -13,9 +13,8 @@
 
 package net.tangly.core.tsv;
 
-import net.tangly.core.Address;
-import net.tangly.core.BankConnection;
-import net.tangly.core.DateRange;
+import net.tangly.core.*;
+import net.tangly.core.domain.Document;
 import net.tangly.gleam.model.TsvEntity;
 import net.tangly.gleam.model.TsvProperty;
 import org.apache.commons.csv.CSVRecord;
@@ -24,6 +23,9 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
 import java.util.function.Function;
+
+import static net.tangly.core.HasId.ID;
+import static net.tangly.core.HasTags.TAGS;
 
 public class TsvHdlCore {
     public static final String NAME = "name";
@@ -46,12 +48,23 @@ public class TsvHdlCore {
     private TsvHdlCore() {
     }
 
+    public static TsvEntity<Document> createTsvDocument() {
+        Function<CSVRecord, Document> imports = (CSVRecord csv) -> new Document(TsvEntity.get(csv, ID), TsvEntity.get(csv, NAME), ofDate(csv, DATE),
+            DateRange.of(ofDate(csv, FROM_DATE), ofDate(csv, TO_DATE)), TsvEntity.get(csv, TEXT), Boolean.valueOf(TsvEntity.get(csv, "generated")),
+            Tag.toTags(TsvEntity.get(csv, TAGS)));
+        List<TsvProperty<Document, ?>> fields =
+            List.of(TsvProperty.ofString(ID, Document::id), TsvProperty.ofString(NAME, Document::name), TsvProperty.ofDate(DATE, Document::date, null),
+                TsvProperty.of(TsvHdlCore.createTsvDateRange(), Document::range, null), TsvProperty.ofString(TEXT, Document::text),
+                TsvProperty.ofBoolean("generated", Document::generated), TsvProperty.ofString(TAGS, HasTags::rawTags, null));
+        return TsvEntity.of(Document.class, fields, imports);
+    }
+
     public static TsvEntity<BankConnection> createTsvBankConnection() {
-        Function<CSVRecord, BankConnection> imports = (CSVRecord csv) -> BankConnection.of(TsvEntity.get(csv, IBAN),
-            TsvEntity.get(csv, BIC), TsvEntity.get(csv, INSTITUTE));
-        List<TsvProperty<BankConnection, ?>> fields = List.of(TsvProperty.ofString("iban", BankConnection::iban),
-            TsvProperty.ofString("bic", BankConnection::bic),
-            TsvProperty.ofString(INSTITUTE, BankConnection::institute));
+        Function<CSVRecord, BankConnection> imports =
+            (CSVRecord csv) -> BankConnection.of(TsvEntity.get(csv, IBAN), TsvEntity.get(csv, BIC), TsvEntity.get(csv, INSTITUTE));
+        List<TsvProperty<BankConnection, ?>> fields =
+            List.of(TsvProperty.ofString("iban", BankConnection::iban), TsvProperty.ofString("bic", BankConnection::bic),
+                TsvProperty.ofString(INSTITUTE, BankConnection::institute));
         return TsvEntity.of(BankConnection.class, fields, imports);
     }
 
@@ -65,14 +78,15 @@ public class TsvHdlCore {
 
     public static TsvEntity<DateRange> createTsvDateRange() {
         Function<CSVRecord, DateRange> imports = (CSVRecord csv) -> DateRange.of(ofDate(csv, FROM_DATE), ofDate(csv, TO_DATE));
-        List<TsvProperty<DateRange, ?>> fields = List.of(TsvProperty.ofDate(FROM_DATE, DateRange::from, null), TsvProperty.ofDate(TO_DATE, DateRange::to, null));
+        List<TsvProperty<DateRange, ?>> fields =
+            List.of(TsvProperty.ofDate(FROM_DATE, DateRange::from, null), TsvProperty.ofDate(TO_DATE, DateRange::to, null));
         return TsvEntity.of(DateRange.class, fields, imports);
     }
 
     public static Address ofAddress(CSVRecord csv) {
         return (Objects.isNull(TsvEntity.get(csv, LOCALITY)) || Objects.isNull(TsvEntity.get(csv, COUNTRY))) ? null :
-            new Address(TsvEntity.get(csv, STREET), TsvEntity.get(csv, EXTENDED), TsvEntity.get(csv, POBOX), TsvEntity.get(csv, POSTCODE), TsvEntity.get(csv, LOCALITY),
-                TsvEntity.get(csv, REGION), TsvEntity.get(csv, COUNTRY));
+            new Address(TsvEntity.get(csv, STREET), TsvEntity.get(csv, EXTENDED), TsvEntity.get(csv, POBOX), TsvEntity.get(csv, POSTCODE),
+                TsvEntity.get(csv, LOCALITY), TsvEntity.get(csv, REGION), TsvEntity.get(csv, COUNTRY));
     }
 
     public static LocalDate ofDate(CSVRecord csv, String field) {

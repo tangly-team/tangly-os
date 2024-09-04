@@ -51,6 +51,7 @@ public class ProductsAdapter implements ProductsPort {
     public static final String PRODUCTS_TSV = "products.tsv";
     public static final String WORK_CONTRACTS_TSV = "work-contracts.tsv";
     public static final String ASSIGNMENTS_TSV = "assignments.tsv";
+    public static final String SCHEMA_FILE = "assignment-efforts-schema-1.0.0.json";
     public static final String YAML_EXT = ".yaml";
 
     private final ProductsRealm realm;
@@ -126,7 +127,7 @@ public class ProductsAdapter implements ProductsPort {
     @Override
     public void importEfforts(@NotNull DomainAudit audit, @NotNull Reader stream, @NotNull String source, boolean replace) throws IORuntimeException {
         try {
-            if (ValidatorUtilities.isYamlValid(new StringReader(source), "assignment-efforts-schema.json")) {
+            if (ValidatorUtilities.isYamlValid(new StringReader(source), SCHEMA_FILE)) {
                 YamlMapping data = Yaml.createYamlInput(stream).readYamlMapping();
                 String contractId = data.string("contractId");
                 String collaborator = data.string("collaborator");

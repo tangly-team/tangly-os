@@ -38,14 +38,15 @@ import java.util.concurrent.Flow;
  * domain interface.</p>
  */
 public abstract class BoundedDomainUi<T extends BoundedDomain<?, ?, ?>> implements BoundedDomain.EventListener {
-    public static final String ENTITIES = "Entities";
     public static final String ADMINISTRATION = "Administration";
     public static final String ANALYTICS = "Analytics";
-    public static final String STATISTICS = "Statistics";
-    public static final String IMPORT = "Import";
-    public static final String EXPORT = "Export";
     public static final String CLEAR = "Clear";
+    public static final String DOCUMENTS = "Documents";
+    public static final String ENTITIES = "Entities";
+    public static final String EXPORT = "Export";
+    public static final String IMPORT = "Import";
     public static final String LOAD = "Load";
+    public static final String STATISTICS = "Statistics";
 
     private final T domain;
     private AccessRights rights;
@@ -85,7 +86,8 @@ public abstract class BoundedDomainUi<T extends BoundedDomain<?, ?, ?>> implemen
     }
 
     /**
-     * Select the bounded domain and the associated default view to be displayed from the bounded domain user interface and update the menu to reflect the bounded domain.
+     * Selects the bounded domain and the associated default view to be displayed from the bounded domain user interface and update the menu to reflect the
+     * bounded domain.
      *
      * @param layout  layout in which the view will be displayed
      * @param menuBar empty menu bar of the layout. The domain adds domain-specific menu items to the menu bar
@@ -93,7 +95,7 @@ public abstract class BoundedDomainUi<T extends BoundedDomain<?, ?, ?>> implemen
     public abstract void select(@NotNull AppLayout layout, @NotNull MenuBar menuBar);
 
     /**
-     * Refresh the views of the bounded domain user interface because the domain entities have changed.
+     * Refreshes the views of the bounded domain user interface because the domain entities have changed.
      */
     public void refreshViews() {
         views.values().forEach(view -> view.ifPresent(View::refresh));
@@ -158,15 +160,28 @@ public abstract class BoundedDomainUi<T extends BoundedDomain<?, ?, ?>> implemen
      * </ul>
      */
     protected void addAdministration(@NotNull AppLayout layout, @NotNull MenuBar menuBar, @NotNull LazyReference<?> domainView) {
-        MenuItem menuItem = menuBar.addItem(ADMINISTRATION);
-        SubMenu subMenu = menuItem.getSubMenu();
-        subMenu.addItem(STATISTICS, _ -> select(layout, domainView));
-        var action = subMenu.addItem(IMPORT, _ -> executeGlobalAction(() -> domain.port().importEntities(domain())));
-        action.setEnabled(hasDomainAdminRights());
-        action = subMenu.addItem(EXPORT, _ -> executeGlobalAction(() -> domain.port().exportEntities(domain())));
-        action.setEnabled(hasDomainAdminRights());
-        action = subMenu.addItem(CLEAR, _ -> executeGlobalAction(() -> domain.port().clearEntities(domain())));
-        action.setEnabled(hasDomainAdminRights());
+        if (hasDomainAdminRights() || hasAppAdminRights()) {
+            MenuItem menuItem = menuBar.addItem(ADMINISTRATION);
+            SubMenu subMenu = menuItem.getSubMenu();
+            var action = subMenu.addItem(STATISTICS, _ -> select(layout, domainView));
+
+            subMenu.addSeparator();
+            action.setEnabled(hasDomainAdminRights());
+            action = subMenu.addItem(IMPORT, _ -> executeGlobalAction(() -> domain.port().importEntities(domain())));
+            action.setEnabled(hasDomainAdminRights());
+            action = subMenu.addItem(EXPORT, _ -> executeGlobalAction(() -> domain.port().exportEntities(domain())));
+            action.setEnabled(hasDomainAdminRights());
+            action = subMenu.addItem(CLEAR, _ -> executeGlobalAction(() -> domain.port().clearEntities(domain())));
+            action.setEnabled(hasDomainAdminRights());
+
+            subMenu.addSeparator();
+            action = subMenu.addItem("Import All", _ -> domain().directory().boundedDomains().forEach(o -> o.port().importEntities(o)));
+            action.setEnabled(hasAppAdminRights());
+            action = subMenu.addItem("Export All", _ -> domain().directory().boundedDomains().forEach(o -> o.port().exportEntities(o)));
+            action.setEnabled(hasAppAdminRights());
+            action = subMenu.addItem("Clear All", _ -> domain().directory().boundedDomains().forEach(o -> o.port().clearEntities(o)));
+            action.setEnabled(hasAppAdminRights());
+        }
     }
 
     protected void addAnalytics(@NotNull AppLayout layout, @NotNull MenuBar menuBar, @NotNull LazyReference<?> analyticsView) {
@@ -198,5 +213,9 @@ public abstract class BoundedDomainUi<T extends BoundedDomain<?, ?, ?>> implemen
 
     protected boolean hasDomainAdminRights() {
         return (rights != null) && rights.right() == AccessRightsCode.domainAdmin;
+    }
+
+    protected boolean hasAppAdminRights() {
+        return (Objects.nonNull(user()) && user().accessRights().stream().anyMatch(o -> o.right() == AccessRightsCode.appAdmin));
     }
 }

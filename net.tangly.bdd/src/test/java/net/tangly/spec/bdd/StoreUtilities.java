@@ -1,10 +1,10 @@
 /*
- * Copyright 2006-2023 Marcel Baumann
+ * Copyright 2006-2024 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- *          http://www.apache.org/licenses/LICENSE-2.0
+ *          https://apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -36,6 +36,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  * Store definitions for unit tests.
  */
 public class StoreUtilities {
+    private static final String SCHEMA_FILE = "bdd-schema-1.0.0.json";
     private static final String BDD_REPORT = "bdd-features.json";
 
     public static void main(String[] params) throws IOException {
@@ -77,7 +78,7 @@ public class StoreUtilities {
     private static void validateSchema(Path bddReport) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
         JsonSchemaFactory factory = JsonSchemaFactory.getInstance(SpecVersion.VersionFlag.V7);
-        try (InputStream is = Thread.currentThread().getContextClassLoader().getResourceAsStream("bdd-schema.json");
+        try (InputStream is = Thread.currentThread().getContextClassLoader().getResourceAsStream(SCHEMA_FILE);
              InputStream stream = new BufferedInputStream(Files.newInputStream(bddReport))) {
             JsonSchema schema = factory.getSchema(is);
             JsonNode node = mapper.readTree(stream);

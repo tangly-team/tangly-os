@@ -67,23 +67,16 @@ public class MainView extends ApplicationView {
     }
 
 
+    /**
+     * application admininstrator have access to the global housekeeping functions of the application.
+     *
+     * @param ui bounded domain user interface
+     */
     @Override
     protected void selectBoundedDomainUi(@NotNull BoundedDomainUi<?> ui) {
         super.selectBoundedDomainUi(ui);
         var menuItem = menuBar().addItem("Housekeeping");
         SubMenu subMenu = menuItem.getSubMenu();
-        subMenu.addItem("Import All", _ -> {
-            tenant().boundedDomains().values().forEach(o -> o.port().importEntities(o));
-            boundedDomainUis().values().forEach(BoundedDomainUi::refreshViews);
-        });
-        subMenu.addItem("Export All", _ -> {
-            tenant().boundedDomains().values().forEach(o -> o.port().exportEntities(o));
-            boundedDomainUis().values().forEach(BoundedDomainUi::refreshViews);
-        });
-        subMenu.addItem("Clear All", _ -> {
-            tenant().boundedDomains().values().forEach(o -> o.port().clearEntities(o));
-            boundedDomainUis().values().forEach(BoundedDomainUi::refreshViews);
-        });
         subMenu.addItem("Setup All", _ -> {
             exportDocuments();
             boundedDomainUis().values().forEach(BoundedDomainUi::refreshViews);
