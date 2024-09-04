@@ -16,6 +16,7 @@ package net.tangly.erp.invoices;
 import net.tangly.core.Address;
 import net.tangly.core.BankConnection;
 import net.tangly.core.EmailAddress;
+import net.tangly.core.domain.Document;
 import net.tangly.core.providers.Provider;
 import net.tangly.core.providers.ProviderInMemory;
 import net.tangly.erp.invoices.artifacts.InvoiceJson;
@@ -36,12 +37,13 @@ class InvoiceTest {
     private static final BigDecimal VAT_REGULAR = new BigDecimal("0.077");
     private static final String PAYMENT_CONDITIONS_30_DAYS = "30 days net";
 
-    record Realm(Provider<Invoice> invoices, Provider<Article> articles, Provider<InvoiceLegalEntity> legalEntities) implements InvoicesRealm {
+    record Realm(Provider<Invoice> invoices, Provider<Article> articles, Provider<InvoiceLegalEntity> legalEntities, Provider<Document> documents)
+        implements InvoicesRealm {
     }
 
     @Test
     void testRegularInvoiceTotals() {
-        var realm = new Realm(ProviderInMemory.of(), ProviderInMemory.of(), ProviderInMemory.of());
+        var realm = newRealm();
         Invoice invoice = newRegularInvoice(realm);
         assertThat(invoice.amountWithoutVat()).isEqualByComparingTo(new BigDecimal("10850.00"));
         assertThat(invoice.amountWithVat()).isEqualByComparingTo(new BigDecimal("11685.45"));
@@ -66,7 +68,7 @@ class InvoiceTest {
 
     @Test
     void testJsonRegualarInvoice() {
-        var realm = new Realm(ProviderInMemory.of(), ProviderInMemory.of(), ProviderInMemory.of());
+        var realm = newRealm();
         var invoice = newRegularInvoice(realm);
         var invoiceJson = new InvoiceJson(realm);
         JsonEntity<Invoice> entity = invoiceJson.createJsonInvoice();
@@ -86,15 +88,21 @@ class InvoiceTest {
         assertThat(importedInvoice.paymentConditions()).isEqualTo(invoice.paymentConditions());
     }
 
+    private static Realm newRealm() {
+        return new Realm(ProviderInMemory.of(), ProviderInMemory.of(), ProviderInMemory.of(), ProviderInMemory.of());
+    }
+
     private Invoice newRegularInvoice(InvoicesRealm realm) {
         realm.articles().update(new Article("0001", "Agile coaching", "", ArticleCode.work, new BigDecimal(1400), "day"));
         realm.articles().update(new Article("0002", "Technical project management", "", ArticleCode.work, new BigDecimal("1400"), "day"));
 
         Invoice invoice = newInvoice("2017-0001", "Coaching contract Planta 20XX-5946 und ARE-20XX-6048");
         invoice.add(new InvoiceItem(1, realm.articles().findBy(Article::id, "0001").orElseThrow(), "GIS goes Agile project", new BigDecimal("4"), VAT_REGULAR));
-        invoice.add(new InvoiceItem(2, realm.articles().findBy(Article::id, "0001").orElseThrow(), "Java architecture coaching project", new BigDecimal("1.5"), VAT_REGULAR));
+        invoice.add(new InvoiceItem(2, realm.articles().findBy(Article::id, "0001").orElseThrow(), "Java architecture coaching project", new BigDecimal("1.5"),
+            VAT_REGULAR));
         invoice.add(new Subtotal(3, "Subtotal Project Leading GEO 2017 83200 Planta 20XX-5946", List.of(invoice.getAt(1), invoice.getAt(2))));
-        invoice.add(new InvoiceItem(4, realm.articles().findBy(Article::id, "0002").orElseThrow(), "OGD technical project management", new BigDecimal("2.25"), VAT_REGULAR));
+        invoice.add(new InvoiceItem(4, realm.articles().findBy(Article::id, "0002").orElseThrow(), "OGD technical project management", new BigDecimal("2.25"),
+            VAT_REGULAR));
         invoice.add(new Subtotal(5, "Subtotal Agile Coaching 3130 0 80000", List.of(invoice.getAt(4))));
         invoice.paymentConditions(PAYMENT_CONDITIONS_30_DAYS);
         invoice.currency(Currency.getInstance("CHF"));

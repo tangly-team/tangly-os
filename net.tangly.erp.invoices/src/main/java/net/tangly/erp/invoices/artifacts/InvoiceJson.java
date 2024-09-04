@@ -15,9 +15,7 @@ package net.tangly.erp.invoices.artifacts;
 
 import net.tangly.commons.logger.EventData;
 import net.tangly.commons.utilities.ValidatorUtilities;
-import net.tangly.core.Address;
-import net.tangly.core.BankConnection;
-import net.tangly.core.EmailAddress;
+import net.tangly.core.*;
 import net.tangly.core.domain.DocumentGenerator;
 import net.tangly.core.domain.DomainAudit;
 import net.tangly.erp.invoices.domain.*;
@@ -46,6 +44,8 @@ import java.util.function.BiFunction;
 import java.util.function.Function;
 
 public class InvoiceJson implements DocumentGenerator<Invoice> {
+    public static final String INVOICE_SCHEMA_ID = "https://blog.tangly.erp/schemas/invoice-schema-1.0.0.json";
+    public static final String INVOICE_SCHEMA_FILE = "invoice-schema-1.0.0.json";
     private static final Logger logger = LogManager.getLogger();
     private final InvoicesRealm realm;
 
@@ -79,7 +79,7 @@ public class InvoiceJson implements DocumentGenerator<Invoice> {
         try {
             String jsonString = IOUtils.toString(reader);
             reader.close();
-            if (ValidatorUtilities.isJsonValid(new StringReader(jsonString), "invoice-schema.json")) {
+            if (ValidatorUtilities.isJsonValid(new StringReader(jsonString), INVOICE_SCHEMA_FILE)) {
                 var jsonInvoice = new JSONObject(new JSONTokener(new StringReader(jsonString)));
                 // TODO validate article information: E article id exist, E article price is correct, W article unit, W article text is correct
                 // should be a seperate validation method going through the JSON array and checking for item containing an article if consistent
@@ -103,8 +103,9 @@ public class InvoiceJson implements DocumentGenerator<Invoice> {
         JsonEntity<InvoiceLegalEntity> jsonLegalEntity = createJsonLegalEntity();
         JsonEntity<BankConnection> jsonBankConnection = createJsonBankConnection();
         List<JsonField<Invoice, ?>> fields =
-            List.of(JsonProperty.ofString("id", Invoice::id, Invoice::id), JsonProperty.ofString("name", Invoice::name, Invoice::name),
-                JsonProperty.ofString("text", Invoice::text, Invoice::text), JsonProperty.ofString("contractId", Invoice::contractId, Invoice::contractId),
+            List.of(JsonProperty.ofConstant(JsonEntity.SCHEMA_PROPERTY, INVOICE_SCHEMA_ID), JsonProperty.ofString(HasId.ID, Invoice::id, Invoice::id),
+                JsonProperty.ofString("name", Invoice::name, Invoice::name), JsonProperty.ofString(HasText.TEXT, Invoice::text, Invoice::text),
+                JsonProperty.ofString("contractId", Invoice::contractId, Invoice::contractId),
                 JsonProperty.ofType("invoicingEntity", Invoice::invoicingEntity, Invoice::invoicingEntity, jsonLegalEntity),
                 JsonProperty.ofType("invoicingConnection", Invoice::invoicingConnection, Invoice::invoicingConnection, jsonBankConnection),
                 JsonProperty.ofType("invoicedEntity", Invoice::invoicedEntity, Invoice::invoicedEntity, jsonLegalEntity),
@@ -119,10 +120,10 @@ public class InvoiceJson implements DocumentGenerator<Invoice> {
         JsonEntity<Address> jsonAddress = createJsonAddress();
         JsonProperty<InvoiceLegalEntity, EmailAddress> jsonEmail = ofEmailAddress("email", InvoiceLegalEntity::email, null);
         Function<JSONObject, InvoiceLegalEntity> imports =
-            o -> new InvoiceLegalEntity(JsonField.string(o, "id"), JsonField.string(o, "name"), JsonField.string(o, "vatNr"),
+            o -> new InvoiceLegalEntity(JsonField.string(o, HasId.ID), JsonField.string(o, HasName.NAME), JsonField.string(o, "vatNr"),
                 jsonAddress.imports(o.getJSONObject("address")), jsonEmail.convertFromJson(o));
         List<JsonField<InvoiceLegalEntity, ?>> fields =
-            List.of(JsonProperty.ofString("id", InvoiceLegalEntity::id, null), JsonProperty.ofString("name", InvoiceLegalEntity::name, null),
+            List.of(JsonProperty.ofString(HasId.ID, InvoiceLegalEntity::id, null), JsonProperty.ofString(HasName.NAME, InvoiceLegalEntity::name, null),
                 JsonProperty.ofString("vatNr", InvoiceLegalEntity::vatNr, null), JsonProperty.ofType("address", InvoiceLegalEntity::address, null, jsonAddress),
                 jsonEmail);
         return JsonEntity.of(fields, imports);
@@ -155,7 +156,8 @@ public class InvoiceJson implements DocumentGenerator<Invoice> {
     }
 
     public JsonEntity<Article> createJsonArticle() {
-        List<JsonField<Article, ?>> fields = List.of(JsonProperty.ofString("id", Article::id, null), JsonProperty.ofString("description", Article::text, null),
+        List<JsonField<Article, ?>> fields = List.of(JsonProperty.ofString(HasId.ID, Article::id, null), JsonProperty.ofString("description", Article::text,
+                null),
             JsonProperty.ofBigDecimal("unitPrice", Article::unitPrice, null), JsonProperty.ofString("unit", Article::unit, null));
         return JsonEntity.of(fields, this::importArticle);
     }
@@ -168,7 +170,7 @@ public class InvoiceJson implements DocumentGenerator<Invoice> {
 
         List<JsonField<InvoiceItem, ?>> fields =
             List.of(JsonProperty.ofInt("position", InvoiceItem::position, null), JsonProperty.ofType(ARTICLE, InvoiceItem::article, null, createJsonArticle()),
-                JsonProperty.ofString("text", InvoiceItem::text, null), JsonProperty.ofBigDecimal("quantity", InvoiceItem::quantity, null),
+                JsonProperty.ofString(HasText.TEXT, InvoiceItem::text, null), JsonProperty.ofBigDecimal("quantity", InvoiceItem::quantity, null),
                 JsonProperty.ofBigDecimal("vatRate", InvoiceItem::vatRate, null));
         return JsonEntity.of(fields, imports);
     }
@@ -187,7 +189,7 @@ public class InvoiceJson implements DocumentGenerator<Invoice> {
         BiFunction<Subtotal, Object, JSONObject> exports = (subtotal, entity) -> {
             JSONObject subtotalJson = new JSONObject();
             subtotalJson.put("position", (subtotal != null) ? subtotal.position() : null);
-            subtotalJson.put("text", (subtotal != null) ? subtotal.text() : null);
+            subtotalJson.put(HasText.TEXT, (subtotal != null) ? subtotal.text() : null);
             JSONArray itemsPosition = new JSONArray();
             if (subtotal != null) {
                 subtotal.items().forEach(o -> itemsPosition.put(o.position()));

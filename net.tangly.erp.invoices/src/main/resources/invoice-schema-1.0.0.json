@@ -1,5 +1,6 @@
 {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://blog.tangly.erp/schemas/invoice-schema-1.0.0.json",
     "title": "invoice archive schema",
     "description": "schema to describe invoices",
     "definitions": {
@@ -170,6 +171,9 @@
     },
     "type": "object",
     "properties": {
+        "$schema": {
+            "type": "string"
+        },
         "id": {
             "description": "unique identifier of the invoice",
             "type": "string"

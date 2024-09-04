@@ -27,7 +27,6 @@ import com.vaadin.flow.router.PageTitle;
 import net.tangly.erp.invoices.domain.Invoice;
 import net.tangly.erp.invoices.domain.InvoiceItem;
 import net.tangly.erp.invoices.domain.InvoiceLine;
-import net.tangly.erp.invoices.services.InvoicesBoundedDomain;
 import net.tangly.ui.app.domain.Cmd;
 import net.tangly.ui.components.*;
 import org.jetbrains.annotations.NotNull;
@@ -113,14 +112,15 @@ class InvoicesView extends ItemView<Invoice> {
     }
 
     @Override
-    public InvoicesBoundedDomain domain() {
-        return (InvoicesBoundedDomain) super.domain();
+    public InvoicesBoundedDomainUi domainUi() {
+        return (InvoicesBoundedDomainUi) super.domainUi();
     }
 
     @Override
     protected void addActions(@NotNull GridMenu<Invoice> menu) {
         menu().add(new Hr());
-        menu().add(GridMenu.PRINT_TEXT, e -> Cmd.ofDualCmd(e, (Invoice o) -> new CmdCreateInvoiceDocument(o, domain()).execute()), GridMenu.MenuItemType.DUAL);
+        menu().add(GridMenu.PRINT_TEXT, e -> Cmd.ofDualCmd(e, (Invoice o) -> new CmdCreateInvoiceDocument(o, domainUi()).execute()),
+            GridMenu.MenuItemType.DUAL);
     }
 
     private void init() {

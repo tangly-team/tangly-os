@@ -13,6 +13,7 @@
 
 package net.tangly.erp.invoices.services;
 
+import net.tangly.core.domain.Document;
 import net.tangly.core.domain.Realm;
 import net.tangly.core.providers.Provider;
 import net.tangly.erp.invoices.domain.Article;
@@ -31,6 +32,8 @@ public interface InvoicesRealm extends Realm {
     Provider<Invoice> invoices();
 
     Provider<Article> articles();
+
+    public Provider<Document> documents();
 
     default List<Invoice> invoicesFor(@NotNull String contractId) {
         return invoices().items().stream().filter(o -> contractId.equals(o.contractId())).toList();

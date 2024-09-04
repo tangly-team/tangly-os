@@ -21,10 +21,10 @@ import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.textfield.TextField;
+import net.tangly.core.Tag;
 import net.tangly.erp.invoices.domain.Invoice;
-import net.tangly.erp.invoices.services.InvoicesBoundedDomain;
 import net.tangly.ui.app.domain.Cmd;
-import net.tangly.ui.components.VaadinUtils;
+import net.tangly.ui.components.*;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
@@ -41,7 +41,9 @@ public class CmdCreateInvoiceDocument implements Cmd {
     private final Checkbox withEN16931;
     private final Checkbox overwrite;
     private final TextField name;
-    private final InvoicesBoundedDomain domain;
+    private final AsciiDocField documnetText;
+    private final One2ManyOwnedField<Tag> documentTags;
+    private final InvoicesBoundedDomainUi domain;
     private final Invoice invoice;
     private Dialog dialog;
 
@@ -51,7 +53,7 @@ public class CmdCreateInvoiceDocument implements Cmd {
      * @param invoice invoice for which the document is created. If null, the command creates documents for all invoices within the date range
      * @param domain  bounded domain of the invoices
      */
-    public CmdCreateInvoiceDocument(Invoice invoice, @NotNull InvoicesBoundedDomain domain) {
+    public CmdCreateInvoiceDocument(Invoice invoice, @NotNull InvoicesBoundedDomainUi domain) {
         this.domain = domain;
         this.invoice = invoice;
         name = new TextField("Name");
@@ -66,6 +68,9 @@ public class CmdCreateInvoiceDocument implements Cmd {
         if (Objects.nonNull(invoice)) {
             name.setValue(invoice.name());
         }
+        documnetText = new AsciiDocField("Text");
+        documentTags = new One2ManyOwnedField<>(new TagsView(domain, Mode.EDITABLE));
+        // pass the document data to the exportInvoiceDocument methods
     }
 
     @Override
@@ -73,10 +78,11 @@ public class CmdCreateInvoiceDocument implements Cmd {
         dialog = Cmd.createDialog("40em", create());
         Button execute = new Button("Execute", VaadinIcon.COGS.create(), e -> {
             if (invoice == null) {
-                domain.port().exportInvoiceDocuments(domain, withQrCode.getValue(), withEN16931.getValue(), overwrite.getValue(), from.getValue(),
-                    to.getValue());
+                domain.domain().port()
+                    .exportInvoiceDocuments(domain.domain(), withQrCode.getValue(), withEN16931.getValue(), overwrite.getValue(), from.getValue(),
+                        to.getValue());
             } else {
-                domain.port().exportInvoiceDocument(domain, invoice, withQrCode.getValue(), withEN16931.getValue(), overwrite.getValue());
+                domain.domain().port().exportInvoiceDocument(domain.domain(), invoice, withQrCode.getValue(), withEN16931.getValue(), overwrite.getValue());
             }
             close();
         });
@@ -98,7 +104,10 @@ public class CmdCreateInvoiceDocument implements Cmd {
     private FormLayout create() {
         FormLayout form = new FormLayout();
         VaadinUtils.set3ResponsiveSteps(form);
-        form.add(name, new HtmlComponent("br"), from, to, new HtmlComponent("br"), withQrCode, withEN16931, overwrite);
+        form.add(name, new HtmlComponent("br"), from, to, new HtmlComponent("br"), withQrCode, withEN16931, overwrite, new HtmlComponent("br"), documnetText,
+            documentTags);
+        form.setColspan(documnetText, 3);
+        form.setColspan(documentTags, 3);
         if (invoice == null) {
             name.setVisible(false);
         } else {

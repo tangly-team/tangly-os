@@ -13,6 +13,7 @@
 
 package net.tangly.erp.invoices.ports;
 
+import net.tangly.core.domain.Document;
 import net.tangly.core.providers.Provider;
 import net.tangly.core.providers.ProviderInMemory;
 import net.tangly.core.providers.ProviderPersistence;
@@ -33,11 +34,13 @@ public class InvoicesEntities implements InvoicesRealm {
         private final List<Invoice> invoices;
         private final List<Article> articles;
         private final List<InvoiceLegalEntity> legalEntities;
+        private final List<Document> documents;
 
         Data() {
             invoices = new ArrayList<>();
             articles = new ArrayList<>();
             legalEntities = new ArrayList<>();
+            documents = new ArrayList<>();
         }
     }
 
@@ -46,6 +49,7 @@ public class InvoicesEntities implements InvoicesRealm {
     private final Provider<Invoice> invoices;
     private final Provider<Article> articles;
     private final Provider<InvoiceLegalEntity> legalEntities;
+    private final Provider<Document> documents;
     private final EmbeddedStorageManager storageManager;
 
 
@@ -55,6 +59,7 @@ public class InvoicesEntities implements InvoicesRealm {
         invoices = ProviderPersistence.of(storageManager, data.invoices);
         articles = ProviderPersistence.of(storageManager, data.articles);
         legalEntities = ProviderPersistence.of(storageManager, data.legalEntities);
+        documents = ProviderPersistence.of(storageManager, data.documents);
     }
 
     public InvoicesEntities() {
@@ -63,6 +68,7 @@ public class InvoicesEntities implements InvoicesRealm {
         invoices = ProviderInMemory.of(data.invoices);
         articles = ProviderInMemory.of(data.articles);
         legalEntities = ProviderInMemory.of(data.legalEntities);
+        documents = ProviderInMemory.of(data.documents);
     }
 
     public void storeRoot() {
@@ -77,6 +83,11 @@ public class InvoicesEntities implements InvoicesRealm {
     @Override
     public Provider<Invoice> invoices() {
         return this.invoices;
+    }
+
+    @Override
+    public Provider<Document> documents() {
+        return this.documents;
     }
 
     public void close() {

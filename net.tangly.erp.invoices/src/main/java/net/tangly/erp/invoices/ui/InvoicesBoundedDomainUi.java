@@ -24,6 +24,7 @@ import net.tangly.core.events.EntityChangedInternalEvent;
 import net.tangly.erp.invoices.domain.Invoice;
 import net.tangly.erp.invoices.services.InvoicesBoundedDomain;
 import net.tangly.ui.app.domain.BoundedDomainUi;
+import net.tangly.ui.app.domain.DocumentsView;
 import net.tangly.ui.app.domain.DomainView;
 import net.tangly.ui.app.domain.View;
 import net.tangly.ui.components.Mode;
@@ -37,7 +38,9 @@ public class InvoicesBoundedDomainUi extends BoundedDomainUi<InvoicesBoundedDoma
         super(domain);
         addView(ARTICLES, new LazyReference<>(() -> new ArticlesView(this, Mode.EDITABLE)));
         addView(INVOICES, new LazyReference<>(() -> new InvoicesView(this, Mode.EDITABLE)));
+        addView(DOCUMENTS, new LazyReference<>(() -> new DocumentsView(this,domain().realm().documents())));
         addView(ENTITIES, new LazyReference<>(() -> new DomainView(this)));
+        addView(ANALYTICS, new LazyReference<>(() -> new AnalyticsProductsView(this)));
         currentView(INVOICES);
         domain.subscribeInternally(this);
     }
@@ -48,7 +51,9 @@ public class InvoicesBoundedDomainUi extends BoundedDomainUi<InvoicesBoundedDoma
         SubMenu subMenu = menuItem.getSubMenu();
         subMenu.addItem(ARTICLES, e -> select(layout, view(ARTICLES).orElseThrow()));
         subMenu.addItem(INVOICES, e -> select(layout, view(INVOICES).orElseThrow()));
+        subMenu.addItem(DOCUMENTS, e -> select(layout, view(DOCUMENTS).orElseThrow()));
 
+        addAnalytics(layout, menuBar, view(ANALYTICS).orElseThrow());
         addAdministration(layout, menuBar, view(ENTITIES).orElseThrow());
         select(layout);
     }

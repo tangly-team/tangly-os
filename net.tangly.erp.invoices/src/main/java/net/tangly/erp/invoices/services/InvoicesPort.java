@@ -33,7 +33,7 @@ public interface InvoicesPort extends Port<InvoicesRealm> {
     String JSON_EXT = ".json";
 
     /**
-     * Export an invoice to a file. The method is responsible to infer the uri to the generated invoice document.
+     * Exports an invoice to a file. The method is responsible to infer the uri to the generated invoice document.
      * <p><em>implNote</em> The asciidoc document is deleted upon creation of the pdf document.</p>
      *
      * @param invoice     invoice to be exported
