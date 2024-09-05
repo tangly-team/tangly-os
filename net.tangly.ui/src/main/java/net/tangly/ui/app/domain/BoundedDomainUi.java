@@ -52,7 +52,7 @@ public abstract class BoundedDomainUi<T extends BoundedDomain<?, ?, ?>> implemen
     private final T domain;
     private AccessRights rights;
     private LazyReference<?> currentView;
-    private Map<String, LazyReference<? extends View>> views;
+    private final Map<Class<?>, LazyReference<? extends View>> views;
     private Flow.Subscription subscription;
 
     public BoundedDomainUi(@NotNull T domain) {
@@ -146,15 +146,16 @@ public abstract class BoundedDomainUi<T extends BoundedDomain<?, ?, ?>> implemen
     // endregion
 
     protected final void addView(@NotNull Class<?> clazz, @NotNull LazyReference<? extends View> view) {
-        views.put(clazz.getSimpleName(), view);
+        views.put(clazz, view);
     }
 
     protected final Optional<LazyReference<? extends View>> view(@NotNull Class<?> clazz) {
-        return Optional.ofNullable(views.get(clazz.getSimpleName()));
+        return Optional.ofNullable(views.get(clazz));
     }
 
     protected final Optional<LazyReference<? extends View>> view(@NotNull String name) {
-        return Optional.ofNullable(views.get(name));
+        Class<?> key = views.keySet().stream().filter(o -> o.getSimpleName().equals(name)).findAny().orElse(null);
+        return Objects.nonNull(key) ? Optional.ofNullable(views.get(key)) : Optional.empty();
     }
 
     /**
