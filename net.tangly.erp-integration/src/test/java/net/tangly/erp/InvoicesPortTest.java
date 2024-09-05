@@ -30,6 +30,7 @@ import java.io.IOException;
 import java.nio.file.FileSystem;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.Collections;
 import java.util.Properties;
 
 import static net.tangly.erp.invoices.ports.InvoicesAdapter.JSON_EXT;
@@ -45,7 +46,7 @@ class InvoicesPortTest {
             InvoicesPort port = new InvoicesAdapter(new InvoicesEntities(),
                 store.dataRoot().resolve(InvoicesBoundedDomain.DOMAIN), store.docsRoot().resolve(InvoicesBoundedDomain.DOMAIN), new Properties());
             port.importEntities(store);
-            port.exportInvoiceDocuments(store, false, false, true, null, null);
+            port.exportInvoiceDocuments(store, false, false, true, null, null, null, Collections.emptyList());
 
             port.realm().invoices().items()
                 .forEach(o -> assertThat(

@@ -45,8 +45,9 @@ public record User(@NotNull String username, @NotNull String passwordHash, @NotN
 
     /**
      * Encrypts the password of a user using a salt.
+     *
      * @param password password to encrypt
-     * @param salt salt used to encrypt the password
+     * @param salt     salt used to encrypt the password
      * @return encrypted password
      */
     public static String encryptPassword(@NotNull String password, @NotNull String salt) {
@@ -65,6 +66,7 @@ public record User(@NotNull String username, @NotNull String passwordHash, @NotN
 
     /**
      * Generates a new salt value with a JDK provided random generator.
+     *
      * @return new salt value
      */
     public static String newSalt() {
@@ -81,6 +83,7 @@ public record User(@NotNull String username, @NotNull String passwordHash, @NotN
 
     /**
      * Returns the avatar of a user based on the email address of the user.
+     *
      * @param gravatarEmail email address of the user registered in the gravatar service
      * @return avatar picture of the user
      */
@@ -91,6 +94,7 @@ public record User(@NotNull String username, @NotNull String passwordHash, @NotN
 
     /**
      * Returns the access rights of a user for a specific domain.
+     *
      * @param domain domain for which the access rights are requested
      * @return access rights of the user for the domain
      */
@@ -98,8 +102,13 @@ public record User(@NotNull String username, @NotNull String passwordHash, @NotN
         return accessRights.stream().filter(rights -> rights.domain().equals(domain)).findAny();
     }
 
+    public boolean hasAdminRightsFor(@NotNull String domain) {
+        return accessRightsFor(domain).map(o -> (o.right() == AccessRightsCode.domainAdmin) || (o.right() == AccessRightsCode.appAdmin)).orElse(false);
+    }
+
     /**
      * Authenticates the user based on the password provided.
+     *
      * @param password password to authenticate the user
      * @return true if the password is correct
      */

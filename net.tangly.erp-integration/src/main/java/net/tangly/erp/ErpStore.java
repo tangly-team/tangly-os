@@ -149,13 +149,30 @@ public record ErpStore(@NotNull FileSystem fs) implements DomainAudit {
         Files.copy(resourcePath, folder.resolve(filename), StandardCopyOption.REPLACE_EXISTING);
     }
 
+    // region DomainAudit
+
     @Override
     public void log(@NotNull EventData auditEvent) {
 
     }
 
     @Override
+    public void entityImported(@NotNull String entityName) {
+
+    }
+
+    @Override
+    public void submitInterally(@NotNull Object event) {
+    }
+
+    @Override
+    public void submit(@NotNull Object event) {
+    }
+
+    @Override
     public String name() {
         return "ErpStore";
     }
+
+    // endregion
 }

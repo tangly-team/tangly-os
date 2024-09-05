@@ -89,6 +89,13 @@ public class Tenant implements TenantDirectory {
         return apps().logic().activeUsersFor(domain);
     }
 
+    @Override
+    public String docs(@NotNull String domain) {
+        return "%s/%s".formatted(getProperty(DOCUMENTS_DIRECTORY_PROPERTY), domain);
+    }
+
+
+
     // endregion
 
     public boolean isEnabled(@NotNull String domain) {
@@ -150,10 +157,6 @@ public class Tenant implements TenantDirectory {
 
     public String databases() {
         return getProperty(DATABASES_DIRECTORY_PROPERTY);
-    }
-
-    public String docs(String domain) {
-        return "%s/%s".formatted(getProperty(DOCUMENTS_DIRECTORY_PROPERTY), domain);
     }
 
     private void ofAppDomain() {

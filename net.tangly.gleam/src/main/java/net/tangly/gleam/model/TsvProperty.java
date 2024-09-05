@@ -89,6 +89,10 @@ public record TsvProperty<T, U>(List<String> columns, Function<T, U> getter, BiC
         return of(column, getter, setter, v -> (Strings.isNullOrBlank(v)) ? null : LocalDate.parse(v), u -> u);
     }
 
+    public static <T> TsvProperty<T, LocalDateTime> ofDateTime(@NotNull String column, Function<T, LocalDateTime> getter, BiConsumer<T, LocalDateTime> setter) {
+        return of(column, getter, setter, v -> (Strings.isNullOrBlank(v)) ? null : LocalDateTime.parse(v), u -> u);
+    }
+
     public static <T> TsvProperty<T, Integer> ofInt(@NotNull String column, Function<T, Integer> getter) {
         return of(column, getter, null, v -> (Strings.isNullOrBlank(v)) ? 0 : Integer.parseInt(v), u -> u);
     }

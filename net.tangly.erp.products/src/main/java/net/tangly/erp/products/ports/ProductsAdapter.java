@@ -28,6 +28,8 @@ import net.tangly.core.providers.Provider;
 import net.tangly.erp.products.artifacts.EffortReportEngine;
 import net.tangly.erp.products.domain.Assignment;
 import net.tangly.erp.products.domain.Effort;
+import net.tangly.erp.products.domain.Product;
+import net.tangly.erp.products.domain.WorkContract;
 import net.tangly.erp.products.services.ProductsBusinessLogic;
 import net.tangly.erp.products.services.ProductsPort;
 import net.tangly.erp.products.services.ProductsRealm;
@@ -103,6 +105,7 @@ public class ProductsAdapter implements ProductsPort {
         } catch (IOException e) {
             throw new UncheckedIOException(e);
         }
+        entitiesImported(audit);
     }
 
     @Override
@@ -122,6 +125,7 @@ public class ProductsAdapter implements ProductsPort {
         Port.entitiesCleared(audit, "assignments");
         realm().products().deleteAll();
         Port.entitiesCleared(audit, "products");
+        entitiesImported(audit);
     }
 
     @Override
@@ -278,5 +282,12 @@ public class ProductsAdapter implements ProductsPort {
     private String filename(@NotNull Effort effort) {
         String generatedText = "%04d-%02d".formatted(effort.date().getYear(), effort.date().getMonthValue());
         return "%s-%s-%s%s".formatted(generatedText, effort.assignment().name(), effort.contractId(), YAML_EXT);
+    }
+
+    private void entitiesImported(@NotNull DomainAudit audit) {
+        audit.entityImported(Effort.class.getSimpleName());
+        audit.entityImported(Assignment.class.getSimpleName());
+        audit.entityImported(WorkContract.class.getSimpleName());
+        audit.entityImported(Product.class.getSimpleName());
     }
 }

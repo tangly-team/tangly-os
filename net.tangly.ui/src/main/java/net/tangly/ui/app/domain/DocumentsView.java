@@ -23,6 +23,10 @@ import net.tangly.core.providers.Provider;
 import net.tangly.ui.components.*;
 import org.jetbrains.annotations.NotNull;
 
+import java.nio.file.Path;
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
+
 /**
  * Documents contain record management informoation and metadata about the document.
  * Only limited attributes can be edited in the view. The description and the tags are editable.
@@ -36,6 +40,7 @@ public class DocumentsView extends ItemView<Document> {
     public static class DocumentForm extends ItemForm<Document, DocumentsView> {
         private final TextField id;
         private final TextField name;
+        private final TextField extension;
         private final DatePicker date;
         private final Checkbox generated;
         private final AsciiDocField text;
@@ -45,6 +50,7 @@ public class DocumentsView extends ItemView<Document> {
             super(parent);
             id = new TextField("Id");
             name = new TextField("Name");
+            extension = new TextField("Extension");
             date = new DatePicker("Date");
             generated = new Checkbox("Generated");
             text = new AsciiDocField("Text");
@@ -61,15 +67,19 @@ public class DocumentsView extends ItemView<Document> {
 
         @Override
         public Document createOrUpdateInstance(Document entity) {
-            return new Document(id.getValue(), name.getValue(), date.getValue(), new DateRange(null, null), text.getValue(), generated.getValue(), null);
+            return new Document(id.getValue(), name.getValue(), extension.getValue(), LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS),
+                new DateRange(null, null), text.getValue(), generated.getValue(), null);
         }
     }
 
     private void init() {
         var grid = grid();
-        grid.addColumn(Document::id).setKey(ID).setHeader(ID_LABEL).setSortable(true).setAutoWidth(true).setResizable(true);
         grid.addColumn(Document::name).setKey(NAME).setHeader(NAME_LABEL).setSortable(true).setAutoWidth(true).setResizable(true);
-        grid.addColumn(Document::date).setKey(DATE).setHeader(DATE_LABEL).setSortable(true).setAutoWidth(true).setResizable(true);
+        grid.addColumn(Document::time).setKey(TIME).setHeader(TIME_LABEL).setSortable(true).setAutoWidth(true).setResizable(true);
+        grid.addColumn(VaadinUtils.addLinkToFile(Path.of(domain().directory().docs(domain().name())))).setKey(ID).setHeader(ID_LABEL).setSortable(true)
+            .setAutoWidth(true).setResizable(true);
         grid.addColumn(Document::text).setKey(TEXT).setHeader(TEXT_LABEL).setSortable(true).setAutoWidth(true).setResizable(true);
     }
+
+
 }

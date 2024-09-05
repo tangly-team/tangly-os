@@ -20,6 +20,7 @@ import net.tangly.core.codes.CodeHelper;
 import net.tangly.core.domain.DomainAudit;
 import net.tangly.core.domain.Port;
 import net.tangly.erp.ledger.artifacts.ClosingReportAsciiDoc;
+import net.tangly.erp.ledger.domain.Account;
 import net.tangly.erp.ledger.domain.LedgerTags;
 import net.tangly.erp.ledger.domain.Transaction;
 import net.tangly.erp.ledger.domain.VatCode;
@@ -96,6 +97,7 @@ public class LedgerAdapter implements LedgerPort {
         } catch (IOException e) {
             throw new UncheckedIOException(e);
         }
+        entitiesImported(audit);
     }
 
     @Override
@@ -115,6 +117,7 @@ public class LedgerAdapter implements LedgerPort {
         Port.entitiesCleared(audit, "accounts");
         realm().transactions().deleteAll();
         Port.entitiesCleared(audit, "transactions");
+        entitiesImported(audit);
     }
 
     @Override
@@ -143,4 +146,10 @@ public class LedgerAdapter implements LedgerPort {
     public static String journalForYear(int year) {
         return "%04d%s".formatted(year, JOURNAL);
     }
+
+    private void entitiesImported(@NotNull DomainAudit audit) {
+        audit.entityImported(Account.class.getSimpleName());
+        audit.entityImported(Transaction.class.getSimpleName());
+    }
+
 }

@@ -20,6 +20,7 @@ import net.tangly.gleam.model.TsvProperty;
 import org.apache.commons.csv.CSVRecord;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
 import java.util.function.Function;
@@ -49,13 +50,15 @@ public class TsvHdlCore {
     }
 
     public static TsvEntity<Document> createTsvDocument() {
-        Function<CSVRecord, Document> imports = (CSVRecord csv) -> new Document(TsvEntity.get(csv, ID), TsvEntity.get(csv, NAME), ofDate(csv, DATE),
-            DateRange.of(ofDate(csv, FROM_DATE), ofDate(csv, TO_DATE)), TsvEntity.get(csv, TEXT), Boolean.valueOf(TsvEntity.get(csv, "generated")),
-            Tag.toTags(TsvEntity.get(csv, TAGS)));
+        Function<CSVRecord, Document> imports =
+            (CSVRecord csv) -> new Document(TsvEntity.get(csv, ID), TsvEntity.get(csv, NAME), TsvEntity.get(csv, "extension"), ofDateTime(csv, DATE),
+                DateRange.of(ofDate(csv, FROM_DATE), ofDate(csv, TO_DATE)), TsvEntity.get(csv, TEXT), Boolean.valueOf(TsvEntity.get(csv, "generated")),
+                Tag.toTags(TsvEntity.get(csv, TAGS)));
         List<TsvProperty<Document, ?>> fields =
-            List.of(TsvProperty.ofString(ID, Document::id), TsvProperty.ofString(NAME, Document::name), TsvProperty.ofDate(DATE, Document::date, null),
-                TsvProperty.of(TsvHdlCore.createTsvDateRange(), Document::range, null), TsvProperty.ofString(TEXT, Document::text),
-                TsvProperty.ofBoolean("generated", Document::generated), TsvProperty.ofString(TAGS, HasTags::rawTags, null));
+            List.of(TsvProperty.ofString(ID, Document::id), TsvProperty.ofString(NAME, Document::name), TsvProperty.ofString("extension", Document::extension),
+                TsvProperty.ofDateTime("time", Document::time, null), TsvProperty.of(TsvHdlCore.createTsvDateRange(), Document::range, null),
+                TsvProperty.ofString(TEXT, Document::text), TsvProperty.ofBoolean("generated", Document::generated),
+                TsvProperty.ofString(TAGS, HasTags::rawTags, null));
         return TsvEntity.of(Document.class, fields, imports);
     }
 
@@ -92,5 +95,10 @@ public class TsvHdlCore {
     public static LocalDate ofDate(CSVRecord csv, String field) {
         String value = TsvEntity.get(csv, field);
         return (value == null) ? null : LocalDate.parse(value);
+    }
+
+    public static LocalDateTime ofDateTime(CSVRecord csv, String field) {
+        String value = TsvEntity.get(csv, field);
+        return (value == null) ? null : LocalDateTime.parse(value);
     }
 }

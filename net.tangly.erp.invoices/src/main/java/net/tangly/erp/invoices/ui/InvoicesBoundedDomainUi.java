@@ -13,20 +13,16 @@
 
 package net.tangly.erp.invoices.ui;
 
-import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.contextmenu.MenuItem;
 import com.vaadin.flow.component.contextmenu.SubMenu;
 import com.vaadin.flow.component.menubar.MenuBar;
 import net.tangly.commons.lang.functional.LazyReference;
 import net.tangly.core.domain.BoundedDomain;
-import net.tangly.core.events.EntityChangedInternalEvent;
-import net.tangly.erp.invoices.domain.Invoice;
 import net.tangly.erp.invoices.services.InvoicesBoundedDomain;
 import net.tangly.ui.app.domain.BoundedDomainUi;
 import net.tangly.ui.app.domain.DocumentsView;
 import net.tangly.ui.app.domain.DomainView;
-import net.tangly.ui.app.domain.View;
 import net.tangly.ui.components.Mode;
 import org.jetbrains.annotations.NotNull;
 
@@ -38,7 +34,7 @@ public class InvoicesBoundedDomainUi extends BoundedDomainUi<InvoicesBoundedDoma
         super(domain);
         addView(ARTICLES, new LazyReference<>(() -> new ArticlesView(this, Mode.EDITABLE)));
         addView(INVOICES, new LazyReference<>(() -> new InvoicesView(this, Mode.EDITABLE)));
-        addView(DOCUMENTS, new LazyReference<>(() -> new DocumentsView(this,domain().realm().documents())));
+        addView(DOCUMENTS, new LazyReference<>(() -> new DocumentsView(this, domain().realm().documents())));
         addView(ENTITIES, new LazyReference<>(() -> new DomainView(this)));
         addView(ANALYTICS, new LazyReference<>(() -> new AnalyticsProductsView(this)));
         currentView(INVOICES);
@@ -56,14 +52,5 @@ public class InvoicesBoundedDomainUi extends BoundedDomainUi<InvoicesBoundedDoma
         addAnalytics(layout, menuBar, view(ANALYTICS).orElseThrow());
         addAdministration(layout, menuBar, view(ENTITIES).orElseThrow());
         select(layout);
-    }
-
-    @Override
-    public void onNext(Object event) {
-        if (event instanceof EntityChangedInternalEvent entityChanged) {
-            if (entityChanged.entityName().equals(Invoice.class.getSimpleName())) {
-                view(INVOICES).ifPresent(v -> UI.getCurrent().access(() -> v.ifPresent(View::refresh)));
-            }
-        }
     }
 }

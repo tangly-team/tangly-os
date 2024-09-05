@@ -125,6 +125,9 @@ public abstract class ItemView<T> extends VerticalLayout implements View {
     public static final String DATE = "date";
     public static final String DATE_LABEL = "Date";
 
+    public static final String TIME = "time";
+    public static final String TIME_LABEL = "Time";
+
     public static final String ISO_DATE_FORMAT = "yyyy-MM-dd";
 
     /**

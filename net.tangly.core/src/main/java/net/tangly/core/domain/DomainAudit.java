@@ -48,4 +48,26 @@ public interface DomainAudit {
     default void log(@NotNull String event, @NotNull EventData.Status status, String reason, @NotNull Map<String, Object> data, Throwable exception) {
         log(EventData.of(event, name(), status, reason, data, exception));
     }
+
+    /**
+     * Instances were added, deleted or modified in the domain programmatically and not through the user interface.
+     *
+     * @param entityName name of the entity
+     */
+    void entityImported(@NotNull String entityName);
+
+    /**
+     * Submit an event to the internal event channel of the domain. The channel is used to publish events within the domain.
+     *
+     * @param event event to submit
+     */
+    void submitInterally(@NotNull Object event);
+
+    /**
+     * Submit an event to the external public event channel of the domain. The channel is used to publish events to other domains.
+     *
+     * @param event event to submit
+     */
+    void submit(@NotNull Object event);
+
 }

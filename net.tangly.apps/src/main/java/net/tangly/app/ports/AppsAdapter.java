@@ -15,6 +15,7 @@ package net.tangly.app.ports;
 
 import net.tangly.app.services.AppsPort;
 import net.tangly.app.services.AppsRealm;
+import net.tangly.core.domain.AccessRights;
 import net.tangly.core.domain.DomainAudit;
 import net.tangly.core.domain.Port;
 import net.tangly.core.domain.User;
@@ -44,6 +45,7 @@ public class AppsAdapter implements AppsPort {
     public void importEntities(@NotNull DomainAudit audit) {
         var handler = new AppsTsvHdl(realm);
         handler.importUsers(audit, dataFolder.resolve(USERS_TSV), dataFolder.resolve(ACCESS_RIGHTS_TSV));
+        entitiesImported(audit);
     }
 
     @Override
@@ -56,5 +58,11 @@ public class AppsAdapter implements AppsPort {
     public void clearEntities(@NotNull DomainAudit audit) {
         realm().users().deleteAll();
         Port.entitiesCleared(audit, User.class.getSimpleName());
+        entitiesImported(audit);
+    }
+
+    private void entitiesImported(@NotNull DomainAudit audit) {
+        audit.entityImported(User.class.getSimpleName());
+        audit.entityImported(AccessRights.class.getSimpleName());
     }
 }

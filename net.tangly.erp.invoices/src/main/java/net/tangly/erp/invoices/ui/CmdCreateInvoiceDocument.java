@@ -80,9 +80,10 @@ public class CmdCreateInvoiceDocument implements Cmd {
             if (invoice == null) {
                 domain.domain().port()
                     .exportInvoiceDocuments(domain.domain(), withQrCode.getValue(), withEN16931.getValue(), overwrite.getValue(), from.getValue(),
-                        to.getValue());
+                        to.getValue(), documnetText.getValue(), documentTags.getValue());
             } else {
-                domain.domain().port().exportInvoiceDocument(domain.domain(), invoice, withQrCode.getValue(), withEN16931.getValue(), overwrite.getValue());
+                domain.domain().port().exportInvoiceDocument(domain.domain(), invoice, withQrCode.getValue(), withEN16931.getValue(), overwrite.getValue(),
+                    documnetText.getValue(), documentTags.getValue());
             }
             close();
         });

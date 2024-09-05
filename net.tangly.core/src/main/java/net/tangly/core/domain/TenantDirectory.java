@@ -78,4 +78,11 @@ public interface TenantDirectory extends HasId {
      * @return list of active users
      */
     List<String> activeUsersFor(@NotNull String domain);
+
+    /**
+     * Returns the path to the documents folder of the domain.
+     * @param domain name of the bounded domain
+     * @return path to the documents folder of the domain
+     */
+    String docs(@NotNull String domain);
 }

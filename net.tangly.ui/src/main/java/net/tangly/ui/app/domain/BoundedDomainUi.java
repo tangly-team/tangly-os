@@ -14,6 +14,7 @@
 package net.tangly.ui.app.domain;
 
 import com.vaadin.flow.component.Component;
+import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.contextmenu.MenuItem;
 import com.vaadin.flow.component.contextmenu.SubMenu;
@@ -24,6 +25,7 @@ import net.tangly.core.domain.AccessRights;
 import net.tangly.core.domain.AccessRightsCode;
 import net.tangly.core.domain.BoundedDomain;
 import net.tangly.core.domain.User;
+import net.tangly.core.events.EntityChangedInternalEvent;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
@@ -69,7 +71,7 @@ public abstract class BoundedDomainUi<T extends BoundedDomain<?, ?, ?>> implemen
 
 
     /**
-     * Return the name of bounded domain user interface as displayed in the user interface.
+     * Returns the name of bounded domain user interface as displayed in the user interface.
      *
      * @return name of the bounded domain
      */
@@ -136,7 +138,10 @@ public abstract class BoundedDomainUi<T extends BoundedDomain<?, ?, ?>> implemen
     }
 
     @Override
-    public void onNext(Object event) {
+    public void onNext(@NotNull Object event) {
+        if (event instanceof EntityChangedInternalEvent entityChanged) {
+            view(entityChanged.entityName()).ifPresent(v -> UI.getCurrent().access(() -> v.ifPresent(View::refresh)));
+        }
     }
 
     // endregion
@@ -212,7 +217,7 @@ public abstract class BoundedDomainUi<T extends BoundedDomain<?, ?, ?>> implemen
     }
 
     protected boolean hasDomainAdminRights() {
-        return (rights != null) && rights.right() == AccessRightsCode.domainAdmin;
+        return (rights != null) && (rights.right() == AccessRightsCode.domainAdmin) || (rights.right() == AccessRightsCode.appAdmin);
     }
 
     protected boolean hasAppAdminRights() {

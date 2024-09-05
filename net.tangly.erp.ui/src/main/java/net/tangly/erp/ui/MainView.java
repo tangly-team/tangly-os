@@ -37,6 +37,7 @@ import org.jetbrains.annotations.NotNull;
 import java.time.LocalDate;
 import java.time.Month;
 import java.time.temporal.ChronoUnit;
+import java.util.Collections;
 
 @PageTitle("tangly ERP")
 @Route("")
@@ -68,7 +69,7 @@ public class MainView extends ApplicationView {
 
 
     /**
-     * application admininstrator have access to the global housekeeping functions of the application.
+     * application administrator have access to the global housekeeping functions of the application.
      *
      * @param ui bounded domain user interface
      */
@@ -85,7 +86,8 @@ public class MainView extends ApplicationView {
 
     private void exportDocuments() {
         var invoices = (InvoicesBoundedDomain) (tenant().getBoundedDomain(InvoicesBoundedDomain.DOMAIN).orElseThrow());
-        invoices.port().exportInvoiceDocuments(invoices, false, false, true, LocalDate.of(2015, Month.JANUARY, 1), LocalDate.of(2024, Month.DECEMBER, 31));
+        invoices.port().exportInvoiceDocuments(invoices, false, false, true, LocalDate.of(2015, Month.JANUARY, 1), LocalDate.of(2024, Month.DECEMBER, 31),
+            null, Collections.emptyList());
         var ledger = (LedgerBoundedDomain) (tenant().getBoundedDomain(LedgerBoundedDomain.DOMAIN).orElseThrow());
         ledger.port()
             .exportLedgerDocument("tangly-2016", LocalDate.of(2015, Month.SEPTEMBER, 1), LocalDate.of(2016, Month.DECEMBER, 31), true, true, true, true, true);

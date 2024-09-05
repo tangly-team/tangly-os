@@ -13,6 +13,7 @@
 
 package net.tangly.erp.invoices.services;
 
+import net.tangly.core.Tag;
 import net.tangly.core.domain.DomainAudit;
 import net.tangly.core.domain.Port;
 import net.tangly.erp.invoices.domain.Invoice;
@@ -20,6 +21,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.Collection;
 import java.util.Currency;
 import java.util.Optional;
 
@@ -40,9 +42,10 @@ public interface InvoicesPort extends Port<InvoicesRealm> {
      * @param withQrCode  flag if the Swiss QR cde should be added to the invoice document
      * @param withEN16931 flag if the EN16931 digital invoice should be added to the invoice document
      * @param overwrite   flag if an existing document should be overwritten
-     * @see #exportInvoiceDocuments(DomainAudit, boolean, boolean, boolean, LocalDate, LocalDate)
+     * @see #exportInvoiceDocuments(DomainAudit, boolean, boolean, boolean, LocalDate, LocalDate, String, Collection)
      */
-    void exportInvoiceDocument(@NotNull DomainAudit audit, @NotNull Invoice invoice, boolean withQrCode, boolean withEN16931, boolean overwrite);
+    void exportInvoiceDocument(@NotNull DomainAudit audit, @NotNull Invoice invoice, boolean withQrCode, boolean withEN16931, boolean overwrite,
+                               String text, Collection<Tag> tags);
 
     /**
      * Exports all selected invoices as artifact to a file. The method is responsible to infer the uri to the generated invoice document.
@@ -54,7 +57,8 @@ public interface InvoicesPort extends Port<InvoicesRealm> {
      * @param to          optional end of the relevant time interval for the invoiced date
      * @param overwrite   flag if an existing document should be overwritten
      */
-    void exportInvoiceDocuments(@NotNull DomainAudit audit, boolean withQrCode, boolean withEN16931, boolean overwrite, LocalDate from, LocalDate to);
+    void exportInvoiceDocuments(@NotNull DomainAudit audit, boolean withQrCode, boolean withEN16931, boolean overwrite, LocalDate from, LocalDate to,
+                                String text, Collection<Tag> tags);
 
     record InvoiceView(@NotNull String id, @NotNull Currency currency, @NotNull BigDecimal amountWithoutVat, @NotNull BigDecimal vat,
                        @NotNull BigDecimal amountWithVat, @NotNull LocalDate invoicedDate, @NotNull LocalDate dueDate) {

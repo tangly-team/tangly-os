@@ -15,6 +15,7 @@ package net.tangly.core.domain;
 
 import net.tangly.commons.logger.EventData;
 import net.tangly.core.*;
+import net.tangly.core.events.EntityChangedInternalEvent;
 import net.tangly.core.providers.Provider;
 import org.jetbrains.annotations.NotNull;
 
@@ -112,24 +113,6 @@ public class BoundedDomain<R extends Realm, B, P extends Port<R>> implements Has
     }
 
     /**
-     * Returns the external event channel of the domain. The channel is used to publish events to the external world.
-     *
-     * @return external event channel
-     */
-    public SubmissionPublisher<Object> channel() {
-        return channel;
-    }
-
-    /**
-     * Returns the internal event channel of the domain. The channel is used to publish internal events within the domain.
-     *
-     * @return internal event channel
-     */
-    public SubmissionPublisher<Object> internalChannel() {
-        return internalChannel;
-    }
-
-    /**
      * Subscribes to the public event channel of the domain.
      *
      * @param listener event listener
@@ -183,9 +166,38 @@ public class BoundedDomain<R extends Realm, B, P extends Port<R>> implements Has
         return auditEvents;
     }
 
+    // region DomainAudit
+
+    @Override
     public void log(@NotNull EventData auditEvent) {
         EventData.log(auditEvent);
         auditEvents.add(auditEvent);
+    }
+
+    @Override
+    public void entityImported(@NotNull String entityName) {
+        submitInterally(new EntityChangedInternalEvent(name(), entityName, Operation.ALL));
+    }
+
+    @Override
+    public void submitInterally(@NotNull Object event) {
+        internalChannel().submit(event);
+    }
+
+    @Override
+    public void submit(@NotNull Object event) {
+        channel().submit(event);
+    }
+
+
+    // endregion
+
+    public SubmissionPublisher<Object> channel() {
+        return channel;
+    }
+
+    public SubmissionPublisher<Object> internalChannel() {
+        return internalChannel;
     }
 
     public void startup() {

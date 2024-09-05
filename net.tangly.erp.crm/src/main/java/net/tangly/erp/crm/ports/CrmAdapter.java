@@ -14,6 +14,7 @@
 package net.tangly.erp.crm.ports;
 
 import net.tangly.core.domain.DomainAudit;
+import net.tangly.erp.crm.domain.*;
 import net.tangly.erp.crm.services.CrmPort;
 import net.tangly.erp.crm.services.CrmRealm;
 import org.jetbrains.annotations.NotNull;
@@ -64,6 +65,7 @@ public final class CrmAdapter implements CrmPort {
         var crmEnrichmentHdl = new CrmEnrichmentHdl(realm());
         crmEnrichmentHdl.importVCards(folder.resolve(VCARDS_FOLDER));
         crmEnrichmentHdl.importLinkedInPhotos(folder);
+        entitiesImported(audit);
     }
 
     @Override
@@ -89,5 +91,17 @@ public final class CrmAdapter implements CrmPort {
         realm().naturalEntities().deleteAll();
         realm().legalEntities().deleteAll();
         realm().leads().deleteAll();
+        entitiesImported(audit);
+    }
+
+    private void entitiesImported(@NotNull DomainAudit audit) {
+        audit.entityImported(Lead.class.getSimpleName());
+        audit.entityImported(LegalEntity.class.getSimpleName());
+        audit.entityImported(NaturalEntity.class.getSimpleName());
+        audit.entityImported(Employee.class.getSimpleName());
+        audit.entityImported(Contract.class.getSimpleName());
+        audit.entityImported(ContractExtension.class.getSimpleName());
+        audit.entityImported(Opportunity.class.getSimpleName());
+        audit.entityImported(Activity.class.getSimpleName());
     }
 }

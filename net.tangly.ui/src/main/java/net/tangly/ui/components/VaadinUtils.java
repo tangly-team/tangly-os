@@ -29,13 +29,20 @@ import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.renderer.ComponentRenderer;
 import com.vaadin.flow.data.renderer.Renderer;
 import com.vaadin.flow.function.ValueProvider;
+import com.vaadin.flow.server.StreamResource;
 import net.tangly.commons.lang.Strings;
 import net.tangly.core.EmailAddress;
 import net.tangly.core.HasMutableTags;
 import net.tangly.core.Tag;
+import net.tangly.core.domain.Document;
+import org.eclipse.jetty.io.RuntimeIOException;
 import org.jetbrains.annotations.NotNull;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.math.BigDecimal;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.text.NumberFormat;
@@ -203,6 +210,21 @@ public final class VaadinUtils {
             anchor.setHref(Objects.nonNull(url) ? "https://%s".formatted(url) : "");
             anchor.setTarget("_blank");
             return anchor;
+        });
+    }
+
+    public static <T> ComponentRenderer<Anchor, Document> addLinkToFile(@NotNull Path root) {
+        return new ComponentRenderer<>(document -> {
+            try {
+                Path path = root.resolve(document.id() + document.extension());
+                InputStream stream = Files.newInputStream(path);
+                StreamResource streamResource = new StreamResource(path.getFileName().toString(), () -> stream);
+                Anchor anchor = new Anchor(streamResource, document.id());
+                anchor.getElement().setAttribute("download", true);
+                return anchor;
+            } catch (IOException e) {
+                throw new RuntimeIOException(e);
+            }
         });
     }
 

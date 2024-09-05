@@ -39,6 +39,7 @@ public interface Port<R extends Realm> {
      * All TSV, JSON, TOML, and YAML files are imported.
      * The domain is responsible for the order of the import and the handling of the entities.
      * A bounded domain should not depend on other domains to perform the operation.
+     * <p>You should trigger a user interface update by calling {@link DomainAudit#entityImported(String)} for each entity clas which was imported.</p>
      *
      * @param audit domain audit sink to log the operation events
      * @see #exportEntities(DomainAudit)
@@ -58,6 +59,7 @@ public interface Port<R extends Realm> {
      * Clears all entities of the bounded domain. All <em>generated</em> documents and reports are cleared.
      * Upon execution, the domain is empty. Use with caution as the operation is not reversible.
      * Typically, the operation is used before an import to ensure that the domain is empty.
+     * <p>You should trigger a user interface update by calling {@link DomainAudit#entityImported(String)} for each entity clas which was cleared.</p>
      *
      * @param audit domain audit sink to log the operation events
      */
@@ -74,7 +76,7 @@ public interface Port<R extends Realm> {
     }
 
     /**
-     * Return the realm containing all the entities of the bounded domain.
+     * Returns the realm containing all the entities of the bounded domain.
      *
      * @return realm of the bounded domain
      */
@@ -85,7 +87,7 @@ public interface Port<R extends Realm> {
     }
 
     /**
-     * Resolve the uri to where a document should be located in the file system. The convention is <em>base directory/year</em>. If folders do not
+     * Resolves the uri to where a document should be located in the file system. The convention is <em>base directory/year</em>. If folders do not
      * exist, they are created. The year must contain four digits.
      *
      * @param directory base directory containing all reports and documents
@@ -100,7 +102,7 @@ public interface Port<R extends Realm> {
     }
 
     /**
-     * Resolve the uri to where a document should be located in the file system. The convention is <em>base directory/year/month</em>. If folders do not
+     * Resolves the uri to where a document should be located in the file system. The convention is <em>base directory/year/month</em>. If folders do not
      * exist, they are created. The year must contain four digits. The month is transformed to a two-digit string.
      *
      * @param directory base directory containing all reports and documents
