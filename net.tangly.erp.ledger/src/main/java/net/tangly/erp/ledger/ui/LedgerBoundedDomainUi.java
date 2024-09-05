@@ -18,6 +18,9 @@ import com.vaadin.flow.component.contextmenu.MenuItem;
 import com.vaadin.flow.component.contextmenu.SubMenu;
 import com.vaadin.flow.component.menubar.MenuBar;
 import net.tangly.commons.lang.functional.LazyReference;
+import net.tangly.core.domain.DomainEntity;
+import net.tangly.erp.ledger.domain.Account;
+import net.tangly.erp.ledger.domain.Transaction;
 import net.tangly.erp.ledger.services.LedgerBoundedDomain;
 import net.tangly.ui.app.domain.BoundedDomainUi;
 import net.tangly.ui.app.domain.DomainView;
@@ -30,22 +33,22 @@ public class LedgerBoundedDomainUi extends BoundedDomainUi<LedgerBoundedDomain> 
 
     public LedgerBoundedDomainUi(@NotNull LedgerBoundedDomain domain) {
         super(domain);
-        addView(ACCOUNTS, new LazyReference<>(() -> new AccountsView(this, Mode.EDITABLE)));
-        addView(TRANSACTIONS, new LazyReference<>(() -> new TransactionsView(this, Mode.EDITABLE)));
-        addView(ANALYTICS, new LazyReference<>(() -> new AnalyticsLedgerView(this)));
-        addView(ENTITIES, new LazyReference<>(() -> new DomainView(this)));
-        currentView(view(TRANSACTIONS).orElseThrow());
+        addView(Account.class, new LazyReference<>(() -> new AccountsView(this, Mode.EDITABLE)));
+        addView(Transaction.class, new LazyReference<>(() -> new TransactionsView(this, Mode.EDITABLE)));
+        addView(DomainEntity.class, new LazyReference<>(() -> new DomainView(this)));
+        addView(AnalyticsLedgerView.class, new LazyReference<>(() -> new AnalyticsLedgerView(this)));
+        currentView(view(Transaction.class).orElseThrow());
     }
 
     @Override
     public void select(@NotNull AppLayout layout, @NotNull MenuBar menuBar) {
         MenuItem menuItem = menuBar.addItem(BoundedDomainUi.ENTITIES);
         SubMenu subMenu = menuItem.getSubMenu();
-        subMenu.addItem(ACCOUNTS, _ -> select(layout, view(ACCOUNTS).orElseThrow()));
-        subMenu.addItem(TRANSACTIONS, _ -> select(layout, view(TRANSACTIONS).orElseThrow()));
+        subMenu.addItem(ACCOUNTS, _ -> select(layout, view(Account.class).orElseThrow()));
+        subMenu.addItem(TRANSACTIONS, _ -> select(layout, view(Transaction.class).orElseThrow()));
 
-        addAnalytics(layout, menuBar, view(ANALYTICS).orElseThrow());
-        addAdministration(layout, menuBar, view(ENTITIES).orElseThrow());
+        addAnalytics(layout, menuBar, view(AnalyticsLedgerView.class).orElseThrow());
+        addAdministration(layout, menuBar, view(DomainEntity.class).orElseThrow());
         select(layout);
     }
 }

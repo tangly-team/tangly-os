@@ -16,5 +16,13 @@ package net.tangly.core.events;
 import net.tangly.core.domain.Operation;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * Event published when an entity is changed in the domain programatically. This change was not performed through the user interface. The event is used to
+ * propagate changes in the domain to the user interface.
+ *
+ * @param domain     name of the domain where the entity was changed
+ * @param entityName should be the simple name of the entity class {@link Class#getSimpleName()}
+ * @param operation  operation performed on the entity
+ */
 public record EntityChangedInternalEvent(@NotNull String domain, @NotNull String entityName, @NotNull Operation operation) {
 }

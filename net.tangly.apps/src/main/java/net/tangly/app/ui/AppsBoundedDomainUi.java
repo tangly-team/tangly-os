@@ -19,6 +19,8 @@ import com.vaadin.flow.component.contextmenu.SubMenu;
 import com.vaadin.flow.component.menubar.MenuBar;
 import net.tangly.app.services.AppsBoundedDomain;
 import net.tangly.commons.lang.functional.LazyReference;
+import net.tangly.core.domain.DomainEntity;
+import net.tangly.core.domain.User;
 import net.tangly.ui.app.domain.BoundedDomainUi;
 import net.tangly.ui.app.domain.DomainView;
 import net.tangly.ui.components.Mode;
@@ -29,17 +31,17 @@ public class AppsBoundedDomainUi extends BoundedDomainUi<AppsBoundedDomain> {
 
     public AppsBoundedDomainUi(@NotNull AppsBoundedDomain domain) {
         super(domain);
-        addView(USERS, new LazyReference<>(() -> new UsersView(this, Mode.EDITABLE)));
-        addView(ENTITIES, new LazyReference<>(() -> new DomainView(this)));
-        currentView(USERS);
+        addView(User.class, new LazyReference<>(() -> new UsersView(this, Mode.EDITABLE)));
+        addView(DomainEntity.class, new LazyReference<>(() -> new DomainView(this)));
+        currentView(User.class.getSimpleName());
     }
 
     @Override
     public void select(@NotNull AppLayout layout, @NotNull MenuBar menuBar) {
         MenuItem menuItem = menuBar.addItem(BoundedDomainUi.ENTITIES);
         SubMenu subMenu = menuItem.getSubMenu();
-        subMenu.addItem(USERS, e -> select(layout, view(USERS).orElseThrow()));
-        addAdministration(layout, menuBar, view(ENTITIES).orElseThrow());
+        subMenu.addItem(USERS, e -> select(layout, view(User.class.getSimpleName()).orElseThrow()));
+        addAdministration(layout, menuBar, view(DomainEntity.class.getSimpleName()).orElseThrow());
         select(layout);
     }
 }

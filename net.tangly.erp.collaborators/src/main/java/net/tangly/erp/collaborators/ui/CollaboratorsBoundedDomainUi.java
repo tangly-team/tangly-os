@@ -18,6 +18,8 @@ import com.vaadin.flow.component.contextmenu.MenuItem;
 import com.vaadin.flow.component.contextmenu.SubMenu;
 import com.vaadin.flow.component.menubar.MenuBar;
 import net.tangly.commons.lang.functional.LazyReference;
+import net.tangly.core.domain.DomainEntity;
+import net.tangly.erp.collaborators.domain.Collaborator;
 import net.tangly.erp.collabortors.services.CollaboratorsBoundedDomain;
 import net.tangly.ui.app.domain.BoundedDomainUi;
 import net.tangly.ui.app.domain.DomainView;
@@ -30,9 +32,9 @@ public class CollaboratorsBoundedDomainUi extends BoundedDomainUi<CollaboratorsB
 
     public CollaboratorsBoundedDomainUi(@NotNull CollaboratorsBoundedDomain domain) {
         super(domain);
-        addView(COLLABORATORS, new LazyReference<>(() -> new CollaboratorsView(this, Mode.EDITABLE)));
-        addView(ENTITIES, new LazyReference<>(() -> new DomainView(this)));
-        currentView(view(COLLABORATORS).orElseThrow());
+        addView(Collaborator.class, new LazyReference<>(() -> new CollaboratorsView(this, Mode.EDITABLE)));
+        addView(DomainEntity.class, new LazyReference<>(() -> new DomainView(this)));
+        currentView(view(Collaborator.class).orElseThrow());
 
     }
 
@@ -40,9 +42,9 @@ public class CollaboratorsBoundedDomainUi extends BoundedDomainUi<CollaboratorsB
     public void select(@NotNull AppLayout layout, @NotNull MenuBar menuBar) {
         MenuItem menuItem = menuBar.addItem(BoundedDomainUi.ENTITIES);
         SubMenu subMenu = menuItem.getSubMenu();
-        subMenu.addItem(COLLABORATORS, _ -> select(layout, view(COLLABORATORS).orElseThrow()));
+        subMenu.addItem(COLLABORATORS, _ -> select(layout, view(Collaborator.class).orElseThrow()));
 
-        addAdministration(layout, menuBar, view(ENTITIES).orElseThrow());
+        addAdministration(layout, menuBar, view(DomainEntity.class).orElseThrow());
         select(layout);
     }
 }

@@ -47,7 +47,6 @@ public abstract class BoundedDomainUi<T extends BoundedDomain<?, ?, ?>> implemen
     public static final String ENTITIES = "Entities";
     public static final String EXPORT = "Export";
     public static final String IMPORT = "Import";
-    public static final String LOAD = "Load";
     public static final String STATISTICS = "Statistics";
 
     private final T domain;
@@ -146,10 +145,13 @@ public abstract class BoundedDomainUi<T extends BoundedDomain<?, ?, ?>> implemen
 
     // endregion
 
-    protected final void addView(@NotNull String name, @NotNull LazyReference<? extends View> view) {
-        views.put(name, view);
+    protected final void addView(@NotNull Class<?> clazz, @NotNull LazyReference<? extends View> view) {
+        views.put(clazz.getSimpleName(), view);
     }
 
+    protected final Optional<LazyReference<? extends View>> view(@NotNull Class<?> clazz) {
+        return Optional.ofNullable(views.get(clazz.getSimpleName()));
+    }
 
     protected final Optional<LazyReference<? extends View>> view(@NotNull String name) {
         return Optional.ofNullable(views.get(name));

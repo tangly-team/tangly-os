@@ -35,11 +35,9 @@ import net.tangly.core.EmailAddress;
 import net.tangly.core.HasMutableTags;
 import net.tangly.core.Tag;
 import net.tangly.core.domain.Document;
-import org.eclipse.jetty.io.RuntimeIOException;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.math.BigDecimal;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -215,16 +213,17 @@ public final class VaadinUtils {
 
     public static <T> ComponentRenderer<Anchor, Document> addLinkToFile(@NotNull Path root) {
         return new ComponentRenderer<>(document -> {
-            try {
-                Path path = root.resolve(document.id() + document.extension());
-                InputStream stream = Files.newInputStream(path);
-                StreamResource streamResource = new StreamResource(path.getFileName().toString(), () -> stream);
-                Anchor anchor = new Anchor(streamResource, document.id());
-                anchor.getElement().setAttribute("download", true);
-                return anchor;
-            } catch (IOException e) {
-                throw new RuntimeIOException(e);
-            }
+            Path path = root.resolve(document.id() + document.extension());
+            StreamResource streamResource = new StreamResource(path.getFileName().toString(), () -> {
+                try {
+                    return Files.newInputStream(path);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            });
+            Anchor anchor = new Anchor(streamResource, document.id());
+            anchor.getElement().setAttribute("download", true);
+            return anchor;
         });
     }
 

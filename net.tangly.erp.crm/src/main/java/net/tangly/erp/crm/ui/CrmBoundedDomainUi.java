@@ -18,6 +18,8 @@ import com.vaadin.flow.component.contextmenu.MenuItem;
 import com.vaadin.flow.component.contextmenu.SubMenu;
 import com.vaadin.flow.component.menubar.MenuBar;
 import net.tangly.commons.lang.functional.LazyReference;
+import net.tangly.core.domain.DomainEntity;
+import net.tangly.erp.crm.domain.*;
 import net.tangly.erp.crm.services.CrmBoundedDomain;
 import net.tangly.erp.invoices.services.InvoicesBoundedDomain;
 import net.tangly.ui.app.domain.BoundedDomainUi;
@@ -37,32 +39,32 @@ public class CrmBoundedDomainUi extends BoundedDomainUi<CrmBoundedDomain> {
 
     public CrmBoundedDomainUi(@NotNull CrmBoundedDomain crmDomain, @NotNull InvoicesBoundedDomain invoicesDomain) {
         super(crmDomain);
-        addView(LEADS, new LazyReference<>(() -> new LeadsView(this, Mode.EDITABLE)));
-        addView(NATURAL_ENTITIES, new LazyReference<>(() -> new NaturalEntitiesView(this, Mode.EDITABLE)));
-        addView(LEGAL_ENTITIES, new LazyReference<>(() -> new LegalEntitiesView(this, Mode.EDITABLE)));
-        addView(EMPLOYEES, new LazyReference<>(() -> new EmployeesView(this, Mode.EDITABLE)));
-        addView(CONTRACTS, new LazyReference<>(() -> new ContractsView(this, Mode.EDITABLE)));
-        addView(OPPORTUNITIES, new LazyReference<>(() -> new OpportunitiesView(this, Mode.EDITABLE)));
-        addView(ACTIVITIES, new LazyReference<>(() -> new ActivitiesView(this, Mode.EDITABLE)));
-        addView(ANALYTICS, new LazyReference<>(() -> new AnalyticsCrmView(this, invoicesDomain)));
-        addView(ENTITIES, new LazyReference<>(() -> new DomainView(this)));
-        currentView(NATURAL_ENTITIES);
+        addView(Lead.class, new LazyReference<>(() -> new LeadsView(this, Mode.EDITABLE)));
+        addView(NaturalEntity.class, new LazyReference<>(() -> new NaturalEntitiesView(this, Mode.EDITABLE)));
+        addView(LegalEntity.class, new LazyReference<>(() -> new LegalEntitiesView(this, Mode.EDITABLE)));
+        addView(Employee.class, new LazyReference<>(() -> new EmployeesView(this, Mode.EDITABLE)));
+        addView(Contract.class, new LazyReference<>(() -> new ContractsView(this, Mode.EDITABLE)));
+        addView(Opportunity.class, new LazyReference<>(() -> new OpportunitiesView(this, Mode.EDITABLE)));
+        addView(Activity.class, new LazyReference<>(() -> new ActivitiesView(this, Mode.EDITABLE)));
+        addView(AnalyticsCrmView.class, new LazyReference<>(() -> new AnalyticsCrmView(this, invoicesDomain)));
+        addView(DomainEntity.class, new LazyReference<>(() -> new DomainView(this)));
+        currentView(NaturalEntity.class.getSimpleName());
     }
 
     @Override
     public void select(@NotNull AppLayout layout, @NotNull MenuBar menuBar) {
         MenuItem menuItem = menuBar.addItem(BoundedDomainUi.ENTITIES);
         SubMenu subMenu = menuItem.getSubMenu();
-        subMenu.addItem(LEADS, _ -> select(layout, view(LEADS).orElseThrow()));
-        subMenu.addItem(LEGAL_ENTITIES, _ -> select(layout, view(LEGAL_ENTITIES).orElseThrow()));
-        subMenu.addItem(NATURAL_ENTITIES, _ -> select(layout, view(NATURAL_ENTITIES).orElseThrow()));
-        subMenu.addItem(CONTRACTS, _ -> select(layout, view(CONTRACTS).orElseThrow()));
-        subMenu.addItem(EMPLOYEES, _ -> select(layout, view(EMPLOYEES).orElseThrow()));
-        subMenu.addItem(OPPORTUNITIES, _ -> select(layout, view(OPPORTUNITIES).orElseThrow()));
-        subMenu.addItem(ACTIVITIES, _ -> select(layout, view(ACTIVITIES).orElseThrow()));
+        subMenu.addItem(LEADS, _ -> select(layout, view(Lead.class.getSimpleName()).orElseThrow()));
+        subMenu.addItem(LEGAL_ENTITIES, _ -> select(layout, view(LegalEntity.class).orElseThrow()));
+        subMenu.addItem(NATURAL_ENTITIES, _ -> select(layout, view(NaturalEntity.class).orElseThrow()));
+        subMenu.addItem(CONTRACTS, _ -> select(layout, view(Contract.class).orElseThrow()));
+        subMenu.addItem(EMPLOYEES, _ -> select(layout, view(Employee.class).orElseThrow()));
+        subMenu.addItem(OPPORTUNITIES, _ -> select(layout, view(Opportunity.class).orElseThrow()));
+        subMenu.addItem(ACTIVITIES, _ -> select(layout, view(Activity.class).orElseThrow()));
 
-        addAnalytics(layout, menuBar, view(ANALYTICS).orElseThrow());
-        addAdministration(layout, menuBar, view(ENTITIES).orElseThrow());
+        addAnalytics(layout, menuBar, view(AnalyticsCrmView.class).orElseThrow());
+        addAdministration(layout, menuBar, view(DomainEntity.class).orElseThrow());
         select(layout);
     }
 }

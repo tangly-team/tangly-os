@@ -21,12 +21,14 @@ import com.vaadin.flow.component.menubar.MenuBar;
 import net.tangly.commons.lang.functional.LazyReference;
 import net.tangly.core.domain.AccessRightsCode;
 import net.tangly.core.domain.BoundedDomain;
+import net.tangly.core.domain.DomainEntity;
 import net.tangly.core.domain.User;
 import net.tangly.core.events.EntityChangedInternalEvent;
 import net.tangly.core.providers.Provider;
 import net.tangly.core.providers.ProviderView;
 import net.tangly.erp.products.domain.Assignment;
 import net.tangly.erp.products.domain.Effort;
+import net.tangly.erp.products.domain.Product;
 import net.tangly.erp.products.domain.WorkContract;
 import net.tangly.erp.products.services.ProductsBoundedDomain;
 import net.tangly.ui.app.domain.BoundedDomainUi;
@@ -47,12 +49,12 @@ public class ProductsBoundedDomainUi extends BoundedDomainUi<ProductsBoundedDoma
         super(domain);
         efforts = domain.realm().efforts();
         assignments = domain.realm().assignments();
-        addView(PRODUCTS, new LazyReference<>(() -> new ProductsView(this, Mode.EDITABLE)));
-        addView(WORK_CONTRACTS, new LazyReference<>(() -> new WorkContractsView(this, Mode.EDITABLE)));
-        addView(ASSIGNMENTS, new LazyReference<>(() -> new AssignmentsView(this, Mode.EDITABLE)));
-        addView(EFFORTS, new LazyReference<>(() -> new EffortsView(this, Mode.EDITABLE)));
-        addView(ENTITIES, new LazyReference<>(() -> new DomainView(this)));
-        currentView(view(PRODUCTS).orElseThrow());
+        addView(Product.class, new LazyReference<>(() -> new ProductsView(this, Mode.EDITABLE)));
+        addView(WorkContract.class, new LazyReference<>(() -> new WorkContractsView(this, Mode.EDITABLE)));
+        addView(Assignment.class, new LazyReference<>(() -> new AssignmentsView(this, Mode.EDITABLE)));
+        addView(Effort.class, new LazyReference<>(() -> new EffortsView(this, Mode.EDITABLE)));
+        addView(DomainEntity.class, new LazyReference<>(() -> new DomainView(this)));
+        currentView(view(Product.class).orElseThrow());
         domain.subscribeInternally(this);
     }
 
@@ -63,8 +65,8 @@ public class ProductsBoundedDomainUi extends BoundedDomainUi<ProductsBoundedDoma
             String username = user.username();
             efforts = isRestricted ? ProviderView.of(domain().realm().efforts(), u -> u.assignment().name().equals(username)) : domain().realm().efforts();
             assignments = isRestricted ? ProviderView.of(domain().realm().assignments(), u -> u.name().equals(username)) : domain().realm().assignments();
-            view(EFFORTS).ifPresent(v -> v.ifPresent(o -> ((EffortsView) o).provider(efforts)));
-            view(ASSIGNMENTS).ifPresent(v -> v.ifPresent(o -> ((AssignmentsView) o).provider(assignments)));
+            view(Effort.class).ifPresent(v -> v.ifPresent(o -> ((EffortsView) o).provider(efforts)));
+            view(Assignment.class).ifPresent(v -> v.ifPresent(o -> ((AssignmentsView) o).provider(assignments)));
         });
         super.userChanged(user);
     }
@@ -73,11 +75,11 @@ public class ProductsBoundedDomainUi extends BoundedDomainUi<ProductsBoundedDoma
     public void select(@NotNull AppLayout layout, @NotNull MenuBar menuBar) {
         MenuItem menuItem = menuBar.addItem(BoundedDomainUi.ENTITIES);
         SubMenu subMenu = menuItem.getSubMenu();
-        subMenu.addItem(PRODUCTS, _ -> select(layout, view(PRODUCTS).orElseThrow()));
-        subMenu.addItem(WORK_CONTRACTS, _ -> select(layout, view(WORK_CONTRACTS).orElseThrow()));
-        subMenu.addItem(ASSIGNMENTS, _ -> select(layout, view(ASSIGNMENTS).orElseThrow()));
-        subMenu.addItem(EFFORTS, _ -> select(layout, view(EFFORTS).orElseThrow()));
-        addAdministration(layout, menuBar, view(ENTITIES).orElseThrow());
+        subMenu.addItem(PRODUCTS, _ -> select(layout, view(Product.class).orElseThrow()));
+        subMenu.addItem(WORK_CONTRACTS, _ -> select(layout, view(WorkContract.class).orElseThrow()));
+        subMenu.addItem(ASSIGNMENTS, _ -> select(layout, view(Assignment.class).orElseThrow()));
+        subMenu.addItem(EFFORTS, _ -> select(layout, view(Effort.class).orElseThrow()));
+        addAdministration(layout, menuBar, view(DomainEntity.class).orElseThrow());
         select(layout);
     }
 
