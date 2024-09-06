@@ -13,9 +13,13 @@
 
 package net.tangly.erp.ledger.services;
 
+import net.tangly.core.Tag;
+import net.tangly.core.domain.DomainAudit;
 import net.tangly.core.domain.Port;
+import org.jetbrains.annotations.NotNull;
 
 import java.time.LocalDate;
+import java.util.Collection;
 
 /**
  * Defines the import port for the ledger bounded domain. It is the primary port in DDD terminology.
@@ -32,8 +36,12 @@ public interface LedgerPort extends Port<LedgerRealm> {
      * @param withEmptyAccounts    flag indicating if empty accounts should be part of the report
      * @param withTransactions     flag indicating if the transactions should be part of the report
      * @param withVat              flag indicating if VAT information should be part of the report
+     * @param text                 text to be included in the document
+     * @param tags                 tags to be associated with the document
+     * @param audit                audit information for the document
      */
     public void exportLedgerDocument(String name, LocalDate from, LocalDate to, boolean withBalanceSheet, boolean withProfitsAndLosses,
-                                     boolean withEmptyAccounts, boolean withTransactions, boolean withVat);
+                                     boolean withEmptyAccounts, boolean withTransactions, boolean withVat, String text, Collection<Tag> tags,
+                                     @NotNull DomainAudit audit);
 
 }

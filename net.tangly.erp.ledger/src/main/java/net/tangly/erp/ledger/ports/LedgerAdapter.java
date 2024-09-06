@@ -15,10 +15,15 @@ package net.tangly.erp.ledger.ports;
 
 import net.tangly.commons.logger.EventData;
 import net.tangly.commons.utilities.AsciiDoctorHelper;
+import net.tangly.core.DateRange;
+import net.tangly.core.Tag;
 import net.tangly.core.TypeRegistry;
 import net.tangly.core.codes.CodeHelper;
+import net.tangly.core.domain.Document;
 import net.tangly.core.domain.DomainAudit;
+import net.tangly.core.domain.Operation;
 import net.tangly.core.domain.Port;
+import net.tangly.core.events.EntityChangedInternalEvent;
 import net.tangly.erp.ledger.artifacts.ClosingReportAsciiDoc;
 import net.tangly.erp.ledger.domain.Account;
 import net.tangly.erp.ledger.domain.LedgerTags;
@@ -36,9 +41,16 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.Month;
+import java.time.temporal.ChronoUnit;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Map;
+import java.util.Objects;
 import java.util.stream.Stream;
+
+import static net.tangly.commons.utilities.AsciiDoctorHelper.PDF_EXT;
 
 /**
  * Provide workflows for ledger activities.
@@ -136,11 +148,20 @@ public class LedgerAdapter implements LedgerPort {
 
     @Override
     public void exportLedgerDocument(String name, LocalDate from, LocalDate to, boolean withBalanceSheet, boolean withProfitsAndLosses,
-                                     boolean withEmptyAccounts, boolean withTransactions, boolean withVat) {
+                                     boolean withEmptyAccounts, boolean withTransactions, boolean withVat, String text, Collection<Tag> tags,
+                                     @NotNull DomainAudit audit) {
         var report = new ClosingReportAsciiDoc(realm, registry);
         report.create(from, to, docsFolder.resolve(name + AsciiDoctorHelper.ASCIIDOC_EXT), withBalanceSheet, withProfitsAndLosses, withEmptyAccounts,
             withTransactions, withVat);
         AsciiDoctorHelper.createPdf(docsFolder.resolve(name + AsciiDoctorHelper.ASCIIDOC_EXT), docsFolder.resolve(name + AsciiDoctorHelper.PDF_EXT), true);
+        createDocument(name, from, to, text, tags, audit);
+    }
+
+    private void createDocument(@NotNull String name, LocalDate from, LocalDate to, String text, Collection<Tag> tags, @NotNull DomainAudit audit) {
+        Document document = new Document(name, name, PDF_EXT, LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS), new DateRange(from, to), text, true,
+            Objects.nonNull(tags) ? tags : Collections.emptyList());
+        realm().documents().update(document);
+        audit.submitInterally(new EntityChangedInternalEvent(audit.name(), Document.class.getSimpleName(), Operation.CREATE));
     }
 
     public static String journalForYear(int year) {

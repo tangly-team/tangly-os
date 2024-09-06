@@ -24,7 +24,10 @@ import com.vaadin.flow.component.textfield.TextField;
 import net.tangly.core.Tag;
 import net.tangly.erp.invoices.domain.Invoice;
 import net.tangly.ui.app.domain.Cmd;
-import net.tangly.ui.components.*;
+import net.tangly.ui.components.Mode;
+import net.tangly.ui.components.One2ManyOwnedField;
+import net.tangly.ui.components.TagsView;
+import net.tangly.ui.components.VaadinUtils;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
@@ -41,7 +44,6 @@ public class CmdCreateInvoiceDocument implements Cmd {
     private final Checkbox withEN16931;
     private final Checkbox overwrite;
     private final TextField name;
-    private final AsciiDocField documnetText;
     private final One2ManyOwnedField<Tag> documentTags;
     private final InvoicesBoundedDomainUi domain;
     private final Invoice invoice;
@@ -68,7 +70,6 @@ public class CmdCreateInvoiceDocument implements Cmd {
         if (Objects.nonNull(invoice)) {
             name.setValue(invoice.name());
         }
-        documnetText = new AsciiDocField("Text");
         documentTags = new One2ManyOwnedField<>(new TagsView(domain, Mode.EDITABLE));
         // pass the document data to the exportInvoiceDocument methods
     }
@@ -80,10 +81,10 @@ public class CmdCreateInvoiceDocument implements Cmd {
             if (invoice == null) {
                 domain.domain().port()
                     .exportInvoiceDocuments(domain.domain(), withQrCode.getValue(), withEN16931.getValue(), overwrite.getValue(), from.getValue(),
-                        to.getValue(), documnetText.getValue(), documentTags.getValue());
+                        to.getValue(), documentTags.getValue());
             } else {
                 domain.domain().port().exportInvoiceDocument(domain.domain(), invoice, withQrCode.getValue(), withEN16931.getValue(), overwrite.getValue(),
-                    documnetText.getValue(), documentTags.getValue());
+                    documentTags.getValue());
             }
             close();
         });
@@ -105,9 +106,7 @@ public class CmdCreateInvoiceDocument implements Cmd {
     private FormLayout create() {
         FormLayout form = new FormLayout();
         VaadinUtils.set3ResponsiveSteps(form);
-        form.add(name, new HtmlComponent("br"), from, to, new HtmlComponent("br"), withQrCode, withEN16931, overwrite, new HtmlComponent("br"), documnetText,
-            documentTags);
-        form.setColspan(documnetText, 3);
+        form.add(name, new HtmlComponent("br"), from, to, new HtmlComponent("br"), withQrCode, withEN16931, overwrite, new HtmlComponent("br"), documentTags);
         form.setColspan(documentTags, 3);
         if (invoice == null) {
             name.setVisible(false);

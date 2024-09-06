@@ -30,5 +30,5 @@ project.description = "command interpreter (tangly llc)"
 
 dependencies {
     testImplementation(libs.apache.commons.cli)
-//    testImplementation(libs.google.protobuf)
+    testImplementation(libs.google.protobuf)
 }

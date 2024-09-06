@@ -22,8 +22,13 @@ import net.tangly.commons.lang.Strings;
 import net.tangly.commons.logger.EventData;
 import net.tangly.commons.utilities.AsciiDoctorHelper;
 import net.tangly.commons.utilities.ValidatorUtilities;
+import net.tangly.core.DateRange;
+import net.tangly.core.Tag;
+import net.tangly.core.domain.Document;
 import net.tangly.core.domain.DomainAudit;
+import net.tangly.core.domain.Operation;
 import net.tangly.core.domain.Port;
+import net.tangly.core.events.EntityChangedInternalEvent;
 import net.tangly.core.providers.Provider;
 import net.tangly.erp.products.artifacts.EffortReportEngine;
 import net.tangly.erp.products.domain.Assignment;
@@ -40,7 +45,9 @@ import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.YearMonth;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
@@ -48,6 +55,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.groupingBy;
+import static net.tangly.commons.utilities.AsciiDoctorHelper.PDF_EXT;
 
 public class ProductsAdapter implements ProductsPort {
     public static final String PRODUCTS_TSV = "products.tsv";
@@ -252,6 +260,8 @@ public class ProductsAdapter implements ProductsPort {
             var helper = new EffortReportEngine(logic, properties, unit);
             helper.createReport(assignment, from, to, assignmentAsciiDocPath);
             AsciiDoctorHelper.createPdf(assignmentAsciiDocPath, assignmentPdfPath, true);
+            createDocument(Paths.get(Integer.toString(to.getYear()), "%02d".formatted(to.getMonth().getValue())) + "/" + filename, from, to, null,
+                Collections.emptyList(), audit);
         }
     }
 
@@ -268,9 +278,19 @@ public class ProductsAdapter implements ProductsPort {
                 var assignmentPdfPath = Port.resolvePath(reportFolder, to.getYear(), to.getMonth(), "%s%s".formatted(filename, AsciiDoctorHelper.PDF_EXT));
                 helper.createMonthlyReport(assignment, current, assignmentAsciiDocPath);
                 AsciiDoctorHelper.createPdf(assignmentAsciiDocPath, assignmentPdfPath, true);
+                createDocument(Paths.get(Integer.toString(to.getYear()), to.getMonth().toString()).toString() + filename, current.atDay(1),
+                    current.atEndOfMonth(), null, Collections.emptyList(), audit);
                 current = current.plusMonths(1);
             }
         }
+    }
+
+    private void createDocument(@NotNull String id, @NotNull LocalDate from, @NotNull LocalDate to, String text, Collection<Tag> tags,
+                                @NotNull DomainAudit audit) {
+        Document document = new Document(id, id, PDF_EXT, LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS), new DateRange(from, to), text, true,
+            Objects.nonNull(tags) ? tags : Collections.emptyList());
+        realm().documents().update(document);
+        audit.submitInterally(new EntityChangedInternalEvent(audit.name(), Document.class.getSimpleName(), Operation.CREATE));
     }
 
     private String filename(@NotNull Assignment assignment, @NotNull YearMonth month) {

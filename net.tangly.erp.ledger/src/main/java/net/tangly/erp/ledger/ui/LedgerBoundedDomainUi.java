@@ -18,11 +18,13 @@ import com.vaadin.flow.component.contextmenu.MenuItem;
 import com.vaadin.flow.component.contextmenu.SubMenu;
 import com.vaadin.flow.component.menubar.MenuBar;
 import net.tangly.commons.lang.functional.LazyReference;
+import net.tangly.core.domain.Document;
 import net.tangly.core.domain.DomainEntity;
 import net.tangly.erp.ledger.domain.Account;
 import net.tangly.erp.ledger.domain.Transaction;
 import net.tangly.erp.ledger.services.LedgerBoundedDomain;
 import net.tangly.ui.app.domain.BoundedDomainUi;
+import net.tangly.ui.app.domain.DocumentsView;
 import net.tangly.ui.app.domain.DomainView;
 import net.tangly.ui.components.Mode;
 import org.jetbrains.annotations.NotNull;
@@ -35,6 +37,7 @@ public class LedgerBoundedDomainUi extends BoundedDomainUi<LedgerBoundedDomain> 
         super(domain);
         addView(Account.class, new LazyReference<>(() -> new AccountsView(this, Mode.EDITABLE)));
         addView(Transaction.class, new LazyReference<>(() -> new TransactionsView(this, Mode.EDITABLE)));
+        addView(Document.class, new LazyReference<>(() -> new DocumentsView(this, domain().realm().documents())));
         addView(DomainEntity.class, new LazyReference<>(() -> new DomainView(this)));
         addView(AnalyticsLedgerView.class, new LazyReference<>(() -> new AnalyticsLedgerView(this)));
         currentView(view(Transaction.class).orElseThrow());
@@ -46,6 +49,7 @@ public class LedgerBoundedDomainUi extends BoundedDomainUi<LedgerBoundedDomain> 
         SubMenu subMenu = menuItem.getSubMenu();
         subMenu.addItem(ACCOUNTS, _ -> select(layout, view(Account.class).orElseThrow()));
         subMenu.addItem(TRANSACTIONS, _ -> select(layout, view(Transaction.class).orElseThrow()));
+        subMenu.addItem(DOCUMENTS, e -> select(layout, view(Document.class).orElseThrow()));
 
         addAnalytics(layout, menuBar, view(AnalyticsLedgerView.class).orElseThrow());
         addAdministration(layout, menuBar, view(DomainEntity.class).orElseThrow());

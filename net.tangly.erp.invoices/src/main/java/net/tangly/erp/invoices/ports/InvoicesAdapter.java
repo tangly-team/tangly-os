@@ -17,10 +17,7 @@ import net.tangly.commons.logger.EventData;
 import net.tangly.commons.utilities.AsciiDoctorHelper;
 import net.tangly.core.DateRange;
 import net.tangly.core.Tag;
-import net.tangly.core.domain.Document;
-import net.tangly.core.domain.DomainAudit;
-import net.tangly.core.domain.Operation;
-import net.tangly.core.domain.Port;
+import net.tangly.core.domain.*;
 import net.tangly.core.events.EntityChangedInternalEvent;
 import net.tangly.core.providers.Provider;
 import net.tangly.erp.invoices.artifacts.InvoiceAsciiDoc;
@@ -46,9 +43,10 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Stream;
 
 import static net.tangly.commons.utilities.AsciiDoctorHelper.PDF_EXT;
+import static net.tangly.core.domain.TsvHdl.DOCUMENTS_TSV;
 
 /**
- * Define the workflow defined for bounded domain activities in particular the import and export of files.
+ * Define the workflow defined for bounded domain activities, in particular the import and export of files.
  */
 public class InvoicesAdapter implements InvoicesPort {
     private final InvoicesRealm realm;
@@ -95,6 +93,7 @@ public class InvoicesAdapter implements InvoicesPort {
         } catch (IOException e) {
             throw new UncheckedIOException(e);
         }
+        TsvHdl.importDocuments(audit, dataFolder.resolve(DOCUMENTS_TSV), realm().documents());
         entitiesImported(audit);
     }
 
@@ -108,6 +107,7 @@ public class InvoicesAdapter implements InvoicesPort {
             invoiceJson.export(o, true, invoicePath, audit);
             audit.log(EventData.EXPORT_EVENT, EventData.Status.SUCCESS, "Invoice exported to JSON {}", Map.of(INVOICE, o, INVOICE_PATH, invoicePath));
         });
+        TsvHdl.exportDocuments(audit, dataFolder.resolve(DOCUMENTS_TSV), realm().documents());
     }
 
     @Override
@@ -121,10 +121,10 @@ public class InvoicesAdapter implements InvoicesPort {
 
     @Override
     public void exportInvoiceDocuments(@NotNull DomainAudit audit, boolean withQrCode, boolean withEN16931, boolean overwrite, LocalDate from, LocalDate to,
-                                       String text, Collection<Tag> tags) {
+                                       Collection<Tag> tags) {
         final var filter = new DateRange.DateFilter(from, to);
         realm().invoices().items().stream().filter(o -> filter.test(o.date()))
-            .forEach(o -> exportInvoiceDocument(audit, o, withQrCode, withEN16931, overwrite, text, tags));
+            .forEach(o -> exportInvoiceDocument(audit, o, withQrCode, withEN16931, overwrite, tags));
     }
 
     @Override
@@ -136,7 +136,7 @@ public class InvoicesAdapter implements InvoicesPort {
 
     @Override
     public void exportInvoiceDocument(@NotNull DomainAudit audit, @NotNull Invoice invoice, boolean withQrCode, boolean withEN16931, boolean overwrite,
-                                      String text, Collection<Tag> tags) {
+                                      Collection<Tag> tags) {
         var invoiceAsciiDocPath = Port.resolvePath(docsFolder, invoice.date().getYear(), invoice.name() + AsciiDoctorHelper.ASCIIDOC_EXT);
         Path invoicePdfPath = Port.resolvePath(docsFolder, invoice.date().getYear(), invoice.name() + PDF_EXT);
         var asciiDocGenerator = new InvoiceAsciiDoc(invoice.locale(), properties);
@@ -157,14 +157,14 @@ public class InvoicesAdapter implements InvoicesPort {
             audit.log(EventData.EXPORT_EVENT, EventData.Status.SUCCESS, "Invoice exported to PDF {}",
                 Map.of(INVOICE, invoice, INVOICE_PATH, invoicePdfPath, "withQrCode", withQrCode, "withEN16931", withEN16931, "overwrite", overwrite));
         }
-        createDocument(invoice, text, tags, audit);
+        createDocument(invoice, tags, audit);
     }
 
-    private void createDocument(@NotNull Invoice invoice, String text, Collection<Tag> tags, @NotNull DomainAudit audit) {
+    private void createDocument(@NotNull Invoice invoice, Collection<Tag> tags, @NotNull DomainAudit audit) {
         String id = Path.of(Integer.toString(invoice.date().getYear()), invoice.name()).toString();
         Document document =
-            new Document(id, invoice.name(), PDF_EXT, LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS), new DateRange(invoice.date(), invoice.date()), text,
-                true, Objects.nonNull(tags) ? tags : Collections.emptyList());
+            new Document(id, invoice.name(), PDF_EXT, LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS), new DateRange(invoice.date(), invoice.date()),
+                invoice.text(), true, Objects.nonNull(tags) ? tags : Collections.emptyList());
         realm().documents().update(document);
         audit.submitInterally(new EntityChangedInternalEvent(audit.name(), Document.class.getSimpleName(), Operation.CREATE));
     }

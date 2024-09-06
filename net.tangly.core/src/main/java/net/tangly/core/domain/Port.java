@@ -111,8 +111,7 @@ public interface Port<R extends Realm> {
      * @return uri to the file where the document should be written
      */
     static Path resolvePath(@NotNull Path directory, int year, Month month, @NotNull String filename) {
-        var directoryPath =
-            directory.resolve(Integer.toString(year), (month.getValue()) < 10 ? "0%d".formatted(month.getValue()) : Integer.toString(month.getValue()));
+        var directoryPath = directory.resolve(Integer.toString(year), "%02d".formatted(month.getValue()));
         createDirectories(directoryPath);
         return directoryPath.resolve(filename);
     }

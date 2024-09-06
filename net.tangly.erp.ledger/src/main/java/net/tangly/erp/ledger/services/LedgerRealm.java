@@ -15,6 +15,7 @@ package net.tangly.erp.ledger.services;
 
 import net.tangly.commons.utilities.BigDecimalUtilities;
 import net.tangly.core.DateRange;
+import net.tangly.core.domain.Document;
 import net.tangly.core.domain.Realm;
 import net.tangly.core.providers.Provider;
 import net.tangly.erp.ledger.domain.Account;
@@ -47,6 +48,8 @@ public interface LedgerRealm extends Realm {
     Provider<Transaction> transactions();
 
     Provider<AccountEntry> entries();
+
+    Provider<Document> documents();
 
     default List<Account> assets() {
         return accounts().items().stream().filter(o -> Account.AccountGroup.ASSETS == o.group()).toList();

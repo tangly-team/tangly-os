@@ -69,7 +69,7 @@ public class MainView extends ApplicationView {
 
 
     /**
-     * application administrator have access to the global housekeeping functions of the application.
+     * application administrators have access to the global housekeeping functions of the application.
      *
      * @param ui bounded domain user interface
      */
@@ -87,13 +87,14 @@ public class MainView extends ApplicationView {
     private void exportDocuments() {
         var invoices = (InvoicesBoundedDomain) (tenant().getBoundedDomain(InvoicesBoundedDomain.DOMAIN).orElseThrow());
         invoices.port().exportInvoiceDocuments(invoices, false, false, true, LocalDate.of(2015, Month.JANUARY, 1), LocalDate.of(2024, Month.DECEMBER, 31),
-            null, Collections.emptyList());
+            Collections.emptyList());
         var ledger = (LedgerBoundedDomain) (tenant().getBoundedDomain(LedgerBoundedDomain.DOMAIN).orElseThrow());
         ledger.port()
-            .exportLedgerDocument("tangly-2016", LocalDate.of(2015, Month.SEPTEMBER, 1), LocalDate.of(2016, Month.DECEMBER, 31), true, true, true, true, true);
+            .exportLedgerDocument("tangly-2016", LocalDate.of(2015, Month.SEPTEMBER, 1), LocalDate.of(2016, Month.DECEMBER, 31), true, true, false, true, true,
+                null, Collections.emptyList(), ledger);
         for (int year = 2017; year <= 2024; year++) {
             ledger.port().exportLedgerDocument("tangly-%s".formatted(Integer.toString(year)), LocalDate.of(year, Month.JANUARY, 1),
-                LocalDate.of(year, Month.DECEMBER, 31), true, true, true, true, true);
+                LocalDate.of(year, Month.DECEMBER, 31), true, true, false, true, true, null, Collections.emptyList(), ledger);
         }
         var products = (ProductsBoundedDomain) (tenant().getBoundedDomain(ProductsBoundedDomain.DOMAIN).orElseThrow());
         var assignment = Provider.findByOid(products.realm().assignments(), 40002).orElseThrow();

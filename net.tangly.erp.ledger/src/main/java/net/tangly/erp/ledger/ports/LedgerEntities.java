@@ -13,6 +13,7 @@
 
 package net.tangly.erp.ledger.ports;
 
+import net.tangly.core.domain.Document;
 import net.tangly.core.domain.RealmEclipseStore;
 import net.tangly.core.providers.Provider;
 import net.tangly.core.providers.ProviderInMemory;
@@ -34,16 +35,19 @@ public class LedgerEntities implements LedgerRealm, RealmEclipseStore {
     private static class Data {
         private final List<Account> accounts;
         private final List<Transaction> transactions;
+        private final List<Document> documents;
 
         Data() {
             accounts = new ArrayList<>();
             transactions = new ArrayList<>();
+            documents = new ArrayList<>();
         }
     }
 
     private final Data data;
     private final Provider<Account> accounts;
     private final Provider<Transaction> transactions;
+    private final Provider<Document> documents;
     private final EmbeddedStorageManager storageManager;
 
     public LedgerEntities(@NotNull Path path) {
@@ -51,6 +55,7 @@ public class LedgerEntities implements LedgerRealm, RealmEclipseStore {
         storageManager = EmbeddedStorage.start(data, path);
         accounts = ProviderPersistence.of(storageManager, data.accounts);
         transactions = ProviderPersistence.of(storageManager, data.transactions);
+        documents = ProviderPersistence.of(storageManager, data.documents);
     }
 
     public LedgerEntities() {
@@ -58,6 +63,7 @@ public class LedgerEntities implements LedgerRealm, RealmEclipseStore {
         storageManager = null;
         accounts = ProviderInMemory.of(data.accounts);
         transactions = ProviderInMemory.of(data.transactions);
+        documents = ProviderInMemory.of(data.documents);
     }
 
     public void storeRoot() {
@@ -79,6 +85,11 @@ public class LedgerEntities implements LedgerRealm, RealmEclipseStore {
     @Override
     public Provider<Transaction> transactions() {
         return transactions;
+    }
+
+    @Override
+    public Provider<Document> documents() {
+        return documents;
     }
 
     @Override

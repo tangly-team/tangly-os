@@ -14,6 +14,7 @@
 package net.tangly.erp.products.services;
 
 
+import net.tangly.core.domain.Document;
 import net.tangly.core.domain.Realm;
 import net.tangly.core.providers.Provider;
 import net.tangly.erp.products.domain.Assignment;
@@ -29,4 +30,6 @@ public interface ProductsRealm extends Realm {
     Provider<Product> products();
 
     Provider<WorkContract> contracts();
+
+    Provider<Document> documents();
 }

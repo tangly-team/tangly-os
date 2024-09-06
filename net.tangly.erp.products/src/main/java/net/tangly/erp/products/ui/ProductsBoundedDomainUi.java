@@ -19,10 +19,7 @@ import com.vaadin.flow.component.contextmenu.MenuItem;
 import com.vaadin.flow.component.contextmenu.SubMenu;
 import com.vaadin.flow.component.menubar.MenuBar;
 import net.tangly.commons.lang.functional.LazyReference;
-import net.tangly.core.domain.AccessRightsCode;
-import net.tangly.core.domain.BoundedDomain;
-import net.tangly.core.domain.DomainEntity;
-import net.tangly.core.domain.User;
+import net.tangly.core.domain.*;
 import net.tangly.core.events.EntityChangedInternalEvent;
 import net.tangly.core.providers.Provider;
 import net.tangly.core.providers.ProviderView;
@@ -32,6 +29,7 @@ import net.tangly.erp.products.domain.Product;
 import net.tangly.erp.products.domain.WorkContract;
 import net.tangly.erp.products.services.ProductsBoundedDomain;
 import net.tangly.ui.app.domain.BoundedDomainUi;
+import net.tangly.ui.app.domain.DocumentsView;
 import net.tangly.ui.app.domain.DomainView;
 import net.tangly.ui.app.domain.View;
 import net.tangly.ui.components.Mode;
@@ -53,6 +51,7 @@ public class ProductsBoundedDomainUi extends BoundedDomainUi<ProductsBoundedDoma
         addView(WorkContract.class, new LazyReference<>(() -> new WorkContractsView(this, Mode.EDITABLE)));
         addView(Assignment.class, new LazyReference<>(() -> new AssignmentsView(this, Mode.EDITABLE)));
         addView(Effort.class, new LazyReference<>(() -> new EffortsView(this, Mode.EDITABLE)));
+        addView(Document.class, new LazyReference<>(() -> new DocumentsView(this, domain().realm().documents())));
         addView(DomainEntity.class, new LazyReference<>(() -> new DomainView(this)));
         currentView(view(Product.class).orElseThrow());
         domain.subscribeInternally(this);
@@ -79,6 +78,8 @@ public class ProductsBoundedDomainUi extends BoundedDomainUi<ProductsBoundedDoma
         subMenu.addItem(WORK_CONTRACTS, _ -> select(layout, view(WorkContract.class).orElseThrow()));
         subMenu.addItem(ASSIGNMENTS, _ -> select(layout, view(Assignment.class).orElseThrow()));
         subMenu.addItem(EFFORTS, _ -> select(layout, view(Effort.class).orElseThrow()));
+        subMenu.addItem(DOCUMENTS, e -> select(layout, view(Document.class).orElseThrow()));
+
         addAdministration(layout, menuBar, view(DomainEntity.class).orElseThrow());
         select(layout);
     }

@@ -31,6 +31,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.FileSystem;
 import java.nio.file.Files;
 import java.time.LocalDate;
+import java.util.Collections;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -45,7 +46,8 @@ class LedgerPortTest {
             var store = new ErpStore(fs);
             var adapter = createLedgerAdapter(store);
             var docsPath = store.docsRoot().resolve(LedgerBoundedDomain.DOMAIN);
-            adapter.exportLedgerDocument(filenameWithoutExtension, LocalDate.of(2015, 10, 1), LocalDate.of(2016, 12, 31), true, true, true, true, true);
+            adapter.exportLedgerDocument(filenameWithoutExtension, LocalDate.of(2015, 10, 1), LocalDate.of(2016, 12, 31), true, true, true, true, true, null,
+                Collections.emptyList(), store);
             assertThat(Files.exists(docsPath.resolve("%s.adoc".formatted(filenameWithoutExtension)))).isFalse();
             assertThat(Files.exists(docsPath.resolve("%s.pdf".formatted(filenameWithoutExtension)))).isTrue();
         }

@@ -42,10 +42,10 @@ public interface InvoicesPort extends Port<InvoicesRealm> {
      * @param withQrCode  flag if the Swiss QR cde should be added to the invoice document
      * @param withEN16931 flag if the EN16931 digital invoice should be added to the invoice document
      * @param overwrite   flag if an existing document should be overwritten
-     * @see #exportInvoiceDocuments(DomainAudit, boolean, boolean, boolean, LocalDate, LocalDate, String, Collection)
+     * @see #exportInvoiceDocuments(DomainAudit, boolean, boolean, boolean, LocalDate, LocalDate, Collection)
      */
     void exportInvoiceDocument(@NotNull DomainAudit audit, @NotNull Invoice invoice, boolean withQrCode, boolean withEN16931, boolean overwrite,
-                               String text, Collection<Tag> tags);
+                               Collection<Tag> tags);
 
     /**
      * Exports all selected invoices as artifact to a file. The method is responsible to infer the uri to the generated invoice document.
@@ -58,7 +58,7 @@ public interface InvoicesPort extends Port<InvoicesRealm> {
      * @param overwrite   flag if an existing document should be overwritten
      */
     void exportInvoiceDocuments(@NotNull DomainAudit audit, boolean withQrCode, boolean withEN16931, boolean overwrite, LocalDate from, LocalDate to,
-                                String text, Collection<Tag> tags);
+                                Collection<Tag> tags);
 
     record InvoiceView(@NotNull String id, @NotNull Currency currency, @NotNull BigDecimal amountWithoutVat, @NotNull BigDecimal vat,
                        @NotNull BigDecimal amountWithVat, @NotNull LocalDate invoicedDate, @NotNull LocalDate dueDate) {

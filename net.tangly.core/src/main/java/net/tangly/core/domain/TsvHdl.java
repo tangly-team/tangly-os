@@ -39,10 +39,14 @@ import java.util.function.BiConsumer;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 
+import static net.tangly.core.tsv.TsvHdlCore.createTsvDocument;
+
 /**
  * Utility class to handle TSV files.
  */
 public final class TsvHdl {
+    public static final String DOCUMENTS_TSV = "documents.tsv";
+
     public static final CSVFormat FORMAT =
         CSVFormat.Builder.create().setDelimiter('\t').setQuote('"').setRecordSeparator('\n').setIgnoreSurroundingSpaces(true).setHeader()
             .setSkipHeaderRecord(true).setIgnoreHeaderCase(true).setIgnoreEmptyLines(true).build();
@@ -53,6 +57,14 @@ public final class TsvHdl {
     public static final String DOMAIN = "domain";
 
     private TsvHdl() {
+    }
+
+    public static void exportDocuments(@NotNull DomainAudit audit, @NotNull Path path, @NotNull Provider<Document> documents) {
+        TsvHdl.exportEntities(audit, path, createTsvDocument(), documents);
+    }
+
+    public static void importDocuments(@NotNull DomainAudit audit, @NotNull Path path, @NotNull Provider<Document> documents) {
+        TsvHdl.importEntities(audit, path, createTsvDocument(), documents);
     }
 
     public static boolean isEmpty(@NotNull CSVRecord record) {

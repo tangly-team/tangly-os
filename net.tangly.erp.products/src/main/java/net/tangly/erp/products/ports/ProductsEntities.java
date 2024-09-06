@@ -15,6 +15,7 @@ package net.tangly.erp.products.ports;
 
 import net.tangly.commons.generator.IdGenerator;
 import net.tangly.commons.generator.LongIdGenerator;
+import net.tangly.core.domain.Document;
 import net.tangly.core.domain.Realm;
 import net.tangly.core.providers.Provider;
 import net.tangly.core.providers.ProviderHasOid;
@@ -40,12 +41,14 @@ public class ProductsEntities implements ProductsRealm {
         final List<WorkContract> contracts;
         final List<Assignment> assignments;
         final List<Effort> efforts;
+        final List<Document> documents;
 
         Data() {
             products = new ArrayList<>();
             contracts = new ArrayList<>();
             assignments = new ArrayList<>();
             efforts = new ArrayList<>();
+            documents = new ArrayList<>();
         }
     }
 
@@ -55,6 +58,7 @@ public class ProductsEntities implements ProductsRealm {
     private final Provider<WorkContract> contracts;
     private final Provider<Assignment> assignments;
     private final Provider<Effort> efforts;
+    private final Provider<Document> documents;
     private final IdGenerator generator;
     private final EmbeddedStorageManager storageManager;
 
@@ -67,16 +71,18 @@ public class ProductsEntities implements ProductsRealm {
         contracts = ProviderPersistence.of(storageManager, data.contracts);
         assignments = ProviderHasOid.of(generator, storageManager, data.assignments);
         efforts = ProviderPersistence.of(storageManager, data.efforts);
+        documents = ProviderPersistence.of(storageManager, data.documents);
     }
 
     public ProductsEntities() {
         data = new Data();
         storageManager = null;
         generator = generator();
-        this.products = ProviderHasOid.of(generator, data.products);
-        this.contracts = ProviderInMemory.of(data.contracts);
-        this.assignments = ProviderHasOid.of(generator, data.assignments);
-        this.efforts = ProviderInMemory.of(data.efforts);
+        products = ProviderHasOid.of(generator, data.products);
+        contracts = ProviderInMemory.of(data.contracts);
+        assignments = ProviderHasOid.of(generator, data.assignments);
+        efforts = ProviderInMemory.of(data.efforts);
+        documents = ProviderInMemory.of(data.documents);
     }
 
     public void storeRoot() {
@@ -101,6 +107,11 @@ public class ProductsEntities implements ProductsRealm {
     @Override
     public Provider<Effort> efforts() {
         return efforts;
+    }
+
+    @Override
+    public Provider<Document> documents() {
+        return documents;
     }
 
     @Override

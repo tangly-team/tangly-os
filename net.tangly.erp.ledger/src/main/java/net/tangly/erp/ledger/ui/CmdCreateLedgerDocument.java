@@ -75,7 +75,7 @@ public class CmdCreateLedgerDocument implements Cmd {
             } else {
                 domain.port()
                     .exportLedgerDocument(name.getValue(), fromDate.getValue(), toDate.getValue(), withBalanceSheet.getValue(), withProfitsAndLosses.getValue(),
-                        withEmptyAccounts.getValue(), withTransactions.getValue(), withVat.getValue());
+                        withEmptyAccounts.getValue(), withTransactions.getValue(), withVat.getValue(), null, null, domain);
             }
             close();
         });
@@ -116,7 +116,7 @@ public class CmdCreateLedgerDocument implements Cmd {
                 executor.submit(() -> {
                     domain.port().exportLedgerDocument("%s-%d".formatted(name, reportYear), LocalDate.of(reportYear, Month.JANUARY, 1),
                         LocalDate.of(reportYear, Month.DECEMBER, 31), withBalanceSheet.getValue(), withProfitsAndLosses.getValue(),
-                        withEmptyAccounts.getValue(), withTransactions.getValue(), withVat.getValue());
+                        withEmptyAccounts.getValue(), withTransactions.getValue(), withVat.getValue(), null, null, domain);
                 });
             }
         }
