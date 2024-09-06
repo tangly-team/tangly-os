@@ -45,7 +45,7 @@ As a strong supporter of the open source approach, we published our open source 
 The static website is generated using [Hugo](https://gohugo.io/) and [Asciidoctor](https://asciidoctor.org/).
 We use the Hugo [docsy](https://www.docsy.dev/) theme.
 
-We write all technical documents and blogs using the asciidoc syntax.
+We write all technical documents and blogs using the [AsciiDoc](https://asciidoc.org/) syntax.
 
 The website repository is hosted on tangly documentation [repository](https://github.com/tangly-team/tangly-team.github.io/) hosted on GitHub.
 </div>

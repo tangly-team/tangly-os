@@ -68,6 +68,11 @@ cp -R $websiteDir/hugo.toml $siteDir/
 # copy the references.bib file to the data folder
 cp $prjDir/src/main/resources/references.bib $siteDir/data/
 
+# copy the JSON schema files to the static folder
+mkdir $siteDir/static/schemas/
+cp $prjDir/net.tangly.erp.invoices/src/main/resources/invoice-schema-1.0.0.json $siteDir/static/schemas/
+cp $prjDir/net.tangly.erp.products/src/main/resources/assignment-efforts-schema-1.0.0.json $siteDir/static/schemas/
+
 # you need to run gradle build on the whole project to generate the javadoc for modules. The directories containing javadoc seems to need unique names due to
 # hugo strange behavior.
 
