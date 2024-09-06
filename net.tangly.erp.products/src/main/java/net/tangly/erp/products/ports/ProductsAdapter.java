@@ -24,10 +24,7 @@ import net.tangly.commons.utilities.AsciiDoctorHelper;
 import net.tangly.commons.utilities.ValidatorUtilities;
 import net.tangly.core.DateRange;
 import net.tangly.core.Tag;
-import net.tangly.core.domain.Document;
-import net.tangly.core.domain.DomainAudit;
-import net.tangly.core.domain.Operation;
-import net.tangly.core.domain.Port;
+import net.tangly.core.domain.*;
 import net.tangly.core.events.EntityChangedInternalEvent;
 import net.tangly.core.providers.Provider;
 import net.tangly.erp.products.artifacts.EffortReportEngine;
@@ -56,6 +53,7 @@ import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.groupingBy;
 import static net.tangly.commons.utilities.AsciiDoctorHelper.PDF_EXT;
+import static net.tangly.core.domain.TsvHdl.DOCUMENTS_TSV;
 
 public class ProductsAdapter implements ProductsPort {
     public static final String PRODUCTS_TSV = "products.tsv";
@@ -113,6 +111,7 @@ public class ProductsAdapter implements ProductsPort {
         } catch (IOException e) {
             throw new UncheckedIOException(e);
         }
+        TsvHdl.importDocuments(audit, dataFolder.resolve(DOCUMENTS_TSV), realm().documents());
         entitiesImported(audit);
     }
 
@@ -123,6 +122,7 @@ public class ProductsAdapter implements ProductsPort {
         handler.exportWorkContracts(audit, dataFolder.resolve(WORK_CONTRACTS_TSV));
         handler.exportAssignments(audit, dataFolder.resolve(ASSIGNMENTS_TSV));
         exportEfforts(audit, dataFolder);
+        TsvHdl.exportDocuments(audit, dataFolder.resolve(DOCUMENTS_TSV), realm().documents());
     }
 
     @Override
@@ -133,6 +133,10 @@ public class ProductsAdapter implements ProductsPort {
         Port.entitiesCleared(audit, "assignments");
         realm().products().deleteAll();
         Port.entitiesCleared(audit, "products");
+        realm().contracts().deleteAll();
+        Port.entitiesCleared(audit, "contracts");
+        realm().documents().deleteAll();
+        Port.entitiesCleared(audit, "documents");
         entitiesImported(audit);
     }
 

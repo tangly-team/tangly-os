@@ -13,7 +13,7 @@
  */
 
 /**
- * Provides classes for a programmer-first behavior driven framework build on the features of Junit 5.
+ * Provides classes for a programmer-first behavior-driven framework build on the features of Junit 5.
  */
 module net.tangly.commons {
     exports net.tangly.commons.generator;

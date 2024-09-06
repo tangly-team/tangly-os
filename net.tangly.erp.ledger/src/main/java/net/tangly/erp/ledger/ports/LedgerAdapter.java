@@ -19,10 +19,7 @@ import net.tangly.core.DateRange;
 import net.tangly.core.Tag;
 import net.tangly.core.TypeRegistry;
 import net.tangly.core.codes.CodeHelper;
-import net.tangly.core.domain.Document;
-import net.tangly.core.domain.DomainAudit;
-import net.tangly.core.domain.Operation;
-import net.tangly.core.domain.Port;
+import net.tangly.core.domain.*;
 import net.tangly.core.events.EntityChangedInternalEvent;
 import net.tangly.erp.ledger.artifacts.ClosingReportAsciiDoc;
 import net.tangly.erp.ledger.domain.Account;
@@ -51,6 +48,7 @@ import java.util.Objects;
 import java.util.stream.Stream;
 
 import static net.tangly.commons.utilities.AsciiDoctorHelper.PDF_EXT;
+import static net.tangly.core.domain.TsvHdl.DOCUMENTS_TSV;
 
 /**
  * Provide workflows for ledger activities.
@@ -109,6 +107,7 @@ public class LedgerAdapter implements LedgerPort {
         } catch (IOException e) {
             throw new UncheckedIOException(e);
         }
+        TsvHdl.importDocuments(audit, dataFolder.resolve(DOCUMENTS_TSV), realm().documents());
         entitiesImported(audit);
     }
 
@@ -121,6 +120,7 @@ public class LedgerAdapter implements LedgerPort {
             handler.exportJournal(audit, journal, LocalDate.of(o, Month.JANUARY, 1), LocalDate.of(o, Month.DECEMBER, 31));
             audit.log(EventData.EXPORT_EVENT, EventData.Status.SUCCESS, "Journal exported {}", Map.of("journalPath", journal.toString(), "year", o));
         });
+        TsvHdl.exportDocuments(audit, dataFolder.resolve(DOCUMENTS_TSV), realm().documents());
     }
 
     @Override
@@ -130,6 +130,8 @@ public class LedgerAdapter implements LedgerPort {
         realm().transactions().deleteAll();
         Port.entitiesCleared(audit, "transactions");
         entitiesImported(audit);
+        realm().documents().deleteAll();
+        Port.entitiesCleared(audit, "documents");
     }
 
     @Override

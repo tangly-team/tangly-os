@@ -40,8 +40,8 @@ public class LazyReference<T> {
     /**
      * If a value is present, performs the given action with the value, otherwise does nothing.
      *
-     * @param action the action to be performed, if a value is present
-     * @throws NullPointerException if action is null
+     * @param action the action to be performed if a value is present
+     * @throws NullPointerException if the action is null
      */
     public void ifPresent(@NotNull Consumer<? super T> action) {
         if (value != null) {

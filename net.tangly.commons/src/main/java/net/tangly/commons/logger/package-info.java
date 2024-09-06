@@ -12,6 +12,6 @@
  */
 
 /**
- * Provide extensions to the log4j2 logging framework. One major extension is the concept of audit trail to create audit log for all relevant operations.
+ * Provide extensions to the log4j2 logging framework. One major extension is the concept of audit trail to create an audit log for all relevant operations.
  */
 package net.tangly.commons.logger;

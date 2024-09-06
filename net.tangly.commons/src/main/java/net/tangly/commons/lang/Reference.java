@@ -18,8 +18,8 @@ import org.jetbrains.annotations.NotNull;
 import java.util.function.Consumer;
 
 /**
- * A reference to an object, emulating the concept of typed pointer to typed variable. The indirection can be updated to emulate indirection such as pointer to
- * pointer in other languages.
+ * A reference to an object, emulating the concept of a typed pointer to typed variable. The indirection can be updated to emulate indirection such as
+ * pointer to pointer in other languages.
  *
  * @param <T> type of the reference
  */
@@ -104,7 +104,7 @@ public class Reference<T> {
     /**
      * If a value is present, performs the given action with the value, otherwise does nothing.
      *
-     * @param action the action to be performed, if a value is present
+     * @param action the action to be performed if a value is present
      */
     public void ifPresent(@NotNull Consumer<? super T> action) {
         if (reference != null) {

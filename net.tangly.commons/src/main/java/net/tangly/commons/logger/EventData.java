@@ -62,7 +62,7 @@ public record EventData(@NotNull String event, @NotNull LocalDateTime timestamp,
     }
 
     /**
-     * Log the event data as audit log.
+     * Log the event data as an audit log.
      *
      * @param data event data to add to the audit trail
      */

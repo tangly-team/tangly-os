@@ -13,11 +13,24 @@
 
 package net.tangly.app;
 
+import net.tangly.commons.utilities.FileUtilities;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 
+import java.nio.file.Path;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+
+import static net.tangly.app.Tenant.TENANT_ARCHIVE_DRECTORY_PROPERTY;
+import static net.tangly.app.Tenant.TENANT_ROOT_DIRECTORY_PROPERTY;
 
 /**
  * The application defines the context of the whole digital product with a set of tenants.
@@ -30,6 +43,8 @@ import java.util.Map;
  */
 public final class Application {
     private static final Application self = new Application();
+    private static final Logger logger = LogManager.getLogger();
+    private final ScheduledExecutorService service;
 
     private final Map<String, Tenant> tenants;
 
@@ -39,6 +54,8 @@ public final class Application {
 
     public Application() {
         tenants = new HashMap<>();
+        service = Executors.newSingleThreadScheduledExecutor();
+        service.scheduleAtFixedRate(this::archiveTenants, 1, 1, TimeUnit.HOURS);
     }
 
     public void putTenant(@NotNull Tenant tenant) {
@@ -55,5 +72,16 @@ public final class Application {
 
     public Collection<Tenant> tenants() {
         return tenants.values();
+    }
+
+    public void archiveTenants() {
+        tenants.values().forEach(tenant -> {
+            tenant.boundedDomains().forEach(o -> o.port().exportEntities(o));
+            String filename = "%s-%s.zip".formatted(tenant.id(), LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS).format(DateTimeFormatter.ISO_DATE_TIME));
+            Path sourceFolder = Path.of(tenant.getProperty(TENANT_ROOT_DIRECTORY_PROPERTY));
+            Path archiveFile = Path.of(tenant.getProperty(TENANT_ARCHIVE_DRECTORY_PROPERTY), filename);
+            FileUtilities.pack(sourceFolder, archiveFile);
+            logger.atInfo().log("Archived tenant {} folder {} to {}", tenant.id(), sourceFolder, archiveFile);
+        });
     }
 }

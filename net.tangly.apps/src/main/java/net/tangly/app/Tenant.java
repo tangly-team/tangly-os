@@ -39,6 +39,7 @@ import java.util.*;
 public class Tenant implements TenantDirectory {
     public static final String IN_MEMORY_PROPERTY = "tenant.in-memory";
     public static final String TENANT_ROOT_DIRECTORY_PROPERTY = "tenant.root.directory";
+    public static final String TENANT_ARCHIVE_DRECTORY_PROPERTY = "tenant.archive.directory";
     public static final String DATABASES_DIRECTORY_PROPERTY = "tenant.root.db.directory";
     public static final String IMPORTS_DIRECTORY_PROPERTY = "tenant.root.imports.directory";
     public static final String DOCUMENTS_DIRECTORY_PROPERTY = "tenant.root.docs.directory";
@@ -93,8 +94,6 @@ public class Tenant implements TenantDirectory {
     public String docs(@NotNull String domain) {
         return "%s/%s".formatted(getProperty(DOCUMENTS_DIRECTORY_PROPERTY), domain);
     }
-
-
 
     // endregion
 

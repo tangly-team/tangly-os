@@ -117,6 +117,8 @@ public class InvoicesAdapter implements InvoicesPort {
         realm().articles().deleteAll();
         Port.entitiesCleared(audit, "articles");
         entitiesImported(audit);
+        realm.documents().deleteAll();
+        Port.entitiesCleared(audit, "documents");
     }
 
     @Override
