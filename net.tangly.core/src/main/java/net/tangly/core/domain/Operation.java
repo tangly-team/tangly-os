@@ -18,7 +18,6 @@ package net.tangly.core.domain;
  */
 public enum Operation {
     NONE, VIEW, EDIT, CREATE, DUPLICATE, REPLACE, DELETE, ALL;
-    public static final String NONE_TEXT = "None";
     public static final String VIEW_TEXT = "View";
     public static final String EDIT_TEXT = "Edit";
     public static final String CREATE_TEXT = "Create";
@@ -28,6 +27,7 @@ public enum Operation {
 
     public static final String DUPLICATE_TEXT = "Duplicate";
     public static final String DELETE_TEXT = "Delete";
+    public static final String REFRESH_TEXT = "Refresh";
 
     public boolean readonly() {
         return this == VIEW || this == NONE;

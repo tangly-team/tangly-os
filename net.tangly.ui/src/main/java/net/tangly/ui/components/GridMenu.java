@@ -115,6 +115,7 @@ public class GridMenu<T> {
             add(Operation.EDIT_TEXT, event -> event.getItem().ifPresent(o -> view.form().get().edit(o)), MenuItemType.ITEM);
             add(Operation.DUPLICATE_TEXT, event -> event.getItem().ifPresent(o -> view.form().get().duplicate(o)), MenuItemType.ITEM);
             add(Operation.DELETE_TEXT, event -> event.getItem().ifPresent(o -> view.form().get().delete(o)), MenuItemType.ITEM);
+            add(Operation.REFRESH_TEXT, _ -> view.refresh(), MenuItemType.GLOBAL);
         }
     }
 }
