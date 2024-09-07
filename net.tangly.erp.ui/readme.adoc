@@ -104,7 +104,7 @@ The JVM options to run the application are
 
 [source,shell]
 ----
-JVM_OPTS="--enable-preview --add-exports=java.base/jdk.internal.misc=ALL_UNNAMED \
+JVM_OPTS="--enable-preview --add-exports=java.base/jdk.internal.misc=ALL-UNNAMED \
           --add-opens=java.base/jdk.internal.misc=ALL-UNNAMED -XX:+ShowCodeDetailsInExceptionMessages -Xmx256m"
 ----
 
@@ -136,7 +136,8 @@ To run the built image, use the following commands.
 [source,shell]
 ----
 docker run --rm -it -p 8080:8080 -e PORT=8080 -v /var/tangly-erp:/var/tangly-erp tanglyllc/tangly-erp:latest -p 8080 -c app-in-memory-no-imports.properties <1>
-  docker run --rm -it -p 8080:8080 -e PORT=8080 -v /var/tangly-erp:/var/tangly-erp tanglyllc/tangly-erp:latest -p 8080                                      <2>
+
+docker run --rm -it -p 8080:8080 -e PORT=8080 -v /var/tangly-erp:/var/tangly-erp tanglyllc/tangly-erp:latest -p 8080                                        <2>
 ----
 
 <1> The application is started with the in-memory storage and the configuration file `app-in-memory-no-imports.properties`.

@@ -15,10 +15,12 @@ package net.tangly.erp.invoices.services;
 
 import net.tangly.core.codes.CodeType;
 import net.tangly.core.domain.BoundedDomain;
+import net.tangly.core.domain.Document;
 import net.tangly.core.domain.DomainEntity;
 import net.tangly.core.domain.TenantDirectory;
 import net.tangly.erp.invoices.domain.Article;
 import net.tangly.erp.invoices.domain.ArticleCode;
+import net.tangly.erp.invoices.domain.Invoice;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
@@ -34,6 +36,7 @@ public class InvoicesBoundedDomain extends BoundedDomain<InvoicesRealm, Invoices
 
     @Override
     public List<DomainEntity<?>> entities() {
-        return List.of(new DomainEntity<>(DOMAIN, Article.class, realm().articles()));
+        return List.of(new DomainEntity<>(DOMAIN, Article.class, realm().articles()), new DomainEntity<>(DOMAIN, Invoice.class, realm().invoices()),
+            new DomainEntity<>(DOMAIN, Document.class, realm().documents()));
     }
 }

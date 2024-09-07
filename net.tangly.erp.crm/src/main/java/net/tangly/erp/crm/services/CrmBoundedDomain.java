@@ -49,8 +49,9 @@ public class CrmBoundedDomain extends BoundedDomain<CrmRealm, CrmBusinessLogic, 
 
     @Override
     public List<DomainEntity<?>> entities() {
-        return List.of(new DomainEntity<>(DOMAIN, NaturalEntity.class, realm().naturalEntities()),
+        return List.of(new DomainEntity<>(DOMAIN, Lead.class, realm().leads()), new DomainEntity<>(DOMAIN, NaturalEntity.class, realm().naturalEntities()),
             new DomainEntity<>(DOMAIN, LegalEntity.class, realm().legalEntities()), new DomainEntity<>(DOMAIN, Employee.class, realm().employees()),
-            new DomainEntity<>(DOMAIN, Opportunity.class, realm().opportunities()), new DomainEntity<>(DOMAIN, Contract.class, realm().contracts()));
+            new DomainEntity<>(DOMAIN, Opportunity.class, realm().opportunities()), new DomainEntity<>(DOMAIN, Contract.class, realm().contracts()),
+            new DomainEntity<>(DOMAIN, Activity.class, realm().activities()));
     }
 }

@@ -15,6 +15,7 @@ package net.tangly.erp.ledger.services;
 
 import net.tangly.core.TagType;
 import net.tangly.core.domain.BoundedDomain;
+import net.tangly.core.domain.Document;
 import net.tangly.core.domain.DomainEntity;
 import net.tangly.core.domain.TenantDirectory;
 import net.tangly.erp.ledger.domain.Account;
@@ -42,6 +43,6 @@ public class LedgerBoundedDomain extends BoundedDomain<LedgerRealm, LedgerBusine
     @Override
     public List<DomainEntity<?>> entities() {
         return List.of(new DomainEntity<>(DOMAIN, Account.class, realm().accounts()), new DomainEntity<>(DOMAIN, AccountEntry.class, realm().entries()),
-            new DomainEntity<>(DOMAIN, Transaction.class, realm().transactions()));
+            new DomainEntity<>(DOMAIN, Transaction.class, realm().transactions()), new DomainEntity<>(DOMAIN, Document.class, realm().documents()));
     }
 }

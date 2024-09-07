@@ -15,12 +15,14 @@ package net.tangly.erp.products.services;
 
 import net.tangly.core.TagType;
 import net.tangly.core.domain.BoundedDomain;
+import net.tangly.core.domain.Document;
 import net.tangly.core.domain.DomainEntity;
 import net.tangly.core.domain.TenantDirectory;
 import net.tangly.erp.crm.services.CrmBoundedDomain;
 import net.tangly.erp.products.domain.Assignment;
 import net.tangly.erp.products.domain.Effort;
 import net.tangly.erp.products.domain.Product;
+import net.tangly.erp.products.domain.WorkContract;
 import net.tangly.erp.products.events.CrmEventsProcessor;
 import org.jetbrains.annotations.NotNull;
 
@@ -43,8 +45,9 @@ public class ProductsBoundedDomain extends BoundedDomain<ProductsRealm, Products
 
     @Override
     public List<DomainEntity<?>> entities() {
-        return List.of(new DomainEntity<>(DOMAIN, Assignment.class, realm().assignments()), new DomainEntity<>(DOMAIN, Effort.class, realm().efforts()),
-            new DomainEntity<>(DOMAIN, Product.class, realm().products()));
+        return List.of(new DomainEntity<>(DOMAIN, Assignment.class, realm().assignments()), new DomainEntity<>(DOMAIN, WorkContract.class, realm().contracts()),
+            new DomainEntity<>(DOMAIN, Effort.class, realm().efforts()), new DomainEntity<>(DOMAIN, Product.class, realm().products()),
+            new DomainEntity<>(DOMAIN, Document.class, realm().documents()));
     }
 
     @Override
