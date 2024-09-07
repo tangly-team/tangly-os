@@ -51,6 +51,7 @@ public class BoundedDomain<R extends Realm, B, P extends Port<R>> implements Has
     private final R realm;
     private final P port;
     private final B logic;
+    private final boolean enabled;
     private final TenantDirectory directory;
     private final TypeRegistry registry;
     private final SubmissionPublisher<Object> channel;
@@ -100,6 +101,7 @@ public class BoundedDomain<R extends Realm, B, P extends Port<R>> implements Has
         channel = new SubmissionPublisher<>(Executors.newVirtualThreadPerTaskExecutor(), Flow.defaultBufferSize());
         internalChannel = new SubmissionPublisher<>(Executors.newVirtualThreadPerTaskExecutor(), Flow.defaultBufferSize());
         auditEvents = new ArrayList<>();
+        enabled = Boolean.valueOf(directory.getProperty("%s.enabled".formatted(name)));
     }
 
     protected static <I extends HasOid & HasMutableTags> void addTagCounts(@NotNull TypeRegistry registry, @NotNull Provider<I> provider,
@@ -164,6 +166,10 @@ public class BoundedDomain<R extends Realm, B, P extends Port<R>> implements Has
 
     public List<EventData> auditEvents() {
         return auditEvents;
+    }
+
+    public boolean enabled() {
+        return enabled;
     }
 
     // region DomainAudit

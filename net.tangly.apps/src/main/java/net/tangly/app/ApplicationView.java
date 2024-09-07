@@ -102,7 +102,7 @@ public class ApplicationView extends AppLayout {
     @Override
     protected void onAttach(@NotNull AttachEvent attachEvent) {
         super.onAttach(attachEvent);
-        if (Objects.isNull(VaadinUtils.getAttribute(this, USER))) {
+        if (hasAuthentication && Objects.isNull(VaadinUtils.getAttribute(this, USER))) {
             new CmdLogin(this).execute();
         }
     }
@@ -153,8 +153,10 @@ public class ApplicationView extends AppLayout {
         boundedDomainUis().values().forEach(o -> {
             boolean hasAccessToDomain = Objects.isNull(user) || user.accessRightsFor(o.name()).isPresent();
             domainTab(o.name()).ifPresent(tab -> {
-                tab.setEnabled(hasAccessToDomain);
-                o.userChanged(user);
+                tab.setEnabled(o.domain().enabled() && hasAccessToDomain);
+                if (Objects.nonNull(user)) {
+                    o.userChanged(user);
+                }
             });
         });
     }

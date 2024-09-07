@@ -220,7 +220,7 @@ public abstract class BoundedDomainUi<T extends BoundedDomain<?, ?, ?>> implemen
     }
 
     protected boolean hasDomainAdminRights() {
-        return (rights != null) && (rights.right() == AccessRightsCode.domainAdmin) || (rights.right() == AccessRightsCode.appAdmin);
+        return (rights != null) && ((rights.right() == AccessRightsCode.domainAdmin) || (rights.right() == AccessRightsCode.appAdmin));
     }
 
     protected boolean hasAppAdminRights() {
