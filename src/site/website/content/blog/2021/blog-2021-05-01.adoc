@@ -13,7 +13,7 @@ include::../fragments/_config-mb-blog.adoc[]
 image::2021-05-01-head.jpg[width=420,height=360,role=left]
 
 As a modern leader, you are aware of the importance of transforming your organization to become more agile.
-Indeed, you have successfully implemented first steps.
+Indeed, you have successfully implemented the first steps.
 
 Trouble is brewing.
 Things are not moving forward as quickly as they should, especially in the current challenging situation.
@@ -43,15 +43,15 @@ The good news is that many companies have started whole transformation initiativ
 
 Creating products with agile approaches is now mainstream.
 Only laggards are clutching on obsolete methods.
-Competitive advantage is now to implement an agile product value stream through the whole organization.
+The competitive advantage is now to implement an agile product value stream through the whole organization.
 Fast delivery to customers and pivot to disruptive changes are the new key for extraordinary growth and success.
-The raise of digital and Internet affine banking solutions is such a transformative example.
+The rise of digital and Internet affine banking solutions is such a transformative example.
 
 == Waterfall vs Agile
 
 The collected data clearly show agile approaches are tremendously more successful by more than 10%.
 The agile approach seems to eliminate catastrophic development failures.
-It means an agile team has 25% higher relative probability to be victorious than classical teams (_50.5% versus 39.5%_).
+It means an agile team has a 25% higher relative probability to be victorious than classical teams (_50.5% versus 39.5%_).
 
 [mermaid,waterfall-methods-success-2020,svg,opts="inline",svg-type=interactive]
 ....
@@ -117,7 +117,7 @@ ____
 
 [cite,Anthony Mersino]
 ____
-It isn’t about changing agile to fit your company.
+It is not about changing agile to fit your company.
 It is changing your organization to achieve business agility.
 ____
 
@@ -128,7 +128,7 @@ The next gains require deeper changes.
 Progress is slow and resistance is very high.
 
 Collaborators are happy with the change and do not want to go back to the old world.
-However, the change often does not go beyond a first application of the methodology.
+However, the change often does not go beyond the first application of the methodology.
 The biggest obstacle for employees is at the same time, the biggest challenge for leaders.
 A culture that promotes a learning and adaptable organization and its own agile way through the organization.
 

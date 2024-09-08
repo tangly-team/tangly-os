@@ -42,26 +42,26 @@ The long term implementation is the crux.
 
 == Source Code Checks
 
-How clean, legible and maintainable is your source code?
+How clean, legible, and maintainable is your source code?
 Often it is best to start your health evaluation with your product source code.
 At the end of the day, it is compiled source code you deliver to all your customers to work with.
 
 One nice aspect of source code checks is that a whole set of tools is available on the market.
 You still need an expert to provide the diagnostic, but the gathering of data can be automated and quite inexpensive to gather.
 
-Below a list of capabilities we have build-up over time for source code checks.
+Below is a list of capabilities we have built up over time for source code checks.
 Use common sense and strategic goals to identify the objectives you want to measure.
 Expertise is needed to define values to measure if the source code of your product reaches the selected objectives.
 
 . *Java* 11/10/9/8/7/6 code and how to migrate to the current version and use the new Java features,
-. Multithreaded, parallel programming and reactive systems,
+. Multithreaded, parallel programming, and reactive systems,
 . Functional and object-oriented detailed design approaches,
-. Test driven development TDD and build-in quality - gradle or maven -,
+. Test-driven development TDD and built-in quality - gradle or maven -,
 . *Acceptance test driven development ATDD* and user acceptance,
 . Clean code approach and detection of code smells,
 . *Static analysis tools* to measure the quality attributes of source code,
 . Compilation and test automation,
-. Software craftsmanship approach, values and techniques,
+. Software craftsmanship approach, values, and techniques,
 . *Domain driven development* and micro services,
 . Database models and open data,
 . Software architecture and Enterprise architecture,

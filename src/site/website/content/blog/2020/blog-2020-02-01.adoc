@@ -56,7 +56,7 @@ CFO to CEO: “What happens if we invest in developing our people, and they leav
 CEO to CFO: “What happens if we do not, and they stay?”
 ____
 
-Secure collective knowledge of the code through code reviews, pair collaboration or collective work.
+Secure collective knowledge of the code through code reviews, pair collaboration, or collective work.
 Avoid any developer working solely on his own on a specific piece of code.
 Crafting successful software applications is teamwork.
 Encourage your collaborators to write blogs and ask questions in forums such as https://stackoverflow.com/[Stack Overflow].
@@ -64,10 +64,10 @@ Encourage your collaborators to write blogs and ask questions in forums such as 
 Establish together development standards and keep them up to date.
 Nurture these good practices through https://en.wikipedia.org/wiki/Community_of_practice[Communities of Practice] _CoP_.
 
-Rely on tools such as continuous integration, static metrics and architecture fitness functions to shorten the feedback loop.
+Rely on tools such as continuous integration, static metrics, and architecture fitness functions to shorten the feedback loop.
 See our post about link:../../2018/pragmatic-craftsmanship-professional-software-developer[pragmatic software craftsmanship].
 
-Establish a culture to use current versions of programming languages, tools and libraries.
+Establish a culture to use current versions of programming languages, tools, and libraries.
 
 On a previous project, we had planned a coding dojo ritual once every two weeks, during which we shared our practices with some perspective over the product.
 It was an occasion to experiment with new technologies, assess their match for the project needs, share new coding techniques, and update our standards together.

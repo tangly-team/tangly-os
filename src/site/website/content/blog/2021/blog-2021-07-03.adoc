@@ -44,11 +44,11 @@ A top-notch Java technical lead should have good analytical skills, the ability 
 * Identifying risk and conducting mitigation action planning.
 * Conducting configuration of your own work.
 * Reviewing the work of other developers and providing feedback.
-* Using coding standards and best practices ensuring quality.
+* Using coding standards and best practices to ensure quality.
 
 == Java Technical Lead Requirements
 
-The candidate has a bachelor or master degree in engineering, information systems or related.
+The candidate has a bachelor or master degree in engineering, information systems, or related.
 
 * Extensive experience in the IT industry.
 * Sound knowledge of estimation techniques.
@@ -64,7 +64,7 @@ Similar examples can also be found under https://www.linkedin.com[LinkedIn].
 
 == Responsibilities
 
-Below a description of the responsibilities for a technical lead.
+Below is a description of the responsibilities for a technical lead.
 A technical lead is responsible for the following tasks:
 
 * Hiring and training technical personnel

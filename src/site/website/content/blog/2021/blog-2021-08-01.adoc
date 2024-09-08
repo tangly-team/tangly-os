@@ -17,14 +17,14 @@ Companies institutionalize agile change programs and send all their collaborator
 
 What does that mean?
 
-How should I as a manager work the agile way?
+How should I, as a manager, work the agile way?
 
 Does this agile way exist, or is it simply a fad created by the consulting industry?
 
 This article provides some pointers and hypotheses what agile leadership could be.
 
 Feel free to experiment and refine your successful approach to be agile as an organization.
-You must experiment, learn and train to become a successful agile leader cite:[great-scrum-master,scrum-pocket-guide-3rd].
+You must experiment, learn, and train to become a successful agile leader cite:[great-scrum-master,scrum-pocket-guide-3rd].
 It is a job, not a hobby.
 
 [quote]
@@ -34,7 +34,7 @@ Organizational agility cannot exceed the level of personal leadership agility of
 Because agile leadership involves ongoing personal development, it is not something that can be mastered in a single training course.
 ____
 
-== Agile Leaders engage, and serve the team at the place of work
+== Agile Leaders engage and serve the team at the place of work
 
 Serving the team is all the rage these days.
 You hear or read about Servant Leadership at every turn.
@@ -89,7 +89,7 @@ You can use various indicators to detect the self-management requirement at the 
 * You assign specific tasks directly to Developers, thus bypassing the Product Owner.
 * Alternatively, you remove a Developer from the Scrum team (temporarily) to work on such a task.
 * Developers are assigned to support other organization members while ignoring their commitment to achieving the Sprint Goal.
-Examples are supporting sales in a pitch, or being an expert in management meetings.
+Examples are supporting sales in a pitch or being an expert in management meetings.
 * Scrum is rolled back in a moment of crisis to a traditional form of command & control, exercised, for example, by dispatching jobs directly to individual Developers.
 
 Ignoring self-management does not only violate Scrum’s first principles.
@@ -119,12 +119,12 @@ ____
 
 You should
 
-* Be knowledgeable about agile values, approaches and practices Understand and apply the Scrum, Kanban and lean, Spotify model frameworks.
-* Develop people and teams with self-organizing teams Leadership styles, coaching and mentoring, and facilitation.
+* Be knowledgeable about agile values, approaches, and practices Understand and apply the Scrum, Kanban and lean, Spotify model frameworks.
+* Develop people and teams with self-organizing teams, Leadership styles, coaching and mentoring, and facilitation.
 * Manage products with agility.
 * Forecast and perform release planing based on product value and business strategy.
 * Develop and deliver products professionally.
-* Evolve the agile organization through organizational design and structure, and evidence based management.
+* Evolve the agile organization through organizational design and structure, and evidence-based management.
 * Take a collaborative continuous improvement approach to organizational effectiveness.
 
 You should avoid hindering value stream organizations and cross-functional teams by
@@ -135,7 +135,7 @@ You should avoid hindering value stream organizations and cross-functional teams
 * Ask control questions or systematically participate to.
 * Promote the mindset that people are exchangeable - see mythical man month cite:[mythical-man-month].
 * State anybody can be a good Scrum master.
-* Criticize craftsmanship approaches such as TDD, DDD, pair programming, continuous integration and delivery.
+* Criticize craftsmanship approaches such as TDD, DDD, pair programming, continuous integration, and delivery.
 
 Exceptional agile leaders
 

@@ -21,9 +21,9 @@ You read the {ref-manifesto} and memorized the {ref-manifesto-principles}.
 Perhaps you have recently been moved into that role and are wondering if being a Scrum master is right for you.
 
 There are plenty of good reasons to become a Scrum master.
-The job is fascinating, in demand and pays well.
+The job is fascinating, in demand, and pays well.
 
-The most important reason to become a Scrum master is that it is the right job for your personality, interests and skills.
+The most important reason to become a Scrum master is that it is the right job for your personality, interests, and skills.
 
 What is the role of Scrum master?
 
@@ -42,7 +42,7 @@ New products have product owners.
 
 The organization needs an owner, someone to manage the vast backlog of requests.
 Somebody should prioritise and collaborate with the cross-functional team of makers to deliver incremental value to its stakeholders.
-The stakeholders are all employees, partners and shareholders.
+The stakeholders are all employees, partners, and shareholders.
 
 If {ref-scrum} does not ripple through an organisation this way, it is set up for failure.
 Or worse a facade of change, a kind way of saying lies and deceit <<detecting-agile-bullshit>> <<what-do-not-need-to-do-in-scrum>>.
@@ -77,7 +77,7 @@ Can You Influence Without Authority?::
 Influencing without authority is an important skill for all good Scrum masters.
 If you enjoy leading this way, count that as a point in favor of a career as a Scrum master cite:[management-30].
 Are You Comfortable with Uncertainty?::
-If you’re the type who secretly wants to eliminate all uncertainties, you will either be frustrated as a Scrum master or will drive your team crazy in pursuit of an impossible goal
+If you are the type who secretly wants to eliminate all uncertainties, you will either be frustrated as a Scrum master or will drive your team crazy in pursuit of an impossible goal
 cite:[future-of-management,reinventing-organizations].
 Can You Handle Conflict Well?::
 Agile teams are used on an organization's hardest challenges—the projects that will not succeed any other way.
@@ -99,14 +99,14 @@ Contrary to popular belief, she does not only facilitate events, but the whole S
 Finally, she facilitates relationships, promoting collaboration and creating synergies within the team and with clients.
 Coach::
 Just like a sports coach, the Scrum master focuses on team building.
-She guides and encourages the team to self-organize, stays focused and has a continuous improvement-oriented mindset.
-She trains every single team member with a focus on mindset, behavior and organization to collaborate effectively with Scrum Teams.
+She guides and encourages the team to self-organize, stays focused, and has a continuous improvement-oriented mindset.
+She trains every single team member with a focus on mindset, behavior, and organization to collaborate effectively with Scrum Teams.
 Teacher::
 The Scrum master ensures that the Scrum principles and framework are understood and put into practice.
 She guides the Product Owner and the team towards Agile practices and principles whenever they move away from them.
 Servant Leader::
-Servant-leadership focuses on collaboration, trust, empathy and the ethical use of power.
-As a servant leader, the Scrum master is fully aligned with the Scrum values of courage, openness, respect, focus and commitment.
+Servant-leadership focuses on collaboration, trust, empathy, and the ethical use of power.
+As a servant leader, the Scrum master is fully aligned with the Scrum values of courage, openness, respect, focus, and commitment.
 She focuses on the needs of team members with the aim of achieving results in line with the company's values and goals.
 Manager::
 She is responsible for process management, with an eye on team health and waste elimination.
@@ -141,7 +141,7 @@ The Scrum values any organization shall live are
 . *Respect*
 . *Courage*
 
-Scrum master explain, teach, protect the Scrum values and adapt Scrum rules and tactics to the organization.
+Scrum master explain, teach, protect the Scrum values, and adapt Scrum rules and tactics to the organization.
 
 As a Scrum master you must strongly identify with these values.
 You must understand empiricism and how a model can be impacted with closed-loop approaches.
@@ -186,7 +186,7 @@ The Scrum master is no longer necessary to resolve communication roadblocks and 
 There are fewer organizational impediments to agility.
 Those that remain can be particularly difficult to resolve, but there are fewer of them.
 
-Even the best Scrum team continues to benefit from the coaching, guiding and mentoring provided by a good Scrum master.
+Even the best Scrum team continues to benefit from the coaching, guiding, and mentoring provided by a good Scrum master.
 With that being said, some high-performing teams might find they do not need a Scrum master full-time anymore.
 
 == Dedication

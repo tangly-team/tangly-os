@@ -12,11 +12,11 @@ include::../fragments/_config-mb-blog.adoc[]
 image::2021-06-02-head.jpg[width=420,height=360,role=left]
 
 As a modern leader, you are aware of the importance of transforming your organization to become more agile.
-Indeed, you have successfully implemented first steps.
+Indeed, you have successfully implemented the first steps.
 
 Trouble is brewing.
 Things are not moving forward as quickly as they should, especially in the current challenging situation.
-The leadership behaviour of your colleagues is only changing slowly.
+The leadership behavior of your colleagues is only changing slowly.
 Your key developers are grumbling you are faking it.
 
 Many companies around the world discover their agile transformation is stalling.
@@ -24,12 +24,12 @@ Many companies around the world discover their agile transformation is stalling.
 {ref-hermes} is still the official Swiss government method.
 They clearly acknowledged that this
 https://stefanedbrittain.medium.com/the-insidious-institutionalisation-of-water-scrum-fall-4af7de8865b9[Water-Scrum-Fall]
-is only needed because administration is strongly hierarchical and unable to adapt to the changes over the development of the solution.
+is only necessary because the administration is strongly hierarchical and unable to adapt to the changes over the development of the solution.
 
 Bachelors in Swiss technical universities are still trained with obsolete methodologies such as
 https://www.hslu.ch/de-ch/informatik/studium/soda/[SoDa], a variation of the dead https://en.wikipedia.org/wiki/Rational_Unified_Process[RUP] method.
 
-The SwissQ report provides empirical data where Swiss companies stand in 2021
+The SwissQ report provides empirical data on where Swiss companies stood in 2021
 footnote:xebia[The SwissQ company was acquired by https://xebia.com/switzerland-de/[Xebia] and access to the data was removed.
 The reports are archived on this site under {ref-tangly-blog-url}/expertise/knowledge/history/[SwissQ Reports].].
 
@@ -110,10 +110,10 @@ pie
 The major finding of the agile community during 2020 and 2021 is co-location is not mandatory for a successful agile approach.
 
 Remote working and distributed teams can work very successfully on a product.
-You need high-quality tools such as videoconferencing, chat, collaborative tools and pair working approaches.
+You need high-quality tools such as videoconferencing, chat, collaborative tools, and pair working approaches.
 
 The huge gain of 2020 and 2021 was the tremendous improvements of these tools due to the Corona lockdown.
-Companies still need to invest in high-quality headsets, cameras and 4K displays for their collaborators.
+Companies still need to invest in high-quality headsets, cameras, and 4K displays for their collaborators.
 
 Do not be penny wise and pound foolish.
 Invest in professional hardware and buy the adequate number of licenses.
@@ -135,7 +135,7 @@ A drawback is that {ref-safe} is the de-facto standard for agile scaling in Swit
 https://www.thoughtworks.com/[Thoughtworks] just stated in Spring 2021 technology radar you should avoid using {ref-safe}.
 These learnings have not reached our country.
 
-Team accountability is lagging; but decentralization of decisions is too hard for the majority.
+Team accountability is lagging, but decentralization of decisions is too hard for the majority.
 
 We have reached the level where late majority and laggards are slowly looking into the agile way of working.
 Change is slow and hybrid solutions are preferred.
@@ -183,6 +183,6 @@ All of this must be done in an open and humble way, as otherwise there is no new
 Maybe you are wrong and they were right?
 
 Did we mention _patience_?
-I wish a fruitful and successful transformation to better way of working and of creating awesome products.
+I wish a fruitful and successful transformation to a better way of working and of creating awesome products.
 
 You can download the Trends Benchmark Report 2021 from SwissQ footnote:xebia[].

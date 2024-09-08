@@ -81,7 +81,7 @@ Development in an agile and DevOps environment means:
 image::2022-04-04-Ci-pipeline.png[width=480,height=360,role=left]
 
 Your development teams shall have automatic continuous integration.
-This pipeline builds the software, runs static code analyzer and executes a reasonable set of unit and integration tests.
+This pipeline builds the software, runs static code analyzer, and executes a reasonable set of unit and integration tests.
 If not, they are pretending to do DevOps and lying to you.
 
 The next step is to configure an automatic continuous delivery.
@@ -133,14 +133,14 @@ Each person in the organization has their own security responsibility and must b
 Collaboration and Integration::
 Security can only be achieved through collaboration, not confrontation.
 Pragmatic Implementation::
-They focus on application development to ensure safety, privacy and trust in the digital society.
+They focus on application development to ensure safety, privacy, and trust in the digital society.
 Organizations shall be able to pragmatically approach security in DevOps.
 Bridge the Divide between Compliance and Development::
-The key to addressing the gap between compliance and development is to identify applicable controls, translating them to appropriate software measures and identifying inflection points within the software lifecycle where these controls can be automated and measured.
+The key to addressing the gap between compliance and development is to identify applicable controls, translating them to appropriate software measures, and identifying inflection points within the software lifecycle where these controls can be automated and measured.
 Automation::
-Software quality can be better by improving the thoroughness, timeliness and frequency of testing.
+Software quality can be better by improving the thoroughness, timeliness, and frequency of testing.
 Processes that can be automated should be automated, and the other ones should be considered for elimination.
-Measurement, Monitoring, Report and Action::
+Measurement, Monitoring, Report, and Action::
 The qualified people must continuously control the results during software development as well as post-delivery at the right time for DevSecOps to succeed.
 
 [#bootstrap-devops-adoption]
@@ -161,17 +161,17 @@ Measure deployment frequency and deployment duration.
 * Each product can be checked out locally from a git repository and built with less than five commands.
 * Each product is built in a continuous delivery pipeline and packaged for deployment in a staging area or in production.
 Static code analysis and automated tests are executed in the pipeline.
-They provide an automated, tracked and documented quality gate.
+They provide an automated, tracked, and documented quality gate.
 * Each production version is tagged in the repository, including associated documentation and technical instructions.
 Running:: Focus is on time to repair rather than time between issues.
 Measure mean-time to recovery, production failure rate and change failure rate.
-* Each instance has a monitoring feature, which enabled us to provide realtime information about resource usage, heartbeat, health status and warnings.
+* Each instance has a monitoring feature, which enabled us to provide realtime information about resource usage, heartbeat, health status, and warnings.
 You can rely on an automated alert and response system to troubleshoot and monitor your enterprise servers.
 The developing team can quickly rectify errors or hiccups in the workflow without disturbing the operations teams.
 * Each instance monitor view is accessible to all involved collaborators.
 * Each deployed product has a set of measurable targets and the associated metrics to track them.
 * You have a documented process to handle security issues in a timely manner.
-* You have a documented process to mitigate proactively potential security, performance and governance issues.
+* You have a documented process to mitigate proactively potential security, performance, and governance issues.
 A governance goal could be to always update libraries once a security defect is corrected.
 Empiricism and data are the building block to quality and sustainable improvements.
 https://en.wikipedia.org/wiki/Continual_improvement_process[Continuous Improvement]:: Take small steps.
@@ -190,14 +190,14 @@ _I shall install the necessary development tools based on written instruction av
 . You give access to a product repository.
 I can initiate a complete build and delivery action in a continuous integration and delivery pipeline.+
 _I shall use the CI/CD tool chosen for the product._
-. I can check out, build and deploy the two last releases in a staging area with less than ten commands.
+. I can check out, build, and deploy the two last releases in a staging area with less than ten commands.
 . You give me access to the list of all issues and changes ongoing in the repository.
 The list is specific to one product.
 I see the information such as priority, cycle-time of these issues and in which release the issue was fixed.
 . You give me read-only access to the health dashboard of any test and productive server on which the product runs.
 I see:
-* Uptime, availability, last down events with time of occurrence, duration and explanation.
-* Database, memory, CPU, etc. usage and trends,
+* Uptime, availability, last down events with time of occurrence, duration, and explanation.
+* Database, memory, CPU, etc. usage, and trends,
 * List of alarms with the involved components and resolution status.
 . You give a list of improvements to continuously improve the quality of the product.
 For each improvement, a list of actions and their status are available.
@@ -244,12 +244,12 @@ https://en.wikipedia.org/wiki/Failure_rate[failure rate].
 
 == Cultural change
 
-DevOps initiatives create cultural changes in companies by transforming the way operations, developers and testers collaborate during the development and delivery processes.
+DevOps initiatives create cultural changes in companies by transforming the way operations, developers, and testers collaborate during the development and delivery processes.
 Getting these groups to work cohesively is a critical challenge in enterprise adoption.
 DevOps is as much about culture, the toolchains are only instruments to implement the approach.
 
 Organizational culture is a strong predictor of IT and organizational performance.
-Cultural practices such as information flow, collaboration, shared responsibilities, learning from failures and encouraging new ideas are central to DevOps.
+Cultural practices such as information flow, collaboration, shared responsibilities, learning from failures, and encouraging new ideas are central to DevOps.
 
 Team-building and other employee engagement activities are often used to create an environment that fosters this communication and cultural change within an organization.
 DevOps as a service approach allows developers and operations teams to take greater control of their applications and infrastructure without hindering speed.
@@ -260,7 +260,7 @@ The 2015 State of DevOps Report discovered that the top seven measures with the 
 . Organizational investment,
 . Team leaders' experience and effectiveness,
 . Continuous delivery,
-. The ability of different disciplines _development, operations and security_ to achieve win-win outcomes,
+. The ability of different disciplines _development, operations, and security_ to achieve win-win outcomes,
 . Organizational performance,
 . Deployment pain,
 . Lean management practices.
@@ -269,7 +269,7 @@ The 2015 State of DevOps Report discovered that the top seven measures with the 
 
 DevOps will only be successful if your organization adopts agile values.
 
-* Support transparency, inspection and adaption.
+* Support transparency, inspection, and adaption.
 * These pillars are central to empiricism and lean thinking.
 * Nurture commitment, focus, openness, respect and courage.
 
@@ -277,7 +277,7 @@ These are the official values of {ref-scrum}.
 
 Be honest with yourself.
 
-If you do not have concrete and visible initiatives in the areas of development _Dev_, running _Ops_ and continuous improvement, you are just pretending to be a professional.
+If you do not have concrete and visible initiatives in the areas of development _Dev_, running _Ops,_ and continuous improvement, you are just pretending to be a professional.
 But in reality, you are just an amateur.
 
 == Glossary
@@ -288,7 +288,7 @@ Fowler, 2006 - a software development practice where members of a team usually i
 Multiple integrations per day shall be possible.
 Each integration is verified by an automated build, including tests to quickly detect errors.
 Pair Programming::
-Williams & Kessler, 2003 – style of programming in which two programmers work side by side at one computer, continually collaborating on the same design, algorithm, code or test.
+Williams & Kessler, 2003 – style of programming in which two programmers work side by side at one computer, continually collaborating on the same design, algorithm, code, or test.
 The *driver* types and writes the design.
 The *navigator* observes the driver and looks for defects.
 Refactoring::

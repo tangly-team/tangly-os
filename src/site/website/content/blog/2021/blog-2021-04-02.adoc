@@ -14,19 +14,19 @@ include::../fragments/_config-mb-blog.adoc[]
 image::2021-04-02-head.jpg[width=420,height=360,role=left]
 
 Often, I hear complain that the IT department is not reacting to developer's needs.
-They are slow, clumsy and too administrative.
+They are slow, clumsy, and too administrative.
 Harsher words state they are incompetent.
 
 I have observed a clear trend in Switzerland since around 2015 to solve these tensions.
 
-Standard IT services such as docker images, database instances or internal domain names are provided through self-service kiosks.
+Standard IT services such as docker images, database instances, or internal domain names are provided through self-service kiosks.
 
 What are the advantages of this approach?
 --
 
 == Advantages
 
-The advantages to providing a self-service kiosk for users in an academical or industrial environment are:
+The advantages of providing a self-service kiosk for users in an academical or industrial environment are:
 
 * Improving data quality and strongly reducing the error rate.
 Kiosk services must be standardized before being offered.
@@ -66,12 +66,12 @@ The needs boil down to
 The images shall be accessible from the company Intranet and often from the Internet.
 * Provide virtual images only exceptionally.
 * Provide git repositories.
-* Provide development tools such as GitHub, GitLab or Bitbucket solutions including Pages for documentation.
+* Provide development tools such as GitHub, GitLab, or Bitbucket solutions including Pages for documentation.
 
-Most often, virtual images are only needed when the user needs a Microsoft or macOS environment.
-All Unix related requests are serviced through docker images.
+Most often, virtual images are only necessary when the user needs a Microsoft or macOS environment.
+All Unix-related requests are serviced through docker images.
 
-A need trend is the need to provide GPU capabilities for machine learning, artificial intelligence and visualization products.
+A need trend is the need to provide GPU capabilities for machine learning, artificial intelligence, and visualization products.
 The image approach is still working.
 The current major challenge is the immaturity of the software solutions to share efficiently physical GPU.
 I expect viable standard solutions will be available in the next two years.

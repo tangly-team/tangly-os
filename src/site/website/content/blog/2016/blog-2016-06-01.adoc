@@ -58,7 +58,7 @@ The Scrum Master serves the Product Owner in several ways, including:
 * _Facilitating_ Scrum events as requested or needed.
 ____
 
-The Scrum Master should also coach the product owner and support him in the long-term planning, the communication of the vision and backlog management.
+The Scrum Master should also coach the product owner and support him in the long-term planning, the communication of the vision, and backlog management.
 The vision and goals of the product should always contain an overall planning frame.
 During product development, empirical evidence will trigger revision of the milestones and product planning.
 
@@ -111,7 +111,7 @@ The work remaining and date are the only variables of interest.
 ____
 
 The only relevant information is the amount of work still open and when this work will be completed.
-This is true for sprint, release and the whole backlog burn-down chart.
+This is true for sprint, release, and the whole backlog burn-down chart.
 I am glad that these precisions were added to the new version of the Scrum guide.
 I simplify my daily work.
 I can now simply refer to the official Scrum Guide to convince people how aspects of Scrum should be understood.

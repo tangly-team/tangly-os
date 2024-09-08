@@ -27,7 +27,7 @@ Over the years, I developed a checklist to select promising candidates.
 The below checklist is biased to the Java technology check.
 When I use the verb *explain* in a list item, I mean that I got a hint the candidate is aware of the concept and has used it in his applications.
 
-Similar lists can be created for Javascript/Typescript, Python, Ruby, {cpp}, or .NET developers.
+Similar lists can be created for JavaScript/Typescript, Python, Ruby, {cpp}, or .NET developers.
 --
 
 == What Do I Check?
@@ -57,9 +57,9 @@ The following information should be available:
 ** What formation did he attend? +
 _I am checking if the candidate pursued training in the areas she applies for.
 A team leader should train in soft skills and product management methods.
-An agile specialist should train in agile, Scrum and DevOps.
+An agile specialist should train in agile, Scrum, and DevOps.
 A software architect should train in architecture and software design themes.
-A user interface developer should know about usability, accessibility, design and corporate interface standards._
+A user interface developer should know about usability, accessibility, design, and corporate interface standards._
 ** When did he attend the continuous formation and year when the title was received?
 ** Link to an authority providing proof of the certificate for the formation.
 Spoken Languages:::
@@ -98,7 +98,7 @@ Architecture Capabilities::
 A professional software architect shall be able to define an application architecture.
 I am looking for:
 * Explain architecture patterns such as monolith, modular monolith, modular application, layered application.
-* Show knowledge of architecture approach such as domain driven design, Traditional approaches such as https://en.wikipedia.org/wiki/Rational_Unified_Process[RUP].
+* Show knowledge of architecture approach such as domain-driven design, Traditional approaches such as https://en.wikipedia.org/wiki/Rational_Unified_Process[RUP].
 https://en.wikipedia.org/wiki/Zachman_Framework[Zachmann] can be mentioned but is no more relevant.
 * Explain the different facets of the architect role: Teacher, Coach, Mentor, Developer.
 * Explain how architecture is documented (https://adr.github.io/[ADR], https://c4model.com/[C4]), static websites (Pages in GitHub, GitLab, or Bitbucket); and which notation
@@ -109,7 +109,7 @@ https://en.wikipedia.org/wiki/Zachman_Framework[Zachmann] can be mentioned but i
 * Check if a formal architecture training was performed such as https://en.wikipedia.org/wiki/Domain-driven_design[DDD],
 https://www.opengroup.org/togaf[TOGAF], or https://arc42.org/[arc42].
 Agile Work Capabilities::
-A professional developers should know agile methods which are around since this millennium:
+A professional developer should know agile methods which are around since this millennium:
 * Check if Scrum, Kanban, Lean approaches were used in projects.
 Often they only pretend because they hold a daily meeting and a retrospective.
 * Check if CI/CD/CD and DevOps practices were used in projects,
@@ -117,7 +117,7 @@ Often they only pretend because they hold a daily meeting and a retrospective.
 Teamwork Capabilities::
 * What does teamwork mean for the candidate?
 * Explain pair programming, mob programming, merge requests
-* Explain feature branch versus trunk based development
+* Explain feature branch versus trunk-based development
 * Check if community of practice, coding dojo, design workshops are known concepts
 * Does the candidate show a sensibility to soft factors and team building instruments?
 
@@ -132,7 +132,7 @@ Open Source Activities::
 Modern software application development relies heavily on open-source libraries and frameworks.
 Developers who understand how to communicate with the teams behind these projects and how to contribute improvements are worth a lot in any project.
 Community Activities::
-Engineers working in communities and user group members are often open, enthusiasts and have a wider network of professional acquaintances.
+Engineers working in communities and user group members are often open, enthusiasts, and have a wider network of professional acquaintances.
 Blogs and Articles::
 Developers taking time to write public blogs or articles show a genuine interest in helping others in their learning.
 I also find it very interesting to learn which technical books a candidate has read.
@@ -158,7 +158,7 @@ Using data and numbers can help a hiring manager get a better sense of how you p
 Please add more details for the last five years.
 I am not deeply interested in knowing details about a project ten years old. +
 _I do not fully count experience when the project duration was below half a year.
-You need time to learn the application, the team and the constraints.
+You need time to learn the application, the team, and the constraints.
 Therefore, the first six months of your personal learning in new approaches and technologies are quite shallow._
 Explain why you apply for a specific job position::
 Either you have the necessary capabilities through past and current experiences or explain why you think you could take over the responsibility.
@@ -191,8 +191,8 @@ Everybody uses Git.
 
 == Node.js Candidates
 
-A Node.js developer shall know domain-driven design, clean, refactoring, TDD, CI/CD and agile approaches.
-General information, computer science, design, software architecture and agile approach requirements are similar.
+A Node.js developer shall know domain-driven design, clean, refactoring, TDD, CI/CD, and agile approaches.
+General information, computer science, design, software architecture, and agile approach requirements are similar.
 
 The technical questions for a Node.js person are slightly different from a Java developer:
 
@@ -202,14 +202,14 @@ How experienced is she with the packet manager _npm_?
 Which version of Typescript is she using?
 * Which tools did she use for quality conformance and refactoring in projects?
 * Does he know standard https://owasp.org/[OWASP] approaches and why they are important in a Node.js environment?
-* Examples of object-oriented, functional programming, asynchronous and reactive approaches in Typescript code.
+* Examples of object-oriented, functional programming, asynchronous, and reactive approaches in Typescript code.
 * Can senior developers discuss and explain threading, thread library, or async design approaches?
 * Which development environment does he use to develop NodeJS code - e.g. JetBrain WebStorm -?
 * Does he master https://en.wikipedia.org/wiki/MEAN_(solution_stack)[MEAN] stack - MongoDB, Express.js, Angular, Node.js -?
 * Which experience and certification does she have with Angular or React?
 * Which training or certificates does she have in user interface design, usability, or accessibility?
 * Does he have experience and training in MongoDB, Mongoose, Meteor, express.js, socket.io?
-* Is she experienced with integrating relational database in Node.js backend solutions?
+* Is she experienced with integrating a relational database in Node.js backend solutions?
 * Are advanced topics such as {ref-webassembly} or {ref-deno} known?
 
 Use hints in the project experience sections to cover the above topics.

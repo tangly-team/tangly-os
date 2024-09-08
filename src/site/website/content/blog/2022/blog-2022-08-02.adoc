@@ -24,10 +24,10 @@ The customer organization shall take ownership of all product related artifacts.
 The handover is a vital part of closing a project
 footnote:[The handover is most of the time implied through the contract or the corporate governance processes of your customer.].
 
-Your customer paid for the development and own the produced artifacts.
+Your customer paid for the development and owned the produced artifacts.
 --
 
-You are legally bound to deliver source code, binary artifacts defining the executable application, credentials and documentation to your customer.
+You are legally bound to deliver source code, binary artifacts defining the executable application, credentials, and documentation to your customer.
 The ownership transfer is either an explicit part of your contract or implicit through the contract type you are working with.
 
 _Remember, a product development is a work contract._
@@ -65,7 +65,7 @@ _Generate your static website.
 Use a spellchecker for orthography, and a link checker for your links_.
 . Tag the artifacts to insure traceability between your binary delivery and the source code. +
 You still need an official acceptance form from your client. +
-_Do not forget to document your tagging conventions.
+_Remember to document your tagging conventions.
 Are you using semantic versioning?_.
 . Transfer your repository to the new organization. You should formally document the acceptance of the produced artifacts and handover of all results.
 Good practice is to sign the transfer protocol. +
@@ -88,15 +88,15 @@ Regular infringement laws apply if you use, copy or modify source code.
 Therefore, any source code file has an implicit or an explicit copyright.
 Good practice is to have a banner in each source file stating the short version of your copyright.
 Documentation Copyright::
-Documentation, drawings and sketches are also under copyright legislation.
+Documentation, drawings, and sketches are also under copyright legislation.
 Please add your copyright to all your documents <<creative-commons>>.
 
 [WARNING]
 ====
 Respect the licenses of the open source components you are using.
 
-The free software foundation and similar entities consequently sue organizations cheating on open source licenses.
-Avoid loosing your reputation and money for infringing copyrights.
+The free software foundation and similar entities consequently sue organizations for cheating on open source licenses.
+Avoid losing your reputation and money by infringing copyrights.
 ====
 
 == Update Your Documentation
@@ -104,7 +104,7 @@ Avoid loosing your reputation and money for infringing copyrights.
 I strongly suggest using actual good practice documentation as static websites to publish your documentation.
 The huge gain is git based tracking to map a documentation set to a specific release of your solution.
 Auditability and tracing of the documents are implicitly provided through version management system features
-footnote:[You should easily identify and retrieve the source code, binary artifacts and documentation for a specific release.].
+footnote:[You should easily identify and retrieve the source code, binary artifacts, and documentation for a specific release.].
 
 [WARNING]
 ====
@@ -117,7 +117,7 @@ Additional steps to validate the newly configured domain and enable _SSL_ are we
 
 . Register your custom domain in the {ref-github} pages repository.
 . Reserve your custom domain in {ref-github} to block other users to steel your domain if it is once down <<configuring-custom-domain>>.
-Beware you need to add a https://en.wikipedia.org/wiki/TXT_record[TXT] record in your domain.
+Beware, you need to add a https://en.wikipedia.org/wiki/TXT_record[TXT] record in your domain.
 Bigger companies are quite slow to process such a request.
 . Enable HTTPS to be compliant with good practices <<configuring-custom-domain>>.
 {ref-github} will generate and deploy at no costs a certificate for your custom domain.
@@ -150,9 +150,9 @@ Here is a simple example of a redirect page for your old website.
 == Update Your CI/CD Pipeline
 
 The continuous integration and delivery pipelines cite:[continuous-delivery] shall build all expected artifacts associated with the product.
-Ideally the process shall follow DevOps good practices and be automated.
+Ideally, the process shall follow DevOps good practices and be automated.
 
-If not document thoroughly the manual steps.
+If not, document thoroughly the manual steps.
 
 == Transfer Your GitHub Repository
 

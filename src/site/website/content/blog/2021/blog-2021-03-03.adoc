@@ -14,7 +14,7 @@ image::2021-03-03-head.jpg[width=420,height=360,role=left]
 
 Slowly, slowly major actors in the software architecture landscape acknowledge agile development is state of the industry approach to building software products.
 
-They are still struggling to integrate their older views in a faster, iterative, incremental development approach.
+They are still struggling to integrate their older views into a faster, iterative, incremental development approach.
 The duration of a regular Scrum sprint is usually two weeks.
 
 More important, they have discovered we build products because no customers buy projects.
@@ -28,7 +28,7 @@ If pushed, they acknowledge agile development is mainstream and used in the over
 
 We have learnt it is difficult to concede and congratulate the winning party.
 
-Look at the president of the United States of America https://en.wikipedia.org/wiki/Donald_Trump[Donald Trump] to have a well-documented case of a loser trying all lies and tricks to avoid reality.
+Look at the President of the United States of America https://en.wikipedia.org/wiki/Donald_Trump[Donald Trump] to have a well-documented case of a loser trying all lies and tricks to avoid reality.
 Not long ago, the tobacco industry did the same as professional liars.
 And we still have climate change deniers.
 
@@ -64,7 +64,7 @@ image::2021-03-03-open-group-agile.png[width=420,height=360,role=left]
 The open group has stewardship for the TOGAF enterprise architecture standard and training.
 
 The open group has started to discuss the future of software architecture and agile approaches with a white paper second half of 2019.
-They published a first potential approach to https://pubs.opengroup.org/architecture/o-aa-standard-single/[agile software architecture] the end of 2020.
+They published the first potential approach to https://pubs.opengroup.org/architecture/o-aa-standard-single/[agile software architecture] the end of 2020.
 
 The approach is quite rough.
 It is more a collection of ideas available in various approaches and ideas picked from the Internet.
@@ -99,7 +99,7 @@ https://www.isaqb.org/certifications/cpsa-certifications/cpsa-advanced-level/agi
 Their proposal of the module is described below.
 
 * The participants learn how to design, develop and further develop software systems and architectures in accordance with agile principles.
-* On one hand, the module covers the application of agile principles and concepts to architecture work.
+* On the one hand, the module covers the application of agile principles and concepts to architecture work.
 On the other hand, expedient anchoring of architecture practices in an agile approach.
 * The development of architectures in projects with self-sufficient teams or shared responsibilities demands new skills and capabilities on the part of developers and architects.
 * We cover technical as well as methodical and also communicative aspects, which are addressed here all theoretically and in practical exercises.

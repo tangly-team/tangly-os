@@ -25,7 +25,7 @@ They preferred to use free software and not to invest any thoughts or efforts to
 == Update Your JDK and JVM
 
 A new version of the Java development kit is released every six months.
-Early adaptors versions are always available to migrate and test your solutions.
+Early adaptor versions are always available to migrate and test your solutions.
 Each new version fixes hundreds of bugs and provides new productive features.
 
 *Update your JDK in a timely manner*.
@@ -41,7 +41,7 @@ Solve them now.
 
 == Update Your Libraries
 
-Gradle versions catalog is a new feature in modern versions of Gradle that allows you to centralize your project dependencies, plugins and their respective versions into a single location.
+Gradle versions catalog is a new feature in modern versions of Gradle that allows you to centralize your project dependencies, plugins, and their respective versions into a single location.
 Plugins are available to check if new versions of your libraries and plugins are available.
 I simply execute the following command to detect new versions.
 
@@ -53,7 +53,7 @@ gradle dependencyUpdates -Drevision=release // <1>
 <1> Check that any libraries or plugins in the project have a newer available version.
 
 I still have to decide if I shall update the library.
-The usual approach is to simply update, and run all unit and integration tests.
+The usual approach is to simply update and run all unit and integration tests.
 If all tests passed successfully, I shall simply upgrade to the newer version, otherwise I simply roll back the changes or start a debugging session to find out why some tests failed.
 
 [NOTE]

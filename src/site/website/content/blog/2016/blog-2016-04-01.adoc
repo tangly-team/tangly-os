@@ -57,7 +57,7 @@ Based on the above statement, you have to find a way to unit test and refactor l
 * Test Driven Development by Example, Ken Beck, Addison-Wesley 2003 How can a programmer be sure his code is working before and after refactoring
 * Clean Code: A Handbook of Agile Software Craftsmanship, Robert C. Martin, Prentice Hall 2009 We are professional developers and uncle Bob shows how we should work
 * The Clean Coder: A Code of Conduct for Professional Programmers, Robert C. Martin, Prentice Hall 2011 Uncle Bob defines what a professional developer is.
-I know quite a few developers shocked by his requirements
+I know quite a few developers are shocked by his requirements.
 
 == Agile and Lean Concepts
 

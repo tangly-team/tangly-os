@@ -53,7 +53,7 @@ The Scrum Master serves the organization in several ways, including:
 
 * Leading, training, and coaching the organization in its Scrum adoption;
 * Planning and advising Scrum implementations within the organization;
-* Helping employees and stakeholders understand and enact an empirical approach for complex work; and,
+* Helping employees and stakeholders understand and enact an empirical approach to complex work; and,
 * Removing barriers between stakeholders and Scrum Teams.
 
 == Certifications
@@ -84,7 +84,7 @@ The https://www.scrum.org[Scrum.org] certifications never expire.
 The _Scrum Master_ learning objectives for the first level are:
 
 . _Lean, Agile, and Scrum_
-.. list at least three rights and five responsibilities of the Product Owner, Development Team and Scrum Master.
+.. list at least three rights and five responsibilities of the Product Owner, Development Team, and Scrum Master.
 .. discuss at least two reasons why the Product Owner is a single person and not a group or a committee.
 .. discuss how and why the Product Owner maintains authority over the product while working collaboratively with the Development Team and stakeholders.
 .. list at least five characteristics of the Development Team.
@@ -101,7 +101,7 @@ https://scrumguides.org/scrum-guide.html#sprint-review[Sprint Review], and https
 .. describe at least three activities that occur during the Sprint Review other than a demonstration of the
 https://scrumguides.org/scrum-guide.html#increment[increment].
 .. identify at least three potential outcomes for a Sprint Review.
-.. describe at least two approaches to conduct a Sprint Retrospective.
+.. describe at least two approaches to conducting a Sprint Retrospective.
 .. identify at least three essential characteristics of the https://scrumguides.org/scrum-guide.html#product-backlog[Product Backlog].
 .. list at least four attributes of a https://scrumguides.org/scrum-guide.html#product-backlog[Product Backlog] item.
 .. identify at least three essential characteristics of the https://scrumguides.org/scrum-guide.html#sprint-backlog[Sprint Backlog].
@@ -140,7 +140,7 @@ cite:[scrum-managing-for-results,scrum-pocket-guide-3rd].
 
 I published a list of seminal works for interested Scrum masters under link:{ref-tangly-blog-url}/ideas/learnings/books/[Books].
 
-== Project Leadership Trainings
+== Project Leadership Training
 
 image::2021-08-03-pmi-talent-triangle.png[width=420,height=360,role=left]
 
@@ -150,9 +150,9 @@ https://www.pmi.org/certifications/agile-certifications[Disciplined Agile Design
 
 I expect the emphasis on agile approaches to markedly increase in the next years.
 
-== University Formal Trainings
+== University Formal Training
 
-Technical universities in Switzerland provide formal training in project leadership, project management and related fields.
+Technical universities in Switzerland provide formal training in project leadership, project management, and related fields.
 The formation provides a certificate of advanced study CAS in the field.
 Current available certificates of advanced study offering are, for example:
 

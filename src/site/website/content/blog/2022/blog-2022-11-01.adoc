@@ -18,7 +18,7 @@ Vernon Vaugh published powerful approaches how to implement DDD concepts into a 
 
 How do you validate and test your DDD digital solutions?
 
-https://en.wikipedia.org/wiki/Behavior-driven_development[Behavior Driven Development] _BDD_ is an inversion how systems are often developed.
+https://en.wikipedia.org/wiki/Behavior-driven_development[Behavior Driven Development] _BDD_ is an inversion of how systems are often developed.
 In some ways, it is an extension of Test Driven Development _TDD_ approach to the whole application.
 
 Acceptance criteria are coded as automated acceptance tests.
@@ -59,11 +59,11 @@ For it is always important to think about notifying past actions.
 
 == Evolution
 
-A tension exists who is in charge to write the acceptance tests.
+A tension exists who is in charge of writing the acceptance tests.
 Experts initially advocated that the product owner or the business analysts should write the tests to validate the work of the development team.
 Solutions such as Gherkin and Fitnesse were developed to support this approach.
 
-Experience showed the difficulty of maintaining and refactor test sets written by non-developers.
+Experience showed the difficulty of maintaining and refactoring test sets written by non-developers.
 I strongly advocate product owners shall formulate the acceptance criteria.
 Developers shall always write the acceptance tests and guarantee a reasonable quality of the created code.
 Use frameworks based on a programming language instead of structured text approaches.

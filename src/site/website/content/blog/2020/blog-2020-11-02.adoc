@@ -33,11 +33,11 @@ ____
 
 In other words, an agile organization is optimized for a
 https://en.wikipedia.org/wiki/Volatility,_uncertainty,_complexity_and_ambiguity[VUCA] - __V__olatile, __U__ncertain, __C__omplex, __A__mbiguous - environment.
-The organization should provide vision, understanding, courage and adaptability.
+The organization should provide vision, understanding, courage, and adaptability.
 
 [quote,Gary Hamel,2007]
 ____
-There is simply no way to build tomorrow's essential organizational capabilities – resilience, innovation and employee engagement – atop the scaffolding of 20^th^ century management principles.
+There is simply no way to build tomorrow's essential organizational capabilities – resilience, innovation, and employee engagement – atop the scaffolding of 20^th^ century management principles.
 ____
 
 == Agile Culture
@@ -102,7 +102,7 @@ A stream is in charge of a set of related products and directly communicates wit
 ____
 Attempting to change an organization’s culture is a folly.
 It always fails.
-Peoples’ behavior _the culture_ is a product of the system; *when you change the system, peoples’ behavior changes.*"
+Peoples’ behavior _the culture_ is a product of the system; *when you change the system, people’ behavior changes.*"
 ____
 
 * The major anti-pattern is the refusal to change the structure of your organization.

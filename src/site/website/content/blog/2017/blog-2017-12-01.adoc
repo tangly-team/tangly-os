@@ -11,7 +11,7 @@ include::../fragments/_config-mb-blog.adoc[]
 
 [.float-group]
 --
-image::2017-12-01-head.png[width=420, height=360, role=left]
+image::2017-12-01-head.png[width=420,height=360,role=left]
 It is Christmastime.
 
 Clean your desk and the content of your workstation.
@@ -20,7 +20,8 @@ Upgrade your tools and your development environment to the actual version.
 It is time to add automated build pipelines, TDD, ATDD, and Docker to your toolbox.
 Embrace agile approaches.
 
-Work focused and avoid overtime.
+Work focused.
+Avoid overtime.
 Prioritize outcomes instead of outputs.
 Enjoy family life, practice sport, and pursue continuous training.
 --
@@ -28,6 +29,7 @@ Enjoy family life, practice sport, and pursue continuous training.
 == Clean Your Desk
 
 === Digitalize Your Office
+
 It is time to sell the last fax device in your office and plan to remove your big printer.
 Burn your paper documentation and discard your folders.
 Please store all the information digitally and have an effective search application in your company.
@@ -60,9 +62,9 @@ As a Java developer, it is time to use state of the industry tools and improve y
 . Java 9 JDK - If you are still working with Java 7 or earlier, you are a laggard
 .. Java 8 public support will end in the middle of next year.
 .. Java 10 shall be available next year.
- The early releases are already online.
- Download them and try the new features.
- The local variable declarations are a huge improvement.
+The early releases are already online.
+Download them and try the new features.
+The local variable declarations are a huge improvement.
 .. You are a laggard and security danger if you are still using Java 6 or earlier.
 . Gradle
 .. Build, deliver, and deploy your solution with one keystroke.
@@ -74,22 +76,24 @@ As a Java developer, it is time to use state of the industry tools and improve y
 .. Splendid Gradle support.
 .. Marvelous JUnit 5 support.
 .. Alt-Enter anywhere brings up context-sensitive options.
- Run a test, create a test, create a subclass, convert to closure, generate missing test methods, remove an explicit type, split into declaration and assignment, introduce local variable.
- The suggestions are limitless.
+Run a test, create a test, create a subclass, convert to closure, generate missing test methods, remove an explicit type, split into declaration and assignment, introduce local variable.
+The suggestions are limitless.
 .. Great Java 8 support, suggesting lambda notation where appropriate!
 .. Even displaying anonymous inner class usage (collapsed) as if it was written using a lambda expression.
-. Quality with PMD, FindBugs, SonarLint, or the build-in rules of IntelliJ
+. Quality with PMD, FindBugs, SonarLint, or the built-in rules of IntelliJ
 . Banish Flash from your workstation
 
 == New Year Improvements
 
 === Sustainable Pace
 
-Agile approaches state you should work at a sustainable pace, forty hours a week. Avoid working overtime during the evenings or weekends.
+Agile approaches state you should work at a sustainable pace, forty hours a week.
+Avoid working overtime during the evenings or weekends.
 
 Enjoy family time, practice sport, give back to the community.
 
-Work with your team, ideally collocated in a team room. Face2Face exchanges and pair working - pair design, pair review, pair programming, pair checkin - are training on the job occasions.
+Work with your team, ideally collocated in a team room.
+Face2Face exchanges and pair working - pair design, pair review, pair programming, pair checkin - are training on the job occasions.
 
 === Hone your Craftsmanship
 
@@ -99,7 +103,7 @@ Here are some suggestions to hone your craftsmanship
 * Read good technical books, at least one book per quarter.
 * Learn new shortcuts and plugins for your favorite IDE.
 * Improve the agile, lean, Scrum, LeSS approaches in your department.
-* Refactor daily code and practice clean-code.
+* Refactor daily code and practice clean code.
 * Become an expert on Git.
 * Increase self-awareness and work on your soft skills, teamwork shall improve.
 

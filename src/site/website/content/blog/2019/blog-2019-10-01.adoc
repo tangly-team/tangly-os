@@ -33,7 +33,7 @@ The payback is fantastic.
 
 * You have economic gains through
 ** Major performance improvements make your application faster.
-You have either higher customer satisfaction or need less processing resources.
+You have either higher customer satisfaction or need fewer processing resources.
 ** Major garbage collector updates make your application more predictable.
 The maximum amount of memory is often lower.
 ** Better behavior in container environment translates to less resource usage.
@@ -43,10 +43,10 @@ The maximum amount of memory is often lower.
 ** One important change was that internal APIs - largely those classes in packages that started with sun.misc.* - were hidden from use.
 ** APIs that are not core to the JDK have also been removed in Java 11 or later.
 These changes may impact your application, but there is a clear path to avoid these problems.
-* You have to select either the long-term support path or upgrade every six months the Java runtime.
-** When upgrading the choice you face is whether to use the latest version of Java, currently 13, and be prepared to upgrade every six months.
+* You have to select either the long-term support path or upgrade the Java runtime every six months.
+** When upgrading, the choice you face is whether to use the latest version of Java, currently 13, and be prepared to upgrade every six months.
 Or upgrade to the latest LTS 11 to give yourself up to three years to think about your next upgrade,
-** Don’t be tempted to ignore compiler warnings.
+** Do not be tempted to ignore compiler warnings.
 Deprecation is being taken much more seriously in this modern Java world, and both Java 10 and Java 11 removed APIs.
 ** In less than two years, the next LTS will be released with Java 17. It is scheduled for September 2021.
 * Become more agile

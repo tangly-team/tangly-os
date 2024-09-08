@@ -11,22 +11,22 @@ include::../fragments/_config-mb-blog.adoc[]
 
 image::2018-09-01-head.png[width=420,height=360,role=left]
 
-First teams have successfully used Scrum to develop applications.
+First, teams have successfully used Scrum to develop applications.
 The news spread out and everybody wants to apply Scrum.
 It is time to introduce enterprise-wide Agile with Scrum or Kanban or XP.
 
-Your Company wants to introduce Enterprise Agility in their product development, quality assurance and sales departments.
+Your Company wants to introduce Enterprise Agility in their product development, quality assurance, and sales departments.
 The company as a whole shall transition to an agile organization and all teams shall adopt {ref-scrum}.
 
 Try the https://martinfowler.com/bliki/ShuHaRi.html[Shu Ha Ri] approach for such a change process.
 
 Based on our exhaustive experience, we recommend starting with a set of workshops with the goal of defining a tailored approach to adapt the structure and processes of the company and introduce enterprise agile.
 
-These workshops provide the platform to identify the company’s needs and strategic goals, and gather support from all participants.
+These workshops provide the platform to identify the company’s needs and strategic goals and gather support from all participants.
 Try the https://en.wikipedia.org/wiki/Open_Space_Technology[open space] format to involve all collaborators and identify their needs.
 
 Below, we provide an approach which must be later tailored to the specific needs of the Company during the above-mentioned workshops.
-The organizational needs for feature oriented planning and development of an application portfolio should be considered.
+The organizational needs for feature-oriented planning and development of an application portfolio should be considered.
 
 == Approach
 
@@ -34,7 +34,7 @@ We work with the Shu Ha Ri agile approach when introducing enterprise agile in t
 All collaborators will progress from the novice level through the proficient level before reaching the expert level.
 You can also use the agile fluency model if you prefer.
 
-This model also maps very well to the “Awareness – Desire – Knowledge – Ability – Reinforcement “or ADFAR model.
+This model also maps very well to the _Awareness – Desire – Knowledge – Ability – Reinforcement_ or ADFAR model.
 The Company has already reached awareness and desire level because they want to introduce enterprise agile.
 We describe below the activities for the development organization consisting of software development, product management and quality insurance departments, and the activities at company level.
 
@@ -43,7 +43,7 @@ We describe below the activities for the development organization consisting of 
 === Shu - Novice Level - _Learn the Rules_
 
 The duration of the novice level is at least six months.
-The major activities are to align the collaborators and provide the needed knowledge through training and hands-on exercises.
+The major activities are to align the collaborators and provide the necessary knowledge through training and hands-on exercises.
 Extensive training is aligned with experiences and industrial best practices.
 
 All collaborators shall attend an introduction to agile and Scrum approaches.
@@ -52,7 +52,7 @@ Each group of technical collaborators will learn specific techniques and skills 
 
 The agile coaches have two roles.
 First, they facilitate and support the teams to implement all meetings, artifacts, and rules of the Scrum approach.
-Second, they train the team members how to use learnt techniques such as clean code, pair programming, pair check-in, agile architecture, requirements elicitation, test driven development, agile quality assurance, acceptance test driven development, continuous integration, deployment and delivery.
+Second, they train the team members how to use learnt techniques such as clean code, pair programming, pair check-in, agile architecture, requirement elicitation, test driven development, agile quality assurance, acceptance test driven development, continuous integration, deployment, and delivery.
 
 After the initial training, the coaches ensure that this knowledge and ground rules are applied in daily activities.
 
@@ -132,7 +132,7 @@ _*Doing* agile is easy.
 
 We recommend
 
-. An Agile and Scrum coach responsible for six to eight Scrum teams.
+. An Agile and Scrum coach is responsible for six to eight Scrum teams.
 The internal coaches should start taking responsibilities
 . A center of competence for the growth of internal Scrum coaches for the company.
 
@@ -146,12 +146,12 @@ Workshops with key managers will
 * Discuss the fact that the standard competencies of agile leadership and coaching – mentoring, facilitating, problem-solving, and conflict navigating – are essential to agile adoption, but simply not enough to sustain and grow agility within an organization.
 We find that the unique blend of combining senior internal leaders with experienced agile coaches provides an unprecedented learning environment for all.
 * Understand that most organizations adopt agile _Outside-In_ - that means they start with a process change and expose organizational impediments.
-The problem is that most of the organizational impediments are driven from cultural values deep within the organization.
+The problem is that most of the organizational impediments are driven by cultural values deep within the organization.
 The process changes rarely stick.
 * Identify an "Inside-Out" approach - that means we will start with the company culture.
-Just as understanding the personality of a person is a key to working effectively with that person, understanding the culture of an organization is critical to its success in adopting, and more importantly sustaining, agility.
+Just as understanding the personality of a person is a key to working effectively with that person, understanding the culture of an organization is critical to its success in adopting, and more importantly, sustaining, agility.
 * Explore a number of organizational systems and structures which enable (or impede) agility at an organizational level.
-This approach sets the priority first to the culture, second to the structure and third to the processes of the company
+This approach sets the priority first to the culture, second to the structure, and third to the processes of the company
 
 We recommend
 
@@ -166,7 +166,7 @@ Top managers must realize that cultural elements must first be modified before t
 
 == Checklist
 
-Here a checklist example to reflect why and how to transform into an agile organization
+Here is a checklist example to reflect why and how to transform into an agile organization
 
 * Answer the question, “_Why move to Agile?_” This is important, as the reasons for attempting such a fundamental change should be well understood from both a quantitative and qualitative standpoint.
 * Understand the current business culture.
@@ -174,8 +174,8 @@ Change is hard and there will be champions as well as potential saboteurs of the
 * Spend time on the organization structure to understand how it helps or hinders the move to agile and lean.
 * Involve all levels of the business, including top level ‘C’ executives.
 Their sponsorship and support will be important.
-* Don’t neglect mid-level management as their support is vital to the success of the transformation.
+* Do not neglect mid-level management as their support is vital to the success of the transformation.
 * Create a roadmap with the explicit understanding that it will change over time.
-* Don’t attempt to change everything.
+* Do not attempt to change everything.
 Pick an area where a win will be evident and beneficial.
-* Prefer narrow and deep change to broad and shallow approach.
+* Prefer narrow and deep change to a broad and shallow approach.

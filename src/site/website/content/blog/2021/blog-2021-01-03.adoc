@@ -20,7 +20,7 @@ They predate agile development approaches.
 
 Technical schools should provide an in-depth experience in these areas to prepare their students for their future activities after completing their bachelor.
 
-The below mind map consolidates concepts, tools and approaches based on the {ref-gitlab} tooling established in some universities.
+The below mind map consolidates concepts, tools, and approaches based on the {ref-gitlab} tooling established in some universities.
 The approach emphasizes *agile* and *DevOps* concepts and approaches.
 
 [plantuml,target=students-proficiencies,format=svg]
@@ -108,7 +108,7 @@ Your organization is responsible for running the software on the premises.
 CI and CD pipelines are part of the product.
 * {ref-bitbucket} is a closed-source solution of Atlassian.
 CI and CD pipelines are part of the product.
-Atlassian also owns JIRA, Confluence and Trello.
+Atlassian also owns JIRA, Confluence, and Trello.
 * https://azure.microsoft.com/en-us/services/devops/[Azure Devops] is a closed-source solution, and Microsoft answers to .NET development.
 CI and CD pipelines access is under definition by Microsoft.
 They slowly open their product to additional development stacks such as Java, Python.
@@ -222,7 +222,7 @@ include 'net.tangly.commons'
 ----
 
 The initial build file for each module is the same as for a minimal Gradle project.
-You can now compile, test and check your application.
+You can now compile, test, and check your application.
 
 [source,console]
 ----
@@ -279,9 +279,9 @@ test:
 
 [WARNING]
 ====
-Please prefer a workstation powered with Linux or macOS if you are developing in Java, Groovy or Python.
+Please prefer a workstation powered with Linux or macOS if you are developing in Java, Groovy, or Python.
 
-You will be more efficient and avoid all the problems related to virus scanners, missing packages or arcane path length problems.
+You will be more efficient and avoid all the problems related to virus scanners, missing packages, or arcane path length problems.
 ====
 
 . Install the latest LTS JDK and the latest JDK on your workstation.
@@ -336,7 +336,7 @@ The tool is compatible with git philosophy and static website generators.
 The IntelliJ AsciiDoc is used to write technical documentation and to display embedded PlantUML diagrams.
 AsciiDoc format has native support for PlantUML diagrams.
 
-Students have training in technical notation such as UML, BPNM, C4 and others.
+Students have training in technical notation such as UML, BPNM, C4, and others.
 They can now apply these notations to their projects using plantUML.
 
 == Agile and Scrum
@@ -435,7 +435,7 @@ Read the post link:../../2016/git-branches-for-the-impatient[Git Branches for th
 
 === Pull Request
 
-Read the documentation of GitLab, BitBucket or GitHub.
+Read the documentation of GitLab, BitBucket, or GitHub.
 You will use pull requests if you are working in a team for a project.
 Sadly, students rarely work in teams during their studies.
 

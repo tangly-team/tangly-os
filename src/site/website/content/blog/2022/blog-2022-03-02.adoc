@@ -136,7 +136,7 @@ Use plain old Java objects _POJO_ to exchange information between layers inside 
 
 If you have to return complex aggregated objects for a persistence store, use views, persistent layer queries to populate read-only objects.
 Java provides the _record_ construct for such situations.
-The need to define frequent queries to generate aggregate views are a smell that your design has flaws.
+The need to define frequent queries to generate aggregate views is a smell that your design has flaws.
 
 == Schedulers in Spring
 

@@ -59,14 +59,14 @@ After each cycle of customer feedback, the goals and budget are evaluated again.
 The value streams have agile teams that work like small companies.
 
 Each team has a Product Owner - PO - who has overall responsibility for their respective product.
-Realizations are further funded, modified or canceled on the basis of initial results, meaning after customer and technical tests.
+Realizations are further funded, modified, or canceled on the basis of initial results, meaning after customer and technical tests.
 
 The product financing is following a start-up approach and not based on the yearly budget as usual in larger companies.
 
 == Co-location and Team ownership
 
 Work is done across departments, in cross-functional teams.
-All those who can contribute to the success of the product, e.g. company organization, IT, market management, or sales, sit in one room.
+All those who can contribute to the success of the product, e.g., company organization, IT, market management, or sales, sit in one room.
 They form the agile team.
 Co-location ensures lean coordination processes as well as speed and quality.
 
@@ -94,7 +94,7 @@ for a description of modern agile development procedures.
 == Elastic Infrastructure
 
 We shall use the state of industry technology.
-This enables test-driven development suc as ATDD or TDD, meaning predefined automated software tests that run in real-time.
+This enables test-driven development such as ATDD or TDD, meaning predefined automated software tests that run in real-time.
 
 Cloud infrastructure provides unlimited processing capabilities for development, test, and deployment of software artifacts.
 
@@ -105,9 +105,9 @@ The goal is to deliver a software release in production every few hours if neede
 ==  Learnt Lessons
 
 . The power of co-location is tremendous.
-The work atmosphere is focused, friendly and productive.
+The work atmosphere is focused, friendly, and productive.
 Team members are continuously working on the solution without spurious task switches in their team room.
-. Establish stable and long living teams.
+. Establish stable and long-living teams.
 . Realize the importance of training and coaching.
 Establish a continuous learning culture.
 Pursue technical excellence.

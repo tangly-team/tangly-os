@@ -14,16 +14,16 @@ image::2021-02-01-head.svg[width=420,height=360,role=left]
 Scaling Agile, Lean and {ref-scrum} to the whole product development department is hard work.
 
 You start a change journey in murky waters.
-Best to communicate a lot, strengthen your teams and have total support of upper management.
+Best to communicate a lot, strengthen your teams, and have total support of upper management.
 
 Technical agile coaching usefully describes the work I do.
 Agile coaching helps your business to become more successful, often improving the way you plan and deliver software.
 
-Technical agile coaching focuses on how people design products, write code and deliver high-quality products.
+Technical agile coaching focuses on how people design products, write code, and deliver high-quality products.
 
 My aim is the same as other agile coaches.
 I improve the agility of the organizations I work with.
-I use coaching, mentoring, teaching and facilitation techniques just as other coaches do.
+I use coaching, mentoring, teaching, and facilitation techniques just as other coaches do.
 
 My main focus is how the source code is written, the design defined, and the architecture formulated.
 

@@ -21,7 +21,7 @@ Start with proven principles and learn.
 https://www.impactmapping.org/[Impact Mapping] and https://en.wikipedia.org/wiki/User_story[Story Mapping]
 are successful approaches to identify and prioritize your functions.
 https://en.wikipedia.org/wiki/Specification_by_example[Specification by Example] and https://en.wikipedia.org/wiki/User_story[User Stories]
-as a discussion allow you to refine your understanding of what your customers need.
+as a discussion allows you to refine your understanding of what your customers need.
 
 https://en.wikipedia.org/wiki/Acceptance_testing[Acceptance Testing] verifies the implementation fulfills the expected behavior.
 You get the mechanism to avoid regression problems when releasing your application for free.
@@ -32,7 +32,7 @@ You can later still improve your approach based on your learning.
 
 A nice overview was published in the _Professional Product Owner_ cite:[professional-product-owner] written by the stewards of the product owner certification path under {ref-scrum-org}.
 
-If you prefer videos, search for Gojko Adzic, Roman Pichler, Mike Cohn or Christian Hassa.
+If you prefer videos, search for Gojko Adzic, Roman Pichler, Mike Cohn, or Christian Hassa.
 These experts are often speakers at conferences.
 You will find recordings of their speech on various platforms such as https://www.youtube.com/[YouTube] or https://vimeo.com/[Vimeo].
 
@@ -55,11 +55,11 @@ Use Impact mapping and story mapping to classify and order your functionality.
 Story mapping works hand in hand with the release plan artifact I cited in a previous post.
 You have not only the key functionality you want to deliver, but also a tentative plan when you will deliver them.
 
-Vision, roadmap, and release plan are needed artefacts for any product development using Scrum as a development approach.
+Vision, roadmap, and release plan are necessary artifacts for any product development using Scrum as a development approach.
 The mapping identifies the stories to realize in a release to satisfy the customer's needs.
 A nice discussion of these concepts can be found in _Strategize_ cite:[strategize].
 
-The nice think is that impact mapping and story mapping are quite compatible with design thinking.
+The nice thing is that impact mapping and story mapping are quite compatible with design thinking.
 We can nicely connect the different directions used in agile product development and marketing departments.
 
 Each specification story has acceptance criteria.
@@ -67,7 +67,7 @@ These criteria are the specifications of your product.
 
 The Scrum community clearly states that product backlog items are not specifications.
 They are work items for the Scrum team.
-If you want to use stories to describe your needs instead of the specification by example approach, it is OK, but please not in the backlog.
+If you want to use stories to describe your needs instead of the specification-by-example approach, it is OK, but please not in the backlog.
 
 == Validation
 
@@ -78,7 +78,7 @@ https://en.wikipedia.org/wiki/Behavior-driven_development[BDD] - are the automat
 image::2021-04-03-test-pyramid.png[width=420,height=360,role=left]
 
 The gain of implementing the acceptance criteria as ATDD is guaranteed elimination of regression issues.
-You also get automatic generation of test plans, test results and requirement documents.
+You also get automatic generation of test plans, test results, and requirement documents.
 Your documents are always in sync with the source code of your product.
 An additional advantage is all these artifacts are under source code management and fully auditable.
 
@@ -111,9 +111,9 @@ cite:[value-proposition-design,agile-product-management,strategize,how-to-lead-p
 
 == Evolution
 
-The most effective software architecture approach is https://en.wikipedia.org/wiki/Domain-driven_design[Domain Driven Design].
+The most effective software architecture approach is https://en.wikipedia.org/wiki/Domain-driven_design[Domain-Driven Design].
 
-The requirement analysis approach predating DDD is https://en.wikipedia.org/wiki/Event_storming[Event Storming].
+The requirement analysis approach is predating DDD is https://en.wikipedia.org/wiki/Event_storming[Event Storming].
 
 Event Storming is a collaborative analysis practice that brings together domain experts and developers for a common understanding of the needs to be realized.
 Conducted in the form of a workshop, its purpose is to quickly discover what is happening in the software domain.

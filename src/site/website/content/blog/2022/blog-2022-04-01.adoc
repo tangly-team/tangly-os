@@ -49,7 +49,7 @@ ____
 
 Clojure is a Lisp dialect not constrained by backward compatibility.
 
-* Extends the code-as-data paradigm to maps, sets and vectors
+* Extends the code-as-data paradigm to maps, sets, and vectors
 * Defaults to immutability
 * Core data structures are extensible abstractions
 * Provides approaches to concurrent programming
@@ -340,7 +340,7 @@ I am not convinced that dynamic inheritance and protocols promote the maintainab
 Java is slowly moving to improve their support:
 
 - Switch expressions are now more functional.
-In Spring 2022, deconstruction of records, objects and arrays is still not available.
+In Spring 2022, deconstruction of records, objects, and arrays is still not available.
 - First class citizen status for functions is still ongoing.
 You still do not define the implementation of a virtual method using the lambda notation or a method reference.
 I agree it is a detail.

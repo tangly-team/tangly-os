@@ -52,7 +52,7 @@ Major opponents, such as senior managers or internal and external customers, mor
 
 The majority of teams use Scrum or Kanban.
 The associated events and tools are used.
-Values such as test driven development, acceptance test-driven development, clean code or refactoring are often missing.
+Values such as test-driven development, acceptance test-driven development, clean code, or refactoring are often missing.
 The key is
 
 [.text-center]

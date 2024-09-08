@@ -40,9 +40,9 @@ You should:
 * Develop customer-centric ROI models that align with the value provided.
 * Identify financing models to create and maintain the product line.
 Often you shall acquire and retain the team in charge.
-Their expertise lowers the cost of the development and support of your product.
+Their expertise lowers the cost of the development and support for your product.
 
-_Assume you need formal training in marketing, sales, finances, accounting and controlling.
+_Assume you need formal training in marketing, sales, finances, accounting, and controlling.
 This is typically achieved with an executive master education during your career._
 
 === Hire and retain qualified collaborators
@@ -95,7 +95,7 @@ _Digital products are now almost exclusively created with https://en.wikipedia.o
 The https://scrumguides.org/scrum-guide.html[Scrum framework] is the most popular variant over the world.
 A product manager shall be proficient with agile techniques and hold some certification._
 
-NOTE: https://www.scrumalliance.org/[Scrum Alliance], https://www.scrum.org/[Scrum.org] and https://www.pmi.org/disciplined-agile/process/introduction-to-dad[PMI DAD] have extensive agile training and certification offerings.
+NOTE: https://www.scrumalliance.org/[Scrum Alliance], https://www.scrum.org/[Scrum.org,] and https://www.pmi.org/disciplined-agile/process/introduction-to-dad[PMI DAD] have extensive agile training and certification offerings.
 
 === Amplify Learnings
 
@@ -134,7 +134,7 @@ image::2022-04-03-product-management.png[width=420,height=360,role=left]
 ** Product portfolio and life-cycle management.
 ** Roadmap, release plan, and requirement analysis.
 ** Technical and user support is a must for satisfied customers.
-The legal aspects of security, accessibility, data privacy and user protection are now a central success factor for any digital product.
+The legal aspects of security, accessibility, data privacy, and user protection are now a central success factor for any digital product.
 Internationalization and localization are regular aspects of an application.
 * Line manager responsibility toward collaborators
 * Department financial responsibility toward organization
@@ -162,7 +162,7 @@ Beware that modern product and project management approaches based on agile prin
 Big organizations such as https://www.pmi.org/[PMI] have realized the need and are now focusing on more agile approaches.
 Digital transformation and technology awareness are a second area of specialization::
 The available trainings either emphasize business and culture or technology.
-The integration of the product, organization and technology dimensions is currently not available in regular education.
+The integration of the product, organization, and technology dimensions is currently not available in regular education.
 I assume this dichotomy reflects the silo structure of many companies.
 
 [IMPORTANT]
@@ -170,7 +170,7 @@ I assume this dichotomy reflects the silo structure of many companies.
 The most successful digital companies, such as Microsoft, Twitter, Apple, Goggle, and Facebook have such profiles in their highest senior positions.
 These leaders master product development, collaborators nurturing, financial acumen, and technological savviness.
 
-Successful executives shall master culture, market and technology to launch awesome product lines.
+Successful executives shall master culture, market, and technology to launch awesome product lines.
 ====
 
 Leadership and collaborator management are a third specialization::

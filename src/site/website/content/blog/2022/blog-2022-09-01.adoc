@@ -34,7 +34,7 @@ It enforces architectural constraints in Java projects.
 
 ArchUnit is a test library and allows us to validate whether a solution adheres to a given set of design considerations or architecture rules.
 
-The product is a free, simple and extensible library for checking the architecture of your Java code using any plain Java unit test framework.
+The product is a free, simple, and extensible library for checking the architecture of your Java code using any plain Java unit test framework.
 The license is the open source https://www.apache.org/licenses/LICENSE-2.0[Apache 2.0].
 The support for https://junit.org/junit5/docs/current/user-guide/[JUnit 5] is very good.
 

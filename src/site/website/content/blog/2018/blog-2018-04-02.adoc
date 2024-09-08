@@ -40,7 +40,7 @@ Use these criteria as a checklist to evaluate your current agile transformation.
 ** A strong definition of done supports organizational changes, see the {ref-less} metaphor of the _Undone Department_.
 ** Check the team can implement the current definition of done or expand cross-functionality and training.
 * Have appropriately structured teams
-** A team is stable, *long-lived, collocated, cross-functional* and implement end to end features for the solution.
+** A team is stable, *long-lived, collocated, cross-functional,* and implements end-to-end features for the solution.
  Avoid component teams specialized for the database, user interface or communication layer.
 * Team members are dedicated to the team.
  They do not work in other projects and do not report to a matrix structure.
@@ -48,7 +48,7 @@ Use these criteria as a checklist to evaluate your current agile transformation.
 ** The team is dedicated to implementing the best solutions as defined by the product owner.
 No side activities are tolerated.
 * Keep product managers away from the teams.
-** Project managers are not needed in an agile organization.
+** Project managers are unnecessary in an agile organization.
 ** We realize and sell products, projects are irrelevant.
 ** Nurture good managers to sustain the transformation.
 
@@ -60,5 +60,5 @@ You need an agile mindset and technical excellence to develop awesome products.
 See link:../../2018/pragmatic-craftsmanship-professional-software-developer/[Software Craftsmanship] blog.
 
 A huge advantage of https://less.works[LeSS] is that it is {ref-scrum}.
-You do not need to learn new methodologies, terminology or processes.
+You do not need to learn new methodologies, terminology, or processes.
 Apply all your hard-earned learnings from your Scrum transformation.

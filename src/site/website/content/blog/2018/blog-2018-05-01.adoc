@@ -34,14 +34,14 @@ SonarLint lives only in your IDE (IntelliJ, Eclipse, or Visual Studio).
 Its purpose is to give instantaneous feedback as you type your code.
 For this, it concentrates on what code you are adding or updating.
 
-Findings are displayed in the source code with information such as rule violation, rating of the rule and explanation.
+Findings are displayed in the source code with information such as rule violation, rating of the rule, and explanation.
 You have a window where all findings are displayed to provide an overview and navigation support.
 You are free to analyze a single file, a package, or the whole product; you can also exclude files or packages from the analysis.
 
 Connect SonarLint to your preferred code quality application.
-It then uses the same code analyzers, rules and settings locally that are used on the server.
+It then uses the same code analyzers, rules, and settings locally that are used on the server.
 
-Issues marked as Won’t Fix or False Positive in SonarQube or SonarCloud disappear from your IDE.
+Issues marked as Will not Fix or False Positive in SonarQube or SonarCloud disappear from your IDE.
 
 Both SonarLint and SonarQube rely on the same static source code analyzers – most of them being written using SonarSource technology.
 
@@ -57,8 +57,8 @@ Both SonarLint and SonarQube rely on the same static source code analyzers – m
 . Run your unit tests and acceptance tests – TDD and ATDD -.
 . Commit your changes.
 
-This approach guarantees you always release source code with less SonarCube issues.
+This approach guarantees you always release source code with fewer SonarCube issues.
 SonarCube always shows no findings for new code and for refactored code.
 
-And you have made a step to the journey to become a professional software developer and achieve
+And you have made a step on the journey to become a professional software developer and achieve
 link:../../2018/pragmatic-craftsmanship-professional-software-developer/[craftsmanship].

@@ -23,9 +23,9 @@ There is https://en.wikipedia.org/wiki/No_Silver_Bullet[No Silver Bullet] to sol
 Using a goal-driven approach that guides people through process-related options is one powerful approach.
 We need to take decisions to tailor and scale agile strategies to address the context of the situations we face.
 Approaches such as {ref-scrum} have a minimal set of instructions.
-You are responsible to add the missing pieces to improve your development organization and remove your specific impediments.
+You are responsible for adding the missing pieces to improve your development organization and remove your specific impediments.
 
-What are the advantages to take a goal-driven approach?
+What are the advantages to taking a goal-driven approach?
 How can you tailor your product development process?
 
 == Goals over Prescription
@@ -36,37 +36,37 @@ Nevertheless, Scott Ambler is an experienced and talented developer.
 Learning from his experiences and analyzing his approaches promotes the essence of {ref-less}.
 We want to experiment with new approaches and add the successful ones in our toolbox.
 
-Our philosophy is to look for great ideas regardless of their source and to recognize there ar no best practices.
+Our philosophy is to look for great ideas regardless of their source and to recognize there are no best practices.
 When we learn a new technique, we strive to understand what its strengths and weaknesses are and in what situations to apply it.
 
 The diagram shows a potential approach for scope exploration.
-For each facet of the exploration we have set of methods to work with.
+For each facet of the exploration we have a set of methods to work with.
 The context of the product development and the identified goals should allow us to select the most effective approach.
 
 image::2021-11-01-explore-scope.jpg[width=800,height=600,role=center]
 
 . *Supports process tailoring*.
-I think that figures below make it very clear how people are enabled to make intelligent process decisions.
+I think that the figures below make it very clear how people are enabled to make intelligent process decisions.
 I think that this is a huge improvement over previous process frameworks, particularly Rational Unified Process _RUP_.
 _RUP_ provides great process advice regardless of what some agilists may claim but struggled to provide consumable process tailoring advice.
 . *Enables effective scaling*.  {ref-less} is our preferred scaling approach.
 An important part of scaling agile is to tailor your strategy to reflect the realities of the scaling factors which you face.
 For example, consider your approach to exploring the initial scope of your effort (the goal captured in Figure 2).
 A large agile team or a geographically distributed team will make different tailoring decisions than a small co-located team.
-A team in a regulatory environment will make different decisions, particularly around amount of detail, than teams in non-regulatory environments.
+A team in a regulatory environment will make different decisions, particularly around the amount of detail, than teams in non-regulatory environments.
 These are just three of several scaling factors (more on this in a future blog posting, although you may find my agility at scale blog to be of interest).
-. *Makes your process options very clea*.
+. *Makes your process options very clear*.
 Figure 4, in combination with the more detailed goals diagrams (such as in Figures 2 and 3) make it very clear what you need to consider when tailoring an agile solution delivery process to meet the unique needs of the situation faced by your team.
 . *Takes the guesswork out of extending agile methods*.
 Although it makes for wonderful marketing rhetoric, it’s disingenuous for people to claim that simple methods such as Scrum can be tailored to meet your actual needs.
-Yes, we suppose this claim is true but how do you do so?
+Yes, we suppose this claim is true, but how do you do so?
 Shouldn’t you start with a full delivery lifecycle, not just a construction lifecycle?
-Shouldn’t the toolkit cover a wider range of issues, such as leadership and requirements management as Scrum does, technical issues as XP does, modeling and documentation as Agile Modeling does, and many other issues?
+Shouldn’t the toolkit cover a wider range of issues, such as leadership and requirement management as Scrum does, technical issues as XP does, modeling and documentation as Agile Modeling does, and many other issues?
 In short, shouldn’t it be a hybrid?
 Finally, shouldn’t you be given some context-sensitive advice for tailoring the details, as we do with the goal-driven approach described here?
 . *Makes it clear what risks you’re taking on*.
-By making your process decision options clear, and by describing the trade-offs associated with those options, we make it very clear what risks you’re taking on.
-Want to write a detailed requirement specification up front then the approach is going to make it very clear what risks you’ve just taken on by doing so.
+By making your process decision options clear and by describing the trade-offs associated with those options, we make it very clear what risks you’re taking on.
+Want to write a detailed requirement specification up front, then the approach is going to make it very clear what risks you’ve just taken on by doing so.
 It also makes clear when this decision is appropriate, so if you’re not in this situation then it is likely time to rethink your approach.
 Although we cannot prevent challenges such as a Water-Scrum-Fall approach.
 Such when a heavy approach is taken to _Inception_ and _Transition_ and an agile approach to Construction.
@@ -75,7 +75,7 @@ We have spoken with several people who have used the decision tables in it to ar
 In many situations the argument _that isn’t agile_ falls on deaf ears.
 Whereas _that will take longer and here’s why_, _that will be more expensive and here’s why_ will be listened to.
 . *It hints at an agile maturity model*.
-We suggest that in the case of issues where the options are ordered there is a clearly an indication of agile maturity or sophistication.
+We suggest that in the case of issues where the options are ordered there is clearly an indication of agile maturity or sophistication.
 Having said that I have no desire to wade into the agile maturity model morass, but I think it is an important observation nonetheless.
 
 == Change and Adapt
@@ -84,5 +84,5 @@ Acknowledge that goals and priorities will shift during the product lifetime.
 
 image::2021-11-01-change-scope.jpg[width=600,height=600,role=left]
 
-The palette of approaches for a facet of your process was exemplary showed above.
+The palette of approaches for a facet of your process was exemplary shown above.
 You should explore solutions for all your process steps to continuously improve.

@@ -43,7 +43,7 @@ A name does not need to be unique in the system.
 
 A more sophisticated variant provides additional features.
 
-* A set of tags to classify the instance through a crowd based ontology.
+* A set of tags to classify the instance through a crowd-based ontology.
 Tags are often called labels.
 * A list of comments to add human-readable information to the instance.
 Comments have a timeline and can be sorted by creation date.
@@ -112,7 +112,7 @@ Upon completion of the refactoring activities, these tags document historical in
 Multiple external object identifiers imply the existence of mapping functions to identify the object referenced.
 Because the ownership of external identifiers is outside your system, you are dependent on these systems and have to hope they are good citizens.
 The key rule of good systems is that they never change external identifiers.
-As soon as you modify identifiers, they are per definition no more real identifiers.
+As soon as you modify identifiers, they are, per definition, no more real identifiers.
 
 == Names _name_
 
@@ -158,7 +158,7 @@ Please implement the internal identifier feature as an interface marker.
 The external identifier and name features can be grouped into one interface.
 
 Additional information is available under link:../../../docs/core/models/[models].
-Below the source code in modern Java is:
+Below, the source code in modern Java is:
 
 [source,java]
 ----

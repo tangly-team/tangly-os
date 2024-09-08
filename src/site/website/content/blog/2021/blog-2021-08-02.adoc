@@ -13,7 +13,7 @@ include::../fragments/_config-mb-blog.adoc[]
 
 image::2021-08-02-head.png[width=420,height=360,role=left]
 
-{ref-devops} is the combination of cultural philosophies, practices and tools that increase an organization’s ability to deliver at high velocity.
+{ref-devops} is the combination of cultural philosophies, practices, and tools that increase an organization’s ability to deliver at high velocity.
 
 It evolves and improves products at a faster pace than organizations using traditional software development and infrastructure management processes.
 
@@ -64,7 +64,7 @@ Monitoring and logging practices help you stay informed of performance in real-t
 Scale::
 Operate and manage your infrastructure and development processes at scale.
 Automation and consistency help you manage complex or changing systems efficiently and with reduced risk.
-For example, infrastructure as code helps you manage your development, testing and production environments in a repeatable and more efficient manner.
+For example, infrastructure as code helps you manage your development, testing, and production environments in a repeatable and more efficient manner.
 Improved Collaboration::
 Build more effective teams under a DevOps cultural model, which emphasizes values such as ownership and accountability.
 Developers and operations teams collaborate closely, share many responsibilities, and combine their workflows.
@@ -110,7 +110,7 @@ https://en.wikipedia.org/wiki/Infrastructure_as_code[Infrastructure as Code]::
 Infrastructure as code is a practice in which infrastructure is provisioned and managed to use code and software development techniques.
 Examples are version control and continuous integration.
 The cloud’s API-driven model enables developers and system administrators to interact with infrastructure programmatically.
-They do need to interact manually set up and configure resources.
+They do need to interact manually to set up and configure resources.
 Engineers can interface with infrastructure using code-based tools and treat infrastructure in a manner similar to how they treat application code.
 Because they are defined by code, infrastructure and servers can quickly be deployed using standardized patterns, updated with the latest patches and versions.
 
@@ -129,7 +129,7 @@ This helps speed up communication across developers, operations, and even other 
 
 == DevOps Tools
 
-A DevOps toolchain is a set or combination of tools that aid in the delivery, development, and management of software applications throughout the system development life cycle, as coordinated by an organisation that uses DevOps practices.
+A DevOps toolchain is a set or combination of tools that aid in the delivery, development, and management of software applications throughout the system development life cycle, as coordinated by an organization that uses DevOps practices.
 
 image:2021-08-02-ci-cd-pipeline.png[role=center]
 
@@ -150,7 +150,7 @@ Often the step of https://en.wikipedia.org/wiki/Continuous_delivery[Continuous D
 _Use a platform such as gitLab, gitHub, BitBucket, or Azure DevOps.
 Use Gradle as your build tool._
 https://en.wikipedia.org/wiki/Continuous_deployment[Continuous delivery]::
-This practice requires your team to release into production all code changes after it is written and then automatically built, and tested.
+This practice requires your team to release into production all code changes after it is written and then automatically built and tested.
 If continuous integration puts your code changes onto a testing environment, continuous delivery puts it into a production environment.
 What does this mean?
 You will always have a production-ready Java application! +
@@ -159,7 +159,7 @@ Use Docker, Ansible to deploy._
 https://en.wikipedia.org/wiki/Microservices[Microservices]::
 DevOps makes use of microservices.
 Instead of having one big monolithic Java application, your application is made up of smaller and independent applications. +
-_Use domain driven design DDD as your architecture method.
+_Use domain-driven design DDD as your architecture method.
 Prefer standalone applications embedding your application server._
 https://en.wikipedia.org/wiki/Infrastructure_as_code[Infrastructure as a code]::
 This practice means that infrastructure is allocated and then managed by using code and development techniques.
@@ -173,10 +173,10 @@ The motivations for what has become modern _DevOps_ and several standard DevOps 
 Agile development teams using methods such as {ref-xp} could not _satisfy the customer through early and continuous delivery of valuable software_ unless they subsumed the operation responsibilities associated with their applications, many of which they automated.
 
 Because {ref-scrum} emerged as the dominant Agile framework in the early 2000s, and it omitted the engineering practices that were part of many Agile teams, the movement to automate operations functions splintered from Agile and expanded into what has become modern DevOps cite[accelerate].
-Today, DevOps focuses on the deployment of developed software, whether it is developed via Agile or other methodologies.
+Today DevOps focuses on the deployment of developed software, whether it is developed via Agile or other methodologies.
 
 To practice DevOps effectively, software applications have to meet a set of architecturally significant requirements such as: deployability, modifiability, testability, and monitorability.
-You must continuously monitor your infrastructure, network and application.
+You must continuously monitor your infrastructure, network, and application.
 
 [CAUTION]
 ====
@@ -187,7 +187,7 @@ Command and control cultures always fail.
 It boils down if your culture trusts your collaborators - often called {ref-theory-xy} beliefs.
 
 Interestingly, the DevOps transformation is similar to an agile transformation.
-The approaches, recipes and failures are similar.
+The approaches, recipes, and failures are similar.
 
 Smaller organizations are often more affine with trust.
 ====

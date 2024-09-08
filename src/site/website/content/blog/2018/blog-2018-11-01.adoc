@@ -43,15 +43,15 @@ The long-term implementation is the crux.
 
 == Delivery Pipeline Checks
 
-How reproducible, fast and economic is your product deliver pipeline?
+How reproducible, fast, and economic is your product deliver pipeline?
 At the end of the day, you regularly deliver a reproducible and trackable product version to your customers.
 
 One nice aspect about delivery pipeline checks is that a whole set of tools and methods emerged with the https://en.wikipedia.org/wiki/DevOps[DevOps] movement.
 You still need an expert to tune the diagnostic to your company's specific needs, but the approach is well-documented.
 
-Below a list of capabilities we have build-up over time for delivery pipeline checks.
+Below is a list of capabilities we have built up over time for delivery pipeline checks.
 Use common sense and strategic goals to identify the objectives you want to measure.
-Expertise is needed to define values to measure if the source code of your product reaches the selected objectives.
+Expertise is necessary to define values to measure if the source code of your product reaches the selected objectives.
 
 . Continuous integration pipeline with quality checks and automatic tests.
 . Continuous delivery pipeline packaging the same binary to all your environments.
@@ -62,7 +62,7 @@ Expertise is needed to define values to measure if the source code of your produ
 . No branches or only short-lived branches shall be the policy.
 . https://blog.crisp.se/2018/08/27/yassalsundman/the-story-of-how-to-implement-a-zero-bug-policy[Zero bugs policy]
 eliminates the change management processes and board for errors.
-. Traceability of specifications to delivered features and product versions
+. Traceability of specifications to deliver features and product versions
 . Semantic versioning and API documentation
 . Configuration and infrastructure as managed artifacts
 . Generation of documentation part of the delivery pipeline
@@ -78,7 +78,7 @@ eliminates the change management processes and board for errors.
 You should know how often you can deliver your product without failures and track your lead time between fixes.
 The overall goal is faster time to market and improved delivery frequency.
 
-The overall features and processes can be implemented through your development organization is less than a year.
+The overall features and processes can be implemented through your development organization in less than a year.
 Stop evaluating, start implementing!
 
 == Continuous Integration Practices
@@ -87,10 +87,10 @@ Check your process to see which continuous practices you are really mastering
 
 * Maintain a single source repository - no long-lived branches.
 * Automate the build - no manual inputs, no manual configuration, automatically triggered.
-* Make your build self testing - TDD, ATDD, static metrics, semantic checks.
-* Everyone commits to trunk every day.
+* Make your build self-testing - TDD, ATDD, static metrics, semantic checks.
+* Everyone commits to the trunk every day.
 * Every commit should build trunk on an integration machine.
-* Fix broken build immediately - _lean red button stopping production, everybody helps fix the broken build_.
+* Fix a broken build immediately - _lean red button stopping production, everybody helps fix the broken build_.
 Keep the build fast - _We are talking of minutes, not hours_.
 * Test within an integration staging area which is a clone of the production environment.
 The goal is to have docker images, virtual network, and in-memory database to be fast.

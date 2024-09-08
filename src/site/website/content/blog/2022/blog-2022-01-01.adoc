@@ -54,7 +54,7 @@ to perform simple refactorings and improve the quality of your code.
 Keep your source code free of obsolete and unused code.
 * Use a {ref-gradle} plugin
 footnote:[I use the https://github.com/ben-manes/gradle-versions-plugin[com.github.ben-manes.versions] for this purpose.
-The plugin handles nicely multi-modules projects.
+The plugin nicely handles multi-modules projects.
 The plugin also supports the central declaration of dependencies feature in Gradle.]
 To update your libraries and remove technical obsolescence.
 * Please use the current version of your technical stack and build toolchain. +
@@ -136,7 +136,7 @@ You can start very simply.
 . Track locations of technical debts with _TODO_ and _FIXME_ comments as a first step.
 . Next time you have to modify source code in a package, use your IDE features to find all _TODO_ in the package you are working on.
 . Fix at least one such comment and improve the code.
-. Repeat and over time, your technical debt will slowly diminish.
+. Repeat, and over time, your technical debt will slowly diminish.
 
 Fixing technical debt is not rocket science.
 It means to have discipline and behave like a professional software developer.
@@ -160,15 +160,15 @@ You have a legal responsibility to secure your code and protect your users.
 * Apply the boy scout rule cite:[clean-coder,clean-craftsmanship].
 Leave the code in a better state as it was when you started.
 * Train your developer in refactoring and clean code practices cite:[refactoring-2nd,refactoring-to-patterns,refactoring-databases].
-Beware technical debt is also created through:
+Beware, technical debt is also created through:
 ** Lack of knowledge when the developer does not know how to write elegant code,
-** Lack of ownership when outsourced software efforts results in in-house engineering being required to refactor or rewrite outsourced code.
+** Lack of ownership with outsourced software efforts results in in-house engineering being required to refactor or rewrite outsourced code.
 
 [IMPORTANT]
 ====
 Professional software developers deeply understand the impacts of technical debt.
 
-Amateurs just ignore the consequences and hop to the next product before they go bankrupt.
+Amateurs just ignore the consequences and hop for the next product before they go bankrupt.
 ====
 
 [bibliography]

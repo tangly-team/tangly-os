@@ -19,18 +19,18 @@ Scale was a sufficient advantage to be successful in the market.
 Now, fast and adaptive beats slow and steadfast.
 
 New technologies, evolving customer preferences and changing employee expectations are fundamentally challenging established ways of working
-footnote:[The impact of the last pandemic on home office, remote distributed teams and hybrid company models was tremendous and here to stay.].
+footnote:[The impact of the last pandemic on home office, remote distributed teams, and hybrid company models was tremendous and here to stay.].
 
-It is time to move beyond rigid hierarchies, siloed business units, crippling bureaucracy and an increasingly unwieldy matrix.
+It is time to move beyond rigid hierarchies, siloed business units, crippling bureaucracy, and an increasingly unwieldy matrix.
 --
 
-Agile organizations combine the efficiencies of scale with the speed, flexibility and resilience to compete and win in today’s world.
+Agile organizations combine the efficiencies of scale with the speed, flexibility, and resilience to compete and win in today’s world.
 
 [quote,Gunther Verheyen]
 ____
 Increasing agility is a path.
 
-Progressing on that path requires vision, belief, persistence and _hard work_.
+Progressing on that path requires vision, belief, persistence, and _hard work_.
 ____
 
 Companies are asking themselves:
@@ -41,11 +41,11 @@ Companies are asking themselves:
 
 == Challenges of Agile Companies
 
-Now, we find the machine paradigm shifting in the face of the organizational challenges brought by the _digital revolution_ that is transforming industries, economies and societies.
+Now, we find the machine paradigm shifting in the face of the organizational challenges brought by the _digital revolution_ that is transforming industries, economies, and societies.
 This is expressed in four current trends:
 
 Quickly evolving environment::
-Stakeholders’ demand patterns are evolving rapidly: customers, partners and regulators have pressing needs; investors are demanding growth, which results in acquisitions and restructuring; and competitors and collaborators demand action to accommodate fast-changing priorities
+Stakeholders’ demand patterns are evolving rapidly: customers, partners, and regulators have pressing needs; investors are demanding growth, which results in acquisitions and restructuring; and competitors and collaborators demand action to accommodate fast-changing priorities
 footnote:[An agile organization has partners and not suppliers.
 Your purchase department is not a sadistic group trying to pressure rebates out of your vendors and forgetting all about quality and supply chains.].
 Constant introduction of disruptive technology::
@@ -55,13 +55,13 @@ footnote:[Evaluate your own company.
 A digital organization should not possess fax machines, paper archive rooms, landlines.
 You should finish the phase-out of printers, scanners, and virtual private networks.].
 Accelerating digitization and democratization of information::
-The increased volume, transparency and distribution of information require organizations to rapidly engage in multi-directional communication and complex collaboration with customers, partners and colleagues
+The increased volume, transparency, and distribution of information require organizations to rapidly engage in multi-directional communication and complex collaboration with customers, partners, and colleagues
 footnote:[Check if your company issues electronic invoices.
 A digital document can automatically be processed by partners' applications.
 A PDF document is *not* an electronic slipper.].
 The new war for talent::
 As creative knowledge- and learning-based tasks become more important, organizations need a distinctive value proposition to acquire and retain the best talent.
-These _knowledge workers_ often have more diverse origins, thoughts, composition and experience and may have different desires, (for example, millennials).
+These _knowledge workers_ often have more diverse origins, thoughts, composition, and experience and may have different desires, (for example, millennials).
 
 == Trademarks of Agile Organizations
 
@@ -78,7 +78,7 @@ Non-agile organizations are only talking <<detecting-agile-bullshit>>.
 The illusion of agility is often established in such companies.
 Internal working groups are drafting transformation plans, updated processes, and guidelines.
 Where is the doing?
-It was one of the findings of thw SwissQ agility report 2020.
+It was one of the findings of the SwissQ agility report 2020.
 
 [quote,Gunther Verheyen]
 ____
@@ -86,7 +86,7 @@ It is not a transformation if it does not change how you work.
 
 It is not an agile transformation if it does not simplify how you work.
 
-It is not an agile transformation of Scrum if it does not increase the actual collaboration between customers, teams and stakeholders.
+It is not an agile transformation of Scrum if it does not increase the actual collaboration between customers, teams, and stakeholders.
 ____
 
 Look at all these companies trying to copycat Spotify ways of working.
@@ -113,7 +113,7 @@ A huge intentional effort needs to be taken by those in the process, willing to 
 == Agile Teams
 
 Here is a set of capabilities strongly improving the throughput of an agile team.
-Our company is proud of how cool, professional and effective our development teams are.
+Our company is proud of how cool, professional, and effective our development teams are.
 The eight tips are:
 
 . Do Just In-Time kickoffs.
@@ -157,19 +157,19 @@ Social and Cultural Advantages::
 * We love to work in a kind and supportive organization.
 * We are proud not to have political games and power struggles.
 * We stand to our collaborators and love to see them growth.
-* Motivation, ownership and accountability are high.
+* Motivation, ownership, and accountability are high.
 Financial Advantages and Enhanced Operational Efficiency::
 * The timely invoicing process allows us to send all monthly invoices on the first day of the following month
 footnote:[I regularly interact with companies forgetting to invoice their delivered services.
 They are often quite thankful when I remind them to send the invoice for their work!].
-* Our company can finally process all federal, local and VAT taxes electronically.
+* Our company can finally process all federal, local, and VAT taxes electronically.
 The local government systems now support digital sending and processing for tax declarations.
 * Realtime financial cockpit
 ** Cash-flow overview provides security of how our company is doing and how our liquidity is evolving.
 ** Rolling budgeting optimizes investments when the market shifts
 footnote:[The Corona catastrophe was a huge test we successfully mastered.].
 ** The sales pipeline provides indicators of how we should perform in the next months.
-** Paperless processes remove scanning, archiving and printing activities.
+** Paperless processes remove scanning, archiving, and printing activities.
 Technological Advantages and Increased Developer Productivity::
 * Agile software development approaches with technical focus provide as strong market proposition.
 Motivated collaborators love to work on such initiatives.
@@ -187,7 +187,7 @@ Business Advantages and Faster Time to Market::
 * Leadership how to develop successful software products.
 * Clear understanding and extensive experience with digitalization.
 We discarded paper artifacts for years.
-Your company does not possess any paper archive, printer or fax machine.
+Your company does not possess any paper archive, printer, or fax machine.
 * Expertise on how to remove waste and streamline digital processes through a whole organization.
 
 [bibliography]

@@ -51,7 +51,7 @@ footnote:[Jim Highsmith removed all blogs. Try to find the blog _beyond scope sc
 . Analysis and design on agile projects
 . Agile quality
 . Soft skills for agile product leaders and negotiation
-. Value based prioritization of requirements
+. Value-based prioritization of requirements
 . Managing risk on agile projects
 . Metrics and charts on agile projects
 . Agile value stream analysis
@@ -105,14 +105,14 @@ It is best when you have at least 40 items which allow for groupings to easily b
 * Continuous Integration _CI_: multistage integration is running additional tests for performance, load or stability
 * Collaboration versus Coordination: Work Together versus Share Information
 * Cycle Time = Flow Time
-* The acronym _DEEP_ Detailed Appropriately, Estimable, Emergent, Prioritised. Split the story into smaller stories.
+* The acronym _DEEP_ Detailed Appropriately, Estimable, Emergent, Prioritized. Split the story into smaller stories.
 * DRY Do not Repeat Yourself
 * EI Emotional Intelligence
 * EISA Emotional Intelligence Skills Assessment _Perceiving, Managing, Decision Making, Achieving, Influencing_
 * EQ Emotional Intelligence Quotient
 * Error-feedback ratio: is the number of new defects injected when fixing existing defects.
 Several years ago, Jerry Weinberg conducted studies on the error-feedback ratio and found that a 20% difference in the feedback ratio leads to an 88% difference in completion time (bad enough), but the next 10% increase leads to a 112% increase.
-* http://en.wikipedia.org/wiki/Earned_value_management[Earned Value Management] _EVM_ - this is standard PMI theory -
+* http://en.wikipedia.org/wiki/Earned_value_management[Earned Value Management] _EVM_ - this is the standard PMI theory -
 ** PV (Planned Value) = BAC (Budget At Completion) \* Planned Percentage Completed Budget Cost of Work Scheduled
 ** AC (Actual Cost) - Budget Cost of Work Performed
 ** EV (Earned Value) = BAC (Budget At Completion) \* Actual Percentage Completed - Sum (PV[Completed]) from start until current
@@ -246,15 +246,15 @@ Learners in the Fluent stage are experts -The Stage 3 Learner is at the stage of
 He is able to figure out the end effect of any procedure and to make his way to that end.-
 * Scrum uses the sashimi technique to require that every slice of functionality created by the developers be complete.
 All the requirements gathering and analysis, design work, coding, testing, and documentation that constitute a complete product are required to be completed in every Sprint and demonstrated in the Sprint increment of functionality.
-Sprints are kept short enough that the stakeholders don’t lose interest in the product before the Sprints are completed.
+Sprints are kept short enough that the stakeholders do not lose interest in the product before the Sprints are completed.
 And stakeholders can see that they have an opportunity to redirect the product at the start of every Sprint to optimize the value they derive from the product.
 At the end of every Sprint, stakeholders see new functionality.
-Models, requirements, and internal artefacts might be of use to the developers, but they are never shown to the stakeholders.
+Models, requirements, and internal artifacts might be of use to the developers, but they are never shown to the stakeholders.
 * Feature X has a value of 12 and the total value of all features is 35. If the feature is estimated to cost 56%, what is the priority of this feature using relative weighting?
 _Correct Answer is B. The priority of the feature is determined by dividing the relative value by the cost %.
 Hence the answer = (12/35)/(0.56) = 0.61._
 * The 100-Point Method was originally developed by Dean Leffingwell and Don Widrig for use cases and is used for prioritization as well.
-It is a voting scheme where each stakeholder is given 100 points that he or she can use for voting in favour of the most important requirements.
+It is a voting scheme where each stakeholder is given 100 points that he or she can use for voting in favor of the most important requirements.
 How they distribute the 100 points is up to them: 20 here, 10 there or even all 100 on a single requirement if that is their sole priority.
 * When a team member approaches the Coach with a complaint about another team member, what conflict resolution technique should the Coach use?
 _Three-step intervention path_

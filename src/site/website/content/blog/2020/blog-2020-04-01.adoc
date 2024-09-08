@@ -39,9 +39,9 @@ The pattern movement was started last millennium.
 Very talented and experienced developers have documented how to solve common problems elegantly and effectively.
 Depending on the programming language, you are using different idioms are preferred.
 
-The way to solve the same problem is different in Java, Scala, {cpp}, Python or C#.
+The way to solve the same problem is different in Java, Scala, {cpp}, Python, or C#.
 
-You should know all regular structural, behavioral and creational patterns cite:[design-patterns].
+You should know all regular structural, behavioral, and creational patterns cite:[design-patterns].
 Explore your programming language and discover how idioms and patterns have evolved between major releases.
 For example, lambda expressions and streams introduced in Java 8 - released Spring 2014 - completely transform the solution for regular business logic.
 
@@ -71,7 +71,7 @@ Standard patterns are implemented in almost all packages.
 Idioms are encoded everywhere.
 
 See how Java deals with human and machine time with https://docs.oracle.com/en/java/javase/14/docs/api/java.base/java/time/package-summary.html[java.time] package.
-Decades of trials and errors were needed to finally create a balanced and simple to use time abstractions.
+Decades of trials and errors were necessary to finally create balanced and simple to use time abstractions.
 The author of https://www.joda.org/joda-time/[Joda Time] experimented years before he wrote the java time package – JSR 310 – introduced in Java 8.
 All these decisions and learning are encoded in this code.
 

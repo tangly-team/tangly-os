@@ -15,7 +15,7 @@ image::2019-11-01-head.jpg[width=420,height=360,role=left]
 
 Your organization has decided to introduce agile at scale in all development departments or better in the whole company.
 
-Your Chief of Agility _COA_, Chief of Digitalization _COD_ or Chief of Change _COC_ was in an expensive training.
+Your Chief of Agility _COA_, Chief of Digitalization _COD,_ or Chief of Change _COC_ was in an expensive training.
 After a few drinks, he has selected the appropriate framework for your company.
 
 Welcome to the club of companies introducing agile approaches and having no clues why they do it and how they could be successful.
@@ -41,7 +41,7 @@ Henrik Kniberg has written an interesting article stating Spotify Model is a kin
 * {ref-less} defined by Craig Larman and Bas Vodde.
 It is also supported by {ref-scrum-alliance}
 cite:[scaling-lean-and-agile-development,large-scale-scrum,practices-for-scaling-lean-and-agile-development].
-* {ref-safe} 5.0 defined by the RUP aficionados and often trashed by Kniberg, Sutherland, Schwaber, Larmann and Vodde.
+* {ref-safe} 5.0 defined by the RUP aficionados and often trashed by Kniberg, Sutherland, Schwaber, Larmann, and Vodde.
 It is also the most popular approach in quite a few countries.
 _And I would never state it is the most successful_.
 
@@ -68,7 +68,7 @@ Be gentle and kind to your professional teams.
 *It takes time to learn and master* Scrum and Kanban approaches.
 
 *Recognize that technical agility constrains the organizational agility.*
-Focus the first years on technical excellence, software craftsmanship and clean development.
+Focus the first years on technical excellence, software craftsmanship, and clean development.
 
 All the above-mentioned methods emphasize the importance of technical excellence for durable success.
 
@@ -111,7 +111,7 @@ Eliminate product-based organizations.
 Multiple backlogs must be otherwise synchronized, and local optimization is de facto applied.
 This approach is against all lean principles.
 * _Customer and users talk directly with the development team_.
-Product owners, product managers and enterprise architects should never be filtering the information flow between customers and engineers.
+Product owners, product managers, and enterprise architects should never be filtering the information flow between customers and engineers.
 * _Eliminate step by step all coordination roles_.
 Emphasize communication between developers in the team and between teams.
 Scrums of Scrums where only Scrum masters attend, Release Train Engineer, System teams, corporate Solution Engineers are just a waste of resources.

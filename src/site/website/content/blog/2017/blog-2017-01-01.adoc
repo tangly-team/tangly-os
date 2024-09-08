@@ -30,7 +30,7 @@ We exhort you to eliminate these misunderstandings in your projects.
 == What is Scrum?
 
 image:2017-01-01-Scrum.jpg[width=420,height=360,role=left]
-The Scrum approach is clear, well documented and shall be done by the book.
+The Scrum approach is clear, well documented, and shall be done by the book.
 
 The Scrum framework is straight forward.
 The possibilities inside are unlimited.
@@ -85,8 +85,8 @@ image:2017-01-01-Meeting.jpg[width=420,height=360,role=left]
 
 Perhaps too often we interpret these sentences as
 
-* Respect people, have nice interactions and avoid any hard discussions.
-* Collaborate with the customer, never disagree and avoid harsh truths.
+* Respect people, have nice interactions, and avoid any hard discussions.
+* Collaborate with the customer, never disagree, and avoid harsh truths.
 
 Swiss people are well-educated.
 They always empty their glasses in the restaurant and have trouble leaving some wine in the glass.
@@ -116,7 +116,7 @@ People do not work anymore, they just sit in meetings.
 ** a protocol of the meeting,
 ** as a result, a list of decisions and a list of tasks – who must do what until when -.
 
-Interesting enough, all Scrum meetings have a clear agenda, a moderator and a documented result.
+Interesting enough, all Scrum meetings have a clear agenda, a moderator, and a documented result.
 
 Do the same for additional meetings, Remember two ground rules Once you have reached the goals of the meeting, stop the meeting.
 A team decision is about 20% better than a qualified individual decision.
@@ -169,7 +169,7 @@ Scrum is about agility.
 Therefore, you have the right to change anything at any time, isn't it?
 Your stakeholders need the changes now.
 They cannot wait until the end of the sprint, a mere ten working days or two weeks of elapsed time.
-But Scrum also states we have a vision, features, a minimum viable product and a potentially shippable product.
+But Scrum also states we have a vision, features, a minimum viable product, and a potentially shippable product.
 How often can you change these key concepts?
 What is the balance between agility and chaos?
 
@@ -238,11 +238,11 @@ Scrum states the product backlog is the most important document in a Scrum produ
 _ROI: New features with the most value_ Creating a new successful product is a full-time job.
 
 * You cannot define a vision and key features during a coffee break.
-The product owner must create a vision, an initial release plan, identify the key features and define a minimal shippable product.
+The product owner must create a vision, an initial release plan, identify the key features, and define a minimal shippable product.
 * _You shall not perform up-front design_
 * Either the product owner has a team of requirement engineers to elicit the use cases.
 Or the role of requirement engineering is part of the team.
-* The team provides technical feedback and input about potential technologies for all stories, discusses the non-functional requirements and refines the acceptance criteria.
+* The team provides technical feedback and input about potential technologies for all stories, discusses the non-functional requirements, and refines the acceptance criteria.
 * As a simple check, the team guaranty together with the product owner that each story is valuable.
 Use INVEST - Independent, Negotiable, Valuable (ROI), Estimable, Size appropriately, Testable - approach.
 ====
@@ -264,7 +264,7 @@ You shall not train engineering practices
 I do not have time to become a craftsman.
 * Scrum is snake oil.
 It cures all illnesses and makes you immortal.
-For the older ones, do you remember CASE, CMM and ISO-9000.
+For the older ones, do you remember CASE, CMM, and ISO-9000.
 * The PROCESS promises that you will deliver high-quality software on time, on budget with unqualified and cheap collaborators.
 
 Do you really believe in snake oil?
@@ -278,7 +278,7 @@ He must train every week to achieve and maintain a given level of skills.
 _ROI: Engineering versus bureaucracy_
 
 * To build quality solutions, you have to have craftsmen and craftswomen as team members.
-* A craftsman masters his work techniques, is experienced, knows his limits and is an expert with his tools.
+* A craftsman masters his work techniques, is experienced, knows his limits, and is an expert with his tools.
 * You must be a craftsman: You are an expert in XP, clean code, TDD, ATDD, Mocking, CI, CD, refactoring, etc.
 And you must train, train, train.
 
@@ -296,7 +296,7 @@ It is based on empirical process control and bottom-up thinking.
 
 [TIP]
 ====
-Each sprint to ameliorate some aspects, measure and decide if the change is worth the effort?
+Each sprint to ameliorate some aspects, measure, and decide if the change is worth the effort?
 
 But Scrum will never give checklists to guarantee success.
 This job is YOURS.
@@ -315,9 +315,9 @@ What is the risk?
 
 The truth is complex, more blurred.
 The answer for your product cannot be stated in one standard rule set.
-We are talking about agile quality assurance, lean approaches and the best practices.
+We are talking about agile quality assurance, lean approaches, and the best practices.
 
-Best practice should only be selected through its ROI.
+A best practice should only be selected through its ROI.
 
 Please look at the http://manifesto.softwarecraftsmanship.org/[Software Craftsmanship Manifesto].
 

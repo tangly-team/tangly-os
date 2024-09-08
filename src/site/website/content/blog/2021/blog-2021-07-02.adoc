@@ -16,10 +16,10 @@ The major difference between older traditional approaches and modern agile ones 
 
 The last years have shown a promising evolution of plan-based, centralist enterprise architecture approaches to more agile, decentralized, meritocracy driven processes.
 
-These new approaches are way more compatible with modern and agile software product development framework such as {ref-scrum}, {ref-xp}, and {ref-less}
+These new approaches are way more compatible with a modern and agile software product development framework such as {ref-scrum}, {ref-xp}, and {ref-less}
 
 Traditional processes use dedicated persons or departments to define architecture principles in a top-down approach.
-Thick standards such as https://en.wikipedia.org/wiki/Enterprise_Architecture_Body_of_Knowledge[Enterprise Architecture Body of Knowledge] codifies wisdom.
+Thick standards such as https://en.wikipedia.org/wiki/Enterprise_Architecture_Body_of_Knowledge[Enterprise Architecture Body of Knowledge] codify wisdom.
 
 [cite,EABOK]
 ____
@@ -54,7 +54,7 @@ When teams follow effective, common conventions, it results in greater quality.
 This makes it easier to learn about assets that are new to them, in particular existing source code, and to evolve those assets as needed.
 Greater consistency also makes it easier for people to move between teams.
 It will be easier for them to come up to speed on what the new team is doing and to share their skills with those team members.
-Agile architectures enable disaggregation::
+Agile architecture enables disaggregation::
 When your solutions are built from loosely coupled, highly cohesive components, it is easier to spread development work across smaller teams.
 This reduces overall risk and organizational complexity, which in turn reduces time-to-delivery.
 Common infrastructure enables continuous delivery::
@@ -83,10 +83,10 @@ They may guide the teams in the business and technical roadmaps, help them to id
 They should transfer their skills and knowledge to team members.
 Negotiate technical dependencies::
 Like it or not, there are dependencies between the solutions that we create.
-For example, if your system invokes a web service, or calls an API, provided by another system, then you have a dependency on that system.
+For example, if your system invokes a web service or calls an API provided by another system, then you have a dependency on that system.
 Enterprise architects will often find that they need to negotiate these dependencies with other teams, either at a high-level in their role of Enterprise Architect or sometimes at a detailed level in their role of Architecture Owner on a delivery team.
 Explore architectural views::
-Organizations are complex and as a result, they must be understood from a variety of view points.
+Organizations are complex, and as a result, they must be understood from a variety of view points.
 It is not just a matter of writing “architectural epics” on a collection of index cards.
 The enterprise architecture team may choose to adopt, and likely tailor, an existing enterprise architecture framework.
 Tailor the chosen architecture framework::
@@ -102,7 +102,7 @@ The roadmaps are updated in a rolling wave approach where the roadmap(s) are upd
 Capture enterprise architecture::
 There are two broad categories for how enterprise architects can capture their work: as documents or as working/executable examples.
 High-level models work well for the documentation.
-Executable artifacts, such as executable reference architectures or architectural runways, are usually preferred over documentation by delivery teams.
+Delivery teams usually prefer executable artifacts, such as executable reference architectures or architectural run aways, over documentation.
 Govern architecture::
 Architectural activities within your organization should be governed in a lightweight, collaborative manner.
 This is an important activity for enterprise architects as well as for your IT governance team.
@@ -134,7 +134,7 @@ Collaborate with IT stakeholders::
 Disciplined agile EAs will spend the majority of their time, 80 to 90% of it typically, working as members of IT delivery teams.
 By doing this, they bring their knowledge, vision, and skills to the team in a pragmatic, hands-on manner.
 The teams will often take on the role of _architecture owners_.
-Enterprise architects will also work with other IT stakeholders, including operations engineers, support staff, and the data management team.
+Enterprise architects will also work with other IT stakeholders, including operation engineers, support staff, and the data management team.
 They need to understand their needs.
 Evolve architecture assets::
 The enterprise architecture team, or at least the portion of the team who is currently available, will meet on a regular basis.
@@ -157,7 +157,7 @@ Often you see the tension between more agility and the drag of traditional compl
 
 The regular enterprise architecture frameworks are too complicated to be applied in nimble product development.
 The approach is cumbersome and slow.
-The processes are based on the assumption documents are written and later a group of experts review them.
+The processes are based on the assumption documents are written, and later a group of experts review them.
 Agile approaches are too nimble and fast to mesh with such workflows.
 
 The techniques used in these frameworks are powerful ones.

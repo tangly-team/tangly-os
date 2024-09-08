@@ -20,7 +20,7 @@ Well, my current experience is that the answer is a sounding *YES*.
 Developers love to develop software products using {ref-scrum}.
 The motivation and positive energy just explode.
 
-People talk together, build as a team better products and enjoy the daily activities.
+People talk together, build as a team better products, and enjoy the daily activities.
 
 Stakeholders and customers or users embrace the advantages they get.
 
@@ -87,14 +87,14 @@ But wait as a product owner, I am responsible for the budget and product success
 Scrum is cool and we enjoy it.
 And Scrum makes everything transparent and fast.
 Every two weeks, a new version is delivered.
-This version must be evaluated, accepted or a list of improvements must be provided in the next few days.
+This version must be evaluated, accepted, or a list of improvements must be provided in the next few days.
 This rhythm is fast, really fast.
 Once you are up to this speed, you will enjoy the flow.
 
 == Lessons Learnt
 
 Middle management often struggles with the agile approach at the beginning.
-See, for example, the discussion about https://less.works/less/management/index.html[manager role in an agile environment] in the {ref-less} approach.
+See, for example, the discussion about the https://less.works/less/management/index.html[manager role in an agile environment] in the {ref-less} approach.
 Be assured the results are worth the effort.
 
 Reading an experience report or digging in the findings of Kotter, you realize success or failure goes through how you handle middle management.

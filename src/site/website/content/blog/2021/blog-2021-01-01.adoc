@@ -17,7 +17,7 @@ This post discusses the value object pattern, and the factory pattern, which are
 
 
 Value objects represent typed values that have no conceptual identity in your domain.
-They can help you write better codes that are less error-prone, more performant and more expressive.
+They can help you write better codes that are less error-prone, more performant, and more expressive.
 
 Value objects define the second kind of domain objects besides entities.
 Their main characteristic is immutability:
@@ -47,13 +47,13 @@ Operations never command a change to the internal state of a value object.
 We can pass value objects to clients without worrying they change them.
 
 Many objects can be modeled as value objects instead of entities because they are defined through their attributes.
-These objects measure, quantify or describe things in the domain model.
+These objects measure, quantify, or describe things in the domain model.
 Because they are so easy to handle, we should model domain abstractions as value objects as often as possible.
 
 == Addresses, Phone Numbers, Email Addresses
 
 Some value objects are part of any commercial application domain.
-Postal addresses, phone numbers and email addresses are canonical value objects.
+Postal addresses, phone numbers, and email addresses are canonical value objects.
 Other candidates are bank account IBAN numbers, job titles, job descriptions, company legal status.
 
 This means that these objects do not have an object identifier and should not be stored in a separate table if stored in an SQL database.
@@ -64,7 +64,7 @@ It should have an external identifier and has a postal address, multiple phone n
 
 Check your domain model and validate these assumptions.
 
-* Postal address, phone numbers, email addresses are value objects and have no external or internal identifiers.
+* Postal addresses, phone numbers, email addresses are value objects and have no external or internal identifiers.
 * They are always owned by other value objects or more often by entities such as people, companies, and delivery forms.
 * They are immutable objects.
 * Business processes can replace such an object with a new instance without impeding other domain instances.
@@ -82,7 +82,7 @@ Often it is a one-liner.
 Invoice lines are lines containing details in an invoice.
 Invoice lines are always value objects belonging to exactly one invoice.
 
-To complicate matter, invoice lines have different types, such as a regular line with a specific article, quantity, unit price and computed price.
+To complicate matter, invoice lines have different types, such as a regular line with a specific article, quantity, unit price, and computed price.
 Often VAT aspects must be considered and computed for the overall invoice.
 An invoice line can also be a subtotal for a set of regular invoice lines.
 
@@ -130,7 +130,7 @@ The JEPs for deconstruction and construction of objects in a *switch* statement 
 The current version of Java _JDK 16_ does not support this feature.
 ====
 
-When the creation logic is complex or has dependencies that are not needed by the created object.
+When the creation logic is complex or has dependencies that are unnecessary for the created object.
 It is best to create a separate factory.
 This factory could provide multiple ways to create new instances.
 

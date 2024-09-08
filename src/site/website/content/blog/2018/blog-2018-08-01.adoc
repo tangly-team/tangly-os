@@ -23,7 +23,7 @@ Support teams and individuals to identify potential with their roles and within 
 == How Can You Do It?
 
 Lateral Leadership::
-Mediating the team through conflicts and help them with making decisions and foster the team's self-organization.
+Mediating the team through conflicts and helps them with making decisions and foster the team's self-organization.
 After a few months, a team shall have jelled.
 Facilitation::
 Facilitate meetings for the team, including preparing, moderation and post-processing for the agile process as well as the supporting agile organization.
@@ -38,11 +38,11 @@ Consult the Scrum guide: You must select one impediment after each retrospective
 This mechanism insures continuous improvement.
 
 [.text-center]
-_To ensure continuous improvement, it includes at least one high priority way in which the team works, identified in the previous Retrospective meeting._
+_To ensure continuous improvement, it includes at least one high-priority way in which the team works, identified in the previous Retrospective meeting._
 
 Culture::
 Establish a culture of inspecting and adapting for teams.
-Create structure to establish a continuous improvement process - also meaning establish a tolerance to failure -, advocate transparency, enlighten the organization of the relation between autonomy and accountability.
+Create a structure to establish a continuous improvement process - also meaning establish a tolerance to failure -, advocate transparency, enlighten the organization of the relation between autonomy and accountability.
 
 Ask yourself how your organization handles meritocracy.
 
@@ -57,7 +57,7 @@ Your teams should have business expertise.
 . Use Process Excellence and apply {ref-scrum}, XP, {ref-less} by the book:
 .. Discuss the core values of commitment, focus, openness, respect, and courage.
 .. Present again the agile manifesto and the twelve principles.
-.. Show the organization why commitment in the planning was replaced by forecast in the official Scrum guide cite:[scrum-pocket-guide-3rd].
+.. Show the organization why forecast replaced commitment in the planning in the official Scrum guide cite:[scrum-pocket-guide-3rd].
 .. Require a vision, a roadmap, a release plan with a story map and a refined backlog for each product and team.
 .. Tell why an impediment resolution backlog item shall be part of each iteration.
 .. Teach the importance of the definition of done _DoD_ for the internal quality of the product.
@@ -83,22 +83,22 @@ Try to define if you are a beginner, practitioner, guide, or catalyst for each r
 image::2018-08-01-compentencies.png[width=90%,height=360,role=text-center]
 
 [horizontal]
-Self Mastery::
+Self-Mastery::
 At the heart of great agile coaching is the need to invest in yourself through learning and reflection and take care of your well-being.
 Self-mastery starts with a focus on yourself, having the emotional, social, and relationship intelligence to choose how you show up in any given context.
 Agile/Lean Practitioner::
 an agile/lean practitioner has a deep and tacit understanding of the principles behind agile and lean and has experience in working with frameworks and practices of agile and lean.
 Serving::
 serving is about being concerned with the needs of the team or business over your own agenda.
-They do this from the stance of servant leadership which focuses primarily on the growth and well-being of the team or business and the communities to which they belong.
+They do this from the stance of servant leadership, which focuses primarily on the growth and well-being of the team or business and the communities to which they belong.
 Coaching::
 coaching is partnering with a person, team, or organization (client) in a creative process to help the client to reach their goals by unlocking their own potential and understanding.
-A coach is able to accept the client as a whole and capable, and serve their agenda ethically.
+A coach is able to accept the client as a whole and capable and serve their agenda ethically.
 Facilitating::
 facilitating increases the effectiveness of groups to align in a collaborative way, to interpret their context, and mutually identify the most valuable outcomes desired.
 A facilitator has the skills to create a neutral environment of openness, safety, and innovation in a group setting.
 Guide to Learning::
-guide learning is about effectively growing an individual, a group, or a team skills and enabling them to be competent and resourceful.
+guide to learning is about effectively growing an individual, a group, or a team skills and enabling them to be competent and resourceful.
 With this competency, you choose the most effective learning method to help the learners achieve their learning objectives and inspire future learning.
 Advising::
 advising is the ability to bring your experience, insights, and observations to guide the client towards a shared understanding of the value that can help them to achieve sustainable success, even after you have moved on.

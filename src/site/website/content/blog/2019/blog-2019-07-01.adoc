@@ -98,6 +98,6 @@ They have a lot of interactive charts.
 - https://ourworldindata.org/[Research and interactive data visualizations to understand the world’s largest problems]
 - https://www.bbc.com/news/health-47371078[What do the people of the world die from?]
 
-The beautiful book from Hans Rosling is worth studying.
+The beautiful book from Hans Rosling is worth reading.
 
 https://www.amazon.com/dp/B0756J1LLV/[Factfulness: Ten Reasons We are Wrong about the World - and Why Things Are Better Than You Think, Hans Rosling]

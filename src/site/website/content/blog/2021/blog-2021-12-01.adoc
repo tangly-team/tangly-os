@@ -17,7 +17,7 @@ This statement sounded great for him.
 Spotify has published some great articles and videos about how they have grown and transformed their organization to be agile.
 Then it occurred to me that what my customer was saying was completely wrong.
 
-I don’t think you can really understand what it is like to work at Spotify without actually living it.
+I do not think you can really understand what it is like to work at Spotify without actually living it.
 You see, most of us are working from our own paradigm and belief system.
 We have a hard time imagining how it really works at Spotify.
 
@@ -42,7 +42,7 @@ image::2021-12-01-failure-culture.png[width=90%,height=360,role=text-center]
 
 Do not scale agile…descale your organization::
 Henrik starts with this quote which directly conflicts with the 5% of people who claim to be scaling agile using Spotify.
-It isn’t about changing agile to fit your company, it is changing your organization to achieve business agility. +
+It is not about changing agile to fit your company, it is changing your organization to achieve business agility. +
 _Have you considered descaling your organization before scaling agile?_
 Your Company is *not* Spotify::
 Spotify was born agile in 2006, so it is not even 20 years old.
@@ -58,7 +58,7 @@ _Are your “squads” self-organizing?_ _Are they capable of end to end deliver
 Squads are Autonomous::
 Autonomy is the key to the company.
 It includes not just what to work on next or how to complete their work.
-Autonomy helps to scale because they don’t need as much central function.
+Autonomy helps to scale because they do not need as much central function.
 Autonomy is fun and motivating. +
 _Are the squads you created autonomous?_
 Motivation is Essential for Productivity::
@@ -68,22 +68,22 @@ Kniberg has a simple formula showing that Productivity = Effort X Competence X E
 _Is your company focused on increasing the motivation of each employee?_
 Balance alignment and autonomy::
 Spotify strives to strike a balance between alignment (central direction) and autonomy (team self-organization).
-Managers paint the big picture but don’t tell people how to solve it.
+Managers paint the big picture but do not tell people how to solve it.
 This is probably one of the biggest sticking points for most organizations – managers are directly involved in telling people how to solve problems. +
 _Who makes decisions in your organization?_ _What is the balance of power between team members and managers?_
 Shape the Environment::
 Physical space supports informal collaboration and coordination.
 At Spotify, Squads sit and work together.
-Tribes sit near each other and there are plenty of spaces for informal meetings without having to schedule a conference room. +
+Tribes sit near each other, and there are plenty of spaces for informal meetings without having to schedule a conference room. +
 _Has your company made an effort to co-locate people working together on the same team or tribe?_ _Does your physical space support informal meetings without going to the trouble to schedule a conference room?_
-No Magic in the terms Squads and Tribes::
+No Magic in terms of Squads and Tribes::
 Henrik said he was not sure why they used weird words like Squads and Tribes.
 The label itself means nothing.
-Each tribe is a cross-functional team that is vertically aligned for delivery. +
+Each tribe is a cross-functional team vertically aligned for delivery. +
 _Did you change your existing team to a squad without changing anything else?_
 Guilds are cross-cutting areas of Expertise::
 Guilds are the equivalent of Communities of Practice.
-They are not functional departments, they are volunteer-led communities based around a particular expertise. +
+They are not functional departments, they are volunteer-led communities based around particular expertise. +
 _Are your guilds communities based on expertise, or are they organized around key managers or existing functional departments?_
 Emphasis on face 2 face communications::
 That is the purpose of the structure of Tribes, Squads, and Guilds.
@@ -92,11 +92,11 @@ Tribes and Squads were organized so that they can sit together. +
 _Does your organization put a priority on face to face communications?_
 Boring Releases::
 Long release cycles are scary and risky.
-Frequent releases are less scary, less risky and easy.
+Frequent releases are less scary, less risky, and easy.
 They become routine and boring. +
 _How often are you releasing to Production?
 Are your releases scary or are they boring?_
-Decoupled Releases and CI/CD Reduces Cycle Time::
+Decoupled Releases and CI/CD Reduce Cycle Time::
 Spotify focused on changing the architecture to decouple dependencies and make releases easier.
 Dependencies are reduced and teams can release to production independent of each other.
 Spotify has also invested heavily in continuous delivery to automate getting code to production in minutes, not days or weeks. +
@@ -108,26 +108,26 @@ Kniberg uses the example of the difference in control between a roundabout and a
 Where possible, Spotify trusts people and does not try to control them because they believe that most people are doing what is best for the organization. +
 _What is the level of trust you place on your employees and teams?_ _Are they empowered with opportunities for self-service, or are there checks and balances and delays due to waiting for approvals that slow them down?_
 Transparency & short feedback loops::
-Transparency is one of the pillars of Scrum and essential for all agility.
+Transparency is one of the pillars of Scrum and essential for agility.
 Transparency is also an enabler for self-organization.
 Similarly, short feedback loops provide opportunities for inspection and adaptation.
 Fast feedback ensures teams are building the most valuable features. +
 _How long are your sprints?_ _What is the time between when a team builds something and when a real customer uses or provides feedback on that feature?_
 Managers are Servant Leaders::
 Spotify believes that managers are servant leaders, focused on serving the highest needs of the team.
-They think it is better for managers to ask teams how then can help, rather than asking people what they are working on or when they will be done. +
+They think it is better for managers to ask teams how they can help, rather than asking people what they are working on or when they will be done. +
 _What is the posture of your managers to your teams?
 Do they serve the teams, or do they think that the teams serve them?_
 Lean Startup::
 The Spotify mantra seems to be _Think it, Build it, Tweak it, Ship it_ based on Eric Ries and the Lean Startup approach.
 Teams establish a hypothesis and then run experiments and A/B tests and measure the results.
-They strive to get lots of feedback, tweak what they implement and maximize the value. +
-They know the difference between maximizing value and not just output (i.e. more user stories completed).
+They strive to get lots of feedback, tweak what they implement, and maximize the value. +
+They know the difference between maximizing value and not just output (i.e., more user stories completed).
 _Are you set up to run small experiments?_ _Or are your products/projects the result of a long list of requirements that are all built before deploying to production in a big bang?_
 Spotify Hack Week::
 Twice a year Spotify hosts a hack week when they let everyone work for a week on whatever they want.
 The approach unleashes creativity and improves cross-organizational collaboration They celebrate with a party on Friday. +
-_How comfortable would your company be with a one-week hackathon that allows people to do whatever they want?_ _What controls do you think your leaders would demand for that week (e.g. assigned work, time reporting, must show results, etc)._
+_How comfortable would your company be with a one-week hackathon that allows people to do whatever they want?_ _What controls do you think your leaders would demand for that week (e.g., assigned work, time reporting, must show results, etc)._
 Experiment-friendly Culture::
 More data-driven decisions, not decisions made by the highest paid person.
 Teams are encouraged to develop a hypothesis and run an experiment.
@@ -145,7 +145,7 @@ It is the smallest amount of bureaucracy that an organization can have without c
 _What is the level of bureaucracy in your organization?_ _Do your managers actively work to reduce or eliminate overhead so that teams can focus on being productive?_
 Team Definition of Awesome::
 Spotify encourages teams to talk about and decide what would make them awesome.
-After all, without a vision for awesomeness, you likely won’t get there.
+After all, without a vision for awesomeness, you likely will not get there.
 Spotify teams use regular team health checks.
 They track improvements over time. +
 _Do your teams have a definition of awesome?

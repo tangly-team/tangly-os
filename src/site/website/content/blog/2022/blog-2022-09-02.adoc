@@ -32,7 +32,7 @@ Start small.
 Optimize your internal process with technology.
 
 _I challenge you._
-_Your company does not need any printers, fax machines or landlines._
+_Your company does not need any printers, fax machines, or landlines._
 
 == Eliminate Your Printer
 
@@ -45,7 +45,7 @@ They are costly in natural and human resources.
 
 [TIP]
 ====
-Our company {ref-tangly} never possessed any printer, fax machine or phone landline.
+Our company {ref-tangly} never possessed any printer, fax machine, or phone landline.
 
 On average, we need to print around three documents each year.
 Governmental authorities always required these documents.
@@ -114,13 +114,13 @@ Recognized digital certificates are currently way to expensive in Switzerland.
 Therefore, almost nobody is using this approach.].
 - Native digital people often do not anymore possess paper books, CDs, or printed photos.
 Instead, they use the digital equivalent.
-It is more ecological, cost-effective and is additional features.
+It is more ecological, cost-effective, and is additional features.
 - Physical money has disappeared in the context of companies.
 All financial transactions are electronic.
 
 [NOTE]
 ====
-Every time you use a printer, a fax machine or a scanner, you have identified a process you should digitize.
+Every time you use a printer, a fax machine, or a scanner, you have identified a process you should digitize.
 
 Analog paper and digital processes are not compatible.
 ====

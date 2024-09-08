@@ -19,7 +19,7 @@ Do you coach your teams toward mastery?
 
 Too often, Scrum masters become Scrum administrators.
 
-They schedule meetings, moderate discussions, write progress reports and draw beautiful slides on how to improve the organization.
+They schedule meetings, moderate discussions, write progress reports, and draw beautiful slides on how to improve the organization.
 
 Or worse, they collect extensive statistics about velocity, planned versus delivered story points or how precise story estimation was.
 
@@ -30,7 +30,7 @@ _Wake up!_ You are not a product manager, you shall be a catalyst.
 == Facets of a Scrum Master
 
 * Be a https://en.wikipedia.org/wiki/Servant_leadership[servant leader] whose focus is on the needs of the team members and those they serve (the customer), with the goal of achieving results in line with the organization’s values, principles, and business objectives.
-* Teach ensuring agile, lean, Scrum and other approaches are understood and enacted.
+* Teach ensuring agile, lean, Scrum, and other approaches are understood and enacted.
 * Mentor to transfer agile knowledge and experience to the team and concentrate on continuous improvement.
 * Coach the individual with a focus on their mindset and behavior.
 * Help the organization to truly collaborate with the Scrum team.

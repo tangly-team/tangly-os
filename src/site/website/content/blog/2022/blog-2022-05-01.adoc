@@ -70,7 +70,7 @@ Two or more of these specifications do not mandate the use of a particular quant
 Therefore, SI (System-International) is usually used so that the standard system of units of measurement is suitable for most applications.
 According to the JSR-385 API specification, 7 quantities should be acceptable if they have the same dimensions so that they can be compared with one another in a meaningful way.
 Unit::
-A unit, or unit of measure, is a quantity that is assumed to be the standard with a unique value that can be used to express.
+A unit, or unit of measure, is a quantity assumed to be the standard with a unique value that can be used to express.
 The same type units of measurement are used as a comparison value.
 For example, one foot corresponds to a quantity of 0.3048 meters.
 Regardless of how this came about, a unit of measure can be expressed as the quantity of other units of measure of the same kind.

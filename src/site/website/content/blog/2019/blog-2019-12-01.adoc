@@ -14,7 +14,7 @@ include::../fragments/_config-mb-blog.adoc[]
 image::2019-12-01-head.jpg[width=420,height=360,role=left]
 
 I long dreamed of working in a digital environment.
-I shall no longer print out a form, sign it by hand and use snake mail to deliver it to the receiving party.
+I shall no longer print out a form, sign it by hand, and use snake mail to deliver it to the receiving party.
 All company documents are stored electronically.
 I can search any artifacts by content and get a list of all interesting items in seconds.
 
@@ -51,7 +51,7 @@ You monitor all software continuous integration and delivery pipelines from anyw
 The information is available with a regular notebook or on any mobile device.
 
 And you have a positive impact on the environment.
-Less traveling, less paper and less shipping.
+Less traveling, less paper, and less shipping.
 Embrace the digital age and be environment-aware.
 
 == All Activities and Processes are Digitized
@@ -60,10 +60,10 @@ Embrace the digital age and be environment-aware.
 
 At https://www.tangly.net[tangly] we use internally
 
-* Google Business Apps and LibreOffice for office work, email, calendar, video conference and document sharing.
+* Google Business Apps and LibreOffice for office work, email, calendar, video conference, and document sharing.
 All documents are stored in our product or company online drives.
 * Google Business Apps administration console to manage our technical infrastructure such as workstations, mobile devices, DNS record.
-* Bitbucket and continuous integration, delivery and deployment pipelines for software development.
+* Bitbucket and continuous integration, delivery, and deployment pipelines for software development.
 * Trello for activities management and our electronic Scrum or Kanban board.
 We use analog boards if the team members are collocated.
 We are trying to avoid JIRA.
@@ -71,14 +71,14 @@ It would be just overkill for us.
 * Slack is our preferred chat platform.
 * https://www.banana.ch/[Banana] is our accounting solution.
 
-We never had to buy or rent a printer, a landline or a fax machine since founding the company.
+We never had to buy or rent a printer, a landline, or a fax machine since founding the company.
 
 == External Tools
 
 We use an impressive set of tools to collaborate with our customers and partners
 
-* Google email, calendar and meetup for communication.
-* https://www.bitbucket.org/[Bitbucket] and continuous integration, delivery and deployment pipelines for software development.
+* Google email, calendar, and meetup for communication.
+* https://www.bitbucket.org/[Bitbucket] and continuous integration, delivery, and deployment pipelines for software development.
 * {ref-maven-central} to distribute public binary software artifacts.
 * Slack is our preferred chat platform.
 * Google Groups for technical discussion.

@@ -17,13 +17,13 @@ include::../fragments/_config-mb-blog.adoc[]
 image::2018-04-01-head.png[width=420, height=360, role=left]
 The last months I was often confronted with software products having insufficient quality.
 
-Insufficient means late delivery, and few new features.
+Insufficient means late delivery and few new features.
 The effort to correct errors in the field eats *30% to 50%* away from the development budget.
 How can such a dreadful situation occur?
 
 One root cause is the low quality of the source code and ignorance of basic coding design approaches.
 
-We are not talking about complex design activities or complex patterns; we are discussing basic approaches how to write correct and maintainable code.
+We are not talking about complex design activities or complex patterns; we are discussing basic approaches to writing correct and maintainable code.
 --
 
 == Master Your Technology Stack
@@ -38,12 +38,12 @@ I recommend any Java developer:
 
 * Have formal training in the Java language and library cite:[java-puzzlers].
 For example, you should consider a Java Programmer certification for the current JDK you are working daily with.
-* Learn the new features in Java e.g. Streams, Lambdas, Reactive Programming, LocalDate, Modules, packaging with jlink.
+* Learn the new features in Java e.g., Streams, Lambdas, Reactive Programming, LocalDate, Modules, packaging with jlink.
 * Read and understand _Effective Java_ cite:[effective-java-2nd] from Joshua Bloch.
 * Read and understand the clean series cite:[clean-code, clean-coder, clean-architecture,clean-agile, clean-craftsmanship].
 * Read and understand _Refactoring_ from Martin Fowler cite:[refactoring-2nd].
 * And read https://ronjeffries.com/xprog/articles/refactoring-not-on-the-backlog/[Refactoring not in the backlog] article from Ron Jeffries.
-* Learn modern practices such as logging with https://www.slf4j.org/[slf4j], TDD with https://junit.org/junit5/[JUnit5], https://site.mockito.org/[Mockito] and http://joel-costigliola.github.io/assertj/[AssertJ], ATDD with https://cucumber.io/[Cucumber].
+* Learn modern practices such as logging with https://www.slf4j.org/[slf4j], TDD with https://junit.org/junit5/[JUnit5], https://site.mockito.org/[Mockito,] and http://joel-costigliola.github.io/assertj/[AssertJ], ATDD with https://cucumber.io/[Cucumber].
 * Lean DevOps, continuous integration, continuous delivery, continuous deployment, monitoring.
 * Be aware of famous Java libraries such as https://github.com/google/guava[Guava], https://commons.apache.org/[Apache Commons].
 * Use {ref-sonarcube} and the {ref-sonarlint} plugin for your preferred IDE to catch well-known weaknesses in your source code and improve
@@ -55,7 +55,7 @@ https://www.mountaingoatsoftware.com/blog/the-difference-between-a-professional-
 
 == Improve Continuously You shall strive for mastery.
 
-The feeling having reached a certain mastery level is truly awesome.
+The feeling of having reached a certain mastery level is truly awesome.
 
 * Read a technical book each quarter.
 * Lean a new language or framework every two years.
@@ -100,9 +100,9 @@ Software craftsmanship is
 * Not a church, trying to convert all developers.
 * About leading by example and showing how we can be better.
 * About well-written and designed code and the customer stays in the center.
-* About continuously delivering value not writing crap code.
+* About continuously delivering value, not writing crap code.
 
-Your goal shall to become a professional developer and reach mastery.
+Your goal shall be to become a professional developer and reach mastery.
 How you do it is up to you.
 
 An extensive list of books can be found under link:{ref-tangly-blog-url}/ideas/learnings/books/[Books].

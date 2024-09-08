@@ -29,9 +29,9 @@ ____
 == The Visible Change
 
 The visible change is the dawn of the keyword *var*.
-Now instead of typing the type declaration of a local variable - local to a method, a block or an instruction - you can use the keyword var.
+Now, instead of typing the type declaration of a local variable - local to a method, a block, or an instruction - you can use the keyword var.
 The constraint is that the variable is initialized at declaration.
-Stay tune for more support in JDK 11.
+Stay tuned for more support in JDK 11.
 
 When the type declaration is a complex generic type definition, the var shortcut is a boon.
 The code is less verbose and the legibility is at least as good.
@@ -56,11 +56,11 @@ It makes development work more efficient.
 The garbage collector shall have a clear and documented API.
 Developing and adding new garbage collectors is easier.
 
-Various updates such as the Unicode newest version.
+Various updates, such as the Unicode newest version.
 The extensions are used in library classes to better support locales.
 
 Open JDK and Oracle JDK are slowly merging.
-For example, CA certificates will be provided to OpenJDK by Oracle.
+For example, Oracle will provide CA certificates to OpenJDK.
 
 == Outlook
 
@@ -68,12 +68,12 @@ The rhythm of releases is staggering higher.
 Starting Spring 2018, we will have * The new rule as blogged by Mark Reinhold https://mreinhold.org/blog/forward-faster[Moving Java Forward Faster].
 * You will get a new JDK every six months * You will get security updates every three months * You will get a long-term support release every three years.
 
-This means that you shall update your JDK in development environment six times a year if you want to install the new JDK and the security releases.
+This means that you shall update your JDK in a development environment six times a year if you want to install the new JDK and the security releases.
 We recommend automating the process in your environment.
 And you shall deliver your applications in Docker containers to support the whole ecosystem.
 
 The tool landscape is still struggling to adapt to the new rhythm.
-I am working with IntelliJ IDE and I had to wait for the EAP 2018.3 before being able to write JDK 10 code in the IDE.
+I am working with IntelliJ IDEA, and I had to wait for the EAP 2018.3 before being able to write JDK 10 code in the IDE.
 I use Gradle as a building tool and also to wait until JDK 10 was at least partially supported.
 And I am still waiting for the update of the code coverage plugin.
 Before that, I was back to stone age, writing software with a text editor and compiling it with the command line.

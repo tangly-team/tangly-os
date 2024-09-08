@@ -15,7 +15,7 @@ I truly love the new release rhythm of the Java ecosystem.
 Every six months a new JDK is delivered.
 Being able to use new features every six months is awesome.
 
-The new release JDK 17 <<jdk-17>> is the next long term support _LTS_ release.
+The new release JDK 17 <<jdk-17>> is the next long-term support _LTS_ release.
 The migration overhead is held to a minimum thanks to the incredible backward compatibility.
 The early-access builds give you more than enough opportunities and time to migrate all your applications on time.
 
@@ -33,15 +33,15 @@ It is more a question of *when*, rather than *if* you will upgrade.
 
 Why should you actually upgrade your application?
 
-* Every Java version, even minor versions offer performance benefits, but also _security fixes_,
+* Every Java version, even minor versions, offers performance benefits, but also _security fixes_,
 * Other useful extras that make your application more robust and better maintainable are often part of a new release,
 * It includes cool features.
 For instance, the recently released Java records, sealed types, or the pattern matching functionality,
 * Reduce attack surface by updating project dependencies proactively,
 * Reduce technical debt and most importantly, prepare your project for the new and dynamic modern Java world,
-* Take advantage of _performance improvements_ on new JVM version,
+* Take advantage of _performance improvements_ on a new JVM version,
 * Take advantage from improvements of Java as programming language,
-* Sleep better by having a more secure, efficient and quality product.
+* Sleep better by having a more secure, efficient, and quality product.
 
 I have noticed that a lot of applications are still on Java 8.
 Java 8 was released in March 2014.
@@ -53,7 +53,7 @@ That is not a good approach.
 
 [WARNING]
 ====
-If you are still on Java 8, the licensing situation is may be problematic.
+If you are still on Java 8, the licensing situation is maybe problematic.
 Like all JDKs past their end of public updates, you now have to pay for support, or you must use a free OpenJDK 8u build which
 
 . only contains backport patches that do not cover the entire JDK.
@@ -68,7 +68,7 @@ Licensing alone is a reason to update.
 I try to make it more practical.
 Actually, in the case of the weeks to months' estimation, I often managed to migrate the application in a couple of days.
 It is often a matter of simply trying it, and if you are lucky, you manage to upgrade it quite easily.
-Depending on what dependencies you use, or what code bases you use, it might be a bigger challenge.
+Depending on what dependencies you use or what code bases you use, it might be a bigger challenge.
 
 [NOTE]
 ====
@@ -88,11 +88,11 @@ Until now the release cycle was three years]?
 If you have the time available, I would recommend using the latest version of Java because you can use the new features and improvements.
 It always increases developer productivity and application reliability
 footnote:[Do not underestimate how more motivated developers are if they can use actual techniques and language features.].
-You have to do it every six months, because you cannot use the new minor versions.
+You have to do it every six months because you cannot use the new minor versions.
 
-If you do not have that time available to upgrade every six months, you might opt to using only the long term support versions.
-However, then, each time you need to upgrade your long term support version, that actually might take quite a bit more time as well.
-In the end, I think staying on long term support versions or using the latest version should not differ much in the investment in upgrading.
+If you do not have that time available to upgrade every six months, you might opt to using only the long-term support versions.
+However, then, each time you need to upgrade your long-term support version, that actually might take quite a bit more time as well.
+In the end, I think staying on long-term support versions or using the latest version should not differ much in the investment in upgrading.
 
 [IMPORTANT]
 ====
@@ -101,7 +101,7 @@ You must anyway migrate to JDK 17.
 The only discussion point is *when* and certainly *not if*.
 Decide
 
-You are a laggard organization:: Start to plan your migration and allocate needed resources and budget to the migration.
+You are a laggard organization:: Start to plan your migration and allocate the necessary resources and budget to the migration.
 You should hope your competition will not release new features and beat you.
 You are a modern organization:: You are already migrating to JDk 17 and will complete it in the next months.
 The discussion is moot.
@@ -111,17 +111,17 @@ Congratulations, you can focus on business value and beat your competitors.
 
 == How Big is the Migration Effort?
 
-When we start developing against the new Java version, it's recommended to start with your local machine, get that up and running first.
+When we start developing against the new Java version, it is recommended to start with your local machine, get that up, and running first.
 Then upgrade your build environment, so it supports the latest version of Java.
 Get everything built and tested over there.
 Then at the end, release it to the other environments, including the production environment.
 
 When upgrading Java, you might upgrade from 8 to 17 at once.
-If you have encountered any issues, it might be hard to pinpoint what's caused the exact issue.
+If you have encountered any issues, it might be hard to pinpoint what has caused the exact issue.
 
 Therefore, it might be better to do the migration, step by step.
 Maybe you migrate from 8 to 11 first, or maybe from 8 to 9.
-If you encounter any issues, you can easily see what's changed in that Java version.
+If you encounter any issues, you can easily see what has changed in that Java version.
 
 Answers can often be found through Google or StackOverflow.
 That way, it is easier to get the upgrades done instead of in one big bang.
@@ -141,7 +141,7 @@ Based on the nice ingredients, we should get a nice result.
 The official list of new features is
 
 https://openjdk.org/jeps/306[JEP 306] - Restore Always-Strict Floating-Point Semantics::
-Very useful if you are a mathematical library developer
+Beneficial if you are a mathematical library developer
 https://openjdk.org/jeps/356[JEP 356] - Enhanced Pseudo-Random Number Generators::
 Simpler usage of random generators in the API
 https://openjdk.org/jeps/382[JEP 382] - New macOS Rendering Pipeline::
@@ -155,7 +155,7 @@ Stop using unsafe operations in your libraries.
 Use the JDK tools to identify suitable supported classes with the same functionality
 https://openjdk.org/jeps/406[JEP 406] - Pattern Matching for switch (Preview)::
 Pattern matching is the new kid on the block.
-We have now nice features for the switch expression.
+We now have nice features for the switch expression.
 https://openjdk.org/jeps/407[JEP 407] - Remove RMI Activation::
 https://openjdk.org/jeps/409[JEP 409] - Sealed Classes::
 Sealed class release completes the implementation of https://en.wikipedia.org/wiki/Algebraic_data_type[algebraic data types]
@@ -168,7 +168,7 @@ Cool feature supporting https://en.wikipedia.org/wiki/SIMD[SIMD] hardware.
 https://openjdk.org/jeps/415[JEP 415] - Context-Specific Deserialization Filters::
 Increase security.
 
-The new features you should use on a daily basis are described bellow.
+The new features you should use on a daily basis are described below.
 They will impact the appearance and legibility of your source code.
 
 == Algebraic Types
@@ -181,7 +181,7 @@ A record and all associated operations are defined in one statement.
 public record Person(String lastname, String firstname, LocalDate birthday) {}
 ----
 
-Sealed classes are a powerful constructs to constrain your inheritance hierarchy.
+Sealed classes are a powerful construct to constrain your inheritance hierarchy.
 
 == Pattern Matching for Switch
 

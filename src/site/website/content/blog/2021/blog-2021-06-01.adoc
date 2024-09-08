@@ -19,7 +19,7 @@ The second zone of the model is all about software craftsmanship and {ref-xp}.
 
 One key lesson of the fluency model is it takes time until you are professional at your chosen level.
 
-Time measured in years not in days.
+Time is measured in years, not in days.
 Your organization needs years to transition to more agile ways of working.
 Do not rush it.
 
@@ -32,7 +32,7 @@ If you target the third zone, your teams shall also be fluent in all practices o
 
 === Shift Team Culture: _Focusing_ teams produce business value (6 months)
 
-The team generates their own day-to-day tasks and plan based on their business representative’s needs.
+The team generates their own day-to-day tasks and plans based on their business representative’s needs.
 Team members consider their plan to be the team’s work, not individuals’ work.
 Team members share accountability for getting their plan done.
 Management considers the plan to be the team’s work rather than assigning accountability to individuals.
@@ -100,7 +100,7 @@ They actively work to make that strategy more successful.
 
 [.text-center]
 _The organization is a key player and has no real concurrency.
-Employees, customers and stakeholders satisfaction is high._
+Employees, customers, and stakeholder satisfaction is high._
 
 == Choose Your Zone
 
@@ -123,7 +123,7 @@ Employees, customers and stakeholders satisfaction is high._
 
 |Optimizing
 |Higher-value deliveries and better product decisions.
-|Social capital expended on moving business decisions and expertise into the team.
+|Social capital is expended on moving business decisions and expertise into the team.
 |Lean Software Development, Lean Startup, Beyond Budgeting
 |+1-5 years
 
@@ -137,7 +137,7 @@ Employees, customers and stakeholders satisfaction is high._
 == Learnings
 
 When Introducing Agile::
-One of the biggest factors affecting team fluency is an organizational support.
+One of the biggest factors affecting team fluency is organizational support.
 To continue the bus metaphor, the team has to ride the bus to their fluency zone.
 No one can do it for them.
 The organization has to buy the bus tickets.
@@ -151,13 +151,13 @@ The most common cause of fluency loss is when new management decides that agile 
 Without organizational support and the ability to continue practicing what they have learned, team fluency erodes quickly.
 This is often accompanied by loss of expertise as dissatisfied team members seek new positions.
 Turnover is a related cause of fluency loss.
-A team that gains or loses too many members may have trouble sustaining what it is learned.
+A team that gains or loses too many members may have trouble sustaining what it learned.
 This is a particular problem for organizations that assemble new teams for every project.
 Agile Fluency and Scrum::
 Agile and Scrum requires long-living and stable teams.
 A team should work over years on one product development and improvements.
 Agile at organizational level can only work if the upper and middle management transitioned to agile thinking and handling.
-The {ref-less} community is vocal how destructive wrong management decision can be.
+The {ref-less} community is vocal how destructive the wrong management decision can be.
 Agile development is a team sport, so fluency is a trait of the team, not individual team members.
 Fluency is more a matter of habits than skills.
 Discipline is king.

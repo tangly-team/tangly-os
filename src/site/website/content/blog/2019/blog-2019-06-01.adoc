@@ -29,7 +29,7 @@ Your teams use {ref-scrum} or {ref-kanban} to deliver running software every two
 To create an agile architecture, you must write agile-worthy code.
 Agile code is always clean code.
 
-Start early, do it continuously, and soon your code will be clean, legible and free of known defects.
+Start early, do it continuously, and soon your code will be clean, legible, and free of known defects.
 --
 
 == Architecture versus Code
@@ -57,7 +57,7 @@ Have professional engineers in your teams to enforce the discipline.
 == Clean Code and Refactoring
 
 The clean code https://en.wikipedia.org/wiki/Test-driven_development[test-driven development] _TDD_ approach to write code was defined last millennium.
-Professional developers adopted this approach to deliver high quality, legible and maintainable code artifacts.
+Professional developers adopted this approach to deliver high quality, legible, and maintainable code artifacts.
 
 [.float-group]
 --
@@ -73,16 +73,16 @@ Continuously run the tests for guaranteed compliant changes.
 If you are a Java developer, you will
 
 * Use {ref-junit5} and {ref-mockito} to implement the first step.
-* Use a powerful IDE such an IntelliJ IDEA to write and enhance the functional code.
+* Use a powerful IDE such as IntelliJ IDEA to write and enhance the functional code.
 * Use tools such as {ref-sonarlint}, {ref-jacoco}, {ref-spotbugs}, {ref-archunit} to refactor your functional code and test cases.
 Clean code applies to productive and test code.
 
-The described approach is a good practice since the beginning of this millennium.
+The described approach has been a good practice since the beginning of this millennium.
 All above-mentioned tools are open source and free to use.
 
 Your organization has *no excuse* to write crap code.
 
-Write well-engineered, legible and maintainable source code.
+Write well-engineered, legible, and maintainable source code.
 It is a matter of _discipline_.
 It is also a prerequisite to agile architecture.
 
@@ -114,8 +114,9 @@ Practice consolidates changes in the behavior of your development organization.
 
 * https://en.wikipedia.org/wiki/Pair_programming[Pair Programming] is a training on the job and crowd wisdom approach to steadily improving knowledge and quality.
 * https://en.wikipedia.org/wiki/Test-driven_development[TDD] and https://en.wikipedia.org/wiki/Acceptance_test%E2%80%93driven_development[ATDD] - are a safety net to guaranty quality attributes in your source code.
-* https://en.wikipedia.org/wiki/DevOps[DevOps] starts with git, docker, continuous integration, delivery and deployment to speed up development and eliminate tedious manual errors.
-* Lack of accountability equates to lack of trust your teams are accountable for the quality of your product.
+* https://en.wikipedia.org/wiki/DevOps[DevOps] starts with git, docker, continuous integration, delivery, and deployment to speed up development and eliminate tedious manual errors.
+* Lack of accountability equates to lack of trust.
+Your teams are accountable for the quality of your product.
 You should trust them.
 
 Once good practices are established, you can move to more sophisticated tools.

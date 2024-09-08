@@ -82,7 +82,7 @@ Take full advantage of the team's expertise.
 |Developers and a senior engineer to coach and support the developers.
 |Full Scrum team with cross-functional team developers including senior designers, quality specialists, and architects.
 A Scrum master coaches the team and takes over member development and administration tasks.
-|Full Scrum team with cross-functional team developers including designers, quality specialists, architects and DevOps.
+|Full Scrum team with cross-functional team developers including designers, quality specialists, architects, and DevOps.
 A Scrum master and product owner round up the team capabilities.
 
 |_Choose_
@@ -95,7 +95,7 @@ You keep product responsibility.
 == Nearshore advantages
 
 Geographical and Cultural Proximity::
-Nearshore locations are located in or near Europe, making it easy to reach from most European cities via air connection As a European nation.
+Nearshore locations are located in or near Europe, making it easy to reach it from most European cities via air connection As a European nation.
 We share the same mentality, values, and business culture as our clients.
 It provides an excellent foundation for a long-lasting and productive nearshore partnership.
 Convenient time zone and no jet lag::
@@ -103,7 +103,7 @@ A time difference of zero to two hours between nearshore locations and EU countr
 It avoids exhausting jet lag.
 Software engineers can engage with our clients during their business hours, maximizing efficiency while enhancing productivity.
 Intellectual property protection::
-European security and privacy requirements such as those imposed by ISO, GDPR, PCI and HIPAA are understood.
+European security and privacy requirements such as those imposed by ISO, GDPR, PCI, and HIPAA are understood.
 Compliance with European legislation can be achieved.
 
 == Risks
@@ -112,7 +112,7 @@ Language::
 All documents and comments in the source code shall be legible for all team members.
 Discussions and remote conferences shall be held in a language available to all members. +
 A shoring strategy implies this language must be International English.
-All documents, emails and chats must therefore be written in English.
+All documents, emails, and chats must therefore be written in English.
 Your organization has to recognize this profound change and train all your collaborators to become fluent in written and spoken English.
 Cultural Barriers::
 The shored team collaborators shall be integrated in the company as respected and valuable colleagues.
@@ -137,15 +137,15 @@ Train and certify all collaborations in {ref-scrum} and your technology stack to
 Ask yourself if your company culture and processes treat all collaborators fairly.
 Is our company willing to:
 
-. Write all project documentation, source code, emails and chats in English?
-. Hold all meetings, workshops and discussions in English?
+. Write all project documentation, source code, emails, and chats in English?
+. Hold all meetings, workshops, and discussions in English?
 . Train all collaborators in cultural aspects?
 . Host physical meetings using round-robin in all locations?
 . Schedule all meetings so that all locations have similar constraints for early or late work?
 . Share financial and strategic information to align all collaborators?
 . Set up the infrastructure to not differentiate between company offices and nearshore locations?
 . Buy all licenses so that all developers are using the same tools?
-. Provide the same training, certifications and conference access to all developers?
+. Provide the same training, certifications, and conference access to all developers?
 . Support meritocracy?
 Any role can be held by a local or a remote collaborator?
 

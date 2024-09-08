@@ -58,7 +58,7 @@ public enum EnumCode implements Code {
 }
 ----
 
-The above approach is a low impact transformation of your application.
+The above approach is a low-impact transformation of your application.
 Once your enumeration types implement the code interface, you are free to migrate selected types to external persistent and extensible solutions.
 
 == Persistent Codes
@@ -127,7 +127,7 @@ At the database level, you can define integrity rules in the schema to increase 
 
 == Design
 
-You have the freedom to model set of values as enumeration, reference codes, or tags.
+You have the freedom to model a set of values as enumeration, reference codes, or tags.
 Each approach has specific advantages and tradeoffs.
 The costs of moving from one approach to another are quite small.
 Choose one solution, implement it, and track its adequacy and user acceptance.
@@ -135,7 +135,7 @@ Choose one solution, implement it, and track its adequacy and user acceptance.
 We provide a Java library BUS implementing these constructs.
 More information is available under {ref-site}.
 
-The unit tests contain examples for enumeration codes, JSON codes and SQL database stored codes.
+The unit tests contain examples for enumeration codes, JSON codes, and SQL database stored codes.
 
 Related concepts are discussed in our blog series
 

@@ -15,7 +15,7 @@ image::2018-03-02-head.jpg[width=420,height=360,role=left]
 
 How can agile approaches be applied to deliver solutions in a government environment?
 
-Here is an example of a GIS open data portal successfully developed using agile approaches such as Kanban, lean product and technical excellence.
+Here is an example of a GIS open data portal successfully developed using agile approaches such as Kanban, lean product, and technical excellence.
 --
 
 == GIS Open Data Initiative
@@ -25,18 +25,18 @@ The aims are
 
 Release of official data::
 The Confederation will make data which are suitable for OGD available to the public in machine-readable and open formats to be freely reused.
-The individual administrative units must review and, where necessary, adapt the legal, organizational, financial and technical framework of data production to make this possible.
+The individual administrative units must review and, where necessary, adapt the legal, organizational, financial, and technical framework of data production to make this possible.
 Coordinated publication and provision of official data::
 With the help of a central infrastructure (OGD portal), the Confederation will make its data sets easily locatable for the public and will make the data available for free use.
 Establishing an open-data culture::
-The Confederation will support the use of data through free, uniform and understandable terms of use and through additional information on the individual data sets.
+The Confederation will support the use of data through free, uniform, and understandable terms of use and through additional information on the individual data sets.
 It will also pursue a continuous dialogue with the public.
 
 You can find more details under
 https://www.egovernment.ch/en/umsetzung/e-government-schweiz-2008-2015/open-government-data-schweiz[Open Government Data Switzerland].
 
 The solution is a GIS open data portal supporting self-service.
-It provides over a hundred theme maps with GIS data in multiple formats, resolutions and geographical sizes available through a self-service portal.
+It provides over a hundred theme maps with GIS data in multiple formats, resolutions, and geographical sizes available through a self-service portal.
 It was realized using agile approaches.
 
 == Agile Approach
@@ -73,7 +73,7 @@ https://are.zh.ch/internet/baudirektion/are/de/geoinformation/geodaten_uebersich
 
 == Learnings
 
-Pragmatic approaches to become agile were very successful in this setup.
+Pragmatic approaches to becoming agile were very successful in this setup.
 These governmental organizations were willing and eager to try them.
 
 Senior management was supportive.

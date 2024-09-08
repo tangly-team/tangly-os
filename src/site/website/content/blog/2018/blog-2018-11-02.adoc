@@ -33,9 +33,9 @@ I challenge you.
 If you are following {ref-safe}, talk with your teams and checks how many of their official good practices are you using on a daily basis.
 --
 
-I have seen {ref-safe} introductions in Swiss, German and Czech companies.
+I have seen {ref-safe} introductions in Swiss, German, and Czech companies.
 Attention was set on the structure of the release train.
-A lot of effort was spent on the various ceremonies, meetings and artifacts.
+A lot of effort was spent on the various ceremonies, meetings, and artifacts.
 But how to produce quality software and apply technical excellence was sadly always an afterthought.
 And more than once a senior {ref-safe} coach just publicly stated that the {ref-safe} core value x is not so important for a successful introduction.
 Quite a denial approach of his own methodology, I think!
@@ -55,7 +55,7 @@ That I mean is walk the talk.
 And please read some Internet blogs and books about {ref-less}, https://en.wikipedia.org/wiki/Software_craftsmanship[Software Craftsmanship],
 https://en.wikipedia.org/wiki/Extreme_programming[Extreme Programming], TDD, ATTD, clean code.
 Most of these concepts were defined and published in the last millennium.
-It is time your teams finally adopt them and produce high quality, maintainable and cost-effective products.
+It is time your teams finally adopt them and produce high-quality, maintainable, and cost-effective products.
 This is the whole concept of the lean movement.
 And I welcome the fact that {ref-safe} now explicitly mention https:scaledagileframework.com/built-in-quality/[Cost of Delay].
 
@@ -64,7 +64,7 @@ All C-level managers are trained in lean and agile, they advocate these approach
 Therefore, all managers shall advocate technical excellence on a daily basis.
 
 If not, the seminal work of John Kotter clearly states the transformation will fail.
-You will have a bunch of Scrum teams in your development department, but have none of the expected synergies at the product or company level.
+You will have a bunch of Scrum teams in your development department but have none of the expected synergies at the product or company level.
 
 Personally I prefer the {ref-less} approach, but I respect your choice - {ref-safe},
 https://www.scrum.org/resources/nexus-guide[Nexus], or https://www.scrumatscale.com/scrum-at-scale-guide/[Scrum@Scale] - as long as technical excellence is a key aspect of your agile strategy.
@@ -89,8 +89,8 @@ No more semester or hopefully quarter cadence.
 It still does not make sense to plan for three months and at the same time advocate DevOps and design thinking.
 
 DevOps has a time horizon of days.
-It is waste to have huge quarterly PI gatherings and plans just to discard them after the next DevOps finding.
-You should probably just update your PI roadmap.
+It is a waste to have huge quarterly PI gatherings and plans just to discard them after the next DevOps finding.
+You should probably update your PI roadmap.
 
 == Call for Action
 

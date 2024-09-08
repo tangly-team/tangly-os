@@ -94,7 +94,7 @@ You want to improve, and your company as a natural part of the daily work.
 Do you lead by example?
 * No management by objectives _MBO_ or bonuses are established in your company
 * Every collaborator has access to all company data, every collaborator can request process and tool changes.
-We favour _Individuals and interactions over tools and processes_
+We favor _Individuals and interactions over tools and processes_
 * You want to be excellent in your work.
 You have a purpose and autonomy in your daily work
 * Team members take the decision to hire or to fire collaborators, not the department responsible, or the human resources group.
@@ -116,7 +116,7 @@ _I agree with all of you to desire a fulfilling job is only true if you earn eno
 
 These ideas are not new.
 You can delve into empirical evidence and discussions in books written by business management professors, CEOs, and passionate agile advocates.
-Below a list of mind openers (available as Amazon ebooks):
+Below is a list of mind openers (available as Amazon ebooks):
 
 [horizontal]
 Reinventing organizations:: A guide to creating organizations inspired by the next stage of human consciousness by Frederic Laloux,
@@ -124,7 +124,7 @@ Accelerate:: Building strategy agility for a fast-moving world by John P. Kotter
 Beyond budgeting:: How managers can break free from the annual performance trap.
 The Leader’s Dilemma:: How to build an empowered and adaptive organization without losing control; both books by Jeremy Hope.
 Holacracy:: the new management system for a rapidly changing world by Brian J. Robertson,
-Deliver Happiness:: A path to profits, passion and purpose by Tony Hsieh.
+Deliver Happiness:: A path to profits, passion, and purpose by Tony Hsieh.
 The Lean Startup:: How today’s entrepreneurs use continuous innovation to create radically successful businesses by Eric Ries.
 Lean Novels::
 The Lean Manager::: A novel of lean transformation.

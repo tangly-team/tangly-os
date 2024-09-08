@@ -44,7 +44,7 @@ The plugin will detect the presence of a _module-info.java_ module declaration f
 The Gradle team has decided to introduce semantic support for the declaration of dependencies.
 
 All dependencies of a multi-module Java application are declared in a central file.
-The _libs.versions.toml_ file under the gradle subdirectory of the root build can contain all plugin and library dependencies.
+The _libs.versions.toml_ file under the Gradle subdirectory of the root build can contain all plugin and library dependencies.
 The declarations can be used in all subprojects.
 
 Support is provided to group a set of related dependencies and use the alias in the various Gradle modules.
@@ -54,15 +54,15 @@ Support is provided to group a set of related dependencies and use the alias in 
 Jetbrains has improved support of Gradle in their new releases of IntelliJ.
 The 2021 versions offer native support of Gradle.
 Native support means IntelliJ finally uses Gradle for compilation and unit testing inside the IDE.
-You just need to take care of one build configuration and no more need to delve in the mysteries of IntelliJ build process.
+You just need to take care of one build configuration and no more need to delve into the mysteries of the IntelliJ build process.
 
-The only glitch is that IntelliJ has its own concept of modules and are not synchronized with the Gradle modules.
+The only glitch is that IntelliJ has its own concept of modules and is not synchronized with the Gradle modules.
 You have to be careful to align both structures to avoid surprises.
 
 == Jacoco Aggregated Test Coverage Reports
 
-The support for coverage reports over multiple gradle subprojects is still limited.
-I use the following configuration to generate aggregated coverage report over all gradle modules.
+The support for coverage reports over multiple Gradle subprojects is still limited.
+I use the following configuration to generate an aggregated coverage report over all Gradle modules.
 
 [source,groovy]
 ----
@@ -117,8 +117,8 @@ tasks.withType(Test) {
 <2> Allows the selection of the Jacoco version.
 I found it useful when using the latest JDK version.
 JaCoCo developers have a slow release rhythm.
-<3> Configure JaCoCo to generate a html and an XML report.
-The binary report is no more supported by external tool.
+<3> Configure JaCoCo to generate an HTML and an XML report.
+External tools no longer support the binary report.
 <4> -
 <5> Configure JaCoCo test report to be generated after the running of a test task
 
@@ -129,7 +129,7 @@ Gradle has finally new plugins to better generate unit tests and test coverage r
 - test-report-aggregation
 - jacoco-report-aggregation
 
-The new approach to create aggregated reports is described in link:../../2022/multi-module-test-reporting-with-gradle-7.x/[Multi-module Test Reporting with Gradle 7].
+The new approach to creating aggregated reports is described in link:../../2022/multi-module-test-reporting-with-gradle-7.x/[Multi-module Test Reporting with Gradle 7].
 ====
 
 == Wishes

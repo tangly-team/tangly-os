@@ -87,14 +87,14 @@ Do not implement mutable enums, this will screw.
 All enum classes are immutable in the standard API.
 * java.math.BigInteger and java.math.BigDecimal,
 * java.io.File represents a file in a local or remote file system.
-A file may or may not exist, and has some methods modifying and querying the state of this external object.
+A file may or may not exist and has some methods modifying and querying the state of this external object.
 But the File object itself stays immutable.
 * java.util.Locale - representing a specific geographical, political, or cultural region,
 
 == Builder Pattern
 
 Immutable abstractions have often verbose and cumbersome constructors.
-You want to provide a more elegant approach to create instances of your immutable classes.
+You want to provide a more elegant approach to creating instances of your immutable classes.
 The builder pattern is ideal for creating immutable instances through legible and maintainable code.
 
 Writing builders is a tedious and repetitive activity.

@@ -20,7 +20,7 @@ An agile organization continuously removes impediments.
 It is one of her major activities.
 This activity is ongoing and can never be completed.
 
-Impediments resolution is {ref-kaizen} 改善, a key technique to lean, agile, and Scrum approaches.
+Impediment resolution is {ref-kaizen} 改善, a key technique to lean, agile, and Scrum approaches.
 The translation is _change for the better_.
 
 Often agile organizations forget to aggressively identify and resolve impediments.

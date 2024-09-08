@@ -26,8 +26,8 @@ Over the years, the deficiencies sting more and more
 
 The major drawbacks are:
 
-* Their editor is brittle, with limited functionality and unreliable.
-The generated HTML is not legible and does not support concepts such as micro fragments, meta information or simple functions such as source code highlighting.
+* Their editor is brittle, with limited functionality, and unreliable.
+The generated HTML is not legible and does not support concepts such as micro fragments, meta information, or simple functions such as source code highlighting.
 * The last quarter, they started to tinker with their editor and output format.
 My older posts are now a mess and can only be open in the HTML mode.
 If I switch to their WYSIWYG editor, the layout is destroyed and random fonts family and sizes are displayed.
@@ -51,7 +51,7 @@ The blog platform should support multiple years of publishing and referencing be
 Our projects and our collaborators put effort to regularly publish articles.
 . I shall be able to write technical articles and publish them on the same site.
 The articles are naturally written in {ref-asciidoc}.
-We want professional looking documentation to encourage new users to try our open source components.
+We want professional-looking documentation to encourage new users to try our open source components.
 . I shall publish the technical documentation of the open source components I develop on the same site.
 
 {ref-hugo} was selected as static site generator because its support for {ref-asciidoc} is tremendously improving.
@@ -59,7 +59,7 @@ We want professional looking documentation to encourage new users to try our ope
 Static website generators have strong advantages for technical savvy people:
 
 * Hosting is cheap.
-GitHub, GitLab or Bitbucket pages even host static websites for free.
+GitHub, GitLab, or Bitbucket pages even host static websites for free.
 * The source files go into {ref-git} for backup and history.
 * The source files are in plain text:
 ** Changes come in as a _Pull Request_ for proper review and CI pipeline validation.
@@ -133,7 +133,7 @@ Below the configuration of asciidoctor in the _config.toml_ file.
 You should not add it to the extensions because since {ref-asciidoctor} version 2.0 rouge is included.
 <2> Define the style used to highlight source code.
 <3> Configure rouge to generate all formatting data into the generated HTML file, avoiding any CSS file configuration.
-<4> Icons provide better looking icons for various {ref-asciidoc}} constructs.
+<4> Icons provide better-looking icons for various {ref-asciidoc}} constructs.
 <5> Define document attributes which are accessible to all processed documents (DRY concepts for the whole site).
 
 CAUTION

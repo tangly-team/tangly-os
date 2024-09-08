@@ -40,7 +40,7 @@ The findings are often clear and the measures are straightforward.
 The real work is to consistently implement the measures.
 
 I have the same personal challenge when trying to lose weight or improve my running form.
-The long term implementation is the crux.
+The long-term implementation is the crux.
 
 == Product Strategy Checks
 
@@ -62,10 +62,10 @@ Early and regular delivery of a product increment::
 You get feedback on the delivered and installed product increment.
 This goal is only achievable if your organization has implemented a delivery pipeline.
 Risk List::
-You have a documented risk lists with description of risks, probability of occurrence and cost per event, and mitigation measures,
+You have a documented risk list with description of risks, probability of occurrence and cost per event, and mitigation measures,
 Solution architecture::
 You have an emergent solution architecture with a prototype and support the team to refine the architecture proposal and to implement it in the solution.
-Do not forget an agile product needs an https://en.wikipedia.org/wiki/Agile_Architecture[agile architecture].
+Remember an agile product needs an https://en.wikipedia.org/wiki/Agile_Architecture[agile architecture].
 See also the {ref-less} approach for creating an https://less.works/less/technical-excellence/architecture-design.html[agile architecture].
 Non-functional requirements::
 You have identified your non-functional requirements and constraints and have fitness measures in place.

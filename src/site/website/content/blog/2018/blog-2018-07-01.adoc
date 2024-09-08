@@ -37,14 +37,14 @@ Short present tense imperative phrase, less than 50 characters, like a git commi
 Status::
 Proposed, accepted, rejected, deprecated, superseded
 Context::
-What is the issue that we're seeing that is motivating this decision or change?
+What is the issue that we are seeing that is motivating this decision or change?
 Decision::
-What is the change that we're actually proposing or doing?
+What is the change that we are actually proposing or doing?
 Consequences::
 What becomes easier or more challenging to do because of this change?
 
 I use {ref-asciidoc} format to write all our architecture design records.
-You can add to the same git repository as the product, visualize differences and if desired, generate a nice looking document.
+You can add to the same git repository as the product, visualize differences, and if desired, generate a nice-looking document.
 And my IDE IntelliJ IDEA has a nice plugin for this format.
 
 Before using ADR, I documented the decision changes as footnotes in a Microsoft Word document.
@@ -58,7 +58,7 @@ For example, "ADR 1: Deployment on Ruby on Rails 3.0.10" or "ADR 9: LDAP for Mul
 === Context
 
 This section describes the forces at play, including technological, political, social, and product local.
-These forces are probably in tension, and should be called out as such.
+These forces are probably in tension and should be called out as such.
 The language in this section is value-neutral.
 It is simply describing facts.
 
@@ -69,7 +69,7 @@ It is stated in full sentences, with active voice: _We will ..._
 
 === Status
 
-A decision may be "proposed" if the product stakeholders haven't agreed with it yet, or "accepted" once it is agreed.
+A decision may be "proposed" if the product stakeholders have not agreed with it yet or "accepted" once it is agreed.
 If a later ADR changes or reverses a decision, it may be marked as "deprecated" or "superseded" with a reference to its replacement(s).
 
 The status and the graph of related decisions can be tracked and visualized using tools.
@@ -78,7 +78,7 @@ And you can always write a small parse utility to extract your dependency graph.
 
 === Consequences
 
-This section describes the resulting context, after applying the decision.
+This section describes the resulting context after applying the decision.
 All consequences should be listed here, not just the "positive" ones.
 A particular decision may have positive, negative, and neutral consequences, but all of them will affect the team and product in the future.
 
@@ -92,7 +92,7 @@ Bullets are acceptable only for visual style, not as an excuse for writing sente
 [quote]
 ____
 The cost of undocumented decisions is hard to measure, but the effects usually include duplicated efforts.
-Other engineers try to solve the same problems or competing solutions (two third-party libraries that do the same thing).
+Other engineers try to solve the same problems or competing solutions with (two third-party libraries that do the same thing).
 ____
 
 The approach is very similar to how you would document a software pattern.
@@ -105,5 +105,5 @@ Regardless of what we discover, we understand and truly believe that everyone di
 ____
 
 Write down important decisions influencing your digital product and software design.
-Detailed choices are of tactical nature and do not need an explicit ADR.
+Detailed choices are of a tactical nature and do not need an explicit ADR.
 Finding a good abstraction level requires some experimentation.

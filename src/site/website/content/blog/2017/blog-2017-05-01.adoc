@@ -14,7 +14,7 @@ include::../fragments/_config-mb-blog.adoc[]
 image::2017-05-01-head.jpg[width=420,height=360,role=left]
 You have more agile coaches on the market than sand-corns on a regular beach.
 
-They all promise the holly grail of agile product development, highly productive teams and perfect applications for internal and external customers.
+They all promise the holly grail of agile product development, highly productive teams, and perfect applications for internal and external customers.
 
 Why should any sane customer hire us to deploy or perfect their agile approach?
 
@@ -30,14 +30,14 @@ They build your solution, it shall fulfill the user's requirements, be of high q
 * Coach the organization how to adapt, provide the ground to have the best collaborators and become most successful in the market.
 Use a https://en.wikipedia.org/wiki/Lean_startup[lean approach].
 
-In other words, you need technical coaching, team coaching and organization coaching.
+In other words, you need technical coaching, team coaching, and organization coaching.
 Avoid hiring management consultants with agile painting, coaches should understand software and product development.
 
 At the end of the day, your products shall improve.
 Your customers shall be delighted.
 How your highly qualified teams develop software shall become more effective and efficient.
 
-First come quality, effectiveness and only later efficiency.
+First come quality, effectiveness, and only later efficiency.
 Look at https://en.wikipedia.org/wiki/Lean_software_development[lean methods].
 First, we improve the quality-effectiveness for the customer, then the productivity and efficiency for the company.
 
@@ -88,7 +88,7 @@ It is common for a coach to take on the Scrum Master role.
 ** Learn, teach, coach through the stages of Shu Ha Ri (守破離).
 ** Empower the team to turn into the best of breed.
 Technical coaching::
-The coach works with (or on) a team on their actual codebase to improve technical practices and adopt agile development techniques such as simple design, refactoring, unit testing, test-driven development and acceptance test-driven development.
+The coach works with (or on) a team on their actual codebase to improve technical practices and adopt agile development techniques such as simple design, refactoring, unit testing, test-driven development, and acceptance test-driven development.
 ** Discovering _code/design smells_.
 Places where code/design could be improved.
 ** Explaining modern, _clean_ code that is simple and easier to change and maintain.
@@ -106,6 +106,6 @@ When advising others, I spend much of my time trying to connect practice with a 
 You truly need both.
 
 Wisely choose your coaches.
-Check they can coach at technical, team and organization level.
+Check they can coach at technical, team, and organization level.
 Senior coaches shall have a decade of experience.
 Good coaches practice https://en.wikipedia.org/wiki/Gemba[Gemba] and should restrain from drawing too many slides.

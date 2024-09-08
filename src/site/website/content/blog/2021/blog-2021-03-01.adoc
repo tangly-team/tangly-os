@@ -81,7 +81,7 @@ The _LambdaMetafactory_ class allows you to create a reference at runtime.
 The reflection operations can be replaced by lambda expressions.
 The code is more performant and has security issues.
 Text Blocks::
-We can finally write legible multi-lines strings.
+We can finally write legible multi-line strings.
 
 == Cumbersome Aspects
 

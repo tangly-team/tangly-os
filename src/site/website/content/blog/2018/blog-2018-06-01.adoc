@@ -22,11 +22,11 @@ But tools can only measure _non-quality_.
 
 They tell you when you are doing it wrong, only your heart can tell you when you are doing it right.
 
-But first that does it mean to have a quality software product?
+But first, what does it mean to have a quality software product?
 
 [quote]
 ____
-A high-quality software product has no catastrophic failures, and seldom bad behavior.
+A high-quality software product has no catastrophic failures and seldom bad behavior.
 
 It is maintainable and extendable with new technologies and new features.
 ____
@@ -38,7 +38,7 @@ Criteria such as test code coverage, static analyzers, coding guidelines are jus
 They help your team produce higher quality and nothing else.
 
 I encounter organizations stating that zero defects as measured with SonarQube is the ultimate goal.
-And they find normal to have thousands of smells.
+And they find it normal to have thousands of smells.
 Time for a reality check.
 
 Tools such as SonarQube, unit test coverage are just instruments to support your teams to detect _known non-quality_.
@@ -51,7 +51,7 @@ I encourage you to extend your practices with additional procedures based on you
 
 === Extrinsic Quality - Product Quality
 
-_Is why you buy a specific car_
+_Ig is why you buy a specific car_.
 
 * Acceptance criteria and behavior test-driven development ATDD – You ensure through automatic tests that the feature behaves how your customer requested.
 * Defect driven development – You ensure through automatic tests your customer will never encounter this exact error again.
@@ -61,17 +61,17 @@ By fast, we mean daily or perhaps weekly.
 
 === Intrinsic Quality – Technical Quality
 
-_Is why you can daily drive your car and not have to weekly repair it.
+_It is why you can daily drive your car and not have to weekly repair it.
 And, later be able to add a charger for your mobile phone without spending a fortune._
 
 * Static code analysis - Known weaknesses are removed from your source code.
-* Test driven development TDD – You can change the code without changing the behavior or outputs, see also ATDD.
+* Test-driven development TDD – You can change the code without changing the behavior or outputs, see also ATDD.
 * Clean code – You guarantee the source code is maintainable cite:[clean-code,clean-coder].
 * Clean architecture and domain driven development - You guarantee the product is extendable cite:[clean-architecture,domain-driven-design,implementing-domain-driven-design].
 
 == Accountability
 
-The Scrum Team - Development Team, Product Owner and Scrum Master - are responsible and accountable for the intrinsic and extrinsic quality of the delivered products cite:[clean-agile,succeeding-with-agile].
+The Scrum Team - Development Team, Product Owner, and Scrum Master - are responsible and accountable for the intrinsic and extrinsic quality of the delivered products cite:[clean-agile,succeeding-with-agile].
 Insufficient quality is always a collective failure.
 
 Truly, if the intrinsic quality of the source code is low, it is undeniably a failure.
@@ -85,7 +85,7 @@ So please be a professional and read again the principles of the http://agileman
 
 [quote,Agile Manifesto]
 ____
-Continuous attention to technical excellence and good design enhances agility.
+Continuous attention to technical excellence and good design enhance agility.
 ____
 
 Developers please read the seminal book _Clean Coder_ from Robert Martin cite:[clean-coder].
@@ -105,13 +105,13 @@ The first steps to improve your product are quite simple are around for at least
 * Activate the checkers of the IDE you are working with.
 For example, I am using IntelliJ IDEA.
 They have extensive checkers.
-* If using {ref-sonarcube}, download link:../../2018/blog-2018-05-01]SonarLint plugin and simply use it.
-This tool is best of breed, do not argument and just use it.
+* If using {ref-sonarcube}, download link:../../2018/blog-2018-05-01]SonarLint plugin and use it.
+This tool is the best of breed, do not argument and use it.
 * Write tests with JUnit5, Mockito, AssertJ, Cucumber.
 
 I am _ashamed_ to see software developers not implementing the above measures on a daily basis.
 I _despair_ of encountering Scrum masters who tolerate the situation.
-These techniques cost nothing, _are installed in a few minutes and support incremental improvement of your source code_.
+These techniques cost nothing, _are installed in a few minutes, and support incremental improvement of your source code_.
 See also
 https://www.leadingagile.com/2018/09/software-developers-dont-need-permission-or-forgiveness/[Why software developers do not need to ask for permission or forgiveness].
 
@@ -123,7 +123,7 @@ And if you do not agree with one of the warnings, just disable the rule and docu
 
 Agile and Scrum are all about learning and continuous improvement.
 Please stop talking about quality.
-Just start improving it!
+Start improving it!
 I do not want to hear any lame excuses why a software developer is not continuously doing the above activities.
 
 _I acknowledge I am emotionally involved and not fully objective.

@@ -50,7 +50,7 @@ You should read the recommended books to have a greater probability to pass the 
 Certified Scrum Professional Scrum Developer::
 Pinnacle course for experts wishing to master the Scrum developer track. +
 _The third level requires more training, experience, and reading books.
-You often must participate to workshops before being allowed to graduate.
+You often must participate in workshops before being allowed to graduate.
 Each certification organization has her own rules and conditions._ +
 The goals are: +
 . Enabling a Culture of Technical Excellence
@@ -101,7 +101,7 @@ The _Scrum Developer_ learning objective examples for the first level are:
 
 . _Lean, Agile, and Scrum_
 .. This should include creating a sprint goal, selecting product backlog items (PBIs) with a value orientation in mind and decomposing PBIs into smaller work items.
-.. This emphasizes the collaboration between the members of the Scrum team, especially product owner and developers, for understanding the items and turning them into a valuable stepping stone toward the product goal.
+.. This emphasizes the collaboration between the members of the Scrum team, especially product owners and developers, for understanding the items and turning them into a valuable stepping stone toward the product goal.
 .. Methods to organize the daily Scrum could be: original three questions, walk the wall, collaborative daily Scrum.
 .. Description, order, size, domain-specific attributes.
 .. This could include asking for clarification, adding acceptance criteria, sizing or estimating items, breaking them down into smaller items.
@@ -110,14 +110,14 @@ There could be other elements, too.
 The point of this LO is to raise the awareness of done, especially _done for whom?_.
 . _Collaboration & Team Dynamics_
 .. This could include stable membership, reaching a shared goal by working together, self-management.
-.. Example definition of team: small number of people with complementary skills, committed to a common purpose, performance goal and approach, for which they are mutually accountable.Example: T-shaped skill profile.
+.. Example definition of a team: small number of people with complementary skills, committed to a common purpose, performance goal, and approach, for which they are mutually accountable.Example: T-shaped skill profile.
 .. Pair programming, pair designing, pair working in general.
 Creating something – code or non-technical – in a Scrum simulation.
-.. Shorter feedback loops, less work-in-progress, less mis-interpretation of needs, direct feedback of the working solution, actually trying the built product
+.. Shorter feedback loops, less work-in-progress, less misinterpretation of needs, direct feedback of the working solution, actually trying the built product
 .. During https://scrumguides.org/scrum-guide.html#sprint-review[sprint review] while obtaining feedback regarding the latest increment, during sprint review while identifying what kind of changes to the product backlog are a helpful response to changing circumstances, during product backlog refinement, during a story mapping workshop, observing users using the product, interview users how they currently solve their problem, _friendly users_ actively using the new product and giving feedback, invite the sprint review
 . _Architecture and Design_
 .. Foster understanding of the work, improve shared ownership and responsibility, improve estimability and reliability, reduce defects, avoid accumulation of technical debt
-.. This could include test first, quick design sessions, using spikes to understand a new technology, constant refactoring, metaphor, conversational modelling, CRC cards, pair programming.
+.. This could include test first, quick design sessions, using spikes to understand a new technology, constant refactoring, metaphor, conversational modeling, CRC cards, pair programming.
 .. Reversibility, https://en.wikipedia.org/wiki/KISS_principle[KISS]; https://en.wikipedia.org/wiki/Don%27t_repeat_yourself[DRY];
 https://en.wikipedia.org/wiki/You_aren%27t_gonna_need_it[YAGNI]; decide at the last responsible moment; responsive, resilient, elastic, message-driven (Reactive Manifesto),
 https://en.wikipedia.org/wiki/SOLID[SOLID].
@@ -131,7 +131,7 @@ Benefits include simplicity, avoidance of bloating, defect reduction, built-in r
 .. Differences include frequency, inclusion in the development process, being tied to specification versus being tied to code, amount of automation, responsibility, timing.
 .. Point out that it is important to have the simplest possible solution that passes the test in the first place to ensure the test is working, and refactor it to a sensible design that can be verified immediately, refer to the Broken Window metaphor, foster collective stewardship.
 .. Testers are Scrum team members, aka developers, include testing in the sizing discussion, collaborate on PBI refinement and acceptance criteria definition, pair up doing TDD
-to embed good tests from the beginning, include considerations of load, exploratory, and other testing approaches, contribute to definition of done.
+to embed good tests from the beginning, include considerations of load, exploratory, and other testing approaches, contribute to the definition of done.
 . _Integrating Continuously_
 .. CI is the practice of reducing the feedback time between code creation and integration.
 It can be supported using technical means.
@@ -139,29 +139,29 @@ CI changes habits and behaviors, creates awareness about shared responsibility.
 It is the base for frequent deliveries, reduces defects, reduces risk from late discovery of integration issues.
 ... Example 1: The increment is necessarily integrated.
 Using CI is highly recommendable for getting to at least one increment per sprint or more.
-... Example 2: The daily Scrum can provide better transparency about progress if there is a better measure for progress.
+... Example 2: The daily Scrum can provide better transparency about progress if there is a better measure of progress.
 CI helps to get this transparency about what is working and what isn’t.
 Without CI, the Scrum team might probably not know the actual status of the system for days.
 ... Example 3: In the sprint review, only done PBIs are inspected.
 CI improves the probability of having done PBIs at the end of the https://scrumguides.org/scrum-guide.html#the-sprint[sprint].
-.. Automation tools reduce manual repetition, single repository acts as document of record, configuration as code for repeatable error-free process and support continuous delivery
+.. Automation tools reduce manual repetition, single repository acts as document of record, configuration as code for repeatable error-free process, and support continuous delivery
 
 You can self-study the Scrum developer objectives <<scrum-developer-learning-objectives>> and <<scrum-developer-advanced-learning-objectives>>.
 Examples for the objectives are provided in <<scrum-developer-learning-objectives-examples>> and <<scrum-developer-advanced-learning-objectives-examples>>.
 
 I published a list of seminal works for interested Scrum developers under link:{ref-tangly-blog-url}/ideas/learnings/books/[Books].
 
-== Agile Software Development Trainings
+== Agile Software Development Training
 
-An interesting development is the addition of tailored trainings emphasizing agile approaches.
-The biggest organization https://www.pmi.org[PMI] has a whole agile based on https://www.pmi.org/certifications/agile-certifications[Disciplined Agile
-Design] _DAD_.
+An interesting development is the addition of tailored training emphasizing agile approaches.
+The biggest organization is https://www.pmi.org[PMI].
+The agile certifications are based on https://www.pmi.org/certifications/agile-certifications[Disciplined AgileDesign] _DAD_.
 
 I expect the emphasis on agile approaches to significantly increase in the next years.
 
-== University Formal Trainings
+== University Formal Training
 
-Technical universities in Switzerland provide formal training in project leadership, project management and related fields.
+Technical universities in Switzerland provide formal training in project leadership, project management, and related fields.
 The formation provides a certificate of advanced study CAS in the field.
 Current available certificates of advanced study offering are for example:
 

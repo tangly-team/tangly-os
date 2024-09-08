@@ -18,7 +18,7 @@ Congratulations, working as a professional https://scrumguides.org/scrum-guide.h
 
 You should attend professional training.
 
-Being a product owner and requirements engineer is a profession, not a hobby!
+Being a product owner and requirement engineer is a profession, not a hobby!
 
 Formal training is often the difference between being a professional instead of just pretending to be one.
 
@@ -34,7 +34,7 @@ The https://scrumguides.org/scrum-guide.html#product-owner[Product Owner] is als
 * Developing and explicitly communicating the *Product Goal*;
 * Creating and clearly communicating *Product Backlog* items;
 * Ordering *Product Backlog Items*; and,
-* Ensuring that the *Product Backlog* is transparent, visible and understood.
+* Ensuring that the *Product Backlog* is transparent, visible, and understood.
 
 The Product Owner may do the above work or may delegate the responsibility to others.
 Regardless, the Product Owner remains accountable.
@@ -47,7 +47,7 @@ The Product Owner may represent the needs of many stakeholders in the *Product B
 Those wanting to change the Product Backlog can do so by trying to convince the Product Owner.
 
 How can you become a better product owner?
-The first steps to become a great product owner are described in this article.
+The first steps to becoming a great product owner are described in this article.
 
 == Certifications
 
@@ -99,11 +99,11 @@ The _Product Owner_ learning objectives for the first level are:
 .. describe at least one approach to validate product assumptions by their cost and quality of learning
 . _Working with the https://scrumguides.org/scrum-guide.html#product-backlog[Product Backlog]_
 .. describe the relationship between outcome and output
-.. describe at least three attributes of a https://scrumguides.org/scrum-guide.html#product-backlog[Product Backlog] item that help assess maximizing outcome
+.. describe at least three attributes of a https://scrumguides.org/scrum-guide.html#product-backlog[Product Backlog] item that help assess the maximizing outcome
 .. define value and list at least two techniques to measure value.
 .. describe value from the perspective of at least three different stakeholder groups.
 .. list at least three terms related to product economics
-.. create at least one https://scrumguides.org/scrum-guide.html#product-backlog[Product Backlog] item that includes description of desired outcome and value.
+.. create at least one https://scrumguides.org/scrum-guide.html#product-backlog[Product Backlog] item that includes a description of the desired outcome and value.
 .. describe at least one approach to https://scrumguides.org/scrum-guide.html#product-backlog[Product Backlog] Refinement.
 .. describe at least three criteria for ordering the https://scrumguides.org/scrum-guide.html#product-backlog[Product Backlog].
 
@@ -116,7 +116,7 @@ https://www.scrum.org/resources/suggested-reading-professional-scrum-product-own
 
 I published a list of seminal works for interested product owners under link:{ref-tangly-blog-url}/ideas/learnings/books/#_product_owner[Books].
 
-== Requirement Engineering Trainings
+== Requirement Engineering Training
 
 The most relevant organization is Europe is the {ref-ireb} _IREB_.
 Professional requirements engineers should be IREB certified.
@@ -132,7 +132,7 @@ The organization offers two certifications for _Certified Professional Requireme
 * https://www.ireb.org/en/exams/re-agile/[RE@Agile Primer] - Bridging the gap between RE and Agile
 * https://www.ireb.org/en/exams/advanced/[Advanced Level RE@Agile] - is part of the advanced CPRE AL
 
-== University Formal Trainings
+== University Formal Training
 
 Technical universities in Switzerland provide formal training in requirements engineering and related fields <<agile-requirements>>.
 The formation provides a certificate of advanced study CAS in the field.

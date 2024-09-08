@@ -91,7 +91,7 @@ It is very unprofessional to have equality problems or boolean condition errors 
 === Test Driven Development - TDD
 
 You are serious about development quality code.
-So you are working with the test driven approach TDD and need to write unit tests.
+So you are working with the test-driven approach TDD and need to write unit tests.
 Each time you write some code, you go through the loop "red - green - refactor - commit".
 
 Junit 5::
@@ -165,7 +165,7 @@ To deploy various integration environments
 == Design Quality
 
 Important decisions and overall structure shall be documented for new team members.
-Architecture Decision Record: A lightweight approach to document architecture decisions using Markdown documents and traceability through the decision history.
+Architecture Decision Record: A lightweight approach to documenting architecture decisions using Markdown documents and traceability through the decision history.
 UML: Sometimes I would like to draw some UML diagrams to explain a design solution.
 I am currently using a textual tool to define such diagrams.
 
@@ -174,7 +174,7 @@ I am currently using a textual tool to define such diagrams.
 Analog Board::
 Nothing beats a big analog board in the team room as the ideal information radiator.
 If you want your collocated to work effectively and solve problems as a team, you shall provide an analog board.
-Trello, Stride, BitBucket, Hipchat and other Atlassian tools for distributed teams::
+Trello, Stride, BitBucket, Hipchat, and other Atlassian tools for distributed teams::
 The first advice is to have a collocated team.
 The productivity and performance gains are unachievable in a distributed environment.
 We have splendid experience with Atlassian and Google App solutions to mitigate the drawback of distributed teams and establish a team work atmosphere.

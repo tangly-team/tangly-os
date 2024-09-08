@@ -51,7 +51,7 @@ Companies seem less reluctant to introduce agile approaches.
 Major opponents, such as senior managers or internal and external customers, more and more acknowledge the success of agile approaches.
 The two first identified hurdles still reflect the difficulty of changes at company level.
 They are also the main reasons why a Scrum introduction fails in Swiss companies for my experience.
-Too often, companies revert to some Waterfall/Hermes process or worst to a so-called internal adhoc method.
+Too often, companies revert to some Waterfall/Hermes process or worse to a so-called internal adhoc method.
 
 We wrote in previous blogs that introducing Scrum in the development department or in the whole company is a
 http://en.wikipedia.org/wiki/Change_management[change process].
@@ -84,8 +84,8 @@ As an excerpt, I gave you the four major identified failure reasons.
 . Changes during the product (62% Computer, 48% Experteer) _Agile and Scrum welcome changes in the product.
 It is one of the four mantras of the Agile Manifesto.
 All agile processes are optimized to support changes._
-. Unclear product definition forms the business stakeholders (50% Computer, 43% Experteer) _Scrum requests a clearly stated vision, roadmap and story map of the product._ _The Scrum board is a radiator to communicate the product vision, goals, and motivations to all interested parties._
+. Unclear product definition forms the business stakeholders (50% Computer, 43% Experteer) _Scrum requests a clearly stated vision, roadmap, and story map of the product._ _The Scrum board is a radiator to communicate the product vision, goals, and motivations to all interested parties._
 . Insufficient product management and controlling (40 % of Computer, 4847 Experteer) _Scrum team, product owner, and Scrum master have clear responsibilities for product management._ _At the end of each sprint, we have an objective and explicit control point._
-. Insufficient communication between involved persons (36% Computer, 45% Experteer) _Scrum framework enforces clear, transparent and regular communication within the team and with all stakeholders._
+. Insufficient communication between involved persons (36% Computer, 45% Experteer) _Scrum framework enforces clear, transparent, and regular communication within the team and with all stakeholders._
 
 In one sentence, be agile, use {ref-scrum} and {ref-xp} and the major four above problems are handled in a professional and consistent way.

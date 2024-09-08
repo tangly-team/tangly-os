@@ -39,7 +39,7 @@ Organizations are implicitly optimized to avoid changing the status quo of middl
 The corollaries are:
 
 . Any change initiative will be reduced to redefining or overloading the new terminology to mean basically the same as status quo.
-. Any change initiative will be derided as _purist_, _theoretical_, _revolutionary_, _religion_ and _needing pragmatic customization for local concerns_.
+. Any change initiative will be derided as _purist_, _theoretical_, _revolutionary_, _religion,_ and _needing pragmatic customization for local concerns_.
 It deflects from addressing weaknesses, and manager or specialist status quo.
 . If after changing the change, some managers and single-specialists are still displaced, they become _coaches or trainers_ for the change.
 They frequently reinforce (1) and (2).

@@ -54,7 +54,7 @@ The technologies used in the application are no longer current, having been repl
 Also, software complexity increases as it evolves over time as you add new requirements.
 
 The key to managing the lifecycle of software is to continuously work as a professional and skilled developer.
-A professional engineer https://martinfowler.com/bliki/OpportunisticRefactoring.html[opportunistically refactor] each time she modifies source code.
+A professional engineer https://martinfowler.com/bliki/OpportunisticRefactoring.html[opportunistically refactors] each time she modifies source code.
 
 == Understand Your Product
 
@@ -104,11 +104,11 @@ Beware of good practices how to write good software products and successfully re
 
 * Move to https://en.wikipedia.org/wiki/Domain-driven_design[Domain-Driven Design] as an architecture approach.
 It works either for micro architecture or for modular monolith approaches.
-* Master long live domain driven design and event storming
+* Master long live domain-driven design and event storming
 * Master your technical stack and use current tools and libraries.
 * Modularize one big service extraction one after the other Avoid using dead architectural techniques.
 TOGAF, UML, PMI, CMMI are obsolete - various activities they recommend are good, do them in your sprints.
-Avoid a lengthy, slow and expensive review approach.
+Avoid a lengthy, slow, and expensive review approach.
 * https://en.wikipedia.org/wiki/Architecture_tradeoff_analysis_method[ATAM] is dead The quality tree technique is wonderful, use fitness functions to implement your quality tree.
 
 [NOTE]

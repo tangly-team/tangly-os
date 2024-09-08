@@ -21,7 +21,7 @@ This special certification has a cool logo with the remainder of the Java 25-yea
 
 Oracle offers this certification for only 25 dollars footnote:[The regular price is around 250 dollars.] and provides free access to their learning platform.
 
-The offer and logo availability are time limited.
+The offer and logo availability are time-limited.
 --
 
 The free learning subscription includes:
@@ -38,27 +38,27 @@ The official goals of the certification cover:
 
 Working with Java data types::
 - Use primitives and wrapper classes.
-This includes operators, parentheses, type promotion and casting.
+This includes operators, parentheses, type promotion, and casting.
 - Handle text using String and StringBuilder classes.
 - Use local variable type inference, including lambda parameters.
 Controlling Program Flow::
 - Create and use loops, if/else, and switch statements.
 Java Object-Oriented Approach::
-- Declare and instantiate Java objects including nested class objects.
-Explain the lifecycle of an object (including creation, dereferencing by a reassignment and garbage collection).
+- Declare and instantiate Java objects, including nested class objects.
+Explain the lifecycle of an object (including creation, dereferencing by a reassignment, and garbage collection).
 - Define and use fields and methods, including instance, static and overloaded methods.
 - Initialize objects and their members using instance and static initializer statements and constructors.
-- Understand variable scopes, apply encapsulation and make objects immutable.
+- Understand variable scopes, apply encapsulation, and make objects immutable.
 - Create and use subclasses and superclasses, including abstract classes.
 - Utilize polymorphism and casting to call methods, differentiate an object type versus a reference type.
-- Create and use interfaces, identify functional interfaces, and utilize private, static and default methods.
+- Create and use interfaces, identify functional interfaces, and utilize private, static, and default methods.
 - Create and use enumerations.
 Exception Handling::
 - Handle exceptions using try/catch/finally clauses, try-with-resource, and multi-catch statements.
 - Create and use custom exceptions.
 Working with Arrays and Collections::
 - Use generics, including wildcards.
-- Use a Java array and List, Set, Map and Deque collections, including convenience methods.
+- Use a Java array and List, Set, Map, and Deque collections, including convenience methods.
 - Sort collections and arrays using Comparator and Comparable interfaces.
 Working with Streams and Lambda expressions::
 - Implement functional interfaces using lambda expressions, including interfaces from the java.util.function package.
@@ -68,7 +68,7 @@ Java Platform Module System::
 - Deploy and execute modular applications, including automatic modules.
 - Declare, use, and expose modules, including the use of services.
 Concurrency::
-- Create worker threads using Runnable and Callable, and manage concurrency using an ExecutorService and java.util.concurrent API.
+- Create worker threads using Runnable and Callable and manage concurrency using an ExecutorService and java.util.concurrent API.
 - Develop thread-safe code, using different locking mechanisms and java.util.concurrent API.
 Java I/O API::
 - Read from and write to the console and file data using I/O Streams.
@@ -82,7 +82,7 @@ Database Applications with JDBC::
 Localization::
 - Implement localization using Locale class, resource bundles, and Java APIs to parse and format messages, dates, and numbers.
 Annotations::
-- Create, apply and process annotations.
+- Create, apply, and process annotations.
 
 == E-learning Platform
 
@@ -107,9 +107,9 @@ I found all needed the information, and the practice questions were a good drill
 The material is terse to read.
 This should be expected from such material but makes concentration more challenging.
 
-Invest time for lambdas, streams, annotations and the module system.
+Invest time for lambdas, streams, annotations, and the module system.
 I was surprised how many questions about these themes I needed to answer during the examination.
-The questions sometimes asked details you are not aware when writing regular Java code in regular products
+The questions sometimes asked details you are not aware of when writing regular Java code in regular products
 footnote:[Regular developers seldom define their own annotations.
 I need to know the details of how to declare annotations to answer examination questions.].
 
@@ -117,7 +117,7 @@ I need to know the details of how to declare annotations to answer examination q
 
 Udemy provides https://www.udemy.com/course/java-se-11-certification-exam-1z0-819-practice-tests/[practice tests].
 The set contains 250 questions and costs between 15 and 90 dollars.
-Just look for rebates.
+Look for rebates.
 
 You can find a set of links to https://blogs.oracle.com/oracleuniversity/post/test-your-java-knowledge-with-free-sample-questions[free sample questions] in an Oracle blog.
 
@@ -158,7 +158,7 @@ Writing down ideas or which options are plausible as an answer helps me a lot.
 The rules I use are:
 
 Manage and track time::
-- The examination is time limited.
+- The examination is time-limited.
 - You need to steadily progress and answer the questions in 90 minutes.
 - The number of questions is 50.
 You have *less* than 2 minutes for each question.
@@ -170,4 +170,4 @@ Answer all questions::
 - No penalty exists if you answer a question wrong.
 - The passing rate for the examination is 68%.
 
-I hope you interesting learning and successful certification.
+I hope you are interested in learning and successful certification.

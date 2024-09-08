@@ -26,7 +26,7 @@ Seminal books cite:[accelerate,devops-handbook,phoenix-project,site-reliability-
 
 The DevOps approach belongs to the regular instruments of professional software developers.
 Major development platforms, {ref-github}, {ref-gitlab}, {ref-bitbucket}
-and https://azure.microsoft.com/en-us/services/devops/[Microsoft Azure DevOps] do support continuous integration, delivery and deployments for years.
+and https://azure.microsoft.com/en-us/services/devops/[Microsoft Azure DevOps] do support continuous integration, delivery, and deployments for years.
 
 The DORA metrics define a standard approach to measure the quality and efficiency of a DevOps or agile process implementation in an organization.
 They were published in 2016.
@@ -35,7 +35,7 @@ The metrics for stability are _mean time to recover_ and _change failure rate_.
 
 They define a standard approach to measure the quality and efficiency of a DevOps or agile process implementation in an organization.
 An agile team shall be able to deploy a version of their digital platform multiple times per day.
-Frequent and economical deployments require the full automation of the integration, delivery and deployment steps.
+Frequent and economical deployments require the full automation of the integration, delivery, and deployment steps.
 
 Below, we provide a detailed possible approach to deploying DevOps concepts in your organization.
 These recipes are helpful for companies with little knowledge and experience in agile and DevOps approaches for digital product development <<detecting-agile-bullshit>>.
@@ -44,7 +44,7 @@ These recipes are helpful for companies with little knowledge and experience in 
 
 In software engineering, continuous integration _CI_ is the practice of merging all developers' working copies to a shared mainline *several times* a day
 footnote:[https://en.wikipedia.org/wiki/Grady_Booch[Grady Booch] first proposed the term Continuous Integration _CI_ in 1991.
-Analyze your git logs and find out if your developers are truly merging working copies to a shared mainlines several times a day.
+Analyze your git logs and find out if your developers are truly merging working copies to a shared mainline several times a day.
 Laggard programmers use git as a backup tool and not as a collaborative development platform.].
 
 The workflow is:
@@ -54,7 +54,7 @@ _No manual activities shall be required to compile the solution and run all test
 . Commit, push, and compile code in the continuous integration environment. +
 _A continuous integration pipeline shall be available._
 _The environment is a clean new one each time the pipeline is triggered._
-. Run static code analyzers, unit tests and integration in this integration environment.
+. Run static code analyzers, unit tests, and integration in this integration environment.
 . _Optionally, trigger continuous delivery if the earlier steps were successful_.
 
 Classical questions and answers _FAQ_ are:
@@ -66,7 +66,7 @@ Professional developers push multiple times a day <<code-as-crime-scene>>.
 What steps are part of a continuous integration script?::
 The script shall at least compile the solution.
 Static code checkers shall be called to validate the changes and ensure minimal code quality. +
-Modern checkers detect syntactic, semantic or security violations.
+Modern checkers detect syntactic, semantic, or security violations.
 OWASP rules are readily available to start implementing DevSecOps.
 Unit tests and if reasonable integration tests shall be executed automatically to verify the changes.
 When should the continuous integration script be executed?::
@@ -100,7 +100,7 @@ Migration and configuration scripts are part of the delivery.
 The installation process shall perform an unattended migration of the configuration and databases.
 *Manual steps are not allowed*.
 When is a new delivery package created?::
-Upon completion of compilation, static verification, unit tests and integration tests, you should create the delivery package.
+Upon completion of compilation, static verification, unit tests, and integration tests, you should create the delivery package.
 Which preferred format should you use?::
 For complex solutions, the preferred format is a https://www.docker.com/[docker] image or a https://kubernetes.io/[kubernetes] pod.
 How do you identify a specific version of a package?::
@@ -143,7 +143,7 @@ The software architecture document of your solution should document how and what
 Mapped diagnostic contexts are used to track session and user related actions and log records
 footnote:[odoo.sh provides logging support for a deployed solution.
 Corporate governance often requires that the log files be archived in a separate location.
-These files are needed when a forensic analysis of a security situation shall be investigated.]
+These files are required when a forensic analysis of a security situation shall be investigated.]
 footnote:[odoo has an audit module supporting auditing of critical actions initiated through user interactions or external systems.
 The audit module is somewhat primitive.
 The audit configuration is performed at the database level and not at the functional level.
@@ -168,14 +168,14 @@ Modern software development departments use these platforms for collaboration an
 
 image::2022-12-01-ci-vs-cd.png[width=90%,height=360,role=text-center]
 
-As stated on GitHub website, we have the following definitions.
+As stated on the GitHub website, we have the following definitions.
 
 *Automation* is a core principle for achieving DevOps success and CI/CD is a critical component.
 CI/CD consists of continuous integration and continuous delivery or continuous deployment.
 Put together, they form a _CI/CD/CD pipeline_.
 *Automated* workflows that help DevOps teams cut down on manual tasks:
 
-- Continuous integration (CI) automatically builds, tests and integrates code changes within a shared repository.
+- Continuous integration (CI) automatically builds, tests, and integrates code changes within a shared repository.
 - Continuous delivery (CD) automatically delivers code changes to production-ready environments for a final approval.
 - Continuous deployment (CD) automatically deploys code changes to customers directly.
 
@@ -203,7 +203,7 @@ GitHub provides initial support for Security, DevOps, and agile approaches.
 We shall evaluate these tools and, if relevant, use them as standard tooling for our Odoo software tailoring and development.
 
 The CI tools of GitHub are ideal to implement DevSecOps approaches on odoo modules and internal Python application development.
-The Sonar scanners verify for example compliance to OWASP vulnerabilities.
+The Sonar scanners verify, for example, compliance to OWASP vulnerabilities.
 This verification step can be executed on a repository update to remove vulnerabilities in deployed oddo instances.
 ====
 
@@ -243,7 +243,7 @@ This is the best practice for a better scalability of your developments as you u
 Therefore, you have traceability for your changes.*
 _This approach is compatible with clean code and DevOps_.
 - Pass them manually from your staging to your production database, by copying and pasting them.
-_This approach is probably a motive to fire the developer because traceability, auditability and reproducibility are not enforced_.
+_This approach is probably a motive to fire the developer because traceability, auditability, and reproducibility are not enforced_.
 _Regular corporate governance rules are neglected and could have legal consequences in case of incidents on the production server._
 
 When you want to test the changes of your development branches with the production data, you can either:
@@ -261,9 +261,9 @@ The above process is documented for Odoo version 15 under the https://www.odoo.c
 Beware that the odoo.sh environment does not hinder amateur developers from doing foolish things with git.
 
 The quote below is from the official website of https://www.odoo.sh/[Odoo.sh].
-The statement violates all the rules of clean code, DevOps and professional software development.
+The statement violates all the rules of clean code, DevOps, and professional software development.
 
-I wishfully hope Odoo organization will mature and remove these misleading statements.
+I wishfully hope the Odoo organization will mature and remove these misleading statements.
 
 [quote,odoo.sh,2022]
 ____
@@ -277,7 +277,7 @@ On the bright side, odoo.sh supports and advocates the following clean code comp
 
 . Source code is developed and tested in the development branch.
 Good practice is to write unit tests and have demonstration data.
-Each time you push changes, a clean instance is created, the demonstration data loaded and all unit tests are executed. +
+Each time you push changes, a clean instance is created, the demonstration data is loaded, and all unit tests are executed. +
 _odoo.sh good practices implement TDD, ATDD, and quality gates as expected from a professional approach_.
 . Once you are successful, you merge your development branch to the staging branch.
 The environment will automatically provide a copy of the production database in the staging area.
@@ -304,7 +304,7 @@ footnote:[If you write, for example, an SQL database schema migration script, yo
 For example, if the script expects the existence of a value or an identifier in the database, it should test this integrity rule and abort if an error happens.
 The goal is to avoid inconsistent states after an update or a migration.
 
-The new good practice is finally compatible with clean code, infrastructure as code and DevOps.
+The new good practice is finally compatible with clean code, infrastructure as code, and DevOps.
 This approach is promoted in the official odoo.sh documentation.
 footnote:[Manual editions through copy and paste are a violation of sound engineering development practices.
 You lose reproducibility, versioning of a single source for truth, and auditability.
@@ -325,7 +325,7 @@ Your experts shall apply most or all the approaches documented in the two column
 image::2022-12-01-devops-cloud-graph.png[width=780,height=360,role=text-center]
 
 A professional organization shall have a continuous formation and training path for all collaborators.
-I currently often have to answer basic questions about DevOps, clean code or Scrum.
+I currently often have to answer basic questions about DevOps, clean code, or Scrum.
 Quite a few developers do not know basic definitions or how to use Git or GitHub.
 It is time to read the documentation.
 
@@ -345,9 +345,9 @@ Most developers are versed in how to use the provided features.
 
 If your company is missing experienced DevOps and agile professionals, it is time to improve your recruitment process <<detecting-agile-bullshit>>.
 
-All development platforms have extensive support for continuous integration, delivery and deployment.
+All development platforms have extensive support for continuous integration, delivery, and deployment.
 DevOps approaches are well-supported.
-Often, advanced concepts such as monitoring, DevSecOps or license management are supported.
+Often, advanced concepts such as monitoring, DevSecOps, or license management are supported.
 Extensive tutorials and good practices are available.
 
 Use the provided tools and approaches to professionally develop and operate your digital platforms.

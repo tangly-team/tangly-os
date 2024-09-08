@@ -55,7 +55,7 @@ It is time to rethink your structure and move decision power to the teams, near 
 Controlling not tailored to agile approaches::
 It is difficult to be slightly agile.
 The same can be said about lean.
-Either you are lean, agile or you are not.
+Either you are lean, agile, or you are not.
 Try {ref-bbrt},
 Overall processes are not tailored to agile::
 Once you change your structure and hierarchy, the processes will evolve.

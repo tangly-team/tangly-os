@@ -37,7 +37,7 @@ There is a proposal on improving it by adding user configurations, so at least t
 ====
 
 The features of {ref-asciidoc} are equivalent to https://en.wikipedia.org/wiki/DocBook[DocBook].
-The readers with grey hair probably remember https://en.wikipedia.org/wiki/Standard_Generalized_Markup_Language[SGML], the ancestor of DocBook.
+The readers with gray hair probably remember https://en.wikipedia.org/wiki/Standard_Generalized_Markup_Language[SGML], the ancestor of DocBook.
 The librarians could remember https://en.wikipedia.org/wiki/LaTeX[LaTeX] created by https://en.wikipedia.org/wiki/Leslie_Lamport[Leslie Lamport].
 He created it to describe https://en.wikipedia.org/wiki/Temporal_logic[temporal logic] aspects of cluster communication for the
 https://en.wikipedia.org/wiki/Digital_Equipment_Corporation[Digital Equipment Corporation] _DEC_ solution.

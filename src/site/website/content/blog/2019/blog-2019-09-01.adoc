@@ -73,7 +73,7 @@ In my experience, it takes years until an organization discards command and cont
 
 Daily Scrum events are often reporting meetings.
 The developers report either to the Scrum master, or the product owner, or a manager.
-The events are seldom a platform to collaborate, discuss options and experiment with variants.
+The events are seldom a platform to collaborate, discuss options, and experiment with variants.
 
 Consensus or consent approaches are widely more successful than majority decisions is one of the findings of Elinor.
 
@@ -123,7 +123,7 @@ The automatic checks are worth the effort as an effective, neutral, and cost-eff
 The Scrum events are platforms to discuss and resolve the discovered violations.
 The Scrum master must facilitate the discussion until the team members have developed their own conflict resolution instruments.
 
-== Self-determination of the community recognized by higher-level authorities
+== Self-determination of the community is recognized by higher-level authorities
 
 Self-determination works only if recognized by the overall authorities and organization.
 Here we leave the team level and need department recognition - for a LeSS approach - or company level recognition - for example, to have ownership to remove a team member -.
@@ -151,7 +151,7 @@ Scaling agile practices at the organization level requires multiple levels.
 
 * Transparency through Scrum board,
 * Definition of Dome as a contract between a team and their organization,
-* Visibility of source code, continuous integration, delivery and deployment of artifacts,
+* Visibility of source code, continuous integration, delivery, and deployment of artifacts,
 * Scale to product level using {ref-less}.
 
 If you are ready to scale up to the company you could consider {ref-bbrt}.

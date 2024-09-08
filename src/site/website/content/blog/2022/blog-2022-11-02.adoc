@@ -13,20 +13,20 @@ image::2022-11-02-head.jpg[width=420,height=360,role=left]
 
 I love Gradle as the building tool for all my Java projects.
 
-But sometimes I was discouraged about how spotty or cumbersome the support for multi-module project is.
+But sometimes I was discouraged about how spotty or cumbersome the support for a multi-module project is.
 
 I struggled for years to generate test and code overage reports over modules included in a {ref-gradle} project.
 
-Gradle finally provides a better approach to generate aggregated test and code coverage reports over multiple modules belonging to the same project.
+Gradle finally provides a better approach to generating aggregated test and code coverage reports over multiple modules belonging to the same project.
 The solution is a huge improvement against the previous quite cumbersome approach described in <<gradle-7>>.
 
 Two plugins nicely solve this daunting problem for all Java developers preferring {ref-gradle} over {ref-maven}.
 
-I hope similar solutions will be provided for static code analysers such as SpotBugs, PMD or Checkstyle.
+I hope similar solutions will be provided for static code analyzers such as SpotBugs, PMD, or Checkstyle.
 
 == Selected Approach
 
-We use the documented approach to define a separate module to generate the aggregation reports.
+We use the documented approach to defining a separate module to generate the aggregation reports.
 
 [source, groovy]
 ----
@@ -58,7 +58,7 @@ reporting {                                         // <3>
     }
 }
 ----
-<1> Load the plugin for test aggregation report and the test coverage aggregation report.
+<1> Load the plugin for the test aggregation report and the test coverage aggregation report.
 <2> Declare the modules which results should be aggregated. We have to declare the same subprojects for each plugin separately.
 <3> Configure the aggregation reports.
 
@@ -69,7 +69,7 @@ We call the following goals to generate the aggregation results:
 ./gradlew testAggregateTestReport <1>
 ./gradlew testCodeCoverageReport  <2>
 ----
-<1> Generates an aggregate report over all unit tests. Run before the gradle test.
+<1> Generates an aggregate report over all unit tests. Run before the Gradle test.
 <2> Generates a code coverage aggregate report over all unit tests. Run first gradle jacocoTestReport.
 
 == Learnings
@@ -82,7 +82,7 @@ The scenario of a mono repository containing a set of libraries is not covered.
 
 [CAUTION]
 ====
-We would encourage the plugin authors to provide a default configuration option based on the gradle settings defined in _settings.gradle_.
+We would encourage the plugin authors to provide a default configuration option based on the Gradle settings defined in _settings.gradle_.
 The modules are defined in the file and could be retrieved by the plugin using the Gradle API.
 
 _Apply the cardinal rule of good user interface design.

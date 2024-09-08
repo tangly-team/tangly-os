@@ -39,7 +39,7 @@ Fake Agile is a signal to do better.
 Fake agile is a *treatable* disorder.
 ____
 
-They throw around talk of sprints, stories and Scrum without meaning it.
+They throw around talk of sprints, stories, and Scrum without meaning it.
 Signs of this behavior are
 
 Ignoring users::

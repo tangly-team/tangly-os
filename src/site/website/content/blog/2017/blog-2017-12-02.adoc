@@ -46,7 +46,7 @@ Oracle only provides public support for the latest two Java versions, e.g., in J
 Java 8 support will stop at the end of September 2018, older versions are no more publicly maintained.
 
 If, for some reason, you are using an older commercially but no more publicly supported JDK, you must sign a support contract with the Oracle company and pay for it.
-You cannot use deprecated JDK versions because nobody provides security fixes on these versions, e.g. Java 6 commercial support ended in December 2017.
+You cannot use deprecated JDK versions because nobody provides security fixes on these versions, e.g., Java 6 commercial support ended in December 2017.
 
 If you include a deprecated JDK / JVM in your product, you willingly endanger your users and shall be liable for their losses.
 
@@ -66,7 +66,7 @@ Having older versions will hinder you from supporting actual timezone changes or
 
 == Training and Community Support
 
-Good training and associated certification are only available for actual versions of languages, frameworks, or library.
+Good training and associated certification are only available for actual versions of languages, frameworks, or libraries.
 You will not find any training for Ada, Apache server 1.x, or any object-oriented database.
 
 The articles in Stack Overflow and the community always cover the current version of components.
@@ -77,11 +77,11 @@ So you are on your own for support or code examples for older versions of librar
 Writing code for older versions of libraries, frameworks, or runtimes means https://en.wikipedia.org/wiki/Backporting[backporting] to older application interfaces and features.
 For example, if you do not have access to auto-closable resources, you have to write your own framework and software checks guarantying closing system resources.
 You should always free system resources in your application.
-The literature states this is neither straightforward nor error free.
+The literature states this is neither straightforward nor error-free.
 It is the root reason why such a feature was added to Java.
 
 Teams often forget the consequences of back porting.
-Later, when you adopt a more modern version of your dependencies, you have to remove all this now spurious code and migrate to the build-in concept.
+Later, when you adopt a more modern version of your dependencies, you have to remove all this now spurious code and migrate to the built-in concept.
 Otherwise, the code is no more maintainable and changes are error-prone.
 
 In other words, you have to twice work when backporting, once to build it in, and a second time to later remove it.

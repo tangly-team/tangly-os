@@ -15,13 +15,13 @@ image::2021-09-02-head.jpg[width=420,height=360,role=left]
 I am teaching agile software architecture and techniques _SWAT_ as advanced bachelor level lecture weighted with 3
 https://en.wikipedia.org/wiki/European_Credit_Transfer_and_Accumulation_System[ECTS].
 
-I gave this training the last three years at https://www.hslu.ch/en[Lucerne University of Applied Sciences and Arts] _HSLU_ in Switzerland.
+I gave this training for the last three years at https://www.hslu.ch/en[Lucerne University of Applied Sciences and Arts] _HSLU_ in Switzerland.
 
 All materials are released under the https://creativecommons.org/[Creative Commons] copyright.
 
 The course contents are aligned with the big software architecture programs.
 
-The https://www.opengroup.org/[Open Group] organization is the steward of https://publications.opengroup.org/standards/togaf[TOGAF] standard.
+The https://www.opengroup.org/[Open Group] organization is the steward of the https://publications.opengroup.org/standards/togaf[TOGAF] standard.
 {ref-togaf} is the worldwide industrial standard for enterprise software architecture.
 
 The group has realized that software and enterprise architecture must incorporate the agile principles <<agile-architecture>>, <<open-agile-architecture>>.
@@ -57,7 +57,7 @@ The fourteen lecture themes are:
 .. [[chapter-10, Architecture Documentation]]Architecture Documentation
 .. [[chapter-11, Trends I]]Architecture Trends I
 .. [[chapter-12, Trends II]]Architecture Trends II
-.. [[chapter-13, Domain Driven Design]]Domain Driven Design Workshop
+.. [[chapter-13, Domain-Driven Design]]Domain Driven Design Workshop
 .. [[chapter-14, Excellence for Architects]]Team and Technical Excellence for Architects
 
 The link:{ref-tangly-blog-url}/ideas/learnings/lectures[slides of the SWAT course] are available for all interested parties.
@@ -67,7 +67,7 @@ The course provides link:{ref-tangly-blog-url}/ideas/learnings/lectures/#softwar
 The reference texts are cite:[domain-driven-design,refactoring,building-evolutionary-architectures,working-effectively-with-legacy-code].
 
 The following books are recommended for interested students cite:[clean-code,clean-coder,clean-architecture,clean-agile,clean-craftsmanship].
-Each book is quite compact and can read over a weekend.
+Each book is quite compact and can be read over a weekend.
 
 The lecturer can also use cite:[domain-driven-design-distilled,implementing-domain-driven-design] for the workshop parts.
 
@@ -87,8 +87,8 @@ Stakeholder management has a strong emphasis and is the responsibility of the pr
 _See  <<chapter-1>>, <<chapter-2>>, <<chapter-4>>_
 Constraints::
 Anything that constrains teams in design and implementation decisions or decision about related processes.
-It can sometimes go beyond individual systems and are valid for whole organizations and companies. +
-_Define, track and verify through fitness functions._ +
+It can sometimes go beyond individual systems and is valid for whole organizations and companies. +
+_Define, track, and verify through fitness functions._ +
 +
 _See  <<chapter-9>>_
 Context and Scope::
@@ -100,13 +100,14 @@ _Define and document using the UML or C4 approach._ +
 _See  <<chapter-10>>_
 Solution Strategy::
 Summary of the fundamental decisions and solution strategies that shape the architecture.
-Can include technology, top-level decomposition, approaches to achieve top quality goals and relevant organizational decisions. +
-_Document through an architecture document, architecture workshops and diagrams._ +
+Can include technology, top-level decomposition, approaches to achieve top quality goals, and relevant organizational decisions. +
+_Document through an architecture document, architecture workshops, and diagrams._ +
 +
 _See  <<chapter-10>>, <<chapter-11>>, <<chapter-12>>_
 Building Block View::
-Static decomposition of the system, abstractions of source-code, shown as hierarchy of white boxes (containing black boxes), up to the appropriate level of detail.
-_Document through an architecture document, architecture workshops and diagrams.
+Static decomposition of the system, abstractions of source-code, shown as a hierarchy of white boxes (containing black boxes), up to the appropriate level of
+detail.
+_Document through an architecture document, architecture workshops, and diagrams.
 Complex UML models are useless and not maintainable._ +
 +
 _See  <<chapter-7>>, <<chapter-10>>_
@@ -123,14 +124,14 @@ Usually deployment diagrams are useless._ +
 +
 _See <<chapter-7>>, <<chapter-10>>_
 Cross Cutting Concepts::
-Overall, principal regulations and solution approaches relevant in multiple parts (→ cross-cutting) of the system.
+Overall, principal regulations and solution approaches are relevant in multiple parts (→ cross-cutting) of the system.
 Concepts are often related to multiple building blocks.
 Include different topics like domain models, architecture patterns and styles, rules for using specific technology and implementation rules. +
 _Should be documented as architecture decisions._ +
 +
 _See <<chapter-9>>, <<chapter-10>>_
 Architecture Decisions::
-Important, expensive, critical, large scale or risky architecture decisions including rationales. +
+Important, expensive, critical, large scale, or risky architecture decisions including rationales. +
 _It is an important aspect of any software architecture._ +
 +
 _See  <<chapter-10>>_
@@ -151,7 +152,7 @@ _See  <<chapter-3>>, <<chapter-5>>, <<chapter-9>>, <<chapter-14>>._
 Glossary::
 Important domain and technical terms that stakeholders use when discussing the system.
 Also: translation reference if you work in a multi-language environment. +
-_Static web page generator approaches create more legible, searchable and usable documentation.
+_Static web page generator approaches create more legible, searchable, and usable documentation.
 Paper-based documentation or wikis are a suboptimal way of describing a software product._ +
 +
 _See <<chapter-10>>_
@@ -187,7 +188,7 @@ The key points are:
 
 The taught skills are:
 
-* How can you coordinate essential software architecture decisions with other project participants from the fields of requirements management, project management, testing and development?
+* How can you coordinate essential software architecture decisions with other project participants from the fields of requirements management, project management, testing, and development?
 * How can you document and communicate software architectures based on architecture patterns and technical concepts?
 * How can you independently carry out the essential steps in designing software architectures for small and medium-sized systems?
 
@@ -216,7 +217,7 @@ Introduction to agile software architecture::
 * Knowing the tasks involved in architecture development and how they are modified in the agile environment.
 * Being able to appropriately align architecture work to the specific problem and project.
 * Knowledge of agile tools for architecture work.
-* Knowledge of the capabilities for anchoring architecture as a cross-cutting aspect in agile organisations.
+* Knowledge of the capabilities for anchoring architecture as a cross-cutting aspect in agile organizations.
 * _See <<chapter-3>>, <<chapter-4>>_
 The agile architecture approach::
 * Being able to iteratively and agilely structure architecture work.
@@ -227,7 +228,7 @@ Architecture requirements in agile projects::
 * Being able to formulate quality requirements appropriately for specific target groups.
 * Being able to use agile concepts for architecture requirements.
 * Being able to use iterative approaches for continuous definition of architecture requirements.
-* Being able to effectively organise joint management, evaluation and prioritisation of requirements.
+* Being able to effectively organize joint management, evaluation, and prioritization of requirements.
 * Knowing and being able to explain urgency as a driving factor for architecture work.
 * _See <<chapter-4>>, <<chapter-8>>_
 Designing and developing architectures in a team::
@@ -248,7 +249,7 @@ Examples of agile architecture work::
 * Being familiar with and understanding examples for agile architecture requirements.
 * Being familiar with physical characteristics of agile communication concepts.
 * Being able to understand the postponement of architecture decisions.
-* Being familiar with and understanding examples of agilely organised architecture groups.
+* Being familiar with and understanding examples of agilely organized architecture groups.
 * _See <<chapter-14>>_
 
 Care was taken that all the above aspects are handled over the SWAT course.
@@ -271,7 +272,7 @@ Understanding why certain https://en.wikipedia.org/wiki/Anti-pattern[anti-patter
 You can only become a professional software architect if you are proficient in a technology stack.
 You shall be a craftsman about how to write industrial grade source code.
 
-You know how to test it, deploy it, run it and maintain it.
+You know how to test it, deploy it, run it, and maintain it.
 You shall have knowledge of the idioms for your programming language and software design patterns at the component level.
 
 The students are motivated and eager to learn.
@@ -281,7 +282,7 @@ This time is missing in our SWAT lecture for the discussion of product software 
 
 We are now defining an overall path for all students to achieve craftsmanship over their bachelor curriculum.
 Students must write professional source code, master design at the component level, and understand agile techniques.
-Approaches such as clean code, test-driven development, refactoring and infrastructure as code shall be studied material.
+Approaches such as clean code, test-driven development, refactoring, and infrastructure as code shall be studied material.
 
 == Design and Architecture
 

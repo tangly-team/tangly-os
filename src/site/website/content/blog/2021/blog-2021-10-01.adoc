@@ -21,11 +21,11 @@ As always, there is a pragmatic balance somewhere in the middle, but it does rai
 
 == Key Takeaways
 
-* Understanding the basics of software architecture is more important than ever before, given the distributed nature of the software systems we are now building, and the distributed nature of the teams building them.
+* Understanding the basics of software architecture is more important than ever before, given the distributed nature of the software systems we are now building and the distributed nature of the teams building them.
 * The sweet spot of up front design, between too much and none at all, should focus on understanding the significant decisions and trade-offs that influence the shape of a software system.
 * Good architects are active members of the development team, from collaborating on code to coaching and providing technical leadership to the team.
 * Communicating about software architecture is challenging.
-The https://c4model.com/[C4] model can help structure the communication, starting with a context diagram, and working down to more technical aspects of the
+The https://c4model.com/[C4] model can help structure the communication, starting with a context diagram and working down to more technical aspects of the
 system.
 * Contrary to some popular assumptions, putting effort towards good architecture actually enables agility.
 
@@ -40,7 +40,7 @@ We could state the definition of software design and architecture is
 == Good Practices
 
 Domain-Driven Design::
-I would postulate if your agile design follow domain-driven principles, you are safe for the next five years.
+I would postulate if your agile design follows domain-driven principles, you are safe for the next five years.
 Just do it.
 Evolutive Architecture::
 Features and non-functional requirements will change over time.
@@ -71,11 +71,11 @@ Agile digital product architects are aware of:
 
 . Allow architecture to emerge,
 . Software architecture is *not* about big design up front,
-. A picture is worth thousand words,
+. A picture is worth a thousand words,
 . You do not need to use UML See also https://c4model.com/[C4 Model],
 . Every software team needs to consider software architecture,
 . Everyone is an architect and everyone owns the architecture,
-. The software architecture role is about coding, coaching and collaboration,
+. The software architecture role is about coding, coaching, and collaboration,
 . A good software architecture enables agility.
 
 == References

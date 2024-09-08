@@ -9,8 +9,9 @@ params:
 
 include::../fragments/_config-mb-blog.adoc[]
 
-image::2016-05-01-head.jpg[width=420, height=360, role=left]
-I am very happy we discuss in depth the role, responsibilities and activities of a good Scrum Master.
+image::2016-05-01-head.jpg[width=420,height=360,role=left]
+
+I am delighted we discuss in depth the role, responsibilities, and activities of a good Scrum Master.
 I fully agree with Scrum advocates that Scrum Master is a dedicated full-time job.
 
 I am also convinced a Scrum Master can support multiple experienced Scrum teams.
@@ -35,22 +36,24 @@ A Scrum Master is under huge stress being a development team member and having t
 
 So you shall have full-time Scrum Masters.
 More important is that you have real Scrum Masters, and not only Scrum administrators who organize meetings and manage the Scrum board and burn-down charts.
-{ref-scrum} has always been a hands-on approach to be successful in this you need to have a passion for getting your hands dirty.
+{ref-scrum} has always been a hands-on approach to be successful in this, you need to have a passion for getting your hands dirty.
 
 Find out if you are a real professional Scrum master.
 Do you perform each sprint the top things a Scrum Master usually forgets to focus on?
 
-. Do Gemba. Redefine career paths, incentives, organization to be more Scrum focused.
+. Do Gemba.
+Redefine career paths, incentives, organization to be more Scrum focused.
 . Identify with the product owner and the development team missing product backlog items.
 . State team issues are not being discussed because they are too uncomfortable.
 . Find out an appropriate balance between end-to-end system tests and unit tests.
 . Play back the team's progress against the proposed release plan.
-. Integrate all tests into continuous integration, delivery and deployment.
-. Coach your team members to understand the benefits of refactoring, removing waste and focus on quality.
+. Integrate all tests into continuous integration, delivery, and deployment.
+. Coach your team members to understand the benefits of refactoring, removing waste, and focus on quality.
 . Teach Kaizen.
 Coach team to peer-review and continuously improve towards perfection.
 . Teach pair programming on a daily basis.
-. Expand with the team and the organization the definition of done. Beware it can trigger an organizational change.
+. Expand with the team and the organization the definition of done.
+Beware, it can trigger an organizational change.
 
 I hope the discussion what a successful Scrum master stays active.
 Avoid agile coaches not being Scrum masters, they are not doing https://en.wikipedia.org/wiki/Gemba[Gemba] and lose contact with the knowledge workers.

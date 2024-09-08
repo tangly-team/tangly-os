@@ -30,7 +30,7 @@ You can probably not afford to hire them.
 
 The Vaadin framework is optimal for internal applications.
 
-It scales up to a few thousands of active users.
+It scales up to a few thousand of active users.
 
 == Progressive Web Applications https://en.wikipedia.org/wiki/Progressive_web_app[PWA]
 
@@ -58,7 +58,7 @@ This approach is well-supported in the IDE.
 The Vaadin company still seems to prefer {ref-maven} as build tool.
 You find Gradle examples created by the developer of the Karibu library.
 
-I prefer to deploy Vaadin application with an embedded Web Server.
+I prefer to deploy a Vaadin application with an embedded Web Server.
 The approach has two advantages.
 First, debugging the application is easier and snappier.
 Second, the modern production environment builds on Docker images and Kubernetes.
@@ -80,7 +80,7 @@ Karibu testing is here to perform:
 
 Containerless testing::
 You do not need to launch the servlet container.
-Karibu creates a _Vaadin Session_, the UI and other necessary Vaadin classes straight in the JVM, which runs your JUnit tests.
+Karibu creates a _Vaadin Session_, the UI, and other necessary Vaadin classes straight in the JVM, which runs your JUnit tests.
 Browserless testing::
 You look up components straight from _UI.getCurrent()_, bypassing the browser and the JavaScript bridge completely.
 You directly call methods on your server-side _View_ classes and on the server-side Java Vaadin components.
@@ -104,7 +104,7 @@ Very cool is the https://vaadin.com/student-program/[student program].
 I am currently trying to introduce computer science bachelor students to the advantages of Vaadin.
 Students are bombarded with various technology stacks.
 Java and Vaadin is a single Java-based approach to write more easily semester and bachelor development assignments.
-The drawback is it is less sexy than _React_, _VueJS_, or perhaps _Angular_.
+The drawback is it is less sexy than _React_, _Vue.js_, or perhaps _Angular_.
 
 Vaadin supports the latest version of Java in a timely manner
 footnote:[The same can be said for the {ref-gradle} since it supports toolchains configuration.].

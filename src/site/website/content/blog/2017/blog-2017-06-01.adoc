@@ -50,14 +50,14 @@ Without technical practices, quality is low, and the team hit the wall.
 The quality gap makes it impossible to maintain the pace in the long run.
 Fake Agile::
 occurs when a team declares itself Agile and blames everyone else for their failure to interact correctly with the group.
-Such a group typically stops writing documentation, listening to business analysts, product managers and other customers, and dictates its own delivery schedule.
+Such a group typically stops writing documentation, listening to business analysts, product managers, and other customers, and dictates its own delivery schedule.
 Meanwhile, the team does not improve quality, does not adopt test-driven development or any other practice they dislike.
 Potemkin Agile::
 occurs when a team adopts and applies an Agile method well but does not deliver business value.
 This is a form of goal deferment where the team considers adhering to the process rather than delivering business value as the success criteria.
 Customer (Business Analyst, Product Manager, Product Owner) overload::
 on a well-functioning Agile product, the customer, or proxy customer, is called upon to do a lot.
-They need to decide requirements, set priorities, scout ahead of the product, align strategy, work with the developers, testers and managers, and may even have their own day job to do.
+They need to decide requirements, set priorities, scout ahead of the product, align strategy, work with the developers, testers, and managers, and may even have their own day job to do.
 In the earliest XP product (“C3”) the first business analyst came close to a nervous breakdown.
 Fall back::
 Management may bring in consultants and other experts to help switch a team to Agile.

@@ -16,7 +16,7 @@ image::2022-06-01-head.jpg[width=420,height=360,role=left]
 https://en.wikipedia.org/wiki/Domain-driven_design[Domain Driven Development] _DDD_ is the preferred software architecture approach for designing digital products.
 The method nicely matches with the operational concepts of microservices.
 
-Domain-driven design is a holistic approach to understanding, designing and building software applications.
+Domain-driven design is a holistic approach to understanding, designing, and building software applications.
 
 Seminal books cite:[domain-driven-design,domain-driven-design-distilled,implementing-domain-driven-design] describes the approach and key concepts defining the development method.
 
@@ -202,7 +202,7 @@ Use either Java modules or archUnit to enforce that communication always goes th
 == Architecture Integrity
 
 A Bounded Context is a logical boundary of a domain where particular terms and rules apply consistently.
-Inside this boundary, all terms, definitions and concepts form the Ubiquitous Language.
+Inside this boundary, all terms, definitions, and concepts form the Ubiquitous Language.
 
 Good practices shall be applied to ensure the quality of the bounded domain software architecture cite:[clean-architecture,refactoring,refactoring-databases]
 

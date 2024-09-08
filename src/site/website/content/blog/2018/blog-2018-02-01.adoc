@@ -33,13 +33,13 @@ Starting in the early 1990s, Scrum has been used extensively, worldwide, to:
 . Research and identify viable markets, technologies, and product capabilities.
 . Develop products and enhancements.
 . Release products and enhancements as frequently as many times per day.
-. Develop and sustain Cloud (online, secure, on-demand) and other operational environments for application use.
+. Develop and sustain Cloud (online, secure, on-demand,) and other operational environments for application use.
 . Sustain and renew products.
 
 The essence of Scrum is a small team of people.
 The individual team is highly flexible and adaptive.
 These strengths continue operating in single, several, and networks of teams.
-They develop, release, operate and sustain the work and work products for thousands of people.
+They develop, release, operate, and sustain the work and work products for thousands of people.
 
 They collaborate and interoperate through sophisticated development architectures and target release environments.
 
@@ -83,7 +83,7 @@ ____
 Updated the first paragraph of the Daily Scrum section to read::
 The Daily Scrum is a 15-minute time-boxed event for the Development Team.
 The Daily Scrum is held every day of the Sprint.
-At it, the Development Team plans work for the next 24 hours.
+At it, the Development Team plans their work for the next 24 hours.
 This optimizes team collaboration and performance by inspecting the work since the last Daily Scrum and f__orecasting upcoming Sprint work__.
 The Daily Scrum is held at the same time and place each day to reduce complexity.
 Updated the Daily Scrum section to provide clarity on the goals of the Daily Scrum including this text::
@@ -95,7 +95,7 @@ Here is an example of what might be used:
 * What will I do today to help the Development Team meet the Sprint Goal?
 * Do I see any impediment that prevents me or the Development Team from meeting the Sprint Goal?
 Added clarity around time-boxes::
-Using the words “at most” to remove any questions that the time-box for Events means maximum length, but could be shorter.
+Using the words “at most” to remove any questions that the time-box for Events means maximum length but could be shorter.
 
 *The guide clarifies the daily Scrum event.
 It establishes a daily feedback loop for improvement.*
@@ -105,7 +105,7 @@ It establishes a daily feedback loop for improvement.*
 == Scrum Artifacts
 
 Added to the Sprint Backlog section::
-To ensure continuous improvement, it includes at least one high priority way in which the team works, identified in the previous Retrospective meeting.
+To ensure continuous improvement, it includes at least one high-priority way in which the team works, identified in the previous Retrospective meeting.
 Added clarity to the Increment section::
 An increment is a body of inspectable, "Done" work that supports empiricism at the end of the Sprint.
 The increment is a step toward a vision or goal.
@@ -129,7 +129,7 @@ _The state or quality of being dedicated to a cause, an activity._
 
 The second big innovation was the introduction of five Scrum values: Commitment, Focus, Openness, Respect, and Courage.
 
-I welcome the focus on values, principles and core behaviors over detailed checklists and rules.
+I welcome the focus on values, principles, and core behaviors over detailed checklists and rules.
 Please also read again the http://agilemanifesto.org/principles.html[twelve principles] of the agile manifesto.
 
 [bibliography]
