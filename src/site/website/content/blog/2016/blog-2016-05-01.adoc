@@ -17,7 +17,7 @@ I am also convinced a Scrum Master can support multiple experienced Scrum teams.
 The Large Scale Scrum framework {ref-less} states a full-time Scrum Master supports 1 to 3 teams.
 
 I worked with quite a few Scrum Masters, Product Owners, and Scrum teams.
-My experience shows it is more productive and effective when the Scrum Master works full-time as (see
+My experience shows it is more productive and effective when the Scrum Master works full-time, as (see
 https://shop.theliberators.com/products/the-8-stances-of-a-scrum-master[white paper of Barry Overeem])
 footnote:[The liberators have changed their website structure. Search under https://shop.theliberators.com/[The Liberators Shop] to find information.]
 
@@ -52,7 +52,7 @@ Coach team to peer-review and continuously improve towards perfection.
 . Teach pair programming on a daily basis.
 . Expand with the team and the organization the definition of done. Beware it can trigger an organizational change.
 
-I hope the discussion what a successful Scrum master does stay active.
+I hope the discussion what a successful Scrum master stays active.
 Avoid agile coaches not being Scrum masters, they are not doing https://en.wikipedia.org/wiki/Gemba[Gemba] and lose contact with the knowledge workers.
 
 Read our link:../../2016/what-you-do-not-need-to-do-in-scrum[what you do not need to do].

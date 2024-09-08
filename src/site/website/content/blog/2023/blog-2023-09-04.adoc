@@ -26,7 +26,7 @@ Use tags to recognize this state in the list of changes of your shared {ref-git}
 == Listing Your Tags
 
 Listing the existing tags in Git is straightforward.
-Just type git tag (with optional -l or --list):
+Type git tag (with optional -l or --list):
 
 [source,console]
 ----
@@ -44,10 +44,10 @@ Git supports two types of tags: lightweight and annotated.
 Annotated tags, however, are stored as full objects in the Git database.
 They have a check sum.
 They contain the tagger name, email, and date.
-THey have a tagging message, and can be signed and verified with GNU Privacy Guard (GPG).
+THey have a tagging message and can be signed and verified with GNU Privacy Guard (GPG).
 It is generally recommended that you create annotated tags, so you can have all this information; but if you want a temporary tag or for some reason do not want to keep the other information, lightweight tags are available too.
 
-Annotated Tags Creating an annotated tag in Git is simple.
+Annotated Tags Creating an annotated tag in Git is straightforward.
 The easiest way is to specify -a when you run the tag command:
 
 [source,console]

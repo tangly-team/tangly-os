@@ -34,7 +34,7 @@ Similar lists can be created for Javascript/Typescript, Python, Ruby, {cpp}, or 
 
 Education:: Which kind of education did the candidate pursue during his career?
 Formal Training::: I expect a software developer to have formal training in computer science or related fields.
-Dormal training is given by an accredited institution.
+Formal training is given by an accredited institution.
 The student receives a recognized certificate.
 * The following information should be available:
 ** Title of the formation and information if it is a bachelor, a master, or an alternative title,
@@ -61,7 +61,7 @@ An agile specialist should train in agile, Scrum and DevOps.
 A software architect should train in architecture and software design themes.
 A user interface developer should know about usability, accessibility, design and corporate interface standards._
 ** When did he attend the continuous formation and year when the title was received?
-** Link to an authority providing proof of the certificate of the formation.
+** Link to an authority providing proof of the certificate for the formation.
 Spoken Languages:::
 The workplace is international.
 Relevant computer science documentation is in English.
@@ -73,7 +73,7 @@ Programming Capabilities::
 A software developer shall be a proficient and trained programmer.
 Here are some examples of capabilities I look for if the candidate is a Java developer:
 * Java versions he has experience with
-footnote:[I sadely sometimes encounter candidates who have no clue which version of their programming language they are daily using.]. +
+footnote:[I sadly sometimes encounter candidates who have no clue which version of their programming language they are daily using.]. +
 _If his current projects use older versions of the language, I expect a professional to study the current version on his own_.
 * Build tool he has experience with - https://maven.apache.org/[maven], https://gradle.org/[gradle] -.
 * If he is a junior developer, I check if he has an official Java developer certificate.
@@ -91,7 +91,7 @@ https://en.wikipedia.org/wiki/You_aren%27t_gonna_need_it[YAGNI], https://en.wiki
 * Explain functional approaches such as Optional<T>, Streams, immutability, idempotence, Functor, Monad.
 * Explain application concepts such as internationalization _i18n_, localization _l16n_, or accessibility _a11y_.
 * Explain exception handling approaches in backend and frontend applications.
-* Explain test driven development build on JUnit 5, Mockito and AssertJ and the variants TDD, BDD, ATDD.
+* Explain how test driven development is built on JUnit 5, Mockito and AssertJ and the variants TDD, BDD, ATDD.
 * Explain continuous integration, continuous delivery, and continuous deployment, infrastructure as code, DevOps.
 * Explain refactoring triggered by {ref-sonarlint}, https://pmd.github.io/[PMD], https://spotbugs.github.io/[SpotBugs].
 Architecture Capabilities::
@@ -99,7 +99,7 @@ A professional software architect shall be able to define an application archite
 I am looking for:
 * Explain architecture patterns such as monolith, modular monolith, modular application, layered application.
 * Show knowledge of architecture approach such as domain driven design, Traditional approaches such as https://en.wikipedia.org/wiki/Rational_Unified_Process[RUP].
-https://en.wikipedia.org/wiki/Zachman_Framework[Zachmann] can be mentioned but are no more relevant.
+https://en.wikipedia.org/wiki/Zachman_Framework[Zachmann] can be mentioned but is no more relevant.
 * Explain the different facets of the architect role: Teacher, Coach, Mentor, Developer.
 * Explain how architecture is documented (https://adr.github.io/[ADR], https://c4model.com/[C4]), static websites (Pages in GitHub, GitLab, or Bitbucket); and which notation
 (https://www.omg.org/spec/UML/[UML]) or approaches can be used.
@@ -109,7 +109,7 @@ https://en.wikipedia.org/wiki/Zachman_Framework[Zachmann] can be mentioned but a
 * Check if a formal architecture training was performed such as https://en.wikipedia.org/wiki/Domain-driven_design[DDD],
 https://www.opengroup.org/togaf[TOGAF], or https://arc42.org/[arc42].
 Agile Work Capabilities::
-A professional developers should know agile methods which around since this millennium:
+A professional developers should know agile methods which are around since this millennium:
 * Check if Scrum, Kanban, Lean approaches were used in projects.
 Often they only pretend because they hold a daily meeting and a retrospective.
 * Check if CI/CD/CD and DevOps practices were used in projects,
@@ -121,7 +121,7 @@ Teamwork Capabilities::
 * Check if community of practice, coding dojo, design workshops are known concepts
 * Does the candidate show a sensibility to soft factors and team building instruments?
 
-If the position is for a team lead position I use the criteria discussed in link:../..//2021/technical-team-lead/[Techincal Team Lead] blog.
+If the position is for a team lead position I use the criteria discussed in link:../..//2021/technical-team-lead/[Technical Team Lead] blog.
 
 == Goodies
 
@@ -129,13 +129,13 @@ LinkedIn Profile::
 Digital professionals publish their career and achievements on a platform.
 I like to visit your LinkedIn profile or your personal career website.
 Open Source Activities::
-Modern software application development relies heavily on open source libraries and frameworks.
+Modern software application development relies heavily on open-source libraries and frameworks.
 Developers who understand how to communicate with the teams behind these projects and how to contribute improvements are worth a lot in any project.
 Community Activities::
 Engineers working in communities and user group members are often open, enthusiasts and have a wider network of professional acquaintances.
 Blogs and Articles::
 Developers taking time to write public blogs or articles show a genuine interest in helping others in their learning.
-I also find very interesting to learn which technical books a candidate has read.
+I also find it very interesting to learn which technical books a candidate has read.
 Other Programming Languages::
 Java developers interested in Groovy, Kotlin, Scala, Clojure are often more knowledgeable and open to new approaches.
 
@@ -159,9 +159,9 @@ Please add more details for the last five years.
 I am not deeply interested in knowing details about a project ten years old. +
 _I do not fully count experience when the project duration was below half a year.
 You need time to learn the application, the team and the constraints.
-Therefore, the first six months your personal learning in new approaches and technologies is quite shallow._
+Therefore, the first six months of your personal learning in new approaches and technologies are quite shallow._
 Explain why you apply for a specific job position::
-Either you have the needed capabilities through past and current experiences or explain why you think you could take over the responsibility.
+Either you have the necessary capabilities through past and current experiences or explain why you think you could take over the responsibility.
 Use a spell checker::
 A computer specialist not being able to use a spell checker is automatically disqualified.
 Interest in improving::
@@ -170,7 +170,7 @@ This learning and training shall be visible in your resume.
 _I look for Oracle Java Developer, advanced or professional Scrum, iSAQB (senior designer), TOGAF, and JEE (architect) certifications._
 Personal information::
 I like to see a picture of the candidate.
-I also expect some information about the location of the candidate such as city and state.
+I also expect some information about the location of the candidate, such as city and state.
 I have a strong emphasis on building diverse teams because I am fully aware of the improved productivity.
 Women must have a higher chance to get an interview and the job.
 We want to equilibrate our development teams.
@@ -189,27 +189,27 @@ Everybody uses Git.
 * Big front-end architecture and design activities have died for 15 years.
 * Technologies such as NetBeans, Ant, or XML are obsolete.
 
-== NodeJS Candidates
+== Node.js Candidates
 
-A NodeJS developer shall know domain-driven design, clean, refactoring, TDD, CI/CD and agile approaches.
+A Node.js developer shall know domain-driven design, clean, refactoring, TDD, CI/CD and agile approaches.
 General information, computer science, design, software architecture and agile approach requirements are similar.
 
-The technical questions for a NodeJS person are slightly different from a Java developer:
+The technical questions for a Node.js person are slightly different from a Java developer:
 
-* Which https://nodejs.org/en/[NodeJS] version is he working with?
+* Which https://nodejs.org/en/[Node.js] version is he working with?
 How experienced is she with the packet manager _npm_?
 * Does he have a Typescript certification?
 Which version of Typescript is she using?
 * Which tools did she use for quality conformance and refactoring in projects?
-* Does he know standard https://owasp.org/[OWASP] approaches and why they are important in a NodeJS environment?
+* Does he know standard https://owasp.org/[OWASP] approaches and why they are important in a Node.js environment?
 * Examples of object-oriented, functional programming, asynchronous and reactive approaches in Typescript code.
 * Can senior developers discuss and explain threading, thread library, or async design approaches?
 * Which development environment does he use to develop NodeJS code - e.g. JetBrain WebStorm -?
-* Does he master https://en.wikipedia.org/wiki/MEAN_(solution_stack)[MEAN] stack - MongoDB, Express.JS, Angular, NodeJS -?
+* Does he master https://en.wikipedia.org/wiki/MEAN_(solution_stack)[MEAN] stack - MongoDB, Express.js, Angular, Node.js -?
 * Which experience and certification does she have with Angular or React?
 * Which training or certificates does she have in user interface design, usability, or accessibility?
 * Does he have experience and training in MongoDB, Mongoose, Meteor, express.js, socket.io?
-* Is she experienced with integrating relational database in NodeJS backend solutions?
+* Is she experienced with integrating relational database in Node.js backend solutions?
 * Are advanced topics such as {ref-webassembly} or {ref-deno} known?
 
 Use hints in the project experience sections to cover the above topics.

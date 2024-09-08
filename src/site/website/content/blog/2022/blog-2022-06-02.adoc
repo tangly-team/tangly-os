@@ -2,7 +2,7 @@
 title: "Modular Monoliths are the new Graal"
 linkTitle: "Modular Monoliths"
 date: 2022-06-10
-tags: ["architecture", "domain-driven-design", "java"]
+tags: ["architecture", "domain-driven-design", "tangly-os", "java"]
 params:
   featured: "blog/2022/pics/2022-06-02-head.svg"
 ---
@@ -42,7 +42,7 @@ Because modular monoliths make individual functions more independent, they, by n
 This makes it easier for developers to easily assess which parts of the application require which dependencies.
 Increased Observability::
 Developing with modularity in mind means code is more accessible to developers.
-For Java developers in particular, interface classes and their requisite javadoc comments help to enhance accessibility and interoperability for developers who may need to work with the modularized function.
+For Java developers in particular, interface classes and their requisite Javadoc comments help to enhance accessibility and interoperability for developers who may need to work with the modularized function.
 
 [cols="1,1",options="header"]
 |===

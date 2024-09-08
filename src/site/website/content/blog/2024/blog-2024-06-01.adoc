@@ -57,7 +57,7 @@ _**They often meet throughout the day for more detailed discussions about adapti
 . Do we have any blockers?
 . What should we drop to focus on the highest priority?
 . Shall we reduce WIP?
-. Appreciation time for provided help. Why wait until the Retrospective?
+. Appreciation time for providing help. Why wait until the Retrospective?
 . What were the biggest learnings in this Sprint?
 . Start with a quote about software engineering or agile!
 

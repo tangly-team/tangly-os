@@ -47,7 +47,7 @@ ____
 
 I am so grateful for GPS navigation and precise maps on my mobile telephone.
 I never had to print any route to a new customer or to my holiday hostel in the last two decades.
-The mobile app guides me effortless to my destination.
+The mobile app guides me effortlessly to my destination.
 This is measurable progress for millions of people.
 And it saves trees and ink because nobody prints maps anymore.
 
@@ -56,7 +56,7 @@ And it saves trees and ink because nobody prints maps anymore.
 I found out the only drawback of my job in Switzerland is the age discrimination.
 It is challenging to get hired as a software developer when you are older than fifty years.
 I am now sixty years old.
-The Swiss companies are bigot and prefer to hire young people.
+The Swiss companies are bigots and prefer to hire young people.
 
 I seldom encounter active developers my age in the companies I work for.
 Managers think that older developers are not productive anymore.
@@ -89,7 +89,7 @@ I love to teach students at technical universities and coach software engineers
 
 Teaching is a beautiful and rewarding activity.
 But it is sometimes frustrating.
-I am living in Switzerland and the education system is not the finest for technical education.
+I am living in Switzerland, and the education system is not the finest for technical education.
 It is a country with neither a STEM strategy at federal nor state education level.
 We are exceedingly missing young people with training in science, technology, engineering, and mathematics.
 

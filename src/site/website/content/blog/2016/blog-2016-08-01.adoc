@@ -14,7 +14,7 @@ image::2016-08-01-head.jpg[width=420,height=360,role=left]
 I learnt quite a few new acronyms and techniques when studying for the PMI-ACP certification program.
 In this post, I collected these acronyms, some definition and the bibliography you should know before attending the examination.
 
-The main advantage of having it is that you no longer need to argue with PMI certified product managers if agile is applicable to software projects.
+The main advantage of having it is that you no longer need to argue with PMI-certified product managers if agile is applicable to software projects.
 
 The main interest of PMI-ACP certification is their collection of concepts taken from Agile, eXtreme Programming, Scrum and Lean.
 
@@ -105,7 +105,7 @@ It is best when you have at least 40 items which allow for groupings to easily b
 * Continuous Integration _CI_: multistage integration is running additional tests for performance, load or stability
 * Collaboration versus Coordination: Work Together versus Share Information
 * Cycle Time = Flow Time
-* The acronym _DEEP_ Detailed Appropriately, Estimable, Emergent, Prioritised. Split story into smaller stories.
+* The acronym _DEEP_ Detailed Appropriately, Estimable, Emergent, Prioritised. Split the story into smaller stories.
 * DRY Do not Repeat Yourself
 * EI Emotional Intelligence
 * EISA Emotional Intelligence Skills Assessment _Perceiving, Managing, Decision Making, Achieving, Influencing_
@@ -161,7 +161,7 @@ The higher, the better
 Complete waste of time" or Lost Principle: No Benefit Received for Time Invested Break-Even
 ** 1 = "You really should have let me stay at my desk and code"
 ** 2 = "This was an OK meeting.
-About as valuable as if I haave been coding" or Received Benefit Equal to Time Invested High Return on Investment
+About as valuable as if I had been coding" or Received Benefit Equal to Time Invested High Return on Investment
 ** 3 = "Surprisingly, this was more valuable than if I have been writing code"
 ** 4 = "Wow, this meeting saved me tons of time.
 Thank goodness I did not skip it to code" or Received Benefit Greater than Time Invested
@@ -193,7 +193,7 @@ Waves can have both a product management and a technical function.
 From a product management perspective, they provide a chance to review progress and make adjustments.
 * http://en.wikipedia.org/wiki/Work_breakdown_structure[Work Breakdown Structure] _WBS_
 
-Below some additional definitions
+Below are some additional definitions
 
 [quote,Norm Kerth's Prime Directive (should be used in review and retrospective) ]
 ____
@@ -239,7 +239,7 @@ _Reflective Listening is a communication technique where you repeat back a summa
 _Another benefit in this situation is that having a person hear their own ideas in another person’s voice/words may make it easier for them to be objective._
 * Adaptation depends upon understanding a wide range of information, including an assessment of the product's progress, technical risks, the requirements evolution, and ongoing competitive market analysis.
 Which are the areas where every team needs to constantly evaluate and make appropriate adaptations?
-_Product Value, Product quality, Product status, Team performance -Every team needs to constantly evaluate and make appropriate adaptations in the following four areas - Product Value, Product quality, Product status, Team performance-_
+_Product Value, Product quality, Product status, Team performance - Every team needs to constantly evaluate and make appropriate adaptations in the following four areas - Product Value, Product quality, Product status, Team performance-_
 * A standard for measuring or evaluating something. _Metric - A metric is a standard for measuring or evaluating something.-_
 * What BEST describes the characteristics of a Learner at Level 3 or in the Fluent stage of learning?
 Learners in the Fluent stage are experts -The Stage 3 Learner is at the stage of mastery.

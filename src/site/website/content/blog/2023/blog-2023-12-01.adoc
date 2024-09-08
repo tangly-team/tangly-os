@@ -111,7 +111,7 @@ We use this approach in our projects and {ref-repository} to ensure a consistent
 
 Redundant tasks and misconfigured scripts::
 Moreover, this complexity can have a significant impact on build speed.
-If scripts include redundant tasks, or simply take a long time to execute your Groovy or Kotlin configuration, the build speed can slow to a frustrating crawl.
+If scripts include redundant tasks or simply take a long time to execute your Groovy or Kotlin configuration, the build speed can slow to a frustrating crawl.
 Misconfigured scripts can also lead to extended test times, further exacerbating the build rot.
 
 _Always prefer standard plugins to build artifacts._

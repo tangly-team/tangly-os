@@ -13,15 +13,15 @@ image::2017-07-01-head.png[width=420,height=360,role=left]
 
 What does a Scrum master the whole day?
 
-Are you just a fancy administrator or are you actively removing impediments?
+Are you just a fancy administrator, or are you actively removing impediments?
 
 Do you coach your teams toward mastery?
 
 Too often, Scrum masters become Scrum administrators.
 
-They schedule meetings, moderate discussions, write progress reports and draw beautiful slides how to improve the organization.
+They schedule meetings, moderate discussions, write progress reports and draw beautiful slides on how to improve the organization.
 
-Or worst, they collect extensive statistics about velocity, planned versus delivered story points or how precise story estimation was.
+Or worse, they collect extensive statistics about velocity, planned versus delivered story points or how precise story estimation was.
 
 At the end of the day, your job is to mentor your team to be champions and build awesome products cite:[great-scrum-master,scrum-pocket-guide-3rd,mastering-professional-scrum].
 
@@ -31,11 +31,11 @@ _Wake up!_ You are not a product manager, you shall be a catalyst.
 
 * Be a https://en.wikipedia.org/wiki/Servant_leadership[servant leader] whose focus is on the needs of the team members and those they serve (the customer), with the goal of achieving results in line with the organization’s values, principles, and business objectives.
 * Teach ensuring agile, lean, Scrum and other approaches are understood and enacted.
-* Mentor to transfer agile knowledge and experience to the team, and concentrate on continuous improvement.
+* Mentor to transfer agile knowledge and experience to the team and concentrate on continuous improvement.
 * Coach the individual with a focus on their mindset and behavior.
 * Help the organization to truly collaborate with the Scrum team.
 * Be an impediment remover solving blocking issues to the team’s progress, taking into account the self-organizing capabilities of the development team.
-* Facilitate by setting the stage and providing clear boundaries in which the team can collaborate.
+* Facilitate by setting the stage and providing clear boundaries on which the team can collaborate.
 * Be a change agent to enable a culture in which Scrum teams can flourish.
 
 Remember the https://www.agilealliance.org/agile101/agile-glossary/[definition] of an agile or Scrum team.
@@ -51,8 +51,8 @@ From time to time, you could also remove a specific impediment.
 * Moderate Scrum meetings.
 Remember to regulate delegate moderation to your team.
 * Gently transform your department and organization to become more agile.
-** Remove yearly evaluation, practice biweekly face to face meetings.
-** Remove any individual bonus, either introduce team bonuses.
+** Remove yearly evaluation, practice biweekly face-to-face meetings.
+** Remove any individual bonus, introduce team bonuses.
 Better remove extrinsic motivators.
 ** Remove test and quality department, move the specialists to the Scrum teams.
 

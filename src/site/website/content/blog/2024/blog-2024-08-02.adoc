@@ -29,8 +29,8 @@ The ROS ecosystem is a cornucopia of robot software.
 Whether you need a device driver for your GPS, a walk and balance controller for your quadruped, or a mapping system for your mobile robot, ROS has something for you.
 From drivers to algorithms, to user interfaces, ROS provides the building blocks that allow you to focus on your application.
 
-The goal of the ROS project is to continually raise the bar on what is taken for granted, and thus to lower the barrier to entry to building robot applications.
-Anyone with a good idea for a useful robot should be able to make that idea real, without having to understand everything about the underlying hardware and software.
+The goal of the ROS project is to continually raise the bar on what is taken for granted and thus to lower the barrier to entry to building robot applications.
+Anyone with a good idea for a useful robot should be able to make that idea real without having to understand everything about the underlying hardware and software.
 
 How do you map your application design to the ROS-2 framework?
 
@@ -84,7 +84,7 @@ Designers can define cross-cutting solutions to solve recurring problems.
 Examples are configuration, alarm handling, monitoring, observability, logging, or data persistence
 footnote:[{ref-arc42} defines explicit the cross-cutting concepts as chapter 8 of their architecture documentation structure.].
 
-The implementation is always confined in domains.
+The implementation is always confined to domains.
 Pair working and code reviews can help to ensure similar concrete solutions are used in multiple domains
 footnote:[When the cross-cutting aspect is well understood, you could provide a reference implementation as a library.].
 ====
@@ -93,7 +93,7 @@ With packages, you can release your ROS 2 work and allow others to build and use
 
 [CAUTION]
 ====
-Beware ROS architecture does not distinguish logical components from deployment units.
+Beware, ROS architecture does not distinguish logical components from deployment units.
 You should use a ROS package to simultaneously define a design abstraction and an operational deployment object
 footnote:[The UML component diagram and deployment diagram contain the same items with the same identifier.].
 
@@ -107,7 +107,7 @@ Three aspects define the interface of each bounded domain in the context of ROS-
 
 First, we have the *messages* published on the *topics* owned by the domain.
 These messages define the asynchronous interface of the bounded domain
-footnote:[This should be the primary interface of any domain because ROS-2 is a message passing middleware.].
+footnote:[This should be the primary interface of any domain because ROS-2 is a message-passing middleware.].
 The messages for a domain are part of the related ROS-2 package and are defined in a description file included in the package.
 Each message and all its fields are syntactically well-documented using {ref-doxygen}.
 
@@ -120,7 +120,7 @@ Syntactically means at least the following:
 - If strings are used, try to define the pattern of legal values.
 Evaluate the usage of bounded strings to improve interface quality.
 - Are application relevant values defined as constants?
-An example would the pattern for ISO 8601 date format.
+An example would be the pattern for ISO 8601 date format.
 
 Additional documentation can provide semantic information.
 Examples of messages are always helpful to new developers.
@@ -155,7 +155,7 @@ DDD requires that relevant state changes are communicated to interesting parties
 You should never propagate system state changes through services.
 A domain cannot be aware of all parties interested in state changes.
 Node as Parallel Processing Unit::
-ROS-2 uses node as independent process unit.
+ROS-2 uses node as an independent process unit.
 A node should be small and offer cohesive services.
 We recommend having as much as possible single threaded nodes to profit from the ROS-2 provided solutions
 footnote:[As stated in ROS-2 documentation, it is complex and error-prone to avoid synchronization troubles such as deadlocks, lifelocks, priority inversion, or starvation when
@@ -187,7 +187,7 @@ The lowest layer defines the hardware access and the physical sensors and actuat
 A device groups a set of related sensors and actuators to provide a clear abstraction with single responsibility.
 An example would be a tractor unit with motors, movement sensors, actuators to avoid slipping on the path.
 
-A tractor manager coordinates multiple tractor units to implement more complex operations such a traveling a path with an expected speed.
+A tractor manager coordinates multiple tractor units to implement more complex operations such as a traveling a path with an expected speed.
 
 A tractor handler implements more complex functions such as executing a planned route and handling obstacles.
 

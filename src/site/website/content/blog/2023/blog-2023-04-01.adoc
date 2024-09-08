@@ -79,7 +79,7 @@ Better are whiteboards to exchange ideas in a team.
 * Design is driven from requirements cite:[domain-driven-design].
 Building anything beyond those requirements puts you into the world of speculative, self-indulgent invention.
 * 90%, maybe 95%, of project managers, could probably disappear tomorrow to either no effect or a net gain in efficiency cite:[large-scale-scrum].
-* After performing over 2000 interviews, I can say that standard human resources interviewing is thoroughly broken.
+* After performing over 2000 interviews, I can say that the standard of human resources interviewing is thoroughly broken.
 Technical interviewing and peer interviewing work way better and are more accurate.
 * Agile approaches are more successful and more fun.
 Waterfall approaches suck

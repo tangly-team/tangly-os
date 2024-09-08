@@ -34,7 +34,7 @@ He identifies and deploys solutions optimizing the cost structure and reducing o
 ====
 The computer department of a technical university has regular variants to deploy their services:
 
-. Buy own hardware.
+. Buy your own hardware.
 Install and support applications with an internal team.
 The challenge is to convince team members to stay.
 . Delegate installation and support to the IT department of the technical university.
@@ -75,13 +75,13 @@ Corporate Governance::
 Stakeholders are sensible that your organization respects laws and pursues an ethical obligation to collaborators, users and society.
 Authentication and Authorization::
 Modern distributed organizations shall provide a secure and standardized approach to authentication and authorization.
-Single sign-on and federated solution (FIDO, Edu ID) are current best practices.
+Single sign-on and federated solution (FIDO, Edu ID) are the current best practices.
 Machine Learning and Graphical Resources::
 Currently, graphic processors are the only approach to computing machine learning and big data problems and provide usable solutions.
 Security, Audit, and Firewalls::
 Security and associated firewalls are mandatory to respect corporate governance and laws.
 Monitoring is a must for all enterprise relevant applications.
-Special solutions are seldom needed and shall be provided on a case basis.
+Special solutions are seldom necessary and shall be provided on a case basis.
 
 == Typical Responsibilities
 

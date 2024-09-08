@@ -98,7 +98,7 @@ The actual industrial standard is https://git-scm.com/[git], a distributed versi
 
 More sophisticated source code management systems based on {ref-git} with additional agile and DevOps functionalities are:
 
-* https://github.com/[GitHub] is a closed-source solution and most well-known solution.
+* https://github.com/[GitHub] is a closed-source solution and the most well-known solution.
 Microsoft acquired them in 2020.
 Some Swiss technical universities - ZHAW, University of Bern - use the academic GitHub campus program.
 CI and CD pipelines are not part of the GitHub product and must be installed separately.
@@ -109,7 +109,7 @@ CI and CD pipelines are part of the product.
 * {ref-bitbucket} is a closed-source solution of Atlassian.
 CI and CD pipelines are part of the product.
 Atlassian also owns JIRA, Confluence and Trello.
-* https://azure.microsoft.com/en-us/services/devops/[Azure Devops] is a closed-source solution and Microsoft answers to .NET development.
+* https://azure.microsoft.com/en-us/services/devops/[Azure Devops] is a closed-source solution, and Microsoft answers to .NET development.
 CI and CD pipelines access is under definition by Microsoft.
 They slowly open their product to additional development stacks such as Java, Python.
 * https://gitea.io/[Gitea] is a community-managed lightweight code hosting solution written in Go.
@@ -129,14 +129,14 @@ The technical university of Lucerne https://www.hslu.ch/en/[HSLU] has selected {
 
 Well-known companies in Switzerland such as Roche Diagnostics, UBS<<ubs-gitlab>>, Siemens<<siemens-gitlab>> have also standardized on this platform.
 
-Our students can more easily bridge between academical teachings and industrial practices and acquire deeper understanding of DevOps and agile practices.
+Our students can more easily bridge between academical teachings and industrial practices and acquire a deeper understanding of DevOps and agile practices.
 Semester and bachelor theses are easier to realize through the use of known software development tool chains.
 Students can concentrate on the content of their thesis.
 ====
 
 == Basic Git Knowledge for Students
 
-Studying the history of software development practices shows the raise and fall of https://en.wikipedia.org/wiki/Source_Code_Control_System[SCCS],
+Studying the history of software development practices shows the rise and fall of https://en.wikipedia.org/wiki/Source_Code_Control_System[SCCS],
 https://en.wikipedia.org/wiki/Concurrent_Versions_System[CVS], ClearCase, Visual Source Safe, or
 https://en.wikipedia.org/wiki/Apache_Subversion[Subversion].
 The current most popular and used tool is https://en.wikipedia.org/wiki/Git[Git].
@@ -238,7 +238,7 @@ gradle clean // <4>
 <4> Clean the output folders and delete all generated files.
 
 You are now ready to create a complete continuous integration pipeline of your project in gitlab.
-A complete _.gitlab-ci.yml_ configuration for a gradle project would be:
+A complete _.gitlab-ci.yml_ configuration for a Gradle project would be:
 
 [source,yaml]
 ----
@@ -279,7 +279,7 @@ test:
 
 [WARNING]
 ====
-Please prefer workstation powered with Linux or macOS if you are developing in Java, Groovy or Python.
+Please prefer a workstation powered with Linux or macOS if you are developing in Java, Groovy or Python.
 
 You will be more efficient and avoid all the problems related to virus scanners, missing packages or arcane path length problems.
 ====
@@ -322,7 +322,7 @@ Both are stored in the same repository and can be marked with a version label Yo
 * https://asciidoc.org/[AsciiDoc]
 * https://gohugo.io/[Hugo]
 
-IntelliJ has native support for markdown and an excellent plugin for Asciidoc.
+IntelliJ has native support for {ref-markdown} and an excellent plugin for {ref-asciidoc}.
 
 Gitlab provides the https://docs.gitlab.com/ee/user/project/pages/[Pages] concept to create and publish complete documentation of a product.
 
@@ -333,8 +333,8 @@ image::2021-01-03-diagrams.png[720,480,role=left]
 https://plantuml.com/[PlantUML] is a simple and powerful tool for diagramming.
 The tool is compatible with git philosophy and static website generators.
 
-The IntelliJ Asciidoc is used to write technical documentation and to display embedded PlantUML diagrams.
-Asciidoc format has native support for PlantUML diagrams.
+The IntelliJ AsciiDoc is used to write technical documentation and to display embedded PlantUML diagrams.
+AsciiDoc format has native support for PlantUML diagrams.
 
 Students have training in technical notation such as UML, BPNM, C4 and others.
 They can now apply these notations to their projects using plantUML.
@@ -351,7 +351,7 @@ Once you master the basic commands, consider learning advanced commands like:
 
 === Merge
 
-Merge your branch _my-branch_ back into _trunk_
+Merge your branch _my-branch_ back into the _trunk_
 
 [source,console]
 ----
@@ -362,7 +362,7 @@ $ git merge my-branch // <3>
 
 <1> Develop some code and commit it in the currently selected my-branch.
 <2> Switched to branch _trunk_.
-<3> Merge the branch _my-branch_ into _trunk_.
+<3> Merge the branch _my-branch_ into the _trunk_.
 
 === Rebase
 
@@ -373,7 +373,7 @@ Git actually creates brand-new commits with new commit ids and permanently delet
 
 You should prefer to rebase only with local branches.
 Avoid rebasing shared branches.
-If you rebase a branch that was pulled from GitHub or GitLab, and then push it back, the server will reject it.
+If you rebase a branch that was pulled from {ref-github} or {ref-gitlab} and then push it back, the server will reject it.
 
 [source,console]
 ----
@@ -384,7 +384,7 @@ git rebase my-branch trunk
 
 Git squash is a technique that helps you to take a series of commits and condense it to a few commits.
 
-So let’s see how to squash the last three commits to a single commit.
+So let us see how to squash the last three commits to a single commit.
 
 [source,console]
 ----
@@ -437,7 +437,7 @@ Read the post link:../../2016/git-branches-for-the-impatient[Git Branches for th
 
 Read the documentation of GitLab, BitBucket or GitHub.
 You will use pull requests if you are working in a team for a project.
-Sadly, students rarely work teams during their studies.
+Sadly, students rarely work in teams during their studies.
 
 [bibliography]
 == Links

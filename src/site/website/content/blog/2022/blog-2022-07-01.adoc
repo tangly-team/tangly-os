@@ -13,7 +13,7 @@ include::../fragments/_config-mb-blog.adoc[]
 --
 image::2022-07-01-head.png[width=420,height=360,role=left]
 
-{ref-scrum} is the most popular approach to create awesome new digital products.
+{ref-scrum} is the most popular approach to creating awesome new digital products.
 
 Perhaps you are thinking of pursuing a career as a Scrum master.
 You read the {ref-manifesto} and memorized the {ref-manifesto-principles}.
@@ -41,7 +41,7 @@ When you introduce Scrum into an organisation, you are focused on the creation o
 New products have product owners.
 
 The organization needs an owner, someone to manage the vast backlog of requests.
-Somebody should prioritise, and collaborate with the cross-functional team of makers to deliver incremental value to its stakeholders.
+Somebody should prioritise and collaborate with the cross-functional team of makers to deliver incremental value to its stakeholders.
 The stakeholders are all employees, partners and shareholders.
 
 If {ref-scrum} does not ripple through an organisation this way, it is set up for failure.
@@ -149,7 +149,7 @@ Yu should certainly know the official {ref-scrum}.
 
 [IMPORTANT]
 ====
-You are a professional Scrum master in a digital product development when:
+You are a professional Scrum master in digital product development when:
 
 - You understand the _Definition of Done_ of your team.
 - You know the roadmap of your product and the release plan for the next six months.
@@ -182,7 +182,7 @@ All team members pursue technical excellence <<scrum-master-certification>> <<pr
 They learn how to facilitate some of their own meetings.
 Team members work more closely and directly with the product owner and stakeholders.
 
-The Scrum master is no longer needed to resolve communication roadblocks and resolve issues.
+The Scrum master is no longer necessary to resolve communication roadblocks and resolve issues.
 There are fewer organizational impediments to agility.
 Those that remain can be particularly difficult to resolve, but there are fewer of them.
 

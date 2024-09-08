@@ -23,7 +23,7 @@ footnote:[Another approach is to build an internal group and develop the solutio
 The costs of a team with ten collaborators and an investment horizon of five years would be at least 10 MCHF in Switzerland.
 It is a steep investment that takes time to be planned in a regular organization.
 The time and the readiness to invest are often not available in a timely manner.].
-It often makes sense for businesses trying to tackle a massive software development project while focusing on the current needs of their clients.
+It often makes sense for businesses to try to tackle a massive software development project while focusing on the current needs of their clients.
 
 == Evaluation
 
@@ -57,7 +57,7 @@ You risk choosing a partner that will go fast but make mistakes, or complete chu
 Do not risk quality and reputation for a good price.
 Ask about change orders.
 Many companies will underbid a project and later add on new charges throughout the project.
-It results a dramatic increase in the overall cost of development. +
+It results in a dramatic increase in the overall cost of development. +
 +
 It is true that aspects of your project will change during the development process.
 Experienced software development companies should help you understand how they will handle changes while protecting both your budget and your timeline. +
@@ -83,11 +83,11 @@ Create a document that records potential companies, their attributes, who you ar
 Ask Tough Questions::
 Learn what challenges they have faced with previous clients and what they did to overcome them.
 If there is something you are particularly worried about, ask about their experience dealing with your prospective challenges to helping their other clients with similar solutions in the past<<detecting-agile-bullshit>>.
-Ask about their best clients, and the ones that did not stick around. +
+Ask about their best clients and the ones that did not stick around. +
 +
 Be sure they have clearly outlined what you can expect from working with their team, how you will measure progress, and how they help define success. +
 +
-Be wary of any potential development partner that struggles to answer these questions or does not provide stories of failure or follow them up with concrete ways they’ve adapted to ensure future success for their clients.
+Be wary of any potential development partner that struggles to answer these questions or does not provide stories of failure or follow them up with concrete ways they have adapted to ensure future success for their clients.
 
 == Evaluation Criteria
 
@@ -108,7 +108,7 @@ You shall implement a clear and founded evaluation approach:
 
 == Checklist
 
-Here our checklist we use to discuss a potential partnership:
+Here is our checklist we use to discuss a potential partnership:
 
 === Hosting and Operations
 

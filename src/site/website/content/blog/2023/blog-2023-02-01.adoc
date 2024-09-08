@@ -79,7 +79,7 @@ Professional engineers have ethics and are aware of their social responsibilitie
 
 The areas are like the ones I check when receiving a CV <<evaluate-technical-cvs>>.
 
-== Write-Down Your Findings and Recommendations
+== Write Down Your Findings and Recommendations
 
 You should perform a technical interview with a colleague.
 Try to write your impressions and findings using the same template for all candidates.
@@ -96,23 +96,23 @@ Communication shall be timely and respectful.
 - Do not say: we want developers who can be exchanged.
 - You want to hire good people that can learn and improve.
 - Your organization should promote that people can learn and evolve.
-- Be clear what you are looking for: make team better, bring new things, what do they value in code and architecture.
+- Be clear what you are looking for: make the team better, bring new things, what do they value in code and architecture.
 - How do they solve various problems in areas such as architecture, design, process, code, bug?
 - Open-ended questions, to start a discussion.
 - Make criteria clear, if a criteria is not reached, inform them that you expect to reach the criteria.
 - An interviewee should also interview the interviewers.
 
-A powerful technique is extensive pair programming and pair design in particular during probation time.
+A powerful technique is extensive pair programming and pair design, in particular during probation time.
 Your new collaborator leans on how her team is working and the specifics of the product.
 
-The team understands the strengths of the trainee.
+The team understands the strengths of the trainees.
 They identify improvement areas to improve her effectiveness when working on the product.
 
 Show your best as a modern development shop.
 Your collaborators have access to 4K displays and professional keyboards, mice, headsets and desks
 footnote:[I am regularly depressed that professional developers still do not have access to high-resolution displays or high-quality headsets.].
 
-The employees are using state of the industry platform to create the products and to collaborate as teams
+The employees are using the state of the industry platform to create the products and to collaborate as teams
 footnote:[I still encounter teams without tools like Slack.
 Worst, some still cannot use development platforms such as GitHub, GitLab, BitBucket or Azure.].
 

@@ -58,7 +58,7 @@ Another gain is tension just disappears when people talk around snacks and drink
 As a Java developer, it is time to use state of the industry tools and improve your daily work
 
 . Java 9 JDK - If you are still working with Java 7 or earlier, you are a laggard
-.. Java 8 public support will end middle of next year.
+.. Java 8 public support will end in the middle of next year.
 .. Java 10 shall be available next year.
  The early releases are already online.
  Download them and try the new features.
@@ -67,14 +67,14 @@ As a Java developer, it is time to use state of the industry tools and improve y
 . Gradle
 .. Build, deliver, and deploy your solution with one keystroke.
 . Continuous integration, delivery and deployment pipelines.
-.. Never again configure manually a deployment by hand.
+.. Never again manually configure a deployment by hand.
 . Test environments with Docker
 .. Never say again, _it is working on my machine_.
 . Modern IDE such as IntelliJ IDEA
 .. Splendid Gradle support.
 .. Marvelous JUnit 5 support.
 .. Alt-Enter anywhere brings up context-sensitive options.
- Run a test, create a test, create subclass, convert to closure, generate missing test methods, remove an explicit type, split into declaration and assignment, introduce local variable.
+ Run a test, create a test, create a subclass, convert to closure, generate missing test methods, remove an explicit type, split into declaration and assignment, introduce local variable.
  The suggestions are limitless.
 .. Great Java 8 support, suggesting lambda notation where appropriate!
 .. Even displaying anonymous inner class usage (collapsed) as if it was written using a lambda expression.
@@ -100,7 +100,7 @@ Here are some suggestions to hone your craftsmanship
 * Learn new shortcuts and plugins for your favorite IDE.
 * Improve the agile, lean, Scrum, LeSS approaches in your department.
 * Refactor daily code and practice clean-code.
-* Become an expert of Git.
+* Become an expert on Git.
 * Increase self-awareness and work on your soft skills, teamwork shall improve.
 
-I wish you success, fulfillment, happiness and fun.
+I wish you success, fulfillment, happiness, and fun.

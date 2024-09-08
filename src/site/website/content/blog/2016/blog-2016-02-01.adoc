@@ -58,7 +58,7 @@ The stakeholders decide how often the solution is deployed into production.
 == Developers Team
 
 Agile methods, such as {ref-scrum}, {ref-xp}, or {ref-less}, are fun for all developers.
-Suddenly, everyone can see your code, so at the beginning you as a developer must cope with different views how good code should be written.
+Suddenly, everyone can see your code, so at the beginning you as a developer must cope with different views on how good code should be written.
 Suddenly, you must master Test Driven Development TDD, mocking, unit test, legible documents.
 But once you have it, you start to experience the "flow" and enjoy the atmosphere and to deliver at the end of each sprint a new software artifact.
 
@@ -67,7 +67,7 @@ You must acknowledge that product success is also your success.
 ROI considerations now also drive each design decision.
 If you master these responsibilities, you suddenly discover the world of engineering.
 It is creating great products with an optimal balance of external quality and costs without ever jeopardizing the quality of the core.
-You can never again deny that you as a developer are in charge.
+You can never again deny that you, as a developer, are in charge.
 
 == Scrum Master
 
@@ -81,8 +81,8 @@ So you need to discover your _the lonely cowboy riding in the sun_ song why this
 
 As a product owner cite:[professional-product-owner], you control the budget of the product, the priorities.
 At the end of each iteration, you can change all priorities and goals.
-Cool isn't it.
-But wait as a product owner, I am responsible for the budget and product success, and each time a member of the team asks me something I must have an answer ready.
+Cool, isn't it.
+But wait as a product owner, I am responsible for the budget and product success, and each time a member of the team asks me something, I must have an answer ready.
 
 Scrum is cool and we enjoy it.
 And Scrum makes everything transparent and fast.

@@ -2,7 +2,7 @@
 title: "Immutability in Java"
 linkTitle: "Immutability in Java"
 date: 2022-01-05
-tags: ["design", "java"]
+tags: ["design", "java", "tangly-os"]
 params:
   featured: "blog/2022/pics/2022-01-02-head.jpg"
 ---

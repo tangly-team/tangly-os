@@ -29,8 +29,8 @@ The solution architecture document is typically used as a reference for designin
 
 Developers, architects, and other stakeholders use it to understand the overall design of the system and how it fits into the larger business or technical environment.
 
-Below an example of a software architecture document content
-footnote:[I add a chapter describing the user manual and user interface when document our applications.].
+Below is an example of a software architecture document content
+footnote:[I add a chapter describing the user manual and user interface when documenting our applications.].
 
 [.text-center]
 image:2024-05-01-architecture-doc.png[width=640,height=360,align="text-center"]
@@ -42,7 +42,7 @@ cite:[modern-software-engineering,effective-java-3rd,building-evolutionary-archi
 
 Tooling and practices have evolved to support the creation of lightweight, agile software architecture documentation.
 The {ref-arc42} approach natively supports {ref-asciidoc} and {ref-markdown} based documentation
-footnote:[The worst solution is to write Microsoft Word documents and store them in a SharePoint site.
+footnote:[The worst solution is to write Microsoft Word documents and store them on a SharePoint site.
 Such documents can neither be searched nor archived.
 Jira wiki documentation has similar drawbacks.].
 All documents are stored as text artifacts in a git repository.
@@ -78,7 +78,7 @@ You should as a software architect understand:
 - What are the things that you really need to think about before coding?
 - How to visualize your software architecture using {ref-c4}?
 - How to document your application with a lightweight and collaborative approach?.
-- Why there is no conflict between agile and architecture?
+- Why does no conflict between agile and architecture exist?
 - What does _just enough_ upfront design mean?
 - How to identify risks with risk-storming?
 
@@ -88,7 +88,7 @@ These are the rules for any technical documentation, including software architec
 
 . Write documentation from the reader’s point of view.
 Embrace approaches such as {ref-javadoc}
-footnote:[JavaDoc lately added support to Markdown syntax and code snippets.
+footnote:[Javadoc lately added support for {ref-markdown} syntax and code snippets.
 It markantly simplifies the redaction of quality documentation.].
 . Document that you have realized, not your wishes.
 . Avoid unnecessary repetition.

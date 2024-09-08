@@ -34,7 +34,7 @@ Remember, simple solutions can be very elegant and extensible.
 
 [TIP]
 ====
-The system you are building as probably hundreds of siblings in the world.
+The system you are building has probably hundreds of siblings in the world.
 Study the available solutions to understand the tradeoffs of these systems.
 
 Open source permeates the software industry.
@@ -50,7 +50,7 @@ What user interface should we define?::
 Acknowledge that a software developer is missing the formal education to create good user interfaces.
 You need a user interface and usability trained professional to create and refine stunning user interfaces.
 Select technological solutions compatible with your technology stack
-footnote:[Beware that browser-based JavaScript solutions require major rework of the solution at least every eighteen months.
+footnote:[Beware that browser-based JavaScript solutions require a major rework of the solution at least every eighteen months.
 The pace of change in frameworks such as Angular, React, Vue, jQuery is stunning.
 Supported standards in browsers are evolving.].
 How do we implement accessibility laws and requirements?::
@@ -100,14 +100,14 @@ Each bounded domain shall implement their own log record repository.
 The structure of the records should be standardized to ease the effort of understanding the behavior of the whole application.
 The various repositories must be aggregated and have a total ordering.
 Either your system has a global time with the required resolution, often in the area of a few microseconds.
-Or you write all your log to an asynchronous aggregator.
+Or you write all your logs to an asynchronous aggregator.
 The order of arrival provides the implicit ordering of the log records.
 How should we audit activities and why?::
 _Review your internal documented solution_
 How is security implemented?::
 _Review your internal documented solution_
 How do we authenticate and authorize?::
-JWT and OAuth are regular approach for webservers.
+JWT and OAuth are regular approaches for webservers.
 
 == Persistent Data Themes
 

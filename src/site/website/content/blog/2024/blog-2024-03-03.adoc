@@ -178,7 +178,7 @@ ruby -v                                                                        <
 
 The consequence is that I should set up a CI pipeline to check if the toolchain is still working.
 
-=== Asciidoc Stylesheet
+=== AsciiDoc Stylesheet
 
 The support of {ref-docsy} for {ref-asciidoc} is limited.
 I had to extend the theme to support styling of {ref-asciidoc} texts and to display taxonomies in the sidebar.
@@ -187,7 +187,7 @@ Additional tinkering supports the download of referenced documents.
 
 === Link Integrity
 
-When your website is growing, you need tools to ensure consistency of links.
+When your website is growing, you need tools to ensure the consistency of links.
 I use {ref-integrity} to validate all hyperlinks on my website.
 
 [bibliography]

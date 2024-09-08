@@ -13,7 +13,7 @@ include::../fragments/_config-mb-blog.adoc[]
 --
 image::2022-08-01-head.jpg[width=420,height=360,role=left]
 
-Some organisations are adopting agile and Scrum approaches simply because they see competitors doing it.
+Some organizations are adopting agile and Scrum approaches simply because they see competitors doing it.
 In these situations, there is rarely a desire to adopt a new mindset and culture, or motivation for true change.
 
 A common pattern is the adoption of a new nomenclature.
@@ -21,7 +21,7 @@ Project Managers are renamed as Scrum Masters.
 Business Analysts become Product Owners.
 
 Very little actually changes.
-Few benefits of agility are realised.
+Few benefits of agility are realized.
 
 If anything, the situation may become worse as some previous structures are lost, yet the discipline for Agile is just not there.
 --
@@ -41,7 +41,7 @@ The corollaries are:
 . Any change initiative will be reduced to redefining or overloading the new terminology to mean basically the same as status quo.
 . Any change initiative will be derided as _purist_, _theoretical_, _revolutionary_, _religion_ and _needing pragmatic customization for local concerns_.
 It deflects from addressing weaknesses, and manager or specialist status quo.
-. If after changing the change some managers and single-specialists are still displaced, they become _coaches or trainers_ for the change.
+. If after changing the change, some managers and single-specialists are still displaced, they become _coaches or trainers_ for the change.
 They frequently reinforce (1) and (2).
 . In large established organizations, culture follows structure.
 And in tiny young orgs, structure follows culture
@@ -55,7 +55,7 @@ This dreadful situation is unavoidable.
 
 == Five Scrum Fake Indicators
 
-How to find out you are in a fake agile environment?
+How to find out if you are in a fake agile environment?
 Indicators you are in a fake agile or Scrum environment often are:
 
 image::2022-08-01-values-principles-practices.png[width=60%,height=360,role=text-center]
@@ -111,7 +111,7 @@ Scrum is built upon this engine.
 
 Scrum is built upon the idea that we make things transparent.
 
-We inspect and adapt at the appropriate frequency and that is how we manage all the complexity of product development.
+We inspect and adapt at the appropriate frequency, and that is how we manage all the complexity of product development.
 We certainly cannot eliminate complexity, but we can work with it.
 So, if you do not have transparency, you got fake Scrum.
 
@@ -137,10 +137,10 @@ You can easily detect fake Scrum and incompetent software development teams:
 Git commit multiple times per day per developer::
 All your software development teams are working with git.
 Each developer creates multiple well-commented commits per day.
-Just use git history to check this hypothesis. +
+Use git history to check this hypothesis. +
 _Here some links to how you can use git_ <<git-local-repositories-for-the-impatient>><<git-branches-for-the-impatient>> <<code-scene>>.
 Deliver working applications multiple times a week::
-All teams deploy their digital increment multiple time per week.
+All teams deploy their digital increment multiple times per week.
 DevOps practices
 footnote:[Continuous integration and continuous delivery is _Dev_ practices.
 Continuous deployment and infrastructure as code are _Ops_ practices.] are lively in our organization cite:[accelerate,continuous-delivery-pipelines].
@@ -150,7 +150,7 @@ A way to check these good practices is to study errors reports <<zero-bug-policy
 Another test is to look at the OWASP static analysis and the obsolete libraries reports.
 Living documentation::
 Professional developers provide adequate and actual documentation for their solution.
-Does the team have a living documentation.
+Does the team have living documentation.
 This documentation is often a generated static website <<static-website>>.
 Agile software architecture regularly uses domain driven design ideas <<domain-driven-design>>.
 Ask the team how they do software design activities?
@@ -177,7 +177,7 @@ Marcel Baumann. 2016.
 Marcel Baumann. 2019.
 - [[[zero-bug-policy, 5]]] link:../../2020/advocate-zero-bug-policy-in-your-projects/[Advocate Zero Bug Policy in Your Projects]
 Marcel Baumann. 2020.
-- [[[static-website, 6]]] link:../../2020/creating-a-technical-website-with-hugo-and-asciidoc/[Creating a Technical Website with Hugo and Asciidoc]
+- [[[static-website, 6]]] link:../../2020/creating-a-technical-website-with-hugo-and-asciidoc/[Creating a Technical Website with Hugo and AsciiDoc]
 Marcel Baumann. 2020.
 - [[[domain-driven-design, 7]]] link:../../2022/software-structure-with-ddd/[Software Structure with DDD]
 Marcel Baumann. 2022.

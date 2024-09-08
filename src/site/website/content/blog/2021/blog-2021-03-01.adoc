@@ -29,12 +29,12 @@ Other tool maintainers such as {ref-jacoco}  are dreadfully behind the release c
 We learnt to deal with the new speed and how to tackle the laggards.
 Some experiences were quite painful.
 
-Below our findings and our current focus on developing software products.
+Below are our findings and our current focus on developing software products.
 --
 
 == Legibility Matters
 
-Programmers learnt the last decade that legibility and brevity of programming languages matter.
+Programmers learnt in the last decade that legibility and brevity of programming languages matter.
 The Java {ref-coin} and {ref-amber}
 projects were initiated to reduce the verbosity of the Java language mainly through syntactic sugar.
 A programmer should not be forced to write statements the compiler could infer.
@@ -61,7 +61,7 @@ Modern Java has introduced powerful constructs to write legible and maintainable
 Modern Java code is quite different from Java 5 code.
 
 Java Modules::
-Dependencies management supported at language level. +
+Dependency management is supported at language level. +
 The https://en.wikipedia.org/wiki/Ada_(programming_language)[Ada] programming language has support for module since 1985.
 Streams and Lambda::
 Support for functional programming approaches.
@@ -114,7 +114,7 @@ Lambda expressions cannot handle checked exceptions.
 Only runtime exceptions can be thrown in a lambda expression.
 Experience with other programming languages shows that checked exceptions do not provide gains in the quality of delivered code.
 Pattern matching with deconstruction::
-First pattern matching constructs are available in switch and if statements.
+First, pattern matching constructs are available in switch and if statements.
 Discussions are underway to extend pattern matching with object deconstruction.
 Value Types::
 Value types would be a huge improvement in performance and support of modern processor architecture if the Valhalla product delivers.

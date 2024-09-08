@@ -34,7 +34,7 @@ Too much time is used to explain the basics of the various loops and conditional
 Java developers should never return null from a method.
 Instead, they should return an empty collection or an optional.
 
-You are truly using functional programming style if some of your methods have lambda expressions as parameters or return values.
+You are truly using a functional programming style if some of your methods have lambda expressions as parameters or return values.
 ====
 
 == Creating Streams
@@ -69,7 +69,7 @@ image::2024-02-01-flatmap.jpg[width=420,height=360,role=left]
 
 The _map()_ method is used to transform one object into another by applying a transformation function.
 It produces a new stream after applying the function to each element of the original stream.
-The new stream could be of different type.
+The new stream could be of a different type.
 
 The _filter()_ method is used to eliminate elements based on a condition.
 It produces a new stream that contains elements of the original stream that pass a given test specified by a _Predicate_.

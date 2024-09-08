@@ -216,7 +216,7 @@ The rules are coded as unit tests and are processed in the continuous integratio
 
 The advantages of the architecture are:
 
-* The whole company talking the same ubiquitous language, reduced risk of misunderstandings.
+* The whole company talking the same ubiquitous language, reduced the risk of misunderstandings.
 Everyone needs to be aligned, both in vocabulary and ownership of the components.
 The engineers have common understanding and coding guidelines to realize the layers inside a bounded domain.
 * You have a segregated architecture defining a modular monolith application.
@@ -238,7 +238,8 @@ Customer-supplier::
 a connection between two contexts, where one context (upstream) produces data, and the other (downstream) consumes it.
 In this relationship, both sides are interested in establishing the best possible communication.
 Conformist::
-this relationship also has upstream and downstream, however, downstream always conforms to the upstream’s APIs.
+this relationship also has upstream and downstream.
+However, downstream always conforms to the upstream’s APIs.
 Anti-corruption layer::
 this relationship kind is widely used for legacy systems to adapt them to a new architecture and gradually migrate from the legacy codebase.
 The protection layer acts as an adapter to translate data from the upstream and protect from undesired changes

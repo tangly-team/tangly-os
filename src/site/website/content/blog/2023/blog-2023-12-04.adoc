@@ -142,7 +142,7 @@ The designer is responsible to avoid concurrent access to the register.
 Input devices should always support interrupts.
 Otherwise, the application must poll registers to detect changes.
 Polling is cumbersome and expensive.
-Either the programmer guesses a polling frequency and misses sometimes data.
+Either the programmer guesses a polling frequency and sometimes misses data.
 Or he chooses a high-frequency sampling rate and wastes computing resources.
 
 [sidebar]
@@ -161,7 +161,7 @@ The drawback is that the program is not informed when a new value is received.
 The approach is a reactive system triggering the application each time input data is received.
 - The interrupt routine calls a callback function.
 The callback function is a function pointer to a static {cpp} function and often has the reference of the object abstracting the sensor.
-Below is a potential implementation of the callback function and callback registration is shown.
+Below is a potential implementation of the callback function, and callback registration is shown.
 +
 [source,cpp]
 ----
@@ -208,7 +208,7 @@ Algorithms are only triggered when the external system has changed.
 
 [TIP]
 ====
-I recommend interrupt triggering input data gathering and reacting to input *changes*.
+I recommend interrupting triggering input data gathering and reacting to input *changes*.
 
 This design approach minimizes microcontroller resource consumption and simplifies the control algorithms.
 ====

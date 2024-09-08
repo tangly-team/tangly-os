@@ -77,7 +77,7 @@ Panama project provides way better approaches to interface with external librari
 == Thoughts
 
 Java is steadily improving <<modern-java-development>> if sometimes slowly
-footnote:[I am waiting since 2018 that Brian Goetz proposal of concise method bodies is implemented in a JDK.].
+footnote:[I have been waiting since 2018 that Brian Goetz proposal of concise method bodies is implemented in a JDK.].
 
 The project https://openjdk.org/projects/amber/[amber] is a powerful driver for regular Java improvements.
 The next goodies for JDK LTS 21 should be https://openjdk.org/jeps/431[Sequenced Collections] and https://openjdk.org/jeps/430[String Templates].

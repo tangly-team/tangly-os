@@ -37,7 +37,7 @@ Application designers often face the following questions:
 == Structured Concurrency
 
 Structured concurrency enhances the maintainability, reliability, and observability of multithreaded code.
-It adopts a concurrent programming style that reduces the likelihood of thread leaks and cancellation delay.
+It adopts a concurrent programming style that reduces the likelihood of thread leaks and cancellation delays.
 These are common risks associated with cancellation and shutdown.
 
 As the JEP for structured concurrency says, _If a task splits into concurrent subtasks, then they all return to the same place, namely the task's code block_.

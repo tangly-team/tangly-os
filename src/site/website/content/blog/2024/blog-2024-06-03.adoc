@@ -18,7 +18,7 @@ image::2024-06-03-head.svg[width=420,height=360,role=left]
 The actor library defines the actor abstraction with mailboxes and concrete implementation for various target platforms.
 
 The {ref-cmsis-rtos2} platform provides an actor implementation for all realtime kernels supporting the CMSIS API.
-The API is under the stewardship of ARM company.
+The API is under the stewardship of the ARM company.
 
 Any kernel with a {ref-cmsis-rtos2} compatible layer is eligible.
 
@@ -151,7 +151,7 @@ bool MyActorCmsis::processMsg(Message<Data>* msg) {                            <
 };
 ----
 
-<1> The body of your actor class responsible to process received messages.
+<1> The body of your actor class responsible for the process received messages.
 You do not need to handle the communication with CMSIS or how the actor communicates with the CMSIS thread.
 The {cpp} implementation takes care of these quirks.
 <2> Retrieve the payload variant you are interested in and check if it is available.
@@ -165,7 +165,7 @@ The actor can still publish a programmatic interface to its users.
 The services are provided as regular public methods.
 The constraint is that they should not have a return value.
 
-Each service method is implemented as the creation of a command message and send to the actor mailbox.
+Each service method is implemented as the creation of a command message and sent to the actor mailbox.
 The command message creation only uses local variables and therefore does not need to be protected with synchronization primitives.
 
 The implementation of the actor is slightly more expensive.
@@ -279,7 +279,7 @@ The message pool hugely simplifies the handling of messages between actors witho
 The message pool uses constructs compatible with interrupt routines.
 Therefore, you can acquire and release messages from a regular actor instance or from an interrupt routine.
 
-The variant abstraction from the standard library provides runtime checks that the correct variant is access.
+The variant abstraction from the standard library provides runtime checks that the correct variant is accessed.
 
 Your actor class only needs to override the _processMsg(Message<Data>* msg)_ method.
 The body of this method should process all expected message types.

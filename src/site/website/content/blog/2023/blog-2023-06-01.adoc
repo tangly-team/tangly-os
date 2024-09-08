@@ -23,7 +23,7 @@ Other languages such as Python, {cpp} or C# added their own functional extension
 
 https://en.wikipedia.org/wiki/Lisp_(programming_language)[Lisp] dialects fully supported functional paradigms since the sixties of the last century.
 
-The theory behind functional model is asciimath:[lambda] _calculus_.
+The theory behind the functional model is asciimath:[lambda] _calculus_.
 https://en.wikipedia.org/wiki/Alonzo_Church[Alonso Church] formulated the https://en.wikipedia.org/wiki/Lambda_calculus[lambda calculus] theory in the thirties of the last century and millennium.
 
 Why are functional programming paradigms suddenly so popular?
@@ -49,7 +49,7 @@ For many tasks, functional programs are easier to understand, less error-prone, 
 Clojure cite:[programming-clojure] is a splendid approach to learn functional programming idioms.
 The language is well-documented.
 
-The integration in the Java ecosystem and virtual machine is well-done.
+The integration of the Java ecosystem and virtual machine is well-done.
 
 [quote]
 ____

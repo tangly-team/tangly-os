@@ -19,22 +19,22 @@ Such a change takes time and sometimes hurts.
 * Without the commitment of senior management, the initiative will fail.
 * You must teach, coach, support your collaborators through the transition.
 You need to believe in them and provide an environment where they can safely learn and experiment.
-* In the end, what matters are collaborator purpose, customer satisfaction, business value.
+* In the end, what matters is collaborator purpose, customer satisfaction, business value.
 
 SwissQ
 footnote:[The SwissQ company was acquired by https://xebia.com/switzerland-de/[Xebia] and access to the data was removed.
 The reports are archived on this site under {ref-tangly-blog-url}/expertise/knowledge/history/[SwissQ Reports].]
 has published a "SwissQ Software Development Switzerland 2016".
-The study can be downloaded as PDF from their website.
+The study can be downloaded as a PDF from their website.
 See a previous blog for the results of link:../../2016/agile-trends-switzerland-2013[Agile Trends Switzerland 2013] and another blog for the results of
 link:../../2016/agile-trends-switzerland-2012[Agile Trends Switzerland 2012].
 
-Below some findings of the study.
+Below are some findings of the study.
 
 == Major Hurdles When Introducing Agile Approaches
 
 The number left is the value for 2016.
-The number in parentheses is the value found in the study for year 2013. Bold items are new in the 2016 study and have no 2013 values.
+The number in parentheses is the value found in the study for the year 2013. Bold items are new in the 2016 study and have no 2013 values.
 
 * 63% (72%): Culture change
 * 61% (21%): Management support
@@ -45,14 +45,14 @@ The number in parentheses is the value found in the study for year 2013. Bold it
 * 17% (28%): Know-how collaborators
 
 The trend is a clear move toward agile approaches.
-Companies seem less reluctant to introduce agile approaches, but often compromise using bimodal IT.
+Companies seem less reluctant to introduce agile approaches but often compromise using bimodal IT.
 A typical Swiss example is the government Hermes method mixing Scrum with Waterfall.
 
-Major opponents such as senior managers or internal and external customers more and more acknowledge the success of agile approaches.
+Major opponents, such as senior managers or internal and external customers, more and more acknowledge the success of agile approaches.
 
 The majority of teams use Scrum or Kanban.
 The associated events and tools are used.
-Values such as test driven development, acceptance test driven development, clean code or refactoring are often missing.
+Values such as test driven development, acceptance test-driven development, clean code or refactoring are often missing.
 The key is
 
 [.text-center]
@@ -69,7 +69,7 @@ You shall start introducing agile approaches
 
 . Senior management is fully committed to the approach and approves the cultural change.
 Read the book "Reinventing Organizations" from Frederic Laloux to understand the implied changes.
-. Products are value-driven and quality oriented
+. Products are value-driven and quality-oriented
 . Teams focus on how to master their work and tools.
 They used craftsmanship or {ref-xp} approaches.
 

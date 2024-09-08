@@ -14,7 +14,7 @@ image::2023-03-01-head.png[width=420,height=360,role=left]
 Scrum is the most popular agile approach used to develop digital products.
 
 The Scrum master role is well-documented in the {ref-scrum}.
-There are probably more than one million of certified Scrum masters in the world.
+There are probably more than one million certified Scrum masters in the world.
 
 To differentiate themselves from the numerous Scrum masters, consultants call themselves agile coaches.
 
@@ -29,13 +29,13 @@ A Scrum master works to implement Agile on a team level, while the Agile coach w
 ____
 
 I suggest that you study again the {ref-scrum} when reading the above quote.
-Here the guide statement how a Scrum master should support her organization.
+Here is the guide statement how a Scrum master should support her organization.
 
 _The Scrum Master serves the organization in several ways, including:_
 
 - __ *Leading*, *training*, and *coaching* the *organization* in its Scrum adoption.__
 - __ *Planning* and advising Scrum implementations within the organization.__
-- __ Helping employees and stakeholders understand and enact an empirical approach for complex work.__
+- __ Helping employees and stakeholders understand and enact an empirical approach to complex work.__
 - __ *Removing barriers* between stakeholders and Scrum Teams.__
 
 == Agile Coaches Profiles
@@ -59,7 +59,7 @@ He supports the scrum masters in their ambition to help the teams forward cite:[
 She is the advisor to empower the team to reach *focusing* fluency in the agile fluency model.
 
 _I expect a professional Scrum master to possess the above capabilities.
-Teaching, coaching, and mentoring the Scrum team to grasp agility is one of her main responsibilities.
+Teaching, coaching, and mentoring the Scrum team to grasp agility are one of her main responsibilities.
 Scrum masters in an organization shall exchange ideas and tips through a community of practice._
 
 === Delivery Coach
@@ -67,7 +67,7 @@ Scrum masters in an organization shall exchange ideas and tips through a communi
 The delivery coach has a strong focus on optimizing the flow of the development process.
 She is the advisor to empower the team to reach *delivering* fluency in the agile fluency model.
 
-In order to increase the delivered business value, the delivery coach identifies bottlenecks, replaces local optimizations for more generic solutions.
+To increase the delivered business value, the delivery coach identifies bottlenecks, replaces local optimizations for more generic solutions.
 She builds quality into the software development lifecycle.
 
 She sits with the team to help them automate deployments and testing and to embrace development practices like

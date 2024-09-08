@@ -2,7 +2,7 @@
 title: "Reference Codes"
 linkTitle: "Reference Codes"
 date: 2020-11-02
-tags: ["java", "design", "crm", "series-identifiers"]
+tags: ["java", "design", "tangly-os", "series-identifiers"]
 params:
   featured: "blog/2020/pics/2020-11-01-head.jpg"
 ---

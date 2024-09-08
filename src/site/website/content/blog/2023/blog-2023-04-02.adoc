@@ -37,7 +37,7 @@ The new notebook replaces my older MacBookPro 2018 I bought five years ago.
 
 The new machine is so fast
 footnote:[To be fair, I am not involved in machine learning or vision application development.
-Apple support for standard ML libraries is abysmal.
+Apple Support for standard ML libraries is abysmal.
 The company decided to create their own standard with {ref-metal} and do not assume the consequences.].
 It is a pleasure to work with it.
 The only visible difference with the older notebook is the newer version has a bulkier build.
@@ -46,11 +46,11 @@ I decided to set up the machine from the ground up.
 I want to find out which programs I am really using in my work.
 The setup activities took around one and a half hours
 footnote:[The synchronization of the various Cloud storages was performed overnight.
-We store company related or personal data either on Cloud drives or in Git repositories.].
+We store company-related or personal data either on Cloud drives or in Git repositories.].
 
 The older notebook is now my backup computer.
 It can be quite useful.
-A battery replacement on a MacBook notebook takes easily one week in Switzerland.
+A battery replacement on a MacBook notebook easily takes one week in Switzerland.
 You have to send the notebook to an approved reseller and have no access during this time.
 
 == Standard Programs
@@ -83,9 +83,9 @@ Shame on them.
 The worst missing feature is bulk download of purchased books.
 I like to explore my library during commute train travel.
 You do not have wireless access to trains in Switzerland.
-The books shall be stored in the notebook otherwise you cannot read them.]._
+The books shall be stored in the notebook, otherwise you cannot read them.]._
 - JabRef for bibliography references
-footnote:[I love the bibtex to keep track to all my literature references.].
+footnote:[I love the bibtex to keep track of all my literature references.].
 - Google Drive to access all our company drives.
 - Switch Drive for the Swiss technical university drives.
 - Spotify to listen to music.
@@ -112,10 +112,10 @@ I am not aware of any scenarios why an organization should use an older Java ver
 The JDK documentation shall be copied in the folder _/Library/WebServer/Documents_.
 You need _sudo_ rights to move the files into the web server documents folder.
 
-You can access the JavaDoc documentation with URI _localhost/docs-jdk20/api/index.html_.
+You can access the Javadoc documentation with URI _localhost/docs-jdk20/api/index.html_.
 
 I need local access to the documentation when traveling in Switzerland.
-The official Swiss railway company does not provide Internet access in the trains.
+The official Swiss railway company does not provide Internet access on the trains.
 
 If you never started the Apache server, you need to execute once:
 
@@ -164,7 +164,7 @@ brew install cmake ninja doxygen                                      <10>
 
 <1> Development tools for Java projects.
 Ant is an obsolete tool and no more part of the set.
-<2> Documentation tools used to produce all technical documents.
+<2> Documentation tools are used to produce all technical documents.
 The applications are used to generate static websites.
 I had to update the PATH variable with _/opt/homebrew/opt/ruby/bin_ to ensure that brew ruby installation is used instead of the macOS one.
 <3> {ref-clojure} tools for the technical university lectures I gave.
@@ -172,7 +172,7 @@ I had to update the PATH variable with _/opt/homebrew/opt/ruby/bin_ to ensure th
 <5> Applications managed through homebrew.
 <6> JabRef for bibliography references management.
 Due to macOS Ventura, you need to enable the application with _xattr_ command.
-<7> https://github.com/sverweij/state-machine-cat[State machine cat] _smcat_ to generate nice statecharts as an asciidoc diagram type.
+<7> https://github.com/sverweij/state-machine-cat[State machine cat] _smcat_ to generate nice statecharts as an AsciiDoc diagram type.
 <8> Install the ruby packages used with asciidoctor to create the static websites.
 <9> Install a newsreader for RSS feeds.
 It is also used to check if https://blog.tangly.net[tangly blog] RSS feed is working.
@@ -268,7 +268,7 @@ gem update
 [TIP]
 ====
 If you install a JDK with brew, read the brew output.
-Do not forget to create the link to the java installation.
+Remember to create the link to the java installation.
 _This step is necessary because brew installs a JDK as keg-only package._
 _MacOS expects JDKs to be installed in the /Library/Java/JavaVirtualMachines directory._
 
@@ -291,11 +291,11 @@ Once the new machine is up and running, I need to clean up the backup drive and 
 sudo tmutil delete -p /Volumes/Backup/Backups.backupdb/<MACHINE-NAME>
 ----
 
-Beware that the delete operation take a very long time.
+Beware that the delete operation takes a very long time.
 
 == Thoughts
 
-All developers in our company are using Apple notebooks since the company's inception.
+All developers in our company have been using Apple notebooks since the company's inception.
 Our primary development stack is Java.
 We are regularly working on embedded industrial products and sometimes use {cpp}.
 
@@ -304,11 +304,11 @@ The Apple ecosystem and the full access to a Unix system validated the assumptio
 The macOS operating system is a cool environment to easily install all the applications you need to work.
 The Unix terminal console is a game changer for any software engineer
 footnote:[Professional programmers shall have access to a terminal and have local administrator rights.].
-The Homebrew package manager streamlines installation and update of needed software packages.
+The Homebrew package manager streamlines installation and update of necessary software packages.
 
 [TIP]
 ====
-An incredible useful feature is time machine.
+An incredible useful feature is a time machine.
 Buy an external storage medium and setup regular backups.
 It costs almost nothing and could save your professional life.
 
@@ -320,9 +320,9 @@ All product development files should be versioned in a remote {ref-git} reposito
 The new MacBookPro is awesome.
 It is fast, slick, and the display is gorgeous.
 The trade-off is the weight of 2.2 kilograms you have to carry around.
-The build-in loudspeakers are an audible improvement against the sound of the previous machine.
+The built-in loudspeakers are an audible improvement against the sound of the previous machine.
 
-I was surprised how much faster write operations on the build-in solid state disk are.
+I was surprised how much faster write operations on the built-in solid state disk are.
 
 It is worth the price I paid
 footnote:[The price of the Macbook notebook in 2023 was CHF 3'300.

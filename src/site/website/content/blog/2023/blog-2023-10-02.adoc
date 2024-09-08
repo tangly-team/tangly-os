@@ -27,7 +27,7 @@ Typical aspects are user interface, persistence, configuration and compatibility
 
 Experienced software designers often have a list of questions any software architecture should answer.
 
-Below the questions I answered every time when implementing a new application.
+Below are the questions I answered every time when implementing a new application.
 
 == User Experience
 
@@ -57,7 +57,7 @@ Trained collaborators are key to designing world-class user interfaces.
 
 == Configuration
 
-How should the product be configured during production and at customer site?
+How should the product be configured during production and at the customer site?
 
 Deployment configuration::
 Defines how the application is deployed on the target system.
@@ -156,7 +156,7 @@ How can you integrate the product into a landscape?
 
 Deployment::
 How should the solution be deployed in a landscape?
-Is incremental update requested?
+Is an incremental update requested?
 How do we update the configuration of a subset of the landscape in a consistent way?
 Authentication::
 How do we authenticate the users of the application?
@@ -171,8 +171,8 @@ How can our application be integrated in the processes of the organizational lan
 
 [IMPORTANT]
 ====
-Modular monolith approach is currently the most cost-effective approach to structure a software application.
-Communication between bounded domains is primary asynchronous and message based.
+Modular monolith approach is currently the most cost-effective approach to structuring a software application.
+Communication between bounded domains is primary asynchronous and message-based.
 
 Use standards for authentication and authorization to minimize security risks.
 ====
@@ -253,5 +253,5 @@ Avoid solutions overwhelming your developers.
 
 Consider choosing well-known approaches to reduce training and coaching effort.
 
-Invest effort to create an evolvable architecture.
+Invest in effort to create an evolvable architecture.
 The chosen architecture shall adapt to encompass newly discovered requirements.

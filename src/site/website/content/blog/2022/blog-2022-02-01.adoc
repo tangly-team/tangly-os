@@ -67,7 +67,7 @@ These _knowledge workers_ often have more diverse origins, thoughts, composition
 
 Agile organizations are working daily to improve.
 There is no substitute for doing hard work.
-They try to figure out solutions to difficult problems as they go along, using Scrum as a canvas to illuminate the way.
+They try to figure out solutions to challenging problems as they go along, using Scrum as a canvas to illuminate the way.
 
 [quote,Kierkegaard]
 ____
@@ -98,9 +98,10 @@ Fully understand that:
 * Agile does not fix poor leadership, poor management, or command-and-control culture.
 * Agile does not fix lack of engagement or company political games.
 * Agile does not fix people's ego or lack of motivation.
-* Agile does not fix poor behaviors, culture and mindset.
+* Agile does not fix poor behaviors, culture, and mindset.
 * Agile does not fix over-allocation of people or lack of focus.
-* Agile does not fix poor customer focus Agile does not fix poor process workflow or poor collaboration.
+* Agile does not fix poor customer focus.
+Agile does not fix poor process workflow or poor collaboration.
 * Agile does not fix poor HR compensation processes that do not set the right people's behavior.
 
 Agile makes it all visible and transparent.
@@ -111,7 +112,7 @@ A huge intentional effort needs to be taken by those in the process, willing to 
 
 == Agile Teams
 
-Here a set of capabilities strongly improving the throughput of an agile team.
+Here is a set of capabilities strongly improving the throughput of an agile team.
 Our company is proud of how cool, professional and effective our development teams are.
 The eight tips are:
 
@@ -126,7 +127,7 @@ A powerful practice is the zero bug policy <<zero-bug-policy>>.
 . Drop rituals that give you no added value.
 Avoid https://en.wikipedia.org/wiki/Cargo_cult[Cargo Cult].
 . Have a good mix of experience and personality in your team.
-Promote continuous training and when adequate certification in key technologies.
+Promote continuous training and adequate certification in key technologies.
 Establish a strong learning culture in your organization.
 Encourage your collaborators to work on open source projects and publish on blogs.
 
@@ -164,16 +165,16 @@ They are often quite thankful when I remind them to send the invoice for their w
 * Our company can finally process all federal, local and VAT taxes electronically.
 The local government systems now support digital sending and processing for tax declarations.
 * Realtime financial cockpit
-** Cash-flow overview provides security how our company is doing and how our liquidity is evolving.
+** Cash-flow overview provides security of how our company is doing and how our liquidity is evolving.
 ** Rolling budgeting optimizes investments when the market shifts
 footnote:[The Corona catastrophe was a huge test we successfully mastered.].
-** The sales pipeline provides indicators of how we should perform the next months.
+** The sales pipeline provides indicators of how we should perform in the next months.
 ** Paperless processes remove scanning, archiving and printing activities.
 Technological Advantages and Increased Developer Productivity::
 * Agile software development approaches with technical focus provide as strong market proposition.
 Motivated collaborators love to work on such initiatives.
 footnote:[To be honest, the biggest problem we have is to find collaborators with the required skill set.].
-* Technological leadership for the Java technology stack delights our collaborators and is a huge market advantage.
+* Technological leadership for the Java technology stack delights our collaborators and has a huge market advantage.
 Our delivered solutions are deployed in hybrid clouds and scale to match customer needs.
 We leverage automation, DevOps, and emerging technologies to create better experiences and increase work productivity.
 * We are digital affine and project our experience and workflows into the applications we develop.
@@ -187,7 +188,7 @@ Business Advantages and Faster Time to Market::
 * Clear understanding and extensive experience with digitalization.
 We discarded paper artifacts for years.
 Your company does not possess any paper archive, printer or fax machine.
-* Expertise how to remove waste and streamline digital processes through a whole organization.
+* Expertise on how to remove waste and streamline digital processes through a whole organization.
 
 [bibliography]
 == Links

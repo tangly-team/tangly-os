@@ -16,7 +16,7 @@ I left the company I founded 20 years ago and needed a new home to work and have
 The best legal construct in Switzerland and in Europe is to establish a limited liability company.
 
 You need such a construct in Switzerland to work as a software specialist.
-The legal Swiss institutions, such as taxes, social insurances, and accident insurances are challenging and almost unfair with freelancers.
+The legal Swiss institutions, such as taxes, social insurance, and accident insurances are challenging and almost unfair with freelancers.
 
 I had to found a limited liability company with a capital of CHF 20'000.
 
@@ -31,7 +31,7 @@ It was really impressive.
 . Before you are allowed to establish a company, you must deposit the capital into a special account.
 I choose https://www.postfinance.ch/[Postfinance].
 It is a well-known Swiss institute and their fee is only CHF 145.
-They insisted I met one of their collaborators to fill their forms.
+They insisted I meet one of their collaborators to fill their forms.
 They probably never heard about web forms.
 I had bad luck.
 They needed three weeks to create the account and send payment confirmation.
@@ -41,15 +41,15 @@ The next day the company was founded, and I received the official paper document
 . I went to https://www.zg.ch/behoerden/volkswirtschaftsdirektion/handelsregisteramt[Handelsregisteramt Zug] to register the company.
 They were very nice but told me they had a lot of work.
 Two weeks later, they finally registered the company and sent me the papers and an invoice for CHF 780.
-. A few phone calls later https://www.postfinance.ch/[Postfinance] converted the account into a regular account.
+. A few phone calls later, https://www.postfinance.ch/[Postfinance] converted the account into a regular account.
 They give me access to the founding capital minus their fee.
 
-During the waiting time, I started to organize for the mandatory insurances you need in Switzerland
+During the waiting time, I started to organize for the mandatory insurance you need in Switzerland
 
 * BVG – the best offer was from https://www.axa.ch/[Axa]
 footnote:[The company was called Axa Winthertur.].
 They also help me because the company CRIF AG wrongly classified the activities of the new company.
-They never contacted me and their NOGA classification has a huge impact on my costs.
+They never contacted me, and their NOGA classification has a huge impact on my costs.
 They are arrogant morons.
 * BU/NBU – the best offer was from https://www.baloise.ch/[Basler Versicherung]
 When starting a software startup I suggest not concluding any other insurances
@@ -70,7 +70,7 @@ Throw them away.
 * The industry development office of Kanton Zug has no clues about start-up companies; the ones in Zürich and Lucerne seem better.
 
 [.text-center]
-_Now we are ready to create great products with our customers_
+_Now we are ready to create great products for our customers_
 
 Please leave a comment if you know a better or less expensive way to establish a Swiss liability company.
 

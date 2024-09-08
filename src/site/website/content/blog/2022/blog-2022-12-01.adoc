@@ -30,8 +30,8 @@ and https://azure.microsoft.com/en-us/services/devops/[Microsoft Azure DevOps] d
 
 The DORA metrics define a standard approach to measure the quality and efficiency of a DevOps or agile process implementation in an organization.
 They were published in 2016.
-The metrics for throughput are _deployment frequency, and lead time for changes_.
-The metrics for stability are _mean time to recover and change failure rate_.
+The metrics for throughput are _deployment frequency_ and _lead time for changes_.
+The metrics for stability are _mean time to recover_ and _change failure rate_.
 
 They define a standard approach to measure the quality and efficiency of a DevOps or agile process implementation in an organization.
 An agile team shall be able to deploy a version of their digital platform multiple times per day.
@@ -68,7 +68,7 @@ The script shall at least compile the solution.
 Static code checkers shall be called to validate the changes and ensure minimal code quality. +
 Modern checkers detect syntactic, semantic or security violations.
 OWASP rules are readily available to start implementing DevSecOps.
-Unit tests and if reasonable integration shall be executed automatically to verify the changes.
+Unit tests and if reasonable integration tests shall be executed automatically to verify the changes.
 When should the continuous integration script be executed?::
 Each time a git push is registered and the repository is updated
 footnote:[You can either use https://trunkbaseddevelopment.com/[trunk based development] or configure the build trigger for all your feature branches.].
@@ -106,7 +106,7 @@ For complex solutions, the preferred format is a https://www.docker.com/[docker]
 How do you identify a specific version of a package?::
 https://semver.org/[Semantic versioning] is the standard approach to generating legible package identifiers.
 You are free to adopt another naming scheme for https://en.wikipedia.org/wiki/Software_versioning[software versioning].
-Just document your approach. +
+Document your approach. +
 Implement a function so that your users can find out the version of the product they are using.
 
 == https://en.wikipedia.org/wiki/Continuous_deployment[Continuous deployment]
@@ -146,7 +146,7 @@ Corporate governance often requires that the log files be archived in a separate
 These files are needed when a forensic analysis of a security situation shall be investigated.]
 footnote:[odoo has an audit module supporting auditing of critical actions initiated through user interactions or external systems.
 The audit module is somewhat primitive.
-The audit configuration is performed at the database level and not at functional level.
+The audit configuration is performed at the database level and not at the functional level.
 The configuration responsible needs deep understanding of which modules perform specific operations on the database.].
 Should logging information be archived?::
 The corporate governance guidelines shall prescribe how long logging information is stored and who can access the data. +
@@ -182,11 +182,11 @@ Put together, they form a _CI/CD/CD pipeline_.
 [TIP]
 ====
 Multiple Toolchains::
-- GitHub supports multiple toolchain installation through successive steps in the pipeline.
+- GitHub supports multiple toolchain installations through successive steps in the pipeline.
 - BitBucket can only install one toolchain for a pipeline.
-Additional toolchains must be installed using package management of the operating system of your Docker image.
-Beware that package managers are dependant of the used distribution.
-The openjdk regular image uses, for example, _microdnf_ as package manager.
+Additional toolchains must be installed using package management of the operating system for your Docker image.
+Beware that package managers are dependent of the used distribution.
+The openjdk regular image uses, for example, _microdnf_ as a package manager.
 Actual Java JDK Releases::
 - GitHub does not support the latest official Java releases on time.
 - Bitbucket supports all officially released Java versions.
@@ -249,7 +249,7 @@ _Regular corporate governance rules are neglected and could have legal consequen
 When you want to test the changes of your development branches with the production data, you can either:
 
 - Merge the development branch into your staging branch by dragging and dropping it onto the desired staging branch.
-- Drag and dropping the development branch on the staging section title, to make it become a staging branch.
+- Drag and drop the development branch on the staging section title, to make it become a staging branch.
 
 When your latest changes are ready for production, you can merge the staging branch onto your production branch to deploy in production your newest features.
 ====
@@ -258,7 +258,7 @@ The above process is documented for Odoo version 15 under the https://www.odoo.c
 
 === Unprofessional Odoo Approach
 
-Beware that the odoo.sh environment does not hinder amateur developers to do foolish things with git.
+Beware that the odoo.sh environment does not hinder amateur developers from doing foolish things with git.
 
 The quote below is from the official website of https://www.odoo.sh/[Odoo.sh].
 The statement violates all the rules of clean code, DevOps and professional software development.
@@ -284,7 +284,7 @@ The environment will automatically provide a copy of the production database in 
 You can test your new functions with production data without impeding the production server.
 . Once you are satisfied with the behavior of the new application with the copy of the production data, you can merge to production.
 A new production server will be deployed.
-If the deployment is unsuccessful, it will be rolled back to minimise downtime and to improve mean-time to recover.
+If the deployment is unsuccessful, it will be rolled back to minimize downtime and to improve mean-time to recover.
 
 == Tips and Tricks
 
@@ -307,7 +307,7 @@ The goal is to avoid inconsistent states after an update or a migration.
 The new good practice is finally compatible with clean code, infrastructure as code and DevOps.
 This approach is promoted in the official odoo.sh documentation.
 footnote:[Manual editions through copy and paste are a violation of sound engineering development practices.
-You lose reproducibility, versioning of a single source of truth, and auditability.
+You lose reproducibility, versioning of a single source for truth, and auditability.
 Assume that you violate development guidelines and corporate governance.].
 
 As stated by Odoo, you shall write the configuration changes in XML data files overriding the default configuration or views in your branches.
@@ -341,7 +341,7 @@ Avoid receiving an https://en.wikipedia.org/wiki/RTFM[RTFM] injunction.
 You need expertise in Docker, Kubernetes and in your development platform <<devops-sme>>.
 We recommend initially using GitHub.
 It is the most used platform.
-Most developers are versed how to use the provided features.
+Most developers are versed in how to use the provided features.
 
 If your company is missing experienced DevOps and agile professionals, it is time to improve your recruitment process <<detecting-agile-bullshit>>.
 

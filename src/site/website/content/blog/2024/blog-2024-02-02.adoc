@@ -29,7 +29,7 @@ How do you organize such a company?
 
 How do collaborators work together?
 
-Should have permanent office spaces or opt for coworking space, and why?
+Should we have permanent office spaces or opt for coworking space, and why?
 --
 
 == Experience with Coworking Space
@@ -57,7 +57,7 @@ So the coworking approach did not have a lot of advantages for us.
 We decided to stop renting the office space after one year.
 We do not see the purpose of having a rented office.
 The office will most often be empty.
-Internal meetings are seldom held in office space.
+Internal meetings are seldom held in an office space.
 We prefer to meet in a nice coffee shop or at a cool location.
 
 Team communication is performed asynchronously using our company chat and synchronously using video calls.
@@ -71,7 +71,7 @@ The decision is based on the project needs and your preferences.
 This flexibility requires high-quality notebooks.
 As a developer, I need a fast machine with a high-quality display.
 I also like to have my own keyboard and mouse when I connect to external displays.
-A programmer is more efficient with a US english keyboard and an ergonomic mouse.
+A programmer is more efficient with a US English keyboard and an ergonomic mouse.
 
 When working at home, you should have a desk with adjustable height and a good chair.
 
@@ -146,7 +146,7 @@ All collaborators identify with these values and apply them in our daily work.
 
 [sidebar]
 ****
-https://www.linkedin.com/in/junghana/[Alexandra Junghans] is the new president of the management board since 2024.
+https://www.linkedin.com/in/junghana/[Alexandra Junghans] has been the new president of the management board since 2024.
 
 Our company promotes female engineers to the highest leadership positions.
 

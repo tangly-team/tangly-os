@@ -2,7 +2,7 @@
 title: "Entities, Identifiers, External identifiers and Names"
 linkTitle: "Entities, Identifiers, Names"
 date: 2020-08-24
-tags: ["java", "design", "domain-driven-design", "crm", "series-identifiers"]
+tags: ["java", "design", "domain-driven-design", "tangly-os", "series-identifiers"]
 params:
   featured: "blog/2020/pics/2020-08-01-head.png"
 ---

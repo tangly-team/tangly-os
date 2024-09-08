@@ -118,7 +118,7 @@ Business can envision and calculate when they can potentially release a product 
 If the backlog has been estimated and refinement done properly, the number of story points it contains should be comparable to the velocity the team has been achieving sprint after sprint. +
 Remember estimation cannot be a single value.
 It must be a set of values with a success probability for each value.
-You did learn gaussian curves during your school time. +
+You did learn Gaussian curves during your school time. +
 An average velocity can be applied to the total of story points in the backlog.
 With this information, business can plan on tentative release dates.
 
@@ -179,7 +179,7 @@ Time-based diagrams show changes over time.
 A picture is worth a thousand words.
 The visualization of facts often helps to identify improvement potential.
 The same diagrams measure the success of specific improvement measures.
-One well-documented successful approach are the four DORA metrics and associated graphs.
+One well-documented successful approach is the four DORA metrics and associated graphs.
 Experienced teams can improve effectivity and efficiency with more advanced technique cite:[site-reliability-engineering,devops-handbook,your-code-as-crime-scene,software-design-x-rays]
 
 [bibliography]

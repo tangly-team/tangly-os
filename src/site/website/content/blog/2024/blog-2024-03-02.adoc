@@ -138,7 +138,7 @@ This approach has one source of truth and minimizes documentation effort.
 == History
 
 A standard to describe and execute UML Statecharts is SCXML <<scxml>>.
-The whole approach to document logic with XML notation was doomed.
+The whole approach to documenting logic with XML notation was doomed.
 This approach is dying out.
 Do not use it.
 

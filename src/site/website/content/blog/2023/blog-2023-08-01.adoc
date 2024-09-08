@@ -34,13 +34,13 @@ By focusing on the things that matter, we apply an agile focus on governance and
 
 Agile works best when processes are clearly defined and transparent to everyone.
 Good governance for programs and projects, regardless if agile is applied, requires a defined structure, ways of working, processes and systems to operate succinctly.
-As a result, enabling programmes and projects the ability to scale up and down to adapt quickly to an organization’s changing needs and environment.
+As a result, enabling programs and projects can scale up and down to adapt quickly to an organization’s changing needs and environment.
 
 image::2023-08-01-process.png[width=420,height=360,role=left]
 
 {ref-togaf} defines architecture governance as the practice and orientation by which software products architectures are managed and controlled at an enterprise-wide level.
 
-Architecture governance does not operate in isolation, but within a hierarchy of governance structures.
+Architecture governance does not operate in isolation but within a hierarchy of governance structures.
 The structures can include distinct domains with their own disciplines and processes:
 
 * Corporate Governance
@@ -58,7 +58,7 @@ Your governance team, which may be called an oversight, audit, or control functi
 
 The aim is to enable them to succeed by removing or at least reducing any barriers that they may experience, to motivate them to do _the right thing_ for your organization and your customers.
 
-They to ensure that they remain compliant with appropriate legal regulations and guidance.
+They are to ensure that they remain compliant with appropriate legal regulations and guidance.
 
 Governance typically addresses areas such as:
 
@@ -85,16 +85,16 @@ Your organization’s investment is spent wisely::
 Organizations make investments in their people, in their infrastructure, and in their processes to enable them to better serve their customers.
 From a financial point of view, your goals should be to regularly and consistently create real business value and to provide an appropriate return on investment (ROI).
 To do this, you must determine how you will execute your strategy by selecting and prioritizing the most valuable initiatives to undertake.
-You must also monitor these initiatives to ensure that they fulfill their promise, and if not then remediate them appropriately.
+You must also monitor these initiatives to ensure that they fulfill their promise, and if not, then remediate them appropriately.
 Your teams are empowered to carry out their work::
 An important aspect of lean governance is to ensure that people and teams have the authority to fulfill their responsibilities.
-Many agile transformations run into trouble when the roles and responsibilities of people are not agreed upon, or when they are not properly supported by senior management.
+Many agile transformations run into trouble when the roles and responsibilities of people are not agreed upon or when they are not properly supported by senior management.
 Another important strategy is to empower teams to choose their own way of working (WoW), to self-determine how they will work together, enabling them to tailor their approach to meet the needs of the situation that they face.
 People are motivated to work together effectively::
 There are two aspects to this.
 First, teams need to work effectively with their stakeholders.
 Second, teams also need to work effectively with their colleagues.
-To do this, you must adopt processes and organizational structures that encourage people to collaborate together and to learn from one another.
+To do this, you must adopt processes and organizational structures that encourage people to collaborate to learn from one another.
 Risks are monitored and mitigated at appropriate organizational levels::
 Although addressing risk at the team-level is a good start, it is not sufficient from an organizational point of view.
 Many small risks that are acceptable individually can add up to a huge risk for your organization.
@@ -102,7 +102,7 @@ For example, one team using a new technology platform is an experiment.
 Fifty teams adopting that new platform at the same time is a significant risk if the platform proves to be problematic.
 Someone must be looking at risks from a portfolio perspective and guide teams accordingly.
 Your organizational ecosystem is sound::
-Your organization isn’t just a collection of teams.
+Your organization is not just a collection of teams.
 It is an ecosystem of teams working together, supported by culture, ways of working, organizational structures, and technologies.
 All aspects of your ecosystem need to be healthy for your organization to thrive.
 Everyone works in an open and collaborative manner::
@@ -110,7 +110,7 @@ There are several ways that the DA toolkit promotes this. +
 First, work is performed in an agile manner that is inherently open and collaborative. +
 Second, all teams should present accurate and timely information to their stakeholders.
 For example, enterprise architects can make their work available to everyone, as can your portfolio management team, your data management team. +
-Third, everyone should be motivated to learn more about your organization, its strategy, its values, and how you intend to work together to achieve the outcomes you’ve set out for yourselves.
+Third, everyone should be motivated to learn more about your organization, its strategy, its values, and how you intend to work together to achieve the outcomes you have set out for yourselves.
 All of these things will continue to be true in the future::
 Lean governance balances your short-term and long-term needs.
 Too many organizations have allowed technical debt to grow in recent years, for the skills of their staff to stagnate, and to continue to tolerate traditional strategies that are well past their prime.
@@ -120,7 +120,7 @@ There are two fundamental reasons why individuals should be interested in lean g
 You are being governed, like it or not::
 Regardless of the size or your organization, the length of time it has been in operation, or the sectors in which you work, someone is keeping an eye on and guiding your overall efforts.
 You deserve to be governed effectively::
-Sadly, many governance strategies prove to be ineffective in practice due to application of traditional strategies and ways of thinking.
+Sadly, many governance strategies prove to be ineffective in practice due to the application of traditional strategies and ways of thinking.
 
 == Security
 
@@ -151,7 +151,7 @@ Management fo used libraries:: Libraries have to check for licenses, support org
 Regular checks for security flaws or published attacks must be implemented.
 A timely mitigation process must be in place
 Tracking of potential security risks and timely update process::
-Potential vulnerabilities should be detected, documented.
+Potential vulnerabilities should be detected and documented.
 The mitigation process shall be triggered in accordance with the corporate governance.
 Traceability and Logging::
 All systems shall have adequate traceability and logging features.
@@ -170,7 +170,7 @@ Interfaces to external systems shall be logged and audited in full.
 This approach is mandatory to verify service level agreements.
 The data is also necessary if external partners initiate legal cases
 Input validation::
-Input validation of all interfaces is a mandatory security and quality requirements.
+Input validation of all interfaces are mandatory security and quality requirements.
 Enterprise data is a high-value asset.
 Care should be taken to guarantee the long-term quality and usability of strategic data.
 This information is often used over decades.
@@ -185,9 +185,9 @@ Highly secure systems cannot, for example, use Node.js due to known flaws in the
 Awareness of corporate governance issues and legal consequences are often overlooked and not well-understood in many organizations.
 Education and awareness campaigns are necessary to increase professionalism
 footnote:[In Switzerland, multiple organizations had to shut down operations in 2021 and 2022 due to blatant security and governance issues.
-Beware non-compliance can be extremely costly and endanger the survival of your company.].
+Beware, non-compliance can be extremely costly and endanger the survival of your company.].
 
-Corporate governance departments have often a coercive approach.
+Corporate governance departments often have a coercive approach.
 They are focused on the legal aspects and seldom understand the societal, commercial and technical facets.
 Try to reform them.
 

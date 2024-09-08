@@ -22,7 +22,7 @@ You are using Scrum well and can laugh about all these posts about Scrum-But(t).
 
 Misunderstandings about Scrum still abound.
 
-We will present common pitfalls seen in teams already applying Scrum; meaning teams using Scrum as an empirical process, holding the meetings as described in the Scrum guide, and producing all expected artefacts.
+We will present common pitfalls seen in teams already applying Scrum; meaning teams using Scrum as an empirical process, holding the meetings as described in the Scrum guide, and producing all expected artifacts.
 
 We want to increase your awareness and reflect how you can become better Scrum experts.
 We exhort you to eliminate these misunderstandings in your projects.
@@ -38,7 +38,7 @@ The possibilities inside are unlimited.
 It is like chess, the game has a simple set of rules.
 The variants how to play a game are limitless.
 
-This article is not about http://www.scrum.org/ScrumBut[Scrum But] impediments describing common errors how meetings are held, artifacts created or roles lived.
+This article is not about http://www.scrum.org/ScrumBut[Scrum But] impediments describing common errors, how meetings are held, artifacts created or roles lived.
 
 We are talking about misunderstandings once you have reached this first level of mastership.
 Before talking about misunderstandings, we should remember the most important facet of Scrum.
@@ -47,11 +47,10 @@ Scrum was defined because the founders were convinced you could develop more eff
 
 == The essence of Scrum is ROI
 
-
 All decisions in Scrum should be based on Return of Investment ROI.
 image:2017-01-01-Essence.jpg[width=360,height=360,role=left]
 
-Each time you doubt how you should do an activity, ask your team what is the ROI of your proposition?
+Each time you doubt how you should do an activity, ask your team what the ROI of your proposition is?
 
 Stakeholders want ROI.
 Each time you request a budget from your stakeholders, you should always remember.
@@ -98,7 +97,8 @@ Is it worth the time to find a slightly better solution for the remaining 20% of
 In Scrum terminology,
 
 " It is also 20% less important.
-" Meeting costs versus solved issues. Meetings cost money.
+" Meeting costs versus solved issues.
+Meetings cost money.
 Meeting with eight people and of a duration of 30 minutes cost in Switzerland around 600 Swiss Francs or 500 Euros.
 
 [TIP]
@@ -114,7 +114,7 @@ People do not work anymore, they just sit in meetings.
 ** an agenda,
 ** a moderator,
 ** a protocol of the meeting,
-** as a result, a list of decisions, and a list of tasks – who must do what until when -.
+** as a result, a list of decisions and a list of tasks – who must do what until when -.
 
 Interesting enough, all Scrum meetings have a clear agenda, a moderator and a documented result.
 
@@ -141,7 +141,8 @@ This concept was described in the mythical man-month book by Fredericks Brook Ju
 A T person is a master in one technical area
 
 - This is the leg of the T
-- And knows about a lot of domains. This is the roof of the T.
+- And knows about a lot of domains.
+This is the roof of the T.
 
 In fact, Square-shaped team members would be better but are arduous to find.
 To increase your ROI, the specialist of the team should perform the tasks it is best suited for.
@@ -179,7 +180,7 @@ _ROI: New value versus cost of development and associated errors_
 First, let me state some concepts deeply entrenched in Scrum Sprint backlog cannot be changed during a sprint.
 This is Scrum.
 
-Bend it with Kanban, for example, for maintenance activities, agile approach is about a minimum viable product release as soon as possible.
+Bend it with Kanban, for example, for maintenance activities, the agile approach is about a minimum viable product release as soon as possible.
 This definition is part of the vision and the initial release planning, Release planning is a must in real Scrum projects.
 
 So you have the right to change everything at the end of each sprint, but the costs are enormous.
@@ -187,7 +188,7 @@ So you have the right to change everything at the end of each sprint, but the co
 
 Here again we are back to ROI computations.
 
-As a rule of thumb to test your decision, Uncle Bob stated in the "Clean Coder" book if you deliver an application with errors.
+As a rule of thumb, to test your decision, Uncle Bob stated in the "Clean Coder" book if you deliver an application with errors.
 The only professional approach is to personally sign a check to the customer for the loss of income.
 In other words, are you ready to change the user interface two hours before the sprint demonstration will be held?
 
@@ -196,14 +197,14 @@ In other words, are you ready to change the user interface two hours before the 
 image:2017-01-01-Indian-Village.jpg[width=420,height=360,role=left]
 So teams state that
 
-- No architecture is needed before starting coding.
+- No architecture is necessary before starting coding.
 - No enterprise architecture should be defined or looked at.
-- No non-functional considerations are needed.
+- No non-functional considerations are required.
 
 Look at the picture.
 Could you design a village without knowing about the ground, the kind of population, do you need school, do they have a flood in the area?
 They believe that refactoring will solve all the problems.
-Architects are no more needed, we are all talented hackers.
+Architects are no more necessary, we are all talented hackers.
 
 [TIP]
 ====
@@ -227,8 +228,7 @@ image:2017-01-01-Meeting.jpg[width=420,height=360,role=left]
 Writing user stories is easy, and anyway nobody has time for
 
 - The product owner has better to do.
-He writes the stories during a coffee break or just before the start of the planning meeting,
-– Anyway, just read the requirements, it is all written down.
+He writes the stories during a coffee break or just before the start of the planning meeting, – Anyway, just read the requirements, it is all written down.
 - The developers want to code, they have no time to write some user stories or improve them.
 
 Scrum states the product backlog is the most important document in a Scrum product.
@@ -239,16 +239,16 @@ _ROI: New features with the most value_ Creating a new successful product is a f
 
 * You cannot define a vision and key features during a coffee break.
 The product owner must create a vision, an initial release plan, identify the key features and define a minimal shippable product.
-*  _You shall not perform up-front design_
+* _You shall not perform up-front design_
 * Either the product owner has a team of requirement engineers to elicit the use cases.
 Or the role of requirement engineering is part of the team.
-* The team provides technical feedback and input about potential technologies for all stories, discuss the non-functional requirements and refine the acceptance criteria.
+* The team provides technical feedback and input about potential technologies for all stories, discusses the non-functional requirements and refines the acceptance criteria.
 * As a simple check, the team guaranty together with the product owner that each story is valuable.
 Use INVEST - Independent, Negotiable, Valuable (ROI), Estimable, Size appropriately, Testable - approach.
 ====
 
-If not why?
-As a rule of thumb, Writing quality user stories are as tough as writing requirements.
+If not, why?
+As a rule of thumb, Writing quality user stories is as tough as writing requirements.
 
 It is the same job!
 
@@ -260,10 +260,12 @@ image:2017-01-01-Rope.jpg[width=420,height=360,role=left]
 You shall not train engineering practices
 
 * The process solves all problems.
-* I want to code. I do not have time to become a craftsman.
+* I want to code.
+I do not have time to become a craftsman.
 * Scrum is snake oil.
-It cures all illnesses and makes you immortal, For the older ones, do you remember CASE, CMM and ISO-9000.
-* The PROCESS promises that you will deliver high quality software on time, on budget with unqualified and cheap collaborators.
+It cures all illnesses and makes you immortal.
+For the older ones, do you remember CASE, CMM and ISO-9000.
+* The PROCESS promises that you will deliver high-quality software on time, on budget with unqualified and cheap collaborators.
 
 Do you really believe in snake oil?
 

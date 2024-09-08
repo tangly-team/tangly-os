@@ -116,7 +116,7 @@ Instances of a command type are commands.
 Each command is defined through an instance of a class.
 
 The sealed structure guarantees that the compiler will mark all code segments needing edition when a new command type is added.
-The sealed class structure and the pattern matching approach is a compiler-validated visitor pattern.
+The sealed class structure and the pattern matching approach are a compiler-validated visitor pattern.
 
 We decided to store the result of a query into an answer object.
 A computed answer can have a reference to the query initiating the processing.
@@ -198,7 +198,7 @@ I recommend {ref-proto-buf} for binary encoding of commands, queries, and answer
 
 == Channels
 
-The channel decodes all commands send through it into a command instances.
+The channel decodes all commands sent through it into command instances.
 The channel has knowledge of the command structure.
 This is needed to decode the command and dispatch it to the right interpreter.
 

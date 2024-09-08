@@ -41,8 +41,8 @@ Solve them now.
 
 == Update Your Libraries
 
-Gradle versions catalog is a new feature in modern versions of Gradle that allows you to centralise your project dependencies, plugins and their respective versions into a single location.
-Plugins are available to check if new versions of your libraries and plugin are available.
+Gradle versions catalog is a new feature in modern versions of Gradle that allows you to centralize your project dependencies, plugins and their respective versions into a single location.
+Plugins are available to check if new versions of your libraries and plugins are available.
 I simply execute the following command to detect new versions.
 
 [source,gradle]
@@ -54,7 +54,7 @@ gradle dependencyUpdates -Drevision=release // <1>
 
 I still have to decide if I shall update the library.
 The usual approach is to simply update, and run all unit and integration tests.
-If all tests passed successfully, I shall simply upgrade to the newer version otherwise I simply roll back the changes or start a debugging session to find out why some tests failed.
+If all tests passed successfully, I shall simply upgrade to the newer version, otherwise I simply roll back the changes or start a debugging session to find out why some tests failed.
 
 [NOTE]
 ====
@@ -100,7 +100,7 @@ Your company and you are legally responsible for protecting customers and stakeh
 You are liable to losses of money and reputation for your customers.
 The big economic blocks have strengthened their protection laws and have introduced heavy fines and potential prison penalties for convicts.
 Lacking professional ethics::
-I will never go to a physician not following hygiene and prevention good practices and regulation.
+I will never go to a physician for not following hygiene and prevention good practices and regulation.
 Why should I acknowledge a software developer ignoring documented and accepted approaches to improve quality and reduce risks?
 
 Be proud to create effective and secure products.

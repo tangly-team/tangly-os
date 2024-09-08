@@ -16,10 +16,10 @@ image::2023-11-02-head.png[width=420,height=360,role=left]
 The *conventional commits* specification is a lightweight convention on top of commit messages.
 The additional information classifies the type of work performed in the commit.
 
-A developer infers the importance of the task by looking to the type of the commit.
+A developer infers the importance of the task by looking at the type of the commit.
 The message communicates the nature of changes to teammates, the public, and other stakeholders.
 
-Contributors of project repositories know that a well-designed Git commit message is the best way to communicate the context about a change to other developers.
+Contributors of project repositories know that a well-designed Git commit message is the best way to communicate the context of a change to other developers.
 And in fact, they will help themselves in the future.
 A diff will tell you what has changed, but only the confirmation message can say why.
 
@@ -68,7 +68,7 @@ The ci type is used to identify development changes related to the continuous in
 They involve scripts, configurations or tools.
 doc::
 The doc type is used to identify documentation changes related to the project.
-Whether intended externally for the end users (in case of a library) or internally for the developers.
+Whether intended externally for the end users (in the case of a library) or internally for the developers.
 refactor::
 The refactor type is used to identify development changes related to modifying the codebase, which neither adds a feature nor fixes a bug.
 Examples are removing redundant code, simplifying the code, or renaming variables.

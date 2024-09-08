@@ -80,7 +80,7 @@ You will realize it when you try to pass them as function parameters.
 ; conceptually when not is an if with only a false path
 (when-not (<condition>) (<false-expression>))
 
-; cond process on condition after another, the expression of the first condition being true is executed and the expression completes.
+; cond process on condition after another, the expression of the first condition being true is executed, and the expression completes.
 (cond
   (<condition-1) (expression-1)
   (condition-2) (expression-2)
@@ -97,7 +97,7 @@ You will realize it when you try to pass them as function parameters.
 ----
 
 The truth axioms in Clojure are a refreshing view of the programming world.
-The numerical tower and implicit type conversions are well-thought and minimize boilerplate code.
+The numerical tower and implicit type conversions are well-thought of and minimize boilerplate code.
 
 Languages with implicit conversion function support have similar quality.
 Sadly, Java does not support an extensible numerical tower or implicit type conversions.
@@ -140,12 +140,12 @@ Returns a transducer when no collection is provided.
 <2> Returns a lazy sequence consisting of the result of applying f to the set of first items of each collection, followed by applying f to the set of second items in each collection, until any one of the collections is exhausted.
 Any remaining items in other collections are ignored.
 Function f should accept number-of-collections arguments.
-<3> f should be a function of 2 arguments.
+<3> The function _f_ should have two arguments.
 If value is not supplied, returns the result of applying f to the first 2 items in coll, then applying f to that result and the 3rd item, etc.
-If collection contains no items, f must accept no arguments as well, and reduce returns the result of calling f with no arguments.
-If collection has only 1 item, it is returned and f is not called.
-If value is supplied, returns the result of applying f to val and the first item in collection, then applying f to that result and the 2nd item, etc.
-If collection contains no items, returns value and f is not called.
+If collection contains no items, f must accept no arguments as well and reduce returns the result of calling f with no arguments.
+If a collection has only 1 item, it is returned and f is not called.
+If value is supplied, returns the result of applying f to val and the first item in the collection, then applying f to that result and the 2nd item, etc.
+If a collection contains no items, returns value and f is not called.
 <4> Applies fn f to the argument list formed by prepending intervening arguments to args.
 
 The powerful advantage of dynamic typed language is that algorithms just work with various parameters.
@@ -160,7 +160,7 @@ You can explicitly optimize tail recursion with the https://clojuredocs.org/cloj
 footnote:[The trampoline operator is available for indirect recursion cases.].
 
 https://en.wikipedia.org/wiki/Currying[Currying] approach is the https://clojuredocs.org/clojure.core/partial[partial] operator.
-The operator maps a set of parameters to value and return a function which arity is the number of free parameters.
+The operator maps a set of parameters to value and returns a function which arity is the number of free parameters.
 
 Memoization is provided with the https://clojuredocs.org/clojure.core/memoize[memoize] operator wrapping the function in need of.
 The documentation is very shallow about the costs of memoization and the behavior of the cache.
@@ -208,7 +208,7 @@ switch value  {    // <2>
 ----
 
 <1> The ternary operator always provided a conditional expression in the Java language.
-<2> The switch expression return a value upon completion.
+<2> The switch expression returns a value upon completion.
 
 A better idiom for _equals_ without any conditional statement is now recommended:
 
@@ -228,14 +228,14 @@ The _java.util.function_ package provides the expected abstractions.
 Function composition is supported through the provided abstractions.
 
 Transparent support of functions as a first-class citizen is still not completed.
-The concise method bodies proposal is still not implemented in year 2022.
+The concise method bodies proposal is still not implemented in the year 2022.
 
 ==== Higher-order Functions and Streams
 
 Lambdas and streams were introduced in Java 8 and released in March 2014.
 The newer versions of Java have refined the abstractions and added methods to simplify frequent use cases.
 
-The stream library is a well-implemented approach to manipulate sequences with higher-order functions.
+The stream library is a well-implemented approach to manipulating sequences with higher-order functions.
 
 ==== Recursion, Tail Recursion, Currying, Memoization, Destructuring
 
@@ -257,7 +257,7 @@ The approach is well-designed and powerful enough to handle all algorithms manip
 
 Functions and expressions are still not handled as first-class citizens.
 The current improvements in the switch expression acknowledge the cliff.
-These improvements also slowly empower us to write a more functional code.
+These improvements also slowly empower us to write more functional code.
 
 == Groovy
 
@@ -265,7 +265,7 @@ image::2022-04-01-groovy.png[width=240,height=240,role=text-center]
 
 Of course, Groovy is not a perfect tool for every application.
 Great in script-like, Groovy is not necessarily equally useful in normal, production coding.
-While dynamic typing gives you a productivity boost, it slows down refactoring afterwards when writing code.
+While dynamic typing gives you a productivity boost, it slows down refactoring afterward when writing code.
 That is a huge drawback if you have dozens of classes in a project tangled by dependencies.
 
 === Expressions and Statements
@@ -291,7 +291,7 @@ https://groovy-lang.org/closures.html[Closures] are built-in abstractions.
 
 https://docs.groovy-lang.org/docs/next/html/documentation/#_working_with_collections[Sequences and higher-order functions] are built-in constructs.
 Groovy syntax is certainly groovy and less verbose than Java.
-But Groovy is not functional style friendly.
+But Groovy is not functional style-friendly.
 
 ==== Recursion, Tail Recursion, Currying, Memoization
 
@@ -335,25 +335,25 @@ def fib = { n ->
 
 Clojure is brilliant in the support of dynamic dispatch at runtime.
 The refined design of their collections is a proof of their support for functional approaches.
-I am not convinced that dynamic inheritance and protocols promote maintainability of software products.
+I am not convinced that dynamic inheritance and protocols promote the maintainability of software products.
 
 Java is slowly moving to improve their support:
 
 - Switch expressions are now more functional.
 In Spring 2022, deconstruction of records, objects and arrays is still not available.
 - First class citizen status for functions is still ongoing.
-You still not define the implementation of a virtual method using the lambda notation or a method reference.
+You still do not define the implementation of a virtual method using the lambda notation or a method reference.
 I agree it is a detail.
 But it is a signal if you want to truly support functional approaches.
 - Nice is the effort to improve the collections.
 The sequence interface would improve the legibility of the standard collections.
-It is still a hack that unmodifiable collection throws an exception if your code calls a modifier.
+It is still a hack that an unmodifiable collection throws an exception if your code calls a modifier.
 It is time to introduce an unmodifiable interface for the various collections.
 
 Groovy is awesome in how operator support enhances the legibility of the source code.
 The implementation is syntactic sugar.
 
-Java libraries are best of breed.
+Java libraries are the best of breed.
 Backward compatibility and static type checks are immensely helpful for enterprise applications developed over decades.
 You do not want to throw away such a huge investment.
 
@@ -366,7 +366,7 @@ Functional programming with sequences is well-supported in all three environment
 Clojure has the edge.
 The language is dynamically typed and provides sequence handling for all collections.
 
-Java is statically type.
+Java is a statically type language.
 You need first to convert a collection into a stream.
 Easy to do, but you have to write the code.
 

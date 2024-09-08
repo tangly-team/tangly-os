@@ -28,7 +28,7 @@ Organizations often forget the liability of using older versions of components w
 footnote:[Data privacy and protection laws were established in Europe in 2018 and in Switzerland in 2020.
 Companies and executives can be sued, sentenced to pay huge fines, and in the worst case, C-level managers get a criminal record entry.
 Such an entry can destroy your career potential.
-For example, you are banned from becoming a board of directors members of a lot of companies.].
+For example, you are banned from becoming a board of directors member of a lot of companies.].
 
 Below, I provide you with arguments why you should always update all components in a timely fashion.
 --
@@ -41,7 +41,7 @@ Therefore, you always include security patches in your product in a timely manne
 Other approaches are deeply unprofessional and unethical.
 In some countries, you are liable if you do not update your software to avoid known security attacks.
 
-You should use actual Java JDK and JVM version because the community is concentrating their effort on the latest version.
+You should use the actual Java JDK and JVM version because the community is concentrating their effort on the latest version.
 Oracle only provides public support for the latest two Java versions, e.g., in January 2018, Java 9 and Java 8 are officially supported.
 Java 8 support will stop at the end of September 2018, older versions are no more publicly maintained.
 
@@ -62,11 +62,11 @@ Performance and scalability improvements between Java versions are impressive.
 You shall not hinder your own customers to rip these low-hanging fruits.
 
 Actual versions of standards - Unicode, HTTP protocol, time zones - help eliminate incompatibilities and subtle errors from use cases.
-Having older versions will hinder you to support actual timezone changes or extensions in the Unicode standard.
+Having older versions will hinder you from supporting actual timezone changes or extensions in the Unicode standard.
 
 == Training and Community Support
 
-Good training and associated certification are only available for actual versions of languages, frameworks or library.
+Good training and associated certification are only available for actual versions of languages, frameworks, or library.
 You will not find any training for Ada, Apache server 1.x, or any object-oriented database.
 
 The articles in Stack Overflow and the community always cover the current version of components.
@@ -74,7 +74,7 @@ So you are on your own for support or code examples for older versions of librar
 
 == Hidden Cost of Backport
 
-Writing code for older versions of libraries, frameworks or runtimes means https://en.wikipedia.org/wiki/Backporting[backporting] to older application interfaces and features.
+Writing code for older versions of libraries, frameworks, or runtimes means https://en.wikipedia.org/wiki/Backporting[backporting] to older application interfaces and features.
 For example, if you do not have access to auto-closable resources, you have to write your own framework and software checks guarantying closing system resources.
 You should always free system resources in your application.
 The literature states this is neither straightforward nor error free.

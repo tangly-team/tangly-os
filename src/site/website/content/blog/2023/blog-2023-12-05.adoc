@@ -45,7 +45,7 @@ These messages are in general commands to physical devices connected through the
 === Synchronous Unbuffered Sending
 
 The send function is a blocking operation until the message is transformed into a frame and sent over the bus.
-You should select this approach only if the frame creation and the bus frame transmission is fast.
+You should select this approach only if the frame creation and the bus frame transmission are fast.
 
 Beware that bus contention can slow down the frame transmission.
 
@@ -57,7 +57,7 @@ _I do not recommend this approach if you send burst of messages or messages with
 ====
 Analyze the application call stack for all synchronous sending operations.
 
-If some driver functions use blocking calls such as polling waits, the thread, the process and in the worst case, the processor core can be blocked until the call returns.
+If some driver functions use blocking calls such as polling waits, the thread, the process, and in the worst case, the processor core can be blocked until the call returns.
 
 If the instruction is a slow initialization request, the system freezes for tens of seconds.
 ====
@@ -103,7 +103,7 @@ Therefore, the callback function shall delegate further processing to another th
 ====
 {ref-canlely} asynchronous callback when a PDO is written in the memory of the device representation.
 
-_The documentation clearly states the user is responsible to provide needed threads for processing._
+_The documentation clearly states the user is responsible for providing needed threads for processing._
 
 The design of the {ref-canlely} is an example of shared memory implementation.
 The device state is replicated in the local application.

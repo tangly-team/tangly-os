@@ -2,7 +2,7 @@
 title: "EclipseStore"
 linkTitle: "EclipseStore"
 date: 2024-01-25
-tags: ["java", "domain-driven-design"]
+tags: ["java", "domain-driven-design", "tangly-os"]
 params:
   featured: "blog/2024/pics/2024-01-02-head.png"
 ---

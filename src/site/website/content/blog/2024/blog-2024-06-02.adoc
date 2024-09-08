@@ -92,7 +92,7 @@ The message abstraction structure is
 
 <1> The field can be used to identify the type of the payload.
 If you use variants, either put the variant index or define constants for the various payload types.
-The kind field is when more a legacy field because variants provide build-in check mechanisms.
+The kind field is when more a legacy field because variants provide built-in check mechanisms.
 <2> The payload of the message.
 
 ==== Application Messages
@@ -128,9 +128,9 @@ Message<Data>* build(PayLoadOne& data) {                                       <
 ----
 
 <1> Define the various payloads for the different types of messages exchanged in the application.
-<2> Forward declaration for declaration with template referencing the message class.
-<3> Define a type verified union of all payload types.
-<4> Define the structure we declared before as forward declaration.
+<2> Forward declaration for declaration with a template referencing the message class.
+<3> Define a type-verified union of all payload types.
+<4> Define the structure we declared before as a forward declaration.
 <5> Optional build function to simplify the creation of message objects.
 <6> Optional build function if you are using a message pool.
 
@@ -284,9 +284,9 @@ If the message was acquired from the message pool, release the message back to t
 
 == Finite State Machines
 
-Embedded applications often have relative simple flat state machine describing their behavior.
-Implement flat state machines as a double nested switch statement.
-The first statement selects the actor current state, the second statement selects the type of message to be processed.
+Embedded applications often have relatively simple flat state machines describing their behavior.
+Implement flat state machines as a double-nested switch statement.
+The first statement selects the actor's current state, the second statement selects the type of message to be processed.
 A guard is implemented as a conditional statement.
 
 [source,cpp]
@@ -323,14 +323,14 @@ The type of the variable should be an enumeration.
 A message should be a value object.
 <3> Evaluate an optional guard condition to decide if the transition will be selected.
 <4> Implement the transition from state _STATE_1_ to _STATE_2_ and execute the associated action _action_a_.
-It is customary to pass the message as parameter to the function.
+It is customary to pass the message as a parameter to the function.
 
 The state machine can be documented with a table describing for each state, the event be processed, an optional guard, the target state and the action.
 
 [IMPORTANT]
 ====
 Finite state machines can contain timeout events or guards.
-Two major approaches exist to implement these timeout dependencies.
+Two major approaches exist to implementing these timeout dependencies.
 Either you have access to a global timer manager or you wait on an event with a timeout clause.
 
 We recommend using the timeout clause in the wait next message call for {cpp} implementations.

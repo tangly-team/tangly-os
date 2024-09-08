@@ -92,7 +92,7 @@ https://en.wikipedia.org/wiki/Maintenance[Preventive maintenance] is a learnt te
 
 == How to Measure Technical Debt
 
-Here are some approaches to quantify the technical debt of a product.
+Here are some approaches to quantifying the technical debt of a product.
 
 New Bugs versus Closed Bugs::
 Every known bug is essentially a tiny sliver of technical debt.
@@ -104,7 +104,7 @@ Code Quality::
 Complex code is a sure sign of growing technical debt.
 At some point, someone is going to have to unravel that mess.
 Code quality is an aggregation of several metrics that quantify the overall quality and complexity of your code:
-* Smells and potential errors detected through static analysis tools
+* Smells and potential errors are detected through static analysis tools
 * Cyclomatic complexity, method size, class size
 * Class and package coupling
 * Depth of inheritance +
@@ -161,8 +161,8 @@ You have a legal responsibility to secure your code and protect your users.
 Leave the code in a better state as it was when you started.
 * Train your developer in refactoring and clean code practices cite:[refactoring-2nd,refactoring-to-patterns,refactoring-databases].
 Beware technical debt is also created through:
-** Lack of knowledge, when the developer doesn't know how to write elegant code,
-** Lack of ownership, when outsourced software efforts result of in-house engineering being required to refactor or rewrite outsourced code.
+** Lack of knowledge when the developer does not know how to write elegant code,
+** Lack of ownership when outsourced software efforts results in in-house engineering being required to refactor or rewrite outsourced code.
 
 [IMPORTANT]
 ====

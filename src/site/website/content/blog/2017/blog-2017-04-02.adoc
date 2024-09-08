@@ -39,11 +39,11 @@ Again, I heard the same arguments as 15 years ago why our companies are differen
 To ripe the benefits of agile approaches, it is now time to transition whole departments and the company.
 I hope to succeed in the first half of this century.
 
-Below some findings of the study.
+Below are some findings of the study.
 
 == Major Hurdles Introducing Agile Approaches
 
-The major hurdles when introducing agile approaches at department/company level are
+The major hurdles when introducing agile approaches at the department or company level are
 
 Current company culture::
 http://www.craiglarman.com/wiki/index.php?title=Larman%27s_Laws_of_Organizational_Behavior[First change the structure], it enables
@@ -60,7 +60,7 @@ Try {ref-bbrt},
 Overall processes are not tailored to agile::
 Once you change your structure and hierarchy, the processes will evolve.
 Trust is missing::
-Here again we talk again about trust, or the beliefs your collaborators are competent and do their best to achieve success.
+Here again we talk about trust, or the beliefs your collaborators are competent and do their best to achieve success.
 As an organization and as a manager, it is time to decide.
 Do you truly https://en.wikipedia.org/wiki/Theory_X_and_Theory_Y[trust] your collaborators?
 Customers are not involved or engaged::
@@ -87,7 +87,7 @@ The transition is painful, see the seminal articles of Steve Denning:
 
 The principles are
 
-* Products are value-driven and quality oriented
+* Products are value-driven and quality-oriented
 * Teams are focused mastering their work and tools – Craftsmanship, {ref-xp} -
 * For huge development departments consider using the {ref-less} approach.
 * Teams work best if you can answer with a deafening yes to these five questions.
@@ -100,4 +100,4 @@ The principles are
 If you have doubts, please refrain from using agile and lean methods.
 Introducing agile approaches in product development is similar to introducing lean principles in a production environment.
 Either you do it fully or the benefits are marginal.
-Worst the best employees will see through and probably leave due to unkept promises.
+Worst, the best employees will see through and probably leave due to unkept promises.

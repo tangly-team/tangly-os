@@ -32,7 +32,7 @@ I only read ebooks and save trees.
 
 == Software Engineering
 
-* Scrum and XP From the Trenches: How We Do Scrum, Henrik Kniberg A short and splendid introduction to Scrum and XP, worth looking again and again, Kniberg is also the guy behind the Spotify Way
+* Scrum and XP From the Trenches: How We Do Scrum, Henrik Kniberg A short and splendid introduction to Scrum and XP, worth looking at again and again, Kniberg is also the guy behind the Spotify Way
 * Clean Code: A Handbook of Agile Software Craftsmanship, Robert C. Martin The reference book about clean code and XP practices.
 You are a programmer, you know this book
 * The Clean Coder: A Code of Conduct for Professional Programmers, Robert C. Martin Are you a coder doing clean code (or are a looser)?
@@ -57,7 +57,7 @@ You can later read the works of John P. Kotter.
 * Agile Retrospective: Making Good Teams Great, Esther Derby & Diana Larsen & Ken Schwaber.
 The major place where improvements are identified is during retrospectives, often the less well-managed meeting in a Scrum team.
 * Practices for Scaling Lean and Agile Development, Craig Larman & Bas Vodde A set of practices and ideas how to do big agile projects, the guys behind {ref-less}
-* Scaling Lean & Agile Development: Thinking and Organizational Tools for Large-Scale {ref-scrum}, Craig Larman and Bas Vodde A second set of practices and ideas how to do big agile projects, still the guys behind {ref-less}
+* Scaling Lean & Agile Development: Thinking and Organizational Tools for Large-Scale {ref-scrum}, Craig Larman, and Bas Vodde A second set of practices and ideas how to do big agile projects, still the guys behind {ref-less}
 * The Leader's Dilemma: How to Build an Empowered and Adaptive Organization Without Losing Control, Jeremy Hope & Peter Bunce &Franz Rösli & Franz Röösli The modern reference text for the BBRT initiative
 
 == Presentation Techniques

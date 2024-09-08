@@ -25,7 +25,7 @@ Certifications can be a great bargaining chip when it comes to negotiating a rai
 
 The current {ref-java-certification}[Java SE 17 Developer] examination process and examination goals are well-documented.
 Beware that only one examination exists.
-The same certification applies for developers pursuing a first certification, and for the developers upgrading to the current LTS version.
+The same certification applies for developers pursuing a first certification and for the developers upgrading to the current LTS version.
 
 [cols="1,1",options="header"]
 |===

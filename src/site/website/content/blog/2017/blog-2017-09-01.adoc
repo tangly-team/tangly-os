@@ -17,15 +17,15 @@ You are doing {ref-scrum}, {ref-kanban}, https://en.wikipedia.org/wiki/Scrumban[
 Your collaborators start asking questions about their organization, management roles, and critique the internal processes.
 
 How employee yearly evaluation, bonus evaluation – work?
-You hear strange statements such _Be agile, do not do agile_.
+You hear strange statements such as _Be agile, do not do agile_.
 
-You as a manager realize you have to describe your role in an agile environment.
+You, as a manager, realize you have to describe your role in an agile environment.
 What does it mean?
-Please read first this blog post describing What is an link:../../2016/what-is-an-agile-company[Agile Company]?
+Please read first this blog post describing What an link:../../2016/what-is-an-agile-company[Agile Company] is?
 
 If you have time, read the post link:../../2017/scrum-masters-are-not-administrators[Why Scrum Masters are not Administrators]?
 
-Another one is about link:../../2017/so-called-agile-and-scrum-failures[So Called Agile and Scrum Failures].
+Another one is about link:../../2017/so-called-agile-and-scrum-failures[So-Called Agile and Scrum Failures].
 Upon reading, you shall have a deeper understanding of how to describe your role as a manager in an agile environment.
 
 We will first discuss your work environment.
@@ -46,12 +46,12 @@ Experiment with improvement::
 Inspection and adaptation are keys; processes and value streams shall constantly be improved.
 Take the lean approach: Relentlessly eliminate waste and increase the value stream.
 Establish long-living teams::
-Teams are the backbone of your company; people are human beings not resources.
+Teams are the backbone of your company; people are human beings, not resources.
 
 == Collaborators and their Needs
 
 Knowledge workers are the collaborators you hire in this millennium.
-They are smart, motivated and better qualified than you are.
+They are smart, motivated, and better qualified than you are.
 
 [quote,Steve Jobs]
 ____
@@ -61,7 +61,7 @@ ____
 
 A manager working with knowledge workers has understood the above quotes and
 
-* Believe in the X vs Y theory.
+* Believe in the X versus Y theory.
 You provide safety to all your people and truly respect them.
 People only perform if you provide psychological safety.
 The test is _Do you compliment every collaborator you are working with at least once a week_.
@@ -91,7 +91,7 @@ An agile team must at least be self-organized and ideally self-designed.
 
 Manager lead::
 The team performs the work,
-self-organised / self-managed::
+self-organized / self-managed::
 The team organizes and performs its own activities and work.
 Self-designed / self-selected::
 The team creates, selects and removes new members and maintains itself.

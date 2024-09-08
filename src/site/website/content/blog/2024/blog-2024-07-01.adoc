@@ -14,7 +14,7 @@ include::../fragments/_config-mb-blog.adoc[]
 
 image::2024-07-01-head.jpg[width=420,height=360,role=left]
 
-The overwhelming success of agile approaches to create digital products has implications on our work techniques.
+The overwhelming success of agile approaches to creating digital products has implications on our work techniques.
 
 Design emerges.
 The team learns incrementally and refines the solution cite:[building-evolutionary-architectures-2nd].
@@ -47,7 +47,7 @@ The tools should support the developers in their daily work activities.
 They should simplify their working.
 
 {ref-asciidoc}::
-The standard to write technical documentation
+is the standard for writing technical documentation
 footnote:[{ref-asciidoc} is semantically equivalent to {ref-docbook}.
 This markup standard is used to write all technical books published by https://www.oreilly.com/[O'Reilly].].
 All modern DevOps platforms such {ref-github}, {ref-gitlab}, {ref-bitbucket} support this approach.
@@ -105,7 +105,8 @@ Artifacts created with {ref-openapi}, {ref-javadoc}, or {ref-doxygen} shall be p
 Technical digital product documentation creation embraces the docs-as-code philosophy.
 Similar to our source code practices, product documentation has been version controlled, subjected to the same gatekeeping systems, and auto-delivered by using the same CI/CD pipeline.
 
-This has allowed us to maintain a high level of quality and consistency across our documentatio, while also enabling our engineers to contribute to the documentation in the same way they contribute to the codebase.
+This has allowed us to maintain a high level of quality and consistency across our documentation, while also enabling our engineers to contribute to the
+documentation in the same way they contribute to the codebase.
 ====
 
 The actual good solution is to use a static website generator <<creating-technical-website>> <<improving-static-website>> <<support-comment-docsy>>.
@@ -124,7 +125,7 @@ The features are equivalent to {ref-docbook} markup language.
 Extensive https://docs.asciidoctor.org/diagram-extension/latest/[diagramming options] are provided.
 An alternative integrated approach is the generation of diagrams with https://kroki.io/[Kroki].
 
-Asciidoc supports source code highlighters to publish nice looking and legible code snippets.
+AsciiDoc supports source code highlighters to publish nice looking and legible code snippets.
 
 We use {ref-plantuml} and {ref-mermaid} for creating diagrams.
 
@@ -163,15 +164,15 @@ Specify the external interfaces shown either in a business or technical perspect
 Summary of the fundamental decisions and solution strategies that shape the architecture.
 It can include technology, top-level decomposition, approaches to achieve top quality goals and relevant organizational decisions.
 {counter:chapter} - Building Block View::
-A static decomposition of the system, shown as hierarchy of white boxes up to the right level of abstraction.
+A static decomposition of the system, shown as a hierarchy of white boxes up to the right level of abstraction.
 {counter:chapter} - Runtime View::
 Behavior of building blocks as scenarios, covering use cases, operation, administration, error handling and features.
-An example for this might be a sequence diagram.
+An example of this might be a sequence diagram.
 {counter:chapter} - Deployment View::
 The technical infrastructure with environments, servers and topologies.
 Mapping of building Blocks to the right infrastructure.
 {counter:chapter} - Crosscutting Concepts::
-Principal regulations and solution approaches relevant in multiple parts of the system.
+Principal regulations and solution approaches are relevant in multiple parts of the system.
 The opportunity between different software components.
 {counter:chapter} - Architectural Decisions::
 Important, expensive, critical, large scale or risky architecture decisions including rationales.

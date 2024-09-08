@@ -35,7 +35,7 @@ It is more cumbersome on Microsoft Windows systems.
 In case you are using the IntelliJ IDEA configure {ref-git} in the IDE through the preference pane.
 
 Graphical {ref-git} clients are available.
-I sometimes use the free available https://www.sourcetreeapp.com/[SourceTree].
+I sometimes use the free-available https://www.sourcetreeapp.com/[SourceTree].
 
 == Create a Local Repository
 
@@ -80,7 +80,7 @@ The files appear in the Local Changes tab of the Version Control tool window, un
 
 [TIP]
 ====
-You can define the set of files which should be ignored by git in the _.gitignore_ configuration file.
+You can define the set of files which git should ignore in the _.gitignore_ configuration file.
 See https://git-scm.com/docs/gitignore[gitignore] for details.
 
 Your IDE shall support this feature and would add files or folder to ignore through its user interface.
@@ -100,7 +100,7 @@ git commit -m "commit message, should be clear and legible"         <1>
 You can perform these operations directly in IntelliJ IDEA using the provided VCS functions.
 Switch to the Version Control tool window and switch to the Local Changes tab.
 
-. Expand the Un-versioned Files node, and select the files to be added.
+. Expand the Un-versioned Files node and select the files to be added.
 From the context menu, choose _to Add to VCS_, or press ⌥⌘A.
 . Switch to the Project tool window and select the files to be added.
 From the context menu, choose Git | Add or press⌥⌘A.
@@ -114,7 +114,7 @@ By a few minutes, we mean 5 or 10 minutes.
 Observe yourself.
 If you commit at the end of the day, you are using your DVCS as a backup medium.
 It is time to change your habits.
-Use Git as a history of all successful changes you implement, and simply roll back all unsuccessful ones, simply discarding them.
+Use Git as a history of all successful changes you implement and roll back all unsuccessful ones, simply discarding them.
 
 If you forget some files when performing the last commit, you can correct it:
 
@@ -156,7 +156,7 @@ The same information is available in IntelliJ IDEA under
 
 == Always Work with Trunk
 
-Ideally, you shall always work against trunk, also called the main branch.
+Ideally, you shall always work against the trunk, also called the main branch.
 Because you develop using TDD and ATTD approaches, you know your source code is always working.
 This approach is deeply compatible with lean and agile values.
 It is also the one with the least waste of effort.
@@ -169,7 +169,7 @@ See how you can do it in the link:../../2016/git-branches-for-the-impatient/[Git
 You find the changes you made locally were not a good decision.
 No problem, you can erase these changes with:
 
-Undo last commit putting everything back into the staging area:
+Undo the last commit putting everything back into the staging area:
 
 [source,console]
 ----

@@ -137,7 +137,7 @@ include::pics/2023-11-02-c4-code-diagram.puml[tag=code]
 === System Landscape diagram
 
 The C4 model provides a static view of a single software system but, in the real-world, software systems never live in isolation.
-For this reason, and particularly if you are responsible for a collection/portfolio of software systems, it's often useful to understand how all of these software systems fit together within a given enterprise, organisation, department, etc.
+For this reason, and particularly if you are responsible for a collection/portfolio of software systems, it is often useful to understand how all of these software systems fit together within a given enterprise, organization, department, etc.
 Essentially this is a map of the software systems within the chosen scope, with a C4 drill-down for each software system of interest.
 
 From a practical perspective, a system landscape diagram is really just a system context diagram without a specific focus on a particular software system.
@@ -153,7 +153,7 @@ It is similar to a UML sequence diagram, although it allows a free-form arrangem
 A deployment diagram allows you to illustrate how instances of software systems and/or containers in the static model are deployed on to the infrastructure within a given deployment environment such as production, staging, development, etc.
 It is based upon UML deployment diagrams.
 
-A deployment node represents where an instance of a software system/container is running; perhaps physical infrastructure (e.g. a physical server or device), virtualized infrastructure (e.g. IaaS, PaaS, a virtual machine), containerised infrastructure (e.g. a Docker container), an execution environment (e.g. a database server, Java EE web/application server, Microsoft IIS), etc.
+A deployment node represents where an instance of a software system/container is running; perhaps physical infrastructure (e.g., a physical server or device), virtualized infrastructure (e.g., IaaS, PaaS, a virtual machine), containerized infrastructure (e.g., a Docker container), an execution environment (e.g., a database server, Java EE web/application server, Microsoft IIS), etc.
 Deployment nodes can be nested.
 
 You may also want to include infrastructure nodes such as DNS services, load balancers, firewalls, etc.

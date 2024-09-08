@@ -21,7 +21,8 @@ include::../fragments/_config-mb-blog.adoc[]
 image::2024-04-02-head.jpg[width=420,height=360,role=left]
 
 The Java community releases a new version every six months.
-This is a good thing, it means that the language is evolving at a steady pace.
+This is a good thing.
+It means that the language is evolving at a steady pace.
 
 New language features are added in each release.
 Much effort is put into improving the performance of the JVM and solving small issues.
@@ -35,7 +36,7 @@ This is a dream for agile and DevOps teams.
 Sadly, many developers are still using outdated versions of Java, which can lead to security vulnerabilities and other issues.
 
 I try to always work with the current release of Java, but I have to admit that it is not always easy.
-Below a rant about some of the issues I have encountered.
+Below is a rant about some of the issues I have encountered.
 Solving these issues or finding workarounds cost me quite some hours of my time.
 
 == IntelliJ IDEA Slow Approach

@@ -29,7 +29,7 @@ The tail-call optimization for recursive calls is sadly still missing.
 The https://openjdk.org/projects/amber/[amber] initiative is completing the changes with pattern matching.
 Start adapting your coding idioms and use pattern matching.
 
-The visitor pattern can simply be implemented as switch expression with pattern matching.
+The visitor pattern can simply be implemented as a switch expression with pattern matching.
 As a bonus, the compiler will verify completeness if your class hierarchy uses sealed inheritance.
 
 - https://openjdk.org/jeps/440[Record Patterns]
@@ -52,10 +52,10 @@ The https://openjdk.org/projects/loom/[loom] initiative is completing the major 
 - https://openjdk.org/jeps/446[Scoped Values] _Preview_
 - https://openjdk.org/jeps/453[Structured Concurrency] _Preview_
 
-Virtual threads are now official part of the Java universe.
+Virtual threads are now an official part of the Java universe.
 Your design can create as many threads as you want without restrictions.
 
-_Most of the Java developers never create directly thread instances._
+_Most of the Java developers never create thread instances._
 _The feature is useful for library and framework creators._
 
 == Panama Project
@@ -94,8 +94,8 @@ Extensions to existing features:
 
 Once again {ref-lombok} up to version 1.18.28 is not working with JDK 21
 footnote:[Version 1.18.30 was released in 2023-09-20 and provides initial support for JDK 21.
-Late but it still saves the day.].
-The project uses internal unsafe functions, which are no more supported in this Java release.
+Late, but it still saves the day.].
+The project uses internal unsafe functions, which are no longer supported in this Java release.
 
 [TIP]
 ====
@@ -106,7 +106,7 @@ You need the following additions in your {ref-gradle} configuration.
 - use the dependency _org.projectlombok:lombok:edge-SNAPSHOT_ for the library and the annotation processor
 ====
 
-All other libraries and tools I am using worked without troubles.
+All other libraries and tools I am using worked without trouble.
 Major libraries test their current release with early-access and solve the problems before the official release of a new Java version.
 
 == Lessons Learnt
@@ -114,7 +114,7 @@ Major libraries test their current release with early-access and solve the probl
 Gradle toolchain feature simplifies experimenting with a new Java version.
 The current version of {ref-gradle} runs under Java 21.
 
-IntelliJ IDE provides support for newer JDK before their official release.
+IntelliJ IDEA provides support for newer JDK before their official release.
 It tremendously simplifies exploration of new features.
 
 Often you can use the continuous integration pipelines of {ref-github} or {ref-gitlab} platforms.

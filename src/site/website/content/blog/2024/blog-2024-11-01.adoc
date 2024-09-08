@@ -2,7 +2,7 @@
 title: "Domain Entities UI"
 linkTitle: "Domain Entities UI"
 date: 2024-11-01
-tags: ["java", "architecture"]
+tags: ["java", "architecture","tangly-os"]
 params:
   featured: "blog/2024/pics/2024-11-01-head.jpg"
 ---
@@ -17,8 +17,8 @@ include::../fragments/_config-mb-blog.adoc[]
 
 image::2024-11-01-head.jpg[width=420,height=360,role=left]
 
-Commercial digital applications regularly display a list of entities and details for selected one.
-The selected entity can be displayed, edited, deleted.
+Commercial digital applications regularly display a list of entities and details for the selected one.
+The selected entity can be displayed, edited, and deleted.
 A new entity can be created.
 This pattern is called {ref-crud}.
 
@@ -39,7 +39,7 @@ It was much easier to engage them in rapid prototyping where they could see and 
 Another approach is holding event storming sessions, where the business managers can see the domain model emerge in real-time.
 
 Even if you could engage the sponsors to design a domain model, by the time you have finished developing the system on top, most of its benefits had disappeared.
-It is nice creating an agile domain object model.
+It is nice to create an agile domain object model.
 But if any change to that model also dictates the modification of the layers above and underneath, then that agility is worthless.
 
 The other concern that gave rise to the birth of {ref-naked-objects} was how to make user interfaces of mainstream business systems expressive.
@@ -51,7 +51,7 @@ Regular business logic is encapsulated as methods on the domain objects rather t
 Complex rules are expressed as business logic classes collaborating with domain entities.
 
 The next step is naturally to have the user interface be a reflection of the domain model.
-It would make it easier to apply domain-driven design, because one could easily translate evolving domain modeling ideas into a working prototype.
+It would make it easier to apply domain-driven design because one could easily translate evolving domain modeling ideas into a working prototype.
 And it would deliver an expressive, object-oriented user interface for free.
 
 Simple things should be simple, complex things should be possible.
@@ -72,7 +72,7 @@ Good user interface design is avoiding the user to enter the same data multiple 
 
 The source code to create a grid with custom columns is:
 
-[source, java]
+[source,java]
 ----
 class EffortsView extends ItemView<Effort> {
     // constant declarations
@@ -104,7 +104,7 @@ class EffortsView extends ItemView<Effort> {
 
 The source code to create a custom form for the CRUD operations is:
 
-[source, java]
+[source,java]
 ----
 class EffortForm extends ItemForm<Effort, EffortsView> {
 
@@ -156,7 +156,7 @@ Please consult the documentation of the component {ref-tangly-blog-url}/docs/ui/
 Vaadin supports sophisticated grid cell extension.
 An example to format accounting numbers and to color them red if negative:
 
-[source, java]
+[source,java]
 ----
     public static <T> ComponentRenderer<Span, T> coloredRender(Function<T, BigDecimal> getter,
                                     NumberFormat numberFormat) {
@@ -180,7 +180,7 @@ An example to format accounting numbers and to color them red if negative:
 
 The `net.tangly.ui.component.ItemView` supports adding selected item and global commands to the grid popup menu.
 
-[source, java]
+[source,java]
 ----
     protected void addActions(@NotNull GridContextMenu<Assignment> menu) {
         menu().add(new Hr());
@@ -193,9 +193,9 @@ The `net.tangly.ui.component.ItemView` supports adding selected item and global 
     }
 ----
 
-<1> adds a selected item command which will process the selected item.
+<1> Adds a selected item command which will process the selected item.
 Optional parameters can be inputted in a dialog before processing.
-<2> adds a global command which will process items displayed in the grid.
+<2> Adds a global command which will process items displayed in the grid.
 Optional global parameters can be inputted in a dialog before processing.
 
 == Asynchronous Operations
@@ -264,6 +264,13 @@ See https://echarts.apache.org/examples/en/index.html[Diagram Examples].
 
 The domain entities UI is a key part of the domain-driven design.
 Mechanisms to display, edit, and create domain entities are essential.
+
+Views for tags and comments are part of the domain entities UI library.
+Visual components for code and date range are available.
+It simplifies the creation of a dialog for entities with tags and comments.
+
+The generic views `ItemView<T>` and `EntityView<T>` are the foundation of the domain entities UI library.
+They tremendously simplify the creation of CRUD grid components.
 
 The multi-user and multi-tab support runs in a multithreaded environment and requires careful programming to scale.
 All the logic is provided by the domain entities UI framework to diminish complexity for the application developers.

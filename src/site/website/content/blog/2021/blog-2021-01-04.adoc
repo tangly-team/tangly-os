@@ -33,19 +33,19 @@ Pull requests are a standard approach to review team colleague works and to cons
 == Modern Java Software Development
 
 Java is the preferred programming language for the majority of teaching institutions around the world.
-The programming language has evolved the last ten years.
+The programming language has evolved over the last ten years.
 Students should learn the current way of writing code in Java.
 
 The actual Java approach is to use streams and renounce in most cases to use instructions such as _for_ or _while_ loops or conditional _if_ statements.
 Delegation and lambda constructs often replace inheritance design.
 
-Since JDK 16, Java provides https://en.wikipedia.org/wiki/Algebraic_data_type[Algebraic Data Types] with records and sealed classes.
+Since JDK 16, Java has provided https://en.wikipedia.org/wiki/Algebraic_data_type[Algebraic Data Types] with records and sealed classes.
 Records implement https://en.wikipedia.org/wiki/Product_type[Product Types].
 Sealed classes implement https://en.wikipedia.org/wiki/Tagged_union[Tagged Unions], also called sum types.
 
 The https://www.jetbrains.com/idea/[IntelliJ IDEA IDE] is now the industrial standard for the Java and often Python world.
 The IDEA environment promotes the use of modern Java constructs.
-Currently, constructs such as records, sealed classes, closeable resources, switch instructions as expressions are new approaches to write legible Java code.
+Currently, constructs such as records, sealed classes, closeable resources, switch instructions as expressions are new approaches to writing legible Java code.
 Concepts such as Optional, Streams, immutable objects, and unchecked expressions promote more functional programming styles.
 
 https://gradle.org/[Gradle] is our preferred build tool for Java projects.
@@ -74,7 +74,7 @@ https://plantuml.com/[PlantUML] is a text-based diagramming approach.
 Major diagram types are supported.
 ALl UML diagram types can be described with the tool.
 {ref-asciidoc} has native support for diagrams in general and PlantUML in particular.
-Asciidoc supports additional diagrams and diagramming tools such as https://mermaid.js.org/[Mermaid].
+AsciiDoc supports additional diagrams and diagramming tools such as https://mermaid.js.org/[Mermaid].
 
 == Agile and Scrum
 

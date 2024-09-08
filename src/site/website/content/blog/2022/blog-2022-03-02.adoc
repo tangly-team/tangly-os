@@ -15,7 +15,7 @@ image::2022-03-02-head.png[width=420,height=360,role=left]
 
 https://spring.io/[Spring] and https://spring.io/projects/spring-boot[Spring Boot] frameworks are the standard for enterprise Java applications.
 
-Spring Boot makes it easy to create stand-alone, production-grade Spring-based Applications that you can just run.
+Spring Boot makes it easy to create stand-alone, production-grade Spring-based Applications that you can run.
 
 They take an opinionated view of the Spring platform and third-party libraries, so you can get started with minimum fuss.
 
@@ -46,7 +46,7 @@ Package the whole application in a docker image for integration and testing acti
 Your services need to store persistent information in a database.
 Spring framework promotes an SQL database and JPA as object mapper.
 
-A lightweight approach simplifies local development and speed-up the integration testing through your CI/CD pipeline.
+A lightweight approach simplifies local development and speeds up the integration testing through your CI/CD pipeline.
 
 Our current approach is:
 
@@ -63,7 +63,7 @@ Professional software development requires the creation and maintenance of a tec
 
 Define a schema per domain to isolate your domain model in the database.
 Use the Spring files _schema.sql_ to define a clean database model.
-Do not define any integrity rules between schemas to insure modularity of your bounded domains down to the persistence layer.
+Do not define any integrity rules between schemas to ensure modularity of your bounded domains down to the persistence layer.
 
 JPA supports schemas through a standard annotation.
 
@@ -83,7 +83,7 @@ Views for read-only objects Business logic should be in services.
 
 == Fluent Getter and Setter
 
-Spring Persistence and JPA Extends persistence to support Java abstractions such as enumeration sets
+Spring Persistence and JPA extend persistence to support Java abstractions such as enumeration sets
 
 Use record construct for immutable entities
 
@@ -125,7 +125,8 @@ Fluent getters are standard with the official Java record feature.
 
 == Eliminate DTO
 
-JSON objects are your data transfer objects JSON schema define the data model and validate it.
+JSON objects are your data transfer objects.
+JSON schema defines the data model and validates it.
 
 * Use annotation to remove AOT artifacts generated through JPA enhancements.
 * Use annotation to coerce Jackson to not request old fashion property getters and setters.
@@ -139,7 +140,7 @@ The need to define frequent queries to generate aggregate views are a smell that
 
 == Schedulers in Spring
 
-Scheduled jobs are easy to defined and use with Spring.
+Scheduled jobs are easy to define and use with Spring.
 
 Please do not use homebrew solutions or cron jobs.
 The Spring scheduler component is powerful enough for most of the scenarios.
@@ -176,7 +177,7 @@ Use Thymeleaf and Bootstrap for B2C applications.
 These frameworks introduce new technologies.
 Developers shall be trained to avoid bad solutions.
 
-Use AngularJS or VueJS if you have a lot of budget.
+Use AngularJS or Vue.js if you have a lot of budget.
 These frameworks introduced a technology stack based on JavaScript or ideally on Typescript.
 New versions of the Typescript language and of the user interface framework are released every few months.
 Experience shows that a major rework of the source code and design decisions is necessary at least every eighteen months.
@@ -186,7 +187,7 @@ Experience shows that a major rework of the source code and design decisions is 
 We had to find ways to support standard API classes in the Spring and JPA worlds.
 We had an enumeration set property we needed to persist.
 
-[source, java]
+[source,java]
 ----
 @Data
 @Entity
@@ -210,7 +211,7 @@ public class Rating implements Serializable {
 
 The generic converter for the regular enumeration set Java class is:
 
-[source, java]
+[source,java]
 ----
 /**
 * Provides an enumeration set converter to enable storing and retrieving enumeration sets for the persistent store.
@@ -251,7 +252,7 @@ I was stunned by the amount of code that I needed to write to persist a standard
 
 * Use the Spring mechanisms to streamline unit and integration tests.
 Please, write unit and integration tests.
-* Train all the developers in Spring framework
+* Train all the developers in the Spring framework
 footnote:[https://spring.io/[Spring organization] provides https://spring.academy/courses[certification path].].
 The organization shall encourage certification in key technologies used in their mission-critical applications.
 You need at least one professional Spring developer to smooth the learning curve.

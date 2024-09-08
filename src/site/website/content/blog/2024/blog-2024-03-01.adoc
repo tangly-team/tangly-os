@@ -31,7 +31,7 @@ A module is distributed as a regular jar file.
 Each module is responsible for its resources, like media or configuration files.
 
 Previously, we put all resources into the root level of our project.
-We manually manage which resources belonged to different parts of the application.
+We manually manage which resources belong to different parts of the application.
 It works, but it is not really a good way to define modular systems.
 
 With modules, we can ship required images and XML files with the module that needs it, making our projects much easier to manage.
@@ -142,9 +142,9 @@ module ch.hslu.pcp.consumer {                                        <4>
 
 <1> Export the package containing the interface describing the service
 <2> Implement the service and provide it to interested parties
-<3> Optional locator responsible to find all implementations of a specific service interface
+<3> Optional locator responsible for finding all implementations of a specific service interface
 <4> Consumer calling an implementation of the service.
-If you do not implement an explicit locator, the consumer is responsible to find a suitable implementation.
+If you do not implement an explicit locator, the consumer is responsible for finding a suitable implementation.
 
 == Migration Strategy
 

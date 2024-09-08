@@ -13,7 +13,7 @@ image::2023-06-02-head.jpg[width=420,height=360,role=left]
 
 Functional programming is hype for the last ten years.
 
-All popular programming languages have added support to functional concepts for years.
+All popular programming languages have added support for functional concepts for years.
 
 Not all developers are embracing the new approach and using the provided constructs.
 
@@ -58,8 +58,8 @@ For example, they can be assigned to variables, passed in as arguments, or retur
 ----
 
 <1> Define a new record _Person_ with two string properties _firstname_ and _lastname_.
-The string type is only a hint and not enforce.
-<2> Create a new record instance with firstname _John_ and lastname _Doe_ and associate it with reference _aPerson_.
+The string type is only a hint and not enforced.
+<2> Create a new record instance with the firstname _John_ and lastname _Doe_ and associate it with reference to _aPerson_.
 <3> Create a new record instance with the values of _aPerson_ and the new value _Jane_ for the _firstname_.
 
 [source,clojure]
@@ -98,7 +98,7 @@ This mechanism provides tail-recursion call optimization.
 ----
 
 <1> Define a multi-arity function.
-The first declaration is without parameter, the second one has one parameter.
+The first declaration is without a parameter, the second one has one parameter.
 <2> Define a variadic function with a variable number of parameters as the last formal parameter.
 
 == Advanced Functional Constructs
@@ -167,7 +167,7 @@ Clojure uses software transactional memory _STM_ to implement this behavior.
 Agents::
 https://clojure.org/reference/agents[Agents] are a mechanism for sequencing operations on a particular instance of a data structure.
 Agents provide independent, asynchronous change of individual locations.
-Agents are bound to a single storage location for their lifetime, and only allow mutation of that location (to a new state) to occur as a result of an action.
+Agents are bound to a single storage location for their lifetime and only allow mutation of that location (to a new state) to occur as a result of an action.
 
 [source,clojure]
 ----
@@ -206,10 +206,10 @@ Agents are bound to a single storage location for their lifetime, and only allow
 
 <1> Declare an atom.
 <2> Update the value of the atom.
-The expression passed as parameter to _swap!_ is applied to the current value of the atom.
+The expression passed as a parameter to _swap!_ is applied to the current value of the atom.
 <3> Gets the current value of the atom.
 <4> Declare a reference.
-<5> Define the transactional parenthesis grouping multiple modifications of references.
+<5> Define the transactional parenthesis by grouping multiple modifications of references.
 <6> The behavior of alter is:
 . Reach outside the transaction and read the reference's current state.
 . Compare the current state to the state the ref started with within the transaction.
@@ -266,7 +266,7 @@ Otherwise, you need to type very lengthy type declarations.
 
 Clojure is an ideal language to learn and better understand functional programming approaches cite:[functional-thinking].
 
-You will probably not use it in a commercial product development.
+You will probably not use it in commercial product development.
 None of the functional languages such as Clojure, List, F# has taken over the world of programmers.
 
 The principles you learnt shall often be applicable to your technology stack.

@@ -22,12 +22,12 @@ The solutions scale to hundreds of thousands of users, are resilient to network 
 The applications are deployed on cloud infrastructure and are available worldwide.
 
 After the conference, I went to Ibiza for a family holiday.
-Our family enjoys prolonging the summer on this beautiful balearic island.
+Our family enjoys prolonging the summer on this beautiful Balearic island.
 
 The weather is Switzerland is typical for fall.
 Cold, misty and often rainy.
 
-I used the relaxed location to reflect about the kind of applications I often develop for customers.
+I used the relaxed location to reflect the kind of applications I often develop for customers.
 
 The application goal often is to digitalize an internal process or a more complex workflow involving customers and suppliers.
 
@@ -92,7 +92,7 @@ FacturX and Swiss QR Code::
 Are used to create compliant invoices in Europe and Switzerland.
 
 Limit the number of external libraries you are using in your products.
-Each additional framework increases maintenance costs and slow down your innovation progress.
+Each additional framework increases maintenance costs and slows down your innovation progress.
 Java open-source projects are often laggards in adopting modern Java constructs.
 
 The application could have a huge success and be sold as a product to customers.
@@ -100,7 +100,7 @@ You must now support thousands of concurrent users and more persistent data.
 
 The following changes are needed:
 
-- Split modular monolith into a set of services.
+- Split a modular monolith into a set of services.
 - Move to PostreSQL database.
 - Shard your application services and data either geographically or per customer groups.
 
@@ -109,7 +109,7 @@ The following changes are needed:
 The user interface written with Vaadin currently scales up to around ten thousand concurrent users for one server.
 If you have more users, you must create shards for your application.
 
-This approach will only scale for around hundred thousand concurrent users.
+This approach will only scale for around a hundred thousand concurrent users.
 
 _Honestly, I never created an application with more than eight thousand concurrent users._
 _Products with more parallel users are seldom in Europe._

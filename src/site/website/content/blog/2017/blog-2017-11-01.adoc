@@ -20,8 +20,8 @@ An agile organization continuously removes impediments.
 It is one of her major activities.
 This activity is ongoing and can never be completed.
 
-Impediments resolution is {ref-kaizen} 改善, a key technique to lean, agile and Scrum approaches.
-The translation is _change for better_.
+Impediments resolution is {ref-kaizen} 改善, a key technique to lean, agile, and Scrum approaches.
+The translation is _change for the better_.
 
 Often agile organizations forget to aggressively identify and resolve impediments.
 
@@ -47,7 +47,7 @@ An impediment is a dysfunction of the organization, never a flaw in an individua
 * Aim for effectivity and quality.
 Efficiency is less important.
 * Find out the root causes, discuss the https://en.wikipedia.org/wiki/5_Whys[5 Whys] over how.
-* Provide safe to fail environment.
+* Provide a safe to fail environment.
 Use the {ref-pdca} loop to implement your experiments to improve,
 * Life the https://www.scrumalliance.org/why-scrum/core-scrum-values-roles[Scrum values].
 Lead by example: Focus, Commitment, Transparency, Openness, Respect, and Courage.
@@ -64,7 +64,7 @@ A delighted customer will order more.
 
 Start with short-term wins to prove the organization that it is worth the effort.
 
-Allocate time and resources in each sprint to resolve a few high prioritized impediments.
+Allocate time and resources in each sprint to resolve a few high-prioritized impediments.
 Please define measurements https://en.wikipedia.org/wiki/Performance_indicator[Key Performance Indicators _KPI_].
 Find out if the solution solves the root cause of the problem.
 
@@ -84,7 +84,7 @@ You have a serious problem
 * If you do not solve at least one impediment each sprint.
 It is a mandatory part in the {ref-scrum} 2018 version.
 
-As a Scrum coach, Scrum master or Scrum team member, you should reflect upon the above statements at least monthly.
+As a Scrum coach, Scrum master, or Scrum team member, you should reflect upon the above statements at least monthly.
 Otherwise, you are just pretending.
 Remember
 

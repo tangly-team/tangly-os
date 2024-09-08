@@ -46,7 +46,7 @@ footnote:[A more popular IDE is https://www.jetbrains.com/idea/[IntelliJ IDEA] w
 * Use review plugin such as Eclipse Jupiter to create these still mandatory review reports on the source code.
 These reports are useless in an agile team working with techniques such as refactoring and pair programming.
 But they are still mandatory for most of the traditional quality assurance _QA_ departments.
-The plugin allows you to generate nice looking reports and to implement the findings at the same time.
+The plugin allows you to generate nice-looking reports and to implement the findings at the same time.
 * Use https://en.wikipedia.org/wiki/Test-driven_development[Test Driven Development] approach and create a lot of unit tests.
 By slightly extending the logging features of JUnit and by using code coverage tools, you can create reports showing which source code was tested.
 Add some annotations to your test cases, and you have full traceability to your stories and associated software requirements.
@@ -57,7 +57,7 @@ Using the reporting features of easyb footonote:[The website of easyb is no more
 It generates hundreds of pages of information and provides the PDF documents to the regulatory department.
 These documents are also https://en.wikipedia.org/wiki/Technischer_%C3%9Cberwachungsverein[TUV] and https://en.wikipedia.org/wiki/Food_and_Drug_Administration[FDA] compliant.
 * Use continuous integration servers to run all the above measures and generate the documentation at the end of each sprint or release.
-* Link your version control system with your continuous server, issue tracking application and unit tests.
+* Link your version control system with your continuous server, issue-tracking application and unit tests.
 So you can generate release notes stating the list of closed issues with the associated source code and unit tests verifying the correctness of the change.
 
 Similar tools are available in Python .NET, or {cpp} communities.

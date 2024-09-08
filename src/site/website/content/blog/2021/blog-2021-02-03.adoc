@@ -28,7 +28,7 @@ Coffee is also really better.
 
 My life would be more productive and fun if more people did better understand how to work in a digital world.
 
-Here are a few advices to improve our work experience.
+Here is a little advice to improve our work experience.
 
 == Schedule an Appointment
 
@@ -103,13 +103,13 @@ No PowerPoints are used inside Amazon.
 Somebody for the meeting has prepared a six-page narrative structured memo.
 It has real sentences, and topic sentences, and verbs, and nouns.
 It is not just bullet points.
-Two pizza sized teams::
+Two pizza-sized teams::
 We try to create teams that are no larger than can be fed by two pizzas.
 ====
 
 == Share a Document
 
-The rules to share a document are:
+The rules to sharing a document are:
 
 * Avoid sending me a document per email.
 Send me the link to the document in a shared repository I have access to.
@@ -117,7 +117,7 @@ I mean everybody is using Google Drive, DropBox, or Microsoft One Drive
 footnote:[Beware you cannot search for such repositories, especially if you are using proprietary document formats such as Microsoft Office.
 The sole exception is Google Drive from the search engine company.].
 
-The rules to edit a document are:
+The rules to editing a document are:
 
 * Do not assume I am using Microsoft Office.
 I use and strongly prefer LibreOffice.

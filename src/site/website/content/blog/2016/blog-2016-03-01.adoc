@@ -44,8 +44,8 @@ The tools I really enjoy and use on a daily basis for software development as I 
 
 * https://www.jetbrains.com/idea/[IntelliJ IDEA] IDE,
 * Atlassian Cloud applications - BitBucket, HipChat, CI pipeline -,
-* {ref-homebrew} as package manager for utilities,
-* Docker as container manager,
+* {ref-homebrew} as the package manager for utilities,
+* Docker as the container manager,
 * VirtualBox when I need a full-fledged virtual machine,
 footnote:[The need of virtual machines for daily work is fading away.].
 

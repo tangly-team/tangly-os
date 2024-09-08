@@ -24,12 +24,12 @@ The operation leaves commit messages in the history.
 The operation _git rebase_ is a way of moving the changes from one branch onto another branch.
 The operation does not leave any commit message in the history.
 
-A simple and powerful approach governing the use of these commands is:
+A simple and powerful approach to governing the use of these commands is:
 
 - Local branches shall be updated using rebase.
 The commit history of the branch stays clean.
 - Local feature branches shall be regularly synchronized against the default remote branch.
-Therefore, team members will have less merge conflicts.
+Therefore, team members will have fewer merge conflicts.
 - Remote branches shall be updated using merge.
 - Before a merge request is created, you can clean up your commit history with an interactive rebase.
 
@@ -62,7 +62,7 @@ Check out the branch you want to rebase and type
 
 Standard rebase replays the previous commits on a branch without changes, stopping only if merge conflicts occur.
 
-. Fetch the latest changes from main:
+. Fetch the latest changes from the main:
 +
 [source,console]
 ----
@@ -88,7 +88,7 @@ git push --force-with-lease origin my-feature   <1>
 git push --force origin my-feature              <2>
 ----
 +
-<1> lease option preserves any new commits added to the remote branch by other people.
+<1> the lease option preserves any new commits added to the remote branch by other people.
 <2> force does not preserve any new commits added to the remote branch by other people.
 
 If there are merge conflicts, Git prompts you to fix them before continuing the rebase.
@@ -106,7 +106,7 @@ Git rebase rewrites the commit history.
 It can be harmful to do it in shared branches.
 It can cause complex and hard to resolve merge conflicts.
 In these cases, instead of rebasing your branch against the default branch, consider pulling it with _git pull origin main_.
-Pulling has similar effects with less risk of compromising the work of your contributors.
+Pulling has similar effects with lower risk of compromising the work of your contributors.
 ====
 
 == Merge
@@ -197,7 +197,7 @@ Because it preserves any new commits added to the remote branch by other people,
 git push --force-with-lease origin my-feature
 ----
 --force flag::
-The _--force flag_ forces pushes, but does not preserve any new commits added to the remote branch by other people.
+The _--force flag_ forces pushes but does not preserve any new commits added to the remote branch by other people.
 To use this method, pass the flag _--force_ or _-f_ to the push command:
 +
 [source,console]

@@ -2,7 +2,7 @@
 title: "Domain Entities"
 linkTitle: "Domain Entities"
 date: 2024-10-01
-tags: ["java", "architecture"]
+tags: ["java", "architecture", "tangly-os"]
 params:
   featured: "blog/2024/pics/2024-10-01-head.jpg"
 ---
@@ -27,7 +27,7 @@ The digital modular monolith can evolve to a full-fledged microservices architec
 The framework enables parallel development with multiple agile teams.
 {ref-domain-driven-design} approach encourages the clear definition of minimal interfaces between bounded domains.
 
-Continuous integration, delivery and deployment validate delivered increments cite:[continuous-delivery].
+Continuous integration, delivery, and deployment validate delivered increments cite:[continuous-delivery].
 The teams have the guaranty the integrated solution is working as expected.
 
 DevOps culture shortens work in progress _WIP_ <<introducing-devops-ideas>> <<devops-for-small-applications>> <<first-steps-devops>>.
@@ -35,6 +35,8 @@ The teams can deliver new features and bug fixes in a timely manner.
 This approach is a key concept in Kanban and Scrum methodologies.
 
 But how do you model the domain entities in your digital solution?
+
+We present an approach implemented in our open-source library {ref-site}.
 
 == Domain Entities
 
@@ -55,23 +57,25 @@ We identified three regular concepts of identities in digital solutions <<meanin
 
 Internal Identity::
 An instance is identified through an internal object identifier _OID_.
-The application is owner of this internal identifier.
+The application is the owner of this internal identifier.
 An internal identifier should stay internal and not be sent to other systems. +
 _An example is the company internal collaborator identifier._
 External Identity::
 An instance is identified through an external object identifier _ID_.
-The application or another external system is owner of the external identifier for a type of entities. +
+The application or another external system is the owner of the external identifier for a type of entities. +
 _An example is the social security number of a collaborator_. +
 External identifiers are natural ones and part of the domain and should always be preferred.
 Name::
-An instance can at least partially be identified through a human friendly name.
-The application or another external system is owner of the name for a type of entities. +
+An instance can at least partially be identified through a human-friendly name.
+The application or another external system is the owner of the name for a type of entities. +
 _An example is the full name of a collaborator_.
 
 Our open-source library provides a mixin for each of these identification concepts.
 The below interfaces are for immutable access to the identity information.
 Identifiers should be set at construction time and should not be modified.
-A mutable version of the name mixin is provided for the cases where the name can be modified.
+
+A mutable version of the mixins is provided for the cases where the property can be modified.
+The mutability is regularly encountered for names, seldom for identifiers and almost never for internal identifiers.
 
 [source,java]
 ----
@@ -98,7 +102,7 @@ External identifiers are natural ones and part of the domain.
 Internal object identifiers are a technical solution for incomplete domain entities.
 Incomplete often means that the digitalization of your bounded domain is hindered.
 
-For example, in Switzerland it was long prohibited to use the social security number as identifier for natural persons.
+For example, in Switzerland it was long prohibited to use the social security number as an identifier for natural persons.
 The federal government changed the laws in 2022. But you still cannot access the social number of children.
 The identifier is defined but is not accessible.
 
@@ -107,7 +111,7 @@ Similar difficulties exist in Europe to access the European natural person ident
 footnote:[Naturally, the Swiss social number is not compatible with the European one to spice up your modeling problems.
 An example of a well-defined external identifier is the plate number of a car.
 Another well-defined external identifier is the bank account number _IBAN_.
-This identifier is worldwide valid.].
+This identifier is worldwide valid and supported by more and more countries.].
 ====
 
 Entities often have temporal information associated with them.
@@ -133,11 +137,12 @@ Similar interfaces are provided for read-write access.
 ----
 package net.tangly.core;
 
-interface HadDate {
+interface HasDate {
     LocalDate date();
 }
 
-interface HasTimeInterval {                                // <1>
+interface HasDateRange {
+    DateRange range();                           // <1>
     LocalDate from();
     LocalDate to();
 }
@@ -151,19 +156,24 @@ Users often want to access human-readable information to better understand an in
 They also want to classify groups of entities.
 
 Textual Description::
-A textual description of the entity to provide context and user related information.
+A textual description of the entity to provide context and user-related information.
 Comments::
 Comments are user-specific notes describing various aspects of an entity.
 Comments are unstructured.
 The software does not generally process them.
 Codes::
-Codes define a customer-specific enumeration type. The values are configurable and expandable.
+Codes define a customer-specific enumeration type.
+The values are configurable and expandable
+footnote:[Values for a code can be defined in a JSON file or in an SQL database.].
 The signification of the code is hard-coded in the software.
 The value set is customer-specific.
 Tags::
 Tags define a customer-specific ontology to classify entities in their system.
 Tags without value are equivalent to labels.
 Tags with optional or mandatory values enrich the classification information with instance-specific parameter values.
+
+The key difference between codes and tags is that you can define values for a code, but you cannot add a new code type.
+You can create new tags at any time.
 
 We support {ref-asciidoc} syntax for all textual elements.
 The feature hugely improves the legibility and attractiveness of textual description for the users.
@@ -373,7 +383,7 @@ The same form is provided for editing purposes.
 
 View mode as readonly access to the entity information.
 
-Edit mode as modification access to the entity information.
+Edit mode as a mutable mode to the entity information.
 Modification includes edit, create, duplicate, and delete.
 
 [NOTE]
@@ -406,6 +416,9 @@ Export and import functions are provided through TSV and JSON format transformat
 We use our Gleam library.
 You can find more information under {ref-tangly-blog-url}/docs/gleam/[Gleam].
 
+The import and export functions are also used to provide a backup and restore function for the domain entities.
+If desired, these functions can be extended to provide a versioning and migration system for the domain entities.
+
 == Lessons Learnt
 
 Modern Java has extensive support for shallow immutability with the `record` construct.
@@ -413,15 +426,22 @@ We had to provide two hierarchies of mixin interfaces.
 One for immutable entities and one for mutable entities.
 
 The compactness of the code necessary to create a complete CRUD user interface is very high.
-We found out writing such code is more efficient than using available model driven approaches.
+We found out writing such code is more efficient than using available model-driven approaches.
 Therefore, we decided to ditch frameworks such as {ref-openxava} or Apache {ref-causeway}.
 footnote:[We strongly prefer a plain coding approach over annotation-based solutions.
 This is certainly a major reason why we do not use these frameworks.].
 
+The gains for using these frameworks are too small to justify the learning curve and implicit limitations of such libraries.
+
+The ideas behind these frameworks and also promoted through domain-driven design are still worth learning how to apply them in your products.
+
 Simple things should be simple and complex things should be possible.
 
-The gains for using these frameworks are too small to justify the learning curve and implicit limitations of such libraries.
-The ideas behind these frameworks and also promoted through domain-driven design are still worth learning how to apply them in your products.
+The programmatic approach of our library is flexible.
+Developers can easily extend the provided interfaces to add new features or use their preferred libraries.
+You can create your specific user interface components and use them in the views.
+
+The same applies to the persistence layer.
 
 [bibliography]
 == Links
@@ -440,8 +460,6 @@ Marcel Baumann. 2022.
 Marcel Baumann. 2021.
 - [[[first-steps-devops, 7]]] link:../../2022/first-steps-devops/[First steps DevOps].
 Marcel Baumann. 2022.
-- [[[domain-entities-ui, 8]]] link:../../2024/domain-entities-ui/[Domain Entities UI].
-Marcel Baumann. 2024.
 
 == References
 

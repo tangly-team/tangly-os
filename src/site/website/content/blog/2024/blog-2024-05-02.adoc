@@ -87,7 +87,7 @@ Every actor has a mailbox that stores messages until they can be processed.
 It does not matter if the actor runs locally, on another core, or on another device.
 As long as it can receive messages, it makes no difference.
 . It allows for better scalability and the receiver controls consumption rate.
-If your actor-based solution sees an increase in traffic load
+If your actor-based solution sees an increase in the traffic load
 footnote:[A higher traffic load has a direct impact on the number of unprocessed messages in actor mailboxes.], you can create more actors
 footnote:[The creation of additional actors is prohibited in security relevant applications.
 For example, the MISRA 2022 standard explicitly prohibits dynamic creation of processes.
@@ -104,9 +104,9 @@ The sender can send out more messages in the meantime.
 
 [TIP]
 ====
-Embedded applications using traditional approaches with synchronization primitives such as mutexes and semaphores are very difficult to implement correctly.
+Embedded applications using traditional approaches with synchronization primitives such as mutexes and semaphores are arduous to implement correctly.
 
-The MISRA committee has recognized the problems and defined a set of restrictions in the MISRA C 2012 Amendment 4, or should we say MISRA C 2023 revision.
+The MISRA committee has recognized the problems and defined a set of restrictions in MISRA C 2012 Amendment 4, or should we say MISRA C 2023 revision.
 The recommendations are:
 
 - No dynamic creation of threads.
@@ -145,7 +145,7 @@ Consider using a sealed class hierarchy to define messages actors receive
 footnote:[A similar approach can be implemented in {cpp} with _std::variant_ construct.].
 Pattern matching with _instanceof_ would provide exhaustive and type secure handling of all alternatives.
 
-Java provides the needed mechanisms.
+Java provides the necessary mechanisms.
 Modern pattern matching in Java provides elegant solutions.
 
 The behavior of an actor is specified as a flat or a hierarchical state machine.

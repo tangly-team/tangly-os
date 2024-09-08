@@ -27,7 +27,7 @@ All units are defined by constants of nature.
 Still, various countries use alternate conventions to complicate our lives.
 --
 
-Here some well-documented and expensive catastrophes originating from wrong approaches to measurements.
+Here are some well-documented and expensive catastrophes originating from wrong approaches to measurements.
 
 Patriot Missile::
 The cause here was an inaccurate calculation of the time that has passed since the start due to arithmetic errors in the computer system.

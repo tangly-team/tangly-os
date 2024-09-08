@@ -25,7 +25,7 @@ These are the pillars for iterative incremental improvements.
 
 Transparency::
 You trust all collaborators to provide their best when working on the product.
-They need full access to all relevant information: quality, progress, budget, people and financial data.
+They need full access to all relevant information: quality, progress, budget, people, and financial data.
 They use the data to select the best alternatives to reach the company’s goals.
 Inspection::
 You cherish a failure culture because inspections will find weak points.
@@ -33,7 +33,7 @@ You need a culture where people are never blamed.
 One consequence is that you eliminate management of objectives and bonuses in your company.
 Adaptation::
 You are ready to learn better approaches and truly believe there is a better solution.
-Processes change regularly bottom-up, company’s budget can only be a rolling indicative budget, and planning has to be _continuously_ updated.
+Processes change regularly bottom-up, a company’s budget can only be a rolling indicative budget, and planning has to be _continuously_ updated.
 
 You can also pursue desirable attitudes or values of agile persons.
 
@@ -62,9 +62,9 @@ The https://modernagile.org/[modern agile movement] defines guiding principles.
 
 Make people awesome::
 Dedicated collaborators want to give their best.
-Give them a purpose, a goal, empower them and let them climb the mountain.
-Thriving people need purpose, excellence and autonomy.
-They are happier, healthier and more productive.
+Give them a purpose, a goal, empower them, and let them climb the mountain.
+Thriving people need purpose, excellence, and autonomy.
+They are happier, healthier, and more productive.
 Deliver value continuously::
 Maintain sustainable pace and stability, all divisions of the organization should focus on customer value.
 At the end of the day, successful products are the only reason you get your paycheck.
@@ -85,19 +85,19 @@ The above concepts are comprehensible.
 How do you know if you are moving in the right direction?
 A few concrete tests help you find out if you are an agile department or company.
 
-* _Be agile_ instead of _do agile_.
+* _Be agile_ instead of _doing agile_.
 Practice the above attitudes and do not just follow a checklist
 * Nobody micromanages in your company
 * _Feel accountable_ instead of _being accountable_.
 You want to improve, and your company as a natural part of the daily work.
-* _Compliment every collaborator_ you are working with at least once a week instead of _evaluating weaknesses and criticising people_.
+* _Compliment every collaborator_ you are working with at least once a week instead of _evaluating weaknesses and criticizing people_.
 Do you lead by example?
-* No management by objectives - MBO - or bonuses are established in your company
+* No management by objectives _MBO_ or bonuses are established in your company
 * Every collaborator has access to all company data, every collaborator can request process and tool changes.
 We favour _Individuals and interactions over tools and processes_
 * You want to be excellent in your work.
 You have a purpose and autonomy in your daily work
-* Team members take the decision to hire or to fire collaborators, not the department responsible or the human resources group.
+* Team members take the decision to hire or to fire collaborators, not the department responsible, or the human resources group.
 Think about collaborators selecting their leaders, about managers being servants, about information available to all collaborators
 * Can you say these essential sentences at least three times a week?
 ** the most important one word, _Sorry._
@@ -106,7 +106,7 @@ Think about collaborators selecting their leaders, about managers being servants
 ** and the most important four words, _Can I help you?_
 
 I truly believe that we all want a fulfilling job which improves our world.
-I cannot understand other reasons to spend 40 hours and more per week for something less valuable.
+I cannot understand other reasons to spend 40 hours and more per week on something less valuable.
 Take the above principles and apply them to your daily work.
 There are universal values to establish a working atmosphere you are proud of.
 
@@ -115,11 +115,11 @@ _I agree with all of you to desire a fulfilling job is only true if you earn eno
 == Food for Thoughts
 
 These ideas are not new.
-You can delve in empirical evidence and discussions in books written by business management professors, CEO, and passionate agile advocates.
+You can delve into empirical evidence and discussions in books written by business management professors, CEOs, and passionate agile advocates.
 Below a list of mind openers (available as Amazon ebooks):
 
 [horizontal]
-Reinventing organisations:: A guide to creating organisations inspired by the next stage of human consciousness by Frederic Laloux,
+Reinventing organizations:: A guide to creating organizations inspired by the next stage of human consciousness by Frederic Laloux,
 Accelerate:: Building strategy agility for a fast-moving world by John P. Kotter.
 Beyond budgeting:: How managers can break free from the annual performance trap.
 The Leader’s Dilemma:: How to build an empowered and adaptive organization without losing control; both books by Jeremy Hope.
@@ -137,7 +137,7 @@ The Fifth Discipline:: The art and practice of the learning organization by Pete
 Fearless Change:: Patterns for introducing new ideas; More Fearless Change: Strategies for making your ideas happen; both books by Linda Rising,
 Excellence Novels::
 Build to Last::: Successful habits of visionary companies;
-Good to Great::: Why some companies make the leap and others don’t;
+Good to Great::: Why some companies make the leap and others do not;
 How the Mighty Fall::: And why some companies never give in; all three books by Jim Collins,
 Google re:work:: Google blog about work environment and work techniques
 

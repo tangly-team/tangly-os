@@ -2,7 +2,7 @@
 title: "A Journey Implementing Digital Invoices"
 linkTitle: "Implementing Digital Invoices"
 date: 2020-07-15
-tags: ["java", "design", "crm"]
+tags: ["java", "design", "tangly-os"]
 params:
   featured: "blog/2020/pics/2020-07-01-head.png"
 ---

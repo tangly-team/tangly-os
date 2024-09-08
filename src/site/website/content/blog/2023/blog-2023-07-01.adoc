@@ -14,16 +14,16 @@ image::2023-07-01-head.png[width=420,height=360,role=left]
 Now that you have gone through the long and tedious process of hiring a talented developer with vetting and interview activities, it is easy to think that the hard part is done
 <<evaluate-cv>> <<technical-interviews>>.
 
-There is no doubt that hiring good people is challenging and competitive, but it is a mistake to think that the challenge ends when you hired a new collaborator.
+There is no doubt that hiring good people is challenging and competitive, but it is a mistake to think that the challenge ends when you hire a new collaborator.
 
 Onboarding software developers is just as important for getting the most out of the hiring process.
 
 Too many companies neglect this phase to their own detriment.
 
-== Why onboarding matters?
+== Why does onboarding matter?
 
 Onboarding, the process of bringing new employees to a point where they are fully integrated into the company and working at full capacity is a _make it or break it_ process for companies wanting to compete in the tech world.
-Whether you are a startup with only a few employees, or an established company with hundreds of employees, the onboarding process is the first opportunity you have to set up new employees for long-term success.
+Whether you are a startup with only a few employees or an established company with hundreds of employees, the onboarding process is the first opportunity you have to set up new employees for long-term success.
 
 It can cost employers anywhere from 30–50% of an employee’s yearly salary to replace a developer that leaves.
 So when an organization loses employees to a bad onboarding process, the company feels it.
@@ -31,7 +31,7 @@ And if there is an insufficient onboarding process, new hires will leave.
 
 One of the most important aspects of onboarding is the timeline.
 On the one hand, the practical aspects of onboarding should happen pretty quickly, as outlined below.
-On the other hand, it is important to understand that onboarding an employee meaning getting them to a place where they feel fully immersed and capable at your company takes months.
+On the other hand, it is important to understand that onboarding an employee means getting them to a place where they feel fully immersed and capable at your company takes months.
 
 [CAUTION]
 ====
@@ -51,7 +51,7 @@ All are necessary to successfully onboard a software developer into your company
 === Practical onboarding (1 week)
 
 Practical onboarding involves things like benefits signups, company-wide training videos, HR requirements, equipment setup and account access
-footnote:[Invest in a smooth IT setup. I too often encounter organizations needing months until the new collaborator can finally access all needed applications and resources.
+footnote:[Invest in a smooth IT setup. I too often encounter organizations needing months until the new collaborator can finally access all necessary applications and resources.
 Such a cumbersome process demotivates your employees.
 I am a professional software developer.
 I really love to have a 4K display, a US keyboard, a quality mouse, and a fast SSD.

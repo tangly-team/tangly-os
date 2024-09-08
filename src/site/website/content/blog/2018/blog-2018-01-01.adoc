@@ -14,17 +14,17 @@ include::../fragments/_config-mb-blog.adoc[]
 
 image::2018-01-01-head.jpg[width=420,height=360,role=left]
 
-Why is it so cool to develop software using Java, a modern IDE and agile tools?
+Why is it so cool to develop software using Java, a modern IDE, and agile tools?
 
 Because the environment empowers you and incredibly speeds up your development outcomes.
 In seconds, you know if the next code increment adds value to your product.
 
-Test driven development and static quality tools are integrated in your IDE.
+Test-driven development and static quality tools are integrated in your IDE.
 Each time you check some code into your Git repository, all configured checks shall be executed before allowing the commit.
 
-Liberated your team works adding functions and no more spend unaccounted hours in setting up infrastructure.
+Your liberated team works adding functions and no more spend unaccounted hours on setting up infrastructure.
 
-This trend is propagating to other technology stacks such as Python or C#, but less for PHP or Javascript/Node.js worlds.
+This trend is propagating to other technology stacks such as Python or C#, but less for PHP or JavaScript/Node.js worlds.
 I still experience higher maturity in the Java toolchain.
 
 Below, our current set of techniques and tools to multiply our results and bring earlier products to your customers.
@@ -50,7 +50,7 @@ Before pushing your code to the Git repository, always take a look and refactor 
 You are a craftsman and shall be proud of your result,
 Use Java 8 Lambdas and Streams::
 Actual Java code builds on lambda expressions and stream constructs.
-Your for loops are replaced by stream pipeline, your algorithms extensively use lambdas.
+Your for loops are replaced by a stream pipeline, your algorithms extensively use lambdas.
 Use Java 9 Modules::
 It is finally possible to clearly define public interfaces of a whole software component.
 Configure the dependencies to other libraries and identify specific modules as privileged participants.
@@ -81,9 +81,9 @@ SpotBugs::
 The successor of the wildly popular FindBugs tool can be integrated in your build pipeline to improve the odds of correctness.
 PMD::
 It Is another tool to automatically detect potential quality problems.
-IntelliJ IDEA build-in Checks::
+IntelliJ IDEA built-in Checks::
 You are lazy and do not want to use additional tools.
-Please use at least the build-in checkers of IntelliJ IDEA to improve your code.
+Please use at least the built-in checkers of IntelliJ IDEA to improve your code.
 It is very unprofessional to have equality problems or boolean condition errors in modern code.
 
 == Test Quality
@@ -131,7 +131,7 @@ Requirements are coded and documented in your acceptance tests.
 == Continuous Integration
 
 Agile means reacting to all changes.
-Lean means build-in quality.
+Lean means built-in quality.
 Your continuous pipeline certifies after each change that your solution is correct and has the correct behavior.
 
 {ref-gradle}:: Is the new standard for building your artifacts.
@@ -149,7 +149,7 @@ Agile means to react fast the changes.
 You need to deliver and deploy your new solution to your customers in minutes or hours.
 
 Docker::
-Virtual machines were a powerful construct, but they are slow and require a lot of resources.
+Virtual machines are a powerful construct, but they are slow and require a lot of resources.
 Docker is the answer.
 Start a testing instance in 300 milliseconds.
 Tomcat and TomEE::
@@ -174,7 +174,7 @@ I am currently using a textual tool to define such diagrams.
 Analog Board::
 Nothing beats a big analog board in the team room as the ideal information radiator.
 If you want your collocated to work effectively and solve problems as a team, you shall provide an analog board.
-Trello, Stride, BitBucket, Hipchat and others Atlassian tools for distributed teams::
+Trello, Stride, BitBucket, Hipchat and other Atlassian tools for distributed teams::
 The first advice is to have a collocated team.
 The productivity and performance gains are unachievable in a distributed environment.
 We have splendid experience with Atlassian and Google App solutions to mitigate the drawback of distributed teams and establish a team work atmosphere.
@@ -183,9 +183,9 @@ IntelliJ IDEA::
 This IDE is the choice for refactoring, powerful context suggestions, and efficient programming.
 If you use Eclipse or Netbeans, try a friendly refactoring competition with an IDEA convert.
 {ref-git}::
-Stop using Subversion, CVS, TFS or other geriatric tools.
+Stop using Subversion, CVS, TFS, or other geriatric tools.
 Agile development, efficient integration in delivery pipelines, and extensive refactoring require Git.
-Migrate now to {ref-git} and leave dreaded message _Tree conflict detected, please solve manually_ behind you.
+Migrate now to {ref-git} and leave dreaded message _Tree conflict detected, please solve the problem manually_ behind you.
 
 These tools shall be used in the agile way.
 You do not have long-lived branches in your source code management tool.
@@ -194,10 +194,10 @@ Complex branching strategies are just a waste for a lean practitioner.
 
 I decided to collect all these hints in the same long post.
 They belong together.
-Every day you design a solution, you code it, test it, improve it and guarantee its quality.
+Every day you design a solution, you code it, test it, improve it, and guarantee its quality.
 
-These activities are tangled together to producing a product you are proud of.
+These activities are tangled together to produce a product you are proud of.
 
-And yes, I know about {ref-github}, {ref-gitlab}, Slack, Ant, {ref-maven}, Jetty, Amazon Cloud, AssertJ, Subversion, Eclipse, Netbeans and other good tools.
+And yes, I know about {ref-github}, {ref-gitlab}, Slack, Ant, {ref-maven}, Jetty, Amazon Cloud, AssertJ, Subversion, Eclipse, Netbeans, and other good tools.
 But I still prefer the ones above.
 I am convinced that I am more productive with them.

@@ -56,7 +56,7 @@ Congratulations to the Devoxx committee.
 Most of the talks were good.
 A few were excellent such as <<awesome-speech-llm>>.
 The Oracle Java architects are doing a stunning job.
-They are very professional, polite, and their talks are of high-quality.
+They are very professional, polite, and their talks are of high quality.
 Brian Goetz and Per Minborg made a big impression on how competent they are
 footnote:[I still think that Oracle Java license conditions are lunatic.
 You have to pay 250 USD per collaborator.
@@ -74,22 +74,22 @@ Wireless is working.
 
 It was saddening that most attendees are white male engineers.
 Perhaps the conference committee should more actively pursue diversity.
-Other conferences try very hard to attract less represented groups in particular women.
+Other conferences try very hard to attract less represented groups, in particular women.
 
 The coffee was lousy as usual at a software conference
-footnote:[Agile conferences have often a real coffee machine and a barista.
+footnote:[Agile conferences often have a real coffee machine and a barista.
 I promise it is not the reason why I also attend agile congresses.].
-The danish pastries were welcome.
+The Danish pastries were welcome.
 
 === Test Containers: Needed, Simple, Powerful
 
 Integration tests verify your application is working as expected.
 
-Test containers is a powerful wrapper around docker.
+Test containers are a powerful wrapper around docker.
 You can create the integration environment and the continuous delivery pipeline in Java.
 
 [sidebar]
-Test containers seem to lower the anxiety how to set up an integration environment and deploy the application on it.
+Test containers seem to lower the anxiety about how to set up an integration environment and deploy the application on it.
 
 If you prefer to write and debug your integration setup in Java, test containers are useful.
 The demonstration highlighted you have anyway to learn the subtleties of Docker.
@@ -120,7 +120,7 @@ _Modern developers evaluate a new Java version before it is officially released.
 
 === Value Types and Patterns Matching
 
-Data oriented programming separate data and code.
+Data-oriented programming separates data and code.
 This approach is against core concepts of object-oriented programming.
 
 The speakers talked about the disadvantages of recompiling code when changing an interface.
@@ -152,7 +152,7 @@ An experienced architect with domain knowledge should hint which functionalities
 
 Future constructs were also presented.
 
-Named patterns is a discussion theme in the community.
+Named patterns are a discussion theme in the community.
 They support the deconstruction of regular classes.
 
 Value classes as potential first preview of the {ref-valhalla} project.
@@ -193,7 +193,7 @@ _Instead {ref-structurizr} requires that your {ref-asciidoc} or {ref-arc42} docu
 ====
 You can export the content of a model to an HTML page.
 
-It is not the same as generating a static website with a static generator and theme.
+It is different from generating a static website with a static generator and theme.
 Generators such as {ref-hugo} provides mechanisms to generate links and cross-references to link various parts of your documentation.
 ====
 
@@ -237,9 +237,9 @@ As a young developer, consider taking the Java developer certification examinati
 
 Funny examples of how to write unit tests for crap code.
 The end of the talk presented good design approaches and the need to refactor.
-The speaker Victor Rentea outed himself as a clean-code advocate.
+The speaker, Victor Rentea, outed himself as a clean-code advocate.
 
-Rely on the language and not on tests to detect errors is a profound advice.
+Rely on the language and not on tests to detect errors is profound advice.
 
 The {cpp} bashing was surprising.
 
@@ -257,7 +257,7 @@ _Or I would look out for a serious development environment._
 
 === Microservices Got Talent: The Event-Driven Beautiful Dance
 
-Event-first design is another approach to look at your domain.
+Event-first design is another approach to looking at your domain.
 
 Ensures there are event handlers for all emitted events before they are effectively persisted.
 The event sourcing runtime should ensure the approach.
@@ -270,7 +270,7 @@ Think about schema evolution.
 JSON is fine, but you have to manually implement schema changes. +
 Performant approaches are {ref-avro} or {ref-protobuf} which support schema evolution. +
 {ref-eclipsestore} is a potential candidate.
-The event sourcing runtime is responsible to load events into memory and removes them from memory for a specific instance in the domain model.
+The event sourcing runtime is responsible for loading events into memory and removes them from memory for a specific instance in the domain model.
 
 Projections are used to process events and create a query optimized views on the model.
 The concept is similar to a materialized view in a relational database.
@@ -290,7 +290,7 @@ A trend is to offer PaaS solutions built around a kubernetes cluster.
 === With Java 21, Your Code Runs Even Faster. But How is that Possible?
 
 The presentation was fun, instructive and well-done.
-The details were inspiring and of high-quality.
+The details were inspiring and of high quality.
 
 The speaker showed multiple areas where the JVM was locally massively improved through clever refactoring.
 Worth every second and a nice way to complete the day.
@@ -304,7 +304,7 @@ Artificial intelligence is a hot topic with few concrete scenarios.
 The three most cited areas are personal assistant, coding assistant, and image generator.
 
 _A good coding copilot would be a great use case._
-_Jetbrains and other companies solutions are still work in progress and often not released to the public._
+_Jetbrains and other companies' solutions are still work in progress and often not released to the public._
 
 And two talks about physics and quantum computing.
 
@@ -337,12 +337,12 @@ The speaker advocates the use of cheap raspberry boards to experiment.
 Smaller data packages reduce energy consumption, network traffic, and surprisingly also latency.
 
 {ref-protobuf} is a good compromise to encode payloads.
-Hand coded structures are still factors more compact but require code to encode and decode the payload.
+Hand-coded structures are still factors more compact but require code to encode and decode the payload.
 
 === PostgreSQL, The Time-Series Database You Actually Want
 
 The speaker shows a demonstration of time series in {ref-postgresql}.
-Nice to learn the database supports the feature, and I missed concrete examples why should I use it.
+Nice to learn the database supports the feature, and I missed concrete examples why I should use it.
 
 === Project Leyden
 
@@ -398,7 +398,7 @@ It was a boring presentation.
 I know a little about ARM processor architecture.
 The speaker just presented the different processors available on the market.
 
-No real presentation how Java is optimized for ARM architecture.
+No real presentation of how Java is optimized for ARM architecture.
 He could have presented intrinsics, SIMD support and other architecture optimizations.
 
 Cloud companies provide ARM-based solutions with tens or hundreds of cores.
@@ -435,7 +435,7 @@ It was a little chilly, but locals enjoyed the last warm days of this season.
 
 === Open Telemetry and Continuous Feedback. Things you need to know about your Java code at runtime
 
-The speaker favors integration and production feedbacks how the application behaves.
+The speaker favors integration and production feedbacks on how the application behaves.
 
 He advocates {ref-opentelemetry} because it is an industrial standard.
 
@@ -454,14 +454,14 @@ Funny presentation how to classify Lego bricks using machine learning.
 The speaker is not a machine learning _ML_ specialist and had a steep learning curve.
 All packages are available as open source packages.
 
-The Java ecosystem is smaller and less well documented.
+The Java ecosystem is smaller and less well-documented.
 He used {ref-djl}.
 
 One important finding was _use real images, do not create them mechanically_.
 The difference is tremendous.
 
 [sidebar]
-Tutorials how to set up a machine learning environment, train the models, and process application data are sorely missing.
+Tutorials on how to set up a machine learning environment, train the models, and process application data are sorely missing.
 
 [#awesome-speech-llm]
 === Java Meets AI: A Hands-On Guide to Building LLM-Powered Applications with LangChain4j
@@ -496,7 +496,7 @@ _The tips were good but not really relevant for me._
 
 The speaker presented a solid introduction to {ref-grpc} and {ref-armeria}.
 
-The frameworks provide needed services for highly scalable applications based on microservices.
+The frameworks provide necessary services for highly scalable applications based on microservices.
 {ref-armeria} industrializes {ref-grpc} services.
 
 The concepts are clean and well-implemented.
@@ -541,7 +541,7 @@ I am surprised how tiring it was to listen to so many presentations and trying t
 
 I decided to leave earlier to be sure to catch my flight.
 The yesterday experience with the strikes worried me.
-It worked well, and I was ahead on time at the airport.
+It worked well, and I was ahead of time at the airport.
 
 [sidebar]
 I decided to enjoy the digital nomad feeling.
@@ -609,7 +609,7 @@ How should and would Java evolve in the next years?
 Current https://openjdk.org/[openJDK] projects cover all ideas I heard during the conference.
 The exception is how to support ML and AI approaches.
 I am only aware of https://www.jcp.org/en/jsr/detail?id=381[JSR 381]
-footnote:[I have the impression that JSR approach is dead.
+footnote:[I have the impression that the JSR approach is dead.
 Oracle architects stated the goal is to make Java a friendly environment for all important trends.
 Project {ref-panama} is an approach to better integrate ML and AI libraries with Java.
 {ref-panama} is available in curren Java versions.

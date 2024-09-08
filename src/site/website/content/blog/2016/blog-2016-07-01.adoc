@@ -23,12 +23,12 @@ You use the actual industrial standard for version control systems is https://gi
 
 You decided to use branches to implement new features or fix errors instead of using {ref-trunk-based-development}.
 
-Here the cookbook to create, edit, merge and delete local and remote branches in {ref-git} (version 2.x).
+Here the cookbook to create, edit, merge, and delete local and remote branches in {ref-git} (version 2.x).
 
 Git branches have two important qualities.
 
 * A branch is like an idea.
-Once you implemented the idea, feature or fix, you just merge back to trunk and delete the branch.
+Once you implemented the idea, feature, or fix, you merge back to the trunk and delete the branch.
 * Multiple branches coexist in a repository.
 Ideally, branches should be short-lived to avoid waste.
 * The history of the branch commits is still visible upon deletion of the branch.
@@ -67,7 +67,7 @@ git fetch                                       <2>
 ----
 
 <1> List of all branches in the local repository.
-<2> Retrieve all changes from the remote repository including new branches and store them in the local repository.
+<2> Retrieve all changes from the remote repository, including new branches, and store them in the local repository.
 Your working directory is not modified.
 
 Create new branch feat-#42 locally.
@@ -91,8 +91,8 @@ git push -u origin feat-#42
 
 [CAUTION]
 ====
-Publish files on branch when you are ready to share your changes.
-Once files are available on remote repository, you should avoid rebasing your branch.
+Publish files on the branch when you are ready to share your changes.
+Once files are available on a remote repository, you should avoid rebasing your branch.
 ====
 
 == Work on the Branch
@@ -112,7 +112,7 @@ I suggest performing the synchronization at least daily.
 Once you share your branch, synchronize using merge operations.
 Doing a rebase will confuse other developers by providing an alternate version of the same change.
 
-This housekeeping avoids stress when you finally merge your branch back to trunk.
+This housekeeping avoids stress when you finally merge your branch back to the trunk.
 ====
 
 Upon running the unit tests locally, push the changes to the repository.
@@ -182,7 +182,7 @@ Push the changes.
 git push
 ----
 
-For advanced users, you can first rebase your branch and squash superfluous commits before merging the branch back to trunk.
+For advanced users, you can first rebase your branch and squash superfluous commits before merging the branch back to the trunk.
 
 == Delete the Branch
 

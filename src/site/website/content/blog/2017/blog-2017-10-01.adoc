@@ -22,7 +22,7 @@ They just build what is written in outdated requirements.
 A subpar solution is shipped and the relationship with the customer is deeply damaged.
 
 We can do better.
-We shall collaborate, trust each other and create an awesome product.
+We shall collaborate, trust each other, and create an awesome product.
 This is the essence of _being agile_.
 
 How shall we be agile and work the lean way in a contractual environment?
@@ -52,7 +52,7 @@ Priority on Money::
 Frame cost as investment and discuss value with the customer, not just money. +
 _Fix the budget (money dimension) and have some tentative milestones.
 We must invest to prioritize the stories and talk about your MVP.
-Often nice to have functions are never realized._
+Often nice to have functions that are never realized._
 Priority on Time::
 Sometimes, it is not about the cost.
 Instead, there is a deadline, like the end of the fiscal year. +
@@ -64,7 +64,7 @@ Priority on Scope::
 And in other cases, the scope actually is quite defined, and both money and time are flexible.
 In these cases, it makes sense to fix the scope variable. +
 _Fix the functionality (scope dimension).
-Budget overrun and delays are possible.
+Budget overruns and delays are possible.
 Defining the scope in advance is less agile.
 You assume you already know everything about the product to build._
 
@@ -134,7 +134,7 @@ Sell the entire Scrum team and not individuals.
 ** Deliver and deploy the build solution.
 ** Have the end users use the deployed product.
 
-The Scrum master, the product owner and the team shall perform these activities.
+The Scrum master, the product owner, and the team shall perform these activities.
 Never use external consultants or business analysts.
 The ones writing the stories and estimating them shall implement them.
 
@@ -158,4 +158,4 @@ We avoided complicated and expensive change request processes.
 The build products were very successful.
 We respected the agreed budget and were timely.
 The dynamic was in the scope definition.
-We delivered early and often high quality increments, so the end users could adjust their expectations and refine their needs.
+We delivered early and often high-quality increments, so the end users could adjust their expectations and refine their needs.

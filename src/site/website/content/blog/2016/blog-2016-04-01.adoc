@@ -32,11 +32,11 @@ To open the discussion and bring the discussion back to objective arguments, I o
 
 * Scaling Lean and Agile Development: Thinking and Organizational Tools for Large-Scale Scrum, Craig Larman and Bas Vodde, Addison-Wesley 2009.
 This book and the one below are a very extensive presentation about the challenges and trade-offs of big distributed agile projects using {ref-less}.
-Don't expect pre-cocked solutions but a tool set how to lead successfully such projects.
+Don't expect pre-cocked solutions, but a tool set how to lead successfully such projects.
 Not always an easy reading but worth the effort
 * Practices for Scaling Lean and Agile Development: Large, Multi-side, and Offshore Product Development with Large-Scale Scrum, Craig Larman and Bas Vodde, Addison-Wesley 2010 See above for a review of the book
 * Agile Testing: A Practical Guide for Testers and Agile Teams, Lisa Crispin and Janet Gregory, Addison-Wesley 2009 The seminal reference book how to blend testing with agile projects.
-Lisa Crispin and Janet Gregory provide insights and a proven track how to guaranty agile quality assurance and agile testing.
+Lisa Crispin and Janet Gregory provide insights and a proven track on how to guaranty agile quality assurance and agile testing.
 A must-read book for everyone seriously developing agile projects.
 * Agile Estimating and Planning, Mike Cohn, Prentice-Hall, 2006 The seminal reference to estimating agile projects.
 The experienced readers will understand why Mike Cohn used the words estimating and planning instead of estimates and plan.
@@ -64,7 +64,7 @@ I know quite a few developers shocked by his requirements
 * Lean Software Development, An Agile Toolkit, Mary & Tom Poppendieck, Addison-Wesley 2003 Classical work what lean development means
 * Implementing Lean Software Development: From Concept to Cash, Mary & Tom Poppendieck, Addison-Wesley 2007 The hand-ons how to implement lean approaches
 * Agile Product Management with Scrum: Creating Products that Customers Love, Roman Pichler, Addison-Wesley 2010 Requirement engineering done the agile way
-* Scrum and XP from the trenches: How we do Scrum, Henrik Knieberg, InfoQ 2007 is a short book how to implement Scrum and XP in projects
+* Scrum and XP from the trenches: How we do Scrum, Henrik Knieberg, InfoQ 2007 is a short book on how to implement Scrum and XP in projects
 
 == Change Management
 
@@ -82,7 +82,7 @@ Sad is that a lot of product leaders have no clue of these rules.
 * Becoming a Technical Leader: An organic Problem-Solving Approach, Gerald M. Weingartner, Dorset House 1986 How a gifted technical engineer can become a manager.
 * Slack: Getting past burnout, busywork, and the myth of total efficiency, Tom DeMarco, Broadway Books 2001 In one sentence, the tremendous difference between efficiency and effectivity.
 * The Dilbert Principle, Scott Adams, Harper Collins 1996 An entertainment presentation of all the mistakes companies are doing and still thinking they are smart
-* Death March: The complete Software Developer's Guide to Surviving "Mission Impossible" Projects, Prentice Hall 1997 In my current coaching activities I still encounter departments where burnouts are common.
+* Death March: The complete Software Developer's Guide to Surviving "Mission Impossible" Projects, Prentice Hall 1997 In my current coaching activities, I still encounter departments where burnouts are common.
 Either these managers are criminals or so plain stupid that they cannot be held responsible.
 I am still unsure
 

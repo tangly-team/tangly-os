@@ -17,7 +17,7 @@ You start a change journey in murky waters.
 Best to communicate a lot, strengthen your teams and have total support of upper management.
 
 Technical agile coaching usefully describes the work I do.
-Agile coaching helps your business to become more successful, often improve the way you plan and deliver software.
+Agile coaching helps your business to become more successful, often improving the way you plan and deliver software.
 
 Technical agile coaching focuses on how people design products, write code and deliver high-quality products.
 
@@ -65,7 +65,7 @@ Said bluntly, just do not use it if you can choose.
 
 == Ways of working
 
-The following three levels of coaching are commonly needed:
+The following three levels of coaching are commonly necessary:
 
 === Organizational LeSS Coaching
 

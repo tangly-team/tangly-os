@@ -84,7 +84,7 @@ Volunteer initiatives try to improve this shameful situation for decades.].
 An article about last year's future day can be found under https://hub.hslu.ch/informatik/ava-und-talena-11-informatik-ist-cool-zukunftstag/[HSLU Future Day].
 
 Our collaborators systematically use climate-friendly transportation.
-Most of our travels use the domestic rail.
+Most of our travels use domestic rail.
 Home office work is encouraged to reduce commute traffic.
 
 Office emissions are minimal.
@@ -116,7 +116,7 @@ Swiss government solutions are still stuck in the last millennium and have misse
 The Swiss federal government deployed a new https://www.estv.admin.ch/estv/en/home.html[Swiss Federal Tax Administration Portal] last year.
 The various services are now located under one portal.
 The solution is still missing a public API to enable the digital transformation of company's processes
-footnote:[Having collaborator inputting data on a Web form is certainly not the definition of a digital process.].
+footnote:[Having a collaborator inputting data on a Web form is certainly not the definition of a digital process.].
 
 Big insurance companies are worse than the federal government.
 Pension fund and accident insurances still ask for paper correspondence for standardized processes such as mutation or yearly salary structure information.
@@ -133,7 +133,7 @@ We had to painfully acknowledge that Google has slow innovation and outdated sol
 Try to publish Internet sites with their https://sites.google.com/[Sites] application.
 It is cumbersome, and no support for {ref-asciidoc} or https://daringfireball.net/projects/markdown/syntax[Markdown] is available.
 
-Static website concepts and infrastructure as version managed artifacts are sorely missing.
+Static website concepts and infrastructure as version-managed artifacts are sorely missing.
 We initiated a slow withdrawal from their digital offerings.
 
 == Lessons Learnt

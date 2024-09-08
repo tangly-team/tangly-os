@@ -27,7 +27,7 @@ How can you continuously improve in your profession?
 
 How can you become proficient in the new features and possibilities of the technologies you use daily?
 
-How can you learn new approaches and good practices emerging over the world?
+How can you learn new approaches and good practices emerging all over the world?
 --
 
 Below are approaches I used over the years to improve my technical skills and progress in my career.
@@ -39,7 +39,7 @@ A powerful and cost-effective approach is to meet regularly in user groups.
 
 You can find a lot of user groups in your Swiss area.
 
-You find Java, Python, C++, C#/.Net, and Clojure user groups in the Zurich, Zug, and Lucerne areas.
+You find Java, Python, C++, C#/.Net, and Clojure user groups in the Zürich, Zug, and Lucerne areas.
 
 Attend the group gatherings.
 You will learn new approaches and expand your professional network.
@@ -94,7 +94,7 @@ I want to have knowledge workers in my team.
 I want them to tap into the collective knowledge of the world through the Internet.
 ====
 
-== Attend Formal Trainings
+== Attend Formal Training
 
 A professional engineer shall attend around five training days a year.
 
@@ -206,4 +206,3 @@ Buy a technical book quaterly and read it.
 - bibitem:[skilled-facilitator]
 - bibitem:[learn-or-die]
 - bibitem:[presentation-patterns]
-

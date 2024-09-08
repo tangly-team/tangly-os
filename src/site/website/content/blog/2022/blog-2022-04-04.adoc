@@ -16,7 +16,7 @@ image::2022-04-04-head.png[width=420,height=360,role=left]
 Your organization heard of https://en.wikipedia.org/wiki/DevOps[DevOps], and your developers clamor you should adopt the approach.
 
 Each organization I talk with has some DevOps initiative.
-Often because they read that DevOps approach puts customers and end-user satisfaction at the center.
+Often because they read that the DevOps approach puts customers and end-user satisfaction at the center.
 
 Does DevOps really improve the quality of your digital products and customer satisfaction?
 
@@ -85,7 +85,7 @@ This pipeline builds the software, runs static code analyzer and executes a reas
 If not, they are pretending to do DevOps and lying to you.
 
 The next step is to configure an automatic continuous delivery.
-This pipeline packages the complete solution and delivers as an installation package.
+This pipeline packages the complete solution and delivers it as an installation package.
 This package can be deployed in the staging area without manual configuration.
 
 Only professional DevOps teams shall dare to implement continuous delivery.
@@ -105,8 +105,8 @@ It is important to note, however, that there are so many DevOps tools out there 
 Testing and Automation Tools::
 One of the duties of a DevOps engineer is to speed up the delivery of software to the clients.
 Most companies care about the quality of their software and testing has become an essential part of DevOps engineers' job.
-Functional and non-functional testing techniques and tools are used to guaranty quality of the installed solutions.
-It provides the obvious benefits of automation, and helps DevOps engineers save a lot of time.
+Functional and non-functional testing techniques and tools are used to guaranty the quality of the installed solutions.
+It provides the obvious benefits of automation and helps DevOps engineers save a lot of time.
 Containers and Cloud Services::
 Containers such as Docker and Kubernetes are used to deploy digital solutions.
 Microsoft Azure, Google Cloud, Amazon Web Services are some examples.
@@ -114,7 +114,7 @@ Communication::
 DevOps is not isolated to a specific role or to a specific team in your organization.
 A DevOps specialist must have well-developed empathy because their job implies communication with other people.
 Conflicts are not going to help them.
-Deep understanding of empiricism and transparency of all available information and measurements is a must for successful communication in an agile and DevOps environment.
+A deep understanding of empiricism and transparency of all available information and measurements is a must for successful communication in an agile and DevOps environment.
 
 Google has published exhaustive insights how they implement DevOps mindset cite:[site-reliability-engineering].
 
@@ -141,7 +141,7 @@ Automation::
 Software quality can be better by improving the thoroughness, timeliness and frequency of testing.
 Processes that can be automated should be automated, and the other ones should be considered for elimination.
 Measurement, Monitoring, Report and Action::
-The results during software development as well as post-delivery must be continuously controlled by the qualified people at the right time for DevSecOps to succeed.
+The qualified people must continuously control the results during software development as well as post-delivery at the right time for DevSecOps to succeed.
 
 [#bootstrap-devops-adoption]
 == Bootstrap Your DevOps Adoption
@@ -162,7 +162,7 @@ Measure deployment frequency and deployment duration.
 * Each product is built in a continuous delivery pipeline and packaged for deployment in a staging area or in production.
 Static code analysis and automated tests are executed in the pipeline.
 They provide an automated, tracked and documented quality gate.
-* Each production version is tagged in the repository including associated documentation and technical instructions.
+* Each production version is tagged in the repository, including associated documentation and technical instructions.
 Running:: Focus is on time to repair rather than time between issues.
 Measure mean-time to recovery, production failure rate and change failure rate.
 * Each instance has a monitoring feature, which enabled us to provide realtime information about resource usage, heartbeat, health status and warnings.
@@ -186,7 +186,7 @@ Do the actions measurably improve the associated metrics?
 
 . You give access to a product repository.
 I can check out the whole project and build it locally with one command.+
-_I shall install the needed development tools based on written instruction available in the repository._
+_I shall install the necessary development tools based on written instruction available in the repository._
 . You give access to a product repository.
 I can initiate a complete build and delivery action in a continuous integration and delivery pipeline.+
 _I shall use the CI/CD tool chosen for the product._
@@ -239,7 +239,7 @@ Additional metrics often are:
 Deployment Speed::
 It suggests how quickly you can deploy a new software version into the production environment.
 Production Failure Rate::
-It analyses how frequently your software crashes in production for a particular period through
+It analyzes how frequently your software crashes in production for a particular period through
 https://en.wikipedia.org/wiki/Failure_rate[failure rate].
 
 == Cultural change
@@ -284,9 +284,9 @@ But in reality, you are just an amateur.
 
 [horizontal]
 Continuous Integration::
-Fowler, 2006 - a software development practice where members of a team integrate their work frequently, usually at least daily.
+Fowler, 2006 - a software development practice where members of a team usually integrate their work frequently, at least daily.
 Multiple integrations per day shall be possible.
-Each integration is verified by an automated build including tests to quickly detect errors.
+Each integration is verified by an automated build, including tests to quickly detect errors.
 Pair Programming::
 Williams & Kessler, 2003 – style of programming in which two programmers work side by side at one computer, continually collaborating on the same design, algorithm, code or test.
 The *driver* types and writes the design.
@@ -299,7 +299,7 @@ Biedenharn, personal communication, October 2018 - describes the goal of automat
 It functions with a single command, thus not requiring a multistep procedure.
 Single Source Repository::
 Fowler, 2006 - allows teams to keep the main project codebase in one easy-to-access location.
-This allows for easy version control; and for any new team members to get up and running easily.
+This allows for easy version control and for any new team members to get up and running easily.
 Technical Excellence::
 managing constraints on software development via techniques, individual skills, and practices as a team.
 Generally, this includes test-driven development, collective code ownership, continuous integration, and _ego-less programming_ (Gerald Weinberg).
@@ -311,7 +311,7 @@ development driven by automated tests _published by Beck, 2014_:
 . Refactor: Clear up all duplications made in the process to make the test work.
 Unit Testing::
 testing the smallest units possible to prove what was written is true.
-Unit testing frameworks are Xunit or NUnit for C# and .Net, Junit for Java, PyUnit for Python, Cppunit for {cpp}.
+Unit testing frameworks are Xunit or NUnit for C# and .NET, Junit for Java, PyUnit for Python, Cppunit for {cpp}.
 
 [bibliography]
 == Links
