@@ -26,23 +26,23 @@ Congratulations, you are applying state of the industry good practices.
 
 Your teams use {ref-scrum} or {ref-kanban} to deliver running software every two weeks.
 
-To create an agile architecture, you must write agile worthy code.
+To create an agile architecture, you must write agile-worthy code.
 Agile code is always clean code.
 
-Start early, do it continuously and soon your code will be clean, legible and free of known defects.
+Start early, do it continuously, and soon your code will be clean, legible and free of known defects.
 --
 
 == Architecture versus Code
 
 Be honest.
 Having a huge class with thousands of lines of code plainly demonstrates that your organization worked unprofessionally over months in the past.
-Such monsters are not born over one-night coding session.
+Such monsters are not born over a one-night coding session.
 It takes time and incompetence to create such maintenance nightmares.
 
 As long as your product contains such code monsters, it is worthless to pretend to have a nice and thought through architecture.
 Your organization is still trying to achieve software craftsmanship.
 
-Team discipline and early warning systems are the keys to avoid such blunders and kill the monster in the egg.
+Team discipline and early warning systems are the keys to avoiding such blunders and killing the monster in the egg.
 
 [NOTE]
 ====
@@ -88,15 +88,15 @@ It is also a prerequisite to agile architecture.
 
 == Acceptance Test Driven Development
 
-How do you know what are the requirements of a specific feature?
+How do you know what the requirements of a specific feature are?
 Either write a huge amount of outdated documentation or find a better way.
-The better way is https://en.wikipedia.org/wiki/Acceptance_test%E2%80%93driven_development[acceptance test driven development] _ATDD_.
+The better way is https://en.wikipedia.org/wiki/Acceptance_test%E2%80%93driven_development[acceptance test-driven development] _ATDD_.
 
 For each feature, you need acceptance criteria; this approach is also called _specification by example_ cite:[bridging-communication-gap].
 For each acceptance criteria, write an acceptance test which is executed each time the application is updated in the continuous delivery pipeline.
 The acceptance tests are the living documentation describing the behavior of your product.
 
-To implement this approach you need
+To implement this approach, you need
 
 * Acceptance criteria which imply using _specifications by example_ techniques.
 You need to train your business analysts and product owners.
@@ -114,14 +114,14 @@ Practice consolidates changes in the behavior of your development organization.
 
 * https://en.wikipedia.org/wiki/Pair_programming[Pair Programming] is a training on the job and crowd wisdom approach to steadily improving knowledge and quality.
 * https://en.wikipedia.org/wiki/Test-driven_development[TDD] and https://en.wikipedia.org/wiki/Acceptance_test%E2%80%93driven_development[ATDD] - are a safety net to guaranty quality attributes in your source code.
-* https://en.wikipedia.org/wiki/DevOps[DevOps] starting with git, docker, continuous integration, delivery and deployment to speed up development and eliminate tedious manual errors.
+* https://en.wikipedia.org/wiki/DevOps[DevOps] starts with git, docker, continuous integration, delivery and deployment to speed up development and eliminate tedious manual errors.
 * Lack of accountability equates to lack of trust your teams are accountable for the quality of your product.
 You should trust them.
 
 Once good practices are established, you can move to more sophisticated tools.
 For example, you can perform git history code analysis to uncover weaknesses in your development department.
 
-Teams ready to learn from the like of Google could evaluate https://trunkbaseddevelopment.com/[Trunk-Based Development] and consider long-lived branches as waste.
+Teams ready to learn from the likes of Google could evaluate https://trunkbaseddevelopment.com/[Trunk-Based Development] and consider long-lived branches as waste.
 
 === Code Review
 

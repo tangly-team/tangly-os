@@ -27,9 +27,9 @@ How can you create a good, legible, maintainable component architecture?
 How can you validate your functional and non-functional requirements?
 
 Yes, you are right.
-You are responsible for *architecture decisions* at component or subsystem level.
+You are responsible for *architecture decisions* at the component or subsystem level.
 
-Below a set of tools to improve the quality of your design.
+Below is a set of tools to improve the quality of your design.
 
 == Design Approaches
 
@@ -64,7 +64,8 @@ Always verify the quality and adequacy of their proposed solutions.
 
 === Java Standard API
 
-Know your programming language and the huge associated standard libraries part of your technology stack.
+Know your programming language and the associated standard libraries.
+They are part of your technology stack.
 Wisdom is coded in this code.
 Standard patterns are implemented in almost all packages.
 Idioms are encoded everywhere.
@@ -80,7 +81,7 @@ All these decisions and learning are encoded in this code.
 
 You want to create a clean architecture cite:[clean-architecture] you are proud of.
 You must first write a clean code cite:[clean-code].
-Clean architecture build up on clean code.
+Clean architecture builds up on clean code.
 Promote clean code in your agile team.
 Agile code is clean code.
 
@@ -116,7 +117,7 @@ This construct is an implementation of automatic resource management.
 === Aggressive Refactoring
 
 The entropy of the source code increases over time.
-Only continuous and aggressive refactoring mitigates the degenerescence of your application cite:[refactoring, refactoring-2nd,refactoring-to-patterns,working-effectively-with-legacy-code].
+Only continuous and aggressive refactoring mitigates the degenerescence of your application cite:[refactoring,refactoring-2nd,refactoring-to-patterns,working-effectively-with-legacy-code].
 Each time you correct an error or add a new functionality refactor your code.
 Remove smells, compiler warnings and migrate older code to use newer and better features of your programming language.
 
@@ -130,7 +131,7 @@ You guarantee your users the application behaves as specified.
 
 Testability and changeability of your application are architectural aspects.
 You must have a way to verify these non-functional requirements.
-Test driven development is a proven approach to fulfill these requirements and validate them continuously.
+Test-driven development is a proven approach to fulfill these requirements and validate them continuously.
 
 === Continuous Integration
 
@@ -148,14 +149,14 @@ Your users have easy and standardized access to your components and their latest
 
 Build tools such as {ref-gradle} and {ref-maven} or IDE such as https://www.jetbrains.com/idea/[IntelliJ IDEA] allows potential users to fetch the component without having to install out-of-the-box mechanisms.
 
-Javadoc is the standard and hugely helpful approach to document classes and component public interfaces in Java.
+Javadoc is the standard and hugely helpful approach to documenting classes and component public interfaces in Java.
 Similar tools exist for other programming languages.
 
 Architecture design records provide hints why specific design decisions were chosen.
 Your users can better understand the path you follow and the selected tradeoffs of your design.
 They do not have to agree, but they can understand the arguments why you choose so.
 
-Static code generator is an actual good practice to provide the current documentation and tutorials for your components.
+Static code generator is actually a good practice to provide the current documentation and tutorials for your components.
 We write all our documentation in the {ref-asciidoc} format - including https://plantuml.com/[plantUML] and highlighted source code - and generate our website using {ref-hugo} tool suite.
 
 Start small and improve your approach every day.

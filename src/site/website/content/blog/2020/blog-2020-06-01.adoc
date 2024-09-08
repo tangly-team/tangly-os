@@ -25,7 +25,7 @@ There are two general categories of benefits to the activity of refactoring.
 Maintainability::
 It is easier to fix bugs because the source code is easy to read and the intent of its author is easy to grasp.
 This might be achieved by reducing large monolithic routines into a set of individually concise, well-named, single-purpose methods.
-It might be achieved by moving a method to a more appropriate class, or by removing misleading comments.
+It might be achieved by moving a method to a more appropriate class or by removing misleading comments.
 Extensibility::
 It is easier to extend the capabilities of the application if it uses recognizable design patterns.
 It provides flexibility where none before May have existed.
@@ -41,7 +41,7 @@ ____
 == Introduction
 
 For a developer, new to a legacy software solution, it is often hard to understand the existing application.
-He must determine the extent of source code and architectural decay, and identify smells and metric violations.
+He must determine the extent of source code and architectural decay and identify smells and metric violations.
 
 Legacy applications are often critical to business and have been in use for years, sometimes decades.
 Since business is evolving, there is constant pressure to support additional requirements.
@@ -54,7 +54,7 @@ The technologies used in the application are no longer current, having been repl
 Also, software complexity increases as it evolves over time as you add new requirements.
 
 The key to managing the lifecycle of software is to continuously work as a professional and skilled developer.
-A professional engineer https://martinfowler.com/bliki/OpportunisticRefactoring.html[opportunistically refactor] each time he modifies source code.
+A professional engineer https://martinfowler.com/bliki/OpportunisticRefactoring.html[opportunistically refactor] each time she modifies source code.
 
 == Understand Your Product
 
@@ -92,7 +92,7 @@ You should have learnt enough so that the next try will be successful._
 Use static analysis tools to detect the flaws in your source code.
 You should only improve live code, meaning code you must correct or extend.
 See Agile Code is Clean Code.
-_Use a modern IDE to automate the smaller refactoring steps, and avoid spurious errors_.
+_Use a modern IDE to automate the smaller refactoring steps and avoid spurious errors_.
 . Resolve design issues.
 Your senior design specialists already know the flaws.
 Now it is time to correct them.
@@ -100,9 +100,9 @@ Now it is time to correct them.
 Code coverage is the security net when you are refactoring code.
 . Slowly add https://www.thoughtworks.com/insights/articles/fitness-function-driven-development[fitness functions] to continuously validate your non-functional requirements.
 
-Beware of good practices how to write good software products and refactor successfully applications.
+Beware of good practices how to write good software products and successfully refactor applications.
 
-* Move to https://en.wikipedia.org/wiki/Domain-driven_design[Domain Driven Design] as an architecture approach.
+* Move to https://en.wikipedia.org/wiki/Domain-driven_design[Domain-Driven Design] as an architecture approach.
 It works either for micro architecture or for modular monolith approaches.
 * Master long live domain driven design and event storming
 * Master your technical stack and use current tools and libraries.

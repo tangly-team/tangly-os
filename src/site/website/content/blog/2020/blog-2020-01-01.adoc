@@ -18,7 +18,7 @@ calls on software projects.
 
 For example, business has the right to know how long something is going to take and when it can expect things to be done.
 
-Conversely, developers have the right to know what the priorities are, and to be able to do good work.
+Conversely, developers have the right to know what the priorities are and to be able to do good work.
 
 To that end, https://en.wikipedia.org/wiki/Extreme_programming[eXtreme Programming] created the *Customer and Development Team Bill of Rights*.
 --
@@ -38,7 +38,7 @@ You have the right
 
 You have the right
 
-* To know _what is needed_, with clear declarations of priority.
+* To know _what is necessary_, with clear declarations of priority.
 * To produce _quality work at all times_.
 * _To ask for and receive help from peers, managers, and customers_.
 * _To make and update your own estimates_.
@@ -54,7 +54,7 @@ See if:
 . Your customer has at any time a running and tested application.
  Your development team always produces quality work.
 . Your customer can cancel at any time the development initiative.
- Your development team receives help from peers, managers and customers.
+ Your development team receives help from peers, managers, and customers.
 . Your customer and the development team accept responsibilities.
 
 Dysfunctions are easy to detect

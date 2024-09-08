@@ -18,7 +18,7 @@ Your teams use Scrum or Kanban to deliver running software every two weeks.
 The product market introduction is a success.
 You will successfully sell the solution for the next ten years.
 
-How shall you define the software architecture of your product and ensure a long living and high-quality solution?
+How shall you define the software architecture of your product and ensure a long-living and high-quality solution?
 
 The experts tell you the design is emergent.
 
@@ -47,7 +47,7 @@ Agile architecture comes from the behavior of agile architecting
 
 == Quality of Your Architecture
 
-You shall measure the quality of your design and produced software artifacts.
+You shall measure the quality of your design and produce software artifacts.
 
 * Static analysis tools to validate your source code,
 * Test driven development to validate your design,
@@ -57,7 +57,7 @@ You shall measure the quality of your design and produced software artifacts.
 * Pair review and pull requests to validate your developers' work.
 
 The above validation activities are backed through tools.
-But these tools can only detect non-quality and never provide a proof you achieved quality.
+But these tools can only detect non-quality and never provide proof you achieved quality.
 Qualified and experienced engineers are your best guaranty to achieve and sustain high quality in architecture and software products.
 
 Implement the above measures to gather data and publish the actual state of your source code.
@@ -79,7 +79,7 @@ ____
 Your development teams
 
 * are experts in the used programming language and stack.
-* understand object-oriented, functional and rule-based programming.
+* understand object-oriented, functional, and rule-based programming.
 * know all major patterns and idioms of the used development stack.
 * practice https://en.wikipedia.org/wiki/Test-driven_development[TDD], https://en.wikipedia.org/wiki/Acceptance_test%E2%80%93driven_development[ATDD], clean code, refactoring, embrace CI/CD and DevOps.
 * read source code from open source projects to learn better ways.

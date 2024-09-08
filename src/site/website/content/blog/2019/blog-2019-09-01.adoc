@@ -126,7 +126,7 @@ The Scrum master must facilitate the discussion until the team members have deve
 == Self-determination of the community recognized by higher-level authorities
 
 Self-determination works only if recognized by the overall authorities and organization.
-Here we leave the team level and need department recognition - for a LeSS approach - or company level recognition - for example to have ownership to remove a team member -.
+Here we leave the team level and need department recognition - for a LeSS approach - or company level recognition - for example, to have ownership to remove a team member -.
 
 * Self-organizing of the Scrum team,
 * Ownership of internal quality,

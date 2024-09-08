@@ -24,7 +24,7 @@ How do you define internal identifiers, which grow with application success?
 
 How can you bridge the customer world with your software solution?
 
-What are the good practices to create a maintainable, legible and efficient model of your domain model?
+What are the good practices to create a maintainable, legible, and efficient model of your domain model?
 --
 
 == Entity Concept
@@ -105,7 +105,7 @@ By handling, we mean administrative and import rules matching the various extern
 One possible solution is to use tags.
 Store externally defined identifiers as tags.
 Document these tags as specific for the external system.
-This approach scales to multiple external identifiers, and multiple systems managing the same external identifier.
+This approach scales to multiple external identifiers and multiple systems managing the same external identifier.
 So you have a scalable approach and do not pollute your domain model with spurious information defined in external systems.
 Upon completion of the refactoring activities, these tags document historical information and could safely be removed.
 
@@ -123,7 +123,7 @@ The drawback is that we have no guarantee it is legible for users.
 Names are essential for well-designed user interfaces.
 Never require from your users memorizing external identifiers, please provide names.
 
-For example, the first and last names of a person is the name for a natural entity.
+For example, the first and last names of a person are the name for a natural entity.
 Social security number is a possible external identifier An internal identifier is used as a primary key in the persistence storage.
 
 == Advices
@@ -181,7 +181,7 @@ More information is available under https://blog.tangly.net/[tangly open source 
 
 See our blog how to extend the entity concept with the powerful and flexible concepts of tags and comment approaches.
 
-Another blog shows a constrained form of tags using the concept of reference codes also called reference tables or lookup tables.
+Another blog shows a constrained form of tags using the concept of reference codes, also called reference tables or lookup tables.
 
 Related concepts are discussed in our blog series
 

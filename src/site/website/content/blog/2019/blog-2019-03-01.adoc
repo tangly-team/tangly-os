@@ -30,13 +30,13 @@ How do you establish and nurture a professional and effective engineering cultur
 
 Values drive your culture and the daily behavior of all your collaborators.
 But even if you have invested time and blood to identify the right values and put all the mechanisms in place, it might still not have the desired results.
-Culture is something that happens daily through personal interactions.
-Putting the right values and mechanisms in place will help move your company in the right direction, but it's not a guaranty for success.
+Culture happens daily through personal interactions.
+Putting the right values and mechanisms in place will help move your company in the right direction, but it is not a guaranty for success.
 
 To increase your odds for success, you need to live and breathe your values.
 You need to truly believe at all levels in the organization and not compromise on them.
 
-* Advocate for build-in quality.
+* Advocate for built-in quality.
 * Support employees first.
 * Promote technical excellence.
 * Do not be penny wise and pound foolish.
@@ -65,7 +65,7 @@ You can find an initial list of questions in our blog post Company Culture Check
 Validate that all teams are living up to their values.
 Find a way to measure it.
 Identify and put actions in place in case you need to improve.
-If a value does not make sense, e.g., the value was defined early on, but in hindsight it doesn't fit with your company, then get rid of it.
+If a value does not make sense, e.g., the value was defined early on, but in hindsight it does not fit with your company, then get rid of it.
 
 == Last Thoughts
 
@@ -74,7 +74,7 @@ You cannot cheat.
 It will not automatically happen by copying the values and organization structure from another company such as Spotify.
 You need to really invest in creating a culture that works for your company.
 
-You can look at organizational structures, values and principles from other companies to get inspired.
+You can look at organizational structures, values, and principles from other companies to get inspired.
 Sit down with your people and decide together what is important for your company.
 Put mechanisms in place that will support the concepts, allow them to grow.
 Then live and breathe it within all levels of your company.

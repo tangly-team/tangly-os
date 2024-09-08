@@ -24,7 +24,7 @@ _Comments_ empower users to store relevant unstructured information.
 
 Comments are only for human beings.
 
-What are good approaches to provide searchable tags and labels and avoid wild growth of useless records?
+What are good approaches to providing searchable tags and labels and avoid wild growth of useless records?
 
 Can you as a designer govern the ontology defined through labels?
 --
@@ -35,7 +35,7 @@ Tags add semantic information to business entities.
 Tags are often defined as a crowd ontology without enforced schemas.
 
 Invest in domain modeling to define and maintain tags, and you will move tags to full-fledged ontology into your domain models.
-This ontology supports meaningful search, segmentation and reporting over historical and geographical raw data.
+This ontology supports meaningful search, segmentation, and reporting over historical and geographical raw data.
 
 Tags with associated values are also used to decorate unrelated entities with orthogonal information.
 For example, you can associate geographical coordinates – GIS – to pictures, meetings, or addresses.
@@ -49,7 +49,7 @@ A tag has three parts:
 For example, we could define a tag such as _geo:longitude=50.167958_ to provide the meta-information of longitude to an entity.
 This tag has a namespace _geo_, a name _longitude_ and a double value _50.167958_.
 
-Additional information is available under link:../../../docs/core/models/ Below the source code in modern Java is
+Additional information is available under the link:../../../docs/core/models/ Below the source code in modern Java is
 
 [source,java]
 ----

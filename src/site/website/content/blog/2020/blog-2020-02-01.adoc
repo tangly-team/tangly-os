@@ -15,9 +15,9 @@ image::2020-02-01-head.jpg[width=420,height=360,role=left]
 
 Most products are developed by a team, and these achievements are the fruit of teamwork.
 
-Software product development is now agile, and most often uses the https://scrumguides.org/scrum-guide.html[Scrum] approach.
+Software product development is now agile and most often uses the https://scrumguides.org/scrum-guide.html[Scrum] approach.
 
-Just putting a bunch of people together in the same open office will not produce a high performance agile team.
+Just putting a bunch of people together in the same open office will not produce a high-performance agile team.
 Quite a few companies find that out the hard way.
 
 How can you increase the odds to create an environment where agile teams bloom and perform?
@@ -30,7 +30,7 @@ ____
 Your business is nothing more than the collective energy and efforts of the people working with and for you.
 
 If you want to make your business better, invest in your people.
-They’ll get the job done.
+They will get the job done.
 ____
 
 Learn and pass on good development practices through pair programming, mob programming and coding dojos.
@@ -53,7 +53,7 @@ Train them to improve and perform better.
 ____
 CFO to CEO: “What happens if we invest in developing our people, and they leave us?”
 
-CEO to CFO: “What happens if we don’t, and they stay?”
+CEO to CFO: “What happens if we do not, and they stay?”
 ____
 
 Secure collective knowledge of the code through code reviews, pair collaboration or collective work.

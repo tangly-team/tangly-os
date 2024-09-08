@@ -14,7 +14,7 @@ image::2020-12-01-head.jpg[width=420,height=360,role=left]
 At many customer sites I visit, I see a lot of effort being put into classifying and managing bugs.
 
 Their bug list may contain more than a thousand items.
-All are neatly documented with screenshots, ways to reproduce the problem and a severity and impact classification.
+All are neatly documented with screenshots, ways to reproduce the problem, and a severity and impact classification.
 In the worst case, a specialist has worked hard and estimated the effort to correct each of these bugs.
 
 A change management board meets every few weeks to decide which bugs have a higher priority and should urgently be fixed.
@@ -49,7 +49,7 @@ The rigorous Zero-baseline approach will force us to clean our code.
 
 Let us categorize the bugs you have and deal with them accordingly.
 
-. You have a few critical bugs that crash the system or don’t have a workaround.
+. You have a few critical bugs that crash the system or do not have a workaround.
 *Prioritize and fix those*.
 Your customers will be very thankful.
 Fix at least a handful of these critical problems in each sprint.
@@ -63,7 +63,7 @@ Stop delivering products with known errors.
 Correct them before delivery.
 Your https://scrumguides.org/scrum-guide.html#product-owner[product owner] should reject any feature with known errors.
 
-Bugs have a tendency to become obsolete pretty quickly in applications that are updated frequently.
+Bugs tend to become obsolete pretty quickly in applications that are updated frequently.
 The steps to reproduce them become irrelevant, the functionality changes, the impact of the bug often gets lower.
 
 Please, do not waste your time trying to update the documentation related to these bugs.
@@ -75,12 +75,12 @@ You may lose a few valid ones, but trust me, someone will report it again if it 
 ____
 Bugs are like water leaks.
 
-If you leave them for too long, they can spoil your merchandise and slow down your business.
+If you leave them for too long, they can spoil your merchandize and slow down your business.
 ____
 
 Follow these steps to ensure this system works.
 
-* The bugs that the team decide to fix must be prioritized over regular work and must get fixed *now*.
+* The bugs that the team decides to fix must be prioritized over regular work and must get fixed *now*.
 In Scrum, the https://scrumguides.org/scrum-guide.html#product-backlog[product backlog item] containing the bug has the highest priority.
 * In the beginning, there will be more bugs to work through, as some bugs that were deleted will be reported again.
 * As the team shifts its focus to improved quality, there will be fewer of them.

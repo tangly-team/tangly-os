@@ -14,7 +14,7 @@ include::../fragments/_config-mb-blog.adoc[]
 image::2019-10-01-head.jpg[width=420,height=360,role=left]
 Are you still using _Java 8_ to run your mission-critical systems?
 
-Are you truly using daily a _six years old_ technology stack?
+Are you truly using a _six years old_ technology stack every day?
 
 Are you already applying for a Java laggard club membership?
 
@@ -44,13 +44,13 @@ The maximum amount of memory is often lower.
 ** APIs that are not core to the JDK have also been removed in Java 11 or later.
 These changes may impact your application, but there is a clear path to avoid these problems.
 * You have to select either the long-term support path or upgrade every six months the Java runtime.
-** When upgrading the choice you face is whether to use the latest version of Java, currently 13 and be prepared to upgrade every six months.
+** When upgrading the choice you face is whether to use the latest version of Java, currently 13, and be prepared to upgrade every six months.
 Or upgrade to the latest LTS 11 to give yourself up to three years to think about your next upgrade,
 ** Don’t be tempted to ignore compiler warnings.
 Deprecation is being taken much more seriously in this modern Java world, and both Java 10 and Java 11 removed APIs.
 ** In less than two years, the next LTS will be released with Java 17. It is scheduled for September 2021.
 * Become more agile
-** Once over this first upgrade, it is worth at least testing the application on the latest version of Java every 6 months, for example in CI.
+** Once over this first upgrade, it is worth at least testing the application on the latest version of Java every 6 months, for example, in CI.
 ** In all cases, openJDK is now the new default.
 Various companies - Oracle, Redhat, Amazon, Azul, IBM - provide commercial support for openJDK for different timelines.
 You are more flexible with your migration timeline.

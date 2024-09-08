@@ -13,7 +13,7 @@ image::2019-01-01-head.jpg[width=420,height=360,role=left]
 
 The Defense Innovation Board https://innovation.defense.gov/[DIB] advises the secretary of defense of the United States of America.
 
-Members of the board are recognizable names like Eric Schmidt who was CEO of Google and Alphabet, or Instagram COO Marne Levine.
+Members of the board are recognizable names like Eric Schmidt, who was CEO of Google and Alphabet, or Instagram COO Marne Levine.
 
 So I was quite surprised that a government committee was so straightforward to publish a document called _Detecting Agile Bullshit_ <<detecting-agile-bullshit>>.
 
@@ -33,7 +33,7 @@ Agile development has become such a holy grail that some organizations or produc
 [quote,Jurgen Appelo]
 ____
 Many attempts at achieving business agility are misguided and fake.
-But I consider the glass half full, not half empty.
+But I consider the glass half-full, not half-empty.
 
 Fake Agile is a signal to do better.
 Fake agile is a *treatable* disorder.
@@ -70,7 +70,7 @@ _Wrong answer: “we have a testing organization responsible for testing”_.
 ** What mechanisms are you using to get direct feedback from your users?
 ** What tool suite are you using for issue reporting and tracking?
 ** How do you allocate issues to programming teams?
-** How to you inform users that their issues are being addressed and/or have been resolved?
+** How do you inform users that their issues are being addressed and/or have been resolved?
 * What is your (current and future) cycle time for releases to your users?
 ** What software platforms do you support?
 Are you using containers?
@@ -81,14 +81,14 @@ For a team working on agile, the answer to all of these questions should be a fo
 == Questions for Program Management
 
 * How many programmers are part of the organizations that own the budget and milestones for the program? +
-_Wrong answers: “we don’t know,” “zero,” “it depends on how you define a programmer”_,
+_Wrong answers: “we do not know,” “zero,” “it depends on how you define a programmer”_,
 * What are your management metrics for development and operations; how are they used to inform priorities, detect problems?
 * How often are they accessed and used by leadership?
 * What have you learned in your past three sprint cycles and what did you do about it? +
-_Wrong answers: “what’s a sprint cycle?,” “we are waiting to get approval from management”_,
+_Wrong answers: “what is a sprint cycle?,” “we are waiting to get approval from management”_,
 * Who are the users that you deliver value to each sprint cycle?
 Can we talk to them? +
-_Wrong answers: “we don’t directly deploy our code to users”_.
+_Wrong answers: “we do not directly deploy our code to users”_.
 
 For a team working on agile, the answer to all of these questions should be a form of “yes.”
 
@@ -113,7 +113,7 @@ Do all members of the team understand both, and are they able to see how their w
 * Are teams empowered to change the requirements based on user feedback?
 * Are teams empowered to change their process based on what they learn?
 * Is the full ecosystem of your product agile?
-_Agile programming teams followed by linear, bureaucratic deployment is a failure_.
+_Agile programming teams followed by linear, bureaucratic deployment are a failure_.
 
 For a team to truly work the agile way, the answer to these questions should be a form of _yes_.
 

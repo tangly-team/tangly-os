@@ -35,7 +35,7 @@ The findings are considered confidential.
 
 [quote, Jurgen Appelo]
 ____
-Many attempts at achieving business agility are misguided and fake. But I consider the glass half full, not half empty.
+Many attempts at achieving business agility are misguided and fake. But I consider the glass half-full, not half-empty.
 
 Fake Agile is a signal to do better. Fake agile is a treatable disorder.
 ____
@@ -56,7 +56,7 @@ Small improvements accumulate earnings over time.
 I have the same personal challenge when trying to lose weight or improve my running form.
 The long-term implementation is the crux.
 
-The biggest flag to identifying a learning and improvement focused culture is perhaps this statement
+The biggest flag to identifying a learning and improvement-focused culture is perhaps this statement
 
 [quote]
 ____
@@ -67,7 +67,7 @@ ____
 
 == Company Culture Checks
 
-A set of questions to detect cultural flaws for a lean and agile focused company are
+A set of questions to detect cultural flaws for a lean and agile-focused company are
 
 . Do you still have individual bonuses?
 . Does the organization provide feedback to each employee at least on a monthly basis?
@@ -83,7 +83,7 @@ A set of questions to detect cultural flaws for a lean and agile focused company
 . Can software developers install tools and libraries on their workstation?
 . How is the working environment of your talented developers?
 .. Do they have a team area with a dedicated desk for each team member?
-.. Do they have multiple high-resolution displays to work with high resolution means 4K or higher?
+.. Do they have multiple high-resolution displays to work with high-resolution means 4K or higher?
 .. Do they have root access meaning administrator rights to their development workstation?
 .. Do they have access to technical books and articles?
 .. Do they have a height-adjustable desk?

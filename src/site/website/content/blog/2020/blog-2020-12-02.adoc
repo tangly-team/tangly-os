@@ -52,7 +52,7 @@ When someone posts a comment, the Utterances bot literally leaves a correspondin
 In other words, each page gets its own issue with a comment feed, and so you benefit from the entire feature set of issues out-of-the-box.
 
 * Comments are stored as issues inside a GitHub repository of your choosing.
-* You can edit, report and delete comments.
+* You can edit, report, and delete comments.
 _These functions are great for moderation._
 * If you are watching the repository, you will get email notifications when comments are posted to your site.
 
@@ -65,7 +65,7 @@ The steps are:
 
 . Create a public GitHub repository.
 . Install the {ref-utterances} app on the repo you would like to host comments on.
-You can use the repository of your blog, or set up a dedicated repository.
+You can use the repository of your blog or set up a dedicated repository.
 This option means your blog or website does not need to be hosted on GitHub.
 . Configure the code snippet on the {ref-utterances} website and copy it.
 
@@ -100,7 +100,7 @@ The partial file contains the code to display for commenting using utterances.
 It is a modified version of the snippet you can generate on the {ref-utterances} website.
 
 Create a partial in _docsy/layout/partial_.
-I named my partial _comments-utterances.html_ and add the following snippet.
+I named my partial _comments-utterances.html_ and added the following snippet.
 
 [source,html]
 ----
@@ -123,7 +123,7 @@ I named my partial _comments-utterances.html_ and add the following snippet.
 
 == Edit the blog content file
 
-The template _docsy/layouts/blog/content.html_ is edited to include the above defined partial file.
+The template _docsy/layouts/blog/content.html_ is edited to include the above-defined partial file.
 The original file supports connecting to disqus.
 I replaced the disqus specific code with the inclusion of the partial defined above for utterances comment support.
 _Perhaps {ref-docsy} will introduce a more generic mechanism in the future to integrate commenting systems.

@@ -36,7 +36,7 @@ The 32 GB RAM goes a long way to run multiple docker images and databases.
 
 No virus scanner is still important.
 I was lately at a customer site.
-The whole deployment just crashed because IT department decided to update the virus scanner and associated options.
+The whole deployment just crashed because the IT department decided to update the virus scanner and associated options.
 Suddenly, the generated artifacts were considered harmful.
 This decision just broke the CI/CD pipeline for hours.
 
@@ -56,7 +56,7 @@ It could sometimes be slightly snappier but still the best Java IDE under the sk
 ** https://git-scm.com/[Git] is kept up to date with homebrew.
 ** {ref-gradle} is kept up to date either with homebrew or gradlew.
 * Atlassian Cloud applications - https://bitbucket.org/[BitBucket], https://trello.com/[Trello] and CI pipeline - and SourceTree for some git operations.
-* https://brew.sh/[Homebrew] as package manager for utilities.
+* https://brew.sh/[Homebrew] as a package manager for utilities.
 * https://www.docker.com/[Docker] as container manager - for complex product you can run locally kubernetes.
 * _https://www.google.com/chrome/[Chrome] is my default browser.
 I almost never use _Safari_ or _Firefox_.

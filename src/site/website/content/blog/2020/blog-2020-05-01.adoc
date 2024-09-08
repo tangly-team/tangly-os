@@ -47,7 +47,7 @@ If you use the _java-library_ plugin, the support of Java modules is transparent
  }
 ----
 
-Then you just need to make sure you write a proper Java module by providing a module information file.
+Then you need to make sure you write a proper Java module by providing a module information file.
 An example of a module information file is
 
 [source,java]
@@ -62,7 +62,7 @@ An example of a module information file is
 ----
 
 Java 14 in Gradle Java 14 was also released in Spring 2020. It is worth experimenting with the new preview features.
-The following configuration is needed in Gradle to compile, test, execute and generate JavaDoc when using Java 14 preview features.
+The following configuration is necessary in Gradle to compile, test, execute, and generate Javadoc when using Java 14 preview features.
 
 [source,groovy]
 ----

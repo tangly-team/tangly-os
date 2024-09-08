@@ -28,7 +28,7 @@ Records guarantee:
 
 * An immutable class concept which is the strongest argument for the use of record.
 * Cannot change their state after construction.
-* Don’t change the state of the whole system in any way.
+* Do not change the state of the whole system in any way.
 * Do not do side effects, like inputs and outputs.
 
 Records provide
@@ -72,7 +72,7 @@ The Java language guarantees that all record classes must be immutable.
 
 Immutable value objects are a cornerstone in the https://en.wikipedia.org/wiki/Domain-driven_design[Domain Driven Design] _DDD_ approach.
 
-When you are using Data Transfer Objects, DTO they should probably always be records.
+When you are using Data Transfer Objects, DTO, they should probably always be records.
 In the long run, you should eliminate your DTO, they are just waste and break all the rules of abstraction and information hiding.
 
 == Tricks and Tips

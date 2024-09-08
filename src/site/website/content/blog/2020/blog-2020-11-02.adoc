@@ -20,14 +20,14 @@ We must swiftly react to market changes to survive.
 
 Agility is woven into our culture and processes.
 
-Agile organizations must be fast-moving and flexible, have rapid response to unexpected obstacles, lead change, be in touch with customers.
+Agile organizations must be fast-moving and flexible, have rapid response to unexpected obstacles, lead change, and be in touch with customers.
 
-They have a continuous competitive advantage, and a flat organizational structure for quick communication cite:[future-of-management].
+They have a continuous competitive advantage and a flat organizational structure for quick communication cite:[future-of-management].
 --
 
 [quote,George Bernard Shaw]
 ____
-Life isn’t about finding yourself.
+Life is not about finding yourself.
 Life is about creating yourself.
 ____
 
@@ -148,13 +148,13 @@ At least eighty percent of all software and research activities claim to follow 
 This war is won.
 We are moping the last islands of resistance.
 
-_For me, it is similar to the introduction of object-oriented approaches in analysis, design, and realisation of software projects.
+_For me, it is similar to the introduction of object-oriented approaches in analysis, design, and realization of software projects.
 In the late nineties of the last century, the object-oriented movement won.
-It took more than ten years to take care of the last luddites._
+It took more than ten years to take care of the last Luddites._
 
 _Our company https://www.tangly.net/[tangly llc] works steadily and continuously to advance agile and lean values.
 Our structure and processes actively support agile values.
-We are very happy with the current results._
+We are delighted with the current results._
 
 [bibliography]
 == Links

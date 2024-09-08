@@ -54,7 +54,7 @@ The key learning is
 [quote]
 ____
 *Delay your Scaling.
-First Lean the ropes.
+First, Lean the ropes.
 Try to descale your processes.*
 ____
 
@@ -108,7 +108,7 @@ Your teams shall deliver workable software on demand, multiple times a week or a
 Customers buy products.
 Eliminate product-based organizations.
 *_Have one backlog for the whole product_.
-Multiple backlogs must be otherwise synchronized and local optimization is de facto applied.
+Multiple backlogs must be otherwise synchronized, and local optimization is de facto applied.
 This approach is against all lean principles.
 * _Customer and users talk directly with the development team_.
 Product owners, product managers and enterprise architects should never be filtering the information flow between customers and engineers.
@@ -116,7 +116,7 @@ Product owners, product managers and enterprise architects should never be filte
 Emphasize communication between developers in the team and between teams.
 Scrums of Scrums where only Scrum masters attend, Release Train Engineer, System teams, corporate Solution Engineers are just a waste of resources.
 * _Realize technical excellence is the only approach_ to delivering quality products to the customer.
-Raise the importance of technical excellence, and never forget that when writing software, the technology side is really vital.
+Raise the importance of technical excellence and never forget that when writing software, the technology side is really vital.
 
 == Final Words
 

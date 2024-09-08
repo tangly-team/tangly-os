@@ -29,7 +29,7 @@ ____
 
 == What is Digital Working?
 
-You shall use digital tools and workflows to perform all your work related tasks.
+You shall use digital tools and workflows to perform all your work-related tasks.
 We want to increase interactions with our coworkers and remove any tedious activities.
 
 * Fax is dead.
@@ -88,7 +88,7 @@ We use an impressive set of tools to collaborate with our customers and partners
 
 An impressive set of processes with governmental organizations can now be performed electronically in Switzerland
 
-* VAT authority support declaration and payment electronically.
+* VAT authority supports declaration and payment electronically.
 * https://www.zefix.ch/en/search/entity/welcome[Company register] in Switzerland gives access to all registered companies.
 * Salary declarations and forms are generated electronically through government https://www.elohnausweis-ssk.ch/de/[online tools].
 * Swiss post office supports package tracking and delivery rescheduling online.
@@ -131,9 +131,9 @@ A lot of manual activities are now fully digitized and often automatized.
 We never had to buy a printer.
 The last year we seldom had to scan a paper document.
 
-The partners still requesting paper interactions are some government agencies and some insurances.
+The partners are still requesting paper interactions with some government agencies and some insurance companies.
 We observe a decrease of such physical interactions.
-Our partners are steady, if sometimes slowly, digitizing their workflows.
+Our partners are steadily, if sometimes slowly, digitizing their workflows.
 
 Slowly, digital versions for invoices are emerging.
 This approach should allow automated payment workflows.

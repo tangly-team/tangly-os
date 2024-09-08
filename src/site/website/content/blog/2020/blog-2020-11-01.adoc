@@ -28,7 +28,7 @@ We provide an initial setup approach requiring mere minutes to add codes to your
 As a professional designer, you have declared sets of fixed values as enumeration in your source code.
 Now you can extend your enumeration classes with the code interface.
 
-Additional information is available under link:../../../docs/bus/businessmodels/ Below the source code in modern Java is
+Additional information is available under the link:../../../docs/bus/businessmodels/ Below the source code in modern Java is
 
 [source,java]
 ----
@@ -94,7 +94,7 @@ public static <T extends Code> CodeType<T> build(Class<T> clazz, CodeFactory<T> 
 }
 ----
 
-The JSON files containing the code values can be stored as resource files and delivered either with application or in a separate jar file.
+The JSON files containing the code values can be stored as resource files and delivered either with the application or in a separate jar file.
 
 The Java code for the SQL table is quite similar:
 
@@ -130,7 +130,7 @@ At the database level, you can define integrity rules in the schema to increase 
 You have the freedom to model set of values as enumeration, reference codes, or tags.
 Each approach has specific advantages and tradeoffs.
 The costs of moving from one approach to another are quite small.
-Just choose one solution, implement it, and track its adequacy and user acceptance.
+Choose one solution, implement it, and track its adequacy and user acceptance.
 
 We provide a Java library BUS implementing these constructs.
 More information is available under {ref-site}.

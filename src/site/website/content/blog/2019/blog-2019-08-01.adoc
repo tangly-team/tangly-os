@@ -70,7 +70,7 @@ The well-established practices from the object-oriented and DevOps communities a
 * Develop a working skeleton very early.
 * Clean architecture implies clean code and requires clean coders in your team.
 See our article link:../../2019/agile-code-is-clean-code/[Clean Code],
-* Aggressive refactoring and understand technical debt, Continuous integration, continuous delivery, and continuous deployment.
+* Aggressive refactoring and understanding technical debt, Continuous integration, continuous delivery, and continuous deployment.
 
 For a detailed discussion, consult the article link:../../2018/pragmatic-craftsmanship-professional-software-developer/[Pragmatic Craftsmanship].
 
@@ -78,7 +78,7 @@ For a detailed discussion, consult the article link:../../2018/pragmatic-craftsm
 
 The architect shall
 
-* Be part of the team, work daily with team members and attend all team events.
+* Be part of the team, work daily with team members, and attend all team events.
 * Maintain the pace of development.
 * Often communicate and early as a coach and mentor, _meaning pair programming and design sessions_.
 * Be fluent in domain-driven development, hexagonal architecture, refactoring, and clean code.

@@ -39,9 +39,9 @@ Blogger uses a proprietary and not easy to port format.
 It is *time* to find an alternative, and I have to confess I am a huge fan of {ref-asciidoc}.
 
 OK, so why not go with Markdown?
-Don’t get me wrong, there is nothing bad with Markdown; except that no one should probably use it when {ref-asciidoc} and Asciidoctor are available.
-I’m writing all my documents with {ref-asciidoc}
-footnote:[You find tutorials how to write asciidoc documentation and how to use the toolchain on YouTube and Udemy.].
+Do not get me wrong, there is nothing bad with Markdown; except that no one should probably use it when {ref-asciidoc} and Asciidoctor are available.
+I am writing all my documents with {ref-asciidoc}
+footnote:[You find tutorials on how to write AsciiDoc documentation and how to use the toolchain on YouTube and Udemy.].
 
 The following needs are identified:
 
@@ -129,7 +129,7 @@ Below the configuration of asciidoctor in the _config.toml_ file.
     ref-less = "https://less.works/[LeSS]"  // <5>
 ----
 
-<1> Select https://rouge-ruby.github.io/docs/[rouge] as source highlighter.
+<1> Select https://rouge-ruby.github.io/docs/[rouge] as a source highlighter.
 You should not add it to the extensions because since {ref-asciidoctor} version 2.0 rouge is included.
 <2> Define the style used to highlight source code.
 <3> Configure rouge to generate all formatting data into the generated HTML file, avoiding any CSS file configuration.
@@ -206,12 +206,12 @@ I was not able to find good examples of stylesheets for the semantic backend.
 The _html5s_ backend uses new names for classification and sometimes different HTML structures.
 The regular available stylesheets will not style correctly the generated website.
 
-The Docsy theme does not explicitly support asciidoc documents and the associated stylesheets.
+The Docsy theme does not explicitly support AsciiDoc documents and the associated stylesheets.
 I had to extend the Docsy stylesheets with styling for admonition blocks, quote blocks, and embedded images to improve the quality of the texts.
 
-NOTE: The Hugo theme community is slow to better support asciidoc documents.
-The Hugo developers clearly stated that styling for asciidoc documents is the responsibility of theme authors.
-All Hugo users shall be aware that asciidoc is an officially supported input format.
+NOTE: The Hugo theme community is slow to better support AsciiDoc documents.
+The Hugo developers clearly stated that styling for AsciiDoc documents is the responsibility of theme authors.
+All Hugo users shall be aware that AsciiDoc is an officially supported input format.
 
 Funny is that the blogger software and the docsy theme are from the same company as *Google*.
 

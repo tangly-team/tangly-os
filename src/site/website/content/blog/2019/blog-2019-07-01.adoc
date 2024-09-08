@@ -30,11 +30,11 @@ We are not doomed, we must solve the next challenges instead of just complaining
 * Reduce your plastic and paper usage.
 * Each step reduces your carbon footprint.
 
-Millions of people taking similar steps will be a huge improvement. *Just do it!*
+Millions of people taking similar steps will be a huge improvement. *Do it!*
 
 The late Swedish academic https://en.wikipedia.org/wiki/Hans_Rosling[Hans Rosling] has identified a worrying trend.
 Not only do many people across advanced economies have no idea that the world is becoming a much better place, but they actually even think the opposite.
-This is no wonder when the news focuses on reporting catastrophes, terrorist attacks, wars and famines.
+This is no wonder when the news focuses on reporting catastrophes, terrorist attacks, wars, and famines.
 
 Who wants to hear about the fact that every day some *200'000* people around the world are lifted above the $2-a-day poverty line?
 
@@ -67,7 +67,7 @@ image::2019-07-01-world-poverty.jpg[float="center"]
 
 https://ourworldindata.org/extreme-poverty
 
-=== Literacy and education is exploding
+=== Literacy and education are exploding
 
 image::2019-07-01-world-literacy.jpg[float="center"]
 
