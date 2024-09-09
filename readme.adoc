@@ -30,7 +30,6 @@ The documentation is located under https://blog.tangly.net/[tangly-team].
 The *primary repository* is hosted under GitHub https://github.com/marcelbaumann/tangly-os.git[tangly OS GitHub].
 
 A mirror is also hosted under GitLab https://gitlab.com/marcelbaumann/tangly-os[tangly OS GitLab].
-A legacy mirror is also hosted under BitBucket https://bitbucket.org/tangly-team/tangly-os.git[tangly OS BitBucket].
 
 The issue tracker for errors, improvements, and corrections is https://github.com/tangly-team/tangly-os/issues[tangly OS issues].
 
@@ -107,13 +106,6 @@ GitHub::
 . Automated as build script
 GitLab::
 . Automated as build script
-BitBucket::
-. Go to the https://bitbucket.org/tangly-team/tangly-os/commits/[Commits]
-. Select the commit you want to deploy
-. On the displayed screen select the _Run pipeline_ operation.
-You are presented with a selection of deployment options.
-The variable _BB_AUTH_STRING_ is defined through _REPOSITORY-OWNER-NAME_:_APP-PASSWORD_.
-The continuous deployment is a manual step to limit the usage of pipeline minutes and diminish associated costs.
 
 == Contributions
 
