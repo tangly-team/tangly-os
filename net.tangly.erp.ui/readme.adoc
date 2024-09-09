@@ -76,9 +76,20 @@ You can build and run the generated Java Vaadin application locally. _Run from t
 
 [source,shell]
 ----
-  ./gradlew build installDist -Pvaadin.-Pvaadin.forceProductionBuild=true   <1>
-  net.tangly.erp.ui/build/install/net.tangly.erp.ui/bin/net.tangly.erp.ui   <2>
+  ./gradlew build installDist -Pvaadin.-Pvaadin.forceProductionBuild=true                <1>
+  net.tangly.erp.ui/build/install/net.tangly.erp.ui/bin/net.tangly.erp.ui                <2>
 ----
+* <1> The production mode parameter is mandatory.
+Otherwise, the distribution frontend is not built, and the application cannot run without JavaScript build tools.
+* <2> Head to \http://localhost:8080/erp/.
+The default port is 8080, and the application starts with in-memory storage.
+The environment variables are set in the run script.
+
+[CAUTION]
+====
+If you encounter an error message like `Visiting class net.tangly.erp.products.ui.ProductsView failed with ZipFile invalid LOC header (bad signature)`, you
+should stop the gradle deamon with `./gradlew --stop` and run again the gradle build.
+====
 
 === Run locally as fatjar application
 
@@ -86,10 +97,10 @@ You can build and run the generated Java Vaadin application as fat jar locally. 
 
 [source,shell]
 ----
-  ./gradlew build installShadowDist -Pvaadin.productionMode                 <3>
-  net.tangly.erp.ui/build/install/net.tangly.erp.ui-shadow/bin/net.tangly.erp.ui <2>
-  java $JVM_OPTS -jar net.tangly.erp.ui/build/install/net.tangly.erp.ui-shadow/lib/net.tangly.erp.ui-all.jar <3>
-
+  ./gradlew build installShadowDist -Pvaadin.productionMode                              <1>
+  net.tangly.erp.ui/build/install/net.tangly.erp.ui-shadow/bin/net.tangly.erp.ui         <2>
+  java $JVM_OPTS                                                                         <3>
+    -jar net.tangly.erp.ui/build/install/net.tangly.erp.ui-shadow/lib/net.tangly.erp.ui-all.jar
 ----
 
 * <1> The production mode parameter is mandatory.

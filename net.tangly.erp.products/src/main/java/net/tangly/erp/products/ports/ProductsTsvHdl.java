@@ -13,6 +13,7 @@
 
 package net.tangly.erp.products.ports;
 
+import net.tangly.commons.lang.Strings;
 import net.tangly.core.DateRange;
 import net.tangly.core.HasId;
 import net.tangly.core.domain.DomainAudit;
@@ -54,19 +55,19 @@ public class ProductsTsvHdl {
         TsvHdl.importEntities(audit, path, createTsvProduct(), realm.products());
     }
 
-    public void exportProducts(@NotNull DomainAudit audit,@NotNull Path path) {
+    public void exportProducts(@NotNull DomainAudit audit, @NotNull Path path) {
         TsvHdl.exportEntities(audit, path, createTsvProduct(), realm.products());
     }
 
-    public void importWorkContracts(@NotNull DomainAudit audit,@NotNull Path path) {
+    public void importWorkContracts(@NotNull DomainAudit audit, @NotNull Path path) {
         TsvHdl.importEntities(audit, path, createTsvWorkContract(), realm.contracts());
     }
 
-    public void exportWorkContracts(@NotNull DomainAudit audit,@NotNull Path path) {
+    public void exportWorkContracts(@NotNull DomainAudit audit, @NotNull Path path) {
         TsvHdl.exportEntities(audit, path, createTsvWorkContract(), realm.contracts());
     }
 
-    public void importAssignments(@NotNull DomainAudit audit,@NotNull Path path) {
+    public void importAssignments(@NotNull DomainAudit audit, @NotNull Path path) {
         TsvHdl.importEntities(audit, path, createTsvAssignment(), realm.assignments());
     }
 
@@ -84,7 +85,8 @@ public class ProductsTsvHdl {
 
     private static TsvEntity<Product> createTsvProduct() {
         List<TsvProperty<Product, ?>> fields = createTsvEntityFields();
-        fields.add(TsvProperty.of("contractIds", Product::contractIds, Product::contractIds, e -> Arrays.asList(e.split(",", 0)), e -> String.join(",", e)));
+        fields.add(TsvProperty.of("contractIds", Product::contractIds, Product::contractIds,
+            e -> Arrays.asList(e.split(",", 0)).stream().filter(o -> !Strings.isNullOrBlank(o)).toList(), e -> String.join(",", e)));
         return TsvHdl.of(Product.class, fields, Product::new);
     }
 
@@ -109,8 +111,7 @@ public class ProductsTsvHdl {
 
     private TsvEntity<Effort> createTsvEffort() {
         List<TsvProperty<Effort, ?>> fields = List.of(TsvProperty.of("date", Effort::date, Effort::date, TsvProperty.CONVERT_DATE_FROM),
-            TsvProperty.ofInt("durationInMinutes", Effort::duration, Effort::duration),
-            TsvProperty.ofString(TsvHdl.TEXT, Effort::text, Effort::text),
+            TsvProperty.ofInt("durationInMinutes", Effort::duration, Effort::duration), TsvProperty.ofString(TsvHdl.TEXT, Effort::text, Effort::text),
             TsvProperty.of("assignmentOid", Effort::assignment, Effort::assignment, e -> findAssignmentByOid(e).orElse(null), convertFoidTo()),
             TsvProperty.ofString("contractId", Effort::contractId, Effort::contractId));
         return TsvEntity.of(Effort.class, fields, Effort::new);

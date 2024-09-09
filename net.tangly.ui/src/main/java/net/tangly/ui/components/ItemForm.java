@@ -183,6 +183,10 @@ public abstract class ItemForm<T, U extends ItemView<T>> {
         }
     }
 
+    public boolean creating() {
+        return (operation == Operation.CREATE) || (operation == Operation.DUPLICATE);
+    }
+
     protected Binder<T> binder() {
         return binder;
     }
