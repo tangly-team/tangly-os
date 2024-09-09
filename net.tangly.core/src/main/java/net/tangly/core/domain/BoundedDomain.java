@@ -101,7 +101,7 @@ public class BoundedDomain<R extends Realm, B, P extends Port<R>> implements Has
         channel = new SubmissionPublisher<>(Executors.newVirtualThreadPerTaskExecutor(), Flow.defaultBufferSize());
         internalChannel = new SubmissionPublisher<>(Executors.newVirtualThreadPerTaskExecutor(), Flow.defaultBufferSize());
         auditEvents = new ArrayList<>();
-        enabled = Boolean.valueOf(directory.getProperty("%s.enabled".formatted(name)));
+        enabled = Objects.nonNull(directory) ? Boolean.valueOf(directory.getProperty("%s.enabled".formatted(name))): false;
     }
 
     protected static <I extends HasOid & HasMutableTags> void addTagCounts(@NotNull TypeRegistry registry, @NotNull Provider<I> provider,

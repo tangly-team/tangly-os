@@ -19,6 +19,8 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class TestDomain {
+    static final String DOMAIN = "TestDomain";
+
     static class TestRealm implements Realm {
     }
 
@@ -44,7 +46,7 @@ class TestDomain {
 
     static class TestBoundedDomain extends BoundedDomain<TestRealm, Void, TestPort> {
         TestBoundedDomain(TestRealm realm, TestPort port) {
-            super("TestBoundedDomain", realm, null, port, null);
+            super(DOMAIN, realm, null, port, null);
         }
     }
 
