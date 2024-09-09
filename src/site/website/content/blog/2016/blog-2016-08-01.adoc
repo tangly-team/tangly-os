@@ -1,7 +1,7 @@
 ---
 title: "PMI-ACP Certification"
 linkTitle: "PMI-ACP"
-date: 2016-03-18
+date: 2016-08-18
 tags: ["agile"]
 params:
   featured: "blog/2016/pics/2016-08-01-head.jpg"
@@ -57,36 +57,6 @@ footnote:[Jim Highsmith removed all blogs. Try to find the blog _beyond scope sc
 . Agile value stream analysis
 . Knowledge and skills
 .. Agile team members should be flexible and adaptable.
-
-== Bibliography
-
-The examination reference list of PMI ACP is (the titles in italics are also part of the CAT reference list)
-
-. bibitem:[agile-retrospectives]
-. bibitem:[agile-sw-development]
-. bibitem:[software-project-manager-bridge]
-. bibitem:[coaching-agile-teams]
-. bibitem:[agile-project-management]
-. bibitem:[becoming-agile]
-. bibitem:[agile-estimation-and-planning]
-. bibitem:[art-of-agile-development]
-. bibitem:[user-stories-applied]
-. bibitem:[agile-project-management-with-scrum]
-. bibitem:[lean-agile-software-develpment]
-
-It is interesting to compare the above list with the reference list of the Certified Agile Tester CAT
-
-. bibitem:[agile-testing]
-. bibitem:[succeeding-with-agile]
-. bibitem:[agile-and-iterative-development]
-. bibitem:[agile-project-management-with-scrum]
-. bibitem:[agile-retrospectives]
-. bibitem:[user-stories-applied]
-. bibitem:[the-deadline]
-. bibitem:[peopleware]
-. bibitem:[extreme-programming-explained]
-. bibitem:[lean-from-the-trenches]
-. bibitem:[kanban]
 
 == Terminology and Acronyms
 
@@ -278,3 +248,33 @@ _Who makes the decision is less important than getting the right people involved
 * During critical problem-solving, you can ask probing questions, use active and reflective listening, Lead to an answer, but one should avoid injecting their own ideas.
 
 I wish you success for your certification.
+
+== Bibliography
+
+The examination reference list of PMI ACP is (the titles in italics are also part of the CAT reference list)
+
+. bibitem:[agile-retrospectives]
+. bibitem:[agile-sw-development]
+. bibitem:[software-project-manager-bridge]
+. bibitem:[coaching-agile-teams]
+. bibitem:[agile-project-management]
+. bibitem:[becoming-agile]
+. bibitem:[agile-estimation-and-planning]
+. bibitem:[art-of-agile-development]
+. bibitem:[user-stories-applied]
+. bibitem:[agile-project-management-with-scrum]
+. bibitem:[lean-agile-software-develpment]
+
+It is interesting to compare the above list with the reference list of the Certified Agile Tester CAT
+
+. bibitem:[agile-testing]
+. bibitem:[succeeding-with-agile]
+. bibitem:[agile-and-iterative-development]
+. bibitem:[agile-project-management-with-scrum]
+. bibitem:[agile-retrospectives]
+. bibitem:[user-stories-applied]
+. bibitem:[the-deadline]
+. bibitem:[peopleware]
+. bibitem:[extreme-programming-explained]
+. bibitem:[lean-from-the-trenches]
+. bibitem:[kanban]
