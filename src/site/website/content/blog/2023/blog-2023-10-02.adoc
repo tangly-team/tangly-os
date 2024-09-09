@@ -23,7 +23,7 @@ Some of these technical requirements are encountered again and again when develo
 
 Any software product must provide solutions to standard problems.
 
-Typical aspects are user interface, persistence, configuration and compatibility issues.
+Typical aspects are user interface, persistence, configuration, and compatibility issues.
 
 Experienced software designers often have a list of questions any software architecture should answer.
 
@@ -89,7 +89,7 @@ Archiving::
 How is older information archived?
 Data migration::
 How is persisted data migrated when a new application version is deployed?
-Backwards compatibility::
+Backward compatibility::
 Sometimes the application shall handle older persisted information or configuration without explicit migration.
 The same constraints can often be requested when communicating with external systems.
 
@@ -105,7 +105,7 @@ This data must be accessible in the future.
 
 How do the application components communicate inside the software?
 
-Task communication, synchronization and parallelization::
+Task communication, synchronization, and parallelization::
 How do threads communicate inside the system?
 How do components communicate inside the software?
 Interprocess communication::
@@ -172,7 +172,7 @@ How can our application be integrated in the processes of the organizational lan
 [IMPORTANT]
 ====
 Modular monolith approach is currently the most cost-effective approach to structuring a software application.
-Communication between bounded domains is primary asynchronous and message-based.
+Communication between bounded domains is primarily asynchronous and message-based.
 
 Use standards for authentication and authorization to minimize security risks.
 ====

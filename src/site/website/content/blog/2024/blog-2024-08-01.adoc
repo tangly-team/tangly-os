@@ -18,7 +18,7 @@ include::../fragments/_config-mb-blog.adoc[]
 
 image::2024-08-01-head.png[width=420,height=360,role=left]
 
-Agile architecture means how enterprise architects, system architects and software architects apply architectural practice in agile software development.
+Agile architecture means how enterprise architects, system architects, and software architects apply architectural practice in agile software development.
 
 An agile architect should handle a regular set of questions for each application he is working on.
 
@@ -55,7 +55,7 @@ The pace of change in frameworks such as Angular, React, Vue, jQuery is stunning
 Supported standards in browsers are evolving.].
 How do we implement accessibility laws and requirements?::
 Your usability expert should have the tools to implement the legal requirements.
-I strongly recommend that each architect attend minimal training in internationalization, localization and accessibility matters.
+I strongly recommend that each architect attend minimal training in internationalization, localization, and accessibility matters.
 {ref-localization} _i18n_, localization _l16n_, {ref-accessibility} _a11y_ regulations and good practices.
 How should we translate user interface data?::
 Your organization shall implement a translation process for all involved artifacts.

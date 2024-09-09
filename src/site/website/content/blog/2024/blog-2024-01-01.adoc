@@ -41,7 +41,7 @@ The developer has to take care of the deep immutability of the properties.
 But you are on your own.
 The compiler does not provide any support for deep immutability.
 
-The compiler generates constructor, getters, equals, hashCode and toString.
+The compiler generates constructor, getters, equals, hashCode, and toString.
 
 [source,java]
 ----
@@ -123,7 +123,7 @@ Syntax sugar for pattern matching is on the way and reduces boilerplate code.
 [bibliography]
 == Links
 
-- [[[modern-java-algebric-data-types, 1]]] link:../../2024/data-classes-sealed-types-and-pattern-matching[Data Classes, Sealed Types and Pattern Matching]
+- [[[modern-java-algebric-data-types, 1]]] link:../../2024/data-classes-sealed-types-and-pattern-matching[Data Classes, Sealed Types, and Pattern Matching]
 Marcel Baumann. 2024
 - [[[modern-java-advanced-streams, 2]]] link:../../2024/advanced-streams[Advanced Streams]
 Marcel Baumann. 2024

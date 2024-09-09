@@ -54,7 +54,7 @@ A System Context diagram is a good starting point for diagramming and documentin
 Draw a diagram showing your system as a box in the center, surrounded by its users and the other systems that it interacts with.
 
 Detail is not important here as this is your zoomed-out view showing a big picture of the system landscape.
-The focus should be on people (actors, roles, personas, etc.) and software systems rather than technologies, protocols and other low-level details.
+The focus should be on people (actors, roles, personas, etc.) and software systems rather than technologies, protocols, and other low-level details.
 
 [tabs]
 ====
@@ -113,7 +113,7 @@ include::pics/2023-11-02-c4-component-diagram.puml[tag=code]
 
 == Code
 
-Finally, you can zoom in to each component to show how it is implemented as code; using UML class diagrams, entity relationship diagrams or similar.
+Finally, you can zoom in to each component to show how it is implemented as code; using UML class diagrams, entity relationship diagrams, or similar.
 
 This is an optional level of detail and is often available on-demand from tooling such as IDEs.
 Ideally, this diagram would be automatically generated using tooling, (e.g., an IDE or UML modeling tool), and you should consider showing only those attributes and methods that allow you to tell the story that you want to tell.
@@ -204,6 +204,6 @@ You can use {ref-doxygen} for applications programmed in {cpp}.
 
 - [[[agile-visual-tools, 1]]] link:../../2023/agile-visual-tools/[Agile Visual Tools].
 Marcel Baumann. 2023.
-- [[[creating-website-hugo,2]]] link:../../2020/creating-a-technical-website-with-hugo-and-asciidoc/[Creating a Technical Website with Hugo and Asciidoc].
+- [[[creating-website-hugo,2]]] link:../../2020/creating-a-technical-website-with-hugo-and-asciidoc/[Creating a Technical Website with Hugo and AsciiDoc].
 Marcel Baumann. 2020.
 - [[[plantuml-c4,3]]] https://github.com/plantuml-stdlib/C4-PlantUML[PlantUML stdlib C4]

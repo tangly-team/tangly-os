@@ -153,7 +153,7 @@ footnote:[It is probably the main reason why {ref-arc42} is still used and the o
 image::2024-07-01-arc42.png[width=640,height=400,role=text-center]
 
 {counter:chapter} - Introduction and Goals::
-A short description of the requirements, a few quality goals and a listing of important stakeholders.
+A short description of the requirements, a few quality goals, and a listing of important stakeholders.
 {counter:chapter} - Constraints::
 Anything that constrains teams in design and implementation decisions or decisions about related processes.
 Are valid for whole organizations and companies.
@@ -162,20 +162,20 @@ Separate your system from its external systems and users.
 Specify the external interfaces shown either in a business or technical perspective.
 {counter:chapter} - Solution Strategy::
 Summary of the fundamental decisions and solution strategies that shape the architecture.
-It can include technology, top-level decomposition, approaches to achieve top quality goals and relevant organizational decisions.
+It can include technology, top-level decomposition, approaches to achieve top quality goals, and relevant organizational decisions.
 {counter:chapter} - Building Block View::
 A static decomposition of the system, shown as a hierarchy of white boxes up to the right level of abstraction.
 {counter:chapter} - Runtime View::
-Behavior of building blocks as scenarios, covering use cases, operation, administration, error handling and features.
+Behavior of building blocks as scenarios, covering use cases, operation, administration, error handling, and features.
 An example of this might be a sequence diagram.
 {counter:chapter} - Deployment View::
-The technical infrastructure with environments, servers and topologies.
+The technical infrastructure with environments, servers, and topologies.
 Mapping of building Blocks to the right infrastructure.
 {counter:chapter} - Crosscutting Concepts::
 Principal regulations and solution approaches are relevant in multiple parts of the system.
 The opportunity between different software components.
 {counter:chapter} - Architectural Decisions::
-Important, expensive, critical, large scale or risky architecture decisions including rationales.
+Important, expensive, critical, large scale, or risky architecture decisions including rationales.
 {counter:chapter} - Quality Requirements::
 Quality requirements as scenarios.
 The requirements shall define a quality tree and associated measurements.

@@ -30,7 +30,7 @@ footnote:[Last millennium I had to migrate all my projects from {ref-ant} to {re
 
 In the first years, I sometimes regretted this decision due to missing or faulty plugins.
 
-The plugins have now reached a level of maturity that you can do everything with Gradle
+The plugins have now reached a level of maturity where you can do everything with Gradle
 footnote:[I had to wait until {ref-vaadin} provided an official supported {ref-gradle} plugin.].
 --
 
@@ -39,7 +39,7 @@ footnote:[I had to wait until {ref-vaadin} provided an official supported {ref-g
 === Advantages
 
 Great Flexibility:::
-You can do everything within the build script as you write them with the full-fledged programming language Groovy or Kotlin based DSL. +
+You can do everything within the build script as you write them with the full-fledged programming language Groovy or Kotlin-based DSL. +
 XML is a data modeling language and probably the worst programming language ever used.
 The {ref-maven} approach to declarative builds is a reasonable idea, but the XML syntax is a nightmare.
 Great Performance:::
@@ -50,7 +50,7 @@ Jetbrains IntelliJ IDE has extensive Gradle support.
 === Drawbacks
 
 Steep learning curve:::
-Moreover, the whole team has to learn Gradle or you will be depending on the single Gradle ninja in your team.
+Moreover, the whole team has to learn Gradle, or you will be depending on the single Gradle ninja in your team.
 Groovy or Kotlin DSL:::
 The dynamic Groovy DSL and the heterogeneous plugin APIs will make you google everything.
 Unexpected side effects, behavior, and interdependencies between plugins often feel like magic.
@@ -74,7 +74,7 @@ It is a result of poor practices, neglect, or simply the passage of time.
 It is like rust corroding a piece of machinery.
 
 In this case, it gradually eats into the heart of your build system, causing it to slow down, become unpredictable, or become more challenging to maintain.
-This phenomenon can manifest within any build tool, but for our exploration.
+This phenomenon appears within any build tool and continuous integration pipeline.
 
 What are the most common sources of build rot?
 
@@ -96,8 +96,8 @@ If everything is green, you are good to go.
 ====
 
 Over-customization::
-Gradle’s flexibility is one of its strong suits and yet it can ironically invite build rot.
-Over-customization, while seemingly advantageous in the short run, can result in a convoluted build.gradle files.
+Gradle’s flexibility is one of its strong suits, and yet it can ironically invite build rot.
+Over-customization, while seemingly advantageous in the short run, can result in a convoluted `build.gradle` file.
 These scripts can become so complicated that they require more effort to first comprehend and then maintain.
 
 [IMPORTANT]

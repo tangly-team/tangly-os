@@ -29,7 +29,7 @@ Again and again, our teams had to find ways to learn, tackle complexity, improve
 Modern engineers create increasingly complex and sophisticated systems.
 So as well as focusing on learning and modern engineering, we need to focus on managing complexity.
 
-We need to focus our tools, techniques and mindset on dealing with the complexity
+We need to focus our tools, techniques, and mindset on dealing with the complexity
 cite:[modern-software-engineering,building-evolutionary-architectures-2nd,clean-architecture].
 
 == Strongly Agree

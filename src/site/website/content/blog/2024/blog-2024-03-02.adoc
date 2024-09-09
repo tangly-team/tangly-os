@@ -41,7 +41,7 @@ It is worth noting that you are already coding state machines, except that they 
 == Why Finite State Machines?
 
 The actor model <<actor-model>> is a powerful approach to create resilient and scalable distributed systems.
-Asynchronous communication between actors avoids global states and painful synchronization of primitives such as locks, semaphores or monitors.
+Asynchronous communication between actors avoids global states and painful synchronization of primitives such as locks, semaphores, or monitors.
 
 Each actor defines his behavior with a finite state machine.
 The behavior is documented with a statechart.
@@ -66,7 +66,7 @@ A state in a finite state machine must have a duration.
 The actor implementing the finite state machine is in a state and waits for an input meaning a message, or a timeout event.
 _Consider encoding the states as an enumeration in your programming language_.
 
-A transition has a trigger event, an optional guard and an optional action.
+A transition has a trigger event, an optional guard, and an optional action.
 The guard is a predicate to decide if the transition can be fired or not.
 A transition has semantically no duration.
 The action of a transition must be processed in a brief time.
@@ -143,7 +143,7 @@ This approach is dying out.
 Do not use it.
 
 Simple flat finite state machines can easily be implemented with two levels of nested switch cases.
-A flat state machine does not have any hierarchical, orthogonal or history states. +
+A flat state machine does not have any hierarchical, orthogonal, or history states. +
 Ask yourself if an external library is worth the effort.
 _I recommend defining the set of events and states as enumerations_.
 

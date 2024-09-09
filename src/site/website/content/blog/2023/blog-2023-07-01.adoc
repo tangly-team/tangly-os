@@ -40,7 +40,7 @@ Your organization is serious about professional onboarding if you have a formal 
 Each phase is described, and each new collaborator has a contact person for onboarding questions.
 ====
 
-So what is a realistic expectation for how long it takes to onboard a software engineer?
+So what is a realistic expectation, for how long it takes to onboard a software engineer?
 
 == How long should it take?
 

@@ -17,10 +17,10 @@ When you are running an agile product development initiative, your ultimate goal
 
 The project coordination responsibilities are, however, not limited to this single goal.
 
-The product owner shall nurture the vision, roadmap, the release plan and customer journey.
+The product owner shall nurture the vision, roadmap, the release plan, and customer journey.
 You must coordinate the workflow of your team, refine the product backlog, control identified risks, and track deadlines.
 
-The development team shall inform about progress, incremental deliveries, technical debt, impediments and risks.
+The development team shall inform about progress, incremental deliveries, technical debt, impediments, and risks.
 
 == Why Visual Tools?
 
@@ -30,7 +30,7 @@ While proven useful, these do not replace the importance of *empiricism*.
 
 In complex environments, what will happen is unknown.
 Only what has already happened may be used for forward-looking decision-making.
-Visual aids optimally support the Scrum pillars of _transparency_, _inspection_ and _adaptation_.
+Visual aids optimally support the Scrum pillars of _transparency_, _inspection,_ and _adaptation_.
 
 Most of these diagrams naturally provide the time dimension necessary for forecasting.
 
@@ -49,12 +49,12 @@ ____
 
 image::2023-10-01-visibility-accountability.png[width=420,height=360,role=left]
 
-Visibility ensures that trust, reliability and accountability exist in a team.
+Visibility ensures that trust, reliability, and accountability exist in a team.
 
 Diagrams are information radiators.
 They provide easy and legible access to progress information.
 
-If your team, Scrum Master, Product Owner or stakeholders cannot see what the team is doing, it creates the impression that you are doing lots of _nothing_.
+If your team, Scrum Master, Product Owner, or stakeholders cannot see what the team is doing, it creates the impression that you are doing lots of _nothing_.
 Or do lots of things completely _wrong_.
 
 These doubts are one of the fastest ways to find yourself in a quagmire of unfinished work.
@@ -77,7 +77,7 @@ The agile community experiments with various approaches to visualize what is goi
 
 image::2023-10-01-burndown-diagrams.png[width=420,height=360,role=left]
 
-Burn-down and burn-up diagrams are available for sprints, epics, releases and products.
+Burn-down and burn-up diagrams are available for sprints, epics, releases, and products.
 This is not a measure of work done but work which is *still to be done*.
 It is a valuable tool to use as a thermometer or symptom checker.
 

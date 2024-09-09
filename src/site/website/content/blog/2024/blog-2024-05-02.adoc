@@ -143,7 +143,7 @@ An actor should have a unique external identifier to support identification and 
 
 Consider using a sealed class hierarchy to define messages actors receive
 footnote:[A similar approach can be implemented in {cpp} with _std::variant_ construct.].
-Pattern matching with _instanceof_ would provide exhaustive and type secure handling of all alternatives.
+Pattern matching with _instanceof_ would provide exhaustive and type-secure handling of all alternatives.
 
 Java provides the necessary mechanisms.
 Modern pattern matching in Java provides elegant solutions.
@@ -152,8 +152,8 @@ The behavior of an actor is specified as a flat or a hierarchical state machine.
 
 The _net.tangly.fsm_ library provides the abstractions to elegantly implement applications with Java:
 
-- A library providing actors and asynchronous message passing communication.
-- A timer manager to schedule time triggered tasks.
+- A library providing actors and asynchronous message-passing communication.
+- A timer manager to schedule time-triggered tasks.
 This approach slightly simplifies the programming of actors.
 An actor only needs to wait on regular messages or timeout messages on its mailbox.
 - Hierarchical state machines as described in the UML standard.
@@ -161,8 +161,8 @@ An actor only needs to wait on regular messages or timeout messages on its mailb
 
 A similar library _net::tangly::vinci_ provides similar abstractions to elegantly implement applications with {cpp}:
 
-- A library providing actors and asynchronous message passing communication.
-- A timer manager to schedule time triggered tasks.
+- A library providing actors and asynchronous message-passing communication.
+- A timer manager to schedule time-triggered tasks.
 - _Embedded applications often have more simple flat finite state machines._
 _Such machines should be implemented programmatically with switch statements._ +
 _Additionally, the Boost library provides statechart libraries._

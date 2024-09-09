@@ -135,7 +135,7 @@ bundle exec asciidoctor-revealjs
     <folder>/<presenation>.adoc                                                <3>
 ----
 
-<1> Load the diagram, bibtex and kroki extensions used in the presentation
+<1> Load the diagram, bibtex, and kroki extensions used in the presentation
 <2> Select the reveal.js distribution
 <3> The presentation file to process
 

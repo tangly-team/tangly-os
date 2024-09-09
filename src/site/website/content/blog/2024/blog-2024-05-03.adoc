@@ -108,7 +108,7 @@ cite:[phoenix-project,unicorn-project,lean-startup,founder-dilemma].
 Talk with your customers and understand their needs.
 - The non-functional requirements to ensure that _you build the product right_.
 Performance, security, reliability, and maintainability are essential.
-- Corporate governance, legal, social and ethical constraint to ensure that _you build a good product_.
+- Corporate governance, legal, social, and ethical constraint to ensure that _you build a good product_.
 A professional software engineer considers the impact of the product on society and the environment cite:[three-pillar-model-for-business-decisions].
 He has a sense of responsibility and ethics.
 Legal constraints are not a hindrance but a challenge to overcome.

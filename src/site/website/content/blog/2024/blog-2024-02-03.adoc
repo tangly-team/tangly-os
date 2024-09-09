@@ -167,7 +167,7 @@ Or you could store code snippets you find useful in your daily work on the platf
 == Tips and Tricks
 
 Your organization shall formally have a budget of five days for formal training per year.
-The budget shall be available for each employee and has a time and a cost position.
+The budget shall be available for each employee and has time and a cost position.
 
 Read a technical book each quarter.
 *Buy the book yourself.*
@@ -184,7 +184,7 @@ Code snippets can be found on Stack Overflow or in blogs.
 
 The best way to improve technically is to study interesting approaches.
 
-You need to apply the learnings to truly understand them.
+You need to apply the learning to truly understand them.
 
 Buy a technical book quaterly and read it.
 ====

@@ -325,7 +325,7 @@ A message should be a value object.
 <4> Implement the transition from state _STATE_1_ to _STATE_2_ and execute the associated action _action_a_.
 It is customary to pass the message as a parameter to the function.
 
-The state machine can be documented with a table describing for each state, the event be processed, an optional guard, the target state and the action.
+The state machine can be documented with a table describing for each state, the event be processed, an optional guard, the target state, and the action.
 
 [IMPORTANT]
 ====

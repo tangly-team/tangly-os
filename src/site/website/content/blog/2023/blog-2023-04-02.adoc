@@ -89,7 +89,7 @@ footnote:[I love the bibtex to keep track of all my literature references.].
 - Google Drive to access all our company drives.
 - Switch Drive for the Swiss technical university drives.
 - Spotify to listen to music.
-- https://gpgtools.org/[GPG Tools] to sign all company related emails and encrypt sensitive documents.
+- https://gpgtools.org/[GPG Tools] to sign all company-related emails and encrypt sensitive documents.
 I am using PGP for the last thirty years.
 - https://excalidraw.com/[Escalidraw]
 - Wacom tablet drivers.
@@ -128,13 +128,13 @@ sudo apachectl start
 You can either migrate your whole user account to the new machine or copy manually the needed files
 
 - Copy the _ssh_ keys files and _zhrc_ configuration files.
-- Copy the music, photos and video files.
+- Copy the music, photos, and video files.
 The fastest approach is to copy the files from the backup drive to the new machine.
 - Download all the Kindle books you want to read offline on the train.
 
 == Brew Packages
 
-https://brew.sh/[Homebrew] is an awesome tool to install libraries, tools and applications on macOS.
+https://brew.sh/[Homebrew] is an awesome tool to install libraries, tools, and applications on macOS.
 
 image::2023-04-02-homebrew.png[width=600,height=360,role=text-center]
 

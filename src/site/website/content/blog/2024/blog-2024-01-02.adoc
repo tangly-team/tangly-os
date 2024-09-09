@@ -19,7 +19,7 @@ image::2024-01-02-head.png[width=420,height=360,role=left]
 footnote:[{ref-eclipsestore} was previously called {ref-microstream}.
 The Java frameworks {ref-helidon} and {ref-micronaut} support natively EclipseStore for their persistence layer.]
 is a Java-native persistence layer built for cloud-native microservices and serverless systems.
-EclipseStore is the only data storage solution that uses the native Java object model instead of database-specific structure or format.
+EclipseStore is the only data storage solution that uses the native Java object model instead of a database-specific structure or format.
 
 It enables storing any Java object graph of any size and complexity transaction-safe into any binary data storage such as plain files, persistent volumes, or cloud object storage.
 
@@ -67,7 +67,7 @@ storageManager.storeRoot();                                                     
 Domain-driven design promotes the concept of entities and aggregates.
 EclipseStore optimally supports the storage and retrieval of aggregates.
 
-The provider abstraction is a data access objects for a collection of aggregates with the same type for the root entity.
+The provider abstraction is a data access instance for a collection of aggregates with the same type for the root entity.
 
 [source,java]
 ----
@@ -92,7 +92,7 @@ public interface Provider<T> {
     /**
      * Update the data associated with the entity. If the entity is new, the update is handled
      * as a create operation. The update is transitive and all referenced entities are also
-     * updated. The entity given as parameter becomes the instance managed through the provider.
+     * updated. The entity given as a parameter becomes the instance managed through the provider.
      *
      * @param entity entity to update
      */
@@ -204,7 +204,7 @@ The instance is populated with the persistent data if the storage exists.
 == Advanced Considerations
 
 For a huge set of aggregates, you should introduce a sharding concept to distribute the aggregates over multiple providers.
-For example, accounting transactions can be shard by the year of the transaction date.
+For example, accounting transactions can be sharded by the year of the transaction date.
 
 Beware that if an accounting transaction needs one KB of storage, a million transactions need one GB of storage.
 Few companies have more than a million transactions per year.

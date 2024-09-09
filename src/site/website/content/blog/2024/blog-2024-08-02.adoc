@@ -73,7 +73,7 @@ A logical component should be a bounded domain in your architecture partitioning
 
 Any bounded domain is modeled as a logical UML package and as a ROS distribution package.
 
-Bounded domain examples are battery pack, tracker, sensor package, vehicle and user interface.
+Bounded domain examples are battery pack, tracker, sensor package, vehicle, and user interface.
 If you decide to have a modular user interface, you could have additional domains such as engine user interface, or mission definition user interface.
 
 [TIP]
@@ -157,7 +157,7 @@ A domain cannot be aware of all parties interested in state changes.
 Node as Parallel Processing Unit::
 ROS-2 uses node as an independent process unit.
 A node should be small and offer cohesive services.
-We recommend having as much as possible single threaded nodes to profit from the ROS-2 provided solutions
+We recommend having as many as possible single threaded nodes to profit from the ROS-2 provided solutions
 footnote:[As stated in ROS-2 documentation, it is complex and error-prone to avoid synchronization troubles such as deadlocks, lifelocks, priority inversion, or starvation when
 writing multithreaded nodes.
 Further information can be found in the ROS-2 documentation about calling groups.]. +
@@ -209,7 +209,7 @@ Do not use technical designations related to ROS-2 internals.
 The architecture of the application is implemented in the source code.
 A programmer is also a software designer and architect <<agile-architecture-principles>>.
 Every programming act is also a design act.
-It can be good or bad design, but it is a design act.
+It can be a good or bad design, but it is a design act.
 ====
 
 A similar approach is used to identify application-specific entities.
@@ -232,7 +232,7 @@ Factories are implemented in the code using factory patterns.
 Most often, a regular factory method is enough to create an aggregate.
 
 Configuration parameters are currently the only identified configurable values.
-ROS-2 provides the parameter server as a standardized approach to configure, store and retrieve configuration values.
+ROS-2 provides the parameter server as a standardized approach to configure, store, and retrieve configuration values.
 
 [TIP]
 ====
@@ -299,7 +299,7 @@ ROS-2 nodes are independent execution units.
 The framework will allocate operating system threads based on the overall configuration and the pending requests.
 If your architecture follows the ROS-2 recommendations and favors message-passing communication, you would avoid most realtime problems. +
 +
-Nodes as actors, message-passing communication and finite state machine is a well-documented approach to implement communication and distributed solutions.
+Nodes as actors, message-passing communication, and finite state machine is a well-documented approach to implement communication and distributed solutions.
 
 [IMPORTANT]
 ====
@@ -316,7 +316,7 @@ If your transition guards are using timeouts, you need a global time reference w
 A state in a finite state machine must have a duration.
 The actor implementing the finite state machine is in a state and waits for an input meaning a message, or a timeout event.
 
-A transition has a trigger event, an optional guard and an optional action.
+A transition has a trigger event, an optional guard, and an optional action.
 The guard is a predicate to decide if the transition can be fired or not.
 A transition has semantically no duration.
 The action of a transition must be processed in a brief time.

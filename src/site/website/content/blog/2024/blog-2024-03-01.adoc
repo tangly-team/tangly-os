@@ -190,7 +190,7 @@ Also, add a _requires_ directive for any modules it depends on.
 [bibliography]
 == Links
 
-- [[[modern-java-algebric-data-types, 1]]] link:../../2024/data-classes-sealed-types-and-pattern-matching[Data Classes, Sealed Types and Pattern Matching]
+- [[[modern-java-algebric-data-types, 1]]] link:../../2024/data-classes-sealed-types-and-pattern-matching[Data Classes, Sealed Types, and Pattern Matching]
 Marcel Baumann. 2024
 - [[[modern-java-advanced-streams, 2]]] link:../../2024/advanced-streams[Advanced Streams]
 Marcel Baumann. 2024

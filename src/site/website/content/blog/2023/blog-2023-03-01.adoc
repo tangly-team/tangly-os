@@ -122,7 +122,7 @@ Scrum is founded on empiricism and lean thinking.
 Empiricism asserts that knowledge comes from experience and making decisions based on what is observed.
 Lean thinking reduces waste and focuses on the essentials.
 
-The Scrum pillars are transparency, inspection and adaptation.
+The Scrum pillars are transparency, inspection, and adaptation.
 
 Please postulate hypotheses, create experiments, and find out what is working for your product development teams and your organization.
 

@@ -65,7 +65,7 @@ The build type is used to identify development changes related to the build syst
 They involve scripts, configurations or tools, and package dependencies.
 ci::
 The ci type is used to identify development changes related to the continuous integration and deployment system.
-They involve scripts, configurations or tools.
+They involve scripts, configurations, or tools.
 doc::
 The doc type is used to identify documentation changes related to the project.
 Whether intended externally for the end users (in the case of a library) or internally for the developers.

@@ -53,7 +53,7 @@ Diagrams with {ref-c4} or {ref-uml}, {ref-adr} are linked to source code documen
 
 [TIP]
 ====
-The architecture documents shall be online, searchable and actual.
+The architecture documents shall be online, searchable, and actual.
 
 The artifacts shall be versioned to support documenting various releases of the application.
 
@@ -74,7 +74,7 @@ image:2024-05-01-C4-5-things.png[width=420,height=360,role=text-center]
 You should as a software architect understand:
 
 - What is the essence of {ref-software-architecture}?
-- Why should the software architecture role include coding, coaching and collaboration?
+- Why should the software architecture role include coding, coaching, and collaboration?
 - What are the things that you really need to think about before coding?
 - How to visualize your software architecture using {ref-c4}?
 - How to document your application with a lightweight and collaborative approach?.

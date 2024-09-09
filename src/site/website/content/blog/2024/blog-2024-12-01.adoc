@@ -80,17 +80,17 @@ image::2024-12-01-forgejo.png[width=420,height=360,role=left]
 It provides essential functions to work efficiently as a team with a reasonable footprint.
 footnote:[You could also use https://gitea.com/[Gitea].].
 
-Easy to install and low maintenance, it just does the job.
+Easy to install and low-maintenance, it just does the job.
 
 If you like any of the following features, Forgejo is literally meant for you:
 
 Lightweight::
 Forgejo can easily be hosted on nearly every modern machine.
 Project management::
-Besides Git hosting, Forgejo offers issue tracking, pull requests, wikis, kanban boards and much more to coordinate with your team.
+Besides Git hosting, Forgejo offers issue tracking, pull requests, wikis, kanban boards, and much more to coordinate with your team.
 Publishing::
 Have something to share?
-Use releases to host your software for download, or use the package registry to publish it for docker, npm and many other package managers.
+Use releases to host your software for download, or use the package registry to publish it for docker, npm, and many other package managers.
 Customizable::
 Want to change your look?
 Change some settings?
@@ -205,13 +205,13 @@ The solution also provides a minimal kanban board for geographically distributed
 Provide adequate tools for synchronous and asynchronous communication between team members.
 Quality video cameras and headsets are a must.
 
-A simple test is to check if all video conference attendees have always their video feed active
+A simple test is to check if all video conference attendees always have their video feed active
 footnote:[Look how often the team members held unplanned video communications.
 It is an indicator of how well the team interacts in a remote synchronous working configuration.
 The intensity of chats is an indicator of how the members interact in an asynchronous team setup.].
 
 Channels and rooms in the chat application
-footnote:[Slack is probably the best chat application I know.
+footnote:[Slack is probably the best chat application I know of.
 The second best would be Discord.
 Microsoft Teams is a reasonable solution if all team members work in the same company.
 Otherwise, the solution is quite a pain because you need to manually log out and login each time you want access to a channel of another organization.]

@@ -61,7 +61,7 @@ _The feature is useful for library and framework creators._
 == Panama Project
 
 The panama initiative is iterating through their interfaces.
-They synchronize as much as possible their interfaces with the Valhalla and Lilliput activities.
+They synchronize their interfaces with the Valhalla and Lilliput activities as much as possible.
 
 - https://openjdk.org/jeps/448[Vector API] _Sixth Incubator_
 - https://openjdk.org/jeps/442[Foreign Function & Memory API] _Third Preview_

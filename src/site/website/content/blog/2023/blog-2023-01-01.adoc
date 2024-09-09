@@ -49,7 +49,7 @@ Avoid choosing a company just because they work with trendy technologies or beca
 +
 The length of time they have been in business can be important.
 The length of time they have worked with their own clients can be more telling of the level of expertise they provide.
-Evaluate Costs, Processes and Tools::
+Evaluate Costs, Processes, and Tools::
 You may be tempted to select the lowest cost option but be cautious.
 The software company with the lowest bid might not be the most cost-effective.
 You risk choosing a partner that will go fast but make mistakes, or complete chunks of the work and then need to redo them to match your standards. +
@@ -79,7 +79,7 @@ If you are thinking of offshoring the work, be sure you consider how you will ha
 Many companies offer low-cost solutions that include working with offshore teams to handle services like the help desk, product support, and simple development.
 Start Searching::
 Remember to keep track of your search as you go.
-Create a document that records potential companies, their attributes, who you are talked to, what you have learned, and any decisions you have made.
+Create a document that records potential companies, their attributes, who you are talking to, what you have learned, and any decisions you have made.
 Ask Tough Questions::
 Learn what challenges they have faced with previous clients and what they did to overcome them.
 If there is something you are particularly worried about, ask about their experience dealing with your prospective challenges to helping their other clients with similar solutions in the past<<detecting-agile-bullshit>>.

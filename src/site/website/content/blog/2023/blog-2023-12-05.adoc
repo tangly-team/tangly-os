@@ -76,7 +76,7 @@ _This approach requires a *thread* to process the queue._
 _The processing thread is either part of the bus driver or part of the application._
 
 _Microcontrollers sometimes implement the thread as an interrupt service routine._
-_I would try to avoid the interrupt routine approach if you have a RTOS available._
+_I would try to avoid the interrupt routine approach if you have an RTOS available._
 
 *_This approach scales well for hundreds of devices and thousands of messages per second._*
 *_The sole limitation is the bus bandwidth._*
@@ -103,7 +103,7 @@ Therefore, the callback function shall delegate further processing to another th
 ====
 {ref-canlely} asynchronous callback when a PDO is written in the memory of the device representation.
 
-_The documentation clearly states the user is responsible for providing needed threads for processing._
+_The documentation clearly states the user is responsible for providing the necessary threads for processing._
 
 The design of the {ref-canlely} is an example of shared memory implementation.
 The device state is replicated in the local application.
@@ -269,7 +269,7 @@ The queues are used to decouple the bus driver from the application.
 All receive and transmit operations are asynchronous.
 This design implies asynchronous handling of protocol error codes.
 
-Small embedded systems shall use the RTOS provided primitives for communication between the driver and the application.
+Small embedded systems shall use the RTOS-provided primitives for communication between the driver and the application.
 
 Do not use abstraction layers to isolate the used realtime kernel.
 It makes the code more complex and less efficient.

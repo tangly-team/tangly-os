@@ -25,7 +25,7 @@ You get new features, performance improvements, and better security for free.
 As soon as you have to write code, you will enjoy higher productivity thanks to the new features.
 Your source code will be quite different from functional equivalent source code written with an older Java version.
 
-The projects Amber, Loom and Panama provide the improvements provided in JDK 20.
+The projects Amber, Loom, and Panama provide the improvements provided in JDK 20.
 
 The project https://openjdk.org/projects/amber/[Amber] provided improvements in pattern matching features.
 

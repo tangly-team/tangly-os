@@ -67,7 +67,7 @@ What do you think about design and architecture approaches cite:[design-patterns
 What are your approaches with existing and legacy solutions cite:[working-effectively-with-legacy-code,refactoring]?
 Agile approaches::
 What do you think about agile approaches cite:[clean-agile,clean-code,clean-architecture,accelerate]
-Teamwork, soft skills, teaching and mentoring::
+Teamwork, soft skills, teaching, and mentoring::
 How do you teach and mentor team members? cite:[becoming-technical-leader,skilled-facilitator,humble-inquiry]
 Why does she want to work in our company?::
 Please elaborate.
@@ -114,7 +114,7 @@ footnote:[I am regularly depressed that professional developers still do not hav
 
 The employees are using the state of the industry platform to create the products and to collaborate as teams
 footnote:[I still encounter teams without tools like Slack.
-Worst, some still cannot use development platforms such as GitHub, GitLab, BitBucket or Azure.].
+Worst, some still cannot use development platforms such as GitHub, GitLab, BitBucket, or Azure.].
 
 [bibliography]
 == Links

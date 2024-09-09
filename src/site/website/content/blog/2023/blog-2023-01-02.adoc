@@ -53,14 +53,14 @@ The IT responsible shall select the best alternative for his organization. Best 
 
 Every company is now a technology and software development company.
 
-Your organization needs an infrastructure to build, deliver and deploy digital software solutions cite:[accelerate,site-reliability-engineering].
+Your organization needs an infrastructure to build, deliver, and deploy digital software solutions cite:[accelerate,site-reliability-engineering].
 
 [quote,Marc Andreesen,2011]
 ____
 Software is eating the world.
 ____
 
-Continuous Integration, Delivery and Deployment Pipeline::
+Continuous Integration, Delivery, and Deployment Pipeline::
 {ref-gitlab}, {ref-github}, {ref-bitbucket} or https://azure.microsoft.com/[Microsoft Azure] platforms are the industrial
 standards for digital product development.
 Choose the most adequate for your developers.
@@ -72,7 +72,7 @@ Storage Solution::
 Your organization must store data in persistent storage.
 The information shall be backed up and protected against incidents.
 Corporate Governance::
-Stakeholders are sensible that your organization respects laws and pursues an ethical obligation to collaborators, users and society.
+Stakeholders are sensible that your organization respects laws and pursues an ethical obligation to collaborators, users, and society.
 Authentication and Authorization::
 Modern distributed organizations shall provide a secure and standardized approach to authentication and authorization.
 Single sign-on and federated solution (FIDO, Edu ID) are the current best practices.

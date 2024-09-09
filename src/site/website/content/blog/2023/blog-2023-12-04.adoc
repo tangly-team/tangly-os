@@ -29,7 +29,7 @@ A valve is a domain abstraction of a physical hardware valve.
 A physical valve can be a simple opened-closed device, or a proportional device.
 
 The microcontroller board reads the temperature sensor through an I2C or SPI bus.
-It controls the valve through a GPIO, a PWM or a CAN bus controller.
+It controls the valve through a GPIO, a PWM, or a CAN bus controller.
 
 These hardware components map the domain object to the electronics controlling the physical device.
 --
@@ -91,7 +91,7 @@ The instantiation of objects should define the initialization of abstractions an
 
 Do we start our system and bring all devices to a well-defined initial state?
 
-Or do we start our system, retrieve the state of all devices and initialize our objects accordingly?
+Or do we start our system, retrieve the state of all devices, and initialize our objects accordingly?
 
 This approach is only possible if each hardware component has sensors providing its current state.
 ====
@@ -104,7 +104,7 @@ Instances of the class map to existing devices.
 Therefore, the copy constructor and the copy operator should be disabled.
 The physical devices are defined through the machine the software controls.
 
-The software accesses the physical device through an electronics interface such as a GPIO, PWM or CAN controller.
+The software accesses the physical device through an electronics interface such as a GPIO, PWM, or CAN controller.
 The mapping between the electronic component and the physical device is hardwired at construction.
 
 [source,cpp]

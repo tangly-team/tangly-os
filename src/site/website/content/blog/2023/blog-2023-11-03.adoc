@@ -17,7 +17,7 @@ I attended the 20^th^ edition of the {ref-devoxx} conference in Antwerp.
 
 I heard about beautiful examples of how to design complex software applications written in Java.
 
-The solutions scale to hundreds of thousands of users, are resilient to network disruption and use fancy libraries and tools.
+The solutions scale to hundreds of thousands of users, are resilient to network disruption, and use fancy libraries and tools.
 
 The applications are deployed on cloud infrastructure and are available worldwide.
 
@@ -25,7 +25,7 @@ After the conference, I went to Ibiza for a family holiday.
 Our family enjoys prolonging the summer on this beautiful Balearic island.
 
 The weather is Switzerland is typical for fall.
-Cold, misty and often rainy.
+Cold, misty, and often rainy.
 
 I used the relaxed location to reflect the kind of applications I often develop for customers.
 

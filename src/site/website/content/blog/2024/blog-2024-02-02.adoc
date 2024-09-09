@@ -17,7 +17,7 @@ image::2024-02-02-head.jpg[width=420,height=360,role=left]
 
 We are an agile and software technology boutique.
 
-We often work as Scrum masters, product owners and technical agile coaches.
+We often work as Scrum masters, product owners, and technical agile coaches.
 Regularly we are involved in the architecture and development of software products.
 
 Our collaborators love to coaching, mentoring, and training.
@@ -91,7 +91,7 @@ All required software packages for Java and {cpp} development are available thro
 As a digital nomad, I have my whole office in one traveling bag
 footnote:[I am a fan of the traveler bags from the company _timbuk2_.
 I owned their bags for the last twenty-five years and was always satisfied with the quality and look.
-I pack my notebook, a mouse, a keyboard, a headset, a power supply and some adapters in the bag.
+I pack my notebook, a mouse, a keyboard, a headset, a power supply, and some adapters in the bag.
 The USB-C standard is a powerful improvement.
 I can charge all my devices using one Apple 140 W adapter.].
 
@@ -111,7 +111,7 @@ We had the privilege to work on more than twenty product developments since the 
 
 The experiences and insights gained through the interactions with our customers often provided the material for articles.
 
-The blog is a showcase hinting the capabilities, experiences and interests of our collaborators.
+The blog is a showcase hinting the capabilities, experiences, and interests of our collaborators.
 
 Interested parties read articles and can decide if our ideas match the needs and expectations they have.
 The ideas expressed are cornerstones of our company culture and capabilities.
@@ -151,7 +151,7 @@ https://www.linkedin.com/in/junghana/[Alexandra Junghans] has been the new presi
 Our company promotes female engineers to the highest leadership positions.
 
 We are proud to have her as our leader.
-She is a great engineer, coach and mentor.
+She is a great engineer, coach, and mentor.
 ****
 
 More subtle ethical values are discussed in company meetings or during coffee breaks.

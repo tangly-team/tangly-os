@@ -61,7 +61,7 @@ Since the unchanged parts of the structure cannot be modified, they can often be
 ____
 
 The IntelliJ plugin https://cursive-ide.com/[Cursive] hugely simplifies writing code and testing it
-footnote:[The plugin is free upon registration for students, open source developers and personal use.
+footnote:[The plugin is free upon registration for students, open source developers, and personal use.
 Please buy a license for commercial development.
 The company shall have a stream of income to continue developing this awesome environment.].
 https://www.jetbrains.com/idea/[IntelliJ IDEA] is probably the most popular IDE for Java developers
@@ -151,7 +151,7 @@ Symbols are identifiers that are normally used to refer to something else.
 They can be used in program forms to refer to function parameters, let bindings, class names, and global vars.
 
 Keywords are symbolic identifiers that evaluate to themselves.
-They provide very fast equality tests.
+They provide swift equality tests.
 
 [source,clojure]
 ----
@@ -224,7 +224,7 @@ Study the documentation, more arithmetic and logical operators are available.
 ----
 
 All the Clojure collections are immutable and persistent.
-The Clojure collections support efficient creation of _modified- versions, by utilizing structural sharing.
+The Clojure collections support efficient creation of modified versions by utilizing structural sharing.
 
 The collections are efficient and inherently thread-safe.
 Collections are represented by abstractions, and there may be one or more concrete realizations.

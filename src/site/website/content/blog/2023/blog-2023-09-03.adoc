@@ -106,7 +106,7 @@ Git rebase rewrites the commit history.
 It can be harmful to do it in shared branches.
 It can cause complex and hard to resolve merge conflicts.
 In these cases, instead of rebasing your branch against the default branch, consider pulling it with _git pull origin main_.
-Pulling has similar effects with lower risk of compromising the work of your contributors.
+Pulling has similar effects with a lower risk of compromising the work of your contributors.
 ====
 
 == Merge
@@ -211,7 +211,7 @@ Both _git merge_ and _git rebase_ are handy commands.
 One is not better than the other.
 However, there are some crucial differences between the two commands that you and your team should take into consideration.
 
-Whenever _git merge_ is run, an extra merge commit is created.
+Whenever a _git merge_ is run, an extra merge commit is created.
 Whenever you are working in your local repository, having too many merge commits can make the commit history look confusing.
 One way to avoid the merge commit is to use _git rebase_ instead.
 

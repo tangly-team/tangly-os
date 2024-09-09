@@ -33,7 +33,7 @@ Agile governance is about defining the fastest route that brings the most value.
 By focusing on the things that matter, we apply an agile focus on governance and how to manage program and project risks effectively.
 
 Agile works best when processes are clearly defined and transparent to everyone.
-Good governance for programs and projects, regardless if agile is applied, requires a defined structure, ways of working, processes and systems to operate succinctly.
+Good governance for programs and projects, regardless if agile is applied, requires a defined structure, ways of working, processes, and systems to operate succinctly.
 As a result, enabling programs and projects can scale up and down to adapt quickly to an organization’s changing needs and environment.
 
 image::2023-08-01-process.png[width=420,height=360,role=left]
@@ -77,7 +77,7 @@ Governance typically addresses areas such as:
 * Strategies to share information throughout the organization.
 
 https://www.pmi.org/disciplined-agile[Disciplined Agile] promotes a lean approach to governance.
-Lean governance is the leadership, organizational structures and streamlined processes to enable everyone to work together effectively in sustaining and extending the organization’s ability to produce meaningful value for its customers.
+Lean governance is the leadership, organizational structures, and streamlined processes to enable everyone to work together effectively in sustaining and extending the organization’s ability to produce meaningful value for its customers.
 There are several reasons why a lean governance strategy is important for your organization’s success.
 Lean governance strives to ensure that:
 
@@ -188,7 +188,7 @@ footnote:[In Switzerland, multiple organizations had to shut down operations in 
 Beware, non-compliance can be extremely costly and endanger the survival of your company.].
 
 Corporate governance departments often have a coercive approach.
-They are focused on the legal aspects and seldom understand the societal, commercial and technical facets.
+They are focused on the legal aspects and seldom understand the societal, commercial, and technical facets.
 Try to reform them.
 
 [bibliography]

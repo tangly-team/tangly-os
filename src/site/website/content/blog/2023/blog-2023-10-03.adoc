@@ -289,7 +289,7 @@ A trend is to offer PaaS solutions built around a kubernetes cluster.
 
 === With Java 21, Your Code Runs Even Faster. But How is that Possible?
 
-The presentation was fun, instructive and well-done.
+The presentation was fun, instructive, and well-done.
 The details were inspiring and of high quality.
 
 The speaker showed multiple areas where the JVM was locally massively improved through clever refactoring.
@@ -399,7 +399,7 @@ I know a little about ARM processor architecture.
 The speaker just presented the different processors available on the market.
 
 No real presentation of how Java is optimized for ARM architecture.
-He could have presented intrinsics, SIMD support and other architecture optimizations.
+He could have presented intrinsics, SIMD support, and other architecture optimizations.
 
 Cloud companies provide ARM-based solutions with tens or hundreds of cores.
 All Apple computers are running on ARM.
@@ -477,7 +477,7 @@ If you are a beginner, go to https://huggingface.co/[HuggingFace] and https://lo
 The code examples show how little code you need to set up a chat agent backed with a LLM model.
 
 You can define your own tools to compute values instead of asking the model to guess them.
-Better than you can ask your model to generate a tool because models can also write source code.
+The next improvement is to ask your model to generate a tool because models can also write source code.
 This is awesome.
 
 [sidebar]
@@ -569,7 +569,7 @@ He made 90'000 EUR in 2022.
 The forecast for 2023 is around 260'000 EUR.
 He hired his first employee.
 
-The whole approach is cute, hands-on, and most importantly working.
+The whole approach is cute, hands-on, and most importantly, working.
 He is able to live from an open-source product.
 This is an impressive and sadly seldom achievement.
 

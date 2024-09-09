@@ -29,7 +29,7 @@ What is the meaning of being agile and being digital for our company?
 
 image::2023-02-02-being-agile.png[width=420,height=360,role=left]
 
-Agile organizations combine the efficiencies of scale with the speed, flexibility and resilience to compete and win in today’s world.
+Agile organizations combine the efficiencies of scale with the speed, flexibility, and resilience to compete and win in today’s world.
 
 Practices are the structural framework to cement your principles.
 We live {ref-devops}, {ref-scrum} and {ref-less}.
@@ -55,7 +55,7 @@ Any collaborator can take over a process and improve it.
 ____
 Increasing agility is a path.
 
-Progressing on that path requires vision, belief, persistence and _hard work_.
+Progressing on that path requires vision, belief, persistence, and _hard work_.
 ____
 
 === Social Equality
@@ -103,14 +103,14 @@ ____
 When people tell me they have learned from experience, I tell them the trick is to learn from other people's experience.
 ____
 
-The trend towards digital documents, https://www.six-group.com/en/products-services/banking-services/payment-standardization/standards/qr-bill.html[QR Code]
+The trend towards digital documents, https://www.six-group.com/en/products-services/banking-services/payment-standardization/standards/qr-bill.html[QR Code,]
 and https://fnfe-mpe.org/factur-x/factur-x_en/[digital exchange] standards for invoices helps us to extend our digital approaches to our partners and customers.
 
 We have almost no manual or paper interactions with government platforms and insurance companies.
 Swiss government departments provide web portal access to their services.
 At least we do not need to send paper documents.
 
-But none of the governments provided solutions for social insurance, VAT declarations or salary documents have a published API.
+But none of the governments provided solutions for social insurance, VAT declarations, or salary documents have a published API.
 Swiss government solutions are still stuck in the last millennium and have missed the API integration approach.
 
 The Swiss federal government deployed a new https://www.estv.admin.ch/estv/en/home.html[Swiss Federal Tax Administration Portal] last year.

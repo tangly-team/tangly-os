@@ -59,7 +59,7 @@ Agile approaches and Scrum framework are the regular approach to successfully de
 I expect a professional software developer to have a formal training how to apply correctly the Scrum approach cite:[professional-product-owner,mastering-professional-scrum].
 
 The two biggest Scrum associations {ref-scrum-alliance} and {ref-scrum-org} provide similar certification paths for Scrum.
-For each role, you can progress from beginner, over advanced and finally reach the professional certification level.
+For each role, you can progress from beginner, over advanced, and finally reach the professional certification level.
 You should at least pursue the beginner and advanced level to reflect your professionalism.
 
 I often suggest pursuing the certifications of {ref-scrum-org} because you do need to renew them.
