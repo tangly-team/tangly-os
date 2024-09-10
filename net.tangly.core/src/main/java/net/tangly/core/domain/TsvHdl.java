@@ -199,14 +199,19 @@ public final class TsvHdl {
             int counter = 0;
             for (CSVRecord csv : FORMAT.parse(in)) {
                 loggedRecord = csv;
-                U imported = function.apply(tsvEntity, csv);
-                if (!(imported instanceof MutableEntityExtended entity) || (entity.validate())) {
-                    ++counter;
-                    audit.log(EventData.IMPORT_EVENT, EventData.Status.INFO, "%s imported".formatted(tsvEntity.clazz().getSimpleName()),
-                        Map.of("filename", source, "object", imported));
-                } else {
-                    audit.log(EventData.IMPORT_EVENT, EventData.Status.WARNING, "%s invalid entity".formatted(tsvEntity.clazz().getSimpleName()),
-                        Map.of("filename", source, "object", imported));
+                try {
+                    U imported = function.apply(tsvEntity, csv);
+                    if (!(imported instanceof MutableEntityExtended entity) || (entity.validate())) {
+                        ++counter;
+                        audit.log(EventData.IMPORT_EVENT, EventData.Status.INFO, "%s imported".formatted(tsvEntity.clazz().getSimpleName()),
+                            Map.of("filename", source, "object", imported));
+                    } else {
+                        audit.log(EventData.IMPORT_EVENT, EventData.Status.WARNING, "%s invalid entity".formatted(tsvEntity.clazz().getSimpleName()),
+                            Map.of("filename", source, "object", imported));
+                    }
+                } catch (Exception e) {
+                    audit.log(EventData.IMPORT_EVENT, EventData.Status.ERROR, "Entity not imported from TSV file",
+                        Map.of("filename", source, "csv-record", Objects.nonNull(loggedRecord) ? loggedRecord : "no-record-read"), e);
                 }
             }
             audit.log(EventData.IMPORT_EVENT, EventData.Status.SUCCESS, "%s imported objects".formatted(tsvEntity.clazz().getSimpleName()),

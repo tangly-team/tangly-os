@@ -143,7 +143,7 @@ class EffortsView extends ItemView<Effort> {
             collaborator.setClearButtonVisible(true);
 
             ComboBox<Assignment> assignment = new ComboBox<>(ASSIGNMENT_LABEL);
-            assignment.setItemLabelGenerator(Assignment::id);
+            assignment.setItemLabelGenerator(o -> "%s - %s".formatted(o.id(), o.name()));
             assignment.setRequired(true);
             assignment.setClearButtonVisible(true);
 
@@ -162,7 +162,7 @@ class EffortsView extends ItemView<Effort> {
                 }
             });
             collaborator.addValueChangeListener(e -> {
-                if (Objects.nonNull(collaborator.getValue()) && Objects.isNull(assignment.getValue())) {
+                if (Objects.isNull(assignment.getValue())) {
                     // cut logic to the form update
                     updateAssignment(assignment, collaborator.getValue(), activePeriod.getValue());
                 }
@@ -226,7 +226,7 @@ class EffortsView extends ItemView<Effort> {
             contractId.setItems(contractIds);
             contractId.setReadOnly(Objects.nonNull(assignment) && (contractIds.size() == 1));
             if (Objects.nonNull(assignment) && (contractIds.size() == 1)) {
-                contractId.setValue(contractIds.get(0));
+                contractId.setValue(contractIds.getFirst());
             } else {
                 if (contractIds.contains(contractId)) {
                     contractId.setValue(currentContractId);

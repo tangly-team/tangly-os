@@ -13,7 +13,6 @@
 
 package net.tangly.erp.products.ports;
 
-import net.tangly.commons.lang.Strings;
 import net.tangly.core.DateRange;
 import net.tangly.core.HasId;
 import net.tangly.core.domain.DomainAudit;
@@ -30,11 +29,11 @@ import org.apache.commons.csv.CSVRecord;
 import org.jetbrains.annotations.NotNull;
 
 import java.nio.file.Path;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 import java.util.Optional;
 import java.util.function.Function;
+import java.util.stream.Stream;
 
 import static net.tangly.core.domain.TsvHdl.*;
 import static net.tangly.core.tsv.TsvHdlCore.*;
@@ -86,7 +85,7 @@ public class ProductsTsvHdl {
     private static TsvEntity<Product> createTsvProduct() {
         List<TsvProperty<Product, ?>> fields = createTsvEntityFields();
         fields.add(TsvProperty.of("contractIds", Product::contractIds, Product::contractIds,
-            e -> Arrays.asList(e.split(",", 0)).stream().filter(o -> !Strings.isNullOrBlank(o)).toList(), e -> String.join(",", e)));
+            e -> Stream.of(e.split(",", 0)).map(String::trim).toList(), e -> String.join(",", e)));
         return TsvHdl.of(Product.class, fields, Product::new);
     }
 
