@@ -145,7 +145,11 @@ public class LedgerAdapter implements LedgerPort {
                 o -> new VatCode(o.getInt("id"), o.getString("code"), o.getBigDecimal("vatRate"), o.getBigDecimal("vatDueRate"), o.getBoolean("enabled")),
                 dataFolder.resolve("resources", "VatCodes.json"));
             registry.register(type);
+            audit.log(EventData.IMPORT_EVENT, EventData.Status.SUCCESS, "Vat codes imported",
+                Map.of("code", VatCode.class.getSimpleName(), "vatCodes", type.toString()));
         } catch (IOException e) {
+            audit.log(EventData.IMPORT_EVENT, EventData.Status.FAILURE, "Vat codes not imported",
+                Map.of("code", VatCode.class.getSimpleName(), "exception", e));
             throw new IORuntimeException(e);
         }
     }
