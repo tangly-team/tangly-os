@@ -31,7 +31,7 @@ import java.util.Objects;
 /**
  * A view for a list of objects. The local copy of the list supports adding and removing items.
  * To add items, a provider is passed with the eligible list of items.
- * The author is the currently logged-in user and the creation date is set to the current date and time.
+ * The author is the currently logged-in user, and the creation date is set to the current date and time.
  * <p>
  * The comments view is a Crud view with all the comments defined for an object implementing the {@link HasMutableComments}. Edition functions are provided to add, delete, and view
  * individual comments. Update function is not supported because comments are immutable objects. Immutable objects must explicitly be deleted before a new version is added. This

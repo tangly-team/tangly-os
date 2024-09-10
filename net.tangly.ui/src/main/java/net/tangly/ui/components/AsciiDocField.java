@@ -28,8 +28,8 @@ import org.asciidoctor.Options;
 import java.util.Objects;
 
 /**
- * Define a display and edit field for asciidoc text. The preview field shows rendered asciidoc text. The edition field is a simple text area edit field.
- * Al regular asciidoc expressions are supported.
+ * Define a display and edit field for AsciiDoc text. The preview field shows rendered AsciiDoc text. The edition field is a simple text area edit field.
+ * Al regular AsciiDoc expressions are supported.
  * The tab containing the edit field is only active if the component is not read-only.
  */
 @Tag("asciidoc-area")

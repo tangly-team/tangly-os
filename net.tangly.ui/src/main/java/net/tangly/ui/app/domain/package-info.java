@@ -13,7 +13,7 @@
 
 /**
  * Defines abstractions for the user interface of a bounded domain.
- * The key abstactions are:
+ * The key abstractions are:
  * <ul>
  *     <li>The bounded domain user interface base class.</li>
  *     <li>The domain entities view management class displaying key abstractions defined in the domain.</li>

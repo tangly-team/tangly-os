@@ -132,7 +132,7 @@ public final class VaadinUtils {
     public static <E> Grid.Column<E> addColumnBigDecimal(@NotNull Grid<E> grid, @NotNull ValueProvider<E, BigDecimal> getter, @NotNull String key,
                                                          @NotNull String header) {
         DecimalFormat df = new DecimalFormat("#,###.00");
-        return grid.addColumn(o -> df.format(getter.apply(o))).setKey(key).setComparator(o -> getter.apply(o)).setHeader(header).setAutoWidth(true)
+        return grid.addColumn(o -> df.format(getter.apply(o))).setKey(key).setComparator(getter::apply).setHeader(header).setAutoWidth(true)
             .setResizable(true);
     }
 

@@ -28,7 +28,7 @@ import java.util.Map;
 
 /**
  * Defines a grid menu abstraction to support a dynamic context menu in item views. Menu items can be enabled or disabled based on the fact if items are
- * seleected or not.
+ *  selected or not.
  *
  * @param <T> type of the items in the grid
  */
@@ -77,7 +77,7 @@ public class GridMenu<T> {
     }
 
     public void update(boolean itemSelected) {
-        menuItems.entrySet().forEach(entry -> entry.getKey().setEnabled(entry.getValue().isEnabled(itemSelected)));
+        menuItems.forEach((key, value) -> key.setEnabled(value.isEnabled(itemSelected)));
     }
 
     public void add(@NotNull String label, @NotNull Cmd cmd, @NotNull MenuItemType type) {

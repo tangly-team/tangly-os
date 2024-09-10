@@ -34,7 +34,7 @@ import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 
 /**
- * Documents contain record management informoation and metadata about the document.
+ * Documents contain record management information and metadata about the document.
  * Only limited attributes can be edited in the view. The description and the tags are editable.
  */
 public class DocumentsView extends ItemView<Document> {

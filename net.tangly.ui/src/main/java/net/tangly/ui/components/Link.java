@@ -17,7 +17,7 @@ import com.vaadin.flow.component.html.Anchor;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * Defines a HTML link with a test and a reference.
+ * Defines an HTML link with a test and a reference.
  */
 public class Link extends Anchor {
     public Link(@NotNull String text, @NotNull String href) {

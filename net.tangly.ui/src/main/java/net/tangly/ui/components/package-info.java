@@ -12,7 +12,7 @@
  */
 
 /**
- * The application can be used by mvn install (once) mvn (to run the application) The package provides a CRUD domain for entities. Entities can have
+ * Mvn install can use the application (once) mvn (to run the application) The package provides a CRUD domain for entities. Entities can have
  * <ul>
  *     <li>A list displaying a list of entities with selected fields.</li>
  *     <li>A tabbed details view showing simple fields view, comments view, tags view. The comments and tags view display again a list of

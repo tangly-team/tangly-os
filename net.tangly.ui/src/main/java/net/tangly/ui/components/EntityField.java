@@ -81,7 +81,7 @@ public class EntityField<T extends Entity> extends CustomField<T> {
         oid.clear();
     }
 
-    public <T extends MutableEntity> void bindMutable(@NotNull Binder<T> binder) {
+    public <V extends MutableEntity> void bindMutable(@NotNull Binder<V> binder) {
         binder.bindReadOnly(oid, o -> (int) o.oid());
         binder.bind(id, HasMutableId::id, HasMutableId::id);
         binder.bind(name, HasMutableName::name, HasMutableName::name);

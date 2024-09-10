@@ -35,7 +35,7 @@ import org.jetbrains.annotations.NotNull;
 import java.io.*;
 
 /**
- * The command to upload a set of files containing entities is delcared. The bounded domain shall import the provided entities.
+ * The command to upload a set of files containing entities is declared. The bounded domain shall import the provided entities.
  * The current supported format is tab seperated values TSV. The entity type is encoded with the filename.
  * The mime type <code>text/tab-separated-values</code>is documented under <a href="https://en.wikipedia.org/wiki/Tab-separated_values">TSV Mime Type</a>.
  * The mime type <code>application/json</code> is documented under <a href="https://en.wikipedia.org/wiki/Media_type">Mime types</a>.
@@ -110,7 +110,8 @@ public abstract class CmdFilesUpload<R extends Realm, B, P extends Port<R>> impl
     }
 
     /**
-     * Register the listener in charge to load and update the provided entities for the domain. The listene shall define the correct import order and handle missing files.
+     * Register the listener in charge to load and update the provided entities for the domain. The listener shall define the correct import order and handle
+     * missing files.
      * The method could be called in the constructor of the subclass.
      *
      * @param listener listener to register.

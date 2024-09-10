@@ -20,7 +20,7 @@ import net.tangly.ui.components.Mode;
  */
 public interface View {
     /**
-     * Return the mode of the view. Currently we support LIST, VIEW, and EDITABLE modes.
+     * Return the mode of the view. Currently, we support LIST, VIEW, and EDITABLE modes.
      *
      * @return mode of the view
      */

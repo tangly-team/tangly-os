@@ -43,7 +43,7 @@ import java.util.function.Supplier;
 /**
  * The entity view displays a list of entities in a grid. The view has three main scenarios. First, it is used as a read-only list of entities.
  * Second, it is used as a read-only view with a menu item to display the details of an entity.
- * Third, it is used as an editable view with a form to view, create, duplicate, edit and delete the entity.
+ * Third, it is used as an editable view with a form to view, create, duplicate, edit, and delete the entity.
  * These operations are provided through a context menu. If the view is set to read-only, only the CRUD view operation is available.
  * <p>Specific situations are supported through helper functions. You can define a custom menu for your scenario.</p>
  * <h2>CRUD Operations</h2>
@@ -92,7 +92,7 @@ import java.util.function.Supplier;
  * (ComponentEventListener<GridContextMenu.GridContextMenuItemClickEvent<T>>)((e)->form.edit(e.getItem().orElse(null)))));
  *}
  * <h2>Filtering</h2>
- * <p>You can add filtering capablitities to the view. The user can input filter criteria used to select which entities are displayed in the grid.</p>
+ * <p>You can add filtering capabilities to the view. The user can input filter criteria used to select which entities are displayed in the grid.</p>
  * <h2>Access Rights</h2>
  * <p>Access rights determines which menu items are available. The derived class can use the rights to limit data availability.
  * Access rights are used to create the adequate provider. This operation can be outside the view or in the derived view.
@@ -192,7 +192,7 @@ public abstract class ItemView<T> extends VerticalLayout implements View {
      * @param domain      user interface domain to which the view belongs to
      * @param provider    provider for instances of the entity to display in the grid
      * @param filter      optional filter for the grid
-     * @param mode        mode of the view: LIST, VIEW, or EDITABLE
+     * @param mode        mode of view: LIST, VIEW, or EDITABLE
      */
     protected ItemView(@NotNull Class<T> entityClass, BoundedDomainUi<?> domain, @NotNull Provider<T> provider, ItemFilter<T> filter, @NotNull Mode mode,
                        boolean isViewEmbedded) {
@@ -274,7 +274,7 @@ public abstract class ItemView<T> extends VerticalLayout implements View {
     }
 
     /**
-     * Sets the form embedded attribute. If the form is embedded in the view, the form is displayed in the view. If the form is not embedded, the form is
+     * Sets the form-embedded attribute. If the form is embedded in the view, the form is displayed in the view. If the form is not embedded, the form is
      * displayed.
      *
      * @param isFormEmbedded new value of the property

@@ -22,7 +22,7 @@ import net.tangly.ui.app.domain.BoundedDomainUi;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * The CRUD view for a domain entity. A domain entity has an internal object identifier, external identifier, a name, a temporal validity range and a text.
+ * The CRUD view for a domain entity. A domain entity has an internal object identifier, external identifier, a name, a temporal validity range, and a text.
  * An entity can have optional tags and comments. These tags and comments are displayed in separate views. The views are tabs in the form displaying the
  * details of a selected entity.
  *

@@ -120,8 +120,8 @@ public abstract class ItemForm<T, U extends ItemView<T>> {
 
     /**
      * Creates a form with an AsciiDoc field to edit the text of the entity.
-     * @param text
-     * @return
+     * @param text field to edit the text of the entity
+     * @return a form layout with the AsciiDoc field
      */
     public static FormLayout textForm(@NotNull AsciiDocField text) {
         var form = new FormLayout();
@@ -282,7 +282,7 @@ public abstract class ItemForm<T, U extends ItemView<T>> {
     /**
      * Clears the content of the form. All property fields are reset to empty or a default value. The default implementation clears all fields registered in
      * the binder. Custom
-     * fields are cleared as regular fields because both implements <i>HasValue</i> and therefore are eligble for the binder.
+     * fields are cleared as regular fields because both implements <i>HasValue</i> and therefore are eligible for the binder.
      */
     protected void clear() {
         binder.getFields().forEach(HasValue::clear);
@@ -308,7 +308,7 @@ public abstract class ItemForm<T, U extends ItemView<T>> {
 
     // endregion
 
-    // region Entity related functions
+    // region Entity-related functions
 
     /**
      * Create or update the instance with the new values from the user interface.

@@ -106,7 +106,7 @@ public abstract class BoundedDomainUi<T extends BoundedDomain<?, ?, ?>> implemen
      * Select the new current view of the bounded domain interface.
      *
      * @param layout layout to display within
-     * @param view   new current view if not null otherwise the current view is refreshed
+     * @param view   new current view if not null, otherwise the current view is refreshed
      */
     public void select(@NotNull AppLayout layout, LazyReference<?> view) {
         currentView = Objects.isNull(view) ? currentView : view;
@@ -119,7 +119,7 @@ public abstract class BoundedDomainUi<T extends BoundedDomain<?, ?, ?>> implemen
 
     public void userChanged(@NotNull User user) {
         rights = user.accessRightsFor(name()).orElse(null);
-        views.values().forEach(view -> view.ifPresent(v -> v.readonly(Objects.nonNull(rights) ? AccessRightsCode.readonlyUser == rights.right() : true)));
+        views.values().forEach(view -> view.ifPresent(v -> v.readonly(!Objects.nonNull(rights) || AccessRightsCode.readonlyUser == rights.right())));
     }
 
     public void detach() {
@@ -159,7 +159,7 @@ public abstract class BoundedDomainUi<T extends BoundedDomain<?, ?, ?>> implemen
     }
 
     /**
-     * The administration menu provides standard administration operation for a bounded domain.
+     * The administration menu provides a standard administration operation for a bounded domain.
      * <ul>
      *     <li>Provides statistics about entities of the domain.</li>
      *     <li>Import domain entities from a set of TSV files stored in a directory. The command is responsible for a semantic meaningful ordering of the imports.</li>
