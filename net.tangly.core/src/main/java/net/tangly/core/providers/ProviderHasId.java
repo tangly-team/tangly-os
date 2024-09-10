@@ -13,9 +13,7 @@
 
 package net.tangly.core.providers;
 
-import net.tangly.commons.generator.IdGenerator;
-import net.tangly.commons.lang.ReflectionUtilities;
-import net.tangly.core.HasOid;
+import net.tangly.core.HasId;
 import org.eclipse.store.storage.embedded.types.EmbeddedStorageManager;
 import org.jetbrains.annotations.NotNull;
 
@@ -27,25 +25,19 @@ import java.util.Optional;
  *
  * @param <T> type of the items handled in the provider
  */
-public class ProviderHasOid<T extends HasOid> implements Provider<T> {
-    private final IdGenerator generator;
+public class ProviderHasId<T extends HasId> implements Provider<T> {
     private final Provider<T> provider;
 
-    public ProviderHasOid(@NotNull IdGenerator generator, @NotNull Provider<T> provider) {
-        this.generator = generator;
+    public ProviderHasId(@NotNull Provider<T> provider) {
         this.provider = provider;
     }
 
-    public static <T extends HasOid> Provider<T> of(@NotNull IdGenerator generator) {
-        return new ProviderHasOid<>(generator, ProviderInMemory.of());
+    public static <T extends HasId> Provider<T> of(@NotNull Iterable<T> items) {
+        return new ProviderHasId<>(ProviderInMemory.of(items));
     }
 
-    public static <T extends HasOid> Provider<T> of(@NotNull IdGenerator generator, @NotNull Iterable<T> items) {
-        return new ProviderHasOid<>(generator, ProviderInMemory.of(items));
-    }
-
-    public static <T extends HasOid> Provider<T> of(@NotNull IdGenerator generator, @NotNull EmbeddedStorageManager storageManager, @NotNull List<T> items) {
-        return new ProviderHasOid<>(generator, ProviderPersistence.of(storageManager, items));
+    public static <T extends HasId> Provider<T> of(@NotNull EmbeddedStorageManager storageManager, @NotNull List<T> items) {
+        return new ProviderHasId<>(ProviderPersistence.of(storageManager, items));
     }
 
     /**
@@ -56,7 +48,7 @@ public class ProviderHasOid<T extends HasOid> implements Provider<T> {
      * @return flag indicating if it is allowed to add the object
      */
     public boolean canBeAdded(@NotNull T entity) {
-        Optional<T> original = Provider.findByOid(provider, entity.oid());
+        Optional<T> original = Provider.findById(provider, entity.id());
         return (original.isEmpty() || (original.get() == entity));
     }
 
@@ -67,9 +59,6 @@ public class ProviderHasOid<T extends HasOid> implements Provider<T> {
 
     @Override
     public void update(@NotNull T entity) {
-        if (entity.oid() == HasOid.UNDEFINED_OID) {
-            ReflectionUtilities.set(entity, "oid", generator.id());
-        }
         if (canBeAdded(entity)) {
             provider.update(entity);
         } else {

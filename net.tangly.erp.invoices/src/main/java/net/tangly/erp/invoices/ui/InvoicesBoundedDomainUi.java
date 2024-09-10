@@ -38,7 +38,7 @@ public class InvoicesBoundedDomainUi extends BoundedDomainUi<InvoicesBoundedDoma
         super(domain);
         addView(Article.class, new LazyReference<>(() -> new ArticlesView(this, Mode.EDITABLE)));
         addView(Invoice.class, new LazyReference<>(() -> new InvoicesView(this, Mode.EDITABLE)));
-        addView(Document.class, new LazyReference<>(() -> new DocumentsView(this, domain().realm().documents())));
+        addView(Document.class, new LazyReference<>(() -> new DocumentsView(this, domain().realm().documents(), Mode.EDITABLE)));
         addView(DomainEntity.class, new LazyReference<>(() -> new DomainView(this)));
         addView(AnalyticsProductsView.class, new LazyReference<>(() -> new AnalyticsProductsView(this)));
         currentView(Invoice.class.getSimpleName());

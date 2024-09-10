@@ -47,6 +47,7 @@ public record EventData(@NotNull String event, @NotNull LocalDateTime timestamp,
     public static final String IMPORT_EVENT = "import";
     public static final String EXPORT_EVENT = "export";
     public static final String CLEAR_EVENT = "clear";
+    public static final String DOCUMENT_EVENT = "document";
     public static final String REPORT_EVENT = "report";
     public static final String FILENAME = "filename";
     public static final String ENTITY = "entity";

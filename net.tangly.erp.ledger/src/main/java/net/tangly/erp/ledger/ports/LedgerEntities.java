@@ -16,6 +16,7 @@ package net.tangly.erp.ledger.ports;
 import net.tangly.core.domain.Document;
 import net.tangly.core.domain.RealmEclipseStore;
 import net.tangly.core.providers.Provider;
+import net.tangly.core.providers.ProviderHasId;
 import net.tangly.core.providers.ProviderInMemory;
 import net.tangly.core.providers.ProviderPersistence;
 import net.tangly.erp.ledger.domain.Account;
@@ -55,7 +56,7 @@ public class LedgerEntities implements LedgerRealm, RealmEclipseStore {
         storageManager = EmbeddedStorage.start(data, path);
         accounts = ProviderPersistence.of(storageManager, data.accounts);
         transactions = ProviderPersistence.of(storageManager, data.transactions);
-        documents = ProviderPersistence.of(storageManager, data.documents);
+        documents = ProviderHasId.of(storageManager, data.documents);
     }
 
     public LedgerEntities() {
@@ -63,7 +64,7 @@ public class LedgerEntities implements LedgerRealm, RealmEclipseStore {
         storageManager = null;
         accounts = ProviderInMemory.of(data.accounts);
         transactions = ProviderInMemory.of(data.transactions);
-        documents = ProviderInMemory.of(data.documents);
+        documents = ProviderHasId.of(data.documents);
     }
 
     public void storeRoot() {

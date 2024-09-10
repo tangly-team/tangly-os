@@ -37,7 +37,7 @@ public class LedgerBoundedDomainUi extends BoundedDomainUi<LedgerBoundedDomain> 
         super(domain);
         addView(Account.class, new LazyReference<>(() -> new AccountsView(this, Mode.EDITABLE)));
         addView(Transaction.class, new LazyReference<>(() -> new TransactionsView(this, Mode.EDITABLE)));
-        addView(Document.class, new LazyReference<>(() -> new DocumentsView(this, domain().realm().documents())));
+        addView(Document.class, new LazyReference<>(() -> new DocumentsView(this, domain().realm().documents(), Mode.EDITABLE)));
         addView(DomainEntity.class, new LazyReference<>(() -> new DomainView(this)));
         addView(AnalyticsLedgerView.class, new LazyReference<>(() -> new AnalyticsLedgerView(this)));
         currentView(view(Transaction.class).orElseThrow());

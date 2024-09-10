@@ -404,7 +404,6 @@ public abstract class ItemView<T> extends VerticalLayout implements View {
         addActions(menu());
     }
 
-
     /**
      * Add custom actions to the context menu. Overwrite the menu if you want to add actions to the context menu.
      * The mode of the view is available through the {@link #mode()}}. The read-only attribute is available through the {@link #readonly()} method.

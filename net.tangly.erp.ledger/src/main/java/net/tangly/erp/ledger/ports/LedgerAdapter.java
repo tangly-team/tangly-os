@@ -19,8 +19,10 @@ import net.tangly.core.DateRange;
 import net.tangly.core.Tag;
 import net.tangly.core.TypeRegistry;
 import net.tangly.core.codes.CodeHelper;
-import net.tangly.core.domain.*;
-import net.tangly.core.events.EntityChangedInternalEvent;
+import net.tangly.core.domain.Document;
+import net.tangly.core.domain.DomainAudit;
+import net.tangly.core.domain.Port;
+import net.tangly.core.domain.TsvHdl;
 import net.tangly.erp.ledger.artifacts.ClosingReportAsciiDoc;
 import net.tangly.erp.ledger.domain.Account;
 import net.tangly.erp.ledger.domain.LedgerTags;
@@ -163,7 +165,7 @@ public class LedgerAdapter implements LedgerPort {
         Document document = new Document(name, name, PDF_EXT, LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS), new DateRange(from, to), text, true,
             Objects.nonNull(tags) ? tags : Collections.emptyList());
         realm().documents().update(document);
-        audit.submitInterally(new EntityChangedInternalEvent(audit.name(), Document.class.getSimpleName(), Operation.CREATE));
+        Document.update(realm.documents(), document, audit);
     }
 
     public static String journalForYear(int year) {

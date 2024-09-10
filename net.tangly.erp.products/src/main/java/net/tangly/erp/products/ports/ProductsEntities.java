@@ -17,10 +17,7 @@ import net.tangly.commons.generator.IdGenerator;
 import net.tangly.commons.generator.LongIdGenerator;
 import net.tangly.core.domain.Document;
 import net.tangly.core.domain.Realm;
-import net.tangly.core.providers.Provider;
-import net.tangly.core.providers.ProviderHasOid;
-import net.tangly.core.providers.ProviderInMemory;
-import net.tangly.core.providers.ProviderPersistence;
+import net.tangly.core.providers.*;
 import net.tangly.erp.products.domain.Assignment;
 import net.tangly.erp.products.domain.Effort;
 import net.tangly.erp.products.domain.Product;
@@ -71,7 +68,7 @@ public class ProductsEntities implements ProductsRealm {
         contracts = ProviderPersistence.of(storageManager, data.contracts);
         assignments = ProviderHasOid.of(generator, storageManager, data.assignments);
         efforts = ProviderPersistence.of(storageManager, data.efforts);
-        documents = ProviderPersistence.of(storageManager, data.documents);
+        documents = ProviderHasId.of(storageManager, data.documents);
     }
 
     public ProductsEntities() {
@@ -82,7 +79,7 @@ public class ProductsEntities implements ProductsRealm {
         contracts = ProviderInMemory.of(data.contracts);
         assignments = ProviderHasOid.of(generator, data.assignments);
         efforts = ProviderInMemory.of(data.efforts);
-        documents = ProviderInMemory.of(data.documents);
+        documents = ProviderHasId.of(data.documents);
     }
 
     public void storeRoot() {

@@ -17,8 +17,10 @@ import net.tangly.commons.logger.EventData;
 import net.tangly.commons.utilities.AsciiDoctorHelper;
 import net.tangly.core.DateRange;
 import net.tangly.core.Tag;
-import net.tangly.core.domain.*;
-import net.tangly.core.events.EntityChangedInternalEvent;
+import net.tangly.core.domain.Document;
+import net.tangly.core.domain.DomainAudit;
+import net.tangly.core.domain.Port;
+import net.tangly.core.domain.TsvHdl;
 import net.tangly.core.providers.Provider;
 import net.tangly.erp.invoices.artifacts.InvoiceAsciiDoc;
 import net.tangly.erp.invoices.artifacts.InvoiceJson;
@@ -167,8 +169,7 @@ public class InvoicesAdapter implements InvoicesPort {
         Document document =
             new Document(id, invoice.name(), PDF_EXT, LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS), new DateRange(invoice.date(), invoice.date()),
                 invoice.text(), true, Objects.nonNull(tags) ? tags : Collections.emptyList());
-        realm().documents().update(document);
-        audit.submitInterally(new EntityChangedInternalEvent(audit.name(), Document.class.getSimpleName(), Operation.CREATE));
+        Document.update(realm.documents(), document, audit);
     }
 
     private void entitiesImported(@NotNull DomainAudit audit) {

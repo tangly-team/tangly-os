@@ -13,14 +13,19 @@
 
 package net.tangly.core.domain;
 
+import net.tangly.commons.logger.EventData;
 import net.tangly.core.*;
+import net.tangly.core.events.EntityChangedInternalEvent;
+import net.tangly.core.providers.Provider;
 import org.jetbrains.annotations.NotNull;
 
 import java.time.LocalDateTime;
 import java.util.Collection;
+import java.util.Map;
 
 /**
- * Defines a document and its metadata stored in the system as immutable record. A document is onwed by a domain and is part of the domain model.
+ * Defines a document and its metadata stored in the system as immutable record.
+ * A document is owed by a domain and is part of the domain model.
  * The domain handles the access rights to the document and the retention policies.
  *
  * @param id        uri is relative to the domain documents root folder. It is unique within the domain.
@@ -34,4 +39,16 @@ import java.util.Collection;
  */
 public record Document(@NotNull String id, @NotNull String name, String extension, @NotNull LocalDateTime time, @NotNull DateRange range, String text,
                        boolean generated, @NotNull Collection<Tag> tags) implements HasId, HasName, HasDateRange, HasText, HasTags {
+    public static void update(@NotNull Provider<Document> provider, @NotNull Document document, @NotNull DomainAudit audit) {
+        Provider.findById(provider, document.id()).ifPresentOrElse(o -> {
+            provider.delete(o);
+            provider.update(document);
+            audit.log(EventData.DOCUMENT_EVENT, EventData.Status.INFO, "Document was superseded.", Map.of("old-document", o, "superseding-document", document));
+            audit.submitInterally(new EntityChangedInternalEvent(audit.name(), Document.class.getSimpleName(), Operation.REPLACE));
+        }, () -> {
+            provider.update(document);
+            audit.log(EventData.DOCUMENT_EVENT, EventData.Status.INFO, "Document was created.", Map.of("document", document));
+            audit.submitInterally(new EntityChangedInternalEvent(audit.name(), Document.class.getSimpleName(), Operation.CREATE));
+        });
+    }
 }

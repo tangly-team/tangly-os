@@ -51,7 +51,7 @@ public class ProductsBoundedDomainUi extends BoundedDomainUi<ProductsBoundedDoma
         addView(WorkContract.class, new LazyReference<>(() -> new WorkContractsView(this, Mode.EDITABLE)));
         addView(Assignment.class, new LazyReference<>(() -> new AssignmentsView(this, Mode.EDITABLE)));
         addView(Effort.class, new LazyReference<>(() -> new EffortsView(this, Mode.EDITABLE)));
-        addView(Document.class, new LazyReference<>(() -> new DocumentsView(this, domain().realm().documents())));
+        addView(Document.class, new LazyReference<>(() -> new DocumentsView(this, domain().realm().documents(), Mode.EDITABLE)));
         addView(DomainEntity.class, new LazyReference<>(() -> new DomainView(this)));
         currentView(view(Product.class).orElseThrow());
         domain.subscribeInternally(this);

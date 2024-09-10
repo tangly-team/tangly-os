@@ -280,7 +280,8 @@ public abstract class ItemForm<T, U extends ItemView<T>> {
     }
 
     /**
-     * Clear the content of the form. All property fields are reset to empty or a default value. The default implementation clears all fields registered in the binder. Custom
+     * Clears the content of the form. All property fields are reset to empty or a default value. The default implementation clears all fields registered in
+     * the binder. Custom
      * fields are cleared as regular fields because both implements <i>HasValue</i> and therefore are eligble for the binder.
      */
     protected void clear() {
@@ -288,7 +289,7 @@ public abstract class ItemForm<T, U extends ItemView<T>> {
     }
 
     /**
-     * Create the form containing all the fields to display an entity. The form is added into the CRUD form with the associated operations.
+     * Creates the form containing all the fields to display an entity. The form is added into the CRUD form with the associated operations.
      *
      * @return the vertical layout containing all fields to display the entity
      */
@@ -297,7 +298,7 @@ public abstract class ItemForm<T, U extends ItemView<T>> {
     }
 
     /**
-     * Create the CRUD button bar. The button bar has always a cancel operation and an additional CRUD operation.
+     * Creates the CRUD button bar. The button bar has always a cancel operation and an additional CRUD operation.
      *
      * @return domain containing the CRUD form command button
      */
@@ -340,7 +341,7 @@ public abstract class ItemForm<T, U extends ItemView<T>> {
     }
 
     /**
-     * Delete the entity from the backend and refreshes the grid.
+     * Deletes the entity from the backend and refreshes the grid.
      *
      * @return deleted entity instance
      */

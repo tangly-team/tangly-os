@@ -24,8 +24,10 @@ import net.tangly.commons.utilities.AsciiDoctorHelper;
 import net.tangly.commons.utilities.ValidatorUtilities;
 import net.tangly.core.DateRange;
 import net.tangly.core.Tag;
-import net.tangly.core.domain.*;
-import net.tangly.core.events.EntityChangedInternalEvent;
+import net.tangly.core.domain.Document;
+import net.tangly.core.domain.DomainAudit;
+import net.tangly.core.domain.Port;
+import net.tangly.core.domain.TsvHdl;
 import net.tangly.core.providers.Provider;
 import net.tangly.erp.products.artifacts.EffortReportEngine;
 import net.tangly.erp.products.domain.Assignment;
@@ -197,7 +199,7 @@ public class ProductsAdapter implements ProductsPort {
         } catch (IOException e) {
             throw new IORuntimeException(e);
         } catch (YamlReadingException e) {
-            e.printStackTrace();
+            audit.log(EventData.IMPORT_EVENT, EventData.Status.ERROR, "Error importing efforts.", Map.of("filename", source, "exception", e));
         }
     }
 
@@ -293,8 +295,7 @@ public class ProductsAdapter implements ProductsPort {
                                 @NotNull DomainAudit audit) {
         Document document = new Document(id, id, PDF_EXT, LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS), new DateRange(from, to), text, true,
             Objects.nonNull(tags) ? tags : Collections.emptyList());
-        realm().documents().update(document);
-        audit.submitInterally(new EntityChangedInternalEvent(audit.name(), Document.class.getSimpleName(), Operation.CREATE));
+        Document.update(realm.documents(), document, audit);
     }
 
     private String filename(@NotNull Assignment assignment, @NotNull YearMonth month) {
