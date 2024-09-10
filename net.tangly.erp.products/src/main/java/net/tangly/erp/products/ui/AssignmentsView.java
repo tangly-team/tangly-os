@@ -13,6 +13,7 @@
 
 package net.tangly.erp.products.ui;
 
+import com.vaadin.flow.component.HtmlComponent;
 import com.vaadin.flow.component.datepicker.DatePicker;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.html.Hr;
@@ -26,14 +27,16 @@ import net.tangly.ui.app.domain.Cmd;
 import net.tangly.ui.components.*;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Objects;
+
 /**
  * Regular CRUD view on the assignment abstraction. The grid and the edition dialog are optimized for usability.
  */
 @PageTitle("products-assignments")
 class AssignmentsView extends EntityView<Assignment> {
-    class AssignmentForm extends MutableEntityForm<Assignment, AssignmentsView> {
-        public AssignmentForm(@NotNull AssignmentsView parent, @NotNull TypeRegistry registry) {
-            super(parent, Assignment::new);
+    static class AssignmentForm extends MutableEntityForm<Assignment, AssignmentsView> {
+        public AssignmentForm(@NotNull AssignmentsView view, @NotNull TypeRegistry registry) {
+            super(view, Assignment::new);
             initEntityForm();
             addTabAt("details", details(), 1);
 
@@ -41,18 +44,24 @@ class AssignmentsView extends EntityView<Assignment> {
 
         private FormLayout details() {
             var form = new FormLayout();
-            var productField = new One2OneField<>("Product", Product.class, domain().realm().products());
             var collaboratorId = new TextField("Collaborator ID");
+            collaboratorId.setRequired(true);
+            var collaboratorName = new TextField("Collaborator Name");
+            collaboratorId.setRequired(true);
+            var productField = new One2OneField<>("Product", Product.class, view().domain().realm().products());
             var closedPeriod = new DatePicker("Closed period");
-            form.add(productField, collaboratorId);
-            binder().bind(productField, Assignment::product, Assignment::product);
+            form.add(collaboratorId, collaboratorName, closedPeriod, new HtmlComponent("br"), productField);
             binder().bind(collaboratorId, Assignment::collaboratorId, Assignment::collaboratorId);
-            binder().bind(closedPeriod, Assignment::closedPeriod, Assignment::closedPeriod);
+            binder().bind(collaboratorName, Assignment::name, Assignment::name);
+            binder().bind(productField, Assignment::product, Assignment::product);
+            binder().forField(closedPeriod)
+                .withValidator(o -> Objects.isNull(value().closedPeriod()) || (Objects.nonNull(o) && !value().closedPeriod().isAfter(o)),
+                    "Closed period must be after the current closed period").bind(Assignment::closedPeriod, Assignment::closedPeriod);
             return form;
         }
     }
 
-    public AssignmentsView(@NotNull ProductsBoundedDomainUi domain,@NotNull Mode mode) {
+    public AssignmentsView(@NotNull ProductsBoundedDomainUi domain, @NotNull Mode mode) {
         super(Assignment.class, domain, domain.assignments(), mode);
         form(() -> new AssignmentForm(this, domain.domain().registry()));
         init();
@@ -73,7 +82,8 @@ class AssignmentsView extends EntityView<Assignment> {
     private void init() {
         initEntityView();
         var grid = grid();
-        grid.addColumn(Assignment::collaboratorId).setKey("collaboratorId").setHeader("Collaborator Id").setSortable(true).setAutoWidth(true).setResizable(true);
+        grid.addColumn(Assignment::collaboratorId).setKey("collaboratorId").setHeader("Collaborator Id").setSortable(true).setAutoWidth(true)
+            .setResizable(true);
         grid.addColumn(Assignment::closedPeriod).setKey("closedPeriod").setHeader("Closed Period").setSortable(true).setAutoWidth(true).setResizable(true);
     }
 }

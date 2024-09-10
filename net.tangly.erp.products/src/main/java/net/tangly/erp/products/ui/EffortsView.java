@@ -109,8 +109,8 @@ class EffortsView extends ItemView<Effort> {
      */
     static class EffortForm extends ItemForm<Effort, EffortsView> {
 
-        EffortForm(@NotNull EffortsView parent) {
-            super(parent);
+        EffortForm(@NotNull EffortsView view) {
+            super(view);
             addTabAt("details", details(), 0);
             addTabAt("text", textForm(), 1);
         }
@@ -212,7 +212,7 @@ class EffortsView extends ItemView<Effort> {
         }
 
         private boolean isRestrictedUser() {
-            return ApplicationView.user().accessRightsFor(parent().domain().name()).stream().anyMatch(o -> o.right() == AccessRightsCode.restrictedUser);
+            return ApplicationView.user().accessRightsFor(view().domain().name()).stream().anyMatch(o -> o.right() == AccessRightsCode.restrictedUser);
         }
 
         private String username() {
@@ -262,13 +262,13 @@ class EffortsView extends ItemView<Effort> {
         }
 
         private List<Assignment> assignmentFor(@NotNull String username, boolean active) {
-            return parent().domain().realm().assignments().items().stream()
+            return view().domain().realm().assignments().items().stream()
                 .filter(o -> (Strings.isNullOrBlank(username) || o.name().equals(username)) && (!active || o.range().isActive())).toList();
         }
 
         private List<String> usernamesFor(Assignment assignment, boolean restricted, boolean active) {
             return Objects.nonNull(assignment) ? List.of(assignment.name()) : restricted ? List.of(username()) :
-                parent().domain().realm().assignments().items().stream().filter(o -> !active || o.range().isActive()).map(Assignment::name).distinct().toList();
+                view().domain().realm().assignments().items().stream().filter(o -> !active || o.range().isActive()).map(Assignment::name).distinct().toList();
         }
     }
 

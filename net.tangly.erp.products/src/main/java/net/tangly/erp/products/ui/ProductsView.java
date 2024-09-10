@@ -31,8 +31,8 @@ import java.util.List;
 @PageTitle("products-products")
 class ProductsView extends EntityView<Product> {
     static class ProductForm extends MutableEntityForm<Product, ProductsView> {
-        public ProductForm(@NotNull ProductsView parent) {
-            super(parent, Product::new);
+        public ProductForm(@NotNull ProductsView view) {
+            super(view, Product::new);
             initEntityForm();
             addTabAt("details", details(), 1);
         }
