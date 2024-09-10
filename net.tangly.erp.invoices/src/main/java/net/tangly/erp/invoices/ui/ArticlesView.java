@@ -45,8 +45,8 @@ class ArticlesView extends ItemView<Article> {
     }
 
     static class ArticleForm extends ItemForm<Article, ArticlesView> {
-        ArticleForm(@NotNull ArticlesView parent) {
-            super(parent);
+        ArticleForm(@NotNull ArticlesView view) {
+            super(view);
             addTabAt("details", details(), 0);
         }
 

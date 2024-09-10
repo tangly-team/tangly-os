@@ -50,8 +50,8 @@ class NaturalEntitiesView extends EntityView<NaturalEntity> {
     static class NaturalEntityForm extends MutableEntityForm<NaturalEntity, NaturalEntitiesView> {
         private final Image image;
 
-        public NaturalEntityForm(@NotNull NaturalEntitiesView parent) {
-            super(parent, NaturalEntity::new);
+        public NaturalEntityForm(@NotNull NaturalEntitiesView view) {
+            super(view, NaturalEntity::new);
             image = new Image();
             image.setWidth(200, Unit.PIXELS);
             image.setHeight(200, Unit.PIXELS);

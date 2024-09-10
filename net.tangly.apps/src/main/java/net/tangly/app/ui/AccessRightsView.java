@@ -40,8 +40,8 @@ public class AccessRightsView extends ItemView<AccessRights> {
         private final TextField domain;
         private final ComboBox<AccessRightsCode> gender;
 
-        public AccessRightsForm(@NotNull AccessRightsView parent) {
-            super(parent);
+        public AccessRightsForm(@NotNull AccessRightsView view) {
+            super(view);
             username = VaadinUtils.createTextField("Username", "username");
             domain = VaadinUtils.createTextField("Domain", "domain");
             gender = ItemForm.createCodeField(CodeType.of(AccessRightsCode.class), "Gender");
@@ -65,7 +65,7 @@ public class AccessRightsView extends ItemView<AccessRights> {
         @Override
         protected AccessRights createOrUpdateInstance(AccessRights entity) {
             var rights = new AccessRights(username.getValue(), domain.getValue(), null);
-            parent().provider().replace(entity, rights);
+            view().provider().replace(entity, rights);
             return rights;
         }
 

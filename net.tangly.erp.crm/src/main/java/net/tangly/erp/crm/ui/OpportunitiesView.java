@@ -34,11 +34,11 @@ import java.math.BigDecimal;
 @PageTitle("crm-interactions")
 class OpportunitiesView extends EntityView<Opportunity> {
     static class InteractionForm extends MutableEntityForm<Opportunity, OpportunitiesView> {
-        protected InteractionForm(@NotNull OpportunitiesView parent) {
-            super(parent, Opportunity::new);
+        protected InteractionForm(@NotNull OpportunitiesView view) {
+            super(view, Opportunity::new);
             initEntityForm();
             addTabAt("details", details(), 1);
-            var activities = new One2ManyOwnedField<>(new ActivitiesView(parent.domainUi(), Mode.EDITABLE, true));
+            var activities = new One2ManyOwnedField<>(new ActivitiesView(view.domainUi(), Mode.EDITABLE, true));
             binder().bind(activities, Opportunity::activities, (o, v) -> o.activities(activities.generateModelValue()));
             addTabAt("activities", activities, 2);
         }
@@ -47,7 +47,7 @@ class OpportunitiesView extends EntityView<Opportunity> {
             var potential = new BigDecimalField("Potential", "potential");
             var probability = new BigDecimalField("Probability", "probability");
             var code = ItemForm.createCodeField(CodeType.of(OpportunityCode.class), "code");
-            var contact = new One2OneField<>("Contact", Employee.class, (parent().domain().realm().employees()));
+            var contact = new One2OneField<>("Contact", Employee.class, (view().domain().realm().employees()));
 
             FormLayout form = new FormLayout();
             form.add(potential, probability, code, contact);

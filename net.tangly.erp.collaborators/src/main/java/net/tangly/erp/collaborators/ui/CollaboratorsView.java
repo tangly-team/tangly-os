@@ -30,8 +30,8 @@ public class CollaboratorsView extends ItemView<Collaborator> {
         TextField internalId;
         AddressField address;
 
-        CollaboratorForm(@NotNull CollaboratorsView parent) {
-            super(parent);
+        CollaboratorForm(@NotNull CollaboratorsView view) {
+            super(view);
             id = VaadinUtils.createTextField("SSN", "ssn");
             oldSsn = VaadinUtils.createTextField("Old SSN", "old SSN");
             birthday = VaadinUtils.createDatePicker("Birthday");

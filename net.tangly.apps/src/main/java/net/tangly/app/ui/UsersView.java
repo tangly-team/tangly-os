@@ -48,8 +48,8 @@ class UsersView extends ItemView<User> {
         private final TextField naturalPersonId;
         private final One2ManyOwnedField<AccessRights> rights;
 
-        UserForm(@NotNull UsersView parent) {
-            super(parent);
+        UserForm(@NotNull UsersView view) {
+            super(view);
             image = new Image();
             image.setWidth(200, Unit.PIXELS);
             image.setHeight(200, Unit.PIXELS);
@@ -59,7 +59,7 @@ class UsersView extends ItemView<User> {
             gravatarEmail = VaadinUtils.createTextField("Gravatar Email", "gravatar email");
             active = new Checkbox("Active");
             naturalPersonId = VaadinUtils.createTextField("Person Id", "natural person id");
-            rights = new One2ManyOwnedField<>(new AccessRightsView(parent.domainUi(), Mode.EDITABLE));
+            rights = new One2ManyOwnedField<>(new AccessRightsView(view.domainUi(), Mode.EDITABLE));
             binder().bindReadOnly(rights, User::accessRights);
 
             addTabAt("details", details(), 0);

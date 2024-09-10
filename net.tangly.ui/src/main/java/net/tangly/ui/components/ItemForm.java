@@ -62,7 +62,7 @@ import java.util.Objects;
  */
 public abstract class ItemForm<T, U extends ItemView<T>> {
     private static final Logger logger = LogManager.getLogger();
-    private final U parent;
+    private final U view;
     private final Binder<T> binder;
     private final VerticalLayout formLayout;
     private final TabSheet tabSheet;
@@ -73,9 +73,9 @@ public abstract class ItemForm<T, U extends ItemView<T>> {
     private Operation operation;
     private Dialog dialog;
 
-    protected ItemForm(@NotNull U parent) {
-        this.parent = parent;
-        binder = new Binder<>(parent.entityClass());
+    protected ItemForm(@NotNull U view) {
+        this.view = view;
+        binder = new Binder<>(view.entityClass());
         operation = Operation.NONE;
         formLayout = new VerticalLayout();
         tabSheet = new TabSheet();
@@ -83,11 +83,11 @@ public abstract class ItemForm<T, U extends ItemView<T>> {
         tabSheet.addThemeVariants(TabSheetVariant.LUMO_TABS_SMALL);
 
         cancel = new Button("Cancel");
-        cancel.addClickListener(event -> closeForm());
+        cancel.addClickListener(_ -> closeForm());
         cancel.addClickShortcut(Key.ESCAPE);
         action = new Button();
         action.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
-        action.addClickListener(event -> {
+        action.addClickListener(_ -> {
             switch (operation) {
                 case EDIT, CREATE, DUPLICATE, REPLACE -> updateEntity();
                 case DELETE -> deleteEntity();
@@ -104,10 +104,11 @@ public abstract class ItemForm<T, U extends ItemView<T>> {
     /**
      * Creates a code combobox field with the specified code type and label.
      * The combobox is configured to display the code of the code type.
+     *
      * @param codeType type of the table code. It contains all code values
-     * @param label label of the combobox
+     * @param label    label of the combobox
+     * @param <T>      type of the code
      * @return a combobox field with the specified code type and label
-     * @param <T> type of the code
      */
     public static <T extends Code> ComboBox<T> createCodeField(@NotNull CodeType<T> codeType, @NotNull String label) {
         ComboBox<T> codeField = new ComboBox<>(label);
@@ -120,6 +121,7 @@ public abstract class ItemForm<T, U extends ItemView<T>> {
 
     /**
      * Creates a form with an AsciiDoc field to edit the text of the entity.
+     *
      * @param text field to edit the text of the entity
      * @return a form layout with the AsciiDoc field
      */
@@ -191,12 +193,12 @@ public abstract class ItemForm<T, U extends ItemView<T>> {
         return binder;
     }
 
-    protected U parent() {
-        return parent;
+    protected U view() {
+        return view;
     }
 
     protected Class<T> entityClass() {
-        return parent().entityClass();
+        return view().entityClass();
     }
 
     // region CRUD operations available through the popup menu
@@ -259,8 +261,8 @@ public abstract class ItemForm<T, U extends ItemView<T>> {
         operation(operation);
         action.setText(operation.confirmationText());
         value(value);
-        if (parent.isFormEmbedded()) {
-            parent.add(formLayout);
+        if (view.isFormEmbedded()) {
+            view.add(formLayout);
         } else {
             dialog = VaadinUtils.createDialog();
             dialog.add(formLayout);
@@ -273,7 +275,7 @@ public abstract class ItemForm<T, U extends ItemView<T>> {
             dialog.close();
             dialog = null;
         } else {
-            parent.remove(formLayout);
+            view.remove(formLayout);
         }
         value(null);
         clear();
@@ -329,10 +331,10 @@ public abstract class ItemForm<T, U extends ItemView<T>> {
         try {
             T entity = createOrUpdateInstance(value());
             if (Objects.nonNull(value()) && !Objects.equals(entity, value())) {
-                parent.provider().delete(value());
+                view.provider().delete(value());
             }
-            parent.provider().update(entity);
-            parent.dataView().refreshAll();
+            view.provider().update(entity);
+            view.dataView().refreshAll();
             return entity;
         } catch (ValidationException e) {
             logger.atError().log(e);
@@ -348,8 +350,8 @@ public abstract class ItemForm<T, U extends ItemView<T>> {
     protected T deleteEntity() {
         T deletedItem = value();
         if (Objects.nonNull(deletedItem)) {
-            parent.provider().delete(deletedItem);
-            parent.dataView().refreshAll();
+            view.provider().delete(deletedItem);
+            view.dataView().refreshAll();
         }
         return deletedItem;
     }

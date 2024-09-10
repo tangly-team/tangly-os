@@ -152,7 +152,7 @@ class TransactionsView extends ItemView<Transaction> {
         }
 
         LedgerBusinessLogic logic() {
-            return (LedgerBusinessLogic) parent().domain().logic();
+            return (LedgerBusinessLogic) view().domain().logic();
         }
     }
 

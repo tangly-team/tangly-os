@@ -39,8 +39,8 @@ class LegalEntitiesView extends EntityView<LegalEntity> {
      */
     static class LegalEntityForm extends MutableEntityForm<LegalEntity, LegalEntitiesView> {
 
-        public LegalEntityForm(@NotNull LegalEntitiesView parent) {
-            super(parent, LegalEntity::new);
+        public LegalEntityForm(@NotNull LegalEntitiesView view) {
+            super(view, LegalEntity::new);
             initEntityForm();
             addTabAt("details", details(), 1);
         }
@@ -58,7 +58,7 @@ class LegalEntitiesView extends EntityView<LegalEntity> {
 
         private CustomField<Collection<Employee>> employees() {
             return new One2ManyReferencesField<>(Employee.class,
-                ProviderView.of(parent().domain().realm().employees(), o -> value().oid() == o.organization().oid()));
+                ProviderView.of(view().domain().realm().employees(), o -> value().oid() == o.organization().oid()));
         }
     }
 

@@ -101,7 +101,7 @@ public class TagsView extends ItemView<Tag> {
         @Override
         public void value(Tag value) {
             if (Objects.nonNull(value)) {
-                name.setItems(parent().registry().tagNamesForNamespace(value.namespace()));
+                name.setItems(view().registry().tagNamesForNamespace(value.namespace()));
             }
             super.value(value);
         }
@@ -125,20 +125,20 @@ public class TagsView extends ItemView<Tag> {
         @Override
         protected Tag createOrUpdateInstance(Tag entity) {
             Tag tag = new Tag(namespace.getValue(), name.getValue(), value.getValue());
-            parent().provider().replace(entity, tag);
+            view().provider().replace(entity, tag);
             return tag;
         }
 
         private void init() {
             FormLayout layout = new FormLayout();
             namespace = new ComboBox<>(NAMESPACE);
-            namespace.setItems(parent().registry().namespaces());
+            namespace.setItems(view().registry().namespaces());
             namespace.setAllowCustomValue(false);
             namespace.addValueChangeListener(event -> {
                 this.name.clear();
                 deactivateValue();
                 if (Objects.nonNull(event.getValue())) {
-                    name.setItems(parent().registry().tagNamesForNamespace(event.getValue()));
+                    name.setItems(view().registry().tagNamesForNamespace(event.getValue()));
                 }
             });
             name = new ComboBox<>(NAME);
@@ -146,7 +146,7 @@ public class TagsView extends ItemView<Tag> {
             name.setAllowCustomValue(false);
             name.addValueChangeListener(event -> {
                 if (Objects.nonNull(event.getValue())) {
-                    activateValue(parent().registry().find(namespace.getValue(), name.getValue()).orElseThrow());
+                    activateValue(view().registry().find(namespace.getValue(), name.getValue()).orElseThrow());
                 }
             });
             value = new TextField(VALUE);

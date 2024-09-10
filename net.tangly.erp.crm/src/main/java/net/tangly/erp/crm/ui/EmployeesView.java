@@ -37,8 +37,8 @@ class EmployeesView extends EntityView<Employee> {
         }
 
         private FormLayout details() {
-            One2OneField<LegalEntity> organization = new One2OneField<>("Organization", LegalEntity.class, parent().domain().realm().legalEntities());
-            One2OneField<NaturalEntity> person = new One2OneField<>("Person", NaturalEntity.class, parent().domain().realm().naturalEntities());
+            One2OneField<LegalEntity> organization = new One2OneField<>("Organization", LegalEntity.class, view().domain().realm().legalEntities());
+            One2OneField<NaturalEntity> person = new One2OneField<>("Person", NaturalEntity.class, view().domain().realm().naturalEntities());
             FormLayout form = new FormLayout();
             form.add(person);
             form.add(new HtmlComponent("br"));

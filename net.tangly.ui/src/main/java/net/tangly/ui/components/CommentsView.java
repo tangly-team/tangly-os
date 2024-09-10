@@ -109,7 +109,7 @@ public class CommentsView extends ItemView<Comment> {
         @Override
         protected Comment createOrUpdateInstance(Comment entity) {
             Comment comment = Comment.of(author.getValue(), text.getValue());
-            parent().provider().replace(entity, comment);
+            view().provider().replace(entity, comment);
             return comment;
         }
 

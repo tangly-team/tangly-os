@@ -52,8 +52,8 @@ class ContractsView extends EntityView<Contract> {
             currency.setLabel("Currency");
             currency.setItems(Currency.getInstance("CHF"), Currency.getInstance("EUR"));
 
-            One2OneField<LegalEntity> seller = new One2OneField<>("Seller", LegalEntity.class, parent().domain().realm().legalEntities());
-            One2OneField<LegalEntity> sellee = new One2OneField<>("Sellee", LegalEntity.class, parent().domain().realm().legalEntities());
+            One2OneField<LegalEntity> seller = new One2OneField<>("Seller", LegalEntity.class, view().domain().realm().legalEntities());
+            One2OneField<LegalEntity> sellee = new One2OneField<>("Sellee", LegalEntity.class, view().domain().realm().legalEntities());
 
             var form = new FormLayout();
             form.add(bankConnection, locale, currency);
@@ -70,7 +70,7 @@ class ContractsView extends EntityView<Contract> {
 
         private One2ManyOwnedField<ContractExtension> extensions() {
             One2ManyOwnedField<ContractExtension> extensions =
-                new One2ManyOwnedField<>(new ContractExtensionsView((CrmBoundedDomainUi) parent().domainUi(), Mode.EDITABLE));
+                new One2ManyOwnedField<>(new ContractExtensionsView((CrmBoundedDomainUi) view().domainUi(), Mode.EDITABLE));
             binder().bind(extensions, Contract::contractExtensions, (o, v) -> o.contractExtensions(extensions.generateModelValue()));
             return extensions;
         }

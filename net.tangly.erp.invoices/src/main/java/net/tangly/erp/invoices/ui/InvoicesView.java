@@ -46,8 +46,8 @@ class InvoicesView extends ItemView<Invoice> {
     static class InvoiceForm extends ItemForm<Invoice, InvoicesView> {
         private final Grid<InvoiceLine> invoiceLines;
 
-        InvoiceForm(@NotNull InvoicesView parent) {
-            super(parent);
+        InvoiceForm(@NotNull InvoicesView view) {
+            super(view);
             invoiceLines = invoiceLines();
             addTabAt("details", details(), 0);
             addTabAt("lines", invoiceLines(), 1);

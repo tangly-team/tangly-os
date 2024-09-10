@@ -60,8 +60,8 @@ public class LeadsView extends ItemView<Lead> {
         private ComboBox<ActivityCode> activityCode;
         private AsciiDocField text;
 
-        public LeadForm(@NotNull LeadsView parent) {
-            super(parent);
+        public LeadForm(@NotNull LeadsView view) {
+            super(view);
             addTabAt("details", details(), 0);
             addTabAt("text", textForm(text), 1);
         }
