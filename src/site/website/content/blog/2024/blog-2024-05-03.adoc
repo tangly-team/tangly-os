@@ -29,7 +29,7 @@ My passion is tinkering with source code to have a maintainable and efficient so
 I love to work with other developers and to coach them to become better software engineers.
 Some of the products I developed last millennium are still in use today.
 
-I love technology and work to improve live quality for humanity
+I love technology and I work to improve live quality for humanity
 footnote:[I can buy all my public transportation tickets with my mobile phone.
 Or I can just swipe my phone and ride the bus or train.
 The application will track my movements and select the cheapest ticket for the commute.
@@ -54,7 +54,7 @@ And it saves trees and ink because nobody prints maps anymore.
 == Software Engineer
 
 I found out the only drawback of my job in Switzerland is the age discrimination.
-It is challenging to get hired as a software developer when you are older than fifty years.
+It is challenging to get hired as a software developer when you are more than fifty years old.
 I am now sixty years old.
 The Swiss companies are bigots and prefer to hire young people.
 
@@ -76,8 +76,8 @@ My productivity is much higher than it was in the last millennium.
 
 I use the Java technical stack for almost all my development activities.
 I mostly develop internal and management applications.
-{ref-vaadin} is my preferred technology for writing user interface.
-I wrote all the user interface code in plain Java for modern browser based solutions.
+{ref-vaadin} is my preferred technology for creating user interface.
+I wrote all the user interface code in plain Java for modern browser-based solutions.
 
 == Teacher and Coach
 
@@ -85,7 +85,7 @@ I regularly complain that quite a few software developers are not well-trained.
 Often they are not aware of the latest software engineering practices and idioms of their preferred programming language.
 
 I have therefore to actively initiate a change.
-I love to teach students at technical universities and coach software engineers
+I love to teach students at technical universities and coach software engineers.
 
 Teaching is a beautiful and rewarding activity.
 But it is sometimes frustrating.
@@ -113,7 +113,7 @@ A professional software engineer considers the impact of the product on society 
 He has a sense of responsibility and ethics.
 Legal constraints are not a hindrance but a challenge to overcome.
 - Financial considerations to ensure that _you create a sellable product_.
-Software developers often underestimate or ignore The financial aspects.
+Software developers often underestimate or ignore the financial aspects.
 
 I thrive in the entrepreneurial aspects of financial and legal constraints necessary for a successful product
 cite:[awakening-the-entrepreneur-within].

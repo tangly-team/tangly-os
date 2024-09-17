@@ -127,7 +127,7 @@ The temporal range when an entity is active.
 The start date or the end date of the scope can be optional. +
 _An example is the start and end of a collaborator work contract An active work contract has a start date but no end date._
 _Another interesting temporal range is the validity range of currencies.
-The introduction of the Euro was the end of quite a few currencies_
+The introduction of the Euro was the end of quite a few currencies._
 
 Our open-source library provides a mixin for each of these temporal concepts.
 The below interfaces are for read-only access to the identity information.
@@ -165,8 +165,8 @@ Codes::
 Codes define a customer-specific enumeration type.
 The values are configurable and expandable
 footnote:[Values for a code can be defined in a JSON file or in an SQL database.].
-The signification of the code is hard-coded in the software.
-The value set is customer-specific.
+The signification of a code type is hard-coded in the software.
+The set of values for a code type is customer-specific.
 Tags::
 Tags define a customer-specific ontology to classify entities in their system.
 Tags without value are equivalent to labels.
@@ -220,14 +220,18 @@ The entity abstraction wraps the above mixins and introduces the concept of vali
 ----
 package net.tangly.core;
 
-interface Entity extends HasOid, HasId, HasName, HasText, HasTimeInterval, HasTags, HasComments {
+interface Entity extends HasOid, HasId, HasName, HasText, HasTimeInterval, HasTags, HasComments {     // <1>
     boolean validate();
 }
 
-interface MutableEntity extends Entity, HasMutableName, HasMutableText, HasMutableTimeInterval,
+interface MutableEntity extends Entity, HasMutableName, HasMutableText, HasMutableTimeInterval,      // <2>
     HasMutableTags, HasMutableComments {
 }
 ----
+
+<1> The entity interface defines the basic properties of a value entity.
+A concrete implementation of an entity can be a Java record.
+<2> The mutable entity interface extends the entity interface with the mutable properties of a value entity.
 
 An excerpt of the provided mixins is displayed below.
 Documentation for the core library is available {ref-tangly-blog-url}/docs/core/[Core Library].

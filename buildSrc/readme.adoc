@@ -1,8 +1,11 @@
-= Purpose
+= Build Process
+
+== Purpose
 
 The definition of plugins to configure a multimodule Gradle project uses the current good practices for a Gradle project.
 
 We use the newer central configuration feature for all plugins and libraries used in the project.
+The configuration file is `libs.versions.toml`.
 
 == Convention Plugins
 
@@ -29,14 +32,32 @@ The set of Gradle command line special commands we seldom use:
 
 == Tips
 
-To execute the zsh profile commands you shall run `source ~/.zshrc`.
+To update the zsh profile commands you shall run `source ~/.zshrc`.
 
 == Release Process
 
+We use a monorepo to manage the source code of the libraries and the example application.
+All libraries are released and published together on the maven central repository.
+
+. push to GitHub and verify the build on the CI server
 . `git commit -m "Release X"`
 . `git tag -a "tangly-os-X" -m "official release published on maven central"`
 . `git push origin --tags`
 . `./gradlew publishMavenJavaPublicationToMavenRepository`
+
+[TIP]
+====
+Verify first that the example application runs correctly with the new artifacts.
+
+. Publish artifacts to the local maven repository `./gradlew publishMavenJavaPublicationToMavenLocal`
+. Update the https://github.com/tangly-team/tangly-app-example[tangly App Example].
+Update the artifacts in the build.gradle file to the latest version.
+. Verify the application runs correctly with the new artifacts.
+
+Upon releasing the new version of the libraries, you have to wait until the artifacts are available on the maven central repository.
+Once the artifacts are available, you can push the new version of the example application to the GitHub repository.
+It triggers the CI/CD pipeline.
+====
 
 You can check the release on the maven central repository under https://repo1.maven.org/maven2/net/tangly[net.tangly].
 The search index takes a few hours to be updated.
@@ -51,10 +72,10 @@ Search the component in
 
 You must create a gradle `~/.gradle/gradle.properties` file with the following content:
 
-[code, properties]
+[code,properties]
 ----
-avenCentralUsername=*Value*
+mavenCentralUsername=*Value*
 mavenCentralPassword=*Value*
 ----
 
-The build process of the gradle build file requires these variables.
+The build process of the Gradle build file requires these variables to run without errors.

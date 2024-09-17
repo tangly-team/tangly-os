@@ -22,7 +22,6 @@ import net.tangly.ui.components.Mode;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Displays all tags and their usage, often used for administrative information for a bounded domain.
@@ -30,22 +29,21 @@ import java.util.Map;
 public class TagTypesView extends ItemView<TagType> {
     public static final String NAMESPACE = "namespace";
     public static final String NAMESPACE_LABEL = "Namespace";
-    public static final String NAME = "name";
-    public static final String NAME_LABEL = " Name";
     private final transient HashMap<TagType<?>, Integer> counts;
 
     public TagTypesView(@NotNull BoundedDomainUi<?> domain) {
         super(TagType.class, domain, ProviderInMemory.of(domain.domain().registry().tagTypes()), new TagTypeFilter(), Mode.LIST);
         this.counts = new HashMap<>();
         init();
+        update();
     }
 
     private void init() {
         var grid = grid();
         grid.addColumn(TagType::namespace).setKey(NAMESPACE).setHeader(NAMESPACE_LABEL).setSortable(true).setAutoWidth(true).setResizable(true);
-        grid.addColumn(TagType::name).setKey(NAME).setHeader("Name").setSortable(true).setAutoWidth(true).setResizable(true);
+        grid.addColumn(TagType::name).setKey(NAME).setHeader(NAME_LABEL).setSortable(true).setAutoWidth(true).setResizable(true);
         grid.addColumn(TagType::canHaveValue).setKey("canHaveValue").setHeader("Can Have Value").setSortable(true).setAutoWidth(true).setResizable(true);
-        grid.addColumn(TagType::kind).setKey("Kind").setHeader("Kind").setSortable(true).setAutoWidth(true).setResizable(true);
+        grid.addColumn(TagType::kind).setKey("kind").setHeader("Kind").setSortable(true).setAutoWidth(true).setResizable(true);
         grid.addColumn(e -> e.clazz().getSimpleName()).setKey("valueType").setHeader("Value Type").setSortable(true).setAutoWidth(true).setResizable(true);
         grid.addColumn(this::count).setKey("count").setHeader("Count").setSortable(true).setAutoWidth(true).setResizable(true);
 
@@ -59,7 +57,7 @@ public class TagTypesView extends ItemView<TagType> {
     @Override
     protected void addActions(@NotNull GridMenu<TagType> menu) {
         super.addActions(menu);
-        menu().add("Count Tags", e -> update(this.domain().countTags(new HashMap<>())), GridMenu.MenuItemType.GLOBAL);
+        menu().add("Count Tags", e -> update(), GridMenu.MenuItemType.GLOBAL);
     }
 
     static class TagTypeFilter extends ItemFilter<TagType> {
@@ -85,9 +83,9 @@ public class TagTypesView extends ItemView<TagType> {
         }
     }
 
-    public void update(@NotNull Map<TagType<?>, Integer> counts) {
+    private void update() {
         this.counts.clear();
-        this.counts.putAll(counts);
+        this.domain().countTags(counts);
         grid().getDataProvider().refreshAll();
     }
 
