@@ -33,12 +33,12 @@ import java.util.*;
  */
 public class Invoice implements HasMutableId, HasMutableName, HasMutableDate, HasMutableText {
     /**
-     * The identifier is the unique external identifier of the invoice used in the accounting, banking and tracking systems.
+     * The identifier is the unique external identifier of the invoice used in the accounting, banking, and tracking systems.
      */
     private String id;
 
     /**
-     * The name is a human-readable identifier of the invoice. The name is also used as file name if the invoice is stored in a JSON file or an artifact is generated. Humans can
+     * The name is a human-readable identifier of the invoice. The name is also used as a file name if the invoice is stored in a JSON file or an artifact is generated. Humans can
      * associate the invoice with the various artifacts generated out of it.
      */
     public String name;
@@ -61,7 +61,7 @@ public class Invoice implements HasMutableId, HasMutableName, HasMutableDate, Ha
 
     /**
      * Currency of the invoice. We do not support multi-currency invoices. Please create one invoice for each currency. The decision is logical due to the complexities of handling
-     * value added taxes and exchange rates.
+     *  value-added taxes and exchange rates.
      */
     private Currency currency;
 

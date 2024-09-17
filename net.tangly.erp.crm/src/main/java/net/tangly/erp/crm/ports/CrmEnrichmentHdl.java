@@ -85,12 +85,10 @@ public class CrmEnrichmentHdl {
             if (homeEmail.isPresent()) {
                 person = realm.naturalEntities().findBy(o -> o.email(VcardType.home).orElse(null), homeEmail.get());
             }
-            person.ifPresent(o -> {
-                photo.ifPresent(p -> {
-                    o.photo(p);
-                    realm.naturalEntities().update(o);
-                });
-            });
+            person.ifPresent(o -> photo.ifPresent(p -> {
+                o.photo(p);
+                realm.naturalEntities().update(o);
+            }));
         } catch (IOException e) {
             throw new UncheckedIOException(e);
         } catch (ParserException e) {
@@ -103,7 +101,6 @@ public class CrmEnrichmentHdl {
      *
      * @param entity      natural entity which picture should be updated
      * @param picturesDir the folder containing LinkedIn pictures. The name of the picture is the LinkedIn profile name
-     * @return the best found picture if found otherwise an empty optional
      */
     private void updatePhoto(@NotNull NaturalEntity entity, @NotNull Path picturesDir) {
         Optional<Tag> tag = entity.findBy(CrmTags.CRM_IM_LINKEDIN);

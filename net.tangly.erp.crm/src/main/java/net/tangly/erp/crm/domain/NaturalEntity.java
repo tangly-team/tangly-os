@@ -22,7 +22,7 @@ import java.util.Optional;
 
 /**
  * A natural entity is a person. A natural entity has an identity defined as the legal number of a person (e.g., the social security number, a name defined as the last name and the
- * first name separated by a comma, a life duration and a text describing him or her.
+ * first name separated by a comma, a life duration, and a text describing him or her.
  * <p>A potential approach for a natural person identification is ISO 24366.</p>
  * <p>The attributes of a natural entity shall specify private or home capabilities. Work related information shall be stored in an employee entity to acknowledge the situation
  * when a person has multiple employment relations. </p>
@@ -57,7 +57,7 @@ public class NaturalEntity extends MutableEntityExtendedImp implements MutableEn
     }
 
     public String fullname() {
-        return "%s%s".formatted(name(), (firstname() != null) ? ", " + firstname() : "");
+        return "%s%s".formatted(name(), (firstname() != null) ? ", %s".formatted(firstname()) : "");
     }
 
     public GenderCode gender() {

@@ -17,7 +17,7 @@ import net.tangly.core.codes.Code;
 
 /**
  * Defines the phases of an opportunity between the seller and sellee organizations. An opportunity is first a prospect, can evolve to lead, customer, and
- * completed contract or instead can be lost.
+ * completed contract, or instead can be lost.
  * <dl>
  *     <dt>prospect</dt><dd>a contact was established and activities are initiated.</dd>
  *     <dt>lead</dt><dd>activities are pursued to create a contract with a legal entity.</dd>

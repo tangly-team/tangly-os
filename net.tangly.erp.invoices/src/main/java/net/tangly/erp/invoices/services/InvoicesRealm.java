@@ -23,7 +23,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 
 /**
- * Handles the invoices subsystem entities. A realm provides access to the instances of the CRM abstractions. The major abstractions are:
+ * Handles the invoices' subsystem entities. A realm provides access to the instances of the CRM abstractions. The major abstractions are:
  * <ul>
  *     <li>Invoices are legal entity invoices</li>
  * </ul>
@@ -33,7 +33,7 @@ public interface InvoicesRealm extends Realm {
 
     Provider<Article> articles();
 
-    public Provider<Document> documents();
+    Provider<Document> documents();
 
     default List<Invoice> invoicesFor(@NotNull String contractId) {
         return invoices().items().stream().filter(o -> contractId.equals(o.contractId())).toList();

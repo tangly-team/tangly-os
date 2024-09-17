@@ -74,7 +74,7 @@ public class InvoicesTsvJsonHdl {
         var invoiceJson = new InvoiceJson(realm);
         var invoice = invoiceJson.imports(audit, reader, source);
         if ((invoice != null) && invoice.check()) {
-            // locale is not a mandatory field and default locale is English
+            // locale is not a mandatory field and the default locale is English
             if (Objects.isNull(invoice.locale())) {
                 invoice.locale(Locale.ENGLISH);
             }

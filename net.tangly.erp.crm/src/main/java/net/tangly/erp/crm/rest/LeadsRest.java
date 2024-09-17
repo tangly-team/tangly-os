@@ -32,10 +32,10 @@ public class LeadsRest {
 
     public void registerEndPoints(@NotNull Javalin javalin) {
         javalin.get(PREFIX, this::getAll);
-        javalin.get(PREFIX + "/id", this::getById);
+        javalin.get("%s/id".formatted(PREFIX), this::getById);
         javalin.put(PREFIX, this::create);
-        javalin.patch(PREFIX + "/id", this::update);
-        javalin.delete(PREFIX + "/id", this::delete);
+        javalin.patch("%s/id".formatted(PREFIX), this::update);
+        javalin.delete("%s/id".formatted(PREFIX), this::delete);
     }
 
     @OpenApi(
@@ -67,7 +67,7 @@ public class LeadsRest {
     )
     private void getById(Context ctx) {
         String id = ctx.pathParam("id");
-        leads().findBy(Lead::linkedIn, id).ifPresentOrElse(entity -> ctx.json(entity), () -> ctx.status(404));
+        leads().findBy(Lead::linkedIn, id).ifPresentOrElse(ctx::json, () -> ctx.status(404));
     }
 
     @OpenApi(

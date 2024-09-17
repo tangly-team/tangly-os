@@ -274,22 +274,7 @@ public class InvoiceZugFerd implements IExportableTransaction, DocumentGenerator
     }
 
     @Override
-    public IZUGFeRDAllowanceCharge[] getZFAllowances() {
-        return null;
-    }
-
-    @Override
-    public IZUGFeRDAllowanceCharge[] getZFCharges() {
-        return null;
-    }
-
-    @Override
     public IZUGFeRDExportableItem[] getZFItems() {
         return invoice.items().stream().map(Item::new).toList().toArray(new Item[0]);
-    }
-
-    @Override
-    public IZUGFeRDAllowanceCharge[] getZFLogisticsServiceCharges() {
-        return null;
     }
 }

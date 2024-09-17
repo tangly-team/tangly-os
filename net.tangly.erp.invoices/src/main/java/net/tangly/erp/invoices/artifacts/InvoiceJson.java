@@ -82,7 +82,7 @@ public class InvoiceJson implements DocumentGenerator<Invoice> {
             if (ValidatorUtilities.isJsonValid(new StringReader(jsonString), INVOICE_SCHEMA_FILE)) {
                 var jsonInvoice = new JSONObject(new JSONTokener(new StringReader(jsonString)));
                 // TODO validate article information: E article id exist, E article price is correct, W article unit, W article text is correct
-                // should be a seperate validation method going through the JSON array and checking for item containing an article if consistent
+                // should be a separate validation method going through the JSON array and checking for item containing an article if consistent
                 invoice = entity.imports(jsonInvoice);
                 if (!invoice.check()) {
                     logger.atInfo().log("Invoice {} has an invalid check", invoice.name());

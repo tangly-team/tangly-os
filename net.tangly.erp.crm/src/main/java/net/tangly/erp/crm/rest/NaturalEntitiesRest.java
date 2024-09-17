@@ -54,16 +54,16 @@ public class NaturalEntitiesRest {
 
     public void registerEndPoints(@NotNull Javalin javalin) {
         javalin.get(PREFIX, this::getAll);
-        javalin.get(PREFIX + "/id", this::getById);
+        javalin.get("%s/id".formatted(PREFIX), this::getById);
         javalin.put(PREFIX, this::create);
-        javalin.patch(PREFIX + "/id", this::update);
-        javalin.delete(PREFIX + "/id", this::delete);
+        javalin.patch("%s/id".formatted(PREFIX), this::update);
+        javalin.delete("%s/id".formatted(PREFIX), this::delete);
     }
 
     @OpenApi(summary = "Get all natural entities", operationId = "getAllNaturalEntities", path = "/customers/natural-entities", methods = HttpMethod.GET, tags = {
         "NaturalEntities"}, responses = {@OpenApiResponse(status = "200", content = {@OpenApiContent(from = NaturalEntityView[].class)})})
     private void getAll(Context ctx) {
-        ctx.json(naturalEntities().items().stream().map(o -> NaturalEntityView.of(o)).toList());
+        ctx.json(naturalEntities().items().stream().map(NaturalEntityView::of).toList());
     }
 
     @OpenApi(
@@ -96,7 +96,8 @@ public class NaturalEntitiesRest {
         Provider.findById(naturalEntities(), id).ifPresentOrElse(o -> naturalEntities().update(updated.update(o)), () -> ctx.status(404));
     }
 
-    @OpenApi(summary = "delete a natural entity by email", operationId = "deletaNaturalEntityByEmail", path = "/customers/natural-entities/:email", methods = HttpMethod.DELETE, pathParams = {
+    @OpenApi(summary = "delete a natural entity by email", operationId = "deleteNaturalEntityByEmail", path = "/customers/natural-entities/:email", methods =
+        HttpMethod.DELETE, pathParams = {
         @OpenApiParam(name = "email", required = true, type = String.class, description = "The entity private email address")}, tags = {
         "NaturalEntities"}, responses = {@OpenApiResponse(status = "204"),
         @OpenApiResponse(status = "400"),

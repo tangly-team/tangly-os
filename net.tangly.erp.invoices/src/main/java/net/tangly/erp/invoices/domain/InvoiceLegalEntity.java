@@ -28,7 +28,7 @@ import org.jetbrains.annotations.NotNull;
  * search platform to find out that the identifier of a company is.</p>
  *
  * @param id      identifier of the legal entity as defined the register of legal organization for the related geographical entity
- * @param name    name of the entity as human-readable name
+ * @param name    name of the entity as a human-readable name
  * @param vatNr   VAT number of the legal entity if defined
  * @param address legal address of the entity
  * @param email   email defining the target point to send electronic information to the legal entity

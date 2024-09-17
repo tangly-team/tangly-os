@@ -61,12 +61,12 @@ public class InvoiceAsciiDoc implements DocumentGenerator<Invoice> {
     public void export(@NotNull Invoice invoice, boolean overwrite, @NonNull Path document, @NotNull DomainAudit audit) {
         try (PrintWriter writer = new PrintWriter(Files.newOutputStream(document), true, StandardCharsets.UTF_8)) {
             var helper = new AsciiDocHelper(writer);
-            writer.println(":organization: " + properties.getProperty(ORGANIZATION_NAME_KEY));
-            writer.println(":copyright: " + "Lorzenhof 27, 6330 Cham");
-            writer.println(":pdf-themesdir: " + properties.getProperty(THEME_PATH_KEY));
+            writer.printf(":organization: %s%n", properties.getProperty(ORGANIZATION_NAME_KEY));
+            writer.printf(":copyright: Lorzenhof 27, 6330 Cham%n");
+            writer.printf(":pdf-themesdir: %s%n", properties.getProperty(THEME_PATH_KEY));
             writer.println(":pdf-theme: tenant");
             writer.println();
-            writer.println("image::" + properties.getProperty(LOGO_PATH_KEY) + "/tenant-logo.svg[80,80,align=\"center\"]");
+            writer.printf("image::%s/tenant-logo.svg[80,80,align=\"center\"]%n", properties.getProperty(LOGO_PATH_KEY));
             writer.println();
             helper.header(bundle.getString("invoice"), 2);
 

@@ -62,7 +62,7 @@ public class LegalEntitiesRest {
         }
     )
     private void getAll(@NotNull Context ctx) {
-        ctx.json(legalEntities().items().stream().map(o -> LegalEntityView.of(o)).toList());
+        ctx.json(legalEntities().items().stream().map(LegalEntityView::of).toList());
     }
 
     @OpenApi(

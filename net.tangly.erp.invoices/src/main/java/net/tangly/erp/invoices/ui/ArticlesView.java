@@ -32,7 +32,7 @@ import net.tangly.ui.components.VaadinUtils;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * Regular CRUD view on articles abstraction. The grid and edition dialog wre optimized for usability.
+ * Regular CRUD view on articles abstraction. The grid and edition dialog are optimized for usability.
  */
 @PageTitle("invoices-activities")
 class ArticlesView extends ItemView<Article> {

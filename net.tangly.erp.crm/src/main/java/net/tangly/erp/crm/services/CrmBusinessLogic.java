@@ -23,7 +23,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 
 /**
- * The business logic and rules of the bounded domain of CRM entities.
+ * The business logic and rules of the bounded domain for CRM entities.
  */
 public class CrmBusinessLogic {
     private final CrmRealm realm;
