@@ -17,10 +17,10 @@ import com.vaadin.flow.component.Html;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 
 import java.io.IOException;
-import java.net.URISyntaxException;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 
 public class UserManualView extends HorizontalLayout implements View {
     public static final String USER_MANUAL = "user-manual.html";
@@ -30,14 +30,17 @@ public class UserManualView extends HorizontalLayout implements View {
         this.domain = domain;
         try {
 
-            Path path = Path.of(domain.domain().directory().resources(domain.name()), USER_MANUAL);
-            if (!Files.exists(path)) {
-                path = Paths.get(getClass().getClassLoader().getResource(USER_MANUAL).toURI());
-            }
-            String html = Files.readString(path);
-            add(new Html(html));
+            Path path = Path.of(domain.domain().directory().resources(domain.name()), userManual());
+            String html;
+            if (Files.exists(path)) {
+                html = Files.readString(path);
+            } else {
+                try (InputStream in = domain.domain().getClass().getResourceAsStream("/%s".formatted(userManual()))) {
+                    html = new String(in.readAllBytes(), StandardCharsets.UTF_8);
+                }
+            } add(new Html(html));
             setSizeFull();
-        } catch (IOException | URISyntaxException e) {
+        } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
@@ -53,5 +56,9 @@ public class UserManualView extends HorizontalLayout implements View {
 
     @Override
     public void refresh() {
+    }
+
+    private String userManual() {
+        return "%s-%s".formatted(domain.name(), USER_MANUAL);
     }
 }
