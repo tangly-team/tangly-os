@@ -1,6 +1,33 @@
+<span>
 <h1>User Manual</h1>
 <h2>Tenant</h2>
 <h2>Authentication and Authorization</h2>
 <h2>Directory Services</h2>
 <h2>Configuration</h2>
+Each tenant has a configuration file in the folder <emp>_tenants</emp>,
+The tenant properties are:
+
+<dl>
+    <dt><tenant.id/dt>
+    <dd>identifier of the tenant. It is used in the login process to identify the tenant the user wants to log in.</dd>
+<dt>tenant.in-memory</dt><dd>Flag indicating if the imported and inputed data are persisted or not.</dd>
+<dt>tenant.root.directory</dt><dd>The root directory of the tenant. Per convention, it is <em>tenant-tenant_id</em></dd>
+<dt>tenant.root.db.directory</dt><dd>The root directory of the databases of the tenant. Per convention, it is <em>tenant-tenant_id/db</em>.
+Each domain should have a subfolder named after the domain name.</dd>
+<dt>tenant.root.imports.directory</dt><dd>
+    The root directory of the databases of the tenant. Per convention, it is <em>tenant-tenant_id/data/</em>.
+    Each domain should have a subfolder named after the domain name.
+</dd>
+<dt>tenant.root.docs.directory</dt><dd>
+    The root directory of the databases of the tenant. Per convention, it is <em>tenant-tenant_id/docs/</em>.
+    Each domain should have a subfolder named after the domain name.
+</dd>
+<dt>tenant.archive.directory</dt><dd>
+    The root directory of the archives of the tenant. Per convention, it is <em>archives/tenant-tenant_id/</em>.
+    Each domain should have a subfolder named after the domain name.
+</dd>
+</dl>
+
+Additional properties can be defined for the tenant and for each domain.
 <h2>Backup and Archiving</h2>
+</span>
