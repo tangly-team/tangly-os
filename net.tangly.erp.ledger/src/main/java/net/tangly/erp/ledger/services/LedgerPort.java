@@ -18,6 +18,7 @@ import net.tangly.core.domain.DomainAudit;
 import net.tangly.core.domain.Port;
 import org.jetbrains.annotations.NotNull;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Collection;
 
@@ -40,8 +41,21 @@ public interface LedgerPort extends Port<LedgerRealm> {
      * @param tags                 tags to be associated with the document
      * @param audit                audit information for the document
      */
-    public void exportLedgerDocument(String name, LocalDate from, LocalDate to, boolean withBalanceSheet, boolean withProfitsAndLosses,
-                                     boolean withEmptyAccounts, boolean withTransactions, boolean withVat, String text, Collection<Tag> tags,
-                                     @NotNull DomainAudit audit);
+    void exportLedgerDocument(String name, LocalDate from, LocalDate to, boolean withBalanceSheet, boolean withProfitsAndLosses,
+                              boolean withEmptyAccounts, boolean withTransactions, boolean withVat, String text, Collection<Tag> tags,
+                              @NotNull DomainAudit audit);
 
+    record Segment(String name, LocalDate from, LocalDate to, BigDecimal amount) {
+    }
+
+    /**
+     * Computes all segments of a code for a specific time interval.
+     * <p>If the transaction is VAT relevant, the effective amount is used to compute the amount.</p>
+     *
+     * @param code the code for which the segments should be computed. Examples are <emp>project</emp> and <emp>segment</emp>.
+     * @param from start of the time interval relevant for the report
+     * @param to   end of the time interval relevant for the report
+     * @return the list of segments for the code in the time interval
+     */
+    Collection<Segment> computeSegments(String code, LocalDate from, LocalDate to);
 }

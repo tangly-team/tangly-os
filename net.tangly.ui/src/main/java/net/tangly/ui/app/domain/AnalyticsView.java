@@ -127,9 +127,9 @@ public abstract class AnalyticsView extends VerticalLayout implements View {
     protected void refresh(SOChart chart, @NotNull Consumer<SOChart> populate) {
         try {
             if (Objects.nonNull(chart)) {
-                chart.update(false);
+                chart.clear();
                 populate.accept(chart);
-                chart.update(false);
+                chart.update();
             }
         } catch (Exception e) {
             logger.atError().withThrowable(e).log("Error when updating SO charts");

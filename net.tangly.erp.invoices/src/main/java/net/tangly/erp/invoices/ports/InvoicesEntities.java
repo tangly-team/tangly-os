@@ -71,11 +71,6 @@ public class InvoicesEntities implements InvoicesRealm {
         legalEntities = ProviderInMemory.of(data.legalEntities);
         documents = ProviderHasId.of(data.documents);
     }
-
-    public void storeRoot() {
-        storageManager.storeRoot();
-    }
-
     @Override
     public Provider<Article> articles() {
         return this.articles;

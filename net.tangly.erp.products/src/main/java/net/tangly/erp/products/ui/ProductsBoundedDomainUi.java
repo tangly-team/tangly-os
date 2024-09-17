@@ -28,10 +28,7 @@ import net.tangly.erp.products.domain.Effort;
 import net.tangly.erp.products.domain.Product;
 import net.tangly.erp.products.domain.WorkContract;
 import net.tangly.erp.products.services.ProductsBoundedDomain;
-import net.tangly.ui.app.domain.BoundedDomainUi;
-import net.tangly.ui.app.domain.DocumentsView;
-import net.tangly.ui.app.domain.DomainView;
-import net.tangly.ui.app.domain.View;
+import net.tangly.ui.app.domain.*;
 import net.tangly.ui.components.Mode;
 import org.jetbrains.annotations.NotNull;
 
@@ -53,6 +50,7 @@ public class ProductsBoundedDomainUi extends BoundedDomainUi<ProductsBoundedDoma
         addView(Effort.class, new LazyReference<>(() -> new EffortsView(this, Mode.EDITABLE)));
         addView(Document.class, new LazyReference<>(() -> new DocumentsView(this, domain().realm().documents(), Mode.EDITABLE)));
         addView(DomainEntity.class, new LazyReference<>(() -> new DomainView(this)));
+        addView(UserManualView.class, new LazyReference<>(() -> new UserManualView(this)));
         currentView(view(Product.class).orElseThrow());
         domain.subscribeInternally(this);
     }
@@ -80,7 +78,10 @@ public class ProductsBoundedDomainUi extends BoundedDomainUi<ProductsBoundedDoma
         subMenu.addItem(EFFORTS, _ -> select(layout, view(Effort.class).orElseThrow()));
         subMenu.addItem(DOCUMENTS, e -> select(layout, view(Document.class).orElseThrow()));
 
-        addAdministration(layout, menuBar, view(DomainEntity.class).orElseThrow());
+        menuItem = menuBar.addItem(TOOLS);
+        subMenu = menuItem.getSubMenu();
+        subMenu.addItem(USER_MANUAL, _ -> select(layout, view(UserManualView.class).orElseThrow()));
+        addAdministration(layout, subMenu, view(DomainEntity.class).orElseThrow());
         select(layout);
     }
 

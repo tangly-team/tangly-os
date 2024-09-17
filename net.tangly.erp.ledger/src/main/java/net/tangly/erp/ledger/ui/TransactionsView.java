@@ -84,7 +84,7 @@ class TransactionsView extends ItemView<Transaction> {
         public boolean test(@NotNull Transaction entity) {
             return (Objects.isNull(dateRange) || Objects.isNull(entity.date()) || dateRange.isActive(entity.date())) &&
                 ItemFilter.matches(entity.text(), text) && checkAccountId(entity.credit(), credit) && checkAccountId(entity.debit(), debit) &&
-                checkBoolean(entity.isSynthetic(), synthetic);
+                checkBoolean(entity.synthetic(), synthetic);
         }
 
         private boolean checkAccountId(AccountEntry entry, String accountId) {
@@ -113,7 +113,7 @@ class TransactionsView extends ItemView<Transaction> {
             ComboBox<String> creditAccount = new ComboBox<>("Credit");
             creditAccount.setItems(logic().bookableAccountIds());
             creditAccount.setClearButtonVisible(true);
-            TextField amount = VaadinUtils.createTextField("Amount", "amount");
+            TextField amount = VaadinUtils.createTextField(AMOUNT_LABEL, AMOUNT);
 
             binder().bindReadOnly(date, Transaction::date);
             binder().bindReadOnly(debitAccount, Transaction::debitAccount);
@@ -152,12 +152,12 @@ class TransactionsView extends ItemView<Transaction> {
         }
 
         LedgerBusinessLogic logic() {
-            return (LedgerBusinessLogic) view().domain().logic();
+            return view().domain().logic();
         }
     }
 
     public TransactionsView(@NotNull LedgerBoundedDomainUi domain, @NotNull Mode mode) {
-        super(Transaction.class, domain, ProviderView.of(domain.domain().realm().transactions(), o -> !o.isSynthetic()), new TransactionFilter(), mode);
+        super(Transaction.class, domain, ProviderView.of(domain.domain().realm().transactions(), o -> !o.synthetic()), new TransactionFilter(), mode);
         form(() -> new TransactionForm(this));
         init();
     }
@@ -186,7 +186,7 @@ class TransactionsView extends ItemView<Transaction> {
         VaadinUtils.addColumnBoolean(grid, Transaction::isSplit, "split", "Split");
         grid.addColumn(Transaction::debitAccount).setKey("debit").setHeader("Debit").setAutoWidth(true).setResizable(true);
         grid.addColumn(Transaction::creditAccount).setKey("credit").setHeader("Credit").setAutoWidth(true).setResizable(true);
-        grid.addColumn(new NumberRenderer<>(Transaction::amount, VaadinUtils.FORMAT)).setKey("amount").setHeader("Amount").setComparator(Transaction::amount)
+        grid.addColumn(new NumberRenderer<>(Transaction::amount, VaadinUtils.FORMAT)).setKey(AMOUNT).setHeader(AMOUNT_LABEL).setComparator(Transaction::amount)
             .setAutoWidth(true).setResizable(true).setSortable(true).setTextAlign(ColumnTextAlign.END);
         grid.addColumn(Transaction::vatCodeAsString).setKey("vatCode").setHeader("VatCode").setAutoWidth(true).setResizable(true).setSortable(true);
         addEntityFilterFields(grid(), filter());
@@ -215,7 +215,7 @@ class TransactionsView extends ItemView<Transaction> {
             grid.addColumn(AccountEntry::date).setKey(DATE).setHeader(DATE_LABEL).setAutoWidth(true).setResizable(true).setSortable(true);
             grid.addColumn(AccountEntry::reference).setKey("reference").setHeader("Reference").setAutoWidth(true).setResizable(true).setSortable(true);
             grid.addColumn(AccountEntry::text).setKey(TEXT).setHeader(TEXT_LABEL).setAutoWidth(true).setResizable(true).setSortable(true);
-            grid.addColumn(new NumberRenderer<>(AccountEntry::amount, VaadinUtils.FORMAT)).setKey("amount").setHeader("Amount")
+            grid.addColumn(new NumberRenderer<>(AccountEntry::amount, VaadinUtils.FORMAT)).setKey(AMOUNT).setHeader(AMOUNT_LABEL)
                 .setComparator(AccountEntry::amount).setAutoWidth(true).setResizable(true).setSortable(true).setTextAlign(ColumnTextAlign.END);
             grid.addColumn(AccountEntry::vatCodeAsString).setKey("vatCode").setHeader("VatCode").setAutoWidth(true).setResizable(true).setSortable(true);
             add(grid);

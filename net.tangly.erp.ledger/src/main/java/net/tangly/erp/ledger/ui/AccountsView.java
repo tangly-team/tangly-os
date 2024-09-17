@@ -28,7 +28,7 @@ import org.jetbrains.annotations.NotNull;
 import java.time.LocalDate;
 
 /**
- * Charts of accounts are defined externally as TSV files. Currently the account view is a read-only view on accounts instances.
+ * Charts of accounts are defined externally as TSV files. Currently, the account view is a read-only view on accounts instances.
  */
 @PageTitle("ledger-accounts")
 class AccountsView extends ItemView<Account> {

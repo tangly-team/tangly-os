@@ -31,6 +31,9 @@ import org.jetbrains.annotations.NotNull;
 import java.math.BigDecimal;
 import java.util.Objects;
 
+import static net.tangly.ui.components.ItemView.AMOUNT;
+import static net.tangly.ui.components.ItemView.AMOUNT_LABEL;
+
 public class AnalyticsProductsView extends AnalyticsView {
     private static final String ArticlesUsage = "Articles Usage";
     private final InvoicesBoundedDomainUi domain;
@@ -73,7 +76,7 @@ public class AnalyticsProductsView extends AnalyticsView {
             .setAutoWidth(true).setResizable(true).setSortable(true);
 
         grid.addColumn(this::nrOfInvoices).setKey("nrOfInvoices").setHeader("# Invoices").setSortable(true);
-        grid.addColumn(new NumberRenderer<>(this::articleAmount, VaadinUtils.FORMAT)).setKey("amount").setHeader("Amount").setComparator(this::articleAmount)
+        grid.addColumn(new NumberRenderer<>(this::articleAmount, VaadinUtils.FORMAT)).setKey(AMOUNT).setHeader(AMOUNT_LABEL).setComparator(this::articleAmount)
             .setAutoWidth(true).setResizable(true).setSortable(true);
         return grid;
     }

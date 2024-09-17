@@ -41,7 +41,7 @@ import java.util.List;
 import static net.tangly.commons.utilities.AsciiDocHelper.format;
 
 /**
- * A complete accounting report for a specific time interval. We suggest you use year, half-year and quarter ports. The output format is AsciiDoc.
+ * A complete accounting report for a specific time interval. We suggest you use year, half-year, and quarter ports. The output format is AsciiDoc.
  */
 public class ClosingReportAsciiDoc {
     private static final Logger logger = LogManager.getLogger();
@@ -89,8 +89,8 @@ public class ClosingReportAsciiDoc {
         writer.println(":doctype: book");
         writer.println(":organization: " + "tangly llc");
         writer.println(":copyright: " + "Lorzenhof 27, 6330 Cham, Switzerland");
-        writer.println(":title-logo-image: " + "image:" + folder + "/tenant-logo.svg[top=25%,align=center,pdfwidth=40mm]");
-        writer.println(":pdf-themesdir: " + folder);
+        writer.printf(":title-logo-image: image:%s/tenant-logo.svg[top=25%%,align=center,pdfwidth=40mm]%n", folder);
+        writer.printf(":pdf-themesdir: %s%n", folder);
         writer.println(":pdf-theme: " + "tenant");
         writer.println(":icons: font");
         writer.println(":sectnums:");

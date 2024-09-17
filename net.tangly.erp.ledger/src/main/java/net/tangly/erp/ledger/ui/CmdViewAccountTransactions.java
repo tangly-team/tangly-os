@@ -45,7 +45,7 @@ public class CmdViewAccountTransactions implements Cmd {
     private final DatePicker fromDate;
     private final DatePicker toDate;
     private final BigDecimalField initialBalance;
-    private Grid<AccountEntry> entries;
+    private final Grid<AccountEntry> entries;
     private Dialog dialog;
 
     public CmdViewAccountTransactions(@NotNull LedgerBoundedDomain domain, @NotNull Account account) {
@@ -61,13 +61,13 @@ public class CmdViewAccountTransactions implements Cmd {
         initialBalance.setReadOnly(true);
         entries = new Grid<>();
         entries.addColumn(AccountEntry::date).setKey(ItemView.DATE).setHeader(ItemView.DATE_LABEL).setAutoWidth(true).setResizable(true).setSortable(true);
-        entries.addColumn(o -> referenceFor(o)).setKey("reference").setHeader("Reference").setAutoWidth(true).setResizable(true).setSortable(true);
-        entries.addColumn(o -> textFor(o)).setKey(ItemView.TEXT).setHeader(ItemView.TEXT_LABEL).setAutoWidth(true).setResizable(true).setSortable(true);
-        entries.addColumn(o -> accountIdFor(o)).setKey("account-id").setHeader("Account Id").setAutoWidth(true).setResizable(true).setSortable(true);
+        entries.addColumn(this::referenceFor).setKey("reference").setHeader("Reference").setAutoWidth(true).setResizable(true).setSortable(true);
+        entries.addColumn(this::textFor).setKey(ItemView.TEXT).setHeader(ItemView.TEXT_LABEL).setAutoWidth(true).setResizable(true).setSortable(true);
+        entries.addColumn(this::accountIdFor).setKey("account-id").setHeader("Account Id").setAutoWidth(true).setResizable(true).setSortable(true);
         entries.addColumn(o -> o.isDebit() ? o.amount() : null).setKey("debit").setHeader("Debit").setAutoWidth(true).setResizable(true).setSortable(true);
         entries.addColumn(o -> o.isCredit() ? o.amount() : null).setKey("credit").setHeader("Credit").setAutoWidth(true).setResizable(true).setSortable(true);
         entries.addColumn(o -> account.balance(o.date())).setKey("balance").setHeader("Balance").setAutoWidth(true).setResizable(true).setSortable(true);
-        entries.addColumn(o -> isSynthetic(o)).setKey("synthetic").setHeader("Synthetic").setAutoWidth(true).setResizable(true).setSortable(true);
+        entries.addColumn(this::isSynthetic).setKey("synthetic").setHeader("Synthetic").setAutoWidth(true).setResizable(true).setSortable(true);
         entries.setWidthFull();
         entries.setItems(entries(fromDate.getValue(), toDate.getValue()));
         initialBalance.setValue(account.balance(fromDate.getValue()));
@@ -75,9 +75,7 @@ public class CmdViewAccountTransactions implements Cmd {
             entries.setItems(entries(fromDate.getValue(), toDate.getValue()));
             initialBalance.setValue(account.balance(fromDate.getValue()));
         });
-        toDate.addValueChangeListener(e -> {
-            entries.setItems(entries(fromDate.getValue(), toDate.getValue()));
-        });
+        toDate.addValueChangeListener(_ -> entries.setItems(entries(fromDate.getValue(), toDate.getValue())));
     }
 
     @Override
@@ -111,7 +109,7 @@ public class CmdViewAccountTransactions implements Cmd {
 
     private boolean isSynthetic(AccountEntry entry) {
         return domain.realm().transactions().items().stream().filter(o -> o.creditSplits().contains(entry) || o.debitSplits().contains(entry)).findAny()
-            .orElseThrow().isSynthetic();
+            .orElseThrow().synthetic();
     }
 
     private String textFor(AccountEntry entry) {
@@ -134,6 +132,6 @@ public class CmdViewAccountTransactions implements Cmd {
     }
 
     private List<AccountEntry> entries(LocalDate from, LocalDate to) {
-        return account.entries().stream().filter(new HasDate.IntervalFilter(from, to)).toList();
+        return account.entries().stream().filter(new HasDate.IntervalFilter<>(from, to)).toList();
     }
 }

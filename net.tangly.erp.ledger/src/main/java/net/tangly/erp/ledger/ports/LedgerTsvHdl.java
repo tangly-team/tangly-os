@@ -181,7 +181,7 @@ public class LedgerTsvHdl {
     }
 
     /**
-     * Imports the transaction list exported from a CSV file with header.
+     * Imports the transaction list exported from a CSV file with a header.
      * <p>The file structure provided by the external program is:</p>
      * <dl>
      *     <dt>date</dt><dd>date of the transaction encoded as ISO standard YYYY-MM-DD.</dd>
@@ -254,7 +254,7 @@ public class LedgerTsvHdl {
             out.printRecord(DATE, DOC, DESCRIPTION, ACCOUNT_DEBIT, ACCOUNT_CREDIT, AMOUNT, VAT_CODE, DATE_EXPECTED);
             int counter = 0;
             for (Transaction transaction : ledger.transactions(from, to)) {
-                if (!transaction.isSynthetic()) {
+                if (!transaction.synthetic()) {
                     out.printRecord(transaction.date(), transaction.reference(), transaction.text(), accountCompositeId(transaction.debit()),
                         accountCompositeId(transaction.credit()), transaction.amount(), transaction.vatCodeAsString(), transaction.dateExpected());
                     if (transaction.isSplit()) {
@@ -274,7 +274,7 @@ public class LedgerTsvHdl {
 
     private VatCode of(String code) {
         var vatCodes = registry.find(VatCode.class);
-        return vatCodes.isPresent() ? vatCodes.get().findCode(code).orElse(null) : null;
+        return vatCodes.map(vatCodeCodeType -> vatCodeCodeType.findCode(code).orElse(null)).orElse(null);
     }
 
     private CSVRecord importSplits(@NotNull Iterator<CSVRecord> records, List<AccountEntry> splits) {
@@ -297,7 +297,7 @@ public class LedgerTsvHdl {
     }
 
     /**
-     * Returns true if the record is relevant for the ledger plan, meaning it has a description and either an account identifier not starting with an semicolon
+     * Returns true if the record is relevant for the ledger plan, meaning it has a description and either an account identifier not starting with a semicolon
      * or a group with an identifier different from 0.
      *
      * @return flag indicating if the record is relevant for the ledger plan or not
@@ -307,12 +307,20 @@ public class LedgerTsvHdl {
             ((!Strings.isNullOrEmpty(accountId) && !accountId.startsWith(":")) || (!Strings.isNullOrEmpty(groupId) && !groupId.equalsIgnoreCase("0")));
     }
 
+    /**
+     * Defines the segments of the account entry. The segment code value must be a non-empty string. The banana export supports empty values for the segment.
+     * <p>Currently, two segment dimensions are supported.
+     * The project segment defined as first value and the collaborator segment defined as the second value.</p>
+     *
+     * @param values array of values
+     * @return set of tags describing the segments
+     */
     private static Set<Tag> defineSegments(String[] values) {
         Set<Tag> tags = new HashSet<>();
-        if (values.length > 1) {
+        if ((values.length > 1) && !Strings.isNullOrBlank(values[1])) {
             tags.add(new Tag(AccountEntry.FINANCE, AccountEntry.PROJECT, values[1]));
         }
-        if (values.length > 2) {
+        if ((values.length > 2) && !Strings.isNullOrBlank(values[2])) {
             tags.add(new Tag(AccountEntry.FINANCE, AccountEntry.SEGMENT, values[2]));
         }
         return tags;
@@ -323,13 +331,13 @@ public class LedgerTsvHdl {
             Optional<Tag> project = entry.findBy(AccountEntry.FINANCE, AccountEntry.PROJECT);
             Optional<Tag> segment = entry.findBy(AccountEntry.FINANCE, AccountEntry.SEGMENT);
             return "%s%s%s".formatted(entry.accountId(), project.map(tag -> "-%s".formatted(tag.value())).orElse(""),
-                segment.map(value -> "-" + value.value()).orElse(""));
+                segment.map(value -> "-%s".formatted(value.value())).orElse(""));
         } else {
             return null;
         }
     }
 
-    private static Account.AccountGroup ofGroup(String accountGroup) {
+    private static Account.AccountGroup ofGroup(@NotNull String accountGroup) {
         if (!accountGroup.contains("*")) {
             try {
                 return switch (Integer.parseInt(accountGroup)) {
@@ -346,7 +354,7 @@ public class LedgerTsvHdl {
         return null;
     }
 
-    private static String ofGroup(Account.AccountGroup group) {
+    private static String ofGroup(@NotNull Account.AccountGroup group) {
         return switch (group) {
             case ASSETS -> "1";
             case LIABILITIES -> "2";
@@ -370,7 +378,7 @@ public class LedgerTsvHdl {
         }
     }
 
-    private static String ofKind(Account.AccountKind kind) {
+    private static String ofKind(@NotNull Account.AccountKind kind) {
         return switch (kind) {
             case ASSET -> "1";
             case LIABILITY -> "2";
@@ -380,7 +388,7 @@ public class LedgerTsvHdl {
         };
     }
 
-    private static void writeSection(Account.AccountGroup group, CSVPrinter out) throws IOException {
+    private static void writeSection(@NotNull Account.AccountGroup group, @NotNull CSVPrinter out) throws IOException {
         switch (group) {
             case ASSETS -> {
                 out.printRecord("*", null, null, "BALANCE SHEET", null, null, null);

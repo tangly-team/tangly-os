@@ -43,6 +43,7 @@ public interface TenantDirectory extends HasId {
 
     /**
      * Returns the bounded domains available in the tenant.
+     *
      * @return bounded domains available in the tenant
      */
     Collection<BoundedDomain<?, ?, ?>> boundedDomains();
@@ -81,8 +82,17 @@ public interface TenantDirectory extends HasId {
 
     /**
      * Returns the path to the documents folder of the domain.
+     *
      * @param domain name of the bounded domain
      * @return path to the documents folder of the domain
      */
     String docs(@NotNull String domain);
+
+    /**
+     * Returns the path to the resources folder of the domain.
+     *
+     * @param domain name of the bounded domain
+     * @return path to the resources folder of the domain
+     */
+    String resources(@NotNull String domain);
 }

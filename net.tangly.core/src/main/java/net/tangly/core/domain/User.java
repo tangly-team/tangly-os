@@ -103,7 +103,7 @@ public record User(@NotNull String username, @NotNull String passwordHash, @NotN
     }
 
     public boolean hasAdminRightsFor(@NotNull String domain) {
-        return accessRightsFor(domain).map(o -> (o.right() == AccessRightsCode.domainAdmin) || (o.right() == AccessRightsCode.appAdmin)).orElse(false);
+        return accessRightsFor(domain).map(o -> (o.right() == AccessRightsCode.domainAdmin) || (o.right() == AccessRightsCode.tenantAdmin)).orElse(false);
     }
 
     /**

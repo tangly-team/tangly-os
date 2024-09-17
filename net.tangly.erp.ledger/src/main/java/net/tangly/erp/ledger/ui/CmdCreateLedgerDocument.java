@@ -103,9 +103,9 @@ public class CmdCreateLedgerDocument implements Cmd {
     }
 
     /**
-     * Creates yearly rports for the given period.
+     * Creates yearly reports for the given period.
      *
-     * @param name     perfix of the report name. A dash and the year will be appended to the name.
+     * @param name     prefix of the report name. A dash and the year will be appended to the name.
      * @param fromYear first year of the reports
      * @param toYear   last year of the reports
      */
@@ -113,11 +113,9 @@ public class CmdCreateLedgerDocument implements Cmd {
         try (ExecutorService executor = Executors.newVirtualThreadPerTaskExecutor()) {
             for (int year = fromYear; year <= toYear; year++) {
                 final int reportYear = year;
-                executor.submit(() -> {
-                    domain.port().exportLedgerDocument("%s-%d".formatted(name, reportYear), LocalDate.of(reportYear, Month.JANUARY, 1),
-                        LocalDate.of(reportYear, Month.DECEMBER, 31), withBalanceSheet.getValue(), withProfitsAndLosses.getValue(),
-                        withEmptyAccounts.getValue(), withTransactions.getValue(), withVat.getValue(), null, null, domain);
-                });
+                executor.submit(() -> domain.port().exportLedgerDocument("%s-%d".formatted(name, reportYear), LocalDate.of(reportYear, Month.JANUARY, 1),
+                    LocalDate.of(reportYear, Month.DECEMBER, 31), withBalanceSheet.getValue(), withProfitsAndLosses.getValue(),
+                    withEmptyAccounts.getValue(), withTransactions.getValue(), withVat.getValue(), null, null, domain));
             }
         }
     }

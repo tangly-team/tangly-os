@@ -1,0 +1,45 @@
+<h1>User Manual</h1>
+<h2>Concepts</h2>
+<p>The bounded domain <em>products</em> abstracts the work activities on ordered projects to develop a digital product.</p>
+<dl>
+    <dt>Product</dt>
+    <dd>A digital product realized through a set of work contracts.</dd>
+    <dt>Work Contact</dt>
+    <dd>A work contract has a budget of hours to work on the product. The work contract can be an extension of a main contract.
+        A work contract has a time range.
+    </dd>
+    <dt>Assignment</dt>
+    <dd>A collaborator can work for a work contract during a time range. The collaborator reports work efforts associated to the assignement.
+        The assignment has a time range. The collaborator and the organization can set the closing date on the assignment to indicate that all activities until
+        the closing date have been reported in the system.
+    </dd>
+    <dt>Collaborator</dt>
+    <dd>A collaborator working on the development of the digital products through a set of assignements. Work is reporting in efforts.</dd>
+    <dt>Efforts</dt>
+    <dd>A collaborator work is described in an effort. An effort has a date when the work was done and a duration. An effort is connected to an assignment
+        and a work contract. A summary of activities performed during the effort is described in a text field. If relevant details can be added to the
+        minutes' field.
+    </dd>
+</dl>
+<h2>Workflows</h2>
+<h3>Record Efforts</h3>
+<p>The collaborator can input the details of each effort into the system through the user interface.</p>
+<p>Effort for an assignment shall be reported daily. If multiple work contracts are used, they are reported through different efforts.
+    <em>This situation is either if different roles and tariffs are used, or the older contract has reached its end and the collaborator starts working on
+        on a contract extension.</em></p>
+<h3>Import Efforts</h3>
+<p>The collaborator can document her activities in an effort report offline using an YAML format.
+    The collaborator can be imported the files into the system when the collaborator when she is ready.
+    <em>The import process allows the collaborator to import only new efforts or to overwrite older versions with the current file.
+        Efforts can be only overwriten if they are not in the closing period.</em></p>
+<h3>Create Effort Report</h3>
+<p>Employeess can create an effort report describing the activities a collaborator performed in an assignment during a selected time range.
+    The report contains the description, worked time, and minutes. The total of worked time per contract and for the whole assignement are provided.</p>
+<p>The report is a PDF document, which can be sent to customers to document the work done.</p>
+<h2>Reporting</h2>
+<h2>Connection to Invoicing</h2>
+<h2>Managemeent Processes</h2>
+<p>The responsible person shall create the necessary assignments in the system. The assignements specify who can work on which product during a specific time
+    range.</p>
+<p>The work contract is automatically generated when a contract is signed. The bounded domain <em>customers</em> sends the event <em>ContractSignedEvent</em>
+    upon successful contract negociation.</p>

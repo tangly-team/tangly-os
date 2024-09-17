@@ -20,7 +20,7 @@ import org.jetbrains.annotations.NotNull;
 import java.time.LocalDate;
 
 /**
- * The tags ontology of the ledger bounded domain is defined here.
+ * The tag ontology of the ledger bounded domain is defined here.
  * <dl>
  *     <dt>fin:expected-date</dt><dd>expected date when a payment is performed and the transaction can be booked. This information is useful for creditors
  *     and debtors accounting in the ledger domain.</dd>
@@ -31,19 +31,14 @@ import java.time.LocalDate;
  * </dl>
  */
 public final class LedgerTags {
-    public static final String LEDGER = "fin";
-    public static final String CUSTOMER = "customer";
-    public static final String COLLABORATOR = "collaborator";
-    public static final String LOCATION = "location";
     public static final String EXPECTED_DATE = "expected-date";
 
     private LedgerTags() {
     }
 
     public static void registerTags(@NotNull TypeRegistry registry) {
-        registry.register(TagType.ofMandatory(LEDGER, EXPECTED_DATE, LocalDate.class, LocalDate::parse));
-        registry.register(TagType.ofMandatoryString(LEDGER, CUSTOMER));
-        registry.register(TagType.ofMandatoryString(LEDGER, COLLABORATOR));
-        registry.register(TagType.ofMandatoryString(LEDGER, LOCATION));
+        registry.register(TagType.ofMandatory(AccountEntry.FINANCE, EXPECTED_DATE, LocalDate.class, LocalDate::parse));
+        registry.register(TagType.ofMandatoryString(AccountEntry.FINANCE, AccountEntry.PROJECT));
+        registry.register(TagType.ofMandatoryString(AccountEntry.FINANCE, AccountEntry.SEGMENT));
     }
 }

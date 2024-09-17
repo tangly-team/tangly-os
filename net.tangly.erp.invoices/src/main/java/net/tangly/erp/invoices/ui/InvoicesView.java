@@ -84,7 +84,7 @@ class InvoicesView extends ItemView<Invoice> {
             var grid = new Grid<InvoiceLine>();
             grid.addColumn(InvoiceLine::position).setKey("position").setHeader("Position").setAutoWidth(true).setResizable(true).setSortable(true);
             grid.addColumn(InvoiceLine::text).setKey("text").setHeader("Text").setAutoWidth(true).setResizable(true).setSortable(true);
-            grid.addColumn(o -> VaadinUtils.format(o.amount())).setKey("amount").setHeader("Amount").setAutoWidth(true).setResizable(true).setSortable(true);
+            grid.addColumn(o -> VaadinUtils.format(o.amount())).setKey(AMOUNT).setHeader(AMOUNT_LABEL).setAutoWidth(true).setResizable(true).setSortable(true);
             grid.addColumn(o -> VaadinUtils.format(o.quantity())).setKey("quantity").setHeader("Quantity").setAutoWidth(true).setResizable(true)
                 .setSortable(true);
             grid.addColumn(o -> VaadinUtils.format(o.unitPrice())).setKey("unitPrice").setHeader("Unit Price").setAutoWidth(true).setResizable(true)

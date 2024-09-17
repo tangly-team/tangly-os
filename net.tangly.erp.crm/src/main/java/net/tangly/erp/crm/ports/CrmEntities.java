@@ -105,10 +105,6 @@ public class CrmEntities implements CrmRealm {
         activities = ProviderInMemory.of(data.activities);
     }
 
-    public void storeRoot() {
-        storageManager.storeRoot();
-    }
-
     @Override
     public void close() {
         if (Objects.nonNull(storageManager)) {

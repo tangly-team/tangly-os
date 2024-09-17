@@ -37,7 +37,7 @@ public class Account implements HasId, HasName {
     public enum AccountGroup {ASSETS, LIABILITIES, EXPENSES, PROFITS_AND_LOSSES}
 
     /**
-     * Human readable description of the account function.
+     * Human-readable description of the account function.
      */
     private final String name;
 
@@ -171,7 +171,7 @@ public class Account implements HasId, HasName {
 
     /**
      * Debits and Credits are from the bank’s point of view, and so are the opposite of what you expect when it comes to the maths involved. Debits - meaning
-     * assets and expenses - have a positive balance and Credits - meaning liabilities and income - have a negative balance.
+     * assets and expenses - have a positive balance, and Credits - meaning liabilities and income - have a negative balance.
      * <ul>
      * <li>If I Debit (add to) a Debit account, it gets more positive and has a larger format (Debit -&gt; Soll)</li>
      * <li> If I Credit (subtract from) a Debit account, it gets less positive and has a smaller format (Credit -&gt; Haben)</li>

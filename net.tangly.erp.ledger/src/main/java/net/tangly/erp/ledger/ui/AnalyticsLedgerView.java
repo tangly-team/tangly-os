@@ -16,18 +16,22 @@ package net.tangly.erp.ledger.ui;
 import com.storedobject.chart.*;
 import com.vaadin.flow.component.datepicker.DatePicker;
 import com.vaadin.flow.component.formlayout.FormLayout;
+import com.vaadin.flow.component.grid.ColumnTextAlign;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.grid.GridVariant;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.provider.DataProvider;
 import com.vaadin.flow.data.renderer.ComponentRenderer;
-import net.tangly.core.HasDate;
+import com.vaadin.flow.data.renderer.NumberRenderer;
+import net.tangly.core.providers.ProviderInMemory;
 import net.tangly.core.providers.ProviderView;
 import net.tangly.erp.invoices.services.InvoicesBoundedDomain;
 import net.tangly.erp.invoices.services.InvoicesPort;
+import net.tangly.erp.ledger.domain.AccountEntry;
 import net.tangly.erp.ledger.domain.Transaction;
 import net.tangly.erp.ledger.ports.LedgerAdapter;
+import net.tangly.erp.ledger.services.LedgerPort;
 import net.tangly.ui.app.domain.AnalyticsView;
 import net.tangly.ui.components.VaadinUtils;
 import org.jetbrains.annotations.NotNull;
@@ -35,10 +39,12 @@ import org.jetbrains.annotations.NotNull;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
-import java.util.function.Predicate;
+
+import static net.tangly.ui.components.ItemView.*;
 
 public class AnalyticsLedgerView extends AnalyticsView {
     private static final String ProfitAndLoss = "Profit & Loss";
@@ -48,6 +54,8 @@ public class AnalyticsLedgerView extends AnalyticsView {
     private SOChart profitAndLossSoChart;
     private SOChart financialSoChart;
     private Grid<Transaction> transactionsGrid;
+    private Grid<LedgerPort.Segment> segmentsGrid;
+    private Grid<LedgerPort.Segment> projectsGrid;
     private final Map<String, InvoicesPort.InvoiceView> invoiceViewsCache;
 
     public AnalyticsLedgerView(@NotNull LedgerBoundedDomainUi domain) {
@@ -63,25 +71,49 @@ public class AnalyticsLedgerView extends AnalyticsView {
         var layout = new HorizontalLayout(transactionsGrid);
         layout.setSizeFull();
         tabSheet().add(Reconciliation, layout);
+        segmentsGrid = segmentsTable(domain.domain().port().computeSegments(AccountEntry.SEGMENT, from(), to()));
+        layout = new HorizontalLayout(segmentsGrid);
+        layout.setSizeFull();
+        tabSheet().add("Segments", layout);
+        projectsGrid = segmentsTable(domain.domain().port().computeSegments(AccountEntry.PROJECT, from(), to()));
+        layout = new HorizontalLayout(projectsGrid);
+        layout.setSizeFull();
+        tabSheet().add("Projects", layout);
     }
 
     @Override
     public void refresh() {
         refresh(profitAndLossSoChart, this::profitAndLossChart);
         refresh(financialSoChart, this::financialsChart);
-        refreshTransactionsGrid();
-    }
-
-    private void refreshTransactionsGrid() {
         if (Objects.nonNull(transactionsGrid)) {
-            transactionsGrid.setDataProvider(DataProvider.ofCollection(ProviderView.of(domain.domain().realm().transactions(), transacctionFilter()).items()));
+            transactionsGrid.setDataProvider(DataProvider.ofCollection(
+                ProviderView.of(ProviderInMemory.of(domain.domain().realm().transactions(from(), to())), o -> !o.synthetic() && o.vatCode().isPresent())
+                    .items()));
             transactionsGrid.getDataProvider().refreshAll();
+        }
+        if (Objects.nonNull(segmentsGrid)) {
+            segmentsGrid.setDataProvider(DataProvider.ofCollection(domain.domain().port().computeSegments(AccountEntry.SEGMENT, from(), to())));
+            segmentsGrid.getDataProvider().refreshAll();
+        }
+        if (Objects.nonNull(projectsGrid)) {
+            projectsGrid.setDataProvider(DataProvider.ofCollection(domain.domain().port().computeSegments(AccountEntry.PROJECT, from(), to())));
+            projectsGrid.getDataProvider().refreshAll();
         }
     }
 
-    private Predicate<Transaction> transacctionFilter() {
-        var dateFilter = new HasDate.IntervalFilter<>(from(), to());
-        return o -> !o.isSynthetic() && o.vatCode().isPresent() && dateFilter.test(o);
+    private Grid<LedgerPort.Segment> segmentsTable(Collection<LedgerPort.Segment> segments) {
+        Grid<LedgerPort.Segment> grid = new Grid<>();
+        grid.setSelectionMode(Grid.SelectionMode.NONE);
+        grid.addThemeVariants(GridVariant.LUMO_COMPACT);
+        grid.setHeight("24em");
+        grid.setWidth("1200px");
+        grid.setItems(DataProvider.ofCollection(segments));
+        grid.addColumn(LedgerPort.Segment::name).setHeader(NAME_LABEL).setKey(NAME).setSortable(true).setResizable(true);
+        grid.addColumn(new NumberRenderer<>(LedgerPort.Segment::amount, VaadinUtils.FORMAT)).setKey(AMOUNT_LABEL).setHeader(AMOUNT).setComparator(LedgerPort.Segment::amount)
+            .setAutoWidth(true).setResizable(true).setSortable(true).setTextAlign(ColumnTextAlign.END);
+        grid.addColumn(LedgerPort.Segment::from).setHeader(FROM_LABEL).setKey(FROM).setSortable(true).setResizable(true);
+        grid.addColumn(LedgerPort.Segment::to).setHeader(TO_LABEL).setKey(TO).setSortable(true).setResizable(true);
+        return grid;
     }
 
     private Grid<Transaction> transactionsTable() {
@@ -91,20 +123,20 @@ public class AnalyticsLedgerView extends AnalyticsView {
         grid.addThemeVariants(GridVariant.LUMO_COMPACT);
         grid.setHeight("24em");
         grid.setWidth("1200px");
-        grid.setItems(DataProvider.ofCollection(ProviderView.of(domain.domain().realm().transactions(), transacctionFilter()).items()));
+        grid.setItems(DataProvider.ofCollection(
+            ProviderView.of(ProviderInMemory.of(domain.domain().realm().transactions(from(), to())), o -> !o.synthetic() && o.vatCode().isPresent())
+                .items()));
         VaadinUtils.addColumnBoolean(grid, this::isReconciled, "Reconciled", "reconciled");
         VaadinUtils.addColumnBigDecimal(grid, this::reconciliationDifference, "Difference", "difference");
         grid.addColumn(this::latencyPayment).setHeader("Latency").setKey("latency").setSortable(true).setResizable(true);
-        grid.addColumn(Transaction::date).setHeader("Date").setKey("date").setSortable(true).setResizable(true);
+        grid.addColumn(Transaction::date).setHeader(DATE_LABEL).setKey(DATE).setSortable(true).setResizable(true);
         grid.addColumn(Transaction::reference).setHeader("Reference").setKey("reference").setSortable(true).setResizable(true);
-        grid.addColumn(Transaction::amount).setHeader("Amount").setKey("amount").setSortable(true).setResizable(true);
+        grid.addColumn(Transaction::amount).setHeader(AMOUNT_LABEL).setKey(AMOUNT).setSortable(true).setResizable(true);
         grid.addColumn(Transaction::vatCodeAsString).setHeader("VAT").setKey("vat").setSortable(true).setResizable(true);
         grid.addColumn(o -> o.vatCode().isPresent() ? o.vatCode().get().vatRate() : null).setHeader("VAT %").setKey("vat-percentage").setSortable(true)
             .setResizable(true);
         VaadinUtils.addColumnBoolean(grid, Transaction::isSplit, "Split", "split");
 
-        grid.addColumn(o -> Objects.nonNull(invoiceFor(o.reference())) ? invoiceFor(o.reference()).id() : null).setHeader("Invoice ID").setKey("invoiceId")
-            .setSortable(true).setResizable(true);
         grid.addColumn(o -> Objects.nonNull(invoiceFor(o.reference())) ? invoiceFor(o.reference()).invoicedDate() : null).setHeader("Invoiced Date")
             .setKey("invoicedDate").setSortable(true).setResizable(true);
         grid.addColumn(o -> Objects.nonNull(invoiceFor(o.reference())) ? invoiceFor(o.reference()).dueDate() : null).setHeader("Due Date").setKey("dueDate")
@@ -123,7 +155,7 @@ public class AnalyticsLedgerView extends AnalyticsView {
 
     private boolean isReconciled(@NotNull Transaction transaction) {
         InvoicesPort.InvoiceView item = invoiceFor(transaction.reference());
-        return Objects.nonNull(item) ? transaction.amount().compareTo(item.amountWithVat()) == 0 : false;
+        return Objects.nonNull(item) && (transaction.amount().compareTo(item.amountWithVat()) == 0);
     }
 
     private BigDecimal reconciliationDifference(@NotNull Transaction transaction) {
@@ -138,7 +170,7 @@ public class AnalyticsLedgerView extends AnalyticsView {
 
     private InvoicesPort.InvoiceView invoiceFor(@NotNull String id) {
         if (!invoiceViewsCache.containsKey(id)) {
-            InvoicesBoundedDomain domain = (InvoicesBoundedDomain) this.domain.domain().directory().getBoundedDomain(InvoicesBoundedDomain.DOMAIN).get();
+            InvoicesBoundedDomain domain = (InvoicesBoundedDomain) this.domain.domain().directory().getBoundedDomain(InvoicesBoundedDomain.DOMAIN).orElseThrow();
             domain.port().invoiceViewFor(id).ifPresent(o -> invoiceViewsCache.put(id, o));
         }
         return invoiceViewsCache.get(id);
@@ -208,10 +240,10 @@ public class AnalyticsLedgerView extends AnalyticsView {
 
         public InvoiceViewDetails() {
             VaadinUtils.set3ResponsiveSteps(this);
-            date = VaadinUtils.createDatePicker("date");
-            amount = VaadinUtils.createTextField("Amount", "amount");
+            date = VaadinUtils.createDatePicker(DATE);
+            amount = VaadinUtils.createTextField(AMOUNT_LABEL, AMOUNT);
             reference = VaadinUtils.createTextField("Reference", "reference");
-            text = VaadinUtils.createTextField("Text", "text");
+            text = VaadinUtils.createTextField(TEXT_LABEL, TEXT);
             vatCode = VaadinUtils.createTextField("VAT Code", "vatCode");
             vatPercentage = VaadinUtils.createTextField("VAT Percentage", "vatPercentage");
             add(date, text, reference, vatCode, vatPercentage);

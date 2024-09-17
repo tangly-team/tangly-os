@@ -54,7 +54,7 @@ public class LedgerEntities implements LedgerRealm, RealmEclipseStore {
     public LedgerEntities(@NotNull Path path) {
         this.data = new Data();
         storageManager = EmbeddedStorage.start(data, path);
-        accounts = ProviderPersistence.of(storageManager, data.accounts);
+        accounts = ProviderHasId.of(storageManager, data.accounts);
         transactions = ProviderPersistence.of(storageManager, data.transactions);
         documents = ProviderHasId.of(storageManager, data.documents);
     }
@@ -62,15 +62,9 @@ public class LedgerEntities implements LedgerRealm, RealmEclipseStore {
     public LedgerEntities() {
         this.data = new Data();
         storageManager = null;
-        accounts = ProviderInMemory.of(data.accounts);
+        accounts = ProviderHasId.of(data.accounts);
         transactions = ProviderInMemory.of(data.transactions);
         documents = ProviderHasId.of(data.documents);
-    }
-
-    public void storeRoot() {
-        if (storageManager != null) {
-            storageManager.storeRoot();
-        }
     }
 
     @Override

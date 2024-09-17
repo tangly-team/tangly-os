@@ -29,7 +29,7 @@ import net.tangly.core.codes.Code;
  * </dl>
  */
 public enum AccessRightsCode implements Code {
-    none, restrictedUser, readonlyUser, user, domainAdmin, appAdmin;
+    none, restrictedUser, readonlyUser, user, domainAdmin, tenantAdmin;
 
     @Override
     public int id() {

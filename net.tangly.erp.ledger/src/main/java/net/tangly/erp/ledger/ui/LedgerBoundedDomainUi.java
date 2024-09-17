@@ -26,6 +26,7 @@ import net.tangly.erp.ledger.services.LedgerBoundedDomain;
 import net.tangly.ui.app.domain.BoundedDomainUi;
 import net.tangly.ui.app.domain.DocumentsView;
 import net.tangly.ui.app.domain.DomainView;
+import net.tangly.ui.app.domain.UserManualView;
 import net.tangly.ui.components.Mode;
 import org.jetbrains.annotations.NotNull;
 
@@ -40,6 +41,7 @@ public class LedgerBoundedDomainUi extends BoundedDomainUi<LedgerBoundedDomain> 
         addView(Document.class, new LazyReference<>(() -> new DocumentsView(this, domain().realm().documents(), Mode.EDITABLE)));
         addView(DomainEntity.class, new LazyReference<>(() -> new DomainView(this)));
         addView(AnalyticsLedgerView.class, new LazyReference<>(() -> new AnalyticsLedgerView(this)));
+        addView(UserManualView.class, new LazyReference<>(() -> new UserManualView(this)));
         currentView(view(Transaction.class).orElseThrow());
     }
 
@@ -51,8 +53,11 @@ public class LedgerBoundedDomainUi extends BoundedDomainUi<LedgerBoundedDomain> 
         subMenu.addItem(TRANSACTIONS, _ -> select(layout, view(Transaction.class).orElseThrow()));
         subMenu.addItem(DOCUMENTS, e -> select(layout, view(Document.class).orElseThrow()));
 
-        addAnalytics(layout, menuBar, view(AnalyticsLedgerView.class).orElseThrow());
-        addAdministration(layout, menuBar, view(DomainEntity.class).orElseThrow());
+        menuItem = menuBar.addItem(TOOLS);
+        subMenu = menuItem.getSubMenu();
+        subMenu.addItem(ANALYTICS, _ -> select(layout, view(AnalyticsLedgerView.class).orElseThrow()));
+        subMenu.addItem(USER_MANUAL, _ -> select(layout, view(UserManualView.class).orElseThrow()));
+        addAdministration(layout, subMenu, view(DomainEntity.class).orElseThrow());
         select(layout);
     }
 }

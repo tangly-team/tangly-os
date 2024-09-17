@@ -40,7 +40,7 @@ public class ContractExtensionsView extends ItemView<ContractExtension> {
 
     @Override
     public CrmBoundedDomain domain() {
-        return domain();
+        return (CrmBoundedDomain) super.domain();
     }
 
     @Override
@@ -58,7 +58,7 @@ public class ContractExtensionsView extends ItemView<ContractExtension> {
         VaadinUtils.addColumn(grid, new LocalDateRenderer<>(HasDateRange::to, ItemView.ISO_DATE_FORMAT), TO, TO_LABEL);
 
         VaadinUtils.addColumn(grid, HasText::text, TEXT, TEXT_LABEL).setFlexGrow(0).setWidth("30em");
-        VaadinUtils.addColumn(grid, new NumberRenderer<>(ContractExtension::amountWithoutVat, VaadinUtils.FORMAT), "amount", "Amount")
+        VaadinUtils.addColumn(grid, new NumberRenderer<>(ContractExtension::amountWithoutVat, VaadinUtils.FORMAT), AMOUNT, AMOUNT_LABEL)
             .setTextAlign(ColumnTextAlign.END);
         VaadinUtils.addColumn(grid, new NumberRenderer<>(ContractExtension::budgetInHours, VaadinUtils.FORMAT), "budgetInHours", "Budget In Hours")
             .setTextAlign(ColumnTextAlign.END);

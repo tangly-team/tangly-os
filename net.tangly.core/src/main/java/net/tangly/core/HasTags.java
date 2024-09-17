@@ -28,6 +28,7 @@ public interface HasTags {
      * String representation of the property associated with the mixin.
      */
     String TAGS = "tags";
+
     /**
      * Returns the collection of tags for the entity.
      *
@@ -73,13 +74,24 @@ public interface HasTags {
     }
 
     /**
-     * Return the value of the tag with the given qualified tag name.
+     * Returns the value of the tag with the given qualified tag name.
      *
      * @param tag qualified tag name
      * @return the tag value if found
      */
     default Optional<String> value(@NotNull String tag) {
         return findBy(tag).map(Tag::value);
+    }
+
+    /**
+     * Returns the value of the tag with the given qualified tag name.
+     *
+     * @param namespace namespace of the tag
+     * @param tag       qualified tag name
+     * @return the tag value if found
+     */
+    default Optional<String> value(@NotNull String namespace, @NotNull String tag) {
+        return findBy(namespace, tag).map(Tag::value);
     }
 
     default Collection<Tag> findByNamespace(String namespace) {

@@ -25,7 +25,7 @@ import net.tangly.ui.components.*;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * Regular CRUD view on employees abstraction. The grid and edition dialog wre optimized for usability.
+ * Regular CRUD view on employees' abstraction. The grid and edition dialog wre optimized for usability.
  */
 @PageTitle("crm-employees")
 class EmployeesView extends EntityView<Employee> {
@@ -64,7 +64,7 @@ class EmployeesView extends EntityView<Employee> {
     private void init() {
         var grid = grid();
         addEntityColumns(grid);
-        VaadinUtils.addColumn(grid, o -> o.value(CrmTags.CRM_EMPLOYEE_TITLE).orElse(null), "titke", "Title");
+        VaadinUtils.addColumn(grid, o -> o.value(CrmTags.CRM_EMPLOYEE_TITLE).orElse(null), "title", "Title");
         addEntityFilterFields(grid(), filter());
     }
 }

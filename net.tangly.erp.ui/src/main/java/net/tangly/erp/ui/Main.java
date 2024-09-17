@@ -184,7 +184,7 @@ public final class Main {
         final String username = "aeon";
         String passwordSalt = User.newSalt();
         String passwordHash = User.encryptPassword("aeon", passwordSalt);
-        var rights = List.of(new AccessRights(username, AppsBoundedDomain.DOMAIN, AccessRightsCode.appAdmin));
+        var rights = List.of(new AccessRights(username, AppsBoundedDomain.DOMAIN, AccessRightsCode.tenantAdmin));
         return new User(username, passwordHash, passwordSalt, true, null, rights, null);
     }
 }

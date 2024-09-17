@@ -44,7 +44,7 @@ public enum Mode {
             case null -> Mode.LIST;
             case none -> Mode.LIST;
             case readonlyUser -> Mode.VIEW;
-            case appAdmin, restrictedUser, user, domainAdmin -> Mode.EDITABLE;
+            case tenantAdmin, restrictedUser, user, domainAdmin -> Mode.EDITABLE;
         };
     }
 

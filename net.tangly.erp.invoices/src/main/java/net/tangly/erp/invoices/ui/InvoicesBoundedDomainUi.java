@@ -53,8 +53,10 @@ public class InvoicesBoundedDomainUi extends BoundedDomainUi<InvoicesBoundedDoma
         subMenu.addItem(INVOICES, e -> select(layout, view(Invoice.class).orElseThrow()));
         subMenu.addItem(DOCUMENTS, e -> select(layout, view(Document.class).orElseThrow()));
 
-        addAnalytics(layout, menuBar, view(AnalyticsProductsView.class).orElseThrow());
-        addAdministration(layout, menuBar, view(DomainEntity.class).orElseThrow());
+        menuItem = menuBar.addItem(TOOLS);
+        subMenu = menuItem.getSubMenu();
+        subMenu.addItem(ANALYTICS, _ -> select(layout, view(AnalyticsProductsView.class).orElseThrow()));
+        addAdministration(layout, subMenu, view(DomainEntity.class).orElseThrow());
         select(layout);
     }
 }

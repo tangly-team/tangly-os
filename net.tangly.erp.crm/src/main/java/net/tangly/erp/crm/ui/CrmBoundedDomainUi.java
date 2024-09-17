@@ -35,7 +35,6 @@ public class CrmBoundedDomainUi extends BoundedDomainUi<CrmBoundedDomain> {
     public static final String CONTRACTS = "Contracts";
     public static final String OPPORTUNITIES = "Opportunities";
     public static final String ACTIVITIES = "Activities";
-    public static final String ANALYTICS = "Analytics";
 
     public CrmBoundedDomainUi(@NotNull CrmBoundedDomain crmDomain, @NotNull InvoicesBoundedDomain invoicesDomain) {
         super(crmDomain);
@@ -63,8 +62,10 @@ public class CrmBoundedDomainUi extends BoundedDomainUi<CrmBoundedDomain> {
         subMenu.addItem(OPPORTUNITIES, _ -> select(layout, view(Opportunity.class).orElseThrow()));
         subMenu.addItem(ACTIVITIES, _ -> select(layout, view(Activity.class).orElseThrow()));
 
-        addAnalytics(layout, menuBar, view(AnalyticsCrmView.class).orElseThrow());
-        addAdministration(layout, menuBar, view(DomainEntity.class).orElseThrow());
+        menuItem = menuBar.addItem(TOOLS);
+        subMenu = menuItem.getSubMenu();
+        subMenu.addItem(ANALYTICS, _ -> select(layout, view(AnalyticsCrmView.class).orElseThrow()));
+        addAdministration(layout, subMenu, view(DomainEntity.class).orElseThrow());
         select(layout);
     }
 }

@@ -33,7 +33,7 @@ import java.util.Optional;
  * @param amount    the amount of the entry
  * @param reference the reference of the entry
  * @param text      the text of the entry
- * @param isDebit   is the entry on the debit side or not (meaning credit side)
+ * @param isDebit   is the entry on the debit side or not (meaning credit side)?
  * @param vatCode   the VAT code of the entry
  * @param tags      the tags of the entry
  */
@@ -42,8 +42,6 @@ public record AccountEntry(@NotNull String accountId, @NotNull LocalDate date, @
     public static final String FINANCE = "fin";
     public static final String PROJECT = "project";
     public static final String SEGMENT = "segment";
-    public static final String DATE_EXPECTED = "date-expected";
-
 
     public AccountEntry of(@NotNull String accountId, @NotNull LocalDate date, @NotNull BigDecimal amount, String reference, String text, boolean debit,
                            VatCode vatCode) {
@@ -94,7 +92,11 @@ public record AccountEntry(@NotNull String accountId, @NotNull LocalDate date, @
         return Optional.ofNullable(vatCode()).map(VatCode::vatRate);
     }
 
-    public Optional<BigDecimal> getVatDue() {
-        return Optional.ofNullable(vatCode()).map(VatCode::vatDueRate);
+    /**
+     * Returns the VAT due amount for the entry. If the entry has no VAT code, the method returns zero.
+     * @return the VAT due amount for the entry
+     */
+    public BigDecimal getVatDue() {
+        return Optional.ofNullable(vatCode()).map(VatCode::vatDueRate).orElse(BigDecimal.ZERO);
     }
 }

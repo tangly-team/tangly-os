@@ -4,7 +4,7 @@
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- *          http://www.apache.org/licenses/LICENSE-2.0
+ *          https://apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -15,6 +15,7 @@ package net.tangly.core.providers;
 
 import org.eclipse.serializer.persistence.binary.jdk17.types.BinaryHandlersJDK17;
 import org.eclipse.serializer.persistence.binary.jdk8.types.BinaryHandlersJDK8;
+import org.eclipse.serializer.persistence.types.Storer;
 import org.eclipse.store.storage.embedded.types.EmbeddedStorage;
 import org.eclipse.store.storage.embedded.types.EmbeddedStorageFoundation;
 import org.eclipse.store.storage.embedded.types.EmbeddedStorageManager;
@@ -55,12 +56,13 @@ public class ProviderPersistence<T> implements Provider<T> {
     public void update(@NotNull T entity) {
         if (!items.contains(entity)) {
             items.add(entity);
-            storageManager.store(items);
+            storageManager.store(entity);
         } else {
-            var storage = storageManager.createEagerStorer();
-            storage.store(entity);
-            storage.commit();
+            Storer storer = storageManager.createEagerStorer();
+            storer.store(entity);
+            storer.commit();
         }
+        storageManager.store(items);
     }
 
     @Override
@@ -69,9 +71,12 @@ public class ProviderPersistence<T> implements Provider<T> {
             if (!items.contains(entity)) {
                 items.add(entity);
             } else {
-                storageManager.store(entity);
+                Storer storer = storageManager.createEagerStorer();
+                storer.store(entity);
+                storer.commit();
             }
         });
+        storageManager.store(entities);
         storageManager.store(items);
     }
 

@@ -22,7 +22,7 @@ import java.util.Objects;
 
 /**
  * An effort defines work performed on a project. It is possible to specify an additional contract to identify the financial link to the duration. A duration is always performed by
- * one employee. Administrative data specify the duration, the date and an optional description. Efforts can be used to generate work ports such as monthly ports and used to
+ * one employee. Administrative data specify the duration, the date, and an optional description. Efforts can be used to generate work ports such as monthly ports and used to
  * calculate the spent time on a contract or a project.
  */
 public class Effort implements HasMutableDate, HasMutableText {

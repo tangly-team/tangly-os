@@ -29,7 +29,7 @@ import org.jetbrains.annotations.NotNull;
 import java.math.BigDecimal;
 
 /**
- * Regular CRUD view on interactions abstraction. The grid and edition dialog wre optimized for usability.
+ * Regular CRUD view on interactions' abstraction. The grid and edition dialog wre optimized for usability.
  */
 @PageTitle("crm-interactions")
 class OpportunitiesView extends EntityView<Opportunity> {
@@ -86,7 +86,7 @@ class OpportunitiesView extends EntityView<Opportunity> {
             .setComparator(o -> o.potential()).setAutoWidth(true).setResizable(true).setSortable(true).setTextAlign(ColumnTextAlign.END);
         VaadinUtils.addColumn(grid, new NumberRenderer<>(e -> HUNDRED.multiply(e.probability()), VaadinUtils.FORMAT), "probability", "Probability (%)")
             .setComparator(o -> o.probability()).setTextAlign(ColumnTextAlign.END);
-        grid.addColumn(new NumberRenderer<>(e -> e.potential().multiply(e.probability()), VaadinUtils.FORMAT)).setKey("fotrcast").setHeader(
+        grid.addColumn(new NumberRenderer<>(e -> e.potential().multiply(e.probability()), VaadinUtils.FORMAT)).setKey("forecast").setHeader(
                 "Forecast").setComparator(e -> e.potential().multiply(e.probability())).setAutoWidth(true).setResizable(true).setSortable(true)
             .setTextAlign(ColumnTextAlign.END);
     }

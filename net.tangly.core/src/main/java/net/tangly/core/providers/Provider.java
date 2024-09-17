@@ -4,7 +4,7 @@
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- *          http://www.apache.org/licenses/LICENSE-2.0
+ *          https://apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -47,14 +47,15 @@ public interface Provider<T> {
     }
 
     /**
-     * Return a list containing all known instances of the entity type.
+     * Returns a list containing all known instances of the entity type.
      *
      * @return list of all instances
      */
     List<T> items();
 
     /**
-     * Update the data associated with the entity. If the entity is new, the update is handled as a create operation. The update is transitive and all referenced entities are also
+     * Updates the data associated with the entity. If the entity is new, the update is handled as a create operation. The update is transitive and all
+     * referenced entities are also
      * updated. The entity given as parameter becomes the instance managed through the provider.
      *
      * @param entity entity to update
@@ -62,20 +63,20 @@ public interface Provider<T> {
     void update(@NotNull T entity);
 
     /**
-     * Delete the data associated with the entity. The object identifier is invalidated.
+     * Deletes the data associated with the entity. The object identifier is invalidated.
      *
      * @param entity entity to delete
      */
     void delete(@NotNull T entity);
 
     /**
-     * Delete all the entities managed by the provider.
+     * Deletes all the entities managed by the provider.
      */
     void deleteAll();
 
 
     /**
-     * Replace an existing value with a new one. A null value is ignored.
+     * Replaces an existing value with a new one. A null value is ignored.
      *
      * @param oldValue remove the old value if not null
      * @param newValue add the new value if not null
@@ -90,7 +91,7 @@ public interface Provider<T> {
     }
 
     /**
-     * Update the data associated with all entities.
+     * Updates the data associated with all entities.
      *
      * @param items entities to update
      */
@@ -100,7 +101,7 @@ public interface Provider<T> {
 
 
     /**
-     * Return the first entity which property matches the value.
+     * Returns the first entity which property matches the value.
      *
      * @param getter getter to retrieve the property
      * @param value  value to compare with

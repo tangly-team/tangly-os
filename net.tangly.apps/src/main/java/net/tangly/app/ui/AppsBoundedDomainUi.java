@@ -23,6 +23,7 @@ import net.tangly.core.domain.DomainEntity;
 import net.tangly.core.domain.User;
 import net.tangly.ui.app.domain.BoundedDomainUi;
 import net.tangly.ui.app.domain.DomainView;
+import net.tangly.ui.app.domain.UserManualView;
 import net.tangly.ui.components.Mode;
 import org.jetbrains.annotations.NotNull;
 
@@ -33,6 +34,7 @@ public class AppsBoundedDomainUi extends BoundedDomainUi<AppsBoundedDomain> {
         super(domain);
         addView(User.class, new LazyReference<>(() -> new UsersView(this, Mode.EDITABLE)));
         addView(DomainEntity.class, new LazyReference<>(() -> new DomainView(this)));
+        addView(UserManualView.class, new LazyReference<>(() -> new UserManualView(this)));
         currentView(User.class.getSimpleName());
     }
 
@@ -41,7 +43,13 @@ public class AppsBoundedDomainUi extends BoundedDomainUi<AppsBoundedDomain> {
         MenuItem menuItem = menuBar.addItem(BoundedDomainUi.ENTITIES);
         SubMenu subMenu = menuItem.getSubMenu();
         subMenu.addItem(USERS, e -> select(layout, view(User.class.getSimpleName()).orElseThrow()));
-        addAdministration(layout, menuBar, view(DomainEntity.class.getSimpleName()).orElseThrow());
+        subMenu.addItem(USER_MANUAL, _ -> select(layout, view(UserManualView.class).orElseThrow()));
+        menuItem = menuBar.addItem(TOOLS);
+        subMenu = menuItem.getSubMenu();
+        subMenu.addItem(USER_MANUAL, _ -> select(layout, view(UserManualView.class).orElseThrow()));
+        if (hasDomainAdminRights() || hasAppAdminRights()) {
+            addAdministration(layout, subMenu, view(DomainEntity.class.getSimpleName()).orElseThrow());
+        }
         select(layout);
     }
 }

@@ -36,7 +36,7 @@ import java.util.Optional;
 
 /**
  * The ledger implements a ledger with a chart of accounts and a set of transactions. It provides the logic for the automatic processing of VAT amounts and related bookings to the
- * VAT related accounts.
+ * VAT-related accounts.
  */
 public interface LedgerRealm extends Realm {
     String VAT_FLAT_RATE = "VAT flat rate";
@@ -133,21 +133,10 @@ public interface LedgerRealm extends Realm {
             .forEach(o -> logger.atError().log("Aggregate account wrongly defined {}", o.id()));
     }
 
-    private void bookEntry(@NotNull AccountEntry entry) {
-        Optional<Account> account = accountBy(entry.accountId());
-        account.ifPresent(o -> {
-            o.addEntry(entry);
-            accounts().update(o);
-        });
-        if (account.isEmpty()) {
-            logger.atError().log("account {} for entry with amount {} booked {} is undefined", entry.accountId(), entry.amount(), entry.date());
-        }
-    }
-
 // region VAT-computations
 
     default BigDecimal computeVatSales(LocalDate from, LocalDate to, VatCode vatCode) {
-        return transactions(from, to).stream().filter(o -> !o.isSynthetic()).flatMap(o -> o.creditSplits().stream())
+        return transactions(from, to).stream().filter(o -> !o.synthetic()).flatMap(o -> o.creditSplits().stream())
             .filter(o -> Objects.isNull(vatCode) ? Objects.nonNull(o.vatCode()) : vatCode.equals(o.vatCode())).map(AccountEntry::amount)
             .reduce(BigDecimal.ZERO, BigDecimal::add);
     }
@@ -166,11 +155,19 @@ public interface LedgerRealm extends Realm {
             .reduce(BigDecimal.ZERO, BigDecimal::add)).orElse(BigDecimal.ZERO);
     }
 
-    private void bookTransaction(Transaction transaction) {
+    // endregion
+
+    private void bookTransaction(@NotNull Transaction transaction) {
         transactions().update(transaction);
         transaction.creditSplits().forEach(this::bookEntry);
         transaction.debitSplits().forEach(this::bookEntry);
     }
 
-// endregion
+    private void bookEntry(@NotNull AccountEntry entry) {
+        Optional<Account> account = accountBy(entry.accountId());
+        account.ifPresentOrElse(o -> {
+            o.addEntry(entry);
+            accounts().update(o);
+        }, () -> logger.atError().log("account {} for entry with amount {} booked {} is undefined", entry.accountId(), entry.amount(), entry.date()));
+    }
 }

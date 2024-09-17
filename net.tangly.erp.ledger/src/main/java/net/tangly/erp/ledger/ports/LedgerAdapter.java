@@ -24,18 +24,18 @@ import net.tangly.core.domain.DomainAudit;
 import net.tangly.core.domain.Port;
 import net.tangly.core.domain.TsvHdl;
 import net.tangly.erp.ledger.artifacts.ClosingReportAsciiDoc;
-import net.tangly.erp.ledger.domain.Account;
-import net.tangly.erp.ledger.domain.LedgerTags;
-import net.tangly.erp.ledger.domain.Transaction;
-import net.tangly.erp.ledger.domain.VatCode;
+import net.tangly.erp.ledger.domain.*;
 import net.tangly.erp.ledger.services.LedgerPort;
 import net.tangly.erp.ledger.services.LedgerRealm;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.eclipse.serializer.exceptions.IORuntimeException;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
 import java.io.Reader;
 import java.io.UncheckedIOException;
+import java.math.BigDecimal;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -43,10 +43,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Month;
 import java.time.temporal.ChronoUnit;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 import java.util.stream.Stream;
 
 import static net.tangly.commons.utilities.AsciiDoctorHelper.PDF_EXT;
@@ -72,6 +69,7 @@ public class LedgerAdapter implements LedgerPort {
     public static final String LONG_TERM_THIRD_PARTY_CAPITAL_ACCOUNT = "2A";
     public static final String EQUITY_ACCOUNT = "28";
     public static final String CASH_ON_HAND_ACCOUNT = "100";
+    private static final Logger logger = LogManager.getLogger();
     private final LedgerRealm realm;
     private final Path dataFolder;
     private final Path docsFolder;
@@ -163,6 +161,31 @@ public class LedgerAdapter implements LedgerPort {
             withTransactions, withVat);
         AsciiDoctorHelper.createPdf(docsFolder.resolve(name + AsciiDoctorHelper.ASCIIDOC_EXT), docsFolder.resolve(name + AsciiDoctorHelper.PDF_EXT), true);
         createDocument(name, from, to, text, tags, audit);
+    }
+
+    @Override
+    public Collection<Segment> computeSegments(@NotNull String code, LocalDate from, LocalDate to) {
+        var segments = new HashMap<String, Segment>();
+        try {
+            realm().transactions(from, to).stream().flatMap(o -> o.creditSplits().stream()).filter(o -> o.containsTag(AccountEntry.FINANCE, code))
+                .forEach(o -> update(segments, o.value(AccountEntry.FINANCE, code).orElseThrow(), o));
+            realm.transactions(from, to).stream().flatMap(o -> o.debitSplits().stream()).filter(o -> o.containsTag(AccountEntry.FINANCE, code))
+                .forEach(o -> update(segments, o.value(AccountEntry.FINANCE, code).orElseThrow(), o));
+        } catch (Exception e) {
+            // TODO solve problem with EclipseStore
+            logger.atError().withThrowable(e).log("Error computing segments for code (EclipseStore known problem {}", code);
+        }
+        return segments.values();
+    }
+
+    private void update(@NotNull Map<String, Segment> segments, String key, @NotNull AccountEntry entry) {
+        BigDecimal amount = entry.isCredit() ? entry.amount().subtract(entry.getVatDue()) : entry.amount().negate();
+        if (segments.containsKey(key)) {
+            segments.compute(key, (k, segment) -> new Segment(key, entry.date().isBefore(segment.from()) ? entry.date() : segment.from(),
+                entry.date().isAfter(segment.to()) ? entry.date() : segment.to(), segment.amount().add(amount)));
+        } else {
+            segments.put(key, new Segment(key, entry.date(), entry.date(), amount));
+        }
     }
 
     private void createDocument(@NotNull String name, LocalDate from, LocalDate to, String text, Collection<Tag> tags, @NotNull DomainAudit audit) {

@@ -31,7 +31,7 @@ import java.util.Currency;
 import java.util.Locale;
 
 /**
- * Regular CRUD view on contracts abstraction. The grid and edition dialog wre optimized for usability.
+ * Regular CRUD view on contracts abstraction. The grid and edition dialog were optimized for usability.
  */
 
 class ContractsView extends EntityView<Contract> {
@@ -97,7 +97,7 @@ class ContractsView extends EntityView<Contract> {
         var grid = grid();
         VaadinUtils.addColumn(grid, e -> e.sellee().name(), "customer", "Customer");
         VaadinUtils.addColumn(grid, Contract::currency, "currency", "Currency");
-        grid.addColumn(new NumberRenderer<>(Contract::amountWithoutVat, VaadinUtils.FORMAT)).setKey("amount").setHeader("Amount")
+        grid.addColumn(new NumberRenderer<>(Contract::amountWithoutVat, VaadinUtils.FORMAT)).setKey(AMOUNT).setHeader(AMOUNT_LABEL)
             .setComparator(o -> o.amountWithoutVat()).setAutoWidth(true).setResizable(true).setSortable(true).setTextAlign(ColumnTextAlign.END);
         grid.addColumn(new NumberRenderer<>(Contract::budgetInHours, VaadinUtils.FORMAT)).setKey("budgetInHours").setHeader("Budget In Hours")
             .setComparator(o -> o.amountWithoutVat()).setAutoWidth(true).setResizable(true).setSortable(true).setTextAlign(ColumnTextAlign.END);

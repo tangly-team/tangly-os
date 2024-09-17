@@ -1,0 +1,55 @@
+<h1>User Manual</h1>
+<h2>Concepts</h2>
+<p>The bounded domain <em>ledger</em> abstracts the accounting activities of a digital product company.</p>
+<dl>
+    <dt>Account</dt>
+    <dd>Defines an account as seen for double entry booking ledger and legal accounting for tax ports.
+        The account groups are assets, liabilities, expenses, or profits and losses.
+        The account kinds are asset, liability, income, expense, or an aggregate one. The kind is used for computing correctly the balance.
+        For example, an account with identifier <em>1</em>, of kind <em>ASSET</em>, and with a description <em>Assets</em>
+        Aggregates are used to provide aggregated values such as E6, E5, etc.
+    </dd>
+    <dt>Transaction</dt>
+    <dd>A simple transaction is a money transfer between a debit and a credit account.
+        A split transaction is a money transfer between a debit account and a set of credit accounts or a credit account and a set of debit accounts. The
+        total debit and the total credit of a transaction must be the same format.
+        The majority of transactions have one debit and one credit account. The class is immutable.
+        <p>Two kinds of transactions are supported. The simple transaction is a transfer from one debit account to a credit account. All information is
+            stored at the transaction level. The split transaction is a transfer from one debit account to multiple credit accounts or from one credit
+            account to multiple debit accounts.
+            General information is stored on the transaction level, and specific data is stored in the associated split accounts.</p>
+        <p>A transaction is an event in the ledger domain. The whole sequence of transactions fully describes the state of the ledger and all accounts
+            defined inside.</p>
+        <p> A transaction can have a VAT code. The code is either on the debit or the credit account. If the transaction is split, the VAT code can optionally
+            be defined on multiple split positions. In this case the debit or credit account should not have a VAT code.</p>
+    </dd>
+    <dt>Account Entry</dt>
+    <dd>The account entry models one booking in an account of a double entry accounting system. See also transactions.</dd>
+    <dt>VatCode</dt>
+    <dd></dd>
+</dl>
+
+<p>The ledger structure is defined in the account instances.
+    The ledger can be defined in a TSV file and imported in the system.
+    The format and conventions of the ledger configuration file follow the ones of the <a href="https://www.banana.ch/">banana Accounting</a>.</p>
+
+<h2>Workflows</h2>
+<h3>Ledger Structure</h3>
+<h3>Effective Method for VAT</h3>
+<h3>Accounting Period Report</h3>
+
+<h2>Analytics</h2>
+<h3>Profits and Losses</h3>
+<h3>Assets</h3>
+<h3>Invoices Reconciliation</h3>
+<p>The transactions of paid invoices are reconciled with the invoices.
+The reconciliation is done through the transaction reference, which should be the invoice identifier.
+The process is successful if the referenced invoice was found and the invoice amount is the same as the transaction amount.</p>
+<p>Analytical data is also provided:</p>
+<ul>
+    <li>Is the transaction successfully reconciled?</li>
+    <li>What is the difference between the invoice and the transaction amount?</li>
+    <li>How many days lay between the invoice due date and the transaction booking date?</li>
+</ul>
+<h3>Project Segments</h3>
+<h3>Collaborator Segments</h3>

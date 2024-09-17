@@ -32,7 +32,6 @@ import net.tangly.ui.components.*;
 import org.jetbrains.annotations.NotNull;
 
 import java.time.LocalDate;
-import java.util.List;
 import java.util.Objects;
 
 /**
@@ -50,7 +49,7 @@ class ActivitiesView extends ItemView<Activity> {
     record CmdRefreshActivities(ActivitiesView view) implements Cmd {
         @Override
         public void execute() {
-            List interactions = view.domain().realm().opportunities().items().stream().flatMap(e -> e.activities().stream()).toList();
+            var interactions = view.domain().realm().opportunities().items().stream().flatMap(e -> e.activities().stream()).toList();
             view.provider(ProviderInMemory.of(interactions));
         }
     }
@@ -85,8 +84,8 @@ class ActivitiesView extends ItemView<Activity> {
     }
 
     static class ActivityForm extends ItemForm<Activity, ActivitiesView> {
-        private DatePicker date;
-        private Select<String> author;
+        private final DatePicker date;
+        private final Select<String> author;
 
         public ActivityForm(@NotNull ActivitiesView parent) {
             super(parent);

@@ -16,7 +16,6 @@ package net.tangly.ui.app.domain;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.applayout.AppLayout;
-import com.vaadin.flow.component.contextmenu.MenuItem;
 import com.vaadin.flow.component.contextmenu.SubMenu;
 import com.vaadin.flow.component.menubar.MenuBar;
 import com.vaadin.flow.server.VaadinSession;
@@ -42,12 +41,14 @@ import java.util.concurrent.Flow;
 public abstract class BoundedDomainUi<T extends BoundedDomain<?, ?, ?>> implements BoundedDomain.EventListener {
     public static final String ADMINISTRATION = "Administration";
     public static final String ANALYTICS = "Analytics";
+    public static final String TOOLS = "Tools";
     public static final String CLEAR = "Clear";
     public static final String DOCUMENTS = "Documents";
     public static final String ENTITIES = "Entities";
     public static final String EXPORT = "Export";
     public static final String IMPORT = "Import";
     public static final String STATISTICS = "Statistics";
+    public static final String USER_MANUAL = "User Manual";
 
     private final T domain;
     private AccessRights rights;
@@ -167,12 +168,10 @@ public abstract class BoundedDomainUi<T extends BoundedDomain<?, ?, ?>> implemen
      *     application with the import domain command.</li>
      * </ul>
      */
-    protected void addAdministration(@NotNull AppLayout layout, @NotNull MenuBar menuBar, @NotNull LazyReference<?> domainView) {
+    protected void addAdministration(@NotNull AppLayout layout, @NotNull SubMenu subMenu, @NotNull LazyReference<?> domainView) {
         if (hasDomainAdminRights() || hasAppAdminRights()) {
-            MenuItem menuItem = menuBar.addItem(ADMINISTRATION);
-            SubMenu subMenu = menuItem.getSubMenu();
+            subMenu.addSeparator();
             var action = subMenu.addItem(STATISTICS, _ -> select(layout, domainView));
-
             subMenu.addSeparator();
             action.setEnabled(hasDomainAdminRights());
             action = subMenu.addItem(IMPORT, _ -> executeGlobalAction(() -> domain.port().importEntities(domain())));
@@ -181,7 +180,6 @@ public abstract class BoundedDomainUi<T extends BoundedDomain<?, ?, ?>> implemen
             action.setEnabled(hasDomainAdminRights());
             action = subMenu.addItem(CLEAR, _ -> executeGlobalAction(() -> domain.port().clearEntities(domain())));
             action.setEnabled(hasDomainAdminRights());
-
             subMenu.addSeparator();
             action = subMenu.addItem("Import All", _ -> domain().directory().boundedDomains().forEach(o -> o.port().importEntities(o)));
             action.setEnabled(hasAppAdminRights());
@@ -189,13 +187,8 @@ public abstract class BoundedDomainUi<T extends BoundedDomain<?, ?, ?>> implemen
             action.setEnabled(hasAppAdminRights());
             action = subMenu.addItem("Clear All", _ -> domain().directory().boundedDomains().forEach(o -> o.port().clearEntities(o)));
             action.setEnabled(hasAppAdminRights());
+            action = subMenu.addItem("Shutdown DB", _ -> domain().directory().boundedDomains().forEach(o -> o.shutdown()));
         }
-    }
-
-    protected void addAnalytics(@NotNull AppLayout layout, @NotNull MenuBar menuBar, @NotNull LazyReference<?> analyticsView) {
-        MenuItem menuItem = menuBar.addItem(ANALYTICS);
-        SubMenu subMenu = menuItem.getSubMenu();
-        subMenu.addItem(ANALYTICS, _ -> select(layout, analyticsView));
     }
 
     protected final void executeGlobalAction(@NotNull Runnable action) {
@@ -220,10 +213,10 @@ public abstract class BoundedDomainUi<T extends BoundedDomain<?, ?, ?>> implemen
     }
 
     protected boolean hasDomainAdminRights() {
-        return (rights != null) && ((rights.right() == AccessRightsCode.domainAdmin) || (rights.right() == AccessRightsCode.appAdmin));
+        return (rights != null) && ((rights.right() == AccessRightsCode.domainAdmin) || (rights.right() == AccessRightsCode.tenantAdmin));
     }
 
     protected boolean hasAppAdminRights() {
-        return (Objects.nonNull(user()) && user().accessRights().stream().anyMatch(o -> o.right() == AccessRightsCode.appAdmin));
+        return (Objects.nonNull(user()) && user().accessRights().stream().anyMatch(o -> o.right() == AccessRightsCode.tenantAdmin));
     }
 }

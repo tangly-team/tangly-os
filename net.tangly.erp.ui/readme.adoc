@@ -11,7 +11,7 @@ weight: 10
 image:https://img.shields.io/badge/license-Apache%202-blue.svg[Apache License 2.0]
 image:https://img.shields.io/maven-central/v/{ref-groupId}/{ref-artifactId}[Maven Central]
 https://javadoc.io/doc/{ref-groupId}/{ref-artifactId}[image:https://javadoc.io/badge2/{ref-groupId}/{ref-artifactId}/javadoc.svg[javadoc]]
-image:https://github.com/tangly-team/tangly-os/actions/workflows/workflows.yml/badge.svg[build]
+image:https://github.com/tangly-team/tanglyd-os/actions/workflows/workflows.yml/badge.svg[build]
 image:https://img.shields.io/github/issues-raw/tangly-team/tangly-os[issues]
 image:https://img.shields.io/github/discussions/tangly-team/tangly-os[discussions]
 

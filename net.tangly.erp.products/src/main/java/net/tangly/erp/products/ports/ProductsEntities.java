@@ -82,10 +82,6 @@ public class ProductsEntities implements ProductsRealm {
         documents = ProviderHasId.of(data.documents);
     }
 
-    public void storeRoot() {
-        storageManager.storeRoot();
-    }
-
     @Override
     public Provider<Product> products() {
         return products;
