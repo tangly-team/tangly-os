@@ -104,26 +104,28 @@ class TransactionsView extends ItemView<Transaction> {
 
         private void init() {
             DatePicker date = VaadinUtils.createDatePicker("date");
-            TextField text = VaadinUtils.createTextField("Text", "text");
             TextField reference = VaadinUtils.createTextField("Reference", "reference");
             ComboBox<String> debitAccount = new ComboBox<>("Debit");
-
             debitAccount.setItems(logic().bookableAccountIds());
             debitAccount.setClearButtonVisible(true);
             ComboBox<String> creditAccount = new ComboBox<>("Credit");
             creditAccount.setItems(logic().bookableAccountIds());
             creditAccount.setClearButtonVisible(true);
+            DatePicker expectedDate = VaadinUtils.createDatePicker("date");
             TextField amount = VaadinUtils.createTextField(AMOUNT_LABEL, AMOUNT);
+            TextField text = VaadinUtils.createTextField("Text", "text");
 
             binder().bindReadOnly(date, Transaction::date);
+            binder().bindReadOnly(reference, Transaction::reference);
             binder().bindReadOnly(debitAccount, Transaction::debitAccount);
             binder().bindReadOnly(creditAccount, Transaction::creditAccount);
             binder().bindReadOnly(amount, o -> o.amount().toString());
+            binder().bindReadOnly(expectedDate, Transaction::dateExpected);
             binder().bindReadOnly(text, Transaction::text);
-            binder().bindReadOnly(reference, Transaction::reference);
             // TODO debit and credit including splits
             FormLayout form = new FormLayout();
-            form.add(date, reference, text, debitAccount, creditAccount, amount);
+            form.add(date, reference, debitAccount, creditAccount, amount, expectedDate, text);
+            form.setColspan(text, 3);
             addTabAt("details", form, 0);
         }
 
@@ -171,6 +173,7 @@ class TransactionsView extends ItemView<Transaction> {
     protected void addActions(@NotNull GridMenu<Transaction> menu) {
         menu().add(new Hr());
         menu().add(GridMenu.PRINT_TEXT, e -> Cmd.ofGlobalCmd(e, () -> new CmdCreateLedgerDocument(domain()).execute()), GridMenu.MenuItemType.GLOBAL);
+        menu().add("Update Expected Dates", e -> Cmd.ofGlobalCmd(e, () -> domain().port().populateExpectedDates(domain())), GridMenu.MenuItemType.GLOBAL);
     }
 
     @Override

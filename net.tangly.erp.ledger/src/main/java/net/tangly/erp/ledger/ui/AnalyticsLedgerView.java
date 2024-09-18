@@ -129,33 +129,43 @@ public class AnalyticsLedgerView extends AnalyticsView {
         VaadinUtils.addColumnBoolean(grid, this::isReconciled, "Reconciled", "reconciled");
         VaadinUtils.addColumnBigDecimal(grid, this::reconciliationDifference, "Difference", "difference");
         grid.addColumn(this::latencyPayment).setHeader("Latency").setKey("latency").setSortable(true).setResizable(true);
-        grid.addColumn(Transaction::date).setHeader(DATE_LABEL).setKey(DATE).setSortable(true).setResizable(true);
         grid.addColumn(Transaction::reference).setHeader("Reference").setKey("reference").setSortable(true).setResizable(true);
+
         grid.addColumn(Transaction::amount).setHeader(AMOUNT_LABEL).setKey(AMOUNT).setSortable(true).setResizable(true);
+        VaadinUtils.addColumnBigDecimal(grid, o -> Objects.nonNull(invoiceFor(o.reference())) ? invoiceFor(o.reference()).amountWithVat() : null,
+            "invoiceWithVat", "Invoice Amount");
+
         grid.addColumn(Transaction::vatCodeAsString).setHeader("VAT").setKey("vat").setSortable(true).setResizable(true);
         grid.addColumn(o -> o.vatCode().isPresent() ? o.vatCode().get().vatRate() : null).setHeader("VAT %").setKey("vat-percentage").setSortable(true)
             .setResizable(true);
         VaadinUtils.addColumnBoolean(grid, Transaction::isSplit, "Split", "split");
 
+        grid.addColumn(Transaction::date).setHeader(DATE_LABEL).setKey(DATE).setSortable(true).setResizable(true);
         grid.addColumn(o -> Objects.nonNull(invoiceFor(o.reference())) ? invoiceFor(o.reference()).invoicedDate() : null).setHeader("Invoiced Date")
             .setKey("invoicedDate").setSortable(true).setResizable(true);
         grid.addColumn(o -> Objects.nonNull(invoiceFor(o.reference())) ? invoiceFor(o.reference()).dueDate() : null).setHeader("Due Date").setKey("dueDate")
             .setSortable(true).setResizable(true);
+        grid.addColumn(Transaction::dateExpected).setHeader("Expected Date").setKey("dateExpected").setSortable(true).setResizable(true);
+
         grid.addColumn(o -> Objects.nonNull(invoiceFor(o.reference())) ? invoiceFor(o.reference()).currency() : null).setHeader("Currency").setKey("currency")
             .setSortable(true).setResizable(true);
         VaadinUtils.addColumnBigDecimal(grid, o -> Objects.nonNull(invoiceFor(o.reference())) ? invoiceFor(o.reference()).amountWithoutVat() : null,
             "Invoice Net", "invoiceWithoutVat");
-        VaadinUtils.addColumnBigDecimal(grid, o -> Objects.nonNull(invoiceFor(o.reference())) ? invoiceFor(o.reference()).amountWithoutVat() : null,
-            "Invoice With VAT", "invoiceWitVat");
         VaadinUtils.addColumnBigDecimal(grid, o -> Objects.nonNull(invoiceFor(o.reference())) ? invoiceFor(o.reference()).vat() : null, "Invoice VAT",
             "invoiceVat");
         grid.setItemDetailsRenderer(createInvoiceViewDetailsRenderer());
         return grid;
     }
 
+    /**
+     * A transaction is reonciled with an invoice if the invoice was found, the amounts and the due dates, if defined, are the same.
+     * @param transaction transaction to be reconciled
+     * @return true if the transaction is reconciled with an invoice
+     */
     private boolean isReconciled(@NotNull Transaction transaction) {
         InvoicesPort.InvoiceView item = invoiceFor(transaction.reference());
-        return Objects.nonNull(item) && (transaction.amount().compareTo(item.amountWithVat()) == 0);
+        return Objects.nonNull(item) && (transaction.amount().compareTo(item.amountWithVat()) == 0)
+            && (Objects.isNull(transaction.dateExpected()) || transaction.dateExpected().isEqual(item.dueDate()));
     }
 
     private BigDecimal reconciliationDifference(@NotNull Transaction transaction) {

@@ -207,7 +207,6 @@ public class LedgerTsvHdl {
                 String[] debitValues = csv.get(ACCOUNT_DEBIT).split("-");
                 String[] creditValues = csv.get(ACCOUNT_CREDIT).split("-");
                 BigDecimal amount = TsvHdl.parseBigDecimal(csv, AMOUNT);
-                String dateExpected = csv.get(DATE_EXPECTED);
                 String text = csv.get(DESCRIPTION);
                 String reference = csv.get(DOC);
                 String vatCode = csv.get(VAT_CODE);
@@ -223,7 +222,7 @@ public class LedgerTsvHdl {
                         new AccountEntry(debitAccount, Dates.of(date), amount, null, null, true, of(vatCode), defineSegments(debitValues)) : null;
                     var credit = (creditAccount != null) ?
                         new AccountEntry(creditAccount, Dates.of(date), amount, null, null, false, of(vatCode), defineSegments(creditValues)) : null;
-                    Transaction transaction = Transaction.of(Dates.of(date), reference, text, debit, credit, Dates.of(dateExpected), splits);
+                    Transaction transaction = Transaction.of(Dates.of(date), reference, text, debit, credit, Dates.of(csv.get(DATE_EXPECTED)), splits);
                     ledger.book(transaction);
                     ++counter;
                     audit.log(EventData.IMPORT_EVENT, EventData.Status.SUCCESS, "%s imported to journal".formatted(Transaction.class.getSimpleName()),
@@ -253,12 +252,14 @@ public class LedgerTsvHdl {
         try (CSVPrinter out = new CSVPrinter(Files.newBufferedWriter(path, StandardCharsets.UTF_8), TsvHdl.FORMAT)) {
             out.printRecord(DATE, DOC, DESCRIPTION, ACCOUNT_DEBIT, ACCOUNT_CREDIT, AMOUNT, VAT_CODE, DATE_EXPECTED);
             int counter = 0;
-            for (Transaction transaction : ledger.transactions(from, to)) {
+            List<Transaction> transactions = new ArrayList<>(ledger.transactions(from, to));
+            transactions.sort(Comparator.comparing(Transaction::date));
+            for (var transaction : transactions) {
                 if (!transaction.synthetic()) {
                     out.printRecord(transaction.date(), transaction.reference(), transaction.text(), accountCompositeId(transaction.debit()),
                         accountCompositeId(transaction.credit()), transaction.amount(), transaction.vatCodeAsString(), transaction.dateExpected());
                     if (transaction.isSplit()) {
-                        for (AccountEntry entry : transaction.debitSplits()) {
+                        for (AccountEntry entry : transaction.splits()) {
                             out.printRecord(entry.date(), entry.reference(), entry.text(), entry.isDebit() ? accountCompositeId(entry) : null,
                                 entry.isCredit() ? accountCompositeId(entry) : null, entry.amount(), entry.vatCodeAsString(), null);
                         }

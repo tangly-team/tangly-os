@@ -23,8 +23,10 @@ import net.tangly.core.domain.Document;
 import net.tangly.core.domain.DomainAudit;
 import net.tangly.core.domain.Port;
 import net.tangly.core.domain.TsvHdl;
+import net.tangly.erp.invoices.services.InvoicesBoundedDomain;
 import net.tangly.erp.ledger.artifacts.ClosingReportAsciiDoc;
 import net.tangly.erp.ledger.domain.*;
+import net.tangly.erp.ledger.services.LedgerBoundedDomain;
 import net.tangly.erp.ledger.services.LedgerPort;
 import net.tangly.erp.ledger.services.LedgerRealm;
 import org.apache.logging.log4j.LogManager;
@@ -161,6 +163,12 @@ public class LedgerAdapter implements LedgerPort {
             withTransactions, withVat);
         AsciiDoctorHelper.createPdf(docsFolder.resolve(name + AsciiDoctorHelper.ASCIIDOC_EXT), docsFolder.resolve(name + AsciiDoctorHelper.PDF_EXT), true);
         createDocument(name, from, to, text, tags, audit);
+    }
+
+    public void populateExpectedDates(@NotNull LedgerBoundedDomain domain) {
+        InvoicesBoundedDomain invoicesBoundedDomain = (InvoicesBoundedDomain) domain.directory().getBoundedDomain(InvoicesBoundedDomain.DOMAIN).orElseThrow();
+        realm().transactions().items().stream().filter(o -> o.dateExpected() == null).toList().forEach(
+            o -> invoicesBoundedDomain.port().invoiceViewFor(o.reference()).ifPresent(p -> realm().transactions().replace(o, o.withDateExpected(p.dueDate()))));
     }
 
     @Override

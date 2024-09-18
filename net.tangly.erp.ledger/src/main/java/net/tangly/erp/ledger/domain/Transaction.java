@@ -43,6 +43,10 @@ public record Transaction(@NotNull LocalDate date, String text, String reference
         splits = (Objects.nonNull(splits) && !splits.isEmpty()) ? List.copyOf(splits) : Collections.emptyList();
     }
 
+    public Transaction withDateExpected(@NotNull LocalDate dateExpected) {
+        return new Transaction(date(), text(), reference(), debit(), credit(), dateExpected, synthetic(), splits());
+    }
+
     public Transaction(@NotNull LocalDate date, String debitAccount, String creditAccount, BigDecimal amount, String text, String reference) {
         this(date, text, reference, amount, debitAccount, creditAccount, null, null, Collections.emptyList());
     }

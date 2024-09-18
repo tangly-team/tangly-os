@@ -45,6 +45,9 @@ public interface LedgerPort extends Port<LedgerRealm> {
                               boolean withEmptyAccounts, boolean withTransactions, boolean withVat, String text, Collection<Tag> tags,
                               @NotNull DomainAudit audit);
 
+
+    void populateExpectedDates(@NotNull LedgerBoundedDomain domain);
+
     record Segment(String name, LocalDate from, LocalDate to, BigDecimal amount) {
     }
 
