@@ -210,6 +210,7 @@ public class LedgerTsvHdl {
                 String text = csv.get(DESCRIPTION);
                 String reference = csv.get(DOC);
                 String vatCode = csv.get(VAT_CODE);
+                String dateExpected = csv.get(DATE_EXPECTED);
                 List<AccountEntry> splits = new ArrayList<>();
                 boolean isSplit = isSplit(csv);
                 if (isSplit) {
@@ -222,7 +223,7 @@ public class LedgerTsvHdl {
                         new AccountEntry(debitAccount, Dates.of(date), amount, null, null, true, of(vatCode), defineSegments(debitValues)) : null;
                     var credit = (creditAccount != null) ?
                         new AccountEntry(creditAccount, Dates.of(date), amount, null, null, false, of(vatCode), defineSegments(creditValues)) : null;
-                    Transaction transaction = Transaction.of(Dates.of(date), reference, text, debit, credit, Dates.of(csv.get(DATE_EXPECTED)), splits);
+                    Transaction transaction = Transaction.of(Dates.of(date), reference, text, debit, credit, Dates.of(dateExpected), splits);
                     ledger.book(transaction);
                     ++counter;
                     audit.log(EventData.IMPORT_EVENT, EventData.Status.SUCCESS, "%s imported to journal".formatted(Transaction.class.getSimpleName()),
