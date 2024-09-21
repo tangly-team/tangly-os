@@ -13,6 +13,7 @@
 
 package net.tangly.ui.components;
 
+import com.vaadin.componentfactory.EnhancedDateRangePicker;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.grid.GridVariant;
@@ -348,8 +349,11 @@ public abstract class ItemView<T> extends VerticalLayout implements View {
     }
 
     public static Component createDateRangeFilterField(@NotNull Consumer<DateRange> consumer) {
-        var field = new DateRangePicker(null, "Select Date Range", null, null);
-        field.addValueChangeListener(e -> consumer.accept(e.getValue()));
+        var field = new EnhancedDateRangePicker();
+        field.setPattern("yyyy-MM-dd");
+        field.setClearButtonVisible(true);
+        field.addValueChangeListener(
+            e -> consumer.accept(Objects.nonNull(e.getValue()) ? new DateRange(e.getValue().getStartDate(), e.getValue().getEndDate()) : null));
         return field;
     }
 

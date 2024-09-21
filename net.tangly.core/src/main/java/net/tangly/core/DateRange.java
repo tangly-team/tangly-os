@@ -37,7 +37,8 @@ public record DateRange(LocalDate from, LocalDate to) implements Serializable {
         }
 
         public boolean test(@NotNull LocalDate date) {
-            return (interval.from() == null || !interval.from().isAfter(date)) && (interval.to() == null || !interval.to().isBefore(date));
+            return Objects.isNull(date) || ((interval.from() == null || !interval.from().isAfter(date)) &&
+                (interval.to() == null || !interval.to().isBefore(date)));
         }
     }
 
