@@ -86,7 +86,7 @@ eclispsestore-storage = { module = "org.eclipse.store:storage-embedded", version
 eclispsestore-jdk8 = { module = "org.eclipse.serializer:persistence-binary-jdk8", version.ref = "eclipsestore-version" }
 eclispsestore-jdk17 = { module = "org.eclipse.serializer:persistence-binary-jdk17", version.ref = "eclipsestore-version" }
 
-mockito = "org.mockito:mockito-junit-jupiter:5.13.0"
+mockito = "org.mockito:mockito-junit-jupiter:5.14.1"
 
 javalin = { module = "io.javalin:javalin", version.ref = "javalin-version" }
 javalin-openapi = { module = "io.javalin.community.openapi:javalin-openapi-plugin", version.ref = "openapi-version" }
