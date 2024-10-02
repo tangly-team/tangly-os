@@ -9,11 +9,15 @@ params:
 
 include::../fragments/_config-mb-blog.adoc[]
 
+:ref-bpmn: https://en.wikipedia.org/wiki/Business_Process_Model_and_Notation[Business Process Model and Notation]
+:ref-causeway: https://causeway.apache.org/[Causeway]
 :ref-echarts: https://echarts.apache.org/en/index.html[ECharts]
 :ref-domain-driven-design: https://en.wikipedia.org/wiki/Domain-driven_design[Domain-driven design]
 :ref-naked-objects: https://en.wikipedia.org/wiki/Naked_objects[Naked Objects]
 :ref-crud: https://en.wikipedia.org/wiki/Create,_read,_update_and_delete[CRUD]
 :ref-socharts: https://github.com/syampillai/SOCharts[SO-Charts]
+:ref-uml: https://en.wikipedia.org/wiki/Unified_Modeling_Language[Unified Modeling Language]
+:ref-openxava: https://www.openxava.org/[OpenXava]
 
 image::2024-11-01-head.jpg[width=420,height=360,role=left]
 
@@ -27,6 +31,7 @@ Most company internal applications are a variation of this pattern.
 
 Often you do not need sophisticated forms or display complex diagrams.
 But most of the solutions will have a few complex forms or diagrams.
+It is also common to have a few workflows codifying key business processes of your company.
 
 The {ref-naked-objects} approach is a radical simplification of the {ref-crud} pattern.
 We use it for all our management applications.
@@ -34,7 +39,7 @@ We use it for all our management applications.
 == Domain-driven Design
 
 {ref-domain-driven-design} practitioners complain that it was hard to gain commitment from business stakeholders, or even to completely engage them.
-My own experience suggests that it was nearly impossible to engage business managers with UML diagrams.
+My own experience suggests that it was nearly impossible to engage business managers with {ref-uml} or {ref-bpmn} diagrams.
 It was much easier to engage them in rapid prototyping where they could see and interact with the results.
 Another approach is holding event storming sessions, where the business managers can see the domain model emerge in real-time.
 
@@ -60,7 +65,7 @@ Our preferred technology stack is pure modern Java and {ref-vaadin} for the user
 
 == Grid Display
 
-Grid display of an entity list is the bread and butter of the domain entities representation.
+A grid display of an entity list is the bread and butter of the domain entities representation.
 
 The additional concepts are filtering and ordering of the selected items per column
 footnote:[Strong filtering and ordering capabilities make paging obsolete.].
@@ -264,6 +269,16 @@ See https://echarts.apache.org/examples/en/index.html[Diagram Examples].
 
 The domain entities UI is a key part of the domain-driven design.
 Mechanisms to display, edit, and create domain entities are essential.
+
+[NOTE]
+====
+The open source products {ref-causeway} and {ref-openxava} provide similar functionality.
+Their approach is annotation-based.
+I strongly prefer a programmatic configuration because it is more legible and expendable.
+
+Adding codes, tags, and comments to domain entities was quite simple.
+====
+
 
 Views for tags and comments are part of the domain entities UI library.
 Visual components for code and date range are available.

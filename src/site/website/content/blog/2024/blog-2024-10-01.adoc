@@ -186,19 +186,19 @@ Similar interfaces are provided for immutable access.
 ----
 package net.tangly.core;
 
-interface HasText {
+interface HasMutableText {
     String text();
     void text(String text);
 }
 
-interface HasComments {
+interface HasMutableComments {
     List<Comment> comments();
     void add(@NotNull Comment comment);
     void addComments(@NotNull Iterable<Comment> comments);
     void remove(@NotNull Comment comment);
 }
 
-interface HasTags {
+interface HasMutableTags {
     Set<Tag> tags;
     boolean add(@NotNull Tag tag);
     void addTags(@NotNull Iterable<Tag> tags);
@@ -408,7 +408,7 @@ The defined modes support these special requirements.
 
 The three most used modes are _list_, _view_, and _edit_.
 
-The domain entity user interface <<domain-entities-ui>> discuss the implementation of the CRUD approach in more details.
+The domain entity user interface article discusses the implementation of the CRUD approach in more detail.
 
 == Persistence
 

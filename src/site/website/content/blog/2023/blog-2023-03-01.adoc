@@ -137,7 +137,7 @@ Agile Consortium. 2020
 * [[[butkus, 2]]] https://www.toptal.com/project-managers/agile/what-is-an-agile-coach[What Does an Agile Coach Do and How Can You Become One?].
 Butkus, V.
 * [[[businessreport, 3]]]
-https://www.accenture.com/us-en/insights/technology/business-agility-report-2020[The Business Agility Report, 3rd Edition].
+https://www.accenture.com/us-en/insights/technology/business-agility-report-2020[The Business Agility Report, third Edition].
 Accenture. 2020
 * [[[scrum-master-as-technical-coach, 4]]] https://less.works/blog/2019/12/05/scrum-master-as-technical-coach.html[Scrum Master as Technical Coach].
 Bas Vodde, 2019-12-05

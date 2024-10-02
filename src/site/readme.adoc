@@ -1,4 +1,4 @@
-cd w== Docsy Theme for Hugo
+== Docsy Theme for Hugo
 
 The _docsy_ theme was customized to support specific needs of the tangly OS documentation static website.
 

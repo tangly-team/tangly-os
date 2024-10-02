@@ -80,7 +80,7 @@ Machine Learning and Graphical Resources::
 Currently, graphic processors are the only approach to computing machine learning and big data problems and provide usable solutions.
 Security, Audit, and Firewalls::
 Security and associated firewalls are mandatory to respect corporate governance and laws.
-Monitoring is a must for all enterprise relevant applications.
+Monitoring is a must for all enterprise-relevant applications.
 Special solutions are seldom necessary and shall be provided on a case basis.
 
 == Typical Responsibilities
