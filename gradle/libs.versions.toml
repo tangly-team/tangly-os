@@ -7,7 +7,7 @@ javalin-version = '5.6.4'
 openapi-version = "5.6.4"
 eclipsestore-version = '1.4.0'
 mustang-version = '2.14.0'
-vaadin-version = '24.4.12'
+vaadin-version = '24.4.13'
 
 [plugins]
 vaadin = { id = "com.vaadin", version.ref = "vaadin-version" }
@@ -47,7 +47,7 @@ iban4j = "org.iban4j:iban4j:3.2.10-RELEASE"
 ical4j-core = "org.mnode.ical4j:ical4j:4.0.4"
 ical4j-vcard = "org.mnode.ical4j:ical4j-vcard:1.0.7"
 
-google-libphonenumber = "com.googlecode.libphonenumber:libphonenumber:8.13.46"
+google-libphonenumber = "com.googlecode.libphonenumber:libphonenumber:8.13.47"
 google-protobuf = "com.google.protobuf:protobuf-java:4.28.2"
 
 jakarta-mail = "jakarta.mail:jakarta.mail-api:2.1.3"
