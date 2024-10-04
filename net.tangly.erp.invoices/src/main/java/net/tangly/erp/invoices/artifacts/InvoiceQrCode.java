@@ -24,8 +24,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 
-import java.io.IOException;
 import java.math.BigDecimal;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -35,6 +35,15 @@ public class InvoiceQrCode implements DocumentGenerator<Invoice> {
     private static final BigDecimal HUNDRED = new BigDecimal("100");
     private static final Pattern ISO11649ReferenceFormat = Pattern.compile("[^A-Za-z0-9]");
 
+    /**
+     * Export the invoice as a QR code document. The invoice is exported as a QR code document in the Swiss QR bill format.
+     * <p>The implementation now reads in the input PDF file in memory due to change to the underlying implementation {@link PDFCanvas#saveAs}.</p>
+     *
+     * @param invoice     entity used to create a new invoice document
+     * @param overwrite   flag to overwrite the existing invoice document
+     * @param invoicePath path to the invoice document
+     * @param audit       domain audit sink to log the operation events
+     */
     public void export(@NotNull Invoice invoice, boolean overwrite, @NotNull Path invoicePath, @NotNull DomainAudit audit) {
         var bill = new Bill();
         bill.setFormat(createBillFormat());
@@ -47,10 +56,10 @@ public class InvoiceQrCode implements DocumentGenerator<Invoice> {
         bill.setBillInformation(createSwicoBillInformation(invoice).encodeAsText());
         // reference is the usual reference number of Swiss payment slips
         bill.setReference(Payments.createISO11649Reference(ISO11649ReferenceFormat.matcher(invoice.id()).replaceAll("")));
-        try (PDFCanvas canvas = new PDFCanvas(invoicePath, PDFCanvas.NEW_PAGE_AT_END)) {
+        try (PDFCanvas canvas = new PDFCanvas(Files.readAllBytes(invoicePath), PDFCanvas.NEW_PAGE_AT_END)) {
             QRBill.draw(bill, canvas);
             canvas.saveAs(invoicePath);
-        } catch (IOException e) {
+        } catch (Exception e) {
             logger.atError().withThrowable(e).log("Error when generating QR code for {}", invoicePath);
         }
     }
