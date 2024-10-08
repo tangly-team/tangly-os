@@ -1,12 +1,12 @@
 [versions]
 assertj-version = '3.26.3'
-flyway-version = '10.18.2'
-junit-version = '5.11.1'
+flyway-version = '10.19.0'
+junit-version = '5.11.2'
 log4j2-version = '2.23.0'
 javalin-version = '5.6.4'
 openapi-version = "5.6.4"
 eclipsestore-version = '1.4.0'
-mustang-version = '2.14.0'
+mustang-version = '2.14.1'
 vaadin-version = '24.4.13'
 
 [plugins]
