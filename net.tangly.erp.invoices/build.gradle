@@ -33,8 +33,10 @@ dependencies {
     implementation(libs.eclispsestore.storage)
     implementation(libs.apache.commons.csv)
     implementation(libs.apache.commons.io)
+    implementation(libs.apache.pdfbox)
     implementation(libs.json.core)
     implementation(libs.mustang.core)
+    implementation(libs.mustang.validator)
     implementation(libs.qrbill)
 
     testImplementation project(':net.tangly.apps')

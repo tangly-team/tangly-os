@@ -178,8 +178,9 @@ public class InvoiceZugFerd implements IExportableTransaction, DocumentGenerator
 
     public void export(@NotNull Invoice invoice, boolean overwrite, @NotNull Path invoicePath, @NotNull DomainAudit audit) {
         this.invoice = invoice;
-        try (IZUGFeRDExporter exporter = new ZUGFeRDExporterFromPDFA().setProducer("tangly ERP").setCreator(invoice.invoicingEntity().name())
-            .load(Files.readAllBytes(invoicePath))) {
+        try {
+            IZUGFeRDExporter exporter =
+                new ZUGFeRDExporterFromPDFA().load(Files.readAllBytes(invoicePath)).setProducer("tangly ERP").setCreator(invoice.invoicingEntity().name());
             exporter.setTransaction(this);
             exporter.export(new BufferedOutputStream(Files.newOutputStream(invoicePath)));
         } catch (IOException e) {

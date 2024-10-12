@@ -1,8 +1,11 @@
-== tangly OS Components
+= tangly OS Components
 :ref-github: https://github.com/[GitHub]
 :ref-gitlab: https://gitlab.com/[GitLab]
 :ref-gradle: https://gradle.org/[Gradle Build Tool]
 :ref-asciidoc: https://asciidoc.org/[Asciidoc]
+
+image:https://img.shields.io/badge/license-Apache%202-blue.svg[Apache License 2.0]
+https://scorecard.dev/viewer/?uri=github.com/tangly-team/tangly-os[image:https://api.scorecard.dev/projects/github.com/tangly-team/tangly-os/badge[OpenSSFScorecard]]
 
 The _tangly_ open source components are a set of open source libraries released under Apache 2.0 licence and are available through maven central.
 The components are
