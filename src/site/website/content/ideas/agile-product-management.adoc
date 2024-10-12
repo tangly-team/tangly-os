@@ -8,7 +8,7 @@ author: "Marcel Baumann"
 ifdef::backend-pdf[]
 = Agile Product Management
 Marcel Baumann, tangly llc
-Version 1.0
+Version 2.0
 include::fragments/_pdf-doc.adoc[]
 endif::[]
 :toc:
@@ -319,6 +319,22 @@ Acceptance criteria shall be formulated for each feature.
 The acceptance criteria are used to validate the implementation of the feature.
 Ideally, the acceptance criteria are formulated as automated acceptance tests.
 
+[TIP]
+====
+Agile approaches promote collaboration and face-to-face communication over formal documentation.
+
+The product owner proxy should work closely and regularly with the product managers and the development team.
+
+She should refine epics with the involved product managers.
+She could involve key stakeholders and customers in some refinement process activities together with the product managers.
+Consider the tradeoffs of involving customers in the refinement process and the associated costs.
+
+These activities will evolve over time.
+Experience shows that product managers and stakeholders often lack the technical instruments to identify, refine, validate, and verify product requirements.
+
+The product owner proxy and the product portfolio manager should invest in training and coaching the involved parties.
+====
+
 A product owner proxy is necessary if the development teams are organized as component teams.
 A component team is specialized in a specific technology stack or a specific domain.
 
@@ -358,6 +374,7 @@ The most frequent flaw of digital products is the lack of high-quality user inte
 
 Software architecture is about all important design decisions that are hard to change.
 Architects concentrate on design decisions that have a high impact on the costs of the system.
+Professional architects provide enough documentation to ensure that the architecture is understood and implemented correctly.
 
 Architecture and design are a continuous process to achieve technical excellence
 cite:[building-evolutionary-architectures-2nd,working-effectively-with-legacy-code].
