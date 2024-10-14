@@ -177,8 +177,6 @@ public class LedgerAdapter implements LedgerPort {
         try {
             realm().transactions(from, to).stream().flatMap(o -> o.creditSplits().stream()).filter(o -> o.containsTag(AccountEntry.FINANCE, code))
                 .forEach(o -> update(segments, o.value(AccountEntry.FINANCE, code).orElseThrow(), o));
-            realm.transactions(from, to).stream().flatMap(o -> o.debitSplits().stream()).filter(o -> o.containsTag(AccountEntry.FINANCE, code))
-                .forEach(o -> update(segments, o.value(AccountEntry.FINANCE, code).orElseThrow(), o));
         } catch (Exception e) {
             // TODO solve problem with EclipseStore
             logger.atError().withThrowable(e).log("Error computing segments for code (EclipseStore known problem {}", code);

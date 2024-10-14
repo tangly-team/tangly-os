@@ -72,6 +72,7 @@ tasks.withType(Test).configureEach {
     useJUnitPlatform()
     jvmArgs += ['--enable-preview',
                 '--add-exports=java.base/jdk.internal.misc=ALL-UNNAMED',
+                '--add-exports=java.base/jdk.internal.misc=org.eclipse.serializer.base',
                 '--add-opens=java.base/sun.nio.ch=ALL-UNNAMED',
                 '--add-opens=java.base/java.io=ALL-UNNAMED',
                 '-XX:+ShowCodeDetailsInExceptionMessages']
@@ -97,8 +98,10 @@ tasks.withType(Javadoc).configureEach {
 }
 
 tasks.withType(JavaExec).configureEach {
-    jvmArgs += ['--add-exports=java.base/jdk.internal.misc=ALL-UNNAMED',
-                '--enable-preview', '-XX:+ShowCodeDetailsInExceptionMessages']
+    jvmArgs += ['--enable-preview',
+                '--add-exports=java.base/jdk.internal.misc=ALL-UNNAMED',
+                '--add-exports=java.base/jdk.internal.misc=org.eclipse.serializer.base',
+                '-XX:+ShowCodeDetailsInExceptionMessages']
 }
 
 jar {

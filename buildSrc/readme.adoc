@@ -26,9 +26,16 @@ The set of Gradle command line special commands we seldom use:
 * To generate static and aggregate code coverage metrics `./gradlew test testCodeCoverageReport testAggregateTestReport`
 * To detect newer versions of libraries `./gradlew dependencyUpdates -Drevision=release`
 * To update sonar cloud `./gradlew sonarqube -Dsonar.login=<login token>`
+* To run all tests locally as sanity check `./gradlew clean build test javadoc -Pvaadin.productionMode`
 * To create a production release `./gradlew net.tangly.erp.ui:installDist -Pvaadin.productionMode`
 * To detect vulnerabilities `./gradlew ossIndexAudit --info`
 * To check licenses of dependencies `./gradlew checkLicense`
+
+Run these commands from the root folder of the project.
+
+A good sanity check is to run the following command before pushing the code to the repository:
+
+`./gradlew clean build test javadoc testCodeCoverageReport testAggregateTestReport -Pvaadin.productionMode`
 
 == Tips
 

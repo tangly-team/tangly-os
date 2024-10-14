@@ -66,6 +66,8 @@ public class CmdCreateInvoiceDocument implements Cmd {
         name.setReadOnly(true);
         withQrCode = new Checkbox("with QR Code");
         withEN16931 = new Checkbox("with EN 16931");
+        // TODO EN16931 is disabled until the code is extended to support the changes in the standard and library
+        withEN16931.setEnabled(false);
         overwrite = new Checkbox("Overwrite Existing Document(s)");
         if (Objects.nonNull(invoice)) {
             name.setValue(invoice.name());

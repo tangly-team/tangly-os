@@ -29,6 +29,7 @@ project.description = "User Interface ERP - using Java 21 or higher (tangly llc)
 
 application {
     applicationDefaultJvmArgs = ['--enable-preview',
+                                 '--add-exports=java.base/jdk.internal.misc=org.eclipse.serializer.base',
                                  '--add-opens=java.base/jdk.internal.misc=ALL-UNNAMED',
                                  '--add-opens=java.base/sun.nio.ch=ALL-UNNAMED',
                                  '--add-opens=java.base/java.io=ALL-UNNAMED',
