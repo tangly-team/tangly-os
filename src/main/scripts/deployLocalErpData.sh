@@ -11,9 +11,14 @@
 #
 #
 
-# deploy the archive of the ERP data to the local file system
+# deploy the archive of the ERP data to the local file system.
+# The first command line argument is the operating system user name and the second is firstname.lastname of the user.
+# A calling example is: ./deployLocalErpData.sh marcelbaumann marcel.baumann
+
+user="$1"
+userTangly="$2"
 
 sudo rm -R /var/tangly-erp/
-sudo cp -R /Users/marcelbaumann/Library/CloudStorage/GoogleDrive-marcel.baumann@tangly.net/My\ Drive/tangly/10-Data/tangly-erp /var/
-sudo chown -R marcelbaumann /var/tangly-erp/
+sudo cp -R /Users/$user/Library/CloudStorage/GoogleDrive-$userTangly@tangly.net/Shared\ drives/tangly/10-Data/tangly-erp /var/
+sudo chown -R $user /var/tangly-erp/
 sudo chmod -R 777 /var/tangly-erp/

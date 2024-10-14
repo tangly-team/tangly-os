@@ -129,7 +129,7 @@ git push --prune
 
 git remote                                                                <2>
 
-git push origin-github                                                    <3>
+git push origin                                                           <3>
 git push origin-gitlab
 git push origin-hslu
 git push origin-bitbucket
