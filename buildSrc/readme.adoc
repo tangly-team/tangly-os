@@ -33,14 +33,6 @@ The set of Gradle command line special commands we seldom use:
 
 Run these commands from the root folder of the project.
 
-A good sanity check is to run the following command before pushing the code to the repository:
-
-`./gradlew clean build test javadoc testCodeCoverageReport testAggregateTestReport -Pvaadin.productionMode`
-
 == Tips
 
 To update the zsh profile commands you shall run `source ~/.zshrc`.
-
-
-
-The build process of the Gradle build file requires these variables to run without errors.

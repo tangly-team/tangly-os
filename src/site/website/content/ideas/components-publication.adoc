@@ -23,6 +23,10 @@ _The statistics for developer activities will be automatically updated._
 The continuous integration pipeline is triggered by the push to the {ref-github} repository.
 See https://github.com/tangly-team/tangly-os/blob/master/buildSrc/readme.adoc[Readme].
 
+A good sanity check before pushing to the repository is to run the following command before pushing the code to the repository:
+
+`./gradlew clean build test javadoc testCodeCoverageReport testAggregateTestReport -Pvaadin.productionMode`
+
 == Release Process
 
 We use a monorepo to manage the source code of the libraries and the example application.
@@ -59,6 +63,8 @@ Search the component in
 * https://central.sonatype.com/[sonatype repository] to check the release.
 
 ==== Constraints
+
+The build process of the Gradle build file requires these variables to run without errors.
 
 You must create a gradle `~/.gradle/gradle.properties` file with the following content:
 
