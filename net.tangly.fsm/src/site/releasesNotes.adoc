@@ -12,8 +12,11 @@ weight: 20
 This document provides a high-level view of the changes introduced in the FSM library by release.
 For a detailed view of what has changed, refer to the https://bitbucket.org/tangly-team/tangly-os[repository] git commits.
 
-=== 0.2.8 (2024-09-30)
+=== 0.2.9 (2024-12-31)
+* Improvements in code
 
+=== 0.2.8 (2024-09-30)
+* Improvements in code
 
 === 0.2.7 (2024-05-31)
 

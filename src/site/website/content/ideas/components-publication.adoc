@@ -91,23 +91,23 @@ footnote:[The newer version macOS GPP stopped creating the `secring.kbx` file an
 The following process is used to publish {ref-tangly} open source component on {ref-maven-central}.
 
 . Publish artifacts of a component with the script `uploadToMavenCentral.sh`.
-Do not use the gradle task `gradle publishAllPublicationsToMavenRepository -Pmode=prod`.
+*Do not use the gradle task `gradle publishAllPublicationsToMavenRepository -Pvaadin.productionMode`*.
 Sonatype cannot handle a parallel upload of multiple components and simply close the connections during upload (Status 2020-Q2).
-.. Pre-activity: test publishing with `gradle publishToMavenLocal`
-.. Pre-activity: check on bitbucket the product compiles through the *CI* continuous integration pipeline
+.. Pre-activity: test publishing with `gradle publishToMavenLocal`.
+.. Pre-activity: check on {ref-github} the product compiles through the *CI* continuous integration pipeline.
 .. Post-activity: *tag repository* on git to identify the version of the published packages.
 The tag version semantic part *must* be the same as the package version on {ref-maven-central}. +
-The tag is of the form -AcronymComponent-MajorVersion-MinorVersion-PatchVersion-
-.. Verify with `git tag label` and `git push origin --tags`
-. Log into https://oss.sonatype.org/#welcome[Sonatype Maven Central Repository]
-.. Go to https://oss.sonatype.org/#stagingRepositories[Staging Repositories]
-.. Find your temporary repository at the end of the list
-.. Review the content of the repository
-.. Close the repository-button on the tool list-
+The tag is of the form -AcronymComponent-MajorVersion-MinorVersion-PatchVersion-.
+.. Verify with `git tag label` and `git push origin --tags`.
+. Log into https://oss.sonatype.org/#welcome[Sonatype Maven Central Repository].
+.. Go to https://oss.sonatype.org/#stagingRepositories[Staging Repositories].
+.. Find your temporary repository at the end of the list.
+.. Review the content of the repository,
+.. Close the repository-button on the tool list.
 .. Close stage is initiated and checks are performed.
 If everything was fine, the content was published.
-.. Release the artifact-button on the tool list-
-. See <<website-publication>> to update the website
+.. Release the artifact-button on the tool list.
+. See <<website-publication>> to update the website.
 
 [CAUTION]
 ====
@@ -115,6 +115,10 @@ It takes up to one day until the component is visible in {ref-maven-central} web
 
 On the positive side, the last publications were performed in less than 30 minutes.
 ====
+
+The final step is to create a release on {ref-github} and update the website.
+
+[#dependencies]
 
 == Dependencies
 
@@ -292,7 +296,7 @@ Four scripts are provided to generate the Hugo static site with associated struc
 Upon completion of local development, you must start a local Hugo server and generate the indexing files for https://lunrjs.com/[lunr] search.
 Before uploading the site, stop the Hugo local server.
 
-. the script _completeHugo.sh_ generates the static pictures and copies them to the static folder and publish the whole site on bitbucket.
+. the script _completeHugo.sh_ generates the static pictures and copies them to the static folder and publish the whole site on {ref-github}.
 
 Upon completion, the site is published on the web for all.
 
