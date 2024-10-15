@@ -41,48 +41,6 @@ A good sanity check is to run the following command before pushing the code to t
 
 To update the zsh profile commands you shall run `source ~/.zshrc`.
 
-== Release Process
 
-We use a monorepo to manage the source code of the libraries and the example application.
-All libraries are released and published together on the maven central repository.
-
-. push to GitHub and verify the build on the CI server
-. `git commit -m "Release X"`
-. `git tag -a "tangly-os-X" -m "official release published on maven central"`
-. `git push origin --tags`
-. `./gradlew publishMavenJavaPublicationToMavenRepository`
-
-[TIP]
-====
-Verify first that the example application runs correctly with the new artifacts.
-
-. Publish artifacts to the local maven repository `./gradlew publishMavenJavaPublicationToMavenLocal`
-. Update the https://github.com/tangly-team/tangly-app-example[tangly App Example].
-Update the artifacts in the build.gradle file to the latest version.
-. Verify the application runs correctly with the new artifacts.
-
-Upon releasing the new version of the libraries, you have to wait until the artifacts are available on the maven central repository.
-Once the artifacts are available, you can push the new version of the example application to the GitHub repository.
-It triggers the CI/CD pipeline.
-====
-
-You can check the release on the maven central repository under https://repo1.maven.org/maven2/net/tangly[net.tangly].
-The search index takes a few hours to be updated.
-
-Log in the https://oss.sonatype.org/[sonatype portal] for the staging repository and close the repository.
-Search the component in
-
-* https://search.maven.org/[maven central repository] to check the release.
-* https://central.sonatype.com/[sonatype repository] to check the release.
-
-== Constraints
-
-You must create a gradle `~/.gradle/gradle.properties` file with the following content:
-
-[code,properties]
-----
-mavenCentralUsername=*Value*
-mavenCentralPassword=*Value*
-----
 
 The build process of the Gradle build file requires these variables to run without errors.
