@@ -23,7 +23,7 @@ The view provides the regular {ref-crud} operations:
 - Modify an entity instance.
 The user can edit all properties of an object in the user interface. +
 All changes are buffered in the user interface components.
-She can decide to propage the changes to the model or discard them through _save_ or _cancel_ operations.
+She can decide to propagate the changes to the model or discard them through _save_ or _cancel_ operations.
 - Delete an entity instance.
 - Create an entity instance.
 
@@ -113,7 +113,7 @@ The object is not deleted, only the relation to it.
 The user can select an instance from a set of available objects.
 This set of objects is provided through a provider.
 
-The provider for selectabe instance is provided to the constructor of the _one2one_ control.
+The provider for selectable instance is provided to the constructor of the _one2one_ control.
 
 _Providers support composition with _ProviderView_ to define selection on the eligible instances.
 

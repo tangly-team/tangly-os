@@ -37,6 +37,7 @@ import org.jetbrains.annotations.NotNull;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.InvalidPathException;
 import java.nio.file.Path;
 import java.util.*;
 import java.util.stream.IntStream;
@@ -74,18 +75,24 @@ public class ApplicationView extends AppLayout {
     /**
      * The method is called when a user successfully logs in. Update access to bounded domains based on the user's access rights.
      * Propagate the user change to all bounded domains.
+     * <p>A tenant does not have to provide a logo. This case is also handled.</p>
      *
      * @param user newly logged-in user
      */
     public void userChanged(@NotNull Tenant tenant, @NotNull User user) {
         this.tenant = tenant;
         boundedDomainUis.clear();
-        try (var stream = Files.newInputStream(Path.of(tenant.getProperty(Tenant.TENANT_ROOT_DIRECTORY_PROPERTY), IMAGE_NAME))) {
-            byte[] buffer = stream.readAllBytes();
-            Image logo = new Image(new StreamResource(IMAGE_NAME, () -> new ByteArrayInputStream(buffer)), IMAGE_NAME);
-            logo.setHeight("44px");
-            addToNavbar(new DrawerToggle(), logo, menuBar);
-        } catch (IOException e) {
+        Image logo = null;
+        if (tenant.getProperty(Tenant.TENANT_ROOT_DIRECTORY_PROPERTY) != null) {
+            try (var stream = Files.newInputStream(Path.of(tenant.getProperty(Tenant.TENANT_ROOT_DIRECTORY_PROPERTY), IMAGE_NAME))) {
+                byte[] buffer = stream.readAllBytes();
+                logo = new Image(new StreamResource(IMAGE_NAME, () -> new ByteArrayInputStream(buffer)), IMAGE_NAME);
+                logo.setHeight("44px");
+                addToNavbar(new DrawerToggle(), logo, menuBar);
+            } catch (IOException | InvalidPathException e) {
+                addToNavbar(new DrawerToggle(), menuBar);
+            }
+        } else {
             addToNavbar(new DrawerToggle(), menuBar);
         }
         ofAppDomainUi();

@@ -46,7 +46,7 @@ public class CollaboratorsBoundedDomainUi extends BoundedDomainUi<CollaboratorsB
         if (hasDomainAdminRights() || hasAppAdminRights()) {
             menuItem = menuBar.addItem(TOOLS);
             subMenu = menuItem.getSubMenu();
-            addAdministration(layout, subMenu, view(DomainEntity.class.getSimpleName()).orElseThrow());
+            addAdministration(layout, subMenu, view(DomainEntity.class).orElseThrow());
         }
         select(layout);
     }

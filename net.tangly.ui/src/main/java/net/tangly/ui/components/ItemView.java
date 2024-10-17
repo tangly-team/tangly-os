@@ -330,14 +330,12 @@ public abstract class ItemView<T> extends VerticalLayout implements View {
         field.setItems("True", "False");
         field.setEmptySelectionAllowed(true);
         field.setValue(null);
-        field.addValueChangeListener(e -> {
-            consumer.accept(switch (e.getValue()) {
-                case null -> null;
-                case "True" -> Boolean.TRUE;
-                case "False" -> Boolean.FALSE;
-                default -> null;
-            });
-        });
+        field.addValueChangeListener(e -> consumer.accept(switch (e.getValue()) {
+            case null -> null;
+            case "True" -> Boolean.TRUE;
+            case "False" -> Boolean.FALSE;
+            default -> null;
+        }));
         return field;
     }
 

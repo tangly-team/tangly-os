@@ -167,6 +167,10 @@ public abstract class BoundedDomainUi<T extends BoundedDomain<?, ?, ?>> implemen
      *     <li>Export domain entities to a set of TSV files stored in a directory. Existing files are overwritten. The exported entities could later be imported into the
      *     application with the import domain command.</li>
      * </ul>
+     *
+     * @param layout  layout in which the view will be displayed
+     * @param subMenu menu to which the administration commands are added
+     * @param domainView view to be displayed when the statistics command is selected
      */
     protected void addAdministration(@NotNull AppLayout layout, @NotNull SubMenu subMenu, @NotNull LazyReference<?> domainView) {
         if (hasDomainAdminRights() || hasAppAdminRights()) {
@@ -187,7 +191,8 @@ public abstract class BoundedDomainUi<T extends BoundedDomain<?, ?, ?>> implemen
             action.setEnabled(hasAppAdminRights());
             action = subMenu.addItem("Clear All", _ -> domain().directory().boundedDomains().forEach(o -> o.port().clearEntities(o)));
             action.setEnabled(hasAppAdminRights());
-            action = subMenu.addItem("Shutdown DB", _ -> domain().directory().boundedDomains().forEach(o -> o.shutdown()));
+            action = subMenu.addItem("Shutdown DB", _ -> domain().directory().boundedDomains().forEach(BoundedDomain::shutdown));
+            action.setEnabled(hasAppAdminRights());
         }
     }
 

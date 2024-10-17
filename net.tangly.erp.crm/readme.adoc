@@ -7,6 +7,7 @@ weight: 10
 = ERP CRM Component
 :ref-groupId: net.tangly.erp
 :ref-artifactId: crm
+:ref-java-current-version: 21 LTS
 
 image:https://img.shields.io/badge/license-Apache%202-blue.svg[Apache License 2.0]
 image:https://img.shields.io/maven-central/v/{ref-groupId}/{ref-artifactId}[Maven Central]
@@ -17,8 +18,7 @@ image:https://img.shields.io/github/discussions/tangly-team/tangly-os[discussion
 
 == Purpose
 
-The *tangly erp crm* bounded domain component provides regular business model abstractions for business applications written in Java. The component is using
-records and requires *{ref-java-current-version} or higher*.
+The *tangly erp crm* bounded domain component provides regular business model abstractions for business applications written in Java. The component is using records and requires *{ref-java-current-version} or higher*.
 
 *Try it out*.
 

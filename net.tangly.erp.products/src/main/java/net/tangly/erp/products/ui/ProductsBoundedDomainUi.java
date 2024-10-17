@@ -97,9 +97,9 @@ public class ProductsBoundedDomainUi extends BoundedDomainUi<ProductsBoundedDoma
     public void onNext(Object event) {
         if (event instanceof EntityChangedInternalEvent entityChanged) {
             if (entityChanged.entityName().equals(Effort.class.getSimpleName())) {
-                view(EFFORTS).ifPresent(v -> UI.getCurrent().access(() -> v.ifPresent(View::refresh)));
+                view(Effort.class).ifPresent(v -> UI.getCurrent().access(() -> v.ifPresent(View::refresh)));
             } else if (entityChanged.entityName().equals(WorkContract.class.getSimpleName())) {
-                view(WORK_CONTRACTS).ifPresent(v -> UI.getCurrent().access(() -> v.ifPresent(View::refresh)));
+                view(WorkContract.class).ifPresent(v -> UI.getCurrent().access(() -> v.ifPresent(View::refresh)));
             }
         }
     }
