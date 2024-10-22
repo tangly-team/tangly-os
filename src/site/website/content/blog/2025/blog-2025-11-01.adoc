@@ -9,7 +9,10 @@ params:
 
 include::../fragments/_config-mb-blog.adoc[]
 :ref-docbook: https://en.wikipedia.org/wiki/DocBook[DocBook]
+:ref-freespire: https://www.e-iceblue.com/Introduce/free-pdf-for-java.html[Free Spire.PDF for Java]
 :ref-kroki: https://kroki.io/[Kroki]
+:ref-mustang: https://www.mustangproject.org/[Mustang]
+:ref-pdfbox: https://pdfbox.apache.org/[PDFBox]
 :ref-structurizr: https://structurizr.com/[Structurizr]
 
 image::2025-11-01-head.jpg[width=420,height=360,role=left]
@@ -45,6 +48,15 @@ Apparently, all german states accept ZUGFeRD invoices and E-Rechnung-Bund mentio
 === Swiss QR Code
 
 == tangly ERP
+
+The {ref-mustang} library is a wonderful tool to create and read ZUGFeRD invoices.
+The drawback is that the newer versions of the libray require a PDF/A document as input.
+
+PDF/A is a well-defined format, but you cannot currently find open source libraries to transform a PDF document to PDF/A document.
+The apache {ref-pdfbox} library for example does not explicitly support these conversions.
+We finally found a free library {ref-freespire} to convert PDF to PDF/A documents
+footnote:[Commercial libraries cost thousands of Euros per developer and per year.
+These prices prohibit their use in open source solutions with low income flows.].
 
 == Lessons Learnt
 
