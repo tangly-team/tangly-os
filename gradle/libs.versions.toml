@@ -1,13 +1,13 @@
 [versions]
 assertj-version = '3.26.3'
-flyway-version = '10.20.0'
-junit-version = '5.11.2'
+flyway-version = '10.20.1'
+junit-version = '5.11.3'
 log4j2-version = '2.23.0'
 javalin-version = '5.6.4'
 openapi-version = "5.6.4"
 eclipsestore-version = '2.0.0'
 mustang-version = '2.14.2'
-vaadin-version = '24.5.0'
+vaadin-version = '24.5.1'
 
 [plugins]
 vaadin = { id = "com.vaadin", version.ref = "vaadin-version" }
@@ -33,7 +33,7 @@ apache-pdfbox = "org.apache.pdfbox:pdfbox:3.0.3"
 arch-unit = "com.tngtech.archunit:archunit-junit5-api:1.3.0"
 
 asciidoctorj = "org.asciidoctor:asciidoctorj:3.0.0"
-asciidoctorj-pdf = "org.asciidoctor:asciidoctorj-pdf:2.3.18"
+asciidoctorj-pdf = "org.asciidoctor:asciidoctorj-pdf:2.3.19"
 
 assertj = { module = "org.assertj:assertj-core", version.ref = "assertj-version" }
 eo-yaml = "com.amihaiemil.web:eo-yaml:8.0.6"
@@ -85,6 +85,7 @@ qrepc = "de.muehlencord.epcqr:epc-qr:1.0.0"
 eclispsestore-storage = { module = "org.eclipse.store:storage-embedded", version.ref = "eclipsestore-version" }
 eclispsestore-jdk8 = { module = "org.eclipse.serializer:persistence-binary-jdk8", version.ref = "eclipsestore-version" }
 eclispsestore-jdk17 = { module = "org.eclipse.serializer:persistence-binary-jdk17", version.ref = "eclipsestore-version" }
+eclipsestore-serializer = {module = "org.eclipse.serializer:serializer", version.ref = "eclipsestore-version" }
 
 mockito = "org.mockito:mockito-junit-jupiter:5.14.2"
 
@@ -93,14 +94,12 @@ javalin-openapi = { module = "io.javalin.community.openapi:javalin-openapi-plugi
 javalin-openapi-processor = { module = "io.javalin.community.openapi:openapi-annotation-processor", version.ref = "openapi-version" }
 javalin-swagger = { module = "io.javalin.community.openapi:javalin-swagger-plugin", version.ref = "openapi-version" }
 vaadin-core = { module = "com.vaadin:vaadin-core", version.ref = "vaadin-version" }
-vaadin-pdfviewer = "org.vaadin.addons.componentfactory:vcf-pdf-viewer:3.0.0"
+vaadin-pdfviewer = "org.vaadin.addons.componentfactory:vcf-pdf-viewer:4.0.0"
 vaadin-embedded-jetty = "com.github.mvysny.vaadin-boot:vaadin-boot:13.1"
 vaadin-socharts = "com.storedobject.chart:so-charts:3.2.6"
 vaadin-test = "com.github.mvysny.kaributesting:karibu-testing-v24:2.1.8"
 vaadin-rangepicker = "com.vaadin.componentfactory:vcf-date-range-picker:5.0.2"
 
-iceblue-spire = "e-iceblue:spire.pdf:10.10.0"
-
 [bundles]
 test-deps = ["junit-api", "assertj", "mockito", "arch-unit", "awaitility"]
-eclipsestore-deps = ["eclispsestore-storage", "eclispsestore-jdk8", "eclispsestore-jdk17"]
+eclipsestore-deps = ["eclispsestore-storage", "eclispsestore-jdk8", "eclispsestore-jdk17", "eclipsestore-serializer"]

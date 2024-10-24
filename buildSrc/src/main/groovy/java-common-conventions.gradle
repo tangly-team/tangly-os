@@ -29,7 +29,6 @@ repositories {
     maven { url "https://raw.github.com/ZUGFeRD/mustangproject/mvn-repo" }
     maven { url "https://repo.microstream.one/repository/maven-public/" }
     maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
-    maven { url "https://repo.e-iceblue.com/nexus/content/groups/public/" }
 }
 
 dependencies {
