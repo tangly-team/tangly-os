@@ -16,7 +16,7 @@ jib = "com.google.cloud.tools.jib:3.4.3"
 mannes = "com.github.ben-manes.versions:0.41.0"
 
 [libraries]
-annotations = "org.jetbrains:annotations:26.0.0"
+annotations = "org.jetbrains:annotations:26.0.1"
 antlr-st4 = "org.antlr:ST4:4.3.4"
 apache-commons-cli = "commons-cli:commons-cli:1.9.0"
 apache-commons-csv = "org.apache.commons:commons-csv:1.12.0"
