@@ -17,7 +17,7 @@ I am not an English native speaker and also not really talented with foreign lan
 I should find ways to improve the structure of my articles and remove typographical errors.
 
 The IntelliJ environment provides a build-in spellchecker the Grazie plugin to detect grammar errors.
-The plugin uses https://languagetool.org/[language tool] to provide hints.
+The plugin uses https://languagetool.org/[LanguageTool] to provide hints.
 The spellchecker supports the extension of supported words.
 When writing technical texts, assume that quite a few words are not part of a standard dictionary.
 
@@ -25,7 +25,7 @@ When writing technical texts, assume that quite a few words are not part of a st
 =====
 The grammar checker cannot be easily tailored and has limitations.
 
-For example, the expression _Scrum Master_ is often flagged as political incorrect.
+For example, the expression _Scrum Master_ is often flagged as politically incorrect.
 You get the hint that the word _master_ should be avoided.
 This hint is quite useless in the context of the {ref-scrum} approach.
 =====
@@ -56,11 +56,11 @@ On a rainy day, we decided to write our small utility tailored to our website an
 
 The utility provides the following features:
 
-- Parse recursively our website and extract all links.
+- Recursively parse our website and extract all links.
 - Ignore all links to javascript libraries: jQuery, lunr, mathJax.
 - Ignore all links to ebook on Amazon website.
 The Amazon site refuses connection requests as soon as the frequency hints to a program.
-- List all failed connections with the source page, the link and the error message encountered.
+- List all failed connections with the source page, the link, and the error message encountered.
 
 ==  Bibliography
 
@@ -86,7 +86,7 @@ I find it interesting to know:
 
 - Year of publication
 - How many articles did I write in a specific year?
-- How manu times is an article referenced in other blogs?
+- How many times is an article referenced in other blogs?
 Average number of references to a blog are published in a specific year?
 - How many article references are defined in an article?
 Average number of articles references are published per blog in a specific year?
@@ -113,7 +113,7 @@ Average number of book references are published per blog in a specific year?
 [bibliography]
 == Links
 
-- [[[creating-website, 1]]] link:../../2020/creating-a-technical-website-with-hugo-and-asciidoc/[Creating a Technical Website with Hugo and Asciidoc].
+- [[[creating-website, 1]]] link:../../2020/creating-a-technical-website-with-hugo-and-asciidoc/[Creating a Technical Website with Hugo and AsciiDoc].
 Marcel Baumann. 2020.
 - [[[improving-website, 2]]] link:../../2021/improving-a-static-web-site-build-with-hugo-and-docsy/[Improving a Static Website build with Hugo and Docsy].
 Marcel Baumann. 2021.

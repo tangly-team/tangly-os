@@ -227,7 +227,7 @@ Care is taken to publish UI changes on the UI thread. {ref-vaadin} provides a me
 
 [source,java]
 ----
-UI.getCurrent().access(() -> v.ifPresent(View::refresh)));              <1>
+UI.getCurrent().access(() -> v.ifPresent(View::refresh));              <1>
 ----
 
 <1> First, the current UI in which the user component is expected is obtained.

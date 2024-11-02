@@ -137,7 +137,7 @@ This factory could provide multiple ways to create new instances.
 == Value Objects in Persistent Store
 
 We encourage experimenting with the {ref-microstream} approach for small projects footnote:[The Eclipse foundation took over the MicroStream library in 2023 under the new name {ref-eclipsestore}.
-The effort to persist a Java object graph is very small.
+The effort to persist a Java object graph is tiny.
 
 You can always move to a no SQL solution when your application is successful and time comes to harden it.
 Another standard but cumbersome approach is to move to JPA.

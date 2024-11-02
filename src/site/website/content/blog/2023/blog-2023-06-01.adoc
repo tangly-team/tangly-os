@@ -138,7 +138,7 @@ The usual constructs are:
     :else "zero"))
 ----
 
-<1> The _if_ expression evaluates a boolean expression.
+<1> The expression _if_ evaluates a boolean expression.
 If true returns the first expression, if false returns the optional second expression or nil if not defined.
 <2> The _when_ expression is an _if_ expression with only the true path.
 <3> The _cond_ expression evaluates boolean conditions until the first one returning true is found.

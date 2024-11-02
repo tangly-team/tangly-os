@@ -13,13 +13,15 @@ image::2025-02-02-head.jpg[width=420,height=360,role=left]
 
 What a journey it has been!
 
-Nine years ago, we founded {ref-tangly}.
+Nine years ago, we founded our company {ref-tangly}.
+We are a Java and agile digital product development boutique.
 
 We are going strong and tremendously enjoying the journey.
 
 We always wanted to nuture a company where collaborators are happy and proud to work.
 
 Agile approaches and principles are the foundation of our company.
+
 The {ref-bbrt} has been a source of inspiration for our company since its inception in 2016.
 They try to rethink how we manage organizations in a post-industrial world.
 
@@ -31,11 +33,11 @@ The {ref-bbrt} proposed twelve principles in 2011.
 
 I added _italics_ comments how our company interprets and applies these ideas.
 
-Governance and transparency::
+_Governance and transparency_::
 Values:::
 Bind people to a common cause; not a central plan. +
 +
-_We are a technical agile boutique specialized in the Java stack.
+_We are a technical agile boutique specialized in the Modern Java stack.
 We strongly believe you can create awesome digital products the agile way, with Java.
 The teams will enjoy the work every day and be proud of delivering products improving quality of life._ +
 +
@@ -43,22 +45,23 @@ _Great companies are not in business to make money, they make money to stay in b
 Governance:::
 Govern through shared values and sound judgment; not detailed rules and regulations. +
 +
-_We are proud to have very few regulations.
-These documents are all a one-pager.
-We expect our collaborators to apply common sense and to act in the best interest of the company and the customer. +
+_We are proud to have very few regulations._
+_These documents are all a one-pager._
+_We expect our collaborators to apply common sense and to act in the best interest of the company and the customer._ +
 +
-We align collaborators through transparency of their handling and implicit peer review._
+_We align collaborators through transparency of their handling and implicit peer review._
 Transparency:::
 Make information open and transparent; do not restrict and control it. +
 +
 _All collaborators have access to all documents of the company.
 Customers sometimes require confidentiality for specific initiatives.
 In this case the project artifacts visibility is limited to the team working on them._
-Accountable teams::
+_Accountable teams_::
 Teams:::
 Organize around a seamless network of accountable teams; not centralized functions. +
 +
 _We have a flat organization with a few roles.
+All product development initiatives are organized as value streams. +
 The only specialized role in the company is the accounting.
 If a collaborator is interested in finance, we will train him to take over this role._
 Trust:::
@@ -75,7 +78,7 @@ We are qualified specialists in technical agility and digital software product d
 +
 _We have a profit center accounting structure.
 Each collaborator has access to all financial data and can see how she is doing._
-Goals and rewards::
+_Goals and Rewards_::
 Goals:::
 Set ambitious medium-term goals, not short-term fixed targets. +
 +
@@ -85,7 +88,7 @@ Rewards:::
 Base rewards on relative performance; not on meeting fixed targets. +
 +
 _This is fully implemented._
-Planning and controls::
+_Planning and Controls_::
 Planning:::
 Make planning a continuous and inclusive process; not a top-down annual event. +
 +
@@ -113,7 +116,7 @@ _We have no budget, therefore, we have no budget variances._
 == Adaptive Product Development
 
 Agile approaches promote adaptive product development and the ability to respond to change.
-Methods such as Desigh Thinking, Lean Startup, and Scrum are the foundation to develop digital products.
+Methods such as Design Thinking, Lean Startup, {ref-xp}, and {ref-scrum} are the foundation to develop digital products.
 
 image::2025-02-02-iterations.png[width=420,height=360,role=left]
 

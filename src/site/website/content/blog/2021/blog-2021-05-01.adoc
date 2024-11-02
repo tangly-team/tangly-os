@@ -78,7 +78,7 @@ Stop being a laggard.
 == Transformation Drivers
 
 The IT department is still the main driver for agile transformation.
-Going fully agile is challenging and sticking with waterfall is no more an option.
+Going fully agile is challenging, and sticking with waterfall is no more an option.
 Leaving many companies stuck in a hybrid approach.
 
 Swiss companies are often embracing Hermes
@@ -95,7 +95,7 @@ This is not necessarily a catastrophic thing if you manage to get the best of bo
 
 Kanban offers an easy start with agile and unlike Scrum is applicable to any process.
 As our numbers show, it is becoming more and more popular.
-Remember, it is not Kanban if it doesn't have WIP limits.
+Remember, it is not Kanban if it does not have WIP limits.
 
 There is also a trend towards stable product teams that extend their responsibilities beyond those of _just_ the development for a solution or service.
 
@@ -129,7 +129,7 @@ Progress is slow and resistance is very high.
 
 Collaborators are happy with the change and do not want to go back to the old world.
 However, the change often does not go beyond the first application of the methodology.
-The biggest obstacle for employees is at the same time, the biggest challenge for leaders.
+The biggest obstacle for employees is, at the same time, the biggest challenge for leaders.
 A culture that promotes a learning and adaptable organization and its own agile way through the organization.
 
 [.text-center]

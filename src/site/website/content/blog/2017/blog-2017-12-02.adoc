@@ -19,7 +19,7 @@ The same discussion arises for development tools and programming language versio
 
 I have a *strong opinion* about upgrades.
 You should always use the current version of all components included in your product.
-The only discussion is the timely *when* and never the *if*.
+The only discussion is the timely *when* and never the statement *if*.
 
 Be realist, if your product is successful, you have to upgrade before the components are obsolete.
 Otherwise, your application will become a geriatric solution.

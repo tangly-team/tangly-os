@@ -12,7 +12,7 @@ include::../fragments/_config-mb-blog.adoc[]
 
 image::2021-09-02-head.jpg[width=420,height=360,role=left]
 
-I am teaching agile software architecture and techniques _SWAT_ as advanced bachelor level lecture weighted with 3
+I am teaching agile software architecture and techniques _SWAT_ as an advanced bachelor level lecture weighted with 3
 https://en.wikipedia.org/wiki/European_Credit_Transfer_and_Accumulation_System[ECTS].
 
 I gave this training for the last three years at https://www.hslu.ch/en[Lucerne University of Applied Sciences and Arts] _HSLU_ in Switzerland.
@@ -53,7 +53,7 @@ The fourteen lecture themes are:
 .. [[chapter-7, Component Architecture]]Architecture of Components and Subsystems
 .. [[chapter-8, Functional Features]]Verify Functional Features
 .. [[chapter-9, Non-functional Features]]Validate Quality Attributes of a Software Architecture
-. _Agile Application Architecture and Domain Driven Design_
+. _Agile Application Architecture and Domain-Driven Design_
 .. [[chapter-10, Architecture Documentation]]Architecture Documentation
 .. [[chapter-11, Trends I]]Architecture Trends I
 .. [[chapter-12, Trends II]]Architecture Trends II
@@ -80,7 +80,7 @@ The main sections in the arc42 documentation:
 Introduction and Goals::
 Short description of the requirements, driving forces, extract (or abstract) of requirements.
 Top three (max five) quality goals for the architecture which have the highest priority for the major stakeholders.
-A table of important stakeholders with their expectation regarding architecture. +
+A table of important stakeholders with their expectations regarding architecture. +
 _Agile defines the product vision, goals, and roadmap.
 Stakeholder management has a strong emphasis and is the responsibility of the product owner._ +
 +
@@ -119,7 +119,7 @@ _See  <<chapter-7>>, <<chapter-10>>_
 Deployment View::
 Technical infrastructure with environments, computers, processors, topologies.
 Mapping of (software) building blocks to infrastructure elements. +
-_Infrastructure as code document the infrastructure and the solution deployment.
+_Infrastructure as code documents the infrastructure and the solution deployment.
 Usually deployment diagrams are useless._ +
 +
 _See <<chapter-7>>, <<chapter-10>>_
@@ -136,7 +136,7 @@ _It is an important aspect of any software architecture._ +
 +
 _See  <<chapter-10>>_
 Quality Requirements::
-Quality requirements as scenarios, with quality tree to provide a high-level overview.
+Quality requirements as scenarios, with a quality tree to provide a high-level overview.
 The most important quality goals should have been described in section 1.2 (quality goals). +
 _Should be documented as fitness functions and realized as automated tests._ +
 +
@@ -174,7 +174,7 @@ footnote:[The main difference is the course has weighted more heavily on example
 Students learn better when they practice the theory].
 
 The ISAQB foundation is kind of a laggard.
-Most of their trainings are for classical software and enterprise architecture.
+Most of their training is for classical software and enterprise architecture.
 They have finally understood lately that agile is won the war how to develop digital products.
 
 THe ISAQB programs teach skills in three areas: technological competence, methodical competence, and communicative competence.

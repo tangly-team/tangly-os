@@ -125,7 +125,7 @@ sudo apachectl start
 ----
 ====
 
-You can either migrate your whole user account to the new machine or copy manually the needed files
+You can either migrate your whole user account to the new machine or copy manually the necessary files
 
 - Copy the _ssh_ keys files and _zhrc_ configuration files.
 - Copy the music, photos, and video files.

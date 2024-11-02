@@ -158,7 +158,7 @@ Most of the diagrams are created with {ref-plantuml}.
 [CAUTION]
 ====
 Beware of the drawbacks of wiki approaches.
-Wiki-based solutions are very easy to deploy.
+Wiki-based solutions are effortless to deploy.
 
 Wikis often have the following problems:
 

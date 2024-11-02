@@ -32,7 +32,7 @@ To open the discussion and bring the discussion back to objective arguments, I o
 
 * Scaling Lean and Agile Development: Thinking and Organizational Tools for Large-Scale Scrum, Craig Larman and Bas Vodde, Addison-Wesley 2009.
 This book and the one below are a very extensive presentation about the challenges and trade-offs of big distributed agile projects using {ref-less}.
-Don't expect pre-cocked solutions, but a tool set how to lead successfully such projects.
+Do not expect pre-cocked solutions, but a tool set how to lead successfully such projects.
 Not always an easy reading but worth the effort
 * Practices for Scaling Lean and Agile Development: Large, Multi-side, and Offshore Product Development with Large-Scale Scrum, Craig Larman and Bas Vodde, Addison-Wesley 2010 See above for a review of the book
 * Agile Testing: A Practical Guide for Testers and Agile Teams, Lisa Crispin and Janet Gregory, Addison-Wesley 2009 The seminal reference book how to blend testing with agile projects.
@@ -55,7 +55,7 @@ Based on the above statement, you have to find a way to unit test and refactor l
 == Extreme Programming
 
 * Test Driven Development by Example, Ken Beck, Addison-Wesley 2003 How can a programmer be sure his code is working before and after refactoring
-* Clean Code: A Handbook of Agile Software Craftsmanship, Robert C. Martin, Prentice Hall 2009 We are professional developers and uncle Bob shows how we should work
+* Clean Code: A Handbook of Agile Software Craftsmanship, Robert C. Martin, Prentice Hall 2009 We are professional developers, and uncle Bob shows how we should work
 * The Clean Coder: A Code of Conduct for Professional Programmers, Robert C. Martin, Prentice Hall 2011 Uncle Bob defines what a professional developer is.
 I know quite a few developers are shocked by his requirements.
 

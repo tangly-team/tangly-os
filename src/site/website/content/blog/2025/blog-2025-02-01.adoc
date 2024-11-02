@@ -27,7 +27,7 @@ The approach promotes modular object-oriented design cite:[modern-software-engin
 The modular monolith architecture is recognized as the cost-effective approach for high-quality software products <<modular-monolith>>.
 
 Embedded systems and the underlying hardware naturally map to object-oriented abstractions.
-Just look at your device, buses, actuators, and sensors to identify potential classes.
+Look at your device, buses, actuators, and sensors to identify potential classes.
 
 The method emphasizes clean-code approach and the usage of {ref-scrum} and {ref-devops} techniques.
 
@@ -50,7 +50,7 @@ Examples are battery packs, drives, sensor packages, tractors, hydraulic systems
 Such a component often has a set of sensors and actuators.
 Advanced components have their own processing capabilities
 footnote:[Examples are frequency converters, motors with a CAN node, or modems.].
-Additional logic is provided to transform the raw signals in a representative view of the abstraction.
+Additional logic is provided to transform the raw signals into a representative view of the abstraction.
 This logic can be implemented in software or hardware.
 
 Hardware components shall be realized as active objects to handle the parallelism of the hardware sensors and actuators.
@@ -152,7 +152,7 @@ end note
 The whole device should also be a bounded domain.
 
 Logical abstractions are also bounded domains or part of the device domain.
-Examples are battery manager handling a set of battery packs.
+Examples are a battery manager handling a set of battery packs.
 
 Complex business logic areas should be evaluated as a bounded domain.
 Examples are alarm and error state machine of the machine, job or mission execution engine.
@@ -258,7 +258,7 @@ footnote:[Modern {cpp} best practices recommend that any application class is de
 Modern {cpp} versions provide syntactic sugar to declare nested namespaces with a compact and legible notation.
 See for example {cpp} Google coding guidelines.].
 A bounded domain should also be packaged following the concepts of the used framework.
-For example, it should be a Gradle module or a ROS package.
+For example, it should be a Gradle module or an ROS package.
 
 [IMPORTANT]
 ====
@@ -302,7 +302,7 @@ Data processing nodes are in higher layers.
 ====
 A specific model can be provided if your control algorithm follows the {ref-plc} approach.
 
-You must provide a buffered model of all relevant inputs and outputs of your machine.
+You must provide a buffered model of all relevant inputs and outputs for your machine.
 Relevant means used in the PLC algorithm.
 
 Buffered means you implement the loop.
@@ -352,7 +352,7 @@ Try the following approach.
 
 An asynchronous command cannot have an immediate return value.
 Otherwise, it is a synchronous call.
-Best practice is to implement the command as an asynchronous message send to a message queue for later processing.
+The best practice is to implement the command as an asynchronous message send to a message queue for later processing.
 
 The only compromise is when the return value is a simple acknowledgement the command was received.
 The command was queued and still needs to be processed.
@@ -378,7 +378,7 @@ The consequence would otherwise be starvation and potential deadlocks.
 ====
 Asynchronous approach requires multithreaded systems.
 
-Asynchronous command and query requests is the only scalable and resilient approach for complex concurrent systems.
+Asynchronous command and query requests are the only scalable and resilient approach for complex concurrent systems.
 ====
 
 === Outgoing Queries and Commands
@@ -416,7 +416,7 @@ A good design minimizes filtering of events you are not interested in without fo
 
 Avoid callbacks to propagate events.
 Callbacks introduce a dependency between the caller and the callee.
-The callee is responsible to implement parallel handling of multiple callbacks and protection of variables accessed from multiple callbacks.
+The callee is responsible for implementing parallel handling of multiple callbacks and protection of variables accessed from multiple callbacks.
 
 == Crosscutting Concerns
 
@@ -526,7 +526,7 @@ A human operator shall receive all alarms and decide if they influence his decis
 Alarms are also used to bring the device to a save state if the error detected impeded correct processing.
 
 Alarms should have a unique type identifier, a severity level and a human-readable text.
-Alarms are sent to a product wide topic and made available to all interested parties.
+Alarms are sent to a product-wide topic and made available to all interested parties.
 
 === Logging
 
@@ -563,7 +563,7 @@ The {ref-kiss} is essential to construct a maintainable and stable solution.
 Aggressive refactoring and clean code approaches hugely improve the code in the long-term cite:[refactoring,clean-code,clean-coder,clean-architecture].
 
 Embedded applications should always be implemented with the active object pattern <<actors>>.
-The programmable logic control _PLC_ with a fixed timed based loop has well-documented limitations as soon as the application complexity increases.
+The programmable logic control _PLC_ with a fixed timed-based loop has well-documented limitations as soon as the application complexity increases.
 Communication should always be message-based.
 Avoid using synchronization primitives such as mutex, semaphores, or monitors.
 
