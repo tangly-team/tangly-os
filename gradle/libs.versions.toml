@@ -7,7 +7,7 @@ javalin-version = '5.6.4'
 openapi-version = "5.6.4"
 eclipsestore-version = '2.0.0'
 mustang-version = '2.14.2'
-vaadin-version = '24.5.3'
+vaadin-version = '24.5.4'
 
 [plugins]
 vaadin = { id = "com.vaadin", version.ref = "vaadin-version" }
@@ -94,9 +94,9 @@ javalin-openapi-processor = { module = "io.javalin.community.openapi:openapi-ann
 javalin-swagger = { module = "io.javalin.community.openapi:javalin-swagger-plugin", version.ref = "openapi-version" }
 vaadin-core = { module = "com.vaadin:vaadin-core", version.ref = "vaadin-version" }
 vaadin-pdfviewer = "org.vaadin.addons.componentfactory:vcf-pdf-viewer:4.0.0"
-vaadin-embedded-jetty = "com.github.mvysny.vaadin-boot:vaadin-boot:13.1"
+vaadin-embedded-jetty = "com.github.mvysny.vaadin-boot:vaadin-boot:13.2"
 vaadin-socharts = "com.storedobject.chart:so-charts:3.2.6"
-vaadin-test = "com.github.mvysny.kaributesting:karibu-testing-v24:2.1.8"
+vaadin-test = "com.github.mvysny.kaributesting:karibu-testing-v24:2.2.0"
 vaadin-rangepicker = "com.vaadin.componentfactory:vcf-date-range-picker:5.0.2"
 
 [bundles]
