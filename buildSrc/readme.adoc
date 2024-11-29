@@ -22,14 +22,20 @@ The other plugins could be eliminated by using the Java Common Conventions plugi
 The set of Gradle command line special commands we seldom use:
 
 * To publish all modules in local maven repository `./gradlew publishMavenJavaPublicationToMavenLocal -Pvaadin.productionMode`
-* To publish all modules in maven central repository `./gradlew publishMavenJavaPublicationToMavenRepository -Pvaadin.productionMode`
 * To generate static and aggregate code coverage metrics `./gradlew test testCodeCoverageReport testAggregateTestReport -Pvaadin.productionMode`
 * To detect newer versions of libraries `./gradlew dependencyUpdates -Drevision=release`
 * To update sonar cloud `./gradlew sonarqube -Dsonar.login=<login token>`
-* To run all tests locally as sanity check `./gradlew clean build test javadoc -Pvaadin.productionMode`
+* To run all tests locally as sanity check `./gradlew clean build test testCodeCoverageReport testAggregateTestReport javadoc -Pvaadin.productionMode`
 * To create a production release `./gradlew net.tangly.erp.ui:installDist -Pvaadin.productionMode`
 * To detect vulnerabilities `./gradlew ossIndexAudit --info`
 * To check licenses of dependencies `./gradlew checkLicense`
+
+[NOTE]
+====
+To publish the artifacts to {ref-maven-central}, use the script `src/main/scripts/uploadToMavenCentral.sh`.
+
+The {ref-maven-central} server cannot cope with the speed and parallelism of the Gradle build.
+====
 
 Run these commands from the root folder of the project.
 

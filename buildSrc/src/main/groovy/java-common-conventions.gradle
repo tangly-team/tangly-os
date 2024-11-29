@@ -18,7 +18,6 @@ plugins {
     id 'jacoco'
     id 'pmd' apply false
     id 'org.sonarqube'
-    id 'info.solidsoft.pitest'
 }
 
 repositories {
