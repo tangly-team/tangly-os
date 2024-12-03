@@ -10,6 +10,7 @@ params:
 include::../fragments/_config-mb-blog.adoc[]
 :ref-forgejo: https://forgejo.org/[Forgejo]
 :ref-c4: https://c4model.com/[C4 Model]
+:ref-gitlab-reference-architecture: https://docs.gitlab.com/ee/administration/reference_architectures/index.html[GitLab Reference Architectures]
 
 image::2024-12-01-head.jpg[width=420,height=360,role=left]
 
@@ -22,7 +23,9 @@ These solutions are the best of breed in our industry.
 The price per developer and year is around 250 Euro.
 You get the whole set of functions and goodies such as single sign-on and auditing of all activities.
 
-The same companies not willing to use cloud solutions are often not able to provide financial and technical resources to build a similar onsite offer.
+The same companies not willing to use cloud solutions are often not able to provide financial and technical resources to build a similar onsite offer
+footnote:[Do *not* understimate the effort to install {ref-github} or {ref-gitlab} on premises.
+See for example {ref-gitlab-reference-architecture} for the official GitLab reference architectures, expected infrastructure, and servers you need to maintain.].
 
 The development teams have no access to modern source code management or build pipelines.
 
@@ -80,7 +83,7 @@ image::2024-12-01-forgejo.png[width=420,height=360,role=left]
 It provides essential functions to work efficiently as a team with a reasonable footprint.
 footnote:[You could also use https://gitea.com/[Gitea].].
 
-Easy to install and low-maintenance, it just does the job.
+Easy to install and low maintenance, it just does the job.
 
 If you like any of the following features, Forgejo is literally meant for you:
 
@@ -129,13 +132,13 @@ These products are too powerful and complex for smaller organizations.
 
 The Java community uses {ref-maven} and {ref-gradle} to handle artifact dependencies.
 
-The Python community has https://pip.pypa.io/en/stable/[pip3] tool.
+The Python community has the https://pip.pypa.io/en/stable/[pip3] tool.
 The C and {cpp} community often use https://conan.io/[Conan] and https://vcpkg.io/en/[vcpckg].
 
 == Software Documentation
 
 The current approach to writing technical documentation is to use static website generators.
-{ref-github}, {ref-gitlab}, and {ref-bitbucket} all offer such as solution through their pages concept.
+{ref-github}, {ref-gitlab}, and {ref-bitbucket} all offer such as solution through their _pages_ concept.
 
 image::2024-12-01-hugo.jpg[width=420,height=360,role=left]
 

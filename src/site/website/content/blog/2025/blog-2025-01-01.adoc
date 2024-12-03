@@ -178,7 +178,7 @@ state = switch (state) {
                     yield STATE_2;
                 } else if (guard_2(mesage)) {
                     action_a_2(message));
-                    yiedl STATE_3;
+                    yield STATE_3;
                 }
             case (ID_B):
                 action_b(message);

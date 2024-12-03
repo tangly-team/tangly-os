@@ -34,7 +34,7 @@ ifndef::imagesdir[:imagesdir: ./pics]
 
 === PRJ Decisions
 
-. link:../adr/prj-001-project-tag-for-project-costs/Project Tag for Project Costs]
+. link:../adr/pro-001-project-tag-for-project-costs/[Product Tag for Product Costs]
 
 === Ledger Decisions
 

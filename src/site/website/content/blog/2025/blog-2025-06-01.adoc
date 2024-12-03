@@ -8,6 +8,7 @@ params:
 ---
 
 include::../fragments/_config-mb-blog.adoc[]
+:ref-asciidoc-bibtex: https://github.com/asciidoctor/asciidoctor-bibtex[AsciiDoctor BibTeX]
 
 image::2025-06-01-head.jpg[width=420,height=360,role=left]
 
@@ -73,6 +74,14 @@ footnote:[I chose Amazon because I bought all my ebooks there.
 I do not own anymore paper editions.
 You could decide to use another universal bookstore if you prefer.].
 
+[NOTE]
+====
+{ref-asciidoctor} provides a nice extension to include bibliographical references in our articles.
+The extension is called {ref-asciidoc-bibtex} and supports the inclusion of bibtex files.
+
+It supports the IEEE format for the bibliographic references, which is my preferred format.
+====
+
 We provide a bibtex file with all the books we bought and referenced in our articles.
 Feel free to use it.
 It is released as all our articles under https://creativecommons.org/licenses/by/4.0/[creative commons attribution 4.0 international] _CC BY 4.0_
@@ -86,29 +95,27 @@ I find it interesting to know:
 
 - Year of publication
 - How many articles did I write in a specific year?
-- How many times is an article referenced in other blogs?
-Average number of references to a blog are published in a specific year?
 - How many article references are defined in an article?
 Average number of articles references are published per blog in a specific year?
 - How many book references are defined in an article?
 Average number of book references are published per blog in a specific year?
 
-[cols="1,>1,>1,>1,>1,>1,>1,>1",options="header"]
+[cols="1,>1,>1,>1,>1,>1",options="header"]
 |===
-^|Year ^|Published Blogs ^|Blog References ^|Average ^|Referenced Blogs ^|Average ^|Book References ^|Average
+^|Year ^|Published Blogs ^|Referenced Blogs ^|Average ^|Book References ^|Average
+| 2016 >|  13 >|   9 >| 0.69 >|  23 >| 1.77
+| 2017 >|  15 >|  16 >| 1.07 >|   4 >| 0.27
+| 2018 >|  20 >|  28 >| 1.40 >|  22 >| 1.10
+| 2019 >|  13 >|  27 >| 2.08 >|   8 >| 0.62
+| 2020 >|  14 >|  51 >| 3.64 >|  13 >| 0.93
+| 2021 >|  32 >|  64 >| 2.00 >|  43 >| 1.34
+| 2022 >|  25 >|  66 >| 2.64 >|  84 >| 3.36
+| 2023 >|  28 >| 111 >| 3.96 >|  78 >| 2.79
+| 2024 >|  22 >|  82 >| 3.73 >|  75 >| 3.41
+| *Total* >| 182 | | | |
+|===
 
-| 2016   >|  13 | | | | | |
-| 2017   >|  15 | | | | | |
-| 2018   >|  20 | | | | | |
-| 2019   >|  13 | | | | | |
-| 2020   >|  14 | | | | | |
-| 2021   >|  32 | | | | | |
-| 2022   >|  25 | | | | | |
-| 2023   >|  18 | | | | | |
-| 2024   >|  19 | | | | | |
-| 2025   >|  15 | | | | | |
-|*Total* >| 176 | | | | | |
-|===
+Over the years, we cited 130 different books in our articles.
 
 [bibliography]
 == Links

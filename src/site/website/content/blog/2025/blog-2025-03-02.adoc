@@ -31,14 +31,23 @@ The desk height is adjustable, and I can switch between sitting and standing.
 The chair is ergonomic and supports my back.
 
 The display is a 28-inch 4k monitor.
-This is better than in almost all customer offices.
+A pleasure for my eyes.
+This is a better display than the ones I got in almost all customer offices I work for.
 I have a full-size keyboard and a mouse.
+
+_I tried working with two displays, but I never hooked up to this mode._
+_I use the notebook display as a monitoring and logging display, and the external display for development activities._
 
 Modern chat and video conferencing tools optimally support my communication with my team.
 You should buy a professional headset for your conference calls.
 Use a high-quality webcam so that your team can see you clearly.
 
 All our development for products is done on {ref-github}.
+We have a git repository, a continuous integration and delivery pipeline, and an agile product board.
+Deployments in production are manually triggered through a command line interface.
+
+Documentation is done in {ref-asciidoc} and stored in the git repository.
+The content is published as a static website.
 
 Technical books are available as ebooks.
 

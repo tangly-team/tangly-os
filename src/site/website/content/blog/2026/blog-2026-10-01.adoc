@@ -1,0 +1,126 @@
+---
+title: "Teaching Clojure III"
+linkTitle: "Clojure III"
+date: 2026-10-01
+tags: ["jvm-languages", "series-students"]
+params:
+  featured: "blog/2025/pics/2025-05-01-head.png"
+---
+
+include::../fragments/_config-mb-blog.adoc[]
+
+image::2025-12-02-head.png[width=420,height=360,role=left]
+
+== More Functional Constructs
+
+Functions can be defined to take different numbers of parameters, meaning different _arity_.
+Different arities must all be defined in the same defn.
+Using _defn_ more than once will replace the previous function.
+
+Functions may also define a variable number of parameters.
+This is known as a "variadic" function.
+The variable parameters must occur at the end of the parameter list.
+They will be collected in a sequence for use by the function.
+
+[source,clojure]
+----
+(defn greet
+     ([] (greet "you"))
+     ([name] (print "Hello" name))
+     [name & rest] (apply print "Hello" name rest))
+
+----
+
+An anonymous function can be created with _fn_.
+Because the anonymous function has no name, it cannot be referred to later.
+Rather, the anonymous function is typically created at the point it is passed to another function.
+Or it is possible to immediately invoke it.
+_This is not a common usage_.
+
+[source,clojure]
+----
+(  (fn [message] (println message))  "Hello world!" )
+----
+
+map filter reduce with lambda expressions
+
+method chaining (f2 f1 x) is equivalent to (-> x f1 f2)
+
+== Recursions
+
+Structural Recursion
+
+Accumulative Recursion
+
+Tail Recursion
+
+Sequences
+
+== Programming By Contracts
+
+:pre and :post % is the output :tests
+
+
+Destructuring is a way to concisely bind names to the values inside a data structure.
+Destructuring allows us to write more concise and readable code.
+
+[source,clojure]
+----
+(def my-line [[5 10] [10 20]])
+(let [[p1 p2] my-line
+      [x1 y1] p1
+      [x2 y2] p2]
+ (println "Line from (" x1 "," y1 ") to (" x2 ", " y2 ")"))
+
+(def my-vector [1 2 3])
+(let [[x y z] my-vector]
+  (println x y z))
+
+(def client {:name "tangly llc"  :location "Zug, Switzerland :description "Agile boutique."})
+(let [name (:name client)
+      location (:location client)
+      description (:description client)]
+  (println name location "-" description))
+----
+
+->>
+
+transducers
+
+REPL
+
+F1 for displaying the documentation of the function under the carret.
+The display the documentation in the REPL
+
+[source,clojure]
+----
+(require '[clojure.repl :refer :all])                      <1>
+
+(doc nil?)                                                 <2>
+(source nil?)                                              <3>
+(dir clojure.core)                                         <4>
+(find-doc "nil")                                           <5>
+----
+
+<1> Importing the clojure.repl namespace
+<2> Displaying the documentation of the _nil?_ function.
+Documentation is available only for libs that have been required.
+<3> Displaying the source code of the _nil?_ function
+<4> Displaying the list of functions in the _clojure.core_ namespace
+<5> Searching for the documentation of the nil keyword
+
+Accessing recent results with *1, *2, *3, ...
+
+Using a library with (require '[library]) or (require '[library :as lib]
+
+== Namespaces
+
+[bibliography]
+== Links
+
+- [[[clojure-1, 1]]]  link:../../2023/teaching-clojure-i/[Teaching Clojure I].
+Marcel Baumann. 2023.
+- [[[clojure-2, 2]]]  link:../../2023/teaching-clojure-ii/[Teaching Clojure II].
+Marcel Baumann. 2023.
+- [[[clojure-groovy-java, 3]]] link:../../2022/java-groovy-clojure/[Clojure, Groovy, Java]
+Marcel Baumann. 2022.

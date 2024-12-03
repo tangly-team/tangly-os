@@ -9,6 +9,7 @@ params:
 
 include::../fragments/_config-mb-blog.adoc[]
 :ref-erasmus: https://en.wikipedia.org/wiki/Erasmus_Programme[Erasmus Program]
+:ref-futureday: https://www.nationalerzukunftstag.ch/en[National Future Day]
 :ref-horizon: https://en.wikipedia.org/wiki/Horizon_Europe[Horizon Europe]
 :ref-postfinance: https://www.postfinance.ch/en/private/products/investment-funds.html[PostFinance Funds]
 :ref-svp: https://en.wikipedia.org/wiki/Swiss_People%27s_Party[Swiss People's Party]
@@ -23,6 +24,8 @@ The last years these have been slowly decreasing.
 
 I am a software engineer and a father of two daughters.
 I could now live in Spain, Germany, France, Denmark, or the Netherlands and have the same or higher income and quality of life.
+
+As a parent, I want to provide my daughters opportunities for the best possible future.
 
 Below are some issues I found out in the last years.
 I am a father of two wonderful daughters.
@@ -56,13 +59,15 @@ In the age of digitalization and after Corona lockdown, this is a major issue.
 I have to give my children physical money for their pocket money or to buy things.
 So I am forced to find an ATM and withdraw money regularly.
 
-== No possibility to open a stock account for children younger than 18 years
+== No possibility to open a stock account for children
 
 How should you finance the education of your children if you cannot invest in the stock market?
 
 This is quite impossible in Switzerland.
 
 For mysterious reasons, Swiss banking does not allow children to invest in the stock market.
+You have to wait until your child is 18 years old to open a regular stock account.
+
 Some banks other pseudo accounts, but they force you to buy their products and are not real stock accounts.
 You are forced to buy their funds instead of investing in regular ETFs.
 These funds are poorly performing and have high yearly fees.
@@ -98,6 +103,16 @@ My mother tongue is French, and I will happily scrap French from the curriculum.
 The poor children must be fluent in Swiss German, High German, and English.
 Three languages are enough for a child.
 Please scrap mandatory French from the curriculum.
+
+[IMPORTANT]
+====
+The {ref-futureday} is a great governmental initiative to show children the work of their parents.
+Try to get a place in a technical company for your child.
+It is worth the effort.
+
+The initiative is quite successful.
+The drawback is that it is once a year and not all children can get a slot to participate.
+====
 
 == Force to use Microsoft Office in schools
 
