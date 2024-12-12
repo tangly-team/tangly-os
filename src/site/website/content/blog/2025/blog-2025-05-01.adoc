@@ -1,7 +1,7 @@
 ---
 title: "Agile Rant"
 linkTitle: "Agile Rant"
-date: 2025-05-10
+date: 2025-05-01
 tags: ["tangly", "agile"]
 params:
   featured: "blog/2025/pics/2025-05-01-head.jpg"
@@ -61,11 +61,22 @@ I will never let a person without deep health care skills work as a doctor and p
 
 In other words, it is not always a people problem.
 It can be a technical capability difficulty.
-To acquire technical skills, you need *formal education* and years of experience.
+To acquire technical skills, you need *formal education* and years of experience.____
 A few team building exercises cannot solve such knowledge and capabilities troubles.
 
+[quote,Jurgen Appelo,2024]
+____
+The Agile movement’s emphasis on _soft_ skills—prioritizing people over technical and operational expertise—has left teams ill-equipped to deliver value
+despite feeling good about themselves.
+
+Many coaches lack deep backgrounds, leading to fluff-focused coaching and failed transformations.
+Organizations abandoned Agile when they saw their investments did not yield tangible results.
+
+*Technical depth, operational expertise, and deep learning still matter*.
+____
+
 You need technical training and skills for technical jobs
-footnote:[I studied four and half years at the Swiss Federal Institute of Technology of Lausanne _EPFL_ to get my master degree in Computer Science.
+footnote:[I studied for four and a half years at the Swiss Federal Institute of Technology of Lausanne _EPFL_ to get my master degree in Computer Science.
 I cannot reach the level of such a formal training by attending a few days of conference or bootcamp sessions.].
 You need Scrum Masters with technical skills to coach software development teams.
 How can you help a team improve their digital product development processes and techniques if you have no clue about software development?

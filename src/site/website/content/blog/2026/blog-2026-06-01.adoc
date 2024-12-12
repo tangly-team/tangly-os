@@ -4,7 +4,7 @@ linkTitle: "Dependency Injection"
 date: 2026-06-01
 tags: ["java", "architecture"]
 params:
-  featured: "blog/2024/pics/2026-06-01-head.png"
+  featured: "blog/2026/pics/2026-06-01-head.png"
 ---
 
 image::2026-06-01-head.png[width=420,height=360,role=left]
@@ -76,4 +76,3 @@ The code is simple and easy to understand.
 The number of statements is below twenty.
 
 The same approach is applied to create a bounded domain user interface.
-

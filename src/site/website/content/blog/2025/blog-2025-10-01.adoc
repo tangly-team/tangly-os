@@ -1,194 +1,214 @@
 ---
-title: "Java Concurrency Approaches"
-linkTitle: "Java Concurrency"
+title: "Rant about Switzerland"
+linkTitle: "Swiss Rant"
 date: 2025-10-01
-tags: ["java", "architecture"]
+tags: ["tangly", "agile"]
 params:
-  featured: "blog/2025/pics/2025-10-01-head.png"
+  featured: "blog/2025/pics/2025-01-02-head.jpg"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]
+:ref-erasmus: https://en.wikipedia.org/wiki/Erasmus_Programme[Erasmus Program]
+:ref-futureday: https://www.nationalerzukunftstag.ch/en[National Future Day]
+:ref-horizon: https://en.wikipedia.org/wiki/Horizon_Europe[Horizon Europe]
+:ref-postfinance: https://www.postfinance.ch/en/private/products/investment-funds.html[PostFinance Funds]
+:ref-svp: https://en.wikipedia.org/wiki/Swiss_People%27s_Party[Swiss People's Party]
 
-[.float-group]
---
-image::2025-10-01-head.png[width=420,height=360,role=left]
+image::2025-10-01-head.jpg[width=420,height=360,role=left]
 
-My current notebook has twelve cores.
-The programs I develop should be able to utilize all of them.
+I am a Swiss citizen, and I am quite happy to live in Switzerland.
 
-A server can easily have 128 or more cores.
-The programs should adapt automatically to the number of cores available.
+But there are some issues that I would like to address.
+The quality of life and the standard of living in Switzerland are high.
+The last years these have been slowly decreasing.
 
-We are developing user interfaces that should be responsive.
-Longer operations should not block the user interface and be run in the background.
+I am a software engineer and a father of two daughters.
+I could now live in Spain, Germany, France, Denmark, or the Netherlands and have the same or higher income and quality of life.
 
-The solution to these problems is to use multithreading when designing and programming applications.
---
+As a parent, I want to provide my daughters opportunities for the best possible future.
 
-There are several reasons as to why one would use multithreading in an application. Some of the most common reasons for multithreading are:
+Below are some issues I found out in the last years.
+I am a father of two wonderful daughters.
+I found out which aspects are not optimal for the future of my children.
 
-* Better utilization of a single CPU.
-* Better utilization of multiple CPUs or CPU cores.
-* Better user experience in regard to responsiveness.
-* Better user experience in regard to fairness.
+== No digital identity for Swiss citizens
 
-== First Iteration
+We currently have no access to digital identity in Switzerland.
 
-=== Threads
+You have to give your child a physical identification card, often also physical money, physical travel cards, and a physical health insurance card.
+All parents know that children lose things.
 
-You can create a thread by extending the Thread class and overriding the run method.
-You need to call the start method to start the thread.
-
-[source,java]
-----
-public class ThreadExample {
-    public static void main(String[] args) {
-        var thread = new NewThread();
-        thread.start();
-    }
-}
-----
-
-=== Synchronized
-
-We can use the synchronized keyword on different levels:
-
-* Instance methods
-* Static methods
-* Code blocks
-
-When we use a synchronized block, Java internally uses a monitor, also known as a monitor lock or intrinsic lock, to provide synchronization.
-These monitors are bound to an object; therefore, all synchronized blocks of the same object can have only one thread executing them at the same time.
-
-The lock behind the synchronized methods and blocks is a reentrant.
-This means the current thread can acquire the same synchronized lock over and over again while holding it.
-
-[source,java]
-----
-public synchronized void performSynchronisedTask() {
-    setCount(getCount()+1);
-}
-
-public void performSynchronisedTask() {
-    synchronized (this) {
-        setCount(getCount()+1);
-    }
-}
-----
-
-=== Volatile
-
-We can use volatile to tackle the issues with Cache Coherence.
-
-To ensure that updates to variables propagate predictably to other threads, we should apply the volatile modifier to those variables.
-
-This way, we can communicate with runtime and processor to not reorder any instruction involving the volatile variable.
-Also, processors understand that they should immediately flush any updates to these variables.
-
-This way, we communicate with runtime and processor to not reorder any instruction involving the volatile variable.
-Also, processors understand that they should immediately flush any updates to these variables.
-
-[IMPORTANT]
-====
-In modern Java, the synchronized and the thread concepts are obsolete and should not be used.
-Try avoiding using the volatile keyword as well.
-====
-
-== Second Iteration
-
-=== Executors
-
-The executor concept is a higher-level abstraction for managing threads.
-It is a more flexible and powerful way to manage threads than the Thread class and avoids most of its pitfalls.
-
-=== Concurrent Primitives and Collections
-
-Java provides a set of concurrent primitives and collections to work with threads.
-These classes are thread-safe and can be used in a multithreaded environment.
-They are simpler and more efficient than using synchronized blocks.
-
-=== Fork and Join
-
-The fork and join solution implements the _divide and conquer_ algorithm.
-The subtasks are created and executed in parallel.
-The results are then combined to get the final result in the _join_ phase.
-
-The ForkJoinPool is a special kind of executor that is designed to work with the ForkJoinTask.
+Replacing a lost card is a nightmare.
+It takes weeks, and it is naturally not a digital process.
+Additionally, you have to pay quite a fee for the replacement.
 
 [NOTE]
 ====
-The correct implementation of your algorithm using the fork and join framework is not trivial.
-It was a standard trick question in the Java certification examinations.
+The government is currently working on a digital identity for Swiss citizens.
+Hopefully, we shall get it in 2026 at the earliest.
 
-The order of divide and conquer tasks declaration in the code is crucial for a correct execution.
+Some transportation companies are working on a digital travel card.
+Availability is almost a lottery based on the company.
 ====
 
-== Third Iteration
+== No digital payment card for children younger than 12 years
 
-=== Parallel Streams
+For mysterious reasons, Swiss banks do not allow children younger than 12 years old to have a digital payment card.
+In the age of digitalization and after Corona lockdown, this is a major issue.
 
-The stream API was introduced in Java 8.
-It is a powerful way to work with collections in a functional way.
-The paradigm is data programming.
+I have to give my children physical money for their pocket money or to buy things.
+So I am forced to find an ATM and withdraw money regularly.
 
-Any stream processing can easily be parallelized by calling the `parallelStream` method.
-The underlying implementation uses the fork and join framework and hides all the quirks from the developer.
+== No possibility to open a stock account for children
 
-=== Reactive API
+How should you finance the education of your children if you cannot invest in the stock market?
 
-The reactive API supports the reactive programming model.
-The classes `CompletableFuture` and `CompletableStage` provide powerful ways to work with asynchronous tasks.
+This is quite impossible in Switzerland.
 
-Most reactive solutions are now realized with the much simpler approach based on _virtual threads_.
-_Think twice before using the reactive API_.
+For mysterious reasons, Swiss banking does not allow children to invest in the stock market.
+You have to wait until your child is 18 years old to open a regular stock account.
 
-== Forth Iteration
+Some banks other pseudo accounts, but they force you to buy their products and are not real stock accounts.
+You are forced to buy their funds instead of investing in regular ETFs.
+These funds are poorly performing and have high yearly fees.
+See, for example, the funds of {ref-postfinance}.
 
-=== Virtual Threads
+It is a major issue for the future of the country.
 
-Virtual threads allow the scaling of any IO-based processing.
-Conceptually, it replaces and simplifies the reactive approach and makes it obsolete.
+== Twenty-six education systems for nine million inhabitants
 
-=== Structured Concurrency
+States are responsible for the education system in Switzerland.
+Worst, details are often left to the municipalities.
 
-Structured concurrency allows you to manage your threads in a structured way in the source code.
-Exceptions are propagated to the parent thread, and the parent thread can decide how to handle them in a try block.
+So we have 26 different education systems for 9 million inhabitants.
+This is a nightmare for parents who move to another canton.
+And imagine, we have in 2024 2131 municipalities in Switzerland issuing nursery, primary and sometimes secondary school reglementations.
 
-=== Scoped Values
+[NOTE]
+====
+As usual the {ref-svp} opposed the initiative to align the education systems.
+The initiative was called _Lehrplan 21_.
 
-Scoped values needed to be introduced to provide data to threads.
+The Swiss citizens voted for the harmonization of the education system.
+Around 21 cantons are currently working on the harmonization.
+Some are more progressive than others.
 
-The `ThreadLocal` class is obsolete and should not be used anymore.
-It does not scale well with virtual threads.
+The Swiss education system is quite good.
+The hard fact is quite good, not especially outstanding.
+====
 
-== Good Practices
+All Swiss German states are also teaching the French language as mandatory in primary and secondary school.
+My mother tongue is French, and I will happily scrap French from the curriculum.
 
-Use the modern Java constructs in your codebase.
-Immutability and functional programming are key approaches to legible and working parallel code.
+The poor children must be fluent in Swiss German, High German, and English.
+Three languages are enough for a child.
+Please scrap mandatory French from the curriculum.
 
-*Prefer the message passing pattern over shared memory.*
-Immutable objects and message passing are the key to parallel programming in bigger systems.
-I highly recommend choosing the actor model <<actor-model>> as your architecture pattern.
+[IMPORTANT]
+====
+The {ref-futureday} is a great governmental initiative to show children the work of their parents.
+Try to get a place in a technical company for your child.
+It is worth the effort.
 
-*Use parallel streams for parallelizing your algorithm processing data.*
-If you need to parallelize your algorithms, use `parallelStream`.
-It is a straightforward way to parallelize your code without the need to manage threads.
-The code is legible and painless to maintain.
+The initiative is quite successful.
+The drawback is that it is once a year and not all children can get a slot to participate.
+====
 
-*Seldom use structured concurrency to manage more complex algorithms to parallelize processing if data.*
-Try to always use structured concurrency to manage your threads.
-Use virtual threads to parallelize your IO operations.
+== Force to use Microsoft Office in schools
 
-All constructs of the first iteration meaning threads, synchronized, and volatile are obsolete and should be avoided.
+Most Swiss cantons heavily promote the usage of Microsoft Office in schools.
 
-If you have the need to provide data to threads, use scoped values.
+This is a major issue for parents who do not want to use Microsoft products.
+It is also an ethical issue as Microsoft is a US company and the data is stored in the US.
 
-[bibliography]
-== Links
+[NOTE]
+====
+And please do not come with the argument that Microsoft has a data center in Switzerland.
 
-- [[[actor-model, 1]]] link:../../2024/actor-model/[Actor Model].
-Marcel Baumann. 2024.
-- [[[actor-model-in-cpp, 2]]] link:../../2024/actors-in-cpp/[Actor Model in {cpp}].
-Marcel Baumann. 2024.
-- [[[actor-model-with-cmsis, 3]]] link:../../2024/actors-with-cmsis-os-in-cpp/[Actor Model with CMSIS OS].
-Marcel Baumann. 2024.
+The US laws are still valid for the data stored in Switzerland.
+The US government can still access and process the data stored in Switzerland and forbid Microsoft to inform the Swiss government.
+====
+
+== Cannot listen to regular music on YouTube or Spotify
+
+The music industry bowed to the pressure of the US government.
+As a child, you cannot listen to music containing adult language on YouTube or Spotify.
+
+The word fuck is forbidden, and any song containing it cannot be played by children.
+
+I would like as a parent to be in charge of such decisions.
+I do not recognize that some fringe Christian groups force such decisions on all children on this planet.
+
+[NOTE]
+====
+The positive news is that we have access to all books in our libraries.
+Censorship like in the US is unknown in most communal or cantonal libraries.
+
+The nightmare for US librarians did not snap over to Switzerland.
+The {ref-svp} tried an initiative and was crushed by common sense.
+====
+
+== No roaming in the EU when traveling and visiting family
+
+The Swiss government has not signed the agreement with the EU to allow roaming in the EU.
+
+They still advocate that Swiss citizens should stay in Switzerland and not have any friends or family in the EU.
+
+== No membership to European education initiatives
+
+I know it is the official position of the {ref-svp} political right party, but it is a shame for the country.
+
+The strange idea to define exchange programs with China or Singapore is laudable.
+Requesting students to travel to China or Singapore to study marine biology is quite a joke.
+
+[NOTE]
+====
+One of my daughters currently wants to study marine biology.
+
+It should be obvious that you cannot study marine biology, avionic, or space engineering in Switzerland.
+You have to go to the EU to study these subjects.
+
+Switzerland was stupid enough to leave the student exchange program {ref-erasmus} and the research program {ref-horizon}.
+You more and more need European citizenship to study in the EU.
+
+The country tried to set up alternative Swiss programs.
+These initiatives were doomed to fail.
+The first top researchers and postdocs are leaving the country.
+====
+
+The same party also opposes dual citizenship.
+They promote the strange and partially illegal concept of Swiss citizenship on probation.
+
+This means that my daughters and wife should give up their Swiss citizenship if they want to keep their European citizenship.
+Worse, the same party promotes the far-right ideology and wants to send foreigners back to their country.
+
+So, my daughters who were born and educated in Switzerland should be sent back to Germany accordingly to the SVP party.
+
+== Thoughts
+
+Switzerland is a beautiful country with a high quality of life.
+I am happy to live here.
+
+But the country is not ready for the future and the digital age.
+
+The country is certainly not an ideal place for my daughters with the current xenophobic political parties.
+The current political trends will almost certainly lead to a worsening for the quality of life in Switzerland.
+
+[NOTE]
+====
+Lately I read official statistics about knowledge workers in Switzerland.
+More than 40% of all doctors, engineers, and IT specialists are foreigners because the country does not produce enough of them
+footnote:[The political system at least realized the acute problem for doctors.
+The _numerus clausus_ for doctor formation was removed in 2024.
+The decision will not have any impact in the next twelve years.
+You need six years to study medicine and another six years of practice to get the full accreditation.
+Therefore, any change is only visible after twelve years.
+
+It will probably take longer because cantons are in charge of university formation and the classroom size.].
+
+In other words, our education system is flawed and under performing.
+The education system does not produce enough knowledge workers for the needs of the country.
+The situation will degrade more rapidly in the next ten years because baby boomers are now retiring in big numbers.
+====
+
+The country has to ask itself how to stay competitive and attractive in the future.

@@ -1,0 +1,194 @@
+---
+title: "Java Concurrency Approaches"
+linkTitle: "Java Concurrency"
+date: 2026-11-01
+tags: ["java", "architecture"]
+params:
+  featured: "blog/2026/pics/2026-11-01-head.png"
+---
+
+include::../fragments/_config-mb-blog.adoc[]
+
+[.float-group]
+--
+image::2026-11-01-head.png[width=420,height=360,role=left]
+
+My current notebook has twelve cores.
+The programs I develop should be able to utilize all of them.
+
+A server can easily have 128 or more cores.
+The programs should adapt automatically to the number of cores available.
+
+We are developing user interfaces that should be responsive.
+Longer operations should not block the user interface and be run in the background.
+
+The solution to these problems is to use multithreading when designing and programming applications.
+--
+
+There are several reasons as to why one would use multithreading in an application. Some of the most common reasons for multithreading are:
+
+* Better utilization of a single CPU.
+* Better utilization of multiple CPUs or CPU cores.
+* Better user experience in regard to responsiveness.
+* Better user experience in regard to fairness.
+
+== First Iteration
+
+=== Threads
+
+You can create a thread by extending the Thread class and overriding the run method.
+You need to call the start method to start the thread.
+
+[source,java]
+----
+public class ThreadExample {
+    public static void main(String[] args) {
+        var thread = new NewThread();
+        thread.start();
+    }
+}
+----
+
+=== Synchronized
+
+We can use the synchronized keyword on different levels:
+
+* Instance methods
+* Static methods
+* Code blocks
+
+When we use a synchronized block, Java internally uses a monitor, also known as a monitor lock or intrinsic lock, to provide synchronization.
+These monitors are bound to an object; therefore, all synchronized blocks of the same object can have only one thread executing them at the same time.
+
+The lock behind the synchronized methods and blocks is a reentrant.
+This means the current thread can acquire the same synchronized lock over and over again while holding it.
+
+[source,java]
+----
+public synchronized void performSynchronisedTask() {
+    setCount(getCount()+1);
+}
+
+public void performSynchronisedTask() {
+    synchronized (this) {
+        setCount(getCount()+1);
+    }
+}
+----
+
+=== Volatile
+
+We can use volatile to tackle the issues with Cache Coherence.
+
+To ensure that updates to variables propagate predictably to other threads, we should apply the volatile modifier to those variables.
+
+This way, we can communicate with runtime and processor to not reorder any instruction involving the volatile variable.
+Also, processors understand that they should immediately flush any updates to these variables.
+
+This way, we communicate with runtime and processor to not reorder any instruction involving the volatile variable.
+Also, processors understand that they should immediately flush any updates to these variables.
+
+[IMPORTANT]
+====
+In modern Java, the synchronized and the thread concepts are obsolete and should not be used.
+Try avoiding using the volatile keyword as well.
+====
+
+== Second Iteration
+
+=== Executors
+
+The executor concept is a higher-level abstraction for managing threads.
+It is a more flexible and powerful way to manage threads than the Thread class and avoids most of its pitfalls.
+
+=== Concurrent Primitives and Collections
+
+Java provides a set of concurrent primitives and collections to work with threads.
+These classes are thread-safe and can be used in a multithreaded environment.
+They are simpler and more efficient than using synchronized blocks.
+
+=== Fork and Join
+
+The fork and join solution implements the _divide and conquer_ algorithm.
+The subtasks are created and executed in parallel.
+The results are then combined to get the final result in the _join_ phase.
+
+The ForkJoinPool is a special kind of executor that is designed to work with the ForkJoinTask.
+
+[NOTE]
+====
+The correct implementation of your algorithm using the fork and join framework is not trivial.
+It was a standard trick question in the Java certification examinations.
+
+The order of divide and conquer tasks declaration in the code is crucial for a correct execution.
+====
+
+== Third Iteration
+
+=== Parallel Streams
+
+The stream API was introduced in Java 8.
+It is a powerful way to work with collections in a functional way.
+The paradigm is data programming.
+
+Any stream processing can easily be parallelized by calling the `parallelStream` method.
+The underlying implementation uses the fork and join framework and hides all the quirks from the developer.
+
+=== Reactive API
+
+The reactive API supports the reactive programming model.
+The classes `CompletableFuture` and `CompletableStage` provide powerful ways to work with asynchronous tasks.
+
+Most reactive solutions are now realized with the much simpler approach based on _virtual threads_.
+_Think twice before using the reactive API_.
+
+== Forth Iteration
+
+=== Virtual Threads
+
+Virtual threads allow the scaling of any IO-based processing.
+Conceptually, it replaces and simplifies the reactive approach and makes it obsolete.
+
+=== Structured Concurrency
+
+Structured concurrency allows you to manage your threads in a structured way in the source code.
+Exceptions are propagated to the parent thread, and the parent thread can decide how to handle them in a try block.
+
+=== Scoped Values
+
+Scoped values needed to be introduced to provide data to threads.
+
+The `ThreadLocal` class is obsolete and should not be used anymore.
+It does not scale well with virtual threads.
+
+== Good Practices
+
+Use the modern Java constructs in your codebase.
+Immutability and functional programming are key approaches to legible and working parallel code.
+
+*Prefer the message passing pattern over shared memory.*
+Immutable objects and message passing are the key to parallel programming in bigger systems.
+I highly recommend choosing the actor model <<actor-model>> as your architecture pattern.
+
+*Use parallel streams for parallelizing your algorithm processing data.*
+If you need to parallelize your algorithms, use `parallelStream`.
+It is a straightforward way to parallelize your code without the need to manage threads.
+The code is legible and painless to maintain.
+
+*Seldom use structured concurrency to manage more complex algorithms to parallelize processing if data.*
+Try to always use structured concurrency to manage your threads.
+Use virtual threads to parallelize your IO operations.
+
+All constructs of the first iteration meaning threads, synchronized, and volatile are obsolete and should be avoided.
+
+If you have the need to provide data to threads, use scoped values.
+
+[bibliography]
+== Links
+
+- [[[actor-model, 1]]] link:../../2024/actor-model/[Actor Model].
+Marcel Baumann. 2024.
+- [[[actor-model-in-cpp, 2]]] link:../../2024/actors-in-cpp/[Actor Model in {cpp}].
+Marcel Baumann. 2024.
+- [[[actor-model-with-cmsis, 3]]] link:../../2024/actors-with-cmsis-os-in-cpp/[Actor Model with CMSIS OS].
+Marcel Baumann. 2024.

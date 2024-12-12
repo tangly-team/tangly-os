@@ -1,72 +1,96 @@
 ---
-title: "Electronic Invoices"
-linkTitle: "e-invoice"
-date: 2025-11-10
-tags: ["java"]
+title: "Thoughts Developing Embedded Products"
+linkTitle: "Embedded Development"
+date: 2025-11-01
+tags: ["agile", "C++", "embedded"]
 params:
-  featured: "blog/2025/pics/2025-11-01-head.jpg"
+  featured: "blog/2026/pics/2026-03-01-head.jpg"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]
-:ref-docbook: https://en.wikipedia.org/wiki/DocBook[DocBook]
-:ref-freespire: https://www.e-iceblue.com/Introduce/free-pdf-for-java.html[Free Spire.PDF for Java]
-:ref-kroki: https://kroki.io/[Kroki]
-:ref-mustang: https://www.mustangproject.org/[Mustang]
-:ref-pdfbox: https://pdfbox.apache.org/[PDFBox]
-:ref-structurizr: https://structurizr.com/[Structurizr]
+:ref-actor-model: https://en.wikipedia.org/wiki/Actor_model[Actor Model]
 
 image::2025-11-01-head.jpg[width=420,height=360,role=left]
 
-On this page we describe the ZUGFeRD format for electronic invoices.
-The name ZUGFeRD (pronounced »Tsoogfaird«) is a pun on the German word »Zugpferd« which means »draft horse«.
-It indicates that the new invoicing standard is positioned to play a major role regarding efficient electronic invoicing.
-ZUGFeRD allows the exchange of invoices between supplier and payer without any requirements for prior arrangements.
-ZUGFeRD invoices can be deployed universally and are not limited to specific industry sectors or company sizes.
-Private enterprises as well as public administration can efficiently organize their invoice processing with ZUGFeRD.
+Your organization creates stunning embedded digital products.
+You want to be a market leader for your product and geographical segments.
 
-The standard has been created by a working group which comprises members from the public administration, three German federal ministries, industry associations in the financial, tax and software sectors, and other organizations.
-The working group is called »Forum elektronische Rechnung Deutschland« _FeRD,_ which means »Forum for electronic invoices Germany«.
-The organization responsible for Factur-X is FNFE-MPE (»Forum National de la Facture Electronique et des Marchés Publics Electroniques«).
+You develop modern embedded software cite:[modern-software-engineering] running on microcontrollers.
+Your products can be deployed in industrial and harsh environments.
 
-The standart will be based on the European Norm EN 16931 which defines the semantic data model of an electronic invoice.
-It will be mandatory for all B2B and B2G invoices in the European Union from 2028 onwards.
+Your teams are eager to create awesome products to delight your customers.
 
-== Hybrid Approaches
+Your hardware platform has limited computation and memory resources.
 
-== Standards
+Your solution has extended features.
+Realtime constraints and industrial norms damper eligible solutions.
 
-EN16931
+What are good approaches to successfully develop digital applications?
 
-Like the XRechnung, ZUGFeRD uses the EN16931 calculation rules and the according codelists for the allowed attribute values.
+== Approaches
 
-Apparently, all german states accept ZUGFeRD invoices and E-Rechnung-Bund mentions the ZUGFeRD 2.1.1 XRechnung reference profile as an alternative to the XRechnung.
+The digital product and software development process shall be agile.
+Try to use the industrial standard {ref-scrum}.
 
-== Libraries
+Use continuous delivery cite:[continuous-delivery] and git as technical tools.
 
-=== Mustang Library
+The architecture approach shall be domain-driven design.
+The technical decisions shall follow modern software engineering principles cite:[modern-software-engineering].
 
-=== Swiss QR Code
+The programming language shall be {cpp}.
 
-== tangly ERP
+== Team Member Capabilities
 
-The {ref-mustang} library is a wonderful tool to create and read ZUGFeRD invoices.
-The drawback is that the newer versions of the libray require a PDF/A document as input.
+Train your engineers.
+The areas of knowledge are:
 
-PDF/A is a well-defined format, but you cannot currently find open source libraries to transform a PDF document to PDF/A document.
-The apache {ref-pdfbox} library for example does not explicitly support these conversions.
-We finally found a free library {ref-freespire} to convert PDF to PDF/A documents
-footnote:[Commercial libraries cost thousands of Euros per developer and per year.
-These prices prohibit their use in open source solutions with low income flows.].
+- Modern {cpp} programming with coding guidelines, static code checkers, and unit tests.
+Consider reading cite:[tour-of-cpp,effective-modern-cpp,effective-cpp,realtime-cpp,cpp-software-design,cpp-core-guidelines,beautiful-cpp,cpp-templates].
+- Asynchronous and multithreaded development based on {ref-actor-model}.`
+- Domain driven architecture documented with {ref-arc42}, {ref-c4}, {ref-plantuml} and {ref-adr}.
+Consider reading cite:[domain-driven-design,domain-driven-design-distilled,implementing-domain-driven-design].
+- Agile approaches based on {ref-manifesto}, {ref-manifesto-principles}, and {ref-scrum}.
 
-== Lessons Learnt
+[TIP]
+====
+The seminal book _Tour of {cpp}_ cite:[tour-of-cpp] provides an overview of all features of {cpp} 20 and 23.
+The father of {cpp} describes major features of the language and how to apply them.
 
-Governmental organizations are moving incredibly slowly.
-I wrote an article on how to implement digital invoices in 2020, and now in 2024 we are still not using them on a wide scale.
-The European Union has mandated the use of electronic invoices in some cases starting int2025.
-Digital invoices will be mandatory in 2028.
-One bright decision is that the XML data is the source of true and the PDF is just a visual representation of the invoice.
+The introductory book _Realtime {cpp}_ cite:[realtime-cpp] is a rigorous introduction how to program microcontrollers in {cpp}.
+You learn how to access hardware resources from {cpp} and what are the costs of various {cpp} constructs.
+====
+
+== Thoughts
+
+The described approach is tailored for embedded applications running on microcontrollers with limited hardware resources.
+
+Applications running on industrial boards supporting Linux can often be developed in {cpp} or Java.
+The library universe in the Java ecosystem is way bigger than in {cpp} or C.
+
+An example would be the raspberry pi initiative with the _raspberrypi 4 compose_ or _raspberrypi zero 2 W_ industrial boards.
+Multiple companies provide various clones of these boards.
+They run a linux operating system and have extensive hardware resources.
 
 [bibliography]
 == Links
 
-- [[[digital-invoices,1]]] link:../../2020/a-journey-implementing-digital-invoices/[A Journey Implementing Digital Invoices]
+- [[[agile-software-architecture, 1]]] link:../../2025/agile-software-architecture/[Agile Software Architecture].
+Marcel Baumann.
+- [[[modern-embedded-software-development,2]]] link:../../2025/modern-embedded-software-development/[Modern Embedded Software Development].
+Marcel Baumann.
+- [[[distributed-asynchronous-systems, 3]]] link:../../2025/distributed-systems/[Distributed Asynchronous Systems].
+Marcel Baumann.
+- [[[actors-in-cpp, 4]]] link:../../2024/actors-in-cpp/[Actors in {cpp}].
+Marcel Baumann.
+- [[[actors-cmsis-cpp, 5]]] link:../../2024/actors-with-cmsis-os-in-cpp/[Actors with CMSIS in {cpp}].
+Marcel Baumann.
+- [[[ddd-for-embedded-systems, 6]]] link:../../2025/ddd-for-embedded-systems/[DDD for Embedded Systems].
+Marcel Baumann.
+- [[[command-interpreter-revisited, 7]]] link:../../2023/command-interpreter-revisited/[Command Interpreter Revisited].
+Marcel Baumann.
+- [[[sensors-actuators, 8]]] link:../../2023/sensors-and-actuators/[Sensors and Actuators].
+Marcel Baumann.
+
+== References
+
+bibliography::[]
