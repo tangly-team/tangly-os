@@ -88,7 +88,7 @@ public final class Main {
         } else {
             Application.instance().putTenant(createTenant(Paths.get(propertyFile)));
         }
-        new VaadinBoot().setPort(port).withContextRoot(contextRoot).run();
+        new VaadinBoot().withPort(port).withContextRoot(contextRoot).run();
     }
 
     private static Options options() {

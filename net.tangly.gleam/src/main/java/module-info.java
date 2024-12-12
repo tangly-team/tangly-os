@@ -15,9 +15,7 @@ module tangly.os.net.tangly.gleam {
     exports net.tangly.gleam.model;
 
     requires net.tangly.commons;
-
     requires org.apache.commons.csv;
-    // requires org.apache.commons.lang;
     requires org.apache.logging.log4j;
     requires org.json;
     requires static transitive org.jetbrains.annotations;

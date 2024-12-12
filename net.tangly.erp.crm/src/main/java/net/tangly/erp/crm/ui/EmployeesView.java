@@ -25,7 +25,7 @@ import net.tangly.ui.components.*;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * Regular CRUD view on employees' abstraction. The grid and edition dialog wre optimized for usability.
+ * Regular CRUD view on employees' abstraction. The grid and edition dialog were optimized for usability.
  */
 @PageTitle("crm-employees")
 class EmployeesView extends EntityView<Employee> {

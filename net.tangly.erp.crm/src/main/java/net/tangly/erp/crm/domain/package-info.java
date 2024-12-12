@@ -12,7 +12,7 @@
  */
 
 /**
- * Provides core abstractions used in any commercial application in need of customer relation management entities. The cornerstone of the package are the set of
+ * Provides core abstractions used in any commercial application in need of customer relation management entities. The cornerstone of the package is the set of
  * CRM entities, natural and legal entities, and the employee relation between a legal and natural entity.
  * <p>The customer relationship management package is designed as a bounded domain.</p>
  */

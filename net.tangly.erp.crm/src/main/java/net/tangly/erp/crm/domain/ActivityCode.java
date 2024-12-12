@@ -16,7 +16,7 @@ package net.tangly.erp.crm.domain;
 import net.tangly.core.codes.Code;
 
 /**
- * Defines the kinds of af activities between natural persons.
+ * Defines the kinds af activities between natural persons.
  * <dl>
  *     <dt>talk</dt><dd>A personal and informal interaction with customer representatives.</dd>
  *     <dt>meeting</dt><dd>A scheduled meeting with customer representatives. THe activity text can be used as meeting protocol.</dd>

@@ -39,9 +39,10 @@ import static net.tangly.erp.crm.domain.CrmTags.*;
 import static net.tangly.gleam.model.TsvEntity.get;
 
 /**
- * Provide import and export functions for CRM entities persisted in tab separated files. These files are often defined for integration testing or integration of legacy systems not
- * providing programmatic API. The description of the TSV file structure and the mapping rules are of declarative nature. One2one relations are mapped through the oid of the
- * referenced entity if defined, otherwise an empty string. One2many relations are mapped through a tab separated list for the oid of the referenced entities if at least one is
+ * Provide import and export functions for CRM entities persisted in tab-separated files. These files are often defined for integration testing or integration of legacy systems, not
+ * providing programmatic API. The description of the TSV file structure and the mapping rules are of a declarative nature. One2one relations are mapped
+ * through the oid of the
+ * referenced entity if defined, otherwise an empty string. One2many relations are mapped through a tab-separated list for the oid of the referenced entities if at least one is
  * defined, otherwise an empty string.
  */
 public class CrmTsvHdl {

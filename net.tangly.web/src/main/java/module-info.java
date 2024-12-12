@@ -1,12 +1,7 @@
 module tangly.net.tangly.web {
-    exports net.tangly.web.bibtex;
-    exports net.tangly.web.text;
+    exports net.tangly.web.blog;
 
-    // requires org.apache.commons.cli;
     requires org.jsoup;
-    // requires jbibtex;
-    requires lombok;
     requires org.apache.logging.log4j;
     requires static transitive org.jetbrains.annotations;
-
 }

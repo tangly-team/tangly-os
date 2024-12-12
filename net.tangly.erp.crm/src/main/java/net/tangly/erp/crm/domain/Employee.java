@@ -22,7 +22,7 @@ import java.util.Objects;
 /**
  * Define an employee as a temporal work contract between a natural entity meaning a person and a legal entity meaning an organization or a company. The name property of the
  * employee is the name property of the natural person for this employee. The from and to date defines the duration of the employment. If the _to date_ is
- * empty the employee is still
+ *  empty, the employee is still
  * legally working for the organization.
  */
 public class Employee extends MutableEntityExtendedImp implements MutableEntityExtended, CrmEntity {

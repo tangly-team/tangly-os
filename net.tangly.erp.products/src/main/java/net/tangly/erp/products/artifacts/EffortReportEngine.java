@@ -131,7 +131,9 @@ public class EffortReportEngine {
 
     private void createMinutes(@NotNull Assignment assignment, @NotNull LocalDate from, @NotNull LocalDate to, @NotNull AsciiDocHelper helper) {
         List<Effort> efforts = logic.collect(assignment, from, to);
-        boolean containsMinutes = efforts.stream().anyMatch(o -> !Strings.isNullOrBlank(o.minutes()));
+        var sortedEfforts = new ArrayList<>(efforts);
+        sortedEfforts.sort(Comparator.comparing(Effort::date));
+        boolean containsMinutes = sortedEfforts.stream().anyMatch(o -> !Strings.isNullOrBlank(o.minutes()));
         if (containsMinutes) {
             helper.header("Minutes", 2);
         }

@@ -24,7 +24,8 @@ import java.net.URL;
 import java.util.Objects;
 
 /**
- * A taxonomy of tags for a customer relationship management system. The namespace is naturally <i>crm</i>. Additional namespaces were added to introduce standard tags such a
+ * A taxonomy of tags for a customer relationship management system. The namespace is naturally <i>crm</i>. Additional namespaces were added to introduce
+ * standard tags such as
  * location tags.
  */
 public final class CrmTags {

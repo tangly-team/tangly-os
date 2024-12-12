@@ -26,5 +26,4 @@ project.description = "Internet web utilities (tangly llc)"
 dependencies {
     implementation(libs.jsoup)
     implementation(libs.apache.commons.cli)
-    implementation(libs.jbibtext)
 }

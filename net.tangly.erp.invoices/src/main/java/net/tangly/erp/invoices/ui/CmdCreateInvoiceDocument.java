@@ -42,6 +42,7 @@ public class CmdCreateInvoiceDocument implements Cmd {
     private final DatePicker to;
     private final Checkbox withQrCode;
     private final Checkbox withEN16931;
+    private final Checkbox pdfa;
     private final Checkbox overwrite;
     private final TextField name;
     private final One2ManyOwnedField<Tag> documentTags;
@@ -66,9 +67,18 @@ public class CmdCreateInvoiceDocument implements Cmd {
         name.setReadOnly(true);
         withQrCode = new Checkbox("with QR Code");
         withEN16931 = new Checkbox("with EN 16931");
-        // TODO EN16931 is disabled until the code is extended to support the changes in the standard and library
-        withEN16931.setEnabled(false);
+        pdfa = new Checkbox("PDF/A");
         overwrite = new Checkbox("Overwrite Existing Document(s)");
+        withEN16931.addValueChangeListener(e ->
+        {
+            if (e.getValue()) {
+                pdfa.setValue(true);
+                pdfa.setReadOnly(true);
+            } else {
+                pdfa.setValue(false);
+                pdfa.setReadOnly(false);
+            }
+        });
         if (Objects.nonNull(invoice)) {
             name.setValue(invoice.name());
         }
@@ -82,11 +92,12 @@ public class CmdCreateInvoiceDocument implements Cmd {
         Button execute = new Button("Execute", VaadinIcon.COGS.create(), e -> {
             if (invoice == null) {
                 domain.domain().port()
-                    .exportInvoiceDocuments(domain.domain(), withQrCode.getValue(), withEN16931.getValue(), overwrite.getValue(), from.getValue(),
-                        to.getValue(), documentTags.getValue());
+                    .exportInvoiceDocuments(domain.domain(), withQrCode.getValue(), withEN16931.getValue(), pdfa.getValue(), overwrite.getValue(),
+                        from.getValue(), to.getValue(), documentTags.getValue());
             } else {
-                domain.domain().port().exportInvoiceDocument(domain.domain(), invoice, withQrCode.getValue(), withEN16931.getValue(), overwrite.getValue(),
-                    documentTags.getValue());
+                domain.domain().port()
+                    .exportInvoiceDocument(domain.domain(), invoice, withQrCode.getValue(), withEN16931.getValue(), pdfa.getValue(), overwrite.getValue(),
+                        documentTags.getValue());
             }
             close();
         });
@@ -108,7 +119,8 @@ public class CmdCreateInvoiceDocument implements Cmd {
     private FormLayout create() {
         FormLayout form = new FormLayout();
         VaadinUtils.set3ResponsiveSteps(form);
-        form.add(name, new HtmlComponent("br"), from, to, new HtmlComponent("br"), withQrCode, withEN16931, overwrite, new HtmlComponent("br"), documentTags);
+        form.add(name, new HtmlComponent("br"), from, to, new HtmlComponent("br"), withQrCode, withEN16931, pdfa, overwrite, new HtmlComponent("br"),
+            documentTags);
         form.setColspan(documentTags, 3);
         if (invoice == null) {
             name.setVisible(false);

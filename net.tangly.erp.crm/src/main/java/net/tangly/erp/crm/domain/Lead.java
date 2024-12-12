@@ -35,7 +35,7 @@ import java.time.LocalDate;
  * @param company   name of the company the lead is associated with
  * @param phoneNr   phone number of the lead
  * @param email     email address of the lead
- * @param linkedIn  linkedIn profile of the lead
+ * @param linkedIn  LinkedIn profile of the lead
  * @param text      history of the lead
  * @
  */

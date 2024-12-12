@@ -29,7 +29,7 @@ import org.jetbrains.annotations.NotNull;
 import java.math.BigDecimal;
 
 /**
- * Regular CRUD view on interactions' abstraction. The grid and edition dialog wre optimized for usability.
+ * Regular CRUD view on interactions' abstraction. The grid and edition dialog were optimized for usability.
  */
 @PageTitle("crm-interactions")
 class OpportunitiesView extends EntityView<Opportunity> {

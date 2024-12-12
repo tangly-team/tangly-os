@@ -22,7 +22,7 @@ import org.jetbrains.annotations.NotNull;
 import java.nio.file.Path;
 
 /**
- * Define the workflows defined for bounded domain activities in particular the import and export to files.
+ * Define the workflows defined for bounded domain activities, in particular the import and export to files.
  */
 public final class CrmAdapter implements CrmPort {
     public static final String COMMENTS_TSV = "comments.tsv";
