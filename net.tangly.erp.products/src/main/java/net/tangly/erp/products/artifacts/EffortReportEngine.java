@@ -137,7 +137,7 @@ public class EffortReportEngine {
         if (containsMinutes) {
             helper.header("Minutes", 2);
         }
-        efforts.stream().filter(o -> !Strings.isNullOrBlank(o.minutes())).forEach(o -> {
+        sortedEfforts.stream().filter(o -> !Strings.isNullOrBlank(o.minutes())).forEach(o -> {
             helper.header("Minutes %s".formatted(o.date().toString()), 3);
             helper.paragraph(o.minutes());
         });
