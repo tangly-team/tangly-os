@@ -38,7 +38,8 @@ public class UserManualView extends HorizontalLayout implements View {
                 try (InputStream in = domain.domain().getClass().getResourceAsStream("/%s".formatted(userManual()))) {
                     html = new String(in.readAllBytes(), StandardCharsets.UTF_8);
                 }
-            } add(new Html(html));
+            }
+            add(new Html(html));
             setSizeFull();
         } catch (IOException e) {
             throw new RuntimeException(e);

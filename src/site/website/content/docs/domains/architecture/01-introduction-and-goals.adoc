@@ -28,9 +28,27 @@ I follow up with the lead and add the information in the text of the lead.
 
 ==== Opportunities
 
-Once a lead is qualified, I create a natural entity for the prospect,
-a legal entity for the company he is working for and an employee for the relation between him and the company.
+Once a lead is qualified, I create a natural entity representing the person for the prospect.
+This person is the previous lead.
+
+[NOTE]
+====
+I clearly separate leads from opportunities.
+Leads are numerous.
+
+Opportunities are more seldom and should be nutured.
+====
+
+a legal entity for the company the natural entitu is working for, and an employee for the relation between him and the company.
 The acquisition process is documented in an opportunity with a set of activities describing our interactions.
+
+[NOTE]
+====
+A natural entity can work for multiple legal entities either simultaneously or over time.
+
+Our business is with always with legal entities.
+In particular, contracts are always with legal entities.
+====
 
 ==== Contracts
 
@@ -42,7 +60,18 @@ Sometimes new areas of work are identified and new contracts are created.
 ==== Work Contracts
 
 A manager can activate the contract and initiate a work contract in the product domain.
+
+[NOTE]
+====
+Most of the data of a work contract is copied from the contract.
+The main difference is a contract has a monetary amount and a work contract has a time budget.
+====
+
 A product is created and the work contract is assigned to the product.
+
+_I agree that it seems strange, but we want to clearly state we are helping our customers to build products._
+_Multiple contracts or contract extensions, and work contracts can be define over the lifetime of a product._
+
 Assignments are created to assign collaborators to the product development.
 
 Collaborators track their work in activities.
@@ -199,7 +228,7 @@ The sum of all invoices for a contract should be below the contract amount.
 == Links
 
 * [[[entities-identifiers-names, 1]]] {ref-tangly-blog-url}/blog/2020/entities-identifiers-external-identifiers-and-names/[Entities, Identifiers, External
-Identifiers, and Names
+Identifiers, and Names]
 * [[[meaningful-identifiers, 2]]] {ref-tangly-blog-url}/blog/2021/meaningful-identifiers/[Meaningful Identifiers]
 * [[[reference-codes, 3]]] {ref-tangly-blog-url}/blog/2020/reference-codes/[Reference Codes]
 * [[[tags-comments, 4]]] {ref-tangly-blog-url}/blog/2020/the-power-of-tags-and-comments/[The Power of Tags and Comments

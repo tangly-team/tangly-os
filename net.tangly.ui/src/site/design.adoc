@@ -15,7 +15,7 @@ weight: 50
 
 === Context
 
-[plantuml, context-diagram-erp, svg]
+[plantuml,context-diagram-erp,svg]
 ....
 @startuml
 !includeurl https://raw.githubusercontent.com/RicardoNiepel/C4-PlantUML/release/1-0/C4_Container.puml
@@ -61,14 +61,14 @@ Files are written in italics font, folders are written in bold font.
 Examples with content are provided for each file type as test resources.
 These resources are available in the git repository.
 
-[plantuml, folder-structure-erp, svg]
+[plantuml,folder-structure-erp,svg]
 ....
 @startuml
     salt
     {
         {T
         + **crm**
-        ++ //actitivites.tsv//       | tab separated representation of all activities for the company
+        ++ //activites.tsv//       | tab separated representation of all activities for the company
         ++ //comments.tsv//          | tab separated representation of all comments defined in other entities
         ++ //contracts.tsv//         | tab separated representation of all contracts for the company
         ++ //employees.tsv//         | tab separated representation of all employees for the company
@@ -123,7 +123,7 @@ Callbacks are provided to inform the entity form class defining the form layout 
 
 ==== Crud List View and Details Form
 
-[plantuml, crud-view, svg]
+[plantuml,crud-view,svg]
 ....
 @startuml
 

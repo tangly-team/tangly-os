@@ -80,6 +80,7 @@ You can build and run the generated Java Vaadin application locally. _Run from t
   ./gradlew build installDist -Pvaadin.-Pvaadin.forceProductionBuild=true                <1>
   net.tangly.erp.ui/build/install/net.tangly.erp.ui/bin/net.tangly.erp.ui                <2>
 ----
+
 * <1> The production mode parameter is mandatory.
 Otherwise, the distribution frontend is not built, and the application cannot run without JavaScript build tools.
 * <2> Head to \http://localhost:8080/erp/.
@@ -88,8 +89,7 @@ The environment variables are set in the run script.
 
 [CAUTION]
 ====
-If you encounter an error message like `Visiting class net.tangly.erp.products.ui.ProductsView failed with ZipFile invalid LOC header (bad signature)`, you
-should stop the gradle deamon with `./gradlew --stop` and run again the gradle build.
+If you encounter an error message like `Visiting class net.tangly.erp.products.ui.ProductsView failed with ZipFile invalid LOC header (bad signature)`, you should stop the gradle deamon with `./gradlew --stop` and run again the gradle build.
 ====
 
 === Run locally as fatjar application

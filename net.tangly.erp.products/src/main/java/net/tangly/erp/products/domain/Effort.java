@@ -32,6 +32,7 @@ public class Effort implements HasMutableDate, HasMutableText {
     private int durationInMinutes;
     private String text;
     private String minutes;
+
     public Effort() {
     }
 
@@ -101,7 +102,8 @@ public class Effort implements HasMutableDate, HasMutableText {
 
     @Override
     public boolean equals(Object o) {
-        return (o instanceof Effort other) && (date().equals(other.date())) && (duration() == other.duration()) && (Objects.nonNull(assignment()) && assignment().equals(other.assignment()));
+        return (o instanceof Effort other) && (date().equals(other.date())) && (duration() == other.duration()) &&
+            (Objects.nonNull(assignment()) && assignment().equals(other.assignment()));
     }
 
     @Override

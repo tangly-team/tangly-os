@@ -4,7 +4,7 @@ linkTitle: "9 Years tangly"
 date: 2025-02-01
 tags: ["agile", "tangly", "organization"]
 params:
-  featured: "blog/2025/pics/2025-02-02-head.jpg"
+  featured: "blog/2025/pics/2025-02-01-head.jpg"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]
@@ -18,14 +18,14 @@ We are a Java and agile digital product development boutique.
 
 We are going strong and tremendously enjoying the journey.
 
-We always wanted to nuture a company where collaborators are happy and proud to work.
+We always wanted to nurture a company where collaborators are happy and proud to work.
 
 Agile approaches and principles are the foundation of our company.
 
 The {ref-bbrt} has been a source of inspiration for our company since its inception in 2016.
 They try to rethink how we manage organizations in a post-industrial world.
 
-They advocate a progressive set of leadership principles and management processes proven to free organisations of _command and control_ cultures and improve performance.
+They advocate a progressive set of leadership principles and management processes proven to free organizations of _command and control_ cultures and improve performance.
 
 == Beyond Budgeting Principles
 

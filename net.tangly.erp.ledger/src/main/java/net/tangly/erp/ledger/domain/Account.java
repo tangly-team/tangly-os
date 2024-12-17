@@ -189,8 +189,9 @@ public class Account implements HasId, HasName {
 
     /**
      * Returns the balance of the account between two dates. The balance is computed by summing the booking entries between the two dates.
+     *
      * @param from start date
-     * @param to end date
+     * @param to   end date
      * @return the balance of the account between the two dates
      */
     public BigDecimal balance(@NotNull LocalDate from, @NotNull LocalDate to) {

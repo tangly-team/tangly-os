@@ -28,13 +28,14 @@ import java.util.Map;
 
 /**
  * Defines a grid menu abstraction to support a dynamic context menu in item views. Menu items can be enabled or disabled based on the fact if items are
- *  selected or not.
+ * selected or not.
  *
  * @param <T> type of the items in the grid
  */
 public class GridMenu<T> {
     public static final String IMPORT_TEXT = "Import";
     public static final String PRINT_TEXT = "Print";
+
     /**
      * Defines the type of menu items. The type of the menu item determines if the item is enabled or disabled based on the fact if items are selected
      * <dl>
@@ -92,6 +93,7 @@ public class GridMenu<T> {
 
     /**
      * Adds a component to the context menu. Mainly used to add a separator.
+     *
      * @param component component to add to the context menu
      */
     public void add(@NotNull Component component) {

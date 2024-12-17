@@ -54,11 +54,19 @@ class CrmBusinessLogicTest {
             var logic = new CrmBusinessLogic(handler.realm());
             handler.importEntities(store);
 
-            assertThat(logic.funnel(OpportunityCode.prospect, LocalDate.of(2015, Month.JANUARY, 1), LocalDate.of(2024, Month.DECEMBER, 31))).isGreaterThanOrEqualTo(BigDecimal.ZERO);
-            assertThat(logic.funnel(OpportunityCode.lead, LocalDate.of(2015, Month.JANUARY, 1), LocalDate.of(2024, Month.DECEMBER, 31))).isGreaterThanOrEqualTo(BigDecimal.ZERO);
-            assertThat(logic.funnel(OpportunityCode.ordered, LocalDate.of(2015, Month.JANUARY, 1), LocalDate.of(2024, Month.DECEMBER, 31))).isGreaterThanOrEqualTo(BigDecimal.ZERO);
-            assertThat(logic.funnel(OpportunityCode.completed, LocalDate.of(2015, Month.JANUARY, 1), LocalDate.of(2024, Month.DECEMBER, 31))).isGreaterThanOrEqualTo(BigDecimal.ZERO);
-            assertThat(logic.funnel(OpportunityCode.lost, LocalDate.of(2015, Month.JANUARY, 1), LocalDate.of(2024, Month.DECEMBER, 31))).isGreaterThanOrEqualTo(BigDecimal.ZERO);
+            assertThat(
+                logic.funnel(OpportunityCode.prospect, LocalDate.of(2015, Month.JANUARY, 1), LocalDate.of(2024, Month.DECEMBER, 31))).isGreaterThanOrEqualTo(
+                BigDecimal.ZERO);
+            assertThat(logic.funnel(OpportunityCode.lead, LocalDate.of(2015, Month.JANUARY, 1), LocalDate.of(2024, Month.DECEMBER, 31))).isGreaterThanOrEqualTo(
+                BigDecimal.ZERO);
+            assertThat(
+                logic.funnel(OpportunityCode.ordered, LocalDate.of(2015, Month.JANUARY, 1), LocalDate.of(2024, Month.DECEMBER, 31))).isGreaterThanOrEqualTo(
+                BigDecimal.ZERO);
+            assertThat(
+                logic.funnel(OpportunityCode.completed, LocalDate.of(2015, Month.JANUARY, 1), LocalDate.of(2024, Month.DECEMBER, 31))).isGreaterThanOrEqualTo(
+                BigDecimal.ZERO);
+            assertThat(logic.funnel(OpportunityCode.lost, LocalDate.of(2015, Month.JANUARY, 1), LocalDate.of(2024, Month.DECEMBER, 31))).isGreaterThanOrEqualTo(
+                BigDecimal.ZERO);
 
         }
     }

@@ -59,7 +59,6 @@ public class ProductsEntities implements ProductsRealm {
     private final IdGenerator generator;
     private final EmbeddedStorageManager storageManager;
 
-
     public ProductsEntities(@NotNull Path path) {
         data = new Data();
         storageManager = EmbeddedStorage.start(data, path);

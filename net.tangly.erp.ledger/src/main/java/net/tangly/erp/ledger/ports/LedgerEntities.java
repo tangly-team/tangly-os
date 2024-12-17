@@ -93,7 +93,7 @@ public class LedgerEntities implements LedgerRealm, RealmEclipseStore {
     }
 
     @Override
-    public void add(@NotNull Account account) {
+    public void update(@NotNull Account account) {
         accounts.update(account);
     }
 

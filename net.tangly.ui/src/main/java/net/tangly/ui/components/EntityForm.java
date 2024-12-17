@@ -23,7 +23,7 @@ import java.util.Collections;
 /**
  * Create the form for a simple entity or a full entity. A simple entity has an internal object identifier, an external identifier, a human-readable name, a
  * time interval when the entity is active, and a textual description. A full entity has additionally a set of tags and a set of comments.
- * <p> Entities are immutable instances. Therefore we need to retrieve new values directuly from the form to create an update of an instance.</p>
+ * <p> Entities are immutable instances. Therefore we need to retrieve new values directly from the form to create an update of an instance.</p>
  *
  * @param <T> type of the entity displayed in the form
  * @param <V> the view owning the form

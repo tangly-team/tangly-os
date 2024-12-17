@@ -30,12 +30,14 @@ public class Blogs {
     private static final Pattern yearPattern = Pattern.compile("\\/\\d\\d\\d\\d\\/");
     private static final String line = "| %4d | %3d | %3d | %#2.2f | %3d | %#2.2f";
     private static final String summary = "| Total | %3s | | | | ";
+    private static final String BLOG_URL = "https://blog.tangly.net/blog";
+    private static final String AMAZON_DP_URL = "/www.amazon.com/dp/";
 
     private final String blogUrl;
     private final List<Blog> blogs;
 
     public static void main(String[] args) {
-        Blogs blogs = new Blogs("https://blog.tangly.net/blog");
+        Blogs blogs = new Blogs(BLOG_URL);
         blogs.blogReferences();
         blogs.computeStatistics();
     }
@@ -98,7 +100,7 @@ public class Blogs {
                     if (href.startsWith("../../")) {
                         String referencedBlog = blogUrl + href.substring(6);
                         referencedBlogs.add(referencedBlog);
-                    } else if (href.contains("/www.amazon.com/dp/")) {
+                    } else if (href.contains(AMAZON_DP_URL)) {
                         String bilbiographyReference = href;
                         bibliographyReferences.add(bilbiographyReference);
                     }

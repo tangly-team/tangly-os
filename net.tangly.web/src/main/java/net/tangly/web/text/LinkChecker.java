@@ -64,7 +64,8 @@ public class LinkChecker {
             LinkChecker checker = new LinkChecker();
             checker.websiteUri = "https://blog.tangly.net";
             checker.shouldNotBeValidated = Pattern.compile(".*(\\.xml|\\.ico|\\.png|\\.jpg|\\.css|\\.pdf|jquery|mathjax|/#_footnoteref_|#_footnotedef_|" +
-                "en\\.wikipedia\\.org|www\\.amazon\\.com/dp/|mvnrepository\\.com|oss\\.sonatype\\.org|sourceforge\\.net|googlemananger|#$)", Pattern.CASE_INSENSITIVE);
+                    "en\\.wikipedia\\.org|www\\.amazon\\.com/dp/|mvnrepository\\.com|oss\\.sonatype\\.org|sourceforge\\.net|googlemananger|#$)",
+                Pattern.CASE_INSENSITIVE);
             checker.isApiDocs = Pattern.compile(
                 "/docs/bdd/api-bdd/|/docs/bib/api-bib/|/docs/core/api-core/|/docs/dev/api-dev/|/docs/facts/api-facts/|/docs/fsm/api-fsm/|/docs/gleam/api-gleam/|" +
                     "/docs/domains/agile/api-agile|/docs/domains/collaborators/api-collaborators|/docs/domains/crm/api-crm|" +

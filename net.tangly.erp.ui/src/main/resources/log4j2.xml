@@ -31,19 +31,19 @@
         </Root>
         <Logger name="org.slf4j.simpleLogger.log.org.atmosphere" additivity="false" level="warn">
             <AppenderRef ref="Console"/>
-            <AppenderRef ref="File" />"
+            <AppenderRef ref="File"/>"
         </Logger>
         <Logger name="org.slf4j.simpleLogger.log.org.eclipse.jetty" additivity="false" level="warn">
             <AppenderRef ref="Console"/>
-            <AppenderRef ref="File" />"
+            <AppenderRef ref="File"/>"
         </Logger>
         <Logger name="org.slf4j.simpleLogger.log.org.eclipse.jetty.annotations.AnnotationParser" additivity="false" level="error">
             <AppenderRef ref="Console"/>
-            <AppenderRef ref="File" />"
+            <AppenderRef ref="File"/>"
         </Logger>
         <Logger name="org.eclipse.jetty" additivity="false" level="warn">
             <AppenderRef ref="Console"/>
-            <AppenderRef ref="File" />"
+            <AppenderRef ref="File"/>"
         </Logger>
         <Logger name="org.atmosphere.cpr.AtmosphereFramework" additivity="false" level="warn">
             <AppenderRef ref="Console"/>
@@ -51,7 +51,7 @@
         </Logger>
         <Logger name="org.eclipse.serializer" additivity="false" level="warn">
             <AppenderRef ref="Console"/>
-            <AppenderRef ref="File" />"
+            <AppenderRef ref="File"/>"
         </Logger>
         <Logger name="org.eclipse.persistence" additivity="false" level="warn">
             <AppenderRef ref="Console"/>

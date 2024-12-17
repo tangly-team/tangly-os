@@ -40,7 +40,8 @@ public class ProductsBusinessLogic {
     }
 
     public Optional<Effort> findEffortFor(long assignmentId, @NotNull String collaborator, @NotNull LocalDate date) {
-        return realm().efforts().items().stream().filter(o -> o.assignment().oid() == assignmentId && o.assignment().collaboratorId().equals(collaborator) && o.date().equals(date))
+        return realm().efforts().items().stream()
+            .filter(o -> o.assignment().oid() == assignmentId && o.assignment().collaboratorId().equals(collaborator) && o.date().equals(date))
             .findAny();
     }
 }

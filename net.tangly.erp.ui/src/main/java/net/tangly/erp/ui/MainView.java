@@ -90,8 +90,9 @@ public class MainView extends ApplicationView {
      */
     private void exportDocuments() {
         var invoices = (InvoicesBoundedDomain) (tenant().getBoundedDomain(InvoicesBoundedDomain.DOMAIN).orElseThrow());
-        invoices.port().exportInvoiceDocuments(invoices, false, false, false,true, LocalDate.of(2015, Month.JANUARY, 1), LocalDate.of(2024, Month.DECEMBER, 31),
-            Collections.emptyList());
+        invoices.port()
+            .exportInvoiceDocuments(invoices, false, false, false, true, LocalDate.of(2015, Month.JANUARY, 1), LocalDate.of(2024, Month.DECEMBER, 31),
+                Collections.emptyList());
         var ledger = (LedgerBoundedDomain) (tenant().getBoundedDomain(LedgerBoundedDomain.DOMAIN).orElseThrow());
         ledger.port()
             .exportLedgerDocument("tangly-2016", LocalDate.of(2015, Month.SEPTEMBER, 1), LocalDate.of(2016, Month.DECEMBER, 31), true, true, false, true, true,

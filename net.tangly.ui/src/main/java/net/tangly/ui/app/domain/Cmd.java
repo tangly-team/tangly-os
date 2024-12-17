@@ -60,8 +60,8 @@ public interface Cmd {
      * @param consumer consumer to execute the command
      */
     static <T> void ofDualCmd(@NotNull GridContextMenu.GridContextMenuItemClickEvent<T> event, @NotNull Consumer<T> consumer) {
-        var selectedtItems = event.getGrid().getSelectedItems();
-        consumer.accept(selectedtItems.isEmpty() ? null : selectedtItems.stream().findAny().orElse(null));
+        var selectedItems = event.getGrid().getSelectedItems();
+        consumer.accept(selectedItems.isEmpty() ? null : selectedItems.stream().findAny().orElse(null));
     }
 
     /**

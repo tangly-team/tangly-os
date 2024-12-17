@@ -44,7 +44,7 @@ public interface InvoicesPort extends Port<InvoicesRealm> {
      * @param withEN16931 flag if the EN16931 digital invoice should be added to the invoice document
      * @param pdfa        flag if the pdf document should be generated in pdfa format
      * @param overwrite   flag if an existing document should be overwritten
-     * @see #exportInvoiceDocuments(DomainAudit, boolean, boolean, boolean,boolean, LocalDate, LocalDate, Collection)
+     * @see #exportInvoiceDocuments(DomainAudit, boolean, boolean, boolean, boolean, LocalDate, LocalDate, Collection)
      */
     void exportInvoiceDocument(@NotNull DomainAudit audit, @NotNull Invoice invoice, boolean withQrCode, boolean withEN16931, boolean pdfa, boolean overwrite,
                                Collection<Tag> tags);

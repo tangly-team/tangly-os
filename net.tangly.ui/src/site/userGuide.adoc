@@ -153,7 +153,7 @@ The view to select objects which are added to the relation should be provided to
 A dialog will open with the view and the _cancel_ or _add_ options.
 ====
 
-An example of referenced object is an employee list of companies she is working for.
+An example of a referenced object is an employee list of companies she is working for.
 
 ==== Owned Objects
 
@@ -198,13 +198,13 @@ Visualized entities are manipulated under different access rights.
 ** Readonly access allows a user to view an entity and associated properties.
 The update, delete and create operations are disabled.
 
-** Full access allows a user to view, update, create and delete an entity and associated properties.
+** Full access allows a user to view, to update, to create, and to delete an entity and associated properties.
 
 * Editable, immutable, or audited immutable entities
 
 ** Immutable entities or properties support view, create and delete.
 The update operation is not available.
-We avoid support for hybrid approach such as clone a new instance and delete an old one.
+We avoid support for hybrid approach such as cloning a new instance and deleting an old one.
 The semantics are often slightly awkward.
 
 ** Audited immutable entities or properties support view, and create.

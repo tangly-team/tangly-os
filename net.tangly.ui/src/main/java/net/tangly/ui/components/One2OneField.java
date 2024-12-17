@@ -32,7 +32,7 @@ import java.util.Objects;
 
 /**
  * A composite field to display a one-2-one relationship instance. The unique name of the referenced instance is shown. The button allows the change of the relationship instance.
- * <p>The referenced object is stored as field. The displayed fields are updated through {@link One2OneField#setPresentationValue(T)} ()}.</p>
+ * <p>The referenced object is stored as a field. The displayed fields are updated through {@link One2OneField#setPresentationValue(T)}.</p>
  * <p>The selection view displays the fields of an entity as columns. The provided provider can be used to filter out the items being considered for the field.</p>
  *
  * @param <T> type of the entity referenced in the one-2-one relationship.

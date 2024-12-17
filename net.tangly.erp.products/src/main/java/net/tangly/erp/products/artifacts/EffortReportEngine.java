@@ -38,7 +38,8 @@ import static net.tangly.core.domain.DocumentGenerator.*;
 import static net.tangly.erp.products.domain.Assignment.convert;
 
 /**
- * engine to create effort reports for collaborators.
+ * Engine to create effort reports for collaborators. We support text in tabke cells per day and assignment. the report has optional minues for detailed
+ * information. The approach is legible and respects resctriction of AsciiDocToPdf conversion.
  */
 public class EffortReportEngine {
     private static final Logger logger = LogManager.getLogger();

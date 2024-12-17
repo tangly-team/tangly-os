@@ -44,7 +44,7 @@ public final class ValidatorUtilities {
     /**
      * Check if the JSON file is valid against the schema describing the structure of the file.
      *
-     * @param path JSON file which structure should be validated
+     * @param path   JSON file which structure should be validated
      * @param schema name of the schema containing the schema to validate against
      * @return true if no validation error was found otherwise false
      */
@@ -59,7 +59,7 @@ public final class ValidatorUtilities {
     /**
      * Check if the YAML file is valid against the schema describing the structure of the file.
      *
-     * @param path YAML file which structure should be validated
+     * @param path   YAML file which structure should be validated
      * @param schema name of the schema containing the schema to validate against
      * @return true if no validation error was found otherwise false
      */

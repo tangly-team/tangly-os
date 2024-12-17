@@ -171,7 +171,7 @@ public abstract class ItemForm<T, U extends ItemView<T>> {
 
     /**
      * Sets the value displayed in the form. If the value is null, the form fields are reset to empty values.
-     * <p>Overwrite the method to update components not supported by Vaadin binder for example an image. Handle null value accordingly. Do not forget to call the overwritten
+     * <p>Overwrite the method to update components not supported by Vaadin binder, for example, an image. Handle null value accordingly. Do not forget to call the overwritten
      * method to trigger the binding mechanism.</p>
      *
      * @param value value to display in the form

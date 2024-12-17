@@ -47,9 +47,9 @@ public class ProviderHasId<T extends HasId> implements Provider<T> {
      * @param entity entity to be added
      * @return flag indicating if it is allowed to add the object
      */
-    public boolean canBeAdded(@NotNull T entity) {
+    public boolean contains(@NotNull T entity) {
         Optional<T> original = Provider.findById(provider, entity.id());
-        return (original.isEmpty() || (original.get() == entity));
+        return (original.isPresent() && (original.get().equals(entity)));
     }
 
     @Override
@@ -59,11 +59,7 @@ public class ProviderHasId<T extends HasId> implements Provider<T> {
 
     @Override
     public void update(@NotNull T entity) {
-        if (canBeAdded(entity)) {
-            provider.update(entity);
-        } else {
-            throw new IllegalArgumentException("Different Objects with duplicate oid %s".formatted(entity));
-        }
+        provider.update(entity);
     }
 
     @Override

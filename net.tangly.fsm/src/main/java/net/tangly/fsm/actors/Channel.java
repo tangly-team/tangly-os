@@ -84,6 +84,7 @@ public class Channel<T> implements AutoCloseable {
 
     /**
      * Subscribe an actor to the channel. The actor will receive messages from the channel.
+     *
      * @param actor actor to subscribe
      */
     public void subscribe(@NotNull Actor<T> actor) {
@@ -92,6 +93,7 @@ public class Channel<T> implements AutoCloseable {
 
     /**
      * Dispatch a message to all subscribers of the channel.
+     *
      * @param message message to dispatch
      */
     public void publish(@NotNull T message) {

@@ -20,7 +20,7 @@ include::../fragments/_config-mb-blog.adoc[]
 image::2025-01-01-head.png[width=420,height=360,role=left]
 
 The embedded software industry is in the midst of a major revolution.
-A tremendous amount of new development lays ahead.
+A tremendous amount of new development lies ahead.
 
 New embedded software needs an actual architecture that is inherently safer and easier to understand.
 

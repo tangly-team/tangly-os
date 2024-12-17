@@ -99,6 +99,7 @@ public abstract class CmdFilesUpload<R extends Realm, B, P extends Port<R>> impl
     protected BoundedDomain<R, B, P> domain() {
         return domain;
     }
+
     protected MultiFileMemoryBuffer buffer() {
         return buffer;
     }

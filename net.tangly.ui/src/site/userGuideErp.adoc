@@ -27,13 +27,13 @@ We are proud to provide quite a few advanced functions in the released applicati
 
 * Full support of the Swiss 2D barcode payment solution for all invoices issued for Swiss customers,
 * Full support of digital invoice data based on the EN 16931 standard for all interested customers.
-The standard is also know as _Factur-X_ and _ZUGFeRD_ version 2.1 in France and Germany.
-E-invoices are mandatory for some business in Germany and France.
+The standard is also known as _Factur-X_ and _ZUGFeRD_ version 2.1 in France and Germany.
+E-invoices are mandatory for some businesses in Germany and France.
 Switzerland is a slow adapter.
 * Sliding windows for all financial reports to support rolling financial planning and reporting.
 {ref-bbrt} advocates similar approaches for digital and agile company-wide transformation.
 
-The first objective of Factur-X is to enable suppliers, invoice issuers, to create added-value e-invoices.
+The first objective of Factur-X is to enable suppliers, invoice issuers to create added-value e-invoices.
 The e-invoices shall contain a maximum of information in structured form, according to their ability to produce them in this form.
 Let the customer recipients free to use the invoice data or the readable presentation, depending on their needs, and their invoice process maturity on automation.
 

@@ -36,8 +36,9 @@ import java.util.Objects;
  * The comments view is a Crud view with all the comments defined for an object implementing the {@link HasMutableComments}. Edition functions are provided to add, delete, and view
  * individual comments. Update function is not supported because comments are immutable objects. Immutable objects must explicitly be deleted before a new version is added. This
  * approach supports auditing approaches.
- * <p>the filter conditions are defined as follow. You can filter by author, by a string contained in the text, or a time interval during which the comment was created.
- * Therefore to select the range of interest you need to input two dates.</p>
+ * <p>The filter conditions are defined as follow. You can filter by author, by a string contained in the text, or a time interval during which the comment
+ * was created.
+ * Therefore, to select the range of interest you need to input two dates.</p>
  */
 public class CommentsView extends ItemView<Comment> {
     private static final String CREATED = "created";

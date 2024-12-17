@@ -37,6 +37,7 @@ lsof -i :8080 | grep LISTEN <1>
 ps -ef pid
 kill pid <2>
 ----
+
 <1> to get the pid of process using port 8080
 <2> kill the process using port 8080
 

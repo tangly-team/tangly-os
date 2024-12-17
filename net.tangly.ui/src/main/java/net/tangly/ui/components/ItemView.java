@@ -49,7 +49,7 @@ import java.util.function.Supplier;
  * <p>Specific situations are supported through helper functions. You can define a custom menu for your scenario.</p>
  * <h2>CRUD Operations</h2>
  * <p>The view owns an optional form to display and edit details and an optional filter to filter desired entities in the
- * grid. Following operations are available through a pop-up menu:</p>
+ * grid. The following operations are available through a pop-up menu:</p>
  * <dl>
  *     <dt>List</dt><dd>Display the grid with the entity properties. No form can be selected and no modification operations are available.
  *     No context sensitive menu is displayed. The view is implicitly read-only.</dd>
@@ -78,16 +78,16 @@ import java.util.function.Supplier;
  * </dl>
  * <p>The entity view contains a grid and a form which both access the same underlying data model and entity provider.</p>
  * <h2>Form Declaration</h2>
- * <p>The form shall contains all visible or editable properties of an entity. The displayed entity is optional.
- * The create and duplicate mode open a form without a corresponding entity.</p>
- * <p>Beware that an entity could displays other items such as comments, tags, and relations to other entities.
+ * <p>The form shall contain all visible or editable properties of an entity. The displayed entity is optional.
+ * The creation and duplication mode open a form without a corresponding entity.</p>
+ * <p>Beware that an entity could display other items such as comments, tags, and relations to other entities.
  * These objects are often displayed as entity views in panels.</p>
  * <h2>Menu Extensions</h2>
  * <p>Views can add menu options to perform an action on the selected item or on the whole list. A set of related actions are
  * added to the popup menu with a separation. Multiple blocks can be added.</p>
- * <p>Separate menu actions specific to selected items from global menu actions. The first block should be the view related CRUD operations.
+ * <p>Separate menu actions specific to selected items from global menu actions. The first block should be the view-related CRUD operations.
  * A second optional block should contain actions for selected items.
- * A third optional blocks should contains global actions not related to selected items.</p>
+ * A third optional block should contain global actions not related to selected items.</p>
  * {@snippet :
  * var items = List.of(new AbstractMap.SimpleImmutableEntry(Mode.EDIT_TEXT,
  * (ComponentEventListener<GridContextMenu.GridContextMenuItemClickEvent<T>>)((e)->form.edit(e.getItem().orElse(null)))));
@@ -179,7 +179,7 @@ public abstract class ItemView<T> extends VerticalLayout implements View {
     /**
      * Constructor of the class. The access rights are used to filter the data the user can see and modify.
      * The filtering is often realized by defining a filtering provider other the given data provider.
-     * <p>A view has always access rights. How the view interprets them is up the specific implementation.</p>
+     * <p>A view always has access rights. How the view interprets them is up to the specific implementation.</p>
      * <p>The menu is refreshed each time the access rights or the mode is changed. The mode attribute supersedes the access rights when determining the
      * content of the menu.</p>
      *
@@ -334,7 +334,7 @@ public abstract class ItemView<T> extends VerticalLayout implements View {
             case null -> null;
             case "True" -> Boolean.TRUE;
             case "False" -> Boolean.FALSE;
-            default -> null;
+            default -> throw new IllegalStateException("Unexpected value: " + e.getValue());
         }));
         return field;
     }

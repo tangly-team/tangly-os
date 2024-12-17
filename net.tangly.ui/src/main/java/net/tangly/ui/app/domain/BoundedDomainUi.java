@@ -168,8 +168,8 @@ public abstract class BoundedDomainUi<T extends BoundedDomain<?, ?, ?>> implemen
      *     application with the import domain command.</li>
      * </ul>
      *
-     * @param layout  layout in which the view will be displayed
-     * @param subMenu menu to which the administration commands are added
+     * @param layout     layout in which the view will be displayed
+     * @param subMenu    menu to which the administration commands are added
      * @param domainView view to be displayed when the statistics command is selected
      */
     protected void addAdministration(@NotNull AppLayout layout, @NotNull SubMenu subMenu, @NotNull LazyReference<?> domainView) {

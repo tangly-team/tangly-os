@@ -66,7 +66,8 @@ public abstract class MutableEntityForm<T extends MutableEntity, V extends Entit
             addTabAt("tags", tags, 2);
         }
         if (comments != null) {
-            binderCast().bind(comments, o -> ((MutableEntityExtended) o).comments(), (o, v) -> ((MutableEntityExtended) o).comments(comments.generateModelValue()));
+            binderCast().bind(comments, o -> ((MutableEntityExtended) o).comments(),
+                (o, v) -> ((MutableEntityExtended) o).comments(comments.generateModelValue()));
             addTabAt("comments", comments, 3);
         }
     }

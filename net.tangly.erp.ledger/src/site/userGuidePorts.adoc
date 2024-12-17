@@ -36,7 +36,8 @@ The following steps export the information from the banana application:
 * Select the destination file
 * If necessary change the extension to _tsv_
 
-The generated file is a CSV file containing the whole ledger account plan. The separator is TAB.
+The generated file is a CSV file containing the whole ledger account plan.
+The separator is TAB.
 
 ==== Importing Transactions
 
@@ -47,7 +48,8 @@ The following steps export the information from the banana application:
 * Select the destination file
 * If necessary change the extension to _tsv_
 
-The generated file is a CSV file containing the transaction details. The separator is TAB.
+The generated file is a CSV file containing the transaction details.
+The separator is TAB.
 It is a good practice to generate a file per fiscal year.
 
 All imported transactions should use the same ledger structure to support benchmarking and reporting over multiple periods.

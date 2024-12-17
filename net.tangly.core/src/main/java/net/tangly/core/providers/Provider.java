@@ -55,8 +55,7 @@ public interface Provider<T> {
 
     /**
      * Updates the data associated with the entity. If the entity is new, the update is handled as a create operation. The update is transitive and all
-     * referenced entities are also
-     * updated. The entity given as parameter becomes the instance managed through the provider.
+     * referenced entities are also updated. The entity given as a parameter becomes the instance managed through the provider.
      *
      * @param entity entity to update
      */

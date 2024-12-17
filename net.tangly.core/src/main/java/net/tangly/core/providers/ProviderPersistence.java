@@ -13,6 +13,7 @@
 
 package net.tangly.core.providers;
 
+import org.eclipse.serializer.concurrency.LockedExecutor;
 import org.eclipse.serializer.persistence.binary.jdk17.types.BinaryHandlersJDK17;
 import org.eclipse.serializer.persistence.binary.jdk8.types.BinaryHandlersJDK8;
 import org.eclipse.serializer.persistence.types.Storer;
@@ -34,6 +35,7 @@ import java.util.List;
 public class ProviderPersistence<T> implements Provider<T> {
     private final EmbeddedStorageManager storageManager;
     private final List<T> items;
+    private final transient LockedExecutor executor = LockedExecutor.New();
 
     public ProviderPersistence(@NotNull EmbeddedStorageManager storageManager, @NotNull List<T> items) {
         final EmbeddedStorageFoundation<?> foundation = EmbeddedStorage.Foundation();
@@ -67,17 +69,17 @@ public class ProviderPersistence<T> implements Provider<T> {
 
     @Override
     public void updateAll(@NotNull Iterable<? extends T> entities) {
+        Storer storer = storageManager.createEagerStorer();
         entities.forEach(entity -> {
             if (!items.contains(entity)) {
                 items.add(entity);
             } else {
-                Storer storer = storageManager.createEagerStorer();
                 storer.store(entity);
-                storer.commit();
             }
         });
         storageManager.store(entities);
         storageManager.store(items);
+        storer.commit();
     }
 
     @Override

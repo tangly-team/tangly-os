@@ -15,7 +15,7 @@
 # The first command line argument is the operating system user name and the second is firstname.lastname of the user.
 # A calling example is: ./deployLocalErpData.sh marcelbaumann marcel.baumann
 
-# user=marcelbaumann userTangly=marcel.baumann
+# user=marcelbaumann userTangly=marcel.baumann ./deployLocalErpData.sh marcelbaumann marcel.baumann
 user="$1"
 userTangly="$2"
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!--
-  - Copyright 2022 Marcel Baumann
+  - Copyright 2022-2024 Marcel Baumann
   -
   - Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
   - the License at
@@ -9,14 +9,63 @@
   -
   - Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
   - OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+  -
   -->
 
 <svg xmlns="http://www.w3.org/2000/svg" contentScriptType="application/ecmascript" contentStyleType="text/css" height="73px" preserveAspectRatio="none"
-     style="width:474px;height:73px;" version="1.1" viewBox="0 0 474 73" width="474px" zoomAndPan="magnify"><defs><filter height="300%" id="fhsf39nu9n177" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[6a163677132734a135b71a7bf2304ab6]
-class TsvProperty--><rect fill="#FEFECE" filter="url(#fhsf39nu9n177)" height="54.2656" id="TsvProperty" style="stroke: #A80036; stroke-width: 1.5;" width="129" x="331" y="8"/><ellipse cx="346" cy="27.1328" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M348.4731,33.2759 Q347.8921,33.5747 347.2529,33.7241 Q346.6138,33.8735 345.9082,33.8735 Q343.4014,33.8735 342.0815,32.2217 Q340.7617,30.5698 340.7617,27.4487 Q340.7617,24.3193 342.0815,22.6675 Q343.4014,21.0156 345.9082,21.0156 Q346.6138,21.0156 347.2612,21.165 Q347.9087,21.3145 348.4731,21.6133 L348.4731,24.3359 Q347.8423,23.7549 347.2488,23.4851 Q346.6553,23.2153 346.0244,23.2153 Q344.6797,23.2153 343.9949,24.282 Q343.3101,25.3486 343.3101,27.4487 Q343.3101,29.5405 343.9949,30.6072 Q344.6797,31.6738 346.0244,31.6738 Q346.6553,31.6738 347.2488,31.4041 Q347.8423,31.1343 348.4731,30.5532 Z "/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="50" x="369.5" y="24.6016">«record»</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="69" x="360" y="38.7344">TsvProperty</text><rect fill="#FFFFFF" height="16.1328" style="stroke: #000000; stroke-width: 1.0; stroke-dasharray: 2.0,2.0;" width="26" x="437" y="5"/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="24" x="438" y="17.6016">T, U</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="332" x2="459" y1="46.2656" y2="46.2656"/><line style="stroke: #A80036; stroke-width: 1.5;" x1="332" x2="459" y1="54.2656" y2="54.2656"/><!--MD5=[6f92155559c9e7e809e707028c403769]
-class TsvEntity--><rect fill="#FEFECE" filter="url(#fhsf39nu9n177)" height="54.2656" id="TsvEntity" style="stroke: #A80036; stroke-width: 1.5;" width="139" x="6" y="8"/><ellipse cx="21" cy="27.1328" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M23.4731,33.2759 Q22.8921,33.5747 22.2529,33.7241 Q21.6138,33.8735 20.9082,33.8735 Q18.4014,33.8735 17.0815,32.2217 Q15.7617,30.5698 15.7617,27.4487 Q15.7617,24.3193 17.0815,22.6675 Q18.4014,21.0156 20.9082,21.0156 Q21.6138,21.0156 22.2612,21.165 Q22.9087,21.3145 23.4731,21.6133 L23.4731,24.3359 Q22.8423,23.7549 22.2488,23.4851 Q21.6553,23.2153 21.0244,23.2153 Q19.6797,23.2153 18.9949,24.282 Q18.3101,25.3486 18.3101,27.4487 Q18.3101,29.5405 18.9949,30.6072 Q19.6797,31.6738 21.0244,31.6738 Q21.6553,31.6738 22.2488,31.4041 Q22.8423,31.1343 23.4731,30.5532 Z "/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="50" x="35.5" y="24.6016">«record»</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="51" x="35" y="38.7344">TsvEntity</text><rect fill="#FFFFFF" height="16.1328" style="stroke: #000000; stroke-width: 1.0; stroke-dasharray: 2.0,2.0;" width="54" x="94" y="5"/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="52" x="95" y="17.6016">T&lt;T, U&gt;</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="7" x2="144" y1="46.2656" y2="46.2656"/><line style="stroke: #A80036; stroke-width: 1.5;" x1="7" x2="144" y1="54.2656" y2="54.2656"/><!--MD5=[306227b13a54e1e80ad40383a2ed81f2]
-class TsvField--><rect fill="#FEFECE" filter="url(#fhsf39nu9n177)" height="48" id="TsvField" style="stroke: #A80036; stroke-width: 1.5;" width="79" x="217" y="11"/><ellipse cx="232" cy="27" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M234.4731,33.1431 Q233.8921,33.4419 233.2529,33.5913 Q232.6138,33.7407 231.9082,33.7407 Q229.4014,33.7407 228.0815,32.0889 Q226.7617,30.437 226.7617,27.3159 Q226.7617,24.1865 228.0815,22.5347 Q229.4014,20.8828 231.9082,20.8828 Q232.6138,20.8828 233.2612,21.0322 Q233.9087,21.1816 234.4731,21.4805 L234.4731,24.2031 Q233.8423,23.6221 233.2488,23.3523 Q232.6553,23.0825 232.0244,23.0825 Q230.6797,23.0825 229.9949,24.1492 Q229.3101,25.2158 229.3101,27.3159 Q229.3101,29.4077 229.9949,30.4744 Q230.6797,31.541 232.0244,31.541 Q232.6553,31.541 233.2488,31.2712 Q233.8423,31.0015 234.4731,30.4204 Z "/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="47" x="246" y="31.5352">TsvField</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="218" x2="295" y1="43" y2="43"/><line style="stroke: #A80036; stroke-width: 1.5;" x1="218" x2="295" y1="51" y2="51"/><!--MD5=[34fdec782a123824caa222570ca3be6a]
-reverse link TsvEntity to TsvField--><path d="M158.48,35 C178.84,35 199.7,35 216.92,35 " fill="none" id="TsvEntity&lt;-TsvField" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="145.22,35,151.22,39,157.22,35,151.22,31,145.22,35" style="stroke: #A80036; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="35" x="163.5" y="28.5684">fields</text><!--MD5=[2bf1c76fda932a6317e6fe7eaa50d919]
+     style="width:474px;height:73px;" version="1.1" viewBox="0 0 474 73" width="474px" zoomAndPan="magnify">
+    <defs>
+        <filter height="300%" id="fhsf39nu9n177" width="300%" x="-1" y="-1">
+            <feGaussianBlur result="blurOut" stdDeviation="2.0"/>
+            <feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/>
+            <feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/>
+            <feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/>
+        </filter>
+    </defs>
+    <g><!--MD5=[6a163677132734a135b71a7bf2304ab6]
+class TsvProperty-->
+        <rect fill="#FEFECE" filter="url(#fhsf39nu9n177)" height="54.2656" id="TsvProperty" style="stroke: #A80036; stroke-width: 1.5;" width="129" x="331"
+              y="8"/>
+        <ellipse cx="346" cy="27.1328" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <path
+            d="M348.4731,33.2759 Q347.8921,33.5747 347.2529,33.7241 Q346.6138,33.8735 345.9082,33.8735 Q343.4014,33.8735 342.0815,32.2217 Q340.7617,30.5698 340.7617,27.4487 Q340.7617,24.3193 342.0815,22.6675 Q343.4014,21.0156 345.9082,21.0156 Q346.6138,21.0156 347.2612,21.165 Q347.9087,21.3145 348.4731,21.6133 L348.4731,24.3359 Q347.8423,23.7549 347.2488,23.4851 Q346.6553,23.2153 346.0244,23.2153 Q344.6797,23.2153 343.9949,24.282 Q343.3101,25.3486 343.3101,27.4487 Q343.3101,29.5405 343.9949,30.6072 Q344.6797,31.6738 346.0244,31.6738 Q346.6553,31.6738 347.2488,31.4041 Q347.8423,31.1343 348.4731,30.5532 Z "/>
+        <text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="50" x="369.5" y="24.6016">
+            «record»
+        </text>
+        <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="69" x="360" y="38.7344">TsvProperty</text>
+        <rect fill="#FFFFFF" height="16.1328" style="stroke: #000000; stroke-width: 1.0; stroke-dasharray: 2.0,2.0;" width="26" x="437" y="5"/>
+        <text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="24" x="438" y="17.6016">T,
+            U
+        </text>
+        <line style="stroke: #A80036; stroke-width: 1.5;" x1="332" x2="459" y1="46.2656" y2="46.2656"/>
+        <line style="stroke: #A80036; stroke-width: 1.5;" x1="332" x2="459" y1="54.2656" y2="54.2656"/><!--MD5=[6f92155559c9e7e809e707028c403769]
+class TsvEntity-->
+        <rect fill="#FEFECE" filter="url(#fhsf39nu9n177)" height="54.2656" id="TsvEntity" style="stroke: #A80036; stroke-width: 1.5;" width="139" x="6" y="8"/>
+        <ellipse cx="21" cy="27.1328" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <path
+            d="M23.4731,33.2759 Q22.8921,33.5747 22.2529,33.7241 Q21.6138,33.8735 20.9082,33.8735 Q18.4014,33.8735 17.0815,32.2217 Q15.7617,30.5698 15.7617,27.4487 Q15.7617,24.3193 17.0815,22.6675 Q18.4014,21.0156 20.9082,21.0156 Q21.6138,21.0156 22.2612,21.165 Q22.9087,21.3145 23.4731,21.6133 L23.4731,24.3359 Q22.8423,23.7549 22.2488,23.4851 Q21.6553,23.2153 21.0244,23.2153 Q19.6797,23.2153 18.9949,24.282 Q18.3101,25.3486 18.3101,27.4487 Q18.3101,29.5405 18.9949,30.6072 Q19.6797,31.6738 21.0244,31.6738 Q21.6553,31.6738 22.2488,31.4041 Q22.8423,31.1343 23.4731,30.5532 Z "/>
+        <text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="50" x="35.5" y="24.6016">
+            «record»
+        </text>
+        <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="51" x="35" y="38.7344">TsvEntity</text>
+        <rect fill="#FFFFFF" height="16.1328" style="stroke: #000000; stroke-width: 1.0; stroke-dasharray: 2.0,2.0;" width="54" x="94" y="5"/>
+        <text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="52" x="95" y="17.6016">T&lt;T,
+            U&gt;
+        </text>
+        <line style="stroke: #A80036; stroke-width: 1.5;" x1="7" x2="144" y1="46.2656" y2="46.2656"/>
+        <line style="stroke: #A80036; stroke-width: 1.5;" x1="7" x2="144" y1="54.2656" y2="54.2656"/><!--MD5=[306227b13a54e1e80ad40383a2ed81f2]
+class TsvField-->
+        <rect fill="#FEFECE" filter="url(#fhsf39nu9n177)" height="48" id="TsvField" style="stroke: #A80036; stroke-width: 1.5;" width="79" x="217" y="11"/>
+        <ellipse cx="232" cy="27" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <path
+            d="M234.4731,33.1431 Q233.8921,33.4419 233.2529,33.5913 Q232.6138,33.7407 231.9082,33.7407 Q229.4014,33.7407 228.0815,32.0889 Q226.7617,30.437 226.7617,27.3159 Q226.7617,24.1865 228.0815,22.5347 Q229.4014,20.8828 231.9082,20.8828 Q232.6138,20.8828 233.2612,21.0322 Q233.9087,21.1816 234.4731,21.4805 L234.4731,24.2031 Q233.8423,23.6221 233.2488,23.3523 Q232.6553,23.0825 232.0244,23.0825 Q230.6797,23.0825 229.9949,24.1492 Q229.3101,25.2158 229.3101,27.3159 Q229.3101,29.4077 229.9949,30.4744 Q230.6797,31.541 232.0244,31.541 Q232.6553,31.541 233.2488,31.2712 Q233.8423,31.0015 234.4731,30.4204 Z "/>
+        <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="47" x="246" y="31.5352">TsvField</text>
+        <line style="stroke: #A80036; stroke-width: 1.5;" x1="218" x2="295" y1="43" y2="43"/>
+        <line style="stroke: #A80036; stroke-width: 1.5;" x1="218" x2="295" y1="51" y2="51"/><!--MD5=[34fdec782a123824caa222570ca3be6a]
+reverse link TsvEntity to TsvField-->
+        <path d="M158.48,35 C178.84,35 199.7,35 216.92,35 " fill="none" id="TsvEntity&lt;-TsvField" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <polygon fill="#A80036" points="145.22,35,151.22,39,157.22,35,151.22,31,145.22,35" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="35" x="163.5" y="28.5684">fields</text><!--MD5=[2bf1c76fda932a6317e6fe7eaa50d919]
 @startuml
 class TsvProperty<T, U> <<record>> {}
 class TsvEntity<T<T, U>> <<record>> {}
@@ -33,4 +82,6 @@ Operating System: Mac OS X
 Default Encoding: UTF-8
 Language: en
 Country: CH
---></g></svg>
+-->
+    </g>
+</svg>

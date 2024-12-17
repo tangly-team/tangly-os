@@ -2,7 +2,7 @@
 title: "Why I Love Home Office"
 linkTitle: "Love Home Office"
 date: 2025-03-02
-tags: ["agile", "tangly", ]
+tags: ["agile", "tangly"]
 params:
   featured: "blog/2025/pics/2025-03-02-head.jpg"
 ---

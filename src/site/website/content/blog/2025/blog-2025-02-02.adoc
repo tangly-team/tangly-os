@@ -1,0 +1,121 @@
+---
+title: "Can a Father handover Pieces of Wisdom to his Daughters?"
+linkTitle: "Father's wisdom"
+date: 2025-02-01
+tags: ["organization", "tangly"]
+params:
+  featured: "blog/2025/pics/2025-02-02-head.jpg"
+---
+
+[.float-group]
+--
+image::2025-02-01-head.jpg[width=420,height=360,role=left]
+
+Can a father handover pieces of wisdom to his daughters?
+Does it make sense?
+
+I do truly not know.
+I certainly doubt that I own any wisdom.
+I am just a simple software engineer.
+
+But I would like to entrust life learnings to my daughters.
+
+I had a fulfilled life with a lot of wonderful experiences.
+
+I have a delightful life partner and two clever and lovely daughters.
+I deeply love them.
+--
+
+Reflecting on my life, I came up with a few learnings that I would like to hand over to my daughters.
+
+Be Happy::
+Enjoy your life and your friends.
+Savor small things at the moment.
+Small task with a friend or a colleague.
+A beautiful sunset over the lake in Summer.
+The removal of a stubborn bug in your code. +
++
+Do not worry too much about the future.
+THe world is generally improving <<world-in-data>>. +
++
+Avoid stress, narcissists.
+Select an Invigorating Activity::
+Perhaps the most important decision is to choose an activity that you enjoy doing.
+I want to stand up in the morning and look forward to the day and my activities. +
++
+_I worked as a software engineer for the last forty years._
+I daily enjoyed this job, and I am still passionate about it. +
++
+I have no restriction to the choice of activity.
+The only small restriction would be that you should make enough money to pay the bills at the end of the month.
+Avoid money stress.
+Find the Love of your Life::
+Choose a life partner that you love and respect.
+The life partner shall love and respect you.
+Travel::
+Travel to open your horizon.
+Learn about different cultures and people.
+You have at least six weeks of holiday per year in Europe.
+Take a sabbatical year to travel extensively.
+Have a few friends::
+Friends are the spice in life.
+They do not need to be many of them, but you need a few trustworthy friends.
+Practice a Sport::
+You are happier with a healthy body.
+You do not need to compete in a sport.
+Enjoy the physical activity and the people around you. +
++
+Switzerland is a paradise for sports.
+You can practice any sport in the mountains, lakes, and rivers.
+
+image::2025-02-02-continuous-learning.jpg[width=420,height=360,role=left]
+Study and Learn::
+You are never too old to learn.
+A university degree can be a goal but is not mandatory.
+It is sad, but formal training is still a powerful door opener when it comes to cool and fascinating job opportunities. +
++
+Find out what you are passionate about.
+Decide how extensive the formal education should be to reach your goal. +
++
+Continuous learning is an important facet to enjoying your job.
+Proficiency and expertise are a foundation for a fulfilling job.
+Avoid Toxic People::
+Cut the contact with toxic persons.
+They will not change.
+They will not improve.
+They will darken the atmosphere. +
++
+Better to have a few lovely and trustful friends.
+Money is Not Important::
+Money is not important.
+You need enough money to pay the bills and finance your holidays. +
++
+Beware money is freedom.
+If you have some, you can decide to work less, to get a new job or to reduce how much you work.
+
+[NOTE]
+====
+If you understand statistics, the solution is straightforward.
+Buy passive index funds covering a broad index such as SPI, STOXX 600, or S&P 500.
+Do not sell.
+Use the dividends to buy more shares or improve your lifestyle.
+
+If you are living in Switzerland, buy first SPI ETF because you use Swiss Francs.
+THen buy STOXX 600 because Switzerland is in the middle of Europe.
+Last, buy S&P 500 because the USA is the biggest economy in the world.
+
+You should buy regularly, for example, once a quarter due to statistical reasons.
+The minimum investment for one stock is around 200 CHF,
+Start early, and you will be surprised how much money you will have in 20 years.
+
+If you do not understand statistics, it is time to learn.
+====
+
+These are the learnings that I would like to hand over to my daughters.
+They are few and plain.
+And they offered me a fulfilled, beautiful, and worthy life.
+
+[bibliography]
+== Links
+
+- [[[world-in-data, 1]]] https://ourworldindata.org/[Our World in Data]

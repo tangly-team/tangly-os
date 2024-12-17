@@ -1,3 +1,176 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--
+  - Copyright 2024 Marcel Baumann
+  -
+  - Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
+  - the License at
+  -
+  -          https://apache.org/licenses/LICENSE-2.0
+  -
+  - Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
+  - OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+  -
+  -->
+
 <svg xmlns="http://www.w3.org/2000/svg" contentScriptType="application/ecmascript" contentStyleType="text/css" height="421px" preserveAspectRatio="none"
-     style="width:631px;height:421px;" version="1.1" viewBox="0 0 631 421" width="631px" zoomAndPan="magnify"><defs/><g><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="73" x="16" y="17.6016">actitivites.tsv</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="348" x="218" y="17.6016">tab separated representation of all activities of the company</text><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="79" x="16" y="31.7344">comments.tsv</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="406" x="218" y="31.7344">tab separated representation of all comments defined in other entities</text><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="72" x="16" y="45.8672">contracts.tsv</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="351" x="218" y="45.8672">tab separated representation of all contracts of the company</text><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="82" x="16" y="60">employees.tsv</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="361" x="218" y="60">tab separated representation of all employees of the company</text><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="86" x="16" y="74.1328">interactions.tsv</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="365" x="218" y="74.1328">tab separated representation of all interactions of the company</text><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="95" x="16" y="88.2656">legal-entities.tsv</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="371" x="218" y="88.2656">tab separated representation of all legal entities of the company</text><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="108" x="16" y="102.3984">natural-entities.tsv</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="384" x="218" y="102.3984">tab separated representation of all natural entities of the company</text><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="71" x="16" y="116.5313">products.tsv</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="350" x="218" y="116.5313">tab separated representation of all products of the company</text><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="68" x="16" y="130.6641">subjects.tsv</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="347" x="218" y="130.6641">tab separated representation of all subjects of the company</text><text fill="#000000" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="51" x="16" y="144.7969">invoices</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="284" x="218" y="144.7969">contains all invoices grouped by issued date year</text><text fill="#000000" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="32" x="26" y="158.9297">2018</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="182" x="218" y="158.9297">all invoices issued in year 2018</text><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="166" x="36" y="173.0625">2018-01-01-invoice-x.json</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="12" x="36" y="187.1953">...</text><text fill="#000000" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="39" x="16" y="201.3281">ledger</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="352" x="218" y="201.3281">contains the ledger structure and the transactions per period</text><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="94" x="26" y="215.4609">swiss-ledger.tsv</text><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="97" x="26" y="229.5938">2019-period.tsv</text><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="97" x="26" y="243.7266">2020-period.tsv</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="12" x="26" y="257.8594">...</text><text fill="#000000" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="45" x="16" y="271.9922">reports</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="334" x="218" y="271.9922">the report files are generated through the ERP application</text><text fill="#000000" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="51" x="26" y="286.125">invoices</text><text fill="#000000" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="32" x="36" y="300.2578">2018</text><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="162" x="46" y="314.3906">2018-01-01-invoice-x.pdf</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="12" x="46" y="328.5234">...</text><text fill="#000000" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="39" x="26" y="342.6563">ledger</text><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="100" x="36" y="356.7891">2020-ledger.pdf</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="12" x="36" y="370.9219">...</text><text fill="#000000" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="40" x="16" y="385.0547">vcards</text><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="90" x="26" y="399.1875">john-doe.vcard</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="12" x="26" y="413.3203">...</text><rect fill="none" height="2" style="stroke: #888888; stroke-width: 1.0;" width="2" x="9" y="139.2617"/><rect fill="none" height="2" style="stroke: #888888; stroke-width: 1.0;" width="2" x="19" y="153.3945"/><line style="stroke: #888888; stroke-width: 1.0;" x1="10" x2="10" y1="142.2617" y2="154.3945"/><line style="stroke: #888888; stroke-width: 1.0;" x1="10" x2="18" y1="154.3945" y2="154.3945"/><line style="stroke: #888888; stroke-width: 1.0;" x1="20" x2="20" y1="156.3945" y2="168.5273"/><line style="stroke: #888888; stroke-width: 1.0;" x1="20" x2="28" y1="168.5273" y2="168.5273"/><line style="stroke: #888888; stroke-width: 1.0;" x1="20" x2="20" y1="156.3945" y2="182.6602"/><line style="stroke: #888888; stroke-width: 1.0;" x1="20" x2="28" y1="182.6602" y2="182.6602"/><rect fill="none" height="2" style="stroke: #888888; stroke-width: 1.0;" width="2" x="9" y="195.793"/><line style="stroke: #888888; stroke-width: 1.0;" x1="10" x2="10" y1="198.793" y2="210.9258"/><line style="stroke: #888888; stroke-width: 1.0;" x1="10" x2="18" y1="210.9258" y2="210.9258"/><line style="stroke: #888888; stroke-width: 1.0;" x1="10" x2="10" y1="198.793" y2="225.0586"/><line style="stroke: #888888; stroke-width: 1.0;" x1="10" x2="18" y1="225.0586" y2="225.0586"/><line style="stroke: #888888; stroke-width: 1.0;" x1="10" x2="10" y1="198.793" y2="239.1914"/><line style="stroke: #888888; stroke-width: 1.0;" x1="10" x2="18" y1="239.1914" y2="239.1914"/><line style="stroke: #888888; stroke-width: 1.0;" x1="10" x2="10" y1="198.793" y2="253.3242"/><line style="stroke: #888888; stroke-width: 1.0;" x1="10" x2="18" y1="253.3242" y2="253.3242"/><rect fill="none" height="2" style="stroke: #888888; stroke-width: 1.0;" width="2" x="9" y="266.457"/><rect fill="none" height="2" style="stroke: #888888; stroke-width: 1.0;" width="2" x="19" y="280.5898"/><line style="stroke: #888888; stroke-width: 1.0;" x1="10" x2="10" y1="269.457" y2="281.5898"/><line style="stroke: #888888; stroke-width: 1.0;" x1="10" x2="18" y1="281.5898" y2="281.5898"/><rect fill="none" height="2" style="stroke: #888888; stroke-width: 1.0;" width="2" x="29" y="294.7227"/><line style="stroke: #888888; stroke-width: 1.0;" x1="20" x2="20" y1="283.5898" y2="295.7227"/><line style="stroke: #888888; stroke-width: 1.0;" x1="20" x2="28" y1="295.7227" y2="295.7227"/><line style="stroke: #888888; stroke-width: 1.0;" x1="30" x2="30" y1="297.7227" y2="309.8555"/><line style="stroke: #888888; stroke-width: 1.0;" x1="30" x2="38" y1="309.8555" y2="309.8555"/><line style="stroke: #888888; stroke-width: 1.0;" x1="30" x2="30" y1="297.7227" y2="323.9883"/><line style="stroke: #888888; stroke-width: 1.0;" x1="30" x2="38" y1="323.9883" y2="323.9883"/><rect fill="none" height="2" style="stroke: #888888; stroke-width: 1.0;" width="2" x="19" y="337.1211"/><line style="stroke: #888888; stroke-width: 1.0;" x1="10" x2="10" y1="269.457" y2="338.1211"/><line style="stroke: #888888; stroke-width: 1.0;" x1="10" x2="18" y1="338.1211" y2="338.1211"/><line style="stroke: #888888; stroke-width: 1.0;" x1="20" x2="20" y1="340.1211" y2="352.2539"/><line style="stroke: #888888; stroke-width: 1.0;" x1="20" x2="28" y1="352.2539" y2="352.2539"/><line style="stroke: #888888; stroke-width: 1.0;" x1="20" x2="20" y1="340.1211" y2="366.3867"/><line style="stroke: #888888; stroke-width: 1.0;" x1="20" x2="28" y1="366.3867" y2="366.3867"/><rect fill="none" height="2" style="stroke: #888888; stroke-width: 1.0;" width="2" x="9" y="379.5195"/><line style="stroke: #888888; stroke-width: 1.0;" x1="10" x2="10" y1="382.5195" y2="394.6523"/><line style="stroke: #888888; stroke-width: 1.0;" x1="10" x2="18" y1="394.6523" y2="394.6523"/><line style="stroke: #888888; stroke-width: 1.0;" x1="10" x2="10" y1="382.5195" y2="408.7852"/><line style="stroke: #888888; stroke-width: 1.0;" x1="10" x2="18" y1="408.7852" y2="408.7852"/></g></svg>
+     style="width:631px;height:421px;" version="1.1" viewBox="0 0 631 421" width="631px" zoomAndPan="magnify">
+    <defs/>
+    <g>
+        <text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="73" x="16" y="17.6016">
+            actitivites.tsv
+        </text>
+        <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="348" x="218" y="17.6016">tab separated
+            representation of all activities of the company
+        </text>
+        <text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="79" x="16" y="31.7344">
+            comments.tsv
+        </text>
+        <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="406" x="218" y="31.7344">tab separated
+            representation of all comments defined in other entities
+        </text>
+        <text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="72" x="16" y="45.8672">
+            contracts.tsv
+        </text>
+        <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="351" x="218" y="45.8672">tab separated
+            representation of all contracts of the company
+        </text>
+        <text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="82" x="16" y="60">
+            employees.tsv
+        </text>
+        <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="361" x="218" y="60">tab separated
+            representation of all employees of the company
+        </text>
+        <text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="86" x="16" y="74.1328">
+            interactions.tsv
+        </text>
+        <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="365" x="218" y="74.1328">tab separated
+            representation of all interactions of the company
+        </text>
+        <text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="95" x="16" y="88.2656">
+            legal-entities.tsv
+        </text>
+        <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="371" x="218" y="88.2656">tab separated
+            representation of all legal entities of the company
+        </text>
+        <text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="108" x="16" y="102.3984">
+            natural-entities.tsv
+        </text>
+        <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="384" x="218" y="102.3984">tab separated
+            representation of all natural entities of the company
+        </text>
+        <text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="71" x="16" y="116.5313">
+            products.tsv
+        </text>
+        <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="350" x="218" y="116.5313">tab separated
+            representation of all products of the company
+        </text>
+        <text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="68" x="16" y="130.6641">
+            subjects.tsv
+        </text>
+        <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="347" x="218" y="130.6641">tab separated
+            representation of all subjects of the company
+        </text>
+        <text fill="#000000" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="51" x="16" y="144.7969">
+            invoices
+        </text>
+        <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="284" x="218" y="144.7969">contains all invoices
+            grouped by issued date year
+        </text>
+        <text fill="#000000" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="32" x="26" y="158.9297">
+            2018
+        </text>
+        <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="182" x="218" y="158.9297">all invoices issued
+            in year 2018
+        </text>
+        <text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="166" x="36" y="173.0625">
+            2018-01-01-invoice-x.json
+        </text>
+        <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="12" x="36" y="187.1953">...</text>
+        <text fill="#000000" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="39" x="16" y="201.3281">
+            ledger
+        </text>
+        <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="352" x="218" y="201.3281">contains the ledger
+            structure and the transactions per period
+        </text>
+        <text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="94" x="26" y="215.4609">
+            swiss-ledger.tsv
+        </text>
+        <text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="97" x="26" y="229.5938">
+            2019-period.tsv
+        </text>
+        <text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="97" x="26" y="243.7266">
+            2020-period.tsv
+        </text>
+        <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="12" x="26" y="257.8594">...</text>
+        <text fill="#000000" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="45" x="16" y="271.9922">
+            reports
+        </text>
+        <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="334" x="218" y="271.9922">the report files are
+            generated through the ERP application
+        </text>
+        <text fill="#000000" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="51" x="26" y="286.125">
+            invoices
+        </text>
+        <text fill="#000000" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="32" x="36" y="300.2578">
+            2018
+        </text>
+        <text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="162" x="46" y="314.3906">
+            2018-01-01-invoice-x.pdf
+        </text>
+        <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="12" x="46" y="328.5234">...</text>
+        <text fill="#000000" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="39" x="26" y="342.6563">
+            ledger
+        </text>
+        <text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="100" x="36" y="356.7891">
+            2020-ledger.pdf
+        </text>
+        <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="12" x="36" y="370.9219">...</text>
+        <text fill="#000000" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="40" x="16" y="385.0547">
+            vcards
+        </text>
+        <text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="90" x="26" y="399.1875">
+            john-doe.vcard
+        </text>
+        <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="12" x="26" y="413.3203">...</text>
+        <rect fill="none" height="2" style="stroke: #888888; stroke-width: 1.0;" width="2" x="9" y="139.2617"/>
+        <rect fill="none" height="2" style="stroke: #888888; stroke-width: 1.0;" width="2" x="19" y="153.3945"/>
+        <line style="stroke: #888888; stroke-width: 1.0;" x1="10" x2="10" y1="142.2617" y2="154.3945"/>
+        <line style="stroke: #888888; stroke-width: 1.0;" x1="10" x2="18" y1="154.3945" y2="154.3945"/>
+        <line style="stroke: #888888; stroke-width: 1.0;" x1="20" x2="20" y1="156.3945" y2="168.5273"/>
+        <line style="stroke: #888888; stroke-width: 1.0;" x1="20" x2="28" y1="168.5273" y2="168.5273"/>
+        <line style="stroke: #888888; stroke-width: 1.0;" x1="20" x2="20" y1="156.3945" y2="182.6602"/>
+        <line style="stroke: #888888; stroke-width: 1.0;" x1="20" x2="28" y1="182.6602" y2="182.6602"/>
+        <rect fill="none" height="2" style="stroke: #888888; stroke-width: 1.0;" width="2" x="9" y="195.793"/>
+        <line style="stroke: #888888; stroke-width: 1.0;" x1="10" x2="10" y1="198.793" y2="210.9258"/>
+        <line style="stroke: #888888; stroke-width: 1.0;" x1="10" x2="18" y1="210.9258" y2="210.9258"/>
+        <line style="stroke: #888888; stroke-width: 1.0;" x1="10" x2="10" y1="198.793" y2="225.0586"/>
+        <line style="stroke: #888888; stroke-width: 1.0;" x1="10" x2="18" y1="225.0586" y2="225.0586"/>
+        <line style="stroke: #888888; stroke-width: 1.0;" x1="10" x2="10" y1="198.793" y2="239.1914"/>
+        <line style="stroke: #888888; stroke-width: 1.0;" x1="10" x2="18" y1="239.1914" y2="239.1914"/>
+        <line style="stroke: #888888; stroke-width: 1.0;" x1="10" x2="10" y1="198.793" y2="253.3242"/>
+        <line style="stroke: #888888; stroke-width: 1.0;" x1="10" x2="18" y1="253.3242" y2="253.3242"/>
+        <rect fill="none" height="2" style="stroke: #888888; stroke-width: 1.0;" width="2" x="9" y="266.457"/>
+        <rect fill="none" height="2" style="stroke: #888888; stroke-width: 1.0;" width="2" x="19" y="280.5898"/>
+        <line style="stroke: #888888; stroke-width: 1.0;" x1="10" x2="10" y1="269.457" y2="281.5898"/>
+        <line style="stroke: #888888; stroke-width: 1.0;" x1="10" x2="18" y1="281.5898" y2="281.5898"/>
+        <rect fill="none" height="2" style="stroke: #888888; stroke-width: 1.0;" width="2" x="29" y="294.7227"/>
+        <line style="stroke: #888888; stroke-width: 1.0;" x1="20" x2="20" y1="283.5898" y2="295.7227"/>
+        <line style="stroke: #888888; stroke-width: 1.0;" x1="20" x2="28" y1="295.7227" y2="295.7227"/>
+        <line style="stroke: #888888; stroke-width: 1.0;" x1="30" x2="30" y1="297.7227" y2="309.8555"/>
+        <line style="stroke: #888888; stroke-width: 1.0;" x1="30" x2="38" y1="309.8555" y2="309.8555"/>
+        <line style="stroke: #888888; stroke-width: 1.0;" x1="30" x2="30" y1="297.7227" y2="323.9883"/>
+        <line style="stroke: #888888; stroke-width: 1.0;" x1="30" x2="38" y1="323.9883" y2="323.9883"/>
+        <rect fill="none" height="2" style="stroke: #888888; stroke-width: 1.0;" width="2" x="19" y="337.1211"/>
+        <line style="stroke: #888888; stroke-width: 1.0;" x1="10" x2="10" y1="269.457" y2="338.1211"/>
+        <line style="stroke: #888888; stroke-width: 1.0;" x1="10" x2="18" y1="338.1211" y2="338.1211"/>
+        <line style="stroke: #888888; stroke-width: 1.0;" x1="20" x2="20" y1="340.1211" y2="352.2539"/>
+        <line style="stroke: #888888; stroke-width: 1.0;" x1="20" x2="28" y1="352.2539" y2="352.2539"/>
+        <line style="stroke: #888888; stroke-width: 1.0;" x1="20" x2="20" y1="340.1211" y2="366.3867"/>
+        <line style="stroke: #888888; stroke-width: 1.0;" x1="20" x2="28" y1="366.3867" y2="366.3867"/>
+        <rect fill="none" height="2" style="stroke: #888888; stroke-width: 1.0;" width="2" x="9" y="379.5195"/>
+        <line style="stroke: #888888; stroke-width: 1.0;" x1="10" x2="10" y1="382.5195" y2="394.6523"/>
+        <line style="stroke: #888888; stroke-width: 1.0;" x1="10" x2="18" y1="394.6523" y2="394.6523"/>
+        <line style="stroke: #888888; stroke-width: 1.0;" x1="10" x2="10" y1="382.5195" y2="408.7852"/>
+        <line style="stroke: #888888; stroke-width: 1.0;" x1="10" x2="18" y1="408.7852" y2="408.7852"/>
+    </g>
+</svg>

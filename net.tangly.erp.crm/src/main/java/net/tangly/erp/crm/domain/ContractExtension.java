@@ -34,4 +34,5 @@ public record ContractExtension(@NotNull String id, @NotNull String name, @NotNu
         var amountWithoutVat = FastMoney.of(extension.amountWithoutVat(), Monetary.getCurrency(mainContract.currency().getCurrencyCode()));
         return new ContractSignedEvent(extension.id(), extension.contractId(), extension.range(), mainContract.locale(), amountWithoutVat,
             extension.budgetInHours());
-    }}
+    }
+}

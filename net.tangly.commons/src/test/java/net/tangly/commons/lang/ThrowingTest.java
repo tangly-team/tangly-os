@@ -58,7 +58,8 @@ class ThrowingTest {
 
     @Test
     void testWrappers() {
-        assertThatExceptionOfType(RuntimeException.class).isThrownBy(() -> IntStream.range(1, 101).boxed().forEach(ThrowingIOExceptionConsumer.of(this::consumerWithIOException)));
+        assertThatExceptionOfType(RuntimeException.class).isThrownBy(
+            () -> IntStream.range(1, 101).boxed().forEach(ThrowingIOExceptionConsumer.of(this::consumerWithIOException)));
         assertThatExceptionOfType(RuntimeException.class).isThrownBy(() -> IntStream.range(1, 101).boxed().forEach(ThrowingConsumer.of(this::consumer)));
         assertThatExceptionOfType(RuntimeException.class)
             .isThrownBy(() -> IntStream.range(1, 101).boxed().map(ThrowingFunction.of(this::function)).forEach(o -> {
