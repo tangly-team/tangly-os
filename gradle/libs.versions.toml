@@ -1,7 +1,7 @@
 [versions]
 assertj-version = '3.26.3'
 flyway-version = '11.1.0'
-junit-version = '5.11.3'
+junit-version = '5.11.4'
 log4j2-version = '2.23.0'
 javalin-version = '5.6.4'
 openapi-version = "5.6.4"
@@ -43,7 +43,7 @@ flywy-hsqldb = { module = "org.flywaydb:flyway-database-hsqldb", version.ref = "
 hsqldb = "org.hsqldb:hsqldb:2.7.4"
 iban4j = "org.iban4j:iban4j:3.2.10-RELEASE"
 
-ical4j-core = "org.mnode.ical4j:ical4j:4.0.6"
+ical4j-core = "org.mnode.ical4j:ical4j:4.0.7"
 ical4j-vcard = "org.mnode.ical4j:ical4j-vcard:2.0.0"
 
 google-libphonenumber = "com.googlecode.libphonenumber:libphonenumber:8.13.52"
