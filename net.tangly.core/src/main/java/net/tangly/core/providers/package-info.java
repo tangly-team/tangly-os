@@ -19,7 +19,6 @@
  *     <dt>Provider In Memory</dt><dd>provides an implementation where the items are stored in memory and never persisted.</dd>
  *     <dt>Provider Persistence</dt><dd>provides an implementation where the items are persisted.</dd>
  *     <dt>Provider Has Oid</dt><dd>provides a decorator for provider holding items with unique object identifiers. Such objects must implements the HasOid
- *     <dt>Provider Has Id</dt><dd>provides a decorator for provider holding items with unique identifiers. Such objects must implements the HasId
  *     interface.</dd>
  * </dl>
  * <p>How can you provide basis operation for ACID transactions.</p>
