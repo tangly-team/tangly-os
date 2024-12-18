@@ -46,6 +46,10 @@ public interface Provider<T> {
         return provider.findBy(E::id, id);
     }
 
+    static boolean containsById(@NotNull Provider<? extends HasId> provider, @NotNull String id) {
+        return findById(provider, id).isPresent();
+    }
+
     /**
      * Returns a list containing all known instances of the entity type.
      *
