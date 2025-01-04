@@ -50,8 +50,8 @@ public class EventDataView extends ItemView<EventData> {
 
             FormLayout form = new FormLayout();
             form.add(event, timestamp, domain, status, text, data);
-            form.setColspan(text,2);
-            form.setColspan(data,2);
+            form.setColspan(text, 2);
+            form.setColspan(data, 2);
 
             binder().bindReadOnly(event, EventData::event);
             binder().bindReadOnly(timestamp, o -> o.timestamp().toString());
@@ -77,7 +77,7 @@ public class EventDataView extends ItemView<EventData> {
     @Override
     protected void addActions(@NotNull GridMenu<EventData> menu) {
         menu().add(new Hr());
-        menu().add("Refresh", _ -> this.provider( ProviderInMemory.of(domain().auditEvents())), GridMenu.MenuItemType.GLOBAL);
+        menu().add("Refresh", _ -> this.provider(ProviderInMemory.of(domain().auditEvents())), GridMenu.MenuItemType.GLOBAL);
     }
 
 

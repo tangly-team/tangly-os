@@ -9,13 +9,19 @@ weight: 20
 This document provides a high-level view of the changes introduced in the ERP Products library by release.
 For a detailed view of what has changed, refer to the https://bitbucket.org/tangly-team/tangly-os[repository] commits.
 
+=== 0.2.9 (2024-12-31)
+
+* Improvements in code
+
 === 0.2.8 (2024-09-30)
 
+* Improvements in code
 
 === 0.2.7 (2024-05-31)
 
 * Update of library dependencies, update to JDK-21, and modern Gradle approach to build solutions
-* Efforts are now stored in YAML files. The library provides a parser to read and write YAML files.
+* Efforts are now stored in YAML files.
+The library provides a parser to read and write YAML files.
 Work contract abstraction tracks the efforts of a person on a project.
 
 === 0.2.6 (2021-08-31)

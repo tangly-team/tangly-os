@@ -1,19 +1,19 @@
 {
-    "feature" : {
-        "id" :"",
-        "name" : "",
-        "text" : "",
-        "date" : "",
-        "tags" : {},
-        "comments" : {},
-        "stories" : [
+    "feature": {
+        "id": "",
+        "name": "",
+        "text": "",
+        "date": "",
+        "tags": {},
+        "comments": {},
+        "stories": [
             {
-                "id" :"",
-                "name" : "",
-                "text" : "",
-                "date" : "",
-                "tags" : {},
-                "comments" : {}
+                "id": "",
+                "name": "",
+                "text": "",
+                "date": "",
+                "tags": {},
+                "comments": {}
             }
         ]
     }

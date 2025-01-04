@@ -32,7 +32,7 @@ Below are some findings of the study.
 
 The number left is the value for 2013.
 The number in parentheses is the value found in the study for the year 2012.
-Bold items are new in the 2013 study and have no 2012 values.
+Bold items are new in the 2013 study and have no value in the year 2012.
 
 * 72% (95%): Capabilities to handle organizational changes and the culture
 * 53% (-%): Difficulty how to handle the loss of control seen from a management perspective

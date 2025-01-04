@@ -13,7 +13,7 @@
 
 /**
  * Provides the adapters for the bounded domain. The package is based on the hexagonal architecture pattern. It avoids polluting the business model with
- *  implementation of independent constructs.
+ * implementation of independent constructs.
  * <p>The handler classes implements the transformation between a business model and an external system or storage.n The workflow classes provide aggregations
  * of functions which are semantically related. For example the handler publishes methods to import individual domain entities and the workflow publishes
  * methods to import all semantically related entities of a domain.</p>

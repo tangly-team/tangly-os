@@ -27,16 +27,16 @@ What techniques help agile team create lasting products?
 
 == Agile Digital and Software Product Development
 
-Scrum is the de-facto standard approach to create digital products.
-Small and medium companies develop new services and products with the help of small size teams.
+Scrum is the de-facto standard approach to creating digital products.
+Small and medium companies develop new services and products with the help of small-size teams.
 They do not have the resources to build a huge development organization with hundreds of developers.
 {ref-scrum} and in bigger setup {ref-less} approaches are ideal matches for these initiatives.
 
 Agile and Scrum frameworks are used to create new products and services.
 They are *not* project methods.
-Customers buy products not projects.
+Customers buy products, not projects.
 
-Scrum supports us in the setup, team dynamics and prioritization of features and releases.
+Scrum supports us in the setup, team dynamics, and prioritization of features and releases.
 No answers are provided how to develop the solution.
 Your organization needs to reach technical fluency.
 The teams have to growth their organizational and technical capabilities simultaneously <<reflections-on-agile-fluency-model>>.
@@ -63,7 +63,7 @@ Quality responsible needs requirements to fulfill legal constraints.
 Traceability through TDD and ATDD::
 Each story shall have acceptance criteria and automated acceptance tests. +
 If desired, you can formulate requirements and explicitly define dependency between the requirement and the integration test.
-This setup is required by more rigorous standards such as the German V-Model, or validation standards in the medicinal industry with FDA or transportation industry with the functional safety constraints
+This setup is required by more rigorous standards such as the German V-Model, or validation standards in the medical industry with FDA or transportation industry with the functional safety constraints
 footnote:[Use annotations in the automated tests to link a specific test to the requirement being validated.
 This information is used to generate test reports and dependency matrices.].
 Continuous integration and delivery::
@@ -71,7 +71,7 @@ The validation of the solution against acceptance criteria is only economically 
 footnote:[The DORA metrics document the correlation between the use of an automated delivery pipeline and software product quality.].
 User manual::
 An alternative approach is to specify the behavior of the solution in the user manual.
-This technique was popular end of the last millennium.
+This technique was popular at the end of the last millennium.
 The current trend is rather not to create a user manual due to the involved manual effort.
 
 == Architecture Characteristics
@@ -122,7 +122,7 @@ Agile Competencies::
 Teams with all four competencies often create lasting products.
 
 - Domain-driven design is a popular solution for top-down expertise.
-- Clean code is a powerful approach to establish bottom-up capabilities.
+- Clean code is a powerful approach to establishing bottom-up capabilities.
 - Continuous delivery implementing fitness functions is a promising approach.
 - Document your artifact using the living documentation approach.
 A good starting point is the {ref-arc42} toolset.
@@ -145,7 +145,7 @@ The community has more than twenty years to refine the techniques how to success
 +
 A model is an essential part of software design.
 We need it in order to be able to deal with complexity.
-the main point is that we need to communicate the model.
+The main point is that we need to communicate the model.
 Does domain-driven design have similarities with SysML?::
 You can use sysML to document your solution.
 DDD has a strong emphasis on delivering working software and iterate the refinement of the solution.
@@ -182,7 +182,7 @@ Each node is responsible for a specific feature.
 The node graph structure inside a package defines the layers of bounded domain.
 The node graph structure between packages defines the API and event based communication between bounded domains.
 Do we have entities, aggregates, and value objects?::
-Entities, value objects and aggregates are natural abstraction in any object-oriented system.
+Entities, value objects, and aggregates are natural abstraction in any object-oriented system.
 Here is an example.
 A temperature sensor is an entity with identity, data, and behavior.
 The configuration parameters of the sensor are stored in a value object.

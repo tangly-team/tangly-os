@@ -7,6 +7,7 @@ weight: 10
 = ERP Products Component
 :ref-groupId: net.tangly.erp
 :ref-artifactId: products
+:ref-java-current-version: 21 LTS
 
 image:https://img.shields.io/badge/license-Apache%202-blue.svg[Apache License 2.0]
 image:https://img.shields.io/maven-central/v/{ref-groupId}/{ref-artifactId}[Maven Central]

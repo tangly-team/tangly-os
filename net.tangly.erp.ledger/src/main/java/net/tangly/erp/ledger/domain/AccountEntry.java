@@ -94,6 +94,7 @@ public record AccountEntry(@NotNull String accountId, @NotNull LocalDate date, @
 
     /**
      * Returns the VAT due amount for the entry. If the entry has no VAT code, the method returns zero.
+     *
      * @return the VAT due amount for the entry
      */
     public BigDecimal getVatDue() {

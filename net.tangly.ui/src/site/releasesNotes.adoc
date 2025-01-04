@@ -9,6 +9,10 @@ weight: 20
 This document provides a high-level view of the changes introduced in the Common UI library by release.
 For a detailed view of what has changed, refer to the https://bitbucket.org/tangly-team/tangly-os[repository] commits.
 
+=== 0.2.9 (2024-12-31)
+
+* Improvements in code
+
 === 0.2.8 (2024-09-30)
 
 * Update of library dependencies, update to JDK-22, and modern Gradle approach to build solutions.

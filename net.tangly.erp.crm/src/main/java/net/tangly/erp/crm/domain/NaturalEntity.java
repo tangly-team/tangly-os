@@ -21,11 +21,11 @@ import java.util.Objects;
 import java.util.Optional;
 
 /**
- * A natural entity is a person. A natural entity has an identity defined as the legal number of a person (e.g., the social security number, a name defined as the last name and the
- * first name separated by a comma, a life duration, and a text describing him or her.
+ * A natural entity is a person. A natural entity has an identity defined as the legal number of a person, e.g., the social security number, a name defined as
+ * the last name and the first name separated by a comma, a life duration, and a text describing him or her.
  * <p>A potential approach for a natural person identification is ISO 24366.</p>
- * <p>The attributes of a natural entity shall specify private or home capabilities. Work related information shall be stored in an employee entity to acknowledge the situation
- * when a person has multiple employment relations. </p>
+ * <p>The attributes of a natural entity shall specify private or home capabilities. Work related information shall be stored in an employee entity to
+ * acknowledge the situation when a person has multiple employment relations. </p>
  * <p><em>A natural entity has an internal object identifier because universal identifier for natural persons are currently not available in our world.
  * Switzerland allows since 2023 to use the Swiss security social number. This identifier is not compatible with the EU standards.
  * Europe has a person identifier. Sadly both identifiers are not easily accessible

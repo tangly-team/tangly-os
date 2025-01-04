@@ -94,7 +94,8 @@ public class AnalyticsCrmView extends AnalyticsView {
         grid.addColumn(Contract::from).setKey(FROM).setHeader(FROM_LABEL).setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Contract::to).setKey(TO).setHeader(TO_LABEL).setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Contract::currency).setKey("currency").setHeader("Currency").setAutoWidth(true).setResizable(true).setSortable(true);
-        grid.addColumn(VaadinUtils.coloredRender(Contract::amountWithoutVat, VaadinUtils.FORMAT)).setKey(AMOUNT).setHeader(AMOUNT_LABEL).setAutoWidth(true).setResizable(true)
+        grid.addColumn(VaadinUtils.coloredRender(Contract::amountWithoutVat, VaadinUtils.FORMAT)).setKey(AMOUNT).setHeader(AMOUNT_LABEL).setAutoWidth(true)
+            .setResizable(true)
             .setSortable(true);
         grid.addColumn(VaadinUtils.coloredRender(o -> invoicesLogic.invoicedAmountWithoutVatForContract(o.id(), from(), to()), VaadinUtils.FORMAT))
             .setHeader("Invoiced").setAutoWidth(true).setResizable(true).setSortable(true);

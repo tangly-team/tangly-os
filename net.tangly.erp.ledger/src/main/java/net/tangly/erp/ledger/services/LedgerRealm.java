@@ -79,7 +79,7 @@ public interface LedgerRealm extends Realm {
         return accounts().items().stream().filter(o -> id.equals(o.ownedBy())).toList();
     }
 
-    void add(@NotNull Account account);
+    void update(@NotNull Account account);
 
     default void book(@NotNull Transaction transaction) {
         bookTransaction(transaction);

@@ -38,7 +38,8 @@ import static net.tangly.core.domain.DocumentGenerator.*;
 import static net.tangly.erp.products.domain.Assignment.convert;
 
 /**
- * engine to create effort reports for collaborators.
+ * Engine to create effort reports for collaborators. We support text in tabke cells per day and assignment. the report has optional minues for detailed
+ * information. The approach is legible and respects resctriction of AsciiDocToPdf conversion.
  */
 public class EffortReportEngine {
     private static final Logger logger = LogManager.getLogger();
@@ -131,11 +132,13 @@ public class EffortReportEngine {
 
     private void createMinutes(@NotNull Assignment assignment, @NotNull LocalDate from, @NotNull LocalDate to, @NotNull AsciiDocHelper helper) {
         List<Effort> efforts = logic.collect(assignment, from, to);
-        boolean containsMinutes = efforts.stream().anyMatch(o -> !Strings.isNullOrBlank(o.minutes()));
+        var sortedEfforts = new ArrayList<>(efforts);
+        sortedEfforts.sort(Comparator.comparing(Effort::date));
+        boolean containsMinutes = sortedEfforts.stream().anyMatch(o -> !Strings.isNullOrBlank(o.minutes()));
         if (containsMinutes) {
             helper.header("Minutes", 2);
         }
-        efforts.stream().filter(o -> !Strings.isNullOrBlank(o.minutes())).forEach(o -> {
+        sortedEfforts.stream().filter(o -> !Strings.isNullOrBlank(o.minutes())).forEach(o -> {
             helper.header("Minutes %s".formatted(o.date().toString()), 3);
             helper.paragraph(o.minutes());
         });

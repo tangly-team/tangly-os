@@ -44,6 +44,7 @@ import java.util.function.Supplier;
 public record JsonEntity<T>(List<JsonField<T, ?>> properties, Supplier<T> factory, BiFunction<JSONObject, Object, T> imports,
                             BiFunction<T, Object, JSONObject> exports) {
     public static final String SCHEMA_PROPERTY = "$schema";
+
     /**
      * Defines a factory method for a regular Java class mapped to a JSON type.
      *

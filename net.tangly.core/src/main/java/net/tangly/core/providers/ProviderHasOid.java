@@ -27,7 +27,7 @@ import java.util.Optional;
  *
  * @param <T> type of the items handled in the provider
  */
-public class ProviderHasOid<T extends HasOid> implements Provider<T> {
+public class ProviderHasOid<T extends HasOid> extends Provider<T> {
     private final IdGenerator generator;
     private final Provider<T> provider;
 

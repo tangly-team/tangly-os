@@ -8,6 +8,7 @@ params:
 ---
 
 include::../fragments/_config-mb-blog.adoc[]
+:ref-handelsregister: https://zg.ch/de/volkswirtschaftsdirektion/handelsregister-und-konkursamt/handelsregisteramt[Handelsregisteramt Zug]
 
 image::2016-11-02-head.jpg[width=420,height=360,role=left]
 
@@ -38,7 +39,7 @@ They needed three weeks to create the account and send payment confirmation.
 They were aware of the problem and very helpful, but it still took three weeks.
 . Upon reception of the payment confirmation, I sent all signed documents to https://www.swissregistration.ch/[Swissregistration].
 The next day the company was founded, and I received the official paper documents a few hours later.
-. I went to https://www.zg.ch/behoerden/volkswirtschaftsdirektion/handelsregisteramt[Handelsregisteramt Zug] to register the company.
+. I went to {ref-handelsregister} to register the company.
 They were very nice but told me they had a lot of work.
 Two weeks later, they finally registered the company and sent me the papers and an invoice for CHF 780.
 . A few phone calls later, https://www.postfinance.ch/[Postfinance] converted the account into a regular account.
@@ -52,7 +53,7 @@ They also help me because the company CRIF AG wrongly classified the activities 
 They never contacted me, and their NOGA classification has a huge impact on my costs.
 They are arrogant morons.
 * BU/NBU – the best offer was from https://www.baloise.ch/[Basler Versicherung]
-When starting a software startup I suggest not concluding any other insurances
+When starting a software startup, I suggest not concluding any other insurances
 
 The government-controlled social insurance contracts can only be initiated once the company is registered in the Swiss company registry.
 The AHV center needed more than two weeks to confirm my registration.

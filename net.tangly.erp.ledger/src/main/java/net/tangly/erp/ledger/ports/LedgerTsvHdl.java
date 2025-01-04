@@ -121,11 +121,10 @@ public class LedgerTsvHdl {
                     } else {
                         account = Account.of(accountGroup, currentSection, currency, text, ownedByGroupId);
                     }
-                    ledger.add(account);
+                    ledger.update(account);
                     ++counter;
                     audit.log(EventData.IMPORT_EVENT, EventData.Status.INFO, "%s imported".formatted(Account.class.getSimpleName()),
                         Map.of(SOURCE, path, "object", account));
-
                 }
                 audit.log(EventData.IMPORT_EVENT, EventData.Status.INFO, "%s imported objects".formatted(Account.class.getSimpleName()),
                     Map.of(SOURCE, path, "count", counter));

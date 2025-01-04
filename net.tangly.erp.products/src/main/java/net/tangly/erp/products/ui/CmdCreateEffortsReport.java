@@ -144,9 +144,26 @@ public class CmdCreateEffortsReport implements Cmd {
             validateDateInterval(fromDate.getValue(), toDate.getValue()));
     }
 
+    /**
+     * The filename to propose has the following form.
+     * <em>year is displayed as four digits and month as two digits value to follow ISO date representation.</em>
+     * <em>If to date is missing, we take the current year and month.</em>
+     * <dl>
+     *     <dt>if from and to are defined and are in the same month.</dt>
+     *     <dd>to_yyyy-to_month-assignmentId-collaborator-from_month_named_as_full_text</dd>
+     *     <dt>if from and to are defined and are not in the same year</dt
+     *     <dd>to_yyyy-to_month-assignmentId-collaborator-from_date-to_date. The from_date and to_date follow ISO date representation.</dd>
+     * </dl>
+     *
+     * @param assignment   the name of the assignment
+     * @param collaborator the name of the collaborator
+     * @param from         the start date of the report and is optional
+     * @param to           the end date of the report and is optional
+     * @return the generated filename
+     */
     private String filename(@NotNull String assignment, @NotNull String collaborator, LocalDate from, LocalDate to) {
         YearMonth generated = (Objects.nonNull(to)) ? YearMonth.from(to) : YearMonth.now();
-        String generatedText = "%d-%%02d%d".formatted(generated.getYear(), generated.getMonthValue());
+        String generatedText = "%04d-%02d".formatted(generated.getYear(), generated.getMonthValue());
         String dateText;
         if (Objects.nonNull(from) && Objects.nonNull(to) && (YearMonth.from(from).equals(YearMonth.from(to)))) {
             dateText = YearMonth.from(to).getMonth().toString();

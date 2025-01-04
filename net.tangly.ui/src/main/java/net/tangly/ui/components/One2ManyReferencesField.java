@@ -33,10 +33,9 @@ import java.util.Objects;
 /**
  * The view displays all items of a property backed by a collection. Two operations are supported. You can remove selected items from the collection. You can select items from a
  * list and add them to the collection.
- * <p>The List mode is used when read-only state is applied to the owning entity. No menu items are available.
- * The view mode is used when the entity is editable. The menu items provides add and remove of items from the collection. If the view of the collection
- * field has a form, a view
- * menu item is provided.
+ * <p>The List mode is used when the read-only state is applied to the owning entity. No menu items are available.
+ * The view mode is used when the entity is editable. The menu items provide adding and removing of items operations from the collection. If the view of the
+ * collection field has a form, a view menu item is provided.
  * </p>
  * <p>The add action opens a dialog with a list of all entities, which could be added to the relation.
  * The user can select multiple items and either add them to the displayed relation or discard the changes. The changes are only performed in the user interface and will only be

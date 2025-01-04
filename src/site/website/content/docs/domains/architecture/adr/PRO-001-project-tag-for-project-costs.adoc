@@ -1,0 +1,42 @@
+---
+title: "PRJ 001"
+date: 2017-12-01
+weight: 2
+---
+
+== PRJ-001 Use Tag for product costs computation
+
+Date: 2017-12-01
+
+=== Status
+
+Implemented
+
+=== Context
+
+We would like to compute earnings and costs on per product base.
+Each transaction entry should support tags to identify the associated projects or departments.
+The tag approach supports multiple consolidation of an orthogonal cost structure.
+
+=== Decision
+
+We will support tags at the transaction entry.
+The tags are a triplet *[namespace:]name[=value]* format.
+We recommend the namespace "fin", the name "segment", and a text identifier has value.
+
+[NOTE]
+====
+The approach was implemented for a small company ERP system.
+
+The segment tag is used to identify the department or collaborator involved in the transaction.
+This is a simple approach to support a cost structure based on profit and loss centers.
+
+the project tag is used to identify the project or product involved in the transaction.
+This is a simple approach to support a cost structure based on projects or products.
+====
+
+=== Consequences
+
+* Ontology based on tags is not hard to define through a type system.
+See the tag feature provided in the `net.tangly.core.domain` package.
+* Checks have to be implemented to guaranty an adequate level of tracking.

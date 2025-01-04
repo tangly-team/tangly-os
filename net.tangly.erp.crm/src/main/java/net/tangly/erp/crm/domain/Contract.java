@@ -152,7 +152,8 @@ public class Contract extends MutableEntityExtendedImp implements MutableEntityE
 
     @Override
     public boolean equals(Object obj) {
-        return (obj instanceof Contract o) && super.equals(o) && Objects.equals(address(), o.address()) && Objects.equals(bankConnection(), o.bankConnection()) &&
+        return (obj instanceof Contract o) && super.equals(o) && Objects.equals(address(), o.address()) &&
+            Objects.equals(bankConnection(), o.bankConnection()) &&
             Objects.equals(amountWithoutVat(), o.amountWithoutVat()) && Objects.equals(seller(), o.seller()) && Objects.equals(sellee(), o.sellee()) &&
             Objects.equals(locale(), o.locale()) && Objects.equals(currency(), o.currency());
     }
@@ -161,6 +162,7 @@ public class Contract extends MutableEntityExtendedImp implements MutableEntityE
     public String toString() {
         return """
             Contract[oid=%s, id=%s, name=%s, fromDate=%s, toDate=%s, text=%s, locale=%s, currency=%s, address=%s, bankConnection=%s, amountWithoutVat=%s, seller=%s, sellee=%s, tags=%s]
-            """.formatted(oid(), id(), name(), from(), to(), text(), locale(), currency(), address(), bankConnection(), amountWithoutVat(), seller(), sellee(), tags());
+            """.formatted(oid(), id(), name(), from(), to(), text(), locale(), currency(), address(), bankConnection(), amountWithoutVat(), seller(), sellee(),
+            tags());
     }
 }

@@ -34,6 +34,7 @@ public interface InvoicesPort extends Port<InvoicesRealm> {
     String ARTICLES_TSV = "articles.tsv";
     String JSON_EXT = ".json";
 
+
     /**
      * Exports an invoice to a file. The method is responsible for infering the uri to the generated invoice document.
      * <p><em>implNote</em> The asciidoc document is deleted upon creation of the pdf document.</p>
@@ -41,10 +42,11 @@ public interface InvoicesPort extends Port<InvoicesRealm> {
      * @param invoice     invoice to be exported
      * @param withQrCode  flag if the Swiss QR cde should be added to the invoice document
      * @param withEN16931 flag if the EN16931 digital invoice should be added to the invoice document
+     * @param pdfa        flag if the pdf document should be generated in pdfa format
      * @param overwrite   flag if an existing document should be overwritten
-     * @see #exportInvoiceDocuments(DomainAudit, boolean, boolean, boolean, LocalDate, LocalDate, Collection)
+     * @see #exportInvoiceDocuments(DomainAudit, boolean, boolean, boolean, boolean, LocalDate, LocalDate, Collection)
      */
-    void exportInvoiceDocument(@NotNull DomainAudit audit, @NotNull Invoice invoice, boolean withQrCode, boolean withEN16931, boolean overwrite,
+    void exportInvoiceDocument(@NotNull DomainAudit audit, @NotNull Invoice invoice, boolean withQrCode, boolean withEN16931, boolean pdfa, boolean overwrite,
                                Collection<Tag> tags);
 
     /**
@@ -53,11 +55,13 @@ public interface InvoicesPort extends Port<InvoicesRealm> {
      *
      * @param withQrCode  flag if the Swiss QR cde should be added to the invoice document
      * @param withEN16931 flag if the EN16931 digital invoice should be added to the invoice document
+     * @param pdfa        flag if the pdf document should be generated in pdfa format
+     * @param overwrite   flag if an existing document should be overwritten
      * @param from        optional start of the relevant time interval for the invoiced date
      * @param to          optional end of the relevant time interval for the invoiced date
-     * @param overwrite   flag if an existing document should be overwritten
      */
-    void exportInvoiceDocuments(@NotNull DomainAudit audit, boolean withQrCode, boolean withEN16931, boolean overwrite, LocalDate from, LocalDate to,
+    void exportInvoiceDocuments(@NotNull DomainAudit audit, boolean withQrCode, boolean withEN16931, boolean pdfa, boolean overwrite, LocalDate from,
+                                LocalDate to,
                                 Collection<Tag> tags);
 
     record InvoiceView(@NotNull String id, @NotNull Currency currency, @NotNull BigDecimal amountWithoutVat, @NotNull BigDecimal vat,

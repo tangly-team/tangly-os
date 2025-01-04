@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!--
-  - Copyright 2022 Marcel Baumann
+  - Copyright 2022-2024 Marcel Baumann
   -
   - Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
   - the License at
@@ -9,17 +9,100 @@
   -
   - Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
   - OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+  -
   -->
 
 <svg xmlns="http://www.w3.org/2000/svg" contentScriptType="application/ecmascript" contentStyleType="text/css" height="207px" preserveAspectRatio="none"
-     style="width:444px;height:207px;" version="1.1" viewBox="0 0 444 207" width="444px" zoomAndPan="magnify"><defs><filter height="300%" id="f16750mp4nsw80" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[19c384ec939cf3ef8ab57cab22d69bc2]
-class JsonField--><rect fill="#FEFECE" filter="url(#f16750mp4nsw80)" height="73.9102" id="JsonField" style="stroke: #A80036; stroke-width: 1.5;" width="231" x="177" y="123"/><ellipse cx="248.75" cy="139" fill="#B4A7E5" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M245.1777,135.2651 L245.1777,133.1069 L252.5571,133.1069 L252.5571,135.2651 L250.0918,135.2651 L250.0918,143.3418 L252.5571,143.3418 L252.5571,145.5 L245.1777,145.5 L245.1777,143.3418 L247.6431,143.3418 L247.6431,135.2651 Z "/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="51" x="269.25" y="143.5352">JsonField</text><rect fill="#FFFFFF" height="16.1328" style="stroke: #000000; stroke-width: 1.0; stroke-dasharray: 2.0,2.0;" width="26" x="385" y="120"/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="24" x="386" y="132.6016">T, U</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="178" x2="407" y1="155" y2="155"/><line style="stroke: #A80036; stroke-width: 1.5;" x1="178" x2="407" y1="163" y2="163"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="219" x="183" y="177.6348">void imports(T entity, JSONObject object)</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="219" x="183" y="190.5898">void exports(T entity, JSONObject object)</text><!--MD5=[61380588cfd4902febf0b9c47d1d58b8]
-class JsonProperty--><rect fill="#FEFECE" filter="url(#f16750mp4nsw80)" height="54.2656" id="JsonProperty" style="stroke: #A80036; stroke-width: 1.5;" width="133" x="147" y="8"/><ellipse cx="162" cy="27.1328" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M164.4731,33.2759 Q163.8921,33.5747 163.2529,33.7241 Q162.6138,33.8735 161.9082,33.8735 Q159.4014,33.8735 158.0815,32.2217 Q156.7617,30.5698 156.7617,27.4487 Q156.7617,24.3193 158.0815,22.6675 Q159.4014,21.0156 161.9082,21.0156 Q162.6138,21.0156 163.2612,21.165 Q163.9087,21.3145 164.4731,21.6133 L164.4731,24.3359 Q163.8423,23.7549 163.2488,23.4851 Q162.6553,23.2153 162.0244,23.2153 Q160.6797,23.2153 159.9949,24.282 Q159.3101,25.3486 159.3101,27.4487 Q159.3101,29.5405 159.9949,30.6072 Q160.6797,31.6738 162.0244,31.6738 Q162.6553,31.6738 163.2488,31.4041 Q163.8423,31.1343 164.4731,30.5532 Z "/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="50" x="187.5" y="24.6016">«record»</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="73" x="176" y="38.7344">JsonProperty</text><rect fill="#FFFFFF" height="16.1328" style="stroke: #000000; stroke-width: 1.0; stroke-dasharray: 2.0,2.0;" width="26" x="257" y="5"/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="24" x="258" y="17.6016">T, U</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="148" x2="279" y1="46.2656" y2="46.2656"/><line style="stroke: #A80036; stroke-width: 1.5;" x1="148" x2="279" y1="54.2656" y2="54.2656"/><!--MD5=[c157cd45ee96a74697917465c858f2f2]
-class JsonArray--><rect fill="#FEFECE" filter="url(#f16750mp4nsw80)" height="54.2656" id="JsonArray" style="stroke: #A80036; stroke-width: 1.5;" width="115" x="315" y="8"/><ellipse cx="330" cy="27.1328" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M332.4731,33.2759 Q331.8921,33.5747 331.2529,33.7241 Q330.6138,33.8735 329.9082,33.8735 Q327.4014,33.8735 326.0815,32.2217 Q324.7617,30.5698 324.7617,27.4487 Q324.7617,24.3193 326.0815,22.6675 Q327.4014,21.0156 329.9082,21.0156 Q330.6138,21.0156 331.2612,21.165 Q331.9087,21.3145 332.4731,21.6133 L332.4731,24.3359 Q331.8423,23.7549 331.2488,23.4851 Q330.6553,23.2153 330.0244,23.2153 Q328.6797,23.2153 327.9949,24.282 Q327.3101,25.3486 327.3101,27.4487 Q327.3101,29.5405 327.9949,30.6072 Q328.6797,31.6738 330.0244,31.6738 Q330.6553,31.6738 331.2488,31.4041 Q331.8423,31.1343 332.4731,30.5532 Z "/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="50" x="346.5" y="24.6016">«record»</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="55" x="344" y="38.7344">JsonArray</text><rect fill="#FFFFFF" height="16.1328" style="stroke: #000000; stroke-width: 1.0; stroke-dasharray: 2.0,2.0;" width="26" x="407" y="5"/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="24" x="408" y="17.6016">T, U</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="316" x2="429" y1="46.2656" y2="46.2656"/><line style="stroke: #A80036; stroke-width: 1.5;" x1="316" x2="429" y1="54.2656" y2="54.2656"/><!--MD5=[d881006194e0b49b1aaabdc4e7953b65]
-class JsonEntity--><rect fill="#FEFECE" filter="url(#f16750mp4nsw80)" height="54.2656" id="JsonEntity" style="stroke: #A80036; stroke-width: 1.5;" width="99" x="6" y="133"/><ellipse cx="21" cy="152.1328" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M23.4731,158.2759 Q22.8921,158.5747 22.2529,158.7241 Q21.6138,158.8735 20.9082,158.8735 Q18.4014,158.8735 17.0815,157.2217 Q15.7617,155.5698 15.7617,152.4487 Q15.7617,149.3193 17.0815,147.6675 Q18.4014,146.0156 20.9082,146.0156 Q21.6138,146.0156 22.2612,146.165 Q22.9087,146.3145 23.4731,146.6133 L23.4731,149.3359 Q22.8423,148.7549 22.2488,148.4851 Q21.6553,148.2153 21.0244,148.2153 Q19.6797,148.2153 18.9949,149.282 Q18.3101,150.3486 18.3101,152.4487 Q18.3101,154.5405 18.9949,155.6072 Q19.6797,156.6738 21.0244,156.6738 Q21.6553,156.6738 22.2488,156.4041 Q22.8423,156.1343 23.4731,155.5532 Z "/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="50" x="37.5" y="149.6016">«record»</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="55" x="35" y="163.7344">JsonEntity</text><rect fill="#FFFFFF" height="16.1328" style="stroke: #000000; stroke-width: 1.0; stroke-dasharray: 2.0,2.0;" width="10" x="98" y="130"/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="8" x="99" y="142.6016">T</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="7" x2="104" y1="171.2656" y2="171.2656"/><line style="stroke: #A80036; stroke-width: 1.5;" x1="7" x2="104" y1="179.2656" y2="179.2656"/><!--MD5=[a9b278688fedc34e1c7a4ff79d016bb0]
-reverse link JsonProperty to JsonField--><path d="M241.17,79.08 C250.32,93.32 260.39,109.01 269.18,122.69 " fill="none" id="JsonProperty&lt;-JsonField" style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 7.0,7.0;"/><polygon fill="none" points="235.17,82.7,230.25,62.09,246.95,75.13,235.17,82.7" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[61d8572711611b973678a4af2c5d3c73]
-reverse link JsonArray to JsonField--><path d="M344.48,79.08 C335.22,93.32 325.01,109.01 316.12,122.69 " fill="none" id="JsonArray&lt;-JsonField" style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 7.0,7.0;"/><polygon fill="none" points="338.76,75.03,355.53,62.09,350.5,82.67,338.76,75.03" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[b5538769f08c4f63d175d16154c02d26]
-reverse link JsonEntity to JsonField--><path d="M118.25,160 C136.36,160 156.73,160 176.98,160 " fill="none" id="JsonEntity&lt;-JsonField" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="105.18,160,111.18,164,117.18,160,111.18,156,105.18,160" style="stroke: #A80036; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="35" x="123.5" y="153.5684">fields</text><!--MD5=[9bc9d7cb8184cfe68d47e95877e9c1d8]
+     style="width:444px;height:207px;" version="1.1" viewBox="0 0 444 207" width="444px" zoomAndPan="magnify">
+    <defs>
+        <filter height="300%" id="f16750mp4nsw80" width="300%" x="-1" y="-1">
+            <feGaussianBlur result="blurOut" stdDeviation="2.0"/>
+            <feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/>
+            <feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/>
+            <feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/>
+        </filter>
+    </defs>
+    <g><!--MD5=[19c384ec939cf3ef8ab57cab22d69bc2]
+class JsonField-->
+        <rect fill="#FEFECE" filter="url(#f16750mp4nsw80)" height="73.9102" id="JsonField" style="stroke: #A80036; stroke-width: 1.5;" width="231" x="177"
+              y="123"/>
+        <ellipse cx="248.75" cy="139" fill="#B4A7E5" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <path
+            d="M245.1777,135.2651 L245.1777,133.1069 L252.5571,133.1069 L252.5571,135.2651 L250.0918,135.2651 L250.0918,143.3418 L252.5571,143.3418 L252.5571,145.5 L245.1777,145.5 L245.1777,143.3418 L247.6431,143.3418 L247.6431,135.2651 Z "/>
+        <text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="51" x="269.25"
+              y="143.5352">JsonField
+        </text>
+        <rect fill="#FFFFFF" height="16.1328" style="stroke: #000000; stroke-width: 1.0; stroke-dasharray: 2.0,2.0;" width="26" x="385" y="120"/>
+        <text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="24" x="386" y="132.6016">T,
+            U
+        </text>
+        <line style="stroke: #A80036; stroke-width: 1.5;" x1="178" x2="407" y1="155" y2="155"/>
+        <line style="stroke: #A80036; stroke-width: 1.5;" x1="178" x2="407" y1="163" y2="163"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="219" x="183" y="177.6348">void imports(T
+            entity, JSONObject object)
+        </text>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="219" x="183" y="190.5898">void exports(T
+            entity, JSONObject object)
+        </text><!--MD5=[61380588cfd4902febf0b9c47d1d58b8]
+class JsonProperty-->
+        <rect fill="#FEFECE" filter="url(#f16750mp4nsw80)" height="54.2656" id="JsonProperty" style="stroke: #A80036; stroke-width: 1.5;" width="133" x="147"
+              y="8"/>
+        <ellipse cx="162" cy="27.1328" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <path
+            d="M164.4731,33.2759 Q163.8921,33.5747 163.2529,33.7241 Q162.6138,33.8735 161.9082,33.8735 Q159.4014,33.8735 158.0815,32.2217 Q156.7617,30.5698 156.7617,27.4487 Q156.7617,24.3193 158.0815,22.6675 Q159.4014,21.0156 161.9082,21.0156 Q162.6138,21.0156 163.2612,21.165 Q163.9087,21.3145 164.4731,21.6133 L164.4731,24.3359 Q163.8423,23.7549 163.2488,23.4851 Q162.6553,23.2153 162.0244,23.2153 Q160.6797,23.2153 159.9949,24.282 Q159.3101,25.3486 159.3101,27.4487 Q159.3101,29.5405 159.9949,30.6072 Q160.6797,31.6738 162.0244,31.6738 Q162.6553,31.6738 163.2488,31.4041 Q163.8423,31.1343 164.4731,30.5532 Z "/>
+        <text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="50" x="187.5" y="24.6016">
+            «record»
+        </text>
+        <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="73" x="176" y="38.7344">JsonProperty</text>
+        <rect fill="#FFFFFF" height="16.1328" style="stroke: #000000; stroke-width: 1.0; stroke-dasharray: 2.0,2.0;" width="26" x="257" y="5"/>
+        <text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="24" x="258" y="17.6016">T,
+            U
+        </text>
+        <line style="stroke: #A80036; stroke-width: 1.5;" x1="148" x2="279" y1="46.2656" y2="46.2656"/>
+        <line style="stroke: #A80036; stroke-width: 1.5;" x1="148" x2="279" y1="54.2656" y2="54.2656"/><!--MD5=[c157cd45ee96a74697917465c858f2f2]
+class JsonArray-->
+        <rect fill="#FEFECE" filter="url(#f16750mp4nsw80)" height="54.2656" id="JsonArray" style="stroke: #A80036; stroke-width: 1.5;" width="115" x="315"
+              y="8"/>
+        <ellipse cx="330" cy="27.1328" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <path
+            d="M332.4731,33.2759 Q331.8921,33.5747 331.2529,33.7241 Q330.6138,33.8735 329.9082,33.8735 Q327.4014,33.8735 326.0815,32.2217 Q324.7617,30.5698 324.7617,27.4487 Q324.7617,24.3193 326.0815,22.6675 Q327.4014,21.0156 329.9082,21.0156 Q330.6138,21.0156 331.2612,21.165 Q331.9087,21.3145 332.4731,21.6133 L332.4731,24.3359 Q331.8423,23.7549 331.2488,23.4851 Q330.6553,23.2153 330.0244,23.2153 Q328.6797,23.2153 327.9949,24.282 Q327.3101,25.3486 327.3101,27.4487 Q327.3101,29.5405 327.9949,30.6072 Q328.6797,31.6738 330.0244,31.6738 Q330.6553,31.6738 331.2488,31.4041 Q331.8423,31.1343 332.4731,30.5532 Z "/>
+        <text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="50" x="346.5" y="24.6016">
+            «record»
+        </text>
+        <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="55" x="344" y="38.7344">JsonArray</text>
+        <rect fill="#FFFFFF" height="16.1328" style="stroke: #000000; stroke-width: 1.0; stroke-dasharray: 2.0,2.0;" width="26" x="407" y="5"/>
+        <text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="24" x="408" y="17.6016">T,
+            U
+        </text>
+        <line style="stroke: #A80036; stroke-width: 1.5;" x1="316" x2="429" y1="46.2656" y2="46.2656"/>
+        <line style="stroke: #A80036; stroke-width: 1.5;" x1="316" x2="429" y1="54.2656" y2="54.2656"/><!--MD5=[d881006194e0b49b1aaabdc4e7953b65]
+class JsonEntity-->
+        <rect fill="#FEFECE" filter="url(#f16750mp4nsw80)" height="54.2656" id="JsonEntity" style="stroke: #A80036; stroke-width: 1.5;" width="99" x="6"
+              y="133"/>
+        <ellipse cx="21" cy="152.1328" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <path
+            d="M23.4731,158.2759 Q22.8921,158.5747 22.2529,158.7241 Q21.6138,158.8735 20.9082,158.8735 Q18.4014,158.8735 17.0815,157.2217 Q15.7617,155.5698 15.7617,152.4487 Q15.7617,149.3193 17.0815,147.6675 Q18.4014,146.0156 20.9082,146.0156 Q21.6138,146.0156 22.2612,146.165 Q22.9087,146.3145 23.4731,146.6133 L23.4731,149.3359 Q22.8423,148.7549 22.2488,148.4851 Q21.6553,148.2153 21.0244,148.2153 Q19.6797,148.2153 18.9949,149.282 Q18.3101,150.3486 18.3101,152.4487 Q18.3101,154.5405 18.9949,155.6072 Q19.6797,156.6738 21.0244,156.6738 Q21.6553,156.6738 22.2488,156.4041 Q22.8423,156.1343 23.4731,155.5532 Z "/>
+        <text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="50" x="37.5" y="149.6016">
+            «record»
+        </text>
+        <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="55" x="35" y="163.7344">JsonEntity</text>
+        <rect fill="#FFFFFF" height="16.1328" style="stroke: #000000; stroke-width: 1.0; stroke-dasharray: 2.0,2.0;" width="10" x="98" y="130"/>
+        <text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="8" x="99" y="142.6016">T
+        </text>
+        <line style="stroke: #A80036; stroke-width: 1.5;" x1="7" x2="104" y1="171.2656" y2="171.2656"/>
+        <line style="stroke: #A80036; stroke-width: 1.5;" x1="7" x2="104" y1="179.2656" y2="179.2656"/><!--MD5=[a9b278688fedc34e1c7a4ff79d016bb0]
+reverse link JsonProperty to JsonField-->
+        <path d="M241.17,79.08 C250.32,93.32 260.39,109.01 269.18,122.69 " fill="none" id="JsonProperty&lt;-JsonField"
+              style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 7.0,7.0;"/>
+        <polygon fill="none" points="235.17,82.7,230.25,62.09,246.95,75.13,235.17,82.7" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[61d8572711611b973678a4af2c5d3c73]
+reverse link JsonArray to JsonField-->
+        <path d="M344.48,79.08 C335.22,93.32 325.01,109.01 316.12,122.69 " fill="none" id="JsonArray&lt;-JsonField"
+              style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 7.0,7.0;"/>
+        <polygon fill="none" points="338.76,75.03,355.53,62.09,350.5,82.67,338.76,75.03" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[b5538769f08c4f63d175d16154c02d26]
+reverse link JsonEntity to JsonField-->
+        <path d="M118.25,160 C136.36,160 156.73,160 176.98,160 " fill="none" id="JsonEntity&lt;-JsonField" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <polygon fill="#A80036" points="105.18,160,111.18,164,117.18,160,111.18,156,105.18,160" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="35" x="123.5" y="153.5684">fields</text><!--MD5=[9bc9d7cb8184cfe68d47e95877e9c1d8]
 @startuml
 interface JsonField<T, U> {
     void imports(T entity, JSONObject object)
@@ -46,4 +129,6 @@ Operating System: Mac OS X
 Default Encoding: UTF-8
 Language: en
 Country: CH
---></g></svg>
+-->
+    </g>
+</svg>

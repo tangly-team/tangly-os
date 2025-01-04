@@ -1,45 +1,214 @@
 ---
-title: "Java Concurrency Approaches"
-linkTitle: "Java Concurrency"
+title: "Rant about Switzerland"
+linkTitle: "Swiss Rant"
 date: 2025-10-01
-tags: ["java", "architecture"]
+tags: ["tangly", "agile"]
 params:
-  featured: "blog/2025/pics/2025-10-01-head.png"
+  featured: "blog/2025/pics/2025-01-02-head.jpg"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]
-:ref-ros: https://www.ros.org/[Robot Operating System _ROS_]
+:ref-erasmus: https://en.wikipedia.org/wiki/Erasmus_Programme[Erasmus Program]
+:ref-futureday: https://www.nationalerzukunftstag.ch/en[National Future Day]
+:ref-horizon: https://en.wikipedia.org/wiki/Horizon_Europe[Horizon Europe]
+:ref-postfinance: https://www.postfinance.ch/en/private/products/investment-funds.html[PostFinance Funds]
+:ref-svp: https://en.wikipedia.org/wiki/Swiss_People%27s_Party[Swiss People's Party]
 
-image::2025-10-01-head.png[width=420,height=360,role=left]
+image::2025-10-01-head.jpg[width=420,height=360,role=left]
 
-== First Iteration
+I am a Swiss citizen, and I am quite happy to live in Switzerland.
 
-=== Threads and Monitor
+But there are some issues that I would like to address.
+The quality of life and the standard of living in Switzerland are high.
+The last years these have been slowly decreasing.
 
-=== Synchronized, Volatile
+I am a software engineer and a father of two daughters.
+I could now live in Spain, Germany, France, Denmark, or the Netherlands and have the same or higher income and quality of life.
 
-== Second Iteration
+As a parent, I want to provide my daughters opportunities for the best possible future.
 
-=== Executors
+Below are some issues I found out in the last years.
+I am a father of two wonderful daughters.
+I found out which aspects are not optimal for the future of my children.
 
-=== Concurrent Primitives and Collections
+== No digital identity for Swiss citizens
 
-=== Fork and Join
+We currently have no access to digital identity in Switzerland.
 
-== Third Iteration
+You have to give your child a physical identification card, often also physical money, physical travel cards, and a physical health insurance card.
+All parents know that children lose things.
 
-=== Parallel Streams
+Replacing a lost card is a nightmare.
+It takes weeks, and it is naturally not a digital process.
+Additionally, you have to pay quite a fee for the replacement.
 
-=== Completable Future and CompletableStage
+[NOTE]
+====
+The government is currently working on a digital identity for Swiss citizens.
+Hopefully, we shall get it in 2026 at the earliest.
 
-=== Reactive API
+Some transportation companies are working on a digital travel card.
+Availability is almost a lottery based on the company.
+====
 
-=== Forth Iteration
+== No digital payment card for children younger than 12 years
 
-=== Virtual Threads
+For mysterious reasons, Swiss banks do not allow children younger than 12 years old to have a digital payment card.
+In the age of digitalization and after Corona lockdown, this is a major issue.
 
-=== Structured Concurrency
+I have to give my children physical money for their pocket money or to buy things.
+So I am forced to find an ATM and withdraw money regularly.
 
-=== Scoped Values
+== No possibility to open a stock account for children
 
-== Good Practices
+How should you finance the education of your children if you cannot invest in the stock market?
+
+This is quite impossible in Switzerland.
+
+For mysterious reasons, Swiss banking does not allow children to invest in the stock market.
+You have to wait until your child is 18 years old to open a regular stock account.
+
+Some banks other pseudo accounts, but they force you to buy their products and are not real stock accounts.
+You are forced to buy their funds instead of investing in regular ETFs.
+These funds are poorly performing and have high yearly fees.
+See, for example, the funds of {ref-postfinance}.
+
+It is a major issue for the future of the country.
+
+== Twenty-six education systems for nine million inhabitants
+
+States are responsible for the education system in Switzerland.
+Worst, details are often left to the municipalities.
+
+So we have 26 different education systems for 9 million inhabitants.
+This is a nightmare for parents who move to another canton.
+And imagine, we have in 2024 2131 municipalities in Switzerland issuing nursery, primary and sometimes secondary school reglementations.
+
+[NOTE]
+====
+As usual the {ref-svp} opposed the initiative to align the education systems.
+The initiative was called _Lehrplan 21_.
+
+The Swiss citizens voted for the harmonization of the education system.
+Around 21 cantons are currently working on the harmonization.
+Some are more progressive than others.
+
+The Swiss education system is quite good.
+The hard fact is quite good, not especially outstanding.
+====
+
+All Swiss German states are also teaching the French language as mandatory in primary and secondary school.
+My mother tongue is French, and I will happily scrap French from the curriculum.
+
+The poor children must be fluent in Swiss German, High German, and English.
+Three languages are enough for a child.
+Please scrap mandatory French from the curriculum.
+
+[IMPORTANT]
+====
+The {ref-futureday} is a great governmental initiative to show children the work of their parents.
+Try to get a place in a technical company for your child.
+It is worth the effort.
+
+The initiative is quite successful.
+The drawback is that it is once a year and not all children can get a slot to participate.
+====
+
+== Force to use Microsoft Office in schools
+
+Most Swiss cantons heavily promote the usage of Microsoft Office in schools.
+
+This is a major issue for parents who do not want to use Microsoft products.
+It is also an ethical issue as Microsoft is a US company and the data is stored in the US.
+
+[NOTE]
+====
+And please do not come with the argument that Microsoft has a data center in Switzerland.
+
+The US laws are still valid for the data stored in Switzerland.
+The US government can still access and process the data stored in Switzerland and forbid Microsoft to inform the Swiss government.
+====
+
+== Cannot listen to regular music on YouTube or Spotify
+
+The music industry bowed to the pressure of the US government.
+As a child, you cannot listen to music containing adult language on YouTube or Spotify.
+
+The word fuck is forbidden, and any song containing it cannot be played by children.
+
+I would like as a parent to be in charge of such decisions.
+I do not recognize that some fringe Christian groups force such decisions on all children on this planet.
+
+[NOTE]
+====
+The positive news is that we have access to all books in our libraries.
+Censorship like in the US is unknown in most communal or cantonal libraries.
+
+The nightmare for US librarians did not snap over to Switzerland.
+The {ref-svp} tried an initiative and was crushed by common sense.
+====
+
+== No roaming in the EU when traveling and visiting family
+
+The Swiss government has not signed the agreement with the EU to allow roaming in the EU.
+
+They still advocate that Swiss citizens should stay in Switzerland and not have any friends or family in the EU.
+
+== No membership to European education initiatives
+
+I know it is the official position of the {ref-svp} political right party, but it is a shame for the country.
+
+The strange idea to define exchange programs with China or Singapore is laudable.
+Requesting students to travel to China or Singapore to study marine biology is quite a joke.
+
+[NOTE]
+====
+One of my daughters currently wants to study marine biology.
+
+It should be obvious that you cannot study marine biology, avionic, or space engineering in Switzerland.
+You have to go to the EU to study these subjects.
+
+Switzerland was stupid enough to leave the student exchange program {ref-erasmus} and the research program {ref-horizon}.
+You more and more need European citizenship to study in the EU.
+
+The country tried to set up alternative Swiss programs.
+These initiatives were doomed to fail.
+The first top researchers and postdocs are leaving the country.
+====
+
+The same party also opposes dual citizenship.
+They promote the strange and partially illegal concept of Swiss citizenship on probation.
+
+This means that my daughters and wife should give up their Swiss citizenship if they want to keep their European citizenship.
+Worse, the same party promotes the far-right ideology and wants to send foreigners back to their country.
+
+So, my daughters who were born and educated in Switzerland should be sent back to Germany accordingly to the SVP party.
+
+== Thoughts
+
+Switzerland is a beautiful country with a high quality of life.
+I am happy to live here.
+
+But the country is not ready for the future and the digital age.
+
+The country is certainly not an ideal place for my daughters with the current xenophobic political parties.
+The current political trends will almost certainly lead to a worsening for the quality of life in Switzerland.
+
+[NOTE]
+====
+Lately I read official statistics about knowledge workers in Switzerland.
+More than 40% of all doctors, engineers, and IT specialists are foreigners because the country does not produce enough of them
+footnote:[The political system at least realized the acute problem for doctors.
+The _numerus clausus_ for doctor formation was removed in 2024.
+The decision will not have any impact in the next twelve years.
+You need six years to study medicine and another six years of practice to get the full accreditation.
+Therefore, any change is only visible after twelve years.
+
+It will probably take longer because cantons are in charge of university formation and the classroom size.].
+
+In other words, our education system is flawed and under performing.
+The education system does not produce enough knowledge workers for the needs of the country.
+The situation will degrade more rapidly in the next ten years because baby boomers are now retiring in big numbers.
+====
+
+The country has to ask itself how to stay competitive and attractive in the future.

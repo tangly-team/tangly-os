@@ -15,12 +15,12 @@ I am delighted we discuss in depth the role, responsibilities, and activities of
 I fully agree with Scrum advocates that Scrum Master is a dedicated full-time job.
 
 I am also convinced a Scrum Master can support multiple experienced Scrum teams.
-The Large Scale Scrum framework {ref-less} states a full-time Scrum Master supports 1 to 3 teams.
+The Large Scale Scrum framework {ref-less} states a full-time Scrum Master supports one to three teams.
 
 I worked with quite a few Scrum Masters, Product Owners, and Scrum teams.
 My experience shows it is more productive and effective when the Scrum Master works full-time, as (see
 https://shop.theliberators.com/products/the-8-stances-of-a-scrum-master[white paper of Barry Overeem])
-footnote:[The liberators have changed their website structure. Search under https://shop.theliberators.com/[The Liberators Shop] to find information.]
+footnote:[The liberators have changed their website structure. Search under https://shop.theliberators.com/[The Liberators' Shop] to find information.]
 
 . A servant leader
 . A coach

@@ -5,7 +5,7 @@ include::_settings_reveal.adoc[]
 
 == Motivation
 
-[quote, H.G. Wells 1945]
+[quote,H.G. Wells 1945]
 ____
 Adapt or perish, now as ever, is Nature's inexorable imperative.
 ____
@@ -31,7 +31,7 @@ ____
 
 == Domain Driven Design
 
-[plantuml, core-domain, svg]
+[plantuml,core-domain,svg]
 ----
 interface Handler {}
 interface Realm {}
@@ -78,7 +78,7 @@ Provider <|-- ProviderPersistence
 * Incredible Efficient Approach to persist models
 * Persistent Store per Bounded Domain support DDD
 * Lessons Learnt
-** Eager Save to store an entity 
+** Eager Save to store an entity
 ** Application is responsible to manage object identitfiers
 
 == Key Framework Ideas
@@ -88,7 +88,7 @@ Labels or Tags:: defines a user controlled ontology and be processed
 Table Codes:: defines a domain controlled and processed ontology
 Comments:: Human readable information as free form structure
 
-[plantuml, core-mixins, svg]
+[plantuml,core-mixins,svg]
 ----
 interface HasId {}
 interface HadOid {}
@@ -111,7 +111,7 @@ interface QualifiedEntity extends Entity, HasEditableId {}
 
 == Key Abstractions
 
-[plantuml, core-abstractions, svg]
+[plantuml,core-abstractions,svg]
 ----
 class PhoneNr {}
 class EmailAddress {}
@@ -130,12 +130,12 @@ class BankConnection {}
 
 * Employee Abstraction
 * Value Objects
-	
+
 == Products and Efforts
 
 * Agile Product Approach
 
-[plantuml, products, svg]
+[plantuml,products,svg]
 ----
 
 ----

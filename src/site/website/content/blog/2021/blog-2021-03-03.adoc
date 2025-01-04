@@ -12,7 +12,7 @@ include::../fragments/_config-mb-blog.adoc[]
 
 image::2021-03-03-head.jpg[width=420,height=360,role=left]
 
-Slowly, slowly major actors in the software architecture landscape acknowledge agile development is state of the industry approach to building software products.
+Slowly, slowly major actors in the software architecture landscape acknowledge agile development is the state of the industry approach to building software products.
 
 They are still struggling to integrate their older views into a faster, iterative, incremental development approach.
 The duration of a regular Scrum sprint is usually two weeks.
@@ -28,7 +28,7 @@ If pushed, they acknowledge agile development is mainstream and used in the over
 
 We have learnt it is difficult to concede and congratulate the winning party.
 
-Look at the President of the United States of America https://en.wikipedia.org/wiki/Donald_Trump[Donald Trump] to have a well-documented case of a loser trying all lies and tricks to avoid reality.
+Look at the President of the United States of America, https://en.wikipedia.org/wiki/Donald_Trump[Donald Trump] to have a well-documented case of a loser trying all lies and tricks to avoid reality.
 Not long ago, the tobacco industry did the same as professional liars.
 And we still have climate change deniers.
 

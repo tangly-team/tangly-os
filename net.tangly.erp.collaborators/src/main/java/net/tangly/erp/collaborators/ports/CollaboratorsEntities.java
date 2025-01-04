@@ -62,7 +62,6 @@ public class CollaboratorsEntities implements CollaboratorsRealm {
         collaborators = ProviderInMemory.of(data.collaborators);
         organizations = ProviderInMemory.of(data.organizations);
         contracts = ProviderInMemory.of(data.contracts);
-
     }
 
     @Override

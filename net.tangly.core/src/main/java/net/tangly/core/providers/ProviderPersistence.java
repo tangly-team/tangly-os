@@ -13,6 +13,7 @@
 
 package net.tangly.core.providers;
 
+import org.eclipse.serializer.concurrency.LockedExecutor;
 import org.eclipse.serializer.persistence.binary.jdk17.types.BinaryHandlersJDK17;
 import org.eclipse.serializer.persistence.binary.jdk8.types.BinaryHandlersJDK8;
 import org.eclipse.serializer.persistence.types.Storer;
@@ -31,9 +32,10 @@ import java.util.List;
  *
  * @param <T> type of the instances handled in the provider
  */
-public class ProviderPersistence<T> implements Provider<T> {
+public class ProviderPersistence<T> extends Provider<T> {
     private final EmbeddedStorageManager storageManager;
     private final List<T> items;
+    private final transient LockedExecutor executor = LockedExecutor.New();
 
     public ProviderPersistence(@NotNull EmbeddedStorageManager storageManager, @NotNull List<T> items) {
         final EmbeddedStorageFoundation<?> foundation = EmbeddedStorage.Foundation();
@@ -49,41 +51,52 @@ public class ProviderPersistence<T> implements Provider<T> {
 
     @Override
     public List<T> items() {
-        return Collections.unmodifiableList(items);
+        try {
+            mutex().readLock().lock();
+            return Collections.unmodifiableList(items);
+        } finally {
+            mutex().readLock().unlock();
+        }
     }
 
     @Override
     public void update(@NotNull T entity) {
-        if (!items.contains(entity)) {
-            items.add(entity);
-            storageManager.store(entity);
-        } else {
-            Storer storer = storageManager.createEagerStorer();
-            storer.store(entity);
-            storer.commit();
-        }
-        storageManager.store(items);
-    }
-
-    @Override
-    public void updateAll(@NotNull Iterable<? extends T> entities) {
-        entities.forEach(entity -> {
+        execute(() -> {
             if (!items.contains(entity)) {
                 items.add(entity);
+                storageManager.store(entity);
             } else {
                 Storer storer = storageManager.createEagerStorer();
                 storer.store(entity);
                 storer.commit();
             }
+            storageManager.store(items);
         });
-        storageManager.store(entities);
-        storageManager.store(items);
+    }
+
+    @Override
+    public void updateAll(@NotNull Iterable<? extends T> entities) {
+        execute(() -> {
+            Storer storer = storageManager.createEagerStorer();
+            entities.forEach(entity -> {
+                if (!items.contains(entity)) {
+                    items.add(entity);
+                } else {
+                    storer.store(entity);
+                }
+            });
+            storageManager.store(entities);
+            storageManager.store(items);
+            storer.commit();
+        });
     }
 
     @Override
     public void delete(@NotNull T entity) {
-        items.remove(entity);
-        storageManager.store(items);
+        execute(() -> {
+            items.remove(entity);
+            storageManager.store(items);
+        });
     }
 
     @Override

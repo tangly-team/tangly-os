@@ -175,7 +175,7 @@ public class TagsView extends ItemView<Tag> {
     }
 
     public TagsView(@NotNull BoundedDomainUi<?> domain, @NotNull Mode mode) {
-        super(Tag.class, domain, ProviderInMemory.of(), new TagFilter(),  mode);
+        super(Tag.class, domain, ProviderInMemory.of(), new TagFilter(), mode);
         form(() -> new TagForm(this));
         init();
     }

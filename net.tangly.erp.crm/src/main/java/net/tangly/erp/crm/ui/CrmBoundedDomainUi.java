@@ -54,7 +54,7 @@ public class CrmBoundedDomainUi extends BoundedDomainUi<CrmBoundedDomain> {
     public void select(@NotNull AppLayout layout, @NotNull MenuBar menuBar) {
         MenuItem menuItem = menuBar.addItem(BoundedDomainUi.ENTITIES);
         SubMenu subMenu = menuItem.getSubMenu();
-        subMenu.addItem(LEADS, _ -> select(layout, view(Lead.class.getSimpleName()).orElseThrow()));
+        subMenu.addItem(LEADS, _ -> select(layout, view(Lead.class).orElseThrow()));
         subMenu.addItem(LEGAL_ENTITIES, _ -> select(layout, view(LegalEntity.class).orElseThrow()));
         subMenu.addItem(NATURAL_ENTITIES, _ -> select(layout, view(NaturalEntity.class).orElseThrow()));
         subMenu.addItem(CONTRACTS, _ -> select(layout, view(Contract.class).orElseThrow()));

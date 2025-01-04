@@ -1,127 +1,143 @@
 ---
-title: "Teaching Clojure III"
-linkTitle: "Clojure III"
+title: "Agile Rant"
+linkTitle: "Agile Rant"
 date: 2025-05-01
-tags: ["jvm-languages", "series-students"]
+tags: ["tangly", "agile"]
 params:
-  featured: "blog/2025/pics/2025-05-01-head.png"
+  featured: "blog/2025/pics/2025-05-01-head.jpg"
 ---
 
 include::../fragments/_config-mb-blog.adoc[]
 
-image::2025-05-01-head.png[width=420,height=360,role=left]
+image::2025-05-01-head.jpg[width=420,height=360,role=left]
 
-== More Functional Constructs
+I am using agile approaches to develop digital products for 25 years.
+I truly enjoy the agile principles and values.
+The created digital products were quite successful on the market.
+Some of them are still in use.
+I regularly have to smile when I use an elevator in a hotel and know that some of the software we developed is used to move it.
 
-Functions can be defined to take different numbers of parameters, meaning different _arity_.
-Different arities must all be defined in the same defn.
-Using _defn_ more than once will replace the previous function.
+Honestly, I do not care if you prefer {ref-scrum}, {ref-kanban}, {ref-xp}, or your own agile approach.
+I am not a fan of {ref-safe}.
+If you are more successful with {ref-safe}, I am happy for you.
+Please feel free to use it.
 
-Functions may also define a variable number of parameters.
-This is known as a "variadic" function.
-The variable parameters must occur at the end of the parameter list.
-They will be collected in a sequence for use by the function.
+I am an engineer and an entrepreneur.
+A method is a tool for me.
+The approach is good if your digital product is _more_ successful on the market.
 
-[source,clojure]
-----
-(defn greet
-     ([] (greet "you"))
-     ([name] (print "Hello" name))
-     [name & rest] (apply print "Hello" name rest))
+And I really hate the agile methodology zealots and the agile ignorants.
+I provide below some examples I still regularly encounter with new customers.
 
-----
+== Thinking Agile is a Project Method
 
-An anonymous function can be created with _fn_.
-Because the anonymous function has no name, it cannot be referred to later.
-Rather, the anonymous function is typically created at the point it is passed to another function.
-Or it is possible to immediately invoke it.
-_This is not a common usage_.
+Too many people think agile is a project management method.
+It is absolutely not.
 
-[source,clojure]
-----
-(  (fn [message] (println message))  "Hello world!" )
-----
+Agile approaches are a set of principles and values to develop digital *products*.
 
-map filter reduce with lambda expressions
+[IMPORTANT]
+====
+Customers do not buy projects.
+Customers buy products.
 
-method chaining (f2 f1 x) is equivalent to (-> x f1 f2)
+If the outcome of your project is not a product, you are doing something wrong.
+====
 
-== Recursions
+The word _project_ is mentioned only once in the {ref-scrum}.
+It states that a _Sprint_ is somewhat of a small project.
 
-Structural Recursion
+The {ref-agilemanifesto} never use the word _project_.
 
-Accumulative Recursion
+== Psycho Scrum Masters
 
-Tail Recursion
+Psycho Scrum masters are probably the worst agile zealots.
+Their mantra is _It is always a people problem._
+_Coach them to work as a team and all problems will be solved_.
 
-Sequences
+I heartily agree that a team that works well together is more productive.
+But you have to be reasonable.
+I will never let a person without deep health care skills work as a doctor and perform surgery on me.
 
-== Programming By Contracts
+In other words, it is not always a people problem.
+It can be a technical capability difficulty.
+To acquire technical skills, you need *formal education* and years of experience.____
+A few team building exercises cannot solve such knowledge and capabilities troubles.
 
-:pre and :post % is the output :tests
+[quote,Jurgen Appelo,2024]
+____
+The Agile movement’s emphasis on _soft_ skills—prioritizing people over technical and operational expertise—has left teams ill-equipped to deliver value
+despite feeling good about themselves.
 
+Many coaches lack deep backgrounds, leading to fluff-focused coaching and failed transformations.
+Organizations abandoned Agile when they saw their investments did not yield tangible results.
 
-Destructuring is a way to concisely bind names to the values inside a data structure.
-Destructuring allows us to write more concise and readable code.
+*Technical depth, operational expertise, and deep learning still matter*.
+____
 
-[source,clojure]
-----
-(def my-line [[5 10] [10 20]])
-(let [[p1 p2] my-line
-      [x1 y1] p1
-      [x2 y2] p2]
- (println "Line from (" x1 "," y1 ") to (" x2 ", " y2 ")"))
+You need technical training and skills for technical jobs
+footnote:[I studied for four and a half years at the Swiss Federal Institute of Technology of Lausanne _EPFL_ to get my master degree in Computer Science.
+I cannot reach the level of such a formal training by attending a few days of conference or bootcamp sessions.].
+You need Scrum Masters with technical skills to coach software development teams.
+How can you help a team improve their digital product development processes and techniques if you have no clue about software development?
 
-(def my-vector [1 2 3])
-(let [[x y z] my-vector]
-  (println x y z))
+[NOTE]
+====
+Smaller companies cannot afford an agile coach and an additional technical coach.
+Beware that in Europe small and medium enterprises are the backbone of the economy.
 
-(def client {:name "tangly llc"  :location "Zug, Switzerland :description "Agile boutique."})
-(let [name (:name client)
-      location (:location client)
-      description (:description client)]
-  (println name location "-" description))
-----
+In such cases, the Scrum Master must have a technical background to coach the team effectively.
+====
 
-->>
+Professional Scrum Masters have a technical background if their team develops digital products
+cite:[professional-scrum-master-guide,scrum-anti-patterns,how-to-get-hired-as-a-scrum-master,scrum-pocket-guide-3rd].
 
-transducers
+== Pretending to Apply DevOps
 
-REPL
+Proud teams regularly and proudly explain to me they are applying DevOps and release their software every two weeks.
+_This is not DevOps_.
+_This is a lie._
 
-F1 for displaying the documentation of the function under the carret.
-The display the documentation in the REPL
+DevOps means you release multiple times a day or at least once a day cite:[devops-handbook,phoenix-project].
+It also means that your continuous integration, delivery, and deployment pipelines are fully automated.
+No manual steps should be required in the pipeline.
 
-[source,clojure]
-----
-(require '[clojure.repl :refer :all])                      <1>
+== Backlog as Requirements Document
 
-(doc nil?)                                                 <2>
-(source nil?)                                              <3>
-(dir clojure.core)                                         <4>
-(find-doc "nil")                                           <5>
-----
+The product backlog is not a requirements document.
+It is a list of activities to improve the digital product and move it forward.
 
-<1> Importing the clojure.repl namespace
-<2> Displaying the documentation of the _nil?_ function.
-Documentation is available only for libs that have been required.
-<3> Displaying the source code of the _nil?_ function
-<4> Displaying the list of functions in the _clojure.core_ namespace
-<5> Searching for the documentation of the nil keyword
+The size of the product backlog should cover activities for the two next sprints.
+A product backlog with 100 items is a sign of a dysfunctional product owner.
+It is not a wish list.
+It describes what we should do in the next weeks.
 
-Accessing recent results with *1, *2, *3, ...
+To be clear.
+A product backlog item can be the current version of a requirement or a user story.
+You use a specification-by-example approach cite:[bridging-communication-gap].
+Each story has acceptance criteria.
+Each acceptance criteria is implemented by one or more automated acceptance tests.
 
-Using a library with (require '[library]) or (require '[library :as lib]
+These acceptance tests are the requirements formulated as specification by example.
+You can add some annotations to the tests to generate legible documentation.
 
-== Namespaces
+== Agile is not a Silver Bullet
 
-[bibliography]
-== Links
+Agile approaches are perfect tools to detect early problems and visualize them.
+You are still responsible for solving them.
 
-- [[[clojure-1, 1]]]  link:../../2023/teaching-clojure-i/[Teaching Clojure I].
-Marcel Baumann. 2023.
-- [[[clojure-2, 2]]]  link:../../2023/teaching-clojure-ii/[Teaching Clojure II].
-Marcel Baumann. 2023.
-- [[[clojure-groovy-java, 3]]] link:../../2022/java-groovy-clojure/[Clojure, Groovy, Java]
-Marcel Baumann. 2022.
+I will again emphasize the obvious.
+You need technical skills and formal technical education to solve technical problems.
 
+== Thoughts on Agile
+
+I am applying for twenty-five years.
+The sound principles and values are still valid.
+They help me to identify issues and solve them before they become costly problems.
+
+If you find a better approach, I am happy for you.
+Use it and create the next Unicorn company.
+
+== References
+
+bibliography::[]

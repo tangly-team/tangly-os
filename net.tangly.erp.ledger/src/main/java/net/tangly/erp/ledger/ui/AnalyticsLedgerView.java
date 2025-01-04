@@ -109,7 +109,8 @@ public class AnalyticsLedgerView extends AnalyticsView {
         grid.setWidth("1200px");
         grid.setItems(DataProvider.ofCollection(segments));
         grid.addColumn(LedgerPort.Segment::name).setHeader(NAME_LABEL).setKey(NAME).setSortable(true).setResizable(true);
-        grid.addColumn(new NumberRenderer<>(LedgerPort.Segment::amount, VaadinUtils.FORMAT)).setKey(AMOUNT_LABEL).setHeader(AMOUNT).setComparator(LedgerPort.Segment::amount)
+        grid.addColumn(new NumberRenderer<>(LedgerPort.Segment::amount, VaadinUtils.FORMAT)).setKey(AMOUNT_LABEL).setHeader(AMOUNT)
+            .setComparator(LedgerPort.Segment::amount)
             .setAutoWidth(true).setResizable(true).setSortable(true).setTextAlign(ColumnTextAlign.END);
         grid.addColumn(LedgerPort.Segment::from).setHeader(FROM_LABEL).setKey(FROM).setSortable(true).setResizable(true);
         grid.addColumn(LedgerPort.Segment::to).setHeader(TO_LABEL).setKey(TO).setSortable(true).setResizable(true);
@@ -159,6 +160,7 @@ public class AnalyticsLedgerView extends AnalyticsView {
 
     /**
      * A transaction is reonciled with an invoice if the invoice was found, the amounts and the due dates, if defined, are the same.
+     *
      * @param transaction transaction to be reconciled
      * @return true if the transaction is reconciled with an invoice
      */
@@ -180,7 +182,8 @@ public class AnalyticsLedgerView extends AnalyticsView {
 
     private InvoicesPort.InvoiceView invoiceFor(@NotNull String id) {
         if (!invoiceViewsCache.containsKey(id)) {
-            InvoicesBoundedDomain domain = (InvoicesBoundedDomain) this.domain.domain().directory().getBoundedDomain(InvoicesBoundedDomain.DOMAIN).orElseThrow();
+            InvoicesBoundedDomain domain =
+                (InvoicesBoundedDomain) this.domain.domain().directory().getBoundedDomain(InvoicesBoundedDomain.DOMAIN).orElseThrow();
             domain.port().invoiceViewFor(id).ifPresent(o -> invoiceViewsCache.put(id, o));
         }
         return invoiceViewsCache.get(id);

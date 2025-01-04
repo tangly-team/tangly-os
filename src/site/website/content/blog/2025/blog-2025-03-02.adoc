@@ -1,0 +1,86 @@
+---
+title: "Why I Love Home Office"
+linkTitle: "Love Home Office"
+date: 2025-03-02
+tags: ["agile", "tangly"]
+params:
+  featured: "blog/2025/pics/2025-03-02-head.jpg"
+---
+
+[.float-group]
+--
+include::../fragments/_config-mb-blog.adoc[]
+
+image::2025-03-02-head.jpg[width=420,height=360,role=left]
+
+The Corona pandemic forced many companies to allow their employees to work from home.
+It was the first time that our culture accepted remote work as a valid option for most of the employees.
+
+The major surprise for traditional managers was that remote work was not only possible but also more productive.
+
+The current effort to bring employees back to the office is a mistake.
+Companies forcing employees back to the office will lose their best employees.
+
+Knowledge workers can choose their company in the modern working world.
+--
+
+== Workplace
+
+I have a dedicated desk in a quiet room for working professionally at home.
+The desk height is adjustable, and I can switch between sitting and standing.
+The chair is ergonomic and supports my back.
+
+The display is a 28-inch 4k monitor.
+A pleasure for my eyes.
+This is a better display than the ones I got in almost all customer offices I work for.
+I have a full-size keyboard and a mouse.
+
+_I tried working with two displays, but I never hooked up to this mode._
+_I use the notebook display as a monitoring and logging display, and the external display for development activities._
+
+Modern chat and video conferencing tools optimally support my communication with my team.
+You should buy a professional headset for your conference calls.
+Use a high-quality webcam so that your team can see you clearly.
+
+All our development for products is done on {ref-github}.
+We have a git repository, a continuous integration and delivery pipeline, and an agile product board.
+Deployments in production are manually triggered through a command line interface.
+
+Documentation is done in {ref-asciidoc} and stored in the git repository.
+The content is published as a static website.
+
+Technical books are available as ebooks.
+
+I can focus on my work without interruptions and immerse myself in complex development tasks.
+I am more productive than in the office due to the lack of interruptions.
+
+Most of my technical training and continuous learning are done online.
+The quality of online training and conferences is excellent.
+
+== Office Time
+
+I regularly meet with my team and customers onsite.
+The two days in the office are used for these meetings and for team building.
+This time is more than enough for these activities.
+
+We put effort to eliminate all unnecessary meetings.
+General information is shared in written form through chat channels.
+Synchronization on initiatives and projects is done through transparent dashboards.
+
+Meetings are used to discuss complex topics, identify potential solutions, and make decisions.
+
+Office time is also nice to have a coffee with colleagues and to discuss non-work-related topics.
+
+Be honest.
+In a well-run digital development I have seldom big or urgent problems.
+
+== Gains
+
+My commute time is around one hour each way.
+Assuming I work three days a week from home, I save 6 hours of commuting time per week or around 270 hours per year in commuting time.
+I have 270 hours more time for my family.
+I can support my daughters in their homework and school projects.
+
+The quality of life gains are tremendous.
+Better is the fact that the company has a more productive collaborator and additionally saves money on office space.
+It is a real win-win situation.

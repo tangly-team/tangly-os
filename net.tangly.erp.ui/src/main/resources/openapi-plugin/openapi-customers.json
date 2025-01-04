@@ -1,884 +1,884 @@
 {
-  "openapi": "3.0.3",
-  "info": {
-    "title": "",
-    "version": ""
-  },
-  "paths": {
-    "/customers/leads": {
-      "get": {
-        "tags": [
-          "Leads"
-        ],
-        "summary": "Get all leads",
-        "operationId": "getAllLeads",
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Lead"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "deprecated": false,
-        "security": []
-      },
-      "post": {
-        "tags": [
-          "Leads"
-        ],
-        "summary": "Create a lead",
-        "operationId": "createLead",
-        "parameters": [],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Lead"
-              }
-            }
-          },
-          "required": false
-        },
-        "responses": {
-          "204": {
-            "description": "No Content"
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          }
-        },
-        "deprecated": false,
-        "security": []
-      }
+    "openapi": "3.0.3",
+    "info": {
+        "title": "",
+        "version": ""
     },
-    "/customers/leads/:id": {
-      "get": {
-        "tags": [
-          "Leads"
-        ],
-        "summary": "Get a lead by linkedIn identifier",
-        "operationId": "getLeadById",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "The entity identifier",
-            "required": true,
-            "deprecated": false,
-            "allowEmptyValue": false,
-            "schema": {
-              "type": "string"
+    "paths": {
+        "/customers/leads": {
+            "get": {
+                "tags": [
+                    "Leads"
+                ],
+                "summary": "Get all leads",
+                "operationId": "getAllLeads",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Lead"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "deprecated": false,
+                "security": []
+            },
+            "post": {
+                "tags": [
+                    "Leads"
+                ],
+                "summary": "Create a lead",
+                "operationId": "createLead",
+                "parameters": [],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Lead"
+                            }
+                        }
+                    },
+                    "required": false
+                },
+                "responses": {
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "deprecated": false,
+                "security": []
             }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Lead"
-                }
-              }
-            }
-          }
         },
-        "deprecated": false,
-        "security": []
-      },
-      "patch": {
-        "tags": [
-          "Leads"
-        ],
-        "summary": "Update a lead identified by linkedIn identifier",
-        "operationId": "updateLeadById",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "The entity identifier",
-            "required": true,
-            "deprecated": false,
-            "allowEmptyValue": false,
-            "schema": {
-              "type": "string"
+        "/customers/leads/:id": {
+            "get": {
+                "tags": [
+                    "Leads"
+                ],
+                "summary": "Get a lead by linkedIn identifier",
+                "operationId": "getLeadById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The entity identifier",
+                        "required": true,
+                        "deprecated": false,
+                        "allowEmptyValue": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Lead"
+                                }
+                            }
+                        }
+                    }
+                },
+                "deprecated": false,
+                "security": []
+            },
+            "patch": {
+                "tags": [
+                    "Leads"
+                ],
+                "summary": "Update a lead identified by linkedIn identifier",
+                "operationId": "updateLeadById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The entity identifier",
+                        "required": true,
+                        "deprecated": false,
+                        "allowEmptyValue": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Lead"
+                            }
+                        }
+                    },
+                    "required": false
+                },
+                "responses": {
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "deprecated": false,
+                "security": []
+            },
+            "delete": {
+                "tags": [
+                    "Leads"
+                ],
+                "summary": "delete a lead by ID",
+                "operationId": "deleteLeadById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The entity identifier",
+                        "required": true,
+                        "deprecated": false,
+                        "allowEmptyValue": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "deprecated": false,
+                "security": []
             }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Lead"
-              }
-            }
-          },
-          "required": false
         },
-        "responses": {
-          "204": {
-            "description": "No Content"
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
+        "/customers/legal-entities": {
+            "get": {
+                "tags": [
+                    "LegalEntities"
+                ],
+                "summary": "Get all legal entities",
+                "operationId": "getAllLegalEntities",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/LegalEntityView"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "deprecated": false,
+                "security": []
+            },
+            "post": {
+                "tags": [
+                    "LegalEntities"
+                ],
+                "summary": "Create legal entity",
+                "operationId": "createLegalEntity",
+                "parameters": [],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/LegalEntityView"
+                            }
+                        }
+                    },
+                    "required": false
+                },
+                "responses": {
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "deprecated": false,
+                "security": []
             }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          }
         },
-        "deprecated": false,
-        "security": []
-      },
-      "delete": {
-        "tags": [
-          "Leads"
-        ],
-        "summary": "delete a lead by ID",
-        "operationId": "deleteLeadById",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "The entity identifier",
-            "required": true,
-            "deprecated": false,
-            "allowEmptyValue": false,
-            "schema": {
-              "type": "string"
+        "/customers/legal-entities/:id": {
+            "get": {
+                "tags": [
+                    "LegalEntities"
+                ],
+                "summary": "Get an entity by id",
+                "operationId": "getLegalEntityById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The entity identifier",
+                        "required": true,
+                        "deprecated": false,
+                        "allowEmptyValue": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/LegalEntityView"
+                                }
+                            }
+                        }
+                    }
+                },
+                "deprecated": false,
+                "security": []
+            },
+            "patch": {
+                "tags": [
+                    "LegalEntities"
+                ],
+                "summary": "Update a legal entity identified by ID",
+                "operationId": "updateLegalEntityById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The entity identifier",
+                        "required": true,
+                        "deprecated": false,
+                        "allowEmptyValue": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/LegalEntityView"
+                            }
+                        }
+                    },
+                    "required": false
+                },
+                "responses": {
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "deprecated": false,
+                "security": []
+            },
+            "delete": {
+                "tags": [
+                    "LegalEntities"
+                ],
+                "summary": "delete a legal entity by ID",
+                "operationId": "deleteLegalEntityById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The entity identifier",
+                        "required": true,
+                        "deprecated": false,
+                        "allowEmptyValue": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "deprecated": false,
+                "security": []
             }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "No Content"
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          }
         },
-        "deprecated": false,
-        "security": []
-      }
+        "/customers/natural-entities": {
+            "get": {
+                "tags": [
+                    "NaturalEntities"
+                ],
+                "summary": "Get all natural entities",
+                "operationId": "getAllNaturalEntities",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/NaturalEntityView"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "deprecated": false,
+                "security": []
+            },
+            "post": {
+                "tags": [
+                    "NaturalEntities"
+                ],
+                "summary": "Create a natural entity",
+                "operationId": "createNaturalEntity",
+                "parameters": [],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/NaturalEntityView"
+                            }
+                        }
+                    },
+                    "required": false
+                },
+                "responses": {
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "deprecated": false,
+                "security": []
+            }
+        },
+        "/customers/natural-entities/:email": {
+            "get": {
+                "tags": [
+                    "NaturalEntities"
+                ],
+                "summary": "Get a natural entity by his or her private email",
+                "operationId": "getNaturalEntityByEmail",
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "path",
+                        "description": "The private email address",
+                        "required": true,
+                        "deprecated": false,
+                        "allowEmptyValue": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/NaturalEntityView"
+                                }
+                            }
+                        }
+                    }
+                },
+                "deprecated": false,
+                "security": []
+            },
+            "delete": {
+                "tags": [
+                    "NaturalEntities"
+                ],
+                "summary": "delete a natural entity by email",
+                "operationId": "deletaNaturalEntityByEmail",
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "path",
+                        "description": "The entity private email address",
+                        "required": true,
+                        "deprecated": false,
+                        "allowEmptyValue": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "deprecated": false,
+                "security": []
+            }
+        },
+        "/customers/natural-entities/:id": {
+            "patch": {
+                "tags": [
+                    "NaturalEntities"
+                ],
+                "summary": "Update a natural entity identified by ID",
+                "operationId": "updateNaturalEntityById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The entity identifier",
+                        "required": true,
+                        "deprecated": false,
+                        "allowEmptyValue": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/NaturalEntityView"
+                            }
+                        }
+                    },
+                    "required": false
+                },
+                "responses": {
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "deprecated": false,
+                "security": []
+            }
+        }
     },
-    "/customers/legal-entities": {
-      "get": {
-        "tags": [
-          "LegalEntities"
-        ],
-        "summary": "Get all legal entities",
-        "operationId": "getAllLegalEntities",
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/LegalEntityView"
-                  }
+    "components": {
+        "schemas": {
+            "ErrorResponse": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                    "requestId": {
+                        "type": "string"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "code": {
+                        "type": "string"
+                    }
                 }
-              }
-            }
-          }
-        },
-        "deprecated": false,
-        "security": []
-      },
-      "post": {
-        "tags": [
-          "LegalEntities"
-        ],
-        "summary": "Create legal entity",
-        "operationId": "createLegalEntity",
-        "parameters": [],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/LegalEntityView"
-              }
-            }
-          },
-          "required": false
-        },
-        "responses": {
-          "204": {
-            "description": "No Content"
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
+            },
+            "Address": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                    "text": {
+                        "type": "string"
+                    },
+                    "street": {
+                        "type": "string"
+                    },
+                    "extended": {
+                        "type": "string"
+                    },
+                    "poBox": {
+                        "type": "string"
+                    },
+                    "postcode": {
+                        "type": "string"
+                    },
+                    "locality": {
+                        "type": "string"
+                    },
+                    "region": {
+                        "type": "string"
+                    },
+                    "country": {
+                        "type": "string"
+                    }
                 }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
+            },
+            "EmailAddress": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                    "text": {
+                        "type": "string"
+                    },
+                    "recipient": {
+                        "type": "string"
+                    },
+                    "domain": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "recipient",
+                    "domain"
+                ]
+            },
+            "PhoneNr": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                    "number": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "number"
+                ]
+            },
+            "ActivityCode": {
+                "type": "string",
+                "enum": [
+                    "talk",
+                    "meeting",
+                    "email",
+                    "letter",
+                    "audiocall",
+                    "videocall",
+                    "chat",
+                    "campaign"
+                ]
+            },
+            "GenderCode": {
+                "type": "string",
+                "enum": [
+                    "male",
+                    "female",
+                    "other",
+                    "unspecified"
+                ]
+            },
+            "Lead": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                    "date": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "code": {
+                        "$ref": "#/components/schemas/LeadCode"
+                    },
+                    "firstname": {
+                        "type": "string"
+                    },
+                    "lastname": {
+                        "type": "string"
+                    },
+                    "gender": {
+                        "$ref": "#/components/schemas/GenderCode"
+                    },
+                    "company": {
+                        "type": "string"
+                    },
+                    "phoneNr": {
+                        "$ref": "#/components/schemas/PhoneNr"
+                    },
+                    "email": {
+                        "$ref": "#/components/schemas/EmailAddress"
+                    },
+                    "linkedIn": {
+                        "type": "string"
+                    },
+                    "activity": {
+                        "$ref": "#/components/schemas/ActivityCode"
+                    },
+                    "text": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "date",
+                    "code",
+                    "lastname",
+                    "activity"
+                ]
+            },
+            "LeadCode": {
+                "type": "string",
+                "enum": [
+                    "open",
+                    "contacting",
+                    "qualified",
+                    "disqualified"
+                ]
+            },
+            "LegalEntity": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                    "active": {
+                        "type": "boolean"
+                    }
+                },
+                "required": [
+                    "active",
+                    "active"
+                ]
+            },
+            "NaturalEntity": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                    "active": {
+                        "type": "boolean"
+                    }
+                },
+                "required": [
+                    "active",
+                    "active"
+                ]
+            },
+            "LegalEntityView": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                    "update": {
+                        "$ref": "#/components/schemas/LegalEntity"
+                    },
+                    "id": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "text": {
+                        "type": "string"
+                    }
                 }
-              }
-            }
-          }
-        },
-        "deprecated": false,
-        "security": []
-      }
-    },
-    "/customers/legal-entities/:id": {
-      "get": {
-        "tags": [
-          "LegalEntities"
-        ],
-        "summary": "Get an entity by id",
-        "operationId": "getLegalEntityById",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "The entity identifier",
-            "required": true,
-            "deprecated": false,
-            "allowEmptyValue": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/LegalEntityView"
+            },
+            "NaturalEntityView": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                    "update": {
+                        "$ref": "#/components/schemas/NaturalEntity"
+                    },
+                    "id": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "firstname": {
+                        "type": "string"
+                    },
+                    "gender": {
+                        "$ref": "#/components/schemas/GenderCode"
+                    },
+                    "text": {
+                        "type": "string"
+                    },
+                    "homeEmail": {
+                        "type": "string"
+                    },
+                    "phoneHome": {
+                        "type": "string"
+                    },
+                    "phoneMobile": {
+                        "type": "string"
+                    },
+                    "address": {
+                        "$ref": "#/components/schemas/Address"
+                    }
                 }
-              }
             }
-          }
-        },
-        "deprecated": false,
-        "security": []
-      },
-      "patch": {
-        "tags": [
-          "LegalEntities"
-        ],
-        "summary": "Update a legal entity identified by ID",
-        "operationId": "updateLegalEntityById",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "The entity identifier",
-            "required": true,
-            "deprecated": false,
-            "allowEmptyValue": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/LegalEntityView"
-              }
-            }
-          },
-          "required": false
-        },
-        "responses": {
-          "204": {
-            "description": "No Content"
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          }
-        },
-        "deprecated": false,
-        "security": []
-      },
-      "delete": {
-        "tags": [
-          "LegalEntities"
-        ],
-        "summary": "delete a legal entity by ID",
-        "operationId": "deleteLegalEntityById",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "The entity identifier",
-            "required": true,
-            "deprecated": false,
-            "allowEmptyValue": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "No Content"
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          }
-        },
-        "deprecated": false,
-        "security": []
-      }
-    },
-    "/customers/natural-entities": {
-      "get": {
-        "tags": [
-          "NaturalEntities"
-        ],
-        "summary": "Get all natural entities",
-        "operationId": "getAllNaturalEntities",
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/NaturalEntityView"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "deprecated": false,
-        "security": []
-      },
-      "post": {
-        "tags": [
-          "NaturalEntities"
-        ],
-        "summary": "Create a natural entity",
-        "operationId": "createNaturalEntity",
-        "parameters": [],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/NaturalEntityView"
-              }
-            }
-          },
-          "required": false
-        },
-        "responses": {
-          "204": {
-            "description": "No Content"
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          }
-        },
-        "deprecated": false,
-        "security": []
-      }
-    },
-    "/customers/natural-entities/:email": {
-      "get": {
-        "tags": [
-          "NaturalEntities"
-        ],
-        "summary": "Get a natural entity by his or her private email",
-        "operationId": "getNaturalEntityByEmail",
-        "parameters": [
-          {
-            "name": "email",
-            "in": "path",
-            "description": "The private email address",
-            "required": true,
-            "deprecated": false,
-            "allowEmptyValue": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/NaturalEntityView"
-                }
-              }
-            }
-          }
-        },
-        "deprecated": false,
-        "security": []
-      },
-      "delete": {
-        "tags": [
-          "NaturalEntities"
-        ],
-        "summary": "delete a natural entity by email",
-        "operationId": "deletaNaturalEntityByEmail",
-        "parameters": [
-          {
-            "name": "email",
-            "in": "path",
-            "description": "The entity private email address",
-            "required": true,
-            "deprecated": false,
-            "allowEmptyValue": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "No Content"
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          }
-        },
-        "deprecated": false,
-        "security": []
-      }
-    },
-    "/customers/natural-entities/:id": {
-      "patch": {
-        "tags": [
-          "NaturalEntities"
-        ],
-        "summary": "Update a natural entity identified by ID",
-        "operationId": "updateNaturalEntityById",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "The entity identifier",
-            "required": true,
-            "deprecated": false,
-            "allowEmptyValue": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/NaturalEntityView"
-              }
-            }
-          },
-          "required": false
-        },
-        "responses": {
-          "204": {
-            "description": "No Content"
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          }
-        },
-        "deprecated": false,
-        "security": []
-      }
+        }
     }
-  },
-  "components": {
-    "schemas": {
-      "ErrorResponse": {
-        "type": "object",
-        "additionalProperties": false,
-        "properties": {
-          "requestId": {
-            "type": "string"
-          },
-          "message": {
-            "type": "string"
-          },
-          "code": {
-            "type": "string"
-          }
-        }
-      },
-      "Address": {
-        "type": "object",
-        "additionalProperties": false,
-        "properties": {
-          "text": {
-            "type": "string"
-          },
-          "street": {
-            "type": "string"
-          },
-          "extended": {
-            "type": "string"
-          },
-          "poBox": {
-            "type": "string"
-          },
-          "postcode": {
-            "type": "string"
-          },
-          "locality": {
-            "type": "string"
-          },
-          "region": {
-            "type": "string"
-          },
-          "country": {
-            "type": "string"
-          }
-        }
-      },
-      "EmailAddress": {
-        "type": "object",
-        "additionalProperties": false,
-        "properties": {
-          "text": {
-            "type": "string"
-          },
-          "recipient": {
-            "type": "string"
-          },
-          "domain": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "recipient",
-          "domain"
-        ]
-      },
-      "PhoneNr": {
-        "type": "object",
-        "additionalProperties": false,
-        "properties": {
-          "number": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "number"
-        ]
-      },
-      "ActivityCode": {
-        "type": "string",
-        "enum": [
-          "talk",
-          "meeting",
-          "email",
-          "letter",
-          "audiocall",
-          "videocall",
-          "chat",
-          "campaign"
-        ]
-      },
-      "GenderCode": {
-        "type": "string",
-        "enum": [
-          "male",
-          "female",
-          "other",
-          "unspecified"
-        ]
-      },
-      "Lead": {
-        "type": "object",
-        "additionalProperties": false,
-        "properties": {
-          "date": {
-            "type": "string",
-            "format": "date"
-          },
-          "code": {
-            "$ref": "#/components/schemas/LeadCode"
-          },
-          "firstname": {
-            "type": "string"
-          },
-          "lastname": {
-            "type": "string"
-          },
-          "gender": {
-            "$ref": "#/components/schemas/GenderCode"
-          },
-          "company": {
-            "type": "string"
-          },
-          "phoneNr": {
-            "$ref": "#/components/schemas/PhoneNr"
-          },
-          "email": {
-            "$ref": "#/components/schemas/EmailAddress"
-          },
-          "linkedIn": {
-            "type": "string"
-          },
-          "activity": {
-            "$ref": "#/components/schemas/ActivityCode"
-          },
-          "text": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "date",
-          "code",
-          "lastname",
-          "activity"
-        ]
-      },
-      "LeadCode": {
-        "type": "string",
-        "enum": [
-          "open",
-          "contacting",
-          "qualified",
-          "disqualified"
-        ]
-      },
-      "LegalEntity": {
-        "type": "object",
-        "additionalProperties": false,
-        "properties": {
-          "active": {
-            "type": "boolean"
-          }
-        },
-        "required": [
-          "active",
-          "active"
-        ]
-      },
-      "NaturalEntity": {
-        "type": "object",
-        "additionalProperties": false,
-        "properties": {
-          "active": {
-            "type": "boolean"
-          }
-        },
-        "required": [
-          "active",
-          "active"
-        ]
-      },
-      "LegalEntityView": {
-        "type": "object",
-        "additionalProperties": false,
-        "properties": {
-          "update": {
-            "$ref": "#/components/schemas/LegalEntity"
-          },
-          "id": {
-            "type": "string"
-          },
-          "name": {
-            "type": "string"
-          },
-          "text": {
-            "type": "string"
-          }
-        }
-      },
-      "NaturalEntityView": {
-        "type": "object",
-        "additionalProperties": false,
-        "properties": {
-          "update": {
-            "$ref": "#/components/schemas/NaturalEntity"
-          },
-          "id": {
-            "type": "string"
-          },
-          "name": {
-            "type": "string"
-          },
-          "firstname": {
-            "type": "string"
-          },
-          "gender": {
-            "$ref": "#/components/schemas/GenderCode"
-          },
-          "text": {
-            "type": "string"
-          },
-          "homeEmail": {
-            "type": "string"
-          },
-          "phoneHome": {
-            "type": "string"
-          },
-          "phoneMobile": {
-            "type": "string"
-          },
-          "address": {
-            "$ref": "#/components/schemas/Address"
-          }
-        }
-      }
-    }
-  }
 }

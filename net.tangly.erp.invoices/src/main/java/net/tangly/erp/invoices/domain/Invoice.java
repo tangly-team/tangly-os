@@ -61,7 +61,7 @@ public class Invoice implements HasMutableId, HasMutableName, HasMutableDate, Ha
 
     /**
      * Currency of the invoice. We do not support multi-currency invoices. Please create one invoice for each currency. The decision is logical due to the complexities of handling
-     *  value-added taxes and exchange rates.
+     * value-added taxes and exchange rates.
      */
     private Currency currency;
 

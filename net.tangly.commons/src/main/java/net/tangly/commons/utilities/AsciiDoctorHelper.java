@@ -19,15 +19,12 @@ import org.asciidoctor.Options;
 import org.asciidoctor.SafeMode;
 import org.jetbrains.annotations.NotNull;
 
-import java.io.BufferedOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.io.UncheckedIOException;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
 /**
- * defines helper functions to transform a asciidoc document into a PDF document.
+ * Defines helper functions to transform a asciidoc document into a PDF document.
  */
 public final class AsciiDoctorHelper {
     public static final String ASCIIDOC_EXT = ".adoc";
@@ -52,6 +49,14 @@ public final class AsciiDoctorHelper {
             if (deleteAsciidocFile) {
                 Files.delete(asciidocFilePath);
             }
+        } catch (IOException e) {
+            throw new UncheckedIOException(e);
+        }
+    }
+
+    public static void createPdf(@NotNull InputStream asciidoc, @NotNull OutputStream pdf) {
+        try {
+            createPdf(new String(asciidoc.readAllBytes()), pdf);
         } catch (IOException e) {
             throw new UncheckedIOException(e);
         }

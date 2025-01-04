@@ -103,7 +103,7 @@ public class EntityField<T extends Entity> extends CustomField<T> {
 
 // region Entity user interface field accessors (read-only instances)
 
- public long oid() {
+    public long oid() {
         return oid.getValue();
     }
 

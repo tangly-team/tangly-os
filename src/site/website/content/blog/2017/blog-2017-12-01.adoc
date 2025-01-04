@@ -59,7 +59,7 @@ Another gain is tension just disappears when people talk around snacks and drink
 
 As a Java developer, it is time to use state of the industry tools and improve your daily work
 
-. Java 9 JDK - If you are still working with Java 7 or earlier, you are a laggard
+. Java 9 JDK, if you are still working with Java 7 or earlier, you are a laggard
 .. Java 8 public support will end in the middle of next year.
 .. Java 10 shall be available next year.
 The early releases are already online.

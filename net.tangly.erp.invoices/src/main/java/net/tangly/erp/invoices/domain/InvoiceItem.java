@@ -21,13 +21,15 @@ import java.math.BigDecimal;
 
 /**
  * The invoice item represents a position of sold items defined through a product.
+ *
  * @param position position of the item in the invoice
- * @param article product sold in the invoice line
- * @param text human-readable text documenting the line
+ * @param article  product sold in the invoice line
+ * @param text     human-readable text documenting the line
  * @param quantity quantity of items sold
- * @param vatRate VAT rate applied to the item
+ * @param vatRate  VAT rate applied to the item
  */
-public record InvoiceItem(int position, @NotNull Article article, String text, @NotNull BigDecimal quantity, @NotNull BigDecimal vatRate) implements InvoiceLine {
+public record InvoiceItem(int position, @NotNull Article article, String text, @NotNull BigDecimal quantity, @NotNull BigDecimal vatRate)
+    implements InvoiceLine {
     @Override
     public BigDecimal amount() {
         return unitPrice().multiply(quantity);

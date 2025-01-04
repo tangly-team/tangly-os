@@ -20,6 +20,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
 import java.util.function.Function;
 
 /**
@@ -37,13 +38,27 @@ import java.util.function.Function;
  *
  * @param <T> type of the instances
  */
-public interface Provider<T> {
-    static <E extends HasOid, Long> Optional<E> findByOid(@NotNull Provider<E> provider, long oid) {
+public abstract class Provider<T> {
+    private final ReentrantReadWriteLock mutex;
+
+    public Provider() {
+        this.mutex = new ReentrantReadWriteLock();
+    }
+
+    public Provider(@NotNull ReentrantReadWriteLock mutex) {
+        this.mutex = mutex;
+    }
+
+    public static <E extends HasOid, Long> Optional<E> findByOid(@NotNull Provider<E> provider, long oid) {
         return provider.findBy(E::oid, oid);
     }
 
-    static <E extends HasId, String> Optional<E> findById(@NotNull Provider<E> provider, @NotNull String id) {
+    public static <E extends HasId, String> Optional<E> findById(@NotNull Provider<E> provider, @NotNull String id) {
         return provider.findBy(E::id, id);
+    }
+
+    public static boolean containsById(@NotNull Provider<? extends HasId> provider, @NotNull String id) {
+        return findById(provider, id).isPresent();
     }
 
     /**
@@ -51,29 +66,27 @@ public interface Provider<T> {
      *
      * @return list of all instances
      */
-    List<T> items();
+    public abstract List<T> items();
 
     /**
      * Updates the data associated with the entity. If the entity is new, the update is handled as a create operation. The update is transitive and all
-     * referenced entities are also
-     * updated. The entity given as parameter becomes the instance managed through the provider.
+     * referenced entities are also updated. The entity given as a parameter becomes the instance managed through the provider.
      *
      * @param entity entity to update
      */
-    void update(@NotNull T entity);
+    public abstract void update(@NotNull T entity);
 
     /**
      * Deletes the data associated with the entity. The object identifier is invalidated.
      *
      * @param entity entity to delete
      */
-    void delete(@NotNull T entity);
+    public abstract void delete(@NotNull T entity);
 
     /**
      * Deletes all the entities managed by the provider.
      */
-    void deleteAll();
-
+    public abstract void deleteAll();
 
     /**
      * Replaces an existing value with a new one. A null value is ignored.
@@ -81,13 +94,15 @@ public interface Provider<T> {
      * @param oldValue remove the old value if not null
      * @param newValue add the new value if not null
      */
-    default void replace(T oldValue, T newValue) {
-        if (Objects.nonNull(oldValue)) {
-            delete(oldValue);
-        }
-        if (Objects.nonNull(newValue)) {
-            update(newValue);
-        }
+    public void replace(T oldValue, T newValue) {
+        execute(() -> {
+            if (Objects.nonNull(oldValue)) {
+                delete(oldValue);
+            }
+            if (Objects.nonNull(newValue)) {
+                update(newValue);
+            }
+        });
     }
 
     /**
@@ -95,10 +110,9 @@ public interface Provider<T> {
      *
      * @param items entities to update
      */
-    default void updateAll(@NotNull Iterable<? extends T> items) {
+    public void updateAll(@NotNull Iterable<? extends T> items) {
         items.forEach(this::update);
     }
-
 
     /**
      * Returns the first entity which property matches the value.
@@ -108,7 +122,20 @@ public interface Provider<T> {
      * @param <U>    type of the property
      * @return optional of the first matching entity otherwise empty
      */
-    default <U> Optional<T> findBy(@NotNull Function<T, U> getter, U value) {
+    public <U> Optional<T> findBy(@NotNull Function<T, U> getter, U value) {
         return items().stream().filter(o -> value.equals(getter.apply(o))).findAny();
     }
+
+    protected ReentrantReadWriteLock mutex() {
+        return mutex;
+    }
+    protected void execute(@NotNull Runnable runnable) {
+        mutex.writeLock().lock();
+        try {
+            runnable.run();
+        } finally {
+            mutex.writeLock().unlock();
+        }
+    }
+
 }

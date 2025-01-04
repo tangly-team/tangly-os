@@ -4,7 +4,7 @@ linkTitle: "DDD Reflections"
 date: 2026-07-01
 tags: ["java", "architecture"]
 params:
-  featured: "blog/2024/pics/2026-07-01-head.jpg"
+  featured: "blog/2026/pics/2026-07-01-head.jpg"
 ---
 
 image::2026-07-01-head.jpg[width=420,height=360,role=left]

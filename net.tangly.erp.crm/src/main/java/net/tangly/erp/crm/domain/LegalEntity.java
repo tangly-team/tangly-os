@@ -25,8 +25,8 @@ import java.util.Objects;
 import java.util.Optional;
 
 /**
- * A legal entity is a legally recognized organization able to underwrite contracts and hire employees. A legal entity has a name, an identity defined as the legal number of an
- * organization (e.g., zefix UID number in Switzerland, EUID in Europe), and a text describing it.
+ * A legal entity is a legally recognized organization able to underwrite contracts and hire employees. A legal entity has a name, an identity defined as the
+ * legal identifier of an organization (e.g., zefix UID number in Switzerland, EUID in Europe), and a text describing it.
  */
 public class LegalEntity extends MutableEntityExtendedImp implements MutableEntityExtended, CrmEntity {
     public LegalEntity(long oid) {

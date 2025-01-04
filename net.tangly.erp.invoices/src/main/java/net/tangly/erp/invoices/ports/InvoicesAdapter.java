@@ -124,11 +124,11 @@ public class InvoicesAdapter implements InvoicesPort {
     }
 
     @Override
-    public void exportInvoiceDocuments(@NotNull DomainAudit audit, boolean withQrCode, boolean withEN16931, boolean overwrite, LocalDate from, LocalDate to,
-                                       Collection<Tag> tags) {
+    public void exportInvoiceDocuments(@NotNull DomainAudit audit, boolean withQrCode, boolean withEN16931, boolean pdfa, boolean overwrite, LocalDate from,
+                                       LocalDate to, Collection<Tag> tags) {
         final var filter = new DateRange.DateFilter(from, to);
         realm().invoices().items().stream().filter(o -> filter.test(o.date()))
-            .forEach(o -> exportInvoiceDocument(audit, o, withQrCode, withEN16931, overwrite, tags));
+            .forEach(o -> exportInvoiceDocument(audit, o, withQrCode, withEN16931, pdfa, overwrite, tags));
     }
 
     @Override
@@ -139,8 +139,8 @@ public class InvoicesAdapter implements InvoicesPort {
     }
 
     @Override
-    public void exportInvoiceDocument(@NotNull DomainAudit audit, @NotNull Invoice invoice, boolean withQrCode, boolean withEN16931, boolean overwrite,
-                                      Collection<Tag> tags) {
+    public void exportInvoiceDocument(@NotNull DomainAudit audit, @NotNull Invoice invoice, boolean withQrCode, boolean withEN16931, boolean pdfa,
+                                      boolean overwrite, Collection<Tag> tags) {
         var invoiceAsciiDocPath = Port.resolvePath(docsFolder, invoice.date().getYear(), invoice.name() + AsciiDoctorHelper.ASCIIDOC_EXT);
         Path invoicePdfPath = Port.resolvePath(docsFolder, invoice.date().getYear(), invoice.name() + PDF_EXT);
         var asciiDocGenerator = new InvoiceAsciiDoc(invoice.locale(), properties);

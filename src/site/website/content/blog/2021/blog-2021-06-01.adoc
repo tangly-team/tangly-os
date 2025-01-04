@@ -30,7 +30,7 @@ You are free to choose the zone best suited for your organization.
 Remember the zones are additive.
 If you target the third zone, your teams shall also be fluent in all practices of the first and second zones.
 
-=== Shift Team Culture: _Focusing_ teams produce business value (6 months)
+=== Shift Team Culture: _Focusing_ teams produces business value (6 months)
 
 The team generates their own day-to-day tasks and plans based on their business representative’s needs.
 Team members consider their plan to be the team’s work, not individuals’ work.
@@ -154,7 +154,7 @@ Turnover is a related cause of fluency loss.
 A team that gains or loses too many members may have trouble sustaining what it learned.
 This is a particular problem for organizations that assemble new teams for every project.
 Agile Fluency and Scrum::
-Agile and Scrum requires long-living and stable teams.
+Agile and Scrum require long-living and stable teams.
 A team should work over years on one product development and improvements.
 Agile at organizational level can only work if the upper and middle management transitioned to agile thinking and handling.
 The {ref-less} community is vocal how destructive the wrong management decision can be.

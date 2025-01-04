@@ -17,7 +17,7 @@
  * <ul>
  *     <li>The bounded domain user interface base class.</li>
  *     <li>The domain entities view management class displaying key abstractions defined in the domain.</li>
- *     <li>The events managgement class displaying information about events processed in the domain.</li>
+ *     <li>The events management class displaying information about events processed in the domain.</li>
  *     <li>Utilities classes</li>
  * </ul>
  */

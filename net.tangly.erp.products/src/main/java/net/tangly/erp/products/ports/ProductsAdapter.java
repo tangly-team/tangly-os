@@ -64,6 +64,9 @@ public class ProductsAdapter implements ProductsPort {
     public static final String SCHEMA_FILE = "assignment-efforts-schema-1.0.0.json";
     public static final String YAML_EXT = ".yaml";
 
+    private static final String ASSIGNMENT_OID = "assignmentOid";
+    private static final String COLLABORATOR = "collaborator";
+    private static final String CONTRACT_ID = "contractId";
     private final ProductsRealm realm;
     private final ProductsBusinessLogic logic;
     private final Properties properties;
@@ -147,9 +150,9 @@ public class ProductsAdapter implements ProductsPort {
         try {
             if (ValidatorUtilities.isYamlValid(new StringReader(source), SCHEMA_FILE)) {
                 YamlMapping data = Yaml.createYamlInput(stream).readYamlMapping();
-                String contractId = data.string("contractId");
-                String collaborator = data.string("collaborator");
-                long assignmentOid = data.longNumber("assignmentOid");
+                String contractId = data.string(CONTRACT_ID);
+                String collaborator = data.string(COLLABORATOR);
+                long assignmentOid = data.longNumber(ASSIGNMENT_OID);
                 Assignment assignment = Provider.findByOid(realm().assignments(), assignmentOid).orElse(null);
 
                 if (Objects.isNull(assignment)) {
@@ -162,7 +165,9 @@ public class ProductsAdapter implements ProductsPort {
                     LocalDate date = effort.asMapping().date("date");
                     int duration = effort.asMapping().integer("duration");
                     Collection<String> text = effort.asMapping().literalBlockScalar("text");
+                    text = processBuggyYaml(text);
                     Collection<String> minutes = effort.asMapping().literalBlockScalar("minutes");
+                    minutes = processBuggyYaml(minutes);
                     Effort newEffort = new Effort(assignment, contractId, date, duration, multilines(text));
                     if (Objects.nonNull(minutes) && !minutes.isEmpty()) {
                         newEffort.minutes(multilines(minutes));
@@ -195,13 +200,30 @@ public class ProductsAdapter implements ProductsPort {
                     }
                 });
             }
-
         } catch (IOException e) {
             throw new IORuntimeException(e);
         } catch (YamlReadingException e) {
             audit.log(EventData.IMPORT_EVENT, EventData.Status.ERROR, "Error importing efforts.", Map.of("filename", source, "exception", e));
         }
     }
+
+    private List<String> processBuggyYaml(Collection<String> text) {
+        if (Objects.isNull(text)) {
+            return null;
+        }
+        var lines = new ArrayList<>(text);
+        boolean listNotStarted = true;
+        for (int i = 0; i < lines.size(); i++) {
+            if (listNotStarted && lines.get(i).matches("^\\s*(-|\\.|\\*).*$")) {
+                listNotStarted = false;
+                if (i > 0) {
+                    lines.add(i, "\n");
+                }
+            }
+        }
+        return lines;
+    }
+
 
     private String multilines(Collection<String> texts) {
         StringBuilder builder = new StringBuilder();

@@ -5,6 +5,7 @@ weight: 10
 ---
 :ref-groupId: net.tangly
 :ref-artifactId: fsm
+:ref-java-current-version: 21 LTS
 
 = Finite State Machine Library
 

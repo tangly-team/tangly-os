@@ -46,7 +46,7 @@ class InvoicesPortTest {
             InvoicesPort port = new InvoicesAdapter(new InvoicesEntities(),
                 store.dataRoot().resolve(InvoicesBoundedDomain.DOMAIN), store.docsRoot().resolve(InvoicesBoundedDomain.DOMAIN), new Properties());
             port.importEntities(store);
-            port.exportInvoiceDocuments(store, false, false, true, null, null, Collections.emptyList());
+            port.exportInvoiceDocuments(store, false, false, false, true, null, null, Collections.emptyList());
 
             port.realm().invoices().items()
                 .forEach(o -> assertThat(

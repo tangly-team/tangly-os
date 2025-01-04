@@ -53,18 +53,18 @@ public class FsmBbv {
         builder.in(States.Play).onLocal(Events.StoreStation, "Play -> Play").execute((o, e) -> o.appendToLog("PlayToPlay")).build();
         builder.in(States.FM).add(States.AutoTune).onEntry(FsmBbv::logAutoTuneEntry).onExit(FsmBbv::logAutoTuneExit);
         builder.in(States.Off).on(Events.TogglePower).to(States.Maintenance, "Off -> TogglePower").onlyIf(FsmBbv::isMaintenanceMode, "Maintenance is On")
-                .execute(FsmBbv::logTransitionFromOffToMaintenance, "log transition Off to Maintenance").build();
+            .execute(FsmBbv::logTransitionFromOffToMaintenance, "log transition Off to Maintenance").build();
         builder.in(States.Maintenance).on(Events.TogglePower).to(States.Off, "Maintenance -> Off")
-                .execute(FsmBbv::logTransitionFromMaintenanceToOff, "MaintainedtoOff").build();
+            .execute(FsmBbv::logTransitionFromMaintenanceToOff, "MaintainedtoOff").build();
         builder.in(States.Off).on(Events.TogglePower).to(States.On, "Off -> On").onlyIf(o -> !o.isMaintenanceMode(), "Maintenance Off")
-                .execute(FsmBbv::logTransitionFromOffToOn, "OfftoOn").build();
+            .execute(FsmBbv::logTransitionFromOffToOn, "OfftoOn").build();
         builder.in(States.On).on(Events.TogglePower).to(States.Off, "TogglePower -> On").execute(FsmBbv::logTransitionFromOnToOff, "OntoOff").build();
         builder.in(States.DAB).on(Events.ToggleMode).to(States.FM, "DAB -> FM").execute(FsmBbv::logTransitionFromDabToFm, "DABtoFM").build();
         builder.in(States.FM).on(Events.ToggleMode).to(States.DAB, "FM -> DAB").execute(FsmBbv::logTransitionFromFmToDab, "FMtoDAB").build();
         builder.in(States.Play).on(Events.StationLost).to(States.AutoTune, "Play -> AutoTune")
-                .execute(FsmBbv::logTransitionFromPlayToAutoTune, "PlaytoAutoTune").build();
+            .execute(FsmBbv::logTransitionFromPlayToAutoTune, "PlaytoAutoTune").build();
         builder.in(States.AutoTune).on(Events.StationFound).to(States.Play, "AutoTune -> Play")
-                .execute(FsmBbv::logTransitionFromAutoTuneToPlay, "AutoTunetoPlay").build();
+            .execute(FsmBbv::logTransitionFromAutoTuneToPlay, "AutoTunetoPlay").build();
         return builder;
     }
 

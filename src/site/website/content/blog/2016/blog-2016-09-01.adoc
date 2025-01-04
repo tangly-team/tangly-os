@@ -47,7 +47,7 @@ The above points in italics are all related to changing processes.
 You can handle two thirds of the hurdles with adequate change management training and a clear change product definition.
 Do not try to introduce Scrum at company level without such an approach.
 
-== The main Reasons Why Agile Projects are Cancelled
+== The main Reasons Why Agile Projects are Canceled
 
 * 52%: Missing experience with agile approaches
 * 45%: Company culture clashes with agile principles

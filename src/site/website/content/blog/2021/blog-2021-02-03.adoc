@@ -8,6 +8,7 @@ params:
 ---
 
 include::../fragments/_config-mb-blog.adoc[]
+:ref-ics: https://en.wikipedia.org/wiki/ICalendar[ICalendar]
 
 image::2021-02-03-head.jpg[width=420,height=360,role=left]
 
@@ -34,7 +35,7 @@ Here is a little advice to improve our work experience.
 
 If you are responsible for the meeting preparation, please:
 
-* Send me a calendar invitation in the https://en.wikipedia.org/wiki/ICalendar[icalendar] format.
+* Send me a calendar invitation in the {ref-ics} format.
 The file extension should be _ics_ or _ical_. +
 Never email me asking for an appointment, please directly provide the invitation. +
 Do not send invitations in the Outlook proprietary format.
@@ -43,7 +44,7 @@ I use macOS and Linux, not Microsoft and Office.
 Provide
 ** Purpose and goals of the meeting.
 ** An agenda, ideally each item has a tentative duration.
-** An attendee list, normally visible in the ICS invitation.
+** An attendee list, normally visible in the {ref-ics} invitation.
 ** Attach the documents I shall read before the meeting in the invitation.
 You can also provide links to the documents.
 Please do not require a login to access the document.
@@ -96,7 +97,7 @@ The Amazon meeting rules are:
 Start with silence::
 We read those memos, silently, during the meeting.
 It is like a study hall.
-Everybody sits around the table, and we read silently, for usually about half an hour, or however long it takes us to read the document.
+Everybody sits around the table, and we read silently, for usually about half an hour, or however, long it takes us to read the document.
 And then we discuss it.
 No PowerPoint presentation::
 No PowerPoints are used inside Amazon.
@@ -114,7 +115,7 @@ The rules to sharing a document are:
 * Avoid sending me a document per email.
 Send me the link to the document in a shared repository I have access to.
 I mean everybody is using Google Drive, DropBox, or Microsoft One Drive
-footnote:[Beware you cannot search for such repositories, especially if you are using proprietary document formats such as Microsoft Office.
+footnote:[Beware, you cannot search for such repositories, especially if you are using proprietary document formats such as Microsoft Office.
 The sole exception is Google Drive from the search engine company.].
 
 The rules to editing a document are:

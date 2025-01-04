@@ -15,7 +15,6 @@ package net.tangly.erp.invoices.ports;
 
 import net.tangly.core.domain.Document;
 import net.tangly.core.providers.Provider;
-import net.tangly.core.providers.ProviderHasId;
 import net.tangly.core.providers.ProviderInMemory;
 import net.tangly.core.providers.ProviderPersistence;
 import net.tangly.erp.invoices.domain.Article;
@@ -60,7 +59,7 @@ public class InvoicesEntities implements InvoicesRealm {
         invoices = ProviderPersistence.of(storageManager, data.invoices);
         articles = ProviderPersistence.of(storageManager, data.articles);
         legalEntities = ProviderPersistence.of(storageManager, data.legalEntities);
-        documents = ProviderHasId.of(storageManager, data.documents);
+        documents = ProviderPersistence.of(storageManager, data.documents);
     }
 
     public InvoicesEntities() {
@@ -69,8 +68,9 @@ public class InvoicesEntities implements InvoicesRealm {
         invoices = ProviderInMemory.of(data.invoices);
         articles = ProviderInMemory.of(data.articles);
         legalEntities = ProviderInMemory.of(data.legalEntities);
-        documents = ProviderHasId.of(data.documents);
+        documents = ProviderInMemory.of(data.documents);
     }
+
     @Override
     public Provider<Article> articles() {
         return this.articles;

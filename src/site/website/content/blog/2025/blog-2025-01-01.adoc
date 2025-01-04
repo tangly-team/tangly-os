@@ -20,13 +20,13 @@ include::../fragments/_config-mb-blog.adoc[]
 image::2025-01-01-head.png[width=420,height=360,role=left]
 
 The embedded software industry is in the midst of a major revolution.
-A tremendous amount of new development lays ahead.
+A tremendous amount of new development lies ahead.
 
 New embedded software needs an actual architecture that is inherently safer and easier to understand.
 
 It provides a higher level of abstraction than the usual _threading_ and _synchronization_ approach based on a traditional Real-Time Operating System _RTOS_
 footnote:[I also state the obvious.
-All the embedded and distributed solutions I developed the last 35 years follow these design principles.
+All the embedded and distributed solutions I developed over the last 35 years follow these design principles.
 Task communication is exclusively over message passing or topics.
 Various RTOS such RT68, {ref-micro-os-II}, {ref-qnx}, {ref-freertos}, {ref-ros} provide all the necessary abstractions.
 Platforms such as Linux or Java have these constructs since inception.
@@ -58,7 +58,7 @@ Therefore, the object must protect its data from potential manipulation by multi
 _Such a mutual exclusion suspends callbacks called when another activity is accessing the data._
 _The sequence of execution becomes entangled and almost impossible to analyze and document._
 
-The protection of the data will use blocking mechanisms of a RTOS and could potentially induce deadlock, livelock or starvation problems.
+The protection of the data will use blocking mechanisms of an RTOS and could potentially induce deadlock, livelock or starvation problems.
 
 The programmer is responsible to avoid these tricky constellations.
 ====
@@ -85,7 +85,7 @@ A well-known example of this architecture is the robotic operating system https:
 In resource-constrained embedded systems, the biggest concern has always been about the size and efficiency of such active object frameworks.
 Modern kernels provide message-passing mechanisms.
 Often, you do not need to add a lot of functionalities.
-Therefore, the only doubt is how efficient these solutions perform.
+Therefore, the only doubt is how efficiently these solutions perform.
 Well, the overhead of sending a message should not be higher than the one needed to synchronize access to a shared variable.
 
 But perhaps the most important benefit of active object frameworks is that they offer a much higher level of abstraction.
@@ -117,7 +117,7 @@ Messages should convey legible information to the receivers.
 Therefore, messages should be typed using good object-oriented modeling techniques.
 Idempotent Messages::
 The system is more resilient if an idempotent message design is systematically used.
-Distributed systems cannot always guaranty single delivery of a specific message without additional and sometimes prohibitive costs.
+Distributed systems cannot always guaranty a single delivery of a specific message without additional and sometimes prohibitive costs.
 https://en.wikipedia.org/wiki/Idempotence[Idempotence] can be realized syntactically with a message identifier or semantically by providing invariants for multiple processing of the same message.
 Actors are State Machines::
 Actors define the internal state of a processing node.
@@ -127,7 +127,7 @@ Nodes are single-Threaded::
 Multi-threaded support shall be provided through the library.
 Avoid as much as possible to implement multithreaded solutions inside an actor.
 
-Below the standard approach to implement a flat state machine using two nested switch statements:
+Below, the standard approach to implementing a flat state machine is using two nested switch statements:
 
 [source,cpp]
 ----
@@ -161,7 +161,7 @@ The type of the variable should be an enumeration.
 A message should be a value object.
 <3> Evaluate an optional guard condition to decide if the transition will be selected.
 <4> Implement the transition from state _STATE_1_ to _STATE_2_ and execute the associated action _action_a_.
-It is customary to pass the message as parameter to the function.
+It is customary to pass the message as a parameter to the function.
 
 The same code in Java would be:
 
@@ -178,7 +178,7 @@ state = switch (state) {
                     yield STATE_2;
                 } else if (guard_2(mesage)) {
                     action_a_2(message));
-                    yiedl STATE_3;
+                    yield STATE_3;
                 }
             case (ID_B):
                 action_b(message);
@@ -205,7 +205,7 @@ You can use eiter the _Meta State Machine boost.MSM or https://boost-ext.github.
 footnote:[ROS-2 has state machines libraries e.g., http://smacc.ninja/statechart-vs-msm/[SMAC], https://github.com/robosoft-ai/SMACC2[SMACC2] or
 https://github.com/uleroboticsgroup/yasmin[YASMIN].].
 If you are using this notation, avoid parallel states.
-Parallel states require multithreaded nodes and the semantic is not well-defined.
+Parallel states require multithreaded nodes, and the semantic is not well-defined.
 ====
 
 [TIP]
@@ -225,16 +225,16 @@ The time is always very handy to generate log records with a system-wide natural
 https://en.wikipedia.org/wiki/Network_Time_Protocol[Network time protocol] is a concrete implementation to provide global time in a distributed environment. +
 The global time is also used to define reliable timeout events encoded in statecharts.
 CAP Theorem::
-The theorem heavily constraints the selected architecture. +
+The theorem heavily constrains the selected architecture. +
 As an example, we take https://www.ros.org/[ROS-2 Robotic Operating System] and see how it is constrained through the {ref-cap}. +
 +
-Topics based and message-passing architecture defines the asynchronous approach. +
+Topics-based and message-passing architecture defines the asynchronous approach. +
 +
 Quality of service is an approach to improving the consistency of a solution at the cost of availability.
 Synchronous services simplify the programming model and kill the availability and partitioning of the system. +
 Single threaded is the sole solution to avoid reintroducing low-level synchronization mechanisms.+
 +
-Similar tradeoffs are required if you are using other RTOS or hand coded solutions.
+Similar tradeoffs are required if you are using other RTOS or hand-coded solutions.
 Eventual Consistency::
 https://en.wikipedia.org/wiki/Eventual_consistency[Eventual consistency] is a consistency model used in distributed computing to achieve high availability.
 It informally guarantees that if no new updates are made to a given data item, eventually all accesses to that item will return the last updated value. +

@@ -1,28 +1,258 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--
+  - Copyright 2024 Marcel Baumann
+  -
+  - Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
+  - the License at
+  -
+  -          https://apache.org/licenses/LICENSE-2.0
+  -
+  - Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
+  - OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+  -
+  -->
+
 <svg xmlns="http://www.w3.org/2000/svg" contentScriptType="application/ecmascript" contentStyleType="text/css" height="679px" preserveAspectRatio="none"
-     style="width:1214px;height:679px;" version="1.1" viewBox="0 0 1214 679" width="1214px" zoomAndPan="magnify"><defs/><g><!--MD5=[84dda40acb3410cad7262261daba2aaf]
-cluster c1--><rect fill="#FFFFFF" height="401" style="stroke: #444444; stroke-width: 1.0; stroke-dasharray: 7.0,7.0;" width="856" x="42.5" y="138"/><text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="80" x="430.5" y="153.5352">«boundary»</text><text fill="#444444" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="87" x="427" y="171.957">tangly ERP</text><text fill="#444444" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="53" x="444" y="186.9336">[System]</text><!--MD5=[e803f86e6a223ab3e19184e0a4cd2794]
-entity ledger_app--><rect fill="#438DD5" height="100.0859" style="stroke: #3C7FC0; stroke-width: 1.5;" width="150" x="732.5" y="410"/><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="65" x="775" y="431.6016">«container»</text><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="56" x="779.5" y="449.6016">Ledger</text><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="76" x="769.5" y="464.5781">[Vaadin App]</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="0" x="809.5" y="480.6445"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="130" x="742.5" y="497.1328">Accounting System</text><!--MD5=[6265404bca8b4168ecf496a0557f4677]
-entity crm_app--><rect fill="#438DD5" height="116.5742" style="stroke: #3C7FC0; stroke-width: 1.5;" width="180" x="58.5" y="401.5"/><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="65" x="116" y="423.1016">«container»</text><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="37" x="130" y="441.1016">CRM</text><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="76" x="110.5" y="456.0781">[Vaadin App]</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="0" x="150.5" y="472.1445"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="156" x="68.5" y="488.6328">Customer Relationship</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="48" x="124.5" y="505.1211">System</text><!--MD5=[8b7393d108b4a8c9b8d52b01dbb5a85f]
-entity analytics_app--><rect fill="#438DD5" height="100.0859" style="stroke: #3C7FC0; stroke-width: 1.5;" width="133" x="148" y="206"/><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="65" x="182" y="227.6016">«container»</text><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="75" x="177" y="245.6016">Analytics</text><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="76" x="176.5" y="260.5781">[Vaadin App]</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="0" x="216.5" y="276.6445"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="113" x="158" y="293.1328">Analytics System</text><!--MD5=[a5a6ae0ba01c8a4589ab26bd33e87aad]
-entity storage--><path d="M386.5,407 C386.5,397 485.5,397 485.5,397 C485.5,397 584.5,397 584.5,407 L584.5,512.5742 C584.5,522.5742 485.5,522.5742 485.5,522.5742 C485.5,522.5742 386.5,522.5742 386.5,512.5742 L386.5,407 " fill="#438DD5" style="stroke: #3C7FC0; stroke-width: 1.5;"/><path d="M386.5,407 C386.5,417 485.5,417 485.5,417 C485.5,417 584.5,417 584.5,407 " fill="none" style="stroke: #3C7FC0; stroke-width: 1.5;"/><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="65" x="453" y="432.6016">«container»</text><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="61" x="455" y="450.6016">Storage</text><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="117" x="427" y="465.5781">[TSV and JSON Files]</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="0" x="487.5" y="481.6445"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="174" x="396.5" y="498.1328">Stores application data in</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="106" x="432.5" y="514.6211">TSV / JSON files</text><!--MD5=[2e0b88dcb29c53aa479c6fca69205452]
-entity salesperson--><rect fill="#08427B" height="52.9766" style="stroke: #073B6F; stroke-width: 1.5;" width="139" x="915" y="229.5"/><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="52" x="958.5" y="251.1016">«person»</text><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="119" x="925" y="269.1016">Sales Engineer</text><!--MD5=[990f84f090b4ff0d511369c9063290fe]
-entity accountant--><rect fill="#08427B" height="52.9766" style="stroke: #073B6F; stroke-width: 1.5;" width="114" x="1089.5" y="229.5"/><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="52" x="1120.5" y="251.1016">«person»</text><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="94" x="1099.5" y="269.1016">Accountant</text><!--MD5=[2b2d5ad518bf6746de4ffeb5be0566d4]
-entity manager--><rect fill="#08427B" height="52.9766" style="stroke: #073B6F; stroke-width: 1.5;" width="91" x="238" y="8"/><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="52" x="257.5" y="29.6016">«person»</text><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="71" x="248" y="47.6016">Manager</text><!--MD5=[d112aecbd7ccc75573a6ee2503a173b3]
-entity email--><rect fill="#999999" height="52.9766" style="stroke: #8A8A8A; stroke-width: 1.5;" width="125" x="6" y="616"/><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="105" x="16" y="637.6016">«external_system»</text><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="47" x="45" y="655.6016">Gmail</text><!--MD5=[eb77c6a6b551cb7500a4ad2ec8270835]
-entity accounting--><rect fill="#999999" height="52.9766" style="stroke: #8A8A8A; stroke-width: 1.5;" width="125" x="745" y="616"/><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="105" x="755" y="637.6016">«external_system»</text><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="59" x="778" y="655.6016">Banana</text><!--MD5=[76c8a26aae6e6f41f3ded4a1e44e8921]
-entity contacts--><rect fill="#999999" height="52.9766" style="stroke: #8A8A8A; stroke-width: 1.5;" width="125" x="166" y="616"/><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="105" x="176" y="637.6016">«external_system»</text><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="71" x="193" y="655.6016">Contacts</text><!--MD5=[25c0e31f453ba5612c73c983bcbb1fca]
-link salesperson to crm_app--><path d="M946.07,282.7 C931.67,291.29 914.84,300.15 898.5,306 C673.5,386.6 601.62,344.29 368.5,397 C327.29,406.32 282.31,418.61 243.81,429.79 " fill="none" id="salesperson-&gt;crm_app" style="stroke: #666666; stroke-width: 1.0;"/><polygon fill="#666666" points="238.67,431.29,248.43,432.61,243.47,429.89,246.19,424.93,238.67,431.29" style="stroke: #666666; stroke-width: 1.0;"/><text fill="#666666" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="32" x="804" y="349.5684">Uses</text><text fill="#666666" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="37" x="801.5" y="363.9121">[https]</text><!--MD5=[71704218c6b146e07d5ff6b3ddac47c0]
-link manager to crm_app--><path d="M299.69,61.11 C304.67,70.21 309.6,80.75 312.5,91 C345.92,209.27 393.77,262.24 329.5,367 C310.26,398.36 276.63,419.44 243.53,433.41 " fill="none" id="manager-&gt;crm_app" style="stroke: #666666; stroke-width: 1.0;"/><polygon fill="#666666" points="238.65,435.42,248.4951,435.692,243.2734,433.5163,245.4491,428.2945,238.65,435.42" style="stroke: #666666; stroke-width: 1.0;"/><text fill="#666666" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="32" x="365" y="254.0684">Uses</text><text fill="#666666" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="37" x="362.5" y="268.4121">[https]</text><!--MD5=[be999528ac56059a1a7235ecc063f722]
-link accountant to ledger_app--><path d="M1124.93,282.56 C1103.33,306.88 1068.1,343.21 1031.5,367 C986.95,395.96 931.79,418.75 887.35,434.4 " fill="none" id="accountant-&gt;ledger_app" style="stroke: #666666; stroke-width: 1.0;"/><polygon fill="#666666" points="882.54,436.09,892.355,436.9055,887.2615,434.4446,889.7224,429.3511,882.54,436.09" style="stroke: #666666; stroke-width: 1.0;"/><text fill="#666666" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="32" x="1073" y="349.5684">Uses</text><text fill="#666666" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="37" x="1070.5" y="363.9121">[https]</text><!--MD5=[3fd1c3d1a72dd6921da365b3c22c6016]
-link manager to analytics_app--><path d="M275.45,61.11 C264.71,95.26 245.44,156.58 231.43,201.14 " fill="none" id="manager-&gt;analytics_app" style="stroke: #666666; stroke-width: 1.0;"/><polygon fill="#666666" points="229.92,205.94,236.435,198.5539,231.4195,201.1701,228.8032,196.1547,229.92,205.94" style="stroke: #666666; stroke-width: 1.0;"/><text fill="#666666" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="32" x="269" y="104.5684">Uses</text><text fill="#666666" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="37" x="266.5" y="118.9121">[https]</text><!--MD5=[eee805baf54a5f0fffb84c41b10083f7]
-link analytics_app to ledger_app--><path d="M281.06,293.59 C290.16,298.03 299.47,302.3 308.5,306 C318.47,310.09 589.2,392.59 727.62,434.71 " fill="none" id="analytics_app-&gt;ledger_app" style="stroke: #666666; stroke-width: 1.0;"/><polygon fill="#666666" points="732.49,436.19,725.0453,429.742,727.7068,434.7336,722.7151,437.3951,732.49,436.19" style="stroke: #666666; stroke-width: 1.0;"/><text fill="#666666" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="68" x="504.5" y="356.5684">Visualizes</text><!--MD5=[64dd466735f173999d4171a1f3d8a628]
-link analytics_app to crm_app--><path d="M162.51,306.13 C155.56,315.35 149.47,325.43 145.5,336 C138.41,354.9 136.96,376.6 137.96,396.47 " fill="none" id="analytics_app-&gt;crm_app" style="stroke: #666666; stroke-width: 1.0;"/><polygon fill="#666666" points="138.26,401.48,141.7138,392.2566,137.9605,396.489,133.7282,392.7357,138.26,401.48" style="stroke: #666666; stroke-width: 1.0;"/><text fill="#666666" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="68" x="146.5" y="356.5684">Visualizes</text><!--MD5=[1a9196ade87001b5ff82ef9e439c91bd]
-link crm_app to storage--><path d="M238.81,460 C282.65,460 335.55,460 381.11,460 " fill="none" id="crm_app-&gt;storage" style="stroke: #666666; stroke-width: 1.0;"/><polygon fill="#666666" points="386.34,460,377.34,456,381.34,460,377.34,464,386.34,460" style="stroke: #666666; stroke-width: 1.0;"/><text fill="#666666" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="107" x="257" y="424.5684">Reads from and</text><text fill="#666666" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="58" x="283.5" y="439.8789">writes to</text><text fill="#666666" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="69" x="278" y="454.2227">[sync, JDBC]</text><!--MD5=[5f85147d5c885b1ba896b896f6973d4b]
-reverse link storage to ledger_app--><path d="M589.79,460 C636.25,460 689.93,460 732.37,460 " fill="none" id="storage&lt;-ledger_app" style="stroke: #666666; stroke-width: 1.0;"/><polygon fill="#666666" points="584.74,460,593.74,464,589.74,460,593.74,456,584.74,460" style="stroke: #666666; stroke-width: 1.0;"/><text fill="#666666" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="107" x="603" y="424.5684">Reads from and</text><text fill="#666666" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="58" x="629.5" y="439.8789">writes to</text><text fill="#666666" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="69" x="624" y="454.2227">[sync, JDBC]</text><!--MD5=[4d2b70445c6aa817c66cc8d484628e28]
-link ledger_app to accounting--><path d="M807.5,510.32 C807.5,542.32 807.5,583.03 807.5,610.55 " fill="none" id="ledger_app-&gt;accounting" style="stroke: #666666; stroke-width: 1.0;"/><polygon fill="#666666" points="807.5,615.87,811.5,606.87,807.5,610.87,803.5,606.87,807.5,615.87" style="stroke: #666666; stroke-width: 1.0;"/><text fill="#666666" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="117" x="808.5" y="568.5684">Gets transactions</text><text fill="#666666" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="30" x="852" y="582.9121">[TSV]</text><!--MD5=[5df0be95ec012eef7e66afb9e4d73179]
-link crm_app to contacts--><path d="M174.03,518.61 C187.64,549.3 203.82,585.81 214.99,611.02 " fill="none" id="crm_app-&gt;contacts" style="stroke: #666666; stroke-width: 1.0;"/><polygon fill="#666666" points="217.02,615.59,217.0257,605.7411,214.992,611.0198,209.7133,608.986,217.02,615.59" style="stroke: #666666; stroke-width: 1.0;"/><text fill="#666666" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="131" x="204.5" y="568.5684">Gets person photos</text><text fill="#666666" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="44" x="248" y="582.9121">[VCard]</text><!--MD5=[befab6f0b8bca6b04c1377d0ccc9a501]
-link crm_app to email--><path d="M120.21,518.65 C114.54,530.61 108.72,543.16 103.5,555 C95.38,573.4 86.91,594.3 80.33,610.95 " fill="none" id="crm_app-&gt;email" style="stroke: #666666; stroke-width: 1.0;"/><polygon fill="#666666" points="78.35,615.97,85.3809,609.0732,80.1897,611.3208,77.9421,606.1296,78.35,615.97" style="stroke: #666666; stroke-width: 1.0;"/><text fill="#666666" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="78" x="104.5" y="568.5684">Gets emails</text><text fill="#666666" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="36" x="125.5" y="582.9121">[IMAP]</text><!--MD5=[d315a51ae59170e4cab3d5aec13a09b3]
+     style="width:1214px;height:679px;" version="1.1" viewBox="0 0 1214 679" width="1214px" zoomAndPan="magnify">
+    <defs/>
+    <g><!--MD5=[84dda40acb3410cad7262261daba2aaf]
+cluster c1-->
+        <rect fill="#FFFFFF" height="401" style="stroke: #444444; stroke-width: 1.0; stroke-dasharray: 7.0,7.0;" width="856" x="42.5" y="138"/>
+        <text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="80" x="430.5" y="153.5352">
+            «boundary»
+        </text>
+        <text fill="#444444" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="87" x="427" y="171.957">
+            tangly ERP
+        </text>
+        <text fill="#444444" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="53" x="444" y="186.9336">
+            [System]
+        </text><!--MD5=[e803f86e6a223ab3e19184e0a4cd2794]
+entity ledger_app-->
+        <rect fill="#438DD5" height="100.0859" style="stroke: #3C7FC0; stroke-width: 1.5;" width="150" x="732.5" y="410"/>
+        <text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="65" x="775" y="431.6016">
+            «container»
+        </text>
+        <text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="56" x="779.5" y="449.6016">
+            Ledger
+        </text>
+        <text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="76" x="769.5" y="464.5781">
+            [Vaadin App]
+        </text>
+        <text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="0" x="809.5" y="480.6445"/>
+        <text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="130" x="742.5" y="497.1328">Accounting System
+        </text><!--MD5=[6265404bca8b4168ecf496a0557f4677]
+entity crm_app-->
+        <rect fill="#438DD5" height="116.5742" style="stroke: #3C7FC0; stroke-width: 1.5;" width="180" x="58.5" y="401.5"/>
+        <text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="65" x="116" y="423.1016">
+            «container»
+        </text>
+        <text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="37" x="130" y="441.1016">
+            CRM
+        </text>
+        <text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="76" x="110.5" y="456.0781">
+            [Vaadin App]
+        </text>
+        <text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="0" x="150.5" y="472.1445"/>
+        <text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="156" x="68.5" y="488.6328">Customer
+            Relationship
+        </text>
+        <text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="48" x="124.5" y="505.1211">System</text><!--MD5=[8b7393d108b4a8c9b8d52b01dbb5a85f]
+entity analytics_app-->
+        <rect fill="#438DD5" height="100.0859" style="stroke: #3C7FC0; stroke-width: 1.5;" width="133" x="148" y="206"/>
+        <text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="65" x="182" y="227.6016">
+            «container»
+        </text>
+        <text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="75" x="177" y="245.6016">
+            Analytics
+        </text>
+        <text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="76" x="176.5" y="260.5781">
+            [Vaadin App]
+        </text>
+        <text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="0" x="216.5" y="276.6445"/>
+        <text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="113" x="158" y="293.1328">Analytics System
+        </text><!--MD5=[a5a6ae0ba01c8a4589ab26bd33e87aad]
+entity storage-->
+        <path
+            d="M386.5,407 C386.5,397 485.5,397 485.5,397 C485.5,397 584.5,397 584.5,407 L584.5,512.5742 C584.5,522.5742 485.5,522.5742 485.5,522.5742 C485.5,522.5742 386.5,522.5742 386.5,512.5742 L386.5,407 "
+            fill="#438DD5" style="stroke: #3C7FC0; stroke-width: 1.5;"/>
+        <path d="M386.5,407 C386.5,417 485.5,417 485.5,417 C485.5,417 584.5,417 584.5,407 " fill="none" style="stroke: #3C7FC0; stroke-width: 1.5;"/>
+        <text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="65" x="453" y="432.6016">
+            «container»
+        </text>
+        <text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="61" x="455" y="450.6016">
+            Storage
+        </text>
+        <text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="117" x="427" y="465.5781">
+            [TSV and JSON Files]
+        </text>
+        <text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="0" x="487.5" y="481.6445"/>
+        <text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="174" x="396.5" y="498.1328">Stores application
+            data in
+        </text>
+        <text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="106" x="432.5" y="514.6211">TSV / JSON files
+        </text><!--MD5=[2e0b88dcb29c53aa479c6fca69205452]
+entity salesperson-->
+        <rect fill="#08427B" height="52.9766" style="stroke: #073B6F; stroke-width: 1.5;" width="139" x="915" y="229.5"/>
+        <text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="52" x="958.5" y="251.1016">
+            «person»
+        </text>
+        <text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="119" x="925" y="269.1016">
+            Sales Engineer
+        </text><!--MD5=[990f84f090b4ff0d511369c9063290fe]
+entity accountant-->
+        <rect fill="#08427B" height="52.9766" style="stroke: #073B6F; stroke-width: 1.5;" width="114" x="1089.5" y="229.5"/>
+        <text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="52" x="1120.5"
+              y="251.1016">«person»
+        </text>
+        <text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="94" x="1099.5" y="269.1016">
+            Accountant
+        </text><!--MD5=[2b2d5ad518bf6746de4ffeb5be0566d4]
+entity manager-->
+        <rect fill="#08427B" height="52.9766" style="stroke: #073B6F; stroke-width: 1.5;" width="91" x="238" y="8"/>
+        <text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="52" x="257.5" y="29.6016">
+            «person»
+        </text>
+        <text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="71" x="248" y="47.6016">
+            Manager
+        </text><!--MD5=[d112aecbd7ccc75573a6ee2503a173b3]
+entity email-->
+        <rect fill="#999999" height="52.9766" style="stroke: #8A8A8A; stroke-width: 1.5;" width="125" x="6" y="616"/>
+        <text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="105" x="16" y="637.6016">
+            «external_system»
+        </text>
+        <text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="47" x="45" y="655.6016">
+            Gmail
+        </text><!--MD5=[eb77c6a6b551cb7500a4ad2ec8270835]
+entity accounting-->
+        <rect fill="#999999" height="52.9766" style="stroke: #8A8A8A; stroke-width: 1.5;" width="125" x="745" y="616"/>
+        <text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="105" x="755" y="637.6016">
+            «external_system»
+        </text>
+        <text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="59" x="778" y="655.6016">
+            Banana
+        </text><!--MD5=[76c8a26aae6e6f41f3ded4a1e44e8921]
+entity contacts-->
+        <rect fill="#999999" height="52.9766" style="stroke: #8A8A8A; stroke-width: 1.5;" width="125" x="166" y="616"/>
+        <text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="105" x="176" y="637.6016">
+            «external_system»
+        </text>
+        <text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="71" x="193" y="655.6016">
+            Contacts
+        </text><!--MD5=[25c0e31f453ba5612c73c983bcbb1fca]
+link salesperson to crm_app-->
+        <path d="M946.07,282.7 C931.67,291.29 914.84,300.15 898.5,306 C673.5,386.6 601.62,344.29 368.5,397 C327.29,406.32 282.31,418.61 243.81,429.79 "
+              fill="none" id="salesperson-&gt;crm_app" style="stroke: #666666; stroke-width: 1.0;"/>
+        <polygon fill="#666666" points="238.67,431.29,248.43,432.61,243.47,429.89,246.19,424.93,238.67,431.29" style="stroke: #666666; stroke-width: 1.0;"/>
+        <text fill="#666666" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="32" x="804" y="349.5684">
+            Uses
+        </text>
+        <text fill="#666666" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="37" x="801.5" y="363.9121">
+            [https]
+        </text><!--MD5=[71704218c6b146e07d5ff6b3ddac47c0]
+link manager to crm_app-->
+        <path d="M299.69,61.11 C304.67,70.21 309.6,80.75 312.5,91 C345.92,209.27 393.77,262.24 329.5,367 C310.26,398.36 276.63,419.44 243.53,433.41 "
+              fill="none" id="manager-&gt;crm_app" style="stroke: #666666; stroke-width: 1.0;"/>
+        <polygon fill="#666666" points="238.65,435.42,248.4951,435.692,243.2734,433.5163,245.4491,428.2945,238.65,435.42"
+                 style="stroke: #666666; stroke-width: 1.0;"/>
+        <text fill="#666666" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="32" x="365" y="254.0684">
+            Uses
+        </text>
+        <text fill="#666666" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="37" x="362.5" y="268.4121">
+            [https]
+        </text><!--MD5=[be999528ac56059a1a7235ecc063f722]
+link accountant to ledger_app-->
+        <path d="M1124.93,282.56 C1103.33,306.88 1068.1,343.21 1031.5,367 C986.95,395.96 931.79,418.75 887.35,434.4 " fill="none" id="accountant-&gt;ledger_app"
+              style="stroke: #666666; stroke-width: 1.0;"/>
+        <polygon fill="#666666" points="882.54,436.09,892.355,436.9055,887.2615,434.4446,889.7224,429.3511,882.54,436.09"
+                 style="stroke: #666666; stroke-width: 1.0;"/>
+        <text fill="#666666" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="32" x="1073" y="349.5684">
+            Uses
+        </text>
+        <text fill="#666666" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="37" x="1070.5"
+              y="363.9121">[https]
+        </text><!--MD5=[3fd1c3d1a72dd6921da365b3c22c6016]
+link manager to analytics_app-->
+        <path d="M275.45,61.11 C264.71,95.26 245.44,156.58 231.43,201.14 " fill="none" id="manager-&gt;analytics_app"
+              style="stroke: #666666; stroke-width: 1.0;"/>
+        <polygon fill="#666666" points="229.92,205.94,236.435,198.5539,231.4195,201.1701,228.8032,196.1547,229.92,205.94"
+                 style="stroke: #666666; stroke-width: 1.0;"/>
+        <text fill="#666666" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="32" x="269" y="104.5684">
+            Uses
+        </text>
+        <text fill="#666666" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="37" x="266.5" y="118.9121">
+            [https]
+        </text><!--MD5=[eee805baf54a5f0fffb84c41b10083f7]
+link analytics_app to ledger_app-->
+        <path d="M281.06,293.59 C290.16,298.03 299.47,302.3 308.5,306 C318.47,310.09 589.2,392.59 727.62,434.71 " fill="none" id="analytics_app-&gt;ledger_app"
+              style="stroke: #666666; stroke-width: 1.0;"/>
+        <polygon fill="#666666" points="732.49,436.19,725.0453,429.742,727.7068,434.7336,722.7151,437.3951,732.49,436.19"
+                 style="stroke: #666666; stroke-width: 1.0;"/>
+        <text fill="#666666" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="68" x="504.5" y="356.5684">
+            Visualizes
+        </text><!--MD5=[64dd466735f173999d4171a1f3d8a628]
+link analytics_app to crm_app-->
+        <path d="M162.51,306.13 C155.56,315.35 149.47,325.43 145.5,336 C138.41,354.9 136.96,376.6 137.96,396.47 " fill="none" id="analytics_app-&gt;crm_app"
+              style="stroke: #666666; stroke-width: 1.0;"/>
+        <polygon fill="#666666" points="138.26,401.48,141.7138,392.2566,137.9605,396.489,133.7282,392.7357,138.26,401.48"
+                 style="stroke: #666666; stroke-width: 1.0;"/>
+        <text fill="#666666" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="68" x="146.5" y="356.5684">
+            Visualizes
+        </text><!--MD5=[1a9196ade87001b5ff82ef9e439c91bd]
+link crm_app to storage-->
+        <path d="M238.81,460 C282.65,460 335.55,460 381.11,460 " fill="none" id="crm_app-&gt;storage" style="stroke: #666666; stroke-width: 1.0;"/>
+        <polygon fill="#666666" points="386.34,460,377.34,456,381.34,460,377.34,464,386.34,460" style="stroke: #666666; stroke-width: 1.0;"/>
+        <text fill="#666666" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="107" x="257" y="424.5684">
+            Reads from and
+        </text>
+        <text fill="#666666" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="58" x="283.5" y="439.8789">
+            writes to
+        </text>
+        <text fill="#666666" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="69" x="278" y="454.2227">
+            [sync, JDBC]
+        </text><!--MD5=[5f85147d5c885b1ba896b896f6973d4b]
+reverse link storage to ledger_app-->
+        <path d="M589.79,460 C636.25,460 689.93,460 732.37,460 " fill="none" id="storage&lt;-ledger_app" style="stroke: #666666; stroke-width: 1.0;"/>
+        <polygon fill="#666666" points="584.74,460,593.74,464,589.74,460,593.74,456,584.74,460" style="stroke: #666666; stroke-width: 1.0;"/>
+        <text fill="#666666" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="107" x="603" y="424.5684">
+            Reads from and
+        </text>
+        <text fill="#666666" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="58" x="629.5" y="439.8789">
+            writes to
+        </text>
+        <text fill="#666666" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="69" x="624" y="454.2227">
+            [sync, JDBC]
+        </text><!--MD5=[4d2b70445c6aa817c66cc8d484628e28]
+link ledger_app to accounting-->
+        <path d="M807.5,510.32 C807.5,542.32 807.5,583.03 807.5,610.55 " fill="none" id="ledger_app-&gt;accounting"
+              style="stroke: #666666; stroke-width: 1.0;"/>
+        <polygon fill="#666666" points="807.5,615.87,811.5,606.87,807.5,610.87,803.5,606.87,807.5,615.87" style="stroke: #666666; stroke-width: 1.0;"/>
+        <text fill="#666666" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="117" x="808.5" y="568.5684">
+            Gets transactions
+        </text>
+        <text fill="#666666" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="30" x="852" y="582.9121">
+            [TSV]
+        </text><!--MD5=[5df0be95ec012eef7e66afb9e4d73179]
+link crm_app to contacts-->
+        <path d="M174.03,518.61 C187.64,549.3 203.82,585.81 214.99,611.02 " fill="none" id="crm_app-&gt;contacts" style="stroke: #666666; stroke-width: 1.0;"/>
+        <polygon fill="#666666" points="217.02,615.59,217.0257,605.7411,214.992,611.0198,209.7133,608.986,217.02,615.59"
+                 style="stroke: #666666; stroke-width: 1.0;"/>
+        <text fill="#666666" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="131" x="204.5" y="568.5684">
+            Gets person photos
+        </text>
+        <text fill="#666666" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="44" x="248" y="582.9121">
+            [VCard]
+        </text><!--MD5=[befab6f0b8bca6b04c1377d0ccc9a501]
+link crm_app to email-->
+        <path d="M120.21,518.65 C114.54,530.61 108.72,543.16 103.5,555 C95.38,573.4 86.91,594.3 80.33,610.95 " fill="none" id="crm_app-&gt;email"
+              style="stroke: #666666; stroke-width: 1.0;"/>
+        <polygon fill="#666666" points="78.35,615.97,85.3809,609.0732,80.1897,611.3208,77.9421,606.1296,78.35,615.97"
+                 style="stroke: #666666; stroke-width: 1.0;"/>
+        <text fill="#666666" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="78" x="104.5" y="568.5684">
+            Gets emails
+        </text>
+        <text fill="#666666" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="36" x="125.5" y="582.9121">
+            [IMAP]
+        </text><!--MD5=[d315a51ae59170e4cab3d5aec13a09b3]
 @startuml
 
 
@@ -198,4 +428,6 @@ Operating System: Mac OS X
 Default Encoding: UTF-8
 Language: en
 Country: CH
---></g></svg>
+-->
+    </g>
+</svg>

@@ -9,12 +9,17 @@ weight: 20
 This document provides a high-level view of the changes introduced in the apps library by release.
 For a detailed view of what has changed, refer to the https://bitbucket.org/tangly-team/tangly-os[repository] commits.
 
+=== 0.2.9 (2024-12-31)
+
+* Improvements in code
+
 === 0.2.8 (2024-09-30)
 
-* Uer management, authorization and authentication are now supported.
+* Uer management, authorization, and authentication are now supported.
 The list of users and active users of a domain can be retrieved.
 * Tenancy support is available.
-Multiple tenants can be defined. Each tenant has dedicated users, custom tags, and custom codes.
+Multiple tenants can be defined.
+Each tenant has dedicated users, custom tags, and custom codes.
 
 === 0.2.7 (2024-05-31)
 

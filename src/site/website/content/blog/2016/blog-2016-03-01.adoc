@@ -43,7 +43,7 @@ These computers were used daily for the first five years.
 The tools I really enjoy and use on a daily basis for software development as I mainly developed in Java - are:
 
 * https://www.jetbrains.com/idea/[IntelliJ IDEA] IDE,
-* Atlassian Cloud applications - BitBucket, HipChat, CI pipeline -,
+* Atlassian Cloud applications based on BitBucket, HipChat, CI pipeline,
 * {ref-homebrew} as the package manager for utilities,
 * Docker as the container manager,
 * VirtualBox when I need a full-fledged virtual machine

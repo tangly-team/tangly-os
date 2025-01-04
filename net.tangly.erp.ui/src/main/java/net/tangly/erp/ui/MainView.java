@@ -84,10 +84,15 @@ public class MainView extends ApplicationView {
         });
     }
 
+    /**
+     * Exports all documents as expected by the users of tangly ERP.
+     * WARNING: this method is a test method and should not be delivered in production.
+     */
     private void exportDocuments() {
         var invoices = (InvoicesBoundedDomain) (tenant().getBoundedDomain(InvoicesBoundedDomain.DOMAIN).orElseThrow());
-        invoices.port().exportInvoiceDocuments(invoices, false, false, true, LocalDate.of(2015, Month.JANUARY, 1), LocalDate.of(2024, Month.DECEMBER, 31),
-            Collections.emptyList());
+        invoices.port()
+            .exportInvoiceDocuments(invoices, false, false, false, true, LocalDate.of(2015, Month.JANUARY, 1), LocalDate.of(2024, Month.DECEMBER, 31),
+                Collections.emptyList());
         var ledger = (LedgerBoundedDomain) (tenant().getBoundedDomain(LedgerBoundedDomain.DOMAIN).orElseThrow());
         ledger.port()
             .exportLedgerDocument("tangly-2016", LocalDate.of(2015, Month.SEPTEMBER, 1), LocalDate.of(2016, Month.DECEMBER, 31), true, true, false, true, true,
@@ -104,6 +109,8 @@ public class MainView extends ApplicationView {
             "2024-04-PT24-marcel-baumann-WorkReport-April", ChronoUnit.HOURS);
         assignment = Provider.findByOid(products.realm().assignments(), 40004).orElseThrow();
         products.port().exportEffortsDocument(products, assignment, LocalDate.of(2024, Month.JUNE, 1), LocalDate.of(2024, Month.AUGUST, 31),
+            "2024-08-DTV24-marcel-baumann-WorkReport-August", ChronoUnit.HOURS);
+        products.port().exportEffortsDocument(products, assignment, LocalDate.of(2024, Month.SEPTEMBER, 1), LocalDate.of(2024, Month.DECEMBER, 31),
             "2024-08-DTV24-marcel-baumann-WorkReport-August", ChronoUnit.HOURS);
     }
 }
