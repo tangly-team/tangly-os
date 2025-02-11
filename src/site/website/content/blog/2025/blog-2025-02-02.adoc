@@ -9,7 +9,7 @@ params:
 
 [.float-group]
 --
-image::2025-02-01-head.jpg[width=420,height=360,role=left]
+image::2025-02-02-continuous-learning.jpg[width=420,height=360,role=left]
 
 Can a father handover pieces of wisdom to his daughters?
 Does it make sense?
@@ -18,12 +18,9 @@ I do truly not know.
 I certainly doubt that I own any wisdom.
 I am just a simple software engineer.
 
-But I would like to entrust life learnings to my daughters.
-
 I had a fulfilled life with a lot of wonderful experiences.
+I have a delightful life partner and two clever and lovely daughters. I deeply love them.
 
-I have a delightful life partner and two clever and lovely daughters.
-I deeply love them.
 --
 
 Reflecting on my life, I came up with a few learnings that I would like to hand over to my daughters.
@@ -68,7 +65,6 @@ Enjoy the physical activity and the people around you. +
 Switzerland is a paradise for sports.
 You can practice any sport in the mountains, lakes, and rivers.
 
-image::2025-02-02-continuous-learning.jpg[width=420,height=360,role=left]
 Study and Learn::
 You are never too old to learn.
 A university degree can be a goal but is not mandatory.
@@ -92,7 +88,7 @@ You need enough money to pay the bills and finance your holidays. +
 +
 Beware money is freedom.
 If you have some, you can decide to work less, to get a new job or to reduce how much you work.
-
+////
 [NOTE]
 ====
 If you understand statistics, the solution is straightforward.
@@ -110,6 +106,7 @@ Start early, and you will be surprised how much money you will have in 20 years.
 
 If you do not understand statistics, it is time to learn.
 ====
+////
 
 These are the learnings that I would like to hand over to my daughters.
 They are few and plain.
