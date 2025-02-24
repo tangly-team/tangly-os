@@ -70,7 +70,7 @@ junit-engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref 
 lombok = "org.projectlombok:lombok:1.18.36"
 
 measurement-api = "javax.measure:unit-api:2.2"
-measurement-ri = "tech.units:indriya:2.2"
+measurement-ri = "tech.units:indriya:2.2.2"
 
 micrometer = "io.micrometer:micrometer-registry-prometheus:1.11.1"
 micrometer-jmx = "io.micrometer:micrometer-registry-jmx:1.13.3"
