@@ -2,7 +2,7 @@
 assertj-version = '3.26.3'
 flyway-version = '11.1.0'
 junit-version = '5.11.4'
-log4j2-version = '2.23.0'
+log4j2-version = '2.24.3'
 javalin-version = '5.6.4'
 openapi-version = "5.6.4"
 eclipsestore-version = '2.1.0'
